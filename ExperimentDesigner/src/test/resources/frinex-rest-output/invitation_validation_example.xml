@@ -2,34 +2,34 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="invitation_id" appNameDisplay="invitation_validation_example" appNameInternal="invitation_validation_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 
-        <!--<validation matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error"-->
+        <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
         <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
-        <validation postName="uuid" fieldName="userId" returnName="validated_uuid" errorMessage="User not found"/>
+        <validation postName="invitation_id" fieldName="userId" returnName="validated_invitation_id" errorMessage="User not found" errorField="validation_error"/>
         <!--matchExistingValue="true"--> 
         <!--allowInsertOnEmpty="true"-->
         <!--validationRegex="" matchingRegex=""--> 
-        <validation postName="session_id" fieldName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]" />
-        <validation postName="session_steps" fieldName="session_steps" validationRegex="[a-Z]+(_[a-Z])*" errorMessage="session_steps not found or invalid"/>
-        <validation postName="session_step" fieldName="session_step" validationRegex="" errorMessage="" />
-        <validation postName="session_next_step" fieldName="session_next_step" errorMessage="" />
+        <validation postName="session_id" fieldName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]" errorField="validation_error"/>
+        <validation postName="session_copepods" fieldName="session_copepods" validationRegex="[a-Z]+(_[a-Z])*" errorMessage="session_copepods not found or invalid" errorField="validation_error"/>
+        <validation postName="session_copepod" fieldName="session_copepod"/>
+        <validation postName="session_next_copepod" fieldName="session_next_copepod"/>
         <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
     </administration>
     <scss/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
-        <!-- The attribute in the Experiment element userIdGetParam="uuid" allows the internal user id to be set via the get parameter and this metadata field -->
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="uuid" preventServerDuplicates="false" registrationField="Invitation UUID"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_uuid" preventServerDuplicates="false" registrationField="Validated UUID"/>
+        <!-- The attribute in the Experiment element userIdGetParam="invitation_id" allows the internal user id to be set via the get parameter and this metadata field -->
+        <field controlledMessage="Please enter your invitation ID." controlledRegex=".'{'3,'}'" postName="invitation_id" preventServerDuplicates="false" registrationField="Invitation ID"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_invitation_id" preventServerDuplicates="false" registrationField="Validated Invitation ID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validation_error" preventServerDuplicates="false" registrationField="Validation Error"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_id" preventServerDuplicates="false" registrationField="session id"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="step_done" preventServerDuplicates="false" registrationField="session done"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_steps" preventServerDuplicates="false" registrationField="session steps"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_step" preventServerDuplicates="false" registrationField="session step"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_step" preventServerDuplicates="false" registrationField="session_next_step"/>
+        <field controlledMessage="Please enter your session number." controlledRegex="[0-9]" postName="session_id" preventServerDuplicates="false" registrationField="session id"/>
+        <field controlledMessage="." controlledRegex="|no|yes" postName="copepod_done" preventServerDuplicates="false" registrationField="session done"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_copepods" preventServerDuplicates="false" registrationField="session copepods"/>
+        <field controlledMessage="." controlledRegex="|Copepod|Antrisocopia prehensilis|Karllangia pulchra|Misophrioida|Monstrilloida|Mormonillidae|Platycopiidae|Poecilostomatoida|Siphonostomatoida|Speleophria bivexilla|Speleophria scottodicarloi|Speleophriidae|Tigriopus brevicornis" postName="session_copepod" preventServerDuplicates="false" registrationField="session copepod"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_copepod" preventServerDuplicates="false" registrationField="session_next_copepod"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
     </metadata>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Overview">
-        <htmlText featureText="This example demostrates three ways of allowing a participant complete an experiment over separate days or via separate devices. Normally a participant will be given a new identifer when they change to a different browser or device. This is because the system has no way to know who the participant is. These methods can be used to overcome this by providing a consistant identifier to each particpant."/>
+        <htmlText featureText="This example demostrates three ways of allowing a participant complete an experiment over separate days or via separate devices. Normally a participant will curretnly be given a new identifer when they change to a different browser or device. This is because the system has no way to know who the participant is. These methods can be used to overcome this by providing a consistant identifier to each particpant."/>
         <addPadding/>
         <targetButton featureText="Invitation URL Example" target="InvitationUrlExample"/>
         <addPadding/>
@@ -54,7 +54,7 @@
             </conditionFalse>
         </hasGetParameter>
     </presenter>
-    <presenter back="Menu" menuLabel="InvitationCodeExample" type="stimulus" self="InvitationCodeExample" title="Invitation Code Example">
+    <presenter back="Menu" menuLabel="InvitationCodeExample" type="metadata" self="InvitationCodeExample" title="Invitation Code Example">
         <htmlTokenText featureText="In the case of Mobile and Desktop apps it is not possible for the participant to enter a URL with thier invition code. So in this case they can enter the code in a metadata field and then via the switchUserIdButton tag they can switch to that user."/>
         <hasMetadataValue fieldName="invitation_code" matchingRegex="...*">
             <conditionTrue>
@@ -70,7 +70,7 @@
                 Please provide this code as a URL GET parameter (&lt;a href=&quot;?invitation_code=yourcode&quot;&gt;?invitation_code=[yourcode]&lt;/a&gt;) and reload this page."/>
             </conditionFalse>
         </hasMetadataValue>
-        <switchUserIdButton featureText="switchUserIdButton" fieldName="uuid" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]">
+        <switchUserIdButton featureText="switchUserIdButton" fieldName="invitation_id" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" styleName="styleName">
             <onError>
                 <htmlText featureText="onError"/>
             </onError>
@@ -102,65 +102,93 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>-->
-    <presenter back="Menu" menuLabel="Invitation Validation Example" type="transmission" self="InvitationValidationExample" title="Invitation Validation Example">
-        <hasMetadataValue fieldName="validated_uuid" matchingRegex="...*">
+    <presenter back="Menu" menuLabel="Enter Invitation Metadata" type="metadata" self="EnterInvitationMetadata" title="Enter Invitation Metadata">
+        <hasMetadataValue fieldName="validated_invitation_id" matchingRegex="...*">
             <conditionTrue>
-                <htmlText featureText="A &quot;validated_uuid&quot; has been found and it must match the provided &quot;uuid&quot;."/>
-                <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
+                <htmlText featureText="A &quot;validated_invitation_id&quot; has been found and it must match the provided &quot;invitation_id&quot;."/>
+                <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
                     <conditionTrue>
-                        <htmlText featureText="The &quot;validated_uuid&quot; does match &quot;uuid&quot; and you can continue."/>
+                        <htmlText featureText="The &quot;validated_invitation_id&quot; does match &quot;invitation_id&quot; and you can continue."/>
                         <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
                     </conditionTrue>
                     <conditionFalse>
-                        <htmlText featureText="The &quot;validated_uuid&quot; does NOT match &quot;uuid&quot;."/>
+                        <htmlText featureText="The &quot;validated_invitation_id&quot; does NOT match &quot;invitation_id&quot;."/>
                         <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleInvalid"/>-->
                         <!--<eraseUsersDataButton featureText="Erase old data" target="InvitationSessionStepsExample"/>-->
                     </conditionFalse>
                 </hasMetadataValue>
             </conditionTrue>
             <conditionFalse>
+                <htmlText featureText="The validated_invitation_id has not been found."/>
             </conditionFalse>
         </hasMetadataValue>
+        <addPadding/>
         <htmlTokenText featureText="userId: &lt;userId&gt;"/> 
-        <htmlTokenText featureText="uuid: &lt;metadataField_uuid&gt;"/> 
-        <htmlTokenText featureText="validated_uuid: &lt;metadataField_validated_uuid&gt;"/> 
-        <metadataField fieldName="uuid"/>
+        <addPadding/>
+        <htmlTokenText featureText="invitation_id: &lt;metadataField_invitation_id&gt;"/> 
+        <addPadding/>
+        <htmlTokenText featureText="validated_invitation_id: &lt;metadataField_validated_invitation_id&gt;"/> 
+        <addPadding/>
+        <metadataField fieldName="invitation_id"/>
         <metadataField fieldName="session_id"/>
-        <metadataField fieldName="session_steps"/>
-        <htmlText featureText="This example takes the list &quot;session_steps&quot; and extracts the next item after &quot;audioas2&quot; from that list which will be &quot;peabodyas&quot;. That value is then placed into the &quot;session_next_step&quot; metadata field."/>
-        <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
-        <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
-        <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
-        <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
-        <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
-        <!--// if the response uuid does not exist then transmit-->
-        <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+        <metadataField fieldName="session_copepod"/>
+        <metadataField fieldName="copepod_done"/>
+        <htmlText featureText="This example takes the list &quot;session_copepods&quot; and extracts the next item after &quot;session_copepod&quot; from that list which will be &quot;peabodyas&quot;. That value is then placed into the &quot;session_next_copepod&quot; metadata field."/>
+        <!--<htmlText featureText="Assuming the list contains session_copepod we act as if the name of this experiment is session_copepod and using setMetadataValue get the next item which is peabodyas."/>-->
+        <htmlText featureText="The resulting value in &quot;session_next_copepod&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
+        <setMetadataValue fieldName="session_copepods" dataLogFormat="Copepod_Antrisocopia prehensilis_Karllangia pulchra_Misophrioida_Monstrilloida_Mormonillidae_Platycopiidae_Poecilostomatoida_Siphonostomatoida_Speleophria bivexilla_Speleophria scottodicarloi_Speleophriidae_Tigriopus brevicornis"/>
+        <!--// if the response invitation_id does not exist then transmit-->
+        <saveMetadataButton featureText="Save Metadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError>
-                <htmlText featureText="Transmitting the data for this session step failed."/>
+                <htmlText featureText="Save metadata failed"/>
             </onError>
             <onSuccess>
-                <htmlText featureText="Transmitting the data for this session step ok"/>
-                <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
-                    <conditionTrue>
-                        <addPadding/>
-                        <addPadding/>
-                        <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
-                    </conditionTrue>
-                    <conditionFalse>
-                        <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
-                            <conditionTrue>
-                                <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
-                                <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
-                            </conditionTrue>
-                            <conditionFalse>
-                                <htmlText featureText="The the return value validated_uuid from transmitResults does NOT match the provided uuid."/>
-                            </conditionFalse>
-                        </hasMetadataValue>
-                    </conditionFalse>
-                </hasMetadataValue>
+                <gotoPresenter target="InvitationValidationExample"/>
             </onSuccess>
-        </transmitResults>
-        <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?uuid=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_steps=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
+        </saveMetadataButton>
+        <!--<targetButton featureText="Send Invitation Request" target="InvitationValidationExample"/>-->
+    </presenter>
+    <presenter back="Menu" menuLabel="Invitation Validation Example" type="transmission" self="InvitationValidationExample" title="Invitation Validation Example">
+        <htmlTokenText featureText="&quot;invitation_id&quot;: &lt;metadataField_invitation_id&gt;"/>
+        <htmlTokenText featureText="&quot;session_id&quot;: &lt;metadataField_session_id&gt;"/>
+        <htmlTokenText featureText="&quot;session_copepod&quot;: &lt;metadataField_session_copepod&gt;"/>
+        <htmlTokenText featureText="&quot;copepod_done&quot;: &lt;metadataField_copepod_done&gt;"/>
+        <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
+        <htmlTokenText featureText="&quot;session_next_copepod&quot;: &lt;metadataField_session_next_copepod&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
+        <addPadding/>
+        <actionButton featureText="Validate Invitation">
+            <transmitResults matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+                <onError>
+                    <addPadding/>
+                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
+                </onError>
+                <onSuccess>
+                    <addPadding/>
+                    <htmlText featureText="Transmitting the data for this session copepod ok"/>
+                    <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
+                        <conditionTrue>
+                            <addPadding/>
+                            <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                        </conditionTrue>
+                        <conditionFalse>
+                            <addPadding/>
+                            <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
+                                <conditionTrue>
+                                    <htmlText featureText="The the return value validated_invitation_id from transmitResults matches the provided invitation_id."/>
+                                    <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <htmlText featureText="The the return value validated_invitation_id from transmitResults does NOT match the provided invitation_id."/>
+                                </conditionFalse>
+                            </hasMetadataValue>
+                        </conditionFalse>
+                    </hasMetadataValue>
+                </onSuccess>
+            </transmitResults>
+        </actionButton>
+        <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?invitation_id=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_copepods=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
     </presenter>
     <stimuli>
         <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
