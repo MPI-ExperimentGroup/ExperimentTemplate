@@ -488,14 +488,17 @@
             <xsl:text>package nl.mpi.tg.eg.frinex.rest;
 
                 import java.io.IOException;
+                import java.util.ArrayList;
                 import java.util.Date;
                 import java.util.List;
+                import javax.servlet.http.HttpServletRequest;
                 import nl.mpi.tg.eg.frinex.model.Participant;
                 import nl.mpi.tg.eg.frinex.model.TagData;
                 import org.springframework.beans.factory.annotation.Autowired;
                 import org.springframework.http.HttpStatus;
                 import org.springframework.http.MediaType;
                 import org.springframework.http.ResponseEntity;
+                import org.springframework.web.bind.annotation.RequestHeader;
                 import org.springframework.web.bind.annotation.RequestMapping;
                 import org.springframework.web.bind.annotation.RequestMethod;
                 import org.springframework.web.bind.annotation.RequestParam;
@@ -517,7 +520,7 @@
                 @RequestMapping(value = "/validate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
                 @ResponseBody
                 public ResponseEntity&lt;String&gt; validate(
-                @RequestParam("userId") String userId,
+                @RequestParam("requestingUserId") String requestingUserId,
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation">
                 <xsl:if test="@postName">
@@ -530,11 +533,14 @@
             </xsl:for-each>
             <xsl:text>
                 @RequestParam("applicationversion") String applicationversion,
-                @RequestParam("datalog") String datalog) throws IOException {
+                @RequestParam("datalog") String datalog,
+                @RequestHeader("Accept-Language") String acceptLang,
+                @RequestHeader("User-Agent") String userAgent,
+                HttpServletRequest request) throws IOException {
                 final Date tagDate = new java.util.Date();
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation">
-                <xsl:text>tagRepository.save(new TagData(userId, "validate", "</xsl:text>
+                <xsl:text>tagRepository.save(new TagData(requestingUserId, "validate", "</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>", (</xsl:text>
                 <xsl:value-of select="@postName" />
@@ -546,9 +552,25 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>
-                tagRepository.save(new TagData(userId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
-                tagRepository.save(new TagData(userId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
-                final List&lt;Participant&gt; foundRecords = participantRepository.findByStaleCopyAndUserId(false, userId);
+                final String remoteAddr = request.getRemoteAddr();
+                <!--final int lastIndexOfIPv4 = remoteAddr.lastIndexOf(".");-->
+                <!--final int lastIndexOfIPv6 = remoteAddr.length() / 2;-->
+                final int lastIndexOf = remoteAddr.lastIndexOf(".");
+                if (lastIndexOf > 0) {
+                tagRepository.save(new TagData(requestingUserId, "validate", "remoteAddr", remoteAddr.substring(0, lastIndexOf) + ".0", 0, tagDate));
+                }
+                tagRepository.save(new TagData(requestingUserId, "validate", "acceptLang", acceptLang, 0, tagDate));
+                tagRepository.save(new TagData(requestingUserId, "validate", "userAgent", userAgent, 0, tagDate));
+                tagRepository.save(new TagData(requestingUserId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
+                tagRepository.save(new TagData(requestingUserId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
+                final List&lt;Participant&gt; foundRecords = new ArrayList();
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation[@fieldName eq'userId']">
+                <xsl:text>foundRecords.addAll(participantRepository.findByStaleCopyAndUserId(false, </xsl:text>
+                <xsl:value-of select="@postName"/>
+                <xsl:text>));</xsl:text>
+            </xsl:for-each>                
+            <xsl:text>
                 final StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("\"{");
                 if(foundRecords.size()!=1){
