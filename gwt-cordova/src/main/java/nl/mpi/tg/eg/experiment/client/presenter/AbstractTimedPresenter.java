@@ -20,17 +20,21 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -60,6 +64,43 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         final String dataLogString = (replacementRegex == null || replacementRegex.isEmpty()) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
         userResults.getUserData().setMetadataValue(metadataField, dataLogString);
         localStorage.storeData(userResults, metadataFieldProvider);
+    }
+    
+    public void switchUserIdButton(final String textString, final MetadataField metadataField, final String styleName, final String validationRegex, final String buttonGroup, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        addButtonToGroup(buttonGroup, timedStimulusView.addOptionButton(new PresenterEventListner() {
+            @Override
+            public String getLabel() {
+                return textString;
+            }
+
+            @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
+                if (metadataString != null && !metadataString.isEmpty() && metadataString.matches(validationRegex)) {
+                    try {
+                        userResults.setUser(localStorage.getStoredData(new UserId(metadataString), metadataFieldProvider));
+                        localStorage.storeData(userResults, metadataFieldProvider);
+                        // todo: note that previous implementations that change the user id, all have changed the application state directly after the user change, so care should be made in testing that no residual data is left behind
+//                        appEventListner.requestApplicationState(nextState);
+                        onSuccess.postLoadTimerFired();
+                    } catch (UserIdException exception) {
+                        onError.postLoadTimerFired();
+                    }
+                } else {
+                    onError.postLoadTimerFired();
+                }
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+        }));
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
