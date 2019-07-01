@@ -531,7 +531,7 @@ or local-name() eq 'removeStimulus'
             <xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else '&quot;logTokenText&quot;, '" />
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
-        <xsl:value-of select="if(local-name() eq 'requestNotification') then ', ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'requestNotification' or local-name() eq 'switchUserIdButton') then ', ' else ''" />
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@linkedFieldName) then concat(', metadataFieldProvider.', @linkedFieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@featureText and (@styleName or contains(local-name(), 'Button'))) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />    
@@ -543,6 +543,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@visibleRegex) then concat(',&quot;', @visibleRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@enabledRegex) then concat(',&quot;', @enabledRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@validationRegex) then concat(',&quot;', @validationRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:if test="@daysThresholds">
             <xsl:text>, new int[]{</xsl:text>
