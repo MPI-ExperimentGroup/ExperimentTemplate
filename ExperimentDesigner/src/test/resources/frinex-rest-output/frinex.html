@@ -66,18 +66,18 @@ Each experiment XML configuration file must have one EXPERIMENT element of which
 <span style="color:green">complementColour2</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
 <span style="color:green">complementColour3</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
 <span style="color:green">complementColour4</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">defaultScale</span><span style="color:grey">=&quot;Decimal Number&quot;</span><br/>
+<span style="color:green">isScalable</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">preserveLastState</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
 <span style="color:green">primaryColour0</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
 <span style="color:green">primaryColour1</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
 <span style="color:green">primaryColour2</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
 <span style="color:green">primaryColour3</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
 <span style="color:green">primaryColour4</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
-<span style="color:green">isScalable</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
-<span style="color:green">preserveLastState</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
-<span style="color:green">userIdGetParam</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">rotatable</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
 <span style="color:green">showMenuBar</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
-<span style="color:green">defaultScale</span><span style="color:grey">=&quot;Decimal Number&quot;</span><br/>
 <span style="color:green">textFontSize</span><span style="color:grey">=&quot;Integral Number&quot;</span><br/>
+<span style="color:green">userIdGetParam</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -95,11 +95,11 @@ Each experiment XML configuration file must have one EXPERIMENT element of which
 <a href="#metadataType"><span style="color:purple">&lt;</span><span style="color:blue">metadata</span></a></td><td></td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#presenterType"><span style="color:purple">&lt;</span><span style="color:blue">presenter</span></a></td><td><span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#presenterType"><span style="color:purple">&lt;</span><span style="color:blue">presenter</span></a></td><td><span style="color:green">back</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">menuLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">back</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">next</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">type</span><span style="color:grey">=&quot;Option List [transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -146,17 +146,17 @@ Administration
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#dataChannelType"><span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></a></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<a href="#dataChannelType"><span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></a></td><td><span style="color:green">channel</span><span style="color:grey">=&quot;Integral Number&quot;</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
-<span style="color:green">channel</span><span style="color:grey">=&quot;Integral Number&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#validationType"><span style="color:purple">&lt;</span><span style="color:blue">validation</span></a></td><td><span style="color:green">postName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">returnName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#validationType"><span style="color:purple">&lt;</span><span style="color:blue">validation</span></a></td><td><span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">postName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">returnName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -179,9 +179,9 @@ dataChannel
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></td><td><span style="color:green">channel</span><span style="color:grey">=&quot;Integral Number&quot;</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
-<span style="color:green">channel</span><span style="color:grey">=&quot;Integral Number&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -198,11 +198,11 @@ validation
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">postName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">returnName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">postName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">returnName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
@@ -248,10 +248,10 @@ The fields of data to be collected for each participant and for use as storage d
 <tr><td>
 <a href="#fieldType"><span style="color:purple">&lt;</span><span style="color:blue">field</span></a></td><td><span style="color:green">controlledMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">controlledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">postName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">registrationField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">duplicatesControlledMessage</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">postName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">preventServerDuplicates</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><br/>
+<span style="color:green">registrationField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 </table>
@@ -275,10 +275,10 @@ field
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">field</span></td><td><span style="color:green">controlledMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">controlledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">postName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">registrationField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">duplicatesControlledMessage</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">postName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">preventServerDuplicates</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><br/>
+<span style="color:green">registrationField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -295,11 +295,11 @@ presenter
 Each screen in an experiment configuration is described in a PRESENTER element.transmission,metadata,preload,stimulus,colourPicker,colourReport,kindiagram,menu,debug,text,timeline,
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">presenter</span></td><td><span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">presenter</span></td><td><span style="color:green">back</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">menuLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">back</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">next</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">type</span><span style="color:grey">=&quot;Option List [transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -614,16 +614,16 @@ All stimulus elements must be contained in the stimuli element.
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#stimulusType"><span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></a></td><td><span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">videoPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">imagePath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#stimulusType"><span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></a></td><td><span style="color:green">audioPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">code</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">audioPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">correctResponses</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">imagePath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integral Number (optional)&quot;</span><br/>
 <span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">tags</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integral Number (optional)&quot;</span><br/>
+<span style="color:green">videoPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 </table>
@@ -645,16 +645,16 @@ stimulus
 Each individual stimulus can be described in the form of label, audio, video
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></td><td><span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">videoPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">imagePath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></td><td><span style="color:green">audioPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">code</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">audioPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">correctResponses</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">imagePath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integral Number (optional)&quot;</span><br/>
 <span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">tags</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integral Number (optional)&quot;</span><br/>
+<span style="color:green">videoPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -674,9 +674,9 @@ actionButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">actionButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="actionButtonChildShow" style="display: block;" onclick="$('#actionButtonChildDocumentation').show();$('#actionButtonChildHide').show();$('#actionButtonChildShow').hide();">show 160 truncated items</button>
@@ -1181,11 +1181,11 @@ actionFooterButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">actionFooterButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">actionFooterButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="actionFooterButtonChildShow" style="display: block;" onclick="$('#actionFooterButtonChildDocumentation').show();$('#actionFooterButtonChildHide').show();$('#actionFooterButtonChildShow').hide();">show 160 truncated items</button>
@@ -1691,9 +1691,9 @@ actionTokenButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">actionTokenButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="actionTokenButtonChildShow" style="display: block;" onclick="$('#actionTokenButtonChildDocumentation').show();$('#actionTokenButtonChildHide').show();$('#actionTokenButtonChildShow').hide();">show 160 truncated items</button>
@@ -2279,14 +2279,14 @@ audioButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">audioButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">audioButton</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">poster</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">poster</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -2828,11 +2828,11 @@ bestScoreAboveThreshold
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">bestScoreAboveThreshold</span></td><td><span style="color:green">scoreThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">bestScoreAboveThreshold</span></td><td><span style="color:green">correctStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">errorStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">errorThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">potentialThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">correctStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">errorStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">scoreThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -3464,8 +3464,8 @@ compareTimer
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">compareTimer</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">compareTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -3495,8 +3495,8 @@ countdownLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">countdownLabel</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msLabelFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -4003,9 +4003,9 @@ createUserButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">createUserButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -4055,8 +4055,8 @@ editableKinEntitesDiagram
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">editableKinEntitesDiagram</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">editableKinEntitesDiagram</span></td><td><span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="editableKinEntitesDiagramChildShow" style="display: block;" onclick="$('#editableKinEntitesDiagramChildDocumentation').show();$('#editableKinEntitesDiagramChildHide').show();$('#editableKinEntitesDiagramChildShow').hide();">show 160 truncated items</button>
@@ -4578,8 +4578,8 @@ eraseLocalStorageButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">eraseLocalStorageButton</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">eraseLocalStorageButton</span></td><td><span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -4613,9 +4613,9 @@ eraseUsersDataButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">eraseUsersDataButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -4722,8 +4722,8 @@ habituationParadigmListener
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">habituationParadigmListener</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="habituationParadigmListenerChildShow" style="display: block;" onclick="$('#habituationParadigmListenerChildDocumentation').show();$('#habituationParadigmListenerChildHide').show();$('#habituationParadigmListenerChildShow').hide();">show 160 truncated items</button>
@@ -5287,8 +5287,8 @@ helpDialogue
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">helpDialogue</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">helpDialogue</span></td><td><span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -5358,9 +5358,9 @@ image
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">image</span></td><td><span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">image</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -5389,8 +5389,8 @@ kinTypeStringDiagram
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">kinTypeStringDiagram</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">kintypestring</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">kinTypeStringDiagram</span></td><td><span style="color:green">kintypestring</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="kinTypeStringDiagramChildShow" style="display: block;" onclick="$('#kinTypeStringDiagramChildDocumentation').show();$('#kinTypeStringDiagramChildHide').show();$('#kinTypeStringDiagramChildShow').hide();">show 160 truncated items</button>
@@ -5895,8 +5895,8 @@ loadKinTypeStringDiagram
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">loadKinTypeStringDiagram</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">loadKinTypeStringDiagram</span></td><td><span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="loadKinTypeStringDiagramChildShow" style="display: block;" onclick="$('#loadKinTypeStringDiagramChildDocumentation').show();$('#loadKinTypeStringDiagramChildHide').show();$('#loadKinTypeStringDiagramChildShow').hide();">show 160 truncated items</button>
@@ -6401,15 +6401,15 @@ loadSdCardStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">loadSdCardStimulus</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">maxStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">loadSdCardStimulus</span></td><td><span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">excludeRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">maxStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -6420,8 +6420,8 @@ loadSdCardStimulus
 <a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -6446,8 +6446,8 @@ randomGrouping
 List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -6544,14 +6544,14 @@ loadStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">loadStimulus</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">maxStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">loadStimulus</span></td><td><span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">maxStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">*</span><span style="color:grey">=&quot;Custom attributes can be assigned in the plugin associated with this feature&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -6563,8 +6563,8 @@ loadStimulus
 <a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -6589,8 +6589,8 @@ randomGrouping
 List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -6703,9 +6703,9 @@ logTimerValue
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -6723,9 +6723,9 @@ logTokenText
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">logTokenText</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">type</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">type</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -6743,8 +6743,8 @@ menuItem
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">menuItem</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -6797,11 +6797,11 @@ metadataFieldDateTriggered
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">metadataFieldDateTriggered</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">daysThresholds</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">metadataFieldDateTriggered</span></td><td><span style="color:green">daysThresholds</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -6818,10 +6818,10 @@ metadataFieldVisibilityDependant
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">metadataFieldVisibilityDependant</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">metadataFieldVisibilityDependant</span></td><td><span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -7440,8 +7440,8 @@ randomMsPause
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">randomMsPause</span></td><td><span style="color:green">minimum</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">randomMsPause</span></td><td><span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">minimum</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">ranges</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -9011,10 +9011,10 @@ requestNotification
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">requestNotification</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">requestNotification</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -9599,10 +9599,10 @@ saveMetadataButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">saveMetadataButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">sendData</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">networkErrorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">networkErrorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">sendData</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -9631,11 +9631,11 @@ scoreAboveThreshold
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">scoreAboveThreshold</span></td><td><span style="color:green">scoreThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">scoreAboveThreshold</span></td><td><span style="color:green">correctStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">errorStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">errorThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">potentialThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">correctStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">errorStreak</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">scoreThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -10259,8 +10259,8 @@ setMetadataValue
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">setMetadataValue</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">setMetadataValue</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
@@ -10366,8 +10366,8 @@ startTimer
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">startTimer</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">startTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="startTimerChildShow" style="display: block;" onclick="$('#startTimerChildDocumentation').show();$('#startTimerChildHide').show();$('#startTimerChildShow').hide();">show 160 truncated items</button>
@@ -10901,9 +10901,9 @@ Switch the user id to the value in the specified metadata field. The value of th
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">switchUserIdButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -10933,8 +10933,8 @@ table
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">table</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">showOnBackButton</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">table</span></td><td><span style="color:green">showOnBackButton</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="tableChildShow" style="display: block;" onclick="$('#tableChildDocumentation').show();$('#tableChildHide').show();$('#tableChildShow').hide();">show 160 truncated items</button>
@@ -11440,10 +11440,10 @@ targetButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">targetButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -11461,9 +11461,9 @@ targetFooterButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">targetFooterButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -11481,8 +11481,8 @@ timerLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">timerLabel</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msLabelFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
@@ -11500,9 +11500,9 @@ totalScoreAboveThreshold
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">totalScoreAboveThreshold</span></td><td><span style="color:green">scoreThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">errorThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">totalScoreAboveThreshold</span></td><td><span style="color:green">errorThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">potentialThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">scoreThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -11531,9 +11531,9 @@ transmitResults
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span></td><td><span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -11580,8 +11580,8 @@ triggerListener
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">triggerListener</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="triggerListenerChildShow" style="display: block;" onclick="$('#triggerListenerChildDocumentation').show();$('#triggerListenerChildHide').show();$('#triggerListenerChildShow').hide();">show 160 truncated items</button>
@@ -12118,14 +12118,14 @@ withStimuli
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">withStimuli</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">maxStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">withStimuli</span></td><td><span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">maxStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -12139,8 +12139,8 @@ withStimuli
 <a href="#afterStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">afterStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -12165,8 +12165,8 @@ randomGrouping
 List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -12266,11 +12266,11 @@ AnnotationTimelinePanel
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">AnnotationTimelinePanel</span></td><td><span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">poster</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">AnnotationTimelinePanel</span></td><td><span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">poster</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="AnnotationTimelinePanelChildShow" style="display: block;" onclick="$('#AnnotationTimelinePanelChildDocumentation').show();$('#AnnotationTimelinePanelChildHide').show();$('#AnnotationTimelinePanelChildShow').hide();">show 160 truncated items</button>
@@ -12775,11 +12775,11 @@ VideoPanel
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">VideoPanel</span></td><td><span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">VideoPanel</span></td><td><span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">poster</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -12796,9 +12796,9 @@ addStimulusValidation
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">addStimulusValidation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">addStimulusValidation</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -12861,8 +12861,8 @@ endAudioRecorderTag
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">endAudioRecorderTag</span></td><td><span style="color:green">eventTier</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">endAudioRecorderTag</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">eventTier</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -12879,8 +12879,8 @@ groupNetwork
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">groupNetwork</span></td><td><span style="color:green">groupMembers</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">groupCommunicationChannels</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">groupNetwork</span></td><td><span style="color:green">groupCommunicationChannels</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupMembers</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">phasesPerStimulus</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -12926,8 +12926,8 @@ logTimeStamp
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">logTimeStamp</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">logTimeStamp</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -12944,12 +12944,12 @@ matchingStimulusGrid
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">matchingStimulusGrid</span></td><td><span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">matchingStimulusGrid</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -13012,12 +13012,12 @@ nextStimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">nextStimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">nextStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -13051,12 +13051,12 @@ prevStimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">prevStimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">prevStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -13074,11 +13074,11 @@ ratingButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">ratingButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelLeft</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="ratingButtonChildShow" style="display: block;" onclick="$('#ratingButtonChildDocumentation').show();$('#ratingButtonChildHide').show();$('#ratingButtonChildShow').hide();">show 160 truncated items</button>
@@ -13584,11 +13584,11 @@ ratingFooterButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">ratingFooterButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelLeft</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="ratingFooterButtonChildShow" style="display: block;" onclick="$('#ratingFooterButtonChildDocumentation').show();$('#ratingFooterButtonChildHide').show();$('#ratingFooterButtonChildShow').hide();">show 160 truncated items</button>
@@ -14094,11 +14094,11 @@ ratingRadioButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">ratingRadioButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelLeft</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -14166,10 +14166,10 @@ sendStimuliReport
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">sendStimuliReport</span></td><td><span style="color:green">type</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">sendStimuliReport</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">separator</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">type</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -14186,9 +14186,9 @@ setStimulusCodeResponse
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">setStimulusCodeResponse</span></td><td><span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">setStimulusCodeResponse</span></td><td><span style="color:green">applyScore</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">applyScore</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -14725,12 +14725,12 @@ showStimulusGrid
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">showStimulusGrid</span></td><td><span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">showStimulusGrid</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">imageWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">imageWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -14776,12 +14776,12 @@ startAudioRecorder
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorder</span></td><td><span style="color:green">recordingFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorder</span></td><td><span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">downloadPermittedWindowMs</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">filePerStimulus</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">filePerStimulus</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">recordingFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -14839,10 +14839,10 @@ stimulusAudio
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusAudio</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">showPlaybackIndicator</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusAudio</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">showPlaybackIndicator</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -14877,11 +14877,11 @@ stimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="stimulusButtonChildShow" style="display: block;" onclick="$('#stimulusButtonChildDocumentation').show();$('#stimulusButtonChildHide').show();$('#stimulusButtonChildShow').hide();">show 160 truncated items</button>
@@ -15386,11 +15386,11 @@ stimulusCodeAudio
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeAudio</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeAudio</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">showPlaybackIndicator</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">showPlaybackIndicator</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -15425,9 +15425,9 @@ stimulusCodeImage
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeImage</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeImage</span></td><td><span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -15457,10 +15457,10 @@ stimulusCodeImageButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeImageButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeImageButton</span></td><td><span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -15492,16 +15492,16 @@ stimulusCodeVideo
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeVideo</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeVideo</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">loop</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -15565,13 +15565,13 @@ stimulusFreeText
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusFreeText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusFreeText</span></td><td><span style="color:green">allowedCharCodes</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">allowedCharCodes</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">inputErrorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -15644,9 +15644,9 @@ stimulusImage
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusImage</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusImage</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -15676,10 +15676,10 @@ stimulusImageCapture
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusImageCapture</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="stimulusImageCaptureChildShow" style="display: block;" onclick="$('#stimulusImageCaptureChildDocumentation').show();$('#stimulusImageCaptureChildHide').show();$('#stimulusImageCaptureChildShow').hide();">show 160 truncated items</button>
@@ -16201,8 +16201,8 @@ stimulusMetadataField
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -16723,13 +16723,13 @@ stimulusPresent
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusPresent</span></td><td><span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusPresent</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">replacement</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -16766,10 +16766,10 @@ stimulusRatingButton
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelLeft</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="stimulusRatingButtonChildShow" style="display: block;" onclick="$('#stimulusRatingButtonChildDocumentation').show();$('#stimulusRatingButtonChildHide').show();$('#stimulusRatingButtonChildShow').hide();">show 160 truncated items</button>
@@ -17294,12 +17294,12 @@ stimulusVideo
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusVideo</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusVideo</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">loop</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">autoPlay</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -17350,8 +17350,8 @@ touchInputCaptureStart
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">touchInputCaptureStart</span></td><td><span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">touchInputCaptureStart</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="touchInputCaptureStartChildShow" style="display: block;" onclick="$('#touchInputCaptureStartChildDocumentation').show();$('#touchInputCaptureStartChildHide').show();$('#touchInputCaptureStartChildShow').hide();">show 160 truncated items</button>
@@ -17873,12 +17873,12 @@ touchInputStimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">touchInputStimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">touchInputStimulusButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="touchInputStimulusButtonChildShow" style="display: block;" onclick="$('#touchInputStimulusButtonChildDocumentation').show();$('#touchInputStimulusButtonChildHide').show();$('#touchInputStimulusButtonChildShow').hide();">show 160 truncated items</button>
@@ -18412,11 +18412,11 @@ withMatchingStimulus
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">withMatchingStimulus</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -18544,11 +18544,11 @@ groupResponseStimulusImage
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">groupResponseStimulusImage</span></td><td><span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">groupResponseStimulusImage</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -18618,14 +18618,14 @@ sendGroupMessageButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">incrementPhase</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><br/>
+<span style="color:green">incrementPhase</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
