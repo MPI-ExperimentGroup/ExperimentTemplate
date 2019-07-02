@@ -4,14 +4,15 @@
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 
         <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
         <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
-        <validation postName="invitation_id" fieldName="userId" returnName="validated_invitation_id" errorMessage="User not found." errorField="validation_error"/>
+        <validation postName="invitation_id" fieldName="userId" returnName="validated_invitation_id" errorMessage="Validated user not found." errorField="validation_error" allowInsertOnEmpty="true"/>
         <!--matchExistingValue="true"--> 
-        <!--allowInsertOnEmpty="true"-->
+        <!---->
         <!--validationRegex="" matchingRegex=""--> 
         <validation postName="session_id" fieldName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error"/>
         <validation postName="session_copepods" fieldName="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error"/>
         <validation postName="session_copepod" fieldName="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error"/>
         <validation postName="session_next_copepod" fieldName="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error"/>
+        <validation fieldName="copepod_done" validationRegex="|no" returnName="copepod_done" errorMessage="This session has already been completed and cannot be restarted." errorField="session_validation_error"/>
         <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
     </administration>
     <scss/>
@@ -22,7 +23,7 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_invitation_id" preventServerDuplicates="false" registrationField="Validated Invitation ID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validation_error" preventServerDuplicates="false" registrationField="Validation Error"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_validation_error" preventServerDuplicates="false" registrationField="Session Validation Error"/>
-        <field controlledMessage="Please enter your session number." controlledRegex="[0-9]" postName="session_id" preventServerDuplicates="false" registrationField="session id"/>
+        <field controlledMessage="Please enter your session number [0-9]." controlledRegex="[0-9]" postName="session_id" preventServerDuplicates="false" registrationField="session id"/>
         <field controlledMessage="." controlledRegex="|no|yes" postName="copepod_done" preventServerDuplicates="false" registrationField="session done"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_copepods" preventServerDuplicates="false" registrationField="session copepods"/>
         <field controlledMessage="." controlledRegex="|Copepod|Antrisocopia prehensilis|Karllangia pulchra|Misophrioida|Monstrilloida|Mormonillidae|Platycopiidae|Poecilostomatoida|Siphonostomatoida|Speleophria bivexilla|Speleophria scottodicarloi|Speleophriidae|Tigriopus brevicornis" postName="session_copepod" preventServerDuplicates="false" registrationField="session copepod"/>
@@ -41,7 +42,7 @@
     <presenter back="Menu" menuLabel="InvitationUrlExample" type="stimulus" self="InvitationUrlExample" title="Invitation URL Example">
         <htmlText featureText="The first method requires providing your participant with a URL containing thier specific identfier and setting userIdGetParam=&quot;invitation_id&quot; in the experiment configuration. For example a URL GET parameter could look like (&lt;a href=&quot;?invitation_id=yourcode&quot;&gt;?invitation_id=[yourcode]&lt;/a&gt;), which they can enter into the browser."/>
         <addPadding/>
-        <htmlText featureText="This method only sends collected data to the server. Which means the participant will start from scratch if they do change to a different machine or browser or clear the browser data storage. However they participant will have the same identifier each time."/>
+        <htmlText featureText="This method only sends collected data to the server. Which means the participant will &lt;b&gt;start from scratch&lt;/b&gt; if they do change to a different machine or browser or clear the browser data storage. However they participant will have the same identifier each time."/>
         <addPadding/>
         <hasGetParameter parameterName="invitation_id">
             <conditionTrue>
@@ -57,6 +58,8 @@
     </presenter>
     <presenter back="Menu" menuLabel="InvitationTextExample" type="metadata" self="InvitationTextExample" title="Invitation Text Example">
         <htmlTokenText featureText="In the case of Mobile and Desktop apps it is not possible for the participant to enter a URL with thier invition ID. So in this case they can enter the ID in a metadata field and then via the switchUserIdButton tag they can switch to that user."/>
+        <addPadding/>
+        <htmlText featureText="This method only sends collected data to the server. Which means the participant will &lt;b&gt;start from scratch&lt;/b&gt; if they do change to a different machine or browser or clear the browser data storage. However they participant will have the same identifier each time."/>
         <addPadding/>
         <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
         <addPadding/>
@@ -180,7 +183,7 @@
         <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
         <addPadding/>
         <actionButton featureText="Validate Invitation">
-            <transmitResults matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod" enabledRegex="validated_invitation_id|validation_error|session_validation_error" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+            <transmitResults matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod" enabledRegex="validated_invitation_id|copepod_done|validation_error|session_validation_error" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
                 <onError>
                     <addPadding/>
                     <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
