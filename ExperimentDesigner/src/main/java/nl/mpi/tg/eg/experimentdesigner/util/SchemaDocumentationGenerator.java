@@ -170,6 +170,13 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     }
 
     private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
+        // sort the attributeTypes alphabetically
+        currentElement.attributeTypes.sort(new AbstractComparator<DocumentationAttribute>() {
+            @Override
+            public int compare(DocumentationAttribute o1, DocumentationAttribute o2) {
+                return o1.name.compareTo(o2.name);
+            }
+        });
         for (DocumentationAttribute attributeTypes : currentElement.attributeTypes) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeTypes.name);
