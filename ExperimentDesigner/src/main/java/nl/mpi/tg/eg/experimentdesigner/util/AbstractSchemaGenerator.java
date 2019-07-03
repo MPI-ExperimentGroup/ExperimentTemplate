@@ -276,6 +276,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("errorField", false)
                                     .stringAttribute("errorMessage", false)
                                     .stringAttribute("validationRegex", true)
+                                    .stringAttribute("allowValidationOnMissing", true)
                         }),
                 new DocumentationElement("scss", "", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
