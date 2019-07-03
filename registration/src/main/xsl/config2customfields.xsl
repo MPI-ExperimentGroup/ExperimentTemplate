@@ -575,15 +575,26 @@
                 <xsl:text> = "";
                 </xsl:text>
             </xsl:for-each>
-            <xsl:for-each select="experiment/administration/validation[@fieldName eq'userId']">
-                <xsl:text>for(Participant participantRecord : participantRepository.findByUserId(</xsl:text>
-                <xsl:value-of select="@postName"/>
-                <xsl:text>)) {
+            <xsl:for-each select="experiment/administration/validation[@fieldName eq 'userId']">
+                <xsl:text>for(Participant participantRecord : participantRepository.findByUserId(requestingUserId)) {
+                    final boolean allowValidationOnMissing = </xsl:text>
+                <xsl:value-of select="if (@allowValidationOnMissing eq 'true') then 'true' else 'false'"/>
+                <xsl:text>;
                 </xsl:text>
-                <xsl:if test="@returnName">
-                    <xsl:text>if (</xsl:text>
+                <xsl:if test="@postName">
+                    <xsl:text>if (!</xsl:text>
                     <xsl:value-of select="@postName"/>
-                    <xsl:text>.equals(participantRecord.get</xsl:text>
+                    <xsl:text>.equals(requestingUserId)) {
+                        errorMessage</xsl:text>
+                    <xsl:value-of select="@errorField" />
+                    <!--only one initial error message should be shown, so this clears any previous messages-->
+                    <xsl:text> = "</xsl:text>
+                    <xsl:value-of select="@errorMessage" />
+                    <xsl:text> ";
+                        } else </xsl:text>
+                </xsl:if>
+                <xsl:if test="@returnName">
+                    <xsl:text>if (requestingUserId.equals(participantRecord.get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@returnName,1,1)), substring(@returnName, 2))" />
                     <xsl:text>())) {
                         foundRecords.add(participantRecord);
@@ -591,24 +602,25 @@
                     </xsl:text>
                 </xsl:if>
                 <xsl:text>
-                    }
-                    if(foundRecords.isEmpty()){
+                    if(!allowValidationOnMissing &amp;&amp; foundRecords.isEmpty()){
                     errorMessage</xsl:text>
                 <xsl:value-of select="@errorField" />
-                <xsl:text> += "</xsl:text>
+                <!--only one initial error message should be shown, so this clears any previous messages-->
+                <xsl:text> = "</xsl:text>
                 <xsl:value-of select="@errorMessage" />
                 <xsl:text> ";
-                    }
-                    while (foundRecords.size() > 1) {
-                    if (foundRecords.get(0).getSubmitDate().before(foundRecords.get(1).getSubmitDate())) {
-                    foundRecords.remove(0);
-                    } else {
-                    foundRecords.remove(1);
                     }
                     }
                 </xsl:text>
             </xsl:for-each>                
             <xsl:text>
+                while (foundRecords.size() > 1) {
+                if (foundRecords.get(0).getSubmitDate().before(foundRecords.get(1).getSubmitDate())) {
+                foundRecords.remove(0);
+                } else {
+                foundRecords.remove(1);
+                }
+                }
                 final StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("{");
                 if(foundRecords.size()!=1){
