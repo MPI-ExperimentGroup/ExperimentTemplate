@@ -5,7 +5,7 @@
         <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
         <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
         <validation fieldName="userId" returnName="validated_invitation_id" errorMessage="Validated user not found." errorField="validation_error" allowValidationOnMissing="true"/>
-        <validation postName="invitation_id" fieldName="userId" errorMessage="The invitation_id does not natch the current user ID" errorField="validation_error"/>
+        <validation postName="invitation_id" fieldName="userId" errorMessage="The invitation_id does not natch the current user ID. (Please switch the current user ID to the invitation ID)" errorField="validation_error" allowValidationOnMissing="true"/>
         <!--matchExistingValue="true"--> 
         <!---->
         <!--validationRegex="" matchingRegex=""--> 
@@ -162,6 +162,7 @@
         <!--<htmlText featureText="Assuming the list contains session_copepod we act as if the name of this experiment is session_copepod and using setMetadataValue get the next item which is peabodyas."/>-->
         <htmlText featureText="The resulting value in &quot;session_next_copepod&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
         <setMetadataValue fieldName="session_copepods" dataLogFormat="Copepod_Antrisocopia prehensilis_Karllangia pulchra_Misophrioida_Monstrilloida_Mormonillidae_Platycopiidae_Poecilostomatoida_Siphonostomatoida_Speleophria bivexilla_Speleophria scottodicarloi_Speleophriidae_Tigriopus brevicornis"/>
+        <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
         <!--// if the response invitation_id does not exist then transmit-->
         <saveMetadataButton featureText="Save Metadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError>
@@ -179,7 +180,6 @@
         <htmlTokenText featureText="&quot;session_id&quot;: &lt;metadataField_session_id&gt;"/>
         <htmlTokenText featureText="&quot;session_copepod&quot;: &lt;metadataField_session_copepod&gt;"/>
         <htmlTokenText featureText="&quot;copepod_done&quot;: &lt;metadataField_copepod_done&gt;"/>
-        <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
         <htmlTokenText featureText="&quot;session_next_copepod&quot;: &lt;metadataField_session_next_copepod&gt;"/>
         <addPadding/>
         <switchUserIdButton featureText="Switch current user ID to the invitation ID" fieldName="invitation_id" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" styleName="styleName">
@@ -221,7 +221,7 @@
                                     <addPadding/>
                                     <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
                                         <conditionTrue>
-                                            <htmlText featureText="The the return value validated_invitation_id from transmitResults matches the provided invitation_id."/>
+                                            <htmlText featureText="The the return value validated_invitation_id from transmitResults matches the provided invitation_id and the participant can proceed."/>
                                             <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
                                         </conditionTrue>
                                         <conditionFalse>
