@@ -401,7 +401,7 @@
                     &lt;tr th:fragment="participantheader"&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=staleCopy'"&gt;Stale&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userId'"&gt;UUID&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userId'"&gt;Participant ID&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=acceptLang'"&gt;Browser Language&lt;/a&gt;&lt;/th&gt;
                 <!--&lt;th&gt;&lt;a th:attr="href='?sort=remoteAddr'"&gt;remoteAddr&lt;/a&gt;&lt;/th&gt;-->
@@ -567,6 +567,7 @@
                 tagRepository.save(new TagData(requestingUserId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
                 tagRepository.save(new TagData(requestingUserId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
                 final List&lt;Participant&gt; foundRecords = new ArrayList();
+                boolean foundError = false;
             </xsl:text>
             <xsl:for-each select="distinct-values(experiment/administration/validation/@errorField)">
                 <xsl:text>
@@ -585,6 +586,7 @@
                     <xsl:text>if (!</xsl:text>
                     <xsl:value-of select="@postName"/>
                     <xsl:text>.equals(requestingUserId)) {
+                        foundError = true;
                         errorMessage</xsl:text>
                     <xsl:value-of select="@errorField" />
                     <!--only one initial error message should be shown, so this clears any previous messages-->
@@ -603,6 +605,7 @@
                 </xsl:if>
                 <xsl:text>
                     if(!allowValidationOnMissing &amp;&amp; foundRecords.isEmpty()){
+                    foundError = true;
                     errorMessage</xsl:text>
                 <xsl:value-of select="@errorField" />
                 <!--only one initial error message should be shown, so this clears any previous messages-->
@@ -623,16 +626,22 @@
                 }
                 final StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("{");
-                if(foundRecords.size()!=1){
-                <!--stringBuilder.append("\"error_message\":\"Found ");-->
-                <!--stringBuilder.append(foundRecords.size());-->
-                <!--stringBuilder.append(" records, cannot proceed\"");-->
-                } else {
-                boolean foundError = false;
+                if(foundRecords.size()&lt;1 &amp;&amp; !foundError){</xsl:text>
+            <xsl:for-each select="experiment/administration/validation[@fieldName eq 'userId']">
+                <xsl:if test="@returnName">
+                    <xsl:text>stringBuilder.append("\"</xsl:text>
+                    <xsl:value-of select="@returnName" />
+                    <xsl:text>\":\"");
+                        stringBuilder.append(requestingUserId);
+                        stringBuilder.append("\",");
+                    </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>
+                } else if (!foundError) {
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation[@fieldName]">
-                <!--// case: compare the provided value to the DB counterpart-->
-                <!--// case: match the provided value to the regex-->
+                <!--match the value to the regex-->
                 <xsl:if test="@validationRegex">
                     <xsl:text>if (!foundRecords.get(0).get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
@@ -648,6 +657,7 @@
                         }
                     </xsl:text>
                 </xsl:if>
+                <!--compare the provided value to the DB counterpart-->
                 <xsl:if test="@postName and @fieldName">
                     <xsl:text>if (!foundRecords.get(0).get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
@@ -662,14 +672,6 @@
                         foundError = true;
                         }
                     </xsl:text>
-                    <!--                    matchExistingValue=
-                    postName="uuid" fieldName="userId"-->
-                    <!--matchingRegex="" validationRegex=""-->
-                    <!--                    <xsl:text>@RequestParam("</xsl:text>
-                    <xsl:value-of select="@postName" />
-                    <xsl:text>") String </xsl:text>
-                    <xsl:value-of select="@postName" />
-                    <xsl:text>,</xsl:text> -->
                 </xsl:if>
             </xsl:for-each>
             <xsl:for-each select="experiment/administration/validation">
