@@ -235,27 +235,29 @@
                             <addPadding/>
                             <htmlTokenText featureText="&lt;metadataField_session_validation_error&gt;"/>                                                                                
                         </conditionTrue>
+                        <conditionFalse>                            
+                        </conditionFalse>
+                    </hasMetadataValue>
+                    <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
+                        <conditionTrue>
+                            <addPadding/>
+                            <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                        </conditionTrue>
                         <conditionFalse>
-                            <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
-                                <conditionTrue>
-                                    <addPadding/>
-                                    <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
-                                </conditionTrue>
-                                <conditionFalse>
-                                    <addPadding/>
-                                    <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
-                                        <conditionTrue>
-                                            <htmlText featureText="The the return value validated_invitation_id from transmitResults matches the provided invitation_id and the participant can proceed."/>
-                                            <addPadding/>
-                                            <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
-                                            <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
-                                        </conditionTrue>
-                                        <conditionFalse>
-                                            <htmlText featureText="The the return value validated_invitation_id from transmitResults does NOT match the provided invitation_id and the current user ID."/>
-                                        </conditionFalse>
-                                    </hasMetadataValue>
-                                </conditionFalse>
-                            </hasMetadataValue>
+                            <addPadding/>
+                        </conditionFalse>
+                    </hasMetadataValue>
+                    <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
+                        <conditionTrue>
+                            <addPadding/>
+                            <htmlText featureText="The the return value validated_invitation_id from transmitResults matches the provided invitation_id and the participant can proceed."/>
+                            <addPadding/>
+                            <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
+                            <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
+                        </conditionTrue>
+                        <conditionFalse>
+                            <addPadding/>
+                            <htmlText featureText="The the return value validated_invitation_id from transmitResults does NOT match the provided invitation_id and the current user ID."/>
                         </conditionFalse>
                     </hasMetadataValue>
                 </onSuccess>
