@@ -5,7 +5,7 @@
         <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
         <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
         <validation fieldName="userId" returnName="validated_invitation_id" errorMessage="Validated user not found." errorField="validation_error" allowValidationOnMissing="true"/>
-        <validation postName="invitation_id" fieldName="userId" errorMessage="The invitation_id does not natch the current user ID. (Please switch the current user ID to the invitation ID)" errorField="validation_error" allowValidationOnMissing="true"/>
+        <validation postName="invitation_id" fieldName="userId" errorMessage="The invitation_id does not match the current user ID. (Please switch the current user ID to the invitation ID)" errorField="validation_error" allowValidationOnMissing="true"/>
         <!--matchExistingValue="true"--> 
         <!---->
         <!--validationRegex="" matchingRegex=""--> 
@@ -32,35 +32,43 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
     </metadata>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Overview">
-        <htmlText featureText="This example demostrates three ways of allowing a participant complete an experiment over separate days or via separate devices. Normally a participant will curretnly be given a new identifer when they change to a different browser or device. This is because the system has no way to know who the participant is. These methods can be used to overcome this by providing a consistant identifier to each particpant."/>
+        <htmlText featureText="This example demostrates three ways of causing a participant to have the same identifier for an experiment over separate days or via separate devices or browsers. Normally a participant will be given a new identifer when they change to a different browser or device or update a amobile app. This is because the system has no way to know who the participant is after such a change. The methods in this example can be used to overcome this by providing a consistant identifier to each particpant."/>
         <addPadding/>
         <targetButton featureText="Invitation URL Example" target="InvitationUrlExample"/>
         <addPadding/>
         <targetButton featureText="Invitation Text Example" target="InvitationTextExample"/>
         <addPadding/>
-        <targetButton featureText="Invitation Validation Example" target="InvitationValidationExample"/>
+        <targetButton featureText="Invitation Validation Example" target="EnterInvitationMetadata"/>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationUrlExample" type="stimulus" self="InvitationUrlExample" title="Invitation URL Example">
-        <htmlText featureText="The first method requires providing your participant with a URL containing thier specific identfier and setting userIdGetParam=&quot;invitation_id&quot; in the experiment configuration. For example a URL GET parameter could look like (&lt;a href=&quot;?invitation_id=yourcode&quot;&gt;?invitation_id=[yourcode]&lt;/a&gt;), which they can enter into the browser."/>
+        <htmlText featureText="The first method requires providing your participant with a URL containing their specific identfier and populating the attribute userIdGetParam=&quot;invitation_id&quot; in the experiment configuration."/>
         <addPadding/>
-        <htmlText featureText="This method only sends collected data to the server. Which means the participant will &lt;b&gt;start from scratch&lt;/b&gt; if they do change to a different machine or browser or clear the browser data storage. However they participant will have the same identifier each time."/>
+        <htmlText featureText="For example a URL GET parameter could look like (&lt;a href=&quot;?invitation_id=yourcode&quot;&gt;?invitation_id=[yourcode]&lt;/a&gt;), which they can enter into the browser."/>
+        <addPadding/>
+        <htmlText featureText="This method only sends collected data to the server. Which means the participant will &lt;b&gt;start from scratch&lt;/b&gt; if they do change to a different machine or browser or if they clear the browser data storage. However the participant will have the same identifier each time, providing they keep uisng that complete URL."/>
+        <addPadding/>
+        <htmlText featureText="Please note that this method cannot be used in a mobile app nor a desktop app, because the participant cannot enter the URL."/>
         <addPadding/>
         <hasGetParameter parameterName="invitation_id">
             <conditionTrue>
                 <htmlTokenText featureText="
                 The participants invitation identifier has been received and is:
-                &lt;metadataField_invitation_id&gt;&lt;br/&gt;
+                &lt;b&gt;&lt;metadataField_invitation_id&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
                 The collected results should now be available via the provided participant id."/>
+                <addPadding/>
+                <htmlText featureText="In the flowing examples you should remove the invitation_id from the URL. Which can be done by clicking this link: (&lt;a href=&quot;?&quot;&gt;link&lt;/a&gt;)."/>
             </conditionTrue>
             <conditionFalse>
-                <htmlText featureText="The invitation identifier has not been found.&lt;br/&gt;"/>
+                <htmlText featureText="The invitation identifier has not been found. Try clicking the link above."/>
             </conditionFalse>
         </hasGetParameter>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationTextExample" type="metadata" self="InvitationTextExample" title="Invitation Text Example">
-        <htmlTokenText featureText="In the case of Mobile and Desktop apps it is not possible for the participant to enter a URL with thier invition ID. So in this case they can enter the ID in a metadata field and then via the switchUserIdButton tag they can switch to that user."/>
+        <htmlTokenText featureText="In the case of Mobile and Desktop apps it is not possible for the participant to enter a URL with their invition ID. So in this example they can enter the ID into a metadata field and then via the switchUserIdButton tag they can be switched to that user."/>
         <addPadding/>
-        <htmlText featureText="This method only sends collected data to the server. Which means the participant will &lt;b&gt;start from scratch&lt;/b&gt; if they do change to a different machine or browser or clear the browser data storage. However they participant will have the same identifier each time."/>
+        <htmlText featureText="This method only sends collected data to the server. Which means the participant will &lt;b&gt;start from scratch&lt;/b&gt; if they do change to a different machine or browser or if they clear the browser data storage. However the participant will have the same identifier, providing they enter the correct invitation ID each time."/>
+        <addPadding/>
+        <htmlText featureText="This example requires the invitation ID to follow the following format of three letters followed by 9 numbers: abc123456789."/>
         <addPadding/>
         <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
         <addPadding/>
