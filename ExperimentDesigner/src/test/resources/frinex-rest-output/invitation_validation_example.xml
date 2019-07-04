@@ -249,21 +249,35 @@
                     </hasMetadataValue>
                     <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
                         <conditionTrue>
-                            <addPadding/>
-                            <htmlText featureText="The the return value validated_invitation_id from transmitResults matches the provided invitation_id and the participant can proceed."/>
-                            <addPadding/>
-                            <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
-                            <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
+                            <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
+                                <conditionTrue>
+                                    <addPadding/>
+                                    <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
+                                        <conditionTrue>
+                                            <addPadding/>
+                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id."/>
+                                        </conditionTrue>
+                                        <conditionFalse>                            
+                                            <addPadding/>
+                                            <htmlText featureText="The return value validated_invitation_id from transmitResults matches the provided invitation_id and the participant can proceed."/>
+                                            <addPadding/>
+                                            <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
+                                        </conditionFalse>
+                                    </hasMetadataValue>                        
+                                </conditionFalse>
+                            </hasMetadataValue>
                         </conditionTrue>
                         <conditionFalse>
                             <addPadding/>
-                            <htmlText featureText="The the return value validated_invitation_id from transmitResults does NOT match the provided invitation_id and the current user ID."/>
+                            <htmlText featureText="The return value validated_invitation_id from transmitResults does NOT match the provided invitation_id and the current user ID."/>
                         </conditionFalse>
                     </hasMetadataValue>
                 </onSuccess>
             </transmitResults>
         </actionButton>
-        <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?invitation_id=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_copepods=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
     </presenter>
     <stimuli>
         <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
