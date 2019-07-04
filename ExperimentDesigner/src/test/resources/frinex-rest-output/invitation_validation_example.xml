@@ -32,7 +32,7 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
     </metadata>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Overview">
-        <htmlText featureText="This example demostrates three ways of causing a participant to have the same identifier for an experiment over separate days or via separate devices or browsers. Normally a participant will be given a new identifer when they change to a different browser or device or update a amobile app. This is because the system has no way to know who the participant is after such a change. The methods in this example can be used to overcome this by providing a consistant identifier to each particpant."/>
+        <htmlText featureText="This &lt;b&gt;Healthy Brain Validation&lt;/b&gt; example demostrates three ways of causing a participant to have the same identifier for an experiment over separate days or via separate devices or browsers. Normally a participant will be given a new identifer when they change to a different browser or device or update a amobile app. This is because the system has no way to know who the participant is after such a change. The methods in this example can be used to overcome this by providing a consistant identifier to each particpant."/>
         <addPadding/>
         <targetButton featureText="Invitation URL Example" target="InvitationUrlExample"/>
         <addPadding/>
