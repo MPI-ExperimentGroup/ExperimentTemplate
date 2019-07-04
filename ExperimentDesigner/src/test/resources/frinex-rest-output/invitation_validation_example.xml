@@ -252,13 +252,13 @@
                             <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
                                 <conditionTrue>
                                     <addPadding/>
-                                    <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id."/>
+                                    <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
                                         <conditionTrue>
                                             <addPadding/>
-                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id."/>
+                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
                                         </conditionTrue>
                                         <conditionFalse>                            
                                             <addPadding/>
