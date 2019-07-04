@@ -9,16 +9,18 @@
         <!--matchExistingValue="true"--> 
         <!---->
         <!--validationRegex="" matchingRegex=""--> 
-        <validation postName="session_id" fieldName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error"/>
-        <validation postName="session_copepods" fieldName="session_copepods" returnName="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error"/>
-        <validation postName="session_copepod" fieldName="session_copepod" returnName="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error"/>
-        <validation postName="session_next_copepod" fieldName="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error"/>
+        <validation postName="token" fieldName="token" errorMessage="The participants token does not match the last stored value." errorField="validation_error"/>
+        <validation fieldName="session_id" returnName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error"/>
+        <validation fieldName="session_copepods" returnName="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error"/>
+        <validation fieldName="session_copepod" returnName="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error"/>
+        <validation fieldName="session_next_copepod" returnName="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error"/>
         <validation fieldName="copepod_done" validationRegex="|no" returnName="copepod_done" errorMessage="This session has already been completed and cannot be restarted." errorField="session_validation_error"/>
         <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
     </administration>
     <scss/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
+        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="token" preventServerDuplicates="false" registrationField="participants token"/>
         <!-- The attribute in the Experiment element userIdGetParam="invitation_id" allows the internal user id to be set via the get parameter and this metadata field -->
         <field controlledMessage="Please enter your invitation ID." controlledRegex=".'{'3,'}'" postName="invitation_id" preventServerDuplicates="false" registrationField="Invitation ID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_invitation_id" preventServerDuplicates="false" registrationField="Validated Invitation ID"/>
@@ -179,6 +181,7 @@
         </hasMetadataValue>
         <addPadding/>
         <metadataField fieldName="invitation_id"/>
+        <metadataField fieldName="token"/>
         <metadataField fieldName="session_id"/>
         <metadataField fieldName="session_copepod"/>
         <metadataField fieldName="copepod_done"/>
@@ -201,6 +204,7 @@
     <presenter back="Menu" menuLabel="Invitation Validation Example" type="transmission" self="InvitationValidationExample" title="Invitation Validation Example">
         <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
         <htmlTokenText featureText="&quot;invitation_id&quot;: &lt;metadataField_invitation_id&gt;"/>
+        <htmlTokenText featureText="&quot;token&quot;: &lt;metadataField_token&gt;"/>
         <htmlTokenText featureText="&quot;session_id&quot;: &lt;metadataField_session_id&gt;"/>
         <htmlTokenText featureText="&quot;session_copepod&quot;: &lt;metadataField_session_copepod&gt;"/>
         <htmlTokenText featureText="&quot;copepod_done&quot;: &lt;metadataField_copepod_done&gt;"/>
@@ -222,7 +226,7 @@
         <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
         <addPadding/>
         <actionButton featureText="Validate Invitation">
-            <transmitResults matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod" enabledRegex="validated_invitation_id|copepod_done|validation_error|session_validation_error|session_copepods|session_copepod|session_next_copepod" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+            <transmitResults matchingRegex="invitation_id|token" enabledRegex="validated_invitation_id|session_id|copepod_done|validation_error|session_validation_error|session_copepods|session_copepod|session_next_copepod" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
                 <onError>
                     <addPadding/>
                     <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
