@@ -659,11 +659,11 @@
                 </xsl:if>
                 <!--compare the provided value to the DB counterpart-->
                 <xsl:if test="@postName and @fieldName">
-                    <xsl:text>if (!foundRecords.get(0).get</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
-                    <xsl:text>().equals(</xsl:text>
+                    <xsl:text>if (!</xsl:text>
                     <xsl:value-of select="@postName" />
-                    <xsl:text>)){
+                    <xsl:text>.equals(foundRecords.get(0).get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                    <xsl:text>())){
                         errorMessage</xsl:text>
                     <xsl:value-of select="@errorField" />
                     <xsl:text>+="</xsl:text>
