@@ -59,11 +59,19 @@ public class ObfuscatedStorage {
     }
 
     private String obfuscateString(String storageKey, String input) {
-        return processString(storageKey, URL.encode(input));
+        return processString(storageKey, urlEncode(input));
+    }
+
+    protected String urlEncode(String input) {
+        return URL.encode(input);
+    }
+
+    protected String urlDecode(String input) {
+        return URL.decode(input);
     }
 
     private String revealString(String storageKey, String input) {
-        return URL.decode(processString(storageKey, input).trim());
+        return urlDecode(processString(storageKey, input).trim());
     }
 
     public ObfuscatedStorage loadStorage() {
