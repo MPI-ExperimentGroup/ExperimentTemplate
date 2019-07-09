@@ -64,6 +64,11 @@ public class ObfuscatedStorageTest {
             protected String urlDecode(String input) {
                 return input;
             }
+
+            @Override
+            public int getLength() {
+                return keyList.size();
+            }
         };
     }
 
@@ -96,9 +101,9 @@ public class ObfuscatedStorageTest {
         instance.setItem(instance.getSTIMULI_DATA(userId, stimulus), "test");
         instance.setItem(instance.getSTIMULI_DATA(userId, stimulusId), "test");
         instance.setItem(instance.getSCREEN_DATA(endPoint, userId), "test");
-        assertTrue(instance.isUSER_METADATA(instance.getUSER_METADATA(userId, "valueName"), postName));
-        assertFalse(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, "valueName"), postName));
-        assertEquals(12, instance.getLength());
+        assertTrue(instance.isUSER_METADATA(instance.getUSER_METADATA(userId, postName), postName));
+        assertFalse(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, postName), postName));
+        assertEquals(44, instance.getLength());
         instance.clearUserData(userId);
         assertEquals(0, instance.getLength());
     }
