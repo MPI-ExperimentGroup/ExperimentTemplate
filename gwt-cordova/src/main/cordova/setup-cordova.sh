@@ -55,12 +55,12 @@ cordova platform add android
 
 
 cordova plugin add /ExperimentTemplate/FieldKitRecorder/
-#cordova plugin add cordova-plugin-file
-#cordova plugin add cordova-plugin-statusbar
-#cordova plugin add cordova-plugin-fullscreen 
+cordova plugin add cordova-plugin-file
+cordova plugin add cordova-plugin-statusbar
+cordova plugin add cordova-plugin-fullscreen 
 #cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
-#cordova plugin add cordova-plugin-local-notification
+cordova plugin add cordova-plugin-local-notification
 
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
 #echo $splashResourcesDir
