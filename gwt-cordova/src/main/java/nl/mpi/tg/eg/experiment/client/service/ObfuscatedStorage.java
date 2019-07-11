@@ -50,8 +50,8 @@ public class ObfuscatedStorage {
             byte[] outputBytes = input.getBytes();
             byte[] storageKeyBytes = storageKey.getBytes();
             for (int index = 0; index < input.length(); index++) {
-                outputBytes[index] ^= storageKeyBytes[storageKeyBytes.length - ((index * 3) % storageKeyBytes.length)];
-            }
+                    outputBytes[index] ^= storageKeyBytes[storageKeyBytes.length - ((index * 3) % storageKeyBytes.length)];
+                }
             return new String(outputBytes);
         } else {
             return input;
@@ -70,7 +70,7 @@ public class ObfuscatedStorage {
         return URL.decode(input);
     }
 
-    private String revealString(String storageKey, String input) {
+    protected String revealString(String storageKey, String input) {
         return urlDecode(processString(storageKey, input).trim());
     }
 
@@ -81,7 +81,7 @@ public class ObfuscatedStorage {
         return (dataStore != null) ? this : null;
     }
 
-    private String obfuscateStorageKey(UserId userId, String storageVariable) {
+    protected String obfuscateStorageKey(UserId userId, String storageVariable) {
         return obfuscateString(userId.toString(), userId.toString() + storageVariable);
     }
 
@@ -97,8 +97,8 @@ public class ObfuscatedStorage {
         return appNameInternal + "." + obfuscateStorageKey(userId, ".UserResults." + valueName);
     }
 
-    protected String getUSER_METADATA(UserId userId, String valueName) {
-        return appNameInternal + "." + userId.toString() + obfuscateString(appNameInternal, ".UserMetadata." + valueName);
+    protected String getUSER_METADATA(UserId userId, String postName) {
+        return appNameInternal + "." + userId.toString() + obfuscateString(appNameInternal, ".UserMetadata." + postName);
     }
 
     protected boolean isUSER_METADATA(String keyName, String postName) {
