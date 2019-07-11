@@ -20,10 +20,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since Dec 9, 2015 4:22:44 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"  
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="fieldkit-recorder" 
         xmlns:android="http://schemas.android.com/apk/res/android"
-        version="0.0.1">
+        version="1.0.0">
     <name>FieldKitRecorder</name>
     <description>FieldKit Recorder Cordova Plugin</description>
     <license>GNU</license>
