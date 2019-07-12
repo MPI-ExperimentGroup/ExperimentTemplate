@@ -265,7 +265,7 @@ public class FieldKitRecorder extends CordovaPlugin {
                     try {
                         final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
                                 + File.separator + userId + File.separator);
-                        final StimuliCsvWriter stimuliCsvWriter = new StimuliScvWriter(outputDirectory);
+                        final StimuliCsvWriter stimuliCsvWriter = new StimuliCsvWriter(outputDirectory);
                         if (stimuliCsvWriter.writeJsonFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext(), userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs)) {
                             callbackContext.success();
                         } else {
