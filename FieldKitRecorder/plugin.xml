@@ -49,6 +49,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <source-file src="src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/CsvWriter.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/StimuliJsonWriter.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
+        <source-file src="src/android/nl/mpi/tg/eg/frinex/StimuliCsvWriter.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/CSVRow.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/AudioRecorder.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/WavRecorder.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
