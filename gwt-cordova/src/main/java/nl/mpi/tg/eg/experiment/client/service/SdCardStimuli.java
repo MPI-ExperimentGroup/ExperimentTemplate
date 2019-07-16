@@ -77,7 +77,7 @@ public class SdCardStimuli {
             final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
             final String filePart = stimulusPath.substring(0, stimulusPath.length() - 4);
             // GWT.log("suffix: " + suffix);
-            final String stimuliLabel = null;
+            final String stimuliLabel = fileName;
             final String stimuliCode = filePart;
             final int pause = 0;
 //        final boolean isLabel = ".txt".equals(suffix);
@@ -209,7 +209,7 @@ public class SdCardStimuli {
                                             sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
                 //                            readFileEntry(entries[currentIndex]);
                                         } else {
-                                            console.log(); 
+                                            console.log(entries[currentIndex].toURL()); 
                                             sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
                                         }
                                     }
