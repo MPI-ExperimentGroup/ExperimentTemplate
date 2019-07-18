@@ -248,7 +248,8 @@ public enum FeatureType {
     scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
     submitTestResults(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    transmitResults(false, false, new FeatureAttribute[]{matchingRegex, enabledRegex, dataLogFormat}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
+    validateMetadata(false, new FeatureAttribute[]{/* take the fields from the vaidate section. matchingRegex, enabledRegex, dataLogFormat*/}, "Validates the current user id and the metadata fields (as listed in the administration section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from ths adminstration secion will be updated localy from the values previously saved in the admin system.", Contitionals.hasErrorSuccess, Contitionals.none),
+    transmitResults(false, new FeatureAttribute[]{matchingRegex, enabledRegex, dataLogFormat}, "Transmits the values of the metadata fields that match the matchingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the enabledRegex will be updated if there is such a field returned from that service.", Contitionals.hasErrorSuccess, Contitionals.none);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
