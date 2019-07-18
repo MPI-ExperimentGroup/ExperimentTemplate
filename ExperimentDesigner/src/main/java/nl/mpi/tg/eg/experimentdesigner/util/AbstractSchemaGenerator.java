@@ -269,14 +269,25 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false)
                                     .integerAttribute("channel", false),
-                            new DocumentationElement("validation", "", 0, 0, new DocumentationElement[0])
-                                    .stringAttribute("postName", true)
-                                    .stringAttribute("fieldName", true)
-                                    .stringAttribute("returnName", true)
+                            new DocumentationElement("validation", "Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.", 0, 1, new DocumentationElement[]{
+                        new DocumentationElement("recordMatch", "", 0, 0, new DocumentationElement[0])
+                        .stringAttribute("postField", false)
+                        .stringAttribute("adminField", false)
+                        .stringAttribute("responseField", false)
+                        .stringAttribute("errorField", false)
+                        .stringAttribute("errorMessage", false)
+                        .stringAttribute("validationRegex", true),
+                        new DocumentationElement("fieldMatch", "", 0, 0, new DocumentationElement[0])
+                        .stringAttribute("postField", true)
+                        .stringAttribute("adminField", false)
+                        .stringAttribute("responseField", true)
+                        .stringAttribute("errorField", false)
+                        .stringAttribute("errorMessage", false)
+                        .stringAttribute("validationRegex", true)
+                    })
                                     .stringAttribute("errorField", false)
                                     .stringAttribute("errorMessage", false)
-                                    .stringAttribute("validationRegex", true)
-                                    .stringAttribute("allowValidationOnMissing", true)
+                                    .stringAttribute("allowValidationOnMissing", false)
                         }),
                 new DocumentationElement("scss", "", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
