@@ -98,6 +98,14 @@
             </actionButton>
         </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
+        <validateMetadata>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </validateMetadata>
         <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -2011,6 +2019,14 @@
             </actionButton>
         </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
+        <validateMetadata>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </validateMetadata>
         <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
