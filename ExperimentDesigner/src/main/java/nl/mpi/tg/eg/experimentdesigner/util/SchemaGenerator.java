@@ -430,6 +430,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addExperiment(writer, FeatureAttribute.values());
         addElement(writer, rootElement, false);
         addElement(writer, rootElement.childElements[1], true);
+        addElement(writer, rootElement.childElements[1].childElements[1], true);
         addElement(writer, rootElement.childElements[3], true);
         addElement(writer, rootElement.childElements[4], true);
         addElement(writer, rootElement.childElements[5], true);
