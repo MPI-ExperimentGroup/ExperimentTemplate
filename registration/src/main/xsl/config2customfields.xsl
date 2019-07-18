@@ -525,14 +525,12 @@
                 public ResponseEntity&lt;String&gt; validate(
                 @RequestParam("requestingUserId") String requestingUserId,
             </xsl:text>
-            <xsl:for-each select="experiment/administration/validation">
-                <xsl:if test="@postName">
-                    <xsl:text>@RequestParam("</xsl:text>
-                    <xsl:value-of select="@postName" />
-                    <xsl:text>") String </xsl:text>
-                    <xsl:value-of select="@postName" />
-                    <xsl:text>,</xsl:text> 
-                </xsl:if>
+            <xsl:for-each select="experiment/administration/validation/*[@postField]">
+                <xsl:text>@RequestParam("</xsl:text>
+                <xsl:value-of select="@postField" />
+                <xsl:text>") String </xsl:text>
+                <xsl:value-of select="@postField" />
+                <xsl:text>,</xsl:text>
             </xsl:for-each>
             <xsl:text>
                 @RequestParam("applicationversion") String applicationversion,
@@ -542,15 +540,15 @@
                 HttpServletRequest request) throws IOException {
                 final Date tagDate = new java.util.Date();
             </xsl:text>
-            <xsl:for-each select="experiment/administration/validation[@postName]">
+            <xsl:for-each select="experiment/administration/validation/*[@postField]">
                 <xsl:text>tagRepository.save(new TagData(requestingUserId, "validate", "</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="@postField" />
                 <xsl:text>", (</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="@postField" />
                 <xsl:text>.length() > 254) ? </xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="@postField" />
                 <xsl:text>.substring(0, 254) : </xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="@postField" />
                 <xsl:text>, 0, tagDate));
                 </xsl:text>
             </xsl:for-each>
@@ -565,27 +563,30 @@
                 tagRepository.save(new TagData(requestingUserId, "validate", "acceptLang", acceptLang, 0, tagDate));
                 tagRepository.save(new TagData(requestingUserId, "validate", "userAgent", userAgent, 0, tagDate));
                 tagRepository.save(new TagData(requestingUserId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
-                tagRepository.save(new TagData(requestingUserId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
+                if (datalog!=null &amp;&amp; !datalog.isEmpty()) {tagRepository.save(new TagData(requestingUserId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));}
                 final List&lt;Participant&gt; foundRecords = new ArrayList();
                 boolean foundError = false;
             </xsl:text>
-            <xsl:for-each select="distinct-values(experiment/administration/validation/@errorField)">
+            <xsl:for-each select="distinct-values((experiment/administration/validation/@errorField, experiment/administration/validation/*/@errorField))">
                 <xsl:text>
                     String errorMessage</xsl:text>
                 <xsl:value-of select="." />
                 <xsl:text> = "";
                 </xsl:text>
             </xsl:for-each>
-            <xsl:for-each select="experiment/administration/validation[@fieldName eq 'userId']">
-                <xsl:text>for(Participant participantRecord : participantRepository.findByUserId(requestingUserId)) {
-                    final boolean allowValidationOnMissing = </xsl:text>
-                <xsl:value-of select="if (@allowValidationOnMissing eq 'true') then 'true' else 'false'"/>
-                <xsl:text>;
-                </xsl:text>
-                <xsl:if test="@postName">
+            <xsl:text>final boolean allowValidationOnMissing = </xsl:text>
+            <xsl:value-of select="if (experiment/administration/validation/@allowValidationOnMissing eq 'true') then 'true' else 'false'"/>
+            <xsl:text>;
+                for(Participant participantRecord : participantRepository.findByUserId(requestingUserId)) {
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation/recordMatch">
+                <xsl:if test="@postField">
                     <xsl:text>if (!</xsl:text>
-                    <xsl:value-of select="@postName"/>
-                    <xsl:text>.equals(requestingUserId)) {
+                    <xsl:value-of select="@postField"/>
+                    <xsl:text>.equals(participantRecord.get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
+                    <xsl:text>())) {
+                        if(foundRecords.isEmpty()){
                         foundError = true;
                         errorMessage</xsl:text>
                     <xsl:value-of select="@errorField" />
@@ -593,29 +594,40 @@
                     <xsl:text> = "</xsl:text>
                     <xsl:value-of select="@errorMessage" />
                     <xsl:text> ";
+                        }
                         } else </xsl:text>
                 </xsl:if>
-                <xsl:if test="@returnName">
-                    <xsl:text>if (requestingUserId.equals(participantRecord.get</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@returnName,1,1)), substring(@returnName, 2))" />
-                    <xsl:text>())) {
-                        foundRecords.add(participantRecord);
-                        }
-                    </xsl:text>
-                </xsl:if>
-                <xsl:text>
-                    if(!allowValidationOnMissing &amp;&amp; foundRecords.isEmpty()){
-                    foundError = true;
-                    errorMessage</xsl:text>
+            </xsl:for-each>  
+            <xsl:text> {
+                foundRecords.add(participantRecord);
+                foundError = true;
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation/recordMatch">
+                <xsl:text>errorMessage</xsl:text>
+                <xsl:value-of select="@errorField" />
+                <!--only one initial error message should be shown, so this clears any previous messages-->
+                <xsl:text> = "";</xsl:text>
+            </xsl:for-each>  
+            <xsl:text>
+                }
+                }
+            </xsl:text>
+            <xsl:text>
+                if(!allowValidationOnMissing &amp;&amp; foundRecords.isEmpty()){
+                foundError = true;
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation">
+                <xsl:text>errorMessage</xsl:text>
                 <xsl:value-of select="@errorField" />
                 <!--only one initial error message should be shown, so this clears any previous messages-->
                 <xsl:text> = "</xsl:text>
                 <xsl:value-of select="@errorMessage" />
                 <xsl:text> ";
-                    }
-                    }
                 </xsl:text>
-            </xsl:for-each>                
+            </xsl:for-each>
+            <xsl:text>
+                }
+            </xsl:text>              
             <xsl:text>
                 while (foundRecords.size() > 1) {
                 if (foundRecords.get(0).getSubmitDate().before(foundRecords.get(1).getSubmitDate())) {
@@ -627,10 +639,10 @@
                 final StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("{");
                 if(foundRecords.size()&lt;1 &amp;&amp; !foundError){</xsl:text>
-            <xsl:for-each select="experiment/administration/validation[@fieldName eq 'userId']">
-                <xsl:if test="@returnName">
+            <xsl:for-each select="experiment/administration/validation/recordMatch">
+                <xsl:if test="@returnField">
                     <xsl:text>stringBuilder.append("\"</xsl:text>
-                    <xsl:value-of select="@returnName" />
+                    <xsl:value-of select="@returnField" />
                     <xsl:text>\":\"");
                         stringBuilder.append(requestingUserId);
                         stringBuilder.append("\",");
@@ -640,11 +652,11 @@
             <xsl:text>
                 } else if (!foundError) {
             </xsl:text>
-            <xsl:for-each select="experiment/administration/validation[@fieldName]">
+            <xsl:for-each select="experiment/administration/validation/*[@adminField]">
                 <!--match the value to the regex-->
                 <xsl:if test="@validationRegex">
                     <xsl:text>if (!foundRecords.get(0).get</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                    <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
                     <xsl:text>().matches("</xsl:text>
                     <xsl:value-of select="@validationRegex" />
                     <xsl:text>")){
@@ -658,11 +670,11 @@
                     </xsl:text>
                 </xsl:if>
                 <!--compare the provided value to the DB counterpart-->
-                <xsl:if test="@postName and @fieldName">
+                <xsl:if test="@postField and @adminField">
                     <xsl:text>if (!</xsl:text>
-                    <xsl:value-of select="@postName" />
+                    <xsl:value-of select="@postField" />
                     <xsl:text>.equals(foundRecords.get(0).get</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                    <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
                     <xsl:text>())){
                         errorMessage</xsl:text>
                     <xsl:value-of select="@errorField" />
@@ -674,25 +686,23 @@
                     </xsl:text>
                 </xsl:if>
             </xsl:for-each>
-            <xsl:for-each select="experiment/administration/validation">
-                <xsl:if test="@returnName">
-                    <xsl:text>if (!foundError) {
-                        stringBuilder.append("\"</xsl:text>
-                    <xsl:value-of select="@returnName" />
-                    <xsl:text>\":\"");
-                    </xsl:text>
-                    <xsl:text>stringBuilder.append(foundRecords.get(0).get</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
-                    <xsl:text>());
-                        stringBuilder.append("\",");
-                        }
-                    </xsl:text>
-                </xsl:if>
+            <xsl:for-each select="experiment/administration/validation/*[@returnField]">
+                <xsl:text>if (!foundError) {
+                    stringBuilder.append("\"</xsl:text>
+                <xsl:value-of select="@returnField" />
+                <xsl:text>\":\"");
+                </xsl:text>
+                <xsl:text>stringBuilder.append(foundRecords.get(0).get</xsl:text>
+                <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
+                <xsl:text>());
+                    stringBuilder.append("\",");
+                    }
+                </xsl:text>
             </xsl:for-each>
             <xsl:text>
                 }
             </xsl:text>
-            <xsl:for-each select="distinct-values(experiment/administration/validation/@errorField)">
+            <xsl:for-each select="distinct-values((experiment/administration/validation/@errorField, experiment/administration/validation/*/@errorField))">
                 <xsl:text>
                     stringBuilder.append("\"</xsl:text>
                 <xsl:value-of select="." />
