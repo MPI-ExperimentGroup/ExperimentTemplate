@@ -196,15 +196,57 @@ dataChannel
 <h3 id="validationType" style="text-transform: uppercase;">
 validation
 </h3>
+Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#recordMatchType"><span style="color:purple">&lt;</span><span style="color:blue">recordMatch</span></a></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#fieldMatchType"><span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></a></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">validation</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='validationTarget'>
+<button onclick="getExample('validation', 'validationTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="recordMatchType" style="text-transform: uppercase;">
+recordMatch
+</h3>
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">recordMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">postName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">returnName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
@@ -212,8 +254,30 @@ validation
 </table>
 <table style="width: 100%;">
 <tr>
-<td colspan='2' id='validationTarget'>
-<button onclick="getExample('validation', 'validationTarget');">search for examples</button>
+<td colspan='2' id='recordMatchTarget'>
+<button onclick="getExample('recordMatch', 'recordMatchTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="fieldMatchType" style="text-transform: uppercase;">
+fieldMatch
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='fieldMatchTarget'>
+<button onclick="getExample('fieldMatch', 'fieldMatchTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="scssType" style="text-transform: uppercase;">
@@ -305,8 +369,8 @@ Each screen in an experiment configuration is described in a PRESENTER element.t
 <span style="color:green">type</span><span style="color:grey">=&quot;Option List [transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="presenterChildShow" style="display: block;" onclick="$('#presenterChildDocumentation').show();$('#presenterChildHide').show();$('#presenterChildShow').hide();">show 95 truncated items</button>
-<button id="presenterChildHide" style="display: none;" onclick="$('#presenterChildDocumentation').hide();$('#presenterChildHide').hide();$('#presenterChildShow').show();">hide 95 items</button>
+<button id="presenterChildShow" style="display: block;" onclick="$('#presenterChildDocumentation').show();$('#presenterChildHide').show();$('#presenterChildShow').hide();">show 96 truncated items</button>
+<button id="presenterChildHide" style="display: none;" onclick="$('#presenterChildDocumentation').hide();$('#presenterChildHide').hide();$('#presenterChildShow').show();">hide 96 items</button>
 <table id="presenterChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#actionButtonType"><span style="color:purple">&lt;</span><span style="color:blue">actionButton</span><span style="color:purple">&gt;</span>
@@ -588,6 +652,9 @@ Each screen in an experiment configuration is described in a PRESENTER element.t
 <a href="#userInfoType"><span style="color:purple">&lt;</span><span style="color:blue">userInfo</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#versionDataType"><span style="color:purple">&lt;</span><span style="color:blue">versionData</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
@@ -681,8 +748,8 @@ actionButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="actionButtonChildShow" style="display: block;" onclick="$('#actionButtonChildDocumentation').show();$('#actionButtonChildHide').show();$('#actionButtonChildShow').hide();">show 160 truncated items</button>
-<button id="actionButtonChildHide" style="display: none;" onclick="$('#actionButtonChildDocumentation').hide();$('#actionButtonChildHide').hide();$('#actionButtonChildShow').show();">hide 160 items</button>
+<button id="actionButtonChildShow" style="display: block;" onclick="$('#actionButtonChildDocumentation').show();$('#actionButtonChildHide').show();$('#actionButtonChildShow').hide();">show 161 truncated items</button>
+<button id="actionButtonChildHide" style="display: none;" onclick="$('#actionButtonChildDocumentation').hide();$('#actionButtonChildHide').hide();$('#actionButtonChildShow').show();">hide 161 items</button>
 <table id="actionButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -1162,6 +1229,9 @@ actionButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -1190,8 +1260,8 @@ actionFooterButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="actionFooterButtonChildShow" style="display: block;" onclick="$('#actionFooterButtonChildDocumentation').show();$('#actionFooterButtonChildHide').show();$('#actionFooterButtonChildShow').hide();">show 160 truncated items</button>
-<button id="actionFooterButtonChildHide" style="display: none;" onclick="$('#actionFooterButtonChildDocumentation').hide();$('#actionFooterButtonChildHide').hide();$('#actionFooterButtonChildShow').show();">hide 160 items</button>
+<button id="actionFooterButtonChildShow" style="display: block;" onclick="$('#actionFooterButtonChildDocumentation').show();$('#actionFooterButtonChildHide').show();$('#actionFooterButtonChildShow').hide();">show 161 truncated items</button>
+<button id="actionFooterButtonChildHide" style="display: none;" onclick="$('#actionFooterButtonChildDocumentation').hide();$('#actionFooterButtonChildHide').hide();$('#actionFooterButtonChildShow').show();">hide 161 items</button>
 <table id="actionFooterButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -1671,6 +1741,9 @@ actionFooterButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -1698,8 +1771,8 @@ actionTokenButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="actionTokenButtonChildShow" style="display: block;" onclick="$('#actionTokenButtonChildDocumentation').show();$('#actionTokenButtonChildHide').show();$('#actionTokenButtonChildShow').hide();">show 160 truncated items</button>
-<button id="actionTokenButtonChildHide" style="display: none;" onclick="$('#actionTokenButtonChildDocumentation').hide();$('#actionTokenButtonChildHide').hide();$('#actionTokenButtonChildShow').show();">hide 160 items</button>
+<button id="actionTokenButtonChildShow" style="display: block;" onclick="$('#actionTokenButtonChildDocumentation').show();$('#actionTokenButtonChildHide').show();$('#actionTokenButtonChildShow').hide();">show 161 truncated items</button>
+<button id="actionTokenButtonChildHide" style="display: none;" onclick="$('#actionTokenButtonChildDocumentation').hide();$('#actionTokenButtonChildHide').hide();$('#actionTokenButtonChildShow').show();">hide 161 items</button>
 <table id="actionTokenButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -2179,6 +2252,9 @@ actionTokenButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -2328,8 +2404,8 @@ backgroundImage
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="backgroundImageChildShow" style="display: block;" onclick="$('#backgroundImageChildDocumentation').show();$('#backgroundImageChildHide').show();$('#backgroundImageChildShow').hide();">show 160 truncated items</button>
-<button id="backgroundImageChildHide" style="display: none;" onclick="$('#backgroundImageChildDocumentation').hide();$('#backgroundImageChildHide').hide();$('#backgroundImageChildShow').show();">hide 160 items</button>
+<button id="backgroundImageChildShow" style="display: block;" onclick="$('#backgroundImageChildDocumentation').show();$('#backgroundImageChildHide').show();$('#backgroundImageChildShow').hide();">show 161 truncated items</button>
+<button id="backgroundImageChildHide" style="display: none;" onclick="$('#backgroundImageChildDocumentation').hide();$('#backgroundImageChildHide').hide();$('#backgroundImageChildShow').show();">hide 161 items</button>
 <table id="backgroundImageChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -2809,6 +2885,9 @@ backgroundImage
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -2964,8 +3043,8 @@ column
 <span style="color:purple">&lt;</span><span style="color:blue">column</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="columnChildShow" style="display: block;" onclick="$('#columnChildDocumentation').show();$('#columnChildHide').show();$('#columnChildShow').hide();">show 160 truncated items</button>
-<button id="columnChildHide" style="display: none;" onclick="$('#columnChildDocumentation').hide();$('#columnChildHide').hide();$('#columnChildShow').show();">hide 160 items</button>
+<button id="columnChildShow" style="display: block;" onclick="$('#columnChildDocumentation').show();$('#columnChildHide').show();$('#columnChildShow').hide();">show 161 truncated items</button>
+<button id="columnChildHide" style="display: none;" onclick="$('#columnChildDocumentation').hide();$('#columnChildHide').hide();$('#columnChildShow').show();">hide 161 items</button>
 <table id="columnChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -3445,6 +3524,9 @@ column
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -3502,8 +3584,8 @@ countdownLabel
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="countdownLabelChildShow" style="display: block;" onclick="$('#countdownLabelChildDocumentation').show();$('#countdownLabelChildHide').show();$('#countdownLabelChildShow').hide();">show 160 truncated items</button>
-<button id="countdownLabelChildHide" style="display: none;" onclick="$('#countdownLabelChildDocumentation').hide();$('#countdownLabelChildHide').hide();$('#countdownLabelChildShow').show();">hide 160 items</button>
+<button id="countdownLabelChildShow" style="display: block;" onclick="$('#countdownLabelChildDocumentation').show();$('#countdownLabelChildHide').show();$('#countdownLabelChildShow').hide();">show 161 truncated items</button>
+<button id="countdownLabelChildHide" style="display: none;" onclick="$('#countdownLabelChildDocumentation').hide();$('#countdownLabelChildHide').hide();$('#countdownLabelChildShow').show();">hide 161 items</button>
 <table id="countdownLabelChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -3983,6 +4065,9 @@ countdownLabel
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -4061,8 +4146,8 @@ editableKinEntitesDiagram
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="editableKinEntitesDiagramChildShow" style="display: block;" onclick="$('#editableKinEntitesDiagramChildDocumentation').show();$('#editableKinEntitesDiagramChildHide').show();$('#editableKinEntitesDiagramChildShow').hide();">show 160 truncated items</button>
-<button id="editableKinEntitesDiagramChildHide" style="display: none;" onclick="$('#editableKinEntitesDiagramChildDocumentation').hide();$('#editableKinEntitesDiagramChildHide').hide();$('#editableKinEntitesDiagramChildShow').show();">hide 160 items</button>
+<button id="editableKinEntitesDiagramChildShow" style="display: block;" onclick="$('#editableKinEntitesDiagramChildDocumentation').show();$('#editableKinEntitesDiagramChildHide').show();$('#editableKinEntitesDiagramChildShow').hide();">show 161 truncated items</button>
+<button id="editableKinEntitesDiagramChildHide" style="display: none;" onclick="$('#editableKinEntitesDiagramChildDocumentation').hide();$('#editableKinEntitesDiagramChildHide').hide();$('#editableKinEntitesDiagramChildShow').show();">hide 161 items</button>
 <table id="editableKinEntitesDiagramChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -4542,6 +4627,9 @@ editableKinEntitesDiagram
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -4728,8 +4816,8 @@ habituationParadigmListener
 <span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="habituationParadigmListenerChildShow" style="display: block;" onclick="$('#habituationParadigmListenerChildDocumentation').show();$('#habituationParadigmListenerChildHide').show();$('#habituationParadigmListenerChildShow').hide();">show 160 truncated items</button>
-<button id="habituationParadigmListenerChildHide" style="display: none;" onclick="$('#habituationParadigmListenerChildDocumentation').hide();$('#habituationParadigmListenerChildHide').hide();$('#habituationParadigmListenerChildShow').show();">hide 160 items</button>
+<button id="habituationParadigmListenerChildShow" style="display: block;" onclick="$('#habituationParadigmListenerChildDocumentation').show();$('#habituationParadigmListenerChildHide').show();$('#habituationParadigmListenerChildShow').hide();">show 161 truncated items</button>
+<button id="habituationParadigmListenerChildHide" style="display: none;" onclick="$('#habituationParadigmListenerChildDocumentation').hide();$('#habituationParadigmListenerChildHide').hide();$('#habituationParadigmListenerChildShow').show();">hide 161 items</button>
 <table id="habituationParadigmListenerChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -5209,6 +5297,9 @@ habituationParadigmListener
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -5395,8 +5486,8 @@ kinTypeStringDiagram
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="kinTypeStringDiagramChildShow" style="display: block;" onclick="$('#kinTypeStringDiagramChildDocumentation').show();$('#kinTypeStringDiagramChildHide').show();$('#kinTypeStringDiagramChildShow').hide();">show 160 truncated items</button>
-<button id="kinTypeStringDiagramChildHide" style="display: none;" onclick="$('#kinTypeStringDiagramChildDocumentation').hide();$('#kinTypeStringDiagramChildHide').hide();$('#kinTypeStringDiagramChildShow').show();">hide 160 items</button>
+<button id="kinTypeStringDiagramChildShow" style="display: block;" onclick="$('#kinTypeStringDiagramChildDocumentation').show();$('#kinTypeStringDiagramChildHide').show();$('#kinTypeStringDiagramChildShow').hide();">show 161 truncated items</button>
+<button id="kinTypeStringDiagramChildHide" style="display: none;" onclick="$('#kinTypeStringDiagramChildDocumentation').hide();$('#kinTypeStringDiagramChildHide').hide();$('#kinTypeStringDiagramChildShow').show();">hide 161 items</button>
 <table id="kinTypeStringDiagramChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -5876,6 +5967,9 @@ kinTypeStringDiagram
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -5901,8 +5995,8 @@ loadKinTypeStringDiagram
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="loadKinTypeStringDiagramChildShow" style="display: block;" onclick="$('#loadKinTypeStringDiagramChildDocumentation').show();$('#loadKinTypeStringDiagramChildHide').show();$('#loadKinTypeStringDiagramChildShow').hide();">show 160 truncated items</button>
-<button id="loadKinTypeStringDiagramChildHide" style="display: none;" onclick="$('#loadKinTypeStringDiagramChildDocumentation').hide();$('#loadKinTypeStringDiagramChildHide').hide();$('#loadKinTypeStringDiagramChildShow').show();">hide 160 items</button>
+<button id="loadKinTypeStringDiagramChildShow" style="display: block;" onclick="$('#loadKinTypeStringDiagramChildDocumentation').show();$('#loadKinTypeStringDiagramChildHide').show();$('#loadKinTypeStringDiagramChildShow').hide();">show 161 truncated items</button>
+<button id="loadKinTypeStringDiagramChildHide" style="display: none;" onclick="$('#loadKinTypeStringDiagramChildDocumentation').hide();$('#loadKinTypeStringDiagramChildHide').hide();$('#loadKinTypeStringDiagramChildShow').show();">hide 161 items</button>
 <table id="loadKinTypeStringDiagramChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -6382,6 +6476,9 @@ loadKinTypeStringDiagram
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -6843,8 +6940,8 @@ pause
 <span style="color:purple">&lt;</span><span style="color:blue">pause</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="pauseChildShow" style="display: block;" onclick="$('#pauseChildDocumentation').show();$('#pauseChildHide').show();$('#pauseChildShow').hide();">show 160 truncated items</button>
-<button id="pauseChildHide" style="display: none;" onclick="$('#pauseChildDocumentation').hide();$('#pauseChildHide').hide();$('#pauseChildShow').show();">hide 160 items</button>
+<button id="pauseChildShow" style="display: block;" onclick="$('#pauseChildDocumentation').show();$('#pauseChildHide').show();$('#pauseChildShow').hide();">show 161 truncated items</button>
+<button id="pauseChildHide" style="display: none;" onclick="$('#pauseChildDocumentation').hide();$('#pauseChildHide').hide();$('#pauseChildShow').show();">hide 161 items</button>
 <table id="pauseChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -7324,6 +7421,9 @@ pause
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -7447,8 +7547,8 @@ randomMsPause
 <span style="color:green">ranges</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="randomMsPauseChildShow" style="display: block;" onclick="$('#randomMsPauseChildDocumentation').show();$('#randomMsPauseChildHide').show();$('#randomMsPauseChildShow').hide();">show 160 truncated items</button>
-<button id="randomMsPauseChildHide" style="display: none;" onclick="$('#randomMsPauseChildDocumentation').hide();$('#randomMsPauseChildHide').hide();$('#randomMsPauseChildShow').show();">hide 160 items</button>
+<button id="randomMsPauseChildShow" style="display: block;" onclick="$('#randomMsPauseChildDocumentation').show();$('#randomMsPauseChildHide').show();$('#randomMsPauseChildShow').hide();">show 161 truncated items</button>
+<button id="randomMsPauseChildHide" style="display: none;" onclick="$('#randomMsPauseChildDocumentation').hide();$('#randomMsPauseChildHide').hide();$('#randomMsPauseChildShow').show();">hide 161 items</button>
 <table id="randomMsPauseChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -7928,6 +8028,9 @@ randomMsPause
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -7970,8 +8073,8 @@ region
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="regionChildShow" style="display: block;" onclick="$('#regionChildDocumentation').show();$('#regionChildHide').show();$('#regionChildShow').hide();">show 160 truncated items</button>
-<button id="regionChildHide" style="display: none;" onclick="$('#regionChildDocumentation').hide();$('#regionChildHide').hide();$('#regionChildShow').show();">hide 160 items</button>
+<button id="regionChildShow" style="display: block;" onclick="$('#regionChildDocumentation').show();$('#regionChildHide').show();$('#regionChildShow').hide();">show 161 truncated items</button>
+<button id="regionChildHide" style="display: none;" onclick="$('#regionChildDocumentation').hide();$('#regionChildHide').hide();$('#regionChildShow').show();">hide 161 items</button>
 <table id="regionChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -8451,6 +8554,9 @@ region
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -8493,8 +8599,8 @@ regionReplace
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="regionReplaceChildShow" style="display: block;" onclick="$('#regionReplaceChildDocumentation').show();$('#regionReplaceChildHide').show();$('#regionReplaceChildShow').hide();">show 160 truncated items</button>
-<button id="regionReplaceChildHide" style="display: none;" onclick="$('#regionReplaceChildDocumentation').hide();$('#regionReplaceChildHide').hide();$('#regionReplaceChildShow').show();">hide 160 items</button>
+<button id="regionReplaceChildShow" style="display: block;" onclick="$('#regionReplaceChildDocumentation').show();$('#regionReplaceChildHide').show();$('#regionReplaceChildShow').hide();">show 161 truncated items</button>
+<button id="regionReplaceChildHide" style="display: none;" onclick="$('#regionReplaceChildDocumentation').hide();$('#regionReplaceChildHide').hide();$('#regionReplaceChildShow').show();">hide 161 items</button>
 <table id="regionReplaceChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -8974,6 +9080,9 @@ regionReplace
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -9098,8 +9207,8 @@ row
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">row</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="rowChildShow" style="display: block;" onclick="$('#rowChildDocumentation').show();$('#rowChildHide').show();$('#rowChildShow').hide();">show 160 truncated items</button>
-<button id="rowChildHide" style="display: none;" onclick="$('#rowChildDocumentation').hide();$('#rowChildHide').hide();$('#rowChildShow').show();">hide 160 items</button>
+<button id="rowChildShow" style="display: block;" onclick="$('#rowChildDocumentation').show();$('#rowChildHide').show();$('#rowChildShow').hide();">show 161 truncated items</button>
+<button id="rowChildHide" style="display: none;" onclick="$('#rowChildDocumentation').hide();$('#rowChildHide').hide();$('#rowChildShow').show();">hide 161 items</button>
 <table id="rowChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -9579,6 +9688,9 @@ row
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -9669,8 +9781,8 @@ scoreIncrement
 <span style="color:purple">&lt;</span><span style="color:blue">scoreIncrement</span></td><td><span style="color:green">scoreValue</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="scoreIncrementChildShow" style="display: block;" onclick="$('#scoreIncrementChildDocumentation').show();$('#scoreIncrementChildHide').show();$('#scoreIncrementChildShow').hide();">show 160 truncated items</button>
-<button id="scoreIncrementChildHide" style="display: none;" onclick="$('#scoreIncrementChildDocumentation').hide();$('#scoreIncrementChildHide').hide();$('#scoreIncrementChildShow').show();">hide 160 items</button>
+<button id="scoreIncrementChildShow" style="display: block;" onclick="$('#scoreIncrementChildDocumentation').show();$('#scoreIncrementChildHide').show();$('#scoreIncrementChildShow').hide();">show 161 truncated items</button>
+<button id="scoreIncrementChildHide" style="display: none;" onclick="$('#scoreIncrementChildDocumentation').hide();$('#scoreIncrementChildHide').hide();$('#scoreIncrementChildShow').show();">hide 161 items</button>
 <table id="scoreIncrementChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -10150,6 +10262,9 @@ scoreIncrement
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -10372,8 +10487,8 @@ startTimer
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="startTimerChildShow" style="display: block;" onclick="$('#startTimerChildDocumentation').show();$('#startTimerChildHide').show();$('#startTimerChildShow').hide();">show 160 truncated items</button>
-<button id="startTimerChildHide" style="display: none;" onclick="$('#startTimerChildDocumentation').hide();$('#startTimerChildHide').hide();$('#startTimerChildShow').show();">hide 160 items</button>
+<button id="startTimerChildShow" style="display: block;" onclick="$('#startTimerChildDocumentation').show();$('#startTimerChildHide').show();$('#startTimerChildShow').hide();">show 161 truncated items</button>
+<button id="startTimerChildHide" style="display: none;" onclick="$('#startTimerChildDocumentation').hide();$('#startTimerChildHide').hide();$('#startTimerChildShow').show();">hide 161 items</button>
 <table id="startTimerChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -10853,6 +10968,9 @@ startTimer
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -10939,8 +11057,8 @@ table
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="tableChildShow" style="display: block;" onclick="$('#tableChildDocumentation').show();$('#tableChildHide').show();$('#tableChildShow').hide();">show 160 truncated items</button>
-<button id="tableChildHide" style="display: none;" onclick="$('#tableChildDocumentation').hide();$('#tableChildHide').hide();$('#tableChildShow').show();">hide 160 items</button>
+<button id="tableChildShow" style="display: block;" onclick="$('#tableChildDocumentation').show();$('#tableChildHide').show();$('#tableChildShow').hide();">show 161 truncated items</button>
+<button id="tableChildHide" style="display: none;" onclick="$('#tableChildDocumentation').hide();$('#tableChildHide').hide();$('#tableChildShow').show();">hide 161 items</button>
 <table id="tableChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -11420,6 +11538,9 @@ table
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -11530,7 +11651,7 @@ totalScoreAboveThreshold
 <h3 id="transmitResultsType" style="text-transform: uppercase;">
 transmitResults
 </h3>
-
+Transmits the values of the metadata fields that match the matchingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the enabledRegex will be updated if there is such a field returned from that service.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
@@ -11586,8 +11707,8 @@ triggerListener
 <span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="triggerListenerChildShow" style="display: block;" onclick="$('#triggerListenerChildDocumentation').show();$('#triggerListenerChildHide').show();$('#triggerListenerChildShow').hide();">show 160 truncated items</button>
-<button id="triggerListenerChildHide" style="display: none;" onclick="$('#triggerListenerChildDocumentation').hide();$('#triggerListenerChildHide').hide();$('#triggerListenerChildShow').show();">hide 160 items</button>
+<button id="triggerListenerChildShow" style="display: block;" onclick="$('#triggerListenerChildDocumentation').show();$('#triggerListenerChildHide').show();$('#triggerListenerChildShow').hide();">show 161 truncated items</button>
+<button id="triggerListenerChildHide" style="display: none;" onclick="$('#triggerListenerChildDocumentation').hide();$('#triggerListenerChildHide').hide();$('#triggerListenerChildShow').show();">hide 161 items</button>
 <table id="triggerListenerChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -12067,6 +12188,9 @@ triggerListener
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -12096,6 +12220,34 @@ userInfo
 <tr>
 <td colspan='2' id='userInfoTarget'>
 <button onclick="getExample('userInfo', 'userInfoTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="validateMetadataType" style="text-transform: uppercase;">
+validateMetadata
+</h3>
+Validates the current user id and the metadata fields (as listed in the administration section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from ths adminstration secion will be updated localy from the values previously saved in the admin system.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span></td><td><span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#onErrorType"><span style="color:purple">&lt;</span><span style="color:blue">onError</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
+<a href="#onSuccessType"><span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='validateMetadataTarget'>
+<button onclick="getExample('validateMetadata', 'validateMetadataTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="versionDataType" style="text-transform: uppercase;">
@@ -12275,8 +12427,8 @@ AnnotationTimelinePanel
 <span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="AnnotationTimelinePanelChildShow" style="display: block;" onclick="$('#AnnotationTimelinePanelChildDocumentation').show();$('#AnnotationTimelinePanelChildHide').show();$('#AnnotationTimelinePanelChildShow').hide();">show 160 truncated items</button>
-<button id="AnnotationTimelinePanelChildHide" style="display: none;" onclick="$('#AnnotationTimelinePanelChildDocumentation').hide();$('#AnnotationTimelinePanelChildHide').hide();$('#AnnotationTimelinePanelChildShow').show();">hide 160 items</button>
+<button id="AnnotationTimelinePanelChildShow" style="display: block;" onclick="$('#AnnotationTimelinePanelChildDocumentation').show();$('#AnnotationTimelinePanelChildHide').show();$('#AnnotationTimelinePanelChildShow').hide();">show 161 truncated items</button>
+<button id="AnnotationTimelinePanelChildHide" style="display: none;" onclick="$('#AnnotationTimelinePanelChildDocumentation').hide();$('#AnnotationTimelinePanelChildHide').hide();$('#AnnotationTimelinePanelChildShow').show();">hide 161 items</button>
 <table id="AnnotationTimelinePanelChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -12756,6 +12908,9 @@ AnnotationTimelinePanel
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -13083,8 +13238,8 @@ ratingButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="ratingButtonChildShow" style="display: block;" onclick="$('#ratingButtonChildDocumentation').show();$('#ratingButtonChildHide').show();$('#ratingButtonChildShow').hide();">show 160 truncated items</button>
-<button id="ratingButtonChildHide" style="display: none;" onclick="$('#ratingButtonChildDocumentation').hide();$('#ratingButtonChildHide').hide();$('#ratingButtonChildShow').show();">hide 160 items</button>
+<button id="ratingButtonChildShow" style="display: block;" onclick="$('#ratingButtonChildDocumentation').show();$('#ratingButtonChildHide').show();$('#ratingButtonChildShow').hide();">show 161 truncated items</button>
+<button id="ratingButtonChildHide" style="display: none;" onclick="$('#ratingButtonChildDocumentation').hide();$('#ratingButtonChildHide').hide();$('#ratingButtonChildShow').show();">hide 161 items</button>
 <table id="ratingButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -13564,6 +13719,9 @@ ratingButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -13593,8 +13751,8 @@ ratingFooterButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="ratingFooterButtonChildShow" style="display: block;" onclick="$('#ratingFooterButtonChildDocumentation').show();$('#ratingFooterButtonChildHide').show();$('#ratingFooterButtonChildShow').hide();">show 160 truncated items</button>
-<button id="ratingFooterButtonChildHide" style="display: none;" onclick="$('#ratingFooterButtonChildDocumentation').hide();$('#ratingFooterButtonChildHide').hide();$('#ratingFooterButtonChildShow').show();">hide 160 items</button>
+<button id="ratingFooterButtonChildShow" style="display: block;" onclick="$('#ratingFooterButtonChildDocumentation').show();$('#ratingFooterButtonChildHide').show();$('#ratingFooterButtonChildShow').hide();">show 161 truncated items</button>
+<button id="ratingFooterButtonChildHide" style="display: none;" onclick="$('#ratingFooterButtonChildDocumentation').hide();$('#ratingFooterButtonChildHide').hide();$('#ratingFooterButtonChildShow').show();">hide 161 items</button>
 <table id="ratingFooterButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -14074,6 +14232,9 @@ ratingFooterButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -14225,8 +14386,8 @@ showStimulus
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">showStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="showStimulusChildShow" style="display: block;" onclick="$('#showStimulusChildDocumentation').show();$('#showStimulusChildHide').show();$('#showStimulusChildShow').hide();">show 160 truncated items</button>
-<button id="showStimulusChildHide" style="display: none;" onclick="$('#showStimulusChildDocumentation').hide();$('#showStimulusChildHide').hide();$('#showStimulusChildShow').show();">hide 160 items</button>
+<button id="showStimulusChildShow" style="display: block;" onclick="$('#showStimulusChildDocumentation').show();$('#showStimulusChildHide').show();$('#showStimulusChildShow').hide();">show 161 truncated items</button>
+<button id="showStimulusChildHide" style="display: none;" onclick="$('#showStimulusChildDocumentation').hide();$('#showStimulusChildHide').hide();$('#showStimulusChildShow').show();">hide 161 items</button>
 <table id="showStimulusChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -14706,6 +14867,9 @@ showStimulus
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -14886,8 +15050,8 @@ stimulusButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="stimulusButtonChildShow" style="display: block;" onclick="$('#stimulusButtonChildDocumentation').show();$('#stimulusButtonChildHide').show();$('#stimulusButtonChildShow').hide();">show 160 truncated items</button>
-<button id="stimulusButtonChildHide" style="display: none;" onclick="$('#stimulusButtonChildDocumentation').hide();$('#stimulusButtonChildHide').hide();$('#stimulusButtonChildShow').show();">hide 160 items</button>
+<button id="stimulusButtonChildShow" style="display: block;" onclick="$('#stimulusButtonChildDocumentation').show();$('#stimulusButtonChildHide').show();$('#stimulusButtonChildShow').hide();">show 161 truncated items</button>
+<button id="stimulusButtonChildHide" style="display: none;" onclick="$('#stimulusButtonChildDocumentation').hide();$('#stimulusButtonChildHide').hide();$('#stimulusButtonChildShow').show();">hide 161 items</button>
 <table id="stimulusButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -15367,6 +15531,9 @@ stimulusButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -15684,8 +15851,8 @@ stimulusImageCapture
 <span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="stimulusImageCaptureChildShow" style="display: block;" onclick="$('#stimulusImageCaptureChildDocumentation').show();$('#stimulusImageCaptureChildHide').show();$('#stimulusImageCaptureChildShow').hide();">show 160 truncated items</button>
-<button id="stimulusImageCaptureChildHide" style="display: none;" onclick="$('#stimulusImageCaptureChildDocumentation').hide();$('#stimulusImageCaptureChildHide').hide();$('#stimulusImageCaptureChildShow').show();">hide 160 items</button>
+<button id="stimulusImageCaptureChildShow" style="display: block;" onclick="$('#stimulusImageCaptureChildDocumentation').show();$('#stimulusImageCaptureChildHide').show();$('#stimulusImageCaptureChildShow').hide();">show 161 truncated items</button>
+<button id="stimulusImageCaptureChildHide" style="display: none;" onclick="$('#stimulusImageCaptureChildDocumentation').hide();$('#stimulusImageCaptureChildHide').hide();$('#stimulusImageCaptureChildShow').show();">hide 161 items</button>
 <table id="stimulusImageCaptureChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -16165,6 +16332,9 @@ stimulusImageCapture
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -16223,8 +16393,8 @@ stimulusPause
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusPause</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="stimulusPauseChildShow" style="display: block;" onclick="$('#stimulusPauseChildDocumentation').show();$('#stimulusPauseChildHide').show();$('#stimulusPauseChildShow').hide();">show 160 truncated items</button>
-<button id="stimulusPauseChildHide" style="display: none;" onclick="$('#stimulusPauseChildDocumentation').hide();$('#stimulusPauseChildHide').hide();$('#stimulusPauseChildShow').show();">hide 160 items</button>
+<button id="stimulusPauseChildShow" style="display: block;" onclick="$('#stimulusPauseChildDocumentation').show();$('#stimulusPauseChildHide').show();$('#stimulusPauseChildShow').hide();">show 161 truncated items</button>
+<button id="stimulusPauseChildHide" style="display: none;" onclick="$('#stimulusPauseChildDocumentation').hide();$('#stimulusPauseChildHide').hide();$('#stimulusPauseChildShow').show();">hide 161 items</button>
 <table id="stimulusPauseChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -16704,6 +16874,9 @@ stimulusPause
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -16774,8 +16947,8 @@ stimulusRatingButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="stimulusRatingButtonChildShow" style="display: block;" onclick="$('#stimulusRatingButtonChildDocumentation').show();$('#stimulusRatingButtonChildHide').show();$('#stimulusRatingButtonChildShow').hide();">show 160 truncated items</button>
-<button id="stimulusRatingButtonChildHide" style="display: none;" onclick="$('#stimulusRatingButtonChildDocumentation').hide();$('#stimulusRatingButtonChildHide').hide();$('#stimulusRatingButtonChildShow').show();">hide 160 items</button>
+<button id="stimulusRatingButtonChildShow" style="display: block;" onclick="$('#stimulusRatingButtonChildDocumentation').show();$('#stimulusRatingButtonChildHide').show();$('#stimulusRatingButtonChildShow').hide();">show 161 truncated items</button>
+<button id="stimulusRatingButtonChildHide" style="display: none;" onclick="$('#stimulusRatingButtonChildDocumentation').hide();$('#stimulusRatingButtonChildHide').hide();$('#stimulusRatingButtonChildShow').show();">hide 161 items</button>
 <table id="stimulusRatingButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -17255,6 +17428,9 @@ stimulusRatingButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -17356,8 +17532,8 @@ touchInputCaptureStart
 <span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="touchInputCaptureStartChildShow" style="display: block;" onclick="$('#touchInputCaptureStartChildDocumentation').show();$('#touchInputCaptureStartChildHide').show();$('#touchInputCaptureStartChildShow').hide();">show 160 truncated items</button>
-<button id="touchInputCaptureStartChildHide" style="display: none;" onclick="$('#touchInputCaptureStartChildDocumentation').hide();$('#touchInputCaptureStartChildHide').hide();$('#touchInputCaptureStartChildShow').show();">hide 160 items</button>
+<button id="touchInputCaptureStartChildShow" style="display: block;" onclick="$('#touchInputCaptureStartChildDocumentation').show();$('#touchInputCaptureStartChildHide').show();$('#touchInputCaptureStartChildShow').hide();">show 161 truncated items</button>
+<button id="touchInputCaptureStartChildHide" style="display: none;" onclick="$('#touchInputCaptureStartChildDocumentation').hide();$('#touchInputCaptureStartChildHide').hide();$('#touchInputCaptureStartChildShow').show();">hide 161 items</button>
 <table id="touchInputCaptureStartChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -17837,6 +18013,9 @@ touchInputCaptureStart
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -17883,8 +18062,8 @@ touchInputStimulusButton
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="touchInputStimulusButtonChildShow" style="display: block;" onclick="$('#touchInputStimulusButtonChildDocumentation').show();$('#touchInputStimulusButtonChildHide').show();$('#touchInputStimulusButtonChildShow').hide();">show 160 truncated items</button>
-<button id="touchInputStimulusButtonChildHide" style="display: none;" onclick="$('#touchInputStimulusButtonChildDocumentation').hide();$('#touchInputStimulusButtonChildHide').hide();$('#touchInputStimulusButtonChildShow').show();">hide 160 items</button>
+<button id="touchInputStimulusButtonChildShow" style="display: block;" onclick="$('#touchInputStimulusButtonChildDocumentation').show();$('#touchInputStimulusButtonChildHide').show();$('#touchInputStimulusButtonChildShow').hide();">show 161 truncated items</button>
+<button id="touchInputStimulusButtonChildHide" style="display: none;" onclick="$('#touchInputStimulusButtonChildDocumentation').hide();$('#touchInputStimulusButtonChildHide').hide();$('#touchInputStimulusButtonChildShow').show();">hide 161 items</button>
 <table id="touchInputStimulusButtonChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -18364,6 +18543,9 @@ touchInputStimulusButton
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -18683,8 +18865,8 @@ aboveThreshold
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">aboveThreshold</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="aboveThresholdChildShow" style="display: block;" onclick="$('#aboveThresholdChildDocumentation').show();$('#aboveThresholdChildHide').show();$('#aboveThresholdChildShow').hide();">show 160 truncated items</button>
-<button id="aboveThresholdChildHide" style="display: none;" onclick="$('#aboveThresholdChildDocumentation').hide();$('#aboveThresholdChildHide').hide();$('#aboveThresholdChildShow').show();">hide 160 items</button>
+<button id="aboveThresholdChildShow" style="display: block;" onclick="$('#aboveThresholdChildDocumentation').show();$('#aboveThresholdChildHide').show();$('#aboveThresholdChildShow').hide();">show 161 truncated items</button>
+<button id="aboveThresholdChildHide" style="display: none;" onclick="$('#aboveThresholdChildDocumentation').hide();$('#aboveThresholdChildHide').hide();$('#aboveThresholdChildShow').show();">hide 161 items</button>
 <table id="aboveThresholdChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -19164,6 +19346,9 @@ aboveThreshold
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -19187,8 +19372,8 @@ afterStimulus
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">afterStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="afterStimulusChildShow" style="display: block;" onclick="$('#afterStimulusChildDocumentation').show();$('#afterStimulusChildHide').show();$('#afterStimulusChildShow').hide();">show 160 truncated items</button>
-<button id="afterStimulusChildHide" style="display: none;" onclick="$('#afterStimulusChildDocumentation').hide();$('#afterStimulusChildHide').hide();$('#afterStimulusChildShow').show();">hide 160 items</button>
+<button id="afterStimulusChildShow" style="display: block;" onclick="$('#afterStimulusChildDocumentation').show();$('#afterStimulusChildHide').show();$('#afterStimulusChildShow').hide();">show 161 truncated items</button>
+<button id="afterStimulusChildHide" style="display: none;" onclick="$('#afterStimulusChildDocumentation').hide();$('#afterStimulusChildHide').hide();$('#afterStimulusChildShow').show();">hide 161 items</button>
 <table id="afterStimulusChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -19668,6 +19853,9 @@ afterStimulus
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -19691,8 +19879,8 @@ beforeStimulus
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">beforeStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="beforeStimulusChildShow" style="display: block;" onclick="$('#beforeStimulusChildDocumentation').show();$('#beforeStimulusChildHide').show();$('#beforeStimulusChildShow').hide();">show 160 truncated items</button>
-<button id="beforeStimulusChildHide" style="display: none;" onclick="$('#beforeStimulusChildDocumentation').hide();$('#beforeStimulusChildHide').hide();$('#beforeStimulusChildShow').show();">hide 160 items</button>
+<button id="beforeStimulusChildShow" style="display: block;" onclick="$('#beforeStimulusChildDocumentation').show();$('#beforeStimulusChildHide').show();$('#beforeStimulusChildShow').hide();">show 161 truncated items</button>
+<button id="beforeStimulusChildHide" style="display: none;" onclick="$('#beforeStimulusChildDocumentation').hide();$('#beforeStimulusChildHide').hide();$('#beforeStimulusChildShow').show();">hide 161 items</button>
 <table id="beforeStimulusChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -20172,6 +20360,9 @@ beforeStimulus
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -20195,8 +20386,8 @@ conditionFalse
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="conditionFalseChildShow" style="display: block;" onclick="$('#conditionFalseChildDocumentation').show();$('#conditionFalseChildHide').show();$('#conditionFalseChildShow').hide();">show 160 truncated items</button>
-<button id="conditionFalseChildHide" style="display: none;" onclick="$('#conditionFalseChildDocumentation').hide();$('#conditionFalseChildHide').hide();$('#conditionFalseChildShow').show();">hide 160 items</button>
+<button id="conditionFalseChildShow" style="display: block;" onclick="$('#conditionFalseChildDocumentation').show();$('#conditionFalseChildHide').show();$('#conditionFalseChildShow').hide();">show 161 truncated items</button>
+<button id="conditionFalseChildHide" style="display: none;" onclick="$('#conditionFalseChildDocumentation').hide();$('#conditionFalseChildHide').hide();$('#conditionFalseChildShow').show();">hide 161 items</button>
 <table id="conditionFalseChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -20676,6 +20867,9 @@ conditionFalse
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -20699,8 +20893,8 @@ conditionTrue
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="conditionTrueChildShow" style="display: block;" onclick="$('#conditionTrueChildDocumentation').show();$('#conditionTrueChildHide').show();$('#conditionTrueChildShow').hide();">show 160 truncated items</button>
-<button id="conditionTrueChildHide" style="display: none;" onclick="$('#conditionTrueChildDocumentation').hide();$('#conditionTrueChildHide').hide();$('#conditionTrueChildShow').show();">hide 160 items</button>
+<button id="conditionTrueChildShow" style="display: block;" onclick="$('#conditionTrueChildDocumentation').show();$('#conditionTrueChildHide').show();$('#conditionTrueChildShow').hide();">show 161 truncated items</button>
+<button id="conditionTrueChildHide" style="display: none;" onclick="$('#conditionTrueChildDocumentation').hide();$('#conditionTrueChildHide').hide();$('#conditionTrueChildShow').show();">hide 161 items</button>
 <table id="conditionTrueChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -21180,6 +21374,9 @@ conditionTrue
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -21203,8 +21400,8 @@ eachStimulus
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">eachStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="eachStimulusChildShow" style="display: block;" onclick="$('#eachStimulusChildDocumentation').show();$('#eachStimulusChildHide').show();$('#eachStimulusChildShow').hide();">show 160 truncated items</button>
-<button id="eachStimulusChildHide" style="display: none;" onclick="$('#eachStimulusChildDocumentation').hide();$('#eachStimulusChildHide').hide();$('#eachStimulusChildShow').show();">hide 160 items</button>
+<button id="eachStimulusChildShow" style="display: block;" onclick="$('#eachStimulusChildDocumentation').show();$('#eachStimulusChildHide').show();$('#eachStimulusChildShow').hide();">show 161 truncated items</button>
+<button id="eachStimulusChildHide" style="display: none;" onclick="$('#eachStimulusChildDocumentation').hide();$('#eachStimulusChildHide').hide();$('#eachStimulusChildShow').show();">hide 161 items</button>
 <table id="eachStimulusChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -21684,6 +21881,9 @@ eachStimulus
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -21707,8 +21907,8 @@ endOfStimulus
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="endOfStimulusChildShow" style="display: block;" onclick="$('#endOfStimulusChildDocumentation').show();$('#endOfStimulusChildHide').show();$('#endOfStimulusChildShow').hide();">show 160 truncated items</button>
-<button id="endOfStimulusChildHide" style="display: none;" onclick="$('#endOfStimulusChildDocumentation').hide();$('#endOfStimulusChildHide').hide();$('#endOfStimulusChildShow').show();">hide 160 items</button>
+<button id="endOfStimulusChildShow" style="display: block;" onclick="$('#endOfStimulusChildDocumentation').show();$('#endOfStimulusChildHide').show();$('#endOfStimulusChildShow').hide();">show 161 truncated items</button>
+<button id="endOfStimulusChildHide" style="display: none;" onclick="$('#endOfStimulusChildDocumentation').hide();$('#endOfStimulusChildHide').hide();$('#endOfStimulusChildShow').show();">hide 161 items</button>
 <table id="endOfStimulusChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -22188,6 +22388,9 @@ endOfStimulus
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -22212,8 +22415,8 @@ groupNetworkActivity
 <span style="color:purple">&lt;</span><span style="color:blue">groupNetworkActivity</span></td><td><span style="color:green">groupRole</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="groupNetworkActivityChildShow" style="display: block;" onclick="$('#groupNetworkActivityChildDocumentation').show();$('#groupNetworkActivityChildHide').show();$('#groupNetworkActivityChildShow').hide();">show 160 truncated items</button>
-<button id="groupNetworkActivityChildHide" style="display: none;" onclick="$('#groupNetworkActivityChildDocumentation').hide();$('#groupNetworkActivityChildHide').hide();$('#groupNetworkActivityChildShow').show();">hide 160 items</button>
+<button id="groupNetworkActivityChildShow" style="display: block;" onclick="$('#groupNetworkActivityChildDocumentation').show();$('#groupNetworkActivityChildHide').show();$('#groupNetworkActivityChildShow').hide();">show 161 truncated items</button>
+<button id="groupNetworkActivityChildHide" style="display: none;" onclick="$('#groupNetworkActivityChildDocumentation').hide();$('#groupNetworkActivityChildHide').hide();$('#groupNetworkActivityChildShow').show();">hide 161 items</button>
 <table id="groupNetworkActivityChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -22693,6 +22896,9 @@ groupNetworkActivity
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -22716,8 +22922,8 @@ hasMoreStimulus
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="hasMoreStimulusChildShow" style="display: block;" onclick="$('#hasMoreStimulusChildDocumentation').show();$('#hasMoreStimulusChildHide').show();$('#hasMoreStimulusChildShow').hide();">show 160 truncated items</button>
-<button id="hasMoreStimulusChildHide" style="display: none;" onclick="$('#hasMoreStimulusChildDocumentation').hide();$('#hasMoreStimulusChildHide').hide();$('#hasMoreStimulusChildShow').show();">hide 160 items</button>
+<button id="hasMoreStimulusChildShow" style="display: block;" onclick="$('#hasMoreStimulusChildDocumentation').show();$('#hasMoreStimulusChildHide').show();$('#hasMoreStimulusChildShow').hide();">show 161 truncated items</button>
+<button id="hasMoreStimulusChildHide" style="display: none;" onclick="$('#hasMoreStimulusChildDocumentation').hide();$('#hasMoreStimulusChildHide').hide();$('#hasMoreStimulusChildShow').show();">hide 161 items</button>
 <table id="hasMoreStimulusChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -23197,6 +23403,9 @@ hasMoreStimulus
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -23220,8 +23429,8 @@ mediaLoadFailed
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="mediaLoadFailedChildShow" style="display: block;" onclick="$('#mediaLoadFailedChildDocumentation').show();$('#mediaLoadFailedChildHide').show();$('#mediaLoadFailedChildShow').hide();">show 160 truncated items</button>
-<button id="mediaLoadFailedChildHide" style="display: none;" onclick="$('#mediaLoadFailedChildDocumentation').hide();$('#mediaLoadFailedChildHide').hide();$('#mediaLoadFailedChildShow').show();">hide 160 items</button>
+<button id="mediaLoadFailedChildShow" style="display: block;" onclick="$('#mediaLoadFailedChildDocumentation').show();$('#mediaLoadFailedChildHide').show();$('#mediaLoadFailedChildShow').hide();">show 161 truncated items</button>
+<button id="mediaLoadFailedChildHide" style="display: none;" onclick="$('#mediaLoadFailedChildDocumentation').hide();$('#mediaLoadFailedChildHide').hide();$('#mediaLoadFailedChildShow').show();">hide 161 items</button>
 <table id="mediaLoadFailedChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -23701,6 +23910,9 @@ mediaLoadFailed
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -23724,8 +23936,8 @@ mediaLoaded
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="mediaLoadedChildShow" style="display: block;" onclick="$('#mediaLoadedChildDocumentation').show();$('#mediaLoadedChildHide').show();$('#mediaLoadedChildShow').hide();">show 160 truncated items</button>
-<button id="mediaLoadedChildHide" style="display: none;" onclick="$('#mediaLoadedChildDocumentation').hide();$('#mediaLoadedChildHide').hide();$('#mediaLoadedChildShow').show();">hide 160 items</button>
+<button id="mediaLoadedChildShow" style="display: block;" onclick="$('#mediaLoadedChildDocumentation').show();$('#mediaLoadedChildHide').show();$('#mediaLoadedChildShow').hide();">show 161 truncated items</button>
+<button id="mediaLoadedChildHide" style="display: none;" onclick="$('#mediaLoadedChildDocumentation').hide();$('#mediaLoadedChildHide').hide();$('#mediaLoadedChildShow').show();">hide 161 items</button>
 <table id="mediaLoadedChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -24205,6 +24417,9 @@ mediaLoaded
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -24228,8 +24443,8 @@ mediaPlaybackComplete
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="mediaPlaybackCompleteChildShow" style="display: block;" onclick="$('#mediaPlaybackCompleteChildDocumentation').show();$('#mediaPlaybackCompleteChildHide').show();$('#mediaPlaybackCompleteChildShow').hide();">show 160 truncated items</button>
-<button id="mediaPlaybackCompleteChildHide" style="display: none;" onclick="$('#mediaPlaybackCompleteChildDocumentation').hide();$('#mediaPlaybackCompleteChildHide').hide();$('#mediaPlaybackCompleteChildShow').show();">hide 160 items</button>
+<button id="mediaPlaybackCompleteChildShow" style="display: block;" onclick="$('#mediaPlaybackCompleteChildDocumentation').show();$('#mediaPlaybackCompleteChildHide').show();$('#mediaPlaybackCompleteChildShow').hide();">show 161 truncated items</button>
+<button id="mediaPlaybackCompleteChildHide" style="display: none;" onclick="$('#mediaPlaybackCompleteChildDocumentation').hide();$('#mediaPlaybackCompleteChildHide').hide();$('#mediaPlaybackCompleteChildShow').show();">hide 161 items</button>
 <table id="mediaPlaybackCompleteChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -24709,6 +24924,9 @@ mediaPlaybackComplete
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -24732,8 +24950,8 @@ mediaPlaybackStarted
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="mediaPlaybackStartedChildShow" style="display: block;" onclick="$('#mediaPlaybackStartedChildDocumentation').show();$('#mediaPlaybackStartedChildHide').show();$('#mediaPlaybackStartedChildShow').hide();">show 160 truncated items</button>
-<button id="mediaPlaybackStartedChildHide" style="display: none;" onclick="$('#mediaPlaybackStartedChildDocumentation').hide();$('#mediaPlaybackStartedChildHide').hide();$('#mediaPlaybackStartedChildShow').show();">hide 160 items</button>
+<button id="mediaPlaybackStartedChildShow" style="display: block;" onclick="$('#mediaPlaybackStartedChildDocumentation').show();$('#mediaPlaybackStartedChildHide').show();$('#mediaPlaybackStartedChildShow').hide();">show 161 truncated items</button>
+<button id="mediaPlaybackStartedChildHide" style="display: none;" onclick="$('#mediaPlaybackStartedChildDocumentation').hide();$('#mediaPlaybackStartedChildHide').hide();$('#mediaPlaybackStartedChildShow').show();">hide 161 items</button>
 <table id="mediaPlaybackStartedChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -25213,6 +25431,9 @@ mediaPlaybackStarted
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -25236,8 +25457,8 @@ multipleUsers
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">multipleUsers</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="multipleUsersChildShow" style="display: block;" onclick="$('#multipleUsersChildDocumentation').show();$('#multipleUsersChildHide').show();$('#multipleUsersChildShow').hide();">show 160 truncated items</button>
-<button id="multipleUsersChildHide" style="display: none;" onclick="$('#multipleUsersChildDocumentation').hide();$('#multipleUsersChildHide').hide();$('#multipleUsersChildShow').show();">hide 160 items</button>
+<button id="multipleUsersChildShow" style="display: block;" onclick="$('#multipleUsersChildDocumentation').show();$('#multipleUsersChildHide').show();$('#multipleUsersChildShow').hide();">show 161 truncated items</button>
+<button id="multipleUsersChildHide" style="display: none;" onclick="$('#multipleUsersChildDocumentation').hide();$('#multipleUsersChildHide').hide();$('#multipleUsersChildShow').show();">hide 161 items</button>
 <table id="multipleUsersChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -25717,6 +25938,9 @@ multipleUsers
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -25740,8 +25964,8 @@ onActivate
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">onActivate</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="onActivateChildShow" style="display: block;" onclick="$('#onActivateChildDocumentation').show();$('#onActivateChildHide').show();$('#onActivateChildShow').hide();">show 160 truncated items</button>
-<button id="onActivateChildHide" style="display: none;" onclick="$('#onActivateChildDocumentation').hide();$('#onActivateChildHide').hide();$('#onActivateChildShow').show();">hide 160 items</button>
+<button id="onActivateChildShow" style="display: block;" onclick="$('#onActivateChildDocumentation').show();$('#onActivateChildHide').show();$('#onActivateChildShow').hide();">show 161 truncated items</button>
+<button id="onActivateChildHide" style="display: none;" onclick="$('#onActivateChildDocumentation').hide();$('#onActivateChildHide').hide();$('#onActivateChildShow').show();">hide 161 items</button>
 <table id="onActivateChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -26221,6 +26445,9 @@ onActivate
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -26244,8 +26471,8 @@ onError
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">onError</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="onErrorChildShow" style="display: block;" onclick="$('#onErrorChildDocumentation').show();$('#onErrorChildHide').show();$('#onErrorChildShow').hide();">show 160 truncated items</button>
-<button id="onErrorChildHide" style="display: none;" onclick="$('#onErrorChildDocumentation').hide();$('#onErrorChildHide').hide();$('#onErrorChildShow').show();">hide 160 items</button>
+<button id="onErrorChildShow" style="display: block;" onclick="$('#onErrorChildDocumentation').show();$('#onErrorChildHide').show();$('#onErrorChildShow').hide();">show 161 truncated items</button>
+<button id="onErrorChildHide" style="display: none;" onclick="$('#onErrorChildDocumentation').hide();$('#onErrorChildHide').hide();$('#onErrorChildShow').show();">hide 161 items</button>
 <table id="onErrorChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -26725,6 +26952,9 @@ onError
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -26748,8 +26978,8 @@ onSuccess
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="onSuccessChildShow" style="display: block;" onclick="$('#onSuccessChildDocumentation').show();$('#onSuccessChildHide').show();$('#onSuccessChildShow').hide();">show 160 truncated items</button>
-<button id="onSuccessChildHide" style="display: none;" onclick="$('#onSuccessChildDocumentation').hide();$('#onSuccessChildHide').hide();$('#onSuccessChildShow').show();">hide 160 items</button>
+<button id="onSuccessChildShow" style="display: block;" onclick="$('#onSuccessChildDocumentation').show();$('#onSuccessChildHide').show();$('#onSuccessChildShow').hide();">show 161 truncated items</button>
+<button id="onSuccessChildHide" style="display: none;" onclick="$('#onSuccessChildDocumentation').hide();$('#onSuccessChildHide').hide();$('#onSuccessChildShow').show();">hide 161 items</button>
 <table id="onSuccessChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -27229,6 +27459,9 @@ onSuccess
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -27252,8 +27485,8 @@ responseCorrect
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">responseCorrect</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="responseCorrectChildShow" style="display: block;" onclick="$('#responseCorrectChildDocumentation').show();$('#responseCorrectChildHide').show();$('#responseCorrectChildShow').hide();">show 160 truncated items</button>
-<button id="responseCorrectChildHide" style="display: none;" onclick="$('#responseCorrectChildDocumentation').hide();$('#responseCorrectChildHide').hide();$('#responseCorrectChildShow').show();">hide 160 items</button>
+<button id="responseCorrectChildShow" style="display: block;" onclick="$('#responseCorrectChildDocumentation').show();$('#responseCorrectChildHide').show();$('#responseCorrectChildShow').hide();">show 161 truncated items</button>
+<button id="responseCorrectChildHide" style="display: none;" onclick="$('#responseCorrectChildDocumentation').hide();$('#responseCorrectChildHide').hide();$('#responseCorrectChildShow').show();">hide 161 items</button>
 <table id="responseCorrectChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -27733,6 +27966,9 @@ responseCorrect
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -27756,8 +27992,8 @@ responseIncorrect
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">responseIncorrect</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="responseIncorrectChildShow" style="display: block;" onclick="$('#responseIncorrectChildDocumentation').show();$('#responseIncorrectChildHide').show();$('#responseIncorrectChildShow').hide();">show 160 truncated items</button>
-<button id="responseIncorrectChildHide" style="display: none;" onclick="$('#responseIncorrectChildDocumentation').hide();$('#responseIncorrectChildHide').hide();$('#responseIncorrectChildShow').show();">hide 160 items</button>
+<button id="responseIncorrectChildShow" style="display: block;" onclick="$('#responseIncorrectChildDocumentation').show();$('#responseIncorrectChildHide').show();$('#responseIncorrectChildShow').hide();">show 161 truncated items</button>
+<button id="responseIncorrectChildHide" style="display: none;" onclick="$('#responseIncorrectChildDocumentation').hide();$('#responseIncorrectChildHide').hide();$('#responseIncorrectChildShow').show();">hide 161 items</button>
 <table id="responseIncorrectChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -28237,6 +28473,9 @@ responseIncorrect
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -28277,8 +28516,8 @@ singleUser
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">singleUser</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="singleUserChildShow" style="display: block;" onclick="$('#singleUserChildDocumentation').show();$('#singleUserChildHide').show();$('#singleUserChildShow').hide();">show 160 truncated items</button>
-<button id="singleUserChildHide" style="display: none;" onclick="$('#singleUserChildDocumentation').hide();$('#singleUserChildHide').hide();$('#singleUserChildShow').show();">hide 160 items</button>
+<button id="singleUserChildShow" style="display: block;" onclick="$('#singleUserChildDocumentation').show();$('#singleUserChildHide').show();$('#singleUserChildShow').hide();">show 161 truncated items</button>
+<button id="singleUserChildHide" style="display: none;" onclick="$('#singleUserChildDocumentation').hide();$('#singleUserChildHide').hide();$('#singleUserChildShow').show();">hide 161 items</button>
 <table id="singleUserChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -28758,6 +28997,9 @@ singleUser
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </table>
@@ -28781,8 +29023,8 @@ withinThreshold
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">withinThreshold</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="withinThresholdChildShow" style="display: block;" onclick="$('#withinThresholdChildDocumentation').show();$('#withinThresholdChildHide').show();$('#withinThresholdChildShow').hide();">show 160 truncated items</button>
-<button id="withinThresholdChildHide" style="display: none;" onclick="$('#withinThresholdChildDocumentation').hide();$('#withinThresholdChildHide').hide();$('#withinThresholdChildShow').show();">hide 160 items</button>
+<button id="withinThresholdChildShow" style="display: block;" onclick="$('#withinThresholdChildDocumentation').show();$('#withinThresholdChildHide').show();$('#withinThresholdChildShow').hide();">show 161 truncated items</button>
+<button id="withinThresholdChildHide" style="display: none;" onclick="$('#withinThresholdChildDocumentation').hide();$('#withinThresholdChildHide').hide();$('#withinThresholdChildShow').show();">hide 161 items</button>
 <table id="withinThresholdChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
@@ -29260,6 +29502,9 @@ withinThreshold
 </a></td></tr>
 <tr><td>
 <a href="#submitTestResultsType"><span style="color:purple">&lt;</span><span style="color:blue">submitTestResults</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
+<a href="#validateMetadataType"><span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
