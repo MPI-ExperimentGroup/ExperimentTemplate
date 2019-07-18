@@ -67,8 +67,10 @@ public class RegistrationService {
             stringBuilder.append("&");
         }
         stringBuilder.append("applicationversion").append("=").append(version.projectVersion()).append("&");
-        String dataLogEncoded = URL.encodeQueryString(dataLogFormated);
-        stringBuilder.append("datalog").append("=").append(dataLogEncoded).append("&");
+        if (dataLogFormated != null) {
+            String dataLogEncoded = URL.encodeQueryString(dataLogFormated);
+            stringBuilder.append("datalog").append("=").append(dataLogEncoded).append("&");
+        }
         try {
             builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registrationUrl, receivingRegex));
         } catch (RequestException exception) {
