@@ -534,7 +534,7 @@
             </xsl:for-each>
             <xsl:text>
                 @RequestParam("applicationversion") String applicationversion,
-                @RequestParam("datalog") String datalog,
+                @RequestParam(value = "datalog", required = false) String datalog,
                 @RequestHeader("Accept-Language") String acceptLang,
                 @RequestHeader("User-Agent") String userAgent,
                 HttpServletRequest request) throws IOException {
