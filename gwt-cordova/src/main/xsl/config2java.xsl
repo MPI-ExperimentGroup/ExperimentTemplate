@@ -498,7 +498,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="requestNotification|redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|switchUserIdButton|transmitResults|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="requestNotification|redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|switchUserIdButton|transmitResults|validateMetadata|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -568,7 +568,8 @@ or local-name() eq 'removeStimulus'
         </xsl:if>
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (contains(local-name(), 'ButtonGroup')) then '' else if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
-        <xsl:value-of select="if(not(@matchingRegex) and local-name() eq 'transmitResults') then 'null' else ''" />
+        <xsl:value-of select="if(not(@matchingRegex) and (local-name() eq 'transmitResults' or local-name() eq 'validateMetadata')) then 'null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'validateMetadata') then concat(', &quot;', string-join(distinct-values(/experiment/administration/validation/*/@postField), '|'), '&quot;, &quot;', string-join(distinct-values(/experiment/administration/validation/*/@responseField), '|'),'&quot;') else ''" />
         <xsl:value-of select="if(@dataLogFormat) then concat(', &quot;', @dataLogFormat, '&quot;') else ''" />
         <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
         <xsl:value-of select="if(not(@replacementRegex) and local-name() eq 'setMetadataValue') then ', null' else ''" />
