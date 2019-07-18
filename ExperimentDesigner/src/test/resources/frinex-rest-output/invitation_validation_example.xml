@@ -4,18 +4,16 @@
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 
         <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
         <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
-        <validation fieldName="userId" returnName="validated_invitation_id" errorMessage="Validated user not found." errorField="validation_error" allowValidationOnMissing="true"/>
-        <validation postName="invitation_id" fieldName="userId" errorMessage="The invitation_id does not match the current user ID. (Please switch the current user ID to the invitation ID)" errorField="validation_error" allowValidationOnMissing="true"/>
-        <!--matchExistingValue="true"--> 
-        <!---->
-        <!--validationRegex="" matchingRegex=""--> 
-        <validation postName="token" fieldName="token" errorMessage="The participants token does not match the last stored value." errorField="validation_error"/>
-        <validation fieldName="session_id" returnName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error"/>
-        <validation fieldName="session_copepods" returnName="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error"/>
-        <validation fieldName="session_copepod" returnName="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error"/>
-        <validation fieldName="session_next_copepod" returnName="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error"/>
-        <validation fieldName="copepod_done" validationRegex="|no" returnName="copepod_done" errorMessage="This session has already been completed and cannot be restarted." errorField="session_validation_error"/>
-        <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
+        <validation errorMessage="User not found." errorField="validation_error1" allowValidationOnMissing="true">
+            <recordMatch postField="invitation_id" adminField="validated_invitation_id" responseField="validated_invitation_id" errorMessage="No record for this user could be found where the provided invitation_id matches to the stored validated_invitation_id." errorField="validation_error3"/>
+            <fieldMatch postField="token" adminField="token" errorMessage="The participants token does not match the last stored value." errorField="validation_error2"/>
+            <fieldMatch adminField="session_id" responseField="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error4"/>
+            <fieldMatch adminField="session_copepods" responseField="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error5"/>
+            <fieldMatch adminField="session_copepod" responseField="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error6"/>
+            <fieldMatch adminField="session_next_copepod" responseField="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error7"/>
+            <fieldMatch adminField="copepod_done" validationRegex="|no" responseField="copepod_done" errorMessage="This session has already been completed and cannot be restarted." errorField="session_validation_error8"/>
+            <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
+        </validation>
     </administration>
     <scss/>
     <metadata>
@@ -41,6 +39,13 @@
         <targetButton featureText="Invitation Text Example" target="InvitationTextExample"/>
         <addPadding/>
         <targetButton featureText="Invitation Validation Example" target="EnterInvitationMetadata"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Delete current participants's local data" target="Finished"/>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationUrlExample" type="stimulus" self="InvitationUrlExample" title="Invitation URL Example">
         <htmlText featureText="The first method requires providing your participant with a URL containing their specific identfier and populating the attribute userIdGetParam=&quot;invitation_id&quot; in the experiment configuration."/>
@@ -113,6 +118,12 @@
                 </hasMetadataValue>
             </onSuccess>
         </saveMetadataButton>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
     </presenter>
     <!--    <presenter back="Informatie" menuLabel="Gegevens" next="Metadata_Jump_Test" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
@@ -196,10 +207,17 @@
                 <htmlText featureText="Save metadata failed"/>
             </onError>
             <onSuccess>
-                <gotoPresenter target="InvitationValidationExample"/>
+                <!--<gotoPresenter target="InvitationValidationExample"/>-->
+                <targetButton featureText="Send Invitation Request via transmitResults" target="InvitationValidationExample"/>
+                <targetButton featureText="Send Invitation Request via validateMetadata" target="InvitationValidateMetadataExample"/>
             </onSuccess>
         </saveMetadataButton>
-        <!--<targetButton featureText="Send Invitation Request" target="InvitationValidationExample"/>-->
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
     </presenter>
     <presenter back="Menu" menuLabel="Invitation Validation Example" type="transmission" self="InvitationValidationExample" title="Invitation Validation Example">
         <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
@@ -282,6 +300,107 @@
                 </onSuccess>
             </transmitResults>
         </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Invitation Validation Metadata Example" type="transmission" self="InvitationValidateMetadataExample" title="Invitation Validation Metadata Example">
+        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+        <htmlTokenText featureText="&quot;invitation_id&quot;: &lt;metadataField_invitation_id&gt;"/>
+        <htmlTokenText featureText="&quot;token&quot;: &lt;metadataField_token&gt;"/>
+        <htmlTokenText featureText="&quot;session_id&quot;: &lt;metadataField_session_id&gt;"/>
+        <htmlTokenText featureText="&quot;session_copepod&quot;: &lt;metadataField_session_copepod&gt;"/>
+        <htmlTokenText featureText="&quot;copepod_done&quot;: &lt;metadataField_copepod_done&gt;"/>
+        <htmlTokenText featureText="&quot;session_next_copepod&quot;: &lt;metadataField_session_next_copepod&gt;"/>
+        <addPadding/>
+        <switchUserIdButton featureText="Switch current user ID to the invitation ID" fieldName="invitation_id" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" styleName="styleName">
+            <onError>
+                <htmlText featureText="onError"/>
+                <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+                <addPadding/>
+                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
+            </onError>
+            <onSuccess>
+                <setMetadataValue fieldName="invitation_id" dataLogFormat="&lt;userId&gt;"/>
+                <gotoPresenter target="InvitationValidateMetadataExample"/>
+            </onSuccess>
+        </switchUserIdButton>
+        <addPadding/>
+        <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
+        <addPadding/>
+        <actionButton featureText="Validate Invitation">
+            <validateMetadata>
+                <onError>
+                    <addPadding/>
+                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
+                </onError>
+                <onSuccess>
+                    <addPadding/>
+                    <htmlText featureText="Transmitting the data for this session copepod ok"/>
+                    <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
+                        <conditionTrue>
+                            <addPadding/>
+                            <htmlTokenText featureText="&lt;metadataField_session_validation_error&gt;"/>                                                                                
+                        </conditionTrue>
+                        <conditionFalse>                            
+                        </conditionFalse>
+                    </hasMetadataValue>
+                    <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
+                        <conditionTrue>
+                            <addPadding/>
+                            <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                        </conditionTrue>
+                        <conditionFalse>
+                            <addPadding/>
+                        </conditionFalse>
+                    </hasMetadataValue>
+                    <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
+                        <conditionTrue>
+                            <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
+                                <conditionTrue>
+                                    <addPadding/>
+                                    <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
+                                        <conditionTrue>
+                                            <addPadding/>
+                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                        </conditionTrue>
+                                        <conditionFalse>                            
+                                            <addPadding/>
+                                            <htmlText featureText="The return value validated_invitation_id from validateMetadata matches the provided invitation_id and the participant can proceed."/>
+                                            <addPadding/>
+                                            <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
+                                        </conditionFalse>
+                                    </hasMetadataValue>                        
+                                </conditionFalse>
+                            </hasMetadataValue>
+                        </conditionTrue>
+                        <conditionFalse>
+                            <addPadding/>
+                            <htmlText featureText="The return value validated_invitation_id from validateMetadata does NOT match the provided invitation_id and the current user ID."/>
+                        </conditionFalse>
+                    </hasMetadataValue>
+                </onSuccess>
+            </validateMetadata>
+        </actionButton>
+    </presenter>
+    <presenter menuLabel="Finished" type="transmission" self="Finished" title="Finished">
+        <!-- either <sendAllData> or <generateCompletionCode> can be used here -->
+        <generateCompletionCode>
+            <onSuccess>
+                <htmlText featureText="At this point the completion code is not included in the &amp;lt;transmitResults&amp;gt; or &amp;lt;validateMetadata&amp;gt; data transfer. As a result different codes will be produced on different devices/sessions. However it can be added if required.&lt;br/&gt;&lt;br/&gt;Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
+                <addPadding/>
+                <displayCompletionCode/>
+                <addPadding/>
+                <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
+                <targetButton featureText="Retry" target="Finished"/>
+            </onError>
+            <!--</sendAllData>-->
+        </generateCompletionCode>
     </presenter>
     <stimuli>
         <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
