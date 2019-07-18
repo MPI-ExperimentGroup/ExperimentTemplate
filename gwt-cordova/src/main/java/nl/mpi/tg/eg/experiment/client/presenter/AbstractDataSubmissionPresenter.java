@@ -138,8 +138,12 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
         });
     }
 
+    public void validateMetadata(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        transmitResults(currentStimulus, sendingRegex, receivingRegex, null, onError, onSuccess);
+    }
+
     public void transmitResults(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-        final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat);
+        final String dataLogFormatted = (dataLogFormat == null) ? null : new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat);
         new RegistrationService().submitRegistration(userResults, sendingRegex, receivingRegex, dataLogFormatted, new RegistrationListener() {
             @Override
             public void registrationFailed(RegistrationException exception) {
