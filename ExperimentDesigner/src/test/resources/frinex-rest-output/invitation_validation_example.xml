@@ -4,14 +4,14 @@
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 
         <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
         <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
-        <validation errorMessage="User not found." errorField="validation_error1" allowValidationOnMissing="true">
-            <recordMatch postField="invitation_id" adminField="validated_invitation_id" responseField="validated_invitation_id" errorMessage="No record for this user could be found where the provided invitation_id matches to the stored validated_invitation_id." errorField="validation_error3"/>
-            <fieldMatch postField="token" adminField="token" errorMessage="The participants token does not match the last stored value." errorField="validation_error2"/>
-            <fieldMatch adminField="session_id" responseField="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error4"/>
-            <fieldMatch adminField="session_copepods" responseField="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error5"/>
-            <fieldMatch adminField="session_copepod" responseField="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error6"/>
-            <fieldMatch adminField="session_next_copepod" responseField="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error7"/>
-            <fieldMatch adminField="copepod_done" validationRegex="|no" responseField="copepod_done" errorMessage="This session has already been completed and cannot be restarted." errorField="session_validation_error8"/>
+        <validation errorMessage="User not found." errorField="validation_error" allowValidationOnMissing="true">
+            <recordMatch postField="invitation_id" adminField="validated_invitation_id" responseField="validated_invitation_id" errorMessage="No record for this user could be found where the provided invitation_id matches to the stored validated_invitation_id." errorField="validation_error"/>
+            <fieldMatch postField="token" adminField="token" errorMessage="The participants token does not match the last stored value." errorField="validation_error"/>
+            <fieldMatch adminField="session_id" responseField="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]." errorField="validation_error"/>
+            <fieldMatch adminField="session_copepods" responseField="session_copepods" errorMessage="session_copepods not recognised." errorField="session_validation_error"/>
+            <fieldMatch adminField="session_copepod" responseField="session_copepod" errorMessage="session_copepod does not match the known value." errorField="session_validation_error"/>
+            <fieldMatch adminField="session_next_copepod" responseField="session_next_copepod" errorMessage="session_next_copepod does not match the known value." errorField="session_validation_error"/>
+            <fieldMatch adminField="copepod_done" validationRegex="|no" responseField="copepod_done" errorMessage="This session has already been completed and cannot be restarted." errorField="session_validation_error"/>
             <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
         </validation>
     </administration>
@@ -202,17 +202,23 @@
         <setMetadataValue fieldName="session_copepods" dataLogFormat="Copepod_Antrisocopia prehensilis_Karllangia pulchra_Misophrioida_Monstrilloida_Mormonillidae_Platycopiidae_Poecilostomatoida_Siphonostomatoida_Speleophria bivexilla_Speleophria scottodicarloi_Speleophriidae_Tigriopus brevicornis"/>
         <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
         <!--// if the response invitation_id does not exist then transmit-->
-        <saveMetadataButton featureText="Save Metadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Save Metadata and transmitResults" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError>
                 <htmlText featureText="Save metadata failed"/>
             </onError>
             <onSuccess>
-                <!--<gotoPresenter target="InvitationValidationExample"/>-->
-                <targetButton featureText="Send Invitation Request via transmitResults" target="InvitationValidationExample"/>
-                <targetButton featureText="Send Invitation Request via validateMetadata" target="InvitationValidateMetadataExample"/>
+                <gotoPresenter target="InvitationValidationExample"/>
             </onSuccess>
         </saveMetadataButton>
         <addPadding/>
+        <saveMetadataButton featureText="Save Metadata and validateMetadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+            <onError>
+                <htmlText featureText="Save metadata failed"/>
+            </onError>
+            <onSuccess>
+                <gotoPresenter target="InvitationValidateMetadataExample"/>
+            </onSuccess>
+        </saveMetadataButton>
         <addPadding/>
         <addPadding/>
         <addPadding/>
