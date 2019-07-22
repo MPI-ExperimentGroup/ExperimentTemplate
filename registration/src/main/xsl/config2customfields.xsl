@@ -526,9 +526,9 @@
                 @RequestParam("requestingUserId") String requestingUserId,
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation/*[@postField]">
-                <xsl:text>@RequestParam(value = ""</xsl:text>
+                <xsl:text>@RequestParam(value = "</xsl:text>
                 <xsl:value-of select="@postField" />
-                <xsl:text>", required = false) String </xsl:text>
+                <xsl:text>", required = false, defaultValue = "") String </xsl:text>
                 <xsl:value-of select="@postField" />
                 <xsl:text>,</xsl:text>
             </xsl:for-each>
