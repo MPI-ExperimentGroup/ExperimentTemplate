@@ -115,7 +115,7 @@ cordova plugin add cordova-plugin-whitelist
 #cp ~/android-keys/release-signing.properties platforms/android/
 
 echo "building"
-#cordova prepare
+cordova prepare
 #cordova compile
 #cordova build -release
 cordova build android --buildConfig /android-keys/frinex-build.json --release
