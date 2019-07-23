@@ -36,7 +36,7 @@ public class CsvWriter {
 
     private final File outputDirectory;
     private final String baseName;
-    private final ArrayList<CSVRow> rows = new ArrayList<CSVRow>();
+    private final ArrayList<CSVRow> rows = Collections.synchronizedList(new ArrayList<CSVRow>());
     private final HashMap<Integer, Long> startTimes = new HashMap<Integer, Long>();
     private static final String CSV_SUFFIX = ".csv";
 
