@@ -46,6 +46,11 @@ public class TriggerListener {
     public void reset() {
     }
 
+    public boolean canTrigger() {
+        boolean noMaximum = maximum <= 0;
+        return (noMaximum || maximumCounter <= maximum);
+    }
+
     public void trigger() {
         thresholdCounter++;
         boolean noMaximum = maximum <= 0;
