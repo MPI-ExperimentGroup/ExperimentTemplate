@@ -1049,15 +1049,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", currentStimulus.getAudio(), duration.elapsedMillis());
             timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "autoStimulus");
         } else if (currentStimulus.hasVideo()) {
-            String ogg = currentStimulus.getVideo() + ".ogg";
             String ogv = currentStimulus.getVideo() + ".ogv";
             String mp4 = currentStimulus.getVideo() + ".mp4";
             if (regex != null && replacement != null) {
                 mp4 = mp4.replaceAll(regex, replacement);
-                ogg = ogg.replaceAll(regex, replacement);
+                ogv = ogv.replaceAll(regex, replacement);
             }
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", currentStimulus.getVideo(), duration.elapsedMillis());
-            final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(ogv);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
             final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
@@ -1068,7 +1066,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     loadedStimulusListener.postLoadTimerFired();
                 }
             };
-            timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
+            timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
         } else if (currentStimulus.getLabel() != null) {
             timedStimulusView.addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
@@ -1133,9 +1131,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String uniqueId = currentStimulus.getUniqueId();
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         String mp4 = videoName + ".mp4";
-        String ogg = videoName + ".ogg";
         String ogv = videoName + ".ogv";
-        final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
         final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(ogv);
         final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
@@ -1147,7 +1143,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        Element videoElement = timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
+        Element videoElement = timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
         if (videoElement != null) {
             timedEventMonitor.addVisibilityListener(widgetTag.getElement(), videoElement, "stimulusVideo");
         }
@@ -1159,9 +1155,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
-        String ogg = formattedCode + ".ogg";
         String ogv = formattedCode + ".ogv";
-        final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
         final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogv);
         final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp4);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
@@ -1173,7 +1167,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
+        timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
     }
 
     protected void stimulusAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
