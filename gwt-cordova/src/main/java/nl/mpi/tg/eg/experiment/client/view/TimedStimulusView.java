@@ -600,7 +600,7 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public Element addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public Element addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -670,9 +670,9 @@ public class TimedStimulusView extends ComplexView {
                     }
                 }
             });
-            if (oggPath != null) {
-                video.addSource(oggPath.asString(), "video/ogg");
-            }
+//            if (oggPath != null) {
+//                video.addSource(oggPath.asString(), "video/ogg");
+//            }
             if (ogvPath != null) {
                 video.addSource(ogvPath.asString(), "video/ogg");
             }
