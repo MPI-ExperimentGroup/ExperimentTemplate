@@ -1087,7 +1087,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void stimulusCodeImageButton(final Stimulus currentStimulus, final String codeStyleName, String codeFormat, final String buttonGroup, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeFormat);
         final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeStyleName);
-        addButtonToGroup(buttonGroup, timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), styleName, 0, loadedStimulusListener, null, failedStimulusListener, clickedStimulusListener));
+        addButtonToGroup(buttonGroup, timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString((formattedCode.startsWith("file")) ? formattedCode : serviceLocations.staticFilesUrl() + formattedCode), styleName, 0, loadedStimulusListener, null, failedStimulusListener, clickedStimulusListener));
     }
 
     protected void stimulusCodeImage(final Stimulus currentStimulus, final String codeStyleName, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
@@ -1101,7 +1101,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
+        timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString((formattedCode.startsWith("file")) ? formattedCode : serviceLocations.staticFilesUrl() + formattedCode), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
 //        timedStimulusView.addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
@@ -1156,8 +1156,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogv = formattedCode + ".ogv";
-        final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogv);
-        final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp4);
+        final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString((ogv.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + ogv);
+        final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString((mp4.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp4);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
@@ -1201,7 +1201,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (imagePath == null || imagePath.isEmpty()) {
             buttonItem = optionButton(presenterListener, buttonGroup);
         } else {
-            buttonItem = imageButton(presenterListener, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), true, buttonGroup);
+            buttonItem = imageButton(presenterListener, UriUtils.fromString((imagePath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + imagePath), true, buttonGroup);
         }
         stimulusButtonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
@@ -2171,7 +2171,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         loadedStimulusListener.postLoadTimerFired();
                     }
                 };
-                timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), false, shownStimulusListener, failedStimulusListener,
+                timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString((oggPath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + oggPath), UriUtils.fromString((mp3Path.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp3Path), false, shownStimulusListener, failedStimulusListener,
                         new CancelableStimulusListener() {
                     @Override
                     protected void trigggerCancelableEvent() {
@@ -2189,7 +2189,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }, true, "audioButton");
             }
         };
-        imageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), false, buttonGroup);
+        imageButton(presenterEventListner, UriUtils.fromString((imagePath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + imagePath), false, buttonGroup);
         if (autoPlay) {
             presenterEventListner.eventFired(null, null);
         }
