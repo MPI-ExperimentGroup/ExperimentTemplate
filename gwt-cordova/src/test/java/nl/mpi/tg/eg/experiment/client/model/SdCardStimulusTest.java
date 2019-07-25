@@ -36,9 +36,9 @@ public class SdCardStimulusTest {
     @Test
     public void testGetTags() {
         System.out.println("getTags");
-        SdCardStimulus instance = new SdCardStimulus("uniqueId", "stimulusBasePath", "label", "code", 0, true, true, "MPI_STIMULI/videos_21/first_x_v.mp4");
+        SdCardStimulus instance = new SdCardStimulus("uniqueId", "MPI_STIMULI/videos_21/first_x_v", "label", "code", 0, true, true, "stimulusImagePath");
         List<String> result = instance.getTags();
-        assertEquals(8, result.size());
+        assertEquals(7, result.size());
         assertEquals("MPI", result.get(0));
         assertEquals("STIMULI", result.get(1));
         assertEquals("videos", result.get(2));
@@ -46,6 +46,6 @@ public class SdCardStimulusTest {
         assertEquals("first", result.get(4));
         assertEquals("x", result.get(5));
         assertEquals("v", result.get(6));
-        assertEquals("mp4", result.get(7));
+//        assertEquals("mp4", result.get(7));
     }
 }
