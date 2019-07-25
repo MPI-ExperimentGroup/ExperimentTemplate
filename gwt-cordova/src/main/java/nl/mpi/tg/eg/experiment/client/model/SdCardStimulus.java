@@ -137,7 +137,7 @@ public class SdCardStimulus implements Stimulus {
 
     @Override
     public List<String> getTags() {
-        return Arrays.asList(stimulusImagePath.split("[_\\/\\.]"));
+        return Arrays.asList(stimulusBasePath.split("[_\\/\\.]"));
     }
 
     @Override
