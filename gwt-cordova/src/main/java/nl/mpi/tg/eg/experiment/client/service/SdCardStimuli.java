@@ -84,6 +84,7 @@ public class SdCardStimuli {
             final boolean isMp3 = ".mp3".equals(suffix);
             final boolean isMp4 = ".mp4".equals(suffix);
             final boolean isOgg = ".ogg".equals(suffix);
+            final boolean isOgv = ".ogv".equals(suffix);
             final boolean isImage = ".jpg".equals(suffix) || ".png".equals(suffix);
             // todo: insert a relevant tag and address enum limitiation
             final SdCardStimulus existingSdCardStimulus = stimulusHashMap.get(stimulusId);
@@ -95,6 +96,9 @@ public class SdCardStimuli {
                     existingSdCardStimulus.addVideo();
                 }
                 if (isOgg) {
+                    existingSdCardStimulus.addAudio();
+                }
+                if (isOgv) {
                     existingSdCardStimulus.addVideo();
                 }
                 if (isImage) {
@@ -104,7 +108,7 @@ public class SdCardStimuli {
                 final SdCardStimulus sdCardStimulus = new SdCardStimulus(stimulusId,
                         stimulusPath.replaceFirst(BASE_FILE_REGEX, ""),
                         //                /* tagArray */ new Stimulus.Tag[0]/* we dont set this with the tag array because each stimulus would only have one out of many applicable from the array */,
-                        stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg), (isImage) ? stimulusPath : null);
+                        stimuliLabel, stimuliCode, pause, (isMp3 || isOgg), (isMp4 || isOgv), (isImage) ? stimulusPath : null);
                 stimulusHashMap.put(stimulusId, sdCardStimulus);
                 stimulusArray.add(sdCardStimulus);
             }
