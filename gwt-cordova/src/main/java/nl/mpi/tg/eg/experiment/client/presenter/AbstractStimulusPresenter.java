@@ -1719,6 +1719,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         triggerListeners.get(listenerId).trigger();
     }
 
+    public void triggerRandom(final String matchingRegex) {
+        ArrayList<TriggerListener> matchingListners = new ArrayList<>();
+        for (TriggerListener triggerListener : triggerListeners.values()) {
+            if (triggerListener.canTrigger()) {
+                if (triggerListener.getListenerId().matches(matchingRegex)) {
+                    matchingListners.add(triggerListener);
+                }
+            }
+        }
+        if (!matchingListners.isEmpty()) {
+            matchingListners.get(new Random().nextInt(matchingListners.size())).trigger();
+        }
+    }
+
     public void resetTrigger(final String listenerId) {
         triggerListeners.get(listenerId).reset();
     }
