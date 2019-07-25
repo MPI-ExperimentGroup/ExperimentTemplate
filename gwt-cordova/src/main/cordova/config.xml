@@ -65,6 +65,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <allow-navigation href="https://frinexstaging.mpi.nl/*"/>
     <allow-navigation href="https://frinexproduction.mpi.nl/*"/>
     <allow-navigation href="http://corpus1.mpi.nl/*"/>
+    <allow-navigation href="data:*"/>
     <access origin="http://ems12.mpi.nl"/>
     <access origin="http://ems13.mpi.nl"/>
     <access origin="https://frinexstaging.mpi.nl"/>
