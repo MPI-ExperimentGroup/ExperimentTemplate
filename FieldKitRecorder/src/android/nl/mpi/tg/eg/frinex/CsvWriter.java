@@ -82,7 +82,7 @@ public class CsvWriter {
         System.out.println("stimulusCode: " + stimulusCode);
         System.out.println("tagString: " + tagString);
         final Long startTime = startTimes.get(tier);
-        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, stimulusId, stimulusCode, tagString));
+        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, (stimulusId != null) ? stimulusId : "", (stimulusCode != null) ? stimulusCode : "", (tagString != null) ? tagString : ""));
     }
 
     public static String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);
