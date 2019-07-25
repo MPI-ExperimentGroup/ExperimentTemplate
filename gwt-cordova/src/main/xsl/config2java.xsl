@@ -1044,7 +1044,8 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         </xsl:if>
         
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
-        <xsl:value-of select="if(@matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@matchingRegex and local-name() ne 'triggerRandom') then ', ' else ''" />
+        <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
         <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
         <!--<xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />-->
