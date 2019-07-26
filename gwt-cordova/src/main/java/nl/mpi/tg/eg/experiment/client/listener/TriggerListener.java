@@ -48,13 +48,13 @@ public class TriggerListener {
 
     public boolean canTrigger() {
         boolean noMaximum = maximum <= 0;
-        return (noMaximum || maximumCounter <= maximum);
+        return (noMaximum || maximumCounter < maximum);
     }
 
     public void trigger() {
         thresholdCounter++;
         boolean noMaximum = maximum <= 0;
-        if (thresholdCounter >= threshold && (noMaximum || maximumCounter <= maximum)) {
+        if (thresholdCounter >= threshold && (noMaximum || maximumCounter < maximum)) {
             maximumCounter++;
             triggerListener.postLoadTimerFired();
         }
