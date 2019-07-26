@@ -1719,7 +1719,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         triggerListeners.get(listenerId).trigger();
     }
 
-    public void triggerRandom(final String matchingRegex) {
+    public void triggerRandom(final String matchingRegex, final TimedStimulusListener endOfTriggersListener) {
         ArrayList<TriggerListener> matchingListners = new ArrayList<>();
         for (TriggerListener triggerListener : triggerListeners.values()) {
             if (triggerListener.canTrigger()) {
@@ -1730,6 +1730,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         if (!matchingListners.isEmpty()) {
             matchingListners.get(new Random().nextInt(matchingListners.size())).trigger();
+        } else {
+            endOfTriggersListener.postLoadTimerFired();
         }
     }
 
