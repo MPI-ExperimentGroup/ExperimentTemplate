@@ -157,7 +157,7 @@ public enum FeatureType {
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
     trigger(false, false, new FeatureAttribute[]{listenerId}),
-    triggerRandom(false, false, new FeatureAttribute[]{matchingRegex}, "Randomly trigger one any of the triggerListeners where the listenerId matches the matchingRegex and the maximum trigger count has not been reached."),
+    triggerRandom(true, false, new FeatureAttribute[]{matchingRegex}, "Randomly trigger one any of the triggerListeners where the listenerId matches the matchingRegex and its maximum trigger count has not been reached. When there are no triggerListeners that match these criteria the child contents of tag will be triggered."),
     resetTrigger(false, false, new FeatureAttribute[]{listenerId}),
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
     stimulusPause(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),

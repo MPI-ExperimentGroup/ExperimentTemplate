@@ -1519,7 +1519,9 @@
             <plainText featureText="plainText in habituationParadigmListener"/>
         </habituationParadigmListener>
         <trigger listenerId="listenerId"/>
-        <triggerRandom matchingRegex="matchingRegex"/>
+        <triggerRandom matchingRegex="matchingRegex">
+            <plainText featureText="plainText in triggerRandom"/>
+        </triggerRandom>
         <resetTrigger listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
             <plainText featureText="plainText in countdownLabel"/>
@@ -3441,7 +3443,9 @@
             <plainText featureText="plainText in habituationParadigmListener"/>
         </habituationParadigmListener>
         <trigger listenerId="listenerId"/>
-        <triggerRandom matchingRegex="matchingRegex"/>
+        <triggerRandom matchingRegex="matchingRegex">
+            <plainText featureText="plainText in triggerRandom"/>
+        </triggerRandom>
         <resetTrigger listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
             <plainText featureText="plainText in countdownLabel"/>
