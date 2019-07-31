@@ -67,7 +67,7 @@ public class SdCardStimuli {
 
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
-    public void insertStimulus(String stimulusPath, String fileName) {
+    public boolean insertStimulus(String stimulusPath, String fileName) {
         if (excludeRegex == null || !fileName.matches(excludeRegex)) {
             // GWT.log("stimulusPath: " + stimulusPath);
             // GWT.log("fileName: " + fileName);
@@ -112,6 +112,9 @@ public class SdCardStimuli {
                 stimulusHashMap.put(stimulusId, sdCardStimulus);
                 stimulusArray.add(sdCardStimulus);
             }
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -214,7 +217,12 @@ public class SdCardStimuli {
                 //                            readFileEntry(entries[currentIndex]);
                                         } else {
                                             console.log(entries[currentIndex].toURL()); 
-                                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+                                            var resultBool = sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+                                            if (resultBool) {
+                                                console.log("added");
+                                            } else {
+                                                console.log("ignored");
+                                            }
                                         }
                                     }
                                     console.log("readEntries complete");
