@@ -65,6 +65,8 @@ public class StimulusProvider extends AbstractStimuliProvider {
     private int attributeAdjacencyThreshold = 3;
     private boolean rememberLastStimuli = true;
     private String attributeExcludeRegex = null;
+    private String attributeIncludeRegex = null;
+    private String attributeReplacementRegex = null;
 
     public void setmaxStimuli(String maxStimulusCount) {
         this.attributeMaxStimulusCount = Integer.parseInt(maxStimulusCount);
@@ -76,10 +78,6 @@ public class StimulusProvider extends AbstractStimuliProvider {
 
     public void setrememberLastStimuli(String randomise) {
         this.rememberLastStimuli = Boolean.valueOf(randomise);
-    }
-
-    public void setAttributeExcludeRegex(String attributeExcludeRegex) {
-        this.attributeExcludeRegex = attributeExcludeRegex;
     }
 
     public void setrepeatCount(String repeatCount) {
@@ -103,7 +101,15 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     public void setexcludeRegex(String excludeRegex) {
-        // todo: this value is not used at this point
+        this.attributeExcludeRegex = excludeRegex; // used to exclude sd card stimulus based on the file path
+    }
+
+    public void setmatchingRegex(String includeRegex) {
+        this.attributeIncludeRegex = includeRegex; // used to select sd card stimulus based on the file path
+    }
+
+    public void setreplacementRegex(String replacementRegex) {
+        this.attributeReplacementRegex = replacementRegex; // used to generate the stimulus code from the sd card file path
     }
 
 //    @Override
@@ -172,7 +178,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
             }
         } else {
             final String directoryTag = directoryTagArray.remove(0);
-            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, attributeExcludeRegex, new TimedStimulusListener() {
+            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, attributeExcludeRegex, attributeIncludeRegex, attributeReplacementRegex, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // todo: should this not take a single directory?
@@ -453,6 +459,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
+    // todo: investigate usage of this 
     public String getCurrentStimulusUniqueId() {
         try {
             final Stimulus currentStimulus = getCurrentStimulus();
@@ -463,6 +470,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
+    // todo: investigate usage of this 
     public int getCurrentStimulusIndex() {
         return currentStimuliIndex;
     }
