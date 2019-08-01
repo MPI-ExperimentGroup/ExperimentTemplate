@@ -476,9 +476,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             loadStimuliFeature.setRandomGrouping(randomGrouping);
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
-//        if (isSdCardStimuli(storedWizardScreenData)) {
+        if (isSdCardStimuli(storedWizardScreenData)) {
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "");
 //            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.excludeRegex, ".*_question\\....$");
-//        }
+        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         if (!isRememberLastStimuli(storedWizardScreenData)) {
