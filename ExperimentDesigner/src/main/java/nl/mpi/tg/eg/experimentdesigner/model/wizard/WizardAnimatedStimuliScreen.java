@@ -132,6 +132,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         if (isSdCardStimuli(storedWizardScreenData)) {
             loadStimuliFeature.addFeatureAttributes(FeatureAttribute.excludeRegex, ".*_question\\\\....$");
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "");
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
