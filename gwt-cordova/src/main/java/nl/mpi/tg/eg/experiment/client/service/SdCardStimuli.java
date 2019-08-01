@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.Timer;
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +39,17 @@ public class SdCardStimuli {
     private final TimedStimulusListener stimulusLoadedListener;
     private final TimedStimulusListener stimulusErrorListener;
     private final String excludeRegex;
+    private final String includeRegex;
+    private final String codeRegex;
 
-    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, final String excludeRegex, TimedStimulusListener stimulusLoadedListener, TimedStimulusListener stimulusErrorListener) {
+    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, final String excludeRegex, final String includeRegex, final String codeRegex, TimedStimulusListener stimulusLoadedListener, TimedStimulusListener stimulusErrorListener) {
         this.stimulusArray = stimulusArray;
         this.stimulusLoadedListener = stimulusLoadedListener;
         this.stimulusErrorListener = stimulusErrorListener;
         this.directoryList = directoryList;
         this.excludeRegex = excludeRegex;
+        this.includeRegex = includeRegex;
+        this.codeRegex = codeRegex;
     }
 
     public final void fillStimulusList(final String directoryTag) {
@@ -68,7 +74,9 @@ public class SdCardStimuli {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     public boolean insertStimulus(String stimulusPath, String fileName) {
-        if (excludeRegex == null || !fileName.matches(excludeRegex)) {
+        final boolean matchesExclude = (excludeRegex == null || excludeRegex.isEmpty()) ? true : fileName.matches(excludeRegex);
+        final boolean matchesInclude = (includeRegex == null || includeRegex.isEmpty()) ? true : fileName.matches(includeRegex);
+        if (!matchesExclude && matchesInclude) {
             // GWT.log("stimulusPath: " + stimulusPath);
             // GWT.log("fileName: " + fileName);
             final String stimulusId = stimulusPath.substring(stimulusPath.indexOf(MPI_STIMULI) + MPI_STIMULI.length() + 1);
@@ -78,7 +86,20 @@ public class SdCardStimuli {
 //            final String filePart = stimulusPath.substring(0, stimulusPath.length() - 4);
             // GWT.log("suffix: " + suffix);
             final String stimuliLabel = fileName;
-            final String stimuliCode = stimulusPath.replaceAll("\\....$", "");
+            final String stimuliCode;
+            if (codeRegex == null || codeRegex.isEmpty()) {
+                stimuliCode = stimulusPath.replaceAll("\\....$", "");
+            } else {
+                String resultString = "";
+                RegExp regExp = RegExp.compile(codeRegex);
+                MatchResult matcher = regExp.exec(stimulusPath);
+                if (matcher != null) {
+                    for (int groupIndex = 1; groupIndex < matcher.getGroupCount(); groupIndex++) {
+                        resultString += matcher.getGroup(groupIndex);
+                    }
+                }
+                stimuliCode = resultString;
+            }
             final int pause = 0;
 //        final boolean isLabel = ".txt".equals(suffix);
             final boolean isMp3 = ".mp3".equals(suffix);
