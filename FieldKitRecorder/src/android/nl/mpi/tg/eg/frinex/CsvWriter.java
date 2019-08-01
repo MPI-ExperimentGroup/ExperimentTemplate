@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @since Dec 10, 2015 4:34:49 PM (creation date)
@@ -36,7 +37,7 @@ public class CsvWriter {
 
     private final File outputDirectory;
     private final String baseName;
-    private final ArrayList<CSVRow> rows = Collections.synchronizedList(new ArrayList<CSVRow>());
+    private final List<CSVRow> rows = Collections.synchronizedList(new ArrayList<CSVRow>());
     private final HashMap<Integer, Long> startTimes = new HashMap<Integer, Long>();
     private static final String CSV_SUFFIX = ".csv";
 
@@ -56,14 +57,20 @@ public class CsvWriter {
         csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,StimulusID,StimulusCode,Tag\n");
         Collections.sort(rows);
         for (CSVRow row : rows) {
+            final String tagString = row.getTagString();
+            final String stimulusCode = row.getStimulusCode();
+            final String stimulusId = row.getStimulusId();
+            System.out.println("tagString: " + tagString);
+            System.out.println("stimulusCode: " + stimulusCode);
+            System.out.println("stimulusId: " + stimulusId);
             csvFileWriter.write(makeTimeString(row.getBeginTime()) + ","
                     + makeTimeString(row.getEndTime())
                     + "," + makeTimeString2(row.getBeginTime())
                     + "," + makeTimeString2(row.getEndTime())
                     + "," + row.getTier() + ",'"
-                    + row.getStimulusId().replace("'", "''") + "','"
-                    + row.getStimulusCode().replace("'", "''") + "','"
-                    + row.getTagString().replace("'", "''") + "'\n");
+                    + stimulusId.replace("'", "''") + "','"
+                    + stimulusCode.replace("'", "''") + "','"
+                    + tagString.replace("'", "''") + "'\n");
         }
         csvFileWriter.close();
         MediaScannerConnection.scanFile(context, new String[]{csvFile.getAbsolutePath()}, null, null);
