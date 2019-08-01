@@ -74,7 +74,7 @@ public class SdCardStimuli {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     public boolean insertStimulus(String stimulusPath, String fileName) {
-        final boolean matchesExclude = (excludeRegex == null || excludeRegex.isEmpty()) ? true : fileName.matches(excludeRegex);
+        final boolean matchesExclude = (excludeRegex == null || excludeRegex.isEmpty()) ? false : fileName.matches(excludeRegex);
         final boolean matchesInclude = (includeRegex == null || includeRegex.isEmpty()) ? true : fileName.matches(includeRegex);
         if (!matchesExclude && matchesInclude) {
             // GWT.log("stimulusPath: " + stimulusPath);
