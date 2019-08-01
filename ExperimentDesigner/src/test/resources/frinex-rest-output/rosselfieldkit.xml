@@ -49,7 +49,7 @@
         <selectUserMenu/>
     </presenter>
     <presenter back="Menu" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitSequential" title="FieldKit Sequential">
-        <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1" matchingRegex="">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="FieldKit Sequential" mediaId="mediaId" filePerStimulus="false">
@@ -69,12 +69,12 @@
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <plainText featureText="the informant talks about the image"/>
-                        <actionButton featureText="next">
-                            <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
-                            <clearPage/>
-                            <nextStimulus repeatIncorrect="false"/>
-                        </actionButton>
+                    <plainText featureText="the informant talks about the image"/>
+                    <actionButton featureText="next">
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
+                        <clearPage/>
+                        <nextStimulus repeatIncorrect="false"/>
+                    </actionButton>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -89,7 +89,7 @@
         </loadSdCardStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="FieldKit Random" type="stimulus" self="FieldKitRandom" title="FieldKit Random">
-        <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1" matchingRegex="">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="FieldKit Random" mediaId="mediaId" filePerStimulus="false">
@@ -130,7 +130,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Task 1" next="Menu" type="stimulus" self="Task_1" title="Task 1">
         <centrePage/>
-        <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1" matchingRegex="">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Task 1" mediaId="mediaId" filePerStimulus="false">
@@ -205,7 +205,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Task 2" next="Menu" type="stimulus" self="Task_2" title="Task 2">
         <centrePage/>
-        <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1" matchingRegex="">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Task 2" mediaId="mediaId" filePerStimulus="false">

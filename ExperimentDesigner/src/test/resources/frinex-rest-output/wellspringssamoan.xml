@@ -77,7 +77,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="Afio_mai__welcome_" menuLabel="Va’ai i le ata (look at the picture)" type="stimulus" self="Stimulus" title="Va’ai i le ata (look at the picture)">
-        <loadSdCardStimulus eventTag="Va’ai i le ata (look at the picture)" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Va’ai i le ata (look at the picture)" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Va’ai i le ata (look at the picture)" mediaId="mediaId" filePerStimulus="true">

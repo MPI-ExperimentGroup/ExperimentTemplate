@@ -73,7 +73,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="Welkam" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
-        <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Lukluk ol foto" mediaId="mediaId" filePerStimulus="true">
@@ -193,7 +193,7 @@
         </loadSdCardStimulus>
     </presenter>
     <presenter back="Konsen" menuLabel="Mekem ol foto" next="Stimulus" type="stimulus" self="Capture" title="Mekem ol foto">
-        <loadSdCardStimulus eventTag="Mekem ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Mekem ol foto" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <stimulusImageCapture featureText="Take Photo" msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80"/>

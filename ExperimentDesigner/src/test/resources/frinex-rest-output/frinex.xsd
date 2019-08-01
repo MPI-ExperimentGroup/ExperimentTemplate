@@ -493,6 +493,8 @@
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 <xs:attribute name="excludeRegex" type="xs:string"/>
+<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
+<xs:attribute name="replacementRegex" type="xs:string"/>
 <xs:attribute name="randomise" type="xs:string" use="required"/>
 <xs:attribute name="repeatCount" type="xs:string"/>
 <xs:attribute name="repeatRandomWindow" type="xs:string"/>

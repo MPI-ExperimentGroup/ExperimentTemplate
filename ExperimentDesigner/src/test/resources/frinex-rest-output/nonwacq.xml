@@ -134,7 +134,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="SdCard Stimuli" type="stimulus" self="SdCard_Stimuli" title="SdCard Stimuli">
-        <loadSdCardStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
