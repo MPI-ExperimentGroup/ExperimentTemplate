@@ -168,7 +168,7 @@ public class SdCardStimuliTest {
             System.out.println("getAudio " + stimulus.getAudio());
             System.out.println("getVideo " + stimulus.getVideo());
             System.out.println("getCode " + stimulus.getCode());
-            assertEquals(3, stimulus.getCode().length());
+            assertEquals(stimulus.getCode(), 48, stimulus.getCode().length());
 //            System.out.println(stimulus.getTags());
             System.out.println("getUniqueId " + stimulus.getUniqueId());
             System.out.println("is image " + stimulus.hasImage());
