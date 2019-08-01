@@ -113,9 +113,10 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         }
         final PresenterFeature loadStimuliFeature = (useSdCard(storedWizardScreenData)) ? new PresenterFeature(FeatureType.loadSdCardStimulus, null) : new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
-//        if (useSdCard(storedWizardScreenData)) {
+        if (useSdCard(storedWizardScreenData)) {
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "");
 //            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.excludeRegex, ".*_question\\....$");
-//        }
+        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
