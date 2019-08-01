@@ -85,7 +85,7 @@ public class SdCardStimuliTest {
         };
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
 
-        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<String[]>(), ".*_question\\....$", null, null);
+        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<String[]>(), ".*_question\\....$", null, null, null, null);
         for (String stimulusPath : testData) {
             instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
         }
@@ -96,6 +96,79 @@ public class SdCardStimuliTest {
             System.out.println("getAudio " + stimulus.getAudio());
             System.out.println("getVideo " + stimulus.getVideo());
             System.out.println("getCode " + stimulus.getCode());
+//            System.out.println(stimulus.getTags());
+            System.out.println("getUniqueId " + stimulus.getUniqueId());
+            System.out.println("is image " + stimulus.hasImage());
+            System.out.println("hasImage " + stimulus.hasAudio());
+            System.out.println("hasVideo " + stimulus.hasVideo());
+
+            assertEquals(stimulus.hasAudio(), stimulus.getAudio() != null);
+            assertEquals(stimulus.hasVideo(), stimulus.getVideo() != null);
+            assertEquals(stimulus.hasImage(), stimulus.getImage() != null);
+
+            assertEquals(true, (stimulus.hasAudio()) ? stimulus.getAudio().startsWith("file:") : true);
+            assertEquals(false, (stimulus.hasAudio()) ? stimulus.getAudio().contains(".") : false);
+            assertEquals(true, (stimulus.hasImage()) ? stimulus.getImage().startsWith("file:") : true);
+            assertEquals(true, (stimulus.hasImage()) ? stimulus.getImage().contains(".") : true);
+            assertEquals(true, (stimulus.hasVideo()) ? stimulus.getVideo().startsWith("file:") : true);
+            assertEquals(false, (stimulus.hasVideo()) ? stimulus.getVideo().contains(".") : false);
+        }
+//        assertEquals(30, stimuliList.size());
+    }
+
+    /**
+     * Test of insertStimulus method with the code regex, of class
+     * SdCardStimuli.
+     */
+    @Test
+    public void testInsertCodeStimulus() {
+        System.out.println("insertCodeStimulus");
+        String[] testData = new String[]{
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1_AT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4_BT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3_AF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4_CF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1_AF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3_AT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4_BF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4_CT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2_CF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2_BT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2_CT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2_BF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2_AF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2_AT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1_BF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3_BT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4_AF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3_CF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1_CT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1_BT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V2.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V4_AT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3_BF.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3_CT.ogg",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V3.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/NADL/V1_CF.ogg"
+        };
+        final ArrayList<Stimulus> stimuliList = new ArrayList<>();
+        final String matchingRegex = ".*F.ogg$";
+        final String excludeRegex = ".*.mp4$";
+        final String replacementRegex = "^(.*)F.ogg$";
+        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<String[]>(), excludeRegex, matchingRegex, replacementRegex, null, null);
+        for (String stimulusPath : testData) {
+            instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
+        }
+        assertEquals(12, stimuliList.size());
+        for (Stimulus stimulus : stimuliList) {
+            System.out.println("getImage " + stimulus.getImage());
+            System.out.println("getLabel " + stimulus.getLabel());
+            System.out.println("getAudio " + stimulus.getAudio());
+            System.out.println("getVideo " + stimulus.getVideo());
+            System.out.println("getCode " + stimulus.getCode());
+            assertEquals(3, stimulus.getCode().length());
 //            System.out.println(stimulus.getTags());
             System.out.println("getUniqueId " + stimulus.getUniqueId());
             System.out.println("is image " + stimulus.hasImage());
