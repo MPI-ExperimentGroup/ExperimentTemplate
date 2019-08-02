@@ -124,6 +124,8 @@ public class FieldKitRecorder extends CordovaPlugin {
                             final String baseName = audioRecorder.startRecording(outputDirectory, FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
                             csvWriter = new CsvWriter(outputDirectory, baseName);
                             callbackContext.success();
+                        } else if (audioRecorder.isRecording()) {
+                            callbackContext.success();
                         }
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
