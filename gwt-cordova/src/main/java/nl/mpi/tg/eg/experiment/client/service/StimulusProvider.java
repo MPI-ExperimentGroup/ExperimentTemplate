@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
+import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -132,13 +133,13 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex, final HtmlTokenFormatter htmlTokenFormatter) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, stimulusLoadedListener, stimulusErrorListener, storedStimulusList, currentStimuliIndex);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, stimulusLoadedListener, stimulusErrorListener, storedStimulusList, currentStimuliIndex, htmlTokenFormatter);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex, final HtmlTokenFormatter htmlTokenFormatter) {
         if (directoryTagArray.isEmpty()) {
             final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
             if (!directoryList.isEmpty()) {
@@ -178,7 +179,9 @@ public class StimulusProvider extends AbstractStimuliProvider {
             }
         } else {
             final String directoryTag = directoryTagArray.remove(0);
-            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, attributeExcludeRegex, attributeIncludeRegex, attributeReplacementRegex, new TimedStimulusListener() {
+            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, attributeExcludeRegex,
+                    htmlTokenFormatter.formatString(attributeIncludeRegex),
+                    attributeReplacementRegex, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // todo: should this not take a single directory?
