@@ -170,6 +170,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         final List<String[]> directoryList = new ArrayList<>();
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
         stimulusProvider.getSdCardSubset(directoryTagArray, directoryList, new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
@@ -211,6 +212,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                                 return -1;
                             }
                         });
+                        timedStimulusView.addPadding();
                     }
                 }
             }
@@ -220,7 +222,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 timedStimulusView.addText("Stimulus loading error");
                 // @todo: when sdcard stimuli sub directories are used:  + "Plase make sure that the directory " + stimuliDirectory + "/" + cleanedTag + " exists and has stimuli files."
             }
-        }, storedStimulusList, seenStimulusIndex);
+        }, storedStimulusList, seenStimulusIndex, htmlTokenFormatter);
     }
 
     @Override
@@ -1739,7 +1741,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         triggerListeners.get(listenerId).reset();
     }
 
-    protected void /* this could be changed to addTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+    protected void /* this could be changed to addTimer or setTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
         final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
         final long initialTimerStartMs;
         if (storedDataValue == null || storedDataValue.isEmpty()) {
