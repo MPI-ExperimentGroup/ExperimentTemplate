@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
-import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -67,6 +66,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     private boolean rememberLastStimuli = true;
     private String attributeExcludeRegex = null;
     private String attributeIncludeRegex = null;
+    private String formattedIncludeRegex = null;
     private String attributeReplacementRegex = null;
 
     public void setmaxStimuli(String maxStimulusCount) {
@@ -109,6 +109,14 @@ public class StimulusProvider extends AbstractStimuliProvider {
         this.attributeIncludeRegex = includeRegex; // used to select sd card stimulus based on the file path
     }
 
+    public void setFormattedIncludeRegex(String formattedIncludeRegex) {
+        this.formattedIncludeRegex = formattedIncludeRegex;
+    }
+
+    public String getAttributeIncludeRegex() {
+        return attributeIncludeRegex;
+    }
+
     public void setreplacementRegex(String replacementRegex) {
         this.attributeReplacementRegex = replacementRegex; // used to generate the stimulus code from the sd card file path
     }
@@ -133,13 +141,13 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex, final HtmlTokenFormatter htmlTokenFormatter) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, stimulusLoadedListener, stimulusErrorListener, storedStimulusList, currentStimuliIndex, htmlTokenFormatter);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, stimulusLoadedListener, stimulusErrorListener, storedStimulusList, currentStimuliIndex);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex, final HtmlTokenFormatter htmlTokenFormatter) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
         if (directoryTagArray.isEmpty()) {
             final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
             if (!directoryList.isEmpty()) {
@@ -180,7 +188,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
         } else {
             final String directoryTag = directoryTagArray.remove(0);
             final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, attributeExcludeRegex,
-                    htmlTokenFormatter.formatString(attributeIncludeRegex),
+                    (formattedIncludeRegex != null) ? formattedIncludeRegex : attributeIncludeRegex,
                     attributeReplacementRegex, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
