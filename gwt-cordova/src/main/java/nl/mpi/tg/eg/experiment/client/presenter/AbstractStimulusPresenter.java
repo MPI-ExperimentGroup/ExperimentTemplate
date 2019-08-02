@@ -1070,7 +1070,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     loadedStimulusListener.postLoadTimerFired();
                 }
             };
-            timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
+            timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, !showControls, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
         } else if (currentStimulus.getLabel() != null) {
             timedStimulusView.addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
