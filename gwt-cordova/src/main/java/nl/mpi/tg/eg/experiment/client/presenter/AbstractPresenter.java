@@ -390,9 +390,11 @@ public abstract class AbstractPresenter implements Presenter {
             $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
                 console.log("startAudioRecorderOk: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted()();
             }, function (tagvalue) {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(tagvalue);
             },  subDirectoryName, directoryName,  (filePerStimulus)?stimulusIdString:'');
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
@@ -417,7 +419,7 @@ public abstract class AbstractPresenter implements Presenter {
                 }
                 if(targetDeviceId === -1) {
                     console.log("Device not found: " + deviceRegex);
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex)
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
                 } else {
                     $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId}});
                     $wnd.recorder.ondataavailable = function( typedArray ){
