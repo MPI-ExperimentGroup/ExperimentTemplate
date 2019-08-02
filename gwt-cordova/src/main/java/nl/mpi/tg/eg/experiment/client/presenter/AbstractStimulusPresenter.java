@@ -171,6 +171,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final List<String[]> directoryList = new ArrayList<>();
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
         final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        // todo: this use of setters and getters with the formatter has been done with a very tight time limit and this use case could have also been done with the randomTags if time permitted
+        ((nl.mpi.tg.eg.experiment.client.service.StimulusProvider) stimulusProvider).setFormattedIncludeRegex(htmlTokenFormatter.formatString(((nl.mpi.tg.eg.experiment.client.service.StimulusProvider) stimulusProvider).getAttributeIncludeRegex()));
         stimulusProvider.getSdCardSubset(directoryTagArray, directoryList, new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
@@ -222,7 +224,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 timedStimulusView.addText("Stimulus loading error");
                 // @todo: when sdcard stimuli sub directories are used:  + "Plase make sure that the directory " + stimuliDirectory + "/" + cleanedTag + " exists and has stimuli files."
             }
-        }, storedStimulusList, seenStimulusIndex, htmlTokenFormatter);
+        }, storedStimulusList, seenStimulusIndex);
     }
 
     @Override
