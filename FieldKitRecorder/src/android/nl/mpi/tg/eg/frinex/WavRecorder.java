@@ -130,6 +130,7 @@ public class WavRecorder implements AudioRecorder, Runnable {
                                 }
                             }
                         }
+                        System.out.println(recorderState);
                         System.out.println("recording ended");
 
                         writeWaveFileHeader(randomAccessFile);
