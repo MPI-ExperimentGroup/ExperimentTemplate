@@ -1467,7 +1467,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void endAudioRecorderTag(int tier, String tagString, final Stimulus currentStimulus) {
-        super.endAudioRecorderTag(tier, currentStimulus.getUniqueId(), currentStimulus.getUniqueId(), tagString);
+        super.endAudioRecorderTag(tier, currentStimulus.getUniqueId(), currentStimulus.getCode(), tagString);
     }
 
     @Override
