@@ -1554,7 +1554,7 @@
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel styleName="styleName"/>
         <clearCurrentScore/>
-        <scoreIncrement scoreValue="true"/>
+        <scoreIncrement scoreValue="8"/>
         <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
@@ -3476,7 +3476,7 @@
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel/>
         <clearCurrentScore/>
-        <scoreIncrement scoreValue="true"/>
+        <scoreIncrement scoreValue="8"/>
         <bestScoreAboveThreshold>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
