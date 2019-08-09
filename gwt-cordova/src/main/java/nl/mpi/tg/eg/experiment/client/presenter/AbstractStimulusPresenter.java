@@ -803,7 +803,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         localStorage.storeUserScore(userResults);
     }
 
-    protected void scoreIncrement(final boolean isCorrect) {
+    protected void scoreIncrement(final int isCorrect) {
         userResults.getUserData().addPotentialScore(isCorrect);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
     }
