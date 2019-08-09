@@ -300,7 +300,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("duplicatesControlledMessage", true)
                                     .booleanAttribute("preventServerDuplicates", true)
                         }),
-                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
+                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element. If the back attribute is provided it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", 1, 0, FeatureType.values(), PresenterType.values())
                         .stringAttribute("self", false)
                         .stringAttribute("title", true)
                         .stringAttribute("menuLabel", true)
