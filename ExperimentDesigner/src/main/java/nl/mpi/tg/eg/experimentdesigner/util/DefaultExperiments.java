@@ -290,6 +290,7 @@ public class DefaultExperiments {
                         case eventTier:
                         case threshold:
                         case phasesPerStimulus:
+                        case scoreValue:
                             presenterFeature.addFeatureAttributes(attribute, "8");
                             break;
                         case fieldName:
@@ -303,7 +304,6 @@ public class DefaultExperiments {
                         case autoPlay:
                         case loop:
                         case showControls:
-                        case scoreValue:
                         case oneToMany:
                         case applyScore:
                             presenterFeature.addFeatureAttributes(attribute, "true");
