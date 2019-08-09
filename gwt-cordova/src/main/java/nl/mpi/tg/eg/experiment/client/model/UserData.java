@@ -177,6 +177,25 @@ public class UserData {
         updateMaxScore(this.currentScore, this.potentialScore - this.currentScore, this.potentialScore, this.correctStreak, this.errorStreak);
     }
 
+    public void addPotentialScore(final int currentScore) {
+        this.potentialScore += Math.abs(currentScore);
+        this.totalPotentialScore += Math.abs(currentScore);
+        this.currentIsCorrect = currentScore > 0;
+        if (currentScore > 0) {
+            this.currentScore += currentScore;
+            this.totalScore += currentScore;
+            this.correctStreak++;
+            this.errorStreak = 0;
+        } else if (currentScore == 0) {
+            this.errorStreak = 0;
+            this.correctStreak = 0;
+        } else {
+            this.errorStreak++;
+            this.correctStreak = 0;
+        }
+        updateMaxScore(this.currentScore, this.potentialScore - this.currentScore, this.potentialScore, this.correctStreak, this.errorStreak);
+    }
+
     public boolean isCurrentCorrect() {
         return (currentIsCorrect != null) ? currentIsCorrect : false;
     }
