@@ -140,6 +140,12 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalPotential" preventServerDuplicates="false" registrationField="Total Potential"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>
+        <field controlledMessage="." controlledRegex=".*" postName="notificationSettings" preventServerDuplicates="false" registrationField="Trigger Notification Minutes"/>
+        <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekdaySettings" preventServerDuplicates="false" registrationField="Weekday Notifications"/>
+        <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekendSettings" preventServerDuplicates="false" registrationField="Weekend Notifications"/>
+        <field controlledMessage="." controlledRegex="[0-9]+" postName="notificationMinutesSettings" preventServerDuplicates="false" registrationField="In X Minutes Notifications"/>
+        <field controlledMessage="." controlledRegex="|V1|V2|V3|V4" postName="Version" registrationField="Version"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -356,6 +362,35 @@
                 </actionButton>
             </showHtmlPopup>
         </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Request Notification Screen" type="metadata" self="Request_Notification_Screen" title="Request Notification Screen">
+        <plainText featureText="This example is for Android and iOS apps and demonstrates how to request notifications at given times in the future."/>
+        <metadataField fieldName="notificationWeekdaySettings"/>
+        <metadataField fieldName="notificationWeekendSettings"/>
+        <metadataField fieldName="notificationMinutesSettings"/>
+        <!--        <actionButton featureText="Request Notification">
+                <requestNotification listenerId="notificationA" featureText="featureText for notificationA" fieldName="notificationMatchA" dataLogFormat="dataLogFormat for notificationA"/>
+                <region regionId="regionTimerA">
+                    <plainText featureText="Request Notification Done"/>
+                </region>
+        </actionButton>-->
+        <saveMetadataButton featureText="Request Notification" sendData="false" networkErrorMessage=".">
+            <onError>
+                <plainText featureText="Save metadata failed"/>
+            </onError>
+            <onSuccess>
+                <setMetadataValue fieldName="notificationSettings" replacementRegex="" dataLogFormat="weekdays:&lt;metadataField_notificationWeekdaySettings&gt; weekends:&lt;metadataField_notificationWeekendSettings&gt; in_minutes:&lt;metadataField_notificationMinutesSettings&gt;"/>
+                <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationSettings&gt;&lt;br/&gt;"/>
+                <requestNotification listenerId="notificationA" featureText="featureText for notificationA" fieldName="notificationSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
+                    <onError>
+                        <plainText featureText="Request Notification Failed"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="Request Notification Done"/>
+                    </onSuccess>
+                </requestNotification>
+            </onSuccess>
+        </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
         <startTimer msToNext="150000" listenerId="timerA">
@@ -576,7 +611,12 @@
                                     </startTimer>
                                 </mediaLoaded>
                                 <mediaLoadFailed>
+                                    <cancelPauseAll/>
                                     <plainText featureText="stimulusVideoFailed"/>
+                                    <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
+                                    <actionButton featureText="Replay" hotKey="SPACE">
+                                        <showStimulus/>
+                                    </actionButton>
                                 </mediaLoadFailed>
                                 <mediaPlaybackStarted>
                                     <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>
@@ -590,8 +630,13 @@
                         </regionReplace>
                     </mediaLoaded>
                     <mediaLoadFailed>
+                        <cancelPauseAll/>
                         <plainText featureText="stimulusAudioFailed"/>
                         <stimulusLabel/>
+                        <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
+                        <actionButton featureText="Replay" hotKey="SPACE">
+                            <showStimulus/>
+                        </actionButton>
                         <actionButton featureText="Skip" hotKey="SPACE">
                             <nextStimulus repeatIncorrect="false"/>
                         </actionButton>
@@ -603,6 +648,31 @@
                         <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer&gt;ms"/>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
+                <table>
+                    <row>
+                        <column>
+                            <actionButton featureText="Media Stimulus V0">
+                                <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v0"/>
+                                <resetStimulus target="Sequential_Display_Example"/>
+                                <gotoPresenter target="Sequential_Display_Example"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="Tone Stimulus V1">
+                                <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v1"/>
+                                <resetStimulus target="Sequential_Display_Example"/>
+                                <gotoPresenter target="Sequential_Display_Example"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="Tone Stimulus V2">
+                                <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v2"/>
+                                <resetStimulus target="Sequential_Display_Example"/>
+                                <gotoPresenter target="Sequential_Display_Example"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
@@ -611,10 +681,13 @@
                     <gotoPresenter target="Sequential_Display_Example"/>
                 </actionButton>
             </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>ToneVideos</tag>
-            </stimuli>
+            <randomGrouping storageField="stimuliSequentialDisplayExample">
+                <tag alias="v0">media</tag>
+                <tag alias="v1">ToneVideos</tag>
+                <tag alias="v2">ToneVideos_c</tag>
+                <!-- A metadata field for this storageField must be declaired above: <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>-->
+                </randomGrouping>
+            <stimuli/>
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Region Timer Screen" next="With_Stimuli_Screen" type="stimulus" self="Region_Timer_Screen" title="With Stimuli Screen">
@@ -1226,8 +1299,9 @@
                                 </stimulusRatingButton>
                             </conditionTrue>
                             <conditionFalse>
-                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
-                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                <!--<plainText featureText="For this example please note that the regex validationRegex .{1,} on a multi line input will need to match on all lines, so the first empty line will not pass the validation test. In order for this example to allow both multiline input and tab+enter for next, the hotKey ENTER should be omitted and added validationRegex should be [\\\\s\\\\S]\\{1,\\} where th 1 indicates the minimum input."/>-->
+                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" "/>
+                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" repeatIncorrect="false"/>
                             </conditionFalse>
                         </stimulusHasRatingOptions>
                     </mediaPlaybackComplete>
@@ -2539,7 +2613,7 @@
                                                                 <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
                                                                 <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
                                                                 <!--// if the response uuid does not exist then transmit-->
-                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceding.">
+                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
                                                                     <onError>
                                                                         <htmlText featureText="Transmitting the data for this session step failed."/>
                                                                     </onError>
@@ -2912,6 +2986,37 @@
             <activateRandomItem/>
         </actionButton>
     </presenter>
+    <presenter menuLabel="triggerRandomListener" type="stimulus" next="Menu" self="triggerRandomListener" title="Trigger Random Listener">
+        <region regionId="regionTriggerA">
+            <plainText featureText="regionTriggerA is unchanged"/>
+        </region>
+        <region regionId="regionTriggerB">
+            <plainText featureText="regionTriggerB is unchanged"/>
+        </region>
+        <region regionId="regionTriggerC">
+            <plainText featureText="regionTriggerC is unchanged"/>
+        </region>
+        <triggerListener listenerId="triggerA" threshold="0" maximum="1">
+            <regionReplace regionId="regionTriggerA">
+                <plainText featureText="regionTriggerA has triggered and will not again"/>
+            </regionReplace>
+        </triggerListener>
+        <triggerListener listenerId="triggerB" threshold="0" maximum="1">
+            <regionReplace regionId="regionTriggerB">
+                <plainText featureText="regionTriggerB has triggered and will not again"/>
+            </regionReplace>
+        </triggerListener>
+        <triggerListener listenerId="triggerC" threshold="0" maximum="1">
+            <regionReplace regionId="regionTriggerC">
+                <plainText featureText="regionTriggerB has triggered and will not again"/>
+            </regionReplace>
+        </triggerListener>
+        <actionButton featureText="Click to randomly trigger any once">
+            <triggerRandom matchingRegex="trigger[ABC]">
+                 <targetButton featureText="Reset Triggers" target="triggerRandomListener"/>
+            </triggerRandom>
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
         <selectUserMenu/>
@@ -3069,6 +3174,11 @@
         <stimulus audioPath="1000ms_a" code="1000ms" identifier="1000ms" imagePath="1000ms.jpg" label="1000ms" pauseMs="1000" tags="ToneVideos" videoPath="1000ms_v"/>
         <stimulus audioPath="2000ms_a" code="2000ms" identifier="2000ms" imagePath="2000ms.jpg" label="2000ms" pauseMs="2000" tags="ToneVideos" videoPath="2000ms_v"/>
         <stimulus audioPath="5000ms_a" code="5000ms" identifier="5000ms" imagePath="5000ms.jpg" label="5000ms" pauseMs="5000" tags="ToneVideos" videoPath="5000ms_v"/>
+        <stimulus audioPath="100ms_a" code="100ms" identifier="100ms_c" imagePath="100ms.jpg" label="100ms_c" pauseMs="100" tags="ToneVideos_c" videoPath="100ms_c_v"/>
+        <stimulus audioPath="500ms_a" code="500ms" identifier="500ms_c" imagePath="500ms.jpg" label="500ms_c" pauseMs="500" tags="ToneVideos_c" videoPath="500ms_c_v"/>
+        <stimulus audioPath="1000ms_a" code="1000ms" identifier="1000ms_c" imagePath="1000ms.jpg" label="1000ms_c" pauseMs="1000" tags="ToneVideos_c" videoPath="1000ms_c_v"/>
+        <stimulus audioPath="2000ms_a" code="2000ms" identifier="2000ms_c" imagePath="2000ms.jpg" label="2000ms_c" pauseMs="2000" tags="ToneVideos_c" videoPath="2000ms_c_v"/>
+        <stimulus audioPath="5000ms_a" code="5000ms" identifier="5000ms_c" imagePath="5000ms.jpg" label="5000ms_c" pauseMs="5000" tags="ToneVideos_c" videoPath="5000ms_c_v"/>
         <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should trigger an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
         <stimulus identifier="R1" label="Speak the word &lt;b&gt;'continue'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="continue" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R2" label="Speak the word &lt;b&gt;'arrête'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="arrête" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
