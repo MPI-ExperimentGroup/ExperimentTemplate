@@ -3017,6 +3017,70 @@
             </triggerRandom>
         </actionButton>
     </presenter>
+    <presenter menuLabel="incrementScoreExample" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
+        <region regionId="scoreLabelsRegion"/>
+        <triggerListener listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
+            <regionReplace regionId="scoreLabelsRegion">
+                <htmlTokenText featureText="
+                Each increment accrues positive potential but only a positive values increment the score while negative values increment errors.&lt;br/&gt;
+                The games played value increments only when the potential is greater than zero and the score is cleared.&lt;br/&gt;
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                playerMaxScore:
+                &lt;playerMaxScore&gt;&lt;br/&gt;
+                playerMaxErrors:
+                &lt;playerMaxErrors&gt;&lt;br/&gt;
+                playerMaxPotentialScore:
+                &lt;playerMaxPotentialScore&gt;&lt;br/&gt;
+                playerMaxErrorStreak:
+                &lt;playerMaxErrorStreak&gt;&lt;br/&gt;
+                playerMaxCorrectStreak:
+                &lt;playerMaxCorrectStreak&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt;&lt;br/&gt;
+                "/>
+            </regionReplace>
+        </triggerListener>
+        <trigger listenerId="scoreLabelsTrigger"/>
+        <actionButton featureText="clearCurrentScore">
+            <clearCurrentScore/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement 5">
+            <scoreIncrement scoreValue="5"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement -3">
+            <scoreIncrement scoreValue="-3"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement -1">
+            <scoreIncrement scoreValue="-1"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement 1">
+            <scoreIncrement scoreValue="1"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement 0">
+            <scoreIncrement scoreValue="0"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
         <selectUserMenu/>
