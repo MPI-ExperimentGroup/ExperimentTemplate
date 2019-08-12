@@ -294,7 +294,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
 //        scoreButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature scoreIncrement = new PresenterFeature(FeatureType.scoreIncrement, null);
-        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, (correctResponse) ? "true" : "false");
+        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, (correctResponse) ? "1" : "-1");
         final PresenterFeature scoreAboveThreshold = new PresenterFeature(FeatureType.scoreAboveThreshold, null);
         scoreAboveThreshold.addFeatureAttributes(FeatureAttribute.scoreThreshold, "5");
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
