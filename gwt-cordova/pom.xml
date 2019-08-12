@@ -9,12 +9,12 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1-testing-SNAPSHOT</version>
+    <version>1.0-testing-SNAPSHOT</version>
     <name>FRINEX GWT-Cordova Template</name>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
         <artifactId>frinex-parent</artifactId>
-        <version>0.1-testing-SNAPSHOT</version>
+        <version>1.0-testing-SNAPSHOT</version>
     </parent>
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -258,7 +258,7 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                     </includes>
-                                </resource>
+                                </resource> 
                             </resources>              
                         </configuration>                                                    
                     </execution>                   

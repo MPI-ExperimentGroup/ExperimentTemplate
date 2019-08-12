@@ -9,7 +9,7 @@
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
         <artifactId>frinex-parent</artifactId>
-        <version>0.1-testing-SNAPSHOT</version>
+        <version>1.0-testing-SNAPSHOT</version>
     </parent>
     <properties>
         <!--<start-class>nl.mpi.tg.eg.frinex.Application</start-class>-->

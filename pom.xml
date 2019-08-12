@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-parent</artifactId>
     <name>Frinex Parent</name>
-    <version>0.1-testing-SNAPSHOT</version>
+    <version>1.0-testing-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
@@ -30,8 +30,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
-        <application.majorVersion>0</application.majorVersion> 
-        <application.minorVersion>1</application.minorVersion> 
+        <application.majorVersion>1</application.majorVersion> 
+        <application.minorVersion>0</application.minorVersion> 
         <application.branch>pretesting</application.branch> 
         <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
         <versionCheck.buildType>testing</versionCheck.buildType> 
@@ -71,20 +71,21 @@
         <!--<experiment.configuration.displayName>Shawi FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>Vanuatu FieldKit</experiment.configuration.displayName>-->
-                <!--<experiment.configuration.name>sentveri-exp3</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>sentveri_exp3</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
         <!--<experiment.configuration.displayName>SynQuiz2</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>zinnen_beoordelen</experiment.configuration.name>-->
         <!--<experiment.configuration.name>exampleronald</experiment.configuration.name>-->
         <!--<experiment.configuration.name>synquiz2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>zinnen_afmaken</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
+                <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>Wellsprings Samoan FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonwacq</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>corsi</experiment.configuration.name>-->
         <!--<experiment.configuration.name>generic_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>advocas1</experiment.configuration.name>-->
         <!--<experiment.configuration.name>audioas2</experiment.configuration.name>-->
@@ -99,9 +100,18 @@
         <!--<experiment.configuration.name>ppvt</experiment.configuration.name>-->
         <!--<experiment.configuration.name>audioas2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>engadvocas</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>with_simulus_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>rosselfieldkit1</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>invitation_validation_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>taal_visuelepuzzels</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>ak_study</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>exemplarnormingstudy</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>group_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>autoprediction</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>digitspanbackward</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>sentenceplausibility</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
-        <experiment.configuration.db.password></experiment.configuration.db.password>        
+        <experiment.configuration.db.password></experiment.configuration.db.password>
         
         <!--<experiment.configuration.name>kinoath</experiment.configuration.name>-->
         <!--        <experiment.configuration.admin.password></experiment.configuration.admin.password>
@@ -132,8 +142,8 @@
                     <verbose>true</verbose>
                     <vcsType>git</vcsType>
                     <allowSnapshots>${versionCheck.allowSnapshots}</allowSnapshots>
-                    <majorVersion>0</majorVersion>
-                    <minorVersion>1</minorVersion>
+                    <majorVersion>1</majorVersion>
+                    <minorVersion>0</minorVersion>
                     <buildType>${versionCheck.buildType}</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule></shortVersionModule>
@@ -223,7 +233,7 @@
                 <enabled>true</enabled>
             </releases>
         </repository>        
-        <repository>
+        <!--        <repository>
             <id>MPI</id>
             <name>MPI LAT Repository</name>
             <url>https://lux15.mpi.nl/nexus/content/groups/public/</url>
@@ -233,6 +243,6 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-        </repository>
+        </repository>-->
     </repositories>
 </project>
