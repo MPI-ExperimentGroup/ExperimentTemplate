@@ -73,7 +73,7 @@
         <dependency>
             <groupId>nl.mpi.tg.eg.frinex</groupId>
             <artifactId>common</artifactId>
-            <version>0.1-testing-SNAPSHOT</version>
+            <version>1.0-testing-SNAPSHOT</version>
         </dependency>        
         <dependency>
             <groupId>nl.mpi</groupId>
@@ -121,7 +121,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>adaptive-vocabulary-assessment-module</artifactId>
-            <version>0.1-testing-SNAPSHOT</version>
+            <version>1.0-testing-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -562,7 +562,7 @@
                     <dependency>
                         <groupId>nl.mpi.tg.eg.frinex</groupId>
                         <artifactId>common</artifactId>
-                        <version>0.1-testing-SNAPSHOT</version>
+                        <version>1.0-testing-SNAPSHOT</version>
                     </dependency>     
                 </dependencies>
             </plugin>
