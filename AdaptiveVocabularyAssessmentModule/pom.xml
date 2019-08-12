@@ -26,9 +26,9 @@
             <version>1.1</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>nl.mpi.tg.eg.frinex</groupId>
             <artifactId>common</artifactId>
-            <version>${project.version}</version>
+            <version>1.0-testing-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
