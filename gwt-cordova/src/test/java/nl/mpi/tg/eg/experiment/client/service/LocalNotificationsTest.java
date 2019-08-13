@@ -43,11 +43,19 @@ public class LocalNotificationsTest {
         LocalNotifications instance = new LocalNotificationsImpl();
         int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
         assertEquals(repetitionCount, result.length);
-        for (int[] values : result) {
-            System.out.println(values[0] + ":" + values[1]);
-        }
+//        for (int[] values : result) {
+//            System.out.println(values[0] + ":" + values[1]);
+//        }
         int expectedHour = hourFromInt;
         for (int repetitionIndex = 0; repetitionIndex < 10; repetitionIndex++) {
+            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+            if (result[repetitionIndex][1] < 31) {
+                assertTrue(result[repetitionIndex][1] >= 2);
+                assertTrue(result[repetitionIndex][1] <= 28);
+            } else {
+                assertTrue(result[repetitionIndex][1] >= 32);
+                assertTrue(result[repetitionIndex][1] <= 58);
+            }
             System.out.println("expectedHour: " + expectedHour);
             assertEquals(expectedHour, result[repetitionIndex][0]);
             if (repetitionIndex % 2 == 0) {
