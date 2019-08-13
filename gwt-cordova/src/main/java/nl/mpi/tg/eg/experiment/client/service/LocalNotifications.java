@@ -71,7 +71,7 @@ public abstract class LocalNotifications {
         final int[][] repetitionArray = new int[repetitionCount][2];
         for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             final int nextInt = new Random().nextInt(repetitionRange - paddingValue * 2);
-            final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt + (paddingValue);
+            final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt - (paddingValue);
 //            System.out.println("nextInt: " + nextInt / 1000 / 60);
 //            System.out.println("nextPeriod: " + nextPeriod / 1000 / 60);
             final Date repetitionDate = new Date(fromDate.getTime() + nextPeriod);
