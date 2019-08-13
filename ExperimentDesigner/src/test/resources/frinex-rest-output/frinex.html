@@ -95,9 +95,9 @@ Each experiment XML configuration file must have one EXPERIMENT element of which
 <a href="#metadataType"><span style="color:purple">&lt;</span><span style="color:blue">metadata</span></a></td><td></td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#presenterType"><span style="color:purple">&lt;</span><span style="color:blue">presenter</span></a></td><td><span style="color:green">back</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#presenterType"><span style="color:purple">&lt;</span><span style="color:blue">presenter</span></a></td><td><span style="color:green">back</span><span style="color:grey">=&quot;This attribute value must exist in one presenter self attribute. If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden. (optional)&quot;</span><br/>
 <span style="color:green">menuLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">next</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">next</span><span style="color:grey">=&quot;This attribute value must exist in one presenter self attribute. The value of this attribute is used as the target for gotoNextPresenter etc.. (optional)&quot;</span><br/>
 <span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">type</span><span style="color:grey">=&quot;Option List [transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><br/>
@@ -354,12 +354,12 @@ field
 <h3 id="presenterType" style="text-transform: uppercase;">
 presenter
 </h3>
-Each screen in an experiment configuration is described in a PRESENTER element. If the back attribute is provided it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.transmission,metadata,preload,stimulus,colourPicker,colourReport,kindiagram,menu,debug,text,timeline,
+Each screen in an experiment configuration is described in a PRESENTER element.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">presenter</span></td><td><span style="color:green">back</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">presenter</span></td><td><span style="color:green">back</span><span style="color:grey">=&quot;This attribute value must exist in one presenter self attribute. If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden. (optional)&quot;</span><br/>
 <span style="color:green">menuLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">next</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">next</span><span style="color:grey">=&quot;This attribute value must exist in one presenter self attribute. The value of this attribute is used as the target for gotoNextPresenter etc.. (optional)&quot;</span><br/>
 <span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">type</span><span style="color:grey">=&quot;Option List [transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><br/>
@@ -9162,7 +9162,7 @@ regionStyle
 <h3 id="requestNotificationType" style="text-transform: uppercase;">
 requestNotification
 </h3>
-
+Request mobile notifications at given times in the future on Android and iOS apps.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">requestNotification</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
