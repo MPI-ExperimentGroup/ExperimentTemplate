@@ -194,9 +194,9 @@ public class AbstractSchemaGenerator {
             this.elementName = elementName;
             this.typeName = elementName + "Type";
             String documentationTemp = documentationText;
-            for (final PresenterType presenterType : presenterTypes) {
-                documentationTemp += presenterType.name() + ",";
-            }
+//            for (final PresenterType presenterType : presenterTypes) {
+//                documentationTemp += presenterType.name() + ",";
+//            }
             this.documentationText = documentationTemp;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
@@ -221,6 +221,11 @@ public class AbstractSchemaGenerator {
 
         public final DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "String", "xs:string", optional, null));
+            return this;
+        }
+
+        public final DocumentationElement presenterNameAttribute(final String attributeName, String documentation, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "This attribute value must exist in one presenter self attribute. " + documentation, "xs:string", optional, null));
             return this;
         }
 
@@ -300,12 +305,12 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("duplicatesControlledMessage", true)
                                     .booleanAttribute("preventServerDuplicates", true)
                         }),
-                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element. If the back attribute is provided it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", 1, 0, FeatureType.values(), PresenterType.values())
+                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
                         .stringAttribute("self", false)
                         .stringAttribute("title", true)
                         .stringAttribute("menuLabel", true)
-                        .stringAttribute("back", true)
-                        .stringAttribute("next", true)
+                        .presenterNameAttribute("back", "If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", true)
+                        .presenterNameAttribute("next", "The value of this attribute is used as the target for gotoNextPresenter etc..", true)
                         .restrictedAttribute("type", null, false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
