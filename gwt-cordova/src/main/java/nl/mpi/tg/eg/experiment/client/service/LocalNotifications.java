@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * @since 6 June, 2019 17:09:32 PM (creation date)
@@ -27,14 +28,21 @@ public abstract class LocalNotifications {
 
     protected void setNotification(final String notificationTitle, final String notificationText, final String notificationCommand) {
         clearNotifications();
-        boolean onWeekends = false;
         for (final String currentEntry : notificationCommand.split(" ")) {
+            boolean onWeekends = false;
             notificationLog(currentEntry);
             final String[] currentParts = currentEntry.split(":");
             if (currentParts.length > 1) {
                 switch (currentParts[0]) {
                     case "in_minutes":
                         setNotificationInMinutes(notificationTitle, notificationText + "\n" + currentEntry, Integer.parseInt(currentParts[1]));
+                        break;
+                    case "weekends_between":
+                        onWeekends = true;
+                    case "weekdays_between":
+                        for (int[] repetitionTimes : findNotificationRepetitions(Integer.parseInt(currentParts[1]), Integer.parseInt(currentParts[2]), Integer.parseInt(currentParts[3]), Integer.parseInt(currentParts[4]), Integer.parseInt(currentParts[5]))) {
+                            findNotificationDays(notificationTitle, notificationText + "\n" + currentEntry, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
+                        }
                         break;
                     case "weekends":
                         onWeekends = true;
@@ -45,6 +53,31 @@ public abstract class LocalNotifications {
             }
         }
         setNotificationSucceded();
+    }
+
+    protected int[][] findNotificationRepetitions(final int hourFromInt, final int minuteFromInt, final int hourUntilInt, final int minuteUntilInt, final int repetitionCount) {
+        Date fromDate = new Date();
+        fromDate.setHours(hourFromInt);
+        fromDate.setMinutes(minuteFromInt);
+        Date untilDate = new Date();
+        untilDate.setHours(hourUntilInt);
+        untilDate.setMinutes(minuteUntilInt);
+        long viableRange = untilDate.getTime() - fromDate.getTime();
+        final int repetitionRange = (int) viableRange / repetitionCount;
+        int paddingValue = (int) (repetitionRange * 0.1);
+//        System.out.println("viableRange: " + viableRange / 1000 / 60);
+//        System.out.println("repetitionRange: " + repetitionRange / 1000 / 60);
+//        System.out.println("paddingValue: " + paddingValue / 1000 / 60);
+        final int[][] repetitionArray = new int[repetitionCount][2];
+        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+            final int nextInt = new Random().nextInt(repetitionRange - paddingValue);
+            final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt + (paddingValue / 2);
+//            System.out.println("nextInt: " + nextInt / 1000 / 60);
+//            System.out.println("nextPeriod: " + nextPeriod / 1000 / 60);
+            final Date repetitionDate = new Date(fromDate.getTime() + nextPeriod);
+            repetitionArray[repetitionIndex] = new int[]{repetitionDate.getHours(), repetitionDate.getMinutes()};
+        }
+        return repetitionArray;
     }
 
     protected void findNotificationDays(final String notificationTitle, final String notificationText, final int maxDaysInAdvance, final boolean onWeekends, final int hourInt, final int minuteInt) {
