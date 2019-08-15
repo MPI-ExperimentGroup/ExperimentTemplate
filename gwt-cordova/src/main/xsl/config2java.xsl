@@ -683,22 +683,26 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="kinTypeStringDiagram|loadKinTypeStringDiagram|editableKinEntitesDiagram|ratingFooterButton|ratingButton|stimulusRatingButton|stimulusRatingRadio|ratingRadioButton">
+    <xsl:template match="kinTypeStringDiagram|loadKinTypeStringDiagram|editableKinEntitesDiagram|ratingFooterButton|ratingButton|stimulusRatingButton|stimulusRatingRadio|stimulusRatingCheckbox|ratingRadioButton|ratingCheckboxes">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
         <xsl:if test="local-name() eq 'stimulusRatingButton'
 or local-name() eq 'stimulusRatingRadio'
+or local-name() eq 'stimulusRatingCheckbox'
 or local-name() eq 'ratingButton'
 or local-name() eq 'ratingRadioButton'
+or local-name() eq 'ratingCheckboxes'
 or local-name() eq 'ratingFooterButton'
 ">
             <xsl:text>, stimulusProvider</xsl:text>
         </xsl:if>
         <xsl:if test="local-name() eq 'stimulusRatingButton'
 or local-name() eq 'stimulusRatingRadio'
+or local-name() eq 'stimulusRatingCheckbox'
 or local-name() eq 'ratingButton'
 or local-name() eq 'ratingRadioButton'
+or local-name() eq 'ratingCheckboxes'
 or local-name() eq 'ratingFooterButton'
 ">
             <xsl:text>, currentStimulus</xsl:text>
@@ -707,7 +711,9 @@ or local-name() eq 'ratingFooterButton'
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Rating')) then ', ' else ''" /> 
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
         <xsl:if test="local-name() ne 'stimulusRatingRadio'
+and local-name() ne 'stimulusRatingCheckbox'
 and local-name() ne 'ratingRadioButton'
+and local-name() ne 'ratingCheckboxes'
 ">
             <xsl:text>, new TimedStimulusListener() {
 
@@ -723,13 +729,13 @@ and local-name() ne 'ratingRadioButton'
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@ratingLabels) then concat(', &quot;', @ratingLabels, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then concat(', &quot;', @ratingLabelLeft, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then concat(', &quot;', @ratingLabelRight, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckboxes' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox') then concat(', &quot;', @ratingLabelLeft, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckboxes' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox') then concat(', &quot;', @ratingLabelRight, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(', ', @eventTier) else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then concat(', &quot;', @styleName, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then if(@dataChannel) then concat(', ', @dataChannel) else ', 0' else ''" />
-        <xsl:value-of select="if(local-name() eq 'stimulusRatingRadio' or local-name() eq 'ratingRadioButton') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckboxes' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox') then concat(', &quot;', @styleName, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckboxes' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox') then if(@dataChannel) then concat(', ', @dataChannel) else ', 0' else ''" />
+        <xsl:value-of select="if(local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckboxes') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
         <xsl:if test="@tags">
             <xsl:text>, new Tag[]{</xsl:text>
             <xsl:for-each select="tokenize(@tags,' ')">
