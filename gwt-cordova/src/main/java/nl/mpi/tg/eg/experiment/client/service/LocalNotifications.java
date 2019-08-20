@@ -60,7 +60,7 @@ public abstract class LocalNotifications {
         fromDate.setHours(hourFromInt);
         fromDate.setMinutes(minuteFromInt);
         Date untilDate = new Date();
-        untilDate.setHours(hourUntilInt);
+        untilDate.setHours((hourFromInt < hourUntilInt) ? hourUntilInt : hourUntilInt + 24);
         untilDate.setMinutes(minuteUntilInt);
         long viableRange = untilDate.getTime() - fromDate.getTime();
         final int repetitionRange = (int) viableRange / repetitionCount;
