@@ -69,6 +69,52 @@ public class LocalNotificationsTest {
         }
     }
 
+    /**
+     * Test of reverse findNotificationRepetitions method, of class
+     * LocalNotifications.
+     */
+    @Test
+    public void testFindNotificationRepetitionsReverse() {
+        System.out.println("findNotificationRepetitions reverse");
+        int hourFromInt = 20;
+        int minuteFromInt = 30;
+        int hourUntilInt = 8;
+        int minuteUntilInt = 30;
+        int repetitionCount = 24;
+        LocalNotifications instance = new LocalNotificationsImpl();
+        int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
+        assertEquals(repetitionCount, result.length);
+//        for (int[] values : result) {
+//            System.out.println(values[0] + ":" + values[1]);
+//        }
+        int expectedHour = hourFromInt;
+        for (int repetitionIndex = 0; repetitionIndex < 10; repetitionIndex++) {
+            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+
+            System.out.println("expectedMinutes: " + minuteFromInt + " - " + minuteUntilInt);
+            if (result[repetitionIndex][1] < 31) {
+                assertTrue(result[repetitionIndex][1] >= 2);
+                assertTrue(result[repetitionIndex][1] <= 28);
+            } else {
+                assertTrue(result[repetitionIndex][1] >= 32);
+                assertTrue(result[repetitionIndex][1] <= 58);
+            }
+            System.out.println("expectedHour: " + expectedHour);
+            assertEquals(expectedHour, result[repetitionIndex][0]);
+            if (repetitionIndex % 2 == 0) {
+                expectedHour++;
+                if (expectedHour > 23) {
+                    expectedHour = 0;
+                }
+            }
+            if (result[repetitionIndex][0] == hourFromInt) {
+                assertTrue(result[repetitionIndex][1] >= minuteFromInt);
+            } else if (result[repetitionIndex][0] == hourUntilInt) {
+                assertTrue(result[repetitionIndex][1] <= minuteUntilInt);
+            }
+        }
+    }
+
     public class LocalNotificationsImpl extends LocalNotifications {
 
         @Override
