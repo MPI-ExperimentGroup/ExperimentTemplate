@@ -300,6 +300,9 @@ public class DefaultExperiments {
                         case animate:
                             presenterFeature.addFeatureAttributes(attribute, "bounce");
                             break;
+                        case orientation:
+                            presenterFeature.addFeatureAttributes(attribute, "none");
+                            break;
                         case randomise:
                         case autoPlay:
                         case loop:
