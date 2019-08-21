@@ -320,6 +320,9 @@ public class DefaultExperiments {
                         case downloadPermittedWindowMs:
                             presenterFeature.addFeatureAttributes(attribute, "30000");
                             break;
+                        case targetOptions:
+                            presenterFeature.addFeatureAttributes(attribute, "AutoMenu,metadata_all_attributes");
+                            break;
                         default:
                             presenterFeature.addFeatureAttributes(attribute, attribute.name());
                     }
