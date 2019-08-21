@@ -2934,14 +2934,14 @@
 <xs:complexType name="requestNotificationType">
 <xs:all>
 <xs:annotation>
-<xs:documentation>Request mobile notifications at given times in the future on Android and iOS apps.</xs:documentation>
+<xs:documentation>Request mobile notifications at given times in the future on Android and iOS apps. The presenters listed in targetOptions need to be comma separated and will be shown as buttons in the notification.</xs:documentation>
 </xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
-<xs:attribute name="listenerId" type="xs:string" use="required"/>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
+<xs:attribute name="targetOptions" type="xs:string"/>
 <xs:attribute name="dataLogFormat" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="startTimerType">

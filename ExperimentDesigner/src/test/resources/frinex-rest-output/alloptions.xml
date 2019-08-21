@@ -262,7 +262,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
-        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="targetOptions" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -1493,7 +1493,7 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
-        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="targetOptions" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2190,7 +2190,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
-        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -3421,7 +3421,7 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
-        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
