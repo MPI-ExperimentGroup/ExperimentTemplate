@@ -1699,12 +1699,12 @@
                 <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingButton>
-                <ratingCheckBox ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <ratingCheckbox ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
                 <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="none"/>
                 <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
-                <stimulusRatingCheckBox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
                 <stimulusRatingRadioButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="none"/>
             </hasMoreStimulus>
             <endOfStimulus>
