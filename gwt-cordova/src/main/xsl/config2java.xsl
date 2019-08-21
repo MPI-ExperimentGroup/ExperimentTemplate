@@ -95,7 +95,12 @@
         </xsl:text>
         <!--todo: does this even work?-->
         <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(messages.', generate-id(experiment/preventWindowClose), '());') else ''" />
-        <xsl:text>        
+        <xsl:for-each select="distinct-values(tokenize(string-join(experiment//@targetOptions,','),','))">
+            <xsl:text>addNotificationCallback(&quot;</xsl:text>
+            <xsl:value-of select="." />
+            <xsl:text>&quot;);</xsl:text>
+        </xsl:for-each>
+        <xsl:text>
             }
             
             @Override
@@ -531,7 +536,18 @@ or local-name() eq 'removeStimulus'
             <xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else '&quot;logTokenText&quot;, '" />
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
-        <xsl:value-of select="if(local-name() eq 'requestNotification' or local-name() eq 'switchUserIdButton') then ', ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'switchUserIdButton') then ', ' else ''" />
+        <xsl:if test="local-name() eq 'requestNotification'">
+            <xsl:text>, new ApplicationState[]{</xsl:text>
+            <xsl:for-each select="tokenize(@targetOptions,',')">
+                <xsl:text>ApplicationState.</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:if test="position() != last()">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>}, </xsl:text>
+        </xsl:if>
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@linkedFieldName) then concat(', metadataFieldProvider.', @linkedFieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@featureText and (@styleName or contains(local-name(), 'Button'))) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />    
@@ -726,7 +742,15 @@ and local-name() ne 'ratingCheckbox'
                 }</xsl:text>
         </xsl:if>
         <xsl:value-of select="if(@kintypestring) then concat(', &quot;', @kintypestring, '&quot;') else ''" />
-orientationType
+        <xsl:if test="local-name() eq 'stimulusRatingRadio'
+or local-name() eq 'stimulusRatingCheckbox'
+or local-name() eq 'stimulusRatingButton'
+or local-name() eq 'ratingRadioButton'
+or local-name() eq 'ratingButton'
+or local-name() eq 'ratingCheckbox'
+">
+            <xsl:value-of select="if(@orientationType) then concat(', OrientationType.', @orientationType) else ', OrientationType.horizontal'" />
+        </xsl:if>
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@ratingLabels) then concat(', &quot;', @ratingLabels, '&quot;') else ''" />
