@@ -292,6 +292,23 @@ public abstract class AppController implements AppEventListner/*, AudioException
      return $wnd.device.cordova;
      }-*/;
 
+    public void requestStateFromString(final String targetState) {
+        try {
+            ApplicationState lastAppState = ApplicationState.valueOf(targetState);
+            requestApplicationState(lastAppState);
+        } catch (IllegalArgumentException argumentException) {
+        }
+    }
+
+    final protected native void addNotificationCallback(final String targetState) /*-{
+        if ($wnd.device) {
+            $wnd.device.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
+                console.log(notification, eopts);
+                appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(targetState);
+            });
+        }
+     }-*/;
+
     protected native String getDevicePlatform() /*-{
      return $wnd.device.platform;
      }-*/;
