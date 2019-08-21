@@ -33,7 +33,7 @@ public enum FeatureType {
     logTokenText(false, false, new FeatureAttribute[]{dataChannel, type, headerKey, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */, // if headerKey is not provided then the stimulus id will be used // todo: headerKey is perhaps in conflict with sendStimuliReport where headerKey is used by the administration and perhaps should be moved to the administration element
     plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{src, styleName, msToNext}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none),
-    menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
+    menuItem(false, true, new FeatureAttribute[]{target, hotKey, styleName}),
     //    popupMessage(true, true, null),
     withStimuli(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.eachStimulus, Contitionals.none), // loop over all loaded stimuli rather than using next stimulus on user input
     // todo: document that Tags require all to exist on the stimuli "stimulus.getTags().containsAll(selectionTags)"
@@ -125,7 +125,7 @@ public enum FeatureType {
     centrePage(false, false, null),
     clearPage(false, false, new FeatureAttribute[]{styleName}),
     backgroundImage(true, false, new FeatureAttribute[]{msToNext, src, styleName}),
-    allMenuItems(false, false, null),
+    allMenuItems(false, false, new FeatureAttribute[]{styleName}),
     prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect/*, repeatMatching*/}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
