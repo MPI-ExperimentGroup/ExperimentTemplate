@@ -1296,6 +1296,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, styleName, dataChannel, buttonGroupName);
     }
 
+    public void stimulusRatingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
+    }
+
     public void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
         final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
         final String[] splitRatingLabels = ratingLabels.split(",");
