@@ -52,7 +52,9 @@ public enum FeatureAttribute {
     maxHeight,
     maxWidth,
     align,
+    orientation(true, new String[]{"horizontal", "vertical", "none"}),
     target(false), // this is probably not optional in some cases
+    targetOptions(true),
     styleName(true),
     regionId,
     showOnBackButton(true),
@@ -71,7 +73,7 @@ public enum FeatureAttribute {
     repeatCount(true),
     repeatRandomWindow(true), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
     adjacencyThreshold(true),
-    repeatIncorrect, 
+    repeatIncorrect,
 //    repeatMatching(true),
     hotKey(true, new String[]{
         "A",
@@ -226,7 +228,7 @@ public enum FeatureAttribute {
     downloadPermittedWindowMs,
     deviceRegex(true),
     poster,
-    autoPlay,
+    autoPlay, // Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.
     loop,
     columnCount,
     kintypestring,
