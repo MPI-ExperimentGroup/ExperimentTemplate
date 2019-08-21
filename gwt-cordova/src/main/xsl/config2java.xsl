@@ -724,7 +724,7 @@ or local-name() eq 'ratingFooterButton'
             <xsl:text>, currentStimulus</xsl:text>
         </xsl:if>
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
-        <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Rating')) then ', ' else ''" /> 
+        <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Rating') or contains(local-name(), 'Checkbox')) then ', ' else ''" /> 
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
         <xsl:if test="local-name() ne 'stimulusRatingRadio'
 and local-name() ne 'stimulusRatingCheckbox'
