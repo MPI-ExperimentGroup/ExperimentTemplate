@@ -321,7 +321,7 @@ public class DefaultExperiments {
                             presenterFeature.addFeatureAttributes(attribute, "30000");
                             break;
                         case targetOptions:
-                            presenterFeature.addFeatureAttributes(attribute, "AutoMenu,metadata_all_attributes");
+                            presenterFeature.addFeatureAttributes(attribute, "AutoMenu,about");
                             break;
                         default:
                             presenterFeature.addFeatureAttributes(attribute, attribute.name());
