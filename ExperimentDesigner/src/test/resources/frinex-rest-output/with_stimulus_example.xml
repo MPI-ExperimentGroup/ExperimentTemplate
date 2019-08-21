@@ -1705,7 +1705,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
                 <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <stimulusRatingRadioButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="none"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="none"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
