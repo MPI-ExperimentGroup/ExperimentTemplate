@@ -1737,7 +1737,7 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <menuItem featureText="menuItem" hotKey="A" target="target"/>
+        <menuItem featureText="menuItem" hotKey="A" styleName="styleName" target="target"/>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
@@ -1748,7 +1748,7 @@
         <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
-        <allMenuItems/>
+        <allMenuItems styleName="styleName"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>

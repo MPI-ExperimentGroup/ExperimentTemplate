@@ -447,6 +447,7 @@
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="target" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
+<xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="withStimuliType">
 <xs:all>
@@ -2487,6 +2488,7 @@
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="allMenuItemsType">
+<xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="prevStimulusButtonType">
 <xs:attribute name="featureText" type="xs:string" use="required"/>
