@@ -334,7 +334,15 @@ public abstract class AbstractPresenter implements Presenter {
         timer.schedule(100);
     }
 
-    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+        StringBuilder targetStateJsonBuilder = new StringBuilder();
+        for (ApplicationState targetState : targetOptionStates) {
+            targetStateJsonBuilder.append("{id: '");
+            targetStateJsonBuilder.append(targetState.name());
+            targetStateJsonBuilder.append("', title: '");
+            targetStateJsonBuilder.append(targetState.label);
+            targetStateJsonBuilder.append("', launch: true},");
+        }
         new LocalNotifications() {
             @Override
             protected void setNotificationSucceded() {
@@ -351,7 +359,7 @@ public abstract class AbstractPresenter implements Presenter {
                 ((ComplexView) simpleView).addText(logString);
             }
 
-        }.requestNotification(messageTitle, dataLogFormat, userResults.getUserData().getMetadataValue(metadataField));
+        }.requestNotification(messageTitle, dataLogFormat, targetStateJsonBuilder.toString(), userResults.getUserData().getMetadataValue(metadataField));
         ((ComplexView) simpleView).addPadding();
     }
 
