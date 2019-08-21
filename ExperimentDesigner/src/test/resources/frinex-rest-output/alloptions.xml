@@ -262,7 +262,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
-        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="targetOptions" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="AutoMenu,metadata_all_attributes" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -1493,7 +1493,7 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
-        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="targetOptions" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="AutoMenu,metadata_all_attributes" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
