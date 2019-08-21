@@ -581,7 +581,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -753,7 +753,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -937,7 +937,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -1110,7 +1110,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -1284,7 +1284,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -1457,7 +1457,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -1611,7 +1611,7 @@
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
-<xs:complexType name="ratingCheckboxesType">
+<xs:complexType name="ratingCheckboxType">
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabels" type="xs:string" use="required"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
@@ -1659,7 +1659,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -1869,7 +1869,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -2049,7 +2049,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -2345,7 +2345,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -2599,7 +2599,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -2792,7 +2792,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -2974,7 +2974,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -3166,7 +3166,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -3337,7 +3337,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -3508,7 +3508,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -3685,7 +3685,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -3857,7 +3857,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -4029,7 +4029,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -4200,7 +4200,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -4368,7 +4368,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -4536,7 +4536,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -4704,7 +4704,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -4874,7 +4874,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -5044,7 +5044,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -5214,7 +5214,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -5382,7 +5382,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -5550,7 +5550,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -5718,7 +5718,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -5886,7 +5886,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -6054,7 +6054,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -6222,7 +6222,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -6390,7 +6390,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -6558,7 +6558,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -6732,7 +6732,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -6900,7 +6900,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -7068,7 +7068,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -7236,7 +7236,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -7404,7 +7404,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -7572,7 +7572,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -7740,7 +7740,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -7908,7 +7908,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -8076,7 +8076,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -8246,7 +8246,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -8414,7 +8414,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -8583,7 +8583,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -8761,7 +8761,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -9046,7 +9046,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -9226,7 +9226,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
@@ -9457,7 +9457,7 @@
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
-<xs:element name="ratingCheckboxes" type="ratingCheckboxesType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
 <xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
 <xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
