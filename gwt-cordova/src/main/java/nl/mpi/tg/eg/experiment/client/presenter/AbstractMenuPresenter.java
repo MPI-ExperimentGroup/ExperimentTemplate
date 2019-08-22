@@ -47,15 +47,15 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
         super(widgetTag, simpleView, submissionService, userResults, localStorage, timerService);
     }
 
-    public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
+    public void allMenuItems(final AppEventListner appEventListner, final String styleName, final ApplicationController.ApplicationState selfApplicationState) {
         for (final ApplicationController.ApplicationState currentAppState : ApplicationController.ApplicationState.values()) {
             if (currentAppState.label != null && selfApplicationState != currentAppState) {
-                menuItem(appEventListner, currentAppState, currentAppState.label, -1);
+                menuItem(appEventListner, currentAppState, currentAppState.label, -1, styleName);
             }
         }
     }
 
-    public void menuItem(final AppEventListner appEventListner, final ApplicationController.ApplicationState target, final String menuLabel, final int hotkey) {
+    public void menuItem(final AppEventListner appEventListner, final ApplicationController.ApplicationState target, final String menuLabel, final int hotkey, final String styleName) {
         final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + target.name()));
         if (!screenCompleted) {
             nonCompletedScreens.add(target);
@@ -74,7 +74,7 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
 
             @Override
             public String getStyleName() {
-                return null;
+                return styleName;
             }
 
             @Override
