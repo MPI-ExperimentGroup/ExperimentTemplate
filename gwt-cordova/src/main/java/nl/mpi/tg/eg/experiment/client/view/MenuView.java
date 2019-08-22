@@ -59,6 +59,9 @@ public class MenuView extends TimedStimulusView {
         final Button menuButton = new Button(new SafeHtmlBuilder().appendEscapedLines(menuItemListerner.getLabel()).toSafeHtml());
 //        tableMap.get(flexTable).add(menuButton);
         menuButton.addStyleName("menuButton");
+        if (menuItemListerner.getStyleName() != null) {
+            menuButton.addStyleName(menuItemListerner.getStyleName());
+        }
         menuButton.setEnabled(menuEnabled);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
