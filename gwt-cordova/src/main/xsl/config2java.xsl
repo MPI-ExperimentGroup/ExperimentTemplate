@@ -378,6 +378,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>()</xsl:text>  
         <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ', -1'" />
+        <xsl:value-of select="if(@styleName) then concat(',&quot;', @styleName, '&quot;') else ',null'" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -604,7 +605,7 @@ or local-name() eq 'removeStimulus'
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
-        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
+        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" /> 
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -615,7 +616,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
-        <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@styleName) then concat(',&quot;',@styleName, '&quot;') else ',null' else ''" />
+        <xsl:value-of select="if(contains(local-name(), 'Menu') or contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@styleName) then concat(',&quot;',@styleName, '&quot;') else ',null' else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'allMenuItems') then ', selfApplicationState' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" /> 
