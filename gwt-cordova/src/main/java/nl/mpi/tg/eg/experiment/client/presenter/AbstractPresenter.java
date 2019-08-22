@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
@@ -336,13 +338,19 @@ public abstract class AbstractPresenter implements Presenter {
 
     public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
         StringBuilder targetStateJsonBuilder = new StringBuilder();
+        targetStateJsonBuilder.append("[");
         for (ApplicationState targetState : targetOptionStates) {
-            targetStateJsonBuilder.append("{id: '");
+            if (targetStateJsonBuilder.length() > 1) {
+                targetStateJsonBuilder.append(",");
+            }
+            targetStateJsonBuilder.append("{\"id\": \"");
             targetStateJsonBuilder.append(targetState.name());
-            targetStateJsonBuilder.append("', title: '");
+            targetStateJsonBuilder.append("\", \"title\": \"");
             targetStateJsonBuilder.append(targetState.label);
-            targetStateJsonBuilder.append("', launch: true},");
+            targetStateJsonBuilder.append("\", \"launch\": true}");
         }
+        targetStateJsonBuilder.append("]");
+        JavaScriptObject targetStateJsonData = JsonUtils.safeEval(targetStateJsonBuilder.toString());
         new LocalNotifications() {
             @Override
             protected void setNotificationSucceded() {
@@ -359,7 +367,7 @@ public abstract class AbstractPresenter implements Presenter {
                 ((ComplexView) simpleView).addText(logString);
             }
 
-        }.requestNotification(messageTitle, dataLogFormat, targetStateJsonBuilder.toString(), userResults.getUserData().getMetadataValue(metadataField));
+        }.requestNotification(messageTitle, dataLogFormat, targetStateJsonData, userResults.getUserData().getMetadataValue(metadataField));
         ((ComplexView) simpleView).addPadding();
     }
 
