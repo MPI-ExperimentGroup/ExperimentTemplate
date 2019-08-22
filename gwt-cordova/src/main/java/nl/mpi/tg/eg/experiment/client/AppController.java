@@ -302,7 +302,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
 
     final protected native void addNotificationCallback(final String targetState) /*-{
         if ($wnd.device) {
-            $wnd.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
+            console.log("addNotificationCallback", targetState);
+            $wnd.cordova.plugins.notification.local.core.on(targetState, function(notification, eopts) {
                 console.log(notification, eopts);
                 appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(targetState);
             });
