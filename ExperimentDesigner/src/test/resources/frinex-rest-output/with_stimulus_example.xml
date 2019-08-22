@@ -113,6 +113,14 @@
         border: 3px solid blueviolet;
         padding: 3px;
         }
+        .gwt-Button.menuButton.menuButtonDemoAStyle {
+        background: rgb(193,227,241);
+        border-radius: 0px;
+        }
+        .gwt-Button.menuButton.menuButtonDemoBStyle {
+        background: rgb(246,170,139);
+        border-radius: 5px;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -3044,15 +3052,16 @@
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-
-    <presenter menuLabel="menuItemStyle" type="menu" next="Menu" self="menuItemStyle" title="menuItemStyle">
-        <menuItem featureText="Timer_Label_Screen" target="Timer_Label_Screen" styleName="toggleBoxOn"/>
-        <menuItem featureText="Region_Timer_Screen" target="Region_Timer_Screen" styleName="toggleBoxOn"/>
-        <menuItem featureText="Region_Toggle_Example" target="Region_Toggle_Example" styleName="bigText"/>
-        <menuItem featureText="Rating_Toggle_Example" target="Rating_Toggle_Example" styleName="toggleBoxOn bigText"/>
-        <menuItem featureText="With_Stimuli_Screen" target="With_Stimuli_Screen" styleName="toggleBoxOn"/>
+    <presenter menuLabel="menuItemStyle" type="menu" back="Menu" self="menuItemStyle" title="menuItemStyle">
+        <menuItem featureText="Timer_Label_Screen" target="Timer_Label_Screen" styleName="menuButtonDemoAStyle"/>
+        <menuItem featureText="Region_Timer_Screen" target="Region_Timer_Screen" styleName="menuButtonDemoAStyle"/>
+        <menuItem featureText="Region_Toggle_Example" target="Region_Toggle_Example" styleName="menuButtonDemoBStyle"/>
+        <menuItem featureText="Rating_Toggle_Example" target="Rating_Toggle_Example" styleName="menuButtonDemoAStyle"/>
+        <menuItem featureText="With_Stimuli_Screen" target="With_Stimuli_Screen" styleName="menuButtonDemoBStyle"/>
     </presenter>
-    
+    <presenter menuLabel="allMenuItemsStyle" type="menu" back="Menu" self="allMenuItemsStyle" title="allMenuItemsStyle">
+        <allMenuItems styleName="menuButtonDemoAStyle"/>
+    </presenter>
     <presenter menuLabel="activateRandomItem" type="menu" next="Menu" self="activateRandomItem" title="activateRandomItem">
         <menuItem featureText="Timer_Label_Screen" target="Timer_Label_Screen"/>
         <menuItem featureText="Region_Timer_Screen" target="Region_Timer_Screen"/>
