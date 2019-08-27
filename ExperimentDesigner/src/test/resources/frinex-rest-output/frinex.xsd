@@ -15,6 +15,11 @@
 <xs:pattern value="[a-z]([a-z_0-9]){3,}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="presenterName">
+<xs:restriction base="xs:string">
+<xs:pattern value="[a-zA-Z_0-9]{3,}"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="integerList">
 <xs:list itemType="xs:integer"/>
 </xs:simpleType>
@@ -26,7 +31,7 @@
 <xs:restriction base="xs:token">
 <xs:enumeration value="horizontal"/>
 <xs:enumeration value="vertical"/>
-<xs:enumeration value="none"/>
+<xs:enumeration value="flow"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>
@@ -148,6 +153,20 @@
 <xs:enumeration value="LP310_MIDDLE_LONG"/>
 <xs:enumeration value="LP310_MIDDLE_DOUBLE"/>
 <xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="autoPlayType">
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="true"/>
+<xs:enumeration value="false"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>
@@ -358,11 +377,11 @@
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
 </xs:choice>
-<xs:attribute name="self" type="xs:string" use="required"/>
+<xs:attribute name="self" type="presenterName" use="required"/>
 <xs:attribute name="title" type="xs:string"/>
 <xs:attribute name="menuLabel" type="xs:string"/>
-<xs:attribute name="back" type="xs:string"/>
-<xs:attribute name="next" type="xs:string"/>
+<xs:attribute name="back" type="presenterName"/>
+<xs:attribute name="next" type="presenterName"/>
 <xs:attribute name="type" use="required">
 <xs:simpleType>
 <xs:restriction>
@@ -2558,7 +2577,7 @@
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="poster" type="xs:string" use="required"/>
-<xs:attribute name="autoPlay" type="xs:string" use="required"/>
+<xs:attribute name="autoPlay" type="autoPlayType" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="src" type="xs:string" use="required"/>
@@ -8965,7 +8984,7 @@
 <xs:attribute name="percentOfPage" type="xs:string" use="required"/>
 <xs:attribute name="loop" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
-<xs:attribute name="autoPlay" type="xs:string" use="required"/>
+<xs:attribute name="autoPlay" type="autoPlayType" use="required"/>
 <xs:attribute name="showControls" type="xs:string" use="required"/>
 <xs:attribute name="maxWidth" type="xs:string" use="required"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
@@ -8980,7 +8999,7 @@
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="loop" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
-<xs:attribute name="autoPlay" type="xs:string" use="required"/>
+<xs:attribute name="autoPlay" type="autoPlayType" use="required"/>
 <xs:attribute name="showControls" type="xs:string" use="required"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
 </xs:complexType>
@@ -8994,7 +9013,7 @@
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="codeFormat" type="xs:string" use="required"/>
 <xs:attribute name="showPlaybackIndicator" type="xs:string" use="required"/>
-<xs:attribute name="autoPlay" type="xs:string" use="required"/>
+<xs:attribute name="autoPlay" type="autoPlayType" use="required"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="stimulusAudioType">
@@ -9006,7 +9025,7 @@
 </xs:all>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="showPlaybackIndicator" type="xs:string" use="required"/>
-<xs:attribute name="autoPlay" type="xs:string" use="required"/>
+<xs:attribute name="autoPlay" type="autoPlayType" use="required"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="playMediaType">
