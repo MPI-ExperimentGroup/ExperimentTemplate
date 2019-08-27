@@ -203,10 +203,12 @@ public class AbstractSchemaGenerator {
             }
             if (featureType.getFeatureAttributes() != null) {
                 for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                    if (featureAttribute.getTypeValues() == null) {
-                        stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
+                    if (featureAttribute.getTypeValues() != null) {
+                        restrictedAttribute(featureAttribute.name(), featureAttribute.name() + "Type", featureAttribute.getDocumentation(), featureAttribute.isOptional(), featureAttribute.getTypeValues());
+                    } else if (featureAttribute.getType() != null) {
+                        documentedAttribute(featureAttribute.name(), featureAttribute.getType(), featureAttribute.getDocumentation(), featureAttribute.isOptional());
                     } else {
-                        restrictedAttribute(featureAttribute.name(), featureAttribute.name() + "Type", featureAttribute.isOptional(), featureAttribute.getTypeValues());
+                        stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
                     }
                 }
             }
@@ -249,13 +251,13 @@ public class AbstractSchemaGenerator {
             return this;
         }
 
-        public final DocumentationElement presenterNameAttribute(final String attributeName, String documentation, final boolean optional) {
+        public final DocumentationElement presenterNameAttribute(final String attributeName, final String documentation, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "The value of this attribute must exist in one presenter self attributes. " + documentation, AttributeType.presenterName, optional));
             return this;
         }
 
-        public final DocumentationElement restrictedAttribute(final String attributeName, final String typeName, final boolean optional, final String... restriction) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Option List", typeName, optional, restriction));
+        public final DocumentationElement restrictedAttribute(final String attributeName, final String typeName, final String documentation, final boolean optional, final String... restriction) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, (documentation != null) ? documentation : "Option List", typeName, optional, restriction));
             return this;
         }
 
@@ -286,6 +288,11 @@ public class AbstractSchemaGenerator {
 
         public final DocumentationElement integerListAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "Integer List", AttributeType.integerList, optional));
+            return this;
+        }
+
+        public final DocumentationElement documentedAttribute(final String attributeName, final AttributeType attributeType, final String documentation, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, documentation, attributeType, optional));
             return this;
         }
     }
@@ -336,7 +343,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("menuLabel", true)
                         .presenterNameAttribute("back", "If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", true)
                         .presenterNameAttribute("next", "The value of this attribute is used as the target for gotoNextPresenter etc..", true)
-                        .restrictedAttribute(AttributeType.presenterKind.typeString, null, false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
+                        .restrictedAttribute(AttributeType.presenterKind.typeString, null, "The type of presenter which also determines the features that can be used in the presenter.", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{
