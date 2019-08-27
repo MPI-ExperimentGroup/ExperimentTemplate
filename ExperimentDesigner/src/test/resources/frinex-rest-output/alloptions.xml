@@ -385,17 +385,17 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <ratingCheckbox orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="none" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusRatingCheckbox orientation="none" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -749,17 +749,17 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <ratingCheckbox orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="none" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusRatingCheckbox orientation="none" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -1113,17 +1113,17 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <ratingCheckbox orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton orientation="none" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="none" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusRatingCheckbox orientation="none" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
