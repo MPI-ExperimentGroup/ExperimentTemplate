@@ -67,7 +67,6 @@ public class ComplexView extends SimpleView {
     private final List<InsertPanel.ForIsWidget> activePanels = new ArrayList<>();
     private final HashMap<String, VerticalPanel> regionPanels = new HashMap<>();
     private final ArrayList<FlexTable> gridPanelList = new ArrayList<>();
-    private final ArrayList<VerticalPanel> cellPanelList = new ArrayList<>();
 
     private class ImageEntry {
 
@@ -146,15 +145,9 @@ public class ComplexView extends SimpleView {
         return (index >= 0) ? gridPanelList.get(index) : null;
     }
 
-    public VerticalPanel cellPanel() {
-        // a cell can exist outside a table in some older experiments, so we keep one outer cell in relation to the gridPanelList
-        return (cellPanelList.size() > gridPanelList.size()) ? cellPanelList.get(gridPanelList.size()) : null;
-    }
-
     public void startCell(String styleName) {
         VerticalPanel cellPanel = new VerticalPanel();
         activePanels.add(cellPanel);
-        cellPanelList.set(gridPanelList.size(), cellPanel);
         if (styleName != null && !styleName.isEmpty()) {
             cellPanel.addStyleName(styleName);
         }
@@ -168,7 +161,6 @@ public class ComplexView extends SimpleView {
     }
 
     public void endCell() {
-        cellPanelList.set(gridPanelList.size(), null);
         activePanels.remove(activePanels.size() - 1);
     }
 
@@ -193,14 +185,10 @@ public class ComplexView extends SimpleView {
         }
         getActivePanel().add(gridPanel);
         gridPanelList.add(gridPanel);
-        while (cellPanelList.size() < gridPanelList.size() + 1) {
-            cellPanelList.add(null);
-        }
         return gridPanel();
     }
 
     public void endTable() {
-        cellPanelList.set(gridPanelList.size(), null);
         gridPanelList.remove(gridPanelList.size() - 1);
     }
 
