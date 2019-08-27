@@ -3266,6 +3266,53 @@
             </sendMetadata>
         </pause>
     </presenter>
+    <presenter menuLabel="table-tags inside a region-tag"  self="table_tags_inside_a_region_tag" type="stimulus" title="table-tags inside a region-tag">
+        <region regionId="missedAutors"/>
+        <regionReplace  regionId="missedAutors" styleName="">
+            <addPadding/>  
+            <withStimuli randomise="false" eventTag="missed_fav_author" maxStimuli="3" repeatCount="1">
+                <beforeStimulus> 
+                </beforeStimulus>
+                <eachStimulus>
+                    <table>
+                        <row>
+                            <column>
+                                <stimulusLabel/> 
+                            </column>
+                            <column>
+                                <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan." validationRegex=".*" inputErrorMessage=" " />
+                            </column>
+                        </row>
+                    </table>
+                </eachStimulus>
+                <afterStimulus>   
+                </afterStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>missed_fav_author</tag>
+                </stimuli>
+            </withStimuli>
+        </regionReplace>
+        <region regionId="buttons"/>
+        <regionReplace regionId="buttons" styleName="">
+            <addPadding/>
+            <htmlText featureText="Heb je favoriete auteurs, die niet in deze lijst staan?"/>
+            <table>
+                <row>
+                    <column>
+                        <actionButton featureText="left" >
+                            <htmlText featureText="pressed left"/>
+                        </actionButton>
+                    </column>
+                    <column>
+                        <actionButton featureText="right" >
+                            <htmlText featureText="pressed right"/>
+                        </actionButton>
+                    </column>   
+                </row>
+            </table>
+        </regionReplace>
+    </presenter>
     <!--todo: add an example of random pause with min max and also with ranges-->
     <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
@@ -3349,5 +3396,8 @@
         <stimulus code="NN" identifier="68" correctResponses="5" ratingLabels="1,2,3,4,5" label="De meeste vrienden. 5" pauseMs="0" tags="RatingToggle"/>
         <stimulus code="NC" identifier="32" correctResponses="1" ratingLabels="1,2,3,4,5" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
         <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
+        <stimulus  identifier="author_1"  label="Auteur 1"  tags="missed_fav_author"  pauseMs="0"  />
+        <stimulus  identifier="author_2"  label="Auteur 2"  tags="missed_fav_author"  pauseMs="0"  />
+        <stimulus  identifier="author_3"  label="Auteur 3"  tags="missed_fav_author"  pauseMs="0"  />
     </stimuli>
 </experiment>
