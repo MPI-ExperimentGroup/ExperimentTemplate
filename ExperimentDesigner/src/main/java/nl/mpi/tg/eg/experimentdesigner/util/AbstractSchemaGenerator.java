@@ -36,7 +36,7 @@ public class AbstractSchemaGenerator {
 
     public enum AttributeType {
         xsString("xs:string"),
-        presenterName("xs:string"),
+        presenterName("presenterName"),
         xsInteger("xs:integer"),
         xsDecimal("xs:decimal"),
         xsBoolean("xs:boolean"),
@@ -338,7 +338,7 @@ public class AbstractSchemaGenerator {
                                     .booleanAttribute("preventServerDuplicates", true)
                         }),
                 new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
-                        .stringAttribute("self", false)
+                        .documentedAttribute("self", AttributeType.presenterName, "The name of the presenter, which must be unique per configuration file.", false)
                         .stringAttribute("title", true)
                         .stringAttribute("menuLabel", true)
                         .presenterNameAttribute("back", "If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", true)
