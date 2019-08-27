@@ -34,6 +34,23 @@ public class AbstractSchemaGenerator {
         allOnceUnordered, choiceAnyCount, sequenceOnceOrdered
     }
 
+    public enum AttributeType {
+        xsString("xs:string"),
+        presenterName("xs:string"),
+        xsInteger("xs:integer"),
+        xsDecimal("xs:decimal"),
+        xsBoolean("xs:boolean"),
+        rgbHexValue("rgbHexValue"),
+        integerList("integerList"),
+        lowercaseValue("lowercaseValue"),
+        presenterKind("type");
+        public final String typeString;
+
+        private AttributeType(String typeString) {
+            this.typeString = typeString;
+        }
+    }
+
     protected class DocumentationAttribute {
 
         final String name;
@@ -41,6 +58,14 @@ public class AbstractSchemaGenerator {
         final String type;
         final boolean optional;
         final String[] restriction;
+
+        public DocumentationAttribute(final String name, final String documentation, final AttributeType type, final boolean optional) {
+            this.name = name;
+            this.documentation = documentation;
+            this.type = type.typeString;
+            this.optional = optional;
+            this.restriction = null;
+        }
 
         public DocumentationAttribute(final String name, final String documentation, final String type, final boolean optional, String[] restriction) {
             this.name = name;
@@ -220,12 +245,12 @@ public class AbstractSchemaGenerator {
         }
 
         public final DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "String", "xs:string", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "String", AttributeType.xsString, optional));
             return this;
         }
 
         public final DocumentationElement presenterNameAttribute(final String attributeName, String documentation, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "This attribute value must exist in one presenter self attribute. " + documentation, "xs:string", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "The value of this attribute must exist in one presenter self attributes. " + documentation, AttributeType.presenterName, optional));
             return this;
         }
 
@@ -235,32 +260,32 @@ public class AbstractSchemaGenerator {
         }
 
         public final DocumentationElement stringLowercaseAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "String Lowercase", "lowercaseValue", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "String Lowercase", AttributeType.lowercaseValue, optional));
             return this;
         }
 
         public final DocumentationElement colourRGBAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "RGB Hex Value", "rgbHexValue", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "RGB Hex Value", AttributeType.rgbHexValue, optional));
             return this;
         }
 
         public final DocumentationElement booleanAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Boolean", "xs:boolean", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Boolean", AttributeType.xsBoolean, optional));
             return this;
         }
 
         public final DocumentationElement decimalAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Decimal Number", "xs:decimal", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Decimal Number", AttributeType.xsDecimal, optional));
             return this;
         }
 
         public final DocumentationElement integerAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Integral Number", "xs:integer", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Integral Number", AttributeType.xsInteger, optional));
             return this;
         }
 
         public final DocumentationElement integerListAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Integer List", "integerList", optional, null));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Integer List", AttributeType.integerList, optional));
             return this;
         }
     }
@@ -311,7 +336,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("menuLabel", true)
                         .presenterNameAttribute("back", "If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", true)
                         .presenterNameAttribute("next", "The value of this attribute is used as the target for gotoNextPresenter etc..", true)
-                        .restrictedAttribute("type", null, false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
+                        .restrictedAttribute(AttributeType.presenterKind.typeString, null, false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{
