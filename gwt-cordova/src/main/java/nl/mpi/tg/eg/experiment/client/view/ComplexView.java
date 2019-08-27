@@ -64,7 +64,7 @@ public class ComplexView extends SimpleView {
 
     private Label recordingLabel = null;
     private HorizontalPanel horizontalPanel = null;
-    private VerticalPanel regionPanel = null;
+    private final List<InsertPanel.ForIsWidget> activePanels = new ArrayList<>();
     private final HashMap<String, VerticalPanel> regionPanels = new HashMap<>();
     private final ArrayList<FlexTable> gridPanelList = new ArrayList<>();
     private final ArrayList<VerticalPanel> cellPanelList = new ArrayList<>();
@@ -88,6 +88,7 @@ public class ComplexView extends SimpleView {
     public ComplexView() {
         super();
         outerPanel = new VerticalPanel();
+        activePanels.add(outerPanel);
 //
 //        outerPanel.getElement().setDraggable(Element.DRAGGABLE_TRUE);
 //        outerPanel.addDragStartHandler(new DragStartHandler() {
@@ -104,7 +105,6 @@ public class ComplexView extends SimpleView {
 
     private void clearAllRegions() {
         regionPanels.clear();
-        regionPanel = null;
     }
 
     public void startRegion(final String regionId, final String styleName) {
@@ -120,11 +120,11 @@ public class ComplexView extends SimpleView {
             // we set or remove the style if it is provided, however if the style is null (no style attribute) we allow the old style to persist.
             regionTemp.setStyleName(styleName);
         }
-        regionPanel = regionTemp;
+        activePanels.add(regionTemp);
     }
 
     public void endRegion() {
-        regionPanel = null;
+        activePanels.remove(activePanels.size() - 1);
     }
 
     public void setRegionStyle(final String regionId, final String styleName) {
@@ -153,6 +153,7 @@ public class ComplexView extends SimpleView {
 
     public void startCell(String styleName) {
         VerticalPanel cellPanel = new VerticalPanel();
+        activePanels.add(cellPanel);
         cellPanelList.set(gridPanelList.size(), cellPanel);
         if (styleName != null && !styleName.isEmpty()) {
             cellPanel.addStyleName(styleName);
@@ -168,6 +169,7 @@ public class ComplexView extends SimpleView {
 
     public void endCell() {
         cellPanelList.set(gridPanelList.size(), null);
+        activePanels.remove(activePanels.size() - 1);
     }
 
     public void startRow() {
@@ -206,18 +208,22 @@ public class ComplexView extends SimpleView {
         horizontalPanel = new HorizontalPanel();
         horizontalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
         outerPanel.add(horizontalPanel);
+        activePanels.add(horizontalPanel);
     }
 
     public void endHorizontalPanel() {
         horizontalPanel = null;
+        activePanels.remove(activePanels.size() - 1);
     }
 
     protected InsertPanel.ForIsWidget getActivePanel() {
-        return (regionPanel != null) ? regionPanel : (cellPanel() != null) ? cellPanel() : (horizontalPanel != null) ? horizontalPanel : outerPanel;
+        return activePanels.get(activePanels.size() - 1);
     }
 
     public void clearPageAndTimers(String styleName) {
         outerPanel.clear();
+        activePanels.clear();
+        activePanels.add(outerPanel);
         if (styleName != null && !styleName.isEmpty()) {
             outerPanel.setStyleName(styleName);
         } else {
