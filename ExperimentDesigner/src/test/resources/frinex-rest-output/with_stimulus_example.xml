@@ -1708,12 +1708,12 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingButton>
                 <ratingCheckbox ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="none"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
                 <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
                 <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="none"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
