@@ -301,7 +301,7 @@ public class DefaultExperiments {
                             presenterFeature.addFeatureAttributes(attribute, "bounce");
                             break;
                         case orientation:
-                            presenterFeature.addFeatureAttributes(attribute, "none");
+                            presenterFeature.addFeatureAttributes(attribute, "flow");
                             break;
                         case randomise:
                         case autoPlay:
