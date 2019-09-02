@@ -33,6 +33,7 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
@@ -41,6 +42,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -55,6 +57,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractStimulusPresenter.OrientationType;
 
 /**
  * @since Jan 8, 2015 5:01:05 PM (creation date)
@@ -341,19 +344,30 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final HorizontalPanel buttonsStylePanel) {
+    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final OrientationType orientationType) {
         final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
-        final VerticalPanel verticalPanel = new VerticalPanel();
-        final HorizontalPanel labelsPanel = new HorizontalPanel();
+        final Panel ratingOuterPanel;
+        final Panel buttonsPanel;
+        final Panel labelsPanel;
+        switch (orientationType) {
+            case horizontal:
+                ratingOuterPanel = new VerticalPanel();
+                buttonsPanel = new HorizontalPanel();
+                labelsPanel = new HorizontalPanel();
+                break;
+            case vertical:
+                ratingOuterPanel = new HorizontalPanel();
+                buttonsPanel = new VerticalPanel();
+                labelsPanel = buttonsPanel;
+                break;
+            default:
+                ratingOuterPanel = new VerticalPanel();
+                buttonsPanel = new FlowPanel();
+                labelsPanel = buttonsPanel;
+        }
         if (ratingLabelLeft != null) {
             labelsPanel.add(new Label(ratingLabelLeft));
         }
-        if (ratingLabelRight != null) {
-            final Label label = new Label(ratingLabelRight);
-            labelsPanel.add(label);
-            label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-        }
-        final HorizontalPanel buttonsPanel = (buttonsStylePanel != null) ? buttonsStylePanel : new HorizontalPanel();
         for (PresenterEventListner listener : presenterListeners) {
             // stimulusRatingRadio needs stimulusFreeText objects to validate them
             StimulusButton nextButton = (buttonGroupName != null) ? getRadioButton(listener, buttonGroupName, savedValue) : getOptionButton(listener);
@@ -363,18 +377,36 @@ public class ComplexView extends SimpleView {
                 nextButton.addStyleName("footerButton");
             }
             buttonsPanel.add(nextButton.getWidget());
-            buttonsPanel.setCellWidth(nextButton.getWidget(), (100 / presenterListeners.size()) + "%");
+            switch (orientationType) {
+                case horizontal:
+                    ((HorizontalPanel) buttonsPanel).setCellWidth(nextButton.getWidget(), (100 / presenterListeners.size()) + "%");
+                    break;
+                case vertical:
+                    ((VerticalPanel) buttonsPanel).setCellHeight(nextButton.getWidget(), (100 / presenterListeners.size()) + "%");
+                    break;
+                default:
+                // we dont do anything for a FlowPanel here
+            }
             stimulusButtonList.add(nextButton);
         }
-        verticalPanel.setWidth("100%");
-        labelsPanel.setWidth("100%");
-        buttonsPanel.setWidth("100%");
-        verticalPanel.add(labelsPanel);
-        verticalPanel.add(buttonsPanel);
+        if (ratingLabelRight != null) {
+            final Label label = new Label(ratingLabelRight);
+            labelsPanel.add(label);
+            if (orientationType == OrientationType.horizontal) {
+                label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+            }
+        }
+        if (orientationType != OrientationType.flow) {
+            ratingOuterPanel.setWidth("100%");
+            labelsPanel.setWidth("100%");
+            buttonsPanel.setWidth("100%");
+        }
+        ratingOuterPanel.add(labelsPanel);
+        ratingOuterPanel.add(buttonsPanel);
         if (footerButtons) {
-            addToFooter(verticalPanel);
+            addToFooter(ratingOuterPanel);
         } else {
-            addWidget(verticalPanel);
+            addWidget(ratingOuterPanel);
         }
         return stimulusButtonList;
     }
