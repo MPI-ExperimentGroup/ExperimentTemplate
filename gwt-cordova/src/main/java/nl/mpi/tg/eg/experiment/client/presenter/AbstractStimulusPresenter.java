@@ -32,7 +32,6 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -105,8 +104,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         bounce, none, stimuliCode
     }
 
-    protected enum OrientationType {
-        vertical, horizontal, none
+    public enum OrientationType {
+        vertical, horizontal, flow
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
@@ -1289,7 +1288,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void stimulusRatingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, null);
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, orientationType);
     }
 
     public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
@@ -1297,6 +1296,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void stimulusRatingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
+        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, styleName, dataChannel, buttonGroupName);
     }
 
     public void ratingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
@@ -1304,34 +1304,36 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
         final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
-        final String[] splitRatingLabels = ratingLabels.split(",");
-        for (final String ratingItem : splitRatingLabels) {
-            ratingEventListners.add(new PresenterEventListner() {
-                @Override
-                public String getLabel() {
-                    return ratingItem;
-                }
+        if (ratingLabels != null) {
+            final String[] splitRatingLabels = ratingLabels.split(",");
+            for (final String ratingItem : splitRatingLabels) {
+                ratingEventListners.add(new PresenterEventListner() {
+                    @Override
+                    public String getLabel() {
+                        return ratingItem;
+                    }
 
-                @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                    JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-                    storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
-                    storedStimulusJSONObject.put("stimulusRatingRadio", new JSONString(ratingItem));
-                    localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
-                }
+                    @Override
+                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                        JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                        storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                        storedStimulusJSONObject.put("stimulusRatingRadio", new JSONString(ratingItem));
+                        localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+                    }
 
-                @Override
-                public String getStyleName() {
-                    return null; // should this one return styleName or a sibling object?
-                }
+                    @Override
+                    public String getStyleName() {
+                        return null; // should this one return styleName or a sibling object?
+                    }
 
-                @Override
-                public int getHotKey() {
-                    return -1;
-                }
-            });
+                    @Override
+                    public int getHotKey() {
+                        return -1;
+                    }
+                });
+            }
         }
-        final HorizontalPanel buttonsPanel = new HorizontalPanel();
+        final List<StimulusButton> ratingButtons = new ArrayList<>();
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
             @Override
             public Stimulus getStimulus() {
@@ -1363,10 +1365,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             @Override
             public boolean isValid() {
                 if (getValue().isEmpty()) {
-                    buttonsPanel.setStylePrimaryName("metadataError");
+                    for (StimulusButton stimulusButton : ratingButtons) {
+                        stimulusButton.addStyleName("metadataError");
+                        stimulusButton.removeStyleName("metadataOK");
+                    }
                     return false;
                 } else {
-                    buttonsPanel.setStylePrimaryName("metadataOK");
+                    for (StimulusButton stimulusButton : ratingButtons) {
+                        stimulusButton.addStyleName("metadataOK");
+                        stimulusButton.removeStyleName("metadataError");
+                    }
                     return true;
                 }
             }
@@ -1380,86 +1388,88 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void setFocus(boolean wantsFocus) {
             }
         };
-        ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, buttonGroupName, stimulusFreeText.getValue(), buttonGroup, buttonsPanel);
+        ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, buttonGroupName, stimulusFreeText.getValue(), buttonGroup, orientationType));
         stimulusFreeTextList.add(stimulusFreeText);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, null);
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, orientationType);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, null, buttonGroup, null);
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, null, buttonGroup, OrientationType.horizontal);
     }
 
     public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int dataChannel) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
-        final String[] splitRatingLabels = ratingLabels.split(",");
-        for (final String ratingItem : splitRatingLabels) {
-            int derivedHotKey = -1;
-            if (ratingItem.equals("0")) {
-                derivedHotKey = KeyCodes.KEY_ZERO;
-            } else if (ratingItem.equals("1")) {
-                derivedHotKey = KeyCodes.KEY_ONE;
-            } else if (ratingItem.equals("2")) {
-                derivedHotKey = KeyCodes.KEY_TWO;
-            } else if (ratingItem.equals("3")) {
-                derivedHotKey = KeyCodes.KEY_THREE;
-            } else if (ratingItem.equals("4")) {
-                derivedHotKey = KeyCodes.KEY_FOUR;
-            } else if (ratingItem.equals("5")) {
-                derivedHotKey = KeyCodes.KEY_FIVE;
-            } else if (ratingItem.equals("6")) {
-                derivedHotKey = KeyCodes.KEY_SIX;
-            } else if (ratingItem.equals("7")) {
-                derivedHotKey = KeyCodes.KEY_SEVEN;
-            } else if (ratingItem.equals("8")) {
-                derivedHotKey = KeyCodes.KEY_EIGHT;
-            } else if (ratingItem.equals("9")) {
-                derivedHotKey = KeyCodes.KEY_NINE;
-            } else if (splitRatingLabels.length == 2) {
-                // if there are only two options then use z and . as the hot keys
-                if (splitRatingLabels[0].equals(ratingItem)) {
-                    derivedHotKey = KeyCodes.KEY_Z;
-                } else {
-                    derivedHotKey = KeyCodes.KEY_NUM_PERIOD;
-                }
-            }
-
-            final int hotKey = derivedHotKey;
-            eventListners.add(new PresenterEventListner() {
-                @Override
-                public String getLabel() {
-                    return ratingItem;
-                }
-
-                @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                    timedEventMonitor.registerEvent("ratingButton");
-                    endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
-                    Boolean isCorrect = null;
-                    if (currentStimulus.hasCorrectResponses()) {
-                        final boolean correctness = currentStimulus.isCorrect(ratingItem);
-                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, ratingItem, stimulusString, (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
-                        // if there are correct responses to this stimulus then increment the score
-                        userResults.getUserData().addPotentialScore(correctness);
-                        isCorrect = correctness;
+        if (ratingLabels != null) {
+            final String[] splitRatingLabels = ratingLabels.split(",");
+            for (final String ratingItem : splitRatingLabels) {
+                int derivedHotKey = -1;
+                if (ratingItem.equals("0")) {
+                    derivedHotKey = KeyCodes.KEY_ZERO;
+                } else if (ratingItem.equals("1")) {
+                    derivedHotKey = KeyCodes.KEY_ONE;
+                } else if (ratingItem.equals("2")) {
+                    derivedHotKey = KeyCodes.KEY_TWO;
+                } else if (ratingItem.equals("3")) {
+                    derivedHotKey = KeyCodes.KEY_THREE;
+                } else if (ratingItem.equals("4")) {
+                    derivedHotKey = KeyCodes.KEY_FOUR;
+                } else if (ratingItem.equals("5")) {
+                    derivedHotKey = KeyCodes.KEY_FIVE;
+                } else if (ratingItem.equals("6")) {
+                    derivedHotKey = KeyCodes.KEY_SIX;
+                } else if (ratingItem.equals("7")) {
+                    derivedHotKey = KeyCodes.KEY_SEVEN;
+                } else if (ratingItem.equals("8")) {
+                    derivedHotKey = KeyCodes.KEY_EIGHT;
+                } else if (ratingItem.equals("9")) {
+                    derivedHotKey = KeyCodes.KEY_NINE;
+                } else if (splitRatingLabels.length == 2) {
+                    // if there are only two options then use z and . as the hot keys
+                    if (splitRatingLabels[0].equals(ratingItem)) {
+                        derivedHotKey = KeyCodes.KEY_Z;
+                    } else {
+                        derivedHotKey = KeyCodes.KEY_NUM_PERIOD;
                     }
-                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
-                    timedStimulusListener.postLoadTimerFired();
                 }
 
-                @Override
-                public String getStyleName() {
-                    return null;
-                }
+                final int hotKey = derivedHotKey;
+                eventListners.add(new PresenterEventListner() {
+                    @Override
+                    public String getLabel() {
+                        return ratingItem;
+                    }
 
-                @Override
-                public int getHotKey() {
-                    return hotKey;
-                }
-            });
+                    @Override
+                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                        timedEventMonitor.registerEvent("ratingButton");
+                        endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
+                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
+                        Boolean isCorrect = null;
+                        if (currentStimulus.hasCorrectResponses()) {
+                            final boolean correctness = currentStimulus.isCorrect(ratingItem);
+                            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, ratingItem, stimulusString, (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
+                            // if there are correct responses to this stimulus then increment the score
+                            userResults.getUserData().addPotentialScore(correctness);
+                            isCorrect = correctness;
+                        }
+                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
+                        timedStimulusListener.postLoadTimerFired();
+                    }
+
+                    @Override
+                    public String getStyleName() {
+                        return null;
+                    }
+
+                    @Override
+                    public int getHotKey() {
+                        return hotKey;
+                    }
+                });
+            }
         }
         return eventListners;
     }
