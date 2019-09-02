@@ -750,7 +750,7 @@ or local-name() eq 'ratingRadioButton'
 or local-name() eq 'ratingButton'
 or local-name() eq 'ratingCheckbox'
 ">
-            <xsl:value-of select="if(@orientationType) then concat(', OrientationType.', @orientationType) else ', OrientationType.horizontal'" />
+            <xsl:value-of select="if(@orientation) then concat(', OrientationType.', @orientation) else ', OrientationType.horizontal'" />
         </xsl:if>
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
