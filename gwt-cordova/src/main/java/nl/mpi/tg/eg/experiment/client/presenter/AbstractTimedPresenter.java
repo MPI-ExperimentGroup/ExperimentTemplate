@@ -21,7 +21,6 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.ButtonBase;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.List;
@@ -36,6 +35,7 @@ import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractStimulusPresenter.OrientationType;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -65,7 +65,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         userResults.getUserData().setMetadataValue(metadataField, dataLogString);
         localStorage.storeData(userResults, metadataFieldProvider);
     }
-    
+
     public void switchUserIdButton(final String textString, final MetadataField metadataField, final String styleName, final String validationRegex, final String buttonGroup, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         addButtonToGroup(buttonGroup, timedStimulusView.addOptionButton(new PresenterEventListner() {
             @Override
@@ -133,10 +133,11 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         timedStimulusView.centrePage();
     }
 
-    public void ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final HorizontalPanel buttonsPanel) {
-        final List<StimulusButton> ratingButtons = timedStimulusView.addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, buttonsPanel);
+    public final List<StimulusButton> ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final OrientationType orientationType) {
+        final List<StimulusButton> ratingButtons = timedStimulusView.addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, orientationType);
         addButtonToGroup(buttonGroup, ratingButtons);
 //        addButtonToGroup(buttonGroupName, ratingButtons);
+        return ratingButtons;
     }
 
     public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final boolean isTouchZone, final String buttonGroup) {
