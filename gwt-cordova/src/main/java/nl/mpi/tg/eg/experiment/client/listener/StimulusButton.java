@@ -35,6 +35,10 @@ public interface StimulusButton {
 
     boolean isEnabled();
 
+    boolean isChecked();
+
+    String getValue();
+
     void setVisible(boolean visible);
 
     void triggerSingleShotEventListner();
