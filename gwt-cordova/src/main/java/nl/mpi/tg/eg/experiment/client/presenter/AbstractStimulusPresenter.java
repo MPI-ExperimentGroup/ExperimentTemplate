@@ -1311,6 +1311,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     private void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
         final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
+        final String stimulusRatingType = (allowMultiple) ? "stimulusRatingCheckbox" : "stimulusRatingRadio";
+        final List<StimulusButton> ratingButtons = new ArrayList<>();
         if (ratingLabels != null) {
             final String[] splitRatingLabels = ratingLabels.split(",");
             for (final String ratingItem : splitRatingLabels) {
@@ -1324,7 +1326,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                         JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
                         storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
-                        storedStimulusJSONObject.put("stimulusRatingRadio", new JSONString(ratingItem));
+                        String ratingValue = "";
+                        if (allowMultiple) {
+                            for (StimulusButton stimulusButton : ratingButtons) {
+                                if (stimulusButton.isChecked()) {
+                                    if (!ratingValue.isEmpty()) {
+                                        ratingValue += ",";
+                                    }
+                                    ratingValue += stimulusButton.getValue();
+                                }
+                            }
+                        } else {
+                            ratingValue = ratingItem;
+                        }
+                        storedStimulusJSONObject.put(stimulusRatingType, new JSONString(ratingValue));
                         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
                     }
 
@@ -1341,7 +1356,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         }
         final Panel ratingStylePanel = new VerticalPanel();
-        final List<StimulusButton> ratingButtons = new ArrayList<>();
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
             @Override
             public Stimulus getStimulus() {
@@ -1350,7 +1364,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public String getPostName() {
-                return "stimulusRatingRadio";
+                return stimulusRatingType;
             }
 
             @Override
@@ -1363,7 +1377,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
                 final String fieldValue;
                 if (storedStimulusJSONObject != null) {
-                    fieldValue = storedStimulusJSONObject.containsKey("stimulusRatingRadio") ? storedStimulusJSONObject.get("stimulusRatingRadio").isString().stringValue() : "";
+                    fieldValue = storedStimulusJSONObject.containsKey(stimulusRatingType) ? storedStimulusJSONObject.get(stimulusRatingType).isString().stringValue() : "";
                 } else {
                     fieldValue = "";
                 }
