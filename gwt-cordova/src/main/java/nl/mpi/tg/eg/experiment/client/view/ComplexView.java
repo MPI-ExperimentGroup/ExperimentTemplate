@@ -344,24 +344,21 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final OrientationType orientationType) {
+    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final Panel ratingStylePanel, final OrientationType orientationType) {
         final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
-        final Panel ratingOuterPanel;
+        final Panel ratingOuterPanel = (ratingStylePanel == null) ? new VerticalPanel() : ratingStylePanel;
         final Panel buttonsPanel;
         final Panel labelsPanel;
         switch (orientationType) {
             case horizontal:
-                ratingOuterPanel = new VerticalPanel();
                 buttonsPanel = new HorizontalPanel();
                 labelsPanel = new HorizontalPanel();
                 break;
             case vertical:
-                ratingOuterPanel = new HorizontalPanel();
                 buttonsPanel = new VerticalPanel();
                 labelsPanel = buttonsPanel;
                 break;
             default:
-                ratingOuterPanel = new VerticalPanel();
                 buttonsPanel = new FlowPanel();
                 labelsPanel = buttonsPanel;
         }
