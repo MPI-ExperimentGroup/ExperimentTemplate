@@ -134,8 +134,8 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         timedStimulusView.centrePage();
     }
 
-    public final List<StimulusButton> ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final Panel ratingStylePanel, final OrientationType orientationType) {
-        final List<StimulusButton> ratingButtons = timedStimulusView.addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, ratingStylePanel, orientationType);
+    public final List<StimulusButton> ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String radioGroupName, final boolean allowMultiple, final String savedValue, final String buttonGroup, final Panel ratingStylePanel, final OrientationType orientationType) {
+        final List<StimulusButton> ratingButtons = timedStimulusView.addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, radioGroupName, allowMultiple, savedValue, ratingStylePanel, orientationType);
         addButtonToGroup(buttonGroup, ratingButtons);
 //        addButtonToGroup(buttonGroupName, ratingButtons);
         return ratingButtons;
