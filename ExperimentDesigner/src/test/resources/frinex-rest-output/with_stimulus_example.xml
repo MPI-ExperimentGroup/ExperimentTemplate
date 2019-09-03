@@ -1697,34 +1697,88 @@
         <loadStimulus eventTag="rating_button_orientationType_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <plainText featureText="Rating buttons can be different for each stimulus, or the same for all. In this example we have the same set of options for all."/>
-                <htmlText featureText="For an example of stimulus based rating buttons see: &lt;a href=&quot;#InvitationCodeExampleStimuliScreen&quot;&gt;InvitationCodeExampleStimuliScreen&lt;/a&gt;"/>
+                <plainText featureText="This example shows various stimulus rating types and various layout options for those rating options. Some rating options in this example are fixed and others are per stimulus."/>
                 <addPadding/>
-                <plainText featureText="These rating buttons also respond to key press events, eg numbers in this case."/>
                 <addPadding/>
-                <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
+                <stimulusLabel styleName="countDownLabel"/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="ratingButton" styleName="highlightedText"/>
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingButton>
-                <ratingCheckbox ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
+                    <nextStimulus repeatIncorrect="false"/>
+                </ratingButton>
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow">
+                    <nextStimulus repeatIncorrect="false"/>
+                </ratingButton>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="stimulusRatingButton" styleName="highlightedText"/>
+                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal">
+                    <nextStimulus repeatIncorrect="false"/>
+                </stimulusRatingButton>
                 <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
-                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow">
+                    <nextStimulus repeatIncorrect="false"/>
+                </stimulusRatingButton>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="ratingRadioButton" styleName="highlightedText"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/><htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>                
+                <htmlText featureText="ratingCheckbox" styleName="highlightedText"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="horizontal"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="vertical"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="flow"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="stimulusRatingCheckbox" styleName="highlightedText"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>                
+                <ratingFooterButton ratingLabelRight="zeer waarschijnlijk V" ratingLabels="Z,Y,X,W,V" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk ratingFooterButton">
+                    <nextStimulus repeatIncorrect="false"/>
+                </ratingFooterButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <actionButton featureText="resetStimulus">
-                    <resetStimulus target="rating_buttons_example"/>
-                    <gotoPresenter target="rating_buttons_example"/>
+                    <resetStimulus target="rating_button_orientationType_example"/>
+                    <gotoPresenter target="rating_button_orientationType_example"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>First_Stimuli_Screen</tag>
+                <tag>rating_button_examples</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -3266,7 +3320,7 @@
             </sendMetadata>
         </pause>
     </presenter>
-    <presenter menuLabel="table-tags inside a region-tag"  self="table_tags_inside_a_region_tag" type="stimulus" title="table-tags inside a region-tag">
+    <presenter back="Menu" menuLabel="table-tags inside a region-tag"  self="table_tags_inside_a_region_tag" type="stimulus" title="table-tags inside a region-tag">
         <region regionId="missedAutors"/>
         <regionReplace  regionId="missedAutors" styleName="">
             <addPadding/>  
@@ -3392,10 +3446,10 @@
         <stimulus code="10X15_30X60_45X60_75X90" correctResponses="1234" identifier="10X15_30X60_45X60_75X90" label="10X15_30X60_45X60_75X90" pauseMs="1000" tags="boxes"/>
         <stimulus code="45X10_15X60_75X30_60X90" correctResponses="1234" identifier="45X10_15X60_75X30_60X90" label="45X10_15X60_75X30_60X90" pauseMs="1000" tags="boxes"/>
         <stimulus code="45X90_10X10_15X75_30X60" correctResponses="1234" identifier="45X90_10X10_15X75_30X60" label="45X90_10X10_15X75_30X60" pauseMs="1000" tags="boxes"/>
-        <stimulus code="NC" identifier="7" correctResponses="2" ratingLabels="1,2,3,4,5" label="In tegenstelling tot andere feestgangers. 2" pauseMs="0" tags="RatingToggle"/>
-        <stimulus code="NN" identifier="68" correctResponses="5" ratingLabels="1,2,3,4,5" label="De meeste vrienden. 5" pauseMs="0" tags="RatingToggle"/>
-        <stimulus code="NC" identifier="32" correctResponses="1" ratingLabels="1,2,3,4,5" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
-        <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
+        <stimulus code="NC" identifier="7" correctResponses="2" ratingLabels="1,2,3,4,5" label="In tegenstelling tot andere feestgangers. 2" pauseMs="0" tags="RatingToggle rating_button_examples"/>
+        <stimulus code="NN" identifier="68" correctResponses="5" ratingLabels="M,T,6,#,2" label="De meeste vrienden. 5" pauseMs="0" tags="RatingToggle rating_button_examples"/>
+        <stimulus code="NC" identifier="32" correctResponses="1" ratingLabels="8,7,6,5,4,3,2,1" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle rating_button_examples"/>
+        <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle rating_button_examples"/>
         <stimulus  identifier="author_1"  label="Auteur 1"  tags="missed_fav_author"  pauseMs="0"  />
         <stimulus  identifier="author_2"  label="Auteur 2"  tags="missed_fav_author"  pauseMs="0"  />
         <stimulus  identifier="author_3"  label="Auteur 3"  tags="missed_fav_author"  pauseMs="0"  />
