@@ -32,7 +32,9 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -1288,7 +1290,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void stimulusRatingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, orientationType);
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, null, orientationType);
     }
 
     public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
@@ -1333,6 +1335,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 });
             }
         }
+        final Panel ratingStylePanel = new VerticalPanel();
         final List<StimulusButton> ratingButtons = new ArrayList<>();
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
             @Override
@@ -1369,12 +1372,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         stimulusButton.addStyleName("metadataError");
                         stimulusButton.removeStyleName("metadataOK");
                     }
+                    ratingStylePanel.addStyleName("metadataError");
+                    ratingStylePanel.removeStyleName("metadataOK");
                     return false;
                 } else {
                     for (StimulusButton stimulusButton : ratingButtons) {
                         stimulusButton.addStyleName("metadataOK");
                         stimulusButton.removeStyleName("metadataError");
                     }
+                    ratingStylePanel.addStyleName("metadataOK");
+                    ratingStylePanel.removeStyleName("metadataError");
                     return true;
                 }
             }
@@ -1388,16 +1395,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void setFocus(boolean wantsFocus) {
             }
         };
-        ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, buttonGroupName, stimulusFreeText.getValue(), buttonGroup, orientationType));
+        ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, buttonGroupName, stimulusFreeText.getValue(), buttonGroup, ratingStylePanel, orientationType));
         stimulusFreeTextList.add(stimulusFreeText);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, orientationType);
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null, buttonGroup, null, orientationType);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, null, buttonGroup, OrientationType.horizontal);
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, null, buttonGroup, null, OrientationType.horizontal);
     }
 
     public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int dataChannel) {
@@ -1881,11 +1888,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         for (Stimulus stimulus : jsonStimulusMap.keySet()) { // we save the current responses here, so that a page reload can pre populate the page when allowed
             localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulus, jsonStimulusMap.get(stimulus));
         }
+        StimulusFreeText firstInvalidStimulusFreeText = null;
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
-                stimulusFreeText.setFocus(true);
-                return false;
+                // by checking isValid we also set the on error style for all relevant fields, but we only set the focus on the first
+                if (firstInvalidStimulusFreeText == null) {
+                    stimulusFreeText.setFocus(true);
+                    firstInvalidStimulusFreeText = stimulusFreeText;
+                }
             }
+        }
+        if (firstInvalidStimulusFreeText != null) {
+           // if any field is invalid then do not proceed
+            return false;
         }
         // @todo: probably good to check if the data has changed before writing to disk
         for (Stimulus stimulus : jsonStimulusMap.keySet()) {
