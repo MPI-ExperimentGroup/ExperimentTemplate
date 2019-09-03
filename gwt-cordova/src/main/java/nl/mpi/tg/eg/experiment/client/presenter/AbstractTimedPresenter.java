@@ -21,6 +21,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.List;
@@ -133,8 +134,8 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         timedStimulusView.centrePage();
     }
 
-    public final List<StimulusButton> ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final OrientationType orientationType) {
-        final List<StimulusButton> ratingButtons = timedStimulusView.addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, orientationType);
+    public final List<StimulusButton> ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final Panel ratingStylePanel, final OrientationType orientationType) {
+        final List<StimulusButton> ratingButtons = timedStimulusView.addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, ratingStylePanel, orientationType);
         addButtonToGroup(buttonGroup, ratingButtons);
 //        addButtonToGroup(buttonGroupName, ratingButtons);
         return ratingButtons;
