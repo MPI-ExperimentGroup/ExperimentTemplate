@@ -454,7 +454,7 @@ public class ComplexView extends SimpleView {
 
     public StimulusButton getCheckbox(final PresenterEventListner presenterListener, final String savedValue) {
         final CheckBox nextButton = new CheckBox(presenterListener.getLabel());
-        nextButton.setValue(savedValue.matches("[^,]" + presenterListener.getLabel() + "[,$]"));
+        nextButton.setValue(savedValue.matches("^([^,]*,)*" + presenterListener.getLabel() + "(,[^,]*)*$"));
         return configureButton(nextButton, presenterListener);
     }
 
@@ -467,10 +467,12 @@ public class ComplexView extends SimpleView {
             protected void singleShotFired() {
                 if (nextButton.isEnabled()) {
                     nextButton.addStyleName("optionButtonActivated");
-                    presenterListener.eventFired(nextButton, this);
                     if (nextButton instanceof RadioButton) {
                         ((RadioButton) nextButton).setValue(Boolean.TRUE);
+                    } else if (nextButton instanceof CheckBox) {
+                        ((CheckBox) nextButton).setValue(!((CheckBox) nextButton).getValue());
                     }
+                    presenterListener.eventFired(nextButton, this);
                 }
                 resetSingleShot();
             }
@@ -507,6 +509,21 @@ public class ComplexView extends SimpleView {
             @Override
             public boolean isEnabled() {
                 return nextButton.isEnabled();
+            }
+
+            @Override
+            public boolean isChecked() {
+                if (nextButton instanceof RadioButton) {
+                    return ((RadioButton) nextButton).getValue();
+                } else if (nextButton instanceof CheckBox) {
+                    return ((CheckBox) nextButton).getValue();
+                }
+                return false;
+            }
+
+            @Override
+            public String getValue() {
+                return presenterListener.getLabel();
             }
 
             @Override
@@ -592,6 +609,16 @@ public class ComplexView extends SimpleView {
             @Override
             public boolean isEnabled() {
                 return isEnabled;
+            }
+
+            @Override
+            public boolean isChecked() {
+                return false;
+            }
+
+            @Override
+            public String getValue() {
+                return null;
             }
 
             @Override
