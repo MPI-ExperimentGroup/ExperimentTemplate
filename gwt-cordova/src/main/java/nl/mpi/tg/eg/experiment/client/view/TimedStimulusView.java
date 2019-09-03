@@ -258,6 +258,16 @@ public class TimedStimulusView extends ComplexView {
             }
 
             @Override
+            public boolean isChecked() {
+                return false;
+            }
+
+            @Override
+            public String getValue() {
+                return null;
+            }
+
+            @Override
             public void setVisible(boolean visible) {
                 image.setVisible(visible);
             }
@@ -543,12 +553,12 @@ public class TimedStimulusView extends ComplexView {
                 }
             }, oggPath, mp3Path, autoPlay);
             audioList.put(mediaId, audioPlayer);
-//        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
+            //        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
             final Label playbackIndicator = new Label();
             final Timer playbackIndicatorTimer = new Timer() {
                 public void run() {
                     playbackIndicator.setText("CurrentTime: " + audioPlayer.getCurrentTime());
-//                    playbackIndicator.setWidth();
+                    //                    playbackIndicator.setWidth();
                     this.schedule(100);
                 }
             };
@@ -589,9 +599,9 @@ public class TimedStimulusView extends ComplexView {
                         timedEventMonitor.registerEvent("audioEnded");
                         timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
                     }
-//                    playbackIndicatorTimer.cancel();
-//                    playbackIndicator.removeFromParent();
-//                    audioPlayer.setEventListner(null); // prevent multiple triggering
+                    //                    playbackIndicatorTimer.cancel();
+                    //                    playbackIndicator.removeFromParent();
+                    //                    audioPlayer.setEventListner(null); // prevent multiple triggering
                     playedStimulusListener.postLoadTimerFired();
                 }
             });
