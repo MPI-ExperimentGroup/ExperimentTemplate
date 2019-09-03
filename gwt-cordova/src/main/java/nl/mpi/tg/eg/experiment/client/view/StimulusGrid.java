@@ -130,6 +130,16 @@ public class StimulusGrid extends FlexTable {
             }
 
             @Override
+            public boolean isChecked() {
+                return false;
+            }
+
+            @Override
+            public String getValue() {
+                return null;
+            }
+
+            @Override
             public void setVisible(boolean visible) {
                 pushButton.setVisible(visible);
             }
