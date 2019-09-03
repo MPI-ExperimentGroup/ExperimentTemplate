@@ -32,6 +32,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -344,7 +345,7 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final Panel ratingStylePanel, final OrientationType orientationType) {
+    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String radioGroupName, final boolean allowMultiple, final String savedValue, final Panel ratingStylePanel, final OrientationType orientationType) {
         final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
         final Panel ratingOuterPanel = (ratingStylePanel == null) ? new VerticalPanel() : ratingStylePanel;
         final Panel buttonsPanel;
@@ -367,7 +368,7 @@ public class ComplexView extends SimpleView {
         }
         for (PresenterEventListner listener : presenterListeners) {
             // stimulusRatingRadio needs stimulusFreeText objects to validate them
-            StimulusButton nextButton = (buttonGroupName != null) ? getRadioButton(listener, buttonGroupName, savedValue) : getOptionButton(listener);
+            StimulusButton nextButton = (radioGroupName != null) ? (allowMultiple) ? getCheckbox(listener, savedValue) : getRadioButton(listener, radioGroupName, savedValue) : getOptionButton(listener);
             if (styleName != null && !styleName.isEmpty()) {
                 nextButton.addStyleName(styleName);
             } else if (footerButtons) {
@@ -445,9 +446,15 @@ public class ComplexView extends SimpleView {
         return configureButton(nextButton, presenterListener);
     }
 
-    public StimulusButton getRadioButton(final PresenterEventListner presenterListener, final String buttonGroupName, final String savedValue) {
-        final RadioButton nextButton = new RadioButton(buttonGroupName, presenterListener.getLabel());
+    public StimulusButton getRadioButton(final PresenterEventListner presenterListener, final String radioGroupName, final String savedValue) {
+        final RadioButton nextButton = new RadioButton(radioGroupName, presenterListener.getLabel());
         nextButton.setValue(presenterListener.getLabel().equals(savedValue));
+        return configureButton(nextButton, presenterListener);
+    }
+
+    public StimulusButton getCheckbox(final PresenterEventListner presenterListener, final String savedValue) {
+        final CheckBox nextButton = new CheckBox(presenterListener.getLabel());
+        nextButton.setValue(savedValue.matches("[^,]" + presenterListener.getLabel() + "[,$]"));
         return configureButton(nextButton, presenterListener);
     }
 
