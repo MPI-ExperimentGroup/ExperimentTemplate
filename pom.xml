@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-parent</artifactId>
     <name>Frinex Parent</name>
-    <version>1.1-testing-SNAPSHOT</version>
+    <version>1.2-testing-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
@@ -31,7 +31,7 @@
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
         <application.majorVersion>1</application.majorVersion> 
-        <application.minorVersion>1</application.minorVersion> 
+        <application.minorVersion>2</application.minorVersion> 
         <application.branch>pretesting</application.branch> 
         <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
         <versionCheck.buildType>testing</versionCheck.buildType> 
@@ -143,7 +143,7 @@
                     <vcsType>git</vcsType>
                     <allowSnapshots>${versionCheck.allowSnapshots}</allowSnapshots>
                     <majorVersion>1</majorVersion>
-                    <minorVersion>1</minorVersion>
+                    <minorVersion>2</minorVersion>
                     <buildType>${versionCheck.buildType}</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule></shortVersionModule>
