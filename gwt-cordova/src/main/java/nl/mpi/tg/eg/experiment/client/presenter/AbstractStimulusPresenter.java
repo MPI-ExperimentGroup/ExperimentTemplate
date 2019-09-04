@@ -701,7 +701,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 duration.elapsedMillis());
     }
 
-    protected void scoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+    protected void scoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer gamesPlayed, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         boolean isWithin = true;
         if (scoreThreshold != null) {
             if (userResults.getUserData().getCurrentScore() > scoreThreshold) {
@@ -715,6 +715,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         if (potentialThreshold != null) {
             if (userResults.getUserData().getPotentialScore() > potentialThreshold) {
+                isWithin = false;
+            }
+        }
+        if (gamesPlayed != null) {
+            if (userResults.getUserData().getGamesPlayed() > gamesPlayed) {
                 isWithin = false;
             }
         }
@@ -735,7 +740,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void bestScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+    protected void bestScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer gamesPlayed, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         boolean isWithin = true;
         if (scoreThreshold != null) {
             if (userResults.getUserData().getMaxScore() > scoreThreshold) {
@@ -749,6 +754,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         if (potentialThreshold != null) {
             if (userResults.getUserData().getMaxPotentialScore() > potentialThreshold) {
+                isWithin = false;
+            }
+        }
+        if (gamesPlayed != null) {
+            if (userResults.getUserData().getGamesPlayed() > gamesPlayed) {
                 isWithin = false;
             }
         }
@@ -769,7 +779,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void totalScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+    protected void totalScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer gamesPlayed, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         boolean isWithin = true;
         if (scoreThreshold != null) {
             if (userResults.getUserData().getTotalScore() > scoreThreshold) {
@@ -783,6 +793,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         if (potentialThreshold != null) {
             if (userResults.getUserData().getTotalPotentialScore() > potentialThreshold) {
+                isWithin = false;
+            }
+        }
+        if (gamesPlayed != null) {
+            if (userResults.getUserData().getGamesPlayed() > gamesPlayed) {
                 isWithin = false;
             }
         }
