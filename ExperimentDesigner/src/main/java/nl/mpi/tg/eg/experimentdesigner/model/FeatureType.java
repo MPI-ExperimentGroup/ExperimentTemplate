@@ -246,9 +246,10 @@ public enum FeatureType {
     clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.none),
     scoreIncrement(false, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
     // todo: using scoreAboveThreshold testing gamesPlayed would be nice 
-    bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
-    totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none), // todo: add games played 
-    scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    // todo: document that all score parameters provided in the attribute list must be above its threshold for this to evaluate as above threshold
+    bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak, gamesPlayed}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, gamesPlayed}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak, gamesPlayed}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
     submitTestResults(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     validateMetadata(false, new FeatureAttribute[]{/* take the fields from the vaidate section. matchingRegex, enabledRegex, dataLogFormat*/}, "Validates the current user id and the metadata fields (as listed in the administration section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from ths adminstration secion will be updated localy from the values previously saved in the admin system.", Contitionals.hasErrorSuccess, Contitionals.none),
