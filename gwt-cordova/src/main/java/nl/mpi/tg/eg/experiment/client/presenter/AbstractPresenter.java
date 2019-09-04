@@ -362,11 +362,6 @@ public abstract class AbstractPresenter implements Presenter {
                 errorEventListner.postLoadTimerFired();
             }
 
-            @Override
-            protected void notificationLog(String logString) {
-                ((ComplexView) simpleView).addText(logString);
-            }
-
         }.requestNotification(messageTitle, dataLogFormat, targetStateJsonData, userResults.getUserData().getMetadataValue(metadataField));
         ((ComplexView) simpleView).addPadding();
     }
