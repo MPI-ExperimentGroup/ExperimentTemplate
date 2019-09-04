@@ -260,6 +260,7 @@ public class DefaultExperiments {
                         case repeatCount:
                         case repeatRandomWindow:
                         case scoreThreshold:
+                        case gamesPlayed:
                         case errorThreshold:
                         case correctStreak:
                         case errorStreak:
