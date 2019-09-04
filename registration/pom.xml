@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>1.1-testing-SNAPSHOT</version>
+    <version>1.2-testing-SNAPSHOT</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
         <artifactId>frinex-parent</artifactId>
-        <version>1.1-testing-SNAPSHOT</version>
+        <version>1.2-testing-SNAPSHOT</version>
     </parent>
     <properties>
         <!--<start-class>nl.mpi.tg.eg.frinex.Application</start-class>-->
@@ -228,12 +228,12 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>3.1.0</version>
+            <version>3.4.1</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
-            <version>5.7.2</version>
+            <version>5.9.0</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -246,7 +246,7 @@
             <plugin>                                                                         
                 <groupId>org.apache.maven.plugins</groupId>                                  
                 <artifactId>maven-javadoc-plugin</artifactId>                                
-                <version>2.10.3</version>                                                       
+                <version>3.1.0</version>                                                       
                 <configuration>                                                              
                     <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>                         
                     <docletArtifact>                                                         
