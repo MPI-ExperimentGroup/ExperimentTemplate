@@ -121,6 +121,16 @@
         background: rgb(246,170,139);
         border-radius: 5px;
         }
+        // Named styles for checkboxes and radio buttons
+        .gwt-RadioButton.optionButton.exampleRatingRadio, .gwt-CheckBox.optionButton.exampleRatingCheckbox {
+        background: none;
+        border: 1px solid blue;
+        padding: 3px;
+        }
+        .gwt-RadioButton.optionButton.exampleRatingRadio.optionButtonActivated, .gwt-CheckBox.optionButton.exampleRatingCheckbox.optionButtonActivated {
+        border-radius: 15px;
+        background: lightgrey;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -1768,6 +1778,9 @@
                 <ratingFooterButton ratingLabelRight="zeer waarschijnlijk V" ratingLabels="Z,Y,X,W,V" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk ratingFooterButton">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingFooterButton>
+                <htmlText featureText="Example CSS styles" styleName="highlightedText"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingCheckbox"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingRadio"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
