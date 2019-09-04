@@ -254,6 +254,7 @@ public enum FeatureAttribute {
     potentialThreshold(true), // interger to make active, when empty or not present is passed as null
     correctStreak(true), // interger to make active, when empty or not present is passed as null
     errorStreak(true), // interger to make active, when empty or not present is passed as null
+    gamesPlayed(true), // interger to make active, when empty or not present is passed as null
     showPlaybackIndicator,
     showControls(false),
     groupRole,
