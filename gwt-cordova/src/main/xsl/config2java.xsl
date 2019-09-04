@@ -1086,6 +1086,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@scoreThreshold eq '') then 'null' else if(@scoreThreshold) then concat('', @scoreThreshold, '') else 'null'" />
             <xsl:value-of select="if(@errorThreshold eq '') then ', null' else if(@errorThreshold) then concat(', ', @errorThreshold, '') else ', null'" />
             <xsl:value-of select="if(@potentialThreshold eq '') then ', null' else if(@potentialThreshold) then concat(', ', @potentialThreshold, '') else ', null'" />
+            <xsl:value-of select="if(@gamesPlayed eq '') then ', null' else if(@gamesPlayed) then concat(', ', @gamesPlayed, '') else ', null'" />
         </xsl:if>
         <xsl:if test="local-name() eq 'bestScoreAboveThreshold' or local-name() eq 'scoreAboveThreshold'">
             <xsl:value-of select="if(@correctStreak eq '') then ', null' else if(@correctStreak) then concat(', ', @correctStreak, '') else ', null'" />
