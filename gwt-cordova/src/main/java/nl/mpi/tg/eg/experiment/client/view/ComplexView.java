@@ -449,12 +449,18 @@ public class ComplexView extends SimpleView {
     public StimulusButton getRadioButton(final PresenterEventListner presenterListener, final String radioGroupName, final String savedValue) {
         final RadioButton nextButton = new RadioButton(radioGroupName, presenterListener.getLabel());
         nextButton.setValue(presenterListener.getLabel().equals(savedValue));
+        if (nextButton.getValue()) {
+            nextButton.addStyleName("optionButtonActivated");
+        }
         return configureButton(nextButton, presenterListener);
     }
 
     public StimulusButton getCheckbox(final PresenterEventListner presenterListener, final String savedValue) {
         final CheckBox nextButton = new CheckBox(presenterListener.getLabel());
         nextButton.setValue(savedValue.matches("^([^,]*,)*" + presenterListener.getLabel() + "(,[^,]*)*$"));
+        if (nextButton.getValue()) {
+            nextButton.addStyleName("optionButtonActivated");
+        }
         return configureButton(nextButton, presenterListener);
     }
 
@@ -466,11 +472,12 @@ public class ComplexView extends SimpleView {
             @Override
             protected void singleShotFired() {
                 if (nextButton.isEnabled()) {
-                    nextButton.addStyleName("optionButtonActivated");
                     if (nextButton instanceof RadioButton) {
                         ((RadioButton) nextButton).setValue(Boolean.TRUE);
                     } else if (nextButton instanceof CheckBox) {
                         ((CheckBox) nextButton).setValue(!((CheckBox) nextButton).getValue());
+                    } else {
+                        nextButton.addStyleName("optionButtonActivated");
                     }
                     presenterListener.eventFired(nextButton, this);
                 }
