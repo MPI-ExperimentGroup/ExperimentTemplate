@@ -9692,6 +9692,7 @@
 <xs:attribute name="potentialThreshold" type="xs:string"/>
 <xs:attribute name="correctStreak" type="xs:string"/>
 <xs:attribute name="errorStreak" type="xs:string"/>
+<xs:attribute name="gamesPlayed" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="totalScoreAboveThresholdType">
 <xs:all>
@@ -9701,6 +9702,7 @@
 <xs:attribute name="scoreThreshold" type="xs:string"/>
 <xs:attribute name="errorThreshold" type="xs:string"/>
 <xs:attribute name="potentialThreshold" type="xs:string"/>
+<xs:attribute name="gamesPlayed" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="scoreAboveThresholdType">
 <xs:all>
@@ -9712,6 +9714,7 @@
 <xs:attribute name="potentialThreshold" type="xs:string"/>
 <xs:attribute name="correctStreak" type="xs:string"/>
 <xs:attribute name="errorStreak" type="xs:string"/>
+<xs:attribute name="gamesPlayed" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="resetStimulusType">
 <xs:attribute name="target" type="xs:string" use="required"/>

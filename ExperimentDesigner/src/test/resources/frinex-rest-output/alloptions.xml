@@ -1561,7 +1561,7 @@
         <scoreLabel styleName="styleName"/>
         <clearCurrentScore/>
         <scoreIncrement scoreValue="8"/>
-        <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
+        <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" gamesPlayed="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
@@ -1569,7 +1569,7 @@
                 <plainText featureText="plainText in withinThreshold"/>
             </withinThreshold>
         </bestScoreAboveThreshold>
-        <totalScoreAboveThreshold scoreThreshold="3" errorThreshold="3" potentialThreshold="3">
+        <totalScoreAboveThreshold scoreThreshold="3" errorThreshold="3" gamesPlayed="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
@@ -1577,7 +1577,7 @@
                 <plainText featureText="plainText in withinThreshold"/>
             </withinThreshold>
         </totalScoreAboveThreshold>
-        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
+        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" gamesPlayed="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
