@@ -1334,9 +1334,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                                         ratingValue += ",";
                                     }
                                     ratingValue += stimulusButton.getValue();
+                                    stimulusButton.addStyleName("optionButtonActivated");
+                                } else {
+                                    stimulusButton.removeStyleName("optionButtonActivated");
                                 }
                             }
                         } else {
+                            for (StimulusButton stimulusButton : ratingButtons) {
+                                stimulusButton.removeStyleName("optionButtonActivated");
+                            }
+                            button.addStyleName("optionButtonActivated");
                             ratingValue = ratingItem;
                         }
                         storedStimulusJSONObject.put(stimulusRatingType, new JSONString(ratingValue));
