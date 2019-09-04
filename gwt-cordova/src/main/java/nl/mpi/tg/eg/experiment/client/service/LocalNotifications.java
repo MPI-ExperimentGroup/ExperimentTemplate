@@ -157,5 +157,7 @@ public abstract class LocalNotifications {
 
     protected abstract void setNotificationFailed();
 
-    protected abstract void notificationLog(final String logString);
+    public native void notificationLog(final String logString) /*-{
+            console.log(logString);
+    }-*/;
 }
