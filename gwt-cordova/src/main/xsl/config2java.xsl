@@ -1021,7 +1021,10 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         </xsl:if>
     </xsl:template>
     <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|stimulusExists">
-        <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
+        <xsl:if test="local-name() eq 'preloadAllStimuli' 
+                   or local-name() eq 'withStimuli' 
+                   or local-name() eq 'loadStimulus' 
+                   or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
             <xsl:value-of select="if(@class) then concat('new ', @class, '(') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider('" />
@@ -1094,8 +1097,14 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         </xsl:if>
         <!-- the trailing comma after scoreThreshold is needed for SynQuiz2, needs to be checked for other configurations. -->
         <!--<xsl:value-of select="if(local-name() eq 'submitTestResults') then ', ' else ''" />-->
-        <xsl:value-of select="if(local-name() eq 'showColourReport') then if(@scoreThreshold eq '') then '0, ' else if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else '0, ' else ''" />
-        <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
+        <xsl:value-of select="if(local-name() eq 'showColourReport') then if(@scoreThreshold eq '') then '0, ' else if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else '0, ' else ''" />        
+        <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(ancestor::*[exists(preloadAllStimuli)]
+                                                                                                               or ancestor::*[exists(withStimuli)]
+                                                                                                               or ancestor::*[exists(loadStimulus)]
+                                                                                                               or ancestor::*[exists(loadSdCardStimulus)]
+                                                                                                               ) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(@dataChannel) then @dataChannel else '0' else ''" />
+        <xsl:value-of select="if(@scoreValue) then concat(', ', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@offset) then @offset else ''" />
