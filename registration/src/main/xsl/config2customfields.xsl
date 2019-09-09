@@ -493,6 +493,7 @@
                 import java.io.IOException;
                 import java.util.ArrayList;
                 import java.util.Date;
+                import nl.mpi.tg.eg.frinex.model.StimulusResponse;
                 import java.util.List;
                 import javax.servlet.http.HttpServletRequest;
                 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -519,7 +520,9 @@
                 ParticipantRepository participantRepository;
                 @Autowired
                 TagRepository tagRepository;
-                
+                @Autowired
+                StimulusResponseRepository stimulusResponseRepository;
+
                 @RequestMapping(value = "/validate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
                 @ResponseBody
                 public ResponseEntity&lt;String&gt; validate(
@@ -637,18 +640,23 @@
                 }
                 }
                 final StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("{");
-                if(foundRecords.size()&lt;1 &amp;&amp; !foundError){</xsl:text>
+                stringBuilder.append("{\n");
+                if(foundRecords.size()&lt;1 &amp;&amp; !foundError){
+                stringBuilder.append("\"metadata\": {\n");</xsl:text>
             <xsl:for-each select="experiment/administration/validation/recordMatch[@responseField]">
                 <xsl:text>stringBuilder.append("\"</xsl:text>
                 <xsl:value-of select="@responseField" />
                 <xsl:text>\":\"");
                     stringBuilder.append(requestingUserId);
-                    stringBuilder.append("\",");
+                    stringBuilder.append("\",\n");
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>
-                stringBuilder.append("\"information\": \"validated user data not found so no existing fields can be returned but this validation is allowed due to allowValidationOnMissing\",");
+                if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
+                stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+                }
+                stringBuilder.append("},\n");
+                stringBuilder.append("\"information\": \"validated user data not found so no existing fields can be returned but this validation is allowed due to allowValidationOnMissing\",\n");
                 } else if (!foundError) {
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation/*[@adminField]">
@@ -667,7 +675,7 @@
                         foundError = true;
                         stringBuilder.append("\"information\": \"validated user data found but the field </xsl:text>
                     <xsl:value-of select="@adminField" />
-                    <xsl:text> does not match the validation regex\",");
+                    <xsl:text> does not match the validation regex\",\n");
                         }
                     </xsl:text>
                 </xsl:if>
@@ -686,28 +694,26 @@
                         foundError = true;
                         stringBuilder.append("\"information\": \"validated user data found but the field </xsl:text>
                     <xsl:value-of select="@adminField" />
-                    <xsl:text> does not match the latest validated record in the admin system\",");
+                    <xsl:text> does not match the latest validated record in the admin system\",\n");
                         }
                     </xsl:text>
                 </xsl:if>
             </xsl:for-each>
+            <xsl:text>stringBuilder.append("\"metadata\": {\n");
+                if (!foundError) {
+            </xsl:text>
             <xsl:for-each select="experiment/administration/validation/*[@responseField]">
-                <xsl:text>if (!foundError) {
-                    stringBuilder.append("\"</xsl:text>
+                <xsl:text>stringBuilder.append("\"</xsl:text>
                 <xsl:value-of select="@responseField" />
                 <xsl:text>\":\"");
                 </xsl:text>
                 <xsl:text>stringBuilder.append(foundRecords.get(0).get</xsl:text>
                 <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
                 <xsl:text>());
-                    stringBuilder.append("\",");
-                    }
+                    stringBuilder.append("\",\n");
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>
-                if (!foundError) {
-                stringBuilder.append("\"information\": \"validated user data found so existing fields are enclosed in this response\",");
-                }
                 }
             </xsl:text>
             <xsl:for-each select="distinct-values((experiment/administration/validation/@errorField, experiment/administration/validation/*/@errorField))">
@@ -718,7 +724,7 @@
                     stringBuilder.append(errorMessage</xsl:text>
                 <xsl:value-of select="." />
                 <xsl:text>);
-                    stringBuilder.append("\",");
+                    stringBuilder.append("\",\n");
                     if(!errorMessage</xsl:text>
                 <xsl:value-of select="." />
                 <xsl:text>.isEmpty()){
@@ -731,8 +737,35 @@
                 </xsl:text>    
             </xsl:for-each>
             <xsl:text>
-                if (stringBuilder.length() > 1) {
-                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+                if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
+                stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+                }
+                stringBuilder.append("},\n");
+                if (!foundError) {
+                stringBuilder.append("\"information\": \"validated user data found so existing fields are enclosed in this response\",\n");
+                for (StimulusResponse stimulusResponse : stimulusResponseRepository.findTop1ByUserIdOrderByTotalPotentialScoreDesc(requestingUserId)) {
+                stringBuilder.append("\"scoredata\": {\n");
+                stringBuilder.append("\"gamesPlayed\": \"").append(stimulusResponse.getGamesPlayed()).append("\",\n");
+                stringBuilder.append("\"totalScore\": \"").append(stimulusResponse.getTotalScore()).append("\",\n");
+                stringBuilder.append("\"totalPotentialScore\": \"").append(stimulusResponse.getTotalPotentialScore()).append("\",\n");
+                stringBuilder.append("\"currentScore\": \"").append(stimulusResponse.getCurrentScore()).append("\",\n");
+                stringBuilder.append("\"correctStreak\": \"").append(stimulusResponse.getCorrectStreak()).append("\",\n");
+                stringBuilder.append("\"errorStreak\": \"").append(stimulusResponse.getErrorStreak()).append("\",\n");
+                stringBuilder.append("\"potentialScore\": \"").append(stimulusResponse.getPotentialScore()).append("\",\n");
+                stringBuilder.append("\"maxScore\": \"").append(stimulusResponse.getMaxScore()).append("\",\n");
+                stringBuilder.append("\"maxErrors\": \"").append(stimulusResponse.getMaxErrors()).append("\",\n");
+                stringBuilder.append("\"maxCorrectStreak\": \"").append(stimulusResponse.getMaxCorrectStreak()).append("\",\n");
+                stringBuilder.append("\"maxErrorStreak\": \"").append(stimulusResponse.getMaxErrorStreak()).append("\",\n");
+                stringBuilder.append("\"maxPotentialScore\": \"").append(stimulusResponse.getMaxPotentialScore()).append("\"\n");
+                stringBuilder.append("},\n");
+                }
+                }
+                if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
+                stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+                }
+                }
+                if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
+                stringBuilder.deleteCharAt(stringBuilder.length() - 2);
                 }
                 stringBuilder.append("}");
                 return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
