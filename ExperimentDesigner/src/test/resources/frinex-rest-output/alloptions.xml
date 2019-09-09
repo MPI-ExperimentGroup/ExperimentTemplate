@@ -320,7 +320,7 @@
             </actionButton>
         </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
+        <clearCurrentScore dataChannel="2"/>
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="stimulus_all_attributes" type="stimulus" self="stimulus_all_attributesScreen" title="stimulus_all_attributes">
@@ -1559,8 +1559,8 @@
         </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel styleName="styleName"/>
-        <clearCurrentScore/>
-        <scoreIncrement scoreValue="8"/>
+        <clearCurrentScore dataChannel="2"/>
+        <scoreIncrement dataChannel="2" scoreValue="8"/>
         <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" gamesPlayed="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>

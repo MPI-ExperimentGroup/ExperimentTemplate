@@ -9678,8 +9678,10 @@
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="clearCurrentScoreType">
+<xs:attribute name="dataChannel" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="scoreIncrementType">
+<xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="scoreValue" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="bestScoreAboveThresholdType">
