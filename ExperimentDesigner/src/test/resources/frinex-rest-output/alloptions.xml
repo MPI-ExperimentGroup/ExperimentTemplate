@@ -681,6 +681,8 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                 </groupNetwork>
+                <clearCurrentScore dataChannel="2"/>
+                <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
             <afterStimulus>
@@ -1045,6 +1047,8 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                 </groupNetwork>
+                <clearCurrentScore dataChannel="2"/>
+                <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -1409,6 +1413,8 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                 </groupNetwork>
+                <clearCurrentScore dataChannel="2"/>
+                <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -2609,6 +2615,8 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                 </groupNetwork>
+                <clearCurrentScore/>
+                <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
             <afterStimulus>
@@ -2973,6 +2981,8 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                 </groupNetwork>
+                <clearCurrentScore/>
+                <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -3337,6 +3347,8 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                 </groupNetwork>
+                <clearCurrentScore/>
+                <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
