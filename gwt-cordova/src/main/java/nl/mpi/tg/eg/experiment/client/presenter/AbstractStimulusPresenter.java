@@ -815,17 +815,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void clearCurrentScore() {
+    protected void clearCurrentScore(final Stimulus currentStimulus, final int dataChannel) {
         if (userResults.getUserData().getPotentialScore() > 0) {
             userResults.getUserData().addGamePlayed();
         }
         userResults.getUserData().clearCurrentScore();
         localStorage.storeUserScore(userResults);
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, null, null, duration.elapsedMillis());
     }
 
-    protected void scoreIncrement(final int isCorrect) {
+    protected void scoreIncrement(final Stimulus currentStimulus, final int dataChannel, final int isCorrect) {
         userResults.getUserData().addPotentialScore(isCorrect);
+        localStorage.storeUserScore(userResults);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, null, null, duration.elapsedMillis());
     }
 
     protected void scoreLabel() {
