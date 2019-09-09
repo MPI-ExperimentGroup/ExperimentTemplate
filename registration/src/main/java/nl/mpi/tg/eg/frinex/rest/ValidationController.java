@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
 import java.util.Date;
+import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,8 @@ public class ValidationController {
     ParticipantRepository participantRepository;
     @Autowired
     TagRepository tagRepository;
+    @Autowired
+    StimulusResponseRepository stimulusResponseRepository;
 
     @RequestMapping(value = "/mock_validate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
@@ -65,6 +68,27 @@ public class ValidationController {
         tagRepository.save(new TagData(uuid, "mock_validate", "session_step", (session_step.length() > 254) ? session_step.substring(0, 254) : session_step, 0, tagDate));
         tagRepository.save(new TagData(uuid, "mock_validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
         tagRepository.save(new TagData(uuid, "mock_validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
-        return new ResponseEntity("{\"validated_uuid\":\"" + uuid + "\",\"error_message\":\"this is a mock response\"}", HttpStatus.OK);
+        final StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{\"scoredata\": {");
+        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findTop1ByUserIdOrderByTotalPotentialScoreDesc(uuid)) {
+            stringBuilder.append("\"gamesPlayed\": \"").append(stimulusResponse.getGamesPlayed()).append("\",");
+            stringBuilder.append("\"totalScore\": \"").append(stimulusResponse.getTotalScore()).append("\",");
+            stringBuilder.append("\"totalPotentialScore\": \"").append(stimulusResponse.getTotalPotentialScore()).append("\",");
+            stringBuilder.append("\"currentScore\": \"").append(stimulusResponse.getCurrentScore()).append("\",");
+            stringBuilder.append("\"correctStreak\": \"").append(stimulusResponse.getCorrectStreak()).append("\",");
+            stringBuilder.append("\"errorStreak\": \"").append(stimulusResponse.getErrorStreak()).append("\",");
+            stringBuilder.append("\"potentialScore\": \"").append(stimulusResponse.getPotentialScore()).append("\",");
+            stringBuilder.append("\"maxScore\": \"").append(stimulusResponse.getMaxScore()).append("\",");
+            stringBuilder.append("\"maxErrors\": \"").append(stimulusResponse.getMaxErrors()).append("\",");
+            stringBuilder.append("\"maxCorrectStreak\": \"").append(stimulusResponse.getMaxCorrectStreak()).append("\",");
+            stringBuilder.append("\"maxErrorStreak\": \"").append(stimulusResponse.getMaxErrorStreak()).append("\",");
+            stringBuilder.append("\"maxPotentialScore\": \"").append(stimulusResponse.getMaxPotentialScore()).append("\",");
+        }
+        stringBuilder.append("},");
+        stringBuilder.append("{\"metadata\": ");
+        stringBuilder.append("\"validated_uuid\":\"");
+        stringBuilder.append(uuid);
+        stringBuilder.append("\",\"error_message\":\"this is a mock response\"}}");
+        return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
     }
 }
