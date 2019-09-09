@@ -38,6 +38,8 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 //    @Query("select distinct new StimulusResponse(userId, eventTag, eventMs, tagDate) from StimulusResponse where userId = :userId order by tagDate asc")
     List<StimulusResponse> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
+    List<StimulusResponse> findTop1ByUserIdOrderByTotalPotentialScoreDesc(@Param("userId") String userId);
+
     @Override
     @RestResource(exported = false)
     public abstract <S extends StimulusResponse> S save(S entity);
