@@ -140,13 +140,31 @@ public class RegistrationService {
                     logger.info(text);
                     if (receivingRegex != null) {
                         JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(text);
-                        for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-                            final String postName = key.getPostName();
-                            if (postName.matches(receivingRegex)) {
-                                if (jsonObject.containsKey(postName)) {
-                                    userResults.getUserData().setMetadataValue(key, jsonObject.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                        if (jsonObject.containsKey("metadata")) {
+                            JSONObject metadataJson = (JSONObject) jsonObject.get("metadata");
+                            for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+                                final String postName = key.getPostName();
+                                if (postName.matches(receivingRegex)) {
+                                    if (metadataJson.containsKey(postName)) {
+                                        userResults.getUserData().setMetadataValue(key, metadataJson.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                                    }
                                 }
                             }
+                        }
+                        if (jsonObject.containsKey("scoredata")) {
+                            JSONObject scoreDataJson = (JSONObject) jsonObject.get("scoredata");
+                            userResults.getUserData().setGamesPlayed(Integer.parseInt(scoreDataJson.get("gamesPlayed").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setTotalScore(Integer.parseInt(scoreDataJson.get("totalScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setTotalPotentialScore(Integer.parseInt(scoreDataJson.get("totalPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setCurrentScore(Integer.parseInt(scoreDataJson.get("currentScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setCorrectStreak(Integer.parseInt(scoreDataJson.get("correctStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setErrorStreak(Integer.parseInt(scoreDataJson.get("errorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setPotentialScore(Integer.parseInt(scoreDataJson.get("potentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setMaxScore(Double.parseDouble(scoreDataJson.get("maxScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setMaxErrors(Integer.parseInt(scoreDataJson.get("maxErrors").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setMaxCorrectStreak(Integer.parseInt(scoreDataJson.get("maxCorrectStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setMaxErrorStreak(Integer.parseInt(scoreDataJson.get("maxErrorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                            userResults.getUserData().setMaxPotentialScore(Integer.parseInt(scoreDataJson.get("maxPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
                         }
                     }
                     registrationListener.registrationComplete();
