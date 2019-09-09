@@ -44,6 +44,7 @@
         <addPadding/>
         <addPadding/>
         <addPadding/>
+        <targetButton featureText="Add score values for the current participant" target="incrementScoreExample"/>
         <addPadding/>
         <targetButton featureText="Delete current participants's local data" target="Finished"/>
     </presenter>
@@ -148,6 +149,70 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>-->
+    <presenter back="Menu" menuLabel="Increment Score" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
+        <region regionId="scoreLabelsRegion"/>
+        <triggerListener listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
+            <regionReplace regionId="scoreLabelsRegion">
+                <htmlTokenText featureText="
+                Each increment accrues positive potential but only a positive values increment the score while negative values increment errors.&lt;br/&gt;
+                The games played value increments only when the potential is greater than zero and the score is cleared.&lt;br/&gt;
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                playerMaxScore:
+                &lt;playerMaxScore&gt;&lt;br/&gt;
+                playerMaxErrors:
+                &lt;playerMaxErrors&gt;&lt;br/&gt;
+                playerMaxPotentialScore:
+                &lt;playerMaxPotentialScore&gt;&lt;br/&gt;
+                playerMaxErrorStreak:
+                &lt;playerMaxErrorStreak&gt;&lt;br/&gt;
+                playerMaxCorrectStreak:
+                &lt;playerMaxCorrectStreak&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt;&lt;br/&gt;
+                "/>
+            </regionReplace>
+        </triggerListener>
+        <trigger listenerId="scoreLabelsTrigger"/>
+        <actionButton featureText="clearCurrentScore">
+            <clearCurrentScore/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement 5">
+            <scoreIncrement scoreValue="5"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement -3">
+            <scoreIncrement scoreValue="-3"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement -1">
+            <scoreIncrement scoreValue="-1"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement 1">
+            <scoreIncrement scoreValue="1"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+        <actionButton featureText="scoreIncrement 0">
+            <scoreIncrement scoreValue="0"/>
+            <trigger listenerId="scoreLabelsTrigger"/>
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="Enter Invitation Metadata" type="metadata" self="EnterInvitationMetadata" title="Enter Invitation Metadata">
         <htmlTokenText featureText="In this example the participant must enter the invitation ID into a metadata field and then save the metadata. In the following presenter via the switchUserIdButton tag they can be switched to that user. Only after that point can the participant ID and the invitation ID be validated by the server."/>
         <addPadding/>
