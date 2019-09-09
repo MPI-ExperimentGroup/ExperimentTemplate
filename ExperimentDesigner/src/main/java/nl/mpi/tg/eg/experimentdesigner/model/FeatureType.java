@@ -243,9 +243,8 @@ public enum FeatureType {
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
-    clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.none),
-    scoreIncrement(false, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
-    // todo: using scoreAboveThreshold testing gamesPlayed would be nice 
+    clearCurrentScore(false, false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.none),
+    scoreIncrement(false, false, new FeatureAttribute[]{dataChannel, scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
     // todo: document that all score parameters provided in the attribute list must be above its threshold for this to evaluate as above threshold
     bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak, gamesPlayed}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, gamesPlayed}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
