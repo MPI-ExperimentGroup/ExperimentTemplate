@@ -931,6 +931,8 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 .gwt-HTML.stimuliLabel,
 .singleLineFreeTextLabel {
     font-size: 60px;
+    line-height: 60px;
+    /*line-height: initial;*/
     padding: 10px;
 }
 
