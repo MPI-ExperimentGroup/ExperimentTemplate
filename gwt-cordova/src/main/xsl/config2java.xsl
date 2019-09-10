@@ -1098,10 +1098,8 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <!-- the trailing comma after scoreThreshold is needed for SynQuiz2, needs to be checked for other configurations. -->
         <!--<xsl:value-of select="if(local-name() eq 'submitTestResults') then ', ' else ''" />-->
         <xsl:value-of select="if(local-name() eq 'showColourReport') then if(@scoreThreshold eq '') then '0, ' else if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else '0, ' else ''" />        
-        <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(ancestor::*[local-name() = 'preloadAllStimuli']
-                                                                                                               or ancestor::*[local-name() = 'withStimuli']
-                                                                                                               or ancestor::*[local-name() = 'loadStimulus']
-                                                                                                               or ancestor::*[local-name() = 'loadSdCardStimulus']
+        <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(ancestor::*[local-name() = 'eachStimulus']
+                                                                                                               or ancestor::*[local-name() = 'hasMoreStimulus']
                                                                                                                ) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(@dataChannel) then @dataChannel else '0' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat(', ', @scoreValue, '') else ''" />
