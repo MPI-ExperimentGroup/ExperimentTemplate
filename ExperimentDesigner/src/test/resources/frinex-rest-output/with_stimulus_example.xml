@@ -121,7 +121,7 @@
         background: rgb(246,170,139);
         border-radius: 5px;
         }
-        // Named styles for checkboxes and radio buttons
+        // Named styles for the styled checkboxes and radio buttons example
         .gwt-RadioButton.optionButton.exampleRatingRadio, .gwt-CheckBox.optionButton.exampleRatingCheckbox {
         background: none;
         border: 1px solid blue;
@@ -130,6 +130,9 @@
         .gwt-RadioButton.optionButton.exampleRatingRadio.optionButtonActivated, .gwt-CheckBox.optionButton.exampleRatingCheckbox.optionButtonActivated {
         border-radius: 15px;
         background: lightgrey;
+        }
+        .gwt-RadioButton.optionButton.exampleRatingRadio > input[type=radio], .gwt-CheckBox.optionButton.exampleRatingCheckbox > input[type=checkbox] {
+        display: none;
         }
     </scss>
     <metadata>
@@ -1779,6 +1782,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingFooterButton>
                 <htmlText featureText="Example CSS styles" styleName="highlightedText"/>
+                <htmlText featureText="To style the checkboxes or radio buttons without the default input items you can use the following (see the scss element for this experiments configuration for more details):&lt;br/&gt;exampleRatingRadio &gt; input[type=radio], exampleRatingCheckbox &gt; input[type=checkbox] &amp;#123;display: none;&amp;#125;"/>
                 <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingCheckbox"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingRadio"/>
             </hasMoreStimulus>
@@ -2902,6 +2906,10 @@
         <setMetadataValue fieldName="session_steps" dataLogFormat="allthesteps"/>
         <actionButton featureText="redirectToUrl">
             <redirectToUrl src="/&lt;metadataField_session_next_step&gt;?uuid=&lt;metadataField_validated_uuid&gt;&amp;session_steps=&lt;metadataField_session_steps&gt;"/>
+        </actionButton> 
+        <addPadding/>           
+        <actionButton featureText="redirectToStaging">
+            <redirectToUrl src="https://frinexstaging.mpi.nl/with_stimulus_example/?session_next_step=thenextexperiment&amp;validated_uuid=theusersid&amp;session_steps=allthesteps#RedirectToUrlExample"/>
         </actionButton>            
     </presenter>
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
