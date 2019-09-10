@@ -47,6 +47,8 @@
         <targetButton featureText="Add score values for the current participant" target="incrementScoreExample"/>
         <addPadding/>
         <targetButton featureText="Delete current participants's local data" target="Finished"/>
+        <addPadding/>
+        <targetButton featureText="Redirect to URL example" target="RedirectToUrlExample"/>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationUrlExample" type="stimulus" self="InvitationUrlExample" title="Invitation URL Example">
         <htmlText featureText="The first method requires providing your participant with a URL containing their specific identfier and populating the attribute userIdGetParam=&quot;invitation_id&quot; in the experiment configuration."/>
@@ -453,6 +455,17 @@
                 </onSuccess>
             </validateMetadata>
         </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="RedirectToUrlExample" type="transmission" self="RedirectToUrlExample" title="RedirectToUrlExample">
+        <htmlText featureText="This experimental example will direct this user to the version of this experiment that is on the staging server. From there you should be able to validate and restore the users current state of metadata and score."/>
+        <addPadding/>           
+        <actionButton featureText="redirectToStaging">
+            <redirectToUrl src="https://frinexstaging.mpi.nl/invitation_validation_example/?invitation_id=&amp;metadataField_invitation_id&amp;#InvitationValidateMetadataExample"/>
+        </actionButton>            
+        <addPadding/>           
+        <actionButton featureText="returnToLocal">
+            <redirectToUrl src="/?invitation_id=&amp;metadataField_invitation_id&amp;#InvitationValidateMetadataExample"/>
+        </actionButton> 
     </presenter>
     <presenter menuLabel="Finished" type="transmission" self="Finished" title="Finished">
         <!-- either <sendAllData> or <generateCompletionCode> can be used here -->
