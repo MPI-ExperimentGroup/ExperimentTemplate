@@ -136,16 +136,13 @@ public class Sentveri_exp3 {
     private PresenterFeature addNextStimulusButtons(final String screenName) {
         // todo: vertical centre all screens
         final PresenterFeature checkTagFeature = new PresenterFeature(FeatureType.currentStimulusHasTag, null);
-        checkTagFeature.addFeatureAttributes(FeatureAttribute.msToNext, "3000");
         checkTagFeature.addStimulusTag("question");
-        final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.conditionFalse, null);
+        final PresenterFeature withoutTagFeature = checkTagFeature.addFeature(FeatureType.conditionFalse, null).addFeature(FeatureType.pause, null, "3000");
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
 //        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
-        checkTagFeature.getPresenterFeatureList().add(withoutTagFeature);
-        final PresenterFeature hasTagFeature = new PresenterFeature(FeatureType.conditionTrue, null);
-        checkTagFeature.getPresenterFeatureList().add(hasTagFeature);
+        final PresenterFeature hasTagFeature = checkTagFeature.addFeature(FeatureType.conditionTrue, null).addFeature(FeatureType.pause, null, "3000");
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
         // todo: this should have a red border, but should it be a tag or on the image and if a tag should it take style?
         final PresenterFeature questionFeature = addStimulusImage(screenName, screenName + "_Q", "0");
