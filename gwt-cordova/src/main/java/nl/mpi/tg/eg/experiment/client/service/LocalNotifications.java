@@ -121,6 +121,7 @@ public abstract class LocalNotifications {
 
     protected native void setDayNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int yearInt, final int monthInt, final int dayInt, final int hourInt, final int minuteInt) /*-{
         var localNotifications = this;
+        console.log("setDayNotification", yearInt, monthInt, dayInt, hourInt, minuteInt);
         $wnd.cordova.plugins.notification.local.schedule({
             title: notificationTitle,
             text: notificationText,
