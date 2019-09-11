@@ -101,6 +101,7 @@
             <xsl:text>&quot;);</xsl:text>
         </xsl:for-each>
         <xsl:text>
+            enableNotificationCallbacks();
             }
             
             @Override
