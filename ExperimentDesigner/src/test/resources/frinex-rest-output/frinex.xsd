@@ -540,7 +540,6 @@
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
 <xs:attribute name="tags" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="validateStimuliResponsesType">

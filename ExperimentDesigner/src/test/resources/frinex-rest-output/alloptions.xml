@@ -349,7 +349,7 @@
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
-                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -715,7 +715,7 @@
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
-                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -1081,7 +1081,7 @@
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
-                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2283,7 +2283,7 @@
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
-                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2649,7 +2649,7 @@
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
-                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -3015,7 +3015,7 @@
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
-                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
