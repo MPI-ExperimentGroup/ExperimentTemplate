@@ -1067,7 +1067,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <!-- // todo: currentStimulusHasTag has changed from stimuli/tag... to @tags so this needs to be updated -->
         <xsl:if test="@tags">
             <!--preloadAllStimuli uses this tags attribute-->
-            <xsl:value-of select="if(local-name() eq 'preloadAllStimuli') then '' else ','" />
+            <xsl:value-of select="if(local-name() eq 'preloadAllStimuli' or local-name() eq 'currentStimulusHasTag') then '' else ','" />
             <xsl:text>new Tag[]{</xsl:text>
             <xsl:for-each select="tokenize(@tags,' ')">
                 <xsl:text>Tag.tag_</xsl:text>
