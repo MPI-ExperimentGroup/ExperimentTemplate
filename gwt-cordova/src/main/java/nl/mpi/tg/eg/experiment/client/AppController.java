@@ -300,10 +300,27 @@ public abstract class AppController implements AppEventListner/*, AudioException
         }
     }
 
+    final protected native void enableNotificationCallbacks() /*-{
+        if ($wnd.cordova) {
+            console.log("enableNotificationCallbacks");
+//            $wnd.cordova.plugins.notification.local.fireQueuedEvents();
+//            console.log($wnd.cordova.plugins.notification.local.launchDetails);
+            $wnd.cordova.plugins.notification.local.on("click", function (notification, state) {
+                console.log(notification.id + " was clicked");
+            }, this);
+            $wnd.cordova.plugins.notification.local.on("schedule", function (notification, state) {
+                console.log(notification.id + " was scheduled");
+            }, this);
+            $wnd.cordova.plugins.notification.local.on("trigger", function (notification, state) {
+                console.log(notification.id + " was triggered");
+            }, this);
+        }
+     }-*/;
+
     final protected native void addNotificationCallback(final String targetState) /*-{
-        if ($wnd.device) {
+        if ($wnd.cordova) {
             console.log("addNotificationCallback", targetState);
-            $wnd.cordova.plugins.notification.local.core.on(targetState, function(notification, eopts) {
+            $wnd.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
                 console.log(notification, eopts);
                 appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(targetState);
             });
