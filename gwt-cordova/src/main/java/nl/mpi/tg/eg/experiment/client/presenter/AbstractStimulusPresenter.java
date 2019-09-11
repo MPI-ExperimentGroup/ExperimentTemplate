@@ -442,12 +442,21 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         labelTimer.schedule(500);
     }
 
+    private int pauseRegionCounter = 0;
+
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        // pauseRegionCounter is used to keep the position in the page where the pause is expected, rather than appending to the end of the page on trigger
+        final String pauseRegionId = "pauseRegionCounter_" + pauseRegionCounter;
+        pauseRegionCounter++;
+        ((ComplexView) simpleView).startRegion(pauseRegionId, null);
+        ((ComplexView) simpleView).endRegion();
         final Timer timer = new Timer() {
             @Override
             public void run() {
+                ((ComplexView) simpleView).startRegion(pauseRegionId, null);
                 timedStimulusListener.postLoadTimerFired();
                 pauseTimers.remove(this);
+                ((ComplexView) simpleView).endRegion();
             }
         };
         pauseTimers.add(timer);
@@ -471,15 +480,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         pause(currentStimulus.getPauseMs(), timedStimulusListener);
     }
 
-    protected void currentStimulusHasTag(int postLoadMs, final Stimulus.Tag[] tagList, final Stimulus currentStimulus, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
+    protected void currentStimulusHasTag(final Stimulus.Tag[] tagList, final Stimulus currentStimulus, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
 // todo: implement randomTags
 //        List<Stimulus.Tag> editableList = new LinkedList<Stimulus.Tag>(tagList);
 //        editableList.retainAll();
 //        if (editableList.isEmpty()) {
         if (currentStimulus.getTags().containsAll(Arrays.asList(tagList))) {
-            pause(postLoadMs, hasTagListener);
+            hasTagListener.postLoadTimerFired();
         } else {
-            pause(postLoadMs, hasntTagListener);
+            hasntTagListener.postLoadTimerFired();
         }
     }
 
