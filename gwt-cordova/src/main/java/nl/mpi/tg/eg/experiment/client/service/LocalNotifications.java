@@ -132,9 +132,9 @@ public abstract class LocalNotifications {
     public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) /*-{
         var localNotifications = this;
         if($wnd.cordova){
-        console.log("$wnd: " + $wnd);
-        console.log("$wnd.plugins: " + $wnd.plugins);
-        console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
+        //console.log("$wnd: " + $wnd);
+        //console.log("$wnd.plugins: " + $wnd.plugins);
+        //console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
             $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
             if (granted) {
                 localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
