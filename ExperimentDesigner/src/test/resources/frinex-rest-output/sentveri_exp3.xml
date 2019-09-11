@@ -23,17 +23,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="practice/practice_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -45,17 +49,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="practice/practice_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -98,17 +106,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list1_a/list1_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -120,17 +132,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list1_a/list1_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -173,17 +189,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list2_a/list2_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -195,17 +215,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list2_a/list2_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -248,17 +272,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list3_a/list3_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -270,17 +298,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list3_a/list3_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -323,17 +355,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list4_a/list4_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -345,17 +381,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list4_a/list4_a_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -398,17 +438,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list1_b/list1_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -420,17 +464,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list1_b/list1_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -473,17 +521,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list2_b/list2_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -495,17 +547,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list2_b/list2_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -548,17 +604,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list3_b/list3_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -570,17 +630,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list3_b/list3_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -623,17 +687,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list4_b/list4_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -645,17 +713,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list4_b/list4_b_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -701,17 +773,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list1_c/list1_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -723,17 +799,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list1_c/list1_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -776,17 +856,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list2_c/list2_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -798,17 +882,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list2_c/list2_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -851,17 +939,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list3_c/list3_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -873,17 +965,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list3_c/list3_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -926,17 +1022,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list4_c/list4_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
@@ -948,17 +1048,21 @@
                                             <centrePage/>
                                             <stimulusCodeImage msToNext="0" codeFormat="list4_c/list4_c_Q/&lt;code&gt;.jpg">
                                                 <mediaLoaded>
-                                                    <currentStimulusHasTag tags="question" msToNext="3000">
+                                                    <currentStimulusHasTag tags="question">
                                                         <conditionFalse>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                            <pause msToNext="3000">
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </conditionFalse>
                                                         <conditionTrue>
-                                                            <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
-                                                            <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
-                                                                <nextStimulus repeatIncorrect="false"/>
-                                                            </actionFooterButton>
+                                                            <pause msToNext="3000">
+                                                                <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                                <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
+                                                                    <nextStimulus repeatIncorrect="false"/>
+                                                                </actionFooterButton>
+                                                            </pause>
                                                         </conditionTrue>
                                                     </currentStimulusHasTag>
                                                 </mediaLoaded>
