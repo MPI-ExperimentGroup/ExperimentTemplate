@@ -50,7 +50,7 @@ FieldKitRecorder.prototype.requestRecorderPermissions = function (successCallbac
 FieldKitRecorder.prototype.writeStimuliData = function (successCallback, errorCallback, userId, stimulusId, stimuliData) {
     cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "writeStimuliData", [userId, stimulusId, stimuliData]);
 };
-FieldKitRecorder.prototype.writeCsvLine = function (userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs) {
+FieldKitRecorder.prototype.writeCsvLine = function (successCallback, errorCallback, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs) {
     cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "writeCsvLine", [userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs]);
 };
 
