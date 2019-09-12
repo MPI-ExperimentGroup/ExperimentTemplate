@@ -53,7 +53,7 @@ cordova platform add android
 #export ANDROID_PLATFORM_TOOLS="/Users/petwit/Library/Android/sdk/platform-tools"
 #PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
 
-if egrep -q "logToSdCard=\"true\"|loadSdCardStimulus|recordingFormat=\"wav\"" @experiment.configuration.name@.xml; then
+if egrep -q "logToSdCard=\"true\"|loadSdCardStimulus|recordingFormat=\"wav\"" www/@experiment.configuration.name@.xml; then
     echo true > logToSdCard-true.txt
     echo "logToSdCard true"
     cordova plugin add /ExperimentTemplate/FieldKitRecorder/
