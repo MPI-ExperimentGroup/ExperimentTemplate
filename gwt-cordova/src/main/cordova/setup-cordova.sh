@@ -53,9 +53,15 @@ cordova platform add android
 #export ANDROID_PLATFORM_TOOLS="/Users/petwit/Library/Android/sdk/platform-tools"
 #PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
 
-
-cordova plugin add /ExperimentTemplate/FieldKitRecorder/
-cordova plugin add cordova-plugin-file
+if egrep -q "logToSdCard=\"true\"|loadSdCardStimulus|recordingFormat=\"wav\"" @experiment.configuration.name@.xml; then
+    echo true > logToSdCard-true.txt
+    echo "logToSdCard true"
+    cordova plugin add /ExperimentTemplate/FieldKitRecorder/
+    cordova plugin add cordova-plugin-file
+else
+    echo false > logToSdCard-false.txt
+    echo "logToSdCard false"
+fi
 cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
 #cordova plugin add cordova-plugin-media-capture
