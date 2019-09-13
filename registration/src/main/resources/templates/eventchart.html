@@ -134,6 +134,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 window.eventChart = Chart.Scatter(ctx, {
                     data: eventChartData,
                     options: {
+                        legend: {
+                            display: $('#showLegend')[0].checked
+                        },
                         title: {
                             display: true,
                             text: 'Timestamp Events'
@@ -179,7 +182,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 $("#outputDiv").append(startOnValue + "<br/>" + zeroOnValue + "<br/>" + stopOnValue + "<br/>" + pageSize + "<br/>" + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
                 }
-                Chart.defaults.global.legend.display = $('#showLegend')[0].checked;
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
                     $("#pageSize").val(data.page.size);
 //                    $("#pageIndex").val(data.page.number);
