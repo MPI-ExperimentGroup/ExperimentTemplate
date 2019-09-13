@@ -73,7 +73,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         Start Date:
         <input type="text" id="startDate" value="2019-05-14T10:00"/>
         End Date:
-        <input type="text" id="endDate" value="2019-10-08T17:17"/>
+        <input type="text" id="endDate" value="&lt;enter date&gt;"/>
         <br/>
         <br/>
         <table>
@@ -103,11 +103,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </tr>
         </table>
         <br/>
-
+        Show Legend:
+        <input type="checkbox" id="showLegend" value="false"/>
+        <br/>
         Page Size:
         <input type="number" id="pageSize" value="200"/>
         Start Page:
-        <input type="number" id="pageIndex" value="40"/>
+        <input type="number" id="pageIndex" value="0"/>
         <br/>
         <div id="pageInfo"/>
         <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
@@ -169,14 +171,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             }
             function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
                 createChart(includeValuesOffset, includeValuesOriginal);
-                    $("#outputDiv").html("");
-                    $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
+                $("#outputDiv").html("");
+                $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
                 populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
             }
             function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
                 $("#outputDiv").append(startOnValue + "<br/>" + zeroOnValue + "<br/>" + stopOnValue + "<br/>" + pageSize + "<br/>" + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
                 }
+                Chart.defaults.global.legend.display = $('#showLegend')[0].checked;
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
                     $("#pageSize").val(data.page.size);
 //                    $("#pageIndex").val(data.page.number);

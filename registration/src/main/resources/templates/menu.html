@@ -41,6 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
             ]<br/>
             <a th:href="'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data Viewer</a><br/>
+            <a th:if="${param.detailed}" th:href="'eventchart?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Event Chart</a><br th:if="${param.detailed}"/>
             <a th:if="${param.detailed}" th:href="'timestampviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Time Stamp Viewer</a><br th:if="${param.detailed}"/>
             <a th:if="${param.detailed}" th:href="'audiolisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Audio Listing</a><br th:if="${param.detailed}"/>
         </section>
@@ -51,7 +52,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <a href="csv.zip">Download Zipped Data</a><br/>
             <div>
                 Download Zipped Audio [
-                <a th:each="dateString,dateIndex : ${audioDates}" th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>
+                    <a th:each="dateString,dateIndex : ${audioDates}" th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>
                 ]
             </div>
         </section>
