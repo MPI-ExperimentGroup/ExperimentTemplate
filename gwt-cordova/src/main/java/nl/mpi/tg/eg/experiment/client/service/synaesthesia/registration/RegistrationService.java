@@ -150,6 +150,15 @@ public class RegistrationService {
                                     }
                                 }
                             }
+                        } else {
+                            for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+                                final String postName = key.getPostName();
+                                if (postName.matches(receivingRegex)) {
+                                    if (jsonObject.containsKey(postName)) {
+                                        userResults.getUserData().setMetadataValue(key, jsonObject.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                                    }
+                                }
+                            }
                         }
                         if (jsonObject.containsKey("scoredata")) {
                             JSONObject scoreDataJson = (JSONObject) jsonObject.get("scoredata");
