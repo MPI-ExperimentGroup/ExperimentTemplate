@@ -279,7 +279,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"screenName\": " + jsonEscape(applicationState) + " \n}");
 
         // todo: optionally include the analytics call also
-        trackView(applicationState);
+//        trackView(applicationState);
     }
 
     public void submitAllData(final UserResults userResults, final DataSubmissionListener dataSubmissionListener) {
@@ -413,13 +413,13 @@ public class DataSubmissionService extends AbstractSubmissionService {
         localStorage.clearUserData(userId);
     }
 
-    private static native void trackView(String applicationState) /*-{
-     if($wnd.analytics) $wnd.analytics.trackView(applicationState);
-     }-*/;
-
-    private static native void trackEvent(String applicationState, String label, String value) /*-{
-     if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
-     }-*/;
+//    private static native void trackView(String applicationState) /*-{
+//     if($wnd.analytics) $wnd.analytics.trackView(applicationState);
+//     }-*/;
+//
+//    private static native void trackEvent(String applicationState, String label, String value) /*-{
+//     if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
+//     }-*/;
 
     protected void sdWriteOk(String message) {
     }
@@ -430,7 +430,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
     protected native void writeCsvLine(final String userIdString, final String screenName, final int dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs) /*-{
         var dataSubmissionService = this;
         console.log("writeCsvLine: " + userIdString + " : " + tagValue1 + " : " + tagValue2);
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.writeCsvLine(function (tagvalue) {
                 console.log("writeCsvLine: " + tagvalue);
 //                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
@@ -446,7 +446,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
     public native void writeJsonData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
         var dataSubmissionService = this;
         console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
                 console.log("writeJsonData: " + tagvalue);
 //                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
