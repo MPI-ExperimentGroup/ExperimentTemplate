@@ -33,8 +33,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
-        <p th:text="'Activity Count, ' + ${count}" />
+        <b>Please keep in mind that this data is an indication only. It is important that you further investigate the underlying data in R or similar with your specific experiment requirements in mind.</b>
+        <!-- todo: check this-->
+        <b>Internal timing data is indicative only. If more accuracy is needed then each experiment should be tested on the target hardware system with hardware optical and audio sensors before interpreting these results.</b>
         <!--<div th:replace="fragments/adminpagelayout :: pagemenu"></div>-->
+        <p th:text="'Activity Count, ' + ${count}" />
         <table>
             <tr>
                 <td>
@@ -113,12 +116,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <br/>
         <div id="pageInfo"/>
         <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
+        <br/>
+        Amount Of Total Data Read:
+        <progress id="totalDataProgressBar" value="0" th:max="${count}"/>
+        <br/>
+        Amount Of Filtered Data Read:
+        <progress id="pagesProgressBar" value="0" th:max="1"/>
         <div style="width:95%">
             <canvas id="canvas"></canvas>
         </div>
         <div id="outputDiv"/>
         <script th:inline="javascript">
             /*<![CDATA[*/
+            var dataReadCounter = 0;
             var timeStampLabels = /*[[${timeStampLabels}]]*/ null;
             var color = Chart.helpers.color;
             var eventChartData = {
@@ -172,12 +182,80 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     }
                 });
             }
+
+            $(window).on('load', function (e) {
+                populateFormValues();
+            });
+
+            $(window).on('hashchange', function (e) {
+                populateFormValues();
+            });
+
+            function populateFormValues() {
+                var splitLocation = location.href.split('#');
+                if (splitLocation.length > 1) {
+                    var selectionValues = splitLocation[1];
+                    $.each(selectionValues.split('|'), function (key, combinedValue) {
+                        var splitValue = combinedValue.split("=");
+                        if (splitValue.length > 1) {
+                            var decodedValue = decodeURI(splitValue[1]);
+                            switch (splitValue[0]) {
+                                case 'startOnValue':
+                                    $('#startOnValue').val(decodedValue.split(","));
+                                    break;
+                                case 'zeroOnValue':
+                                    $('#zeroOnValue').val(decodedValue.split(","));
+                                    break;
+                                case 'stopOnValue':
+                                    $('#stopOnValue').val(decodedValue.split(","));
+                                    break;
+                                case 'showLegend':
+                                    $('#showLegend').prop("checked", decodedValue === 'true');
+                                    break;
+                                case 'pageSize':
+                                    $('#pageSize').val(decodedValue);
+                                    break;
+                                case 'pageIndex':
+                                    $('#pageIndex').val(decodedValue);
+                                    break;
+                                case 'includeValuesOffset':
+                                    $('#includeValuesOffset').val(decodedValue.split(","));
+                                    break;
+                                case 'includeValuesOriginal':
+                                    $('#includeValuesOriginal').val(decodedValue.split(","));
+                                    break;
+                                case 'startDate':
+                                    $('#startDate').val(decodedValue);
+                                    break;
+                                case 'endDate':
+                                    $('#endDate').val(decodedValue);
+                                    break;
+                            }
+                        }
+                    });
+                }
+            }
+
             function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
+                location.href = location.href.split('#')[0] + '#showLegend=' + $('#showLegend')[0].checked
+                        + '|startOnValue=' + $('#startOnValue').val()
+                        + '|zeroOnValue=' + $('#zeroOnValue').val()
+                        + '|stopOnValue=' + $('#stopOnValue').val()
+                        + '|pageSize=' + $('#pageSize').val()
+                        + '|pageIndex=' + $('#pageIndex').val()
+                        + '|includeValuesOffset=' + $('#includeValuesOffset').val()
+                        + '|includeValuesOriginal=' + $('#includeValuesOriginal').val()
+                        + '|startDate=' + $('#startDate').val()
+                        + '|endDate=' + $('#endDate').val()
+                        ;
                 createChart(includeValuesOffset, includeValuesOriginal);
                 $("#outputDiv").html("");
                 $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
+                $("#totalDataProgressBar").attr("value", 0);
+                dataReadCounter = 0;
                 populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
             }
+
             function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
                 $("#outputDiv").append(startOnValue + "<br/>" + zeroOnValue + "<br/>" + stopOnValue + "<br/>" + pageSize + "<br/>" + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
@@ -187,7 +265,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //                    $("#pageIndex").val(data.page.number);
                     $("#donePages").append(data.page.number + ", ");
                     $("#ofPages").html(" of " + data.page.totalPages + " pages<br/>");
+                    $("#pagesProgressBar").attr("max", data.page.totalPages);
+                    $("#pagesProgressBar").attr("value", data.page.number);
                     $.each(data._embedded.timestamps, function (key, timeStamp) {
+                        $("#totalDataProgressBar").attr("value", dataReadCounter++);
                         if (typeof (processedData[timeStamp.userId]) === 'undefined') {
                             processedData[timeStamp.userId] = {started: false, offset: timeStamp.eventMs, data: []};
                         }
