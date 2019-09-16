@@ -397,7 +397,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, final String deviceRegex, final String subDirectoryName, final String directoryName, boolean filePerStimulus, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + subDirectoryName + " : " + directoryName + " : " + stimulusIdString + " : " + userIdString);
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
                 console.log("startAudioRecorderOk: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
@@ -457,7 +457,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void requestRecorderPermissions() /*-{
         var abstractPresenter = this;
         console.log("requestRecorderPermissions");
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
                 console.log("requestRecorderPermissionsOk");
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
@@ -473,7 +473,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void requestFilePermissions() /*-{
         var abstractPresenter = this;
         console.log("requestFilePermissions");
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
                 console.log("requestFilePermissionsOk");
 //                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
@@ -488,7 +488,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected native void isAudioRecording() /*-{
         var abstractPresenter = this;
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.isRecording(function () {
 //                console.log("isAudioRecording");
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
@@ -503,7 +503,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected native void getAudioRecorderTime() /*-{
         var abstractPresenter = this;
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
 //                console.log("isAudioRecording: " + " : " + currentTime);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, currentTime);
@@ -525,7 +525,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void stopAudioRecorder() /*-{
         var abstractPresenter = this;
         console.log("stopAudioRecorder");
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
                 console.log("stopAudioRecorderOk: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, tagvalue);
@@ -547,7 +547,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void startAudioRecorderTag(int tier) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorderTag: " + tier);
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
                 console.log("startAudioRecorderTagOk: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
@@ -563,7 +563,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag) /*-{
         var abstractPresenter = this;
         console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
-        if($wnd.plugins){
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
                 console.log("endAudioRecorderTagOk: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
