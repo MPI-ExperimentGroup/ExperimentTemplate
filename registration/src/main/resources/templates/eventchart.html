@@ -37,7 +37,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!-- todo: check this-->
         <b>Internal timing data is indicative only. If more accuracy is needed then each experiment should be tested on the target hardware system with hardware optical and audio sensors before interpreting these results.</b>
         <!--<div th:replace="fragments/adminpagelayout :: pagemenu"></div>-->
-        <p th:text="'Activity Count, ' + ${count}" />
         <table>
             <tr>
                 <td>
@@ -106,6 +105,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </tr>
         </table>
         <br/>
+        Show Advanced Options:
+        <input type="checkbox" id="showAdvanced" value="false"/>
+        <br/>
         Show Legend:
         <input type="checkbox" id="showLegend" value="false"/>
         <br/>
@@ -115,7 +117,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <input type="number" id="pageIndex" value="0"/>
         <br/>
         <div id="pageInfo"/>
-        <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
+        <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, location.href.split('#'), {})">Generate Chart</button>
+        <br/>
+        <p th:text="'Total Records: ' + ${count}" />
         <br/>
         Amount Of Total Data Read:
         <progress id="totalDataProgressBar" value="0" th:max="${count}"/>
@@ -129,23 +133,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script th:inline="javascript">
             /*<![CDATA[*/
             var dataReadCounter = 0;
+            var calculatedGraphData = {};
             var timeStampLabels = /*[[${timeStampLabels}]]*/ null;
             var color = Chart.helpers.color;
-            var eventChartData = {
-                yLabels: [],
-                datasets: []
-            };
-            function createChart(includeValuesOffset, includeValuesOriginal) {
+            function createChart(datasets, includeValuesOffset, includeValuesOriginal, showLegend) {
                 var chartLabels = includeValuesOffset.concat(includeValuesOriginal);
                 chartLabels.sort();
-                eventChartData.yLabels = jQuery.unique(chartLabels);
-                eventChartData.datasets = [];
                 var ctx = document.getElementById('canvas').getContext('2d');
                 window.eventChart = Chart.Scatter(ctx, {
-                    data: eventChartData,
+                    data: {
+                        yLabels: jQuery.unique(chartLabels),
+                        datasets: datasets
+                    },
                     options: {
                         legend: {
-                            display: $('#showLegend')[0].checked
+                            display: showLegend
                         },
                         title: {
                             display: true,
@@ -189,7 +191,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
             $(window).on('hashchange', function (e) {
                 populateFormValues();
+                showProcessedData($('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#showLegend')[0].checked);
             });
+
+            function showProcessedData(includeValuesOffset, includeValuesOriginal, showLegend) {
+                var processedData = calculatedGraphData[location.href.split('#')];
+                var datasets = [];
+                var colourIndex = 80;
+                $.each(processedData, function (key, data) {
+                    if (data.data.length > 0) {
+                        colourIndex += 1;
+                        datasets.push({
+                            borderColor: 'hsl(' + ((colourIndex * 30) % 360) + ',100%,50%,0.5)',
+                            backgroundColor: 'hsl(' + ((colourIndex * 30) % 360) + ',100%,50%,0.5)',
+                            label: key,
+                            data: data.data
+                        });
+                    }
+                });
+                createChart(datasets, includeValuesOffset, includeValuesOriginal, showLegend);
+                eventChart.update();
+            }
 
             function populateFormValues() {
                 var splitLocation = location.href.split('#');
@@ -208,6 +230,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     break;
                                 case 'stopOnValue':
                                     $('#stopOnValue').val(decodedValue.split(","));
+                                    break;
+                                case 'showAdvanced':
+                                    $('#showAdvanced').prop("checked", decodedValue === 'true');
                                     break;
                                 case 'showLegend':
                                     $('#showLegend').prop("checked", decodedValue === 'true');
@@ -236,8 +261,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
             }
 
-            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
+            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, requestedParameters, processedData) {
                 location.href = location.href.split('#')[0] + '#showLegend=' + $('#showLegend')[0].checked
+                        + '|showAdvanced=' + $('#showAdvanced')[0].checked
                         + '|startOnValue=' + $('#startOnValue').val()
                         + '|zeroOnValue=' + $('#zeroOnValue').val()
                         + '|stopOnValue=' + $('#stopOnValue').val()
@@ -248,15 +274,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         + '|startDate=' + $('#startDate').val()
                         + '|endDate=' + $('#endDate').val()
                         ;
-                createChart(includeValuesOffset, includeValuesOriginal);
                 $("#outputDiv").html("");
                 $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
                 $("#totalDataProgressBar").attr("value", 0);
                 dataReadCounter = 0;
-                populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
+                populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData);
+                calculatedGraphData[requestedParameters] = processedData;
             }
 
-            function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
+            function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData) {
                 $("#outputDiv").append(startOnValue + "<br/>" + zeroOnValue + "<br/>" + stopOnValue + "<br/>" + pageSize + "<br/>" + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
                 }
@@ -297,22 +323,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                     });
                     if (data.page.number < data.page.totalPages) {
-                        setTimeout(populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData), 0);
+                        setTimeout(populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData), 0);
                     } else {
-                        eventChartData.datasets = [];
-                        var colourIndex = 80;
-                        $.each(processedData, function (key, data) {
-                            if (data.data.length > 0) {
-                                colourIndex += 1;
-                                eventChartData.datasets.push({
-                                    borderColor: 'hsl(' + ((colourIndex * 30) % 360) + ',100%,50%,0.5)',
-                                    backgroundColor: 'hsl(' + ((colourIndex * 30) % 360) + ',100%,50%,0.5)',
-                                    label: key,
-                                    data: data.data
-                                });
-                            }
-                        });
-                        eventChart.update();
+                        showProcessedData(includeValuesOffset, includeValuesOriginal, showLegend);
                     }
                 });
             }
