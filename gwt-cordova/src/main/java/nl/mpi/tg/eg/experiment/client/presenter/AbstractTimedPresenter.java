@@ -21,6 +21,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -188,9 +189,9 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void row(final TimedStimulusListener timedStimulusListener) {
-        timedStimulusView.startRow();
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRow();
         timedStimulusListener.postLoadTimerFired();
-        timedStimulusView.endRow();
+        timedStimulusView.endRow(isWidget);
     }
 
     protected void column(final TimedStimulusListener timedStimulusListener) {
@@ -198,16 +199,16 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void column(final String styleName, final TimedStimulusListener timedStimulusListener) {
-        timedStimulusView.startCell(styleName);
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startCell(styleName);
         timedStimulusListener.postLoadTimerFired();
-        timedStimulusView.endCell();
+        timedStimulusView.endCell(isWidget);
     }
 
     protected void region(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
         final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
-        timedStimulusView.startRegion(regionId, styleName);
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
-        timedStimulusView.endRegion();
+        timedStimulusView.endRegion(isWidget);
     }
 
     protected void regionStyle(final Stimulus currentStimulus, final String regionIdToken, final String styleName) {
@@ -218,9 +219,9 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     protected void regionReplace(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
         final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
-        timedStimulusView.startRegion(regionId, styleName);
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
-        timedStimulusView.endRegion();
+        timedStimulusView.endRegion(isWidget);
     }
 
     protected void regionClear(final Stimulus currentStimulus, final String regionIdToken) {

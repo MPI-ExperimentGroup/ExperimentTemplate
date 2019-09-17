@@ -110,7 +110,7 @@ public class ComplexView extends SimpleView {
         regionPanels.clear();
     }
 
-    public void startRegion(final String regionId, final String styleName) {
+    public InsertPanel.ForIsWidget startRegion(final String regionId, final String styleName) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
         if (regionTemp == null) {
             regionTemp = new VerticalPanel();
@@ -124,10 +124,11 @@ public class ComplexView extends SimpleView {
             regionTemp.setStyleName(styleName);
         }
         activePanels.add(regionTemp);
+        return regionTemp;
     }
 
-    public void endRegion() {
-        activePanels.remove(activePanels.size() - 1);
+    public void endRegion(InsertPanel.ForIsWidget isWidget) {
+        activePanels.remove(isWidget);
     }
 
     public void setRegionStyle(final String regionId, final String styleName) {
@@ -149,7 +150,7 @@ public class ComplexView extends SimpleView {
         return (index >= 0) ? gridPanelList.get(index) : null;
     }
 
-    public void startCell(String styleName) {
+    public InsertPanel.ForIsWidget startCell(String styleName) {
         VerticalPanel cellPanel = new VerticalPanel();
         activePanels.add(cellPanel);
         if (styleName != null && !styleName.isEmpty()) {
@@ -162,23 +163,25 @@ public class ComplexView extends SimpleView {
         } else {
             horizontalPanel.add(cellPanel);
         }
+        return cellPanel;
     }
 
-    public void endCell() {
-        activePanels.remove(activePanels.size() - 1);
+    public void endCell(InsertPanel.ForIsWidget isWidget) {
+        activePanels.remove(isWidget);
     }
 
-    public void startRow() {
+    public InsertPanel.ForIsWidget startRow() {
         if (gridPanel() != null) {
             gridPanel().insertRow(gridPanel().getRowCount());
+            return null;
         } else {
-            startHorizontalPanel();
+            return startHorizontalPanel();
         }
     }
 
-    public void endRow() {
+    public void endRow(InsertPanel.ForIsWidget isWidget) {
         if (gridPanel() == null) {
-            endHorizontalPanel();
+            endHorizontalPanel(isWidget);
         }
     }
 
@@ -196,16 +199,17 @@ public class ComplexView extends SimpleView {
         gridPanelList.remove(gridPanelList.size() - 1);
     }
 
-    public void startHorizontalPanel() {
+    public InsertPanel.ForIsWidget startHorizontalPanel() {
         horizontalPanel = new HorizontalPanel();
         horizontalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
         outerPanel.add(horizontalPanel);
         activePanels.add(horizontalPanel);
+        return horizontalPanel;
     }
 
-    public void endHorizontalPanel() {
+    public void endHorizontalPanel(InsertPanel.ForIsWidget isWidget) {
         horizontalPanel = null;
-        activePanels.remove(activePanels.size() - 1);
+        activePanels.remove(isWidget);
     }
 
     protected InsertPanel.ForIsWidget getActivePanel() {

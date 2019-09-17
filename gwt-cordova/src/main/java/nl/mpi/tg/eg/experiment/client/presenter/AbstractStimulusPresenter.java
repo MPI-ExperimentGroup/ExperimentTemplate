@@ -32,6 +32,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -448,15 +449,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         // pauseRegionCounter is used to keep the position in the page where the pause is expected, rather than appending to the end of the page on trigger
         final String pauseRegionId = "pauseRegionCounter_" + pauseRegionCounter;
         pauseRegionCounter++;
-        ((ComplexView) simpleView).startRegion(pauseRegionId, null);
-        ((ComplexView) simpleView).endRegion();
+        final InsertPanel.ForIsWidget isWidget1 = ((ComplexView) simpleView).startRegion(pauseRegionId, null);
+        ((ComplexView) simpleView).endRegion(isWidget1);
         final Timer timer = new Timer() {
             @Override
             public void run() {
-                ((ComplexView) simpleView).startRegion(pauseRegionId, null);
+                final InsertPanel.ForIsWidget isWidget2 = ((ComplexView) simpleView).startRegion(pauseRegionId, null);
                 timedStimulusListener.postLoadTimerFired();
                 pauseTimers.remove(this);
-                ((ComplexView) simpleView).endRegion();
+                ((ComplexView) simpleView).endRegion(isWidget2);
             }
         };
         pauseTimers.add(timer);
@@ -1676,7 +1677,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void matchingStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, final int dataChannel) {
         matchingStimuliGroup = new MatchingStimuliGroup(currentStimulus, stimulusProvider.getMatchingStimuli(matchingRegex), true, hasMoreStimulusListener, endOfStimulusListener);
-        timedStimulusView.startHorizontalPanel();
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startHorizontalPanel();
         int ySpacing = (int) (100.0 / (matchingStimuliGroup.getStimulusCount() + 1));
         int yPos = 0;
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
@@ -1747,7 +1748,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 });
             }
         }
-        timedStimulusView.endHorizontalPanel();
+        timedStimulusView.endHorizontalPanel(isWidget);
     }
 
     private PresenterEventListner getEventListener(final Stimulus currentStimulus, final ArrayList<StimulusButton> buttonList, final String eventTag, final int dataChannel, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
