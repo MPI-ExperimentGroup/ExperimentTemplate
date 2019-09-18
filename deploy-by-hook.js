@@ -165,7 +165,7 @@ function startResult() {
     resultsFile.write("if($.isNumeric(sortItem)){\n");
     resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type(sortItem)', a).text().localeCompare($('td:nth-of-type(sortItem)', b).text());}).appendTo('tbody');\n");
     resultsFile.write("}\n");
-    resultsFile.write("}\n");
+    resultsFile.write("});\n");
     resultsFile.write("</script>\n");
     buildHistoryJson.building = true;
     fs.writeFileSync(buildHistoryFileName, JSON.stringify(buildHistoryJson, null, 4));
@@ -915,13 +915,13 @@ function convertJsonToXml() {
         'versionCheck.buildType': 'stable',
         'exec.args': '-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ' + incomingDirectory + ' ' + incomingDirectory
     }).then(function (value) {
-            console.log("convert JSON to XML finished");
-            resultsFile.write("<div>Conversion from JSON to XML finished, '" + new Date().toISOString() + "'</div>");
-            moveIncomingToProcessing();
+        console.log("convert JSON to XML finished");
+        resultsFile.write("<div>Conversion from JSON to XML finished, '" + new Date().toISOString() + "'</div>");
+        moveIncomingToProcessing();
     }, function (reason) {
         console.log(reason);
-            console.log("convert JSON to XML failed");
-            resultsFile.write("<div>Conversion from JSON to XML failed, '" + new Date().toISOString() + "'</div>");
+        console.log("convert JSON to XML failed");
+        resultsFile.write("<div>Conversion from JSON to XML failed, '" + new Date().toISOString() + "'</div>");
     });
 }
 
