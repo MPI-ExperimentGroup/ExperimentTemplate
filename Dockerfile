@@ -63,6 +63,11 @@ RUN cd init-setup-project \
 #CMD ["/bin/bash"] [ls /target]#, "/target/setup-cordova.sh"]
 #WORKDIR /home/petwit/docker-testing
 COPY android-keys /android-keys
+
+RUN mkdir /electron
+RUN wget https://github.com/electron/electron/releases/download/v2.0.10/electron-v2.0.10-darwin-x64.zip -O /electron/darwin-x64.zip
+RUN wget https://github.com/electron/electron/releases/download/v2.0.10/electron-v2.0.10-win32-x64.zip -O /electron/win32-x64.zip
+
 RUN git clone --depth 30000 https://github.com/MPI-ExperimentGroup/ExperimentTemplate.git
 
 RUN sed -i 's|<versionCheck.allowSnapshots>true</versionCheck.allowSnapshots>|<versionCheck.allowSnapshots>false</versionCheck.allowSnapshots>|g' /ExperimentTemplate/pom.xml
