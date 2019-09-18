@@ -80,7 +80,19 @@ function startResult() {
     resultsFile.write("<div id='buildLabel'>Building...</div>\n");
     resultsFile.write("<div id='buildDate'></div>\n");
     resultsFile.write("<table id='buildTable'>\n");
-    resultsFile.write("<tr><td>experiment</td><td>last update</td><td>validation</td><td>staging web</td><td>staging android</td><td>staging desktop</td><td>staging admin</td><td>production web</td><td>production android</td><td>production desktop</td><td>production admin</td><tr>\n");
+    resultsFile.write("<tr>\n");
+    resultsFile.write("<td><a href=\"#1\">experiment</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">last update</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">validation</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">staging web</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">staging android</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">staging desktop</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">staging admin</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">production web</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">production android</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">production desktop</a></td>\n");
+    resultsFile.write("<td><a href=\"#1\">production admin</a></td>\n");
+    resultsFile.write("<tr>\n");
     resultsFile.write("</table>\n");
     resultsFile.write("<a href='git-push-log.html'>log</a>&nbsp;\n");
     resultsFile.write("<a href='git-update-log.txt'>update-log</a>&nbsp;\n");
@@ -135,6 +147,10 @@ function startResult() {
     resultsFile.write("var statusStyle = (keyString + '_' + cellString in applicationStatus)?';border-right: 3px solid ' + applicationStatus[keyString + '_' + cellString] + ';':'';\n");
     resultsFile.write("document.getElementById(keyString + '_' + cellString).style = data.table[keyString][cellString].style + statusStyle;\n");
     resultsFile.write("}\n");
+    resultsFile.write("}\n");
+    resultsFile.write("var sortItem = calculatedGraphData[location.href.split('#')];\n");
+    resultsFile.write("if($.isNumeric(sortItem)){\n");
+    resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type(sortItem)', a).text().localeCompare($('td:nth-of-type(sortItem)', b).text());}).appendTo('tbody');\n");
     resultsFile.write("}\n");
     resultsFile.write("if(data.building){\n");
     resultsFile.write("updateTimer = window.setTimeout(doUpdate, 1000);\n");
@@ -204,7 +220,7 @@ function stopUpdatingResults() {
 }
 
 function unDeploy(listing, currentEntry) {
-    // we create a new mvn instance for each child pom
+// we create a new mvn instance for each child pom
     var mvngui = require('maven').create({
         cwd: __dirname + "/gwt-cordova",
         settings: m2Settings
@@ -307,7 +323,7 @@ function unDeploy(listing, currentEntry) {
 }
 
 function deployStagingGui(listing, currentEntry) {
-    // we create a new mvn instance for each child pom
+// we create a new mvn instance for each child pom
     var mvngui = require('maven').create({
         cwd: __dirname + "/gwt-cordova",
         settings: m2Settings
