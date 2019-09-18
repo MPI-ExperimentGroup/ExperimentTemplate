@@ -44,7 +44,7 @@ RUN /android-sdk/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION
 #RUN npm config set strict-ssl false # todo: remove this stale ssl work around 
 RUN npm install npm -g # update npm
 RUN npm install -g cordova@9.0.0
-RUN npm install -g electron-forge
+RUN npm install -g electron-forge asar
 RUN electron-forge init init-setup-project
 RUN cd init-setup-project \
 && npm install express
