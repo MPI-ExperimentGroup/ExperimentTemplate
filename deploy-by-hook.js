@@ -150,7 +150,7 @@ function startResult() {
     resultsFile.write("}\n");
     resultsFile.write("var sortItem = location.href.split('#')[1];\n");
     resultsFile.write("if($.isNumeric(sortItem)){\n");
-    resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type(sortItem)', a).text().localeCompare($('td:nth-of-type(sortItem)', b).text());}).appendTo('tbody');\n");
+    resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type('+sortItem+')', a).text().localeCompare($('td:nth-of-type('+sortItem+')', b).text());}).appendTo('tbody');\n");
     resultsFile.write("}\n");
     resultsFile.write("if(data.building){\n");
     resultsFile.write("updateTimer = window.setTimeout(doUpdate, 1000);\n");
@@ -163,7 +163,7 @@ function startResult() {
     resultsFile.write("$(window).on('hashchange', function (e) {\n");
     resultsFile.write("var sortItem = location.href.split('#')[1];\n");
     resultsFile.write("if($.isNumeric(sortItem)){\n");
-    resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type(sortItem)', a).text().localeCompare($('td:nth-of-type(sortItem)', b).text());}).appendTo('tbody');\n");
+    resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type('+sortItem+')', a).text().localeCompare($('td:nth-of-type('+sortItem+')', b).text());}).appendTo('tbody');\n");
     resultsFile.write("}\n");
     resultsFile.write("});\n");
     resultsFile.write("</script>\n");
