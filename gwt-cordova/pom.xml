@@ -169,6 +169,31 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-webjars-for-electron-cordova</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js,META-INF/resources/**/recorder.min.js</includes>
+                            <excludes>**/*.properties</excludes>
+                            <outputDirectory>${project.build.directory}/webjars</outputDirectory>
+                            <!--<outputAbsoluteArtifactFilename>false</outputAbsoluteArtifactFilename>-->
+                            <!--<useRepositoryLayout>false</useRepositoryLayout>-->
+                            <!--<useSubDirectoryPerScope>false</useSubDirectoryPerScope>-->
+                            <!--<useSubDirectoryPerArtifact>false</useSubDirectoryPerArtifact>-->
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.7</version>
                 <executions>
@@ -306,7 +331,7 @@
                                 </resource>
                             </resources>              
                         </configuration>                  
-                    </execution>                                      
+                    </execution>    
                 </executions>
             </plugin>
             <plugin>
