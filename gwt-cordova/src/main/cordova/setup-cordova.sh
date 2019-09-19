@@ -8,6 +8,11 @@ appname=@experiment.configuration.name@-@project.artifactId@-@project.version@
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
+
+mv www/webjars/jquery/*/*.* www/webjars/jquery/
+mv www/webjars/stomp-websocket/*/*.* www/webjars/stomp-websocket/
+mv www/webjars/sockjs-client/*/*.* www/webjars/sockjs-client/
+
 #bash ../generate-icons.sh
 
 if [ -f www/static/icon.png ];
