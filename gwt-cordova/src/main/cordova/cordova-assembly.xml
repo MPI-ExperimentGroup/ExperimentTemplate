@@ -73,7 +73,8 @@
         <fileSet>
             <directory>${project.build.directory}/webjars/META-INF/resources/webjars</directory>
             <includes>
-                <include>*.*</include>
+                <!-- this will include one directory that must be removed by the setup sh script-->
+                <include>**/*.*</include>
             </includes>  
             <outputDirectory>www/webjars</outputDirectory>
             <filtered>false</filtered>
