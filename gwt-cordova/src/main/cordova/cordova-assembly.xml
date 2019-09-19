@@ -70,7 +70,15 @@
             <outputDirectory>www</outputDirectory>
             <filtered>false</filtered>
         </fileSet>
-<!--        <fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/webjars/META-INF/resources/webjars</directory>
+            <includes>
+                <include>*.*</include>
+            </includes>  
+            <outputDirectory>www/webjars</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>
+        <!--        <fileSet>
             <directory>${basedir}/src/main/static/${experiment.configuration.name}</directory>
             <excludes>
                 <exclude>**/*.xlsx</exclude>
