@@ -160,8 +160,15 @@ public class HtmlTokenFormatterTest {
     public void testEvaluateTokens() {
         System.out.println("evaluateTokens");
         HtmlTokenFormatter instance = getInstance();
+        assertEquals((2 - (3 * 6 + (7 - 4 * (7.0 / 2)))) + 4, instance.evaluateTokens("(2-(3*6+(7-4*(7/2))))+4"));
         assertEquals(2.0 - 3 + 4.0, instance.evaluateTokens("2-3+4"));
+        assertEquals(2.0 + 3 - 4.0, instance.evaluateTokens("2+3-4"));
         assertEquals(4.0 / 5.0 * 6, instance.evaluateTokens("4/5*6"));
+        assertEquals(4.0 * 5.0 / 6, instance.evaluateTokens("4*5/6"));
+        assertEquals(-2.0 - 3 + 4.0, instance.evaluateTokens("-2-3+4"));
+        assertEquals(-2.0 + 3 - 4.0, instance.evaluateTokens("-2+3-4"));
+        assertEquals(-4.0 / 5.0 * 6, instance.evaluateTokens("-4/5*6"));
+        assertEquals(-4.0 * 5.0 / 6, instance.evaluateTokens("-4*5/6"));
         assertEquals(3 + 4.0 / 5.0 * 6, instance.evaluateTokens("3+4/5*6"));
         assertEquals(2.0 - 4.0 / 5.0 * 6, instance.evaluateTokens("2-4/5*6"));
         assertEquals(2.0 - 3 + 4.0 / 5.0 * 6, instance.evaluateTokens("2-3+4/5*6"));
