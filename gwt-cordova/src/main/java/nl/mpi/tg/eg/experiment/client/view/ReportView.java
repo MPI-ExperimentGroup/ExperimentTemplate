@@ -58,6 +58,7 @@ public class ReportView extends TimedStimulusView {
                 grid.setWidget(row, column, label);
             }
             if (scoreData.getDistance() != null) {
+                // todo: this bar graph element can be migrated to use the addBarGraphElement in TimedStimulusView
                 final HorizontalPanel bargraphOuter = new HorizontalPanel();
                 final HorizontalPanel bargraphInner = new HorizontalPanel();
                 bargraphOuter.setPixelSize(100, 10);

@@ -156,6 +156,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
                 final long durationMs = System.currentTimeMillis() - startMs;
                 stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, stimulusProviderInternal.getCurrentStimulus(), colourPickerCanvasView.getColour().getHexValue(), null, (int) durationMs);
                 triggerEvent();
             }
 
@@ -181,6 +182,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
                 final long durationMs = System.currentTimeMillis() - startMs;
                 stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, stimulusProviderInternal.getCurrentStimulus(), "", null, (int) durationMs);
                 triggerEvent();
             }
 

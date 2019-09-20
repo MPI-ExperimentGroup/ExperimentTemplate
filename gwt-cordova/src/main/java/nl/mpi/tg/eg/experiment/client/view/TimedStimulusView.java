@@ -38,6 +38,7 @@ import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
@@ -162,6 +163,17 @@ public class TimedStimulusView extends ComplexView {
         super.clearPageAndTimers(styleName);
         videoList.clear();
         audioList.clear();
+    }
+
+    public void addBarGraphElement(final int value, final int range, final String styleName) {
+        final HorizontalPanel bargraphOuter = new HorizontalPanel();
+        final HorizontalPanel bargraphInner = new HorizontalPanel();
+        bargraphOuter.setPixelSize(100, 10);
+        bargraphInner.setPixelSize((int) (100.0 / range * value), 10);
+        bargraphOuter.setStyleName("bargraphOuter");
+        bargraphInner.setStyleName("bargraphInner");
+        bargraphOuter.add(bargraphInner);
+        getActivePanel().add(bargraphOuter);
     }
 
     public StimulusButton addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener onLoadStimulusListener, final CancelableStimulusListener postLoadMsListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
@@ -534,7 +546,7 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, final boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
