@@ -84,37 +84,39 @@ public class HtmlTokenFormatter {
             matcherGroup = regExpGroup.exec(inputString);
         }
         for (String operator : new String[]{"/", "\\*", "%", "-", "\\+"}) {
-            RegExp regExpOperator = RegExp.compile("([0-9\\.]+" + operator + "-?[0-9\\.]+)");
+            RegExp regExpOperator = RegExp.compile("(^-[0-9\\.]+" + operator + "-?[0-9\\.]+)|([0-9\\.]+" + operator + "-?[0-9\\.]+)");
             MatchResult matcherOperator = regExpOperator.exec(inputString);
             if (matcherOperator != null) {
                 for (int groupIndex = 1; groupIndex < matcherOperator.getGroupCount(); groupIndex++) {
                     final String groupString = matcherOperator.getGroup(groupIndex);
-                    final String[] splitGroup = groupString.split(operator);
-                    final Number resultNumber;
-                    switch (operator) {
-                        case "/":
-                            resultNumber = Double.parseDouble(splitGroup[0]) / Double.parseDouble(splitGroup[1]);
-                            break;
-                        case "\\*":
-                            resultNumber = Double.parseDouble(splitGroup[0]) * Double.parseDouble(splitGroup[1]);
-                            break;
-                        case "\\+":
-                            resultNumber = Double.parseDouble(splitGroup[0]) + Double.parseDouble(splitGroup[1]);
-                            break;
-                        case "-":
-                            resultNumber = Double.parseDouble(splitGroup[0]) - Double.parseDouble(splitGroup[1]);
-                            break;
-                        case "%":
-                            resultNumber = Double.parseDouble(splitGroup[0]) % Double.parseDouble(splitGroup[1]);
-                            break;
-                        default:
-                            resultNumber = 0;
+                    if (groupString != null) {
+                        final String[] splitGroup = groupString.split(operator);
+                        final Number resultNumber;
+                        switch (operator) {
+                            case "/":
+                                resultNumber = Double.parseDouble(splitGroup[0]) / Double.parseDouble(splitGroup[1]);
+                                break;
+                            case "\\*":
+                                resultNumber = Double.parseDouble(splitGroup[0]) * Double.parseDouble(splitGroup[1]);
+                                break;
+                            case "\\+":
+                                resultNumber = Double.parseDouble(splitGroup[0]) + Double.parseDouble(splitGroup[1]);
+                                break;
+                            case "-":
+                                resultNumber = Double.parseDouble(splitGroup[0]) - Double.parseDouble(splitGroup[1]);
+                                break;
+                            case "%":
+                                resultNumber = Double.parseDouble(splitGroup[0]) % Double.parseDouble(splitGroup[1]);
+                                break;
+                            default:
+                                resultNumber = 0;
+                        }
+                        inputString = inputString.replace(groupString, "" + resultNumber);
+                        System.out.print(groupString);
+                        System.out.print(" = ");
+                        System.out.println(resultNumber);
+                        System.out.println(inputString);
                     }
-                    inputString = inputString.replace(groupString, "" + resultNumber);
-                    System.out.print(groupString);
-                    System.out.print(" = ");
-                    System.out.println(resultNumber);
-                    System.out.println(inputString);
                 }
             }
         }
