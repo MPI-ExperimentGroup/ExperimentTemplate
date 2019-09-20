@@ -152,4 +152,30 @@ public class HtmlTokenFormatterTest {
             session_steps, session_step});
         return instance;
     }
+
+    /**
+     * Test of evaluateTokens method, of class HtmlTokenFormatter.
+     */
+    @Test
+    public void testEvaluateTokens() {
+        System.out.println("evaluateTokens");
+        HtmlTokenFormatter instance = getInstance();
+        assertEquals(2.0 - 3 + 4.0, instance.evaluateTokens("2-3+4"));
+        assertEquals(4.0 / 5.0 * 6, instance.evaluateTokens("4/5*6"));
+        assertEquals(3 + 4.0 / 5.0 * 6, instance.evaluateTokens("3+4/5*6"));
+        assertEquals(2.0 - 4.0 / 5.0 * 6, instance.evaluateTokens("2-4/5*6"));
+        assertEquals(2.0 - 3 + 4.0 / 5.0 * 6, instance.evaluateTokens("2-3+4/5*6"));
+        assertEquals((1.0 + 5) % 3, instance.evaluateTokens("(1 +5) % 3"));
+        assertEquals(1.0 + (5 % 3), instance.evaluateTokens("1+(5 % 3)"));
+        assertEquals(1.0 + 5 % 3, instance.evaluateTokens("1+5 % 3"));
+        assertEquals(1.0 + 5, instance.evaluateTokens("1 + 5"));
+        assertEquals(-1.0 + 5, instance.evaluateTokens("-1 + 5"));
+        assertEquals(1.0 + 5 * (1 * 3), instance.evaluateTokens("1 + 5 * (1*3)"));
+        assertEquals((1.0 + 5.1) * (1 * 3), instance.evaluateTokens("(1 + 5.1) * (1 *3 ) "));
+        assertEquals(5.1 / (1 - 3), instance.evaluateTokens("5.1 / ( 1- 3) "));
+        assertEquals(-5.1 / (1 - 3), instance.evaluateTokens("-5.1 / ( 1- 3) "));
+        assertEquals(2.0 * 3 - 4 + 5 / 6, instance.evaluateTokens("2*3-4+5/6"));
+        assertEquals(2.0 / 3 * 4 - 5 + 6, instance.evaluateTokens("2/3*4-5+6"));
+        assertEquals(2.0 + 3 / 4 * 5 - 6, instance.evaluateTokens("2+3/4*5-6"));
+    }
 }
