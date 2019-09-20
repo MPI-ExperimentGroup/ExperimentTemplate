@@ -67,6 +67,60 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
+    public Number evaluateTokens(String inputString) {
+        final String formatedString = formatString(inputString);
+        return evaluateResolve(formatedString.replaceAll("\\s", ""));
+    }
+
+    private Number evaluateResolve(String inputString) {
+        System.out.println(inputString);
+        RegExp regExpGroup = RegExp.compile("(\\([^\\)]*\\))");
+        MatchResult matcherGroup = regExpGroup.exec(inputString);
+        while (matcherGroup != null) {
+            for (int groupIndex = 1; groupIndex < matcherGroup.getGroupCount(); groupIndex++) {
+                final String groupString = matcherGroup.getGroup(groupIndex);
+                inputString = inputString.replace(groupString, "" + evaluateResolve(groupString.substring(1, groupString.length() - 1)));
+            }
+            matcherGroup = regExpGroup.exec(inputString);
+        }
+        for (String operator : new String[]{"/", "\\*", "%", "-", "\\+"}) {
+            RegExp regExpOperator = RegExp.compile("([0-9\\.]+" + operator + "-?[0-9\\.]+)");
+            MatchResult matcherOperator = regExpOperator.exec(inputString);
+            if (matcherOperator != null) {
+                for (int groupIndex = 1; groupIndex < matcherOperator.getGroupCount(); groupIndex++) {
+                    final String groupString = matcherOperator.getGroup(groupIndex);
+                    final String[] splitGroup = groupString.split(operator);
+                    final Number resultNumber;
+                    switch (operator) {
+                        case "/":
+                            resultNumber = Double.parseDouble(splitGroup[0]) / Double.parseDouble(splitGroup[1]);
+                            break;
+                        case "\\*":
+                            resultNumber = Double.parseDouble(splitGroup[0]) * Double.parseDouble(splitGroup[1]);
+                            break;
+                        case "\\+":
+                            resultNumber = Double.parseDouble(splitGroup[0]) + Double.parseDouble(splitGroup[1]);
+                            break;
+                        case "-":
+                            resultNumber = Double.parseDouble(splitGroup[0]) - Double.parseDouble(splitGroup[1]);
+                            break;
+                        case "%":
+                            resultNumber = Double.parseDouble(splitGroup[0]) % Double.parseDouble(splitGroup[1]);
+                            break;
+                        default:
+                            resultNumber = 0;
+                    }
+                    inputString = inputString.replace(groupString, "" + resultNumber);
+                    System.out.print(groupString);
+                    System.out.print(" = ");
+                    System.out.println(resultNumber);
+                    System.out.println(inputString);
+                }
+            }
+        }
+        return Double.parseDouble(inputString);
+    }
+
     public String formatString(String inputString) {
         if (inputString == null) {
             return null;
