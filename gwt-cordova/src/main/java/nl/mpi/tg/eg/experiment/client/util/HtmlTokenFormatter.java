@@ -74,7 +74,7 @@ public class HtmlTokenFormatter {
 
     private Number evaluateResolve(String inputString) {
         System.out.println(inputString);
-        RegExp regExpGroup = RegExp.compile("(\\([^\\)]*\\))");
+        RegExp regExpGroup = RegExp.compile("(\\([^\\)\\(]*\\))");
         MatchResult matcherGroup = regExpGroup.exec(inputString);
         while (matcherGroup != null) {
             for (int groupIndex = 1; groupIndex < matcherGroup.getGroupCount(); groupIndex++) {
@@ -84,33 +84,41 @@ public class HtmlTokenFormatter {
             matcherGroup = regExpGroup.exec(inputString);
         }
         for (String operator : new String[]{"/", "\\*", "%", "-", "\\+"}) {
-            RegExp regExpOperator = RegExp.compile("(^-[0-9\\.]+" + operator + "-?[0-9\\.]+)|([0-9\\.]+" + operator + "-?[0-9\\.]+)");
-            MatchResult matcherOperator = regExpOperator.exec(inputString);
-            if (matcherOperator != null) {
-                for (int groupIndex = 1; groupIndex < matcherOperator.getGroupCount(); groupIndex++) {
-                    final String groupString = matcherOperator.getGroup(groupIndex);
-                    if (groupString != null) {
-                        final String[] splitGroup = groupString.split(operator);
+            RegExp regExpOperator = RegExp.compile("(^-|[^0-9.]-|)([0-9\\.]+)(" + operator + ")(-?)([0-9\\.]+)");
+            boolean foundMatch = true;
+            while (foundMatch) {
+                foundMatch = false;
+                MatchResult matcherOperator = regExpOperator.exec(inputString);
+                if (matcherOperator != null) {
+                    if (matcherOperator.getGroupCount() >= 6) {
+                        foundMatch = true;
+                        final String groupSignLeftAll = matcherOperator.getGroup(1);
+                        final String groupSignLeft = (groupSignLeftAll.length() <= 1) ? groupSignLeftAll : groupSignLeftAll.substring(groupSignLeftAll.length() - 1);
+                        final String groupValueLeft = matcherOperator.getGroup(2);
+                        final String groupOperator = matcherOperator.getGroup(3);
+                        final String groupSignRight = matcherOperator.getGroup(4);
+                        final String groupValueRight = matcherOperator.getGroup(5);
                         final Number resultNumber;
                         switch (operator) {
                             case "/":
-                                resultNumber = Double.parseDouble(splitGroup[0]) / Double.parseDouble(splitGroup[1]);
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) / Double.parseDouble(groupSignRight + groupValueRight);
                                 break;
                             case "\\*":
-                                resultNumber = Double.parseDouble(splitGroup[0]) * Double.parseDouble(splitGroup[1]);
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) * Double.parseDouble(groupSignRight + groupValueRight);
                                 break;
                             case "\\+":
-                                resultNumber = Double.parseDouble(splitGroup[0]) + Double.parseDouble(splitGroup[1]);
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) + Double.parseDouble(groupSignRight + groupValueRight);
                                 break;
                             case "-":
-                                resultNumber = Double.parseDouble(splitGroup[0]) - Double.parseDouble(splitGroup[1]);
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) - Double.parseDouble(groupSignRight + groupValueRight);
                                 break;
                             case "%":
-                                resultNumber = Double.parseDouble(splitGroup[0]) % Double.parseDouble(splitGroup[1]);
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) % Double.parseDouble(groupSignRight + groupValueRight);
                                 break;
                             default:
                                 resultNumber = 0;
                         }
+                        String groupString = groupSignLeft + groupValueLeft + groupOperator + groupSignRight + groupValueRight;
                         inputString = inputString.replace(groupString, "" + resultNumber);
                         System.out.print(groupString);
                         System.out.print(" = ");
