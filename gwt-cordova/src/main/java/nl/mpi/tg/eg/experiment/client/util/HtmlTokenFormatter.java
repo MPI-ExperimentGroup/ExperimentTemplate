@@ -88,6 +88,8 @@ public class HtmlTokenFormatter {
             boolean foundMatch = true;
             while (foundMatch) {
                 foundMatch = false;
+                inputString = inputString.replaceAll(operator + "--", operator);
+                inputString = inputString.replaceAll("^--", "");
                 MatchResult matcherOperator = regExpOperator.exec(inputString);
                 if (matcherOperator != null) {
                     if (matcherOperator.getGroupCount() >= 6) {
