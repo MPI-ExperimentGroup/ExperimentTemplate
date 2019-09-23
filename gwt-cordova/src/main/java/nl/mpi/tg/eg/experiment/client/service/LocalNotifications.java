@@ -98,7 +98,7 @@ public abstract class LocalNotifications {
                     || (currentDate.getDay() == 0 && onWeekends)) {
                 if (currentDate.getTime() - new Date().getTime() > minimumTimeWindow) {
                     notificationLog("adding date time notification: " + currentDate);
-                    setDayNotification(notificationTitle, notificationText, notificationActions, currentDate.getYear() + 1900, currentDate.getMonth() + 1, currentDate.getDate(), hourInt, minuteInt);
+                    setDayNotification(notificationTitle, notificationText, notificationActions, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
                 } else {
                     notificationLog("not setting because time too close to now: " + currentDate);
                 }
