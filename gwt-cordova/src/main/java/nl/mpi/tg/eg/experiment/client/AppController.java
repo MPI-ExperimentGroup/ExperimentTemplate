@@ -314,6 +314,10 @@ public abstract class AppController implements AppEventListner/*, AudioException
             $wnd.cordova.plugins.notification.local.on("trigger", function (notification, state) {
                 console.log(notification.id + " was triggered");
             }, this);
+            // list the currently scheduled notifications as debug output
+            $wnd.cordova.plugins.notification.local.getScheduled(function (notificationData) {
+            $.each(notificationData, function(index, value) {console.log(value.text);});
+            });
         }
      }-*/;
 
