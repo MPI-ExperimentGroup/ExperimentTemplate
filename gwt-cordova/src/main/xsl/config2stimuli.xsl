@@ -95,7 +95,7 @@
                 <xsl:text>, code_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="@pauseMs" />
+                <xsl:value-of select="if(@pauseMs) then @pauseMs else '0'" />
                 <!--<xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">-->
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
