@@ -41,8 +41,12 @@ public abstract class LocalNotifications {
                     case "weekends_between":
                         onWeekends = true;
                     case "weekdays_between":
-                        for (int[] repetitionTimes : findNotificationRepetitions(Integer.parseInt(currentParts[1]), Integer.parseInt(currentParts[2]), Integer.parseInt(currentParts[3]), Integer.parseInt(currentParts[4]), Integer.parseInt(currentParts[5]))) {
-                            findNotificationDays(notificationTitle, notificationText + "\n" + currentEntry, notificationActions, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
+                        if (currentParts.length > 5) {
+                            if (!currentParts[1].isEmpty() && !currentParts[2].isEmpty() && !currentParts[3].isEmpty() && !currentParts[4].isEmpty() && !currentParts[5].isEmpty()) {
+                                for (int[] repetitionTimes : findNotificationRepetitions(Integer.parseInt(currentParts[1]), Integer.parseInt(currentParts[2]), Integer.parseInt(currentParts[3]), Integer.parseInt(currentParts[4]), Integer.parseInt(currentParts[5]))) {
+                                    findNotificationDays(notificationTitle, notificationText + "\n" + currentEntry, notificationActions, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
+                                }
+                            }
                         }
                         break;
                     case "weekends":
@@ -98,7 +102,10 @@ public abstract class LocalNotifications {
                     || (currentDate.getDay() == 0 && onWeekends)) {
                 if (currentDate.getTime() - new Date().getTime() > minimumTimeWindow) {
                     notificationLog("adding date time notification: " + currentDate);
-                    setDayNotification(notificationTitle, notificationText, notificationActions, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
+                    setDayNotification(notificationTitle,
+                            notificationText
+                            + " : " + maxDaysInAdvance + "_" + onWeekends + "_" + hourInt + "_" + minuteInt,
+                            notificationActions, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
                 } else {
                     notificationLog("not setting because time too close to now: " + currentDate);
                 }
