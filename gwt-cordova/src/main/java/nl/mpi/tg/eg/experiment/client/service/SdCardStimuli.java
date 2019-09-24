@@ -212,7 +212,7 @@ public class SdCardStimuli {
                     continue;
                 }
                 console.log(potentialDirectories[directoryIndex] + stimuliDirectory + "/" + cleanedTag);
-                console.log(typeof $wnd.resolveLocalFileSystemURL);
+                //console.log(typeof $wnd.resolveLocalFileSystemURL);
                 $wnd.resolveLocalFileSystemURL(potentialDirectories[directoryIndex] + stimuliDirectory + "/" + cleanedTag, function (entry) {
                 if(entry === undefined) {
                     console.log("entry === undefined");
@@ -224,7 +224,7 @@ public class SdCardStimuli {
                         dirReader.readEntries(
                             function (entries) {
                                 if(entries === undefined || entries.length == 0) {
-            //                        console.log("readEntries returned nothing");
+                                    console.log("readEntries returned nothing");
             //                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
                                 } else {
                                     console.log("entries.length: " + entries.length);
