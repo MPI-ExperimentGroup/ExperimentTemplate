@@ -70,6 +70,66 @@ public class LocalNotificationsTest {
     }
 
     /**
+     * Test of setNotification method, of class LocalNotifications.
+     */
+    @Test
+    public void testSetNotification() {
+        System.out.println("setNotification");
+        final StringBuilder resultStringBuilder = new StringBuilder();
+
+        LocalNotifications instance = new LocalNotifications() {
+            @Override
+            protected int[][] findNotificationRepetitions(int hourFromInt, int minuteFromInt, int hourUntilInt, int minuteUntilInt, int repetitionCount) {
+                resultStringBuilder.append(":");
+                resultStringBuilder.append(hourFromInt);
+                resultStringBuilder.append(":");
+                resultStringBuilder.append(minuteFromInt);
+                resultStringBuilder.append(":");
+                resultStringBuilder.append(hourUntilInt);
+                resultStringBuilder.append(":");
+                resultStringBuilder.append(minuteUntilInt);
+                resultStringBuilder.append(":");
+                resultStringBuilder.append(repetitionCount);
+                return new int[0][0];
+            }
+
+            @Override
+            protected void setNotificationSucceded() {
+            }
+
+            @Override
+            protected void setNotificationFailed() {
+            }
+
+            @Override
+            protected void clearNotifications() {
+            }
+
+            @Override
+            public void notificationLog(String logString) {
+            }
+
+        };
+        resultStringBuilder.append("weekdays_between");
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:::9");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between::30:15:30:9");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10::15:30:9");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30::30:9");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30:15::9");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30:15:30:");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30:15:309");
+        assertEquals("weekdays_between", resultStringBuilder.toString());
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30:15:30:9");
+        assertEquals("weekdays_between:10:30:15:30:9", resultStringBuilder.toString());
+    }
+
+    /**
      * Test of reverse findNotificationRepetitions method, of class
      * LocalNotifications.
      */
