@@ -68,6 +68,42 @@ public class LocalNotificationsTest {
             }
         }
     }
+    /**
+     * Test of findNotificationRepetitions method, of class LocalNotifications.
+     */
+    @Test
+    public void testFindNotificationRepetitions2() {
+        System.out.println("findNotificationRepetitions weekdays_between:17:20:17:50:5");
+        int hourFromInt = 17;
+        int minuteFromInt = 20;
+        int hourUntilInt = 17;
+        int minuteUntilInt = 50;
+        int repetitionCount = 5;
+        LocalNotifications instance = new LocalNotificationsImpl();
+        int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
+        assertEquals(repetitionCount, result.length);
+//        for (int[] values : result) {
+//            System.out.println(values[0] + ":" + values[1]);
+//        }
+        int expectedHour = hourFromInt;
+        for (int repetitionIndex = 0; repetitionIndex < 5; repetitionIndex++) {
+            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+            if (result[repetitionIndex][1] < 31) {
+                assertTrue(result[repetitionIndex][1] >= 20);
+                assertTrue(result[repetitionIndex][1] <= 50);
+            } else {
+                assertTrue(result[repetitionIndex][1] >= 32);
+                assertTrue(result[repetitionIndex][1] <= 58);
+            }
+            System.out.println("expectedHour: " + expectedHour);
+            assertEquals(expectedHour, result[repetitionIndex][0]);
+            if (result[repetitionIndex][0] == hourFromInt) {
+                assertTrue(result[repetitionIndex][1] >= minuteFromInt);
+            } else if (result[repetitionIndex][0] == hourUntilInt) {
+                assertTrue(result[repetitionIndex][1] <= minuteUntilInt);
+            }
+        }
+    }
 
     /**
      * Test of setNotification method, of class LocalNotifications.
@@ -127,6 +163,9 @@ public class LocalNotificationsTest {
         assertEquals("weekdays_between", resultStringBuilder.toString());
         instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30:15:30:9");
         assertEquals("weekdays_between:10:30:15:30:9", resultStringBuilder.toString());
+        resultStringBuilder.append(" weekdays_between");
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:17:20:17:50:5");
+        assertEquals("weekdays_between:10:30:15:30:9 weekdays_between:17:20:17:50:5", resultStringBuilder.toString());
     }
 
     /**
