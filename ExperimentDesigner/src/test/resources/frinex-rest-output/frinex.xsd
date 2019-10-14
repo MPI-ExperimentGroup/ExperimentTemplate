@@ -295,6 +295,7 @@
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="clearPage" type="clearPageType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="clearTimer" type="clearTimerType"/>
 <xs:element name="column" type="columnType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -352,6 +353,7 @@
 <xs:element name="scoreAboveThreshold" type="scoreAboveThresholdType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="scoreLabel" type="scoreLabelType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
 <xs:element name="sendAllData" type="sendAllDataType"/>
 <xs:element name="sendMetadata" type="sendMetadataType"/>
@@ -542,6 +544,9 @@
 </xs:all>
 <xs:attribute name="tags" type="xs:string" use="required"/>
 </xs:complexType>
+<xs:complexType name="clearStimulusResponsesType">
+<xs:attribute name="tags" type="xs:string" use="required"/>
+</xs:complexType>
 <xs:complexType name="validateStimuliResponsesType">
 <xs:all>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
@@ -583,6 +588,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -608,7 +614,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -624,6 +630,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -755,6 +762,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -780,7 +788,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -796,6 +804,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -939,6 +948,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -964,7 +974,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -980,6 +990,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -1112,6 +1123,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -1137,7 +1149,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -1153,6 +1165,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -1286,6 +1299,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -1311,7 +1325,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -1327,6 +1341,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -1459,6 +1474,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -1484,7 +1500,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -1500,6 +1516,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -1661,6 +1678,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -1686,7 +1704,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -1702,6 +1720,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -1853,7 +1872,7 @@
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="applyScore" type="xs:string" use="required"/>
 </xs:complexType>
-<xs:complexType name="addStimulusValidationType">
+<xs:complexType name="addStimulusCodeResponseValidationType">
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="validationRegex" type="xs:string" use="required"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
@@ -1871,6 +1890,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -1896,7 +1916,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -1912,6 +1932,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -2051,6 +2072,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -2076,7 +2098,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -2092,6 +2114,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -2276,6 +2299,9 @@
 <xs:complexType name="selectUserMenuType">
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
+<xs:complexType name="selectLocaleMenuType">
+<xs:attribute name="styleName" type="xs:string"/>
+</xs:complexType>
 <xs:complexType name="eraseLocalStorageButtonType">
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
@@ -2347,6 +2373,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -2372,7 +2399,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -2388,6 +2415,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -2602,6 +2630,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -2627,7 +2656,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -2643,6 +2672,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -2795,6 +2825,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -2820,7 +2851,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -2836,6 +2867,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -2977,6 +3009,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -3002,7 +3035,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -3018,6 +3051,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -3169,6 +3203,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -3194,7 +3229,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -3210,6 +3245,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -3340,6 +3376,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -3365,7 +3402,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -3381,6 +3418,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -3511,6 +3549,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -3536,7 +3575,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -3552,6 +3591,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -3688,6 +3728,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -3713,7 +3754,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -3729,6 +3770,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -3860,6 +3902,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -3885,7 +3928,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -3901,6 +3944,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -4032,6 +4076,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -4057,7 +4102,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -4073,6 +4118,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -4203,6 +4249,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -4228,7 +4275,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -4244,6 +4291,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -4371,6 +4419,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -4396,7 +4445,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -4412,6 +4461,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -4539,6 +4589,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -4564,7 +4615,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -4580,6 +4631,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -4707,6 +4759,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -4732,7 +4785,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -4748,6 +4801,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -4877,6 +4931,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -4902,7 +4957,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -4918,6 +4973,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -5047,6 +5103,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -5072,7 +5129,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -5088,6 +5145,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -5217,6 +5275,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -5242,7 +5301,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -5258,6 +5317,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -5385,6 +5445,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -5410,7 +5471,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -5426,6 +5487,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -5553,6 +5615,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -5578,7 +5641,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -5594,6 +5657,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -5721,6 +5785,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -5746,7 +5811,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -5762,6 +5827,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -5889,6 +5955,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -5914,7 +5981,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -5930,6 +5997,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -6057,6 +6125,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -6082,7 +6151,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -6098,6 +6167,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -6225,6 +6295,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -6250,7 +6321,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -6266,6 +6337,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -6393,6 +6465,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -6418,7 +6491,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -6434,6 +6507,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -6561,6 +6635,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -6586,7 +6661,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -6602,6 +6677,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -6735,6 +6811,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -6760,7 +6837,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -6776,6 +6853,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -6903,6 +6981,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -6928,7 +7007,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -6944,6 +7023,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -7071,6 +7151,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -7096,7 +7177,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -7112,6 +7193,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -7239,6 +7321,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -7264,7 +7347,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -7280,6 +7363,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -7407,6 +7491,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -7432,7 +7517,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -7448,6 +7533,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -7575,6 +7661,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -7600,7 +7687,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -7616,6 +7703,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -7743,6 +7831,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -7768,7 +7857,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -7784,6 +7873,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -7911,6 +8001,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -7936,7 +8027,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -7952,6 +8043,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -8079,6 +8171,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -8104,7 +8197,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -8120,6 +8213,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -8249,6 +8343,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -8274,7 +8369,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -8290,6 +8385,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -8417,6 +8513,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -8442,7 +8539,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -8458,6 +8555,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -8586,6 +8684,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -8611,7 +8710,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -8627,6 +8726,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -8764,6 +8864,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -8789,7 +8890,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -8805,6 +8906,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -9049,6 +9151,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -9074,7 +9177,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -9090,6 +9193,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -9229,6 +9333,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -9254,7 +9359,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -9270,6 +9375,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
@@ -9460,6 +9566,7 @@
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
 <xs:element name="stimulusExists" type="stimulusExistsType"/>
 <xs:element name="showStimuliReport" type="showStimuliReportType"/>
@@ -9485,7 +9592,7 @@
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
-<xs:element name="addStimulusValidation" type="addStimulusValidationType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
 <xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
 <xs:element name="targetFooterButton" type="targetFooterButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
@@ -9501,6 +9608,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
