@@ -1071,6 +1071,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@maxHeight) then concat(', ', @maxHeight) else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(', ', @maxWidth) else ''" />
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'clearStimulusResponses') then concat('&quot;', local-name(), '&quot;') else ''" />
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
@@ -1128,6 +1129,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
 or local-name() eq 'withMatchingStimulus'
 or local-name() eq 'loadSdCardStimulus'
 or local-name() eq 'preloadAllStimuli'
+or local-name() eq 'clearStimulusResponses'
 or local-name() eq 'stimulusExists'
 ">
             <xsl:text>
