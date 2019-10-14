@@ -194,12 +194,10 @@ public class AbstractSchemaGenerator {
                 documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)}).stringAttribute("storageField", true).stringAttribute("consumedTagGroup", true));
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
-            this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
-            this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
-            this.hasStringContents = false;
-            this.allowsCustomImplementation = featureType.allowsCustomImplementation();
+            final List<String> translatableAttribites = new ArrayList<>();
             if (featureType.canHaveText()) {
                 stringAttribute("featureText", false);
+                translatableAttribites.add("featureText");
             }
             if (featureType.getFeatureAttributes() != null) {
                 for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
@@ -212,9 +210,21 @@ public class AbstractSchemaGenerator {
                     }
                 }
             }
+            if (!translatableAttribites.isEmpty()) {
+                final DocumentationElement translationElement = new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 1, false);
+                translationElement.stringAttribute("locale", false);
+                for (final String attributeName : translatableAttribites) {
+                    translationElement.stringAttribute(attributeName, true);
+                }
+                documentationElements.add(translationElement);
+            }
             if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
                 stringAttribute("tags", false);
             }
+            this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
+            this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
+            this.hasStringContents = false;
+            this.allowsCustomImplementation = featureType.allowsCustomImplementation();
         }
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final FeatureType[] featureTypes, final PresenterType[] presenterTypes) {
@@ -301,6 +311,7 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
                         new DocumentationElement[0]).stringAttribute("featureText", false),
                 new DocumentationElement("administration", "Administration", 0, 1,
+                        // todo: SynQuiz must not transmit any data until the user say ok, add metadatafield regex match to the admin section
                         new DocumentationElement[]{
                             new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
                                     .stringAttribute("label", false)
@@ -326,7 +337,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("errorMessage", false)
                                     .stringAttribute("allowValidationOnMissing", false)
                         }),
-                new DocumentationElement("scss", "", 0, 1, true),
+                new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("field", "", 1, 0, new DocumentationElement[0])
