@@ -42,6 +42,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -61,10 +62,16 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         this.submissionService = submissionService;
     }
 
-    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
+    public void setMetadataValue(final Stimulus currentStimulus, final MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
         final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
         final String dataLogString = (replacementRegex == null || replacementRegex.isEmpty()) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
         userResults.getUserData().setMetadataValue(metadataField, dataLogString);
+        localStorage.storeData(userResults, metadataFieldProvider);
+    }
+
+    public void setMetadataEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final MetadataField metadataField) {
+        final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
+        userResults.getUserData().setMetadataValue(metadataField, resultValue.toString());
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
@@ -103,6 +110,11 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
                 return -1;
             }
         }));
+    }
+
+    protected void progressIndicator(final Stimulus currentStimulus, final String evaluateTokens, final String styleName) {
+        final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
+        timedStimulusView.addBarGraphElement((int) resultValue, 100, styleName);
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
@@ -152,6 +164,31 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void targetFooterButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
         addButtonToGroup(buttonGroup, timedStimulusView.addFooterButton(presenterListerner));
+    }
+
+    public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListner presenterListener, final String buttonGroup) {
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+            @Override
+            public String getLabel() {
+                return htmlTokenFormatter.formatString(presenterListener.getLabel());
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                presenterListener.eventFired(button, shotEventListner);
+            }
+
+            @Override
+            public String getStyleName() {
+                return presenterListener.getStyleName();
+            }
+
+            @Override
+            public int getHotKey() {
+                return presenterListener.getHotKey();
+            }
+        }));
     }
 
     public void actionButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
