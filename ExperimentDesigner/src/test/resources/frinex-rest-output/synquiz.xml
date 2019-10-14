@@ -44,7 +44,7 @@
         </htmlText>-->
         <hasMetadataValue fieldName="firstName" matchingRegex=".{3,}">
             <conditionTrue>
-                <actionTokenButton featureText="Continue as &quot;&lt;metadataField_firstName&gt;&quot;" styleName="synquizButton" target="Menu">
+                <actionTokenButton featureText="Continue as &quot;&lt;metadataField_firstName&gt;&quot;" styleName="synquizButton" target="quizmenu">
                     <translation featureText="Ga verder als &quot;&lt;metadataField_firstName&gt;&quot;" locale="nl"/>
                     <translation featureText="Mache weiter als &quot;&lt;metadataField_firstName&gt;&quot;" locale="de"/>
                 </actionTokenButton>
@@ -125,7 +125,6 @@ registerButton=Register
 errorScreenTitle=Error
 errorScreenText=An error occurred: {0}
 versionScreenTitle=About
-localeScreenTitle=Language
 stimulusMenuTitle=Select quiz
 stimulusMenuDoneButton={0}\nCOMPLETE
 stimulusMenuNotDoneButton={0}\n
@@ -134,7 +133,6 @@ menuButton=Menu
 exitButton=Exit
 startButton=Restart
 versionMenuLabel=About SynQuiz
-localeMenuLabel=Set language
 setUserMenuLabel=Next
 metadataMenuLabel=Register
 editMetadataLabel=Edit details
@@ -204,7 +202,6 @@ registerButton=Registreer
 errorScreenTitle=Fout
 errorScreenText=Er is een fout opgetreden: {0}
 versionScreenTitle=Over
-localeScreenTitle=Taal
 stimulusMenuTitle=Quiz kiezen
 stimulusMenuDoneButton={0} \nKLAAR
 stimulusMenuNotDoneButton={0}
@@ -213,7 +210,6 @@ menuButton=Menu
 exitButton=Einde
 startButton=Herstart
 versionMenuLabel=Over SynQuiz
-localeMenuLabel=Taal instellen
 setUserMenuLabel=Volgende
 metadataMenuLabel=Registreren
 editMetadataLabel=Gegevens bewerken
@@ -274,7 +270,6 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
     errorScreenTitle=Fehler
     errorScreenText=Ein Fehler ist aufgetreten: {0}
     versionScreenTitle=Impressum
-    localeScreenTitle=Sprache
     stimulusMenuTitle=Quiz w\u00e4hlen
     stimulusMenuDoneButton={0} \nKOMPLETT
     stimulusMenuNotDoneButton={0}
@@ -283,7 +278,6 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
     exitButton=Exit
     startButton=Neustart
     versionMenuLabel=Impressum
-    localeMenuLabel=Sprache einstellen
     setUserMenuLabel=Weiter
     metadataMenuLabel=Registrieren
     editMetadataLabel=Daten bearbeiten
@@ -337,7 +331,22 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
             <translation featureText="Продолжать" locale="ru"/>
         </saveMetadataButton>
     </presenter>-->
-    <presenter back="set_user" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <menuItem featureText="Begin Quiz" target="set_user" styleName="synquizButton">
+            <translation featureText="Quiz starten" locale="nl"/>
+            <translation featureText="Starte Quiz" locale="de"/>
+        </menuItem>
+        <menuItem featureText="Set language" target="localemenu" styleName="synquizButton">
+            <translation featureText="Taal instellen" locale="nl"/>
+            <translation featureText="Sprache einstellen" locale="de"/>
+        </menuItem>
+    </presenter>
+    <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="localemenu" title="Language">
+        <translation featureText="Taal" locale="nl"/>
+        <translation featureText="Sprache" locale="de"/>
+        <selectLocaleMenu styleName="synquizButton"/>
+    </presenter>
+    <presenter back="set_user" menuLabel="Quiz Menu" type="menu" self="quizmenu" title="Select Quiz">
         <menuItem featureText="Weekdays" target="Weekdays" styleName="synquizButton">
             <!--            <translation featureText="Dagen van de week" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -358,7 +367,7 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Далее в тесте следуют вопросы о цветах, которые ассоциируются у вас с днями недели, буквами и цифрами или месяцами. Если у вас не возникнет цветовых ассоциаций в каком-то или ни в одном из вариантов тестов, то эту часть тестирования можно пропустить. После каждого теста вы можете ознакомиться с результатами. Закончив все этапы тестирования, выбранные вами под ваши типы синестезии, пожалуйста, нажмите ниже: &quot;Отправить мои результаты и завершить эксперимент." locale="ru"/>-->
         </htmlText>
-         <!--<targetFooterButton target="Register" styleName="synquizButton"/>-->
+        <!--<targetFooterButton target="Register" styleName="synquizButton"/>-->
     </presenter>
     <presenter back="Menu" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
