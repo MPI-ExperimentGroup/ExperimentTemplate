@@ -375,31 +375,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
-    public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListner presenterListener, final String buttonGroup) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
-            @Override
-            public String getLabel() {
-                return htmlTokenFormatter.formatString(presenterListener.getLabel());
-            }
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                presenterListener.eventFired(button, shotEventListner);
-            }
-
-            @Override
-            public String getStyleName() {
-                return presenterListener.getStyleName();
-            }
-
-            @Override
-            public int getHotKey() {
-                return presenterListener.getHotKey();
-            }
-        }));
-    }
-
     protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
         final HTML html = timedStimulusView.addHtmlText("", styleName);
