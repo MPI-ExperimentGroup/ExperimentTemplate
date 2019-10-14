@@ -383,16 +383,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimulusFreeText|addStimulusValidation">           
+    <xsl:template match="stimulusFreeText|addStimulusCodeResponseValidation">           
         <xsl:value-of select ="local-name()"/>    
         <xsl:text>(currentStimulus, </xsl:text>
         <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
-        <xsl:if test="local-name() eq 'addStimulusValidation'">
+        <xsl:if test="local-name() eq 'addStimulusCodeResponseValidation'">
             <xsl:text>, messages.</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>()</xsl:text>
         </xsl:if>
-        <xsl:if test="local-name() ne 'addStimulusValidation'">    
+        <xsl:if test="local-name() ne 'addStimulusCodeResponseValidation'">    
             <xsl:text>, messages.inputErrorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>(),</xsl:text>
@@ -618,7 +618,7 @@ or local-name() eq 'removeStimulus'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="activateRandomItem|createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|gotoPresenter|gotoNextPresenter">    
+    <xsl:template match="activateRandomItem|createUserButton|selectUserMenu|selectLocaleMenu|allMenuItems|addKinTypeGui|gotoPresenter|gotoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
