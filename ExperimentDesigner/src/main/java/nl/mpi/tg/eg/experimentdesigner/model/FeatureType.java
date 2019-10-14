@@ -68,7 +68,7 @@ public enum FeatureType {
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     setStimulusCodeResponse(false, false, new FeatureAttribute[]{codeFormat, dataChannel, applyScore}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    addStimulusValidation(false, true, new FeatureAttribute[]{validationRegex, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    addStimulusCodeResponseValidation(false, true, new FeatureAttribute[]{validationRegex, dataChannel}, /* this validation is specific to the StimulusCodeResponses*/ false, false, false, Contitionals.none, Contitionals.stimulusAction),
     ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}),
@@ -97,6 +97,7 @@ public enum FeatureType {
     createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
     switchUserIdButton(true, new FeatureAttribute[]{styleName, groupId, fieldName, validationRegex}, "Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.", Contitionals.hasErrorSuccess, Contitionals.none),
     selectUserMenu(false, false, new FeatureAttribute[]{styleName}),
+    selectLocaleMenu(false, false, new FeatureAttribute[]{styleName}),
     eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}),
     eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
     showCurrentMs(false, false, null),
