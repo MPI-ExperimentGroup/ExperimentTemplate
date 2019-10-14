@@ -2109,7 +2109,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         optionButton(eventListner, buttonGroup);
     }
 
-    protected void addStimulusValidation(final Stimulus currentStimulus, final String validationRegex, final String validationChallenge, final int dataChannel) {
+    protected void addStimulusCodeResponseValidation(final Stimulus currentStimulus, final String validationRegex, final String validationChallenge, final int dataChannel) {
         stimulusFreeTextList.add(timedStimulusView.addStimulusValidation(localStorage, userResults.getUserData().getUserId(), currentStimulus, "CodeResponse", validationRegex, validationChallenge, dataChannel));
     }
 
