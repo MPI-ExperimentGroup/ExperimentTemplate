@@ -79,6 +79,7 @@ import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MetadataFieldWidget;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
 
 /**
@@ -246,6 +247,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         } else {
             return true;
+        }
+    }
+
+    protected void clearStimulusResponses(final StimuliProvider stimulusProvider, final Tag[] selectionTags) {
+        stimulusProvider.getSubset(Arrays.asList(selectionTags), "", 0);
+        while (stimulusProvider.hasNextStimulus(0)) {
+            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), new JSONObject());
+            stimulusProvider.nextStimulus(1);
         }
     }
 
