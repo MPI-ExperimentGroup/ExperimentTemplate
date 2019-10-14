@@ -1081,7 +1081,7 @@
             </beforeStimulus>
             <eachStimulus>
                 <stimulusLabel/>
-                <addStimulusValidation featureText="Please respond to this item." validationRegex=".{1,}" dataChannel="8"/>
+                <addStimulusCodeResponseValidation featureText="Please respond to this item." validationRegex=".{1,}" dataChannel="8"/>
                 <htmlTokenText featureText="The current response: &lt;stimulusResponse&gt;"/>
                 <table>
                     <row>
