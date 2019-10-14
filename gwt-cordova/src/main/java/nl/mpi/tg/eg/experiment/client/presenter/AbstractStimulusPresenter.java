@@ -250,7 +250,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void clearStimulusResponses(final StimuliProvider stimulusProvider, final Tag[] selectionTags) {
+    protected void clearStimulusResponses(final Tag[] selectionTags, final StimuliProvider stimulusProvider) {
         stimulusProvider.getSubset(Arrays.asList(selectionTags), "", 0);
         while (stimulusProvider.hasNextStimulus(0)) {
             localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), new JSONObject());
