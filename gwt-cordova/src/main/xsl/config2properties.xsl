@@ -45,11 +45,21 @@
             <xsl:variable name="translationLocale" select="." />
             <xsl:result-document href="{$targetClientDirectory}/Messages-{$translationLocale}.properties" method="text" encoding="UTF-8">
                 <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
-                    <xsl:value-of select="generate-id(..)" />
-                    <xsl:text>=</xsl:text>
-                    <xsl:value-of select="replace(@featureText,'''','''''')"/>
-                    <xsl:text>
-                    </xsl:text>
+                    <xsl:if test="@featureText">
+                        <xsl:value-of select="generate-id(..)" />
+                        <xsl:text>=</xsl:text>
+                        <xsl:value-of select="replace(@featureText,'''','''''')"/>
+                        <xsl:text>
+                        </xsl:text>
+                    </xsl:if>
+                    <xsl:if test="@menuLabel">
+                        <xsl:text>menuLabel</xsl:text>
+                        <xsl:value-of select="../@self" />
+                        <xsl:text>=</xsl:text>
+                        <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
+                        <xsl:text>
+                        </xsl:text>
+                    </xsl:if>
                 </xsl:for-each>
             </xsl:result-document>
         </xsl:for-each>        
@@ -70,7 +80,7 @@
         </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="switchUserIdButton[@featureText != '']|requestNotification[@featureText != '']|preventWindowClose[@featureText != '']|countdownLabel[@featureText != '']|stimulusImageCapture[@featureText != '']|addStimulusValidation[@featureText != '']|stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|showHtmlPopup[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|actionTokenButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|prevStimulusButton[@featureText != '']|touchInputStimulusButton[@featureText != '']|stimulusButton[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|htmlTokenText[@featureText != '']|userInfo[@featureText != '']|sendGroupMessageButton[@featureText != '']">
+    <xsl:template match="addStimulusCodeResponseValidation[@featureText != '']|switchUserIdButton[@featureText != '']|requestNotification[@featureText != '']|preventWindowClose[@featureText != '']|countdownLabel[@featureText != '']|stimulusImageCapture[@featureText != '']|stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|showHtmlPopup[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|actionTokenButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|prevStimulusButton[@featureText != '']|touchInputStimulusButton[@featureText != '']|stimulusButton[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|htmlTokenText[@featureText != '']|userInfo[@featureText != '']|sendGroupMessageButton[@featureText != '']">
         <xsl:if test="@featureText != ''">       
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
