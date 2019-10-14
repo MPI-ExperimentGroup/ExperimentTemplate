@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.i18n.client.LocaleInfo;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
@@ -135,6 +136,47 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
+    private void selectLocaleMenu(final String styleName) {
+        for (final String localeName : LocaleInfo.getAvailableLocaleNames()) {
+            final String displayName = LocaleInfo.getLocaleNativeDisplayName(localeName);
+            if (displayName != null && !displayName.isEmpty()) {
+                ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+
+                    @Override
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                        final String queryString = Window.Location.getQueryString();
+                        final String localeGet = "locale=";
+                        final String updatedPathValue;
+                        if (queryString.contains(localeGet)) {
+                            // if a locale vale already exists then update it
+                            updatedPathValue = queryString.replaceFirst(localeGet + "[^&]*", localeGet + localeName);
+                        } else {
+                            // if there are no values already there then use ? otherwise append with &
+                            String separator = (queryString.isEmpty()) ? "?" : "&";
+                            updatedPathValue = queryString + separator + localeGet + localeName;
+                        }
+                        Window.Location.replace(Window.Location.getPath() + updatedPathValue);
+                    }
+
+                    @Override
+                    public int getHotKey() {
+                        return -1;
+                    }
+
+                    @Override
+                    public String getStyleName() {
+                        return styleName;
+                    }
+
+                    @Override
+                    public String getLabel() {
+                        return displayName;
+                    }
+                }, true);
+            }
+        }
+    }
+
     protected void selectUserMenu(final AppEventListner appEventListner, final String styleName) {
         for (final UserLabelData labelData : localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField)) {
             final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
@@ -157,6 +199,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     try {
+                        // todo: there probably needs to be a tag: set userId from MetadataFieldValue, to that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request 
                         userResults.setUser(localStorage.getStoredData(labelData.getUserId(), metadataFieldProvider));
                         localStorage.storeData(userResults, metadataFieldProvider);
                         appEventListner.requestApplicationState(nextState);
