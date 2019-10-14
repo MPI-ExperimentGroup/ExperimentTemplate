@@ -158,6 +158,7 @@
             </onSuccess>
         </switchUserIdButton>
         <selectUserMenu styleName="styleName"/>
+        <selectLocaleMenu styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -413,7 +414,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
-                <addStimulusValidation featureText="addStimulusValidation" dataChannel="2" validationRegex="validationRegex"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -779,7 +780,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
-                <addStimulusValidation featureText="addStimulusValidation" dataChannel="2" validationRegex="validationRegex"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -1145,7 +1146,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
-                <addStimulusValidation featureText="addStimulusValidation" dataChannel="2" validationRegex="validationRegex"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -1437,6 +1438,7 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadSdCardStimulus>
+        <clearStimulusResponses tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ"/>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
@@ -2092,6 +2094,7 @@
             </onSuccess>
         </switchUserIdButton>
         <selectUserMenu/>
+        <selectLocaleMenu/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -2347,7 +2350,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
-                <addStimulusValidation featureText="addStimulusValidation" validationRegex="validationRegex"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -2713,7 +2716,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
-                <addStimulusValidation featureText="addStimulusValidation" validationRegex="validationRegex"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -3079,7 +3082,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
-                <addStimulusValidation featureText="addStimulusValidation" validationRegex="validationRegex"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -3371,6 +3374,7 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadSdCardStimulus>
+        <clearStimulusResponses tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ"/>
         <targetButton featureText="targetButton" target="target"/>
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
