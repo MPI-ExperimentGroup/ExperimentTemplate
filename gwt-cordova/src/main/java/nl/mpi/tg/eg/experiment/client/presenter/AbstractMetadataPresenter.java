@@ -137,7 +137,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
-    private void selectLocaleMenu(final AppEventListner appEventListner, final String styleName) {
+    protected void selectLocaleMenu(final AppEventListner appEventListner, final String styleName) {
         for (final String localeName : LocaleInfo.getAvailableLocaleNames()) {
             final String displayName = LocaleInfo.getLocaleNativeDisplayName(localeName);
             if (displayName != null && !displayName.isEmpty()) {
