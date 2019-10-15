@@ -328,6 +328,23 @@ public class DataSubmissionService extends AbstractSubmissionService {
     private final List<Timer> dataSubmitTimerList = new ArrayList<>();
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData) {
+        final boolean canSendData;
+        switch (endpoint) {
+            case stowedData:
+            case timeStamp:
+            case screenChange:
+            case tagEvent:
+            case tagPairEvent:
+                canSendData = true;
+                break;
+            case groupEvent:
+            case metadata:
+            case stimulusResponse:
+            default:
+                canSendData = localStorage.getDataAgreementValue(userId);
+                break;
+        }
+        if (canSendData) {
         localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
         final Timer timer = new Timer() {
             @Override
@@ -366,6 +383,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         if (dataSubmitTimerList.size() == 1) {
             timer.schedule(1000);
         }
+}
     }
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
