@@ -89,6 +89,12 @@
             <xsl:value-of select="experiment/metadata/field/@postName" separator="MetadataField, " />
             <xsl:text>MetadataField
                 };
+                public static final String dataAgreementFieldName = </xsl:text>
+            <xsl:value-of select="experiment/administration/dataAgreementField/@fieldName" />
+            <xsl:text>;
+                public static final String dataAgreementMatch = "</xsl:text>
+            <xsl:value-of select="experiment/administration/dataAgreementField/@matchingRegex" />
+            <xsl:text>";
                 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
