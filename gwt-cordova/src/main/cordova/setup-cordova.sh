@@ -29,7 +29,7 @@ fi
 #/usr/bin/npm install -g cordova@9.0.0
 #cordova requirements
 
-#cordova platform add ios
+cordova platform add ios
 #cordova platform add windows
 cordova platform add android
 #cordova plugin add https://github.com/danwilson/google-analytics-plugin.git
@@ -165,6 +165,7 @@ pwd
 #cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
 cp platforms/android/app/build/outputs/apk/release/*.apk ../
 zip -r ../$appname-android.zip platforms/android
+zip -r ../$appname-ios.zip platforms/ios
 #cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
 
 #echo "installing on Android"
