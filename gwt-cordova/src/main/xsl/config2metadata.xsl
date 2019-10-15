@@ -90,11 +90,11 @@
             <xsl:text>MetadataField
                 };
                 public static final String dataAgreementFieldName = </xsl:text>
-            <xsl:value-of select="experiment/administration/dataAgreementField/@fieldName" />
+            <xsl:value-of select="if(experiment/administration/dataAgreementField/@fieldName) then concat('&quot;', experiment/administration/dataAgreementField/@fieldName, '&quot;') else 'null'" />
             <xsl:text>;
-                public static final String dataAgreementMatch = "</xsl:text>
-            <xsl:value-of select="experiment/administration/dataAgreementField/@matchingRegex" />
-            <xsl:text>";
+                public static final String dataAgreementMatch = </xsl:text>
+            <xsl:value-of select="if(experiment/administration/dataAgreementField/@matchingRegex) then concat('&quot;', experiment/administration/dataAgreementField/@matchingRegex, '&quot;') else 'null'" />
+            <xsl:text>;
                 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
