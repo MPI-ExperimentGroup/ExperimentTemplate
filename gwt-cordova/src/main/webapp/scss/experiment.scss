@@ -19,7 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Created on : Oct 13, 2015, 1:33:01 PM
     Author     : Peter Withers <peter.withers@mpi.nl>
 */
-@import '../../../../target/generated-sources/scss/customisations';
+@import '../../../../target/generated-sources/scss/customisationsFirst';
 
 .choosePlayerList,
 .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
@@ -1196,3 +1196,5 @@ textarea.metadataError, textarea.metadataOK {
     width: 90%;
     margin-left: 30px;
 }
+
+@import '../../../../target/generated-sources/scss/customisationsLast';
