@@ -177,6 +177,20 @@ public class LocalStorage {
         // with android versions this JSON data is saved to the SDcard via the StimulusPresenter
     }
 
+    public boolean getDataAgreementValue(UserId userId) {
+        if (MetadataFieldProvider.dataAgreementFieldName == null) {
+            // when the administration/dataAgreementField/@fieldName is not set in the configuration file then permission is always true
+            return true;
+        } else if (MetadataFieldProvider.dataAgreementMatch == null) {
+            // when the administration/dataAgreementField/@fieldName exists in the configuration file but has no matchingRegex then permission is always false
+            return false;
+        } else {
+            loadStorage();
+            final String agreementValue = getCleanStoredData(dataStore.getUSER_METADATA(userId, MetadataFieldProvider.dataAgreementFieldName));
+            return MetadataFieldProvider.dataAgreementMatch.equals(agreementValue);
+        }
+    }
+
     public String getStoredDataValue(UserId userId, String label) {
         loadStorage();
         return getCleanStoredData(dataStore.getGAME_DATA(label, userId));
