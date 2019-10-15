@@ -474,12 +474,12 @@
                                 <include>${experiment.configuration.name}.xml</include>
                             </includes>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/config2css.xsl</stylesheet>
-                            <fileMappers>
-                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>${experiment.configuration.name}\.xml$</pattern>
-                                    <replacement>_customisations.scss</replacement>
-                                </fileMapper>
-                            </fileMappers>
+                            <parameters>
+                                <parameter>
+                                    <name>outputDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/scss</value>
+                                </parameter>
+                            </parameters>
                             <outputDir>${project.build.directory}/generated-sources/scss</outputDir>
                         </transformationSet>
                         <transformationSet>
