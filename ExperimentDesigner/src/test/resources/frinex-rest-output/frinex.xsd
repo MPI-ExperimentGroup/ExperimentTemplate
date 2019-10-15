@@ -217,6 +217,12 @@
 <xs:annotation>
 <xs:documentation>Administration</xs:documentation>
 </xs:annotation>
+<xs:element name="dataAgreementField" minOccurs="0">
+<xs:complexType>
+<xs:attribute name="fieldName" type="xs:string" use="required"/>
+<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="dataChannel" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="label" type="xs:string" use="required"/>
