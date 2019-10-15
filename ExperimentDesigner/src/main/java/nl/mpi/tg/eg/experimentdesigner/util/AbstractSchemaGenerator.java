@@ -311,8 +311,10 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
                         new DocumentationElement[0]).stringAttribute("featureText", false),
                 new DocumentationElement("administration", "Administration", 0, 1,
-                        // todo: SynQuiz must not transmit any data until the user say ok, add metadatafield regex match to the admin section
                         new DocumentationElement[]{
+                            new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
+                                    .stringAttribute("fieldName", false)
+                                    .stringAttribute("matchingRegex", false),
                             new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false)
