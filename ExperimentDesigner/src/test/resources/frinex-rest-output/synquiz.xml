@@ -21,14 +21,49 @@
         }
 
     </scss>
+    <administration>
+        <dataAgreementField fieldName="dataAgreement" matchingRegex="agree"/>
+    </administration>
     <metadata>
-        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
-        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="lastName" preventServerDuplicates="false" registrationField="Last name"/>
-        <field controlledMessage="Please enter a valid email address." controlledRegex="^[^@]+@[^@]+$" postName="emailAddress" preventServerDuplicates="false" registrationField="Email address"/>
-        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="optionCheckBox1" preventServerDuplicates="false" registrationField="I would like to be contacted about participating in other synaesthesia research studies (optional)"/>
-        <field controlledMessage="Please agree to continue." controlledRegex="true" postName="mandatoryCheckBox" preventServerDuplicates="false" registrationField="By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study"/>
-        <field controlledMessage="Please enter in the standard format DD/MM/YYYY." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="DateOfBirth" preventServerDuplicates="false" registrationField="Date of Birth"/>
-        <field controlledMessage="." controlledRegex="|male|female|other" postName="Gender" preventServerDuplicates="false" registrationField="Gender"/>
+<!--fieldValues-gender=Male,Female,Other
+fieldValues-ethnicity=African, Caucasian, Asian, Hispanic, Native American, Pacific Islander, other - free text
+fieldValues-gender=Man, Vrouw, Anders
+fieldValues-ethnicity=Afrikaans, Kaukasisch, Aziatisch, Latijns-Amerikaans, Indiaans, inwoner Pacific Islands, anders - vrije text
+fieldValues-gender=Mann, Frau, Anders
+fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u00a0pazifische Inseln,\u00a0Anders -\u00a0freier Text-->
+        <field controlledMessage="Do you agree with data collection." controlledRegex="disagree|agree" postName="dataAgreement" preventServerDuplicates="false" registrationField="Data Agreement"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name *">
+            <translation controlledMessage="Voer a.u.b. tenminste 3 letters in." registrationField="Vorname *" locale="nl"/>
+            <translation controlledMessage="Bitte trage mindestens drei Buchstaben ein." registrationField="" locale="de"/>
+        </field> 
+        <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="lastName" preventServerDuplicates="false" registrationField="Last name">
+            <translation controlledMessage="" registrationField="Achternaam" locale="nl"/>
+            <translation controlledMessage="" registrationField="Nachname" locale="de"/>
+        </field> 
+        <field controlledMessage="." controlledRegex="0-9'{'1,'}'" postName="age" preventServerDuplicates="false" registrationField="Age">
+            <translation controlledMessage="" registrationField="Leeftijd" locale="nl"/>
+            <translation controlledMessage="" registrationField="Alter" locale="de"/>
+        </field> 
+        <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="ethnicity" preventServerDuplicates="false" registrationField="Ethnicity">
+            <translation controlledMessage="" registrationField="Etniciteit" locale="nl"/>
+            <translation controlledMessage="" registrationField="Ethnizit\u00e4t" locale="de"/>
+        </field> 
+        <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="country" preventServerDuplicates="false" registrationField="Country of origin">
+            <translation controlledMessage="" registrationField="Land van herkomst" locale="nl"/>
+            <translation controlledMessage="" registrationField="Herkunftsland" locale="de"/>
+        </field> 
+        <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="language" preventServerDuplicates="false" registrationField="Native language">
+            <translation controlledMessage="" registrationField="Moedertaal" locale="nl"/>
+            <translation controlledMessage="" registrationField="Muttersprache" locale="de"/>
+        </field> 
+        <field controlledMessage="Please enter a valid email address." controlledRegex="^[^@]+@[^@]+$" postName="emailAddress" preventServerDuplicates="false" registrationField="Email *">
+            <translation controlledMessage="Voer a.u.b. een geldig e-mailadres in." registrationField="E-mail *" locale="nl"/>
+            <translation controlledMessage="Bitte trage eine g\u00fcltige Email Adresse ein." registrationField="Email *" locale="de"/>
+        </field> 
+        <field controlledMessage="." controlledRegex="|male|female|other" postName="gender" preventServerDuplicates="false" registrationField="Gender">
+            <translation controlledMessage="|Man|Vrouw|Anders" registrationField="Geslacht" locale="nl"/>
+            <translation controlledMessage="|Mann|Frau|Anders" registrationField="Geschlecht" locale="de"/>
+        </field> 
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
     <presenter back="Menu" menuLabel="Begin Quiz" type="metadata" self="set_user" title="Set user">
@@ -110,8 +145,6 @@ positiveresultscreentext3=
 negativeresultscreentext1=It appears that you do not have synaesthesia!
 negativeresultscreentext2=\n
 negativeresultscreentext3=
-metadataScreenTitle=User details
-metadataScreenText=
 reportScreenTitle=Quiz reports
 reportScreenScore=Score: {0}
 reportScreenSCT=Speed-Congruency Test
@@ -124,7 +157,6 @@ registerDisabledScreenText=Please view one of the stimuli. You cannot register u
 registerButton=Register
 errorScreenTitle=Error
 errorScreenText=An error occurred: {0}
-versionScreenTitle=About
 stimulusMenuTitle=Select quiz
 stimulusMenuDoneButton={0}\nCOMPLETE
 stimulusMenuNotDoneButton={0}\n
@@ -132,15 +164,13 @@ menuScreenTitle=Menu
 menuButton=Menu
 exitButton=Exit
 startButton=Restart
-versionMenuLabel=About SynQuiz
 setUserMenuLabel=Next
-metadataMenuLabel=Register
 editMetadataLabel=Edit details
 stimulusSelectMenuLabel=Select another quiz
 stimulusShowMenuLabel=Next
 reportMenuLabel=View reports
 feedbackMenuLabel=View feedback
-registerMenuLabel=Continue
+
 moreInfoMenuLabel=More information
 helpButtonChar=?
 informationSheetLink=Study info        
@@ -161,18 +191,6 @@ registrationFailedText=Registration failed on the server. You can try again late
 stimulusMenuShortTestLabel=Find out if you have synaesthesia!
 stimulusMenuLongTestLabelBold=Do you have synaesthesia?
 stimulusMenuLongTestLabel=Join your fellow synaesthetes in a study! In order to register and participate in the study, you have to complete the full test. Please make sure, you can do it in one go.
-aboutScreenTextAheading=\n
-aboutScreenTextAbody=<p>SynQuiz is an app that contains four playful tests for synaesthesia. <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">Synaesthesia</a> is a neurodevelopmental trait estimated to occur in about 4% of the general human population. For people with synaesthesia two or more senses appear to be interconnected; for example a synaesthete perceives certain concepts, such as letters, numbers, days of the week, or months of the year as inherently coloured. Many synaesthetes are not aware that their perceptions are unusual and are often surprised to find out that others do not think of letters, numbers, or weekdays in colours.</p><p>SynQuiz tests this type of synaesthesia, frequently referred to as grapheme-colour synaesthesia. The first three short quizzes are designed to give you (the user) a taste of what synaesthesia might be like and find out whether you might be experiencing it yourself. The Letters/Numbers-full test test gives an indication whether your type of synaesthesia is suitable for the ongoing genetic studies. If so, we might invite you to provide a small sample of saliva, from which we can obtain your DNA.</p>
-aboutScreenTextAlink=
-aboutScreenTextBheading=<h3>Synaesthesia research</h3>
-aboutScreenTextBbody=<p>SynQuiz is based on the <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">decoding the genetics of synaesthesia research programme</a> in the Language and Genetics Department at the Max Planck Institute for Psycholinguistics. synaesthesia@mpi.nl</p><a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;"><img src="images/MPI-logo.png" style="width: 100%;" /></a><p>Previous research has shown that synaesthesia runs in families, but very little is known about which genes are responsible for building the structural and functional features in brains that are capable of synaesthetic experiences. We study the genetics of synaesthesia to uncover how this intriguing trait arises, but also to learn about neural connectivity in the developing human brain that is relevant to sensory processing, cognition, and language.</p>
-aboutScreenTextCheading=<h3>Language in Interaction project</h3>
-aboutScreenTextCbody=<p>SynQuiz was developed within the research consortium <a href="#" onclick="window.open(''http://www.languageininteraction.nl'',''_system''); return false;">Language in Interaction</a>, which aims to explain variation and similarities in languages as well as in linguistic skills. The consortium aims to gain understanding of how such a large range of (cultural) differences have arisen from a biological basis that is common to all people.</p><p>The research program examines human language from the level of genetics to interactions between conversational partners, addressing a diverse range of topics such as: brain structure and function, language development, evolution, multilingualism, speech production and comprehension, nonverbal behaviour, meaning and context, and the interplay of language with other cognitive systems (e.g. memory).</p>
-aboutScreenTextDheading=<h3>More language apps</h3>
-aboutScreenTextDbody=<p>The research results of Language in Interaction are translated into applications for society in areas such as education and health. Currently a range of <a href="#" onclick="window.open(''http://www.languageininteraction.nl/apps.html'',''_system''); return false;">language apps</a> are developed, including games.</p>
-aboutScreenTextEheading=<h3>Contact</h3>
-aboutScreenTextEbody=<p>Do you have a question about SynQuiz or do you want to share your opinion? You can send us an e-mail using the following link: <a href="#" onclick="window.open(''mailto:synquiz@languageininteraction.nl'',''_system''); return false;">synquiz@<wbr>languageininteraction.nl</a>.</p>
-aboutScreenTextJheading=<h3>Specifications</h3>
 
 
 
@@ -190,7 +208,6 @@ userfeedbackscreentext=In deze test wordt een score onder 1.5 beschouwd als syne
 positiveresultscreentext1=U heeft waarschijnlijk synesthesie!
 positiveresultscreentext2=We nodigen u graag uit om deel te nemen aan het wetenschappelijke onderzoek naar synesthesie! www.mpi.nl/synaesthesia
 negativeresultscreentext1=Het lijkt erop dat u geen synesthesie heeft!
-metadataScreenTitle=Gebruiker
 reportScreenTitle=Uitslagen
 reportScreenScore=Score: {0}
 reportScreenSCT=Snelheid-Congruentie test
@@ -201,7 +218,6 @@ registerDisabledScreenText=Bekijk a.u.b. ��n van de reeksen met stimuli. U k
 registerButton=Registreer
 errorScreenTitle=Fout
 errorScreenText=Er is een fout opgetreden: {0}
-versionScreenTitle=Over
 stimulusMenuTitle=Quiz kiezen
 stimulusMenuDoneButton={0} \nKLAAR
 stimulusMenuNotDoneButton={0}
@@ -209,15 +225,12 @@ menuScreenTitle=Menu
 menuButton=Menu
 exitButton=Einde
 startButton=Herstart
-versionMenuLabel=Over SynQuiz
 setUserMenuLabel=Volgende
-metadataMenuLabel=Registreren
 editMetadataLabel=Gegevens bewerken
 stimulusSelectMenuLabel=Kies volgende quiz
 stimulusShowMenuLabel=Volgende
 reportMenuLabel=Bekijk uitslagen
 feedbackMenuLabel=Bekijk feedback
-registerMenuLabel=Verder
 moreInfoMenuLabel=Meer informatie
 helpButtonChar=?
 informationSheetLink=Studie info
@@ -234,16 +247,6 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
 stimulusMenuShortTestLabel=Ontdek of u synesthesie heeft!
 stimulusMenuLongTestLabelBold=Heeft u synesthesie?
 stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in ��n keer af.
-aboutScreenTextAbody=<p>SynQuiz is een app die vier speelse testen biedt voor synesthesie. <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">Synesthesie</a> is een neurologische eigenschap die voorkomt in ongeveer 4% van de algemene menselijke populatie. Voor mensen met synesthesie lijken twee of meer zintuigen samen te smelten; een synestheet ervaart bijvoorbeeld bepaalde kleuren wanneer hij of zij aan concepten denkt, zoals letters, getallen, dagen van de week, of maanden van het jaar. Veel synestheten zijn zich er niet van bewust dat deze ervaringen uitzonderlijk zijn, en zijn vaak verbaasd wanneer ze ontdekken dat andere mensen niet aan kleuren denken bij letters, getallen, of dagen van de week.</p><p>SynQuiz test dit type synesthesie, meestal letter-kleursynesthesie genoemd. De drie korte quizzen zijn ontworpen om u (de gebruiker) een indruk te geven van synesthesie en om te kunnen ontdekken of u dit zelf heeft. De volledige Letters/Getallen test geeft een indicatie of uw type synesthesie geschikt is voor de lopende genetische studies. In dat geval nodigen we u uit om een klein speekselmonster te verstrekken, waaruit we DNA voor de genetische studies kunnen destilleren.</p>
-aboutScreenTextBheading=<h3>Synesthesie onderzoek</h3>
-aboutScreenTextBbody=<p>SynQuiz is gebaseerd op het <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">'decoding the genetics of synaesthesia'</a> onderzoeksproject vanuit het Taal en Genetica departement van het Max Planck Instituut voor Psycholinguistiek. synaesthesia@mpi.nl</p><a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;"><img src="images/MPI-logo.png" style="width: 100%;" /></a><p>Eerder onderzoek heeft laten zien dat synesthesie vaak voorkomt binnen families, maar er is weinig bekend over welke genen verantwoordelijk zijn voor het ontstaan van de structurele en functionele eigenschappen van hersenen die synesthetische ervaringen kunnen produceren. We bestuderen de genetica van synesthesie om te ontrafelen hoe deze intrigerende eigenschap ontstaat, maar ook om te leren over de neurale connectiviteit in het menselijke ontwikkelende brein die relevant is voor zintuiglijke verwerking, cognitie en taal.</p>
-aboutScreenTextCheading=<h3>Language in Interaction project</h3>
-aboutScreenTextCbody=<p>SynQuiz is ontwikkeld binnen het <a href="#" onclick="window.open(''http://www.languageininteraction.nl'',''_system''); return false;">Language in Interaction</a> onderzoeksconsortium, dat als doel heeft zowel de variatie als de overeenkomsten in talen en taalkundige vaardigheden te verklaren. Het consortium probeert te verklaren hoe zo?n groot palet aan culturele verschillen is ontstaan vanuit vanuit een biologische basis die voor alle mensen gelijk is.</p><p>Het onderzoeksprogramma onderzoekt de menselijke taal vanaf het niveau van de genen tot en met sociale interacties tussen gesprekspartners, waarbij een reeks onderwerpen word verkend zoals: de structuur en functie van de hersenen, taalontwikkeling, evolutie, meertaligheid, productie en begrip van spraak, non-verbaal gedrag, betekenis en context, en het samenspel van taal met andere cognitieve systemen (zoals het geheugen).</p>
-aboutScreenTextDheading=<h3>More language apps</h3>
-aboutScreenTextDbody=<p>De onderzoeksresultaten vanuit Language in Interaction worden vertaald in maatschappelijke toepassingen in gebieden als educatie en gezondheid. Momenteel wordt er een reeks <a href="#" onclick="window.open(''http://www.languageininteraction.nl/apps.html'',''_system''); return false;">taal apps</a> ontwikkeld, waaronder spelletjes.</p>
-aboutScreenTextEheading=<h3>Contact</h3>
-aboutScreenTextEbody=<p>Heeft u een vraag over SynQuiz of wilt u uw mening met ons delen? U kunt ons een e-mail sturen via de volgende link: <a href="#" onclick="window.open(''mailto:synquiz@languageininteraction.nl'',''_system''); return false;">synquiz@ languageininteraction.nl</a>.</p>
-aboutScreenTextJheading=<h3>Specificaties</h3>
 
     instructionsMenuLabel=Anleitung
     instructionscreenTitle=Anleitung
@@ -258,7 +261,6 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
     positiveresultscreentext1=Anscheinend hast du Syn\u00e4sthesie!
     positiveresultscreentext2=Wir laden\u00a0dich herzlich\u00a0ein, an einer wissenschaftlichen\u00a0Untersuchung zu Syn\u00e4sthesie\u00a0teilzunehmen! www.mpi.nl/synaesthesia
     negativeresultscreentext1=Es scheint, dass du keine Syn\u00e4sthesie hast!
-    metadataScreenTitle=Benutzer
     reportScreenTitle=Auswertung
     reportScreenScore=Punkte: {0}
     reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
@@ -269,7 +271,6 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
     registerButton=Registrieren
     errorScreenTitle=Fehler
     errorScreenText=Ein Fehler ist aufgetreten: {0}
-    versionScreenTitle=Impressum
     stimulusMenuTitle=Quiz w\u00e4hlen
     stimulusMenuDoneButton={0} \nKOMPLETT
     stimulusMenuNotDoneButton={0}
@@ -277,15 +278,11 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
     menuButton=Men\u00fc
     exitButton=Exit
     startButton=Neustart
-    versionMenuLabel=Impressum
     setUserMenuLabel=Weiter
-    metadataMenuLabel=Registrieren
-    editMetadataLabel=Daten bearbeiten
     stimulusSelectMenuLabel=W\u00e4hle ein anderes Quiz
     stimulusShowMenuLabel=Weiter
     reportMenuLabel=Betrachte Report
     feedbackMenuLabel=Betrachte Feedback
-    registerMenuLabel=Weiter
     moreInfoMenuLabel=Weitere Information
     helpButtonChar=?
     informationSheetLink=Studie info
@@ -303,16 +300,7 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
     stimulusMenuShortTestLabel=Entdecke ob du Syn\u00e4sthesie hast!
     stimulusMenuLongTestLabelBold=Hast Du Syn\u00e4sthesie?
     stimulusMenuLongTestLabel=Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal.
-    aboutScreenTextAbody=<p>SynQuiz ist eine App, die vier spielerische Tests f\u00fcr Syn\u00e4sthesie enth\u00e4lt. <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia-de'',''_system''); return false;">Syn\u00e4sthesie<a/> ist eine neurologische Eigenschaft, die in etwa 4% der allgemeinen Bev\u00f6lkerung vorkommt. Menschen mit Syn\u00e4sthesie erfahren zwei oder mehr Sinne, als w\u00e4ren sie miteinander verkn\u00fcpft; zum Beispiel nimmt ein Syn\u00e4sthetiker bestimmte Konzepte, wie Buchstaben, Zahlen, Wochentage oder Monate im Jahr als inh\u00e4rent gef\u00e4rbt wahr. Viele Syn\u00e4sthetiker sind sich der Besonderheit ihrer Wahrnehmung selbst nicht bewusst und sind oft \u00fcberrascht zu erfahren, dass andere Menschen bei Buchstaben, Zahlen oder Wochentage nicht an Farben denken.</p><p>SynQuiz testet diese Art der Syn\u00e4sthesie, h\u00e4ufig als Graphem-Farb Syn\u00e4sthesie bezeichnet. Die ersten drei kurzen Quizze sollen Ihnen (dem Benutzer) einen Eindruck der Syn\u00e4sthesie geben und Ihnen helfen herauszufinden, ob Sie selber diese Eigenschaft haben. Der vollst\u00e4ndige Buchstaben/Zahlen-Test zeigt an, ob Ihre Art der Syn\u00e4sthesie f\u00fcr die laufenden genetischen Studien geeignet ist. In diesem Fall laden wir Sie zu einer Speichelprobe ein, aus der wir DNA f\u00fcr die genetische Studien gewinnen k\u00f6nnen. </p>
-    aboutScreenTextBheading=<h3>Forschung der Syn\u00e4sthesie</h3>
-    aboutScreenTextBbody=<p>SynQuiz basiert sich auf das Forschungsprojekt <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia-de'',''_system''); return false;"> "decoding the genetics of syneasthesia"</a> der Sprache und Genetik Abteilung des Max Planck Instituts f\u00fcr Psycholinguistik. synaesthesia@mpi.nl</p><a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia-de'',''_system''); return false;"><img src="images/MPI-logo.png" style="width: 100%;" /></a><p>Fr\u00fchere Forschungsergebnisse zeigen, dass Syn\u00e4sthesie in Familien geh\u00e4uft auftritt, aber es ist noch wenig bekannt,  welche Gene f\u00fcr den Aufbau der strukturellen und funktionellen Merkmale im Gehirn, die zu syn\u00e4sthetische Erfahrungen f\u00e4hig sind, verantwortlich sind. Wir untersuchen die Genetik der Syn\u00e4sthesie nicht nur um aufzudecken, wie diese faszinierende Eigenschaft entsteht, sondern auch um etwas \u00fcber die neuronale Verbindungen in der Entwicklung des Gehirns zu erfahren, die wesentlich sind f\u00fcr die sensorische Verarbeitung von Kognition und Sprache.</p>
-    aboutScreenTextCheading=<h3>Language in Interaction Projekt</h3>
-    aboutScreenTextCbody=<p>SynQuiz wurde im Rahmen des Forschungskonsortiums <a href="#" onclick="window.open(''http://www.languageininteraction.nl'',''_system''); return false;">Language in Interaction</a> entwickelt, dass zum Ziel hat, die Verschiedenheiten und Gemeinsamkeiten in Sprachen und sprachlichen F\u00e4higkeiten zu erkl\u00e4ren. Das Konsortium versucht zu verstehen, wie eine so umfangreiche Palette kultureller Unterschiede aus einer biologischen Basis, die gleich ist f\u00fcr alle Menschen, entstanden sein kann.</p><p> Das Forschungsprogramm untersucht die menschliche Sprache von der Ebene der Genetik bis zu den sozialen Wechselwirkungen zwischen Gespr\u00e4chspartnern, wobei \u00a0eine breite Anzahl von Themen erforscht werden, wie: Gehirnstruktur und -funktion, Sprachentwicklung, Evolution, Mehrsprachigkeit, Sprachproduktion und Sprachverstehen, nonverbales Verhalten, Bedeutung und Kontext, und das Zusammenspiel von Sprache und anderen kognitiven Systemen (z.B. das Ged\u00e4chtnis).</p>
-    aboutScreenTextDheading=<h3>Weitere Sprach apps</h3>
-    aboutScreenTextDbody=<p>Die Forschungsergebnisse von Language in Interaction werden in gesellschaftliche Anwendungen in Bereichen wie Bildung und Gesundheit umgesetzt. Derzeit wird eine Reihe von <a href="#" onclick="window.open(''http://www.languageininteraction.nl/apps.html'',''_system''); return false;"> Sprach Apps</a> entwickelt, einschlie\u00dflich Spiele.</p>
-    aboutScreenTextEheading=<h3>Kontaktaufnahme</h3> 
-    aboutScreenTextEbody=<p>Haben Sie Fragen zu SynQuiz oder m\u00f6chten Sie Ihre Meinung geben? Sie k\u00f6nnen uns eine Email schicken mit\u00a0 dem folgenden Link: : <a href="#" onclick="window.open(''mailto:synquiz@languageininteraction.nl'',''_system''); return false;">synquiz@ languageininteraction.nl</a>.</p>
-    aboutScreenTextJheading=<h3>Technische Daten</h3>-->
+-->
 
     
     <!--    <presenter back="Details" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
@@ -340,11 +328,52 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
             <translation featureText="Taal instellen" locale="nl"/>
             <translation featureText="Sprache einstellen" locale="de"/>
         </menuItem>
+        <menuItem featureText="About SynQuiz" target="about" styleName="synquizButton">
+            <translation featureText="Over SynQuiz" locale="nl"/>
+            <translation featureText="Impressum" locale="de"/>
+        </menuItem>
     </presenter>
     <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="localemenu" title="Language">
         <translation featureText="Taal" locale="nl"/>
         <translation featureText="Sprache" locale="de"/>
         <selectLocaleMenu styleName="synquizButton"/>
+    </presenter>
+    <!--    metadataMenuLabel=Register
+    metadataMenuLabel=Registreren   
+    metadataMenuLabel=Registrieren
+    editMetadataLabel=Daten bearbeiten-->
+
+    <presenter back="Menu" next="registrationScreen" menuLabel="LocaleMenu" type="metadata" self="metadataScreen" title="User details">
+        <translation featureText="Gebruiker" locale="nl"/>
+        <translation featureText="Benutzer" locale="de"/>
+        <metadataField fieldName="firstName"/>
+        <metadataField fieldName="lastName"/>
+        <metadataField fieldName="age"/>
+        <metadataField fieldName="country"/>
+        <metadataField fieldName="language"/>
+        <metadataField fieldName="ethnicity"/>
+        <metadataField fieldName="gender"/>
+        <metadataField fieldName="emailAddress"/>
+        <saveMetadataButton featureText="Continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
+            <translation featureText="Verder" locale="nl"/>
+            <translation featureText="Weiter" locale="de"/>
+            <onError/>
+            <onSuccess>
+                <gotoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="" type="metadata" self="registrationScreen" title="">
+        <translation featureText="" locale="nl"/>
+        <translation featureText="" locale="de"/>
+        <htmlTokenText featureText="&lt;metadataField_firstName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_lastName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_ageName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_countryName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_languageName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_ethnicityName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_genderName&gt;" styleName="synquizText"/>
+        <htmlTokenText featureText="&lt;metadataField_emailAddressName&gt;" styleName="synquizText"/>
     </presenter>
     <presenter back="set_user" menuLabel="Quiz Menu" type="menu" self="quizmenu" title="Select Quiz">
         <menuItem featureText="Weekdays" target="Weekdays" styleName="synquizButton">
@@ -445,10 +474,52 @@ aboutScreenTextJheading=<h3>Specificaties</h3>
             <onError/>
         </submitTestResults>
     </presenter>
-    <presenter menuLabel="About Screen" type="debug" self="about" title="About Screen">
+    <presenter menuLabel="About SynQuiz" type="debug" self="about" title="About">
+        <translation menuLabel="Over SynQuiz" title="Over" locale="nl"/>
+        <translation menuLabel="Impressum" title="Impressum" locale="de"/>
+        
+        <!--            versionScreenTitle=About
+    versionMenuLabel=
+    versionScreenTitle=Over
+    versionMenuLabel=
+    versionScreenTitle=Impressum
+        versionMenuLabel=-->
+<!--
+aboutScreenTextAheading=\n
+aboutScreenTextAbody=<p>SynQuiz is an app that contains four playful tests for synaesthesia. <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">Synaesthesia</a> is a neurodevelopmental trait estimated to occur in about 4% of the general human population. For people with synaesthesia two or more senses appear to be interconnected; for example a synaesthete perceives certain concepts, such as letters, numbers, days of the week, or months of the year as inherently coloured. Many synaesthetes are not aware that their perceptions are unusual and are often surprised to find out that others do not think of letters, numbers, or weekdays in colours.</p><p>SynQuiz tests this type of synaesthesia, frequently referred to as grapheme-colour synaesthesia. The first three short quizzes are designed to give you (the user) a taste of what synaesthesia might be like and find out whether you might be experiencing it yourself. The Letters/Numbers-full test test gives an indication whether your type of synaesthesia is suitable for the ongoing genetic studies. If so, we might invite you to provide a small sample of saliva, from which we can obtain your DNA.</p>
+aboutScreenTextAlink=
+aboutScreenTextBheading=<h3>Synaesthesia research</h3>
+aboutScreenTextBbody=<p>SynQuiz is based on the <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">decoding the genetics of synaesthesia research programme</a> in the Language and Genetics Department at the Max Planck Institute for Psycholinguistics. synaesthesia@mpi.nl</p><a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;"><img src="images/MPI-logo.png" style="width: 100%;" /></a><p>Previous research has shown that synaesthesia runs in families, but very little is known about which genes are responsible for building the structural and functional features in brains that are capable of synaesthetic experiences. We study the genetics of synaesthesia to uncover how this intriguing trait arises, but also to learn about neural connectivity in the developing human brain that is relevant to sensory processing, cognition, and language.</p>
+aboutScreenTextCheading=<h3>Language in Interaction project</h3>
+aboutScreenTextCbody=<p>SynQuiz was developed within the research consortium <a href="#" onclick="window.open(''http://www.languageininteraction.nl'',''_system''); return false;">Language in Interaction</a>, which aims to explain variation and similarities in languages as well as in linguistic skills. The consortium aims to gain understanding of how such a large range of (cultural) differences have arisen from a biological basis that is common to all people.</p><p>The research program examines human language from the level of genetics to interactions between conversational partners, addressing a diverse range of topics such as: brain structure and function, language development, evolution, multilingualism, speech production and comprehension, nonverbal behaviour, meaning and context, and the interplay of language with other cognitive systems (e.g. memory).</p>
+aboutScreenTextDheading=<h3>More language apps</h3>
+aboutScreenTextDbody=<p>The research results of Language in Interaction are translated into applications for society in areas such as education and health. Currently a range of <a href="#" onclick="window.open(''http://www.languageininteraction.nl/apps.html'',''_system''); return false;">language apps</a> are developed, including games.</p>
+aboutScreenTextEheading=<h3>Contact</h3>
+aboutScreenTextEbody=<p>Do you have a question about SynQuiz or do you want to share your opinion? You can send us an e-mail using the following link: <a href="#" onclick="window.open(''mailto:synquiz@languageininteraction.nl'',''_system''); return false;">synquiz@<wbr>languageininteraction.nl</a>.</p>
+aboutScreenTextJheading=<h3>Specifications</h3>
+
+aboutScreenTextAbody=<p>SynQuiz is een app die vier speelse testen biedt voor synesthesie. <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">Synesthesie</a> is een neurologische eigenschap die voorkomt in ongeveer 4% van de algemene menselijke populatie. Voor mensen met synesthesie lijken twee of meer zintuigen samen te smelten; een synestheet ervaart bijvoorbeeld bepaalde kleuren wanneer hij of zij aan concepten denkt, zoals letters, getallen, dagen van de week, of maanden van het jaar. Veel synestheten zijn zich er niet van bewust dat deze ervaringen uitzonderlijk zijn, en zijn vaak verbaasd wanneer ze ontdekken dat andere mensen niet aan kleuren denken bij letters, getallen, of dagen van de week.</p><p>SynQuiz test dit type synesthesie, meestal letter-kleursynesthesie genoemd. De drie korte quizzen zijn ontworpen om u (de gebruiker) een indruk te geven van synesthesie en om te kunnen ontdekken of u dit zelf heeft. De volledige Letters/Getallen test geeft een indicatie of uw type synesthesie geschikt is voor de lopende genetische studies. In dat geval nodigen we u uit om een klein speekselmonster te verstrekken, waaruit we DNA voor de genetische studies kunnen destilleren.</p>
+aboutScreenTextBheading=<h3>Synesthesie onderzoek</h3>
+aboutScreenTextBbody=<p>SynQuiz is gebaseerd op het <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;">'decoding the genetics of synaesthesia'</a> onderzoeksproject vanuit het Taal en Genetica departement van het Max Planck Instituut voor Psycholinguistiek. synaesthesia@mpi.nl</p><a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia'',''_system''); return false;"><img src="images/MPI-logo.png" style="width: 100%;" /></a><p>Eerder onderzoek heeft laten zien dat synesthesie vaak voorkomt binnen families, maar er is weinig bekend over welke genen verantwoordelijk zijn voor het ontstaan van de structurele en functionele eigenschappen van hersenen die synesthetische ervaringen kunnen produceren. We bestuderen de genetica van synesthesie om te ontrafelen hoe deze intrigerende eigenschap ontstaat, maar ook om te leren over de neurale connectiviteit in het menselijke ontwikkelende brein die relevant is voor zintuiglijke verwerking, cognitie en taal.</p>
+aboutScreenTextCheading=<h3>Language in Interaction project</h3>
+aboutScreenTextCbody=<p>SynQuiz is ontwikkeld binnen het <a href="#" onclick="window.open(''http://www.languageininteraction.nl'',''_system''); return false;">Language in Interaction</a> onderzoeksconsortium, dat als doel heeft zowel de variatie als de overeenkomsten in talen en taalkundige vaardigheden te verklaren. Het consortium probeert te verklaren hoe zo?n groot palet aan culturele verschillen is ontstaan vanuit vanuit een biologische basis die voor alle mensen gelijk is.</p><p>Het onderzoeksprogramma onderzoekt de menselijke taal vanaf het niveau van de genen tot en met sociale interacties tussen gesprekspartners, waarbij een reeks onderwerpen word verkend zoals: de structuur en functie van de hersenen, taalontwikkeling, evolutie, meertaligheid, productie en begrip van spraak, non-verbaal gedrag, betekenis en context, en het samenspel van taal met andere cognitieve systemen (zoals het geheugen).</p>
+aboutScreenTextDheading=<h3>More language apps</h3>
+aboutScreenTextDbody=<p>De onderzoeksresultaten vanuit Language in Interaction worden vertaald in maatschappelijke toepassingen in gebieden als educatie en gezondheid. Momenteel wordt er een reeks <a href="#" onclick="window.open(''http://www.languageininteraction.nl/apps.html'',''_system''); return false;">taal apps</a> ontwikkeld, waaronder spelletjes.</p>
+aboutScreenTextEheading=<h3>Contact</h3>
+aboutScreenTextEbody=<p>Heeft u een vraag over SynQuiz of wilt u uw mening met ons delen? U kunt ons een e-mail sturen via de volgende link: <a href="#" onclick="window.open(''mailto:synquiz@languageininteraction.nl'',''_system''); return false;">synquiz@ languageininteraction.nl</a>.</p>
+aboutScreenTextJheading=<h3>Specificaties</h3>
+
+    aboutScreenTextAbody=<p>SynQuiz ist eine App, die vier spielerische Tests f\u00fcr Syn\u00e4sthesie enth\u00e4lt. <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia-de'',''_system''); return false;">Syn\u00e4sthesie<a/> ist eine neurologische Eigenschaft, die in etwa 4% der allgemeinen Bev\u00f6lkerung vorkommt. Menschen mit Syn\u00e4sthesie erfahren zwei oder mehr Sinne, als w\u00e4ren sie miteinander verkn\u00fcpft; zum Beispiel nimmt ein Syn\u00e4sthetiker bestimmte Konzepte, wie Buchstaben, Zahlen, Wochentage oder Monate im Jahr als inh\u00e4rent gef\u00e4rbt wahr. Viele Syn\u00e4sthetiker sind sich der Besonderheit ihrer Wahrnehmung selbst nicht bewusst und sind oft \u00fcberrascht zu erfahren, dass andere Menschen bei Buchstaben, Zahlen oder Wochentage nicht an Farben denken.</p><p>SynQuiz testet diese Art der Syn\u00e4sthesie, h\u00e4ufig als Graphem-Farb Syn\u00e4sthesie bezeichnet. Die ersten drei kurzen Quizze sollen Ihnen (dem Benutzer) einen Eindruck der Syn\u00e4sthesie geben und Ihnen helfen herauszufinden, ob Sie selber diese Eigenschaft haben. Der vollst\u00e4ndige Buchstaben/Zahlen-Test zeigt an, ob Ihre Art der Syn\u00e4sthesie f\u00fcr die laufenden genetischen Studien geeignet ist. In diesem Fall laden wir Sie zu einer Speichelprobe ein, aus der wir DNA f\u00fcr die genetische Studien gewinnen k\u00f6nnen. </p>
+    aboutScreenTextBheading=<h3>Forschung der Syn\u00e4sthesie</h3>
+    aboutScreenTextBbody=<p>SynQuiz basiert sich auf das Forschungsprojekt <a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia-de'',''_system''); return false;"> "decoding the genetics of syneasthesia"</a> der Sprache und Genetik Abteilung des Max Planck Instituts f\u00fcr Psycholinguistik. synaesthesia@mpi.nl</p><a href="#" onclick="window.open(''http://www.mpi.nl/synaesthesia-de'',''_system''); return false;"><img src="images/MPI-logo.png" style="width: 100%;" /></a><p>Fr\u00fchere Forschungsergebnisse zeigen, dass Syn\u00e4sthesie in Familien geh\u00e4uft auftritt, aber es ist noch wenig bekannt,  welche Gene f\u00fcr den Aufbau der strukturellen und funktionellen Merkmale im Gehirn, die zu syn\u00e4sthetische Erfahrungen f\u00e4hig sind, verantwortlich sind. Wir untersuchen die Genetik der Syn\u00e4sthesie nicht nur um aufzudecken, wie diese faszinierende Eigenschaft entsteht, sondern auch um etwas \u00fcber die neuronale Verbindungen in der Entwicklung des Gehirns zu erfahren, die wesentlich sind f\u00fcr die sensorische Verarbeitung von Kognition und Sprache.</p>
+    aboutScreenTextCheading=<h3>Language in Interaction Projekt</h3>
+    aboutScreenTextCbody=<p>SynQuiz wurde im Rahmen des Forschungskonsortiums <a href="#" onclick="window.open(''http://www.languageininteraction.nl'',''_system''); return false;">Language in Interaction</a> entwickelt, dass zum Ziel hat, die Verschiedenheiten und Gemeinsamkeiten in Sprachen und sprachlichen F\u00e4higkeiten zu erkl\u00e4ren. Das Konsortium versucht zu verstehen, wie eine so umfangreiche Palette kultureller Unterschiede aus einer biologischen Basis, die gleich ist f\u00fcr alle Menschen, entstanden sein kann.</p><p> Das Forschungsprogramm untersucht die menschliche Sprache von der Ebene der Genetik bis zu den sozialen Wechselwirkungen zwischen Gespr\u00e4chspartnern, wobei \u00a0eine breite Anzahl von Themen erforscht werden, wie: Gehirnstruktur und -funktion, Sprachentwicklung, Evolution, Mehrsprachigkeit, Sprachproduktion und Sprachverstehen, nonverbales Verhalten, Bedeutung und Kontext, und das Zusammenspiel von Sprache und anderen kognitiven Systemen (z.B. das Ged\u00e4chtnis).</p>
+    aboutScreenTextDheading=<h3>Weitere Sprach apps</h3>
+    aboutScreenTextDbody=<p>Die Forschungsergebnisse von Language in Interaction werden in gesellschaftliche Anwendungen in Bereichen wie Bildung und Gesundheit umgesetzt. Derzeit wird eine Reihe von <a href="#" onclick="window.open(''http://www.languageininteraction.nl/apps.html'',''_system''); return false;"> Sprach Apps</a> entwickelt, einschlie\u00dflich Spiele.</p>
+    aboutScreenTextEheading=<h3>Kontaktaufnahme</h3> 
+    aboutScreenTextEbody=<p>Haben Sie Fragen zu SynQuiz oder m\u00f6chten Sie Ihre Meinung geben? Sie k\u00f6nnen uns eine Email schicken mit\u00a0 dem folgenden Link: : <a href="#" onclick="window.open(''mailto:synquiz@languageininteraction.nl'',''_system''); return false;">synquiz@ languageininteraction.nl</a>.</p>
+    aboutScreenTextJheading=<h3>Technische Daten</h3>-->
         <versionData/>
-        <eraseLocalStorageButton/>
-        <localStorageData/>
     </presenter>
     <stimuli>
         <stimulus identifier="Monday" label="Monday" pauseMs="0" tags="Weekdays"/>
