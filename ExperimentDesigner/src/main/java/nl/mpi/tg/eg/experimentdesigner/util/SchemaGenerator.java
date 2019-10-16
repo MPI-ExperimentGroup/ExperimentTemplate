@@ -154,6 +154,49 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 ////There are some more complex cases to be considered here, but this is the reason it still shows the title bar with your configuration.
     }
 
+    private void addChildElements(final Writer writer, final DocumentationElement currentElement, final boolean allowTranslationElements, final boolean allowNonTranslationElements) throws IOException {
+        // todo: this inclusion / exclusion could be nicer if replaced by selective sorting in the DocumentationElement
+        for (DocumentationElement childElement : currentElement.childElements) {
+            if ((allowTranslationElements && childElement.elementName.equals("translation")) || (allowNonTranslationElements && !childElement.elementName.equals("translation"))) {
+                writer.append("<xs:element name=\"");
+                writer.append(childElement.elementName);
+                if (childElement.minBounds != 1) {
+                    writer.append("\" minOccurs=\"");
+                    writer.append(Integer.toString(childElement.minBounds));
+                }
+                if (childElement.maxBounds != 1) {
+                    writer.append("\" maxOccurs=\"");
+                    writer.append((childElement.maxBounds > 0) ? Integer.toString(childElement.maxBounds) : "unbounded");
+                }
+                if (childElement.childElements.length > 0 || "presenter".equals(childElement.elementName)) {
+                    writer.append("\" type=\"");
+                    writer.append(childElement.typeName);
+                    writer.append("\"/>\n");
+                } else if (childElement.hasStringContents) {
+                    if (childElement.attributeTypes.size() > 0) {
+                        writer.append("\">\n");
+                        writer.append("<xs:complexType>\n");
+                        writer.append("<xs:simpleContent>\n");
+                        writer.append("<xs:extension base=\"xs:string\">\n");
+                        addAttributes(writer, childElement);
+                        writer.append("</xs:extension>\n");
+                        writer.append("</xs:simpleContent>\n");
+                        writer.append("</xs:complexType>\n");
+                        writer.append("</xs:element>\n");
+                    } else {
+                        writer.append("\" type=\"xs:string\"/>\n");
+                    }
+                } else {
+                    writer.append("\">\n");
+                    writer.append("<xs:complexType>\n");
+                    addAttributes(writer, childElement);
+                    writer.append("</xs:complexType>\n");
+                    writer.append("</xs:element>\n");
+                }
+            }
+        }
+    }
+
     private void addElement(final Writer writer, final DocumentationElement currentElement, final boolean insertType) throws IOException {
         final boolean isPresenterType = "presenter".equals(currentElement.elementName);
         if (insertType) {
@@ -194,6 +237,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         if (isPresenterType) {
             writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
         }
+        addChildElements(writer, currentElement, true, false);
         if (currentElement.childTypeNames.length > 0) {
             if (currentElement.childOption == ChildType.choiceAnyCount) {
 //                writer.append("<xs:choice2 minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
@@ -209,43 +253,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //                writer.append("</xs:choice3>\n");
             }
         }
-        for (DocumentationElement childElement : currentElement.childElements) {
-            writer.append("<xs:element name=\"");
-            writer.append(childElement.elementName);
-            if (childElement.minBounds != 1) {
-                writer.append("\" minOccurs=\"");
-                writer.append(Integer.toString(childElement.minBounds));
-            }
-            if (childElement.maxBounds != 1) {
-                writer.append("\" maxOccurs=\"");
-                writer.append((childElement.maxBounds > 0) ? Integer.toString(childElement.maxBounds) : "unbounded");
-            }
-            if (childElement.childElements.length > 0 || "presenter".equals(childElement.elementName)) {
-                writer.append("\" type=\"");
-                writer.append(childElement.typeName);
-                writer.append("\"/>\n");
-            } else if (childElement.hasStringContents) {
-                if (childElement.attributeTypes.size() > 0) {
-                    writer.append("\">\n");
-                    writer.append("<xs:complexType>\n");
-                    writer.append("<xs:simpleContent>\n");
-                    writer.append("<xs:extension base=\"xs:string\">\n");
-                    addAttributes(writer, childElement);
-                    writer.append("</xs:extension>\n");
-                    writer.append("</xs:simpleContent>\n");
-                    writer.append("</xs:complexType>\n");
-                    writer.append("</xs:element>\n");
-                } else {
-                    writer.append("\" type=\"xs:string\"/>\n");
-                }
-            } else {
-                writer.append("\">\n");
-                writer.append("<xs:complexType>\n");
-                addAttributes(writer, childElement);
-                writer.append("</xs:complexType>\n");
-                writer.append("</xs:element>\n");
-            }
-        }
+        addChildElements(writer, currentElement, false, true);
         if (isPresenterType) {
             writer.append("</xs:choice>\n");
         }
