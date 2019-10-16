@@ -634,6 +634,12 @@
 </xs:complexType>
 <xs:complexType name="actionButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -800,12 +806,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
@@ -814,6 +814,12 @@
 </xs:complexType>
 <xs:complexType name="actionTokenButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -980,12 +986,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
@@ -1006,6 +1006,12 @@
 </xs:complexType>
 <xs:complexType name="stimulusButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -1172,12 +1178,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
@@ -1187,6 +1187,12 @@
 </xs:complexType>
 <xs:complexType name="touchInputStimulusButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -1353,12 +1359,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
@@ -2166,6 +2166,12 @@
 </xs:complexType>
 <xs:complexType name="actionFooterButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -2332,12 +2338,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
@@ -2378,14 +2378,14 @@
 </xs:complexType>
 <xs:complexType name="saveMetadataButtonType">
 <xs:sequence>
-<xs:element name="onError" type="onErrorType"/>
-<xs:element name="onSuccess" type="onSuccessType"/>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
 <xs:attribute name="featureText" type="xs:string"/>
 </xs:complexType>
 </xs:element>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
 </xs:sequence>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="sendData" type="xs:string" use="required"/>
@@ -2412,14 +2412,14 @@
 <xs:annotation>
 <xs:documentation>Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.</xs:documentation>
 </xs:annotation>
-<xs:element name="onError" type="onErrorType"/>
-<xs:element name="onSuccess" type="onSuccessType"/>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
 <xs:attribute name="featureText" type="xs:string"/>
 </xs:complexType>
 </xs:element>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
 </xs:sequence>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
@@ -3143,14 +3143,14 @@
 <xs:annotation>
 <xs:documentation>Request mobile notifications at given times in the future on Android and iOS apps. The presenters listed in targetOptions need to be comma separated and will be shown as buttons in the notification.</xs:documentation>
 </xs:annotation>
-<xs:element name="onError" type="onErrorType"/>
-<xs:element name="onSuccess" type="onSuccessType"/>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
 <xs:attribute name="featureText" type="xs:string"/>
 </xs:complexType>
 </xs:element>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
 </xs:sequence>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
@@ -4052,6 +4052,12 @@
 </xs:complexType>
 <xs:complexType name="countdownLabelType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -4218,12 +4224,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="msToNext" type="xs:string" use="required"/>
@@ -9307,6 +9307,12 @@
 </xs:complexType>
 <xs:complexType name="stimulusImageCaptureType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="featureText" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -9473,12 +9479,6 @@
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required"/>
-<xs:attribute name="featureText" type="xs:string"/>
-</xs:complexType>
-</xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="percentOfPage" type="xs:string" use="required"/>
@@ -9695,13 +9695,13 @@
 </xs:complexType>
 <xs:complexType name="showHtmlPopupType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
-<xs:element name="actionButton" type="actionButtonType"/>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
 <xs:attribute name="featureText" type="xs:string"/>
 </xs:complexType>
 </xs:element>
+<xs:element name="actionButton" type="actionButtonType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 </xs:complexType>
