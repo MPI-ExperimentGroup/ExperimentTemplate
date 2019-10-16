@@ -58,6 +58,20 @@
                         <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
+                    <xsl:if test="@title">
+                        <xsl:text>title</xsl:text>
+                        <xsl:value-of select="../@self" />
+                        <xsl:text>Presenter=</xsl:text>
+                        <xsl:value-of select="replace(@title,'''','''''')"/>
+                        <xsl:text>&#xa;</xsl:text>
+                    </xsl:if>    
+                    <xsl:if test="@menuLabel">
+                        <xsl:text>menuLabel</xsl:text>
+                        <xsl:value-of select="../@self" />
+                        <xsl:text>Presenter=</xsl:text>
+                        <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
+                        <xsl:text>&#xa;</xsl:text>
+                    </xsl:if>
                 </xsl:for-each>
             </xsl:result-document>
         </xsl:for-each>        
