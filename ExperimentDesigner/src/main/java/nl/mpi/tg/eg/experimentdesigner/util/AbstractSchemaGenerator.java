@@ -135,7 +135,24 @@ public class AbstractSchemaGenerator {
             this.documentationText = featureType.getDocumentationText();
             this.minBounds = 0;
             this.maxBounds = 0;
-            this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount : ChildType.allOnceUnordered;
+            final List<String> translatableAttribites = new ArrayList<>();
+            if (featureType.canHaveText()) {
+                stringAttribute("featureText", false);
+                translatableAttribites.add("featureText");
+            }
+            if (featureType.getFeatureAttributes() != null) {
+                for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
+                    if (featureAttribute.getTypeValues() != null) {
+                        restrictedAttribute(featureAttribute.name(), featureAttribute.name() + "Type", featureAttribute.getDocumentation(), featureAttribute.isOptional(), featureAttribute.getTypeValues());
+                    } else if (featureAttribute.getType() != null) {
+                        documentedAttribute(featureAttribute.name(), featureAttribute.getType(), featureAttribute.getDocumentation(), featureAttribute.isOptional());
+                    } else {
+                        stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
+                    }
+                }
+            }
+            this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
+                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;
             List<String> childTypeList = new ArrayList<>();
             switch (featureType.getRequiresChildType()) {
                 // these items link to separate lists of element groups: general, stimuli, group...
@@ -194,24 +211,8 @@ public class AbstractSchemaGenerator {
                 documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)}).stringAttribute("storageField", true).stringAttribute("consumedTagGroup", true));
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
-            final List<String> translatableAttribites = new ArrayList<>();
-            if (featureType.canHaveText()) {
-                stringAttribute("featureText", false);
-                translatableAttribites.add("featureText");
-            }
-            if (featureType.getFeatureAttributes() != null) {
-                for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                    if (featureAttribute.getTypeValues() != null) {
-                        restrictedAttribute(featureAttribute.name(), featureAttribute.name() + "Type", featureAttribute.getDocumentation(), featureAttribute.isOptional(), featureAttribute.getTypeValues());
-                    } else if (featureAttribute.getType() != null) {
-                        documentedAttribute(featureAttribute.name(), featureAttribute.getType(), featureAttribute.getDocumentation(), featureAttribute.isOptional());
-                    } else {
-                        stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
-                    }
-                }
-            }
             if (!translatableAttribites.isEmpty()) {
-                final DocumentationElement translationElement = new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 1, false);
+                final DocumentationElement translationElement = new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false);
                 translationElement.stringAttribute("locale", false);
                 for (final String attributeName : translatableAttribites) {
                     translationElement.stringAttribute(attributeName, true);
@@ -343,7 +344,7 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("field", "", 1, 0, new DocumentationElement[]{
-                        new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 1, false)
+                        new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false)
                         .stringAttribute("locale", false)
                         .stringAttribute("controlledMessage", true)
                         .stringAttribute("registrationField", true)
