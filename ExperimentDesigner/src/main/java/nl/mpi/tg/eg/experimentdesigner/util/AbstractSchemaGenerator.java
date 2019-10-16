@@ -251,7 +251,12 @@ public class AbstractSchemaGenerator {
                 }
             });
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
-            this.childElements = new DocumentationElement[0];
+            this.childElements = new DocumentationElement[]{
+                new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false)
+                .stringAttribute("locale", false)
+                .stringAttribute("title", true)
+                .stringAttribute("menuLabel=", true)
+            };
             this.hasStringContents = false;
             this.childOption = ChildType.sequenceOnceOrdered;
             this.allowsCustomImplementation = false;
