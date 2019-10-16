@@ -433,11 +433,19 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
         addExperiment(writer, FeatureAttribute.values());
+//        writer.append("<!--experiment-->\n");
         addElement(writer, rootElement, false);
+//        writer.append("<!--administrationType-->\n");
         addElement(writer, rootElement.childElements[1], true);
+//        writer.append("<!--validationType-->\n");
         addElement(writer, rootElement.childElements[1].childElements[2], true);
+//        writer.append("<!--metadataType-->\n");
         addElement(writer, rootElement.childElements[3], true);
+        //        writer.append("<!--fieldType-->\n");
+        addElement(writer, rootElement.childElements[3].childElements[0], true);
+//        writer.append("<!--presenterType-->\n");
         addElement(writer, rootElement.childElements[4], true);
+//        writer.append("<!--stimuliType-->\n");
         addElement(writer, rootElement.childElements[5], true);
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, new DocumentationElement(featureType), true);
