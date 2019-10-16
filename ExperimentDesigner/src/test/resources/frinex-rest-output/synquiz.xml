@@ -76,9 +76,10 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
         </htmlText>-->
         <hasMetadataValue fieldName="firstName" matchingRegex=".{3,}">
             <conditionTrue>
-                <actionTokenButton featureText="Continue as &quot;&lt;metadataField_firstName&gt;&quot;" styleName="synquizButton" target="quizmenu">
+                <actionTokenButton featureText="Continue as &quot;&lt;metadataField_firstName&gt;&quot;" styleName="synquizButton">
                     <translation featureText="Ga verder als &quot;&lt;metadataField_firstName&gt;&quot;" locale="nl"/>
                     <translation featureText="Mache weiter als &quot;&lt;metadataField_firstName&gt;&quot;" locale="de"/>
+                    <gotoPresenter target="quizmenu"/>
                 </actionTokenButton>
                 <addPadding/>
                 <htmlTokenText featureText="If you are not &quot;&lt;metadataField_firstName&gt;&quot; please create a new user." styleName="synquizText">
@@ -245,59 +246,59 @@ stimulusMenuShortTestLabel=Ontdek of u synesthesie heeft!
 stimulusMenuLongTestLabelBold=Heeft u synesthesie?
 stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in ��n keer af.
 
-    instructionsMenuLabel=Anleitung
-    instructionscreenTitle=Anleitung
-    instructionscreentext=<b>Anleitung</b>\n&lt;p&gt;W\u00e4hle die Farbe, die du mit dem dargestellten\nZeichen assoziierst\n<ol>\n<li>Dr\u00fccke zuerst auf die Farbereihe auf der rechten Seite,\num einen Farbton zu w\u00e4hlen</li>\n<li>Bestimme auf der linken Seite die Farbabstufung,\num den Farbton zu finden, der am meisten mit deiner Wort/Zeichen Assoziation\n\u00fcbereinkommt</li>\n<li>Wenn die Farbe in dem kleinem Vorschaufeld mit deiner\nAssoziation \u00fcbereinkommt, dr\u00fccke das Feld "Best\u00e4tigen"</li>\n<li>Falls du keine Assoziation mit dem dargestelltem Zeichen/Wort hast, dann dr\u00fccke auf "Keine Farbe"</li>\n</ol>\n&lt;/p&gt;\n
-    instructionscreenbutton=OK, auf geht\u2019s!
-    stimulusscreenselectbutton=Best\u00e4tigen
-    stimulusscreenQuitButton=Schliessen
-    stimulusscreenrejectbutton=Keine Farbe
-    stimulusscreenprogresstext={0} oder {1}
-    userfeedbackscreentitle=Resultate
-    userfeedbackscreentext=In diesem Test z\u00e4hlt ein Wert unter 1.5 als syn\u00e4sthetisch.
-    positiveresultscreentext1=Anscheinend hast du Syn\u00e4sthesie!
-    positiveresultscreentext2=Wir laden\u00a0dich herzlich\u00a0ein, an einer wissenschaftlichen\u00a0Untersuchung zu Syn\u00e4sthesie\u00a0teilzunehmen! www.mpi.nl/synaesthesia
-    negativeresultscreentext1=Es scheint, dass du keine Syn\u00e4sthesie hast!
-    reportScreenTitle=Auswertung
-    reportScreenScore=Punkte: {0}
-    reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
-    reportScreenSCTaccuracy=Genauigkeit {0}%
-    reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/- {1}
-    registerScreenTitle=Anmeldung
-    registerDisabledScreenText=Bitte beantworte eine Reihe von Stimuli. Du kannst dich nicht registireren bevor du ein Reihe Stimuli beantwortet hast.
-    registerButton=Registrieren
-    errorScreenTitle=Fehler
-    errorScreenText=Ein Fehler ist aufgetreten: {0}
-    stimulusMenuTitle=Quiz w\u00e4hlen
-    stimulusMenuDoneButton={0} \nKOMPLETT
-    stimulusMenuNotDoneButton={0}
-    menuScreenTitle=Men\u00fc
-    menuButton=Men\u00fc
-    exitButton=Exit
-    startButton=Neustart
-    setUserMenuLabel=Weiter
-    stimulusSelectMenuLabel=W\u00e4hle ein anderes Quiz
-    stimulusShowMenuLabel=Weiter
-    reportMenuLabel=Betrachte Report
-    feedbackMenuLabel=Betrachte Feedback
-    moreInfoMenuLabel=Weitere Information
-    helpButtonChar=?
-    informationSheetLink=Studie info
-    informationSheetCheckBox=Hiermit best\u00e4tige ich, dass ich die Teilnahmebedingungen gelesen und verstanden habe, und dass ich an der Studie teilnehmen will.
-    mpiLink=http://www.mpi.nl/synaesthesia-de
-    mpiLinkText=MPI SYN Forschung
-    socialPostButtonText=Teile dein Resultat
-    socialMediaPostText=Ich habe gerade bei SynQuiz teilgenommen und {0} Punkte erreicht. Das z\u00e4hlt als syn\u00e4sthetisch.
-    socialMediaPostSubject=Betreff Social Media Post
-    socialMediaPostUrl=https://www.languageininteraction.nl/
-    registrationCompleteTitle=Anmeldung
-    registrationCompleteText=Anmeldung erfolgreich.
-    registrationFailedTitle=Anmelding
-    registrationFailedText=Die Registrierung auf dem Server ist fehlgeschlagen. Bitte versuche es sp\u00e4ter erneut. Wenn du weiterhin Probleme hast dich zu registrieren, gehe zu www.mpi.nl/synaesthesia, um dich anzumelden und and der Studie teilzunehmen!
-    stimulusMenuShortTestLabel=Entdecke ob du Syn\u00e4sthesie hast!
-    stimulusMenuLongTestLabelBold=Hast Du Syn\u00e4sthesie?
-    stimulusMenuLongTestLabel=Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal.
--->
+        instructionsMenuLabel=Anleitung
+        instructionscreenTitle=Anleitung
+        instructionscreentext=<b>Anleitung</b>\n&lt;p&gt;W\u00e4hle die Farbe, die du mit dem dargestellten\nZeichen assoziierst\n<ol>\n<li>Dr\u00fccke zuerst auf die Farbereihe auf der rechten Seite,\num einen Farbton zu w\u00e4hlen</li>\n<li>Bestimme auf der linken Seite die Farbabstufung,\num den Farbton zu finden, der am meisten mit deiner Wort/Zeichen Assoziation\n\u00fcbereinkommt</li>\n<li>Wenn die Farbe in dem kleinem Vorschaufeld mit deiner\nAssoziation \u00fcbereinkommt, dr\u00fccke das Feld "Best\u00e4tigen"</li>\n<li>Falls du keine Assoziation mit dem dargestelltem Zeichen/Wort hast, dann dr\u00fccke auf "Keine Farbe"</li>\n</ol>\n&lt;/p&gt;\n
+        instructionscreenbutton=OK, auf geht\u2019s!
+        stimulusscreenselectbutton=Best\u00e4tigen
+        stimulusscreenQuitButton=Schliessen
+        stimulusscreenrejectbutton=Keine Farbe
+        stimulusscreenprogresstext={0} oder {1}
+        userfeedbackscreentitle=Resultate
+        userfeedbackscreentext=In diesem Test z\u00e4hlt ein Wert unter 1.5 als syn\u00e4sthetisch.
+        positiveresultscreentext1=Anscheinend hast du Syn\u00e4sthesie!
+        positiveresultscreentext2=Wir laden\u00a0dich herzlich\u00a0ein, an einer wissenschaftlichen\u00a0Untersuchung zu Syn\u00e4sthesie\u00a0teilzunehmen! www.mpi.nl/synaesthesia
+        negativeresultscreentext1=Es scheint, dass du keine Syn\u00e4sthesie hast!
+        reportScreenTitle=Auswertung
+        reportScreenScore=Punkte: {0}
+        reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
+        reportScreenSCTaccuracy=Genauigkeit {0}%
+        reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/- {1}
+        registerScreenTitle=Anmeldung
+        registerDisabledScreenText=Bitte beantworte eine Reihe von Stimuli. Du kannst dich nicht registireren bevor du ein Reihe Stimuli beantwortet hast.
+        registerButton=Registrieren
+        errorScreenTitle=Fehler
+        errorScreenText=Ein Fehler ist aufgetreten: {0}
+        stimulusMenuTitle=Quiz w\u00e4hlen
+        stimulusMenuDoneButton={0} \nKOMPLETT
+        stimulusMenuNotDoneButton={0}
+        menuScreenTitle=Men\u00fc
+        menuButton=Men\u00fc
+        exitButton=Exit
+        startButton=Neustart
+        setUserMenuLabel=Weiter
+        stimulusSelectMenuLabel=W\u00e4hle ein anderes Quiz
+        stimulusShowMenuLabel=Weiter
+        reportMenuLabel=Betrachte Report
+        feedbackMenuLabel=Betrachte Feedback
+        moreInfoMenuLabel=Weitere Information
+        helpButtonChar=?
+        informationSheetLink=Studie info
+        informationSheetCheckBox=Hiermit best\u00e4tige ich, dass ich die Teilnahmebedingungen gelesen und verstanden habe, und dass ich an der Studie teilnehmen will.
+        mpiLink=http://www.mpi.nl/synaesthesia-de
+        mpiLinkText=MPI SYN Forschung
+        socialPostButtonText=Teile dein Resultat
+        socialMediaPostText=Ich habe gerade bei SynQuiz teilgenommen und {0} Punkte erreicht. Das z\u00e4hlt als syn\u00e4sthetisch.
+        socialMediaPostSubject=Betreff Social Media Post
+        socialMediaPostUrl=https://www.languageininteraction.nl/
+        registrationCompleteTitle=Anmeldung
+        registrationCompleteText=Anmeldung erfolgreich.
+        registrationFailedTitle=Anmelding
+        registrationFailedText=Die Registrierung auf dem Server ist fehlgeschlagen. Bitte versuche es sp\u00e4ter erneut. Wenn du weiterhin Probleme hast dich zu registrieren, gehe zu www.mpi.nl/synaesthesia, um dich anzumelden und and der Studie teilzunehmen!
+        stimulusMenuShortTestLabel=Entdecke ob du Syn\u00e4sthesie hast!
+        stimulusMenuLongTestLabelBold=Hast Du Syn\u00e4sthesie?
+        stimulusMenuLongTestLabel=Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal.
+    -->
 
     
     <!--    <presenter back="Details" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
@@ -331,8 +332,8 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
         </menuItem>
     </presenter>
     <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="localemenu" title="Language">
-        <translation featureText="Taal" locale="nl"/>
-        <translation featureText="Sprache" locale="de"/>
+        <translation title="Taal" locale="nl"/>
+        <translation title="Sprache" locale="de"/>
         <selectLocaleMenu styleName="synquizButton"/>
     </presenter>
     <!--    metadataMenuLabel=Register
@@ -341,8 +342,8 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
     editMetadataLabel=Daten bearbeiten-->
 
     <presenter back="Menu" next="registrationScreen" menuLabel="LocaleMenu" type="metadata" self="metadataScreen" title="User details">
-        <translation featureText="Gebruiker" locale="nl"/>
-        <translation featureText="Benutzer" locale="de"/>
+        <translation title="Gebruiker" locale="nl"/>
+        <translation title="Benutzer" locale="de"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
         <metadataField fieldName="age"/>
@@ -361,8 +362,8 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="" type="metadata" self="registrationScreen" title="">
-        <translation featureText="" locale="nl"/>
-        <translation featureText="" locale="de"/>
+        <translation locale="nl"/>
+        <translation locale="de"/>
         <htmlTokenText featureText="&lt;metadataField_firstName&gt;" styleName="synquizText"/>
         <htmlTokenText featureText="&lt;metadataField_lastName&gt;" styleName="synquizText"/>
         <htmlTokenText featureText="&lt;metadataField_ageName&gt;" styleName="synquizText"/>
@@ -481,8 +482,8 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
     versionMenuLabel=
     versionScreenTitle=Impressum
         versionMenuLabel=-->
-<!--
--->    
+        <!--
+        -->    
         <htmlText featureText="&lt;p&gt;SynQuiz is an app that contains four playful tests for synaesthesia. &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/synaesthesia','_system'); return false;&quot;&gt;Synaesthesia&lt;/a&gt; is a neurodevelopmental trait estimated to occur in about 4% of the general human population. For people with synaesthesia two or more senses appear to be interconnected; for example a synaesthete perceives certain concepts, such as letters, numbers, days of the week, or months of the year as inherently coloured. Many synaesthetes are not aware that their perceptions are unusual and are often surprised to find out that others do not think of letters, numbers, or weekdays in colours.&lt;/p&gt;&lt;p&gt;SynQuiz tests this type of synaesthesia, frequently referred to as grapheme-colour synaesthesia. The first three short quizzes are designed to give you (the user) a taste of what synaesthesia might be like and find out whether you might be experiencing it yourself. The Letters/Numbers-full test test gives an indication whether your type of synaesthesia is suitable for the ongoing genetic studies. If so, we might invite you to provide a small sample of saliva, from which we can obtain your DNA.&lt;/p&gt;" styleName="synquizText">
             <translation featureText="&lt;p&gt;SynQuiz is een app die vier speelse testen biedt voor synesthesie. &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/synaesthesia','_system'); return false;&quot;&gt;Synesthesie&lt;/a&gt; is een neurologische eigenschap die voorkomt in ongeveer 4% van de algemene menselijke populatie. Voor mensen met synesthesie lijken twee of meer zintuigen samen te smelten; een synestheet ervaart bijvoorbeeld bepaalde kleuren wanneer hij of zij aan concepten denkt, zoals letters, getallen, dagen van de week, of maanden van het jaar. Veel synestheten zijn zich er niet van bewust dat deze ervaringen uitzonderlijk zijn, en zijn vaak verbaasd wanneer ze ontdekken dat andere mensen niet aan kleuren denken bij letters, getallen, of dagen van de week.&lt;/p&gt;&lt;p&gt;SynQuiz test dit type synesthesie, meestal letter-kleursynesthesie genoemd. De drie korte quizzen zijn ontworpen om u (de gebruiker) een indruk te geven van synesthesie en om te kunnen ontdekken of u dit zelf heeft. De volledige Letters/Getallen test geeft een indicatie of uw type synesthesie geschikt is voor de lopende genetische studies. In dat geval nodigen we u uit om een klein speekselmonster te verstrekken, waaruit we DNA voor de genetische studies kunnen destilleren.&lt;/p&gt;" locale="nl"/>
             <translation featureText="&lt;p&gt;SynQuiz ist eine App, die vier spielerische Tests f\u00fcr Syn\u00e4sthesie enth\u00e4lt. &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/synaesthesia-de','_system'); return false;&quot;&gt;Syn\u00e4sthesie&lt;/a&gt; ist eine neurologische Eigenschaft, die in etwa 4% der allgemeinen Bev\u00f6lkerung vorkommt. Menschen mit Syn\u00e4sthesie erfahren zwei oder mehr Sinne, als w\u00e4ren sie miteinander verkn\u00fcpft; zum Beispiel nimmt ein Syn\u00e4sthetiker bestimmte Konzepte, wie Buchstaben, Zahlen, Wochentage oder Monate im Jahr als inh\u00e4rent gef\u00e4rbt wahr. Viele Syn\u00e4sthetiker sind sich der Besonderheit ihrer Wahrnehmung selbst nicht bewusst und sind oft \u00fcberrascht zu erfahren, dass andere Menschen bei Buchstaben, Zahlen oder Wochentage nicht an Farben denken.&lt;/p&gt;&lt;p&gt;SynQuiz testet diese Art der Syn\u00e4sthesie, h\u00e4ufig als Graphem-Farb Syn\u00e4sthesie bezeichnet. Die ersten drei kurzen Quizze sollen Ihnen (dem Benutzer) einen Eindruck der Syn\u00e4sthesie geben und Ihnen helfen herauszufinden, ob Sie selber diese Eigenschaft haben. Der vollst\u00e4ndige Buchstaben/Zahlen-Test zeigt an, ob Ihre Art der Syn\u00e4sthesie f\u00fcr die laufenden genetischen Studien geeignet ist. In diesem Fall laden wir Sie zu einer Speichelprobe ein, aus der wir DNA f\u00fcr die genetische Studien gewinnen k\u00f6nnen. &lt;/p&gt;" locale="de"/>
@@ -499,7 +500,7 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
             <translation featureText="" locale="nl"/>
             <translation featureText="" locale="de"/>
         </htmlText>
-                <!--
+        <!--
 aboutScreenTextCheading=&lt;h3&gt;Language in Interaction project&lt;/h3&gt;
 aboutScreenTextCbody=&lt;p&gt;SynQuiz was developed within the research consortium &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.languageininteraction.nl','_system'); return false;&quot;&gt;Language in Interaction&lt;/a&gt;, which aims to explain variation and similarities in languages as well as in linguistic skills. The consortium aims to gain understanding of how such a large range of (cultural) differences have arisen from a biological basis that is common to all people.&lt;/p&gt;&lt;p&gt;The research program examines human language from the level of genetics to interactions between conversational partners, addressing a diverse range of topics such as: brain structure and function, language development, evolution, multilingualism, speech production and comprehension, nonverbal behaviour, meaning and context, and the interplay of language with other cognitive systems (e.g. memory).&lt;/p&gt;
 aboutScreenTextDheading=&lt;h3&gt;More language apps&lt;/h3&gt;
