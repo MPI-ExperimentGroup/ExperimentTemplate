@@ -342,7 +342,12 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("field", "", 1, 0, new DocumentationElement[0])
+                            new DocumentationElement("field", "", 1, 0, new DocumentationElement[]{
+                        new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 1, false)
+                        .stringAttribute("locale", false)
+                        .stringAttribute("controlledMessage", true)
+                        .stringAttribute("registrationField", true)
+                    })
                                     .stringAttribute("controlledMessage", false)
                                     .stringAttribute("controlledRegex", false)
                                     .stringAttribute("postName", false)
