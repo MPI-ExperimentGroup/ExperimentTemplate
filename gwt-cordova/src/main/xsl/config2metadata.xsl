@@ -55,7 +55,7 @@
         <xsl:variable name="translationNodes" select="experiment/metadata/field/translation" />
         <xsl:for-each select="distinct-values($translationNodes/@locale)">
             <xsl:variable name="translationLocale" select="." />
-            <xsl:result-document href="{$targetClientDirectory}/MetadataFields-{$translationLocale}.properties" method="text" encoding="UTF-8">
+            <xsl:result-document href="{$targetClientDirectory}/MetadataFields_{$translationLocale}.properties" method="text" encoding="UTF-8">
                 <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
                     <xsl:if test="@controlledMessage">
                         <xsl:text>controlledMessage_</xsl:text>
