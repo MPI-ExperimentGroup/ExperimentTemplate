@@ -296,6 +296,13 @@
 <xs:documentation>Each screen in an experiment configuration is described in a PRESENTER element.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="title" type="xs:string"/>
+<xs:attribute name="menuLabel=" type="xs:string"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="actionButton" type="actionButtonType"/>
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="actionTokenButton" type="actionTokenButtonType"/>
