@@ -268,17 +268,28 @@
 <xs:annotation>
 <xs:documentation>The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.</xs:documentation>
 </xs:annotation>
-<xs:element name="field" maxOccurs="unbounded">
+<xs:element name="field" maxOccurs="unbounded" type="fieldType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fieldType">
+<xs:sequence>
+<xs:annotation>
+<xs:documentation></xs:documentation>
+</xs:annotation>
+<xs:element name="translation" minOccurs="0">
 <xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="controlledMessage" type="xs:string"/>
+<xs:attribute name="registrationField" type="xs:string"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
 <xs:attribute name="controlledMessage" type="xs:string" use="required"/>
 <xs:attribute name="controlledRegex" type="xs:string" use="required"/>
 <xs:attribute name="postName" type="xs:string" use="required"/>
 <xs:attribute name="registrationField" type="xs:string" use="required"/>
 <xs:attribute name="duplicatesControlledMessage" type="xs:string"/>
 <xs:attribute name="preventServerDuplicates" type="xs:boolean"/>
-</xs:complexType>
-</xs:element>
-</xs:sequence>
 </xs:complexType>
 <xs:complexType name="presenterType">
 <xs:annotation>
