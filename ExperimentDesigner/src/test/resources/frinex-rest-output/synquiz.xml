@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="SynQuiz" appNameInternal="synquiz" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FF0000" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#FFFFFF" primaryColour2="#FFFFFF" primaryColour3="#96ADAD" primaryColour4="black" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="SynQuiz" appNameInternal="synquiz" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FF0000" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#FFFFFF" primaryColour2="#FFFFFF" primaryColour3="#96ADAD" primaryColour4="#000000" rotatable="true" showMenuBar="true" textFontSize="17">
+    <administration>
+        <dataAgreementField fieldName="dataAgreement" matchingRegex="agree"/>
+    </administration>
     <scss>
         #widgetTag {
             height: 100%;
@@ -18,9 +21,6 @@
         }
 
     </scss>
-    <administration>
-        <dataAgreementField fieldName="dataAgreement" matchingRegex="agree"/>
-    </administration>
     <metadata>
 <!--fieldValues-gender=Male,Female,Other
 fieldValues-ethnicity=African, Caucasian, Asian, Hispanic, Native American, Pacific Islander, other - free text
@@ -31,27 +31,27 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
         <field controlledMessage="Do you agree with data collection." controlledRegex="disagree|agree" postName="dataAgreement" preventServerDuplicates="false" registrationField="Data Agreement"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name *">
             <translation controlledMessage="Voer a.u.b. tenminste 3 letters in." registrationField="Vorname *" locale="nl"/>
-            <translation controlledMessage="Bitte trage mindestens drei Buchstaben ein." registrationField="" locale="de"/>
+            <translation controlledMessage="Bitte trage mindestens drei Buchstaben ein." locale="de"/>
         </field> 
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="lastName" preventServerDuplicates="false" registrationField="Last name">
-            <translation controlledMessage="" registrationField="Achternaam" locale="nl"/>
-            <translation controlledMessage="" registrationField="Nachname" locale="de"/>
+            <translation registrationField="Achternaam" locale="nl"/>
+            <translation registrationField="Nachname" locale="de"/>
         </field> 
         <field controlledMessage="." controlledRegex="0-9'{'1,'}'" postName="age" preventServerDuplicates="false" registrationField="Age">
-            <translation controlledMessage="" registrationField="Leeftijd" locale="nl"/>
-            <translation controlledMessage="" registrationField="Alter" locale="de"/>
+            <translation registrationField="Leeftijd" locale="nl"/>
+            <translation registrationField="Alter" locale="de"/>
         </field> 
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="ethnicity" preventServerDuplicates="false" registrationField="Ethnicity">
-            <translation controlledMessage="" registrationField="Etniciteit" locale="nl"/>
-            <translation controlledMessage="" registrationField="Ethnizit\u00e4t" locale="de"/>
+            <translation registrationField="Etniciteit" locale="nl"/>
+            <translation registrationField="Ethnizit\u00e4t" locale="de"/>
         </field> 
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="country" preventServerDuplicates="false" registrationField="Country of origin">
-            <translation controlledMessage="" registrationField="Land van herkomst" locale="nl"/>
-            <translation controlledMessage="" registrationField="Herkunftsland" locale="de"/>
+            <translation registrationField="Land van herkomst" locale="nl"/>
+            <translation registrationField="Herkunftsland" locale="de"/>
         </field> 
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="language" preventServerDuplicates="false" registrationField="Native language">
-            <translation controlledMessage="" registrationField="Moedertaal" locale="nl"/>
-            <translation controlledMessage="" registrationField="Muttersprache" locale="de"/>
+            <translation registrationField="Moedertaal" locale="nl"/>
+            <translation registrationField="Muttersprache" locale="de"/>
         </field> 
         <field controlledMessage="Please enter a valid email address." controlledRegex="^[^@]+@[^@]+$" postName="emailAddress" preventServerDuplicates="false" registrationField="Email *">
             <translation controlledMessage="Voer a.u.b. een geldig e-mailadres in." registrationField="E-mail *" locale="nl"/>
