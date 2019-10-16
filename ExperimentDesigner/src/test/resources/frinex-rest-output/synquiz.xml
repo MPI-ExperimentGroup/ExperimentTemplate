@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="SynQuiz" appNameInternal="synquiz" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FF0000" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#FFFFFF" primaryColour2="white" primaryColour3="#96ADAD" primaryColour4="black" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="SynQuiz" appNameInternal="synquiz" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FF0000" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#FFFFFF" primaryColour2="#FFFFFF" primaryColour3="#96ADAD" primaryColour4="black" rotatable="true" showMenuBar="true" textFontSize="17">
     <scss>
         #widgetTag {
             height: 100%;
