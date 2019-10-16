@@ -18,37 +18,32 @@
                 <xsl:value-of select="@postName" />
                 <xsl:text>=</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>
-                </xsl:text>
+                <xsl:text>&#xa;</xsl:text>
                 <xsl:text>registrationField_</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>=</xsl:text>
                 <xsl:value-of select="replace(@registrationField,'''','''''')" />
-                <xsl:text>
-                </xsl:text>
+                <xsl:text>&#xa;</xsl:text>
                 <!--<xsl:if test="@fieldValues">-->
                 <xsl:text>fieldValues_</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>=</xsl:text>
                 <xsl:value-of select="@fieldValues" />
-                <xsl:text>
-                </xsl:text>
+                <xsl:text>&#xa;</xsl:text>
                 <!--</xsl:if>-->
                 <!--<xsl:if test="@controlledMessage">-->
                 <xsl:text>controlledMessage_</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>=</xsl:text>
                 <xsl:value-of select="@controlledMessage" />
-                <xsl:text>
-                </xsl:text>
+                <xsl:text>&#xa;</xsl:text>
                 <!--</xsl:if>-->
                 <!--<xsl:if test="@controlledRegex">-->
                 <xsl:text>controlledRegex_</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>=</xsl:text>
                 <xsl:value-of select="@controlledRegex" />
-                <xsl:text>
-                </xsl:text>
+                <xsl:text>&#xa;</xsl:text>
                 <!--                   <xsl:text>preventServerDuplicates_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@preventServerDuplicates" /><xsl:text>
                 </xsl:text>
                                    <xsl:text>duplicatesControlledMessage_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@duplicatesControlledMessage" /><xsl:text>
@@ -56,6 +51,29 @@
                 <!--</xsl:if>-->
             </xsl:for-each>
         </xsl:result-document>
+        <!--make separate properties files for each locale-->
+        <xsl:variable name="translationNodes" select="experiment/metadata/field/translation" />
+        <xsl:for-each select="distinct-values($translationNodes/@locale)">
+            <xsl:variable name="translationLocale" select="." />
+            <xsl:result-document href="{$targetClientDirectory}/MetadataFields-{$translationLocale}.properties" method="text" encoding="UTF-8">
+                <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
+                    <xsl:if test="@controlledMessage">
+                        <xsl:text>controlledMessage_</xsl:text>
+                        <xsl:value-of select="../@postName" />
+                        <xsl:text>=</xsl:text>
+                        <xsl:value-of select="replace(@controlledMessage,'''','''''')"/>
+                        <xsl:text>&#xa;</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="@registrationField">
+                        <xsl:text>registrationField_</xsl:text>
+                        <xsl:value-of select="../@postName" />
+                        <xsl:text>=</xsl:text>
+                        <xsl:value-of select="replace(@registrationField,'''','''''')"/>
+                        <xsl:text>&#xa;</xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:result-document>
+        </xsl:for-each>   
         <xsl:result-document href="{$targetClientDirectory}/service/MetadataFieldProvider.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.experiment.client.service;
 
