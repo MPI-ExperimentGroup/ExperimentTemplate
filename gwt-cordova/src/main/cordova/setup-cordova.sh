@@ -71,7 +71,8 @@ cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
 #cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
-cordova plugin add cordova-plugin-local-notification
+#cordova plugin add cordova-plugin-local-notification
+cordova plugin add https://github.com/katzer/cordova-plugin-local-notifications.git
 cordova plugin add cordova-plugin-whitelist
 
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
