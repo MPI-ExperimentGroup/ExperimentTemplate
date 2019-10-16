@@ -40,25 +40,23 @@
             stopSharingDetailsExplanation=({0}) and unique id ({1})
         </xsl:text>
         <!--make separate properties files for each locale-->
-        <xsl:variable name="translationNodes" select="//translation" />
+        <xsl:variable name="translationNodes" select="experiment/presenter//translation" />
         <xsl:for-each select="distinct-values($translationNodes/@locale)">
             <xsl:variable name="translationLocale" select="." />
-            <xsl:result-document href="{$targetClientDirectory}/Messages-{$translationLocale}.properties" method="text" encoding="UTF-8">
+            <xsl:result-document href="{$targetClientDirectory}/Messages_{$translationLocale}.properties" method="text" encoding="UTF-8">
                 <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
                     <xsl:if test="@featureText">
                         <xsl:value-of select="generate-id(..)" />
                         <xsl:text>=</xsl:text>
                         <xsl:value-of select="replace(@featureText,'''','''''')"/>
-                        <xsl:text>
-                        </xsl:text>
+                        <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                     <xsl:if test="@menuLabel">
                         <xsl:text>menuLabel</xsl:text>
                         <xsl:value-of select="../@self" />
                         <xsl:text>=</xsl:text>
                         <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
-                        <xsl:text>
-                        </xsl:text>
+                        <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                 </xsl:for-each>
             </xsl:result-document>
@@ -70,14 +68,12 @@
         <xsl:value-of select="@self" />
         <xsl:text>=</xsl:text>
         <xsl:value-of select="@menuLabel" />
-        <xsl:text>
-        </xsl:text>      
+        <xsl:text>&#xa;</xsl:text>      
         <xsl:text>title</xsl:text>
         <xsl:value-of select="@self" />
         <xsl:text>Presenter=</xsl:text>
         <xsl:value-of select="@title" />
-        <xsl:text>
-        </xsl:text>      
+        <xsl:text>&#xa;</xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="addStimulusCodeResponseValidation[@featureText != '']|switchUserIdButton[@featureText != '']|requestNotification[@featureText != '']|preventWindowClose[@featureText != '']|countdownLabel[@featureText != '']|stimulusImageCapture[@featureText != '']|stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|showHtmlPopup[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|actionTokenButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|prevStimulusButton[@featureText != '']|touchInputStimulusButton[@featureText != '']|stimulusButton[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|htmlTokenText[@featureText != '']|userInfo[@featureText != '']|sendGroupMessageButton[@featureText != '']">
@@ -85,32 +81,28 @@
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
             <xsl:value-of select="replace(@featureText,'''','''''')"/>
-            <xsl:text>
-            </xsl:text>
+            <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:if test="@networkErrorMessage != ''">   
             <xsl:text>errorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
             <xsl:value-of select="replace(@networkErrorMessage,'''','''''')"/>
-            <xsl:text>
-            </xsl:text>
+            <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:if test="@inputErrorMessage != ''">   
             <xsl:text>inputErrorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
             <xsl:value-of select="replace(@inputErrorMessage,'''','''''')"/>
-            <xsl:text>
-            </xsl:text>
+            <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:if test="@closeButtonLabel != ''">   
             <xsl:text>closeButtonLabel</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
             <xsl:value-of select="replace(@closeButtonLabel,'''','''''')"/>
-            <xsl:text>
-            </xsl:text>
+            <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:apply-templates/>
     </xsl:template>
