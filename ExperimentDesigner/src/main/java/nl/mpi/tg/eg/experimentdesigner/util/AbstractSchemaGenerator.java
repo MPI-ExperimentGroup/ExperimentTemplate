@@ -255,7 +255,7 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false)
                 .stringAttribute("locale", false)
                 .stringAttribute("title", true)
-                .stringAttribute("menuLabel=", true)
+                .stringAttribute("menuLabel", true)
             };
             this.hasStringContents = false;
             this.childOption = ChildType.sequenceOnceOrdered;
