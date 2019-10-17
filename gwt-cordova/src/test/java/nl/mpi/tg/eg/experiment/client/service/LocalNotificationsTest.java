@@ -68,6 +68,7 @@ public class LocalNotificationsTest {
             }
         }
     }
+
     /**
      * Test of findNotificationRepetitions method, of class LocalNotifications.
      */
@@ -86,7 +87,7 @@ public class LocalNotificationsTest {
 //            System.out.println(values[0] + ":" + values[1]);
 //        }
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 0; repetitionIndex < 5; repetitionIndex++) {
+        for (int repetitionIndex = 0; repetitionIndex < result.length; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
             if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 20);
@@ -169,8 +170,7 @@ public class LocalNotificationsTest {
     }
 
     /**
-     * Test of reverse findNotificationRepetitions method, of class
-     * LocalNotifications.
+     * Test of reverse findNotificationRepetitions method, of class LocalNotifications.
      */
     @Test
     public void testFindNotificationRepetitionsReverse() {
