@@ -440,8 +440,21 @@
 <xs:annotation>
 <xs:documentation>All stimulus elements must be contained in the stimuli element.</xs:documentation>
 </xs:annotation>
-<xs:element name="stimulus" minOccurs="0" maxOccurs="unbounded">
+<xs:element name="stimulus" minOccurs="0" maxOccurs="unbounded" type="stimulusType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stimulusType">
+<xs:sequence>
+<xs:annotation>
+<xs:documentation>Each individual stimulus can be described in the form of label, audio, video</xs:documentation>
+</xs:annotation>
+<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
+<xs:attribute name="locale" type="xs:string" use="required"/>
+<xs:attribute name="label" type="xs:string"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
 <xs:attribute name="identifier" type="xs:string" use="required"/>
 <xs:attribute name="videoPath" type="xs:string"/>
 <xs:attribute name="imagePath" type="xs:string"/>
@@ -452,9 +465,6 @@
 <xs:attribute name="ratingLabels" type="xs:string"/>
 <xs:attribute name="tags" type="xs:string"/>
 <xs:attribute name="pauseMs" type="xs:integer"/>
-</xs:complexType>
-</xs:element>
-</xs:sequence>
 </xs:complexType>
 <xs:complexType name="htmlTextType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -9718,6 +9728,7 @@
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
 <xs:attribute name="featureText" type="xs:string"/>
+<xs:attribute name="closeButtonLabel" type="xs:string"/>
 </xs:complexType>
 </xs:element>
 </xs:choice>
