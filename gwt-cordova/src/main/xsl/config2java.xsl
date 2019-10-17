@@ -44,9 +44,9 @@
         <xsl:for-each select="experiment/presenter">
             <xsl:text>        </xsl:text>
             <xsl:value-of select="@self" />
-            <xsl:text>("</xsl:text>
-            <xsl:value-of select="@menuLabel" />
-            <xsl:text>"),
+            <xsl:text>(messages.menuLabel</xsl:text>
+            <xsl:value-of select="@self" />
+            <xsl:text>()),
             </xsl:text>
         </xsl:for-each>
         <xsl:text>        highscoresubmitted(null),
