@@ -70,6 +70,7 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
             <translation featureText="Associeert u kleuren met letters, cijfers, dagen van de week of maanden van het jaar? In dat geval behoort u misschien tot de ongeveer 4% mensen wereldwijd met synesthesie." locale="nl"/>
             <translation featureText="Assoziierst du Buchstaben, Nummern, Wochentage oder Monate mit Farben? Dann bist du einer von 4% der Menschheit mit Syn\u00e4sthesie!" locale="de"/>
         </htmlText>
+        <addPadding/>
 <!--        <htmlText featureText="">
             <translation featureText="" locale="nl"/>
             <translation featureText="" locale="de"/>
@@ -98,12 +99,13 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
                     <translation featureText="Bitte trage deinen Namen ein." locale="de"/>
                 </htmlText>
                 <metadataField fieldName="firstName"/>
-                <saveMetadataButton featureText="Create new user" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
-                    <translation featureText="Gebruiker aanmaken" locale="nl"/>
-                    <translation featureText="Erstelle Benutzernamen" locale="de"/>
+                <addPadding/>
+                <saveMetadataButton featureText="Continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
+                    <translation featureText="Verder" locale="nl"/>
+                    <translation featureText="Weiter" locale="de"/>
                     <onError/>
                     <onSuccess>
-                        <gotoNextPresenter/>
+                        <gotoPresenter target="quizmenu"/>
                     </onSuccess>
                 </saveMetadataButton>
             </conditionFalse>
@@ -158,8 +160,6 @@ errorScreenText=An error occurred: {0}
 stimulusMenuTitle=Select quiz
 stimulusMenuDoneButton={0}\nCOMPLETE
 stimulusMenuNotDoneButton={0}\n
-menuScreenTitle=Menu
-menuButton=Menu
 exitButton=Exit
 startButton=Restart
 setUserMenuLabel=Next
@@ -219,8 +219,6 @@ errorScreenText=Er is een fout opgetreden: {0}
 stimulusMenuTitle=Quiz kiezen
 stimulusMenuDoneButton={0} \nKLAAR
 stimulusMenuNotDoneButton={0}
-menuScreenTitle=Menu
-menuButton=Menu
 exitButton=Einde
 startButton=Herstart
 setUserMenuLabel=Volgende
@@ -272,8 +270,6 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
         stimulusMenuTitle=Quiz w\u00e4hlen
         stimulusMenuDoneButton={0} \nKOMPLETT
         stimulusMenuNotDoneButton={0}
-        menuScreenTitle=Men\u00fc
-        menuButton=Men\u00fc
         exitButton=Exit
         startButton=Neustart
         setUserMenuLabel=Weiter
@@ -318,6 +314,8 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
         </saveMetadataButton>
     </presenter>-->
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <translation menuLabel="Menu" title="Menu" locale="nl"/>
+        <translation menuLabel="Men\u00fc" title="Men\u00fc" locale="de"/>
         <menuItem featureText="Begin Quiz" target="set_user" styleName="synquizButton">
             <translation featureText="Quiz starten" locale="nl"/>
             <translation featureText="Starte Quiz" locale="de"/>
@@ -373,7 +371,7 @@ stimulusMenuLongTestLabel=Doe dan net als andere mensen met synesthesie mee aan 
         <htmlTokenText featureText="&lt;metadataField_genderName&gt;" styleName="synquizText"/>
         <htmlTokenText featureText="&lt;metadataField_emailAddressName&gt;" styleName="synquizText"/>
     </presenter>
-    <presenter back="set_user" menuLabel="Quiz Menu" type="menu" self="quizmenu" title="Select Quiz">
+    <presenter back="Menu" menuLabel="Quiz Menu" type="menu" self="quizmenu" title="Select Quiz">
         <menuItem featureText="Weekdays" target="Weekdays" styleName="synquizButton">
             <!--            <translation featureText="Dagen van de week" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
