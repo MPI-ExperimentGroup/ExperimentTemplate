@@ -149,6 +149,9 @@ public class AbstractSchemaGenerator {
                     } else {
                         stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
                     }
+                    if (FeatureAttribute.closeButtonLabel == featureAttribute) {
+                        translatableAttribites.add("closeButtonLabel");
+                    }
                 }
             }
             this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
@@ -371,7 +374,11 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new DocumentationElement[0])
+                            new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new DocumentationElement[]{
+                        new DocumentationElement("translation", "Translated attributes for the parent stimulus element.", 0, 0, false)
+                        .stringAttribute("locale", false)
+                        .stringAttribute("label", true)
+                    })
                                     .stringAttribute("identifier", false)
                                     .stringAttribute("videoPath", true)
                                     .stringAttribute("imagePath", true)
