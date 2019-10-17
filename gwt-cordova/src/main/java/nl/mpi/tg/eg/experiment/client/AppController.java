@@ -57,7 +57,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
     private final Version version = GWT.create(Version.class);
-    protected final Messages messages = GWT.create(Messages.class);
+    protected static final Messages messages = GWT.create(Messages.class);
     final LocalStorage localStorage = new LocalStorage(messages.appNameInternal());
     final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
     final TimerService timerService = new TimerService();
