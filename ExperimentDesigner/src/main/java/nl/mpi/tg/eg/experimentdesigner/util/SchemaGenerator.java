@@ -455,6 +455,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addElement(writer, rootElement.childElements[4], true);
 //        writer.append("<!--stimuliType-->\n");
         addElement(writer, rootElement.childElements[5], true);
+        addElement(writer, rootElement.childElements[5].childElements[0], true);
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, new DocumentationElement(featureType), true);
         }
