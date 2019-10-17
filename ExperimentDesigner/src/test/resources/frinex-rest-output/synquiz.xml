@@ -18,6 +18,8 @@
         .gwt-Button.optionButton, .gwt-Button.nextButton, .gwt-Button.menuButton.synquizButton, .gwt-Button.optionButton.synquizButton {
             color: black;
             background: white;
+            height: unset;
+            min-height: 40px;
         }
         .menuTable {
             border-color: rgb(142,207,230);
@@ -312,7 +314,9 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
     <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="localemenu" title="Language">
         <translation title="Taal" locale="nl"/>
         <translation title="Sprache" locale="de"/>
-        <selectLocaleMenu styleName="synquizButton"/>
+        <region regionId="localemenu1" styleName="menuTable">
+            <selectLocaleMenu styleName="synquizButton menuButton"/>
+        </region>
     </presenter>
     <!--    metadataMenuLabel=Register
     metadataMenuLabel=Registreren   
@@ -359,37 +363,45 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
     stimulusMenuDoneButton={0} \nKOMPLETT
     stimulusMenuNotDoneButton={0}
     -->
-    <presenter back="Menu" menuLabel="Quiz Menu" type="menu" self="quizmenu" title="Select Quiz">
+    <presenter back="Menu" menuLabel="Quiz Menu" type="stimulus" self="quizmenu" title="Select Quiz">
         <translation title="Quiz kiezen" locale="nl"/>
         <translation title="Quiz w\u00e4hlen" locale="de"/>
-        <htmlText featureText="Find out if you have synaesthesia!" styleName="highlightedText">
-            <translation featureText="Ontdek of u synesthesie heeft!" locale="nl"/>
-            <translation featureText="Entdecke ob du Syn\u00e4sthesie hast!" locale="de"/>
-        </htmlText>
-        <menuItem featureText="Letters/Numbers - short\n5-10 minutes" target="letters_numbers_short" styleName="synquizButton">
-            <translation featureText="Letters/Cijfers - kort\n5-10 minuten" locale="nl"/>
-            <translation featureText="Buchstaben/Zahlen - kurz \n5-10 Minuten" locale="de"/>
-        </menuItem>
-        <menuItem featureText="Weekdays\n5-10 minutes" target="Weekdays" styleName="synquizButton">
-            <translation featureText="Dagen\n5-10 minuten" locale="nl"/>
-            <translation featureText="Wochentage \n5-10 Minuten" locale="de"/>
-        </menuItem>
-        <menuItem featureText="Months\n5-10 minutes" target="Months" styleName="synquizButton">
-            <translation featureText="Maanden\n5-10 minuten" locale="nl"/>
-            <translation featureText="Monate \n5-10 Minuten" locale="de"/>
-        </menuItem>
-        <htmlText featureText="Do you have synaesthesia?" styleName="highlightedText">
-            <translation featureText="Heeft u synesthesie?" locale="nl"/>
-            <translation featureText="Hast Du Syn\u00e4sthesie?" locale="de"/>
-        </htmlText>
-        <htmlText featureText="Join your fellow synaesthetes in a study! In order to register and participate in the study, you have to complete the full test. Please make sure, you can do it in one go." styleName="synquizText">
-            <translation featureText="Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in ��n keer af." locale="nl"/>
-            <translation featureText="Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal." locale="de"/>
-        </htmlText>
-        <menuItem featureText="Letters/Numbers - full test\n20-30 minutes" target="letters_numbers_full" styleName="synquizButton">
-            <translation featureText="Letters/Cijfers - volledige test\n20-30 minuten" locale="nl"/>
-            <translation featureText="Buchstaben/Zahlen - ganzer Test \n20-30 Minuten" locale="de"/>
-        </menuItem>
+        <region regionId="quizmenu1" styleName="menuTable">
+            <htmlText featureText="Find out if you have synaesthesia!" styleName="highlightedText">
+                <translation featureText="Ontdek of u synesthesie heeft!" locale="nl"/>
+                <translation featureText="Entdecke ob du Syn\u00e4sthesie hast!" locale="de"/>
+            </htmlText>
+            <actionTokenButton featureText="Letters/Numbers - short&lt;br&gt;5-10 minutes" styleName="synquizButton menuButton">
+                <translation featureText="Letters/Cijfers - kort&lt;br&gt;5-10 minuten" locale="nl"/>
+                <translation featureText="Buchstaben/Zahlen - kurz &lt;br&gt;5-10 Minuten" locale="de"/>
+                <gotoPresenter target="letters_numbers_short"/>
+            </actionTokenButton>
+            <actionTokenButton featureText="Weekdays&lt;br&gt;5-10 minutes" styleName="synquizButton menuButton">
+                <translation featureText="Dagen&lt;br&gt;5-10 minuten" locale="nl"/>
+                <translation featureText="Wochentage &lt;br&gt;5-10 Minuten" locale="de"/>
+                <gotoPresenter target="Weekdays"/>
+            </actionTokenButton>
+            <actionTokenButton featureText="Months&lt;br&gt;5-10 minutes" styleName="synquizButton menuButton">
+                <translation featureText="Maanden&lt;br&gt;5-10 minuten" locale="nl"/>
+                <translation featureText="Monate &lt;br&gt;5-10 Minuten" locale="de"/>
+                <gotoPresenter target="Months"/>
+            </actionTokenButton>
+        </region>
+        <region regionId="quizmenu2" styleName="menuTable">
+            <htmlText featureText="Do you have synaesthesia?" styleName="highlightedText">
+                <translation featureText="Heeft u synesthesie?" locale="nl"/>
+                <translation featureText="Hast Du Syn\u00e4sthesie?" locale="de"/>
+            </htmlText>
+            <htmlText featureText="Join your fellow synaesthetes in a study! In order to register and participate in the study, you have to complete the full test. Please make sure, you can do it in one go." styleName="synquizText">
+                <translation featureText="Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in ��n keer af." locale="nl"/>
+                <translation featureText="Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal." locale="de"/>
+            </htmlText>
+            <actionTokenButton featureText="Letters/Numbers - full test&lt;br&gt;20-30 minutes" styleName="synquizButton menuButton">
+                <translation featureText="Letters/Cijfers - volledige test&lt;br&gt;20-30 minuten" locale="nl"/>
+                <translation featureText="Buchstaben/Zahlen - ganzer Test &lt;br&gt;20-30 Minuten" locale="de"/>
+                <gotoPresenter target="letters_numbers_full"/>
+            </actionTokenButton>
+        </region>
         <!--<targetFooterButton target="Register" styleName="synquizButton"/>-->
     </presenter>
     <presenter back="Menu" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
