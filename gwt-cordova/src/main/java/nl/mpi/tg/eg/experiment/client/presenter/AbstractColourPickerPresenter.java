@@ -71,6 +71,9 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     private AppEventListner appEventListner;
     private ApplicationController.ApplicationState nextState;
     private StimulusResponseGroup stimulusResponseGroup = null;
+    private String progressLabelFormatString = null;
+    private String stimulusscreenrejectbutton = "No colour";
+    private String stimulusscreenselectbutton = "Submit";
 
     public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) throws CanvasError {
         this.widgetTag = widgetTag;
@@ -131,9 +134,15 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             startMs = System.currentTimeMillis();
             shownCount++;
             int repeatCount = 1;
-            colourPickerCanvasView.setStimulus(stimulusProviderInternal.getCurrentStimulus(),
-                    //                    messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProviderInternal.getTotalStimuli() * repeatCount))
-                    Integer.toString((int) (((double) (shownCount - 1) / (stimulusProviderInternal.getTotalStimuli() * repeatCount)) * 100)) + "%"
+            final double percentageDone = ((double) (shownCount - 1) / (stimulusProviderInternal.getTotalStimuli() * repeatCount)) * 100;
+            final String progressLabelString = (progressLabelFormatString == null) ? Integer.toString((int) percentageDone) + "%"
+                    : progressLabelFormatString
+                            .replace("<colourPicker_total>", Integer.toString(stimulusProviderInternal.getTotalStimuli() * repeatCount))
+                            .replace("<colourPicker_index>", Integer.toString(shownCount))
+                            .replace("<colourPicker_percent>", Integer.toString((int) percentageDone) + "%");
+            colourPickerCanvasView.setStimulus(stimulusProviderInternal.getCurrentStimulus(), progressLabelString
+            //                    messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProviderInternal.getTotalStimuli() * repeatCount))
+
             );
         }
     }
@@ -172,7 +181,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
             @Override
             public String getLabel() {
-                return messages.stimulusscreenselectbutton();
+                return stimulusscreenselectbutton;
             }
         });
         colourPickerCanvasView.setRejectButton(new PresenterEventListner() {
@@ -198,14 +207,14 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
             @Override
             public String getLabel() {
-                return messages.stimulusscreenrejectbutton();
+                return stimulusscreenrejectbutton;
             }
         });
         colourPickerCanvasView.setQuitButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
-                return messages.stimulusscreenQuitButton();
+                return prevState.label;
             }
 
             @Override
@@ -231,6 +240,25 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         setContent(appEventListner);
     }
 
+    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
+        progressLabelFormatString = textString;
+        // formatting options are <colourPicker_total> <colourPicker_index> <colourPicker_percent>
+    }
+
+    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner eventListner, final int dataChannel, final String group) {
+        switch (dataChannel) {
+            case 0:
+                stimulusscreenrejectbutton = eventListner.getLabel();
+                break;
+            case 1:
+                stimulusscreenselectbutton = eventListner.getLabel();
+                break;
+            default:
+                stimulusscreenselectbutton = "dataChannel:" + dataChannel;
+                break;
+        }
+    }
+
     public void helpDialogue(String helpText, String closeButtonLabel) {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
@@ -238,6 +266,8 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     protected void loadStimulus(String eventTag, final StimulusSelector[] stimulusSelectors, final StimuliProvider stimulusProvider,
             final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener
     ) {
+        // at this point we call hasMoreStimulusListener to set up the labels and buttons
+        hasMoreStimulusListener.postLoadTimerFired(null, null); 
         this.stimulusProviderInternal = stimulusProvider;
         submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final List<Stimulus.Tag> selectionTags = new ArrayList<>();
