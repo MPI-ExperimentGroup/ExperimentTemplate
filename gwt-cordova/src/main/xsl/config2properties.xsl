@@ -12,10 +12,7 @@
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
-        <xsl:text>stimulusscreenselectbutton=Submit
-            stimulusscreenQuitButton=Quit
-            stimulusscreenrejectbutton=No colour
-            stimulusscreenprogresstext={0} of {1}    
+        <xsl:text>
             reportDateFormat=yyyy-MM-dd HH:mm:ss vvvv
             reportScreenScore=Score: {0}
             userfeedbackscreentext=In this test a score below 1.5 is considered synaesthetic.
@@ -70,6 +67,13 @@
                         <xsl:value-of select="../@self" />
                         <xsl:text>Presenter=</xsl:text>
                         <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
+                        <xsl:text>&#xa;</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="@closeButtonLabel">
+                        <xsl:text>closeButtonLabel</xsl:text>
+                        <xsl:value-of select="generate-id(..)" />
+                        <xsl:text>=</xsl:text>
+                        <xsl:value-of select="replace(@closeButtonLabel,'''','''''')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                 </xsl:for-each>
