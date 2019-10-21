@@ -78,8 +78,8 @@ cordova plugin add cordova-plugin-whitelist
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
 #echo $splashResourcesDir
 #splashImage="images/splash.png" #"images/splash.gif" 
-#iconResourcesDir="./platforms/ios/LingQuest/Resources/icons/"
-#iconImage="images/icon.png"
+iconResourcesDir="./platforms/ios/LingQuest/Resources/icons/"
+iconImage="images/icon.png"
 
 #echo $splashImage
 #file ./platforms/ios/LingQuest/Resources/splash/*
@@ -137,22 +137,22 @@ cordova build android --buildConfig /android-keys/frinex-build.json --release
 
 rm platforms/android/release-signing.properties
 #echo "make the iOS icons"
-#convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
-#convert -resize 60x60 -quality 100 $iconImage $iconResourcesDir/icon-60.png
-#convert -resize 120x120 -quality 100 $iconImage $iconResourcesDir/icon-60@2x.png
-#convert -resize 76x76 -quality 100 $iconImage $iconResourcesDir/icon-76.png
-#convert -resize 152x152 -quality 100 $iconImage $iconResourcesDir/icon-76@2x.png
-#convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
-#convert -resize 40x40 -quality 100 $iconImage $iconResourcesDir/icon-40.png
-#convert -resize 80x80 -quality 100 $iconImage $iconResourcesDir/icon-40@2x.png
-#convert -resize 57x57 -quality 100 $iconImage $iconResourcesDir/icon.png
-#convert -resize 114x114 -quality 100 $iconImage $iconResourcesDir/icon@2x.png
-#convert -resize 72x72 -quality 100 $iconImage $iconResourcesDir/icon-72.png
-#convert -resize 144x144 -quality 100 $iconImage $iconResourcesDir/icon-72@2x.png
-#convert -resize 29x29 -quality 100 $iconImage $iconResourcesDir/icon-small.png
-#convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
-#convert -resize 50x50 -quality 100 $iconImage $iconResourcesDir/icon-50.png
-#convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
+convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
+convert -resize 60x60 -quality 100 $iconImage $iconResourcesDir/icon-60.png
+convert -resize 120x120 -quality 100 $iconImage $iconResourcesDir/icon-60@2x.png
+convert -resize 76x76 -quality 100 $iconImage $iconResourcesDir/icon-76.png
+convert -resize 152x152 -quality 100 $iconImage $iconResourcesDir/icon-76@2x.png
+convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
+convert -resize 40x40 -quality 100 $iconImage $iconResourcesDir/icon-40.png
+convert -resize 80x80 -quality 100 $iconImage $iconResourcesDir/icon-40@2x.png
+convert -resize 57x57 -quality 100 $iconImage $iconResourcesDir/icon.png
+convert -resize 114x114 -quality 100 $iconImage $iconResourcesDir/icon@2x.png
+convert -resize 72x72 -quality 100 $iconImage $iconResourcesDir/icon-72.png
+convert -resize 144x144 -quality 100 $iconImage $iconResourcesDir/icon-72@2x.png
+convert -resize 29x29 -quality 100 $iconImage $iconResourcesDir/icon-small.png
+convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
+convert -resize 50x50 -quality 100 $iconImage $iconResourcesDir/icon-50.png
+convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
 
 # list the schemes available 
 #xcodebuild -list
