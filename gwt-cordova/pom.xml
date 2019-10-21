@@ -141,6 +141,7 @@
                     <include>**/Version.properties</include>
                     <include>**/ServiceLocations.properties</include>
                     <include>**/Messages.properties</include>
+                    <include>**/StimulusStrings.properties</include>
                 </includes>
             </resource>
             <resource>
@@ -644,6 +645,7 @@
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.MetadataFields</i18nMessagesBundle>
                         <!--<i18nMessagesBundle>nl.ru.languageininteraction.language.client.Stimuli</i18nMessagesBundle>-->
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.ServiceLocations</i18nMessagesBundle>
+                        <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.StimulusStrings</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.Version</i18nMessagesBundle>
                         <!--<i18nMessagesBundle>nl.ru.languageininteraction.language.client.AutotypRegions</i18nMessagesBundle>-->
                         <!--<i18nMessagesBundle>nl.ru.languageininteraction.language.client.MatchLanguage</i18nMessagesBundle>-->
