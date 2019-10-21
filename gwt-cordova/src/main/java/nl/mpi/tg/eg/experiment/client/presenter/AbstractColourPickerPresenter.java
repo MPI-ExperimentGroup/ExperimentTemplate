@@ -72,8 +72,6 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     private ApplicationController.ApplicationState nextState;
     private StimulusResponseGroup stimulusResponseGroup = null;
     private String progressLabelFormatString = null;
-    private String stimulusscreenrejectbutton = "No colour";
-    private String stimulusscreenselectbutton = "Submit";
 
     public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) throws CanvasError {
         this.widgetTag = widgetTag;
@@ -139,7 +137,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
                     : progressLabelFormatString
                             .replace("<colourPicker_total>", Integer.toString(stimulusProviderInternal.getTotalStimuli() * repeatCount))
                             .replace("<colourPicker_index>", Integer.toString(shownCount))
-                            .replace("<colourPicker_percent>", Integer.toString((int) percentageDone) + "%");
+                            .replace("<colourPicker_percent>", Integer.toString((int) percentageDone));
             colourPickerCanvasView.setStimulus(stimulusProviderInternal.getCurrentStimulus(), progressLabelString
             //                    messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProviderInternal.getTotalStimuli() * repeatCount))
 
@@ -158,58 +156,6 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         this.appEventListner = appEventListner;
         this.nextState = nextState;
         widgetTag.clear();
-        colourPickerCanvasView.setAcceptButton(new PresenterEventListner() {
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                final long durationMs = System.currentTimeMillis() - startMs;
-                stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
-                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, stimulusProviderInternal.getCurrentStimulus(), colourPickerCanvasView.getColour().getHexValue(), null, (int) durationMs);
-                triggerEvent();
-            }
-
-            @Override
-            public int getHotKey() {
-                return -1;
-            }
-
-            @Override
-            public String getStyleName() {
-                return null;
-            }
-
-            @Override
-            public String getLabel() {
-                return stimulusscreenselectbutton;
-            }
-        });
-        colourPickerCanvasView.setRejectButton(new PresenterEventListner() {
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                final long durationMs = System.currentTimeMillis() - startMs;
-                stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
-                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, stimulusProviderInternal.getCurrentStimulus(), "", null, (int) durationMs);
-                triggerEvent();
-            }
-
-            @Override
-            public int getHotKey() {
-                return -1;
-            }
-
-            @Override
-            public String getStyleName() {
-                return null;
-            }
-
-            @Override
-            public String getLabel() {
-                return stimulusscreenrejectbutton;
-            }
-        });
         colourPickerCanvasView.setQuitButton(new PresenterEventListner() {
 
             @Override
@@ -245,18 +191,76 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         // formatting options are <colourPicker_total> <colourPicker_index> <colourPicker_percent>
     }
 
-    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner eventListner, final int dataChannel, final String group) {
-        switch (dataChannel) {
-            case 0:
-                stimulusscreenrejectbutton = eventListner.getLabel();
+    public void actionButton(final PresenterEventListner eventListner, final String group) {
+        switch (group) {
+            case "RejectButton":
+                setRejectButton(eventListner.getLabel());
                 break;
-            case 1:
-                stimulusscreenselectbutton = eventListner.getLabel();
+            case "AcceptButton":
+                setAcceptButton(eventListner.getLabel());
                 break;
             default:
-                stimulusscreenselectbutton = "dataChannel:" + dataChannel;
                 break;
         }
+        colourPickerCanvasView.resizeView();
+    }
+
+    private void setRejectButton(final String buttonLabel) {
+        colourPickerCanvasView.setRejectButton(new PresenterEventListner() {
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                final long durationMs = System.currentTimeMillis() - startMs;
+                stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, stimulusProviderInternal.getCurrentStimulus(), "", null, (int) durationMs);
+                triggerEvent();
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
+            public String getLabel() {
+                return buttonLabel;
+            }
+        });
+    }
+
+    private void setAcceptButton(final String buttonLabel) {
+        colourPickerCanvasView.setAcceptButton(new PresenterEventListner() {
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                final long durationMs = System.currentTimeMillis() - startMs;
+                stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, stimulusProviderInternal.getCurrentStimulus(), colourPickerCanvasView.getColour().getHexValue(), null, (int) durationMs);
+                triggerEvent();
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
+            public String getLabel() {
+                return buttonLabel;
+            }
+        });
     }
 
     public void helpDialogue(String helpText, String closeButtonLabel) {
@@ -266,8 +270,6 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     protected void loadStimulus(String eventTag, final StimulusSelector[] stimulusSelectors, final StimuliProvider stimulusProvider,
             final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener
     ) {
-        // at this point we call hasMoreStimulusListener to set up the labels and buttons
-        hasMoreStimulusListener.postLoadTimerFired(null, null); 
         this.stimulusProviderInternal = stimulusProvider;
         submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final List<Stimulus.Tag> selectionTags = new ArrayList<>();
