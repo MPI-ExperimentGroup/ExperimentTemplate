@@ -431,26 +431,25 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         <!--<targetFooterButton target="Register" styleName="synquizButton"/>-->
     </presenter>
     <presenter back="quizmenu" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
+        <htmlTokenText	featureText="&lt;colourPicker_index&gt; of &lt;colourPicker_total&gt;">
+            <!-- formatting options for the colour picker are: <colourPicker_total> <colourPicker_index> <colourPicker_percent>-->
+            <translation featureText="&lt;colourPicker_index&gt; van &lt;colourPicker_total&gt;" locale="nl"/>
+            <translation featureText="&lt;colourPicker_index&gt; oder &lt;colourPicker_total&gt;" locale="de"/>
+        </htmlTokenText>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!">
             <translation featureText="&lt;b&gt;Instructie&lt;/b&gt;\n&lt;p&gt;Selecteer de kleur die u associeert met het gepresenteerde woord of teken\n&lt;ol&gt;\n&lt;li&gt;Selecteer de kleur door rechts op de kleurenstrook te tappen&lt;/li&gt;\n&lt;li&gt;Selecteer de verzadiging door in het vierkant links te tappen&lt;/li&gt;\n&lt;li&gt;Als de kleur in het kleine voorbeeldvierkant overeenkomt met uw associatie, tap op &quot;Versturen&quot;&lt;/li&gt;\n&lt;li&gt;Als u geen associatie heeft met een kleur, tap op &quot;Geen kleur&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, ga naar de test!" locale="nl"/>
             <translation featureText="&lt;b&gt;Anleitung&lt;/b&gt;\n&lt;p&gt;W\u00e4hle die Farbe, die du mit dem dargestellten\nZeichen assoziierst\n&lt;ol&gt;\n&lt;li&gt;Dr\u00fccke zuerst auf die Farbereihe auf der rechten Seite,\num einen Farbton zu w\u00e4hlen&lt;/li&gt;\n&lt;li&gt;Bestimme auf der linken Seite die Farbabstufung,\num den Farbton zu finden, der am meisten mit deiner Wort/Zeichen Assoziation\n\u00fcbereinkommt&lt;/li&gt;\n&lt;li&gt;Wenn die Farbe in dem kleinem Vorschaufeld mit deiner\nAssoziation \u00fcbereinkommt, dr\u00fccke das Feld &quot;Best\u00e4tigen&quot;&lt;/li&gt;\n&lt;li&gt;Falls du keine Assoziation mit dem dargestelltem Zeichen/Wort hast, dann dr\u00fccke auf &quot;Keine Farbe&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, auf geht\u2019s!" locale="de"/>
         </helpDialogue>
         <loadStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
-            <hasMoreStimulus>
-                <htmlTokenText	featureText="&lt;colourPicker_index&gt; of &lt;colourPicker_total&gt;">
-                    <!-- formatting options for the colour picker are: <colourPicker_total> <colourPicker_index> <colourPicker_percent>-->
-                    <translation featureText="&lt;colourPicker_index&gt; van &lt;colourPicker_total&gt;" locale="nl"/>
-                    <translation featureText="&lt;colourPicker_index&gt; oder &lt;colourPicker_total&gt;" locale="de"/>
-                </htmlTokenText>
-                <stimulusButton	dataChannel="0" featureText="No colour">
-                    <translation featureText="Geen kleur" locale="nl"/>
-                    <translation featureText="Keine Farbe" locale="de"/>   
-                </stimulusButton>
-                <stimulusButton	dataChannel="1" featureText="Submit">
-                    <translation featureText="Versturen" locale="nl"/>
-                    <translation featureText="Best\u00e4tigen" locale="de"/>   
-                </stimulusButton>
-            </hasMoreStimulus>
+            <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
                 <tag>Weekdays</tag>
@@ -461,6 +460,19 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         <translation menuLabel="Letters/Cijfers - kort\n5-10 minuten" locale="nl"/>
         <translation menuLabel="Buchstaben/Zahlen - kurz \n5-10 Minuten" locale="de"/>
         <!--stimuli0csv=A,B,C,D,G,I,O,3,5,6-->
+        <htmlTokenText	featureText="&lt;colourPicker_index&gt; of &lt;colourPicker_total&gt;">
+            <!-- formatting options for the colour picker are: <colourPicker_total> <colourPicker_index> <colourPicker_percent>-->
+            <translation featureText="&lt;colourPicker_index&gt; van &lt;colourPicker_total&gt;" locale="nl"/>
+            <translation featureText="&lt;colourPicker_index&gt; oder &lt;colourPicker_total&gt;" locale="de"/>
+        </htmlTokenText>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!">
             <translation featureText="&lt;b&gt;Instructie&lt;/b&gt;\n&lt;p&gt;Selecteer de kleur die u associeert met het gepresenteerde woord of teken\n&lt;ol&gt;\n&lt;li&gt;Selecteer de kleur door rechts op de kleurenstrook te tappen&lt;/li&gt;\n&lt;li&gt;Selecteer de verzadiging door in het vierkant links te tappen&lt;/li&gt;\n&lt;li&gt;Als de kleur in het kleine voorbeeldvierkant overeenkomt met uw associatie, tap op &quot;Versturen&quot;&lt;/li&gt;\n&lt;li&gt;Als u geen associatie heeft met een kleur, tap op &quot;Geen kleur&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, ga naar de test!" locale="nl"/>
             <translation featureText="&lt;b&gt;Anleitung&lt;/b&gt;\n&lt;p&gt;W\u00e4hle die Farbe, die du mit dem dargestellten\nZeichen assoziierst\n&lt;ol&gt;\n&lt;li&gt;Dr\u00fccke zuerst auf die Farbereihe auf der rechten Seite,\num einen Farbton zu w\u00e4hlen&lt;/li&gt;\n&lt;li&gt;Bestimme auf der linken Seite die Farbabstufung,\num den Farbton zu finden, der am meisten mit deiner Wort/Zeichen Assoziation\n\u00fcbereinkommt&lt;/li&gt;\n&lt;li&gt;Wenn die Farbe in dem kleinem Vorschaufeld mit deiner\nAssoziation \u00fcbereinkommt, dr\u00fccke das Feld &quot;Best\u00e4tigen&quot;&lt;/li&gt;\n&lt;li&gt;Falls du keine Assoziation mit dem dargestelltem Zeichen/Wort hast, dann dr\u00fccke auf &quot;Keine Farbe&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, auf geht\u2019s!" locale="de"/>
@@ -477,6 +489,19 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         </loadStimulus>
     </presenter>
     <presenter back="quizmenu" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="letters_numbers_full" title="letters_numbers_full">
+        <htmlTokenText	featureText="&lt;colourPicker_index&gt; of &lt;colourPicker_total&gt;">
+            <!-- formatting options for the colour picker are: <colourPicker_total> <colourPicker_index> <colourPicker_percent>-->
+            <translation featureText="&lt;colourPicker_index&gt; van &lt;colourPicker_total&gt;" locale="nl"/>
+            <translation featureText="&lt;colourPicker_index&gt; oder &lt;colourPicker_total&gt;" locale="de"/>
+        </htmlTokenText>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!">
             <translation featureText="&lt;b&gt;Instructie&lt;/b&gt;\n&lt;p&gt;Selecteer de kleur die u associeert met het gepresenteerde woord of teken\n&lt;ol&gt;\n&lt;li&gt;Selecteer de kleur door rechts op de kleurenstrook te tappen&lt;/li&gt;\n&lt;li&gt;Selecteer de verzadiging door in het vierkant links te tappen&lt;/li&gt;\n&lt;li&gt;Als de kleur in het kleine voorbeeldvierkant overeenkomt met uw associatie, tap op &quot;Versturen&quot;&lt;/li&gt;\n&lt;li&gt;Als u geen associatie heeft met een kleur, tap op &quot;Geen kleur&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, ga naar de test!" locale="nl"/>
             <translation featureText="&lt;b&gt;Anleitung&lt;/b&gt;\n&lt;p&gt;W\u00e4hle die Farbe, die du mit dem dargestellten\nZeichen assoziierst\n&lt;ol&gt;\n&lt;li&gt;Dr\u00fccke zuerst auf die Farbereihe auf der rechten Seite,\num einen Farbton zu w\u00e4hlen&lt;/li&gt;\n&lt;li&gt;Bestimme auf der linken Seite die Farbabstufung,\num den Farbton zu finden, der am meisten mit deiner Wort/Zeichen Assoziation\n\u00fcbereinkommt&lt;/li&gt;\n&lt;li&gt;Wenn die Farbe in dem kleinem Vorschaufeld mit deiner\nAssoziation \u00fcbereinkommt, dr\u00fccke das Feld &quot;Best\u00e4tigen&quot;&lt;/li&gt;\n&lt;li&gt;Falls du keine Assoziation mit dem dargestelltem Zeichen/Wort hast, dann dr\u00fccke auf &quot;Keine Farbe&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, auf geht\u2019s!" locale="de"/>
@@ -512,6 +537,19 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         </sendAllData>
     </presenter>
     <presenter back="Menu" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
+        <htmlTokenText	featureText="&lt;colourPicker_index&gt; of &lt;colourPicker_total&gt;">
+            <!-- formatting options for the colour picker are: <colourPicker_total> <colourPicker_index> <colourPicker_percent>-->
+            <translation featureText="&lt;colourPicker_index&gt; van &lt;colourPicker_total&gt;" locale="nl"/>
+            <translation featureText="&lt;colourPicker_index&gt; oder &lt;colourPicker_total&gt;" locale="de"/>
+        </htmlTokenText>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!">
             <translation featureText="&lt;b&gt;Instructie&lt;/b&gt;\n&lt;p&gt;Selecteer de kleur die u associeert met het gepresenteerde woord of teken\n&lt;ol&gt;\n&lt;li&gt;Selecteer de kleur door rechts op de kleurenstrook te tappen&lt;/li&gt;\n&lt;li&gt;Selecteer de verzadiging door in het vierkant links te tappen&lt;/li&gt;\n&lt;li&gt;Als de kleur in het kleine voorbeeldvierkant overeenkomt met uw associatie, tap op &quot;Versturen&quot;&lt;/li&gt;\n&lt;li&gt;Als u geen associatie heeft met een kleur, tap op &quot;Geen kleur&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, ga naar de test!" locale="nl"/>
             <translation featureText="&lt;b&gt;Anleitung&lt;/b&gt;\n&lt;p&gt;W\u00e4hle die Farbe, die du mit dem dargestellten\nZeichen assoziierst\n&lt;ol&gt;\n&lt;li&gt;Dr\u00fccke zuerst auf die Farbereihe auf der rechten Seite,\num einen Farbton zu w\u00e4hlen&lt;/li&gt;\n&lt;li&gt;Bestimme auf der linken Seite die Farbabstufung,\num den Farbton zu finden, der am meisten mit deiner Wort/Zeichen Assoziation\n\u00fcbereinkommt&lt;/li&gt;\n&lt;li&gt;Wenn die Farbe in dem kleinem Vorschaufeld mit deiner\nAssoziation \u00fcbereinkommt, dr\u00fccke das Feld &quot;Best\u00e4tigen&quot;&lt;/li&gt;\n&lt;li&gt;Falls du keine Assoziation mit dem dargestelltem Zeichen/Wort hast, dann dr\u00fccke auf &quot;Keine Farbe&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, auf geht\u2019s!" locale="de"/>
