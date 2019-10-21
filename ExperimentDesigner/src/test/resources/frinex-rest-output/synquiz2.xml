@@ -450,6 +450,15 @@
         </htmlText>
     </presenter>
     <presenter back="Menu" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
+        <htmlTokenText	featureText="&lt;colourPicker_percent&gt;%"/>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
             <hasMoreStimulus/>
@@ -460,6 +469,15 @@
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
+        <htmlTokenText	featureText="&lt;colourPicker_percent&gt;%"/>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
             <hasMoreStimulus/>
@@ -492,6 +510,15 @@
         </sendAllData>
     </presenter>
     <presenter back="Menu" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
+        <htmlTokenText	featureText="&lt;colourPicker_percent&gt;%"/>
+        <actionButton groupId="RejectButton" featureText="No colour">
+            <translation featureText="Geen kleur" locale="nl"/>
+            <translation featureText="Keine Farbe" locale="de"/>   
+        </actionButton>
+        <actionButton groupId="AcceptButton" featureText="Submit">
+            <translation featureText="Versturen" locale="nl"/>
+            <translation featureText="Best\u00e4tigen" locale="de"/>   
+        </actionButton>
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
             <hasMoreStimulus/>
