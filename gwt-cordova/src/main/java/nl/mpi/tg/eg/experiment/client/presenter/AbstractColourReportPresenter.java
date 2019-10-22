@@ -139,10 +139,15 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
             ((ReportView) simpleView).addText(messages.reportScreenScore(numberFormat2.format(calculatedScores.getScore())));
             ((ReportView) simpleView).addText(messages.userfeedbackscreentext());
             userResults.getUserData().updateMaxScore(calculatedScores.getScore(), 0, 0, 0, 0);
-//            ((ReportView) simpleView).addText(messages.reportScreenSCT());
-//            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
-//            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
-//            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
+            for (MetadataField field : userResults.getUserData().getMetadataFields()) {
+                if (field.getPostName().equals(stimuliGroup.getPostName() + "_result")) {
+                    userResults.getUserData().setMetadataValue(field, Double.toString(calculatedScores.getScore()));
+                }
+            }
+            //            ((ReportView) simpleView).addText(messages.reportScreenSCT());
+            //            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
+            //            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
+            //            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
