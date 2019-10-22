@@ -294,11 +294,11 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
             <translation featureText="Quiz starten" locale="nl"/>
             <translation featureText="Starte Quiz" locale="de"/>
         </menuItem>
-        <menuItem featureText="View reports" target="Report" styleName="synquizButton">
+        <menuItem featureText="View reports" target="Report" styleName="synquizButton" groupId="reportsButton">
             <translation featureText="Bekijk uitslagen" locale="nl"/>
             <translation featureText="Betrachte Report" locale="de"/>
         </menuItem>
-        <menuItem featureText="Register" target="metadataScreen" styleName="synquizButton">
+        <menuItem featureText="Register" target="metadataScreen" styleName="synquizButton" groupId="registerButton">
             <translation featureText="Registreren" locale="nl"/>
             <translation featureText="Registrieren" locale="de"/>
         </menuItem>
@@ -310,6 +310,33 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
             <translation featureText="Over SynQuiz" locale="nl"/>
             <translation featureText="Impressum" locale="de"/>
         </menuItem>
+        <disableButtonGroup matchingRegex="registerButton"/>
+        <disableButtonGroup matchingRegex="reportsButton"/>
+        <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="...*">
+            <conditionTrue>
+                <enableButtonGroup matchingRegex="reportsButton"/>
+            </conditionTrue>
+            <conditionFalse/>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="weekdays_result" matchingRegex="...*">
+            <conditionTrue>
+                <enableButtonGroup matchingRegex="reportsButton"/>
+            </conditionTrue>
+            <conditionFalse/>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="months_result" matchingRegex="...*">
+            <conditionTrue>
+                <enableButtonGroup matchingRegex="reportsButton"/>
+            </conditionTrue>
+            <conditionFalse/>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
+            <conditionTrue>
+                <enableButtonGroup matchingRegex="reportsButton"/>
+                <enableButtonGroup matchingRegex="registerButton"/>
+            </conditionTrue>
+            <conditionFalse/>
+        </hasMetadataValue>
     </presenter>
     <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="localemenu" title="Language">
         <translation title="Taal" locale="nl"/>
