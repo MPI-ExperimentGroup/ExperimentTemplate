@@ -279,7 +279,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         stimulusProviderInternal.getSubset(selectionTags, "", -1);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        stimulusResponseGroup = new StimulusResponseGroup(eventTag, eventTag.replaceAll("[^A-Za-z0-9]", "_"));
+        stimulusResponseGroup = new StimulusResponseGroup(getTitle(), getSelfTag());
         userResults.addStimulusResponseGroup(stimulusResponseGroup);
 //        showStimulus();
         triggerEvent();
