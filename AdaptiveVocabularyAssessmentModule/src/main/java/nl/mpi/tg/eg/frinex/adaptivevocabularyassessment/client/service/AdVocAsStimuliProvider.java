@@ -321,15 +321,18 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     protected void recycleUnusedStimuli() {
         boolean ended = this.tupleFT.isEmpty();
         while (!ended) {
-            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.tupleFT.remove(0);
+            int n = this.tupleFT.size();
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.tupleFT.remove(n-1); // picking up the last not-used element
             //(String uniqueId, String label, String correctResponses, int bandNumber)
             AdVocAsStimulus stimulus = bStimulus.getStimulus();
             int bandNumber = stimulus.getBandNumber();
             if (bandNumber > 0) { // a word
                 // bandIndex is 1 less then band number 
-                this.words.get(bandNumber - 1).add(stimulus);  // ?? TODO: add at the beginning of the collection of the stimuli for this band or at the end?
+                // this.words.get(bandNumber - 1).add(stimulus);  // ?? TODO: add at the beginning of the collection of the stimuli for this band or at the end?
+                this.words.get(bandNumber - 1).add(0, stimulus);
             } else {
-                this.nonwords.add(stimulus); //?? TODO: add at the beginning of the collection of the stimuli for this band or at the end?
+                //this.nonwords.add(stimulus); //?? TODO: add at the beginning of the collection of the stimuli for this band or at the end?
+                this.nonwords.add(0, stimulus);
             }
             ended = this.tupleFT.isEmpty();
         }
