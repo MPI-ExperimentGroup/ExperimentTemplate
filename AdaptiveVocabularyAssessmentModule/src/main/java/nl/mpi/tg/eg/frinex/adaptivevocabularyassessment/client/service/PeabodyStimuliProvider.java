@@ -350,7 +350,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     }
 
     @Override
-    public BookkeepingStimulus<PeabodyStimulus> deriveNextFastTrackStimulus() {
+    public BookkeepingStimulus<PeabodyStimulus> retrieveNextFastTrackStimulus() {
         return null;
     }
 

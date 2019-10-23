@@ -36,9 +36,9 @@ public class Vocabulary {
     }
 
     // the sequence of words in each band should be randomly reshuffled any time we generate it
-    // side effect: also adss stimuli to the hash map
+    // side effect: also adsstimuli to the hash map ?? obsolete comment
     public ArrayList<ArrayList<AdVocAsStimulus>> initialiseWords(ArrayList<ArrayList<AdVocAsStimulus>> wrds) {
-        if (wrds == null || wrds.isEmpty()) {
+       if (wrds == null || wrds.isEmpty()) {
             System.out.println("Empty array of words in bands");
             return new ArrayList<>();
         }
@@ -57,11 +57,13 @@ public class Vocabulary {
                 }
             }
         }
-        return retVal;
+        return retVal; 
     }
-
+    
+    
+   
     // the sequence of nonwords should be randomly reshuffled any time we generate it
-    // side effect: also adss stimuli to the hash map
+    // side effect: also adss stimuli to the hash map ?? obsolete comment ??
     public ArrayList<AdVocAsStimulus> initialiseNonwords(ArrayList<AdVocAsStimulus> nonwrds) {
         if (nonwrds == null || nonwrds.isEmpty()) {
             System.out.println("Empty array of nonwords");

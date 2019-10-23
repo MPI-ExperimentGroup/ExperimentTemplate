@@ -102,12 +102,12 @@ public class AdVocAsStimuliFromStringTest {
     
      @Test
     public void testParseWordsInputCSVString_NL_21() throws Exception{
-       this.testParseWordsInputCSVString("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "vaak", "fijfel", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
+       this.testParseWordsInputCSVString("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "vaak", "twatwa", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
     }
     
     @Test
     public void testParseWordsInputCSVString_NL_22() throws Exception{
-       this.testParseWordsInputCSVString("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "schuilnaam", "kebon", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
+       this.testParseWordsInputCSVString("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "kleding", "saguweer", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
     }
     
     

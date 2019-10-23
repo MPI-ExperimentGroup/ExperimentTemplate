@@ -88,8 +88,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
 
                 Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
-                this.words = vocab.initialiseWords(rawWords);
-                this.nonwords = vocab.initialiseNonwords(rawNonwords);
+                
+                // here where randomisation within the list of nonwords and words happened
+                // this randmisation is switched off for the current version of the experiment
+                //this.words = vocab.initialiseWords(rawWords);
+                //this.nonwords = vocab.initialiseNonwords(rawNonwords);
+                
+                this.words = rawWords;
+                this.nonwords = rawNonwords;
 
                 this.totalStimuli = this.nonwords.size();
                 for (int i = 0; i < this.numberOfBands; i++) {
@@ -97,6 +103,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 }
 
                 // int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable
+                // Getting positions for non words in fast track, has nothing to do with randomisation within words (or nonwords) lists on themselves
                 this.rndIndexing = new RandomIndexing(this.startBand, this.numberOfBands, this.nonWordsPerBlock, this.averageNonWordPosition, nonwords.size());
                 this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
 
@@ -192,8 +199,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
     // experiment-specific, must be overridden
     // current band index is prepared by hasNextStimulus method
+    // use in nextStimulus
     @Override
-    public BookkeepingStimulus<AdVocAsStimulus> deriveNextFastTrackStimulus() {
+    public BookkeepingStimulus<AdVocAsStimulus> retrieveNextFastTrackStimulus() {
         int experimentNumber = this.responseRecord.size();
         AdVocAsStimulus stimulus;
         if (this.nonWordsIndexes.contains(experimentNumber)) {
@@ -266,15 +274,15 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     @Override
     protected boolean enoughStimuliForFastTrack() {
         boolean retVal = true;
-        // check if we still have data for the next experiment
-        int nextExperimentIndex = this.responseRecord.size();
+        // check if we still have data to show next stimulus
+        int nextStimulusIndex = this.responseRecord.size();
 
-        if (this.nonWordsIndexes.contains(nextExperimentIndex) && nonwords.size() < 1) {
+        if (this.nonWordsIndexes.contains(nextStimulusIndex) && nonwords.size() < 1) { // we must show a nonword
             System.out.println("We do not have nonwords left for the Fast Track!");
             retVal = false;
         }
 
-        if (!this.nonWordsIndexes.contains(nextExperimentIndex)
+        if (!this.nonWordsIndexes.contains(nextStimulusIndex) // we must show a word
                 && this.words.get(this.currentBandIndex).size() < 1) {
             System.out.println("We do not have words in band " + this.currentBandIndex + "  left for the Fast Track!");
             retVal = false;
@@ -294,7 +302,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             this.errorMessage = "There is not enough stimuli for the band  with index " + this.currentBandIndex;
             return false;
         }
-        int nonWordPos = rnd.nextInt(this.fineTuningTupleLength);
+        int nonWordPos = rnd.nextInt(this.fineTuningTupleLength); // rabdomly choosing where to place a nonword
         BookkeepingStimulus<AdVocAsStimulus> bStimulus;
         for (int i = 0; i < nonWordPos; i++) {
             bStimulus = new BookkeepingStimulus<AdVocAsStimulus>(this.words.get(this.currentBandIndex).remove(0)); //injection constructor
@@ -319,9 +327,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             int bandNumber = stimulus.getBandNumber();
             if (bandNumber > 0) { // a word
                 // bandIndex is 1 less then band number 
-                this.words.get(bandNumber - 1).add(stimulus);
+                this.words.get(bandNumber - 1).add(stimulus);  // ?? TODO: add at the beginning of the collection of the stimuli for this band or at the end?
             } else {
-                this.nonwords.add(stimulus);
+                this.nonwords.add(stimulus); //?? TODO: add at the beginning of the collection of the stimuli for this band or at the end?
             }
             ended = this.tupleFT.isEmpty();
         }

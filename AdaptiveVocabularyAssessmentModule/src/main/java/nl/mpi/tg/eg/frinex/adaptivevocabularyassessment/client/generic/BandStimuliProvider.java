@@ -305,7 +305,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         BookkeepingStimulus bStimulus;
         if (this.fastTrackPresent) {
             if (this.isFastTrackIsStillOn) {
-                bStimulus = this.deriveNextFastTrackStimulus();
+                bStimulus = this.retrieveNextFastTrackStimulus();
             } else {
                 bStimulus = this.tupleFT.remove(0);
             }
@@ -316,7 +316,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     }
 
-    public abstract BookkeepingStimulus<A> deriveNextFastTrackStimulus();
+    public abstract BookkeepingStimulus<A> retrieveNextFastTrackStimulus();
 
     @Override
     public void setCurrentStimuliIndex(int currentStimuliIndex) {

@@ -76,7 +76,7 @@ public class BandStimuliProviderTest {
         }
 
         @Override
-        public BookkeepingStimulus<BandStimulus> deriveNextFastTrackStimulus() {
+        public BookkeepingStimulus<BandStimulus> retrieveNextFastTrackStimulus() {
             return null;
         }
 
@@ -454,7 +454,7 @@ public class BandStimuliProviderTest {
     }
 
     /**
-     * Test of deriveNextFastTrackStimulus method, of class BandStimuliProvider.
+     * Test of retrieveNextFastTrackStimulus method, of class BandStimuliProvider.
      */
     @Test
     public void testDeriveNextFastTrackStimulus() {
@@ -468,7 +468,7 @@ public class BandStimuliProviderTest {
 
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
-        BookkeepingStimulus result = instance.deriveNextFastTrackStimulus();
+        BookkeepingStimulus result = instance.retrieveNextFastTrackStimulus();
         assertEquals(null, result);
     }
 

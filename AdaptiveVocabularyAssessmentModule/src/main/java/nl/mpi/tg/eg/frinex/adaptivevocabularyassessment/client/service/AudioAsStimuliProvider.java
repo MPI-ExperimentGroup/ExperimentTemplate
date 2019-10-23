@@ -620,7 +620,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     }
 
     @Override
-    public BookkeepingStimulus<AudioAsStimulus> deriveNextFastTrackStimulus() {
+    public BookkeepingStimulus<AudioAsStimulus> retrieveNextFastTrackStimulus() {
         return null;
     }
 
