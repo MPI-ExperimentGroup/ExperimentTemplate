@@ -91,17 +91,17 @@ iconImage="images/icon.png"
 #draw9patch platforms/splash150x150.9.png
 
 #echo "making iOS splash images"
-#convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-#convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
-#convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
-#convert -crop +0-100 -resize 2208x2208^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
-#convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-#convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
-#convert -resize 1024x1024^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
-#convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
-#convert -resize 1024x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
-#convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
-#convert -resize 480x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
+convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
+convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
+convert -crop +0-100 -resize 2208x2208^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
+convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
+convert -resize 1024x1024^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
+convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
+convert -resize 1024x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
+convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
+convert -resize 480x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
 
 #echo "making Android splash images"
 #cp platforms/splash320x320.9.png platforms/android/res/drawable-land-hdpi/screen.png
@@ -113,14 +113,14 @@ iconImage="images/icon.png"
 #cp platforms/splash150x150.9.png platforms/android/res/drawable-port-mdpi/screen.png
 #cp platforms/splash320x320.9.png platforms/android/res/drawable-port-xhdpi/screen.png
 
-#convert -crop +0-100 -resize 800x480^ -gravity center -extent 800x480 -quality 100 $splashImage platforms/android/res/drawable-land-hdpi/screen.png
-#convert -crop +0-50 -resize 320x200^ -gravity center -extent 320x200 -quality 100 $splashImage platforms/android/res/drawable-land-ldpi/screen.png
-#convert -crop +0-50 -resize 480x320^ -gravity center -extent 480x320 -quality 100 $splashImage platforms/android/res/drawable-land-mdpi/screen.png
-#convert -crop +0-100 -resize 1280x720^ -gravity center -extent 1280x720 -quality 100 $splashImage platforms/android/res/drawable-land-xhdpi/screen.png
-#convert -resize 480x800^ -gravity center -extent 480x800 -quality 100 $splashImage platforms/android/res/drawable-port-hdpi/screen.png
-#convert -resize 200x320^ -gravity center -extent 200x320 -quality 100 $splashImage platforms/android/res/drawable-port-ldpi/screen.png
-#convert -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
-#convert -resize 720x1280^ -gravity center -extent 720x1280 -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
+convert -crop +0-100 -resize 800x480^ -gravity center -extent 800x480 -quality 100 $splashImage platforms/android/res/drawable-land-hdpi/screen.png
+convert -crop +0-50 -resize 320x200^ -gravity center -extent 320x200 -quality 100 $splashImage platforms/android/res/drawable-land-ldpi/screen.png
+convert -crop +0-50 -resize 480x320^ -gravity center -extent 480x320 -quality 100 $splashImage platforms/android/res/drawable-land-mdpi/screen.png
+convert -crop +0-100 -resize 1280x720^ -gravity center -extent 1280x720 -quality 100 $splashImage platforms/android/res/drawable-land-xhdpi/screen.png
+convert -resize 480x800^ -gravity center -extent 480x800 -quality 100 $splashImage platforms/android/res/drawable-port-hdpi/screen.png
+convert -resize 200x320^ -gravity center -extent 200x320 -quality 100 $splashImage platforms/android/res/drawable-port-ldpi/screen.png
+convert -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
+convert -resize 720x1280^ -gravity center -extent 720x1280 -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
 
 # copy the ant.properties file with the android key store and alias (key.store= key.alias=) information so that the APK can be signed
 #cp ~/android-keys/ant.properties platforms/android/
@@ -153,6 +153,8 @@ convert -resize 29x29 -quality 100 $iconImage $iconResourcesDir/icon-small.png
 convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
 convert -resize 50x50 -quality 100 $iconImage $iconResourcesDir/icon-50.png
 convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
+convert -resize 108x108 -quality 100 $iconImage $iconResourcesDir/icon-44@2x.png
+convert -resize 20x20 -quality 100 $iconImage $iconResourcesDir/icon-20@2x.png
 
 # list the schemes available 
 #xcodebuild -list
