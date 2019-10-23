@@ -371,7 +371,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         <translation menuLabel="Verder" title="Registratie" locale="nl"/>
         <translation menuLabel="Weiter" title="Anmeldung" locale="de"/>
         <htmlText featureText="Please view one of the stimuli. You cannot register until you have responded to at least one of these set of stimuli." styleName="highlightedText">
-            <translation featureText="Bekijk a.u.b. ��n van de reeksen met stimuli. U kunt zich pas registreren als u tenminste aan 1 van de reeksen met stimuli mee heeft gedaan." locale="nl"/>
+            <translation featureText="Bekijk a.u.b. één van de reeksen met stimuli. U kunt zich pas registreren als u tenminste aan 1 van de reeksen met stimuli mee heeft gedaan." locale="nl"/>
             <translation featureText="Bitte beantworte eine Reihe von Stimuli. Du kannst dich nicht registireren bevor du ein Reihe Stimuli beantwortet hast." locale="de"/>
         </htmlText>
         <table>
@@ -572,7 +572,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                 <translation featureText="Hast Du Syn\u00e4sthesie?" locale="de"/>
             </htmlText>
             <htmlText featureText="Join your fellow synaesthetes in a study! In order to register and participate in the study, you have to complete the full test. Please make sure, you can do it in one go." styleName="synquizText">
-                <translation featureText="Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in ��n keer af." locale="nl"/>
+                <translation featureText="Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in één keer af." locale="nl"/>
                 <translation featureText="Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal." locale="de"/>
             </htmlText>
             <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
