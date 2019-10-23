@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -130,6 +131,11 @@ public class LocalNotificationsTest {
                 resultStringBuilder.append(":");
                 resultStringBuilder.append(repetitionCount);
                 return new int[0][0];
+            }
+
+            @Override
+            protected void setNotificationLater(String notificationTitle, String notificationText, JavaScriptObject notificationActions, String notificationCommand) {
+                super.setNotificationRun(notificationTitle, notificationText, notificationActions, notificationCommand);
             }
 
             @Override
