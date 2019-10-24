@@ -14,9 +14,6 @@
     <xsl:template match="/">
         <xsl:text>
             reportDateFormat=yyyy-MM-dd HH:mm:ss vvvv
-            reportScreenScore=Score: {0}
-            userfeedbackscreentext=In this test a score below 1.5 is considered synaesthetic.
-            positiveresultsThreshold=1.5
             helpButtonChar=?
             appNameInternal=</xsl:text>
         <xsl:value-of select="experiment/@appNameInternal" />
@@ -24,8 +21,6 @@
             appNameDisplay=</xsl:text>
         <xsl:value-of select="experiment/@appNameDisplay" />
         <xsl:text>
-            popupOkButtonLabel=OK
-            popupCancelButtonLabel=Cancel
             errorScreenTitle=An error occurred
             appNameDisplay=</xsl:text>
         <xsl:value-of select="experiment/@appNameDisplay" />
