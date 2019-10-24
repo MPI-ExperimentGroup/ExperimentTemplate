@@ -20,8 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
 
 /**
- * this can be updated with the output of: grep match=
- * ~/Documents/ExperimentTemplate/gwt-cordova/src/main/xsl/config2java.xsl
+ * this can be updated with the output of: grep match= ~/Documents/ExperimentTemplate/gwt-cordova/src/main/xsl/config2java.xsl
  *
  * @since Aug 18, 2015 4:29:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -77,7 +76,7 @@ public enum FeatureType {
     addPadding(false, false, null),
     localStorageData(false, false, null),
     stimuliValidation(false, false, null),
-    addKeyboardDebug(false, false, null),            
+    addKeyboardDebug(false, false, null),
     // metadataField fields:
     //    displays all or one metadata field for data entry
     allMetadataFields(false, false, null),
@@ -140,6 +139,8 @@ public enum FeatureType {
     hasGetParameter(false, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     hasMetadataValue(false, false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, false, false, false, Contitionals.none, Contitionals.none),
+    progressIndicator(false, false, new FeatureAttribute[]{evaluateTokens, styleName}),
+    setMetadataEvalTokens(false, false, new FeatureAttribute[]{fieldName, evaluateTokens}),
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
