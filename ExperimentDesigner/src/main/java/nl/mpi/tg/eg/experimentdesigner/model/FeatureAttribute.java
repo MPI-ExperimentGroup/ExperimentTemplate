@@ -63,6 +63,7 @@ public enum FeatureAttribute {
     eventTier,
     dataChannel(true),
     dataLogFormat(false),
+    evaluateTokens(false),
     filePerStimulus("When recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli"),
     eventTag(false),
     ratingLabels,
