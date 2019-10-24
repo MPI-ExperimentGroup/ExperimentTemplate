@@ -76,6 +76,8 @@ public enum FeatureType {
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     addPadding(false, false, null),
     localStorageData(false, false, null),
+    stimuliValidation(false, false, null),
+    addKeyboardDebug(false, false, null),            
     // metadataField fields:
     //    displays all or one metadata field for data entry
     allMetadataFields(false, false, null),
