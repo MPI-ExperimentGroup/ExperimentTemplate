@@ -335,6 +335,66 @@ public class DataSubmissionService extends AbstractSubmissionService {
             case screenChange:
             case tagEvent:
             case tagPairEvent:
+            case stimulusResponse:
+                canSendData = true;
+                break;
+            case groupEvent:
+            case metadata:
+            default:
+                canSendData = localStorage.getDataAgreementValue(userId);
+                break;
+        }
+        // data at this point has been neither stored nor sent
+        if (canSendData) {
+            localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
+            final Timer timer = new Timer() {
+                @Override
+                public void run() {
+                    final Timer selfTimer = this;
+                    final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
+                    if (!storedScreenData.isEmpty()) {
+                        submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
+
+                            @Override
+                            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                                dataSubmitTimerList.remove(selfTimer);
+                                if (!dataSubmitTimerList.isEmpty()) {
+                                    dataSubmitTimerList.get(0).schedule(1000);
+                                }
+                            }
+
+                            @Override
+                            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                                localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
+                                dataSubmitTimerList.remove(selfTimer);
+                                if (!dataSubmitTimerList.isEmpty()) {
+                                    dataSubmitTimerList.get(0).schedule(1000);
+                                }
+                            }
+                        });
+                    } else {
+                        dataSubmitTimerList.remove(selfTimer);
+                    }
+                    if (!dataSubmitTimerList.isEmpty()) {
+                        dataSubmitTimerList.get(0).schedule(1000);
+                    }
+                }
+            };
+            dataSubmitTimerList.add(timer);
+            if (dataSubmitTimerList.size() == 1) {
+                timer.schedule(1000);
+            }
+        }
+    }
+
+    private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
+        final boolean canSendData;
+        switch (endpoint) {
+            case stowedData:
+            case timeStamp:
+            case screenChange:
+            case tagEvent:
+            case tagPairEvent:
                 canSendData = true;
                 break;
             case groupEvent:
@@ -344,86 +404,46 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 canSendData = localStorage.getDataAgreementValue(userId);
                 break;
         }
+        // data at this point has been stored but not sent
         if (canSendData) {
-        localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
-        final Timer timer = new Timer() {
-            @Override
-            public void run() {
-                final Timer selfTimer = this;
-                final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
-                if (!storedScreenData.isEmpty()) {
-                    submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
+            final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + endpoint.name());
+            builder.setHeader("Content-type", "application/json");
+            RequestCallback requestCallback = new RequestCallback() {
 
-                        @Override
-                        public void scoreSubmissionFailed(DataSubmissionException exception) {
-                            dataSubmitTimerList.remove(selfTimer);
-                            if (!dataSubmitTimerList.isEmpty()) {
-                                dataSubmitTimerList.get(0).schedule(1000);
-                            }
-                        }
-
-                        @Override
-                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                            localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
-                            dataSubmitTimerList.remove(selfTimer);
-                            if (!dataSubmitTimerList.isEmpty()) {
-                                dataSubmitTimerList.get(0).schedule(1000);
-                            }
-                        }
-                    });
-                } else {
-                    dataSubmitTimerList.remove(selfTimer);
-                }
-                if (!dataSubmitTimerList.isEmpty()) {
-                    dataSubmitTimerList.get(0).schedule(1000);
-                }
-            }
-        };
-        dataSubmitTimerList.add(timer);
-        if (dataSubmitTimerList.size() == 1) {
-            timer.schedule(1000);
-        }
-}
-    }
-
-    private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + endpoint.name());
-        builder.setHeader("Content-type", "application/json");
-        RequestCallback requestCallback = new RequestCallback() {
-
-            @Override
-            public void onError(Request request, Throwable exception) {
-                logger.warning(builder.getUrl());
-                logger.log(Level.WARNING, "RequestCallback", exception);
-                dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.connectionerror, endpoint.name()));
-            }
-
-            @Override
-            public void onResponseReceived(Request request, Response response) {
-                final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
-                // here we also check that the JSON return value contains the correct user id, to test for cases where a web cashe or wifi login redirect returns stale data or a 200 code for a wifi login
-                if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
-                    final String text = response.getText();
-                    logger.info(text);
-//                    localStorage.stowSentData(userId, jsonData);
-                    dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
-                } else {
+                @Override
+                public void onError(Request request, Throwable exception) {
                     logger.warning(builder.getUrl());
-                    logger.warning(response.getStatusText());
-                    if (sumbmissionResult.length() > 0) {
-                        dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.dataRejected, sumbmissionResult.get(0).getMessage()));
+                    logger.log(Level.WARNING, "RequestCallback", exception);
+                    dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.connectionerror, endpoint.name()));
+                }
+
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
+                    // here we also check that the JSON return value contains the correct user id, to test for cases where a web cashe or wifi login redirect returns stale data or a 200 code for a wifi login
+                    if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
+                        final String text = response.getText();
+                        logger.info(text);
+//                    localStorage.stowSentData(userId, jsonData);
+                        dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                     } else {
-                        dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
+                        logger.warning(builder.getUrl());
+                        logger.warning(response.getStatusText());
+                        if (sumbmissionResult.length() > 0) {
+                            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.dataRejected, sumbmissionResult.get(0).getMessage()));
+                        } else {
+                            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
+                        }
                     }
                 }
+            };
+            try {
+                // todo: add the application build number to the submitted data
+                builder.sendRequest(jsonData, requestCallback);
+            } catch (RequestException exception) {
+                logger.log(Level.SEVERE, "submit data failed", exception);
+                dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, endpoint.name()));
             }
-        };
-        try {
-            // todo: add the application build number to the submitted data
-            builder.sendRequest(jsonData, requestCallback);
-        } catch (RequestException exception) {
-            logger.log(Level.SEVERE, "submit data failed", exception);
-            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, endpoint.name()));
         }
     }
 
@@ -438,7 +458,6 @@ public class DataSubmissionService extends AbstractSubmissionService {
 //    private static native void trackEvent(String applicationState, String label, String value) /*-{
 //     if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
 //     }-*/;
-
     protected void sdWriteOk(String message) {
     }
 
