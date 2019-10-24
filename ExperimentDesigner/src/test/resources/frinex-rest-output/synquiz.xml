@@ -726,66 +726,54 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
     <presenter back="Menu" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Quiz reports">
         <translation title="Uitslagen" locale="nl"/>
         <translation title="Auswertung" locale="de"/>
-        <showColourReport scoreThreshold="1">
-            <aboveThreshold/>
-            <withinThreshold/>
+        <htmlTokenText featureText="Score: &lt;playerScore&gt;" styleName="reportScreenScore">
+            <translation featureText="Score: &lt;playerScore&gt;" locale="nl"/>
+            <translation featureText="Punkte: &lt;playerScore&gt;" locale="de"/>
+        </htmlTokenText>
+        <htmlTokenText featureText="In this test a score below 1.5 is considered synaesthetic." styleName="userfeedbackscreentext">
+            <translation featureText="In deze test wordt een score onder 1.5 beschouwd als synesthesie." locale="nl"/>
+            <translation featureText="In diesem Test z\u00e4hlt ein Wert unter 1.5 als syn\u00e4sthetisch." locale="de"/>
+        </htmlTokenText>
+        <showColourReport scoreThreshold="1.4999">
+            <aboveThreshold>
+                <htmlText featureText="It appears that you do not have synaesthesia!" styleName="highlightedText">
+                    <translation featureText="Het lijkt erop dat u geen synesthesie heeft!" locale="nl"/>
+                    <translation featureText="Es scheint, dass du keine Syn\u00e4sthesie hast!" locale="de"/>
+                </htmlText>
+            </aboveThreshold>
+            <withinThreshold>
+                <htmlText featureText="It appears that you might have synaesthesia!" styleName="highlightedText">
+                    <translation featureText="U heeft waarschijnlijk synesthesie!" locale="nl"/>
+                    <translation featureText="Anscheinend hast du Syn\u00e4sthesie!" locale="de"/>
+                </htmlText>
+                <htmlText featureText="We would like to invite you to participate in scientific research of synaesthesia! www.mpi.nl/synaesthesia" styleName="">
+                    <translation featureText="We nodigen u graag uit om deel te nemen aan het wetenschappelijke onderzoek naar synesthesie! www.mpi.nl/synaesthesia" locale="nl"/>
+                    <translation featureText="Wir laden\u00a0dich herzlich\u00a0ein, an einer wissenschaftlichen\u00a0Untersuchung zu Syn\u00e4sthesie\u00a0teilzunehmen! www.mpi.nl/synaesthesia" locale="de"/>
+                </htmlText>
+            </withinThreshold>
         </showColourReport>
-        <!--        <submitTestResults>
+        <!--        
+        <submitTestResults>
             <onSuccess/>
             <onError/>
-        </submitTestResults>-->
-        
-        
-        
-        
-        
-        
-        
-        
-        <!--                reportScreenTitle=
-reportScreenScore=Score: {0}
+        </submitTestResults>
+        -->
+        <!--    
 reportScreenSCT=Speed-Congruency Test
 reportScreenSCTaccuracy=Accuracy {0}%
 reportScreenSCTmeanreactionTime=Mean reaction time {0} seconds +/- {1}
-reportScreenPostSCTtext=
 reportDateFormat=yyyy-MM-dd HH:mm:ss vvvv
-reportScreenTitle=
-reportScreenScore=Score: {0}
 reportScreenSCT=Snelheid-Congruentie test
 reportScreenSCTaccuracy=Nauwkeurigheid {0}%
 reportScreenSCTmeanreactionTime=Gemiddelde reactietijd {0} seconden +/- {1}
-
-        userfeedbackscreentitle=Results
-userfeedbackscreentext=In this test a score below 1.5 is considered synaesthetic.
+userfeedbackscreentitle=Results
 positiveresultsThreshold=1.5
-positiveresultscreentext1=It appears that you might have synaesthesia!
-positiveresultscreentext2=We would like to invite you to participate in scientific research of synaesthesia! www.mpi.nl/synaesthesia
-positiveresultscreentext3=
-negativeresultscreentext1=It appears that you do not have synaesthesia!
-negativeresultscreentext2=\n
-negativeresultscreentext3=
-
 userfeedbackscreentitle=Uitslagen
-userfeedbackscreentext=In deze test wordt een score onder 1.5 beschouwd als synesthesie.
-positiveresultscreentext1=U heeft waarschijnlijk synesthesie!
-positiveresultscreentext2=We nodigen u graag uit om deel te nemen aan het wetenschappelijke onderzoek naar synesthesie! www.mpi.nl/synaesthesia
-negativeresultscreentext1=Het lijkt erop dat u geen synesthesie heeft!
-        userfeedbackscreentitle=Resultate
-        userfeedbackscreentext=In diesem Test z\u00e4hlt ein Wert unter 1.5 als syn\u00e4sthetisch.
-        positiveresultscreentext1=Anscheinend hast du Syn\u00e4sthesie!
-        positiveresultscreentext2=Wir laden\u00a0dich herzlich\u00a0ein, an einer wissenschaftlichen\u00a0Untersuchung zu Syn\u00e4sthesie\u00a0teilzunehmen! www.mpi.nl/synaesthesia
-        negativeresultscreentext1=Es scheint, dass du keine Syn\u00e4sthesie hast!
-
-
-            
-            
-
-
-        reportScreenTitle=
-        reportScreenScore=Punkte: {0}
-        reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
-        reportScreenSCTaccuracy=Genauigkeit {0}%
-        reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/- {1}-->
+userfeedbackscreentitle=Resultate
+reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
+reportScreenSCTaccuracy=Genauigkeit {0}%
+reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/- {1}
+        -->
         <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
             <conditionTrue>
                 <targetFooterButton featureText="Register" target="Completion" groupId="postAgreeButton">
