@@ -40,6 +40,7 @@ import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.Registra
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
 import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Mar 7, 2016 4:10:23 PM (creation date)
@@ -48,6 +49,8 @@ import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
 public abstract class AbstractColourReportPresenter extends AbstractTimedPresenter implements Presenter {
 
     private final DataSubmissionService submissionService;
+    private String reportScreenScore = "<playerScore>";
+    private String userfeedbackscreentext = "";
 
     public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new ReportView(), submissionService, userResults, localStorage, timerService);
@@ -58,6 +61,20 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
     public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
         this.nextState = nextState;
+    }
+
+    @Override
+    public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName) {
+        switch (styleName) {
+            case "reportScreenScore":
+                reportScreenScore = textString;
+                break;
+            case "userfeedbackscreentext":
+                userfeedbackscreentext = textString;
+                break;
+            default:
+                htmlTokenText(currentStimulus, textString, styleName);
+        }
     }
 
     public void submitTestResults(final MetadataField emailAddressMetadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
@@ -124,26 +141,29 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
         }, messages.reportDateFormat(), emailAddressMetadataField, scoreLog);
     }
 
-    public void showColourReport(final int scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
-        showColourReport((float) scoreThreshold, emailAddressMetadataField, aboveThreshold, belowThreshold);
+    public void showColourReport(final int scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) { // todo: use scoreThreshold
+        showColourReport((float) scoreThreshold, emailAddressMetadataField, aboveThreshold, withinThreshold);
     }
 
-    public void showColourReport(final float scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
+    public void showColourReport(final double scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) { // todo: use scoreThreshold
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
 //        final NumberFormat numberFormat3 = NumberFormat.getFormat("0.000");
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
-
+        Double minScore = null;
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
             final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
             ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
-            ((ReportView) simpleView).addText(messages.reportScreenScore(numberFormat2.format(calculatedScores.getScore())));
-            ((ReportView) simpleView).addText(messages.userfeedbackscreentext());
+            ((ReportView) simpleView).addText(reportScreenScore.replace("<playerScore>", numberFormat2.format(calculatedScores.getScore())));
+            ((ReportView) simpleView).addText(userfeedbackscreentext);
+            ((ReportView) simpleView).addPadding();
             userResults.getUserData().updateMaxScore(calculatedScores.getScore(), 0, 0, 0, 0);
             for (MetadataField field : userResults.getUserData().getMetadataFields()) {
                 if (field.getPostName().equals(stimuliGroup.getPostName() + "_result")) {
                     userResults.getUserData().setMetadataValue(field, Double.toString(calculatedScores.getScore()));
+                    localStorage.storeData(userResults, metadataFieldProvider);
                 }
             }
+            minScore = (minScore == null) ? calculatedScores.getScore() : (minScore > calculatedScores.getScore()) ? calculatedScores.getScore() : minScore;
             //            ((ReportView) simpleView).addText(messages.reportScreenSCT());
             //            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
             //            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
@@ -153,16 +173,18 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
-        if (userResults.getUserData().getMaxScore() <= scoreThreshold) {
-            belowThreshold.postLoadTimerFired();
+        if (minScore != null) {
+            if (minScore <= scoreThreshold) {
+                withinThreshold.postLoadTimerFired();
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext1());
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext2());
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext3());
-        } else {
-            aboveThreshold.postLoadTimerFired();
+            } else {
+                aboveThreshold.postLoadTimerFired();
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext1());
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext2());
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext3());
+            }
         }
         ((ReportView) simpleView).addPadding();
     }
