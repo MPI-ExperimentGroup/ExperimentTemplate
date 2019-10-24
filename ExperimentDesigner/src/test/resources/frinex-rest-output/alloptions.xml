@@ -253,6 +253,8 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
+        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName"/>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
@@ -1482,6 +1484,8 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
+        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName"/>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
@@ -1813,6 +1817,8 @@
         <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <localStorageData/>
+        <stimuliValidation/>
+        <addKeyboardDebug/>
         <eraseLocalStorageButton groupId="groupId" styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -2189,6 +2195,8 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
+        <progressIndicator evaluateTokens="evaluateTokens"/>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
@@ -3418,6 +3426,8 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
+        <progressIndicator evaluateTokens="evaluateTokens"/>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" autoPlay="true" poster="poster">
@@ -3749,6 +3759,8 @@
         <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <localStorageData/>
+        <stimuliValidation/>
+        <addKeyboardDebug/>
         <eraseLocalStorageButton/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">

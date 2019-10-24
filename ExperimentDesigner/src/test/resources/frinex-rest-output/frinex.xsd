@@ -307,6 +307,7 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="actionTokenButton" type="actionTokenButtonType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="allMenuItems" type="allMenuItemsType"/>
@@ -362,6 +363,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="preventWindowClose" type="preventWindowCloseType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="redirectToUrl" type="redirectToUrlType"/>
 <xs:element name="region" type="regionType"/>
@@ -381,12 +383,14 @@
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
 <xs:element name="sendAllData" type="sendAllDataType"/>
 <xs:element name="sendMetadata" type="sendMetadataType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
 <xs:element name="showHtmlPopup" type="showHtmlPopupType"/>
 <xs:element name="startTimer" type="startTimerType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
 <xs:element name="table" type="tableType"/>
@@ -700,6 +704,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -740,6 +746,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -880,6 +888,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -920,6 +930,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -1072,6 +1084,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -1112,6 +1126,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -1253,6 +1269,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -1293,6 +1311,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -1429,6 +1449,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -1469,6 +1491,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -1604,6 +1628,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -1644,6 +1670,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -1816,6 +1844,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -1856,6 +1886,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -2036,6 +2068,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -2076,6 +2110,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -2232,6 +2268,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -2272,6 +2310,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -2365,6 +2405,10 @@
 <xs:complexType name="addPaddingType">
 </xs:complexType>
 <xs:complexType name="localStorageDataType">
+</xs:complexType>
+<xs:complexType name="stimuliValidationType">
+</xs:complexType>
+<xs:complexType name="addKeyboardDebugType">
 </xs:complexType>
 <xs:complexType name="allMetadataFieldsType">
 </xs:complexType>
@@ -2561,6 +2605,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -2601,6 +2647,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -2755,6 +2803,14 @@
 <xs:attribute name="dataLogFormat" type="xs:string" use="required"/>
 <xs:attribute name="replacementRegex" type="xs:string"/>
 </xs:complexType>
+<xs:complexType name="progressIndicatorType">
+<xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
+<xs:attribute name="styleName" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="setMetadataEvalTokensType">
+<xs:attribute name="fieldName" type="xs:string" use="required"/>
+<xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
+</xs:complexType>
 <xs:complexType name="activateRandomItemType">
 </xs:complexType>
 <xs:complexType name="gotoPresenterType">
@@ -2834,6 +2890,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -2874,6 +2932,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -3029,6 +3089,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -3069,6 +3131,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -3219,6 +3283,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -3259,6 +3325,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -3413,6 +3481,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -3453,6 +3523,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -3586,6 +3658,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -3626,6 +3700,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -3759,6 +3835,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -3799,6 +3877,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -3938,6 +4018,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -3978,6 +4060,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -4118,6 +4202,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -4158,6 +4244,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -4292,6 +4380,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -4332,6 +4422,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -4465,6 +4557,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -4505,6 +4599,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -4635,6 +4731,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -4675,6 +4773,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -4805,6 +4905,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -4845,6 +4947,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -4975,6 +5079,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5015,6 +5121,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -5147,6 +5255,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5187,6 +5297,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -5319,6 +5431,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5359,6 +5473,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -5491,6 +5607,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5531,6 +5649,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -5661,6 +5781,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5701,6 +5823,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -5831,6 +5955,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5871,6 +5997,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -6001,6 +6129,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6041,6 +6171,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -6171,6 +6303,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6211,6 +6345,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -6341,6 +6477,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6381,6 +6519,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -6511,6 +6651,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6551,6 +6693,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -6681,6 +6825,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6721,6 +6867,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -6851,6 +6999,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6891,6 +7041,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -7027,6 +7179,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -7067,6 +7221,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -7197,6 +7353,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -7237,6 +7395,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -7367,6 +7527,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -7407,6 +7569,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -7537,6 +7701,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -7577,6 +7743,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -7707,6 +7875,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -7747,6 +7917,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -7877,6 +8049,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -7917,6 +8091,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -8047,6 +8223,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -8087,6 +8265,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -8217,6 +8397,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -8257,6 +8439,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -8387,6 +8571,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -8427,6 +8613,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -8559,6 +8747,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -8599,6 +8789,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -8729,6 +8921,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -8769,6 +8963,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -8900,6 +9096,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -8940,6 +9138,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -9080,6 +9280,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -9120,6 +9322,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -9373,6 +9577,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -9413,6 +9619,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -9555,6 +9763,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -9595,6 +9805,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -9811,6 +10023,8 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -9851,6 +10065,8 @@
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
