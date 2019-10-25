@@ -205,7 +205,7 @@
 <xs:attribute name="primaryColour4" type="rgbHexValue" use="required"/>
 <xs:attribute name="isScalable" type="xs:boolean" use="required"/>
 <xs:attribute name="preserveLastState" type="xs:boolean" use="required"/>
-<xs:attribute name="splashPresenter" type="xs:boolean"/>
+<xs:attribute name="splashPresenter" type="xs:string"/>
 <xs:attribute name="userIdGetParam" type="xs:string"/>
 <xs:attribute name="rotatable" type="xs:boolean" use="required"/>
 <xs:attribute name="showMenuBar" type="xs:boolean" use="required"/>
