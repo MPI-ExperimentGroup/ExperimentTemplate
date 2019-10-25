@@ -565,10 +565,12 @@ function buildApk(buildName, stage) {
         if (filename.endsWith("android.zip")) {
             fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + buildName + "_" + stage + "_android.zip"));
             resultString += '<a href="' + buildName + "_" + stage + "_android.zip" + '">android-src</a>&nbsp;';
+            buildArtifactsJson.artifacts.apk_src = filename;
         }
         if (filename.endsWith("ios.zip")) {
             fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + buildName + "_" + stage + "_ios.zip"));
             resultString += '<a href="' + buildName + "_" + stage + "_ios.zip" + '">ios-src</a>&nbsp;';
+            buildArtifactsJson.artifacts.ios_src = filename;
         }
     });
     console.log("build cordova finished");
