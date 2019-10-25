@@ -69,6 +69,14 @@
         width: 40px;
         background: white;
         }
+        .gwt-Image.splashScreenBackground {
+        min-width: 100vw;
+        min-height: 100vh;
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%,-50%);
+        }
     </scss>
     <metadata>
 <!--fieldValues-gender=Male,Female,Other
@@ -118,13 +126,13 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
         <field controlledMessage="weekdays_result" controlledRegex=".'{'3,'}'" postName="weekdays_result" preventServerDuplicates="false" registrationField="weekdays_result"/>
         <field controlledMessage="months_result" controlledRegex=".'{'3,'}'" postName="months_result" preventServerDuplicates="false" registrationField="months_result"/>
         <field controlledMessage="letters_numbers_full_result" controlledRegex=".'{'3,'}'" postName="letters_numbers_full_result" preventServerDuplicates="false" registrationField="letters_numbers_full_result"/>
-    </metadata>
+    </metadata> 
     <presenter menuLabel="splash" type="text" self="splash" title="">
         <setMetadataValue fieldName="letters_numbers_short_result" dataLogFormat=""/>
         <setMetadataValue fieldName="weekdays_result" dataLogFormat=""/>
         <setMetadataValue fieldName="months_result" dataLogFormat=""/>
         <setMetadataValue fieldName="letters_numbers_full_result" dataLogFormat=""/>
-        <image msToNext="60000" src="splash.png" styleName="splashScreenBackground">
+        <image msToNext="1000" src="splash.png" styleName="splashScreenBackground">
             <mediaLoaded>
                 <gotoPresenter target="set_user"/>
             </mediaLoaded>
