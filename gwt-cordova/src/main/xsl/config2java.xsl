@@ -88,6 +88,12 @@
         <xsl:value-of select="experiment/@preserveLastState" />
         <xsl:text>;
             }
+            @Override
+            ApplicationState splashPresenter() {
+            return </xsl:text>
+        <xsl:value-of select="if(experiment/@splashPresenter) then concat('ApplicationState.', experiment/@splashPresenter) else 'null'" />
+        <xsl:text>;
+            }
             public ApplicationController(RootLayoutPanel widgetTag) throws UserIdException {
             super(widgetTag, </xsl:text>
         <xsl:value-of select="if(experiment/@userIdGetParam) then concat('&quot;', experiment/@userIdGetParam, '&quot;') else 'null'" />
