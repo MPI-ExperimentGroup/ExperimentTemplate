@@ -137,6 +137,8 @@
                                 <include>*darwin.zip</include>
                                 <include>*mac.zip</include>
                                 <include>*linux.zip</include>
+                                <include>*android.zip</include>
+                                <include>*ios.zip</include>
                             </includes>
                         </resource>
                     </webResources>
