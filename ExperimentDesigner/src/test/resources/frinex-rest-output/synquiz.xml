@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="SynQuiz" appNameInternal="synquiz" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FF0000" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#FFFFFF" primaryColour2="#FFFFFF" primaryColour3="#96ADAD" primaryColour4="#000000" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="SynQuiz" appNameInternal="synquiz" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FF0000" defaultScale="1.0" isScalable="true" splashPresenter="splash" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#FFFFFF" primaryColour2="#FFFFFF" primaryColour3="#96ADAD" primaryColour4="#000000" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
         <dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>
     </administration>
@@ -119,6 +119,20 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
         <field controlledMessage="months_result" controlledRegex=".'{'3,'}'" postName="months_result" preventServerDuplicates="false" registrationField="months_result"/>
         <field controlledMessage="letters_numbers_full_result" controlledRegex=".'{'3,'}'" postName="letters_numbers_full_result" preventServerDuplicates="false" registrationField="letters_numbers_full_result"/>
     </metadata>
+    <presenter menuLabel="splash" type="text" self="splash" title="">
+        <setMetadataValue fieldName="letters_numbers_short_result" dataLogFormat=""/>
+        <setMetadataValue fieldName="weekdays_result" dataLogFormat=""/>
+        <setMetadataValue fieldName="months_result" dataLogFormat=""/>
+        <setMetadataValue fieldName="letters_numbers_full_result" dataLogFormat=""/>
+        <image msToNext="60000" src="splash.png" styleName="splashScreenBackground">
+            <mediaLoaded>
+                <gotoPresenter target="set_user"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <gotoPresenter target="set_user"/>
+            </mediaLoadFailed>
+        </image>
+    </presenter>
     <presenter back="Menu" menuLabel="Begin Quiz" type="metadata" self="set_user" title="Set user">
         <translation menuLabel="Quiz starten" title="Gebruiker instellen" locale="nl"/>
         <translation menuLabel="Starte Quiz" title="Benutzer eingeben" locale="de"/>
@@ -294,25 +308,25 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         </region>
         <disableButtonGroup matchingRegex="registerButton"/>
         <disableButtonGroup matchingRegex="reportsButton"/>
-        <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="...*">
+        <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="..*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
             </conditionTrue>
             <conditionFalse/>
         </hasMetadataValue>
-        <hasMetadataValue fieldName="weekdays_result" matchingRegex="...*">
+        <hasMetadataValue fieldName="weekdays_result" matchingRegex="..*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
             </conditionTrue>
             <conditionFalse/>
         </hasMetadataValue>
-        <hasMetadataValue fieldName="months_result" matchingRegex="...*">
+        <hasMetadataValue fieldName="months_result" matchingRegex="..*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
             </conditionTrue>
             <conditionFalse/>
         </hasMetadataValue>
-        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
+        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="..*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
                 <enableButtonGroup matchingRegex="registerButton"/>
@@ -471,7 +485,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
             <showButtonGroup matchingRegex="agreeBoxOn"/>
             <enableButtonGroup matchingRegex="postAgreeButton"/>
         </actionButton>
-        <targetFooterButton featureText="Register" target="Completion" groupId="postAgreeButton">
+        <targetFooterButton featureText="Register" target="metadataScreen" groupId="postAgreeButton">
             <translation featureText="Registreren" locale="nl"/>
             <translation featureText="Registrieren" locale="de"/>
         </targetFooterButton>
@@ -494,7 +508,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                 <translation featureText="Ontdek of u synesthesie heeft!" locale="nl"/>
                 <translation featureText="Entdecke ob du Syn\u00e4sthesie hast!" locale="de"/>
             </htmlText>
-            <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="...*">
+            <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="..*">
                 <conditionTrue>
                     <actionTokenButton featureText="Letters/Numbers - short&lt;br&gt;5-10 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Letters/Cijfers - kort&lt;br&gt;5-10 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -510,7 +524,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                     </actionTokenButton>         
                 </conditionFalse>
             </hasMetadataValue>
-            <hasMetadataValue fieldName="weekdays_result" matchingRegex="...*">
+            <hasMetadataValue fieldName="weekdays_result" matchingRegex="..*">
                 <conditionTrue>
                     <actionTokenButton featureText="Weekdays&lt;br&gt;5-10 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Dagen&lt;br&gt;5-10 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -526,7 +540,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                     </actionTokenButton>            
                 </conditionFalse>
             </hasMetadataValue>
-            <hasMetadataValue fieldName="months_result" matchingRegex="...*">
+            <hasMetadataValue fieldName="months_result" matchingRegex="..*">
                 <conditionTrue>
                     <actionTokenButton featureText="Months&lt;br&gt;5-10 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Maanden&lt;br&gt;5-10 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -552,7 +566,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                 <translation featureText="Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in één keer af." locale="nl"/>
                 <translation featureText="Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal." locale="de"/>
             </htmlText>
-            <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
+            <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="..*">
                 <conditionTrue>
                     <actionTokenButton featureText="Letters/Numbers - full test&lt;br&gt;20-30 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Letters/Cijfers - volledige test&lt;br&gt;20-30 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -774,9 +788,9 @@ reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
 reportScreenSCTaccuracy=Genauigkeit {0}%
 reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/- {1}
         -->
-        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
+        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="..*">
             <conditionTrue>
-                <targetFooterButton featureText="Register" target="Completion" groupId="postAgreeButton">
+                <targetFooterButton featureText="Register" target="metadataScreen" groupId="postAgreeButton">
                     <translation featureText="Registreren" locale="nl"/>
                     <translation featureText="Registrieren" locale="de"/>
                 </targetFooterButton>
@@ -810,7 +824,7 @@ reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/-
             <translation featureText="&lt;h3&gt;Language in Interaction Projekt&lt;/h3&gt;" locale="de"/>
         </htmlText>
         <htmlText featureText="&lt;p&gt;SynQuiz was developed within the research consortium &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.languageininteraction.nl','_system'); return false;&quot;&gt;Language in Interaction&lt;/a&gt;, which aims to explain variation and similarities in languages as well as in linguistic skills. The consortium aims to gain understanding of how such a large range of (cultural) differences have arisen from a biological basis that is common to all people.&lt;/p&gt;&lt;p&gt;The research program examines human language from the level of genetics to interactions between conversational partners, addressing a diverse range of topics such as: brain structure and function, language development, evolution, multilingualism, speech production and comprehension, nonverbal behaviour, meaning and context, and the interplay of language with other cognitive systems (e.g. memory).&lt;/p&gt;" styleName="synquizText">
-            <translation featureText="&lt;p&gt;SynQuiz is ontwikkeld binnen het &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.languageininteraction.nl','_system'); return false;&quot;&gt;Language in Interaction&lt;/a&gt; onderzoeksconsortium, dat als doel heeft zowel de variatie als de overeenkomsten in talen en taalkundige vaardigheden te verklaren. Het consortium probeert te verklaren hoe zo?n groot palet aan culturele verschillen is ontstaan vanuit vanuit een biologische basis die voor alle mensen gelijk is.&lt;/p&gt;&lt;p&gt;Het onderzoeksprogramma onderzoekt de menselijke taal vanaf het niveau van de genen tot en met sociale interacties tussen gesprekspartners, waarbij een reeks onderwerpen word verkend zoals: de structuur en functie van de hersenen, taalontwikkeling, evolutie, meertaligheid, productie en begrip van spraak, non-verbaal gedrag, betekenis en context, en het samenspel van taal met andere cognitieve systemen (zoals het geheugen).&lt;/p&gt;" locale="nl"/>
+            <translation featureText="&lt;p&gt;SynQuiz is ontwikkeld binnen het &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.languageininteraction.nl','_system'); return false;&quot;&gt;Language in Interaction&lt;/a&gt; onderzoeksconsortium, dat als doel heeft zowel de variatie als de overeenkomsten in talen en taalkundige vaardigheden te verklaren. Het consortium probeert te verklaren hoe zo'n groot palet aan culturele verschillen is ontstaan vanuit vanuit een biologische basis die voor alle mensen gelijk is.&lt;/p&gt;&lt;p&gt;Het onderzoeksprogramma onderzoekt de menselijke taal vanaf het niveau van de genen tot en met sociale interacties tussen gesprekspartners, waarbij een reeks onderwerpen word verkend zoals: de structuur en functie van de hersenen, taalontwikkeling, evolutie, meertaligheid, productie en begrip van spraak, non-verbaal gedrag, betekenis en context, en het samenspel van taal met andere cognitieve systemen (zoals het geheugen).&lt;/p&gt;" locale="nl"/>
             <translation featureText="&lt;p&gt;SynQuiz wurde im Rahmen des Forschungskonsortiums &lt;a class=&quot;synquizText&quot; href=&quot;#&quot; onclick=&quot;window.open('http://www.languageininteraction.nl','_system'); return false;&quot;&gt;Language in Interaction&lt;/a&gt; entwickelt, dass zum Ziel hat, die Verschiedenheiten und Gemeinsamkeiten in Sprachen und sprachlichen F\u00e4higkeiten zu erkl\u00e4ren. Das Konsortium versucht zu verstehen, wie eine so umfangreiche Palette kultureller Unterschiede aus einer biologischen Basis, die gleich ist f\u00fcr alle Menschen, entstanden sein kann.&lt;/p&gt;&lt;p&gt; Das Forschungsprogramm untersucht die menschliche Sprache von der Ebene der Genetik bis zu den sozialen Wechselwirkungen zwischen Gespr\u00e4chspartnern, wobei \u00a0eine breite Anzahl von Themen erforscht werden, wie: Gehirnstruktur und -funktion, Sprachentwicklung, Evolution, Mehrsprachigkeit, Sprachproduktion und Sprachverstehen, nonverbales Verhalten, Bedeutung und Kontext, und das Zusammenspiel von Sprache und anderen kognitiven Systemen (z.B. das Ged\u00e4chtnis).&lt;/p&gt;" locale="de"/>
         </htmlText>
         <htmlText featureText="&lt;h3&gt;More language apps&lt;/h3&gt;" styleName="synquizText">
