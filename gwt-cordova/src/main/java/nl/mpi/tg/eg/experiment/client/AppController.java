@@ -163,6 +163,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
 //    }
     abstract boolean preserveLastState();
 
+    abstract ApplicationState splashPresenter();
+
     public void start() {
         setBackButtonAction();
         History.addValueChangeHandler(new ValueChangeHandler<String>() {
@@ -237,6 +239,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     }
                 }
             }
+            lastAppState = (splashPresenter() != null) ? splashPresenter() : lastAppState;
             if (!submissionService.isProductionVersion()) {
                 this.presenter = new TestingVersionPresenter(widgetTag, lastAppState);
                 presenter.setState(this, null, null);
