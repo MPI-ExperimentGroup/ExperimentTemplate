@@ -407,6 +407,7 @@ public class AbstractSchemaGenerator {
             .colourRGBAttribute("primaryColour4", false)
             .booleanAttribute("isScalable", false)
             .booleanAttribute("preserveLastState", false)
+            .booleanAttribute("splashPresenter", true)
             .stringAttribute("userIdGetParam", true)
             .booleanAttribute("rotatable", false)
             .booleanAttribute("showMenuBar", false)
