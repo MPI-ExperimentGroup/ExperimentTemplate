@@ -77,6 +77,9 @@
         left: 50vw;
         transform: translate(-50%,-50%);
         }
+        .keyboardPadding {
+        height: 80vh;
+        }
     </scss>
     <metadata>
 <!--fieldValues-gender=Male,Female,Other
@@ -132,7 +135,7 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
         <setMetadataValue fieldName="weekdays_result" dataLogFormat=""/>
         <setMetadataValue fieldName="months_result" dataLogFormat=""/>
         <setMetadataValue fieldName="letters_numbers_full_result" dataLogFormat=""/>
-        <image msToNext="1000" src="splash.png" styleName="splashScreenBackground">
+        <image msToNext="1000" src="splash.png" styleName="splashScreenBackground"> 
             <mediaLoaded>
                 <gotoPresenter target="set_user"/>
             </mediaLoaded>
@@ -182,6 +185,7 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
                         <gotoPresenter target="quizmenu"/>
                     </onSuccess>
                 </saveMetadataButton>
+                <htmlText featureText="&amp;nbsp;" styleName="keyboardPadding"/>
             </conditionFalse>
         </hasMetadataValue>
     </presenter>
@@ -221,10 +225,6 @@ socialMediaPostSubject=Social media post subject
 socialMediaPostImage=www/images/icon.png
 socialMediaPostUrl=https://www.languageininteraction.nl/
 languageInteractionUrl=https://www.languageininteraction.nl/
-registrationCompleteTitle=Registration
-registrationCompleteText=Registration complete.
-registrationFailedTitle=Registration
-registrationFailedText=Registration failed on the server. You can try again later or if you continue having trouble submitting your registration please go to www.mpi.nl/synaesthesia to register and participate in the study!
 
 
 
@@ -245,10 +245,7 @@ mpiLinkText=MPI SYN onderzoek
 socialPostButtonText=Deel deze uitslag
 socialMediaPostText=Ik probeerde zojuist SynQuiz en had een score van {0}, wat duidt op synesthesie.
 socialMediaPostSubject=Onderwerp bericht sociale media
-registrationCompleteTitle=Registratie
-registrationCompleteText=Registratie is afgerond.
-registrationFailedTitle=Registratie
-registrationFailedText=Het registreren op de server is mislukt. Probeer het later nog eens. Indien u problemen blijft houden met het verzenden van uw registratie, ga dan s.v.p. naar www.mpi.nl/synaesthesia om u voor het onderzoek aan te melden en deel te nemen!
+
 
         instructionsMenuLabel=Anleitung
         errorScreenTitle=Fehler
@@ -266,10 +263,6 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
         socialMediaPostText=Ich habe gerade bei SynQuiz teilgenommen und {0} Punkte erreicht. Das z\u00e4hlt als syn\u00e4sthetisch.
         socialMediaPostSubject=Betreff Social Media Post
         socialMediaPostUrl=https://www.languageininteraction.nl/
-        registrationCompleteTitle=Anmeldung
-        registrationCompleteText=Anmeldung erfolgreich.
-        registrationFailedTitle=Anmelding
-        registrationFailedText=Die Registrierung auf dem Server ist fehlgeschlagen. Bitte versuche es sp\u00e4ter erneut. Wenn du weiterhin Probleme hast dich zu registrieren, gehe zu www.mpi.nl/synaesthesia, um dich anzumelden und and der Studie teilzunehmen!
     -->
 
     
@@ -369,6 +362,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                 <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
+        <htmlText featureText="&amp;nbsp;" styleName="keyboardPadding"/>
     </presenter>
     <presenter back="Menu" menuLabel="Continue" type="metadata" self="registrationScreen" title="Registration">
         <translation menuLabel="Verder" title="Registratie" locale="nl"/>
@@ -493,7 +487,7 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
             <showButtonGroup matchingRegex="agreeBoxOn"/>
             <enableButtonGroup matchingRegex="postAgreeButton"/>
         </actionButton>
-        <targetFooterButton featureText="Register" target="metadataScreen" groupId="postAgreeButton">
+        <targetFooterButton featureText="Register" target="Register" groupId="postAgreeButton">
             <translation featureText="Registreren" locale="nl"/>
             <translation featureText="Registrieren" locale="de"/>
         </targetFooterButton>
@@ -690,6 +684,19 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
                 <eraseUsersDataButton featureText="Finish this expriment and start from the begining" target="set_user"/>
             </onSuccess>
             <onError>
+<!--                        registrationCompleteTitle=Registration
+registrationCompleteText=Registration complete.
+registrationFailedTitle=Registration
+registrationFailedText=
+
+registrationCompleteTitle=Registratie
+registrationCompleteText=Registratie is afgerond.
+registrationFailedTitle=Registratie
+registrationFailedText=
+        registrationCompleteText=Anmeldung erfolgreich.
+        registrationFailedTitle=Anmelding
+        registrationFailedText=-->
+
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
                 <!--                    <translation featureText="Geen verbinding met de server, controleer of er internetverbinding is en probeer het dan nog een keer." locale="nl"/>
                 <translation featureText="" locale="de"/>
@@ -734,7 +741,11 @@ registrationFailedText=Het registreren op de server is mislukt. Probeer het late
     <presenter back="Menu" menuLabel="Submit my results" next="Completion" type="colourReport" self="Register" title="Register">
         <submitTestResults>
             <onError>
-                <plainText featureText="Error submitting data."/>
+                <plainText featureText="Registration failed on the server. You can try again later or if you continue having trouble submitting your registration please go to www.mpi.nl/synaesthesia to register and participate in the study!">
+                    <translation featureText="Het registreren op de server is mislukt. Probeer het later nog eens. Indien u problemen blijft houden met het verzenden van uw registratie, ga dan s.v.p. naar www.mpi.nl/synaesthesia om u voor het onderzoek aan te melden en deel te nemen!
+        registrationCompleteTitle=Anmeldung" locale="nl"/>
+                    <translation featureText="Die Registrierung auf dem Server ist fehlgeschlagen. Bitte versuche es sp\u00e4ter erneut. Wenn du weiterhin Probleme hast dich zu registrieren, gehe zu www.mpi.nl/synaesthesia, um dich anzumelden und and der Studie teilzunehmen!" locale="de"/>   
+                </plainText>
                 <!--                    <translation featureText="Error met invoeren van data." locale="nl"/>
                 <translation featureText="" locale="de"/>
                 <translation featureText="Ошибка отправки данных." locale="ru"/>-->
