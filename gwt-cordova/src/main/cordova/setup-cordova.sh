@@ -23,6 +23,13 @@ else
     echo "icon.png not found";
     exit 1
 fi
+if [ -f www/static/splash.png ];
+then
+    file www/static/splash.png;
+else
+    echo "splash.png not found";
+    exit 1
+fi
 
 #/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 #PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
@@ -67,22 +74,29 @@ else
     echo false > logToSdCard-false.txt
     echo "logToSdCard false"
 fi
+if egrep -q "requestNotification" www/@experiment.configuration.name@.xml; then
+    echo true > requestNotification-true.txt
+    echo "requestNotification true"
+    #cordova plugin add cordova-plugin-local-notification
+    cordova plugin add https://github.com/katzer/cordova-plugin-local-notifications.git
+else
+    echo false > requestNotification-false.txt
+    echo "requestNotification false"
+fi
 cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
 #cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
-#cordova plugin add cordova-plugin-local-notification
-cordova plugin add https://github.com/katzer/cordova-plugin-local-notifications.git
 cordova plugin add cordova-plugin-whitelist
 
-#splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
-#echo $splashResourcesDir
-#splashImage="images/splash.png" #"images/splash.gif" 
-iconResourcesDir="./platforms/ios/LingQuest/Resources/icons/"
-iconImage="images/icon.png"
+splashResourcesDir="./platforms/ios/SynQuiz/Images.xcassets/LaunchImage.launchimage/"
+echo $splashResourcesDir
+splashImage="www/static/splash.png" #"images/splash.gif" 
+iconResourcesDir="./platforms/ios/SynQuiz/Images.xcassets/AppIcon.appiconset/"
+iconImage="www/static/icon.png"
 
-#echo $splashImage
-#file ./platforms/ios/LingQuest/Resources/splash/*
+echo $splashImage
+#file ./platforms/ios/$appname/Resources/splash/*
 
 #echo "making 9 patch splash images"
 #convert -background none images/LiI_logo_rgb.jpg -resize 320x320 -matte -bordercolor "rgb(0,158,200)" -border 2 -fill black -draw "line 1,0 1,0" -draw "line 0,1 0,1" -draw "line 0,67 0,67" -draw "line 322,0 322,0" platforms/splash320x320.9.png
@@ -102,7 +116,8 @@ convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splas
 convert -resize 1024x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
 convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
 convert -resize 480x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
-
+convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
+convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
 #echo "making Android splash images"
 #cp platforms/splash320x320.9.png platforms/android/res/drawable-land-hdpi/screen.png
 #cp platforms/splash150x150.9.png platforms/android/res/drawable-land-ldpi/screen.png
@@ -175,9 +190,9 @@ zip -r ../$appname-ios.zip platforms/ios
 #adb install -r platforms/android/build/outputs/apk/android-release.apk
 
 #echo "launching xcode"
-#open platforms/ios/LingQuest.xcodeproj&
+#open platforms/ios/$appname.xcodeproj&
 #echo "launching xcode"
-#open platforms/ios/LingQuest.xcodeproj
+#open platforms/ios/$appname.xcodeproj
 
 # generate the IPA
 #cd platforms/ios/CordovaLib/
@@ -187,13 +202,13 @@ zip -r ../$appname-ios.zip platforms/ios
 
 #cd ..
 #pwd
-#xcodebuild -alltargets -project LingQuest.xcodeproj -sdk iphoneos -configuration Release
-#xcodebuild -scheme LingQuest -project LingQuest.xcodeproj -sdk iphoneos -configuration Release
+#xcodebuild -alltargets -project $appname.xcodeproj -sdk iphoneos -configuration Release
+#xcodebuild -scheme $appname -project $appname.xcodeproj -sdk iphoneos -configuration Release
 #cd build/Release-iphoneos
 #cd platforms/ios/
 #cd build/emulator
 #pwd
-#xcrun -sdk iphoneos PackageApplication -v "$(pwd)/LingQuest.app" -o "$(pwd)/$appname.ipa"
+#xcrun -sdk iphoneos PackageApplication -v "$(pwd)/$appname.app" -o "$(pwd)/$appname.ipa"
 
 # validate the results
 #xcrun -verbose -sdk iphoneos Validation "$(pwd)/$appname.ipa"
