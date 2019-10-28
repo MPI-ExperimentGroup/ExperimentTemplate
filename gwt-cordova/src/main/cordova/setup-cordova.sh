@@ -88,6 +88,9 @@ cordova plugin add cordova-plugin-fullscreen
 #cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
 cordova plugin add cordova-plugin-whitelist
+cordova plugin add cordova-plugin-device
+#cordova plugin add cordova-plugin-splashscreen
+cordova plugin add cordova-plugin-inappbrowser
 
 splashResourcesDir="./platforms/ios/SynQuiz/Images.xcassets/LaunchImage.launchimage/"
 echo $splashResourcesDir
