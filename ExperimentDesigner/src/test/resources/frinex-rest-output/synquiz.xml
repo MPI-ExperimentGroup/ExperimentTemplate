@@ -245,7 +245,7 @@ mpiLinkText=MPI SYN onderzoek
 socialPostButtonText=Deel deze uitslag
 socialMediaPostText=Ik probeerde zojuist SynQuiz en had een score van {0}, wat duidt op synesthesie.
 socialMediaPostSubject=Onderwerp bericht sociale media
-
+ 
 
         instructionsMenuLabel=Anleitung
         errorScreenTitle=Fehler
@@ -309,25 +309,25 @@ socialMediaPostSubject=Onderwerp bericht sociale media
         </region>
         <disableButtonGroup matchingRegex="registerButton"/>
         <disableButtonGroup matchingRegex="reportsButton"/>
-        <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="..*">
+        <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="...*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
             </conditionTrue>
             <conditionFalse/>
         </hasMetadataValue>
-        <hasMetadataValue fieldName="weekdays_result" matchingRegex="..*">
+        <hasMetadataValue fieldName="weekdays_result" matchingRegex="...*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
             </conditionTrue>
             <conditionFalse/>
         </hasMetadataValue>
-        <hasMetadataValue fieldName="months_result" matchingRegex="..*">
+        <hasMetadataValue fieldName="months_result" matchingRegex="...*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
             </conditionTrue>
             <conditionFalse/>
         </hasMetadataValue>
-        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="..*">
+        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
             <conditionTrue>
                 <enableButtonGroup matchingRegex="reportsButton"/>
                 <enableButtonGroup matchingRegex="registerButton"/>
@@ -510,7 +510,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                 <translation featureText="Ontdek of u synesthesie heeft!" locale="nl"/>
                 <translation featureText="Entdecke ob du Syn\u00e4sthesie hast!" locale="de"/>
             </htmlText>
-            <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="..*">
+            <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="...*">
                 <conditionTrue>
                     <actionTokenButton featureText="Letters/Numbers - short&lt;br&gt;5-10 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Letters/Cijfers - kort&lt;br&gt;5-10 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -526,7 +526,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                     </actionTokenButton>         
                 </conditionFalse>
             </hasMetadataValue>
-            <hasMetadataValue fieldName="weekdays_result" matchingRegex="..*">
+            <hasMetadataValue fieldName="weekdays_result" matchingRegex="...*">
                 <conditionTrue>
                     <actionTokenButton featureText="Weekdays&lt;br&gt;5-10 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Dagen&lt;br&gt;5-10 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -542,7 +542,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                     </actionTokenButton>            
                 </conditionFalse>
             </hasMetadataValue>
-            <hasMetadataValue fieldName="months_result" matchingRegex="..*">
+            <hasMetadataValue fieldName="months_result" matchingRegex="...*">
                 <conditionTrue>
                     <actionTokenButton featureText="Months&lt;br&gt;5-10 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Maanden&lt;br&gt;5-10 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -568,7 +568,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                 <translation featureText="Doe dan net als andere mensen met synesthesie mee aan een onderzoek! Om u voor het onderzoek aan te melden en deel te kunnen nemen, moet u de volledige test doorlopen. Rond s.v.p. de test in één keer af." locale="nl"/>
                 <translation featureText="Folge deinen syn\u00e4sthetischen Mitmenschen in einer wissenschaftlichen Studie! Wenn du an unserer Studie teilnehmen und dich registrieren willst, musst du den ganzen Test durchlaufen. Bitte mache den ganzen Test in einem Mal." locale="de"/>
             </htmlText>
-            <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="..*">
+            <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
                 <conditionTrue>
                     <actionTokenButton featureText="Letters/Numbers - full test&lt;br&gt;20-30 minutes&lt;br&gt;COMPLETE" styleName="synquizMenuButton menuButton">
                         <translation featureText="Letters/Cijfers - volledige test&lt;br&gt;20-30 minuten&lt;br&gt;KLAAR" locale="nl"/>
@@ -807,7 +807,7 @@ reportScreenSCT=Geschwindigkeits - \u00dcbereinstimmungs Test
 reportScreenSCTaccuracy=Genauigkeit {0}%
 reportScreenSCTmeanreactionTime=Durchschnittliche Reaktionszeit {0} Sekunden +/- {1}
         -->
-        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="..*">
+        <hasMetadataValue fieldName="letters_numbers_full_result" matchingRegex="...*">
             <conditionTrue>
                 <targetFooterButton featureText="Register" target="metadataScreen" groupId="postAgreeButton">
                     <translation featureText="Registreren" locale="nl"/>
