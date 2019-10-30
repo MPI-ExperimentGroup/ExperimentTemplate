@@ -134,11 +134,11 @@ public abstract class LocalNotifications {
     }
 
     protected native void clearNotifications() /*-{
-        $wnd.cordova.plugins.notification.local.clearAll();
+        if($wnd.cordova) $wnd.cordova.plugins.notification.local.clearAll();
      }-*/;
 
     protected native void setNotificationInMinutes(final int notificationId, final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int minutes) /*-{
-        $wnd.cordova.plugins.notification.local.schedule({
+        if($wnd.cordova) $wnd.cordova.plugins.notification.local.schedule({
             id: notificationId,
             title: notificationTitle,
             text: notificationText,
@@ -150,7 +150,7 @@ public abstract class LocalNotifications {
     protected native void setDayNotification(final int notificationId, final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int yearInt, final int monthInt, final int dayInt, final int hourInt, final int minuteInt) /*-{
         var localNotifications = this;
         console.log("setDayNotification", yearInt, monthInt, dayInt, hourInt, minuteInt);
-        $wnd.cordova.plugins.notification.local.schedule({
+        if($wnd.cordova) $wnd.cordova.plugins.notification.local.schedule({
             id: notificationId,
             title: notificationTitle,
             text: notificationText,
@@ -179,6 +179,7 @@ public abstract class LocalNotifications {
             }
             });
         } else {
+            localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
             localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
         }
      }-*/;
