@@ -68,6 +68,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <allow-navigation href="data:*"/>
     <access origin="about:*" />
     <allow-navigation href="about:*" />
+    <access origin="gap:*" />
+    <allow-navigation href="gap:*" />
     <!--<allow-navigation href="file:///android_asset/www/opus-recorder/encoderWorker.min.wasm"/>-->
     <access origin="http://ems12.mpi.nl"/>
     <access origin="http://ems13.mpi.nl"/>
