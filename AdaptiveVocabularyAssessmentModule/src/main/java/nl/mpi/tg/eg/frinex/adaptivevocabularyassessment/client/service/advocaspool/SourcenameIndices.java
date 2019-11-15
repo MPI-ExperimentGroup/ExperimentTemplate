@@ -28,7 +28,15 @@ public class SourcenameIndices {
     public static final HashMap<String, CsvStringWrapper> STIMULI_FILES_INDEX;
     public static final HashMap<String, String> RESPONSES_INDEX;
     public static final HashMap<String, String> LANGUAGE_INDEX;
-
+    public static final HashMap<String, CsvStringWrapper> SHABLON_INDEX;
+    
+    static {
+        SHABLON_INDEX = new HashMap<String, CsvStringWrapper>();
+        SHABLON_INDEX.put("FastTrackShablonOrigin_NL", new FastTrackShablonOrigin());
+        SHABLON_INDEX.put("FineTuningShablonOrigin_NL", new FineTuningShablonOrigin());
+    }
+    
+   
     static {
         STIMULI_FILES_INDEX = new HashMap<String, CsvStringWrapper>();
         STIMULI_FILES_INDEX.put("NonWords_EN_2rounds_1", new NonWords_EN_2rounds_1());

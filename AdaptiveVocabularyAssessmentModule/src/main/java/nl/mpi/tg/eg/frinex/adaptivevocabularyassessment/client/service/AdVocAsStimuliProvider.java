@@ -34,6 +34,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.Bookkeepi
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.FastTrackShablonElement;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.FineTuningShablonElement;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.SourcenameIndices;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -57,6 +59,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
+    private ArrayList<FastTrackShablonElement> fastTrackSceletone;
+    private ArrayList<FineTuningShablonElement> fineTuningSceletone;
+    private ArrayList<AdVocAsStimulus> fastTrackSequence;
+    private ArrayList<ArrayList<AdVocAsStimulus>> fineTuningSequence;
 
     private LinkedHashMap<Long, Integer> percentageBandTable;
     private Random rnd;
@@ -86,13 +92,13 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 reader.parseNonWordsInputCSVString(this, this.nonwordsSource, this.wordsSource);
                 ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
                 ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+                this.fastTrackSceletone =  reader.parseFastTrackOriginString(this, "FastTrackShablonOrigin_NL", this.numberOfBands);
+                this.fineTuningSceletone =  reader.parseFineTuningOriginString(this, "FineTuningShablonOrigin_NL", this.numberOfBands);
 
-                Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
                 
-                // here where randomisation within the list of nonwords and words happened
-                // this randmisation is switched off for the current version of the experiment
-                //this.words = vocab.initialiseWords(rawWords);
-                //this.nonwords = vocab.initialiseNonwords(rawNonwords);
+                //Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
+                //this.words = vocab.initialiseWordsViaShablon(rawWords, fastTrackSceletone);
+                //this.nonwords = vocab.initialiseNonwordsViaShablon(rawNonwords, fineTuningSceletone);
                 
                 this.words = rawWords;
                 this.nonwords = rawNonwords;

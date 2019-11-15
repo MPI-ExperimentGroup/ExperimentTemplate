@@ -31,6 +31,7 @@ public class Vocabulary {
     private final int wordsPerBand;
 
     public Vocabulary(int numberOfBands, int wordsPerBand) {
+        
         this.numberOfBands = numberOfBands;
         this.wordsPerBand = wordsPerBand;
     }
