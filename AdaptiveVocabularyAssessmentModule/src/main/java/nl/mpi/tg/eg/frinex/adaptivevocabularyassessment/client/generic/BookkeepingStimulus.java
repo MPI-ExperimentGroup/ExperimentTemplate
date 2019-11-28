@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 
 /**
  *
@@ -31,7 +32,7 @@ import java.util.Set;
  *
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
-public class BookkeepingStimulus<A extends BandStimulus> {
+public class BookkeepingStimulus<A extends AbstractStimulus> {
 
     private final static String[] FLDS = {"stimulus", "userReaction", "correctness", "timeStamp"};
     private final A stimulus;

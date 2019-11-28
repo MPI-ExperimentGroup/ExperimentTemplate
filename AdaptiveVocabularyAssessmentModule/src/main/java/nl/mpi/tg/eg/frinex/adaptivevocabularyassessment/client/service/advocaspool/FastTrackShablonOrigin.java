@@ -27,7 +27,7 @@ public class FastTrackShablonOrigin extends CsvStringWrapper {
         this.CSV_STRING = "Band;Stimulus\n"
                 + "20;word\n"
                 + "21;word\n"
-                + "x;nonword\n"
+                + "x;nonword\n" 
                 + "22;word\n"
                 + "23;word\n"
                 + "24;word\n"

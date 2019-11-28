@@ -19,13 +19,14 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
-import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -33,25 +34,17 @@ import static org.junit.Assert.*;
  */
 public class BookkeepingStimulusTest {
 
-    public final BookkeepingStimulus<BandStimulus> instance;
-    public final BandStimulus stimulus;
+    public final BookkeepingStimulus<AdVocAsStimulus> instance;
+    public final AdVocAsStimulus stimulus;
 
     public BookkeepingStimulusTest() {
-        String uniqueId = "smoer_plus10db";
-        String label = "smoer";
+        String uniqueId = "rabarber_w";
+        String label = "rabarber";
 
-        this.stimulus = new BandStimulus(uniqueId, new Stimulus.Tag[0], label, "", 900, "aud", "vid", "img",
-                "a,b,c", "b,c", "plus10db", 10) {
-            @Override
-            public boolean isCorrect(String value) {
-                if (value == null) {
-                    return false;
-                }
-                return value.trim().equals("b") || value.trim().equals("c");
-            }
-        };
+        //AdVocAsStimulus(String uniqueId, String label, String ratingLabels, String correctResponses,  int bandNumber)
+        this.stimulus = new AdVocAsStimulus(uniqueId, label, "yes,no", "no", 10);
 
-        this.instance = new BookkeepingStimulus<BandStimulus>(stimulus);
+        this.instance = new BookkeepingStimulus<>(stimulus);
 
     }
 
@@ -77,7 +70,7 @@ public class BookkeepingStimulusTest {
     @Test
     public void testGetStimulus() {
         System.out.println("getStimulus");
-        BandStimulus result = instance.getStimulus();
+        AdVocAsStimulus result = instance.getStimulus();
         assertEquals(this.stimulus, result);
     }
 
@@ -86,11 +79,13 @@ public class BookkeepingStimulusTest {
      */
     @Test
     public void testGetSetReaction() {
-        System.out.println("getReaction");
+        System.out.println("getReaction, setReaction");
         String result = instance.getReaction();
         assertEquals(null, result);
+        
         this.instance.setReaction("false");
         assertEquals("false", instance.getReaction());
+        
         this.instance.setReaction("Disagree!");
         assertEquals("Disagree!", instance.getReaction());
     }
@@ -103,6 +98,7 @@ public class BookkeepingStimulusTest {
         System.out.println("getTimeStamp");
         long result = instance.getTimeStamp();
         assertEquals(0, result);
+        
         long now = System.currentTimeMillis();
         this.instance.setTimeStamp(now);
         assertEquals(now, this.instance.getTimeStamp());
@@ -113,11 +109,13 @@ public class BookkeepingStimulusTest {
      */
     @Test
     public void testGetSetCorrectness() {
-        System.out.println("getCorrectness");
+        System.out.println("getCorrectness, setCorrectness");
         Boolean result = instance.getCorrectness();
         assertEquals(null, result);
+        
         this.instance.setCorrectness(false);
         assertFalse(this.instance.getCorrectness());
+        
         this.instance.setCorrectness(true);
         assertTrue(this.instance.getCorrectness());
     }
@@ -128,7 +126,7 @@ public class BookkeepingStimulusTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        String expResult = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer_plus10db, userReaction=null, correctness=null, timeStamp=0}";
+        String expResult = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=rabarber_w, userReaction=null, correctness=null, timeStamp=0}";
         String result = this.instance.toString();
         assertEquals(expResult, result);
 
@@ -136,7 +134,7 @@ public class BookkeepingStimulusTest {
         this.instance.setTimeStamp(now);
         this.instance.setReaction("yes");
         this.instance.setCorrectness(false);
-        String expResult2 = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer_plus10db, userReaction=yes, correctness=false, timeStamp=" + now + "}";
+        String expResult2 = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=rabarber_w, userReaction=yes, correctness=false, timeStamp=" + now + "}";
         String result2 = this.instance.toString();
         assertEquals(expResult2, result2);
     }
@@ -146,24 +144,42 @@ public class BookkeepingStimulusTest {
      */
     @Test
     public void testToBookkeepingStimulusObject() throws Exception {
-        System.out.println("toObject");
+        System.out.println("testToBookkeepingStimulusObject");
         long now = System.currentTimeMillis();
-        LinkedHashMap<String, Object> inputMap = new LinkedHashMap<String, Object>();
+        LinkedHashMap<String, Object> inputMap = new LinkedHashMap<>();
         String[] flds = {"stimulus", "userReaction", "correctness", "timeStamp"};
         inputMap.put("fields", Arrays.asList(flds));
-        inputMap.put("stimulus", "smoer");
+        inputMap.put("stimulus", "rabarber_w");
         inputMap.put("userReaction", "yes");
         inputMap.put("correctness", false);
         inputMap.put("timeStamp", now);
 
-        LinkedHashMap<String, BandStimulus> map = new LinkedHashMap<String, BandStimulus>();
-        map.put("smoer", this.stimulus);
+        LinkedHashMap<String, AdVocAsStimulus> map = new LinkedHashMap<>();
+        map.put("rabarber_w", this.stimulus);
 
-        BookkeepingStimulus<BandStimulus> result = this.instance.toBookkeepingStimulusObject(inputMap, map);
+        BookkeepingStimulus<AdVocAsStimulus> result = this.instance.toBookkeepingStimulusObject(inputMap, map);
         assertEquals("yes", result.getReaction());
         assertFalse(result.getCorrectness());
         assertEquals(now, result.getTimeStamp());
         assertEquals(this.stimulus, result.getStimulus());
+    }
+
+  
+
+   
+    /**
+     * Test of toObject method, of class BookkeepingStimulus.
+     */
+    // TODO
+    @Ignore
+    @Test
+    public void testToObject() throws Exception {
+        System.out.println("toObject");
+        BookkeepingStimulus instance = null;
+        BookkeepingStimulus expResult = null;
+        
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
 }

@@ -31,11 +31,11 @@ public class FastTrackShablonElement {
         this.isWord = isWord;
     }
     
-    int getBandNumber(){
+    public int getBandNumber(){
         return this.bandNumber;
     }
     
-    boolean getIsWord(){
+    public boolean getIsWord(){
         return this.isWord;
     }
     

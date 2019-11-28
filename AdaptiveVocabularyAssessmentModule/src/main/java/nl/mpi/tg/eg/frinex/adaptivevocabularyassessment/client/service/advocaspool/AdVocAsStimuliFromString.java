@@ -85,15 +85,16 @@ public class AdVocAsStimuliFromString {
 
             boolean[] isWord = {true, true, true, true};
 
-            for (int i = 0; i < 4; i++) {
-                String stimulus = record.get("Position_" + i).trim();
+            for (int i = 1; i <= 4; i++) {
+                String stimulus = record.get("Position_" + i);
                 if (stimulus == null) {
                     throw new IOException("Position_" + i + " is undefined");
                 }
+                stimulus = stimulus.trim();
 
                 if (!stimulus.equals("word")) {
                     if (stimulus.equals("nonword")) {
-                        isWord[i] = false;
+                        isWord[i-1] = false;
                     } else {
                         throw new IOException("Position_" + i + " is worngly typed, netither word nor nonword");
                     }
@@ -114,9 +115,9 @@ public class AdVocAsStimuliFromString {
 
         String csvString = SourcenameIndices.STIMULI_FILES_INDEX.get(classNameWord).CSV_STRING;
 
-        this.words = new ArrayList<ArrayList<AdVocAsStimulus>>();
+        this.words = new ArrayList<>();
         for (int i = 0; i < numberOfBands; i++) {
-            this.words.add(new ArrayList<AdVocAsStimulus>());
+            this.words.add(new ArrayList<>());
         }
 
         CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
@@ -137,15 +138,9 @@ public class AdVocAsStimuliFromString {
                 throw new IOException(" Seplling is undefined");
             }
 
-            //long time = System.currentTimeMillis();
-            //String uniqueId = label+"_"+time;
+           
             String uniqueId = label;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerWord, bNumber) {
-                @Override
-                public boolean isCorrect(String value) {
-                    return provider.isCorrectResponse(this, value);
-                }
-            };
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerWord, bNumber); 
             this.words.get(bNumber - 1).add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }
@@ -158,7 +153,7 @@ public class AdVocAsStimuliFromString {
 
         String csvString = SourcenameIndices.STIMULI_FILES_INDEX.get(classNameNonWord).CSV_STRING;
 
-        this.nonwords = new ArrayList<AdVocAsStimulus>();
+        this.nonwords = new ArrayList<>();
 
         CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
         csvWrapper.readRecords(csvString);
@@ -174,12 +169,7 @@ public class AdVocAsStimuliFromString {
             //long time = System.currentTimeMillis();
             //String uniqueId = label+"_"+time;
             String uniqueId = label;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerNonWord, 0) {
-                @Override
-                public boolean isCorrect(String value) {
-                    return provider.isCorrectResponse(this, value);
-                }
-            };
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerNonWord, 0); 
             this.nonwords.add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }

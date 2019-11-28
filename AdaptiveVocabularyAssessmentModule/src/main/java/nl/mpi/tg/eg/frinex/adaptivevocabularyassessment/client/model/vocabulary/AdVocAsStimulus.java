@@ -17,20 +17,41 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
+import java.util.Arrays;
+import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 
 /**
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class AdVocAsStimulus extends BandStimulus {
+public class AdVocAsStimulus  extends AbstractStimulus {
+    
+    public final int bandIndex;
+    private final static String[] FLDS = {"uniqueId", "tags", "label", "code", "pauseMs", "audioPath", "videoPath", "imagePath", "ratingLabels", "correctResponses", "bandIndex", "bandLabel"};
+
 
     public AdVocAsStimulus(String uniqueId, String label, String ratingLabels, String correctResponses,  int bandNumber) {
-        super(uniqueId, new Tag[0], label, "", 0, "", "", "", ratingLabels, correctResponses, (new Integer(bandNumber)).toString(), bandNumber-1);
+        super(uniqueId, new Tag[0], label, "", 0, "", "", "", ratingLabels, correctResponses);
+        this.bandIndex = bandNumber-1;
     }
 
     public int getBandNumber() {
-        return Integer.parseInt(bandLabel);
+        return this.bandIndex+1;
     }
     
+  
+
+    @Override
+    public String toString() {
+        return this.getUniqueId();
+    }
+   
+    @Override 
+    public boolean isCorrect(String value){
+        String[] correctResps = this.getCorrectResponses().split(",");
+        boolean retVal = Arrays.asList(correctResps).contains(value);
+        return retVal;
+    }
+
 }
