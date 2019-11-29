@@ -20,11 +20,11 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.*;
 
-import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -456,7 +456,8 @@ public class AdVocAsStimuliProviderTest {
                 assertEquals(bandNumber, stimulus.getBandNumber());
             }
 
-            this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
+            //this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
+            stimulus.isCorrect(stimulus.getCorrectResponses());
             this.provider.hasNextStimulus(0); // here we analyse the correctenss of the previous step and update 
             this.provider.nextStimulus(0);
         }
@@ -473,7 +474,9 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(bandNumber, stimulus.getBandNumber());
         }
         String answer = stimulus.getBandNumber() > 0 ? this.answerNonWord : this.answerWord;
-        boolean correctness = this.provider.isCorrectResponse(stimulus, answer); // "pressing button" wrong
+        //boolean correctness = this.provider.isCorrectResponse(stimulus, answer); // "pressing button" wrong
+        boolean correctness = stimulus.isCorrect(answer);
+
         assertFalse(correctness);
         this.provider.hasNextStimulus(0); // here we analyse the correctenss of the previous step 
         this.provider.nextStimulus(0);
@@ -490,7 +493,8 @@ public class AdVocAsStimuliProviderTest {
                 assertEquals(bandNumber, stimulus.getBandNumber());
             }
 
-            this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
+            //this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
+            stimulus.isCorrect(stimulus.getCorrectResponses());
             this.provider.hasNextStimulus(0); // here we analyse the correctenss of the previous step a
             this.provider.nextStimulus(0);
         }
@@ -578,7 +582,8 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(stimulusIndex, this.provider.getCurrentStimulusIndex());
             AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
             String corrAnswer = stimulus.getCorrectResponses();
-            this.provider.isCorrectResponse(stimulus, corrAnswer); // like pressing button
+            //this.provider.isCorrectResponse(stimulus, corrAnswer); // like pressing button
+            stimulus.isCorrect(corrAnswer);
 
             // memoise previous correct band
             int previousLastCorrect = this.provider.getLastCorrrectFastTrackBand();
@@ -628,7 +633,10 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(0, this.provider.getFastTrackShablonIndex());
         assertEquals(20, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);
+
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);
+        AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(this.answerWord);
         assertTrue(eval);
 
         // shablon position, 2 is a word of band 21//
@@ -639,7 +647,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(1, this.provider.getFastTrackShablonIndex());
         assertEquals(21, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // mistake !
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // mistake !
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(this.answerNonWord);
         assertFalse(eval);
 
         // corrector,  must be a word of band 21 //
@@ -650,7 +660,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(1, this.provider.getFastTrackShablonIndex());
         assertEquals(21, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correcting
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correcting
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(this.answerWord);
         assertTrue(eval);
 
         // shablon position 3 (normal flow) which is a non-word
@@ -661,7 +673,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(2, this.provider.getFastTrackShablonIndex());
         assertEquals(0, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // correct answer normal flow
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // correct answer normal flow
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(this.answerNonWord);
         assertTrue(eval);
 
         this.provider.hasNextStimulus(0);
@@ -677,9 +691,10 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(stimulusIndex, this.provider.getCurrentStimulusIndex());
             assertEquals(shablonPosition, this.provider.getFastTrackShablonIndex());
 
-            AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+            stimulus = this.provider.getCurrentStimulus();
             String corrAnswer = stimulus.getCorrectResponses();
-            this.provider.isCorrectResponse(stimulus, corrAnswer); // "pressing button" 
+            //this.provider.isCorrectResponse(stimulus, corrAnswer); // "pressing button" 
+            stimulus.isCorrect(corrAnswer);
 
             // memoise previous last correct band
             int previousCorrectBand = this.provider.getLastCorrrectFastTrackBand();
@@ -765,7 +780,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(0, this.provider.getFastTrackShablonIndex());
         assertEquals(20, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);
+        AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
 
         // shablon position, 2 is a word of band 21//
@@ -776,7 +793,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(1, this.provider.getFastTrackShablonIndex());
         assertEquals(21, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // mistake !
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // mistake !
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerNonWord);
         assertFalse(eval);
 
         // corrector,  must be again a word of band 21 //
@@ -787,7 +806,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(1, this.provider.getFastTrackShablonIndex());
         assertEquals(21, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // again wrong!
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // again wrong!
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerNonWord);
         assertFalse(eval);
 
         this.provider.hasNextStimulus(0); // has next stimulus analyses the previous response to provide a switch; it also put the firs fine-tuning stimulus on records.
@@ -921,7 +942,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(0, this.provider.getFastTrackShablonIndex());
         assertEquals(20, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // mistake
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // mistake
+        AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerNonWord);
         assertFalse(eval);
 
         // shablon position, 2 is a word of band 20//
@@ -932,7 +955,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(0, this.provider.getFastTrackShablonIndex());
         assertEquals(20, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // again mistake !
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // again mistake !
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerNonWord);
         assertFalse(eval);
 
         this.provider.hasNextStimulus(0); // has next stimulus analyses the previous response to provide a switch; it also put the firs fine-tuning stimulus on records.
@@ -1042,7 +1067,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(0, this.provider.getFastTrackShablonIndex());
         assertEquals(20, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);  // correct
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);  // correct
+        AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
 
         // shablon index 1 is a word of band 21//
@@ -1053,7 +1080,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(1, this.provider.getFastTrackShablonIndex());
         assertEquals(21, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
 
         // shablon index 2 is a nonword  //
@@ -1064,7 +1093,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(2, this.provider.getFastTrackShablonIndex());
         assertEquals(0, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // mistake on a nonword
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // mistake on a nonword
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertFalse(eval);
 
         // shablon index 3 is a word
@@ -1075,7 +1106,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(3, this.provider.getFastTrackShablonIndex()); // shablon index move forward 
         assertEquals(22, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
 
         // shablon index 4, is a word of 23
@@ -1086,7 +1119,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(4, this.provider.getFastTrackShablonIndex());
         assertEquals(23, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
         assertTrue(this.provider.getIsFastTrackIsStillOn());
 
@@ -1104,9 +1139,10 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(stimulusIndex, this.provider.getCurrentStimulusIndex());
             assertEquals(shablonPosition, this.provider.getFastTrackShablonIndex());
 
-            AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+            stimulus = this.provider.getCurrentStimulus();
             String corrAnswer = stimulus.getCorrectResponses();
-            this.provider.isCorrectResponse(stimulus, corrAnswer); // "pressing button" 
+            //this.provider.isCorrectResponse(stimulus, corrAnswer); // "pressing button"
+            stimulus.isCorrect(corrAnswer);
 
             // memoise previous last correct band
             int previousCorrectBand = this.provider.getLastCorrrectFastTrackBand();
@@ -1164,7 +1200,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(0, this.provider.getFastTrackShablonIndex());
         assertEquals(20, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);  // correct
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord);  // correct
+        AdVocAsStimulus stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
 
         // shablon index 1 is a word of band 21//
@@ -1175,7 +1213,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(1, this.provider.getFastTrackShablonIndex());
         assertEquals(21, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // correct
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertTrue(eval);
 
         // shablon index 2 is a nonword  //
@@ -1186,7 +1226,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(2, this.provider.getFastTrackShablonIndex());
         assertEquals(0, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // mistake on a nonword
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerWord); // mistake on a nonword
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerWord);
         assertFalse(eval);
 
         // corrector a word of band 22
@@ -1197,7 +1239,9 @@ public class AdVocAsStimuliProviderTest {
         this.provider.nextStimulus(0);
         assertEquals(3, this.provider.getFastTrackShablonIndex()); // shablon index move forward 
         assertEquals(22, this.provider.getCurrentStimulus().getBandNumber());
-        eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // again mistake
+        //eval = this.provider.isCorrectResponse(this.provider.getCurrentStimulus(), this.answerNonWord); // again mistake
+        stimulus = this.provider.getCurrentStimulus();
+        eval = stimulus.isCorrect(answerNonWord);
         assertFalse(eval);
 
         this.provider.hasNextStimulus(0); // has next stimulus analyses the previous response to provide a switch; it also put the firs fine-tuning stimulus on records.
@@ -1318,6 +1362,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of isTimeOut method, of class AdVocAsStimuliProvider.
      */
+    @Ignore
     @Test
     public void testIsTimeOut_FineTuning_everythingIsCorrect() throws InterruptedException {
         System.out.println("isTimeOut");
@@ -1347,10 +1392,11 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(31, stimulus.getBandNumber());
         }
 
-        this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
+        //this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
+        stimulus.isCorrect(stimulus.getCorrectResponses());
         this.provider.hasNextStimulus(0); // here we analyse the correctenss of the previous step or define timeOuts
         this.provider.nextStimulus(0);
-        
+
         fineTuningToBecontinued = this.provider.getFTtoBeContinued();
         assertFalse(fineTuningToBecontinued);
         assertTrue(this.provider.getIsTimeOut());
@@ -1364,64 +1410,140 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getStimuliReport method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testGetStimuliReport() {
         System.out.println("getStimuliReport");
-        String reportType = "";
-        AdVocAsStimuliProvider instance = null;
-        Map<String, String> expResult = null;
-        Map<String, String> result = instance.getStimuliReport(reportType);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        this.checkFastTrackToBeContinuedWrongOnNonWordNotCorrected();
+        this.checkFineTuningLoop(21, 1, 30);
+
+        Map<String, String> result = this.provider.getStimuliReport("user_summary");
+        Set<String> keys = result.keySet();
+        // header (1 row) + data (1 row)
+        assertTrue(keys.size() == 2);
+        for (String key : keys) {
+            String row = result.get(key);
+            int index = row.indexOf(";");
+            assertTrue(index > -1);
+        }
+        String[] header = result.get("row000000").split(";");
+        assertEquals("Score", header[0]);
+        assertEquals( "BestFastTrack", header[1]);
+        assertEquals("Cycle2oscillation", header[2]);
+        String[] data = result.get("row000001").split(";");
+        assertEquals("30", data[0]);
+        assertEquals("21", data[1]);
+        assertEquals("true", data[2]);
+
+        result = this.provider.getStimuliReport("fast_track");
+        keys = result.keySet();
+        // header (1 row) + data (4 rows, correct, correct, imcorrect, incorrect)
+        assertTrue(keys.size() == 5);
+        for (String key : keys) {
+            String row = result.get(key);
+            int index = row.indexOf(";");
+            assertTrue(index > -1);
+        }
+        
+        header = result.get("row000000").split(";");
+        assertEquals("Spelling", header[0]);
+        assertEquals( "BandNumber", header[1]);
+        assertEquals("UserAnswer", header[2]);
+        
+        data = result.get("row000001").split(";");
+        assertEquals("parfum", data[0]);
+        assertEquals("20", data[1]);
+        assertEquals("JA, ik ken dit woord", data[2]);
+        
+        data = result.get("row000002").split(";");
+        assertEquals("evenveel", data[0]);
+        assertEquals("21", data[1]);
+        assertEquals("JA, ik ken dit woord", data[2]);
+        
+        data = result.get("row000003").split(";");
+        assertEquals("kruffen", data[0]);
+        assertEquals("0", data[1]);
+        assertEquals("JA, ik ken dit woord", data[2]);
+        
+        data = result.get("row000004").split(";");
+        assertEquals("wederzien", data[0]);
+        assertEquals("22", data[1]);
+        assertEquals("NEE, ik ken dit woord niet", data[2]);
+
+        result = this.provider.getStimuliReport("fine_tuning");
+        keys = result.keySet();
+        // header + data
+        assertTrue(keys.size() >= 1);
+        for (String key : keys) {
+            String row = result.get(key);
+            int index = row.indexOf(";");
+            assertTrue(index > -1);
+        }
     }
 
     /**
      * Test of getPercentageBandTable method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testGetPercentageBandTable() {
         System.out.println("getPercentageBandTable");
-        AdVocAsStimuliProvider instance = null;
-        LinkedHashMap<Long, Integer> expResult = null;
-        LinkedHashMap<Long, Integer> result = instance.getPercentageBandTable();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.provider.initialiseStimuliState("");
+        LinkedHashMap<Long, Integer> table = provider.getPercentageBandTable();
+        assertEquals(11, table.size());
+
+        Long[] keys = table.keySet().toArray(new Long[0]);
+        assertTrue(1 == keys[0]);
+        assertTrue(10 == keys[1]);
+        assertTrue(20 == keys[2]);
+        assertTrue(30 == keys[3]);
+        assertTrue(40 == keys[4]);
+        assertTrue(50 == keys[5]);
+        assertTrue(60 == keys[6]);
+        assertTrue(70 == keys[7]);
+        assertTrue(80 == keys[8]);
+        assertTrue(90 == keys[9]);
+        assertTrue(99 == keys[10]);
+
+        assertEquals(1, table.get(keys[0]).intValue());
+        assertEquals(5, table.get(keys[1]).intValue());
+        assertEquals(11, table.get(keys[2]).intValue());
+        assertEquals(16, table.get(keys[3]).intValue());
+        assertEquals(22, table.get(keys[4]).intValue());
+        assertEquals(27, table.get(keys[5]).intValue());
+        assertEquals(32, table.get(keys[6]).intValue());
+        assertEquals(38, table.get(keys[7]).intValue());
+        assertEquals(43, table.get(keys[8]).intValue());
+        assertEquals(49, table.get(keys[9]).intValue());
+        assertEquals(53, table.get(keys[10]).intValue());
     }
 
     /**
      * Test of bandNumberIntoPercentage method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testBandNumberIntoPercentage() {
-        System.out.println("bandNumberIntoPercentage");
-        int bandNumber = 0;
-        AdVocAsStimuliProvider instance = null;
-        long expResult = 0L;
-        long result = instance.bandNumberIntoPercentage(bandNumber);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.provider.initialiseStimuliState("");
+        assertEquals(0L, provider.bandNumberIntoPercentage(0));
+
+        assertEquals(100L, provider.bandNumberIntoPercentage(54));
+        assertEquals(50L, provider.bandNumberIntoPercentage(27));
+        assertEquals(33L, provider.bandNumberIntoPercentage(18));
     }
 
     /**
      * Test of percentageIntoBandNumber method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testPercentageIntoBandNumber() {
         System.out.println("percentageIntoBandNumber");
-        long percentage = 0L;
-        AdVocAsStimuliProvider instance = null;
-        int expResult = 0;
-        int result = instance.percentageIntoBandNumber(percentage);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(0, provider.percentageIntoBandNumber(0));
+        assertEquals(54, provider.percentageIntoBandNumber(100));
+        assertEquals(53, provider.percentageIntoBandNumber(99));
+        assertEquals(27, provider.percentageIntoBandNumber(50));
+        assertEquals(26, provider.percentageIntoBandNumber(49));
+        assertEquals(5, provider.percentageIntoBandNumber(10));
+        assertEquals(1, provider.percentageIntoBandNumber(1));
+        assertEquals(1, provider.percentageIntoBandNumber(2));
     }
 
     /**
@@ -1441,62 +1563,86 @@ public class AdVocAsStimuliProviderTest {
      * Test of toBeContinuedLoopAndLooserChecker method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testToBeContinuedLoopAndLooserChecker() {
         System.out.println("toBeContinuedLoopAndLooserChecker");
-        AdVocAsStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.toBeContinuedLoopAndLooserChecker();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.provider.initialiseStimuliState("");
+        assertTrue(provider.toBeContinuedLoopAndLooserChecker());
     }
 
     /**
      * Test of detectLoop method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testDetectLoop() {
+        this.provider.initialiseStimuliState("");
         System.out.println("detectLoop");
-        Integer[] arr = null;
-        boolean expResult = false;
-        boolean result = AdVocAsStimuliProvider.detectLoop(arr);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Integer[] arr1 = {42, 43, 42, 43, 42, 43, 42};
+        boolean result1 = AdVocAsStimuliProvider.detectLoop(arr1);
+        assertEquals(true, result1);
+        Integer[] arr2 = {42, 43, 42, 43, 42, 43, 45};
+        boolean result2 = AdVocAsStimuliProvider.detectLoop(arr2);
+        assertEquals(false, result2);
+        Integer[] arr3 = {43, 42, 43, 42, 43, 42, 45, 42};
+        boolean result3 = AdVocAsStimuliProvider.detectLoop(arr3);
+        assertEquals(false, result3);
+
+        Integer[] arr4 = {8, 6, 8, 6, 8};
+        boolean result4 = AdVocAsStimuliProvider.detectLoop(arr4);
+        assertTrue(result4);
+
+        Integer[] arr5 = {9, 8, 9, 8, 9};
+        boolean result5 = AdVocAsStimuliProvider.detectLoop(arr5);
+        assertTrue(result5);
     }
 
     /**
      * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testShiftFIFO() {
         System.out.println("shiftFIFO");
-        Integer[] fifo = null;
-        int newelement = 0;
+        this.provider.initialiseStimuliState("");
+        Integer[] fifo = {0, 1, 2, 3, 4, 5, 6};
+        int newelement = 7;
         AdVocAsStimuliProvider.shiftFIFO(fifo, newelement);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (Integer i = 0; i < 7; i++) {
+            assertEquals(new Integer(i + 1), fifo[i]);
+        }
     }
 
     /**
      * Test of mostOftenVisitedBandIndex method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testMostOftenVisitedBandIndex() {
         System.out.println("mostOftenVisitedBandIndex");
-        Integer[] bandVisitCounter = null;
-        int controlIndex = 0;
-        int expResult = 0;
-        int result = AdVocAsStimuliProvider.mostOftenVisitedBandIndex(bandVisitCounter, controlIndex);
+        this.provider.initialiseStimuliState("");
+        Integer[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
+        // indices {1,3,4,5}
+        // ind = 1, indSym = 2
+        int currentIndex1 = 2; // at 2
+        int bandIndex1 = this.provider.mostOftenVisitedBandIndex(visitCounter, currentIndex1);
+        assertEquals(3, bandIndex1);
+
+        int currentIndex2 = 3; // at 3
+        int bandIndex2 = this.provider.mostOftenVisitedBandIndex(visitCounter, currentIndex2);
+        assertEquals(3, bandIndex2);
+    }
+    
+    @Test
+    public void testGetStringSummaryMethod(){
+        this.provider.initialiseStimuliState("");
+
+        String startRow = "";
+        String endRow = "\n";
+        String startColumn = "";
+        String endColumn = ";";
+        String result = this.provider.getStringSummary(startRow, endRow, startColumn, endColumn);
+        String expResult = "Score;BestFastTrack;Cycle2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n1;NA;false;true;false;false;\n";
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**

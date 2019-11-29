@@ -685,13 +685,13 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         return returnMap;
     }
 
-    private String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
+    public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("Score").append(endColumn);
         stringBuilder.append(startColumn).append("BestFastTrack").append(endColumn);
-        stringBuilder.append(startColumn).append("Cycel2oscillation").append(endColumn);
+        stringBuilder.append(startColumn).append("Cycle2oscillation").append(endColumn);
         stringBuilder.append(startColumn).append("EnoughFineTuningStimuli").append(endColumn);
         stringBuilder.append(startColumn).append("Champion").append(endColumn);
         stringBuilder.append(startColumn).append("Looser").append(endColumn);
@@ -701,13 +701,13 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         }
         stringBuilder.append(endRow);
         stringBuilder.append(startRow);
-        String bandLabelScore = String.valueOf(this.bandIndexScore + 1);
-        stringBuilder.append(startColumn).append(bandLabelScore).append(endColumn);
-        String bandLabelFastTrack = String.valueOf(this.lastCorrectBandFastTrack);
-        if (Integer.parseInt(bandLabelFastTrack) < this.startBand) {
-            bandLabelFastTrack = "NA";
+        String bandNumberScore = String.valueOf(this.getBandScore());
+        stringBuilder.append(startColumn).append(bandNumberScore).append(endColumn);
+        String bandNumberFastTrack = String.valueOf(this.lastCorrectBandFastTrack);
+        if (Integer.parseInt(bandNumberFastTrack) < this.startBand) {
+            bandNumberFastTrack = "NA";
         }
-        stringBuilder.append(startColumn).append(bandLabelFastTrack).append(endColumn);
+        stringBuilder.append(startColumn).append(bandNumberFastTrack).append(endColumn);
 
         stringBuilder.append(startColumn).append(this.cycle2).append(endColumn);
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
@@ -790,8 +790,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             System.out.println("Erroenous input: neither word nor nonword; something went terrible wrong.");
             return false;
         }
-
-        return stimulus.isCorrect(stimulusResponseProcessed);
+        String correctResponse = stimulus.getCorrectResponses();
+        return stimulusResponseProcessed.equals(correctResponse);
     }
 
     public void recycleUnusedStimuli() {
@@ -1180,9 +1180,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     }
 
     private LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> generateWordNonWordSequences(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
-        LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> retVal = new LinkedHashMap<>();
-        retVal.put("words", new ArrayList<>());
-        retVal.put("nonwords", new ArrayList<>());
+        LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> retVal = new LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>>();
+        retVal.put("words", new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>());
+        retVal.put("nonwords", new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>());
 
         for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
             if (this.wordsResponse.equals(bStimulus.getStimulus().getCorrectResponses())) {

@@ -115,9 +115,9 @@ public class AdVocAsStimuliFromString {
 
         String csvString = SourcenameIndices.STIMULI_FILES_INDEX.get(classNameWord).CSV_STRING;
 
-        this.words = new ArrayList<>();
+        this.words = new ArrayList<ArrayList<AdVocAsStimulus>>();
         for (int i = 0; i < numberOfBands; i++) {
-            this.words.add(new ArrayList<>());
+            this.words.add(new ArrayList<AdVocAsStimulus>());
         }
 
         CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
@@ -140,7 +140,12 @@ public class AdVocAsStimuliFromString {
 
            
             String uniqueId = label;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerWord, bNumber); 
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerWord, bNumber){
+                @Override 
+                public boolean isCorrect(String value) {
+                    return provider.isCorrectResponse(this, value);
+                }
+            }; 
             this.words.get(bNumber - 1).add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }
@@ -153,7 +158,7 @@ public class AdVocAsStimuliFromString {
 
         String csvString = SourcenameIndices.STIMULI_FILES_INDEX.get(classNameNonWord).CSV_STRING;
 
-        this.nonwords = new ArrayList<>();
+        this.nonwords = new ArrayList<AdVocAsStimulus>();
 
         CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
         csvWrapper.readRecords(csvString);
@@ -169,7 +174,12 @@ public class AdVocAsStimuliFromString {
             //long time = System.currentTimeMillis();
             //String uniqueId = label+"_"+time;
             String uniqueId = label;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerNonWord, 0); 
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId, label, answerNonWord + "," + answerWord, answerNonWord, 0){
+                @Override 
+                public boolean isCorrect(String value) {
+                    return provider.isCorrectResponse(this, value);
+                }
+            }; 
             this.nonwords.add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }
