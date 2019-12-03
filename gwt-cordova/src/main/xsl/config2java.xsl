@@ -817,15 +817,15 @@ or local-name() eq 'ratingCheckbox'
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
         <xsl:if test="local-name() eq 'showStimulusGrid'
-        or local-name() eq 'matchingStimulusGrid'
-">
+                    or local-name() eq 'matchingStimulusGrid'
+                    ">
             <xsl:text>, stimulusProvider</xsl:text>
         </xsl:if>
         <xsl:if test="local-name() eq 'stimulusHasRatingOptions'
-or local-name() eq 'stimulusHasResponse'
-or local-name() eq 'showStimulusGrid'
-or local-name() eq 'matchingStimulusGrid'
-">
+                    or local-name() eq 'stimulusHasResponse'
+                    or local-name() eq 'showStimulusGrid'
+                    or local-name() eq 'matchingStimulusGrid'
+                    ">
             <xsl:text>, currentStimulus</xsl:text>
         </xsl:if>
         <xsl:apply-templates select="conditionTrue" />
@@ -836,7 +836,7 @@ or local-name() eq 'matchingStimulusGrid'
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:value-of select="if(@matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
-        <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />
+        <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else if(local-name() eq 'matchingStimulusGrid') then ', false' else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(', ', @maxWidth) else ''" />
