@@ -2281,12 +2281,12 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <withStimuli eventTag="eventTag" randomise="true">
+        <withStimuli eventTag="eventTag">
             <beforeStimulus>
                 <plainText featureText="plainText in beforeStimulus"/>
             </beforeStimulus>
             <eachStimulus>
-                <withMatchingStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+                <withMatchingStimulus eventTag="eventTag" matchingRegex="matchingRegex">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -2385,7 +2385,7 @@
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
-                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                <matchingStimulusGrid matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2650,9 +2650,9 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </withStimuli>
-        <loadStimulus eventTag="eventTag" randomise="true">
+        <loadStimulus eventTag="eventTag">
             <hasMoreStimulus>
-                <withMatchingStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+                <withMatchingStimulus eventTag="eventTag" matchingRegex="matchingRegex">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -2751,7 +2751,7 @@
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
-                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                <matchingStimulusGrid matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -3016,9 +3016,9 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <loadSdCardStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+        <loadSdCardStimulus eventTag="eventTag" matchingRegex="matchingRegex">
             <hasMoreStimulus>
-                <withMatchingStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+                <withMatchingStimulus eventTag="eventTag" matchingRegex="matchingRegex">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -3117,7 +3117,7 @@
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
-                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                <matchingStimulusGrid matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>

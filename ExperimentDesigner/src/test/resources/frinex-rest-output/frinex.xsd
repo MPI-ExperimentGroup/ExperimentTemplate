@@ -553,7 +553,7 @@
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string" use="required"/>
+<xs:attribute name="randomise" type="xs:string"/>
 <xs:attribute name="repeatCount" type="xs:string"/>
 <xs:attribute name="repeatRandomWindow" type="xs:string"/>
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
@@ -569,13 +569,13 @@
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string" use="required"/>
+<xs:attribute name="randomise" type="xs:string"/>
 <xs:attribute name="repeatCount" type="xs:string"/>
 <xs:attribute name="repeatRandomWindow" type="xs:string"/>
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
 <xs:attribute name="class" type="xs:string"/>
 <xs:anyAttribute  processContents="lax"/>
-<xs:assert test="(@class) or (not(@class)  and @eventTag and @randomise)"/>
+<xs:assert test="(@class) or (not(@class)  and @eventTag)"/>
 </xs:complexType>
 <xs:complexType name="withMatchingStimulusType">
 <xs:all>
@@ -584,7 +584,7 @@
 </xs:all>
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string" use="required"/>
+<xs:attribute name="randomise" type="xs:string"/>
 <xs:attribute name="repeatCount" type="xs:string"/>
 <xs:attribute name="repeatRandomWindow" type="xs:string"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
@@ -603,7 +603,7 @@
 <xs:attribute name="excludeRegex" type="xs:string"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 <xs:attribute name="replacementRegex" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string" use="required"/>
+<xs:attribute name="randomise" type="xs:string"/>
 <xs:attribute name="repeatCount" type="xs:string"/>
 <xs:attribute name="repeatRandomWindow" type="xs:string"/>
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
@@ -3043,7 +3043,7 @@
 <xs:attribute name="animate" type="xs:string"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string" use="required"/>
+<xs:attribute name="randomise" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="pauseType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
