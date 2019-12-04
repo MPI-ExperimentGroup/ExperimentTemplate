@@ -26,6 +26,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 //import com.google.gwt.event.dom.client.DragStartEvent;
 //import com.google.gwt.event.dom.client.DragStartHandler;
 import com.google.gwt.user.client.Window;
@@ -456,6 +457,19 @@ public class ComplexView extends SimpleView {
         if (nextButton.getValue()) {
             nextButton.addStyleName("optionButtonActivated");
         }
+//        nextButton.addClickHandler(new ClickHandler() {
+//            @Override
+//            public void onClick(ClickEvent event) {
+//                nextButton.setValue(!nextButton.getValue());
+//            }
+//        });
+        Event.sinkEvents(nextButton.getElement(), Event.ONCLICK);
+        Event.setEventListener(nextButton.getElement(), new EventListener() {
+            @Override
+            public void onBrowserEvent(Event event) {
+                nextButton.setValue(!nextButton.getValue());
+            }
+        });
         return configureButton(nextButton, presenterListener);
     }
 
@@ -465,6 +479,13 @@ public class ComplexView extends SimpleView {
         if (nextButton.getValue()) {
             nextButton.addStyleName("optionButtonActivated");
         }
+        Event.sinkEvents(nextButton.getElement(), Event.ONCLICK);
+        Event.setEventListener(nextButton.getElement(), new EventListener() {
+            @Override
+            public void onBrowserEvent(Event event) {
+                nextButton.setValue(!nextButton.getValue());
+            }
+        });
         return configureButton(nextButton, presenterListener);
     }
 
