@@ -670,6 +670,11 @@ table.stimulusContainerTab {
     width: 100%;
     white-space: nowrap;
 }
+
+.gwt-RadioButton.optionButton {
+    white-space: nowrap;
+}
+
 /*.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
     background:lightgrey;
     border: none;
