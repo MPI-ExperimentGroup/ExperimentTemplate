@@ -397,8 +397,8 @@
                 <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -763,8 +763,8 @@
                 <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -1129,8 +1129,8 @@
                 <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
