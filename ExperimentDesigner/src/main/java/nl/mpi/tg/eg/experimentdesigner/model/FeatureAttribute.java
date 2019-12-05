@@ -241,7 +241,7 @@ public enum FeatureAttribute {
     alternativeChoice,
     offset,
     msToNext(false),
-    groupId(true),
+    groupId("This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.", true, AttributeType.xsString),
     mediaId(/*true*/), listenerId, threshold, maximum, minimum, average, ranges(true),
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
