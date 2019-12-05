@@ -409,9 +409,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>,</xsl:text>
             <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
             <xsl:text>,</xsl:text>
-            <xsl:value-of select="if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null'" />
-            <xsl:text>,</xsl:text>
             <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null'" />
         </xsl:if>
         <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
         <xsl:text>);
