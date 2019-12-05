@@ -915,9 +915,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusFreeTextList.add(metadataFieldWidget);
     }
 
-    protected void stimulusFreeText(final Stimulus currentStimulus, String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName, final int dataChannel) {
+    protected void stimulusFreeText(final Stimulus currentStimulus, String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName, final String buttonGroup, final int dataChannel) {
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-        final String postName = "freeText";
+        final String postName = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : "freeText";
         final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
         StimulusFreeText stimulusFreeText = timedStimulusView.addStimulusFreeText(currentStimulus, postName, validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
@@ -1323,7 +1323,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     private void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
         final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
-        final String stimulusRatingType = (allowMultiple) ? "stimulusRatingCheckbox" : "stimulusRatingRadio";
+        final String stimulusRatingType = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : (allowMultiple) ? "stimulusRatingCheckbox" : "stimulusRatingRadio";
         final List<StimulusButton> ratingButtons = new ArrayList<>();
         if (ratingLabels != null) {
             final String[] splitRatingLabels = ratingLabels.split(",");
