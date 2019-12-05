@@ -393,7 +393,7 @@
                 </ratingButton>
                 <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -759,7 +759,7 @@
                 </ratingButton>
                 <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -1125,7 +1125,7 @@
                 </ratingButton>
                 <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
-                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>

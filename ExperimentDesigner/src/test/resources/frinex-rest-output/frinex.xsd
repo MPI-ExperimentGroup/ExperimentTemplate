@@ -1799,6 +1799,7 @@
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="inputErrorMessage" type="xs:string" use="required"/>
+<xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="stimulusRatingButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
