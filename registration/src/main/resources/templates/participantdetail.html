@@ -222,11 +222,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <!--<th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=userId'">UserId</a></th>-->
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=screenName'">ScreenName</a></th>
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=dataChannel'">DataChannel</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=responseGroup'">ResponseGroup</a></th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">StimulusId</a></th>
 
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=response'">response</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=response'">Response</a></th>
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=isCorrect'">isCorrect</a></th>
                     <th>
                         <span class="balloontext">Games Played</span>
@@ -276,6 +277,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <!--<td th:text="${prod.experimentName}">experimentName</td>-->
                     <td th:text="${prod.screenName}">screenName</td>
                     <td th:text="${prod.dataChannel}">dataChannel</td>
+                    <td th:text="${prod.responseGroup}">responseGroup</td>
                     <td th:text="${prod.stimulusId}">stimulusId</td>
                     <td th:text="${prod.response}">response</td>
                     <td th:text="${prod.isCorrect}">isCorrect</td>
