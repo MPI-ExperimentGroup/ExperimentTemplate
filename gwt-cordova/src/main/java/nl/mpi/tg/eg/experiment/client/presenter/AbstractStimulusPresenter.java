@@ -815,14 +815,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         userResults.getUserData().clearCurrentScore();
         localStorage.storeUserScore(userResults);
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, null, null, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, duration.elapsedMillis());
     }
 
     protected void scoreIncrement(final Stimulus currentStimulus, final int dataChannel, final int isCorrect) {
         userResults.getUserData().addPotentialScore(isCorrect);
         localStorage.storeUserScore(userResults);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, null, null, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "scoreIncrement", currentStimulus, null, null, duration.elapsedMillis());
     }
 
     protected void scoreLabel() {
@@ -1284,7 +1284,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     userResults.getUserData().addPotentialScore(correctness);
                     isCorrect = correctness;
                 }
-                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, presenterListener.getLabel(), isCorrect, duration.elapsedMillis());
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, duration.elapsedMillis());
                 presenterListener.eventFired(button, shotEventListner);
             }
 
@@ -1500,7 +1500,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             userResults.getUserData().addPotentialScore(correctness);
                             isCorrect = correctness;
                         }
-                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
+                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "ratingButton", currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
                         timedStimulusListener.postLoadTimerFired();
                     }
 
@@ -1959,7 +1959,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 userResults.getUserData().addPotentialScore(correctness);
                 isCorrect = correctness;
             }
-            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, duration.elapsedMillis());
+            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, duration.elapsedMillis());
         }
         return true;
     }
@@ -2125,7 +2125,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 isCorrect = correctness;
             }
         }
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
     }
 
     protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
