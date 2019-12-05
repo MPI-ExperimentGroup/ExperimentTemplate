@@ -43,6 +43,7 @@ public class StimulusResponse {
     private String experimentName;
     private String screenName;
     private Integer dataChannel;
+    private String responseGroup;
     private String stimulusId;
     @Column(length = 1024)
     private String response;
@@ -85,6 +86,10 @@ public class StimulusResponse {
 
     public Integer getDataChannel() {
         return dataChannel;
+    }
+
+    public String getResponseGroup() {
+        return responseGroup;
     }
 
     public String getStimulusId() {
@@ -166,6 +171,7 @@ public class StimulusResponse {
         hash = 47 * hash + Objects.hashCode(this.experimentName);
         hash = 47 * hash + Objects.hashCode(this.screenName);
         hash = 47 * hash + Objects.hashCode(this.dataChannel);
+        hash = 47 * hash + Objects.hashCode(this.responseGroup);
         hash = 47 * hash + Objects.hashCode(this.stimulusId);
         hash = 47 * hash + Objects.hashCode(this.response);
         hash = 47 * hash + Objects.hashCode(this.isCorrect);
@@ -241,6 +247,9 @@ public class StimulusResponse {
             return false;
         }
         if (!Objects.equals(this.screenName, other.screenName)) {
+            return false;
+        }
+        if (!Objects.equals(this.responseGroup, other.responseGroup)) {
             return false;
         }
         if (!Objects.equals(this.stimulusId, other.stimulusId)) {
