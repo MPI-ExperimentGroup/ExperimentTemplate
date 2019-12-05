@@ -161,12 +161,13 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
     }
 
-    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, Stimulus stimulus, String response, Boolean isCorrect, int eventMs) {
+    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, final String responseGroup, Stimulus stimulus, String response, Boolean isCorrect, int eventMs) {
         submitData(ServiceEndpoint.stimulusResponse, userData.getUserId(), "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userData.getUserId().toString()) + ",\n"
                 + "\"screenName\": " + jsonEscape(screenName) + ",\n"
                 + "\"dataChannel\": " + dataChannel + ",\n"
+                + "\"responseGroup\": " + jsonEscape(responseGroup) + ",\n"
                 + "\"stimulusId\": " + ((stimulus != null) ? jsonEscape(stimulus.getUniqueId()) : "\"\"") + ",\n"
                 + "\"response\": " + jsonEscape(response) + ",\n"
                 + "\"isCorrect\": " + ((isCorrect != null) ? isCorrect.toString() : "null") + ",\n"
