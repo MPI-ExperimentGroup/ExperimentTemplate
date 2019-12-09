@@ -253,8 +253,22 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
-        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName"/>
-        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
+        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
@@ -1484,8 +1498,22 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
-        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName"/>
-        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
+        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
@@ -2195,8 +2223,22 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
-        <progressIndicator evaluateTokens="evaluateTokens"/>
-        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
+        <progressIndicator evaluateTokens="evaluateTokens">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
@@ -3426,8 +3468,22 @@
             </conditionFalse>
         </hasMetadataValue>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
-        <progressIndicator evaluateTokens="evaluateTokens"/>
-        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId"/>
+        <progressIndicator evaluateTokens="evaluateTokens">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" autoPlay="true" poster="poster">

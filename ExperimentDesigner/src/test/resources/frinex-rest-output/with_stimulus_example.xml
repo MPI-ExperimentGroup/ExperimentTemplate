@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" userIdGetParam="uuid" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
+        <dataAgreementField fieldName="dataAgreement" matchingRegex="true"/> <!-- change this to have an attribute for each data type with its own regex "|disagree|agree"-->
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
         <dataChannel channel="2" label="Channel" logToSdCard="false"/>
@@ -60,10 +61,10 @@
         width: 200px;
         }
         .hardwareLightSensor1Show, .hardwareLightSensor1Hide, .hardwareLightSensor1Outline {
-            transform: translate(-125%,0);
+        transform: translate(-125%,0);
         }
         .hardwareLightSensor2Show, .hardwareLightSensor2Hide, .hardwareLightSensor2Outline {
-            transform: translate(25%,0);
+        transform: translate(25%,0);
         }
         .hardwareLightSensor1Outline, .hardwareLightSensor2Outline {
         border: 1px black solid;
@@ -741,7 +742,7 @@
                 <tag alias="v1">ToneVideos</tag>
                 <tag alias="v2">ToneVideos_c</tag>
                 <!-- A metadata field for this storageField must be declaired above: <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>-->
-                </randomGrouping>
+            </randomGrouping>
             <stimuli/>
         </loadStimulus>
     </presenter>
@@ -1024,6 +1025,26 @@
             <onError/>
             <onSuccess>
                 <gotoPresenter target="Metadata_Enable_Visible"/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="progressIndicator" type="metadata" self="progressIndicator_example" title="progressIndicator Example">
+        <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>
+        <metadataField fieldName="session_step"/>
+        <metadataField fieldName="session_steps"/>
+        <addPadding/>
+        <plainText featureText="The progressIndicator takes a string in evaluateTokens and uses metadata fields as numbers to calculate a percentage for the progress value."/>
+        <addPadding/>
+        <progressIndicator evaluateTokens="&lt;metadataField_session_step&gt;&lt; / &lt;metadataField_session_steps&gt;&lt; * 100" styleName="String (optional)">
+            <onError>
+                <plainText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values."/>
+            </onError>
+            <onSuccess/>
+        </progressIndicator>
+        <saveMetadataButton featureText="Update" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+            <onError/>
+            <onSuccess>
+                <gotoPresenter target="progressIndicator_example"/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -1757,7 +1778,8 @@
                 <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
                 <addPadding/>
                 <addPadding/>
-                <addPadding/><htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
+                <addPadding/>
+                <htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>

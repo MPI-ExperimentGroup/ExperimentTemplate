@@ -2808,10 +2808,18 @@
 <xs:attribute name="replacementRegex" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="progressIndicatorType">
+<xs:all>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
+</xs:all>
 <xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="setMetadataEvalTokensType">
+<xs:all>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
+</xs:all>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 <xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
 </xs:complexType>
