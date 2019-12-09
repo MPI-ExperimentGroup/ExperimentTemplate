@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.util;
 
 import java.util.HashMap;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
@@ -66,8 +67,7 @@ public class HtmlTokenFormatterTest {
     }
 
     /**
-     * Test of formatString method to ExtractNextFromList, of class
-     * HtmlTokenFormatter.
+     * Test of formatString method to ExtractNextFromList, of class HtmlTokenFormatter.
      */
     @Test
     public void testExtractNextFromList() {
@@ -155,9 +155,11 @@ public class HtmlTokenFormatterTest {
 
     /**
      * Test of evaluateTokens method, of class HtmlTokenFormatter.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException
      */
     @Test
-    public void testEvaluateTokens() {
+    public void testEvaluateTokens() throws EvaluateTokensException {
         System.out.println("evaluateTokens");
         HtmlTokenFormatter instance = getInstance();
         assertEquals((2 - (3 * 6 + (7 - 4 * (7.0 / 2)))) + 4, instance.evaluateTokens("(2-(3*6+(7-4*(7/2))))+4"));
