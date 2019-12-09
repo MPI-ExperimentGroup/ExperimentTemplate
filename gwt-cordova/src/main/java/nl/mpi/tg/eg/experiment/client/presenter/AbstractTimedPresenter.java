@@ -27,6 +27,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -69,10 +70,15 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
-    public void setMetadataEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final MetadataField metadataField) {
-        final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
-        userResults.getUserData().setMetadataValue(metadataField, resultValue.toString());
-        localStorage.storeData(userResults, metadataFieldProvider);
+    public void setMetadataEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        try {
+            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
+            userResults.getUserData().setMetadataValue(metadataField, resultValue.toString());
+            localStorage.storeData(userResults, metadataFieldProvider);
+            onSuccess.postLoadTimerFired();
+        } catch (EvaluateTokensException exception) {
+            onError.postLoadTimerFired();
+        }
     }
 
     public void switchUserIdButton(final String textString, final MetadataField metadataField, final String styleName, final String validationRegex, final String buttonGroup, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
@@ -112,9 +118,18 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         }));
     }
 
-    protected void progressIndicator(final Stimulus currentStimulus, final String evaluateTokens, final String styleName) {
-        final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
-        timedStimulusView.addBarGraphElement((int) resultValue, 100, styleName);
+    protected void progressIndicator(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        try {
+            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
+            if (resultValue.intValue() >= 0 && resultValue.intValue() <= 100) {
+                timedStimulusView.addBarGraphElement(resultValue.intValue(), 100, styleName);
+                onSuccess.postLoadTimerFired();
+            } else {
+                onError.postLoadTimerFired();
+            }
+        } catch (EvaluateTokensException exception) {
+            onError.postLoadTimerFired();
+        }
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
