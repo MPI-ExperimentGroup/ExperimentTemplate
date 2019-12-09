@@ -167,15 +167,16 @@
         <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationMinutesSettings" preventServerDuplicates="false" registrationField="Trigger Notification Minutes"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSettings" preventServerDuplicates="false" registrationField="Trigger Notification Range"/>
+        <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSnoozed" preventServerDuplicates="false" registrationField="Trigger Notification Snooze"/>
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekdaySettings" preventServerDuplicates="false" registrationField="Weekday Notifications"/>
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekendSettings" preventServerDuplicates="false" registrationField="Weekend Notifications"/>
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekdayFromSettings" preventServerDuplicates="false" registrationField="Weekday Notifications From"/>
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekdayUntilSettings" preventServerDuplicates="false" registrationField="Weekday Notifications Until"/>
-        <field controlledMessage="." controlledRegex="[0-9]+" postName="notificationCountWeekdaySettings" preventServerDuplicates="false" registrationField="Show X WeekdayNotifications"/>
+        <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationCountWeekdaySettings" preventServerDuplicates="false" registrationField="Number Of Notifications Per Day On Weekdays"/>
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekendFromSettings" preventServerDuplicates="false" registrationField="Weekend Notifications From"/>
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekendUntilSettings" preventServerDuplicates="false" registrationField="Weekend Notifications Until"/>
-        <field controlledMessage="." controlledRegex="[0-9]+" postName="notificationCountWeekendSettings" preventServerDuplicates="false" registrationField="Show X WeekendNotifications"/>
-        <field controlledMessage="." controlledRegex="[0-9]+" postName="notificationMinutes" preventServerDuplicates="false" registrationField="In X Minutes Notifications"/>
+        <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationCountWeekendSettings" preventServerDuplicates="false" registrationField="Number Of Notifications Per Day On Weekends"/>
+        <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationMinutes" preventServerDuplicates="false" registrationField="Show One Notifications In X Minutes "/>
         <field controlledMessage="." controlledRegex="|V1|V2|V3|V4" postName="Version" registrationField="Version"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
@@ -1051,7 +1052,7 @@
         <addPadding/>
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="String (optional)">
             <onError>
-                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="debugLabel"/>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
             </onError>
             <onSuccess/>
         </progressIndicator>      
@@ -1768,7 +1769,7 @@
                 <addPadding/>
                 <actionButton featureText="clearStimulusResponses">
                     <clearStimulusResponses tags="rating_button_examples"/>
-<gotoPresenter target="clear_stimulus_responses_example"/>
+                    <gotoPresenter target="clear_stimulus_responses_example"/>
                 </actionButton>
                 <addPadding/>
                 <addPadding/>
@@ -1859,7 +1860,8 @@
                 <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="ratingRadioButton flow"/>
                 <addPadding/>
                 <addPadding/>
-                <addPadding/><htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
+                <addPadding/>
+                <htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="stimulusRatingRadio horizontal"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical" groupId="stimulusRatingRadio vertical"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="stimulusRatingRadio flow"/>
