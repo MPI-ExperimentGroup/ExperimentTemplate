@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" userIdGetParam="uuid" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
-        <dataAgreementField fieldName="dataAgreement" matchingRegex="true"/> <!-- change this to have an attribute for each data type with its own regex "|disagree|agree"-->
+        <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
         <dataChannel channel="2" label="Channel" logToSdCard="false"/>
@@ -162,6 +162,8 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalPotential" preventServerDuplicates="false" registrationField="Total Potential"/>
+        <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="progressIndicator_steps" preventServerDuplicates="false" registrationField="progressIndicator steps"/>
+        <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="progressIndicator_step" preventServerDuplicates="false" registrationField="progressIndicator step"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationMinutesSettings" preventServerDuplicates="false" registrationField="Trigger Notification Minutes"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSettings" preventServerDuplicates="false" registrationField="Trigger Notification Range"/>
@@ -392,6 +394,18 @@
             </showHtmlPopup>
         </actionButton>
     </presenter>
+    <presenter back="Menu" menuLabel="Snooze Notification Screen" type="metadata" self="Snooze" title="Snooze Notification Screen">
+        <setMetadataValue fieldName="notificationRangeSnoozed" replacementRegex="" dataLogFormat="in_minutes:5 &lt;metadataField_notificationRangeSettings&gt;"/>
+        <requestNotification targetOptions="Request_Notification_Screen,Menu,Snooze" featureText="Range Notification" fieldName="notificationRangeSnoozed" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
+            <onError> 
+                <plainText featureText="Request Notification Failed"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="Request Notification Done"/>
+            </onSuccess>
+        </requestNotification>
+        <htmlTokenText featureText="Your notification has been snoozed and another will show again in 5 minutes."/>
+    </presenter>
     <presenter back="Menu" menuLabel="Request Notification Screen" type="metadata" self="Request_Notification_Screen" title="Request Notification Screen">
         <plainText featureText="This example is for Android and iOS apps and demonstrates how to request notifications at given times in the future."/>
         <metadataField fieldName="notificationMinutes"/>
@@ -437,7 +451,7 @@
             <onSuccess>
                 <setMetadataValue fieldName="notificationRangeSettings" replacementRegex="" dataLogFormat="weekdays:&lt;metadataField_notificationWeekdaySettings&gt; weekends:&lt;metadataField_notificationWeekendSettings&gt; weekdays_between:&lt;metadataField_notificationWeekdayFromSettings&gt;:&lt;metadataField_notificationWeekdayUntilSettings&gt;:&lt;metadataField_notificationCountWeekdaySettings&gt; weekends_between:&lt;metadataField_notificationWeekendFromSettings&gt;:&lt;metadataField_notificationWeekendUntilSettings&gt;:&lt;metadataField_notificationCountWeekendSettings&gt;"/>
                 <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationRangeSettings&gt;&lt;br/&gt;"/>
-                <requestNotification targetOptions="Request_Notification_Screen,Menu,Timer_Label_Screen" featureText="Range Notification" fieldName="notificationRangeSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
+                <requestNotification targetOptions="Request_Notification_Screen,Menu,Snooze" featureText="Range Notification" fieldName="notificationRangeSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
                     <onError>
                         <plainText featureText="Request Notification Failed"/>
                     </onError>
@@ -1030,18 +1044,19 @@
     </presenter>
     <presenter back="Menu" menuLabel="progressIndicator" type="metadata" self="progressIndicator_example" title="progressIndicator Example">
         <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>
-        <metadataField fieldName="session_step"/>
-        <metadataField fieldName="session_steps"/>
+        <metadataField fieldName="progressIndicator_step"/>
+        <metadataField fieldName="progressIndicator_steps"/>
         <addPadding/>
         <plainText featureText="The progressIndicator takes a string in evaluateTokens and uses metadata fields as numbers to calculate a percentage for the progress value."/>
         <addPadding/>
-        <progressIndicator evaluateTokens="&lt;metadataField_session_step&gt;&lt; / &lt;metadataField_session_steps&gt;&lt; * 100" styleName="String (optional)">
+        <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="String (optional)">
             <onError>
-                <plainText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values."/>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="debugLabel"/>
             </onError>
             <onSuccess/>
-        </progressIndicator>
-        <saveMetadataButton featureText="Update" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        </progressIndicator>      
+        <addPadding/>
+        <saveMetadataButton featureText="Update" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
                 <gotoPresenter target="progressIndicator_example"/>
@@ -1727,6 +1742,66 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Clear Stimulus Responses Example" type="stimulus" self="clear_stimulus_responses_example" title="Clear Stimulus Responses Example">
+        <loadStimulus eventTag="clear_stimulus_responses_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="This example shows how to clear stimulus responses when reshowing a stimulus with radio button or checkbox inputs that already has a response."/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusLabel styleName="countDownLabel"/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <stimulusExists offset="1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <actionButton featureText="clearStimulusResponses">
+                    <clearStimulusResponses tags="rating_button_examples"/>
+<gotoPresenter target="clear_stimulus_responses_example"/>
+                </actionButton>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>                
+                <htmlText featureText="ratingCheckbox" styleName="highlightedText"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="horizontal"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="stimulusRatingCheckbox" styleName="highlightedText"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="clear_stimulus_responses_example"/>
+                    <gotoPresenter target="clear_stimulus_responses_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Rating Button orientationType Example" type="stimulus" self="rating_button_orientationType_example" title="Rating Button orientationType Example">
         <loadStimulus eventTag="rating_button_orientationType_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -1746,57 +1821,62 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
+                <htmlText featureText="All responses for this stimulus will be stored separately according to the groupId of each including the stimulusFreeText." styleName="highlightedText"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText1"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText2"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
                 <htmlText featureText="ratingButton" styleName="highlightedText"/>
-                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal">
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="ratingButton horizontal">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingButton>
-                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical" groupId="ratingButton vertical">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingButton>
-                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow">
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="A,B,C,D,E,F,G" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="ratingButton flow">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingButton>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
                 <htmlText featureText="stimulusRatingButton" styleName="highlightedText"/>
-                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal">
+                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="stimulusRatingButton horizontal">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
-                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical">
+                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical" groupId="stimulusRatingButton vertical">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
-                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow">
+                <stimulusRatingButton ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="stimulusRatingButton flow">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
                 <htmlText featureText="ratingRadioButton" styleName="highlightedText"/>
-                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
-                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="ratingRadioButton horizontal"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical" groupId="ratingRadioButton vertical"/>
+                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="ratingRadioButton flow"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/><htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="stimulusRatingRadio horizontal"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical" groupId="stimulusRatingRadio vertical"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="stimulusRatingRadio flow"/>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
-                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
-                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>                
                 <htmlText featureText="ratingCheckbox" styleName="highlightedText"/>
-                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="horizontal"/>
-                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="vertical"/>
-                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="flow"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="horizontal" groupId="ratingCheckbox horizontal"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="vertical" groupId="ratingCheckbox vertical"/>
+                <ratingCheckbox ratingLabelRight="Most M like" ratingLabels="G,H,I,J,K,L,M" dataChannel="1" ratingLabelLeft="Most G like" orientation="flow" groupId="ratingCheckbox flow"/>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
                 <htmlText featureText="stimulusRatingCheckbox" styleName="highlightedText"/>
-                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
-                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical"/>
-                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="stimulusRatingCheckbox horizontal"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="vertical" groupId="stimulusRatingCheckbox vertical"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="stimulusRatingCheckbox flow"/>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>                
