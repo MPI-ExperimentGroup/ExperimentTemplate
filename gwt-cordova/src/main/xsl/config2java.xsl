@@ -33,7 +33,7 @@
         <xsl:for-each select="experiment/administration/dataChannel[@logToSdCard eq'true']">
             <xsl:value-of select="@channel" />
             <xsl:if test="position() != last()">
-                <xsl:text> </xsl:text>
+                <xsl:text>, </xsl:text>
             </xsl:if>
         </xsl:for-each>
         <xsl:text>};
