@@ -270,6 +270,17 @@
                                     </includes>
                                 </resource>
                                 <resource>
+                                    <directory>/srv/nbl/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                    </includes>
+                                </resource>
+                                <resource>
                                     <directory>src/main/static/${experiment.configuration.name}</directory>
                                     <includes>
                                         <include>**/*.jpg</include>
