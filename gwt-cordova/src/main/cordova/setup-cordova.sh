@@ -229,3 +229,6 @@ find .. -iname *.ipa
 chmod -R a+rwx "$(dirname "$0")"
 
 # cordova run android --device
+
+cd "$(dirname "$0")"
+rm -rf $appname-cordova
