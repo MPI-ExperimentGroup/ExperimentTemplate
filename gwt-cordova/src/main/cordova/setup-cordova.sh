@@ -21,6 +21,8 @@ then
     convert -resize 512x512^ -gravity center -extent 512x512 -quality 100 www/static/icon.png ./icon.png
 else
     echo "icon.png not found";
+    cd "$(dirname "$0")"
+    rm -rf $appname-cordova
     exit 1
 fi
 if [ -f www/static/splash.png ];
@@ -28,6 +30,8 @@ then
     file www/static/splash.png;
 else
     echo "splash.png not found";
+    cd "$(dirname "$0")"
+    rm -rf $appname-cordova
     exit 1
 fi
 
