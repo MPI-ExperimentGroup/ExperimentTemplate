@@ -63,6 +63,7 @@ public class MetadataView extends TimedStimulusView {
         final int rowCount = flexTable.getRowCount();
         if (allUsersList != null) {
             ListBox listBox = new ListBox();
+            listBox.setStylePrimaryName("metadataOK");
             listBox.setMultipleSelect(oneToMany);
             if (!oneToMany) {
                 ((ListBox) listBox).addItem(""); // make sure there is an empty item at the top of the list
