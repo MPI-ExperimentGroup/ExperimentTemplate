@@ -73,6 +73,13 @@ public abstract class DateOfBirthField extends HorizontalPanel {
         }
     }
 
+    @Override
+    public void setStylePrimaryName(String style) {
+        dayBox.setStylePrimaryName(style);
+        monthSelect.setStylePrimaryName(style);
+        yearBox.setStylePrimaryName(style);
+    }
+
     public IntegerBox getTextBox() {
         dayBox.setWidth("50px");
         yearBox.setWidth("100px");
@@ -85,6 +92,15 @@ public abstract class DateOfBirthField extends HorizontalPanel {
             @Override
             public void onValueChange(ValueChangeEvent<Integer> event) {
                 valueChanged();
+            }
+        });
+        dayBox.addKeyPressHandler(new KeyPressHandler() {
+            @Override
+            public void onKeyPress(KeyPressEvent event) {
+                final char charCode = event.getCharCode();
+                if (0 > "0123456789".indexOf(charCode)) {
+                    event.getNativeEvent().preventDefault();
+                }
             }
         });
         monthSelect.addChangeHandler(new ChangeHandler() {
