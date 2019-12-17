@@ -190,4 +190,19 @@ public class HtmlTokenFormatterTest {
         assertEquals(2.0 / 3 * 4 - 5 + 6, instance.evaluateTokens("2/3*4-5+6"));
         assertEquals(2.0 + 3 / 4.0 * 5 - 6, instance.evaluateTokens("2+3/4*5-6"));
     }
+
+    /**
+     * Test of evaluateTokensMethods method, of class HtmlTokenFormatter.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException
+     */
+    @Test
+    public void testEvaluateTokensMethods() throws EvaluateTokensException {
+        System.out.println("evaluateTokensMethods");
+        HtmlTokenFormatter instance = getInstance();
+        assertEquals(6.0, instance.evaluateTokens("length(\"123456\")"));
+        assertEquals(9.0, instance.evaluateTokens("length(\"123456789\")"));
+        assertEquals(12.0, instance.evaluateTokens("length(\"123456123456\")"));
+        assertEquals(12.0, instance.evaluateTokens("daysBetween(\"01/12/2019\", \"13/12/2019\")"));
+    }
 }
