@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.util;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
+import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -68,6 +69,22 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
+    public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
+        // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format
+        final String[] dateParts = inputString.replaceAll("[\"\\(\\)]", "").split("/");
+        if (dateParts.length != 3) {
+            throw new EvaluateTokensException("invalid date:" + inputString);
+        }
+        final Date currentDate = new Date();
+        currentDate.setYear(Integer.parseInt(dateParts[2]));
+        currentDate.setMonth(Integer.parseInt(dateParts[1]));
+        currentDate.setDate(Integer.parseInt(dateParts[0]));
+        currentDate.setHours(0);
+        currentDate.setMinutes(0);
+        currentDate.setSeconds(0);
+        return currentDate;
+    }
+
     public Number evaluateTokens(String inputString) throws EvaluateTokensException {
         final String formatedString = formatString(inputString);
         return evaluateResolve(formatedString.replaceAll("\\s", ""));
@@ -76,6 +93,39 @@ public class HtmlTokenFormatter {
     private Number evaluateResolve(String inputString) throws EvaluateTokensException {
         try {
             System.out.println(inputString);
+            RegExp regExpGroupM = RegExp.compile("(daysBetween|length)(\\([^\\)\\(]*\\))");
+            MatchResult matcherGroupM = regExpGroupM.exec(inputString);
+            while (matcherGroupM != null) {
+                if (matcherGroupM.getGroupCount() == 3) {
+                    final String methodMatch = matcherGroupM.getGroup(1);
+                    final String parameterMatch = matcherGroupM.getGroup(2);
+                    String resultValue = "";
+                    switch (methodMatch) {
+                        case "length":
+                            resultValue = Integer.toString(parameterMatch.length() - 4);
+                            break;
+                        case "daysBetween":
+                            String[] parameterParts = parameterMatch.split(",");
+                            if (parameterParts.length == 2) {
+                                final String dateStringA = parameterParts[0];
+                                final String dateStringB = parameterParts[1];
+                                final Date dateA = parseDDMMYYYDate(dateStringA);
+                                final Date dateB = parseDDMMYYYDate(dateStringB);
+                                long diffMs = dateB.getTime() - dateA.getTime();
+                                resultValue = Long.toString(diffMs / (1000 * 60 * 60 * 24));
+                            } else {
+                                throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
+                            }
+                            break;
+                        default:
+                            throw new EvaluateTokensException("unsupported match:" + matcherGroupM.getGroup(0));
+                    }
+                    inputString = inputString.replace(methodMatch + parameterMatch, resultValue);
+                } else {
+                    throw new EvaluateTokensException(inputString);
+                }
+                matcherGroupM = regExpGroupM.exec(inputString);
+            }
             RegExp regExpGroup = RegExp.compile("(\\([^\\)\\(]*\\))");
             MatchResult matcherGroup = regExpGroup.exec(inputString);
             while (matcherGroup != null) {
