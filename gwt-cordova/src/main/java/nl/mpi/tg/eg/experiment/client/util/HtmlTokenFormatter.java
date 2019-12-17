@@ -69,6 +69,16 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
+    public String formatDDMMYYYCurrentDate() {
+        // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format
+        final Date currentDate = new Date();
+        final String returnString
+                = ((currentDate.getDate() <= 9) ? "0" : "") + currentDate.getDate()
+                + "/" + ((currentDate.getMonth() + 1 <= 9) ? "0" : "") + (currentDate.getMonth() + 1)
+                + "/" + (1900 + currentDate.getYear());
+        return returnString;
+    }
+
     public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
         // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format
         final String[] dateParts = inputString.replaceAll("[\"\\(\\)]", "").split("/");
@@ -242,6 +252,7 @@ public class HtmlTokenFormatter {
         replacedTokensString = replacedTokensString.replaceAll("<playerTotalErrors>", Integer.toString(userData.getTotalPotentialScore() - userData.getTotalScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerTotalPotentialScore>", Integer.toString(userData.getTotalPotentialScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerGamesPlayed>", Integer.toString(userData.getGamesPlayed()));
+        replacedTokensString = replacedTokensString.replaceAll("<currentDateDDMMYYYY>", formatDDMMYYYCurrentDate());
         for (String timerId : timerService.getTimerIds()) {
             replacedTokensString = replacedTokensString.replaceAll("<" + timerId + ">", Integer.toString(timerService.getTimerValue(timerId)));
         }
