@@ -67,6 +67,21 @@ public class HtmlTokenFormatterTest {
     }
 
     /**
+     * Test of formatString currentDateDDMMYYYY method, of class HtmlTokenFormatter.
+     */
+    @Test
+    public void testFormatStringCurrentDate() {
+        System.out.println("testFormatStringCurrentDate");
+        String inputString = "qwerqwer<currentDateDDMMYYYY>qwrwerqwer";
+        final String expectedString = "qwerqwer<currentDateDDMMYYYY>qwrwerqwer";
+        HtmlTokenFormatter instance = getInstance();
+        final String formattedString = instance.formatString(inputString);
+        System.out.println("expectedString:" + expectedString);
+        System.out.println("formattedString: " + formattedString);
+        assertEquals(expectedString, formattedString);
+    }
+
+    /**
      * Test of formatString method to ExtractNextFromList, of class HtmlTokenFormatter.
      */
     @Test
