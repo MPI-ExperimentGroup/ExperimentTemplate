@@ -73,9 +73,9 @@ public class HtmlTokenFormatterTest {
     public void testFormatStringCurrentDate() {
         System.out.println("testFormatStringCurrentDate");
         String inputString = "qwerqwer<currentDateDDMMYYYY>qwrwerqwer";
-        final String expectedString = "qwerqwer<currentDateDDMMYYYY>qwrwerqwer";
+        final String expectedString = "qwerqwer##/##/####qwrwerqwer";
         HtmlTokenFormatter instance = getInstance();
-        final String formattedString = instance.formatString(inputString);
+        final String formattedString = instance.formatString(inputString).replaceAll("[0-9]", "#");
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
