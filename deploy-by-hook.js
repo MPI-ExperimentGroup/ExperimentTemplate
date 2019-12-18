@@ -606,19 +606,19 @@ function buildElectron(buildName, stage) {
 //        }
         if (filename.endsWith(".zip")) {
             var fileTypeString = "zip";
-            if (filename.indexOf("electron") > -1) {
+            if (filename.indexOf("electron.zip") > -1) {
                 fileTypeString = "src";
             } else
-            if (filename.indexOf("win32-ia32") > -1) {
+            if (filename.indexOf("win32-ia32.zip") > -1) {
                 fileTypeString = "win32";
             } else
-            if (filename.indexOf("win32-x64") > -1) {
+            if (filename.indexOf("win32-x64.zip") > -1) {
                 fileTypeString = "win64";
             } else
-            if (filename.indexOf("darwin") > -1) {
+            if (filename.indexOf("darwin-x64.zip") > -1) {
                 fileTypeString = "mac";
             } else
-            if (filename.indexOf("linux") > -1) {
+            if (filename.indexOf("linux-x64.zip") > -1) {
                 fileTypeString = "linux";
             }
             if (fileTypeString !== "zip") {
