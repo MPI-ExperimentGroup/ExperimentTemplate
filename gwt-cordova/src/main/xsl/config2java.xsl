@@ -546,7 +546,7 @@ or local-name() eq 'removeStimulus'
                                 or local-name() eq 'progressIndicator'
                                 ) then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus') or contains(@evaluateTokens, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
-        <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', @evaluateTokens, '&quot;, ') else ''" />   
+        <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;, ') else ''" />   
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
         <xsl:if test="local-name() eq 'logTokenText'">
             <!--<xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else 'currentStimulus, '" />-->
@@ -949,6 +949,9 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,'') else '0'" />
         </xsl:if>
+        <xsl:value-of select="if(local-name() eq 'triggerListener' or local-name() eq 'habituationParadigmListener') then if(ancestor::*[local-name() = 'eachStimulus']
+                                                                                                               or ancestor::*[local-name() = 'hasMoreStimulus']
+                                                                                                               ) then 'currentStimulus, ' else 'null, ' else ''" />
         <!--<xsl:value-of select="if(local-name() eq 'stimulusAudio') then ',' else ''" />-->
         <xsl:if test="local-name() eq 'groupNetworkActivity'">
             <xsl:text>new GroupActivityListener("</xsl:text>
@@ -965,7 +968,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                 }
             </xsl:text>            
         </xsl:if>
-            
+        
         <xsl:if test="local-name() eq 'table' or local-name() eq 'row' or local-name() eq 'column'
  or local-name() eq 'pause'
  or local-name() eq 'stimulusPause'
@@ -1064,6 +1067,9 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(@msToNext and @listenerId) then ', ' else ''" />
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'trigger' or local-name() eq 'resetTrigger') then if(ancestor::*[local-name() = 'eachStimulus']
+                                                                                                               or ancestor::*[local-name() = 'hasMoreStimulus']
+                                                                                                               ) then ', currentStimulus' else ', null' else ''" />
         <xsl:value-of select="if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ') else ''" />
         <xsl:value-of select="if(@downloadPermittedWindowMs) then concat(@downloadPermittedWindowMs, ', ') else ''" />
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;') else ''" />
