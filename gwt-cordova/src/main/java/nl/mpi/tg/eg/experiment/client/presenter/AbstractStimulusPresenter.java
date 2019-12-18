@@ -1776,16 +1776,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
     }
 
-    public void triggerListener(final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
-        triggerListeners.put(listenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
+    public void triggerListener(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
+        final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(listenerId);
+        triggerListeners.put(formattedListenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
     }
 
-    public void habituationParadigmListener(final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
-        triggerListeners.put(listenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
+    public void habituationParadigmListener(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
+        final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(listenerId);
+        triggerListeners.put(formattedListenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
     }
 
-    public void trigger(final String listenerId) {
-        triggerListeners.get(listenerId).trigger();
+    public void trigger(final String listenerId, final Stimulus currentStimulus) {
+        final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(listenerId);
+        triggerListeners.get(formattedListenerId).trigger();
     }
 
     public void triggerRandom(final String matchingRegex, final TimedStimulusListener endOfTriggersListener) {
@@ -1804,8 +1807,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    public void resetTrigger(final String listenerId) {
-        triggerListeners.get(listenerId).reset();
+    public void resetTrigger(final String listenerId, final Stimulus currentStimulus) {
+        final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(listenerId);
+        triggerListeners.get(formattedListenerId).reset();
     }
 
     protected void /* this could be changed to addTimer or setTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
