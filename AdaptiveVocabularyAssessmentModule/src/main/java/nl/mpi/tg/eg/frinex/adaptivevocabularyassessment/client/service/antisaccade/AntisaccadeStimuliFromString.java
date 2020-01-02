@@ -31,119 +31,124 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  */
 public class AntisaccadeStimuliFromString {
 
-//Item;Cue;Stimulus;Position_cue;Position_stimulus;Correct_response\n
- //   public String parseTrialsStringIntoXml(String csvString, String sourceStimuliDir, String baseDir) throws Exception {
+//Phase;Item;Cue;Stimulus;Position_cue;Position_stimulus;Correct_response;Fixation_point_interval_ms
+    // &#8592;&#160; &#8593;&#160; &#8594;
+    public String parseTrialsStringIntoXml(String csvString) throws Exception {
 
-//        StringBuilder builder = new StringBuilder();
-//
-//        CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
-//        csvWrapper.readRecords(csvString);
-//        ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
-//
-//        for (LinkedHashMap<String, String> record : records) {
-//
-//           
-//            String item = record.get("Item");
-//            if (item == null) {
-//                throw new IOException("Item is undefined");
-//            } else {
-//                item = item.trim();
-//            }
-//
-//            String stimulus = record.get("Stimulus");
-//            if ( stimulus == null) {
-//                throw new IOException("Stimulus is undefined");
-//            } else {
-//                stimulus = stimulus.trim();
-//            }
-//
-//            String positionCue = record.get("Position_cue");
-//            if (positionCue == null) {
-//                throw new IOException("Position_cue is undefined");
-//            } else {
-//                //word = word.trim();
-//            }
-//            
-//            String frequency = record.get("frequency");
-//            if (frequency == null) {
-//                throw new IOException("frequency is undefined");
-//            } else {
-//                frequency = frequency.trim();
-//            }
-//            
-//            String wav = record.get("wav");
-//            if (wav == null) {
-//                throw new IOException("wav is undefined");
-//            } else {
-//                wav = wav.trim();
-//            }
-//            
-//            if (!wav.equals(word+".wav")) {
-//                 throw new IOException("wav-name "+wav+" does not coincide with the word "+word); 
-//            }
-//            
-//            String expected = record.get("expected");
-//            if (expected == null) {
-//                throw new IOException("expected is undefined");
-//            } else {
-//                expected = expected.trim();
-//            }
-//
-//          
-//            String correctResponse = expected;
-//
-//            //String uniqueId = "trial_" + trialNumber + "_" + condition + "_" + word + "_" + expected;
-//            
-//            String tags = "condition_" + condition + "  frequency_" + frequency ;
-//            
-//            // creating patternly-named copies of images 
-//            try {
-//              
-//                // end creating copies
-//                // sanity check
-//                BufferedReader br1ogg = new BufferedReader(new FileReader(baseDir + sourceStimuliDir + word + ".ogg"));
-//                br1ogg.close();
-//                BufferedReader br1mp3 = new BufferedReader(new FileReader(baseDir +sourceStimuliDir +word + ".mp3"));
-//                br1mp3.close();
-//                // end sanity check 
-//            } catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
-//
-//            String currentSt = this.makeStimulusString(uniqueId, uniqueId, correctResponse, "stimuli/"+word, tags, "0");
-//            builder.append(currentSt);
-//
-//        }
-//
-//        return builder.toString();
-//    }
+        StringBuilder builder = new StringBuilder();
 
-//    private String makeStimulusString(String uniqueId,
-//            String label,
-//            String correctResponse,
-//            String audioPath,
-//            String tags,
-//            String pause) {
-//
-//        StringBuilder retVal = new StringBuilder();
-//        retVal.append("<stimulus ");
-//        retVal.append(" identifier=\"").append(uniqueId).append("\" ");
-//        if (label != null) {
-//            retVal.append(" label=\"").append(label).append("\" ");
-//        }
-//
-//        retVal.append(" pauseMs=\"").append(pause).append("\" ");
-//
-//        retVal.append(" audioPath=\"").append(audioPath).append("\" ");
-//        retVal.append(" correctResponses=\"").append(correctResponse).append("\" ");
-//
-//        if (tags != null) {
-//            retVal.append(" tags=\"").append(tags).append("\" ");
-//        }
-//
-//        retVal.append(" />\n");
-//        return retVal.toString();
-//
-//    }
+        CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
+        csvWrapper.readRecords(csvString);
+        ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
+
+        for (LinkedHashMap<String, String> record : records) {
+
+            String phase = record.get("Phase");
+            if (phase == null) {
+                throw new IOException("Phase is undefined");
+            } else {
+                phase = phase.trim();
+            }
+           
+            String item = record.get("Item");
+            if (item == null) {
+                throw new IOException("Item is undefined");
+            } else {
+                item = item.trim();
+            }
+
+            String stimulus = record.get("Stimulus");
+            if ( stimulus == null) {
+                throw new IOException("Stimulus is undefined");
+            } else {
+                stimulus = stimulus.trim();
+            }
+            
+            String label=null;
+            if (stimulus.equals("arrowleft")) {
+                label = "&#8592;";
+            } else {
+                if (stimulus.equals("arrowup")){
+                  label= "&#8593;";  
+                } else {
+                    if (stimulus.equals("arrowright")) {
+                        label= "&#8594;"; 
+                    }  else {
+                        throw new IOException("Stimulus arrow is ill-defined");
+                    }
+                }
+                 
+                
+            }
+
+            String positionCue = record.get("Position_cue");
+            if (positionCue == null) {
+                throw new IOException("Position_cue is undefined");
+            } else {
+                positionCue = positionCue.trim();
+            }
+            
+            String positionStimulus = record.get("Position_stimulus");
+            if (positionStimulus == null) {
+                throw new IOException("Position_stimulus is undefined");
+            } else {
+                positionStimulus = positionStimulus.trim();
+            }
+            
+            String correctResponse = record.get("Correct_response");
+            String code = null;
+            if (correctResponse == null) {
+                throw new IOException("Correct_response is undefined");
+            } else {
+                code = correctResponse.trim().toLowerCase();
+                correctResponse = correctResponse.trim().toUpperCase();
+            }
+            
+            String pauseMs = record.get("Fixation_point_interval_ms");
+            if (pauseMs == null) {
+                throw new IOException("Fixation_point_interval_ms is undefined");
+            } else {
+                pauseMs = pauseMs.trim();
+            }
+            
+            String uniqueId = phase + "_"+item+"_"+stimulus;
+            String tags = phase+ " " + stimulus +" " +"cue_" + positionCue + "  pos_stimulus_" + positionStimulus;
+            
+           
+
+            String currentSt = this.makeStimulusString(uniqueId, label, code, correctResponse, tags, pauseMs);
+            builder.append(currentSt);
+
+        }
+
+        return builder.toString();
+    }
+
+    private String makeStimulusString(String uniqueId,
+            String label,
+            String code,
+            String correctResponse,
+            String tags,
+            String pause) {
+
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("<stimulus ");
+        retVal.append(" identifier=\"").append(uniqueId).append("\" ");
+        retVal.append(" label=\"").append(label).append("\" ");
+         retVal.append(" code=\"").append(code).append("\" ");
+         
+        retVal.append(" pauseMs=\"").append(pause).append("\" ");
+
+        retVal.append(" ratingLabels=\"").append("LEFT,UP,RIGHT").append("\" ");
+        retVal.append(" correctResponses=\"").append(correctResponse).append("\" ");
+
+        if (tags != null) {
+            retVal.append(" tags=\"").append(tags).append("\" ");
+        }
+
+        retVal.append(" />\n");
+        return retVal.toString();
+
+    }
 
 }
