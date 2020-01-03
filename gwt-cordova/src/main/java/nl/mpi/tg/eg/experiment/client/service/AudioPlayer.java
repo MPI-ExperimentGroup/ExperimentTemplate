@@ -37,10 +37,14 @@ public class AudioPlayer {
     final private boolean autoPlay;
     private boolean hasTriggeredOnLoaded = false;
     private int sourceLoadingCounter = 0;
+    final TimedEventMonitor timedEventMonitor;
+    final String mediaId;
 
-    public AudioPlayer(AudioExceptionListner audioExceptionListner, SafeUri ogg, SafeUri mp3, boolean autoPlay) throws AudioException {
+    public AudioPlayer(final TimedEventMonitor timedEventMonitor, final AudioExceptionListner audioExceptionListner, final SafeUri ogg, final SafeUri mp3, final boolean autoPlay, final String mediaId) throws AudioException {
+        this.timedEventMonitor = timedEventMonitor;
         this.audioExceptionListner = audioExceptionListner;
         this.autoPlay = autoPlay;
+        this.mediaId = mediaId;
         try {
             createPlayer();
             if (ogg != null) {
@@ -55,6 +59,9 @@ public class AudioPlayer {
             audioPlayer.load();
 //            audioPlayer.pause();
         } catch (AudioException audioException) {
+            if (timedEventMonitor != null) {
+                timedEventMonitor.registerEvent("audioExceptionFired");
+            }
             audioExceptionListner.audioExceptionFired(audioException);
         }
     }
@@ -88,50 +95,70 @@ public class AudioPlayer {
         var audioPlayer = this;
         audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::incrementSourceLoadingCounter()();
         sourceElement.addEventListener("error", function(){
+            // todo: check to second instance of onerror
             audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::registerSourceLoadingError()();
         }, false);
     }-*/;
 
     private native void onEndedSetup(final AudioElement audioElement) /*-{
-     var audioPlayer = this;
-     audioElement.addEventListener("play", function(){
-     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onStartedAction()();
-     }, false);
-     audioElement.addEventListener("ended", function(){
-     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onEndedAction()();
-     }, false);
-     audioElement.addEventListener("canplaythrough", function(){
-     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onLoadedAction()();
-     }, false);
-     audioElement.addEventListener("error", function(){
-     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
-     }, false);
+        var audioPlayer = this;
+        audioElement.addEventListener("play", function(){
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onStartedAction()();
+        }, false);
+        audioElement.addEventListener("ended", function(){
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onEndedAction()();
+        }, false);
+        audioElement.addEventListener("canplaythrough", function(){
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onLoadedAction()();
+        }, false);
+        audioElement.addEventListener("error", function(){
+            // todo: check to second instance of onerror
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
+        }, false);
+     }-*/;
+
+    private native void play(final AudioElement audioElement) /*-{
+        var audioPlayer = this;
+        $wnd.playMedia(audioElement, function(){}, function(){audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()()});
      }-*/;
 
     public void onStartedAction() {
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("audioStarted");
+        }
         if (audioEventListner != null) {
             audioEventListner.audioStarted();
         }
     }
 
     public void onEndedAction() {
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("audioEnded");
+            timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
+        }
         if (audioEventListner != null) {
             audioEventListner.audioEnded();
         }
     }
 
     public void onAudioFailed() {
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("audioFailed");
+        }
         if (audioEventListner != null) {
             audioEventListner.audioFailed();
         }
     }
 
     public void onLoadedAction() {
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("audioLoaded");
+        }
         if (audioEventListner != null && !hasTriggeredOnLoaded) {
             hasTriggeredOnLoaded = true;
             audioEventListner.audioLoaded();
             if (autoPlay) {
-                audioPlayer.play();
+                play(audioPlayer.getAudioElement());
             }
         }
     }
@@ -165,8 +192,10 @@ public class AudioPlayer {
 
     public void play() {
         if (audioPlayer != null) {
-            audioPlayer.play();
-        };
+            play(audioPlayer.getAudioElement());
+        } else {
+            onAudioFailed();
+        }
     }
 
     public void rewind() {

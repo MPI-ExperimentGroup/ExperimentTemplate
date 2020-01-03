@@ -555,15 +555,12 @@ public class TimedStimulusView extends ComplexView {
             if (timedEventMonitor != null) {
                 timedEventMonitor.registerEvent("addTimedAudio");
             }
-            final AudioPlayer audioPlayer = new AudioPlayer(new AudioExceptionListner() {
+            final AudioPlayer audioPlayer = new AudioPlayer(timedEventMonitor, new AudioExceptionListner() {
                 @Override
                 public void audioExceptionFired(AudioException audioException) {
-                    if (timedEventMonitor != null) {
-                        timedEventMonitor.registerEvent("audioExceptionFired");
-                    }
                     failedStimulusListener.postLoadTimerFired();
                 }
-            }, oggPath, mp3Path, autoPlay);
+            }, oggPath, mp3Path, autoPlay, mediaId);
             audioList.put(mediaId, audioPlayer);
             //        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
             final Label playbackIndicator = new Label();
@@ -583,34 +580,21 @@ public class TimedStimulusView extends ComplexView {
             audioPlayer.setEventListner(new AudioEventListner() {
                 @Override
                 public void audioLoaded() {
-                    if (timedEventMonitor != null) {
-                        timedEventMonitor.registerEvent("audioLoaded");
-                    }
                     loadedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioStarted() {
-                    if (timedEventMonitor != null) {
-                        timedEventMonitor.registerEvent("audioStarted");
-                    }
                     playbackStartedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioFailed() {
-                    if (timedEventMonitor != null) {
-                        timedEventMonitor.registerEvent("audioFailed");
-                    }
                     failedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioEnded() {
-                    if (timedEventMonitor != null) {
-                        timedEventMonitor.registerEvent("audioEnded");
-                        timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
-                    }
                     //                    playbackIndicatorTimer.cancel();
                     //                    playbackIndicator.removeFromParent();
                     //                    audioPlayer.setEventListner(null); // prevent multiple triggering
