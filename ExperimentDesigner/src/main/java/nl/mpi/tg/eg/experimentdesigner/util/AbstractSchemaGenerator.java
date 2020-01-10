@@ -41,6 +41,8 @@ public class AbstractSchemaGenerator {
         xsDecimal("xs:decimal"),
         xsBoolean("xs:boolean"),
         rgbHexValue("rgbHexValue"),
+        stimulusTags("stimulusTags"),
+        stimulusTag("stimulusTag"),
         integerList("integerList"),
         lowercaseValue("lowercaseValue"),
         presenterKind("type");
@@ -211,7 +213,7 @@ public class AbstractSchemaGenerator {
             }
             List<DocumentationElement> documentationElements = new ArrayList<>();
             if (featureType.isCanHaveRandomGrouping() && featureType.canHaveStimulusTags()) {
-                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)}).stringAttribute("storageField", true).stringAttribute("consumedTagGroup", true));
+                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)}).stringAttribute("storageField", true).stringAttribute("consumedTagGroup", /* todo: document how consumedTagGroup is used */ true));
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
             if (!translatableAttribites.isEmpty()) {
@@ -223,7 +225,7 @@ public class AbstractSchemaGenerator {
                 documentationElements.add(translationElement);
             }
             if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
-                stringAttribute("tags", false);
+                tagsAttribute("tags", false);
             }
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
@@ -287,6 +289,16 @@ public class AbstractSchemaGenerator {
 
         public final DocumentationElement colourRGBAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "RGB Hex Value", AttributeType.rgbHexValue, optional));
+            return this;
+        }
+
+        public final DocumentationElement tagsAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Stimulus Tag Values", AttributeType.stimulusTags, optional));
+            return this;
+        }
+
+        public final DocumentationElement tagAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Stimulus Tag", AttributeType.stimulusTag, optional));
             return this;
         }
 
@@ -387,7 +399,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("label", true)
                                     .stringAttribute("correctResponses", true)
                                     .stringAttribute("ratingLabels", true)
-                                    .stringAttribute("tags", true)
+                                    .tagsAttribute("tags", true)
                                     .integerAttribute("pauseMs", true)
                         }
                 )
