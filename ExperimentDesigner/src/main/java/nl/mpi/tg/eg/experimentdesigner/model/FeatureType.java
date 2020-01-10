@@ -141,7 +141,7 @@ public enum FeatureType {
     setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, false, false, false, Contitionals.none, Contitionals.none),
     progressIndicator(false, false, new FeatureAttribute[]{evaluateTokens, styleName}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     setMetadataEvalTokens(false, false, new FeatureAttribute[]{fieldName, evaluateTokens}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    activateRandomItem(false, false, new FeatureAttribute[]{}),
+    activateRandomItem(false, false, new FeatureAttribute[]{}, "The tag activateRandomItem will take the list of menu items on the current presenter and randomly select one that has not been completed and send the user to that screen. If all have been completed then the user will be sent to the current presenters next presenter."),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -161,11 +161,11 @@ public enum FeatureType {
     logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
     timerLabel(false, false, new FeatureAttribute[]{listenerId, msToNext, msLabelFormat, styleName}), // this is a label like countdownLabel but shows the time value of listenerId minus msToNext and formats the result with msLabelFormat
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum, ranges}),//"1..100", "1,100" ,"1..3,10,20,30..35,60"
-    triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
+    triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}, "The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum."),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
-    trigger(false, false, new FeatureAttribute[]{listenerId}),
+    trigger(false, false, new FeatureAttribute[]{listenerId}, "Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values."),
     triggerRandom(true, false, new FeatureAttribute[]{matchingRegex}, "Randomly trigger one any of the triggerListeners where the listenerId matches the matchingRegex and its maximum trigger count has not been reached. When there are no triggerListeners that match these criteria the child contents of tag will be triggered."),
-    resetTrigger(false, false, new FeatureAttribute[]{listenerId}),
+    resetTrigger(false, false, new FeatureAttribute[]{listenerId}, "Reset the threshold and maximum counters for triggerListeners matching the listenerId."),
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
     stimulusPause(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
