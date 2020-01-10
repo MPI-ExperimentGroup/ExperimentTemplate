@@ -44,6 +44,8 @@ public class TriggerListener {
     }
 
     public void reset() {
+        maximumCounter = 0;
+        thresholdCounter = 0;
     }
 
     public boolean canTrigger() {
