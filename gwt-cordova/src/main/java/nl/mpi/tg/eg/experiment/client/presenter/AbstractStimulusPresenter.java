@@ -987,7 +987,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", uniqueId, imageString, duration.elapsedMillis());
+//                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", uniqueId, imageString, duration.elapsedMillis());
             }
         };
         timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(imageString), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
@@ -1029,7 +1029,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 protected void trigggerCancelableEvent() {
                     // send image shown tag
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", currentStimulus.getUniqueId(), image, duration.elapsedMillis());
+//                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", currentStimulus.getUniqueId(), image, duration.elapsedMillis());
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
@@ -1082,7 +1082,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 protected void trigggerCancelableEvent() {
                     // send video shown tag
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusVideoShown", currentStimulus.getUniqueId(), currentStimulus.getVideo(), duration.elapsedMillis());
+//                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusVideoShown", currentStimulus.getUniqueId(), currentStimulus.getVideo(), duration.elapsedMillis());
                     loadedStimulusListener.postLoadTimerFired();
                 }
             };
@@ -1118,7 +1118,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
+//                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
         timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString((formattedCode.startsWith("file")) ? formattedCode : serviceLocations.staticFilesUrl() + formattedCode), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
@@ -1139,7 +1139,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeAudioShown", uniqueId, formattedCode, duration.elapsedMillis());
+//                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeAudioShown", uniqueId, formattedCode, duration.elapsedMillis());
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
@@ -1158,7 +1158,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusVideoShown", uniqueId, videoName, duration.elapsedMillis());
+//                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusVideoShown", uniqueId, videoName, duration.elapsedMillis());
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
@@ -1182,7 +1182,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeVideoShown", uniqueId, formattedCode, duration.elapsedMillis());
+//                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeVideoShown", uniqueId, formattedCode, duration.elapsedMillis());
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
