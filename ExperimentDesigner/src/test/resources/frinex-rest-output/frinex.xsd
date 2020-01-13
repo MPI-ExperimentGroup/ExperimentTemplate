@@ -20,6 +20,16 @@
 <xs:pattern value="[a-zA-Z_0-9]{3,}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="stimulusTag">
+<xs:restriction base="xs:string">
+<xs:pattern value="([^\p{P}\W]*[_]*){1,}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="stimulusTags">
+<xs:restriction base="xs:string">
+<xs:pattern value="([^\p{P}\W]*[ _]*)*"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="integerList">
 <xs:list itemType="xs:integer"/>
 </xs:simpleType>
@@ -468,7 +478,7 @@
 <xs:attribute name="label" type="xs:string"/>
 <xs:attribute name="correctResponses" type="xs:string"/>
 <xs:attribute name="ratingLabels" type="xs:string"/>
-<xs:attribute name="tags" type="xs:string"/>
+<xs:attribute name="tags" type="stimulusTags"/>
 <xs:attribute name="pauseMs" type="xs:integer"/>
 </xs:complexType>
 <xs:complexType name="htmlTextType">
@@ -613,10 +623,10 @@
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
-<xs:attribute name="tags" type="xs:string" use="required"/>
+<xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
 <xs:complexType name="clearStimulusResponsesType">
-<xs:attribute name="tags" type="xs:string" use="required"/>
+<xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
 <xs:complexType name="validateStimuliResponsesType">
 <xs:all>
@@ -2824,6 +2834,9 @@
 <xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="activateRandomItemType">
+<xs:annotation>
+<xs:documentation>The tag activateRandomItem will take the list of menu items on the current presenter and randomly select one that has not been completed and send the user to that screen. If all have been completed then the user will be sent to the current presenters next presenter.</xs:documentation>
+</xs:annotation>
 </xs:complexType>
 <xs:complexType name="gotoPresenterType">
 <xs:attribute name="target" type="xs:string" use="required"/>
@@ -2855,7 +2868,7 @@
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
-<xs:attribute name="tags" type="xs:string" use="required"/>
+<xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
 <xs:complexType name="showStimulusType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -3627,6 +3640,9 @@
 </xs:complexType>
 <xs:complexType name="triggerListenerType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -3980,6 +3996,9 @@
 <xs:attribute name="maximum" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="triggerType">
+<xs:annotation>
+<xs:documentation>Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="triggerRandomType">
@@ -4161,6 +4180,9 @@
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="resetTriggerType">
+<xs:annotation>
+<xs:documentation>Reset the threshold and maximum counters for triggerListeners matching the listenerId.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="countdownLabelType">
