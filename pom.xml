@@ -12,7 +12,7 @@
         <module>AdaptiveVocabularyAssessmentModule</module>
         <module>gwt-cordova</module>
         <module>registration</module>
-    </modules>
+  </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -101,6 +101,14 @@
         <!--<experiment.configuration.name>audioas2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>engadvocas</experiment.configuration.name>-->
         <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>ppvt4_en</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>lupyan_replication_norming</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>SynQuiz</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>userid_audio_recorder_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>stairs4words2losse</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>synquiz</experiment.configuration.name>-->
+<!--        <experiment.configuration.name>hbdigitspan</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>beliefs_app</experiment.configuration.name>-->
         <!--<experiment.configuration.name>rosselfieldkit1</experiment.configuration.name>-->
         <!--<experiment.configuration.name>invitation_validation_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>taal_visuelepuzzels</experiment.configuration.name>-->
@@ -146,7 +154,7 @@
                     <minorVersion>2</minorVersion>
                     <buildType>${versionCheck.buildType}</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
-                    <shortVersionModule></shortVersionModule>
+                    <shortVersionModule/>
                 </configuration>
             </plugin>
             <plugin>
@@ -201,7 +209,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.1</version>
                 <configuration>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
