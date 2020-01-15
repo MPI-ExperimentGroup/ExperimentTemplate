@@ -788,7 +788,7 @@ All stimulus elements must be contained in the stimuli element.
 <span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integral Number (optional)&quot;</span><br/>
 <span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">tags</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">tags</span><span style="color:grey">=&quot;Space separated list of stimulus tags [a-Z0-9] (optional)&quot;</span><br/>
 <span style="color:green">videoPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -819,7 +819,7 @@ Each individual stimulus can be described in the form of label, audio, video
 <span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integral Number (optional)&quot;</span><br/>
 <span style="color:green">ratingLabels</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">tags</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">tags</span><span style="color:grey">=&quot;Space separated list of stimulus tags [a-Z0-9] (optional)&quot;</span><br/>
 <span style="color:green">videoPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -2549,7 +2549,7 @@ Translated attributes for the parent element.
 <h3 id="activateRandomItemType" style="text-transform: uppercase;">
 activateRandomItem
 </h3>
-
+Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">activateRandomItem</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -3345,7 +3345,7 @@ clearStimulusResponses
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">clearStimulusResponses</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">clearStimulusResponses</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;Space separated list of stimulus tags [a-Z0-9]&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -8255,7 +8255,7 @@ preloadAllStimuli
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">preloadAllStimuli</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">preloadAllStimuli</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;Space separated list of stimulus tags [a-Z0-9]&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -10090,7 +10090,7 @@ resetStimulus
 <h3 id="resetTriggerType" style="text-transform: uppercase;">
 resetTrigger
 </h3>
-
+Reset the threshold and maximum counters for triggerListeners matching the listenerId.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">resetTrigger</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
@@ -12387,7 +12387,7 @@ Transmits the values of the metadata fields that match the matchingRegex to the 
 <h3 id="triggerType" style="text-transform: uppercase;">
 trigger
 </h3>
-
+Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">trigger</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
@@ -12404,7 +12404,7 @@ trigger
 <h3 id="triggerListenerType" style="text-transform: uppercase;">
 triggerListener
 </h3>
-
+The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">triggerListener</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
@@ -14328,7 +14328,7 @@ currentStimulusHasTag
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">currentStimulusHasTag</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">currentStimulusHasTag</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;Space separated list of stimulus tags [a-Z0-9]&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
