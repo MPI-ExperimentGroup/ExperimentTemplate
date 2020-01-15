@@ -141,7 +141,7 @@ public enum FeatureType {
     setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, false, false, false, Contitionals.none, Contitionals.none),
     progressIndicator(false, false, new FeatureAttribute[]{evaluateTokens, styleName}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     setMetadataEvalTokens(false, false, new FeatureAttribute[]{fieldName, evaluateTokens}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    activateRandomItem(false, false, new FeatureAttribute[]{}, "The tag activateRandomItem will take the list of menu items on the current presenter and randomly select one that has not been completed and send the user to that screen. If all have been completed then the user will be sent to the current presenters next presenter."),
+    activateRandomItem(false, false, new FeatureAttribute[]{}, "Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter."),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
