@@ -293,12 +293,12 @@ public class AbstractSchemaGenerator {
         }
 
         public final DocumentationElement tagsAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Stimulus Tag Values", AttributeType.stimulusTags, optional));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Space separated list of stimulus tags [a-Z0-9]", AttributeType.stimulusTags, optional));
             return this;
         }
 
         public final DocumentationElement tagAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Stimulus Tag", AttributeType.stimulusTag, optional));
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Stimulus selection tag [a-Z0-9]", AttributeType.stimulusTag, optional));
             return this;
         }
 
