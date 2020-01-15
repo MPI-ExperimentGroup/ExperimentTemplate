@@ -123,6 +123,14 @@
             <artifactId>adaptive-vocabulary-assessment-module</artifactId>
             <version>1.2-testing-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <!-- This dependancy is to resolve CI issues with annotations used in sub modules.-->
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+            <classifier>sources</classifier>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
