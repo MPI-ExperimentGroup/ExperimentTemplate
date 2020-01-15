@@ -32,9 +32,7 @@
     <entry-point class='nl.mpi.tg.eg.experiment.client.ExperimentTemplate' />
 
     <!-- Specify the paths for translatable code                    -->
-    <source path='experiment'>
-        <exclude name="javax.xml.bind**"/>
-    </source>
+    <source path='experiment'/>
     <!--<source path='synaesthesia' />-->
     <!--<source path='language' />-->
     <!--<define-linker name="dil" class="com.google.gwt.core.linker.DirectInstallLinker"/>-->
