@@ -30,7 +30,7 @@ public class UserResults {
 
     private UserData userData = null;
     private GameData gameData = new GameData();
-    private final List<StimulusResponseGroup> results = new ArrayList<>();
+    private List<StimulusResponseGroup> results = new ArrayList<>();
 
     public UserResults(UserData userId) {
         this.userData = userId;
@@ -39,6 +39,7 @@ public class UserResults {
     public void setUser(UserData userId) {
         this.userData = userId;
         gameData = new GameData();
+        results = new ArrayList<>();
     }
 
     public UserData getUserData() {
@@ -48,6 +49,7 @@ public class UserResults {
     public void clearResults() {
         // todo: is this needed? 
         gameData = new GameData();
+        results = new ArrayList<>();
     }
 
     public GameData getGameData() {
