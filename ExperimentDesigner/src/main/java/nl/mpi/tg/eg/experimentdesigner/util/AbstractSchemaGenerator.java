@@ -340,25 +340,26 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false)
                                     .integerAttribute("channel", false),
-                            new DocumentationElement("validation", "Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.", 0, 1, new DocumentationElement[]{
-                        new DocumentationElement("recordMatch", "", 0, 0, new DocumentationElement[0])
-                        .stringAttribute("postField", false)
-                        .stringAttribute("adminField", false)
-                        .stringAttribute("responseField", false)
-                        .stringAttribute("errorField", false)
-                        .stringAttribute("errorMessage", false)
-                        .stringAttribute("validationRegex", true),
-                        new DocumentationElement("fieldMatch", "", 0, 0, new DocumentationElement[0])
-                        .stringAttribute("postField", true)
-                        .stringAttribute("adminField", false)
-                        .stringAttribute("responseField", true)
-                        .stringAttribute("errorField", false)
-                        .stringAttribute("errorMessage", false)
-                        .stringAttribute("validationRegex", true)
-                    })
-                                    .stringAttribute("errorField", false)
-                                    .stringAttribute("errorMessage", false)
-                                    .stringAttribute("allowValidationOnMissing", false)
+                            new DocumentationElement("validation", "Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record."
+                                    + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.", 0, 1, new DocumentationElement[]{
+                                new DocumentationElement("recordMatch", "The value sent to the server must match the last valid record stored on in the admin system.", 0, 0, new DocumentationElement[0])
+                                        .documentedAttribute("postField", AttributeType.xsString, "The value of this metadatafield is sent to the admin server for validation.", false)
+                                        .documentedAttribute("adminField", AttributeType.xsString, "The value of the admin systems copy of this metadatafield is compared to the postField for validation.", false)
+                                        .documentedAttribute("responseField", AttributeType.xsString, "If validation succeeds then the matched value (of the postField and adminField) is returned to this metadata field. Usually this is the only way that this field is populated on the client.", false)
+                                        .documentedAttribute("errorField", AttributeType.xsString, "If a record match error occurs the error message will be returned from the admin server in this metadatafield.", false)
+                                        .documentedAttribute("errorMessage", AttributeType.xsString, "If a record match error occurs this is the error message that will be returned.", false)
+                                        .documentedAttribute("validationRegex", AttributeType.xsString, "If provided then this regex is matched against the postField for validation.", true),
+                                new DocumentationElement("fieldMatch", "On successful validation the values stored in the admin system can be returned to the clent. For example to restore a previous session on a new device or browser.", 0, 0, new DocumentationElement[0])
+                                        .documentedAttribute("postField", AttributeType.xsString, "If provided the value of the postField must match the value of the adminField for validation to succeed.", true)
+                                        .documentedAttribute("adminField", AttributeType.xsString, "If validation succeeds then the value this metadatafield is returned.", false)
+                                        .documentedAttribute("responseField", AttributeType.xsString, "If validation succeeds the response value is returned to the client in this metadata field.", true)
+                                        .documentedAttribute("errorField", AttributeType.xsString, "If provided the value of the postField must match the value of the adminField then the error message will be returned in this metadatafield.", false)
+                                        .documentedAttribute("errorMessage", AttributeType.xsString, "If provided the value of the postField does not match the value of the adminField then this message is returned.", false)
+                                        .stringAttribute("validationRegex", true)
+                            })
+                                    .documentedAttribute("errorField", AttributeType.xsString, "If a validation error occurs the error message will be returned from the admin server in this metadatafield.", false)
+                                    .documentedAttribute("errorMessage", AttributeType.xsString, "If no records match and a validation error occurs this is the error message that will be returned.", false)
+                                    .documentedAttribute("allowValidationOnMissing", AttributeType.xsBoolean, "If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.", false)
                         }),
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
