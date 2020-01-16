@@ -247,7 +247,7 @@
 <xs:complexType name="validationType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.</xs:documentation>
+<xs:documentation>Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.</xs:documentation>
 </xs:annotation>
 <xs:element name="recordMatch" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -272,7 +272,7 @@
 </xs:sequence>
 <xs:attribute name="errorField" type="xs:string" use="required"/>
 <xs:attribute name="errorMessage" type="xs:string" use="required"/>
-<xs:attribute name="allowValidationOnMissing" type="xs:string" use="required"/>
+<xs:attribute name="allowValidationOnMissing" type="xs:boolean" use="required"/>
 </xs:complexType>
 <xs:complexType name="metadataType">
 <xs:sequence>
@@ -2835,7 +2835,7 @@
 </xs:complexType>
 <xs:complexType name="activateRandomItemType">
 <xs:annotation>
-<xs:documentation>The tag activateRandomItem will take the list of menu items on the current presenter and randomly select one that has not been completed and send the user to that screen. If all have been completed then the user will be sent to the current presenters next presenter.</xs:documentation>
+<xs:documentation>Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter.</xs:documentation>
 </xs:annotation>
 </xs:complexType>
 <xs:complexType name="gotoPresenterType">

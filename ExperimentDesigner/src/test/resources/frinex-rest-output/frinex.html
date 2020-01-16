@@ -158,9 +158,9 @@ Administration
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#validationType"><span style="color:purple">&lt;</span><span style="color:blue">validation</span></a></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<a href="#validationType"><span style="color:purple">&lt;</span><span style="color:blue">validation</span></a></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;If a validation error occurs the error message will be returned from the admin server in this metadatafield.&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;If no records match and a validation error occurs this is the error message that will be returned.&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 </table>
@@ -216,30 +216,30 @@ dataChannel
 <h3 id="validationType" style="text-transform: uppercase;">
 validation
 </h3>
-Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.
+Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;If a validation error occurs the error message will be returned from the admin server in this metadatafield.&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;If no records match and a validation error occurs this is the error message that will be returned.&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#recordMatchType"><span style="color:purple">&lt;</span><span style="color:blue">recordMatch</span></a></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">postField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">responseField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#recordMatchType"><span style="color:purple">&lt;</span><span style="color:blue">recordMatch</span></a></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;The value of the admin systems copy of this metadatafield is compared to the postField for validation.&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;If a record match error occurs the error message will be returned from the admin server in this metadatafield.&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;If a record match error occurs this is the error message that will be returned.&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;The value of this metadatafield is sent to the admin server for validation.&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;If validation succeeds then the matched value (of the postField and adminField) is returned to this metadata field. Usually this is the only way that this field is populated on the client.&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;If provided then this regex is matched against the postField for validation. (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#fieldMatchType"><span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></a></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">postField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">responseField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#fieldMatchType"><span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></a></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;If validation succeeds then the value this metadatafield is returned.&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;If provided the value of the postField must match the value of the adminField then the error message will be returned in this metadatafield.&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;If provided the value of the postField does not match the value of the adminField then this message is returned.&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;If provided the value of the postField must match the value of the adminField for validation to succeed. (optional)&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;If validation succeeds the response value is returned to the client in this metadata field. (optional)&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -259,15 +259,15 @@ Server side validation of metadata fields and optional reloading of metadata fie
 <h3 id="recordMatchType" style="text-transform: uppercase;">
 recordMatch
 </h3>
-
+The value sent to the server must match the last valid record stored on in the admin system.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">recordMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">postField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">responseField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">recordMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;The value of the admin systems copy of this metadatafield is compared to the postField for validation.&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;If a record match error occurs the error message will be returned from the admin server in this metadatafield.&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;If a record match error occurs this is the error message that will be returned.&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;The value of this metadatafield is sent to the admin server for validation.&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;If validation succeeds then the matched value (of the postField and adminField) is returned to this metadata field. Usually this is the only way that this field is populated on the client.&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;If provided then this regex is matched against the postField for validation. (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -281,14 +281,14 @@ recordMatch
 <h3 id="fieldMatchType" style="text-transform: uppercase;">
 fieldMatch
 </h3>
-
+On successful validation the values stored in the admin system can be returned to the clent. For example to restore a previous session on a new device or browser.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorField</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">errorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">postField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">responseField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;If validation succeeds then the value this metadatafield is returned.&quot;</span><br/>
+<span style="color:green">errorField</span><span style="color:grey">=&quot;If provided the value of the postField must match the value of the adminField then the error message will be returned in this metadatafield.&quot;</span><br/>
+<span style="color:green">errorMessage</span><span style="color:grey">=&quot;If provided the value of the postField does not match the value of the adminField then this message is returned.&quot;</span><br/>
+<span style="color:green">postField</span><span style="color:grey">=&quot;If provided the value of the postField must match the value of the adminField for validation to succeed. (optional)&quot;</span><br/>
+<span style="color:green">responseField</span><span style="color:grey">=&quot;If validation succeeds the response value is returned to the client in this metadata field. (optional)&quot;</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
