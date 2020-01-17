@@ -163,7 +163,7 @@ function startResult() {
     resultsFile.write("$(window).on('hashchange', function (e) {\n");
     resultsFile.write("var sortData = location.href.split('#')[1];\n");
     resultsFile.write("var sortItem = sortData.split('_')[0];\n");
-    resultsFile.write("var sortDirection = sortData.split('#')[1];\n");
+    resultsFile.write("var sortDirection = sortData.split('_')[1];\n");
     resultsFile.write("if($.isNumeric(sortItem)){\n");
     resultsFile.write("if(sortDirection === 'd'){\n");
     resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (b, a) {return $('td:nth-of-type('+sortItem+')', a).text().localeCompare($('td:nth-of-type('+sortItem+')', b).text());}).appendTo('tbody');\n");
