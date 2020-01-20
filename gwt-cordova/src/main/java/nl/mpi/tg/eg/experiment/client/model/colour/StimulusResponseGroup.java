@@ -35,6 +35,7 @@ public class StimulusResponseGroup {
     private final HashMap<Stimulus, ArrayList<StimulusResponse>> stimulusResponses = new HashMap<>();
     private final String groupLabel;
     private final String postName;
+    private boolean isComplete = false;
 
     public StimulusResponseGroup(String groupLabel, String postName) {
         this.groupLabel = groupLabel;
@@ -76,4 +77,13 @@ public class StimulusResponseGroup {
         }
         return max;
     }
+
+    public boolean isComplete() {
+        return isComplete;
+    }
+
+    public void setIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
+    }
+
 }
