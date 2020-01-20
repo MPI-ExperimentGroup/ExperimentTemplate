@@ -152,25 +152,27 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
         Double minScore = null;
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
             final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
-            ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
-            ((ReportView) simpleView).addText(reportScreenScore.replace("<playerScore>", numberFormat2.format(calculatedScores.getScore())));
-            ((ReportView) simpleView).addText(userfeedbackscreentext);
-            ((ReportView) simpleView).addPadding();
-            userResults.getUserData().updateMaxScore(calculatedScores.getScore(), 0, 0, 0, 0);
-            for (MetadataField field : userResults.getUserData().getMetadataFields()) {
-                if (field.getPostName().equals(stimuliGroup.getPostName() + "_result")) {
-                    userResults.getUserData().setMetadataValue(field, Double.toString(calculatedScores.getScore()));
-                    localStorage.storeData(userResults, metadataFieldProvider);
+            if (!calculatedScores.getScoreDataList().isEmpty()) {
+                ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
+                ((ReportView) simpleView).addText(reportScreenScore.replace("<playerScore>", numberFormat2.format(calculatedScores.getScore())));
+                ((ReportView) simpleView).addText(userfeedbackscreentext);
+                ((ReportView) simpleView).addPadding();
+                userResults.getUserData().updateMaxScore(calculatedScores.getScore(), 0, 0, 0, 0);
+                for (MetadataField field : userResults.getUserData().getMetadataFields()) {
+                    if (field.getPostName().equals(stimuliGroup.getPostName() + "_result")) {
+                        userResults.getUserData().setMetadataValue(field, Double.toString(calculatedScores.getScore()));
+                        localStorage.storeData(userResults, metadataFieldProvider);
+                    }
                 }
+                minScore = (minScore == null) ? calculatedScores.getScore() : (minScore > calculatedScores.getScore()) ? calculatedScores.getScore() : minScore;
+                //            ((ReportView) simpleView).addText(messages.reportScreenSCT());
+                //            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
+                //            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
+                //            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
             }
-            minScore = (minScore == null) ? calculatedScores.getScore() : (minScore > calculatedScores.getScore()) ? calculatedScores.getScore() : minScore;
-            //            ((ReportView) simpleView).addText(messages.reportScreenSCT());
-            //            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
-            //            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
-            //            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
         if (minScore != null) {
