@@ -151,8 +151,8 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
         Double minScore = null;
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
-            final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
-            if (!calculatedScores.getScoreDataList().isEmpty()) {
+            if (stimuliGroup.isComplete()) {
+                final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
                 ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
                 ((ReportView) simpleView).addText(reportScreenScore.replace("<playerScore>", numberFormat2.format(calculatedScores.getScore())));
                 ((ReportView) simpleView).addText(userfeedbackscreentext);
