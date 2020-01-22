@@ -92,13 +92,13 @@ public class LocalNotificationsTest {
         int expectedHour = hourFromInt;
         for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
-            if (result[repetitionIndex][1] < 31) {
+//            if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 20);
                 assertTrue(result[repetitionIndex][1] <= 50);
-            } else {
-                assertTrue(result[repetitionIndex][1] >= 32);
-                assertTrue(result[repetitionIndex][1] <= 58);
-            }
+//            } else {
+//                assertTrue(result[repetitionIndex][1] >= 32);
+//                assertTrue(result[repetitionIndex][1] <= 58);
+//            }
             System.out.println("expectedHourN: " + expectedHour);
             assertEquals(expectedHour, result[repetitionIndex][0]);
             if (result[repetitionIndex][0] == hourFromInt) {
