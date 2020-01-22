@@ -35,7 +35,7 @@ public class LocalNotificationsTest {
      */
     @Test
     public void testFindNotificationRepetitions() {
-        System.out.println("findNotificationRepetitions");
+        System.out.println("findNotificationRepetitions:10:30:22:30:24");
         int hourFromInt = 10;
         int minuteFromInt = 30;
         int hourUntilInt = 22;
@@ -151,7 +151,8 @@ public class LocalNotificationsTest {
             }
 
             @Override
-            public void notificationLog(String logString) {
+            public void logNotificationRequest(String logString) {
+                System.out.println(logString);
             }
 
         };
@@ -191,9 +192,9 @@ public class LocalNotificationsTest {
         LocalNotifications instance = new LocalNotificationsImpl();
         int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
         assertEquals(repetitionCount, result.length);
-//        for (int[] values : result) {
-//            System.out.println(values[0] + ":" + values[1]);
-//        }
+        for (int[] values : result) {
+            System.out.println(values[0] + ":" + values[1]);
+        }
         int expectedHour = hourFromInt;
         for (int repetitionIndex = 0; repetitionIndex < 10; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
@@ -233,7 +234,8 @@ public class LocalNotificationsTest {
         }
 
         @Override
-        public void notificationLog(String logString) {
+        public void logNotificationRequest(String logString) {
+            System.out.println(logString);
         }
     }
 }
