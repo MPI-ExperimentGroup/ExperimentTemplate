@@ -28,12 +28,16 @@ import java.util.Random;
  */
 public abstract class LocalNotifications {
 
+    DataSubmissionService dataSubmissionService;
+
     protected void setNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) {
+        logNotificationRequest(notificationCommand);
         clearNotifications();
         setNotificationLater(notificationTitle, notificationText, notificationActions, notificationCommand);
     }
 
     protected void setNotificationLater(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) {
+        logNotificationRequest(notificationCommand);
         Timer timer = new Timer() {
             @Override
             public void run() {
@@ -47,7 +51,7 @@ public abstract class LocalNotifications {
         int notificationCount = 0;
         for (final String currentEntry : notificationCommand.split(" ")) {
             boolean onWeekends = false;
-            notificationLog(currentEntry);
+            logNotificationRequest(currentEntry);
             final String[] currentParts = currentEntry.split(":");
             if (currentParts.length > 1) {
                 switch (currentParts[0]) {
@@ -84,20 +88,20 @@ public abstract class LocalNotifications {
         Date untilDate = new Date();
         untilDate.setHours((hourFromInt * 60 + minuteFromInt < hourUntilInt * 60 + minuteUntilInt) ? hourUntilInt : hourUntilInt + 24);
         untilDate.setMinutes(minuteUntilInt);
-        System.out.println("fromDate: " + fromDate);
-        System.out.println("untilDate: " + untilDate);
+        logNotificationRequest("fromDate: " + fromDate);
+        logNotificationRequest("untilDate: " + untilDate);
         long viableRange = untilDate.getTime() - fromDate.getTime();
         final int repetitionRange = (int) viableRange / repetitionCount;
         int paddingValue = (int) (repetitionRange * 0.1);
-        System.out.println("viableRange: " + viableRange / 1000 / 60);
-        System.out.println("repetitionRange: " + repetitionRange / 1000 / 60);
-        System.out.println("paddingValue: " + paddingValue / 1000 / 60);
+        logNotificationRequest("viableRange: " + viableRange / 1000 / 60);
+        logNotificationRequest("repetitionRange: " + repetitionRange / 1000 / 60);
+        logNotificationRequest("paddingValue: " + paddingValue / 1000 / 60);
         final int[][] repetitionArray = new int[repetitionCount][2];
         for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             final int nextInt = new Random().nextInt(repetitionRange - paddingValue * 2);
             final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt - (paddingValue);
-            System.out.println("nextInt: " + nextInt / 1000 / 60);
-            System.out.println("nextPeriod: " + nextPeriod / 1000 / 60);
+            logNotificationRequest("nextInt: " + nextInt / 1000 / 60);
+            logNotificationRequest("nextPeriod: " + nextPeriod / 1000 / 60);
             final Date repetitionDate = new Date(fromDate.getTime() + nextPeriod);
             repetitionArray[repetitionIndex] = new int[]{repetitionDate.getHours(), repetitionDate.getMinutes()};
         }
@@ -121,14 +125,14 @@ public abstract class LocalNotifications {
                     || (currentDate.getDay() == 6 && onWeekends)
                     || (currentDate.getDay() == 0 && onWeekends)) {
                 if (currentDate.getTime() - new Date().getTime() > minimumTimeWindow) {
-                    notificationLog("adding date time notification: " + currentDate);
+                    logNotificationRequest("adding date time notification: " + currentDate);
                     setDayNotification(notificationCount + numberAdded, notificationTitle,
                             notificationText
                             + " : " + maxDaysInAdvance + "_" + onWeekends + "_" + hourInt + "_" + minuteInt,
                             notificationActions, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
                     numberAdded++;
                 } else {
-                    notificationLog("not setting because time too close to now: " + currentDate);
+                    logNotificationRequest("not setting because time too close to now: " + currentDate);
                 }
             }
         }
@@ -190,7 +194,9 @@ public abstract class LocalNotifications {
 
     protected abstract void setNotificationFailed();
 
-    public native void notificationLog(final String logString) /*-{
-            console.log(logString);
-    }-*/;
+//    public native void notificationLog(final String logString) /*-{
+//            console.log(logString);
+//    }-*/;
+
+    protected abstract void logNotificationRequest(String debugValue);
 }
