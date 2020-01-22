@@ -312,12 +312,15 @@ public abstract class AppController implements AppEventListner/*, AudioException
         //            console.log($wnd.cordova.plugins.notification.local.launchDetails);
                     $wnd.cordova.plugins.notification.local.on("click", function (notification, state) {
                         console.log(notification.id + " was clicked");
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification.id + " was clicked", 0);
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("schedule", function (notification, state) {
                         console.log(notification.id + " was scheduled");
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification.id + " was scheduled", 0);
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("trigger", function (notification, state) {
                         console.log(notification.id + " was triggered");
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification.id + " was triggered", 0);
                     }, this);
         //            // list the currently scheduled notifications as debug output
         //            $wnd.cordova.plugins.notification.local.getScheduled(function (notificationData) {
@@ -337,6 +340,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     $wnd.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
                         console.log("notificationCallback", targetState);
                         console.log(notification, eopts);
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + targetState, 0);
                         appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(targetState);
                     });
                 }
