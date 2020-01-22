@@ -336,7 +336,7 @@ public abstract class AbstractPresenter implements Presenter {
         timer.schedule(100);
     }
 
-    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final DataSubmissionService dataSubmissionService, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
         StringBuilder targetStateJsonBuilder = new StringBuilder();
         targetStateJsonBuilder.append("[");
         for (ApplicationState targetState : targetOptionStates) {
@@ -362,6 +362,10 @@ public abstract class AbstractPresenter implements Presenter {
                 errorEventListner.postLoadTimerFired();
             }
 
+            @Override
+            protected void logNotificationRequest(String debugValue) {
+                dataSubmissionService.submitTimestamp(userResults.getUserData().getUserId(), debugValue, 0);
+            }
         }.requestNotification(messageTitle, dataLogFormat, targetStateJsonData, userResults.getUserData().getMetadataValue(metadataField));
         ((ComplexView) simpleView).addPadding();
     }
