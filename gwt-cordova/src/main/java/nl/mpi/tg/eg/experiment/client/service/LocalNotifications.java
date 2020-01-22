@@ -84,18 +84,20 @@ public abstract class LocalNotifications {
         Date untilDate = new Date();
         untilDate.setHours((hourFromInt * 60 + minuteFromInt < hourUntilInt * 60 + minuteUntilInt) ? hourUntilInt : hourUntilInt + 24);
         untilDate.setMinutes(minuteUntilInt);
+        System.out.println("fromDate: " + fromDate);
+        System.out.println("untilDate: " + untilDate);
         long viableRange = untilDate.getTime() - fromDate.getTime();
         final int repetitionRange = (int) viableRange / repetitionCount;
         int paddingValue = (int) (repetitionRange * 0.1);
-//        System.out.println("viableRange: " + viableRange / 1000 / 60);
-//        System.out.println("repetitionRange: " + repetitionRange / 1000 / 60);
-//        System.out.println("paddingValue: " + paddingValue / 1000 / 60);
+        System.out.println("viableRange: " + viableRange / 1000 / 60);
+        System.out.println("repetitionRange: " + repetitionRange / 1000 / 60);
+        System.out.println("paddingValue: " + paddingValue / 1000 / 60);
         final int[][] repetitionArray = new int[repetitionCount][2];
         for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             final int nextInt = new Random().nextInt(repetitionRange - paddingValue * 2);
             final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt - (paddingValue);
-//            System.out.println("nextInt: " + nextInt / 1000 / 60);
-//            System.out.println("nextPeriod: " + nextPeriod / 1000 / 60);
+            System.out.println("nextInt: " + nextInt / 1000 / 60);
+            System.out.println("nextPeriod: " + nextPeriod / 1000 / 60);
             final Date repetitionDate = new Date(fromDate.getTime() + nextPeriod);
             repetitionArray[repetitionIndex] = new int[]{repetitionDate.getHours(), repetitionDate.getMinutes()};
         }
