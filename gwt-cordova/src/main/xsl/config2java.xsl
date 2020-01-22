@@ -555,6 +555,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
         <xsl:value-of select="if(local-name() eq 'switchUserIdButton') then ', ' else ''" />
         <xsl:if test="local-name() eq 'requestNotification'">
+            <xsl:text>, submissionService</xsl:text>
             <xsl:text>, new ApplicationState[]{</xsl:text>
             <xsl:for-each select="tokenize(@targetOptions,',')">
                 <xsl:text>ApplicationState.</xsl:text>
