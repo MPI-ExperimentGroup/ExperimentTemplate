@@ -58,7 +58,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
         this.stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));
     }
 
-    private int attributeMaxStimulusCount = 3;
+    private Integer attributeMaxStimulusCount = null; // if not provided there will be no limit to the number of stimuli
     private boolean attributeRandomise = true;
     private int attributeRepeatCount = 1;
     private int attributeRepeatRandomWindow = 6;
@@ -160,7 +160,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
                     // todo: also load the list for other getSubset related methods
                     loadStoredStimulusList(storedStimulusList, stimulusSubsetArrayTemp);
                 } else {
-                    while (!stimulusListCopy.isEmpty() && attributeMaxStimulusCount > stimulusSubsetArrayTemp.size()) {
+                    while (!stimulusListCopy.isEmpty() && (attributeMaxStimulusCount == null || attributeMaxStimulusCount > stimulusSubsetArrayTemp.size())) {
                         final int nextIndex = (attributeRandomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
                         Stimulus stimulus = stimulusListCopy.remove(nextIndex);
                         stimulusSelectionArray.add(stimulus);
@@ -251,7 +251,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     public void getSubset(final List<Tag> selectionTags, final String storedStimulusList, List<Stimulus> stimulusListCopy) {
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
         stimulusSelectionArray.clear();
-        while (!stimulusListCopy.isEmpty() && attributeMaxStimulusCount > stimulusSubsetArrayTemp.size()) {
+        while (!stimulusListCopy.isEmpty() && (attributeMaxStimulusCount == null || attributeMaxStimulusCount > stimulusSubsetArrayTemp.size())) {
             final int nextIndex = (attributeRandomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getTags().containsAll(selectionTags)) {
@@ -351,14 +351,16 @@ public class StimulusProvider extends AbstractStimuliProvider {
         }
     }
 
-    private void applyRepeatRandomWindow(final List<Stimulus> stimulusSubsetArrayTemp, final int repeatCount, final int repeatRandomWindow, final int maxStimulusCount) {
+    private void applyRepeatRandomWindow(final List<Stimulus> stimulusSubsetArrayTemp, final int repeatCount, final int repeatRandomWindow, final Integer maxStimulusCount) {
         stimulusSubsetArray.clear();
         for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
             stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
         }
-        while (stimulusSubsetArray.size() > maxStimulusCount) {
-            // cap the number of stimuli by the max stimuli requested
-            stimulusSubsetArray.remove(stimulusSubsetArray.size() - 1);
+        if (maxStimulusCount != null) {
+            while (stimulusSubsetArray.size() > maxStimulusCount) {
+                // cap the number of stimuli by the max stimuli requested
+                stimulusSubsetArray.remove(stimulusSubsetArray.size() - 1);
+            }
         }
         if (repeatCount > 1 && repeatRandomWindow > 0 && stimulusSubsetArray.size() > repeatRandomWindow) {
             // todo: perhaps also do this when the repeatRandomWindow is bigger than the stimulusSubsetArray but just reduce the repeatRandomWindow accordingly
