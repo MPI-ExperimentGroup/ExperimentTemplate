@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk13
 #cache:
 #  directories:
 #    these take as long to download from the cache as from the original source
