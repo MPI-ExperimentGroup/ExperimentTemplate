@@ -121,6 +121,9 @@ public class ObfuscatedStorageTest {
             instance.setItem(instance.getUSER_RESULTS(userId, valueName), "test");
             instance.setItem(instance.getUSER_METADATA(userId, valueName), "test");
             instance.setItem(instance.getUSER_METADATA_CONNECTION(userId, valueName), "test");
+            instance.setItem(instance.getSTIMULI_DATA(userId, valueName), "test");
+            instance.setItem(instance.getSTIMULI_DATA(userId, GeneratedStimulus.values[3]), "test");
+            instance.setItem(instance.getSTIMULI_DATA(userId, "stimulus"), "test");
         }
         instance.setItem(instance.getLAST_USER_ID(), "test");
         instance.setItem(instance.getGAME_DATA(userId), "test");
@@ -130,7 +133,7 @@ public class ObfuscatedStorageTest {
         instance.setItem(instance.getSCREEN_DATA(endPoint, userId), "test");
         assertTrue(instance.isUSER_METADATA(instance.getUSER_METADATA(userId, postName), postName));
         assertFalse(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, postName), postName));
-        assertEquals(44, instance.getLength());
+        assertEquals(80, instance.getLength());
         instance.clearUserData(userId);
         assertEquals(1, instance.getLength());
     }
