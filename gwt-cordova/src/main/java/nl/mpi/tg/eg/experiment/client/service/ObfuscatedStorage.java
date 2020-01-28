@@ -50,24 +50,25 @@ public class ObfuscatedStorage {
             byte[] outputBytes = input.getBytes();
             byte[] storageKeyBytes = storageKey.getBytes();
             for (int index = 0; index < input.length(); index++) {
-                    outputBytes[index] ^= storageKeyBytes[storageKeyBytes.length - ((index * 3) % storageKeyBytes.length)];
-                }
+                final int keyIndex = storageKeyBytes.length - ((index * 3) % storageKeyBytes.length) - 1;
+                outputBytes[index] ^= storageKeyBytes[keyIndex];
+            }
             return new String(outputBytes);
         } else {
             return input;
         }
     }
 
-    private String obfuscateString(String storageKey, String input) {
+    protected String obfuscateString(String storageKey, String input) {
         return processString(storageKey, urlEncode(input));
     }
 
     protected String urlEncode(String input) {
-        return URL.encode(input);
+        return input;// this is not required: URL.encode(input);
     }
 
     protected String urlDecode(String input) {
-        return URL.decode(input);
+        return input;// this is not required: URL.decode(input);
     }
 
     protected String revealString(String storageKey, String input) {
@@ -163,10 +164,10 @@ public class ObfuscatedStorage {
     }
 
     public void clearUserData(UserId userId) {
-        for (int itemIndex = dataStore.getLength() - 1; itemIndex > -1; itemIndex--) {
-            final String key = dataStore.key(itemIndex);
+        for (int itemIndex = getLength() - 1; itemIndex > -1; itemIndex--) {
+            final String key = key(itemIndex);
             if (key.startsWith(appNameInternal + "." + userId.toString())) {
-                dataStore.removeItem(key);
+                removeItem(key);
             }
         }
     }
