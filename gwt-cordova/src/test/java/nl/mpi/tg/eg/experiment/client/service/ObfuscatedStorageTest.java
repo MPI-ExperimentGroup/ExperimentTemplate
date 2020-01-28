@@ -30,7 +30,6 @@ import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  * @since 8 July 2019 17:46:09 PM (creation date)
@@ -84,11 +83,27 @@ public class ObfuscatedStorageTest {
     }
 
     /**
+     * Test of revealString method, of class ObfuscatedStorage.
+     */
+    @Test
+    public void testEncodeRevealString() {
+        System.out.println("testEncodeRevealString");
+        String storageKey = "testEncodeRevealString";
+        ObfuscatedStorage instance = getObfuscatedStorage("invitation_validation_example", new HashMap<>());
+        final String input = "\"ประเพณีบุญบั้งไฟ\", \"Rocket\", \"Festival\", \"Lao\", \"Thai\", \"ບຸນບັ້ງໄຟ\" ประเพณีบุญบั้งไฟ Lao ບຸນບັ້ງໄຟ";
+        String obfuscateString = instance.obfuscateString(storageKey, input);
+        String revealString = instance.revealString(storageKey, obfuscateString);
+        System.out.println("obfuscateString: " + obfuscateString.charAt(16) + " : " + Integer.toBinaryString(obfuscateString.charAt(16)));
+        System.out.println("revealString: " + obfuscateString.charAt(16) + " : " + Integer.toBinaryString(revealString.charAt(16)));
+        assertNotEquals(input, obfuscateString);
+        assertEquals(input, revealString);
+    }
+
+    /**
      * Test of clearUserData method, of class ObfuscatedStorage.
      *
      * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
      */
-    @Ignore
     @Test
     public void testClearUserData() throws UserIdException {
         System.out.println("clearUserData");
@@ -117,6 +132,6 @@ public class ObfuscatedStorageTest {
         assertFalse(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, postName), postName));
         assertEquals(44, instance.getLength());
         instance.clearUserData(userId);
-        assertEquals(0, instance.getLength());
+        assertEquals(1, instance.getLength());
     }
-    }
+}
