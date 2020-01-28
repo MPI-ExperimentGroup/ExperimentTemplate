@@ -164,9 +164,12 @@ public class ObfuscatedStorage {
     }
 
     public void clearUserData(UserId userId) {
+        final String userIdString1 = obfuscateString(userId.toString(), userId.toString()).substring(0, userId.toString().length());
         for (int itemIndex = getLength() - 1; itemIndex > -1; itemIndex--) {
             final String key = key(itemIndex);
-            if (key.startsWith(appNameInternal + "." + userId.toString())) {
+            if (key.startsWith(appNameInternal + "." + userIdString1)) {
+                removeItem(key);
+            } else if (key.startsWith(appNameInternal + "." + userId.toString())) {
                 removeItem(key);
             }
         }
