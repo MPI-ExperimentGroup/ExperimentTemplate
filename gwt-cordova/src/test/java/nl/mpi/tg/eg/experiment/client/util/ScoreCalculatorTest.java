@@ -159,7 +159,7 @@ public class ScoreCalculatorTest {
         final UserResults userResults = new UserResults(new UserData());
         final String resourcePath = "/nl/ru/languageininteraction/testdata/" + userId;
         System.out.println("resourcePath:" + resourcePath);
-        final InputStream testDataStream = ScoreCalculatorTest.class.getClass().getResourceAsStream(resourcePath);
+        final InputStream testDataStream = ScoreCalculatorTest.class.getResourceAsStream(resourcePath);
         Scanner scanner = new Scanner(testDataStream);
         scanner.useDelimiter("\t");
 
