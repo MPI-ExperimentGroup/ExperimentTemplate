@@ -179,7 +179,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
     }
 
     protected void selectUserMenu(final AppEventListner appEventListner, final String styleName) {
-        for (final UserLabelData labelData : localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField)) {
+        for (final UserLabelData labelData : localStorage.getUserIdList(metadataFieldProvider.getWorkerIdMetadataField())) {
             final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
                 @Override
@@ -251,7 +251,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
     }
 
     protected void allMetadataFields() {
-        for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+        for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
             ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
         }
     }
@@ -268,6 +268,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
 
     protected void metadataFieldDateTriggered(final MetadataField metadataField, final MetadataField metadataFieldOther, final String visibleRegex, final String enabledRegex, final int[] daysThresholds) {
         // daysThresholds indicates the index that should be selected based on the day age from metadataFieldOther
+        // last check indicates that dependant field value changes happen even when the element is disabled, see https://frinexstaging.mpi.nl/with_stimulus_example/#Metadata_Enable_Visible
         ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, daysThresholds, visibleRegex, enabledRegex);
     }
 
