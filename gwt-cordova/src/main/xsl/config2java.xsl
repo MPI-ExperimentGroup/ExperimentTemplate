@@ -235,14 +235,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.listener.TimerListner;
                 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
-                import nl.mpi.tg.eg.experiment.client.model.UserId;    
+                import nl.mpi.tg.eg.experiment.client.model.UserId;
                 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
                 import nl.mpi.tg.eg.experiment.client.service.TimerService;
                 import nl.mpi.tg.eg.experiment.client.model.UserResults;    
                 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-                import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+                import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
                 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
                 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
                 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
