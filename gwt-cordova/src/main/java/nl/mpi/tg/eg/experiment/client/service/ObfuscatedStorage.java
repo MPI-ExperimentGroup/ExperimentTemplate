@@ -59,7 +59,7 @@ public class ObfuscatedStorage {
         }
     }
 
-    protected String obfuscateString(String storageKey, String input) {
+    final protected String obfuscateString(String storageKey, String input) {
         return processString(storageKey, urlEncode(input));
     }
 
