@@ -64,7 +64,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void setMetadataValue(final Stimulus currentStimulus, final MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray());
         final String dataLogString = (replacementRegex == null || replacementRegex.isEmpty()) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
         userResults.getUserData().setMetadataValue(metadataField, dataLogString);
         localStorage.storeData(userResults, metadataFieldProvider);
@@ -72,7 +72,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void setMetadataEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
+            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokens(evaluateTokens);
             userResults.getUserData().setMetadataValue(metadataField, resultValue.toString());
             localStorage.storeData(userResults, metadataFieldProvider);
             onSuccess.postLoadTimerFired();
@@ -98,6 +98,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
                 final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
                 if (metadataString != null && !metadataString.isEmpty() && metadataString.matches(validationRegex)) {
                     try {
+                        // todo: why does this set the user before store and what about the results array etc that should be updated to the new user
                         userResults.setUser(localStorage.getStoredData(new UserId(metadataString), metadataFieldProvider));
                         localStorage.storeData(userResults, metadataFieldProvider);
                         // todo: note that previous implementations that change the user id, all have changed the application state directly after the user change, so care should be made in testing that no residual data is left behind
@@ -120,7 +121,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void progressIndicator(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).evaluateTokens(evaluateTokens);
+            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokens(evaluateTokens);
             if (resultValue.intValue() >= 0 && resultValue.intValue() <= 100) {
                 timedStimulusView.addBarGraphElement(resultValue.intValue(), 100, styleName);
                 onSuccess.postLoadTimerFired();
@@ -133,7 +134,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
-        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(textString), styleName);
+        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(textString), styleName);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
@@ -182,7 +183,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListner presenterListener, final String buttonGroup) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray());
         addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
             @Override
             public String getLabel() {
@@ -257,19 +258,19 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void region(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
         timedStimulusView.endRegion(isWidget);
     }
 
     protected void regionStyle(final Stimulus currentStimulus, final String regionIdToken, final String styleName) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
         timedStimulusView.setRegionStyle(regionId, styleName);
     }
 
     protected void regionReplace(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
@@ -277,7 +278,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void regionClear(final Stimulus currentStimulus, final String regionIdToken) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
     }
 
