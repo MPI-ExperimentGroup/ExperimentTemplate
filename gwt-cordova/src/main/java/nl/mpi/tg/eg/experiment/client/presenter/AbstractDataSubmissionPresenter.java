@@ -67,7 +67,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     }
 
     public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
-        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(targetUrl);
+        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(targetUrl);
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
@@ -143,7 +143,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     }
 
     public void transmitResults(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-        final String dataLogFormatted = (dataLogFormat == null) ? null : new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat);
+        final String dataLogFormatted = (dataLogFormat == null) ? null : new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(dataLogFormat);
         new RegistrationService().submitRegistration(userResults, sendingRegex, receivingRegex, dataLogFormatted, new RegistrationListener() {
             @Override
             public void registrationFailed(RegistrationException exception) {
