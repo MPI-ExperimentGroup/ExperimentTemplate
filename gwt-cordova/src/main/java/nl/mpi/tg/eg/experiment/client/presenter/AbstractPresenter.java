@@ -41,7 +41,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.LocalNotifications;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -56,7 +56,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public abstract class AbstractPresenter implements Presenter {
 
     protected final Messages messages = GWT.create(Messages.class);
-    protected final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+    protected final ExperimentMetadataFieldProvider metadataFieldProvider = new ExperimentMetadataFieldProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     protected final RootLayoutPanel widgetTag;
     final protected ComplexView simpleView;
@@ -250,7 +250,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     public void hasMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
-        final String matchingRegex = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(inputRegex);
+        final String matchingRegex = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(inputRegex);
         final String valueString = userResults.getUserData().getMetadataValue(metadataField);
         if (valueString.matches(matchingRegex)) {
             conditionTrue.postLoadTimerFired();
