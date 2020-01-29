@@ -39,14 +39,15 @@ import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.presenter.StorageFullPresenter;
 import nl.mpi.tg.eg.experiment.client.presenter.TestingVersionPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 
 /**
@@ -64,7 +65,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
     protected final RootLayoutPanel widgetTag;
     protected Presenter presenter;
     protected final UserResults userResults;
-    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+    final MetadataFieldProvider metadataFieldProvider = new ExperimentMetadataFieldProvider();
     final boolean isDebugMode;
 
     public AppController(RootLayoutPanel widgetTag, String userIdGetParam) throws UserIdException {
@@ -90,7 +91,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "obfuscationDisabled");
         }
         boolean hasNewMetadata = false;
-        for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+        for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
             final String postName = metadataField.getPostName();
             String value = Window.Location.getParameter(postName);
             if (value != null) {
