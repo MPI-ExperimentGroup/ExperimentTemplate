@@ -17,8 +17,19 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import nl.mpi.tg.eg.experiment.client.model.MetadataFieldProvider;
 
 /**
  * @since Mar 16, 2018 11:30:56 AM (creation date)
@@ -27,6 +38,44 @@ import static org.junit.Assert.*;
 public class LocalStorageTest {
 
     public LocalStorageTest() {
+    }
+
+    private LocalStorage getLocalStorage(final Map<String, String> storageMap) {
+        final List<String> keyList = new ArrayList<>(storageMap.keySet());
+        return new LocalStorage("LocalStorageTest") {
+            @Override
+            protected ObfuscatedStorage loadStorage() {
+                dataStore = new ObfuscatedStorage(appNameInternal, enableObfuscation) {
+                    @Override
+                    public void removeItem(String key) {
+                        storageMap.remove(key);
+                        keyList.remove(key);
+                    }
+
+                    @Override
+                    public void setItem(String key, String data) {
+                        storageMap.put(key, data);
+                        keyList.add(key);
+                    }
+
+                    @Override
+                    public String getItem(String key) {
+                        return storageMap.get(key);
+                    }
+
+                    @Override
+                    public String key(int itemIndex) {
+                        return keyList.get(itemIndex);
+                    }
+
+                    @Override
+                    public int getLength() {
+                        return keyList.size();
+                    }
+                };
+                return dataStore;
+            }
+        };
     }
 
     /**
@@ -1180,4 +1229,257 @@ public class LocalStorageTest {
             + "\"tagValue2\": \"filler_1_3\",\n"
             + "\"eventMs\": \"111680\" \n"
             + "}";
+
+    /**
+     * Test of disableObfuscation method, of class LocalStorage.
+     */
+    @Test
+    public void testDisableObfuscation() throws UserIdException {
+        System.out.println("disableObfuscation");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        LocalStorage instance = getLocalStorage(storageMap);
+        instance.setStoredDataValue(new UserId("disableObfuscationUser"), "disableObfuscationLabel", "disableObfuscationValue");
+        instance.setStoredDataValue(new UserId("disableObfuscationUser"), "disableObfuscationLabel", "disableObfuscationValue");
+        assertEquals(1, storageMap.size());
+        instance.disableObfuscation();
+        instance.setStoredDataValue(new UserId("disableObfuscationUser"), "disableObfuscationLabel", "disableObfuscationValue");
+
+        for (String key : storageMap.keySet()) {
+            System.out.println("key: " + key);
+        }
+        for (String value : storageMap.values()) {
+            System.out.println("value: " + value);
+        }
+        assertEquals(2, storageMap.size());
+    }
+
+    /**
+     * Test of clearUserData method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testClearUserData() throws UserIdException {
+        System.out.println("clearUserData");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        LocalStorage instance = getLocalStorage(storageMap);
+        instance.addStoredGameData(userId, "test");
+        instance.addStoredScreenData(userId, "test", "test");
+        instance.appendStoredDataValue(userId, "test", "test");
+        instance.saveCompletionCode(userId, "test");
+        instance.setStoredDataValue(userId, "test", "test");
+        final UserResults userResults = new UserResults(new UserData(userId));
+        userResults.getUserData().addGamePlayed();
+        userResults.getUserData().addPotentialScore(true);
+        userResults.getUserData().addPotentialScore(5);
+        instance.storeUserScore(userResults);
+        assertEquals(16, storageMap.size());
+        instance.clearUserData(userId);
+        assertEquals(0, storageMap.size());
+    }
+
+    /**
+     * Test of getStoredGameData method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testGetStoredGameData() throws UserIdException {
+        System.out.println("getStoredGameData");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        LocalStorage instance = getLocalStorage(storageMap);
+        String expResult = "serialisedGameData";
+        instance.addStoredGameData(userId, expResult);
+        String result = instance.getStoredGameData(userId);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getStoredScreenData method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testGetStoredScreenData() throws UserIdException {
+        System.out.println("getStoredScreenData");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        String endpoint = "endpoint";
+        LocalStorage instance = getLocalStorage(storageMap);
+        String expResult = "{serialised},{Screen},{Data}";
+        instance.addStoredScreenData(userId, endpoint, expResult);
+        String result1 = instance.getStoredScreenData(userId, endpoint);
+        assertEquals(expResult, result1);
+        instance.deleteStoredScreenData(userId, endpoint, "{Screen}");
+        String result2 = instance.getStoredScreenData(userId, endpoint);
+        assertEquals("{serialised},{Data}", result2);
+    }
+
+//    /**
+//     * Test of getStoredJSONObject method, of class LocalStorage.
+//     *
+//     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+//     */
+//    @Test
+//    public void testGetStoredJSONObject_UserId_Stimulus() throws UserIdException {
+//        System.out.println("getStoredJSONObject");
+//        UserId userId = new UserId("TestUserData");
+//        final HashMap<String, String> storageMap = new HashMap<>();
+//        Stimulus stimulus = GeneratedStimulus.values[0];
+//        LocalStorage instance = getLocalStorage(storageMap);
+//        JSONObject expResult = new JSONObject();
+//        expResult.put("expResult", new JSONString("expResult"));
+//        JSONObject result = instance.getStoredJSONObject(userId, stimulus);
+//        assertEquals("expResult", result);
+//    }
+//
+//    /**
+//     * Test of getStoredJSONObject method, of class LocalStorage.
+//     *
+//     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+//     */
+//    @Test
+//    public void testGetStoredJSONObject_UserId_String() throws UserIdException {
+//        System.out.println("getStoredJSONObject");
+//        UserId userId = new UserId("TestUserData");
+//        final HashMap<String, String> storageMap = new HashMap<>();
+//        String stimulusId = "stimulusId";
+//        LocalStorage instance = getLocalStorage(storageMap);
+//        JSONObject expResult = new JSONObject();
+//        expResult.put("expResult", new JSONString("expResult"));
+//        JSONObject result = instance.getStoredJSONObject(userId, stimulusId);
+//        assertEquals("expResult", result);
+//    }
+//    /**
+//     * Test of getDataAgreementValue method, of class LocalStorage.
+//     *
+//     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+//     */
+//    @Test
+//    public void testGetDataAgreementValue() throws UserIdException {
+//        System.out.println("getDataAgreementValue");
+//        UserId userId = new UserId("TestUserData");
+//        final HashMap<String, String> storageMap = new HashMap<>();
+//        LocalStorage instance = getLocalStorage(storageMap);
+//        boolean expResult = false;
+//        boolean result = instance.getDataAgreementValue(userId);
+//        assertEquals(expResult, result);
+//    }
+    /**
+     * Test of getStoredDataValue method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testGetStoredDataValue() throws UserIdException {
+        System.out.println("getStoredDataValue");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        String label = "label";
+        LocalStorage instance = getLocalStorage(storageMap);
+        String expResult = "expResult";
+        String result1 = instance.getStoredDataValue(userId, label);
+        assertEquals("", result1);
+        instance.setStoredDataValue(userId, label, expResult);
+        String result2 = instance.getStoredDataValue(userId, label);
+        assertEquals(expResult, result2);
+    }
+
+    /**
+     * Test of deleteStoredDataValue method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testDeleteStoredDataValue() throws UserIdException {
+        System.out.println("deleteStoredDataValue");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        String label = "label";
+        LocalStorage instance = getLocalStorage(storageMap);
+        String expResult = "expResult";
+        instance.setStoredDataValue(userId, label, expResult);
+        String result1 = instance.getStoredDataValue(userId, label);
+        assertEquals(expResult, result1);
+        instance.deleteStoredDataValue(userId, label);
+        String result2 = instance.getStoredDataValue(userId, label);
+        assertEquals("", result2);
+    }
+
+    /**
+     * Test of appendStoredDataValue method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testAppendStoredDataValue() throws UserIdException {
+        System.out.println("appendStoredDataValue");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        LocalStorage instance = getLocalStorage(storageMap);
+        String label = "label";
+        String expResult = "expResult";
+        instance.setStoredDataValue(userId, label, expResult);
+        String result1 = instance.getStoredDataValue(userId, label);
+        assertEquals(expResult, result1);
+        instance.appendStoredDataValue(userId, label, expResult);
+        String result2 = instance.getStoredDataValue(userId, label);
+        assertEquals(expResult + expResult, result2);
+    }
+
+    /**
+     * Test of saveCompletionCode method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testSaveCompletionCode() throws UserIdException {
+        System.out.println("saveCompletionCode");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        String completionCode = "completionCode";
+        LocalStorage instance = getLocalStorage(storageMap);
+        instance.saveCompletionCode(userId, completionCode);
+        String result = instance.getCompletionCode(userId);
+        assertEquals(completionCode, result);
+    }
+
+//    /**
+//     * Test of getUserIdList method, of class LocalStorage.
+//     *
+//     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+//     */
+//    @Test
+//    public void testGetUserIdList() throws UserIdException {
+//        System.out.println("getUserIdList");
+//        MetadataField metadataField = new MetadataField("metadataField", "metadataField", "metadataField", "metadataField", "metadataField");
+//        final HashMap<String, String> storageMap = new HashMap<>();
+//        LocalStorage instance = getLocalStorage(storageMap);
+//        UserResults userResults1 = new UserResults(new UserData(new UserId("user1")));
+//        UserResults userResults2 = new UserResults(new UserData(new UserId("user2")));
+//        UserResults userResults3 = new UserResults(new UserData(new UserId("user3")));
+//        final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider() {
+//            @Override
+//            public MetadataField[] getMetadataFieldArray() {
+//                return new MetadataField[]{metadataField};
+//            }
+//
+//            @Override
+//            public String getDataAgreementFieldName() {
+//                return null;
+//            }
+//
+//            @Override
+//            public String getDataAgreementMatch() {
+//                return null;
+//            }
+//        };
+//        instance.storeData(userResults1, metadataFieldProvider);
+//        instance.storeData(userResults2, metadataFieldProvider);
+//        instance.storeData(userResults3, metadataFieldProvider);
+//        List<UserLabelData> result = instance.getUserIdList(metadataField);
+//        assertEquals(3, result.size());
+//    }
 }
