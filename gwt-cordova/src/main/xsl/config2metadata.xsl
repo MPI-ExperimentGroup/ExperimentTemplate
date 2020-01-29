@@ -5,7 +5,7 @@
     Created on : June 22, 2015, 11:30 AM
     Author     : Peter Withers <peter.withers@mpi.nl>
     Description:
-        Purpose of transformation follows.
+        This transformation generates the MetadataFieldProvider class from the experiment configuration file.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
@@ -74,14 +74,13 @@
                 </xsl:for-each>
             </xsl:result-document>
         </xsl:for-each>   
-        <xsl:result-document href="{$targetClientDirectory}/service/MetadataFieldProvider.java" method="text">
-            <xsl:text>package nl.mpi.tg.eg.experiment.client.service;
+        <xsl:result-document href="{$targetClientDirectory}/model/ExperimentMetadataFieldProvider.java" method="text">
+            <xsl:text>package nl.mpi.tg.eg.experiment.client.model;
 
                 import com.google.gwt.core.client.GWT;
                 import nl.mpi.tg.eg.experiment.client.MetadataFields;
-                import nl.mpi.tg.eg.experiment.client.model.MetadataField;
                 
-                public class MetadataFieldProvider {
+                public class ExperimentMetadataFieldProvider implements MetadataFieldProvider {
 
                 private final MetadataFields mateadataFields = GWT.create(MetadataFields.class);
             </xsl:text>
@@ -102,17 +101,25 @@
                 <xsl:text>());</xsl:text>
             </xsl:for-each>
             <xsl:text>
-                public final MetadataField[] metadataFieldArray = new MetadataField[]{
+                public final MetadataField[] getMetadataFieldArray(){
+                return new MetadataField[]{
             </xsl:text>
             <xsl:value-of select="experiment/metadata/field/@postName" separator="MetadataField, " />
             <xsl:text>MetadataField
                 };
-                public static final String dataAgreementFieldName = </xsl:text>
+                }
+                
+                public final String getDataAgreementFieldName() {
+                return </xsl:text>
             <xsl:value-of select="if(experiment/administration/dataAgreementField/@fieldName) then concat('&quot;', experiment/administration/dataAgreementField/@fieldName, '&quot;') else 'null'" />
             <xsl:text>;
-                public static final String dataAgreementMatch = </xsl:text>
+                }
+                
+                public final String getDataAgreementMatch() {
+                return </xsl:text>
             <xsl:value-of select="if(experiment/administration/dataAgreementField/@matchingRegex) then concat('&quot;', experiment/administration/dataAgreementField/@matchingRegex, '&quot;') else 'null'" />
             <xsl:text>;
+                }
                 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
