@@ -342,7 +342,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             case groupEvent:
             case metadata:
             default:
-                canSendData = localStorage.getDataAgreementValue(userId);
+                canSendData = localStorage.getDataAgreementValue(userId, metadataFieldProvider);
                 break;
         }
         // data at this point has been neither stored nor sent
@@ -402,7 +402,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             case metadata:
             case stimulusResponse:
             default:
-                canSendData = localStorage.getDataAgreementValue(userId);
+                canSendData = localStorage.getDataAgreementValue(userId, metadataFieldProvider);
                 break;
         }
         // data at this point has been stored but not sent
