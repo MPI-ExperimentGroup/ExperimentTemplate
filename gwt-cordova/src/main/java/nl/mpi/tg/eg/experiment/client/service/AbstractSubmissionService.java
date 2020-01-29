@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.Version;
+import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 
 /**
  * @since Oct 29, 2014 11:18:31 AM (creation date)
@@ -31,7 +32,7 @@ public abstract class AbstractSubmissionService {
 
     final protected static Logger logger = Logger.getLogger(AbstractSubmissionService.class.getName());
     final protected ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
-    final protected MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+    final protected ExperimentMetadataFieldProvider metadataFieldProvider = new ExperimentMetadataFieldProvider();
     final protected Version version = GWT.create(Version.class);
     protected final Messages messages = GWT.create(Messages.class);
 
