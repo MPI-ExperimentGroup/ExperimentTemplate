@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.MetadataFieldProvider;
 
 /**
  * @since Oct 24, 2014 3:01:35 PM (creation date)
@@ -39,7 +40,7 @@ public class LocalStorage {
 
     protected final String appNameInternal;
     protected boolean enableObfuscation = true;
-    private ObfuscatedStorage dataStore = null;
+    protected ObfuscatedStorage dataStore = null;
     protected final String MAX_SCORE = "maxScore";
     protected final String GAMES_PLAYED = "gamesPlayed";
     protected final String CURRENT_POTENTIAL = "currentPotential";
@@ -59,9 +60,10 @@ public class LocalStorage {
 
     public void disableObfuscation() {
         enableObfuscation = false;
+        dataStore = null;
     }
 
-    private ObfuscatedStorage loadStorage() {
+    protected ObfuscatedStorage loadStorage() {
         if (dataStore == null) {
             dataStore = new ObfuscatedStorage(appNameInternal, enableObfuscation).loadStorage();
         }
@@ -177,17 +179,17 @@ public class LocalStorage {
         // with android versions this JSON data is saved to the SDcard via the StimulusPresenter
     }
 
-    public boolean getDataAgreementValue(UserId userId) {
-        if (MetadataFieldProvider.dataAgreementFieldName == null) {
+    public boolean getDataAgreementValue(final UserId userId, final MetadataFieldProvider metadataFieldProvider) {
+        if (metadataFieldProvider.getDataAgreementFieldName() == null) {
             // when the administration/dataAgreementField/@fieldName is not set in the configuration file then permission is always true
             return true;
-        } else if (MetadataFieldProvider.dataAgreementMatch == null) {
+        } else if (metadataFieldProvider.getDataAgreementMatch() == null) {
             // when the administration/dataAgreementField/@fieldName exists in the configuration file but has no matchingRegex then permission is always false
             return false;
         } else {
             loadStorage();
-            final String agreementValue = getCleanStoredData(dataStore.getUSER_METADATA(userId, MetadataFieldProvider.dataAgreementFieldName));
-            return MetadataFieldProvider.dataAgreementMatch.equals(agreementValue);
+            final String agreementValue = getCleanStoredData(dataStore.getUSER_METADATA(userId, metadataFieldProvider.getDataAgreementFieldName()));
+            return metadataFieldProvider.getDataAgreementMatch().equals(agreementValue);
         }
     }
 
@@ -228,7 +230,7 @@ public class LocalStorage {
         UserData userData = new UserData(userId);
         loadStorage();
         if (dataStore != null) {
-            for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+            for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
                 userData.setMetadataValue(metadataField, getCleanStoredData(dataStore.getUSER_METADATA(userData.getUserId(), metadataField.getPostName())));
                 final String cleanedUserIds = getCleanStoredData(dataStore.getUSER_METADATA_CONNECTION(userData.getUserId(), metadataField.getPostName()));
                 if (cleanedUserIds != null && !cleanedUserIds.isEmpty()) {
@@ -305,7 +307,7 @@ public class LocalStorage {
     public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider) {
         loadStorage();
         if (dataStore != null) {
-            for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+            for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
                 dataStore.setItem(dataStore.getUSER_METADATA(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
                 final List<UserId> metadataConnections = userResults.getUserData().getMetadataConnection(metadataField);
                 if (metadataConnections != null && !metadataConnections.isEmpty()) {
