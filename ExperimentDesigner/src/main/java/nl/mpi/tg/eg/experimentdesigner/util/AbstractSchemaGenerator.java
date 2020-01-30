@@ -340,7 +340,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false)
                                     .integerAttribute("channel", false),
-                            new DocumentationElement("validation", "Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record."
+                            new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record."
                                     + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.", 0, 1, new DocumentationElement[]{
                                 new DocumentationElement("recordMatch", "The value sent to the server must match the last valid record stored on in the admin system.", 0, 0, new DocumentationElement[0])
                                         .documentedAttribute("postField", AttributeType.xsString, "The value of this metadatafield is sent to the admin server for validation.", false)
@@ -355,7 +355,7 @@ public class AbstractSchemaGenerator {
                                         .documentedAttribute("responseField", AttributeType.xsString, "If validation succeeds the response value is returned to the client in this metadata field.", true)
                                         .documentedAttribute("errorField", AttributeType.xsString, "If provided the value of the postField must match the value of the adminField then the error message will be returned in this metadatafield.", false)
                                         .documentedAttribute("errorMessage", AttributeType.xsString, "If provided the value of the postField does not match the value of the adminField then this message is returned.", false)
-                                        .stringAttribute("validationRegex", true)
+                                        .documentedAttribute("validationRegex", AttributeType.xsString, "If provided then this regex is matched against the value for validation.", true)
                             })
                                     .documentedAttribute("errorField", AttributeType.xsString, "If a validation error occurs the error message will be returned from the admin server in this metadatafield.", false)
                                     .documentedAttribute("errorMessage", AttributeType.xsString, "If no records match and a validation error occurs this is the error message that will be returned.", false)
