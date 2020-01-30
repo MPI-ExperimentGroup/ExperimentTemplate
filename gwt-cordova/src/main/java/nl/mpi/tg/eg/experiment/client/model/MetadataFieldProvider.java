@@ -25,8 +25,6 @@ public interface MetadataFieldProvider {
 
     MetadataField[] getMetadataFieldArray();
 
-    MetadataField getWorkerIdMetadataField();
-
     String getDataAgreementFieldName();
 
     String getDataAgreementMatch();
