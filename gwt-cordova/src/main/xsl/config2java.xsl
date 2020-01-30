@@ -1169,8 +1169,9 @@ or local-name() eq 'stimulusExists'
         <xsl:apply-templates select="multipleUsers" />
         <xsl:apply-templates select="singleUser" />
         <xsl:if test="local-name() eq 'showColourReport' or local-name() eq 'submitTestResults'">
-            <!--the colour report needs to know the email address metadata field, but this field does not exist in all experiments so it must be passed in here-->
-            <xsl:text>new MetadataFieldProvider().emailAddressMetadataField</xsl:text>
+            <!--the colour report needs to know the email address metadata field, but this field does not exist in all experiments so it must be passed in here.
+            todo: this field should be added to the configuration file as a fieldName attribute. -->
+            <xsl:text>new ExperimentMetadataFieldProvider().emailAddressMetadataField</xsl:text>
         </xsl:if>
         <xsl:apply-templates select="aboveThreshold" />
         <xsl:apply-templates select="withinThreshold" />
