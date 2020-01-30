@@ -76,8 +76,7 @@ public class WizardSubmitOfflineDataScreen extends AbstractWizardScreen {
 
         final PresenterFeature featureText = new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0));
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(featureText);
-        final PresenterFeature selectUserMenu = new PresenterFeature(FeatureType.selectUserMenu, null);
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(selectUserMenu);
+        storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.selectUserMenu, null, null, "workerId");
         uploadPresenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Uploading matadata"));
         final PresenterFeature sendPause = new PresenterFeature(FeatureType.pause, null);
         sendPause.addFeatureAttributes(FeatureAttribute.msToNext, "100");

@@ -95,8 +95,7 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
 
         if (storedWizardScreenData.getScreenBoolean(0)) {
             PresenterScreen selectUserScreen = new PresenterScreen(storedWizardScreenData.getScreenTitle(), storedWizardScreenData.getScreenTitle(), storedWizardScreenData.getPresenterScreen(), "SelectUser", storedWizardScreenData.getNextWizardScreenData().getPresenterScreen(), PresenterType.metadata, displayOrder + 1);
-            final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
-            selectUserScreen.getPresenterFeatureList().add(selectUserFeature);
+            selectUserScreen.addFeature(FeatureType.selectUserMenu, null, null, "workerId");
             experiment.getPresenterScreen().add(selectUserScreen);
             return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen(), selectUserScreen};
         } else {

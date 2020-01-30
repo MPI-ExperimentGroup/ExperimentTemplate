@@ -29,7 +29,7 @@
         </existingUserCheck>
     </presenter>
     <presenter back="Select_Participant" menuLabel="Select Participant" next="Gegevens" type="metadata" self="SelectUser" title="Select Participant">
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter back="Select_Participant" menuLabel="Terug" next="Practice1" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="RosselFieldKit" appNameInternal="rosselfieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <administration/>
+    <administration>
+        <dataChannel channel="0" label="Example" logToSdCard="true"/>
+    </administration>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Participant ID"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="connectionString" preventServerDuplicates="false" registrationField="connection"/>
@@ -46,7 +48,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Welcome" menuLabel="Select Participant" next="Menu" type="metadata" self="SelectUser" title="Select Participant">
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter back="Menu" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitSequential" title="FieldKit Sequential">
         <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
@@ -69,12 +71,12 @@
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                    <plainText featureText="the informant talks about the image"/>
-                    <actionButton featureText="next">
-                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
-                        <clearPage/>
-                        <nextStimulus repeatIncorrect="false"/>
-                    </actionButton>
+                        <plainText featureText="the informant talks about the image"/>
+                        <actionButton featureText="next">
+                            <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
+                            <clearPage/>
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>

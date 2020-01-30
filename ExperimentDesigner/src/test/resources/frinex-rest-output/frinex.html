@@ -216,7 +216,7 @@ dataChannel
 <h3 id="validationType" style="text-transform: uppercase;">
 validation
 </h3>
-Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.
+When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.&quot;</span><br/>
@@ -240,7 +240,7 @@ Server side validation of metadata fields and optional reloading of metadata fie
 <span style="color:green">errorMessage</span><span style="color:grey">=&quot;If provided the value of the postField does not match the value of the adminField then this message is returned.&quot;</span><br/>
 <span style="color:green">postField</span><span style="color:grey">=&quot;If provided the value of the postField must match the value of the adminField for validation to succeed. (optional)&quot;</span><br/>
 <span style="color:green">responseField</span><span style="color:grey">=&quot;If validation succeeds the response value is returned to the client in this metadata field. (optional)&quot;</span><br/>
-<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;If provided then this regex is matched against the value for validation. (optional)&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 </table>
@@ -289,7 +289,7 @@ On successful validation the values stored in the admin system can be returned t
 <span style="color:green">errorMessage</span><span style="color:grey">=&quot;If provided the value of the postField does not match the value of the adminField then this message is returned.&quot;</span><br/>
 <span style="color:green">postField</span><span style="color:grey">=&quot;If provided the value of the postField must match the value of the adminField for validation to succeed. (optional)&quot;</span><br/>
 <span style="color:green">responseField</span><span style="color:grey">=&quot;If validation succeeds the response value is returned to the client in this metadata field. (optional)&quot;</span><br/>
-<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;If provided then this regex is matched against the value for validation. (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -10803,7 +10803,8 @@ selectUserMenu
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">selectUserMenu</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">selectUserMenu</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>

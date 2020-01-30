@@ -93,7 +93,7 @@
                         </row>
                     </table>
                     <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>  
-                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;_cue" showPlaybackIndicator="false" msToNext="0">
+                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;_cue" showPlaybackIndicator="false">
                         <mediaLoadFailed>
                             <table>
                                 <row>
@@ -116,7 +116,7 @@
                                     <cancelPauseTimers/>  
                                     <trigger listenerId="nextStimulusAction"/>
                                 </stimulusButton>  
-                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_1" showPlaybackIndicator="false" msToNext="0">
+                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_1" showPlaybackIndicator="false" >
                                     <mediaLoadFailed>
                                         <htmlText featureText="Failed to load audio file"/>
                                     </mediaLoadFailed>
@@ -126,7 +126,7 @@
                                         <logTimeStamp eventTag="wordPlayed1"/>
                                         <pause  msToNext="500">
                                             <cancelPauseTimers/>
-                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_2" showPlaybackIndicator="false" msToNext="0">
+                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_2" showPlaybackIndicator="false" >
                                                 <mediaLoadFailed>
                                                     <htmlText featureText="Failed to load audio file"/>
                                                 </mediaLoadFailed>
@@ -136,7 +136,7 @@
                                                     <logTimeStamp eventTag="wordPlayed2"/>
                                                     <pause  msToNext="500">
                                                         <cancelPauseTimers/>  
-                                                        <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_3" showPlaybackIndicator="false" msToNext="0">
+                                                        <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_3" showPlaybackIndicator="false" >
                                                             <mediaLoadFailed>
                                                                 <htmlText featureText="Failed to load audio file"/>
                                                             </mediaLoadFailed>
@@ -146,9 +146,9 @@
                                                                 <logTimeStamp eventTag="wordPlayed3"/>
                                                                 <pause  msToNext="500">
                                                                     <cancelPauseTimers/> 
-                                                                    <currentStimulusHasTag tags="length_at_least_4" msToNext="0">
+                                                                    <currentStimulusHasTag tags="length_at_least_4" >
                                                                         <conditionTrue>
-                                                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_4" showPlaybackIndicator="false" msToNext="0">
+                                                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_4" showPlaybackIndicator="false" >
                                                                                 <mediaLoadFailed>
                                                                                     <htmlText featureText="Failed to load audio file"/>
                                                                                 </mediaLoadFailed>
@@ -157,9 +157,9 @@
                                                                                 <mediaPlaybackComplete>
                                                                                     <logTimeStamp eventTag="wordPlayed4"/>
                                                                                     <pause  msToNext="500">
-                                                                                        <currentStimulusHasTag tags="length_at_least_5" msToNext="0">
+                                                                                        <currentStimulusHasTag tags="length_at_least_5" >
                                                                                             <conditionTrue>
-                                                                                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_5" showPlaybackIndicator="false" msToNext="0">
+                                                                                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_5" showPlaybackIndicator="false" >
                                                                                                     <mediaLoadFailed>
                                                                                                         <htmlText featureText="Failed to load audio file"/>
                                                                                                     </mediaLoadFailed>
@@ -169,9 +169,9 @@
                                                                                                         <logTimeStamp eventTag="wordPlayed5"/>
                                                                                                         <pause  msToNext="500">
                                                                                                             <cancelPauseTimers/> 
-                                                                                                            <currentStimulusHasTag tags="length_at_least_6" msToNext="0">
+                                                                                                            <currentStimulusHasTag tags="length_at_least_6" >
                                                                                                                 <conditionTrue>
-                                                                                                                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_6" showPlaybackIndicator="false" msToNext="0">
+                                                                                                                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_6" showPlaybackIndicator="false" >
                                                                                                                         <mediaLoadFailed>
                                                                                                                             <htmlText featureText="Failed to load audio file"/>
                                                                                                                         </mediaLoadFailed>
@@ -274,7 +274,7 @@
                         </row>
                     </table>
                     <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>  
-                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;_cue" showPlaybackIndicator="false" msToNext="0">
+                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;_cue" showPlaybackIndicator="false" >
                         <mediaLoadFailed>
                             <table>
                                 <row>
@@ -291,7 +291,7 @@
                             <pause  msToNext="1000">
                                 <cancelPauseTimers/>
                                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
-                                    <currentStimulusHasTag tags="last_stimulus" msToNext="0">
+                                    <currentStimulusHasTag tags="last_stimulus" >
                                         <conditionTrue>
                                             <gotoPresenter target="Admin"/>
                                         </conditionTrue>
@@ -304,7 +304,7 @@
                                     <cancelPauseTimers/>  
                                     <trigger listenerId="nextStimulusAction"/>
                                 </stimulusButton>  
-                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_1" showPlaybackIndicator="false" msToNext="0">
+                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_1" showPlaybackIndicator="false" >
                                     <mediaLoadFailed>
                                         <htmlText featureText="Failed to load audio file"/>
                                     </mediaLoadFailed>
@@ -316,7 +316,7 @@
                                         <pause  msToNext="500">
                                             <cancelPauseTimers/>
                                               
-                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_2" showPlaybackIndicator="false" msToNext="0">
+                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_2" showPlaybackIndicator="false" >
                                                 <mediaLoadFailed>
                                                     <htmlText featureText="Failed to load audio file"/>
                                                 </mediaLoadFailed>
@@ -326,7 +326,7 @@
                                                     <logTimeStamp eventTag="wordPlayed2"/>
                                                     <pause  msToNext="500">
                                                         <cancelPauseTimers/>  
-                                                        <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_3" showPlaybackIndicator="false" msToNext="0">
+                                                        <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_3" showPlaybackIndicator="false" >
                                                             <mediaLoadFailed>
                                                                 <htmlText featureText="Failed to load audio file"/>
                                                             </mediaLoadFailed>
@@ -336,9 +336,9 @@
                                                                 <logTimeStamp eventTag="wordPlayed3"/>
                                                                 <pause  msToNext="500">
                                                                     <cancelPauseTimers/> 
-                                                                    <currentStimulusHasTag tags="length_at_least_4" msToNext="0">
+                                                                    <currentStimulusHasTag tags="length_at_least_4" >
                                                                         <conditionTrue>
-                                                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_4" showPlaybackIndicator="false" msToNext="0">
+                                                                            <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_4" showPlaybackIndicator="false" >
                                                                                 <mediaLoadFailed>
                                                                                     <htmlText featureText="Failed to load audio file"/>
                                                                                 </mediaLoadFailed>
@@ -347,9 +347,9 @@
                                                                                 <mediaPlaybackComplete>
                                                                                     <logTimeStamp eventTag="wordPlayed4"/>
                                                                                     <pause  msToNext="500">
-                                                                                        <currentStimulusHasTag tags="length_at_least_5" msToNext="0">
+                                                                                        <currentStimulusHasTag tags="length_at_least_5" >
                                                                                             <conditionTrue>
-                                                                                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_5" showPlaybackIndicator="false" msToNext="0">
+                                                                                                <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_5" showPlaybackIndicator="false" >
                                                                                                     <mediaLoadFailed>
                                                                                                         <htmlText featureText="Failed to load audio file"/>
                                                                                                     </mediaLoadFailed>
@@ -359,9 +359,9 @@
                                                                                                         <logTimeStamp eventTag="wordPlayed5"/>
                                                                                                         <pause  msToNext="500">
                                                                                                             <cancelPauseTimers/> 
-                                                                                                            <currentStimulusHasTag tags="length_at_least_6" msToNext="0">
+                                                                                                            <currentStimulusHasTag tags="length_at_least_6" >
                                                                                                                 <conditionTrue>
-                                                                                                                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_6" showPlaybackIndicator="false" msToNext="0">
+                                                                                                                    <stimulusCodeAudio codeFormat="stimuli/&lt;code&gt;word_6" showPlaybackIndicator="false" >
                                                                                                                         <mediaLoadFailed>
                                                                                                                             <htmlText featureText="Failed to load audio file"/>
                                                                                                                         </mediaLoadFailed>

@@ -247,7 +247,7 @@
 <xs:complexType name="validationType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Server side validation of metadata fields and optional reloading of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.</xs:documentation>
+<xs:documentation>When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.</xs:documentation>
 </xs:annotation>
 <xs:element name="recordMatch" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -2504,6 +2504,7 @@
 </xs:complexType>
 <xs:complexType name="selectUserMenuType">
 <xs:attribute name="styleName" type="xs:string"/>
+<xs:attribute name="fieldName" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="selectLocaleMenuType">
 <xs:attribute name="styleName" type="xs:string"/>

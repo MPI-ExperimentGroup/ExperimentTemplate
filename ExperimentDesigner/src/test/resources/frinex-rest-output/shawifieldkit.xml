@@ -57,7 +57,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="Welcome" menuLabel="Select User" next="MetadataScreen" type="metadata" self="SelectUser" title="Select User">
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter back="Welcome" menuLabel="Edit User" next="MetadataScreen" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="workerId"/>

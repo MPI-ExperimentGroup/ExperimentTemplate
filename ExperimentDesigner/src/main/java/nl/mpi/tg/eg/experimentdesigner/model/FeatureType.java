@@ -98,7 +98,7 @@ public enum FeatureType {
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage, styleName, groupId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
     switchUserIdButton(true, new FeatureAttribute[]{styleName, groupId, fieldName, validationRegex}, "Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.", Contitionals.hasErrorSuccess, Contitionals.none),
-    selectUserMenu(false, false, new FeatureAttribute[]{styleName}),
+    selectUserMenu(false, false, new FeatureAttribute[]{styleName, fieldName}),
     selectLocaleMenu(false, false, new FeatureAttribute[]{styleName}),
     eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}),
     eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.

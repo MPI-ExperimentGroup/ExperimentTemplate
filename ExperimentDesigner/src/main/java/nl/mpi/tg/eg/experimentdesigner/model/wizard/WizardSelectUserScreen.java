@@ -61,8 +61,7 @@ public class WizardSelectUserScreen extends AbstractWizardScreen {
     public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
-        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(selectUserFeature);
+        storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.selectUserMenu, null, null, "workerId");
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }

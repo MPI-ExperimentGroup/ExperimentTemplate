@@ -157,7 +157,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </switchUserIdButton>
-        <selectUserMenu styleName="styleName"/>
+        <selectUserMenu fieldName="workerId" styleName="styleName"/>
         <selectLocaleMenu styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -2127,7 +2127,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </switchUserIdButton>
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
         <selectLocaleMenu/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">

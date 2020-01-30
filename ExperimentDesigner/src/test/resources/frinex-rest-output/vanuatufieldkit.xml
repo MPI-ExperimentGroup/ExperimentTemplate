@@ -36,7 +36,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Welkam" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter back="Welkam" menuLabel="Konsen" next="MetadataScreen" type="metadata" self="Konsen" title="Konsen">
         <htmlText featureText="(Blong man/woman we i makem rikoding)&lt;br&gt;&lt;br&gt;Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.&lt;br&gt;&lt;br&gt;"/>

@@ -196,7 +196,7 @@ Indicate for each word with a mouse click whether it is a word you know or not."
     </presenter>
     <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="To the landing page" target="Menu"/> 

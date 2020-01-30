@@ -309,7 +309,7 @@
           
     <presenter back="Menu" displayOrder="25" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="To the landing page" target="Menu"/> 

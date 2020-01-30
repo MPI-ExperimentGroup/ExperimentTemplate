@@ -29,7 +29,7 @@
         </existingUserCheck>
     </presenter>
     <presenter back="Start" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
@@ -744,7 +744,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
         <htmlText featureText="Participants with data in the application memory:"/>
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter back="DataManagement" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
         <htmlText featureText="Uploading matadata"/>
