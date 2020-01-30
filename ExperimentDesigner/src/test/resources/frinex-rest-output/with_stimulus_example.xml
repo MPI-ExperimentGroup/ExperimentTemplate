@@ -3347,17 +3347,28 @@
             <trigger listenerId="scoreLabelsTrigger"/>
         </actionButton>
     </presenter>
-    <presenter back="Menu" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+    <presenter back="Menu" menuLabel="Deelnemer" type="metadata" self="EditParticipant" next="ListParticipants" title="Deelnemer">
+        <metadataField fieldName="workerId"/>
+        <addPadding/>
+        <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+            <onError/>
+            <onSuccess>
+                <gotoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+        <addPadding/>
+    </presenter>
+    <presenter back="Menu" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" next="Admin" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
         <selectUserMenu fieldName="workerId"/>
         <addPadding/>
-        <addPadding/>
-        <targetButton featureText="To the landing page" target="Menu"/> 
+        <htmlTokenText featureText="Current workerId: &lt;metadataField_workerId&gt;"/>
+        <htmlTokenText featureText="Current userId: &lt;userId&gt;"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="To the admin page" target="Admin"/>   
-    </presenter>   
-    <presenter type="transmission" menuLabel="Einde van deze test." self="Admin" title="Einde van deze test." next="Menu">
+    </presenter>
+    <presenter type="transmission" menuLabel="Einde van deze test." self="Admin" title="Einde van deze test." next="ListParticipants">
         <centrePage/>
         <sendMetadata>
             <onSuccess>
@@ -3370,7 +3381,9 @@
                         <htmlText featureText="Bedankt voor uw deelname."/>
                         <addPadding/>
                         <addPadding/>
-                        <createUserButton featureText="Resultaten opsturen." target="Menu"/>
+                        <createUserButton featureText="Create New User" target="EditParticipant"/>
+                        <addPadding/>
+                        <eraseUsersDataButton featureText="Erase Current User" target="EditParticipant"/>
                     </onSuccess>
                     <onError>
                         <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -3379,7 +3392,9 @@
                         <targetButton featureText="Retry" target="Admin"/>
                         <addPadding/>
                         <addPadding/>
-                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                        <createUserButton featureText="Create New User" target="EditParticipant"/>
+                        <addPadding/>
+                        <eraseUsersDataButton featureText="Erase Current User" target="EditParticipant"/>
                     </onError>
                 </sendAllData>
             </onSuccess>
@@ -3390,7 +3405,9 @@
                 <targetButton featureText="Retry" target="Admin"/>
                 <addPadding/>
                 <addPadding/>
-                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                <createUserButton featureText="Create New User" target="EditParticipant"/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Erase Current User" target="EditParticipant"/>
             </onError>
         </sendMetadata>
     </presenter>
