@@ -178,7 +178,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void selectUserMenu(final AppEventListner appEventListner, final String styleName) {
+    protected void selectUserMenu(final AppEventListner appEventListner, final String styleName, MetadataField labelMetadataField) {
         for (final UserLabelData labelData : localStorage.getUserIdList(metadataFieldProvider.getWorkerIdMetadataField())) {
             final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
