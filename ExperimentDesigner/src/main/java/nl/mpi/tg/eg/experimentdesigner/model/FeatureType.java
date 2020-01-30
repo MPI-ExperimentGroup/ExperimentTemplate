@@ -98,7 +98,7 @@ public enum FeatureType {
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage, styleName, groupId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
     switchUserIdButton(true, new FeatureAttribute[]{styleName, groupId, fieldName, validationRegex}, "Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.", Contitionals.hasErrorSuccess, Contitionals.none),
-    selectUserMenu(false, false, new FeatureAttribute[]{styleName, fieldName}),
+    selectUserMenu(false, false, new FeatureAttribute[]{styleName, fieldName}, "Shows a menu listing the users in the system. The label on each menu item is determined by value of the provided metadata field. When a menu item is clicked the active user is changed and the next presenter is shown."),
     selectLocaleMenu(false, false, new FeatureAttribute[]{styleName}),
     eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}),
     eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
@@ -138,9 +138,9 @@ public enum FeatureType {
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     hasMetadataValue(false, false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
-    setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, false, false, false, Contitionals.none, Contitionals.none),
+    setMetadataValue(false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, "The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, other wise the entire string is used. The result is then stored in the specified metadata field.", Contitionals.none, Contitionals.none),
     progressIndicator(false, false, new FeatureAttribute[]{evaluateTokens, styleName}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    setMetadataEvalTokens(false, false, new FeatureAttribute[]{fieldName, evaluateTokens}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    setMetadataEvalTokens(false, new FeatureAttribute[]{fieldName, evaluateTokens}, "The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is then stored in the specified metadata field.", Contitionals.hasErrorSuccess, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}, "Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter."),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
@@ -163,9 +163,9 @@ public enum FeatureType {
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum, ranges}),//"1..100", "1,100" ,"1..3,10,20,30..35,60"
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}, "The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum."),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
-    trigger(false, false, new FeatureAttribute[]{listenerId}, "Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values."),
+    trigger/* todo: consider changing to triggerMatching */(false, false, new FeatureAttribute[]{listenerId}, "Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values."),
     triggerRandom(true, false, new FeatureAttribute[]{matchingRegex}, "Randomly trigger one any of the triggerListeners where the listenerId matches the matchingRegex and its maximum trigger count has not been reached. When there are no triggerListeners that match these criteria the child contents of tag will be triggered."),
-    resetTrigger(false, false, new FeatureAttribute[]{listenerId}, "Reset the threshold and maximum counters for triggerListeners matching the listenerId."),
+    resetTrigger/* todo: consider changing to triggerReset */(false, false, new FeatureAttribute[]{listenerId}, "Reset the threshold and maximum counters for triggerListeners matching the listenerId."),
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
     stimulusPause(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),

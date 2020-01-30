@@ -2503,6 +2503,9 @@
 <xs:attribute name="validationRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="selectUserMenuType">
+<xs:annotation>
+<xs:documentation>Shows a menu listing the users in the system. The label on each menu item is determined by value of the provided metadata field. When a menu item is clicked the active user is changed and the next presenter is shown.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 </xs:complexType>
@@ -2814,6 +2817,9 @@
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="setMetadataValueType">
+<xs:annotation>
+<xs:documentation>The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, other wise the entire string is used. The result is then stored in the specified metadata field.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 <xs:attribute name="dataLogFormat" type="xs:string" use="required"/>
 <xs:attribute name="replacementRegex" type="xs:string"/>
@@ -2828,6 +2834,9 @@
 </xs:complexType>
 <xs:complexType name="setMetadataEvalTokensType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is then stored in the specified metadata field.</xs:documentation>
+</xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
