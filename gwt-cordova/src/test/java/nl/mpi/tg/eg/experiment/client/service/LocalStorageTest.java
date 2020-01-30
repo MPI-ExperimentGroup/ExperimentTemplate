@@ -1352,21 +1352,39 @@ public class LocalStorageTest {
 //        JSONObject result = instance.getStoredJSONObject(userId, stimulusId);
 //        assertEquals("expResult", result);
 //    }
-//    /**
-//     * Test of getDataAgreementValue method, of class LocalStorage.
-//     *
-//     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
-//     */
-//    @Test
-//    public void testGetDataAgreementValue() throws UserIdException {
-//        System.out.println("getDataAgreementValue");
-//        UserId userId = new UserId("TestUserData");
-//        final HashMap<String, String> storageMap = new HashMap<>();
-//        LocalStorage instance = getLocalStorage(storageMap);
-//        boolean expResult = false;
-//        boolean result = instance.getDataAgreementValue(userId);
-//        assertEquals(expResult, result);
-//    }
+    /**
+     * Test of getDataAgreementValue method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testGetDataAgreementValue() throws UserIdException {
+        System.out.println("getDataAgreementValue");
+        UserId userId = new UserId("TestUserData");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        LocalStorage instance = getLocalStorage(storageMap);
+        MetadataField metadataField = new MetadataField("metadataField", "metadataField", "metadataField", "metadataField", "metadataField");
+        final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider() {
+            @Override
+            public MetadataField[] getMetadataFieldArray() {
+                return new MetadataField[]{metadataField};
+            }
+
+            @Override
+            public String getDataAgreementFieldName() {
+                return "metadataField";
+            }
+
+            @Override
+            public String getDataAgreementMatch() {
+                return null;
+            }
+        };
+        boolean expResult = false;
+        boolean result = instance.getDataAgreementValue(userId, metadataFieldProvider);
+        assertEquals(expResult, result);
+    }
+
     /**
      * Test of getStoredDataValue method, of class LocalStorage.
      *
