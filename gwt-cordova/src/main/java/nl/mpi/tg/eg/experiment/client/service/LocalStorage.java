@@ -397,8 +397,8 @@ public class LocalStorage {
         if (dataStore != null) {
             for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
                 final String key = dataStore.key(itemIndex);
-                if (dataStore.isUSER_METADATA(key, postName)) {
-                    final String userIdString = key.split("\\.")[1];
+                final String userIdString = dataStore.isUSER_METADATA(key, postName);
+                if (userIdString != null) {
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
                     try {
