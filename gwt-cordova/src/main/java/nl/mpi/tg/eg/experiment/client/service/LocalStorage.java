@@ -305,6 +305,11 @@ public class LocalStorage {
     }
 
     public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider) {
+        boolean notTestUser = (Window.Location.getParameter("testuser") == null); // only store the last user id if the id is not a URL defined test user
+        storeData(userResults, metadataFieldProvider, notTestUser);
+    }
+
+    public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider, boolean notTestUser) {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
@@ -325,7 +330,7 @@ public class LocalStorage {
             }
         }
         storeUserScore(userResults);
-        if ((Window.Location.getParameter("testuser") == null)) {
+        if (notTestUser) {
             // only store the last user id if the id is not a URL defined test user
             dataStore.setItem(dataStore.getLAST_USER_ID(), userResults.getUserData().getUserId().toString());
         }
