@@ -640,6 +640,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" /> 
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else '&quot;defaultGroup&quot;' else ''" />
         <!--<xsl:value-of select="if(@repeatIncorrect) then concat(', ', @repeatIncorrect eq 'true') else ''" />-->
+        <xsl:value-of select="if(@fieldName) then concat(', metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
