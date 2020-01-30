@@ -101,7 +101,7 @@
                         <pause  msToNext="200">
                             <enableStimulusButtons/>
                         </pause>
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                        <stimulusAudio showPlaybackIndicator="false" autoPlay="true" mediaId="media">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
@@ -141,7 +141,7 @@
                             <table>
                                 <row>
                                     <column>
-                                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                        <stimulusAudio showPlaybackIndicator="false" autoPlay="true" mediaId="media">
                                             <mediaLoadFailed>
                                                 <htmlText featureText="Failed to load audio file"/>
                                             </mediaLoadFailed>
@@ -205,7 +205,7 @@
                         <pause  msToNext="200">
                             <enableStimulusButtons/>
                         </pause>
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                        <stimulusAudio showPlaybackIndicator="false" autoPlay="true" mediaId="media">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
@@ -245,7 +245,7 @@
                             <table>
                                 <row>
                                     <column>
-                                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                        <stimulusAudio showPlaybackIndicator="false" autoPlay="true" mediaId="media">
                                             <mediaLoadFailed>
                                                 <htmlText featureText="Failed to load audio file"/>
                                             </mediaLoadFailed>
@@ -311,7 +311,7 @@
                         <pause  msToNext="200">
                             <enableStimulusButtons/>
                         </pause>
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                        <stimulusAudio showPlaybackIndicator="false" autoPlay="true" mediaId="media">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
@@ -343,7 +343,7 @@
                             <addPadding/>
                             <addPadding/>
                             <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <stimulusAudio showPlaybackIndicator="false" autoPlay="true" mediaId="media">
                                 <mediaLoadFailed>
                                     <htmlText featureText="Failed to load audio file"/>
                                 </mediaLoadFailed>
@@ -417,7 +417,7 @@
     </presenter>
     <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
-        <selectUserMenu/>
+        <selectUserMenu fieldName="workerId"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="To the landing page" target="Menu"/> 
