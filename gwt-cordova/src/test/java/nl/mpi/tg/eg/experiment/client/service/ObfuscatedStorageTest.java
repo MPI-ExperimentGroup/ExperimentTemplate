@@ -131,8 +131,8 @@ public class ObfuscatedStorageTest {
         instance.setItem(instance.getSTIMULI_DATA(userId, stimulus), "test");
         instance.setItem(instance.getSTIMULI_DATA(userId, stimulusId), "test");
         instance.setItem(instance.getSCREEN_DATA(endPoint, userId), "test");
-        assertTrue(instance.isUSER_METADATA(instance.getUSER_METADATA(userId, postName), postName));
-        assertFalse(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, postName), postName));
+        assertEquals("userId", instance.isUSER_METADATA(instance.getUSER_METADATA(userId, postName), postName));
+        assertNull(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, postName), postName));
         assertEquals(80, instance.getLength());
         instance.clearUserData(userId);
         assertEquals(1, instance.getLength());
