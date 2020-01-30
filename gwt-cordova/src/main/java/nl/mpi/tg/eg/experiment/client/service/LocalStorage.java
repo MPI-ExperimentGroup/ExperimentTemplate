@@ -385,8 +385,8 @@ public class LocalStorage {
         return null;
     }
 
-    public List<UserLabelData> getUserIdList(MetadataField metadataField) {
-        final String postName = metadataField.getPostName();
+    public List<UserLabelData> getUserIdList(MetadataField labelMetadataField) {
+        final String postName = labelMetadataField.getPostName();
         ArrayList<UserLabelData> userIdList = new ArrayList<>();
         loadStorage();
         if (dataStore != null) {
