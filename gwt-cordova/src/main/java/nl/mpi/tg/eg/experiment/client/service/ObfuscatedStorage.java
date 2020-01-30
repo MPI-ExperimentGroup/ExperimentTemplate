@@ -102,8 +102,12 @@ public class ObfuscatedStorage {
         return appNameInternal + "." + userId.toString() + obfuscateString(appNameInternal, ".UserMetadata." + postName);
     }
 
-    protected boolean isUSER_METADATA(String keyName, String postName) {
-        return keyName.startsWith(appNameInternal) && keyName.endsWith(obfuscateString(appNameInternal, ".UserMetadata." + postName));
+    protected String isUSER_METADATA(String keyName, String postName) {
+        final String endString = obfuscateString(appNameInternal, ".UserMetadata." + postName);
+        if (keyName.startsWith(appNameInternal) && keyName.endsWith(endString)) {
+            return keyName.substring(appNameInternal.length() + 1, keyName.length() - endString.length());
+        }
+        return null;
     }
 
     protected String getUSER_METADATA_CONNECTION(UserId userId, String valueName) {
