@@ -1499,5 +1499,8 @@ public class LocalStorageTest {
         instance.storeData(userResults3, metadataFieldProvider, true);
         List<UserLabelData> result = instance.getUserIdList(metadataField);
         assertEquals(3, result.size());
+        assertEquals("user1", result.get(0).getUserId().toString());
+        assertEquals("user2", result.get(1).getUserId().toString());
+        assertEquals("user3", result.get(2).getUserId().toString());
     }
 }
