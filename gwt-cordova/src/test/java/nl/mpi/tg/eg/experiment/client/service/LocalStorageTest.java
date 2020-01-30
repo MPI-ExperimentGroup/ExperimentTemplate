@@ -1446,40 +1446,40 @@ public class LocalStorageTest {
         assertEquals(completionCode, result);
     }
 
-//    /**
-//     * Test of getUserIdList method, of class LocalStorage.
-//     *
-//     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
-//     */
-//    @Test
-//    public void testGetUserIdList() throws UserIdException {
-//        System.out.println("getUserIdList");
-//        MetadataField metadataField = new MetadataField("metadataField", "metadataField", "metadataField", "metadataField", "metadataField");
-//        final HashMap<String, String> storageMap = new HashMap<>();
-//        LocalStorage instance = getLocalStorage(storageMap);
-//        UserResults userResults1 = new UserResults(new UserData(new UserId("user1")));
-//        UserResults userResults2 = new UserResults(new UserData(new UserId("user2")));
-//        UserResults userResults3 = new UserResults(new UserData(new UserId("user3")));
-//        final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider() {
-//            @Override
-//            public MetadataField[] getMetadataFieldArray() {
-//                return new MetadataField[]{metadataField};
-//            }
-//
-//            @Override
-//            public String getDataAgreementFieldName() {
-//                return null;
-//            }
-//
-//            @Override
-//            public String getDataAgreementMatch() {
-//                return null;
-//            }
-//        };
-//        instance.storeData(userResults1, metadataFieldProvider);
-//        instance.storeData(userResults2, metadataFieldProvider);
-//        instance.storeData(userResults3, metadataFieldProvider);
-//        List<UserLabelData> result = instance.getUserIdList(metadataField);
-//        assertEquals(3, result.size());
-//    }
+    /**
+     * Test of getUserIdList method, of class LocalStorage.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
+     */
+    @Test
+    public void testGetUserIdList() throws UserIdException {
+        System.out.println("getUserIdList");
+        MetadataField metadataField = new MetadataField("metadataField", "metadataField", "metadataField", "metadataField", "metadataField");
+        final HashMap<String, String> storageMap = new HashMap<>();
+        LocalStorage instance = getLocalStorage(storageMap);
+        UserResults userResults1 = new UserResults(new UserData(new UserId("user1")));
+        UserResults userResults2 = new UserResults(new UserData(new UserId("user2")));
+        UserResults userResults3 = new UserResults(new UserData(new UserId("user3")));
+        final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider() {
+            @Override
+            public MetadataField[] getMetadataFieldArray() {
+                return new MetadataField[]{metadataField};
+            }
+
+            @Override
+            public String getDataAgreementFieldName() {
+                return null;
+            }
+
+            @Override
+            public String getDataAgreementMatch() {
+                return null;
+            }
+        };
+        instance.storeData(userResults1, metadataFieldProvider, true);
+        instance.storeData(userResults2, metadataFieldProvider, true);
+        instance.storeData(userResults3, metadataFieldProvider, true);
+        List<UserLabelData> result = instance.getUserIdList(metadataField);
+        assertEquals(3, result.size());
+    }
 }
