@@ -186,7 +186,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
         }, buttonGroup);
     }
 
-    protected void eraseUsersDataButton(final String buttonLabel, final String styleName, final ApplicationController.ApplicationState nextState, final String buttonGroup) {
+    protected void eraseUsersDataButton(final AppEventListner appEventListner, final String buttonLabel, final String styleName, final ApplicationController.ApplicationState nextState, final String buttonGroup) {
         optionButton(new PresenterEventListner() {
 
             @Override
@@ -206,15 +206,18 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                submissionService.eraseUsersStoredData(userResults.getUserData().getUserId());
+                final UserId previousUserId = userResults.getUserData().getUserId();
+                submissionService.eraseUsersStoredData(previousUserId);
                 List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField);
                 if (!userList.isEmpty()) {
                     final UserLabelData nextUser = userList.get(0);
-                    localStorage.saveAppState(nextUser.getUserId(), nextState);
+                    userResults.setUser(new UserData(nextUser.getUserId()));
                 } else {
-                    localStorage.saveAppState(new UserId(), nextState);
+                    final UserId nextUserId = new UserId();
+                    userResults.setUser(new UserData(nextUserId));
                 }
-                Window.Location.replace(Window.Location.getHref());
+                submissionService.eraseUsersStoredData(previousUserId);
+                appEventListner.requestApplicationState(nextState);
             }
         }, buttonGroup);
     }
