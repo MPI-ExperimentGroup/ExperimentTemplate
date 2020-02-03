@@ -212,9 +212,9 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
                     final UserLabelData nextUser = userList.get(0);
                     localStorage.saveAppState(nextUser.getUserId(), nextState);
                 } else {
-                    localStorage.saveAppState(new UserId(), ApplicationController.ApplicationState.start);
+                    localStorage.saveAppState(new UserId(), nextState);
                 }
-                Window.Location.replace(Window.Location.getPath());
+                Window.Location.replace(Window.Location.getHref());
             }
         }, buttonGroup);
     }
