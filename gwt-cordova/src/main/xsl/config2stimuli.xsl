@@ -62,7 +62,7 @@
                     </xsl:if>
                     <xsl:if test="@code">
                         <xsl:text>code_</xsl:text>
-                        <xsl:value-of select="../@self" />
+                        <xsl:value-of select="generate-id(..)" />
                         <xsl:text>=</xsl:text>
                         <xsl:value-of select="replace(@code,'''','''''')"/>
                         <xsl:text>&#xa;</xsl:text>
