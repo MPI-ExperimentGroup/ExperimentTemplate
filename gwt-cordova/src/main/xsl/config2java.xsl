@@ -517,6 +517,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
+        <xsl:if test="local-name() eq 'eraseUsersDataButton'">
+            <xsl:text>appEventListner, </xsl:text>
+        </xsl:if>
         <xsl:if test="local-name() eq 'showStimulus' 
         or local-name() eq 'showStimuliReport' 
         or local-name() eq 'sendStimuliReport' 
