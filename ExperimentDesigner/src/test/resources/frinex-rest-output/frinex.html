@@ -387,25 +387,6 @@ field
 <button onclick="getExample('field', 'fieldTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">controlledMessage</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">registrationField</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
-</td></tr>
-</table>
 <h3 id="presenterType" style="text-transform: uppercase;">
 presenter
 </h3>
@@ -751,25 +732,6 @@ Each screen in an experiment configuration is described in a PRESENTER element.
 <button onclick="getExample('presenter', 'presenterTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">menuLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
-</td></tr>
-</table>
 <h3 id="stimuliType" style="text-transform: uppercase;">
 stimuli
 </h3>
@@ -840,24 +802,6 @@ Each individual stimulus can be described in the form of label, audio, video
 <tr>
 <td colspan='2' id='stimulusTarget'>
 <button onclick="getExample('stimulus', 'stimulusTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent stimulus element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <div style="background-color:#add8e630;border: 1px solid black;">
@@ -1388,7 +1332,7 @@ actionButton
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -1403,24 +1347,6 @@ actionButton
 <tr>
 <td colspan='2' id='actionButtonTarget'>
 <button onclick="getExample('actionButton', 'actionButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="actionFooterButtonType" style="text-transform: uppercase;">
@@ -1950,7 +1876,7 @@ actionFooterButton
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -1965,24 +1891,6 @@ actionFooterButton
 <tr>
 <td colspan='2' id='actionFooterButtonTarget'>
 <button onclick="getExample('actionFooterButton', 'actionFooterButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="actionTokenButtonType" style="text-transform: uppercase;">
@@ -2511,7 +2419,7 @@ actionTokenButton
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -2526,24 +2434,6 @@ actionTokenButton
 <tr>
 <td colspan='2' id='actionTokenButtonTarget'>
 <button onclick="getExample('actionTokenButton', 'actionTokenButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="activateRandomItemType" style="text-transform: uppercase;">
@@ -4464,7 +4354,7 @@ countdownLabel
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -4481,24 +4371,6 @@ countdownLabel
 <button onclick="getExample('countdownLabel', 'countdownLabelTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
-</td></tr>
-</table>
 <h3 id="createUserButtonType" style="text-transform: uppercase;">
 createUserButton
 </h3>
@@ -4513,7 +4385,7 @@ createUserButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -4528,24 +4400,6 @@ createUserButton
 <tr>
 <td colspan='2' id='createUserButtonTarget'>
 <button onclick="getExample('createUserButton', 'createUserButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="disableButtonGroupType" style="text-transform: uppercase;">
@@ -5182,7 +5036,7 @@ eraseUsersDataButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -5197,24 +5051,6 @@ eraseUsersDataButton
 <tr>
 <td colspan='2' id='eraseUsersDataButtonTarget'>
 <button onclick="getExample('eraseUsersDataButton', 'eraseUsersDataButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="existingUserCheckType" style="text-transform: uppercase;">
@@ -5914,7 +5750,7 @@ helpDialogue
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_closeButtonLabel_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
@@ -5930,25 +5766,6 @@ helpDialogue
 <tr>
 <td colspan='2' id='helpDialogueTarget'>
 <button onclick="getExample('helpDialogue', 'helpDialogueTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="hideButtonGroupType" style="text-transform: uppercase;">
@@ -5980,7 +5797,7 @@ The contents of featureText will be shown as HTML and styled with styleName if p
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -5997,24 +5814,6 @@ The contents of featureText will be shown as HTML and styled with styleName if p
 <button onclick="getExample('htmlText', 'htmlTextTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
-</td></tr>
-</table>
 <h3 id="htmlTokenTextType" style="text-transform: uppercase;">
 htmlTokenText
 </h3>
@@ -6027,7 +5826,7 @@ When the featureText contains string tokens they will be replaced with the relev
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -6042,24 +5841,6 @@ When the featureText contains string tokens they will be replaced with the relev
 <tr>
 <td colspan='2' id='htmlTokenTextTarget'>
 <button onclick="getExample('htmlTokenText', 'htmlTokenTextTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="imageType" style="text-transform: uppercase;">
@@ -7522,7 +7303,7 @@ menuItem
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -7537,24 +7318,6 @@ menuItem
 <tr>
 <td colspan='2' id='menuItemTarget'>
 <button onclick="getExample('menuItem', 'menuItemTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="metadataFieldType" style="text-transform: uppercase;">
@@ -8197,7 +7960,7 @@ plainText
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -8212,24 +7975,6 @@ plainText
 <tr>
 <td colspan='2' id='plainTextTarget'>
 <button onclick="getExample('plainText', 'plainTextTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="playMediaType" style="text-transform: uppercase;">
@@ -8289,7 +8034,7 @@ preventWindowClose
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -8304,24 +8049,6 @@ preventWindowClose
 <tr>
 <td colspan='2' id='preventWindowCloseTarget'>
 <button onclick="getExample('preventWindowClose', 'preventWindowCloseTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="progressIndicatorType" style="text-transform: uppercase;">
@@ -10035,7 +9762,7 @@ Request mobile notifications at given times in the future on Android and iOS app
 <a href="#onSuccessType"><span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -10050,24 +9777,6 @@ Request mobile notifications at given times in the future on Android and iOS app
 <tr>
 <td colspan='2' id='requestNotificationTarget'>
 <button onclick="getExample('requestNotification', 'requestNotificationTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="resetStimulusType" style="text-transform: uppercase;">
@@ -10676,7 +10385,7 @@ saveMetadataButton
 <a href="#onSuccessType"><span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -10691,24 +10400,6 @@ saveMetadataButton
 <tr>
 <td colspan='2' id='saveMetadataButtonTarget'>
 <button onclick="getExample('saveMetadataButton', 'saveMetadataButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="scoreAboveThresholdType" style="text-transform: uppercase;">
@@ -10996,7 +10687,7 @@ showHtmlPopup
 <a href="#actionButtonType"><span style="color:purple">&lt;</span><span style="color:blue">actionButton</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -11011,24 +10702,6 @@ showHtmlPopup
 <tr>
 <td colspan='2' id='showHtmlPopupTarget'>
 <button onclick="getExample('showHtmlPopup', 'showHtmlPopupTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="startTimerType" style="text-transform: uppercase;">
@@ -11632,7 +11305,7 @@ Switch the user id to the value in the specified metadata field. The value of th
 <a href="#onSuccessType"><span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -11647,24 +11320,6 @@ Switch the user id to the value in the specified metadata field. The value of th
 <tr>
 <td colspan='2' id='switchUserIdButtonTarget'>
 <button onclick="getExample('switchUserIdButton', 'switchUserIdButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="tableType" style="text-transform: uppercase;">
@@ -12218,7 +11873,7 @@ targetButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -12235,24 +11890,6 @@ targetButton
 <button onclick="getExample('targetButton', 'targetButtonTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
-</td></tr>
-</table>
 <h3 id="targetFooterButtonType" style="text-transform: uppercase;">
 targetFooterButton
 </h3>
@@ -12267,7 +11904,7 @@ targetFooterButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -12282,24 +11919,6 @@ targetFooterButton
 <tr>
 <td colspan='2' id='targetFooterButtonTarget'>
 <button onclick="getExample('targetFooterButton', 'targetFooterButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="timerLabelType" style="text-transform: uppercase;">
@@ -14255,7 +13874,7 @@ addStimulusCodeResponseValidation
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -14270,24 +13889,6 @@ addStimulusCodeResponseValidation
 <tr>
 <td colspan='2' id='addStimulusCodeResponseValidationTarget'>
 <button onclick="getExample('addStimulusCodeResponseValidation', 'addStimulusCodeResponseValidationTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="clearCurrentScoreType" style="text-transform: uppercase;">
@@ -14519,7 +14120,7 @@ nextStimulusButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -14534,24 +14135,6 @@ nextStimulusButton
 <tr>
 <td colspan='2' id='nextStimulusButtonTarget'>
 <button onclick="getExample('nextStimulusButton', 'nextStimulusButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="prevStimulusType" style="text-transform: uppercase;">
@@ -14587,7 +14170,7 @@ prevStimulusButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -14602,24 +14185,6 @@ prevStimulusButton
 <tr>
 <td colspan='2' id='prevStimulusButtonTarget'>
 <button onclick="getExample('prevStimulusButton', 'prevStimulusButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="ratingButtonType" style="text-transform: uppercase;">
@@ -17086,7 +16651,7 @@ stimulusButton
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -17101,24 +16666,6 @@ stimulusButton
 <tr>
 <td colspan='2' id='stimulusButtonTarget'>
 <button onclick="getExample('stimulusButton', 'stimulusButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimulusCodeAudioType" style="text-transform: uppercase;">
@@ -17318,7 +16865,7 @@ stimulusFreeText
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -17333,24 +16880,6 @@ stimulusFreeText
 <tr>
 <td colspan='2' id='stimulusFreeTextTarget'>
 <button onclick="getExample('stimulusFreeText', 'stimulusFreeTextTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimulusHasRatingOptionsType" style="text-transform: uppercase;">
@@ -17967,7 +17496,7 @@ stimulusImageCapture
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -17982,24 +17511,6 @@ stimulusImageCapture
 <tr>
 <td colspan='2' id='stimulusImageCaptureTarget'>
 <button onclick="getExample('stimulusImageCapture', 'stimulusImageCaptureTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimulusLabelType" style="text-transform: uppercase;">
@@ -20334,7 +19845,7 @@ touchInputStimulusButton
 <a href="#transmitResultsType"><span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -20349,24 +19860,6 @@ touchInputStimulusButton
 <tr>
 <td colspan='2' id='touchInputStimulusButtonTarget'>
 <button onclick="getExample('touchInputStimulusButton', 'touchInputStimulusButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="validateStimuliResponsesType" style="text-transform: uppercase;">
@@ -20622,7 +20115,7 @@ sendGroupMessageButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#translationType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -20637,24 +20130,6 @@ sendGroupMessageButton
 <tr>
 <td colspan='2' id='sendGroupMessageButtonTarget'>
 <button onclick="getExample('sendGroupMessageButton', 'sendGroupMessageButtonTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="translationType" style="text-transform: uppercase;">
-translation
-</h3>
-Translated attributes for the parent element.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">translation</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='translationTarget'>
-<button onclick="getExample('translation', 'translationTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="sendGroupStoredMessageType" style="text-transform: uppercase;">

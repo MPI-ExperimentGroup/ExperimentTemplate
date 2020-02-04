@@ -49,6 +49,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "    function getExample(tagName, targetId) {\n"
                 + "      console.log(\"getExample\");\n"
                 + "      \n"
+                // todo: add invitation_validation_example.xml
                 + "    $.get( \"with_stimulus_example.xml\", function( data ) {\n"
                 //                + "    console.log(\"gotData\");\n"
                 //                + "    console.log(tagName);\n"
@@ -319,7 +320,10 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</tr>\n");
         writer.append("</table>\n");
         for (DocumentationElement childElement : currentElement.childElements) {
-            addElement(writer, childElement);
+            // omitting the translation elements here because they are already defined in their parent elements
+            if (!childElement.elementName.equals("translation")) {
+                addElement(writer, childElement);
+            }
         }
     }
 

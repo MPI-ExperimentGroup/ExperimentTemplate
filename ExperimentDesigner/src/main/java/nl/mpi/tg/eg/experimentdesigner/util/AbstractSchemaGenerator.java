@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -217,7 +218,9 @@ public class AbstractSchemaGenerator {
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
             if (!translatableAttribites.isEmpty()) {
-                final DocumentationElement translationElement = new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false);
+                Collections.sort(translatableAttribites);
+                final String translationType = "translation_" + String.join("_", translatableAttribites);
+                final DocumentationElement translationElement = new DocumentationElement("translation", translationType, "Translated attributes for the parent element.", 0, 0, new DocumentationElement[]{});
                 translationElement.stringAttribute("locale", false);
                 for (final String attributeName : translatableAttribites) {
                     translationElement.stringAttribute(attributeName, true);
