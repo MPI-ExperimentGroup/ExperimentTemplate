@@ -220,7 +220,7 @@ public enum FeatureType {
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, downloadPermittedWindowMs, filePerStimulus, eventTag, deviceRegex, mediaId}, false, false, false, Contitionals.hasMediaRecorderPlayback, Contitionals.stimulusAction),
+    startAudioRecorder(false, new FeatureAttribute[]{recordingFormat, downloadPermittedWindowMs, filePerStimulus, eventTag, deviceRegex, mediaId, fieldName}, "Starts the audio recorder, the HTML5 audio recorder will be used unless the value of recordingFormat is wav in which case the Android wav recorder wil be used. If the Android wav recorder is used then the wav files will be saved on the device in a sub directory based on value of the provided metadata field.", Contitionals.hasMediaRecorderPlayback, Contitionals.stimulusAction),
     stopAudioRecorder(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    stopAudioRecorder(false, false, new FeatureAttribute[]{minimum, maximum, average}, false, false, false, Contitionals.hasThreshold, Contitionals.stimulusAction),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
