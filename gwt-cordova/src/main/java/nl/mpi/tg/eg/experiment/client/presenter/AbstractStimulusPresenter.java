@@ -1539,9 +1539,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorder(final String recordingFormat, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void startAudioRecorder(final String recordingFormat, final MetadataField directoryMetadataField, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
-        final String subdirectoryName = userResults.getUserData().getMetadataValue(new ExperimentMetadataFieldProvider().workerIdMetadataField);
+        final String subdirectoryName = userResults.getUserData().getMetadataValue(directoryMetadataField);
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
