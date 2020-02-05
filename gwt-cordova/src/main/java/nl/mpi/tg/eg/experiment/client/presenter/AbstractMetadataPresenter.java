@@ -243,7 +243,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
     }
 
     protected void existingUserCheck(TimedStimulusListener multipleUsers, TimedStimulusListener singleUser) {
-        if (localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField).size() > 1 || !userResults.getUserData().getMetadataFields().isEmpty()) {
+        if (localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]).size() > 1 || !userResults.getUserData().getMetadataFields().isEmpty()) {
             multipleUsers.postLoadTimerFired();
         } else {
             singleUser.postLoadTimerFired();
