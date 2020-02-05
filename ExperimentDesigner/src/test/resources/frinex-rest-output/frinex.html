@@ -16026,12 +16026,13 @@ showStimulusProgress
 <h3 id="startAudioRecorderType" style="text-transform: uppercase;">
 startAudioRecorder
 </h3>
-
+Starts the audio recorder, the HTML5 audio recorder will be used unless the value of recordingFormat is wav in which case the Android wav recorder wil be used. If the Android wav recorder is used then the wav files will be saved on the device in a sub directory based on value of the provided metadata field.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorder</span></td><td><span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">downloadPermittedWindowMs</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">filePerStimulus</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">recordingFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>

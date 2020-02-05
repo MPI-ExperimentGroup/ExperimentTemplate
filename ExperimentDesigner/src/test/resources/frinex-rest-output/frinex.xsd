@@ -9943,6 +9943,9 @@
 </xs:complexType>
 <xs:complexType name="startAudioRecorderType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Starts the audio recorder, the HTML5 audio recorder will be used unless the value of recordingFormat is wav in which case the Android wav recorder wil be used. If the Android wav recorder is used then the wav files will be saved on the device in a sub directory based on value of the provided metadata field.</xs:documentation>
+</xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
@@ -9956,6 +9959,7 @@
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
 <xs:attribute name="deviceRegex" type="xs:string"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
+<xs:attribute name="fieldName" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="stopAudioRecorderType">
 </xs:complexType>
