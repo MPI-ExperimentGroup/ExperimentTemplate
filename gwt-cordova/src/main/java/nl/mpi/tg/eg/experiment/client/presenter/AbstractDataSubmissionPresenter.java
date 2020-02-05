@@ -208,7 +208,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 final UserId previousUserId = userResults.getUserData().getUserId();
                 submissionService.eraseUsersStoredData(previousUserId);
-                List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField);
+                List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]);
                 if (!userList.isEmpty()) {
                     final UserLabelData nextUser = userList.get(0);
                     userResults.setUser(new UserData(nextUser.getUserId()));
