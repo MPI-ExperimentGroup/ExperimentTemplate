@@ -126,6 +126,7 @@
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <!-- This dependancy is to resolve CI issues with annotations used in sub modules.-->
@@ -400,10 +401,10 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>-->
-                        <!--                        <transformationSet>
-                            <dir>${project.build.sourceDirectory}/../svg/graphics</dir>
+                        <transformationSet>
+                            <dir>${experiment.configuration.path}</dir>
                             <includes>
-                                <include>*.svg</include>
+                                <include>${experiment.configuration.name}/*.svg</include>
                             </includes>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/svg2java.xsl</stylesheet>
                             <fileMappers>
@@ -413,7 +414,7 @@
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
-                        </transformationSet>-->
+                        </transformationSet>
                         <transformationSet>
                             <dir>${experiment.configuration.path}</dir>
                             <includes>
