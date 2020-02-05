@@ -108,7 +108,7 @@ public class DefaultExperiments {
         experiment.setAppNameInternal(appName);
         final PresenterScreen autoMenuPresenter = addAutoMenu(10);
         experiment.getPresenterScreen().add(autoMenuPresenter);
-        final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
+        final Metadata metadata = new Metadata("name", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
         experiment.addMetadataOnce(metadata);
