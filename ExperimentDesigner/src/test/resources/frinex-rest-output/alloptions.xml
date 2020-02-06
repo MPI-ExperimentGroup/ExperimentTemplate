@@ -570,7 +570,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -936,7 +936,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1302,7 +1302,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2540,7 +2540,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2906,7 +2906,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3272,7 +3272,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
