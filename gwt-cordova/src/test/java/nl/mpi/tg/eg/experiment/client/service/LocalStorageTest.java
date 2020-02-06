@@ -72,6 +72,16 @@ public class LocalStorageTest {
                     public int getLength() {
                         return keyList.size();
                     }
+
+                    @Override
+                    protected String urlDecode(String input) {
+                        return input;
+                    }
+
+                    @Override
+                    protected String urlEncode(String input) {
+                        return input;
+                    }
                 };
                 return dataStore;
             }
