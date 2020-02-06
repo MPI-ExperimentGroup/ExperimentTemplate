@@ -64,11 +64,11 @@ public class ObfuscatedStorage {
     }
 
     protected String urlEncode(String input) {
-        return input;// this is not required: URL.encode(input);
+        return URL.encode(input);
     }
 
     protected String urlDecode(String input) {
-        return input;// this is not required: URL.decode(input);
+        return URL.decode(input);
     }
 
     protected String revealString(String storageKey, String input) {
