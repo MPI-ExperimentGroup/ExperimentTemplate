@@ -54,7 +54,7 @@
         <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="FieldKit Sequential" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="FieldKit Sequential" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -94,7 +94,7 @@
         <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="FieldKit Random" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="FieldKit Random" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -135,7 +135,7 @@
         <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" matchingRegex="" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Task 1" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Task 1" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -210,7 +210,7 @@
         <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" matchingRegex="" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Task 2" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Task 2" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
