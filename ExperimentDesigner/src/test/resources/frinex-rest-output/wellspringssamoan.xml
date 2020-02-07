@@ -50,7 +50,7 @@
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -80,7 +80,7 @@
         <loadSdCardStimulus eventTag="Va’ai i le ata (look at the picture)" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Va’ai i le ata (look at the picture)" mediaId="mediaId" filePerStimulus="true">
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Va’ai i le ata (look at the picture)" mediaId="mediaId" filePerStimulus="true">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
