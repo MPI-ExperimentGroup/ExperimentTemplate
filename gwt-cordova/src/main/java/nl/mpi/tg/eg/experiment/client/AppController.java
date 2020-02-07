@@ -309,18 +309,18 @@ public abstract class AppController implements AppEventListner/*, AudioException
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
                 if (typeof(Storage) !== "undefined") {
-                    var enableNotificationCallbacksClick = localStorage.getItem("enableNotificationCallbacksClick");
-                    localStorage.removeItem("enableNotificationCallbacksClick");
+                    var enableNotificationCallbacksClick = $wnd.localStorage.getItem("enableNotificationCallbacksClick");
+                    $wnd.localStorage.removeItem("enableNotificationCallbacksClick");
                     if (enableNotificationCallbacksClick !== "undefined") {
                         appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksClick + " was clicked", 0);
                     }
-                    var enableNotificationCallbacksSchedule = localStorage.getItem("enableNotificationCallbacksSchedule");
-                    localStorage.removeItem("enableNotificationCallbacksSchedule");
+                    var enableNotificationCallbacksSchedule = $wnd.localStorage.getItem("enableNotificationCallbacksSchedule");
+                    $wnd.localStorage.removeItem("enableNotificationCallbacksSchedule");
                     if (enableNotificationCallbacksSchedule !== "undefined") {
                         appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksSchedule + " was scheduled", 0);
                     }
-                    var enableNotificationCallbacksTrigger = localStorage.getItem("enableNotificationCallbacksTrigger");
-                    localStorage.removeItem("enableNotificationCallbacksTrigger");
+                    var enableNotificationCallbacksTrigger = $wnd.localStorage.getItem("enableNotificationCallbacksTrigger");
+                    $wnd.localStorage.removeItem("enableNotificationCallbacksTrigger");
                     if (enableNotificationCallbacksTrigger !== "undefined") {
                         appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksTrigger + " was triggered", 0);
                     }
@@ -332,19 +332,19 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     $wnd.cordova.plugins.notification.local.on("click", function (notification, state) {
                         console.log(notification.id + " was clicked");
                         if (typeof(Storage) !== "undefined") {
-                            localStorage.setItem("enableNotificationCallbacksClick", notification.id);
+                            $wnd.localStorage.setItem("enableNotificationCallbacksClick", notification.id);
                         }
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("schedule", function (notification, state) {
                         console.log(notification.id + " was scheduled");
                         if (typeof(Storage) !== "undefined") {
-                            localStorage.setItem("enableNotificationCallbacksSchedule", notification.id);
+                            $wnd.localStorage.setItem("enableNotificationCallbacksSchedule", notification.id);
                         }
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("trigger", function (notification, state) {
                         console.log(notification.id + " was triggered");
                         if (typeof(Storage) !== "undefined") {
-                            localStorage.setItem("enableNotificationCallbacksTrigger", notification.id);
+                            $wnd.localStorage.setItem("enableNotificationCallbacksTrigger", notification.id);
                         }
                     }, this);
         //            // list the currently scheduled notifications as debug output
@@ -361,8 +361,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
                 if (typeof(Storage) !== "undefined") {
-                    var storedNotification = localStorage.getItem("NotificationCallback");
-                    localStorage.removeItem("NotificationCallback");
+                    var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
+                    $wnd.localStorage.removeItem("NotificationCallback");
                     if (storedNotification !== "undefined") {
                         appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + storedNotification, 0);
                         appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
@@ -374,7 +374,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                         console.log("notificationCallback", targetState);
                         console.log(notification, eopts);
                         if (typeof(Storage) !== "undefined") {
-                            localStorage.setItem("NotificationCallback", targetState);
+                            $wnd.localStorage.setItem("NotificationCallback", targetState);
                         }
                     });
                 }
