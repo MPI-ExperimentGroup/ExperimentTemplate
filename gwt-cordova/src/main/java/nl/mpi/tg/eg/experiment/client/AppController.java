@@ -248,6 +248,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                 requestApplicationState(lastAppState);
             }
             addKeyboardEvents();
+            checkNotificationCallbacks();
         } catch (Exception exception) {
             this.presenter = new StorageFullPresenter(widgetTag, exception.getMessage());
             presenter.setState(this, ApplicationState.start, null);
@@ -304,10 +305,18 @@ public abstract class AppController implements AppEventListner/*, AudioException
         }
     }
 
-    final protected native void enableNotificationCallbacks() /*-{
+    final protected native void checkNotificationCallbacks() /*-{
         var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
+                if (typeof(Storage) !== "undefined") {
+                    var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
+                    $wnd.localStorage.removeItem("NotificationCallback");
+                    if (storedNotification !== "undefined") {
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + storedNotification, 0);
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
+                    }
+                }   
                 if (typeof(Storage) !== "undefined") {
                     var enableNotificationCallbacksClick = $wnd.localStorage.getItem("enableNotificationCallbacksClick");
                     $wnd.localStorage.removeItem("enableNotificationCallbacksClick");
@@ -325,6 +334,13 @@ public abstract class AppController implements AppEventListner/*, AudioException
                         appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksTrigger + " was triggered", 0);
                     }
                 }
+            }
+        }
+     }-*/;
+
+    final protected native void enableNotificationCallbacks() /*-{
+        if ($wnd.cordova) {
+            if ($wnd.cordova.plugins) {
                 if ($wnd.cordova.plugins.notification) {
                     console.log("enableNotificationCallbacks");
         //            $wnd.cordova.plugins.notification.local.fireQueuedEvents();
@@ -357,17 +373,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
      }-*/;
 
     final protected native void addNotificationCallback(final String targetState) /*-{
-        var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
-                if (typeof(Storage) !== "undefined") {
-                    var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
-                    $wnd.localStorage.removeItem("NotificationCallback");
-                    if (storedNotification !== "undefined") {
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + storedNotification, 0);
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
-                    }
-                }   
                 if ($wnd.cordova.plugins.notification) {
                     console.log("addNotificationCallback", targetState);
                     $wnd.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
