@@ -337,13 +337,22 @@ public abstract class AppController implements AppEventListner/*, AudioException
         var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
+                if (typeof(Storage) !== "undefined") {
+                    var storedNotification = localStorage.getItem("NotificationCallback");
+                    localStorage.removeItem("NotificationCallback");
+                    if (storedNotification !== "undefined") {
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + storedNotification, 0);
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
+                    }
+                }   
                 if ($wnd.cordova.plugins.notification) {
                     console.log("addNotificationCallback", targetState);
                     $wnd.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
                         console.log("notificationCallback", targetState);
                         console.log(notification, eopts);
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + targetState, 0);
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(targetState);
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.setItem("NotificationCallback", targetState);
+                         }
                     });
                 }
             }
