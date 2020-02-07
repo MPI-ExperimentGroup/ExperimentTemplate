@@ -305,6 +305,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
     }
 
     final protected native void enableNotificationCallbacks() /*-{
+        var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
                 if ($wnd.cordova.plugins.notification) {
