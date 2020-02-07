@@ -308,21 +308,44 @@ public abstract class AppController implements AppEventListner/*, AudioException
         var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
+                if (typeof(Storage) !== "undefined") {
+                    var enableNotificationCallbacksClick = localStorage.getItem("enableNotificationCallbacksClick");
+                    localStorage.removeItem("enableNotificationCallbacksClick");
+                    if (enableNotificationCallbacksClick !== "undefined") {
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksClick + " was clicked", 0);
+                    }
+                    var enableNotificationCallbacksSchedule = localStorage.getItem("enableNotificationCallbacksSchedule");
+                    localStorage.removeItem("enableNotificationCallbacksSchedule");
+                    if (enableNotificationCallbacksSchedule !== "undefined") {
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksSchedule + " was scheduled", 0);
+                    }
+                    var enableNotificationCallbacksTrigger = localStorage.getItem("enableNotificationCallbacksTrigger");
+                    localStorage.removeItem("enableNotificationCallbacksTrigger");
+                    if (enableNotificationCallbacksTrigger !== "undefined") {
+                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksTrigger + " was triggered", 0);
+                    }
+                }
                 if ($wnd.cordova.plugins.notification) {
                     console.log("enableNotificationCallbacks");
         //            $wnd.cordova.plugins.notification.local.fireQueuedEvents();
         //            console.log($wnd.cordova.plugins.notification.local.launchDetails);
                     $wnd.cordova.plugins.notification.local.on("click", function (notification, state) {
                         console.log(notification.id + " was clicked");
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification.id + " was clicked", 0);
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.setItem("enableNotificationCallbacksClick", notification.id);
+                        }
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("schedule", function (notification, state) {
                         console.log(notification.id + " was scheduled");
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification.id + " was scheduled", 0);
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.setItem("enableNotificationCallbacksSchedule", notification.id);
+                        }
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("trigger", function (notification, state) {
                         console.log(notification.id + " was triggered");
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification.id + " was triggered", 0);
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.setItem("enableNotificationCallbacksTrigger", notification.id);
+                        }
                     }, this);
         //            // list the currently scheduled notifications as debug output
         //            $wnd.cordova.plugins.notification.local.getScheduled(function (notificationData) {
@@ -352,7 +375,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                         console.log(notification, eopts);
                         if (typeof(Storage) !== "undefined") {
                             localStorage.setItem("NotificationCallback", targetState);
-                         }
+                        }
                     });
                 }
             }
