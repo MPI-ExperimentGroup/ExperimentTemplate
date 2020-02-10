@@ -305,6 +305,10 @@ public abstract class AppController implements AppEventListner/*, AudioException
         }
     }
 
+    public void logNotificationFromString(final String notification) {
+        submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification, 0);
+    }
+
     final protected native void checkNotificationCallbacks() /*-{
         var appController = this;
         if ($wnd.cordova) {
@@ -312,26 +316,24 @@ public abstract class AppController implements AppEventListner/*, AudioException
                 if (typeof(Storage) !== "undefined") {
                     var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
                     $wnd.localStorage.removeItem("NotificationCallback");
-                    if (storedNotification !== "undefined") {
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + storedNotification, 0);
+                    if (storedNotification !== null) {
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)("addNotificationCallback: " + storedNotification);
                         appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
                     }
-                }   
-                if (typeof(Storage) !== "undefined") {
                     var enableNotificationCallbacksClick = $wnd.localStorage.getItem("enableNotificationCallbacksClick");
                     $wnd.localStorage.removeItem("enableNotificationCallbacksClick");
-                    if (enableNotificationCallbacksClick !== "undefined") {
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksClick + " was clicked", 0);
+                    if (enableNotificationCallbacksClick !== null) {
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksClick + " was clicked");
                     }
                     var enableNotificationCallbacksSchedule = $wnd.localStorage.getItem("enableNotificationCallbacksSchedule");
                     $wnd.localStorage.removeItem("enableNotificationCallbacksSchedule");
-                    if (enableNotificationCallbacksSchedule !== "undefined") {
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksSchedule + " was scheduled", 0);
+                    if (enableNotificationCallbacksSchedule !== null) {
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksSchedule + " was scheduled");
                     }
                     var enableNotificationCallbacksTrigger = $wnd.localStorage.getItem("enableNotificationCallbacksTrigger");
                     $wnd.localStorage.removeItem("enableNotificationCallbacksTrigger");
-                    if (enableNotificationCallbacksTrigger !== "undefined") {
-                        appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksTrigger + " was triggered", 0);
+                    if (enableNotificationCallbacksTrigger !== null) {
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksTrigger + " was triggered");
                     }
                 }
             }
