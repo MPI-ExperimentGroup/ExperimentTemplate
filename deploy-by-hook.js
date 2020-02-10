@@ -148,10 +148,7 @@ function startResult() {
     resultsFile.write("document.getElementById(keyString + '_' + cellString).style = data.table[keyString][cellString].style + statusStyle;\n");
     resultsFile.write("}\n");
     resultsFile.write("}\n");
-    resultsFile.write("var sortItem = location.href.split('#')[1];\n");
-    resultsFile.write("if($.isNumeric(sortItem)){\n");
-    resultsFile.write("$('tr:gt(1)').each(function() {}).sort(function (a, b) {return $('td:nth-of-type('+sortItem+')', a).text().localeCompare($('td:nth-of-type('+sortItem+')', b).text());}).appendTo('tbody');\n");
-    resultsFile.write("}\n");
+    resultsFile.write("doSort();\n");
     resultsFile.write("if(data.building){\n");
     resultsFile.write("updateTimer = window.setTimeout(doUpdate, 1000);\n");
     resultsFile.write("} else {\n");
@@ -160,7 +157,7 @@ function startResult() {
     resultsFile.write("});\n");
     resultsFile.write("}\n");
     resultsFile.write("var updateTimer = window.setTimeout(doUpdate, 100);\n");
-    resultsFile.write("$(window).on('hashchange', function (e) {\n");
+    resultsFile.write("function doSort() {\n");
     resultsFile.write("var sortData = location.href.split('#')[1];\n");
     resultsFile.write("var sortItem = sortData.split('_')[0];\n");
     resultsFile.write("var sortDirection = sortData.split('_')[1];\n");
@@ -173,6 +170,9 @@ function startResult() {
     resultsFile.write("$('tr:first').children('td').children('a').each(function(index) {$(this).attr('href', '#' + (index + 1) + '_d')});\n");
     resultsFile.write("}\n");
     resultsFile.write("}\n");
+    resultsFile.write("}\n");
+    resultsFile.write("$(window).on('hashchange', function (e) {\n");
+    resultsFile.write("doSort();\n");
     resultsFile.write("});\n");
     resultsFile.write("</script>\n");
     buildHistoryJson.building = true;
