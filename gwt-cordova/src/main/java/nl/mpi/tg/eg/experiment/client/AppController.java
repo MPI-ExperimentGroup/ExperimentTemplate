@@ -332,7 +332,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
         //            $wnd.cordova.plugins.notification.local.getScheduled(function (notificationData) {
         //            $.each(notificationData, function(index, value) {console.log(value.text);});
         //            });
-                    appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)($wnd.cordova.plugins.notification.local.launchDetails);
+//                    appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)($wnd.cordova.plugins.notification.local.launchDetails);
                 }
             }
         }
