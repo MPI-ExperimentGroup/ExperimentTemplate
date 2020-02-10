@@ -248,7 +248,6 @@ public abstract class AppController implements AppEventListner/*, AudioException
                 requestApplicationState(lastAppState);
             }
             addKeyboardEvents();
-            checkNotificationCallbacks();
         } catch (Exception exception) {
             this.presenter = new StorageFullPresenter(widgetTag, exception.getMessage());
             presenter.setState(this, ApplicationState.start, null);
@@ -309,38 +308,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
         submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification, 0);
     }
 
-    final protected native void checkNotificationCallbacks() /*-{
-        var appController = this;
-        if ($wnd.cordova) {
-            if ($wnd.cordova.plugins) {
-                if (typeof(Storage) !== "undefined") {
-                    var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
-                    $wnd.localStorage.removeItem("NotificationCallback");
-                    if (storedNotification !== null) {
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)("addNotificationCallback: " + storedNotification);
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
-                    }
-                    var enableNotificationCallbacksClick = $wnd.localStorage.getItem("enableNotificationCallbacksClick");
-                    $wnd.localStorage.removeItem("enableNotificationCallbacksClick");
-                    if (enableNotificationCallbacksClick !== null) {
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksClick + " was clicked");
-                    }
-                    var enableNotificationCallbacksSchedule = $wnd.localStorage.getItem("enableNotificationCallbacksSchedule");
-                    $wnd.localStorage.removeItem("enableNotificationCallbacksSchedule");
-                    if (enableNotificationCallbacksSchedule !== null) {
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksSchedule + " was scheduled");
-                    }
-                    var enableNotificationCallbacksTrigger = $wnd.localStorage.getItem("enableNotificationCallbacksTrigger");
-                    $wnd.localStorage.removeItem("enableNotificationCallbacksTrigger");
-                    if (enableNotificationCallbacksTrigger !== null) {
-                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksTrigger + " was triggered");
-                    }
-                }
-            }
-        }
-     }-*/;
-
     final protected native void enableNotificationCallbacks() /*-{
+        var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
                 if ($wnd.cordova.plugins.notification) {
@@ -349,32 +318,28 @@ public abstract class AppController implements AppEventListner/*, AudioException
         //            console.log($wnd.cordova.plugins.notification.local.launchDetails);
                     $wnd.cordova.plugins.notification.local.on("click", function (notification, state) {
                         console.log(notification.id + " was clicked");
-                        if (typeof(Storage) !== "undefined") {
-                            $wnd.localStorage.setItem("enableNotificationCallbacksClick", notification.id);
-                        }
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(notification.id + " was clicked");
                     }, this);
                     $wnd.cordova.plugins.notification.local.on("schedule", function (notification, state) {
                         console.log(notification.id + " was scheduled");
-                        if (typeof(Storage) !== "undefined") {
-                            $wnd.localStorage.setItem("enableNotificationCallbacksSchedule", notification.id);
-                        }
-                    }, this);
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(notification.id + " was scheduled");
+                        }, this);
                     $wnd.cordova.plugins.notification.local.on("trigger", function (notification, state) {
                         console.log(notification.id + " was triggered");
-                        if (typeof(Storage) !== "undefined") {
-                            $wnd.localStorage.setItem("enableNotificationCallbacksTrigger", notification.id);
-                        }
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(notification.id + " was triggered");
                     }, this);
         //            // list the currently scheduled notifications as debug output
         //            $wnd.cordova.plugins.notification.local.getScheduled(function (notificationData) {
         //            $.each(notificationData, function(index, value) {console.log(value.text);});
         //            });
+                    appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)($wnd.cordova.plugins.notification.local.launchDetails);
                 }
             }
         }
      }-*/;
 
     final protected native void addNotificationCallback(final String targetState) /*-{
+        var appController = this;
         if ($wnd.cordova) {
             if ($wnd.cordova.plugins) {
                 if ($wnd.cordova.plugins.notification) {
@@ -382,9 +347,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     $wnd.cordova.plugins.notification.local.on(targetState, function(notification, eopts) {
                         console.log("notificationCallback", targetState);
                         console.log(notification, eopts);
-                        if (typeof(Storage) !== "undefined") {
-                            $wnd.localStorage.setItem("NotificationCallback", targetState);
-                        }
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)("addNotificationCallback: " + targetState);
+                        appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(targetState);
                     });
                 }
             }
