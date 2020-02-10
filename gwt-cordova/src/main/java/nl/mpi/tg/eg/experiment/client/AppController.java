@@ -313,7 +313,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
                     if (storedNotification !== null) {
                         try {
-                            appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), "addNotificationCallback: " + storedNotification, 0);
+                            appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)("addNotificationCallback: " + storedNotification);
                             appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
                             $wnd.localStorage.removeItem("NotificationCallback");
                         } catch (error) {
@@ -325,7 +325,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     var enableNotificationCallbacksClick = $wnd.localStorage.getItem("enableNotificationCallbacksClick");
                     if (enableNotificationCallbacksClick !== null) {
                         try {
-                            appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksClick + " was clicked", 0);
+                            appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksClick + " was clicked");
                             $wnd.localStorage.removeItem("enableNotificationCallbacksClick");
                         } catch (error) {
                             console.error(error);
@@ -334,7 +334,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     var enableNotificationCallbacksSchedule = $wnd.localStorage.getItem("enableNotificationCallbacksSchedule");
                     if (enableNotificationCallbacksSchedule !== null) {
                         try {
-                            appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksSchedule + " was scheduled", 0);
+                            appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksSchedule + " was scheduled");
                             $wnd.localStorage.removeItem("enableNotificationCallbacksSchedule");
                         } catch (error) {
                             console.error(error);
@@ -343,7 +343,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     var enableNotificationCallbacksTrigger = $wnd.localStorage.getItem("enableNotificationCallbacksTrigger");
                     if (enableNotificationCallbacksTrigger !== null) {
                         try {
-                            appController.submissionService.submitTimestamp(userResults.getUserData().getUserId(), enableNotificationCallbacksTrigger + " was triggered", 0);
+                            appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)(enableNotificationCallbacksTrigger + " was triggered");
                             $wnd.localStorage.removeItem("enableNotificationCallbacksTrigger");
                         } catch (error) {
                             console.error(error);
