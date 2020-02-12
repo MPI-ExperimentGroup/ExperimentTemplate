@@ -97,7 +97,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <validateMetadata>
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -200,7 +199,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
@@ -336,7 +334,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore dataChannel="2"/>
         <resetStimulus target="target"/>
     </presenter>
@@ -1597,7 +1594,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel styleName="styleName"/>
         <clearCurrentScore dataChannel="2"/>
         <scoreIncrement dataChannel="2" scoreValue="8"/>
@@ -1627,9 +1623,7 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
-        <preventWindowClose featureText="preventWindowClose"/>
-    </presenter>
+    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes"/>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
@@ -1683,7 +1677,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport scoreThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
@@ -1764,7 +1757,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_all_attributes" type="menu" self="menu_all_attributesScreen" title="menu_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
@@ -1822,7 +1814,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_all_attributes" type="debug" self="debug_all_attributesScreen" title="debug_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
@@ -1882,7 +1873,6 @@
             </actionButton>
         </showHtmlPopup>
         <versionData/>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_all_attributes" type="text" self="text_all_attributesScreen" title="text_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
@@ -1929,7 +1919,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_all_attributes" type="timeline" self="timeline_all_attributesScreen" title="timeline_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
@@ -1984,7 +1973,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -2067,7 +2055,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <validateMetadata>
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -2170,7 +2157,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_minimal_attributes" type="preload" self="preload_minimal_attributesScreen" title="preload_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -2306,7 +2292,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore/>
         <resetStimulus target="target"/>
     </presenter>
@@ -3567,7 +3552,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel/>
         <clearCurrentScore/>
         <scoreIncrement scoreValue="8"/>
@@ -3597,9 +3581,7 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
-        <preventWindowClose featureText="preventWindowClose"/>
-    </presenter>
+    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes"/>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
         <htmlText featureText="htmlText"/>
         <plainText featureText="plainText"/>
@@ -3653,7 +3635,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
@@ -3734,7 +3715,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_minimal_attributes" type="menu" self="menu_minimal_attributesScreen" title="menu_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -3792,7 +3772,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_minimal_attributes" type="debug" self="debug_minimal_attributesScreen" title="debug_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -3852,7 +3831,6 @@
             </actionButton>
         </showHtmlPopup>
         <versionData/>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_minimal_attributes" type="text" self="text_minimal_attributesScreen" title="text_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -3899,7 +3877,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_minimal_attributes" type="timeline" self="timeline_minimal_attributesScreen" title="timeline_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -3954,7 +3931,6 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter menuLabel="about" type="debug" self="about" title="about"/>
     <stimuli>
