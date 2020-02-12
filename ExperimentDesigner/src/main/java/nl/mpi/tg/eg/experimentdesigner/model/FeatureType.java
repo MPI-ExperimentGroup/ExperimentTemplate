@@ -229,7 +229,7 @@ public enum FeatureType {
     helpDialogue(false, true, new FeatureAttribute[]{closeButtonLabel}), // helpDialogue is probably only used in SynQuiz
     userInfo(false, false, null),
     versionData(false, false, null),
-    preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
+    //preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
     groupNetwork(false, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetworkActivity, Contitionals.stimulusAction),
