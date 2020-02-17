@@ -305,8 +305,8 @@ public class AbstractSchemaGenerator {
             return this;
         }
 
-        public final DocumentationElement booleanAttribute(final String attributeName, final boolean optional) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Boolean", AttributeType.xsBoolean, optional));
+        public final DocumentationElement booleanAttribute(final String attributeName, final boolean optional, final String documentation) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, documentation, AttributeType.xsBoolean, optional));
             return this;
         }
 
@@ -341,7 +341,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("matchingRegex", false),
                             new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
                                     .stringAttribute("label", false)
-                                    .booleanAttribute("logToSdCard", false)
+                                    .booleanAttribute("logToSdCard", false, "Boolean")
                                     .integerAttribute("channel", false),
                             new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record."
                                     + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.", 0, 1, new DocumentationElement[]{
@@ -378,7 +378,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("postName", false)
                                     .stringAttribute("registrationField", false)
                                     .stringAttribute("duplicatesControlledMessage", true)
-                                    .booleanAttribute("preventServerDuplicates", true)
+                                    .booleanAttribute("preventServerDuplicates", true, "Boolean")
                         }),
                 new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
                         .documentedAttribute("self", AttributeType.presenterName, "The name of the presenter, which must be unique per configuration file.", false)
@@ -421,12 +421,13 @@ public class AbstractSchemaGenerator {
             .colourRGBAttribute("primaryColour2", false)
             .colourRGBAttribute("primaryColour3", false)
             .colourRGBAttribute("primaryColour4", false)
-            .booleanAttribute("isScalable", false)
-            .booleanAttribute("preserveLastState", false)
+            .booleanAttribute("isScalable", false, "Boolean")
+            .booleanAttribute("preserveLastState", false, "Boolean")
             .stringAttribute("splashPresenter", true)
             .stringAttribute("userIdGetParam", true)
-            .booleanAttribute("rotatable", false)
-            .booleanAttribute("showMenuBar", false)
+            .booleanAttribute("rotatable", false, "Boolean")
+            .booleanAttribute("showMenuBar", false, "Boolean")
             .decimalAttribute("defaultScale", false)
-            .integerAttribute("textFontSize", false);
+            .integerAttribute("textFontSize", false)
+            .booleanAttribute("obfuscateBrowserStorage", false, "By default the browser local storage is obfuscated to make it difficult to cheat they system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
 }
