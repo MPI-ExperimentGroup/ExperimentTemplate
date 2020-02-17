@@ -68,11 +68,11 @@ public abstract class AppController implements AppEventListner/*, AudioException
     final MetadataFieldProvider metadataFieldProvider = new ExperimentMetadataFieldProvider();
     final boolean isDebugMode;
 
-    public AppController(RootLayoutPanel widgetTag, String userIdGetParam) throws UserIdException {
+    public AppController(RootLayoutPanel widgetTag, String userIdGetParam, boolean disableBrowserStorage) throws UserIdException {
         this.widgetTag = widgetTag;
         boolean obfuscationDisabled = false;
         String debugValue = Window.Location.getParameter("debug");
-        if (debugValue != null && !submissionService.isProductionVersion()) {
+        if ((debugValue != null && !submissionService.isProductionVersion()) || disableBrowserStorage) {
             localStorage.disableObfuscation();
             obfuscationDisabled = true;
             isDebugMode = true;
