@@ -429,5 +429,5 @@ public class AbstractSchemaGenerator {
             .booleanAttribute("showMenuBar", false, "Boolean")
             .decimalAttribute("defaultScale", false)
             .integerAttribute("textFontSize", false)
-            .booleanAttribute("obfuscateBrowserStorage", false, "By default the browser local storage is obfuscated to make it difficult to cheat they system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
+            .booleanAttribute("obfuscateBrowserStorage", true, "By default the browser local storage is obfuscated to make it difficult to cheat they system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
 }
