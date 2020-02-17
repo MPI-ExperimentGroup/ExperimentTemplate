@@ -98,7 +98,7 @@
             super(widgetTag, </xsl:text>
         <xsl:value-of select="if(experiment/@userIdGetParam) then concat('&quot;', experiment/@userIdGetParam, '&quot;') else 'null'" />
         <xsl:text>, </xsl:text>
-        <xsl:value-of select="experiment/@obfuscateBrowserStorage eq 'false'" />
+        <xsl:value-of select="if(experiment/@obfuscateBrowserStorage eq 'false') then 'true' else 'false'" />
         <xsl:text>);
         </xsl:text>
         <!--todo: does this even work?-->
