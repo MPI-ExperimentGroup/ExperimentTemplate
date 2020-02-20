@@ -2008,9 +2008,14 @@
 </xs:complexType>
 <xs:complexType name="stimulusHasResponseType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex.</xs:documentation>
+</xs:annotation>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
+<xs:attribute name="groupId" type="xs:string"/>
+<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="setStimulusCodeResponseType">
 <xs:attribute name="codeFormat" type="xs:string" use="required"/>

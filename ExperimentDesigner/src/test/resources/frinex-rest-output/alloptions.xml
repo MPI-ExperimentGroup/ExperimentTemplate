@@ -418,7 +418,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse>
+                <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -784,7 +784,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse>
+                <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -1150,7 +1150,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse>
+                <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2376,7 +2376,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse>
+                <stimulusHasResponse matchingRegex="matchingRegex">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2742,7 +2742,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse>
+                <stimulusHasResponse matchingRegex="matchingRegex">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -3108,7 +3108,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse>
+                <stimulusHasResponse matchingRegex="matchingRegex">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
