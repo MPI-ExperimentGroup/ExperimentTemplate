@@ -254,7 +254,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'AbstractTimed'" />
+            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else if(@type = 'svg') then 'AbstractSvg' else 'AbstractTimed'" />
             <xsl:text>Presenter implements Presenter {
                 private final ApplicationState selfApplicationState = ApplicationState.</xsl:text>
             <xsl:value-of select="@self" />
@@ -271,13 +271,20 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
 if(@type = 'preload') then ', DataSubmissionService submissionService' else 
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService' else ''" />
             <xsl:text>, UserResults userResults, LocalStorage localStorage, final TimerService timerService</xsl:text>
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
                     <xsl:text>
                         super(widgetTag, new MenuView(), submissionService, userResults, localStorage, timerService);
+                    </xsl:text>
+                </xsl:when>
+                <xsl:when test="@type = 'svg'">
+                    <xsl:text>
+                        super(widgetTag, new </xsl:text>
+                    <xsl:value-of select="@self" />
+                    <xsl:text>Builder(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'text'">
@@ -843,6 +850,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:apply-templates select="responseIncorrect" />
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
+        <xsl:value-of select="if (local-name() eq 'stimulusHasResponse') then if(@groupId) then concat(', &quot;', @groupId, '&quot;') else ', null' else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else if(local-name() eq 'matchingStimulusGrid') then ', false' else ''" />
