@@ -72,12 +72,10 @@ public abstract class AppController implements AppEventListner/*, AudioException
         this.widgetTag = widgetTag;
         boolean obfuscationDisabled = false;
         String debugValue = Window.Location.getParameter("debug");
-        if ((debugValue != null && !submissionService.isProductionVersion()) || disableBrowserStorage) {
+        isDebugMode = (debugValue != null && !submissionService.isProductionVersion());
+        if (isDebugMode || disableBrowserStorage) {
             localStorage.disableObfuscation();
             obfuscationDisabled = true;
-            isDebugMode = true;
-        } else {
-            isDebugMode = false;
         }
         final UserId lastUserId = localStorage.getLastUserId(userIdGetParam);
         if (lastUserId == null) {
@@ -89,6 +87,9 @@ public abstract class AppController implements AppEventListner/*, AudioException
         }
         if (obfuscationDisabled) {
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "obfuscationDisabled");
+        }
+        if (isDebugMode) {
+            submissionService.submitScreenChange(userResults.getUserData().getUserId(), "isDebugMode");
         }
         boolean hasNewMetadata = false;
         for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
@@ -103,7 +104,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
             // todo: should we transmit this change here
             localStorage.storeData(userResults, metadataFieldProvider);
         }
-        if (debugValue != null) {
+        if (isDebugMode) {
             try {
                 localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.valueOf("about"));
             } catch (IllegalArgumentException iae) {
