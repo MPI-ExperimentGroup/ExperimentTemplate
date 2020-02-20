@@ -388,6 +388,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature conditionFalseGuesser;
         if ((isUseDictionary(storedWizardScreenData))) {
             final PresenterFeature stimulusHasResponseGuesser = new PresenterFeature(FeatureType.stimulusHasResponse, null);
+            stimulusHasResponseGuesser.addFeatureAttributes(FeatureAttribute.matchingRegex, "");
             final PresenterFeature conditionTrueGuesser = new PresenterFeature(FeatureType.conditionTrue, null);
             conditionFalseGuesser = new PresenterFeature(FeatureType.conditionFalse, null);
             stimulusHasResponseGuesser.getPresenterFeatureList().add(conditionTrueGuesser);
@@ -395,6 +396,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             guesserNetworkActivity0.getPresenterFeatureList().add(stimulusHasResponseGuesser);
 
             final PresenterFeature stimulusHasResponseProduer = new PresenterFeature(FeatureType.stimulusHasResponse, null);
+            stimulusHasResponseProduer.addFeatureAttributes(FeatureAttribute.matchingRegex, "");
             final PresenterFeature conditionTrueProduer = new PresenterFeature(FeatureType.conditionTrue, null);
             final PresenterFeature sendGroupStoredMessageProduer = new PresenterFeature(FeatureType.sendGroupStoredMessage, null);
             sendGroupStoredMessageProduer.addFeatureAttributes(FeatureAttribute.eventTag, "sendGroupStoredMessage");
