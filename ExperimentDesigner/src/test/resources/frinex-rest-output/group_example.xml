@@ -74,7 +74,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:">
                             <clearPage/>
-                            <stimulusHasResponse>
+                            <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
                                     <pause msToNext="2000">
                                         <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
@@ -96,7 +96,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:">
                             <clearPage/>
-                            <stimulusHasResponse>
+                            <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
                                 <conditionFalse>
                                     <htmlText featureText="Phase2"/>
