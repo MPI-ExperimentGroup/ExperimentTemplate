@@ -66,7 +66,7 @@ public enum FeatureType {
     stimulusRatingRadio(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusRatingCheckbox(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
-    stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
+    stimulusHasResponse(false, new FeatureAttribute[]{groupId, matchingRegex}, "When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex.", Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     setStimulusCodeResponse(false, false, new FeatureAttribute[]{codeFormat, dataChannel, applyScore}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     addStimulusCodeResponseValidation(false, true, new FeatureAttribute[]{validationRegex, dataChannel}, /* this validation is specific to the StimulusCodeResponses*/ false, false, false, Contitionals.none, Contitionals.stimulusAction),
     ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
