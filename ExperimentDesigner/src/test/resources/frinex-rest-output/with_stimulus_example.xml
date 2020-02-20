@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" userIdGetParam="uuid" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" 
+            userIdGetParam="uuid" 
+            appNameDisplay="with_stimulus_example" 
+            appNameInternal="with_stimulus_example" 
+            backgroundColour="#FFFFFF" 
+            complementColour0="#EAC3A3" 
+            complementColour1="#9D7B5E" 
+            complementColour2="#C69E7C" 
+            complementColour3="#FFEDDE" 
+            complementColour4="#FFFDFB" 
+            defaultScale="1.0" 
+            isScalable="true" 
+            preserveLastState="false" 
+            primaryColour0="#628D8D" 
+            primaryColour1="#385E5E" 
+            primaryColour2="#4A7777" 
+            primaryColour3="#96ADAD" 
+            primaryColour4="#D5D8D8" 
+            rotatable="true" 
+            showMenuBar="true" 
+            textFontSize="17" 
+            obfuscateBrowserStorage="false"
+>
     <administration>
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
@@ -1043,6 +1065,63 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
+    <presenter back="Menu" menuLabel="Append Unique Date" type="stimulus" self="append_unique_date" title="Append Unique Date">
+        <!--todo: complete this example-->
+        <region regionId="currentValueRegion">
+            <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
+        </region>
+        <triggerListener listenerId="showCurrentValue" threshold="0" maximum="0">
+            <regionReplace regionId="currentValueRegion">
+                <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
+            </regionReplace>
+        </triggerListener>
+        <actionButton featureText="Reset Metadata Value">
+            <setMetadataValue fieldName="session_next_step" dataLogFormat="25112020_26112020_27112020_28112020_29112020"/>
+            <trigger listenerId="showCurrentValue"/>
+        </actionButton>
+        <actionButton featureText="Append Current Date">
+            <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_steps&gt;_&lt;currentDateDDMMYYYY&gt;"/>
+            <trigger listenerId="showCurrentValue"/>
+        </actionButton>
+        <actionButton featureText="Remove Current Date">
+            <setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;currentDateDDMMYYYY&gt;(_?[0-9]{8,8}_?)*[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+            <setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+            <trigger listenerId="showCurrentValue"/>
+        </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="currentDate daysBetween and length" type="metadata" self="currentDate_daysBetween_and_length" title="currentDate daysBetween and length">
+        <plainText featureText="In this example the current date is shown in a label. The number of days between the entered dateOfBirth and today is calculated and put into the session_step field and shown in a label. The length of the string in the educationOther field is put into the step_done field and shown in a label."/>
+        <metadataField fieldName="dateOfBirth"/>
+        <metadataField fieldName="educationOther"/>
+        <addPadding/>
+        <htmlTokenText featureText="The current date is: &lt;currentDateDDMMYYYY&gt;"/>
+        <addPadding/>
+        <saveMetadataButton featureText="update" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+            <onError/>
+            <onSuccess>
+                <!--<clearPage/>-->
+                <addPadding/>
+                <setMetadataEvalTokens evaluateTokens="length(&quot;&lt;metadataField_educationOther&gt;&quot;)" fieldName="step_done">	
+                    <onError>
+                        <htmlTokenText featureText="Failed to setMetadataEvalTokens."/>
+                    </onError>
+                    <onSuccess>
+                        <htmlTokenText featureText="The value of the educationOther field is: &quot;&lt;metadataField_educationOther&gt;&quot;."/>
+                        <htmlTokenText featureText="The length of the educationOther field is: &lt;metadataField_step_done&gt;."/>
+                    </onSuccess>
+                </setMetadataEvalTokens>
+                <setMetadataEvalTokens evaluateTokens="daysBetween(&quot;&lt;metadataField_dateOfBirth&gt;&quot;,&quot;&lt;currentDateDDMMYYYY&gt;&quot;)" fieldName="session_step">	
+                    <onError>
+                        <htmlTokenText featureText="Failed to setMetadataEvalTokens."/>
+                    </onError>
+                    <onSuccess>
+                        <htmlTokenText featureText="The number of days between dateOfBirth:&lt;metadataField_dateOfBirth&gt; and today:&lt;currentDateDDMMYYYY&gt; is &lt;metadataField_session_step&gt;."/>
+                    </onSuccess>
+                </setMetadataEvalTokens>
+                <!--<targetButton featureText="edit values" target="currentDate_daysBetween_and_length"/>-->
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
     <presenter back="Menu" menuLabel="progressIndicator" type="metadata" self="progressIndicator_example" title="progressIndicator Example">
         <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>
         <metadataField fieldName="progressIndicator_step"/>
@@ -1108,6 +1187,107 @@
             <randomGrouping/>
             <stimuli>
                 <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </withStimuli>
+    </presenter>
+    <presenter back="Menu" menuLabel="Stimulus Subquestions" type="stimulus" self="Stimulus_Subquestions" title="Stimulus Subquestions">
+        <withStimuli eventTag="Stimulus Subquestions" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <beforeStimulus>
+                <plainText featureText="plainText in beforeStimulus"/>
+            </beforeStimulus>
+            <eachStimulus>
+                <stimulusMetadataField dataChannel="3" fieldName="education"/>
+                <region regionId="subquestionregion&lt;stimulusId&gt;">
+                    <plainText featureText="plainText in eachStimulus"/>
+                    <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
+                        <mediaPlaybackComplete>
+                            <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            <addPadding/>
+                            <table>
+                                <row>
+                                    <stimulusHasRatingOptions>
+                                        <conditionTrue>
+                                            <column>
+                                                <actionTokenButton featureText="Rating 0 is &lt;stimulusRatingLabel_0&gt;">
+                                                    <region regionId="subquestionregion&lt;stimulusId&gt;">
+                                                        <plainText featureText="Question one rating 0"/>
+                                                        <plainText featureText="Question one for zin compleet"/>
+                                                        <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="rating_0_for_zin_compleet"/>
+                                                    </region>
+                                                </actionTokenButton>
+                                            </column>                                            
+                                            <column>
+                                                <actionTokenButton featureText="Rating 1 is &lt;stimulusRatingLabel_1&gt;">
+                                                    <plainText featureText="Question one rating 1"/>
+                                                    <region regionId="subquestionregion&lt;stimulusId&gt;">
+                                                        <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="rating_0_for_zin_compleet"/>
+                                                    </region>
+                                                </actionTokenButton>
+                                            </column>
+                                        </conditionTrue>
+                                        <conditionFalse/>
+                                    </stimulusHasRatingOptions>
+                                    <column>
+                                        <actionButton featureText="zin compleet">
+                                            <regionReplace regionId="subquestionregion&lt;stimulusId&gt;">
+                                                <plainText featureText="Question one for zin compleet"/>
+                                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="question_one_for_zin_compleet"/>
+                                                <plainText featureText="Question two for zin compleet"/>
+                                                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="3" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="question_two_for_zin_compleet"/>
+                                                <plainText featureText="Question three for zin compleet"/>
+                                                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="3" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="question_three_for_zin_compleet"/>
+                                                <actionButton featureText="do you want another question">
+                                                    <region regionId="subquestionregion&lt;stimulusId&gt;">
+                                                        <plainText featureText="here is your question, please describe it"/>
+                                                        <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="another_question_for_zin_compleet"/>
+                                                    </region>
+                                                </actionButton>
+                                            </regionReplace>
+                                        </actionButton>
+                                    </column>
+                                    <column>
+                                        <actionButton featureText="zin onvolledig">
+                                            <regionReplace regionId="subquestionregion&lt;stimulusId&gt;">
+                                                <plainText featureText="Question one for zin onvolledig"/>
+                                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="question_one_for_zin_compleet"/>
+                                                <plainText featureText="Question two for zin compleet"/>
+                                                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="3" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="question_two_for_zin_compleet"/>
+                                                <plainText featureText="Question three for zin compleet"/>
+                                                <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="3" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="question_three_for_zin_compleet"/>
+                                            </regionReplace>
+                                        </actionButton>
+                                    </column>
+                                </row>
+                            </table>
+                        </mediaPlaybackComplete>
+                    </stimulusPresent>
+                </region>
+            </eachStimulus>
+            <afterStimulus>
+                <region regionId="validateStimuliResponses"/>
+                <actionButton featureText="validateStimuliResponses">
+                    <validateStimuliResponses>
+                        <conditionFalse>
+                            <region regionId="validateStimuliResponses">
+                                <plainText featureText="plainText in conditionFalse"/>
+                            </region>
+                        </conditionFalse>
+                        <conditionTrue>
+                            <region regionId="validateStimuliResponses">
+                                <plainText featureText="plainText in conditionTrue"/>
+                            </region>
+                        </conditionTrue>
+                    </validateStimuliResponses>
+                </actionButton>
+                <plainText featureText="plainText in afterStimulus"/>
+                <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
+            </afterStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
             </stimuli>
         </withStimuli>
     </presenter>
