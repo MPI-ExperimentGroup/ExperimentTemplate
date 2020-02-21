@@ -802,9 +802,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             int bandNumber = stimulus.getBandNumber();
             if (bandNumber > 0) { // a word
                 int bandIndex = bandNumber - 1;
-                this.words.get(bandIndex).add(stimulus);
+                this.words.get(bandIndex).add(0, stimulus);
             } else {
-                this.nonwords.add(stimulus);
+                this.nonwords.add(0, stimulus);
             }
             ended = this.tupleFT.isEmpty();
         }
