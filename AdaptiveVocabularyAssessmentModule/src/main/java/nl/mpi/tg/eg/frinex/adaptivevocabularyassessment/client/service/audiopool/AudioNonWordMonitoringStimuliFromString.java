@@ -45,7 +45,8 @@ public class AudioNonWordMonitoringStimuliFromString {
         return fileName;
     }
 
-    //Order;Round;SNR;Condition;Length_list;Word;Target_nonword;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Position_foil;\n
+     //Order;Round;SNR;Condition;Length_list;Word;Foil_word;Location_foil;Location_target;Cue_nonword;Word1;Word2;Word3;Word4;Word5;Word6
+   
     public String parseTrialsInputCSVStringIntoXml(String csvString, ArrayList<String> fileNameExtensions, String stimuliDir) throws Exception {
 
         StringBuilder builder = new StringBuilder();
@@ -95,23 +96,23 @@ public class AudioNonWordMonitoringStimuliFromString {
                 throw new IOException("Word is undefined");
             }
 
-            String trialTargetNonword = record.get("Target_nonword").trim();
-            if (trialTargetNonword == null) {
-                throw new IOException("Target nonword is undefined");
+            String foilWord = record.get("Foil_word").trim();
+            if (foilWord == null) {
+                throw new IOException("Foil_word nonword is undefined");
             }
 
             ArrayList<String> words = new ArrayList<String>(trialLengthInt + 1);
 
             if (!trialCondition.equals("NoTarget")) {
-                trialTargetNonword += "_1";
+                foilWord += "_1";
             }
-            words.add(trialTargetNonword);
+            words.add(foilWord);
 
-            String trialPositionTarget = record.get("Position_target").trim();
-            if (trialPositionTarget == null) {
-                throw new IOException("Position target is undefined");
+            String locationTarget = record.get("Location_target").trim();
+            if (locationTarget == null) {
+                throw new IOException("Location_target is undefined");
             }
-            int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
+            int locationTargetInt = Integer.parseInt(locationTarget);
 
             for (int i = 1; i <= trialLengthInt; i++) {
                 String fieldName = "Word" + i;
@@ -120,17 +121,17 @@ public class AudioNonWordMonitoringStimuliFromString {
                     throw new IOException(fieldName + " is undefined");
                 }
 
-                if (i == trialPositionTargetInt) {
+                if (i == locationTargetInt) {
                     currentWord = currentWord + "_2";
                 }
                 words.add(currentWord);
             }
 
-            String trialPositionFoil = record.get("Position_foil").trim();
-            if (trialPositionFoil == null) {
-                throw new IOException("Position foil is undefined");
+            String locationFoil = record.get("Location_foil").trim();
+            if (locationFoil == null) {
+                throw new IOException("Location_foil is undefined");
             }
-            int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
+            int locationFoilInt = Integer.parseInt(locationFoil);
 
             for (int i = 0; i < words.size(); i++) {
 
@@ -138,14 +139,14 @@ public class AudioNonWordMonitoringStimuliFromString {
                 String pathEnd;
                 String tags = "trial_" + trialNumber + " round_" + round + " condition_" + trialCondition + " length_" + trialCondition + " word_" + trialWord;
                 if (i == 0) {
-                    pathEnd  = "clear_mono/" + wrd;
+                    pathEnd  = "mono_scaled/" + wrd;
                     tags = tags + " type_cue";
                 } else {
                     pathEnd =  Indices.SNR_TO_DIRNAME.get(snr) + "/" + wrd + "_" + snr;
-                    if (trialPositionTargetInt == i) {
-                        tags = tags + " type_target_nonword";
+                    if (locationTargetInt == i) {
+                        tags = tags + " type_target_word";
                     } else {
-                        if (trialPositionFoilInt == i) {
+                        if (locationFoilInt == i) {
                             tags = tags + " type_foil";
                         } else {
                             tags = tags + " type_nonword";
@@ -162,11 +163,11 @@ public class AudioNonWordMonitoringStimuliFromString {
                 String currentSt = this.makeStimulusString(uniqueId, label, audioPath, tags);
                 builder.append(currentSt);
 
-//                //sanity check if the files exist
+//                 // sanity check if the files exist
 //                String wav = pathEnd + ".wav";
 //                String mp3 = pathEnd + ".mp3";
 //                String ogg = pathEnd + ".ogg";
-//                String path = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audiononwordmonitoring/stimuli/"; // must be the same as in the configuration file
+//                String path = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/monitoring/stimuli/"; // must be the same as in the configuration file
 //                try {
 //
 //                    BufferedReader br = new BufferedReader(new FileReader(path + wav));
@@ -185,7 +186,7 @@ public class AudioNonWordMonitoringStimuliFromString {
 //                    System.out.println(ex);
 //
 //                }
-            }
+           }
 
         }
         return builder.toString();

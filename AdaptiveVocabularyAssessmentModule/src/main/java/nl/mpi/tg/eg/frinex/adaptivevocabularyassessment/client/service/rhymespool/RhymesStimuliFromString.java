@@ -34,7 +34,9 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  */
 public class RhymesStimuliFromString {
 
-//"TrialNr;Condition;Cue;Cue_audiofile;Target;Target_audiofile;Target_length\n
+    //private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/rhymes/stimuli/";
+    
+//TrialNr;Condition;Cue;lettercount;Cue_audiofile;Cue_length;Target;Target_audiofile;Target_length;Expected_button
     public String parseTrialsStringIntoXml(String csvString, String sourceStimuliDir, String codedStimuliDir, String baseDir) throws Exception {
 
         StringBuilder builder = new StringBuilder();
@@ -51,6 +53,8 @@ public class RhymesStimuliFromString {
             } else {
                 trialNumber = trialNumber.trim();
             }
+            
+            String type = trialNumber.startsWith("Practice") ? "practice" : "main";
 
             String condition = record.get("Condition");
             if (condition == null) {
@@ -66,6 +70,8 @@ public class RhymesStimuliFromString {
                 cue = cue.trim();
             }
 
+            
+
             String target = record.get("Target");
             if (target == null) {
                 throw new IOException("Target is undefined");
@@ -73,19 +79,42 @@ public class RhymesStimuliFromString {
                 target = target.trim();
             }
 
+          
+
             String correctResponse;
+            String expectedButton = record.get("Expected_button");
             if (condition.equals("rhyme")) {
-                correctResponse = "M";
+                if (expectedButton.equals("1")) {
+                    correctResponse = "M";
+                } else {
+                    throw new IOException("Expected_button is defined incorrectly in trial " + trialNumber);
+                }
+
             } else {
                 if (condition.equals("foil")) {
-                    correctResponse = "Z";
+                    if (expectedButton.equals("2")) {
+                        correctResponse = "Z";
+                    } else {
+                        throw new IOException("Expected_button is defined incorrectly in trial " + trialNumber);
+                    }
                 } else {
                     if (condition.equals("unrelated")) {
-                        correctResponse = "Z";
+                        if (expectedButton.equals("2")) {
+                            correctResponse = "Z";
+                        } else {
+                            throw new IOException("Expected_button is defined incorrectly in trial " + trialNumber);
+                        }
                     } else {
                         throw new IOException("Correct_response is defined incorrectly");
                     }
                 }
+            }
+            
+             String cueLength = record.get("Cue_length");
+            if (cueLength == null) {
+                throw new IOException("Cue_length is undefined");
+            } else {
+                cueLength = cueLength.trim();
             }
 
             String targetLength = record.get("Target_length");
@@ -149,9 +178,9 @@ public class RhymesStimuliFromString {
                 System.out.println(e.getMessage());
             }
 
-            String label = uniqueId + "_Target_length_" + targetLength;
-
-            String currentSt = this.makeStimulusString(uniqueId, label, correctResponse, uniqueId, null, "0");
+            String label = uniqueId ;
+            String tags = type + " Cue_length_" + cueLength + " Target_length_" + targetLength;
+            String currentSt = this.makeStimulusString(uniqueId, label, correctResponse, uniqueId, tags, "0");
             builder.append(currentSt);
 
         }

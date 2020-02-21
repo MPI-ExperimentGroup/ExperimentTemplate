@@ -55,8 +55,9 @@ public class KonopkaStimuliFromStringTest {
     @Test
     public void testParseTrialsInputCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");
+        String baseDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/mskonopka/";
         KonopkaStimuliFromString instance = new KonopkaStimuliFromString();
-        String result = instance.parseTrialsInputCSVStringIntoXml(KonopkaCsv.CSV_STRING,"Pictures/", "main");
+        String result = instance.parseTrialsInputCSVStringIntoXml(KonopkaCsv.CSV_STRING,"Pictures/", baseDir);
         assertTrue(result.startsWith("<stimulus "));
         assertTrue(result.endsWith(" />\n"));
         System.out.println(result);

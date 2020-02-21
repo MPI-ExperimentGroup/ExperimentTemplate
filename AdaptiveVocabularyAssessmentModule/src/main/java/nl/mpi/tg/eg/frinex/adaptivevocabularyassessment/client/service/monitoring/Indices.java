@@ -52,6 +52,7 @@ public class Indices {
     
     static {
         SNR_TO_DIRNAME = new HashMap<String, String>();
+        SNR_TO_DIRNAME.put("-24", "min24");
         SNR_TO_DIRNAME.put("-22", "min22");
         SNR_TO_DIRNAME.put("-20", "min20");
         SNR_TO_DIRNAME.put("-18", "min18");

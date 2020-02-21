@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -53,7 +54,7 @@ public class MonitoringStimuliCodeImageTest {
      * Test of parseTrialsCsvToXml method, of class
      * MonitoringStimuliCodeImage.
      */
-    
+    @Ignore
     @Test
     public void testParseTrialsCsvToXml1() throws Exception {
         System.out.println("parseTrialsCsvToXml1");
@@ -65,6 +66,7 @@ public class MonitoringStimuliCodeImageTest {
         System.out.println(result);
     }
     
+    @Ignore
     @Test
     public void testParseTrialsCsvToXml2() throws Exception {
         System.out.println("parseTrialsCsvToXml2");
@@ -76,6 +78,7 @@ public class MonitoringStimuliCodeImageTest {
         System.out.println(result);
     }
     
+     @Ignore
     @Test
     public void testParseTrialsCsvToXml3() throws Exception {
         System.out.println("parseTrialsCsvToXml3");

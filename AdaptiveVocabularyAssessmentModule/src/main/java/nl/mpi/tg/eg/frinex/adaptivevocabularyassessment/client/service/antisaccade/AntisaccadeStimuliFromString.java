@@ -89,6 +89,7 @@ public class AntisaccadeStimuliFromString {
             }
             
             String positionStimulus = record.get("Position_stimulus");
+            
             if (positionStimulus == null) {
                 throw new IOException("Position_stimulus is undefined");
             } else {
@@ -96,11 +97,9 @@ public class AntisaccadeStimuliFromString {
             }
             
             String correctResponse = record.get("Correct_response");
-            String code = null;
             if (correctResponse == null) {
                 throw new IOException("Correct_response is undefined");
             } else {
-                code = correctResponse.trim().toLowerCase();
                 correctResponse = correctResponse.trim().toUpperCase();
             }
             
@@ -112,6 +111,7 @@ public class AntisaccadeStimuliFromString {
             }
             
             String uniqueId = phase + "_"+item+"_"+stimulus;
+            String code = positionStimulus;
             String tags = phase+ " " + stimulus +" " +"cue_" + positionCue + "  pos_stimulus_" + positionStimulus;
             
            

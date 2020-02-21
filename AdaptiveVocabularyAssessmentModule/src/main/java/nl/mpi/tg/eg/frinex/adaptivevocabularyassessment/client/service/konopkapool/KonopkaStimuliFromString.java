@@ -17,7 +17,13 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.konopkapool;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
@@ -26,11 +32,11 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  *
  * @author olhshk
  */
-
 // Nr;Item;Condition;(Patient_)inanimate_animal_human;Location_agent;Picture
+//Nr;Item;Condition;Selection_criterion;(Patient_)inanimate_animal_human;Location_agent;Picture
 public class KonopkaStimuliFromString {
-    
-    public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir, String type) throws Exception {
+
+    public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir, String baseDir) throws Exception {
 
         StringBuilder builder = new StringBuilder();
 
@@ -44,11 +50,48 @@ public class KonopkaStimuliFromString {
             if (nr == null) {
                 throw new IOException("Nr is undefined");
             }
+            String type = nr.startsWith("Practice") ? "practice" : "main";
 
             String item = record.get("Item").trim();
             if (item == null) {
                 throw new IOException("Item is undefined");
             }
+            item = item.replace(' ', '_');
+
+            String selectionCriterion = record.get("Selection_criterion").trim();
+            if (selectionCriterion == null) {
+                throw new IOException("Selection_criterion is undefined");
+            }
+
+            String condition = record.get("Condition").trim();
+            if (condition == null) {
+                throw new IOException("Condition is undefined");
+            }
+
+            String subdir="";
+            /*
+            if (selectionCriterion.equals("practice")) {
+                if (!type.equals("practice")) {
+                    throw new IOException("Mismatch between Nr for practice round and the Selection criterion");
+                } else {
+                    subdir = "practice/";
+                }
+            } else {
+                if (condition.equals("Filler")) {
+                    subdir = "fillers/";
+                } else {
+                    if (condition.equals("Active")) {
+                        subdir = "targets/";
+                    } else {
+                        if (condition.equals("Passive")) {
+                            subdir = "targets/";
+                        } else {
+                            throw new IOException("Condition in the main round is nether active, nor passive, nor filler in trial"+ nr);
+                        }
+                    }
+                }
+            }
+*/
 
             String patient_inanimate_animal_human = record.get("(Patient_)inanimate_animal_human").trim();
             if (patient_inanimate_animal_human == null) {
@@ -64,16 +107,34 @@ public class KonopkaStimuliFromString {
             if (picture == null) {
                 throw new IOException("Picture is undefined");
             }
-           
 
-            String imagePath = stimuliDir + picture;
+            // corrector
+            if (!picture.endsWith(".png")) {
+              picture = picture + ".png" ;
+            }
+            
+            
+            String imagePath = stimuliDir +subdir+picture;
+            
+            
+            //testing consistencu of stimuli collection
+            try {
+               
+                BufferedReader br1 = new BufferedReader(new FileReader(baseDir + stimuliDir +subdir+picture));
+                br1.close();
+                // end sanity check 
+            } catch (Exception e) {
+                System.out.println("trial "+nr);
+                System.out.println(e);
+            }
+            
+            
             String label = item.replace(" ", "_");
             String uniqueId = "Nr_".concat(nr).concat("__").concat(label);
-            
 
-            String tags = type+ " Patient_inanimate_animal_human_" + patient_inanimate_animal_human + " Location_agent_" + location_agent;
+            String tags = type + " Condition_" + condition + " Selection_criterion_" + selectionCriterion + " Patient_inanimate_animal_human_" + patient_inanimate_animal_human + " Location_agent_" + location_agent;
 
-           String currentSt = this.makeStimulusString(uniqueId, label, imagePath, tags);
+            String currentSt = this.makeStimulusString(uniqueId, label, imagePath, tags);
             builder.append(currentSt);
 
         }
@@ -100,5 +161,5 @@ public class KonopkaStimuliFromString {
         return retVal.toString();
 
     }
-    
+
 }

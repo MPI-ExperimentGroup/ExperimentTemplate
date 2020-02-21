@@ -62,7 +62,7 @@ public class WerkwoordenStimuliFromStringTest {
         String pictureStimuliDir = "stimuli/pictures/";
         String codeStimuliDir = "stimuli/codes/";
         WerkwoordenStimuliFromString instance = new WerkwoordenStimuliFromString();
-        String result = instance.parseTrialsAudioPicturesStringIntoXml(WerkwoordenCsv.CSV_PICTURES_AUDIO, pictureStimuliDir, audioStimuliDir, codeStimuliDir, baseDir);
+        String result = instance.parseTrialsAudioPicturesStringIntoXml(WerkwoordenCsv.CSV, pictureStimuliDir, audioStimuliDir, codeStimuliDir, baseDir);
         System.out.println(result);
         assertTrue(result.startsWith("<stimulus "));
         assertTrue(result.endsWith(" />\n"));

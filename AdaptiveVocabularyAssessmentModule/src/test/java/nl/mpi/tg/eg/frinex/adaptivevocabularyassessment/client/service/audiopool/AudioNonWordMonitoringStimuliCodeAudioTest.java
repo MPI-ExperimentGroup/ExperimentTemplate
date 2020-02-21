@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
 import java.util.ArrayList;
-import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioNonWordMonitoringStimuliFromStringTest.STIMULI_DIR;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,9 +30,11 @@ import org.junit.Ignore;
  *
  * @author olhshk
  */
-public class AudioNonWordMonitoringStimuliCodeImageTest {
+public class AudioNonWordMonitoringStimuliCodeAudioTest {
     
-    public AudioNonWordMonitoringStimuliCodeImageTest() {
+    public static final String STIMULI_DIR = "stimuli/";
+    
+    public AudioNonWordMonitoringStimuliCodeAudioTest() {
     }
     
     @BeforeClass
@@ -55,13 +56,16 @@ public class AudioNonWordMonitoringStimuliCodeImageTest {
     /**
      * Test of parseTrialsInputCSVStringIntoXml method, of class AudioNonWordMonitoringStimuliCodeImage.
      */
-    @Ignore
+  
     @Test
     public void testParseTrialsInputCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");
-        ArrayList<String> fileNameExtensions = null;
-        AudioNonWordMonitoringStimuliCodeImage instance = new AudioNonWordMonitoringStimuliCodeImage();
-        String result = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV_CONTENT, STIMULI_DIR, "");
+        ArrayList<String> fileNameExtensions = new ArrayList<String>();
+        fileNameExtensions.add("wav");
+        fileNameExtensions.add("ogg");
+        fileNameExtensions.add("mp3");
+        AudioNonWordMonitoringStimuliCodeIAudio instance = new AudioNonWordMonitoringStimuliCodeIAudio();
+        String result = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV, STIMULI_DIR);
         assertTrue(result.startsWith("<stimulus "));
         assertTrue(result.endsWith(" />\n"));
         System.out.println(result);
@@ -72,14 +76,14 @@ public class AudioNonWordMonitoringStimuliCodeImageTest {
     public void testParseNonwordWordformCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");
         ArrayList<String> fileNameExtensions = null;
-        AudioNonWordMonitoringStimuliCodeImage instance = new AudioNonWordMonitoringStimuliCodeImage();
+        AudioNonWordMonitoringStimuliCodeIAudio instance = new AudioNonWordMonitoringStimuliCodeIAudio();
         
-        String resultNonword = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.NONWORD, STIMULI_DIR, "nonword");
+        String resultNonword = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.NONWORD, STIMULI_DIR);
         assertTrue(resultNonword.startsWith("<stimulus "));
         assertTrue(resultNonword.endsWith(" />\n"));
         System.out.println(resultNonword);
         
-        String resultWordform = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.WORDFORM, STIMULI_DIR, "wordform");
+        String resultWordform = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.WORDFORM, STIMULI_DIR);
         assertTrue(resultWordform.startsWith("<stimulus "));
         assertTrue(resultWordform.endsWith(" />\n"));
         System.out.println(resultWordform);

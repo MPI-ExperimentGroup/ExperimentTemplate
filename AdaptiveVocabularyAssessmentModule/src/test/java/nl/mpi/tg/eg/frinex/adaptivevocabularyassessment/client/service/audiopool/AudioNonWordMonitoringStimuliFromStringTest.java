@@ -67,7 +67,7 @@ public class AudioNonWordMonitoringStimuliFromStringTest {
         fileNameExtensions.add("ogg");
         fileNameExtensions.add("mp3");
         AudioNonWordMonitoringStimuliFromString instance = new AudioNonWordMonitoringStimuliFromString();
-         String resultPractice = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV_CONTENT, fileNameExtensions , STIMULI_DIR);
+         String resultPractice = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV, fileNameExtensions , STIMULI_DIR);
         assertTrue(resultPractice.startsWith("<stimulus "));
         assertTrue(resultPractice.endsWith(" />\n"));
         System.out.println(resultPractice);

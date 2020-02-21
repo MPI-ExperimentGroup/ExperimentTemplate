@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Max Planck Institute for Psycholinguistics, Nijmegen
+ * Copyright (C) 2020 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.categorisationpool;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.gendercue2;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,9 +28,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class CategorisationStimuliFromStringTest {
+public class GenderCue2StimuliFromStringTest {
     
-    public CategorisationStimuliFromStringTest() {
+    public GenderCue2StimuliFromStringTest() {
     }
     
     @BeforeClass
@@ -50,15 +50,17 @@ public class CategorisationStimuliFromStringTest {
     }
 
     /**
-     * Test of parseTrialsStringIntoXml method, of class CategorisationStimuliFromString.
+     * Test of parseTrialsAudioPicturesStringIntoXml method, of class GenderCue2StimuliFromString.
      */
     @Test
-    public void testParseTrialsStringIntoXml() throws Exception {
-        System.out.println("parseTrialsStringIntoXml");
-        String baseDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/categorisation/";
-        String sourcesStimuliDir = "stimuli/";
-        CategorisationStimuliFromString instance = new CategorisationStimuliFromString();
-        String result = instance.parseTrialsStringIntoXml(CategorisationCsv.CSV, sourcesStimuliDir, baseDir);
+    public void testParseTrialsAudioPicturesStringIntoXml() throws Exception {
+        System.out.println("parseTrialsAudioPicturesStringIntoXml");
+        String baseDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/grammatical_gender_cues_2/";
+        String audioStimuliDir = "stimuli/";
+        String pictureStimuliDir = "stimuli/";
+        String codeStimuliDir = "stimuli/coded/";
+        GenderCue2StimuliFromString instance = new GenderCue2StimuliFromString();
+        String result = instance.parseTrialsAudioPicturesStringIntoXml(GenderCueCsv2.CSV, pictureStimuliDir, audioStimuliDir, codeStimuliDir, baseDir);
         System.out.println(result);
         assertTrue(result.startsWith("<stimulus "));
         assertTrue(result.endsWith(" />\n"));

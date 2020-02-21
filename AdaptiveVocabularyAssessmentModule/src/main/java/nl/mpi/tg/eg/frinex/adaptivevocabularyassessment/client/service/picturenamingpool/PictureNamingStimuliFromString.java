@@ -27,7 +27,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  *
  * @author olhshk
  */
-//target_word	target_frequency	Length(Letters)	syllables	SUBTLEX_log	Prev	ND	ND_freq	Picture	Random
+//trial_nr; target_word; Zipf_freq; Length; syllables; Prev; ND; ND_freq; Picture
 public class PictureNamingStimuliFromString {
 
     public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir, String type) throws Exception {
@@ -39,20 +39,26 @@ public class PictureNamingStimuliFromString {
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
 
         for (LinkedHashMap<String, String> record : records) {
+            
+            String trialNr = record.get("trial_nr").trim();
+            if (trialNr == null) {
+                throw new IOException("trial_nr is undefined");
+            }
 
             String targetWord = record.get("target_word").trim();
             if (targetWord == null) {
                 throw new IOException("targetWord is undefined");
             }
 
-            String targetFrequency = record.get("target_frequency").trim();
-            if (targetFrequency == null) {
-                throw new IOException("target_frequency is undefined");
+            String zipfFrequency = record.get("Zipf_freq").trim();
+            if (zipfFrequency == null) {
+                throw new IOException("Zipf_freq is undefined");
             }
+            zipfFrequency=zipfFrequency.replaceAll("\\.", "_");
 
-            String lengthInLetters = record.get("Length(Letters)").trim();
-            if (lengthInLetters == null) {
-                throw new IOException("Length(Letters) is undefined");
+            String length = record.get("Length").trim();
+            if (length == null) {
+                throw new IOException("Length is undefined");
             }
 
             String syllables = record.get("syllables").trim();
@@ -60,12 +66,7 @@ public class PictureNamingStimuliFromString {
                 throw new IOException("Syllables is undefined");
             }
 
-            String subtlextLog = record.get("SUBTLEX_log").trim();
-            if (subtlextLog == null) {
-                throw new IOException("SUBTLEX_log is undefined");
-            }
-            subtlextLog=subtlextLog.replaceAll("\\.", "");
-
+           
             String prev = record.get("Prev").trim();
             if (prev == null) {
                 throw new IOException("Prev is undefined");
@@ -88,25 +89,15 @@ public class PictureNamingStimuliFromString {
                 throw new IOException("Picture is undefined");
             }
 
-            String random = "";
-            if (!type.equals("practice")) {
-                random = record.get("Random").trim();
-                if (random == null) {
-                    throw new IOException("Random is undefined");
-                }
-               random=random.replaceAll("\\.", "");
-            }
-            
-
+           
             String imagePath = stimuliDir + picture;
 
-            String uniqueId = targetWord;
+            String uniqueId = "trial_"+trialNr + "_" +targetWord;
             String label = targetWord;
 
-            String tags = type + "  target_frequency_" + targetFrequency + " Length_letters_" + lengthInLetters + " syllables_" + syllables
-                    + " SUBTLEX_log_" + subtlextLog + " Prev_" + prev + " ND_" + nd + " ND_freq_" + ndFreq + " Random_" + random;
+            String tags = type + "  zipf_frequency_" + zipfFrequency + " Length_" + length + " syllables_" + syllables
+                    + " Prev_" + prev + " ND_" + nd + " ND_freq_" + ndFreq;
 
-            //target_word	target_frequency	Length(Letters)	syllables	SUBTLEX_log	Prev	ND	ND_freq	Picture	Random
             String currentSt = this.makeStimulusString(uniqueId, label, imagePath, tags);
             builder.append(currentSt);
 

@@ -34,9 +34,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  */
 public class WerkwoordenStimuliFromString {
 
-//trial;condition;verb;inflected_verb;
- //target; nchar_target;syllabes_target; SUBTLEXWF_target;log_target;prevalence_target;picture_target;position_target;
-//distractor; nchar_distractor;syllabes_distractor; SUBTLEXWF_distractor;log_distractor;prevalence_distractor;picture_distractor;
+//trial;condition;verb;inflected_verb;target; nchar_target;syllabes_target;Zipf_freq_target;prevalence_target;Picture_left;
+//Picture_right;position_target;distractor; nchar_distractor;syllabes_distractor;Zipf_freq_target;prevalence_distractor;
 //wav_file;verb_onset;target_onset;timer;correct_response
 
     public String parseTrialsAudioPicturesStringIntoXml(String csvString, String pictureStimuliDir, String audioStimuliDir, String codeStimuliDir, String baseDir) throws Exception {
@@ -49,7 +48,7 @@ public class WerkwoordenStimuliFromString {
 
         for (LinkedHashMap<String, String> record : records) {
 
-            //"trial;condition;verb;inflected_verb;target; 
+            //"trial;condition;verb;inflected_verb;
 
             String trialNumber = record.get("trial");
             if (trialNumber == null) {
@@ -80,8 +79,8 @@ public class WerkwoordenStimuliFromString {
                 inflectedVerb = inflectedVerb.trim();
             }
            
-            //target; nchar_target;syllabes_target; SUBTLEXWF_target;log_target;prevalence_target;picture_target;position_target;
-
+            //arget; nchar_target;syllabes_target;Zipf_freq_target;prevalence_target;Picture_left;
+            
             String target = record.get("target");
             if (target == null) {
                 throw new IOException("target is undefined");
@@ -103,37 +102,37 @@ public class WerkwoordenStimuliFromString {
                 syllabesTarget = syllabesTarget.trim();
             }
             
-            String SUBTLEXWFTarget = record.get("SUBTLEXWF_target");
-            if (SUBTLEXWFTarget == null) {
-                throw new IOException("SUBTLEXWF_target is undefined");
+            String zipFTarget = record.get("Zipf_freq_target");
+            if (zipFTarget == null) {
+                throw new IOException("Zipf_freq_target is undefined");
             } else {
-                SUBTLEXWFTarget = SUBTLEXWFTarget.trim();
+                zipFTarget = zipFTarget.trim();
             }
             
-            SUBTLEXWFTarget = SUBTLEXWFTarget.replaceAll("\\,", "_comma_");
-           
-            String logTarget = record.get("log_target");
-            if (logTarget == null) {
-                throw new IOException("log_target is undefined");
-            } else {
-                logTarget = logTarget.trim();
-            }
-            logTarget = logTarget.replaceAll("\\,", "_comma_");
-
+          
+            
             String prevalenceTarget = record.get("prevalence_target");
             if (prevalenceTarget == null) {
                 throw new IOException("prevalence_target is undefined");
             } else {
                 prevalenceTarget = prevalenceTarget.trim();
             }
-            prevalenceTarget = prevalenceTarget.replaceAll("\\,", "_comma_");
             
             
-            String pictureTarget = record.get("picture_target");
-            if (pictureTarget == null) {
-                throw new IOException("picture_target is undefined");
+            String pictureLeft = record.get("Picture_left");
+            if (pictureLeft == null) {
+                throw new IOException("Picture_left is undefined");
             } else {
-                pictureTarget = pictureTarget.trim();
+                pictureLeft = pictureLeft.trim();
+            }
+            
+            //Picture_right;position_target;distractor; nchar_distractor;syllabes_distractor;Zipf_freq_distractor;prevalence_distractor;
+            
+            String pictureRight = record.get("Picture_right");
+            if (pictureRight == null) {
+                throw new IOException("Picture_right is undefined");
+            } else {
+                pictureRight = pictureRight.trim();
             }
             
             String positionTarget = record.get("position_target");
@@ -143,8 +142,7 @@ public class WerkwoordenStimuliFromString {
                 positionTarget = positionTarget.trim();
             }
             
-             //Distractor; nchar_distractor;syllabes_distractor; SUBTLEXWF_distractor;log_distractor;prevalence_distractor;picture_distractor;position_distractor;
-
+           
             String distractor = record.get("distractor");
             if (distractor == null) {
                 throw new IOException("distractor is undefined");
@@ -166,46 +164,22 @@ public class WerkwoordenStimuliFromString {
                 syllabesDistractor = syllabesDistractor.trim();
             }
             
-            String SUBTLEXWFDistractor = record.get("SUBTLEXWF_distractor");
-            if (SUBTLEXWFDistractor == null) {
-                throw new IOException("SUBTLEXWF_distractor is undefined");
+            String zipFDistractor = record.get("Zipf_freq_distractor");
+            if (zipFDistractor == null) {
+                throw new IOException("Zipf_freq_distractor is undefined");
             } else {
-                SUBTLEXWFDistractor = SUBTLEXWFDistractor.trim();
+                zipFDistractor = zipFDistractor.trim();
             }
             
-            SUBTLEXWFDistractor = SUBTLEXWFDistractor.replaceAll("\\,", "_comma_");
-           
-            String logDistractor = record.get("log_distractor");
-            if (logDistractor == null) {
-                throw new IOException("log_distractor is undefined");
-            } else {
-                logDistractor = logDistractor.trim();
-            }
-            logDistractor = logDistractor.replaceAll("\\,", "_comma_");
-
             String prevalenceDistractor = record.get("prevalence_distractor");
             if (prevalenceDistractor == null) {
                 throw new IOException("prevalence_distractor is undefined");
             } else {
                 prevalenceDistractor = prevalenceDistractor.trim();
             }
-            prevalenceDistractor = prevalenceDistractor.replaceAll("\\,", "_comma_");
             
-            
-            String pictureDistractor = record.get("picture_distractor");
-            if (pictureDistractor == null) {
-                throw new IOException("picture_distractor is undefined");
-            } else {
-                pictureDistractor = pictureDistractor.trim();
-            }
-            
-           
-            
-            ///////////////////////////
-          
             //wav_file;verb_onset;target_onset;timer;correct_response
-            
-              
+ 
             String audio = record.get("wav_file");
             if (audio == null) {
                 throw new IOException("wav_file is undefined");
@@ -224,8 +198,7 @@ public class WerkwoordenStimuliFromString {
                 verbOnset = verbOnset.trim();
             }
 
-            verbOnset = verbOnset.replaceAll("\\,", "_comma_");
-           
+            
 
             String targetOnset = record.get("target_onset");
             if (targetOnset == null) {
@@ -234,37 +207,59 @@ public class WerkwoordenStimuliFromString {
                 targetOnset = targetOnset.trim();
             }
 
-            targetOnset = targetOnset.replaceAll("\\,", "_comma_");
-            
+              
+          
+
+            String timer = record.get("timer");
+            int timerMs;
+            if (timer == null) {
+                throw new IOException("timer is undefined");
+            } else {
+                timer = timer.trim();
+                timer = timer.replace("_", ".");
+                Double timerMsDb = Double.valueOf(timer);
+                timerMs = (int)Math.round(timerMsDb);
+            }
+           
 
             String correctResponse = record.get("correct_response");
             String correctResponseButton;
             if (correctResponse == null) {
                 throw new IOException("correct_response is undefined");
             }
-            if (correctResponse.trim().equals("left")) {
+            if (correctResponse.trim().equals("2")) {
                 correctResponseButton = "Z";
             } else {
-                if (correctResponse.trim().equals("right")) {
+                if (correctResponse.trim().equals("1")) {
                     correctResponseButton = "M";
                 } else {
-                    throw new IOException("Correct_response is defined incorrectly");
+                    throw new IOException("correct_response input is out of skope incorrectly, trial "+trialNumber);
                 }
             }
             
-            
-            
-          
-
-            String timerMs = record.get("timer_ms");
-            if (timerMs == null) {
-                throw new IOException("timer is undefined");
-            } else {
-                timerMs = timerMs.trim();
+            String pictureTarget=null;
+            String pictureDistractor=null;
+            if (positionTarget.equals("right")) {
+                if (!correctResponseButton.equals("M")){
+                   throw new IOException("correctResponseButton is defined incorrectly, trial "+trialNumber + ", position_traget is right but correctResponseButton is "+correctResponseButton); 
+                }
+                pictureTarget = pictureRight;
+                pictureDistractor = pictureLeft;
             }
-           
+            if (positionTarget.equals("left")) {
+                if (!correctResponseButton.equals("Z")){
+                   throw new IOException("correctResponseButton is defined incorrectly, trial "+trialNumber + ", position_traget is left but correctResponseButton is "+correctResponseButton); 
+                }
+                pictureTarget = pictureLeft;
+                pictureDistractor = pictureRight;
+            }
+            
+            if (pictureTarget == null || pictureDistractor == null) {
+              throw new IOException("Picture target or Picture distractor are define dincorrectly, trial "+trialNumber); 
+            }
+         
 
-            String uniqueId = "trial_" + trialNumber + "_" + verb;
+            String uniqueId = "trial_" + trialNumber + "_" + verb+"_"+positionTarget+"_"+condition;
             // creating patternly-named copies of images 
             try {
                 Path sourceTarget = Paths.get(baseDir + pictureStimuliDir + pictureTarget);
@@ -282,43 +277,36 @@ public class WerkwoordenStimuliFromString {
                 br2.close();
                 // end sanity check 
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println(e);
             }
 
             String label = target;
             
-            //trial;condition;verb;inflected_verb;
- //target; nchar_target;syllabes_target; SUBTLEXWF_target;log_target;prevalence_target;picture_target;position_target;
-//distractor; nchar_distractor;syllabes_distractor; SUBTLEXWF_distractor;log_distractor;prevalence_distractor;picture_distractor;
-//wav_file;verb_onset;target_onset;timer;correct_response
+            String round = (condition.startsWith("practice")) ?  "practice" : "main";
+           
 
-            String tags = positionTarget
-                    + " condition_" +condition 
-                    + " verb_" +verb 
-                    + " inflected_verb_" +inflectedVerb 
-                    
+            String tags =  round + " " +
+                    positionTarget + " " +
+                    " inflected_verb_" +inflectedVerb 
                     + " target_" + target + " nchar_target_" + ncharTarget 
                     + " syllables_target_" + syllabesTarget
-                    + " SUBTLEXWF_target_" + SUBTLEXWFTarget
-                    + " log_target_" + logTarget
+                    + " Zipf_target_" + zipFTarget
                     + " prevalence_target_" + prevalenceTarget
                     + " picture_target_" + pictureTarget.substring(0, pictureTarget.length()-4)
                     + " position_target_" + positionTarget
                     
                     + " distractor_" + distractor + " nchar_distractor_" + ncharDistractor
                     + " syllables_distractor_" + syllabesDistractor
-                    + " SUBTLEXWF_distractor_" + SUBTLEXWFDistractor
-                    + " log_distractor_" + logDistractor
+                    + " Zipf_distractor_" +  zipFDistractor
                     + " prevalence_distractor_" + prevalenceDistractor
                     + " picture_distractor_" + pictureDistractor.substring(0, pictureDistractor.length()-4)
-                    
                     + " verb_onset_" + verbOnset
                     + " target_onset_" + targetOnset
-                    + " timer_ms_" + timerMs
+                    + " timer_" + timerMs
                     + " correctResponse_" + correctResponse.trim();
 
             String audioPath = audioStimuliDir + audio;
-            String currentSt = this.makeAudioPictureStimulusString(uniqueId, label, correctResponseButton, audioPath, uniqueId, tags, timerMs);
+            String currentSt = this.makeAudioPictureStimulusString(uniqueId, label, correctResponseButton, audioPath, uniqueId, tags, Integer.toString(timerMs));
             builder.append(currentSt);
 
         }

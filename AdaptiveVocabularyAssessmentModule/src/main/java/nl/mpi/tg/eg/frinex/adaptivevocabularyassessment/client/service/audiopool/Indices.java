@@ -52,6 +52,23 @@ public class Indices {
     
     static {
         SNR_TO_DIRNAME = new HashMap<String, String>();
+        SNR_TO_DIRNAME.put("-24", "min24");
+        SNR_TO_DIRNAME.put("-22", "min22");
+        SNR_TO_DIRNAME.put("-20", "min20");
+        SNR_TO_DIRNAME.put("-18", "min18");
+        SNR_TO_DIRNAME.put("-16", "min16");
+        SNR_TO_DIRNAME.put("-14", "min14");
+        SNR_TO_DIRNAME.put("-12", "min12");
+        SNR_TO_DIRNAME.put("-10", "min10");
+        SNR_TO_DIRNAME.put("-8", "min8");
+        SNR_TO_DIRNAME.put("-6", "min6");
+        SNR_TO_DIRNAME.put("-4", "min4");
+        SNR_TO_DIRNAME.put("-2", "min2");
+        SNR_TO_DIRNAME.put("0", "zero");
+    }
+    
+    /*static {
+        SNR_TO_DIRNAME = new HashMap<String, String>();
         SNR_TO_DIRNAME.put("-20", "min20");
         SNR_TO_DIRNAME.put("-18", "min18");
         SNR_TO_DIRNAME.put("-16", "min16");
@@ -68,7 +85,7 @@ public class Indices {
         SNR_TO_DIRNAME.put("6", "plus6");
         SNR_TO_DIRNAME.put("8", "plus8");
         SNR_TO_DIRNAME.put("10", "plus10");
-    }
+    }*/
     
      static {
         BAND_LABEL_TO_INDEX = new HashMap<String, Integer>();

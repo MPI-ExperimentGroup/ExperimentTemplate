@@ -30,9 +30,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  */
 public class CategorisationStimuliFromString {
 
-    //Nr;Category;Word;Syllables;Letters;SubtlexWF;Prev;PTAN;PTAF;Filename;Target_length
-    //Trial_Nr;Category;Target_Word;Syllables;Letters;SubtlexWF;Prev;PTAN;PTAF;Filename;Target_length\n"
-    public String parseTrialsStringIntoXml(String csvString, String sourceStimuliDir, String baseDir, String rightCategory, String wrongCategory) throws Exception {
+    //Trial_Nr;Category;Target_Word;Syllables;Letters;ZipfF;Prev;PTAN;PTAF;Filename;Target_length;Expected_button
+    public String parseTrialsStringIntoXml(String csvString, String sourceStimuliDir, String baseDir) throws Exception {
 
         StringBuilder builder = new StringBuilder();
 
@@ -40,7 +39,11 @@ public class CategorisationStimuliFromString {
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
 
+        int professionsLimit = 4 + 32;
+        int counter = 0;
         for (LinkedHashMap<String, String> record : records) {
+
+            counter++;
 
             String trialNumber = record.get("Trial_Nr");
             if (trialNumber == null) {
@@ -70,31 +73,27 @@ public class CategorisationStimuliFromString {
                 syllables = syllables.trim();
             }
 
-         
-
-            //SubtlexWF;Prev;PTAN;PTAF;Filename
-            String subtlexWF = record.get("SubtlexWF");
-            if (subtlexWF == null) {
-                throw new IOException("SubtlexWF is undefined");
+            String letters = record.get("Letters");
+            if (letters == null) {
+                throw new IOException("Letters is undefined");
             } else {
-                subtlexWF = subtlexWF.trim();
-                subtlexWF = subtlexWF.replace(",", "_comma_");
+                letters = letters.trim();
             }
 
-            String prev = "";
-            String prevTag = "";
-            if (rightCategory.equals("Professions")) {
-                prev = record.get("Prev");
-                prevTag = " Prev";
+            String zipF = record.get("ZipfF");
+            if (zipF == null) {
+                throw new IOException("ZipfF is undefined");
             } else {
-                prev = record.get("Irt_Prev");
-                prevTag = " Irt_Prev";
+                zipF = zipF.trim();
+                zipF = zipF.replace(".", "_period_");
             }
+
+            String prev = record.get("Prev");
             if (prev == null) {
-                throw new IOException("Prev/Irt_Prev is undefined");
+                throw new IOException("Prev is undefined");
             } else {
                 prev = prev.trim();
-                prev = prev.replace(",", "_comma_");
+                prev = prev.replace(".", "_point_");
             }
 
             String pTAN = record.get("PTAN");
@@ -102,7 +101,7 @@ public class CategorisationStimuliFromString {
                 throw new IOException("PTAN is undefined");
             } else {
                 pTAN = pTAN.trim();
-                pTAN = pTAN.replace(",", "_comma_");
+                pTAN = pTAN.replace(".", "_point_");
             }
 
             String pTAF = record.get("PTAF");
@@ -110,7 +109,7 @@ public class CategorisationStimuliFromString {
                 throw new IOException("PTAF is undefined");
             } else {
                 pTAF = pTAF.trim();
-                pTAF = pTAF.replace(",", "_comma_");
+                pTAF = pTAF.replace(".", "_point_");
             }
 
             String filename = record.get("Filename");
@@ -123,14 +122,54 @@ public class CategorisationStimuliFromString {
                 }
             }
 
+            String expectedButton = record.get("Expected_button");
+            if (expectedButton == null) {
+                throw new IOException("Expected_button is undefined");
+            } else {
+                expectedButton = expectedButton.trim();
+            }
+
             String correctResponse;
-            if (category.equals(rightCategory)) {
+            if (expectedButton.equals("1")) {
                 correctResponse = "M";
             } else {
-                if (category.equals(wrongCategory)) {
+                if (expectedButton.equals("2")) {
                     correctResponse = "Z";
                 } else {
-                    throw new IOException("Category is out of controlled vocabulary");
+                    throw new IOException("Expected_button is defined icncorrectly, trial_nr " + trialNumber);
+                }
+            }
+
+            String targetCategory ;
+            if (counter <= professionsLimit) {
+                targetCategory = "Professions";
+                if (category.equals("Professions")) {
+                    if (!correctResponse.equals("M")) {
+                        throw new IOException("Correct Response is defined icncorrectly, trial_nr " + trialNumber);
+                    }
+                } else {
+                    if (category.equals("Foil")) {
+                        if (!correctResponse.equals("Z")) {
+                            throw new IOException("Correct Response is defined icncorrectly, trial_nr " + trialNumber);
+                        }
+                    } else {
+                        throw new IOException("Category is defined icncorrectly, trial_nr " + trialNumber);
+                    }
+                }
+            } else {
+                 targetCategory = "vehicles";
+                 if (category.equals("vehicles")) {
+                    if (!correctResponse.equals("M")) {
+                        throw new IOException("Correct Response is defined icncorrectly, trial_nr " + trialNumber);
+                    }
+                } else {
+                    if (category.equals("Foil")) {
+                        if (!correctResponse.equals("Z")) {
+                            throw new IOException("Correct Response is defined icncorrectly, trial_nr " + trialNumber);
+                        }
+                    } else {
+                        throw new IOException("Category is defined icncorrectly, trial_nr " + trialNumber);
+                    }
                 }
             }
 
@@ -140,8 +179,6 @@ public class CategorisationStimuliFromString {
             } else {
                 targetLength = targetLength.trim();
             }
-            
-           
 
             try {
 
@@ -153,14 +190,14 @@ public class CategorisationStimuliFromString {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            String uniqueId = rightCategory + "_" + trialNumber + "_" + word;
+            String uniqueId = targetCategory + "_" + trialNumber + "_" + word+"_"+category;
 
-            //Syllables;Length;SubtlexWF;Prev;PTAN;PTAF;Filename
-            String tags = rightCategory + " Syllables_" + syllables +  " SubtlexWF_" + subtlexWF + prevTag + prev + " PTAN_" + pTAN + " PTAF_" + pTAF;
-            
-            String label = uniqueId + "_Target_length_" + targetLength;
-            
-            String currentSt = this.makeStimulusString(uniqueId, label, correctResponse, "stimuli/audiofiles/" + word, tags, "0");
+            String  round = (trialNumber.startsWith("Practice")) ? "practice" : "main";
+            String tags = targetCategory + " " + round + " Syllables_" + syllables + " Letters_" + letters + " ZipfF_" + zipF +" Prev_ " + prev + " PTAN_" + pTAN + " PTAF_" + pTAF + " Target_length_" + targetLength;
+
+            String label = uniqueId;
+
+            String currentSt = this.makeStimulusString(uniqueId, label, correctResponse, "stimuli/" + word, tags, "0");
             builder.append(currentSt);
 
         }

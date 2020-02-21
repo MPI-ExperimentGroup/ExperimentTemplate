@@ -37,9 +37,9 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  *
  * @author olhshk
  */
-public class AudioNonWordMonitoringStimuliCodeImage {
+public class AudioNonWordMonitoringStimuliCodeIAudio {
 
-    private String tmpDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/nonwordwordform/stimuli/";
+    private String tmpDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/monitoring/stimuli/";
 
     //private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audiononwordmonitoring/stimuli/";
     private String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
@@ -55,8 +55,9 @@ public class AudioNonWordMonitoringStimuliCodeImage {
         return fileName;
     }
 
-    //Order;Round;SNR;Condition;Length_list;Word;Target_nonword;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Position_foil;\n
-    public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir, String trialPrefix) throws Exception {
+      //Order;Round;SNR;Condition;Length_list;Word;Foil_word;Location_foil;Location_target;Cue_nonword;Word1;Word2;Word3;Word4;Word5;Word6
+   
+    public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir) throws Exception {
 
         StringBuilder builder = new StringBuilder();
 
@@ -104,23 +105,27 @@ public class AudioNonWordMonitoringStimuliCodeImage {
             if (trialWord == null) {
                 throw new IOException("Word is undefined");
             }
-
-            String trialTargetNonword = record.get("Target_nonword").trim();
-            if (trialTargetNonword == null) {
-                throw new IOException("Target nonword is undefined");
+            
+            String cueNonword = record.get("Cue_nonword").trim();
+            if (cueNonword == null) {
+                throw new IOException("Cue_nonword is undefined");
             }
 
+            String foilWord = record.get("Foil_word").trim();
+            if (foilWord == null) {
+                throw new IOException("Foil_word nonword is undefined");
+            }
+            
             if (!trialCondition.equals("NoTarget")) {
-                if (!trialTargetNonword.endsWith("_1")) {
-                    trialTargetNonword += "_1";
-                }
+                foilWord += "_1";
             }
+            
 
-            String uniqueId = trialPrefix + "_Trial_" + trialNumber + "_round_" + round;
+            String uniqueId = "Trial_" + trialNumber + "_round_" + round;
 
             // creating patternly-named copies 
-            Path sourceOgg = Paths.get(tmpDir + "clear_mono/" + trialTargetNonword + ".ogg");
-            Path sourceMp3 = Paths.get(tmpDir + "clear_mono/" + trialTargetNonword + ".mp3");
+            Path sourceOgg = Paths.get(tmpDir + "mono_scaled/" + cueNonword + ".ogg");
+            Path sourceMp3 = Paths.get(tmpDir + "mono_scaled/" + cueNonword + ".mp3");
             Path destOgg = Paths.get(tmpDir + uniqueId + "_cue.ogg");
             Path destMp3 = Paths.get(tmpDir + uniqueId + "_cue.mp3");
             try {
@@ -136,28 +141,33 @@ public class AudioNonWordMonitoringStimuliCodeImage {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-
-            String trialPositionTarget = record.get("Position_target");
-            if (trialPositionTarget == null) {
-                throw new IOException("Position target is undefined");
+            
+            String locationTarget = record.get("Location_target").trim();
+            if (locationTarget == null) {
+                throw new IOException("Location_target is undefined");
+            } else {
+               locationTarget = locationTarget.trim();
+               if (locationTarget.isEmpty()){
+                   locationTarget = "0"; 
+                }
             }
-            trialPositionTarget = trialPositionTarget.trim();
-            int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
+            int locationTargetInt = Integer.parseInt(locationTarget);
 
+            
             if (trialCondition.equals("TargetOnly")) {
-                if (trialPositionTargetInt < 1) {
+                if (locationTargetInt < 1) {
                     throw new IOException("Inconsistent input data, TargetOnly with no position target.Trial number: " + trialNumber);
                 }
             }
 
             if (trialCondition.equals("TargetAndFoil")) {
-                if (trialPositionTargetInt < 1) {
+                if (locationTargetInt < 1) {
                     throw new IOException("Inconsistent input data, TargetAndFoil with no position target.Trial number: " + trialNumber);
                 }
             }
 
             if (trialCondition.equals("NoTarget")) {
-                if (trialPositionTargetInt > 0) {
+                if (locationTargetInt > 0) {
                     throw new IOException("Inconsistent input data, NoTarget with positioned target.Trial number: " + trialNumber);
                 }
             }
@@ -172,7 +182,7 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                     throw new IOException(fieldName + " is undefined");
                 }
                 
-                if (i == trialPositionTargetInt) {
+                if (i == locationTargetInt) {
                     if (!currentWord.endsWith("_2")) {
                         currentWord = currentWord + "_2";
                     }
@@ -202,33 +212,38 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 }
             }
 
-            String trialPositionFoil = record.get("Position_foil").trim();
-            if (trialPositionFoil == null) {
-                throw new IOException("Position foil is undefined");
+            String locationFoil = record.get("Location_foil").trim();
+            if (locationFoil == null) {
+                throw new IOException("Location_foil is undefined");
+            } else {
+                locationFoil =  locationFoil.trim();
+                if (locationFoil.isEmpty()){
+                   locationFoil = "0"; 
+                }
             }
+            int locationFoilInt = Integer.parseInt(locationFoil);
 
-            int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
-
+            
             if (trialCondition.equals("TargetOnly")) {
-                if (trialPositionFoilInt > 0) {
+                if (locationFoilInt > 0) {
                     throw new IOException("Inconsistent input data, TargetOnly with positioned foil. Trial number: " + trialNumber);
                 }
             }
 
             if (trialCondition.equals("TargetAndFoil")) {
-                if (trialPositionFoilInt < 1) {
+                if (locationFoilInt < 1) {
                     throw new IOException("Inconsistent input data, TargetAndFoil with no position foil. Trial number: " + trialNumber);
                 }
             }
 
             if (trialCondition.equals("NoTarget")) {
-                if (trialPositionFoilInt > 0) {
+                if (locationFoilInt > 0) {
                     throw new IOException("Inconsistent input data, NoTarget with positioned foil. Trial number: " + trialNumber);
                 }
             }
 
-            String roundStr = (round.trim().equals("0")) ? "0" : "1_2_3";
-            String tags = trialPrefix + " round_" + roundStr;
+            String roundStr = (round.trim().equals("0")) ? "practice" : "main";
+            String tags = roundStr;
             int lgth = Integer.parseInt(trialLength);
             if (lgth >= 4) {
                 tags += (" length_at_least_4");
@@ -240,7 +255,7 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 tags += (" length_at_least_6");
             }
 
-            String label = trialPrefix + "_trialNumber: " + trialNumber + ", round: " + round + ", snr:" + snr + "; " + trialCondition + "; length:" + trialLength + "; target:" + trialTargetNonword + "; positionTarget:" + trialPositionTarget + "; positionFoil:" + trialPositionFoil + "; words: " + words;
+            String label = "trialNumber: " + trialNumber + ", round: " + round + ", snr:" + snr + "; " + trialCondition + "; length:" + trialLength + "; word:" + trialWord + "; Foil_word:" + foilWord + "; locationTarget:" + locationTarget + "; locationFoil:" + locationFoil + "; Cue_nonword:" + cueNonword + "; words: " + words;
             String currentSt = this.makeStimulusString(uniqueId, label, uniqueId, tags);
             builder.append(currentSt);
 

@@ -85,6 +85,13 @@ public class MonitoringStimuliCodeImage {
             } else {
                 trialCondition = trialCondition.trim();
             }
+            
+            String trialLength = record.get("Length_list");
+            if (trialLength == null) {
+                throw new IOException("Length is undefined in trial " + trialNumber);
+            } else {
+                trialLength = trialLength.trim().substring(0, 1);
+            }
 
             if (trialCondition.equals("Target-only") || trialCondition.equals("Target-Only")) {
                 trialCondition = "TargetOnly";
@@ -93,12 +100,7 @@ public class MonitoringStimuliCodeImage {
                 trialCondition = "TargetAndFoil";
             }
 
-            String trialLength = record.get("Length_list");
-            if (trialLength == null) {
-                throw new IOException("Length is undefined in trial " + trialNumber);
-            } else {
-                trialLength = trialLength.trim().substring(0, 1);
-            }
+            
 
             int trialLengthInt = Integer.parseInt(trialLength);
 
@@ -114,6 +116,13 @@ public class MonitoringStimuliCodeImage {
                     throw new IOException("Word is undefined in trial " + trialNumber);
                 } else {
                     word = word.trim();
+                }
+                
+                String locationTarget = record.get("Location_target");
+                if (locationTarget == null) {
+                    throw new IOException("Location_target is undefined in trial " + trialNumber);
+                } else {
+                    locationTarget = locationTarget.trim();
                 }
 
                 String cueNonWord = record.get("Cue_nonword");
@@ -132,11 +141,18 @@ public class MonitoringStimuliCodeImage {
 
             if (roundNr.equals("2")) {
 
-                String nonword = record.get("Non_word");
-                if (nonword == null) {
-                    throw new IOException("Non_word is undefined in trial " + trialNumber);
+                String foilWord = record.get("Foil_word");
+                if (foilWord == null) {
+                    throw new IOException("Foil_word is undefined in trial " + trialNumber);
                 } else {
-                    nonword = nonword.trim();
+                    foilWord = foilWord.trim();
+                }
+                
+                String locationFoil = record.get("Location_foil");
+                if (locationFoil == null) {
+                    throw new IOException("Location_foil is undefined in trial " + trialNumber);
+                } else {
+                    locationFoil = locationFoil.trim();
                 }
 
                 String cueWord = record.get("Cue_word");
@@ -149,7 +165,7 @@ public class MonitoringStimuliCodeImage {
                 sourceOgg = Paths.get(tmpDir + "mono_scaled/" + cueWord + ".ogg");
                 sourceMp3 = Paths.get(tmpDir + "mono_scaled/" + cueWord + ".mp3");
 
-                specificLabelFragment = "Nonword: " + nonword + "; Cue_word: " + cueWord + "; ";
+                specificLabelFragment = "Nonword: " + foilWord + "; Cue_word: " + cueWord + "; ";
             }
 
             if (roundNr.equals("3")) {

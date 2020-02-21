@@ -55,7 +55,7 @@ public class CsvRecords {
 
         for (int i = startRecord; i < this.rawRecords.length; i++) {
 
-            String[] row = this.rawRecords[i].split(this.delimiter);
+            String[] row = this.rawRecords[i].split(this.delimiter, -1);
             if (row.length != this.header.length) {
                 throw new Exception("The length of the row differs from the length of the header row. "
                         + "\n The header row length is " + this.header.length + ",\n"
