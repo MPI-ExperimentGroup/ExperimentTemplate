@@ -458,7 +458,7 @@ public class AdVocAsStimuliProviderTest {
 
             //this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
             stimulus.isCorrect(stimulus.getCorrectResponses());
-            this.provider.hasNextStimulus(0); // here we analyse the correctenss of the previous step and update 
+            this.provider.hasNextStimulus(0); // here we analyse the correctenss of the step and update 
             this.provider.nextStimulus(0);
         }
 
@@ -478,7 +478,55 @@ public class AdVocAsStimuliProviderTest {
         boolean correctness = stimulus.isCorrect(answer);
 
         assertFalse(correctness);
-        this.provider.hasNextStimulus(0); // here we analyse the correctenss of the previous step 
+
+        ArrayList<AdVocAsStimulus> prevNonwords = this.provider.getNonwords();
+        ArrayList<ArrayList<AdVocAsStimulus>> prevWords = this.provider.getWords();
+
+        this.provider.hasNextStimulus(0); // here we analyse the correctenss of the step 
+
+        ArrayList<AdVocAsStimulus> nowNonwords = this.provider.getNonwords();
+        ArrayList<ArrayList<AdVocAsStimulus>> nowWords = this.provider.getWords();
+
+        //checking recycling
+        if (stimulus.getBandNumber() == 0) {
+            assertEquals(nowNonwords.get(0).getLabel(), stimulus.getLabel());
+            for (int i = 0; i < prevNonwords.size(); i++) {
+                assertEquals(prevNonwords.get(i).getLabel(), nowNonwords.get(i + 1).getLabel());
+            }
+            for (int i = 0; i < prevWords.size(); i++) {
+                for (int j = 0; j < prevWords.size(); j++) {
+                    assertEquals(prevWords.get(i).get(j).getLabel(), nowWords.get(i).get(j).getLabel());
+                }
+            }
+        }
+        
+        
+         if (stimulus.getBandNumber() > 0) {
+            for (int i = 0; i < prevNonwords.size(); i++) {
+                assertEquals(prevNonwords.get(i).getLabel(), nowNonwords.get(i).getLabel());
+            }
+            
+            int bandIndex = stimulus.getBandNumber()-1;
+            for (int i = 0; i < bandIndex; i++) {
+                for (int j = 0; j < prevWords.size(); j++) {
+                    assertEquals(prevWords.get(i).get(j).getLabel(), nowWords.get(i).get(j).getLabel());
+                }
+            }
+            
+            
+            assertEquals(nowWords.get(bandIndex).get(0).getLabel(), stimulus.getLabel());
+            for (int i = 0; i < prevWords.get(bandIndex).size(); i++) {
+                assertEquals(prevWords.get(bandIndex).get(i).getLabel(), nowWords.get(bandIndex).get(i + 1).getLabel());
+            }
+            
+            for (int i = 0; i < prevWords.size(); i++) {
+                for (int j = 0; j < prevWords.size(); j++) {
+                    assertEquals(prevWords.get(i).get(j).getLabel(), nowWords.get(i).get(j).getLabel());
+                }
+            }
+        }
+        
+
         this.provider.nextStimulus(0);
     }
 
@@ -1413,7 +1461,7 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetStimuliReport() {
         System.out.println("getStimuliReport");
-        
+
         this.checkFastTrackToBeContinuedWrongOnNonWordNotCorrected();
         this.checkFineTuningLoop(21, 1, 30);
 
@@ -1428,7 +1476,7 @@ public class AdVocAsStimuliProviderTest {
         }
         String[] header = result.get("row000000").split(";");
         assertEquals("Score", header[0]);
-        assertEquals( "BestFastTrack", header[1]);
+        assertEquals("BestFastTrack", header[1]);
         assertEquals("Cycle2oscillation", header[2]);
         String[] data = result.get("row000001").split(";");
         assertEquals("30", data[0]);
@@ -1444,27 +1492,27 @@ public class AdVocAsStimuliProviderTest {
             int index = row.indexOf(";");
             assertTrue(index > -1);
         }
-        
+
         header = result.get("row000000").split(";");
         assertEquals("Spelling", header[0]);
-        assertEquals( "BandNumber", header[1]);
+        assertEquals("BandNumber", header[1]);
         assertEquals("UserAnswer", header[2]);
-        
+
         data = result.get("row000001").split(";");
         assertEquals("parfum", data[0]);
         assertEquals("20", data[1]);
         assertEquals("JA, ik ken dit woord", data[2]);
-        
+
         data = result.get("row000002").split(";");
         assertEquals("evenveel", data[0]);
         assertEquals("21", data[1]);
         assertEquals("JA, ik ken dit woord", data[2]);
-        
+
         data = result.get("row000003").split(";");
         assertEquals("kruffen", data[0]);
         assertEquals("0", data[1]);
         assertEquals("JA, ik ken dit woord", data[2]);
-        
+
         data = result.get("row000004").split(";");
         assertEquals("wederzien", data[0]);
         assertEquals("22", data[1]);
@@ -1630,9 +1678,9 @@ public class AdVocAsStimuliProviderTest {
         int bandIndex2 = this.provider.mostOftenVisitedBandIndex(visitCounter, currentIndex2);
         assertEquals(3, bandIndex2);
     }
-    
+
     @Test
-    public void testGetStringSummaryMethod(){
+    public void testGetStringSummaryMethod() {
         this.provider.initialiseStimuliState("");
 
         String startRow = "";
