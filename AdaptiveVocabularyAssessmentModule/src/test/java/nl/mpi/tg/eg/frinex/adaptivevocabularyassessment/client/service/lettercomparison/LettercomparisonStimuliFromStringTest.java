@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -52,6 +53,7 @@ public class LettercomparisonStimuliFromStringTest {
     /**
      * Test of parseTrialsInputCSVStringIntoXml method, of class LettercomparisonStimuliFromString.
      */
+    @Ignore
     @Test
     public void testParseTrialsInputCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");

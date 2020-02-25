@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -52,6 +53,7 @@ public class GenderCue2StimuliFromStringTest {
     /**
      * Test of parseTrialsAudioPicturesStringIntoXml method, of class GenderCue2StimuliFromString.
      */
+    @Ignore
     @Test
     public void testParseTrialsAudioPicturesStringIntoXml() throws Exception {
         System.out.println("parseTrialsAudioPicturesStringIntoXml");

@@ -54,6 +54,7 @@ public class SyntestStimuliFromStringTest {
      * Test of parseImageRoundStringIntoXml method, of class
      * SyntestStimuliFromString.
      */
+     @Ignore
     @Test
     public void testParseImageRoundStringIntoXml() throws Exception {
         System.out.println("parseImageRoundStringIntoXml");
@@ -72,6 +73,7 @@ public class SyntestStimuliFromStringTest {
      * Test of parseIdiomsStringIntoXml method, of class
      * SyntestStimuliFromString.
      */
+     @Ignore
     @Test
     public void testParseIdiomsStringIntoXml() throws Exception {
         System.out.println("parseIdiomsStringIntoXml");

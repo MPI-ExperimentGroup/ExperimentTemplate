@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -53,6 +54,7 @@ public class PictureNamingStimuliFromStringTest {
     /**
      * Test of parseTrialsInputCSVStringIntoXml method, of class PictureNamingStimuliFromString.
      */
+     @Ignore
     @Test
     public void testParseTrialsInputCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");

@@ -244,6 +244,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of setnfineTuningShablonSource method, of class
      * AdVocAsStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetnfineTuningShablonSource() {
         System.out.println("setnfineTuningShablonSource: tested in testInitialiseStimuliState via setUp");
@@ -447,6 +448,15 @@ public class AdVocAsStimuliProviderTest {
 
     private void wrongFTtuple(int bandNumber, int wrongPosition, int fTuningShablonCounter, boolean[] currentSjablon) {
         AdVocAsStimulus stimulus;
+
+        int oldSizeNonwords = this.provider.getNonwords().size();
+        int oldSizeWords = this.provider.getWords().get(bandNumber - 1).size();
+
+        ArrayList<AdVocAsStimulus> prevNonwords = this.freshCopy(this.provider.getNonwords());
+        ArrayList<AdVocAsStimulus> prevWords = this.freshCopy(this.provider.getWords().get(bandNumber - 1));
+
+        boolean nonWordPresented = false;
+
         for (int tC = 0; tC < wrongPosition; tC++) {
             assertEquals(fTuningShablonCounter, this.provider.getFineTuningShablonPosition());
 
@@ -454,6 +464,8 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(currentSjablon[tC], stimulus.getBandNumber() > 0); // both must be either words or non words simultaneously
             if (stimulus.getBandNumber() > 0) {
                 assertEquals(bandNumber, stimulus.getBandNumber());
+            } else {
+                nonWordPresented = true;
             }
 
             //this.provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses()); // pressing button
@@ -472,6 +484,8 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(currentSjablon[wrongPosition], stimulus.getBandNumber() > 0); // both must be either words or non words simultaneously
         if (stimulus.getBandNumber() > 0) {
             assertEquals(bandNumber, stimulus.getBandNumber());
+        } else {
+            nonWordPresented = true;
         }
         String answer = stimulus.getBandNumber() > 0 ? this.answerNonWord : this.answerWord;
         //boolean correctness = this.provider.isCorrectResponse(stimulus, answer); // "pressing button" wrong
@@ -479,53 +493,117 @@ public class AdVocAsStimuliProviderTest {
 
         assertFalse(correctness);
 
-        ArrayList<AdVocAsStimulus> prevNonwords = this.provider.getNonwords();
-        ArrayList<ArrayList<AdVocAsStimulus>> prevWords = this.provider.getWords();
+        //checking recycling
+        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> tuple = this.provider.getFTtuple();
+        ArrayList<AdVocAsStimulus> unused = new ArrayList<AdVocAsStimulus>();
 
-        this.provider.hasNextStimulus(0); // here we analyse the correctenss of the step 
+        int currentBandNumber = this.provider.getCurrentBandFineTuning();
+        AdVocAsStimulus unusedNonword = null;
+        for (BookkeepingStimulus<AdVocAsStimulus> currentStimulus : tuple) {
+            if (currentStimulus.getStimulus().getBandNumber() > 0) {
+                unused.add(currentStimulus.getStimulus());
+            } else {
+                unusedNonword = currentStimulus.getStimulus();
+            }
+        }
+
+        this.provider.hasNextStimulus(0);
 
         ArrayList<AdVocAsStimulus> nowNonwords = this.provider.getNonwords();
-        ArrayList<ArrayList<AdVocAsStimulus>> nowWords = this.provider.getWords();
+        ArrayList<AdVocAsStimulus> nowWords = this.provider.getWords().get(bandNumber - 1);
 
-        //checking recycling
-        if (stimulus.getBandNumber() == 0) {
-            assertEquals(nowNonwords.get(0).getLabel(), stimulus.getLabel());
-            for (int i = 0; i < prevNonwords.size(); i++) {
-                assertEquals(prevNonwords.get(i).getLabel(), nowNonwords.get(i + 1).getLabel());
+        boolean toBeContinued = this.provider.getFTtoBeContinued();
+
+        if (toBeContinued) {
+
+            if ((currentBandNumber > 1 && currentBandNumber < 54) || (currentBandNumber == 54 && !correctness)) { // when recycled and not used immediately
+                if (oldSizeWords + unused.size() != nowWords.size()) {
+                    System.out.println(currentBandNumber);
+                }
+
+                assertEquals(oldSizeWords + unused.size(), nowWords.size());
+                for (int sC = 0; sC < unused.size(); sC++) {
+                    assertEquals(unused.get(sC), nowWords.get(sC));
+                }
+                for (int sC = unused.size(); sC < nowWords.size(); sC++) {
+                    assertEquals(prevWords.get(sC - unused.size()), nowWords.get(sC));
+                }
+            } else { //we are on the same band twice, put back to recycle and then use 3 stimuli for the next tuple 
+                int diff = 3 - unused.size();
+                assertEquals(oldSizeWords + unused.size() - 3, nowWords.size());
+                for (int sC = 0; sC < nowWords.size(); sC++) {
+                    assertEquals(prevWords.get(sC + diff), nowWords.get(sC));
+                }
             }
-            for (int i = 0; i < prevWords.size(); i++) {
-                for (int j = 0; j < prevWords.size(); j++) {
-                    assertEquals(prevWords.get(i).get(j).getLabel(), nowWords.get(i).get(j).getLabel());
+
+        }
+
+        if (nonWordPresented) {
+            if (toBeContinued) {
+                assertEquals(oldSizeNonwords - 1, this.provider.getNonwords().size()); // gets next nonword on initialisation 
+                for (int sC = 0; sC < nowNonwords.size(); sC++) {
+                    assertEquals(prevNonwords.get(sC + 1), nowNonwords.get(sC));
+                }
+            } else {
+                assertEquals(oldSizeNonwords, this.provider.getNonwords().size());  // nonword list is not changed because initialisation of the next is not called
+                for (int sC = 0; sC < nowNonwords.size(); sC++) {
+                    assertEquals(prevNonwords.get(sC), nowNonwords.get(sC));
+                }
+            }
+        } else {
+            if (toBeContinued) {
+                assertEquals(oldSizeNonwords, nowNonwords.size()); // recycles but uses again for the next tuple 
+                for (int sC = 0; sC < nowNonwords.size(); sC++) {
+                    assertEquals(prevNonwords.get(sC), nowNonwords.get(sC));
+                }
+            } else {
+                assertEquals(oldSizeNonwords + 1, nowNonwords.size()); // recycled is not used
+                for (int sC = 0; sC < nowNonwords.size() - 1; sC++) {
+                    assertEquals(prevNonwords.get(sC), nowNonwords.get(sC + 1));
                 }
             }
         }
-        
-        
-         if (stimulus.getBandNumber() > 0) {
-            for (int i = 0; i < prevNonwords.size(); i++) {
-                assertEquals(prevNonwords.get(i).getLabel(), nowNonwords.get(i).getLabel());
-            }
-            
-            int bandIndex = stimulus.getBandNumber()-1;
-            for (int i = 0; i < bandIndex; i++) {
-                for (int j = 0; j < prevWords.size(); j++) {
-                    assertEquals(prevWords.get(i).get(j).getLabel(), nowWords.get(i).get(j).getLabel());
+
+        if (toBeContinued) {
+            ArrayList<BookkeepingStimulus<AdVocAsStimulus>> newTuple = this.provider.getFTtuple();
+            if (unusedNonword != null) {
+                for (BookkeepingStimulus<AdVocAsStimulus> st : newTuple) {
+                    if (st.getStimulus().getBandNumber() <= 0) {
+                        assertEquals(unusedNonword, st.getStimulus());
+                    }
                 }
             }
-            
-            
-            assertEquals(nowWords.get(bandIndex).get(0).getLabel(), stimulus.getLabel());
-            for (int i = 0; i < prevWords.get(bandIndex).size(); i++) {
-                assertEquals(prevWords.get(bandIndex).get(i).getLabel(), nowWords.get(bandIndex).get(i + 1).getLabel());
-            }
-            
-            for (int i = 0; i < prevWords.size(); i++) {
-                for (int j = 0; j < prevWords.size(); j++) {
-                    assertEquals(prevWords.get(i).get(j).getLabel(), nowWords.get(i).get(j).getLabel());
+
+            if (this.provider.getCurrentBandFineTuning() == currentBandNumber) {
+
+                if (unused.size() > 0) {
+
+                    ArrayList<AdVocAsStimulus> newWords = new ArrayList<AdVocAsStimulus>();
+                    for (BookkeepingStimulus<AdVocAsStimulus> st : newTuple) {
+                        if (st.getStimulus().getBandNumber() > 0) {
+                            newWords.add(st.getStimulus());
+                        }
+                    }
+
+                    if (this.provider.getCurrentStimulus().getBandNumber() > 0) {
+                        assertEquals(unused.get(0), this.provider.getCurrentStimulus());
+                        // the first unused timulus went to the show again
+                        for (int sC = 1; sC < unused.size(); sC++) {
+                            assertEquals(unused.get(sC), newWords.get(sC - 1));
+                            sC++;
+                        }
+                    } else {
+                       for (int sC = 0; sC < unused.size(); sC++) {
+                            assertEquals(unused.get(sC), newWords.get(sC));
+                            sC++;
+                        } 
+                    }
+
                 }
+
             }
+
         }
-        
 
         this.provider.nextStimulus(0);
     }
@@ -560,7 +638,7 @@ public class AdVocAsStimuliProviderTest {
         int fTuningShablonCounter = 0;
         ArrayList<FineTuningShablonElement> sceletoneFR = this.provider.getFineTuningSceletone();
         boolean[] currentSjablon = sceletoneFR.get(0).getArray();
-        ArrayList<Integer> bNumbers = new ArrayList<>();
+        ArrayList<Integer> bNumbers = new ArrayList<Integer>();
         // here everything is correct
         //loopStartBand = X
         for (int bN = startBandNumber; bN <= loopStartBand; bN++) {
@@ -1457,7 +1535,9 @@ public class AdVocAsStimuliProviderTest {
 
     /**
      * Test of getStimuliReport method, of class AdVocAsStimuliProvider.
+     *
      */
+    @Ignore
     @Test
     public void testGetStimuliReport() {
         System.out.println("getStimuliReport");
@@ -1595,19 +1675,6 @@ public class AdVocAsStimuliProviderTest {
     }
 
     /**
-     * Test of recycleUnusedStimuli method, of class AdVocAsStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testRecycleUnusedStimuli() {
-        System.out.println("recycleUnusedStimuli");
-        AdVocAsStimuliProvider instance = null;
-        instance.recycleUnusedStimuli();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of toBeContinuedLoopAndLooserChecker method, of class
      * AdVocAsStimuliProvider.
      */
@@ -1663,6 +1730,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of mostOftenVisitedBandIndex method, of class
      * AdVocAsStimuliProvider.
      */
+    @Ignore
     @Test
     public void testMostOftenVisitedBandIndex() {
         System.out.println("mostOftenVisitedBandIndex");
@@ -1843,4 +1911,11 @@ public class AdVocAsStimuliProviderTest {
         fail("The test case is a prototype.");
     }
 
+    private ArrayList<AdVocAsStimulus> freshCopy(ArrayList<AdVocAsStimulus> list) {
+        ArrayList<AdVocAsStimulus> retVal = new ArrayList<AdVocAsStimulus>();
+        for (AdVocAsStimulus stimulus : list) {
+            retVal.add(stimulus);
+        }
+        return retVal;
+    }
 }

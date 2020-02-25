@@ -797,14 +797,15 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     public void recycleUnusedStimuli() {
         boolean ended = this.tupleFT.isEmpty();
         while (!ended) {
-            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.tupleFT.remove(0); // picking up the first not-used element
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.tupleFT.remove(this.tupleFT.size()-1); // from the end
             AdVocAsStimulus stimulus = bStimulus.getStimulus();
             int bandNumber = stimulus.getBandNumber();
-            if (bandNumber > 0) { // a word
+            if (bandNumber > 0) { // a wordremove 
                 int bandIndex = bandNumber - 1;
                 this.words.get(bandIndex).add(0, stimulus);
             } else {
                 this.nonwords.add(0, stimulus);
+                
             }
             ended = this.tupleFT.isEmpty();
         }
@@ -1371,5 +1372,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         retVal = Math.round(average);
         return retVal;
     }
+    
+   
 
 }

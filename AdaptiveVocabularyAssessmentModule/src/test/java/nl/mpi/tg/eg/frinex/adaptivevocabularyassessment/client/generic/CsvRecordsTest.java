@@ -58,11 +58,11 @@ public class CsvRecordsTest {
     @Test
     public void testReadRecords() throws Exception {
         System.out.println("readRecords");
-        String rawString = "Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;\n"
-                + "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;\n"
-                + "2;pauw;paud_1.wav;1;Target-only;3 words;rolscheegt.wav;paud_2.wav;staap.wav;;;;2;plus10db;0;\n"
-                + "3;krik;grik_1.wav;1;Target-only;3 words;spank.wav;grik_2.wav;pintein.wav;;;;2;plus10db;0;\n"
-                + "4;schelp;schess_1.wav;1;Target-only;3 words;rim.wav;schess_2.wav;werelglal.wav;;;;2;plus10db;0;\n";
+        String rawString = "Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil\n"
+                + "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0\n"
+                + "2;pauw;paud_1.wav;1;Target-only;3 words;rolscheegt.wav;paud_2.wav;staap.wav;;;;2;plus10db;0\n"
+                + "3;krik;grik_1.wav;1;Target-only;3 words;spank.wav;grik_2.wav;pintein.wav;;;;2;plus10db;0\n"
+                + "4;schelp;schess_1.wav;1;Target-only;3 words;rim.wav;schess_2.wav;werelglal.wav;;;;2;plus10db;0\n";
         CsvRecords instance = new CsvRecords(null, ";", "\n");
         instance.readRecords(rawString);
         ArrayList<LinkedHashMap<String, String>> result = instance.getRecords();
@@ -126,11 +126,11 @@ public class CsvRecordsTest {
      @Test
     public void testReadRecordsHeaderSeparate() throws Exception {
         System.out.println("readRecords");
-        String headerString = "Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil";
-        String rawString =  "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;\n"
-                + "2;pauw;paud_1.wav;1;Target-only;3 words;rolscheegt.wav;paud_2.wav;staap.wav;;;;2;plus10db;0;\n"
-                + "3;krik;grik_1.wav;1;Target-only;3 words;spank.wav;grik_2.wav;pintein.wav;;;;2;plus10db;0;\n"
-                + "4;schelp;schess_1.wav;1;Target-only;3 words;rim.wav;schess_2.wav;werelglal.wav;;;;2;plus10db;0;\n";
+        String headerString = "Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil\n";
+        String rawString =  "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0\n"
+                + "2;pauw;paud_1.wav;1;Target-only;3 words;rolscheegt.wav;paud_2.wav;staap.wav;;;;2;plus10db;0\n"
+                + "3;krik;grik_1.wav;1;Target-only;3 words;spank.wav;grik_2.wav;pintein.wav;;;;2;plus10db;0\n"
+                + "4;schelp;schess_1.wav;1;Target-only;3 words;rim.wav;schess_2.wav;werelglal.wav;;;;2;plus10db;0\n";
         CsvRecords instance = new CsvRecords(headerString.split(";"), ";", "\n");
         instance.readRecords(rawString);
         ArrayList<LinkedHashMap<String, String>> result = instance.getRecords();
