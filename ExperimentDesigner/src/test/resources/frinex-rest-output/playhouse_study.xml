@@ -60,7 +60,7 @@
                         <clearPage/>
                         <backgroundImage msToNext="0" src="" styleName=""/>
                         <clearPage styleName="fullScreenWidth"/>
-                        <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                        <triggerDefinition listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                             <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -109,7 +109,7 @@
                                     </pause>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
-                        </triggerListener>
+                        </triggerDefinition>
                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                             <mediaLoaded>
@@ -133,7 +133,7 @@
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                <trigger listenerId="imageLoadedAction"/>
+                                <triggerMatching listenerId="imageLoadedAction"/>
                             </mediaLoaded>
                             <mediaLoadFailed/>
                         </stimulusCodeImage>
@@ -159,7 +159,7 @@
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                <trigger listenerId="imageLoadedAction"/>
+                                <triggerMatching listenerId="imageLoadedAction"/>
                             </mediaLoaded>
                             <mediaLoadFailed/>
                         </stimulusCodeImage>
@@ -185,7 +185,7 @@
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                <trigger listenerId="imageLoadedAction"/>
+                                <triggerMatching listenerId="imageLoadedAction"/>
                             </mediaLoaded>
                             <mediaLoadFailed/>
                         </stimulusCodeImage>
@@ -244,7 +244,7 @@
                         <clearPage/>
                         <backgroundImage msToNext="0" src="" styleName=""/>
                         <clearPage styleName="fullScreenWidth"/>
-                        <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                        <triggerDefinition listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                             <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -293,7 +293,7 @@
                                     </pause>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
-                        </triggerListener>
+                        </triggerDefinition>
                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                             <mediaLoaded>
@@ -317,7 +317,7 @@
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                <trigger listenerId="imageLoadedAction"/>
+                                <triggerMatching listenerId="imageLoadedAction"/>
                             </mediaLoaded>
                             <mediaLoadFailed/>
                         </stimulusCodeImage>
@@ -343,7 +343,7 @@
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                <trigger listenerId="imageLoadedAction"/>
+                                <triggerMatching listenerId="imageLoadedAction"/>
                             </mediaLoaded>
                             <mediaLoadFailed/>
                         </stimulusCodeImage>
@@ -369,7 +369,7 @@
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                <trigger listenerId="imageLoadedAction"/>
+                                <triggerMatching listenerId="imageLoadedAction"/>
                             </mediaLoaded>
                             <mediaLoadFailed/>
                         </stimulusCodeImage>
@@ -433,7 +433,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                                <triggerDefinition listenerId="imageLoadedAction" maximum="1" threshold="1">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -482,7 +482,7 @@
                                             </pause>
                                         </mediaPlaybackComplete>
                                     </stimulusCodeAudio>
-                                </triggerListener>
+                                </triggerDefinition>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
@@ -506,7 +506,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -532,7 +532,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -558,7 +558,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -624,7 +624,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                                <triggerDefinition listenerId="imageLoadedAction" maximum="1" threshold="1">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -673,7 +673,7 @@
                                             </pause>
                                         </mediaPlaybackComplete>
                                     </stimulusCodeAudio>
-                                </triggerListener>
+                                </triggerDefinition>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
@@ -697,7 +697,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -723,7 +723,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -749,7 +749,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -815,7 +815,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
+                                <triggerDefinition listenerId="imageLoadedAction" maximum="1" threshold="2">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <stimulusAudio dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -846,7 +846,7 @@
                                             </pause>
                                         </mediaPlaybackComplete>
                                     </stimulusAudio>
-                                </triggerListener>
+                                </triggerDefinition>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
@@ -870,7 +870,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -896,7 +896,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -922,7 +922,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -988,7 +988,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
+                                <triggerDefinition listenerId="imageLoadedAction" maximum="1" threshold="2">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <stimulusAudio dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -1019,7 +1019,7 @@
                                             </pause>
                                         </mediaPlaybackComplete>
                                     </stimulusAudio>
-                                </triggerListener>
+                                </triggerDefinition>
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
@@ -1043,7 +1043,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -1069,7 +1069,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
@@ -1095,7 +1095,7 @@
                                             </pause>
                                         </touchInputStimulusButton>
                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                        <trigger listenerId="imageLoadedAction"/>
+                                        <triggerMatching listenerId="imageLoadedAction"/>
                                     </mediaLoaded>
                                     <mediaLoadFailed/>
                                 </stimulusCodeImage>
