@@ -102,15 +102,15 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
     private void addAttributes(final Writer writer, final DocumentationElement currentElement) throws IOException {
         for (DocumentationAttribute attributeTypes : currentElement.attributeTypes) {
             writer.append("<xs:attribute name=\"").append(attributeTypes.name);
-            if (attributeTypes.type != null) {
-                writer.append("\" type=\"").append(attributeTypes.type);
+            if (attributeTypes.typeName != null) {
+                writer.append("\" type=\"").append(attributeTypes.typeName);
             }
 //            writer.append("\" use=\"" + ((attributeTypes.optional) ? "optional" : "required") + "\"" + ((attributeTypes.restriction == null) ? "/" : "") + ">\n");
             if (!attributeTypes.optional) {
                 writer.append("\" use=\"required");
             }
-            writer.append(((!(attributeTypes.restriction != null && attributeTypes.type == null)) ? "\"/" : "\"") + ">\n");
-            if (attributeTypes.restriction != null && attributeTypes.type == null) {
+            writer.append(((!(attributeTypes.restriction != null && attributeTypes.typeName == null)) ? "\"/" : "\"") + ">\n");
+            if (attributeTypes.restriction != null && attributeTypes.typeName == null) {
                 writer.append("<xs:simpleType>\n");
                 writer.append("<xs:restriction>\n");
                 writer.append("<xs:simpleType>\n");
