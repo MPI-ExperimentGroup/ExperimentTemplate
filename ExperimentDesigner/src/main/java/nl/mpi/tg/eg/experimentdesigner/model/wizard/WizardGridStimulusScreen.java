@@ -607,11 +607,11 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         } else {
             String buttonGroupsSelect = getStimuliButtonArray(storedWizardScreenData).replace(",", "ButtonGroup|") + "ButtonGroup";
             if (!getAudioAB(storedWizardScreenData).isEmpty()) {
-                final PresenterFeature imageLoadedAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "imageLoadedAction", ("AudioRepeat2".equals(getAudioAB(storedWizardScreenData))) ? "2" : "1", "1");
+                final PresenterFeature imageLoadedAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerDefinition, null, "imageLoadedAction", ("AudioRepeat2".equals(getAudioAB(storedWizardScreenData))) ? "2" : "1", "1");
                 final PresenterFeature currentAction;
                 if ("LoopAction".equals(getAudioAB(storedWizardScreenData))) {
-                    imageLoadedAction.addFeature(FeatureType.trigger, null, "loopAction");
-                    currentAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "loopAction", "1", "-1");
+                    imageLoadedAction.addFeature(FeatureType.triggerMatching, null, "loopAction");
+                    currentAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerDefinition, null, "loopAction", "1", "-1");
                 } else {
                     currentAction = imageLoadedAction;
                 }
@@ -623,7 +623,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
                 switch (getAudioAB(storedWizardScreenData)) {
                     case "LoopAction":
-                        pause2.addFeature(FeatureType.trigger, null, "loopAction");
+                        pause2.addFeature(FeatureType.triggerMatching, null, "loopAction");
                         break;
                     case "AudioAB":
                         final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "0", "<code>_b", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3].addFeature(FeatureType.pause, null, "3000");
@@ -695,7 +695,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
                 if (!getAudioAB(storedWizardScreenData).isEmpty()) {
                     stimulusImage.addFeature(FeatureType.disableButtonGroup, null, buttonGroupsSelect);
-                    stimulusImage.addFeature(FeatureType.trigger, null, "imageLoadedAction");
+                    stimulusImage.addFeature(FeatureType.triggerMatching, null, "imageLoadedAction");
                 }
             }
             stimulusRelatedTags = hasMoreStimulusFeature;
