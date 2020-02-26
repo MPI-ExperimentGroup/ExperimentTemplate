@@ -86,7 +86,7 @@
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <trigger listenerId="habituationAction"/>
+                    <triggerMatching listenerId="habituationAction"/>
                     <disableStimulusButtons/>
                     <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
