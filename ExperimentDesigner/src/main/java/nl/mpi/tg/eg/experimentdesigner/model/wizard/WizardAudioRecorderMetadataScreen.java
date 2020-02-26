@@ -94,14 +94,14 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 //        startRecorderFeature.addFeatureAttributes(FeatureAttribute.recordingFormat, "wav");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.mediaId, "mediaId");
+//        startRecorderFeature.addFeatureAttributes(FeatureAttribute.mediaId, "mediaId");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.fieldName, "workerId");
         startRecorderFeature.addFeature(FeatureType.onError, null);
         startRecorderFeature.addFeature(FeatureType.onSuccess, null);
-        startRecorderFeature.addFeature(FeatureType.mediaLoaded, null);
-        startRecorderFeature.addFeature(FeatureType.mediaLoadFailed, null);
-        startRecorderFeature.addFeature(FeatureType.mediaPlaybackStarted, null);
-        startRecorderFeature.addFeature(FeatureType.mediaPlaybackComplete, null);
+//        startRecorderFeature.addFeature(FeatureType.mediaLoaded, null);
+//        startRecorderFeature.addFeature(FeatureType.mediaLoadFailed, null);
+//        startRecorderFeature.addFeature(FeatureType.mediaPlaybackStarted, null);
+//        startRecorderFeature.addFeature(FeatureType.mediaPlaybackComplete, null);
         hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
