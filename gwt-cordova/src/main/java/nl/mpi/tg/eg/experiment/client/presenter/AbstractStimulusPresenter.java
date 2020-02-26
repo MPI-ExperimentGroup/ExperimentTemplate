@@ -1789,7 +1789,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
     }
 
-    public void triggerListener(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
+    public void triggerDefinition(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
         triggerListeners.put(formattedListenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
     }
@@ -1799,7 +1799,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         triggerListeners.put(formattedListenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
     }
 
-    public void trigger(final String listenerId, final Stimulus currentStimulus) {
+    public void triggerMatching(final String listenerId, final Stimulus currentStimulus) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
         triggerListeners.get(formattedListenerId).trigger();
     }
