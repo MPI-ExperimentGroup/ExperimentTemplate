@@ -1070,23 +1070,23 @@
         <region regionId="currentValueRegion">
             <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
         </region>
-        <triggerListener listenerId="showCurrentValue" threshold="0" maximum="0">
+        <triggerDefinition listenerId="showCurrentValue" threshold="0" maximum="0">
             <regionReplace regionId="currentValueRegion">
                 <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
             </regionReplace>
-        </triggerListener>
+        </triggerDefinition>
         <actionButton featureText="Reset Metadata Value">
             <setMetadataValue fieldName="session_next_step" dataLogFormat="25112020_26112020_27112020_28112020_29112020"/>
-            <trigger listenerId="showCurrentValue"/>
+            <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
         <actionButton featureText="Append Current Date">
             <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_steps&gt;_&lt;currentDateDDMMYYYY&gt;"/>
-            <trigger listenerId="showCurrentValue"/>
+            <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
         <actionButton featureText="Remove Current Date">
             <setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;currentDateDDMMYYYY&gt;(_?[0-9]{8,8}_?)*[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
             <setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
-            <trigger listenerId="showCurrentValue"/>
+            <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="currentDate daysBetween and length" type="metadata" self="currentDate_daysBetween_and_length" title="currentDate daysBetween and length">
@@ -2087,7 +2087,7 @@
         <loadStimulus eventTag="single_line_text_box_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <plainText featureText="The stimulus text box can be single line or multi line, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can trigger the next stimulus."/>
+                <plainText featureText="The stimulus text box can be single line or multi line, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can triggerMatching the next stimulus."/>
                 <addPadding/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
@@ -2163,7 +2163,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorder recordingFormat="ogg" downloadPermittedWindowMs="30000" fieldName="workerId" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                         <onError>
                             <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                         </onError>
@@ -2180,7 +2180,7 @@
                         <mediaPlaybackComplete>
                             <plainText featureText="AudioRecordingPlaybackComplete"/>
                         </mediaPlaybackComplete>
-                    </startAudioRecorder>
+                    </startAudioRecorderWeb>
                 </actionButton>
                 <!--<actionButton featureText="endAudioRecorderTag (not supported in the HTML5 version)">-->
                 <!--<endAudioRecorderTag eventTier="3" eventTag="endAudioRecorderTag"/>-->
@@ -2204,7 +2204,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <startAudioRecorder recordingFormat="ogg" downloadPermittedWindowMs="30000" fieldName="workerId" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                     </onError>
@@ -2222,7 +2222,7 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
                 <stimulusPause>
                     <stopAudioRecorder/>
                 </stimulusPause>
@@ -2288,7 +2288,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderA(USB)">
-                                <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" fieldName="workerId" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMediaA">
+                                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMediaA">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="Error"/>
@@ -2319,7 +2319,7 @@
                                         </regionReplace>
                                         <htmlTokenText featureText="timerMediaRegionA &lt;timerMediaRegionA&gt;ms"/>
                                     </mediaPlaybackComplete>
-                                </startAudioRecorder>
+                                </startAudioRecorderWeb>
                             </actionButton>
                         </column>
                         <column>
@@ -2344,7 +2344,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderB(any)">
-                                <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" fieldName="workerId" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaB">
+                                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaB">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Error"/>
@@ -2375,7 +2375,7 @@
                                         </regionReplace>
                                         <htmlTokenText featureText="timerMediaRegionB &lt;timerMediaRegionB&gt;ms"/>
                                     </mediaPlaybackComplete>
-                                </startAudioRecorder>
+                                </startAudioRecorderWeb>
                             </actionButton>
                         </column>
                         <column>
@@ -2400,7 +2400,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderC(any)">
-                                <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" fieldName="workerId" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaC">
+                                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaC">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="Error"/>
@@ -2431,7 +2431,7 @@
                                         </regionReplace>
                                         <htmlTokenText featureText="timerMediaRegionC &lt;timerMediaRegionC&gt;ms"/>
                                     </mediaPlaybackComplete>
-                                </startAudioRecorder>
+                                </startAudioRecorderWeb>
                             </actionButton>
                         </column>
                         <column>
@@ -3304,7 +3304,7 @@
         <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaResult">
-                    <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" fieldName="workerId" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia_&lt;stimulusId&gt;">
+                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_&lt;stimulusId&gt;">
                         <onError>
                             <regionReplace regionId="stimulusLabel"></regionReplace>
                             <regionReplace regionId="stimulusButtons"></regionReplace>
@@ -3346,7 +3346,7 @@
                                 <plainText featureText="AudioRecordingPlaybackComplete"/>
                             </regionReplace>-->
                         </mediaPlaybackComplete>
-                    </startAudioRecorder>
+                    </startAudioRecorderWeb>
                 </regionReplace>
             </hasMoreStimulus>
             <endOfStimulus>                
@@ -3442,22 +3442,22 @@
         <region regionId="regionTriggerC">
             <plainText featureText="regionTriggerC is unchanged"/>
         </region>
-        <triggerListener listenerId="triggerA" threshold="0" maximum="1">
+        <triggerDefinition listenerId="triggerA" threshold="0" maximum="1">
             <regionReplace regionId="regionTriggerA">
                 <plainText featureText="regionTriggerA has triggered and will not again"/>
             </regionReplace>
-        </triggerListener>
-        <triggerListener listenerId="triggerB" threshold="0" maximum="1">
+        </triggerDefinition>
+        <triggerDefinition listenerId="triggerB" threshold="0" maximum="1">
             <regionReplace regionId="regionTriggerB">
                 <plainText featureText="regionTriggerB has triggered and will not again"/>
             </regionReplace>
-        </triggerListener>
-        <triggerListener listenerId="triggerC" threshold="0" maximum="1">
+        </triggerDefinition>
+        <triggerDefinition listenerId="triggerC" threshold="0" maximum="1">
             <regionReplace regionId="regionTriggerC">
                 <plainText featureText="regionTriggerB has triggered and will not again"/>
             </regionReplace>
-        </triggerListener>
-        <actionButton featureText="Click to randomly trigger any once">
+        </triggerDefinition>
+        <actionButton featureText="Click to randomly triggerMatching any once">
             <triggerRandom matchingRegex="trigger[ABC]">
                 <targetButton featureText="Reset Triggers" target="triggerRandomListener"/>
             </triggerRandom>
@@ -3465,7 +3465,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="incrementScoreExample" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
         <region regionId="scoreLabelsRegion"/>
-        <triggerListener listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
+        <triggerDefinition listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
             <regionReplace regionId="scoreLabelsRegion">
                 <htmlTokenText featureText="
                 Each increment accrues positive potential but only a positive values increment the score while negative values increment errors.&lt;br/&gt;
@@ -3500,31 +3500,31 @@
                 &lt;playerGamesPlayed&gt;&lt;br/&gt;
                 "/>
             </regionReplace>
-        </triggerListener>
-        <trigger listenerId="scoreLabelsTrigger"/>
+        </triggerDefinition>
+        <triggerMatching listenerId="scoreLabelsTrigger"/>
         <actionButton featureText="clearCurrentScore">
             <clearCurrentScore/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 5">
             <scoreIncrement scoreValue="5"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement -3">
             <scoreIncrement scoreValue="-3"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement -1">
             <scoreIncrement scoreValue="-1"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 1">
             <scoreIncrement scoreValue="1"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 0">
             <scoreIncrement scoreValue="0"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Deelnemer" type="metadata" self="EditParticipant" next="ListParticipants" title="Deelnemer">
@@ -3753,7 +3753,7 @@
         <stimulus audioPath="1000ms_a" code="1000ms" identifier="1000ms_c" imagePath="1000ms.jpg" label="1000ms_c" pauseMs="1000" tags="ToneVideos_c" videoPath="1000ms_c_v"/>
         <stimulus audioPath="2000ms_a" code="2000ms" identifier="2000ms_c" imagePath="2000ms.jpg" label="2000ms_c" pauseMs="2000" tags="ToneVideos_c" videoPath="2000ms_c_v"/>
         <stimulus audioPath="5000ms_a" code="5000ms" identifier="5000ms_c" imagePath="5000ms.jpg" label="5000ms_c" pauseMs="5000" tags="ToneVideos_c" videoPath="5000ms_c_v"/>
-        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should trigger an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
+        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should triggerMatching an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
         <stimulus identifier="R1" label="Speak the word &lt;b&gt;'continue'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="continue" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R2" label="Speak the word &lt;b&gt;'arrête'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="arrête" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R3" label="Speak the word &lt;b&gt;'thème'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="thème" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
