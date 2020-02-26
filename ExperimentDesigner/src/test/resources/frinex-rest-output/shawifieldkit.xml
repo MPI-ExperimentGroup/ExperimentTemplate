@@ -30,13 +30,9 @@
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Metadata" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
@@ -72,13 +68,9 @@
         <loadSdCardStimulus eventTag="Grammaticality" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Grammaticality" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Grammaticality" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -110,13 +102,9 @@
         <loadSdCardStimulus eventTag="Anti Nominal Hierrarchy" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Anti Nominal Hierrarchy" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Anti Nominal Hierrarchy" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -202,13 +190,9 @@
         <loadSdCardStimulus eventTag="Anti Nominal Hierrarchy F" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Anti Nominal Hierrarchy F" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Anti Nominal Hierrarchy F" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -253,13 +237,9 @@
         <loadSdCardStimulus eventTag="Pictures" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Pictures" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Pictures" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -293,13 +273,9 @@
         <loadSdCardStimulus eventTag="Animals" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Animals" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Animals" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -333,13 +309,9 @@
         <loadSdCardStimulus eventTag="Frogs" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="Frogs" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Frogs" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -373,13 +345,9 @@
         <loadSdCardStimulus eventTag="bowped" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="bowped" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="bowped" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -411,13 +379,9 @@
         <loadSdCardStimulus eventTag="bodies" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="bodies" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="bodies" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -449,13 +413,9 @@
         <loadSdCardStimulus eventTag="vanuatu" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="vanuatu" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="vanuatu" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -487,13 +447,9 @@
         <loadSdCardStimulus eventTag="grammar" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="grammar" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="grammar" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -525,13 +481,9 @@
         <loadSdCardStimulus eventTag="cutbreak" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorderApp fieldName="workerId" eventTag="cutbreak" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="cutbreak" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
