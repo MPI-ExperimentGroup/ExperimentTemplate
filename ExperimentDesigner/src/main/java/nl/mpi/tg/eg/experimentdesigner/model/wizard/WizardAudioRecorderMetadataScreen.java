@@ -89,9 +89,9 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
-        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.downloadPermittedWindowMs, "0");
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.recordingFormat, "wav");
+        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorderApp, null);
+//        startRecorderFeature.addFeatureAttributes(FeatureAttribute.downloadPermittedWindowMs, "0");
+//        startRecorderFeature.addFeatureAttributes(FeatureAttribute.recordingFormat, "wav");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.mediaId, "mediaId");
