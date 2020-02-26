@@ -153,7 +153,7 @@
     </presenter>-->
     <presenter back="Menu" menuLabel="Increment Score" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
         <region regionId="scoreLabelsRegion"/>
-        <triggerListener listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
+        <triggerDefinition listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
             <regionReplace regionId="scoreLabelsRegion">
                 <htmlTokenText featureText="
                 Each increment accrues positive potential but only a positive values increment the score while negative values increment errors.&lt;br/&gt;
@@ -188,31 +188,31 @@
                 &lt;playerGamesPlayed&gt;&lt;br/&gt;
                 "/>
             </regionReplace>
-        </triggerListener>
-        <trigger listenerId="scoreLabelsTrigger"/>
+        </triggerDefinition>
+        <triggerMatching listenerId="scoreLabelsTrigger"/>
         <actionButton featureText="clearCurrentScore">
             <clearCurrentScore/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 5">
             <scoreIncrement scoreValue="5"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement -3">
             <scoreIncrement scoreValue="-3"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement -1">
             <scoreIncrement scoreValue="-1"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 1">
             <scoreIncrement scoreValue="1"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 0">
             <scoreIncrement scoreValue="0"/>
-            <trigger listenerId="scoreLabelsTrigger"/>
+            <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Enter Invitation Metadata" type="metadata" self="EnterInvitationMetadata" title="Enter Invitation Metadata">
@@ -460,12 +460,16 @@
         <htmlText featureText="This experimental example will direct this user to the version of this experiment that is on the staging server. From there you should be able to validate and restore the users current state of metadata and score."/>
         <addPadding/>           
         <actionButton featureText="redirectToStaging">
-            <redirectToUrl src="https://frinexstaging.mpi.nl/invitation_validation_example/?invitation_id=&amp;metadataField_invitation_id&amp;#InvitationValidateMetadataExample"/>
+            <redirectToUrl src="https://frinexstaging.mpi.nl/invitation_validation_example/?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#InvitationValidateMetadataExample"/>
         </actionButton>            
         <addPadding/>           
         <actionButton featureText="returnToLocal">
-            <redirectToUrl src="/?invitation_id=&amp;metadataField_invitation_id&amp;#InvitationValidateMetadataExample"/>
+            <redirectToUrl src="cdvfile://localhost/assets/www/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#InvitationValidateMetadataExample"/>
         </actionButton> 
+        <addPadding/>           
+        <actionButton featureText="redirect to staging with_stimulus_example">
+            <redirectToUrl src="https://frinexstaging.mpi.nl/with_stimulus_example/?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
+        </actionButton>  
     </presenter>
     <presenter menuLabel="Finished" type="transmission" self="Finished" title="Finished">
         <!-- either <sendAllData> or <generateCompletionCode> can be used here -->
