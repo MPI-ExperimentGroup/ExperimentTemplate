@@ -182,9 +182,14 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeTypes.name);
             writer.append("</span><span style=\"color:grey\">=&quot;");
-            writer.append(attributeTypes.documentation);
+            if (attributeTypes.typeLabel != null) {
+                writer.append(attributeTypes.typeLabel);
+            }
+            if (attributeTypes.typeLabel != null && attributeTypes.restriction != null) {
+                writer.append(" ");
+            }
             if (attributeTypes.restriction != null) {
-                writer.append(" [");
+                writer.append("[");
                 boolean isFirst = true;
                 for (String value : attributeTypes.restriction) {
                     if (!isFirst) {
@@ -198,7 +203,9 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             if (attributeTypes.optional) {
                 writer.append(" (optional)");
             }
-            writer.append("&quot;</span><br/>\n");
+            writer.append("&quot;</span><span>\n");
+            writer.append(attributeTypes.documentation);
+            writer.append("</span><br/>\n");
         }
         if (currentElement.allowsCustomImplementation) {
             writer.append("<span style=\"color:green\">");
