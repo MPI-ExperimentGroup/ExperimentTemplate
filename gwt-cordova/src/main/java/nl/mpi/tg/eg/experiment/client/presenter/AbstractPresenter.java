@@ -398,7 +398,7 @@ public abstract class AbstractPresenter implements Presenter {
 //        ((ComplexView) simpleView).addText("Could not start the audio recorder");
 //        ((ComplexView) simpleView).addText(message);
 //    }
-    protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, final String deviceRegex, final String subDirectoryName, final String directoryName, boolean filePerStimulus, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs) /*-{
+    protected native void startAudioRecorderApp(final DataSubmissionService dataSubmissionService, final String subDirectoryName, final String directoryName, boolean filePerStimulus, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + subDirectoryName + " : " + directoryName + " : " + stimulusIdString + " : " + userIdString);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
@@ -411,7 +411,14 @@ public abstract class AbstractPresenter implements Presenter {
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
                 mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(tagvalue);
             },  subDirectoryName, directoryName,  (filePerStimulus)?stimulusIdString:'');
-        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String deviceRegex, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs) /*-{
+            if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
