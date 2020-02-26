@@ -36,21 +36,23 @@ public class AbstractSchemaGenerator {
     }
 
     public enum AttributeType {
-        xsString("xs:string"),
-        presenterName("presenterName"),
-        xsInteger("xs:integer"),
-        xsDecimal("xs:decimal"),
-        xsBoolean("xs:boolean"),
-        rgbHexValue("rgbHexValue"),
-        stimulusTags("stimulusTags"),
-        stimulusTag("stimulusTag"),
-        integerList("integerList"),
-        lowercaseValue("lowercaseValue"),
-        presenterKind("type");
-        public final String typeString;
+        xsString("xs:string", "String"),
+        presenterName("presenterName", "PresenterName"),
+        xsInteger("xs:integer", "Integer"),
+        xsDecimal("xs:decimal", "Decimal"),
+        xsBoolean("xs:boolean", "Boolean"),
+        rgbHexValue("rgbHexValue", "RGB Hext Value"),
+        stimulusTags("stimulusTags", "Stimulus Tags"),
+        stimulusTag("stimulusTag", "Stimulus Tag"),
+        integerList("integerList", "Integer List"),
+        lowercaseValue("lowercaseValue", "Lowercase Value");
+//        presenterKind("type", "Presenter Type");
+        public final String typeName;
+        public final String typeLabel;
 
-        private AttributeType(String typeString) {
-            this.typeString = typeString;
+        private AttributeType(String typeName, String typeLabel) {
+            this.typeName = typeName;
+            this.typeLabel = typeLabel;
         }
     }
 
@@ -58,14 +60,16 @@ public class AbstractSchemaGenerator {
 
         final String name;
         final String documentation;
-        final String type;
+        public final String typeName;
+        public final String typeLabel;
         final boolean optional;
         final String[] restriction;
 
         public DocumentationAttribute(final String name, final String documentation, final AttributeType type, final boolean optional) {
             this.name = name;
             this.documentation = documentation;
-            this.type = type.typeString;
+            this.typeName = type.typeName;
+            this.typeLabel = type.typeLabel;
             this.optional = optional;
             this.restriction = null;
         }
@@ -73,7 +77,8 @@ public class AbstractSchemaGenerator {
         public DocumentationAttribute(final String name, final String documentation, final String type, final boolean optional, String[] restriction) {
             this.name = name;
             this.documentation = documentation;
-            this.type = type;
+            this.typeName = type;
+            this.typeLabel = type;
             this.optional = optional;
             this.restriction = restriction;
         }
@@ -386,7 +391,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("menuLabel", true)
                         .presenterNameAttribute("back", "If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", true)
                         .presenterNameAttribute("next", "The value of this attribute is used as the target for gotoNextPresenter etc..", true)
-                        .restrictedAttribute(AttributeType.presenterKind.typeString, null, "The type of presenter which also determines the features that can be used in the presenter.", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
+                        .restrictedAttribute("type", null, "The type of presenter which also determines the features that can be used in the presenter.", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{
@@ -429,5 +434,5 @@ public class AbstractSchemaGenerator {
             .booleanAttribute("showMenuBar", false, "Boolean")
             .decimalAttribute("defaultScale", false)
             .integerAttribute("textFontSize", false)
-            .booleanAttribute("obfuscateBrowserStorage", true, "By default the browser local storage is obfuscated to make it difficult to cheat they system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
+            .booleanAttribute("obfuscateBrowserStorage", true, "Boolean: By default the browser local storage is obfuscated to make it difficult to cheat they system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
 }
