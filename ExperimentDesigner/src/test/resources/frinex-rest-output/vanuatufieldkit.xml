@@ -46,14 +46,14 @@
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
-                </startAudioRecorder>
+                </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
                 <stimulusLabel/>
@@ -76,14 +76,14 @@
         <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Lukluk ol foto" mediaId="mediaId" filePerStimulus="true">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Lukluk ol foto" mediaId="mediaId" filePerStimulus="true">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
-                </startAudioRecorder>
+                </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
                 <stimulusLabel/>
