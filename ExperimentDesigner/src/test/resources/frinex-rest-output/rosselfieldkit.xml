@@ -54,14 +54,14 @@
         <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="FieldKit Sequential" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="FieldKit Sequential" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
-                </startAudioRecorder>
+                </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
                 <stimulusLabel/>
@@ -94,14 +94,14 @@
         <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="FieldKit Random" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="FieldKit Random" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
-                </startAudioRecorder>
+                </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
                 <stimulusLabel/>
@@ -135,14 +135,14 @@
         <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" matchingRegex="" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Task 1" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Task 1" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
-                </startAudioRecorder>
+                </startAudioRecorderApp>
                 <withMatchingStimulus eventTag="" randomise="true" repeatRandomWindow="0" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
                         <clearPage/>
@@ -210,14 +210,14 @@
         <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" matchingRegex="" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" fieldName="workerId" eventTag="Task 2" mediaId="mediaId" filePerStimulus="false">
+                <startAudioRecorderApp fieldName="workerId" eventTag="Task 2" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
-                </startAudioRecorder>
+                </startAudioRecorderApp>
                 <clearPage/>
                 <matchingStimulusGrid randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
                     <responseCorrect>
