@@ -410,8 +410,8 @@
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="totalScoreAboveThreshold" type="totalScoreAboveThresholdType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
-<xs:element name="trigger" type="triggerType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
@@ -776,9 +776,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -810,7 +810,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -959,9 +960,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -993,7 +994,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -1154,9 +1156,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -1188,7 +1190,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -1338,9 +1341,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -1372,7 +1375,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -1517,9 +1521,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -1551,7 +1555,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -1695,9 +1700,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -1729,7 +1734,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -1911,9 +1917,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -1945,7 +1951,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -2141,9 +2148,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -2175,7 +2182,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -2340,9 +2348,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -2374,7 +2382,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -2680,9 +2689,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -2714,7 +2723,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -2981,9 +2991,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -3015,7 +3025,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -3179,9 +3190,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -3213,7 +3224,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -3372,9 +3384,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -3406,7 +3418,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -3569,9 +3582,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -3603,7 +3616,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -3639,7 +3653,7 @@
 <xs:attribute name="maximum" type="xs:string" use="required"/>
 <xs:attribute name="ranges" type="xs:string"/>
 </xs:complexType>
-<xs:complexType name="triggerListenerType">
+<xs:complexType name="triggerDefinitionType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum.</xs:documentation>
@@ -3748,9 +3762,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -3782,7 +3796,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -3924,9 +3939,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -3958,7 +3973,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -3994,9 +4010,9 @@
 <xs:attribute name="threshold" type="xs:string" use="required"/>
 <xs:attribute name="maximum" type="xs:string" use="required"/>
 </xs:complexType>
-<xs:complexType name="triggerType">
+<xs:complexType name="triggerMatchingType">
 <xs:annotation>
-<xs:documentation>Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values.</xs:documentation>
+<xs:documentation>Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values. The listenerId can contain tokens eg %lt;stimulusCode&gt;.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
 </xs:complexType>
@@ -4109,9 +4125,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -4143,7 +4159,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -4295,9 +4312,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -4329,7 +4346,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -4472,9 +4490,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -4506,7 +4524,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -4648,9 +4667,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -4682,7 +4701,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -4821,9 +4841,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -4855,7 +4875,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -4994,9 +5015,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -5028,7 +5049,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -5167,9 +5189,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -5201,7 +5223,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -5342,9 +5365,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -5376,7 +5399,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -5517,9 +5541,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -5551,7 +5575,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -5692,9 +5717,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -5726,7 +5751,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -5865,9 +5891,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -5899,7 +5925,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -6038,9 +6065,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -6072,7 +6099,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -6211,9 +6239,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -6245,7 +6273,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -6384,9 +6413,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -6418,7 +6447,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -6557,9 +6587,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -6591,7 +6621,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -6730,9 +6761,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -6764,7 +6795,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -6903,9 +6935,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -6937,7 +6969,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -7076,9 +7109,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -7110,7 +7143,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -7255,9 +7289,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -7289,7 +7323,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -7428,9 +7463,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -7462,7 +7497,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -7601,9 +7637,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -7635,7 +7671,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -7774,9 +7811,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -7808,7 +7845,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -7947,9 +7985,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -7981,7 +8019,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -8120,9 +8159,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -8154,7 +8193,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -8293,9 +8333,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -8327,7 +8367,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -8466,9 +8507,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -8500,7 +8541,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -8639,9 +8681,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -8673,7 +8715,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -8814,9 +8857,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -8848,7 +8891,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -8987,9 +9031,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -9021,7 +9065,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -9161,9 +9206,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -9195,7 +9240,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -9344,9 +9390,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -9378,7 +9424,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -9640,9 +9687,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -9674,7 +9721,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -9825,9 +9873,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -9859,7 +9907,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
@@ -9897,10 +9946,10 @@
 <xs:attribute name="columnCount" type="xs:string" use="required"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 </xs:complexType>
-<xs:complexType name="startAudioRecorderType">
+<xs:complexType name="startAudioRecorderWebType">
 <xs:all>
 <xs:annotation>
-<xs:documentation>Starts the audio recorder, the HTML5 audio recorder will be used unless the value of recordingFormat is wav in which case the Android wav recorder wil be used. If the Android wav recorder is used then the wav files will be saved on the device in a sub directory based on value of the provided metadata field.</xs:documentation>
+<xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is given a suitable period of time, the user can also listen to the recorded audio from the server for verification.</xs:documentation>
 </xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
@@ -9909,12 +9958,20 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="recordingFormat" type="xs:string" use="required"/>
 <xs:attribute name="downloadPermittedWindowMs" type="xs:string" use="required"/>
-<xs:attribute name="filePerStimulus" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
 <xs:attribute name="deviceRegex" type="xs:string"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
+</xs:complexType>
+<xs:complexType name="startAudioRecorderAppType">
+<xs:all>
+<xs:annotation>
+<xs:documentation>Starts the Android wav recorder, the recorded wav files will be saved on the device in a sub directories based on value of the provided metadata field and the eventTag.</xs:documentation>
+</xs:annotation>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
+</xs:all>
+<xs:attribute name="filePerStimulus" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string" use="required"/>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="stopAudioRecorderType">
@@ -10077,9 +10134,9 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="triggerListener" type="triggerListenerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
-<xs:element name="trigger" type="triggerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
 <xs:element name="countdownLabel" type="countdownLabelType"/>
@@ -10111,7 +10168,8 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
-<xs:element name="startAudioRecorder" type="startAudioRecorderType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
 <xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
 <xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>

@@ -302,10 +302,10 @@
         <randomMsPause ranges="10..100,1000" maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in triggerListener"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
+        <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerDefinition"/>
+        </triggerDefinition>
+        <triggerMatching listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
             <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
@@ -567,7 +567,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -586,7 +586,15 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -933,7 +941,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -952,7 +960,15 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -1299,7 +1315,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1318,7 +1334,15 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -1555,13 +1579,13 @@
         <randomMsPause ranges="10..100,1000" maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in triggerListener"/>
-        </triggerListener>
+        <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerDefinition"/>
+        </triggerDefinition>
         <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in habituationParadigmListener"/>
         </habituationParadigmListener>
-        <trigger listenerId="listenerId"/>
+        <triggerMatching listenerId="listenerId"/>
         <triggerRandom matchingRegex="matchingRegex">
             <plainText featureText="plainText in triggerRandom"/>
         </triggerRandom>
@@ -2260,10 +2284,10 @@
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in triggerListener"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
+        <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerDefinition"/>
+        </triggerDefinition>
+        <triggerMatching listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
             <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
@@ -2525,7 +2549,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2544,7 +2568,15 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2891,7 +2923,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2910,7 +2942,15 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -3257,7 +3297,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder downloadPermittedWindowMs="30000" recordingFormat="recordingFormat" fieldName="workerId" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3276,7 +3316,15 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -3513,13 +3561,13 @@
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in triggerListener"/>
-        </triggerListener>
+        <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerDefinition"/>
+        </triggerDefinition>
         <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in habituationParadigmListener"/>
         </habituationParadigmListener>
-        <trigger listenerId="listenerId"/>
+        <triggerMatching listenerId="listenerId"/>
         <triggerRandom matchingRegex="matchingRegex">
             <plainText featureText="plainText in triggerRandom"/>
         </triggerRandom>
