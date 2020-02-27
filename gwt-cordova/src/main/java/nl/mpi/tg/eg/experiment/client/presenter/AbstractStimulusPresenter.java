@@ -1297,6 +1297,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     userResults.getUserData().addPotentialScore(correctness);
                     isCorrect = correctness;
                 }
+                HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
+                if (!jsonStimulusMap.containsKey(currentStimulus)) {
+                    JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                    storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                    jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
+                }
+                jsonStimulusMap.get(currentStimulus).put("stimulusButton", new JSONString(presenterListener.getLabel()));
+                localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
+                // @todo: probably good to check if the data has changed before writing to disk
+                submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
                 submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, duration.elapsedMillis());
                 presenterListener.eventFired(button, shotEventListner);
             }
@@ -1513,6 +1523,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             userResults.getUserData().addPotentialScore(correctness);
                             isCorrect = correctness;
                         }
+                        HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
+                        if (!jsonStimulusMap.containsKey(currentStimulus)) {
+                            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                            storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                            jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
+                        }
+                        jsonStimulusMap.get(currentStimulus).put("ratingButton", new JSONString(ratingItem));
+                        localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
+                        // @todo: probably good to check if the data has changed before writing to disk
+                        submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
                         submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "ratingButton", currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
                         timedStimulusListener.postLoadTimerFired();
                     }
