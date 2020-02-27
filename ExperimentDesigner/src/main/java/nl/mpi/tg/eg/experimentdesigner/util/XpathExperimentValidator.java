@@ -155,8 +155,8 @@ public class XpathExperimentValidator {
                 fieldNames.add(fieldNamesString);
             }
         }
-        for (String testType : new String[]{"fieldName", "linkedFieldName", "storageField"}) {
-            NodeList nodeList2 = (NodeList) validationXPath.compile("/experiment/presenter//@" + testType).evaluate(xmlDocument, XPathConstants.NODESET);
+        for (String testType : new String[]{"fieldName", "linkedFieldName", "storageField", "errorField"}) {
+            NodeList nodeList2 = (NodeList) validationXPath.compile("/experiment//@" + testType).evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList2.getLength(); index++) {
                 final String targetName = nodeList2.item(index).getTextContent();
                 if (!fieldNames.contains(targetName)) {
@@ -174,5 +174,4 @@ public class XpathExperimentValidator {
     // todo: validate that stimulus label does not include unescaped &quot;
     // todo: validate that stimulus IDs are all different
     // todo: validate that featureText has contents because it will fail if empty<htmlText featureText=""/>
-    // todo: validate that the metadata files used by the administration validation tags exist in the metadata field section
 }
