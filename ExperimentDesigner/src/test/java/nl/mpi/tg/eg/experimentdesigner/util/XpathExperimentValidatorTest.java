@@ -147,6 +147,34 @@ public class XpathExperimentValidatorTest {
     public void testValidateMetadataFields() throws Exception {
         System.out.println("validateMetadataFields");
         Document xmlOkPostNameDocument = getDocument("<experiment>"
+                + "<administration>\n"
+                + "<dataAgreementField fieldName=\"age\"/>\n"
+                + "<validation errorField=\"age\"/>\n"
+                + "</administration>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"workerId\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"age\"/>"
+                + "<randomGrouping storageField=\"gender\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailErrorFieldDocument = getDocument("<experiment>"
+                + "<administration>\n"
+                + "<dataAgreementField fieldName=\"age\"/>\n"
+                + "<validation errorField=\"missing\"/>\n"
+                + "</administration>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"workerId\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"age\"/>"
+                + "<randomGrouping storageField=\"gender\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailDataAgreementFieldDocument = getDocument("<experiment>"
+                + "<administration>\n"
+                + "<dataAgreementField fieldName=\"missing\"/>\n"
+                + "<validation errorField=\"age\"/>\n"
+                + "</administration>"
                 + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
                 + "<presenter self=\"Informatie\">"
                 + "<metadataField fieldName=\"workerId\"/>"
@@ -189,6 +217,8 @@ public class XpathExperimentValidatorTest {
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateMetadataFields(xmlOkPostNameDocument));
         System.out.println(instance.validateMetadataFields(xmlFailStorageFieldDocument));
+        assertEquals("Each 'errorField' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailErrorFieldDocument));
+        assertEquals("Each 'fieldName' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailDataAgreementFieldDocument));
         assertEquals("Each 'storageField' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailStorageFieldDocument));
         assertEquals("Each 'linkedFieldName' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailLinkedFieldNameDocument));
         assertEquals("Each 'fieldName' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailFieldNameDocument));
