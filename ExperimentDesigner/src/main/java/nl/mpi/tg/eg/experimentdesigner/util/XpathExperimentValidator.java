@@ -39,18 +39,29 @@ import org.xml.sax.SAXException;
 public class XpathExperimentValidator {
 
     public void validateDocument(File xmlFile) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
-        FileInputStream fileInputStream = new FileInputStream(xmlFile);
-        DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = builderFactory.newDocumentBuilder();
-        Document xmlDocument = builder.parse(fileInputStream);
-        String fileName = xmlFile.getName();
-        String result = "";
-        result += validateInternalName(fileName, xmlDocument);
-        result += validatePresenterNames(xmlDocument);
-        result += validatePresenterLinks(xmlDocument);
-        result += validateStimuliTags(xmlDocument);
-        if (!result.isEmpty()) {
-            throw new XpathExperimentException(result);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(xmlFile);
+            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = builderFactory.newDocumentBuilder();
+            Document xmlDocument = builder.parse(fileInputStream);
+            String fileName = xmlFile.getName();
+            String result = "";
+            result += validateInternalName(fileName, xmlDocument);
+            result += validatePresenterNames(xmlDocument);
+            result += validatePresenterLinks(xmlDocument);
+            result += validateStimuliTags(xmlDocument);
+            if (!result.isEmpty()) {
+                throw new XpathExperimentException(result);
+            }
+        } catch (SAXException saxe) {
+            if (saxe.getMessage().contains("[xX][mM][lL]")) {
+                // an empty line at the start of the file gives an unhelpful message "The processing instruction target matching "[xX][mM][lL]" is not allowed." so we give a hint here
+                throw new XpathExperimentException(saxe.getMessage() + " There must be no white space and no empty lines at the start of the XML file.");
+            } else if (saxe.getMessage().contains("root element")) {
+                throw new XpathExperimentException(saxe.getMessage() + " There can only be one root element and it must be <experiment>...</experiment>.");
+            } else {
+                throw new XpathExperimentException(saxe.getMessage());
+            }
         }
     }
 
@@ -167,11 +178,10 @@ public class XpathExperimentValidator {
         }
         return returnMessage;
     }
-    // todo: an empty line at the start of the file gives an unhelpful message "The processing instruction target matching "[xX][mM][lL]" is not allowed."
-    // todo: validate that stimulusButton etc at in a load stimulus tag
-    // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
-    // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
-    // todo: validate that stimulus label does not include unescaped &quot;
-    // todo: validate that stimulus IDs are all different
-    // todo: validate that featureText has contents because it will fail if empty<htmlText featureText=""/>
+     // todo: validate that stimulusButton etc at in a load stimulus tag
+     // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
+     // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
+     // todo: validate that stimulus label does not include unescaped &quot;
+     // todo: validate that stimulus IDs are all different
+     // todo: validate that featureText has contents because it will fail if empty<htmlText featureText=""/>
 }
