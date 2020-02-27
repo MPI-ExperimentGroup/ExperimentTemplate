@@ -143,11 +143,36 @@ public class XpathExperimentValidator {
         }
         return returnMessage;
     }
-    // todo: validate that the storageField stimulusSetAllocation exists in the metadata list <randomGrouping consumedTagGroup="allRooms" storageField="stimulusSetAllocation">
+
+    protected String validateMetadataFields(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        final ArrayList<String> fieldNames = new ArrayList<>();
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/metadata/field/@postName").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList1.getLength(); index++) {
+            final String fieldNamesString = nodeList1.item(index).getTextContent();
+            if (!fieldNames.contains(fieldNamesString)) {
+                fieldNames.add(fieldNamesString);
+            }
+        }
+        for (String testType : new String[]{"fieldName", "linkedFieldName", "storageField"}) {
+            NodeList nodeList2 = (NodeList) validationXPath.compile("/experiment/presenter//@" + testType).evaluate(xmlDocument, XPathConstants.NODESET);
+            for (int index = 0; index < nodeList2.getLength(); index++) {
+                final String targetName = nodeList2.item(index).getTextContent();
+                if (!fieldNames.contains(targetName)) {
+                    returnMessage += "Each '" + testType + "' attribute must reference a valid metadata field, but '" + targetName + "' is not specified the postName attribute of any metadata field.\n";
+                    System.out.println(returnMessage);
+                }
+            }
+        }
+        return returnMessage;
+    }
     // todo: an empty line at the start of the file gives an unhelpful message "The processing instruction target matching "[xX][mM][lL]" is not allowed."
-    // todo: validate tha the storageField is in the metadata fields <randomGrouping storageField="set">
     // todo: validate that stimulusButton etc at in a load stimulus tag
     // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
     // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
     // todo: validate that stimulus label does not include unescaped &quot;
+    // todo: validate that stimulus IDs are all different
+    // todo: validate that featureText has contents because it will fail if empty<htmlText featureText=""/>
+    // todo: validate that the metadata files used by the administration validation tags exist in the metadata field section
 }
