@@ -322,7 +322,7 @@ public class XpathExperimentValidatorTest {
                 + "</experiment>");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateStimuliIds(xmlOkIdentifierDocument));
-        assertEquals("The stimulus identifier 'daga11_cut' has been used more than one. Each stimulus identifier must be unique.", instance.validateStimuliIds(xmlFailIdentifierDocument));
+        assertEquals("The stimulus identifier 'daga11_cut' has been used more than once. Each stimulus identifier must be unique.", instance.validateStimuliIds(xmlFailIdentifierDocument));
     }
 
     /**
@@ -347,6 +347,6 @@ public class XpathExperimentValidatorTest {
                 + "</experiment>");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateMetadataFieldPostNames(xmlOkIdentifierDocument));
-        assertEquals("The metadata field postName 'daga3_cut' has been used more than one. Each postName must be unique.", instance.validateMetadataFieldPostNames(xmlFailIdentifierDocument));
+        assertEquals("The metadata field postName 'daga3_cut' has been used more than once. Each postName must be unique.", instance.validateMetadataFieldPostNames(xmlFailIdentifierDocument));
     }
 }
