@@ -50,6 +50,8 @@ public class XpathExperimentValidator {
             result += validatePresenterNames(xmlDocument);
             result += validatePresenterLinks(xmlDocument);
             result += validateStimuliTags(xmlDocument);
+//            result += validateStimuliIds(xmlDocument); // duplicate stimulus identifiers are not an issue, there might be use cases where this could be done intentionally, so we allow it here
+            result += validateMetadataFieldPostNames(xmlDocument);
             if (!result.isEmpty()) {
                 throw new XpathExperimentException(result);
             }
@@ -122,6 +124,22 @@ public class XpathExperimentValidator {
         return returnMessage;
     }
 
+    protected String validateStimuliIds(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        final ArrayList<String> stimuliIds = new ArrayList<>();
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/stimuli/stimulus/@identifier").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList1.getLength(); index++) {
+            final String stimuliId = nodeList1.item(index).getTextContent();
+            if (!stimuliIds.contains(stimuliId)) {
+                stimuliIds.add(stimuliId);
+            } else {
+                returnMessage += "The stimulus identifier '" + stimuliId + "' has been used more than once. Each stimulus identifier must be unique.";
+            }
+        }
+        return returnMessage;
+    }
+
     protected String validateStimuliTags(Document xmlDocument) throws XPathExpressionException {
         String returnMessage = "";
         final ArrayList<String> tagNames = new ArrayList<>();
@@ -155,6 +173,22 @@ public class XpathExperimentValidator {
         return returnMessage;
     }
 
+    protected String validateMetadataFieldPostNames(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        final ArrayList<String> fieldNames = new ArrayList<>();
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/metadata/field/@postName").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList1.getLength(); index++) {
+            final String fieldNamesString = nodeList1.item(index).getTextContent();
+            if (!fieldNames.contains(fieldNamesString)) {
+                fieldNames.add(fieldNamesString);
+            } else {
+                returnMessage += "The metadata field postName '" + fieldNamesString + "' has been used more than once. Each postName must be unique.";
+            }
+        }
+        return returnMessage;
+    }
+
     protected String validateMetadataFields(Document xmlDocument) throws XPathExpressionException {
         String returnMessage = "";
         final ArrayList<String> fieldNames = new ArrayList<>();
@@ -178,10 +212,9 @@ public class XpathExperimentValidator {
         }
         return returnMessage;
     }
-     // todo: validate that stimulusButton etc at in a load stimulus tag
-     // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
-     // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
-     // todo: validate that stimulus label does not include unescaped &quot;
-     // todo: validate that stimulus IDs are all different
-     // todo: validate that featureText has contents because it will fail if empty<htmlText featureText=""/>
+    // todo: validate that stimulusButton etc at in a load stimulus tag
+    // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
+    // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
+    // todo: validate that stimulus label does not include unescaped &quot;
+    // todo: validate that featureText has contents because it will fail if empty<htmlText featureText=""/>
 }
