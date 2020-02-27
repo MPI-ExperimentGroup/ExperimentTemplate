@@ -299,4 +299,54 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "shawifieldkit.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "sentenceplausibility.xml"));
     }
+
+    /**
+     * Test of validateStimuliIds method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testValidateStimuliIds() throws Exception {
+        System.out.println("validateStimuliIds");
+        Document xmlOkIdentifierDocument = getDocument("<experiment>"
+                + "<stimuli>"
+                + "<stimulus identifier=\"daga3_cut\" />"
+                + "<stimulus identifier=\"daga11_cut\" />"
+                + "<stimulus identifier=\"daga5_cut\" />"
+                + "</stimuli>"
+                + "</experiment>");
+        Document xmlFailIdentifierDocument = getDocument("<experiment>"
+                + "<stimuli>"
+                + "<stimulus identifier=\"daga11_cut\" />"
+                + "<stimulus identifier=\"daga11_cut\" />"
+                + "<stimulus identifier=\"daga5_cut\" />"
+                + "</stimuli>"
+                + "</experiment>");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("", instance.validateStimuliIds(xmlOkIdentifierDocument));
+        assertEquals("The stimulus identifier 'daga11_cut' has been used more than one. Each stimulus identifier must be unique.", instance.validateStimuliIds(xmlFailIdentifierDocument));
+    }
+
+    /**
+     * Test of validateMetadataFieldPostNames method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testValidateMetadataFieldPostNames() throws Exception {
+        System.out.println("validateMetadataFieldPostNames");
+        Document xmlOkIdentifierDocument = getDocument("<experiment>"
+                + "<metadata>"
+                + "<field postName=\"daga3_cut\" />"
+                + "<field postName=\"daga11_cut\" />"
+                + "<field postName=\"daga5_cut\" />"
+                + "</metadata>"
+                + "</experiment>");
+        Document xmlFailIdentifierDocument = getDocument("<experiment>"
+                + "<metadata>"
+                + "<field postName=\"daga3_cut\" />"
+                + "<field postName=\"daga3_cut\" />"
+                + "<field postName=\"daga5_cut\" />"
+                + "</metadata>"
+                + "</experiment>");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("", instance.validateMetadataFieldPostNames(xmlOkIdentifierDocument));
+        assertEquals("The metadata field postName 'daga3_cut' has been used more than one. Each postName must be unique.", instance.validateMetadataFieldPostNames(xmlFailIdentifierDocument));
+    }
 }
