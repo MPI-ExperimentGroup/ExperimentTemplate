@@ -141,6 +141,63 @@ public class XpathExperimentValidatorTest {
     }
 
     /**
+     * Test of validateMetadataFields method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testValidateMetadataFields() throws Exception {
+        System.out.println("validateMetadataFields");
+        Document xmlOkPostNameDocument = getDocument("<experiment>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"workerId\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"age\"/>"
+                + "<randomGrouping storageField=\"gender\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailStorageFieldDocument = getDocument("<experiment>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"workerId\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"age\"/>"
+                + "<randomGrouping storageField=\"missing\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailLinkedFieldNameDocument = getDocument("<experiment>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"workerId\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"missing\"/>"
+                + "<randomGrouping storageField=\"gender\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailFieldNameDocument = getDocument("<experiment>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"missing\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"workerId\"/>"
+                + "<randomGrouping storageField=\"gender\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailAllDocument = getDocument("<experiment>"
+                + "<metadata><field postName=\"workerId\"/><field postName=\"age\"/><field postName=\"gender\"/></metadata>"
+                + "<presenter self=\"Informatie\">"
+                + "<metadataField fieldName=\"one\"/>"
+                + "<metadataFieldConnection fieldName=\"workerId\" linkedFieldName=\"two\"/>"
+                + "<randomGrouping storageField=\"three\"/>"
+                + "</presenter>"
+                + "</experiment>");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("", instance.validateMetadataFields(xmlOkPostNameDocument));
+        System.out.println(instance.validateMetadataFields(xmlFailStorageFieldDocument));
+        assertEquals("Each 'storageField' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailStorageFieldDocument));
+        assertEquals("Each 'linkedFieldName' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailLinkedFieldNameDocument));
+        assertEquals("Each 'fieldName' attribute must reference a valid metadata field, but 'missing' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailFieldNameDocument));
+        assertEquals("Each 'fieldName' attribute must reference a valid metadata field, but 'one' is not specified the postName attribute of any metadata field.\n"
+                + "Each 'linkedFieldName' attribute must reference a valid metadata field, but 'two' is not specified the postName attribute of any metadata field.\n"
+                + "Each 'storageField' attribute must reference a valid metadata field, but 'three' is not specified the postName attribute of any metadata field.\n", instance.validateMetadataFields(xmlFailAllDocument));
+    }
+
+    /**
      * Test of validateDocument method, of class XpathExperimentValidator.
      *
      * @throws java.io.IOException
