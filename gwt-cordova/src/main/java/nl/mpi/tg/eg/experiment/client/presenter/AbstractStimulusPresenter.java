@@ -902,7 +902,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
             if (storedStimulusJSONObject != null) {
-                String fieldValue = storedStimulusJSONObject.containsKey(groupId) ? storedStimulusJSONObject.get(groupId).isString().stringValue() : "";
+                final String formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(groupId);
+                String fieldValue = storedStimulusJSONObject.containsKey(formattedGroupId) ? storedStimulusJSONObject.get(formattedGroupId).isString().stringValue() : "";
                 if (fieldValue.matches(matchingRegex)) {
                     correctListener.postLoadTimerFired();
                 } else {
@@ -1325,7 +1326,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void stimulusRatingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, buttonGroup, null, orientationType);
+        final String formattedGroupId;
+        if (buttonGroup != null || !buttonGroup.isEmpty()) {
+            formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
+        } else {
+            formattedGroupId = "stimulusRatingButton";
+        }
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
     }
 
     public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
@@ -1346,7 +1353,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     private void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
         final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
-        final String stimulusRatingType = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : (allowMultiple) ? "stimulusRatingCheckbox" : "stimulusRatingRadio";
+        final String stimulusRatingType;
+        if (buttonGroup != null || !buttonGroup.isEmpty()) {
+            stimulusRatingType = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
+        } else {
+            stimulusRatingType = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : (allowMultiple) ? "stimulusRatingCheckbox" : "stimulusRatingRadio";
+        }
         final List<StimulusButton> ratingButtons = new ArrayList<>();
         if (ratingLabels != null) {
             final String[] splitRatingLabels = ratingLabels.split(",");
@@ -1456,19 +1468,31 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void setFocus(boolean wantsFocus) {
             }
         };
-        ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, radioGroupName, allowMultiple, stimulusFreeText.getValue(), buttonGroup, ratingStylePanel, orientationType));
+        ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, radioGroupName, allowMultiple, stimulusFreeText.getValue(), stimulusRatingType, ratingStylePanel, orientationType));
         stimulusFreeTextList.add(stimulusFreeText);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, buttonGroup, null, orientationType);
+        final String formattedGroupId;
+        if (buttonGroup != null || !buttonGroup.isEmpty()) {
+            formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
+        } else {
+            formattedGroupId = "ratingButton";
+        }
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, false, null, buttonGroup, null, OrientationType.horizontal);
+        final String formattedGroupId;
+        if (buttonGroup != null || !buttonGroup.isEmpty()) {
+            formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
+        } else {
+            formattedGroupId = "ratingFooterButton";
+        }
+        ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, false, null, formattedGroupId, null, OrientationType.horizontal);
     }
 
-    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int dataChannel) {
+    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final String formattedGroupId, final int dataChannel) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
         if (ratingLabels != null) {
             final String[] splitRatingLabels = ratingLabels.split(",");
@@ -1512,9 +1536,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                     @Override
                     public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                        timedEventMonitor.registerEvent("ratingButton");
+                        timedEventMonitor.registerEvent(formattedGroupId);
                         endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
-                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
+                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, formattedGroupId, stimulusString, ratingItem, duration.elapsedMillis());
                         Boolean isCorrect = null;
                         if (currentStimulus.hasCorrectResponses()) {
                             final boolean correctness = currentStimulus.isCorrect(ratingItem);
@@ -1529,11 +1553,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
                             jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
                         }
-                        jsonStimulusMap.get(currentStimulus).put("ratingButton", new JSONString(ratingItem));
+                        jsonStimulusMap.get(currentStimulus).put(formattedGroupId, new JSONString(ratingItem));
                         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
                         // @todo: probably good to check if the data has changed before writing to disk
                         submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "ratingButton", currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
+                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
                         timedStimulusListener.postLoadTimerFired();
                     }
 
@@ -1574,6 +1598,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void startAudioRecorderWeb(final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+        // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
@@ -2134,39 +2159,53 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         optionButton(eventListner, buttonGroup);
     }
 
-    protected void addStimulusCodeResponseValidation(final Stimulus currentStimulus, final String validationRegex, final String validationChallenge, final int dataChannel) {
-        stimulusFreeTextList.add(timedStimulusView.addStimulusValidation(localStorage, userResults.getUserData().getUserId(), currentStimulus, "CodeResponse", validationRegex, validationChallenge, dataChannel));
+    protected void addStimulusCodeResponseValidation(final Stimulus currentStimulus, final String validationRegex, final String validationChallenge, final String groupId, final int dataChannel) {
+        final String formattedGroupId;
+        if (groupId != null || !groupId.isEmpty()) {
+            formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(groupId);
+        } else {
+            formattedGroupId = "CodeResponse";
+        }
+        stimulusFreeTextList.add(timedStimulusView.addStimulusValidation(localStorage, userResults.getUserData().getUserId(), currentStimulus, formattedGroupId, validationRegex, validationChallenge, dataChannel));
     }
 
     protected void setStimulusCodeResponse(
             final Stimulus currentStimulus,
             final String codeFormat,
             final boolean applyScore,
+            final String groupId,
             final int dataChannel
     ) {
-        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(codeFormat);
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray());
+        final String formattedGroupId;
+        if (groupId != null || !groupId.isEmpty()) {
+            formattedGroupId = htmlTokenFormatter.formatString(groupId);
+        } else {
+            formattedGroupId = "CodeResponse";
+        }
+        final String formattedCode = htmlTokenFormatter.formatString(codeFormat);
         HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
         if (!jsonStimulusMap.containsKey(currentStimulus)) {
             JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
             storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
             jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
         }
-        jsonStimulusMap.get(currentStimulus).put("CodeResponse", new JSONString(formattedCode));
+        jsonStimulusMap.get(currentStimulus).put(formattedGroupId, new JSONString(formattedCode));
         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
         // @todo: probably good to check if the data has changed before writing to disk
         submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), formattedCode, duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus.getUniqueId(), formattedCode, duration.elapsedMillis());
         Boolean isCorrect = null;
         if (applyScore) {
             if (currentStimulus.hasCorrectResponses()) {
                 final boolean correctness = currentStimulus.isCorrect(formattedCode);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                 // if there are correct responses to this stimulus then increment the score
                 userResults.getUserData().addPotentialScore(correctness);
                 isCorrect = correctness;
             }
         }
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
     }
 
     protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
