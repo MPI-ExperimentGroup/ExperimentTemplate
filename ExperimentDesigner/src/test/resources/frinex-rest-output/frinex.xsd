@@ -2016,7 +2016,7 @@
 <xs:complexType name="stimulusHasResponseType">
 <xs:all>
 <xs:annotation>
-<xs:documentation>When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex.</xs:documentation>
+<xs:documentation>When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex. If groupId contains tokens they will be replaced with the respective values before the evaluation.</xs:documentation>
 </xs:annotation>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
@@ -2025,12 +2025,19 @@
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="setStimulusCodeResponseType">
+<xs:annotation>
+<xs:documentation>Sets a response to the current stimulus with the value of codeFormat. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId or codeFormat contain tokens they will be replaced with the respective values.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="codeFormat" type="xs:string" use="required"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="applyScore" type="xs:string" use="required"/>
+<xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="addStimulusCodeResponseValidationType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Adds a stmulus validation listener for StimulusCodeResponses, so that they can be validaded like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.</xs:documentation>
+</xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
@@ -2041,6 +2048,7 @@
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="validationRegex" type="xs:string" use="required"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
+<xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="ratingFooterButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">

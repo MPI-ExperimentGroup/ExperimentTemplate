@@ -426,8 +426,8 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
-                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" dataChannel="2" validationRegex="validationRegex"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -800,8 +800,8 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
-                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" dataChannel="2" validationRegex="validationRegex"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -1174,8 +1174,8 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
-                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" dataChannel="2" validationRegex="validationRegex"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>

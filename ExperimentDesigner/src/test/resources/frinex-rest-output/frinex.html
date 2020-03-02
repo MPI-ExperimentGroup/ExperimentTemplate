@@ -14226,13 +14226,15 @@ String</span><br/>
 <h3 id="addStimulusCodeResponseValidationType" style="text-transform: uppercase;">
 addStimulusCodeResponseValidation
 </h3>
-
+Adds a stmulus validation listener for StimulusCodeResponses, so that they can be validaded like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">addStimulusCodeResponseValidation</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 <span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:purple">&gt;</span></td><td>
@@ -15843,7 +15845,7 @@ String</span><br/>
 <h3 id="setStimulusCodeResponseType" style="text-transform: uppercase;">
 setStimulusCodeResponse
 </h3>
-
+Sets a response to the current stimulus with the value of codeFormat. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId or codeFormat contain tokens they will be replaced with the respective values.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">setStimulusCodeResponse</span></td><td><span style="color:green">applyScore</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -15852,6 +15854,8 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -17440,7 +17444,7 @@ stimulusHasRatingOptions
 <h3 id="stimulusHasResponseType" style="text-transform: uppercase;">
 stimulusHasResponse
 </h3>
-When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex.
+When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex. If groupId contains tokens they will be replaced with the respective values before the evaluation.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusHasResponse</span></td><td><span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
