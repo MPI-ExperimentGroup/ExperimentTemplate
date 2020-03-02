@@ -419,9 +419,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
             <xsl:text>,</xsl:text>
             <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
-            <xsl:text>,</xsl:text>
-            <xsl:value-of select="if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null'" />
         </xsl:if>
+        <xsl:text>,</xsl:text>
+        <xsl:value-of select="if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null'" />
         <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
         <xsl:text>);
         </xsl:text>
@@ -958,6 +958,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;,') else ''" />
         <xsl:value-of select="if(@applyScore) then concat(@applyScore eq 'true',', ') else ''" />
         <xsl:value-of select="if(contains(local-name(), 'stimulusCodeImageButton')) then if (@groupId) then concat('&quot;',@groupId, '&quot;, ') else '&quot;defaultStimulusGroup&quot;, ' else ''" />
+        <xsl:value-of select="if (local-name() eq 'setStimulusCodeResponse') then if(@groupId) then concat('&quot;', @groupId, '&quot;, ') else 'null, ' else ''" />
         <xsl:if test="
         local-name() eq 'setStimulusCodeResponse' or
 local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeAudio' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusAudio' or local-name() eq 'stimulusCodeImage' or local-name() eq 'stimulusCodeImageButton'">
