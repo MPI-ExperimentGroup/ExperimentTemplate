@@ -55,12 +55,16 @@ public class JsonToXml {
         } else {
             final String inputDirectory = args[0];
             final String outputDirectory = args[1];
+            final String listingDirectory = args[2];
             System.out.println("inputDirectory: " + inputDirectory);
             System.out.println("outputDirectory: " + outputDirectory);
+            System.out.println("listingDirectory: " + listingDirectory);
             if (!new File(inputDirectory).exists()) {
                 System.out.println("inputDirectory does not exist");
             } else if (!new File(outputDirectory).exists()) {
                 System.out.println("outputDirectory does not exist");
+            } else if (!new File(listingDirectory).exists()) {
+                System.out.println("listingDirectory does not exist");
             } else {
                 try {
                     final File schemaOutputFile = new File(outputDirectory, "frinex.xsd");
@@ -120,8 +124,10 @@ public class JsonToXml {
                         Schema schema = schemaFactory.newSchema(schemaFile);
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
-                        XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
+                        final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
                         experimentValidator.validateDocument(xmlFile);
+                        final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
+                        experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory));
                     } catch (SAXException | IOException | IllegalArgumentException | ParserConfigurationException | XPathExpressionException | XpathExperimentException saxe) {
                         System.out.println(saxe.getMessage());
                         // save the error into a log file
