@@ -22,6 +22,17 @@
             textFontSize="17" 
             obfuscateBrowserStorage="false"
 >
+    <deployment
+        publishDate="2020-02-22"
+        expiryDate="2025-02-22"
+        registrationUrlStaging="/with_stimulus_example-admin/validate"
+        registrationUrlProduction="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"
+        isWebApp="true"
+        isDesktop="true"
+        isiOS="true"
+        isAndroid="true"
+        state="staging"
+    />
     <administration>
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
