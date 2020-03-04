@@ -25,6 +25,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlAttribute;
 
 /**
  * @since Dec 1, 2015 1:32:47 PM (creation date)
@@ -56,12 +57,12 @@ public class PublishEvents implements Serializable {
     private boolean isAndroid;
     @ManyToOne
     private Experiment experiment;
-    private String buildName;
+//    private String buildName;
 
     public PublishEvents() {
     }
 
-    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop) {
+    public PublishEvents(Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop) {
         this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
@@ -69,55 +70,59 @@ public class PublishEvents implements Serializable {
         this.isiOS = isiOS;
         this.isAndroid = isAndroid;
         this.isDesktop = isDesktop;
-        this.experiment = experiment;
-        this.buildName = experiment.getAppNameInternal();
+        //this.experiment = experiment;
+//        this.buildName = experiment.getAppNameInternal();
     }
+//
+//    public String getBuildName() {
+//        return buildName;
+//    }
 
-    public String getBuildName() {
-        return buildName;
-    }
-
-    public String getExperimentInternalName() {
-        return experiment.getAppNameInternal();
-    }
-
-    public String getExperimentDisplayName() {
-        return experiment.getAppNameDisplay();
-    }
-
+//    public String getExperimentInternalName() {
+//        return experiment.getAppNameInternal();
+//    }
+//    public String getExperimentDisplayName() {
+//        return experiment.getAppNameDisplay();
+//    }
+    @XmlAttribute
     public PublishState getState() {
         return publishState;
     }
 
+    @XmlAttribute
     public Date getPublishDate() {
         return publishDate;
     }
 
+    @XmlAttribute
     public Date getExpiryDate() {
         return expiryDate;
     }
 
+    @XmlAttribute
     public boolean isIsWebApp() {
         return isWebApp;
     }
 
+    @XmlAttribute
     public boolean isIsiOS() {
         return isiOS;
     }
 
+    @XmlAttribute
     public boolean isIsAndroid() {
         return isAndroid;
     }
 
+    @XmlAttribute
     public boolean isIsDesktop() {
         return isDesktop;
     }
 
-    public float getDefaultScale() {
-        return experiment.getDefaultScale();
-    }
-
-    public int isIsScalable() {
-        return (experiment.isIsScalable()) ? 1 : 0;
-    }
+//    public float getDefaultScale() {
+//        return experiment.getDefaultScale();
+//    }
+//    public int isIsScalable() {
+//        return (experiment.isIsScalable()) ? 1 : 0;
+//    }
 }
