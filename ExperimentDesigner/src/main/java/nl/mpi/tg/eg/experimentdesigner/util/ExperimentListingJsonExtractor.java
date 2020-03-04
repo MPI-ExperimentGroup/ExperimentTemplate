@@ -18,19 +18,18 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Date;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
+import nl.mpi.tg.eg.experimentdesigner.model.BuildListing;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
-import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
@@ -40,41 +39,32 @@ import org.xml.sax.SAXException;
 public class ExperimentListingJsonExtractor {
 
     public void extractListingJson(File xmlFile, File listingDirectory) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
-        FileInputStream fileInputStream = new FileInputStream(xmlFile);
-        DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = builderFactory.newDocumentBuilder();
-        Document xmlDocument = builder.parse(fileInputStream);
-        String fileName = xmlFile.getName();
         String result = "";
-
         final File outputFile = new File(listingDirectory, xmlFile.getName().replaceAll(".xml$", ".json"));
         Writer fileWriter = getWriter(outputFile);
-        final Experiment experiment = new Experiment();
-        experiment.setAppNameDisplay("asd");
-        experiment.setAppNameInternal("asd");
-        final Date publishDate = new Date(2020, 2, 20);
-        final Date expiryDate = new Date(2020, 0, 20);
-        final PublishEvents.PublishState publishState = PublishEvents.PublishState.editing;
-        final boolean isWebApp = true;
-        final boolean isiOS = true;
-        final boolean isAndroid = true;
-        final boolean isDesktop = true;
-        final PublishEvents publishEvents = new PublishEvents(experiment, publishDate, expiryDate, publishState, isWebApp, isiOS, isAndroid, isDesktop);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(fileWriter, publishEvents);
-
-        System.out.println(outputFile);
         try {
-            fileWriter.close();
-        } catch (IOException iOException) {
-            result += "Could not write listing JSON file: ";
-            result += iOException.getMessage();
-            System.out.println(iOException.getMessage());
+            JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+            Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
+            final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
+            ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+            mapper.writeValue(fileWriter, new BuildListing(experiment));
+
+            System.out.println(outputFile);
+            try {
+                fileWriter.close();
+            } catch (IOException iOException) {
+                result += "Could not write listing JSON file: ";
+                result += iOException.getMessage();
+                System.out.println(iOException.getMessage());
+            }
+        } catch (JAXBException jAXBException) {
+            result += "Could not parse the experiment XML needed to creaete the build listing: ";
+            result += jAXBException.getMessage();
+            System.out.println(jAXBException.getMessage());
         }
         if (!result.isEmpty()) {
             throw new XpathExperimentException(result);
         }
-
     }
 
     protected Writer getWriter(final File outputFile) throws IOException {
