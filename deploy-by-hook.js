@@ -40,6 +40,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const m2Settings = properties.get('settings.m2Settings');
+const listingDirectory = properties.get('settings.listingDirectory');
 const incomingDirectory = properties.get('settings.incomingDirectory');
 const processingDirectory = properties.get('settings.processingDirectory');
 const targetDirectory = properties.get('settings.targetDirectory');
@@ -927,7 +928,7 @@ function convertJsonToXml() {
         'exec.classpathScope': 'runtime',
         'versionCheck.allowSnapshots': 'true',
         'versionCheck.buildType': 'stable',
-        'exec.args': '-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ' + incomingDirectory + ' ' + incomingDirectory
+        'exec.args': '-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ' + incomingDirectory + ' ' + incomingDirectory + ' ' + listingDirectory
     }).then(function (value) {
         console.log("convert JSON to XML finished");
         resultsFile.write("<div>Conversion from JSON to XML finished, '" + new Date().toISOString() + "'</div>");
