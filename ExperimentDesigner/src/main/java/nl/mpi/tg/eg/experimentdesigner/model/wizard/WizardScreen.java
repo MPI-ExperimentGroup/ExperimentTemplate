@@ -69,10 +69,10 @@ public interface WizardScreen {
 //    public void setBackWizardScreen(WizardScreen backWizardScreen);
 //    public WizardScreen getNextWizardScreen();
 //    public void setNextWizardScreen(WizardScreen nextWizardScreen);
-    @Deprecated
+    //@Deprecated
     public void setBackWizardScreen(WizardScreen backWizardScreen);
 
-    @Deprecated
+    //@Deprecated
     public void setNextWizardScreen(WizardScreen nextWizardScreen);
 
     public WizardScreenData getWizardScreenData();
