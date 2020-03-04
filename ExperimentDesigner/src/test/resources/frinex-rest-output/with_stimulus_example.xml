@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" 
             userIdGetParam="uuid" 
-            appNameDisplay="with_stimulus_example" 
+            appNameDisplay="With Stimulus Example" 
             appNameInternal="with_stimulus_example" 
             backgroundColour="#FFFFFF" 
             complementColour0="#EAC3A3" 
