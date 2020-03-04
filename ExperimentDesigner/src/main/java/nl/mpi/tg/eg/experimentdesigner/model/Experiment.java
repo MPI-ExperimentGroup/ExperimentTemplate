@@ -194,6 +194,7 @@ public class Experiment implements Serializable {
         this.resourceNetworkPath = resourceNetworkPath;
     }
 
+    @XmlElement(name = "deployment")
     public List<PublishEvents> getPublishEvents() {
         return publishEvents;
     }
