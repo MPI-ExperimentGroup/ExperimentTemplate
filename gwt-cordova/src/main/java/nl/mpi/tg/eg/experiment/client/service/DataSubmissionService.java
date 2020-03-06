@@ -254,7 +254,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                         .append(jsonEscape(experimentName))
                         .append(",\n\"userId\": ")
                         .append(jsonEscape(userId.toString()))
-                        .append(",\n\"eventTag\": ")
+                        .append(",\n\"eventTag\": TEM_")
                         .append(jsonEscape(timedEvent.getEventName()))
                         .append(",\n\"eventMs\": \"")
                         .append(timedEvent.getEventMs())
