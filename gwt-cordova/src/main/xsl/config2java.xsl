@@ -556,7 +556,8 @@ or local-name() eq 'removeStimulus'
                                 or local-name() eq 'hasMetadataValue'
                                 or local-name() eq 'setMetadataEvalTokens'
                                 or local-name() eq 'progressIndicator'
-                                ) then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus') or contains(@evaluateTokens, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
+                                ) then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus') or contains(@evaluateTokens, '&lt;stimulus')
+                                    or contains(@featureText, '&lt;code') or contains(@dataLogFormat, '&lt;code') or contains(@evaluateTokens, '&lt;code')) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;, ') else ''" />   
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
