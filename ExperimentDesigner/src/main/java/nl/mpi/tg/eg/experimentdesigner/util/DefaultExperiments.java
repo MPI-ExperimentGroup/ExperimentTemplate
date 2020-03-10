@@ -463,7 +463,9 @@ public class DefaultExperiments {
                 }
                 break;
         }
-        if (featureType.canHaveFeatures()) {
+        if (featureType.getRequiresChildType() == FeatureType.Contitionals.any
+                || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction
+                || featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction) {
             presenterFeature.addFeature(FeatureType.plainText, "plainText in " + featureType.name());
 //            presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.plainText, presenterFeatureRepository, ));
             if (presenterFeatureRepository != null) {
