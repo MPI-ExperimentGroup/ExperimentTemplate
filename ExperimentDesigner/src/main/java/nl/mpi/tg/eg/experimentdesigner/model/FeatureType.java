@@ -46,9 +46,9 @@ public enum FeatureType {
     stimulusExists(false, false, new FeatureAttribute[]{offset}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     showStimuliReport(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName, groupId}),
-    actionButton(true, true, new FeatureAttribute[]{hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.hasActionButtons, Contitionals.none),
-    actionTokenButton(true, true, new FeatureAttribute[]{hotKey, styleName, groupId}),
+    targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName, groupId}, "Creates a button which when clicked navigates to the target presenter."),
+    actionButton(true, new FeatureAttribute[]{hotKey, styleName, groupId}, "Creates a button which when clicked evaluates the contents of its element.", Contitionals.any, Contitionals.hasActionButtons, Contitionals.none),
+    actionTokenButton(true, new FeatureAttribute[]{hotKey, styleName, groupId}, "Creates a button where any tokens in its label are evaluated before displaying. When clicked evaluates the contents of its element.", Contitionals.any, Contitionals.hasActionButtons, Contitionals.none),
     disableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     enableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     hideButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
@@ -59,19 +59,19 @@ public enum FeatureType {
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /* document the automaticly generated hot key listners for numbers and some letters z . */ /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    ratingRadioButton(false, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.none, Contitionals.stimulusAction),
-    ratingCheckbox(false, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /*"If groupId contains tokens they will be replaced with the respective values.", */false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    ratingRadioButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.none, Contitionals.stimulusAction),
+    ratingCheckbox(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusFreeText(false, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // the hotKey in stimulusFreeText will trigger any button with the same hotkey. // todo: The current use of the featureText attribute could be changed to allowedCharErrorMessage and inputErrorMessage could be changed to validationErrorMessage
     stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.none, Contitionals.stimulusAction),
-    stimulusRatingRadio(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    stimulusRatingCheckbox(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusRatingRadio(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusRatingCheckbox(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, new FeatureAttribute[]{groupId, matchingRegex}, "When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex. If groupId contains tokens they will be replaced with the respective values before the evaluation.", Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     setStimulusCodeResponse(false, new FeatureAttribute[]{codeFormat, dataChannel, applyScore, groupId}, "Sets a response to the current stimulus with the value of codeFormat. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId or codeFormat contain tokens they will be replaced with the respective values.", Contitionals.none, Contitionals.stimulusAction),
-    addStimulusCodeResponseValidation(true, new FeatureAttribute[]{validationRegex, dataChannel, groupId}, "Adds a stmulus validation listener for StimulusCodeResponses, so that they can be validaded like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.",/* this validation is specific to the StimulusCodeResponses*/ Contitionals.none, Contitionals.stimulusAction),
+    addStimulusCodeResponseValidation(true, new FeatureAttribute[]{validationRegex, dataChannel, groupId}, "Adds a stimulus validation listener for StimulusCodeResponses, so that they can be validated like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.",/* this validation is specific to the StimulusCodeResponses*/ Contitionals.none, Contitionals.stimulusAction),
     ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, /*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.none, Contitionals.stimulusAction),
-    targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
-    actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}),
+    targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}, "Creates a button in the footer which when clicked navigates to the target presenter."),
+    actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}, "Creates a button in the footer which when clicked evaluates the contents of its element."),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     addPadding(false, false, null),
     localStorageData(false, false, null),
@@ -96,7 +96,7 @@ public enum FeatureType {
     metadataFieldDateTriggered(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, daysThresholds, visibleRegex, enabledRegex}), // the daysThresholds is a list of values trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName
 
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage, styleName, groupId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
+    createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}, "Creates a button that when clicked creates a new user and then navigates to the target presenter as the new user."),
     switchUserIdButton(true, new FeatureAttribute[]{styleName, groupId, fieldName, validationRegex}, "Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.", Contitionals.hasErrorSuccess, Contitionals.none),
     selectUserMenu(false, false, new FeatureAttribute[]{styleName, fieldName}, "Shows a menu listing the users in the system. The label on each menu item is determined by value of the provided metadata field. When a menu item is clicked the active user is changed and the next presenter is shown."),
     selectLocaleMenu(false, false, new FeatureAttribute[]{styleName}),
@@ -200,10 +200,10 @@ public enum FeatureType {
     table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
-    region(true, false, new FeatureAttribute[]{regionId, styleName}),
-    regionStyle(false, false, new FeatureAttribute[]{regionId, styleName}),
-    regionCodeStyle(false, false, new FeatureAttribute[]{regionId, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    regionReplace(true, false, new FeatureAttribute[]{regionId, styleName}),
+    regionAppend(true, false, new FeatureAttribute[]{regionId, styleName}, "Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be be appended to."),
+    regionStyle(false, false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then it will have the style applied. If no region matching exists then nothing will be done."),
+    regionCodeStyle(false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no region matching exists then nothing will be done.", Contitionals.none, Contitionals.stimulusAction),
+    regionReplace(true, false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then it will cleared. If no region matching the regionId exists then a new region is created in the current location. The resulting region is then appended to."),
     regionClear(false, false, new FeatureAttribute[]{regionId}),
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, animate, replacementRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
@@ -287,7 +287,8 @@ public enum FeatureType {
         hasMediaPlayback(false),
         hasMediaRecorderPlayback(false),
         hasActionButtons(true),
-        none(true);
+        none(true),
+        any(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element
         final public boolean areChildenOptional;
 
