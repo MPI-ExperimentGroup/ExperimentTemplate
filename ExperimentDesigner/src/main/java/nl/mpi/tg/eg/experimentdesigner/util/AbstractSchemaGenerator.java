@@ -197,15 +197,20 @@ public class AbstractSchemaGenerator {
 //                    childTypeList.add("onSuccess");
 //                    break;
             }
-//            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
-            if (featureType.canHaveFeatures()) {
+            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
                 for (final FeatureType featureRef : FeatureType.values()) {
-                    if (featureRef.isChildType(FeatureType.Contitionals.stimulusAction)
-                            || featureRef.isChildType(FeatureType.Contitionals.none)
-                            /* note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example */ || featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction)
-                            /* note: we are falsely allowing all group types here because the XSD does not consider the parent element */ || featureRef.isChildType(featureType.getRequiresChildType()) //|| featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
-                            //|| featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
-                            ) {
+                    if (featureRef.isChildType(featureType.getRequiresChildType())
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.none))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.none))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.none))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))) {
+                        // note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example
+                        // note: we are falsely allowing all group types here because the XSD does not consider the parent element
+                        // currently allowing all groupNetworkAction in any element
+                        // currently allowing all stimulusAction in any element
                         childTypeList.add(featureRef.name());
                     }
                 }
