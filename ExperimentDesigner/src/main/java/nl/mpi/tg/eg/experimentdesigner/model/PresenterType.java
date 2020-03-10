@@ -234,7 +234,7 @@ public enum PresenterType {
         loadKinTypeStringDiagram,
         preloadAllStimuli}),
     colourPicker(new FeatureType[]{
-        region,
+        regionAppend,
         regionClear,
         regionReplace,
         regionStyle,
