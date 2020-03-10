@@ -923,7 +923,7 @@ String</span><br/>
 <h3 id="actionButtonType" style="text-transform: uppercase;">
 actionButton
 </h3>
-
+Creates a button which when clicked evaluates the contents of its element.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">actionButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -1472,7 +1472,7 @@ String</span><br/>
 <h3 id="actionFooterButtonType" style="text-transform: uppercase;">
 actionFooterButton
 </h3>
-
+Creates a button in the footer which when clicked evaluates the contents of its element.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">actionFooterButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -2023,7 +2023,7 @@ String</span><br/>
 <h3 id="actionTokenButtonType" style="text-transform: uppercase;">
 actionTokenButton
 </h3>
-
+Creates a button where any tokens in its label are evaluated before displaying. When clicked evaluates the contents of its element.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">actionTokenButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -4539,7 +4539,7 @@ String</span><br/>
 <h3 id="createUserButtonType" style="text-transform: uppercase;">
 createUserButton
 </h3>
-
+Creates a button that when clicked creates a new user and then navigates to the target presenter as the new user.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">createUserButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -8891,7 +8891,7 @@ String</span><br/>
 <h3 id="regionType" style="text-transform: uppercase;">
 region
 </h3>
-
+Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be be appended to.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">region</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -9447,7 +9447,7 @@ String</span><br/>
 <h3 id="regionReplaceType" style="text-transform: uppercase;">
 regionReplace
 </h3>
-
+If a region matching the regionId exists then it will cleared. If no region matching the regionId exists then a new region is created in the current location. The resulting region is then appended to.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionReplace</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -9985,7 +9985,7 @@ String</span><br/>
 <h3 id="regionStyleType" style="text-transform: uppercase;">
 regionStyle
 </h3>
-
+If a region matching the regionId exists then it will have the style applied. If no region matching exists then nothing will be done.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionStyle</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -10981,6 +10981,9 @@ String</span><br/>
 <table>
 <tr><td>
 <a href="#actionButtonType"><span style="color:purple">&lt;</span><span style="color:blue">actionButton</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
+<a href="#actionTokenButtonType"><span style="color:purple">&lt;</span><span style="color:blue">actionTokenButton</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
 <a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -12170,7 +12173,7 @@ String</span><br/>
 <h3 id="targetButtonType" style="text-transform: uppercase;">
 targetButton
 </h3>
-
+Creates a button which when clicked navigates to the target presenter.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">targetButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -12209,7 +12212,7 @@ String</span><br/>
 <h3 id="targetFooterButtonType" style="text-transform: uppercase;">
 targetFooterButton
 </h3>
-
+Creates a button in the footer which when clicked navigates to the target presenter.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">targetFooterButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -14226,7 +14229,7 @@ String</span><br/>
 <h3 id="addStimulusCodeResponseValidationType" style="text-transform: uppercase;">
 addStimulusCodeResponseValidation
 </h3>
-Adds a stmulus validation listener for StimulusCodeResponses, so that they can be validaded like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.
+Adds a stimulus validation listener for StimulusCodeResponses, so that they can be validated like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">addStimulusCodeResponseValidation</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -15747,7 +15750,7 @@ String</span><br/>
 <h3 id="regionCodeStyleType" style="text-transform: uppercase;">
 regionCodeStyle
 </h3>
-
+If a region matching the regionId exists then the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no region matching exists then nothing will be done.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionCodeStyle</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
