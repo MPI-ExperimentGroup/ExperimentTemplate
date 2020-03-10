@@ -377,7 +377,7 @@
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="redirectToUrl" type="redirectToUrlType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionClear" type="regionClearType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
@@ -797,7 +797,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -984,7 +984,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -1180,7 +1180,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -1365,7 +1365,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -1545,7 +1545,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -1724,7 +1724,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -1905,7 +1905,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -2086,7 +2086,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -2285,7 +2285,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -2465,7 +2465,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -2645,7 +2645,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -2868,7 +2868,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -3074,7 +3074,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -3418,7 +3418,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -3720,7 +3720,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -3919,7 +3919,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -4113,7 +4113,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -4311,7 +4311,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -4491,7 +4491,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -4668,7 +4668,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -4854,7 +4854,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -5041,7 +5041,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -5219,7 +5219,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -5396,7 +5396,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -5570,7 +5570,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -5744,7 +5744,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -5918,7 +5918,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -6094,7 +6094,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -6270,7 +6270,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -6446,7 +6446,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -6620,7 +6620,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -6794,7 +6794,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -6968,7 +6968,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -7142,7 +7142,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -7316,7 +7316,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -7490,7 +7490,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -7664,7 +7664,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -7838,7 +7838,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -8018,7 +8018,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -8192,7 +8192,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -8366,7 +8366,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -8540,7 +8540,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -8714,7 +8714,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -8888,7 +8888,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -9062,7 +9062,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -9236,7 +9236,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -9410,7 +9410,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -9586,7 +9586,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -9760,7 +9760,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -9814,7 +9814,7 @@
 </xs:choice>
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
-<xs:complexType name="regionType">
+<xs:complexType name="regionAppendType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be be appended to.</xs:documentation>
@@ -9938,7 +9938,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -10131,7 +10131,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -10428,7 +10428,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -10614,7 +10614,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
@@ -10876,7 +10876,7 @@
 <xs:element name="table" type="tableType"/>
 <xs:element name="row" type="rowType"/>
 <xs:element name="column" type="columnType"/>
-<xs:element name="region" type="regionType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
