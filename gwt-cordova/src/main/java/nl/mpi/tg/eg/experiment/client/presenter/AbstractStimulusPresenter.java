@@ -1580,11 +1580,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText(duration.elapsedMillis() + "ms");
     }
 
-    protected void logTimeStamp(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, String eventTag, final int dataChannel) {
-        logTimeStamp(stimulusProvider, currentStimulus, "logTimeStamp", eventTag, dataChannel);
+    protected void logTimeStamp(String eventTag) {
+        timedEventMonitor.registerEvent(eventTag);
+        //logTimeStamp(stimulusProvider, currentStimulus, "logTimeStamp", eventTag, dataChannel);
     }
 
-    protected void logTimeStamp(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, String eventName, String eventTag, final int dataChannel) {
+    protected void logTagPairStamp(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, String eventName, String eventTag, final int dataChannel) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), eventName, duration.elapsedMillis());
     }
 
@@ -2240,7 +2241,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public void endOfTouchEvent(String groupName) {
-                    logTimeStamp(stimulusProvider, currentStimulus, "endOfTouchEvent", groupName, dataChannel);
+                    logTagPairStamp(stimulusProvider, currentStimulus, "endOfTouchEvent", groupName, dataChannel);
                 }
 
             };
