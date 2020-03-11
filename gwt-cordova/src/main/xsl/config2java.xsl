@@ -662,7 +662,6 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:if test="local-name() eq 'nextStimulus' 
-or local-name() eq 'logTimeStamp'
 or local-name() eq 'touchInputCaptureStart'
 or local-name() eq 'prevStimulus'
 or local-name() eq 'stimulusButton'
