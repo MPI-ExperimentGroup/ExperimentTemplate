@@ -42,6 +42,7 @@ public class AbstractSchemaGenerator {
         xsDecimal("xs:decimal", "Decimal"),
         xsBoolean("xs:boolean", "Boolean"),
         rgbHexValue("rgbHexValue", "RGB Hext Value"),
+        dateValue("dateValue", "Date Value YYYY-MM-DD"),
         stimulusTags("stimulusTags", "Stimulus Tags"),
         stimulusTag("stimulusTag", "Stimulus Tag"),
         integerList("integerList", "Integer List"),
@@ -344,7 +345,17 @@ public class AbstractSchemaGenerator {
             new DocumentationElement[]{
                 new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
                         new DocumentationElement[0]).stringAttribute("featureText", false),
-                new DocumentationElement("administration", "Administration", 0, 1,
+                new DocumentationElement("deployment", "", 0, 1,
+                        new DocumentationElement[0])
+                        .documentedAttribute("publishDate", AttributeType.dateValue, "The date from which the experiment will be deployed.", false)
+                        .documentedAttribute("expiryDate", AttributeType.dateValue, "The date after which the experiment can be undeployed.", false)
+                        .booleanAttribute("isWebApp", true, "If true a web version of this experiment will be generated.")
+                        .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
+                        .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
+                        .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
+                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are commited.", false, "debug", "staging", "production", "undeploy")
+                        .documentedAttribute("registrationUrlStaging", AttributeType.xsString, "The URL to an external registration service if this is to be used by the experiment.", true),
+                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
                                     .stringAttribute("fieldName", false)
