@@ -144,7 +144,7 @@ public enum FeatureType {
     activateRandomItem(false, false, new FeatureAttribute[]{}, "Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter."),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
-    logTimeStamp(false, new FeatureAttribute[]{eventTag, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    logTimeStamp(false, new FeatureAttribute[]{eventTag}, "Records a timestamp similar to the way image and media onLoad events etc. are logged. The logged ms is relative to the load time of the presenter.", Contitionals.none, Contitionals.none),
     // todo: document audioButton which fires the played event once and only once after the first playback finishes
     audioButton(false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src, groupId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     preloadAllStimuli(false, null, true, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
