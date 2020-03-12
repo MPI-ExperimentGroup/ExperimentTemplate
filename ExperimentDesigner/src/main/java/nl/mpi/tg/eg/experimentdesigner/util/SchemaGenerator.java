@@ -52,6 +52,11 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"dateValue\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:pattern value=\"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"presenterName\">\n");
         writer.append("<xs:restriction base=\"xs:string\">\n");
         writer.append("<xs:pattern value=\"[a-zA-Z_0-9]{3,}\"/>\n");
@@ -453,19 +458,21 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addExperiment(writer, FeatureAttribute.values());
 //        writer.append("<!--experiment-->\n");
         addElement(writer, rootElement, false);
-//        writer.append("<!--administrationType-->\n");
+//        writer.append("<!--deploymentType-->\n");
         addElement(writer, rootElement.childElements[1], true);
+//        writer.append("<!--administrationType-->\n");
+        addElement(writer, rootElement.childElements[2], true);
 //        writer.append("<!--validationType-->\n");
-        addElement(writer, rootElement.childElements[1].childElements[2], true);
+        addElement(writer, rootElement.childElements[2].childElements[2], true);
 //        writer.append("<!--metadataType-->\n");
-        addElement(writer, rootElement.childElements[3], true);
-        //        writer.append("<!--fieldType-->\n");
-        addElement(writer, rootElement.childElements[3].childElements[0], true);
-//        writer.append("<!--presenterType-->\n");
         addElement(writer, rootElement.childElements[4], true);
-//        writer.append("<!--stimuliType-->\n");
+        //        writer.append("<!--fieldType-->\n");
+        addElement(writer, rootElement.childElements[4].childElements[0], true);
+//        writer.append("<!--presenterType-->\n");
         addElement(writer, rootElement.childElements[5], true);
-        addElement(writer, rootElement.childElements[5].childElements[0], true);
+//        writer.append("<!--stimuliType-->\n");
+        addElement(writer, rootElement.childElements[6], true);
+        addElement(writer, rootElement.childElements[6].childElements[0], true);
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, new DocumentationElement(featureType), true);
         }
