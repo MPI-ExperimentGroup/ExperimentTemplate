@@ -36,10 +36,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class PublishEvents implements Serializable {
 
     public enum PublishState {
-
         editing,
+        debug,
         staging,
-        production
+        production,
+        undeploy
     };
 
     @Id
@@ -126,4 +127,34 @@ public class PublishEvents implements Serializable {
 //    public int isIsScalable() {
 //        return (experiment.isIsScalable()) ? 1 : 0;
 //    }
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public void setExpiryDate(Date expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public void setState(PublishState publishState) {
+        this.publishState = publishState;
+    }
+
+//    public void setState(String publishState) {
+//        this.publishState = PublishState.valueOf(publishState);
+//    }
+    public void setIsWebApp(boolean isWebApp) {
+        this.isWebApp = isWebApp;
+    }
+
+    public void setIsDesktop(boolean isDesktop) {
+        this.isDesktop = isDesktop;
+    }
+
+    public void setIsiOS(boolean isiOS) {
+        this.isiOS = isiOS;
+    }
+
+    public void setIsAndroid(boolean isAndroid) {
+        this.isAndroid = isAndroid;
+    }
 }
