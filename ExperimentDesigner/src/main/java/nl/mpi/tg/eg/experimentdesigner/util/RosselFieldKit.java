@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
+import nl.mpi.tg.eg.experimentdesigner.model.DataChannel;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
@@ -44,7 +45,7 @@ public class RosselFieldKit {
         wizardData.setAppName("RosselFieldKit");
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
-
+        wizardData.addDataChannel(new DataChannel(0, "Example", true));
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions",
                 "The stimuli used by this app and the recordings created by this app are stored in MPI_STIMULI and MPI_Recorder respectively. "
