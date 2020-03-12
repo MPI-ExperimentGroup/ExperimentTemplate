@@ -19,7 +19,9 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
@@ -161,6 +163,9 @@ public class DefaultExperiments {
         if (metadataRepository != null) {
             metadataRepository.save(experiment.getMetadata());
         }
+        final Calendar datePublished = new GregorianCalendar(2020, 02, 02);
+        final Calendar dateExpired = new GregorianCalendar(2020, 02, 20);
+        experiment.getPublishEvents().add(new PublishEvents(experiment, datePublished.getTime(), dateExpired.getTime(), PublishEvents.PublishState.editing, true, true, true, true));
         addStimuli(experiment);
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
