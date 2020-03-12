@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -90,13 +91,13 @@ public class PublishEvents implements Serializable {
     }
 
     @XmlAttribute
-    public Date getPublishDate() {
-        return publishDate;
+    public String getPublishDate() {
+        return (publishDate != null) ? new SimpleDateFormat("yyyy-MM-dd").format(publishDate) : "";
     }
 
     @XmlAttribute
-    public Date getExpiryDate() {
-        return expiryDate;
+    public String getExpiryDate() {
+        return (expiryDate != null) ? new SimpleDateFormat("yyyy-MM-dd").format(expiryDate) : "";
     }
 
     @XmlAttribute
