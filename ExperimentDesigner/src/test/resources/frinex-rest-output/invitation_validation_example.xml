@@ -152,7 +152,7 @@
         </saveMetadataButton>
     </presenter>-->
     <presenter back="Menu" menuLabel="Increment Score" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
-        <region regionId="scoreLabelsRegion"/>
+        <regionAppend regionId="scoreLabelsRegion"/>
         <triggerDefinition listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
             <regionReplace regionId="scoreLabelsRegion">
                 <htmlTokenText featureText="
