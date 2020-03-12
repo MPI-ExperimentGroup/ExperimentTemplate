@@ -62,7 +62,7 @@ public class PublishEvents implements Serializable {
     public PublishEvents() {
     }
 
-    public PublishEvents(Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop) {
+    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop) {
         this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
@@ -70,7 +70,7 @@ public class PublishEvents implements Serializable {
         this.isiOS = isiOS;
         this.isAndroid = isAndroid;
         this.isDesktop = isDesktop;
-        //this.experiment = experiment;
+        this.experiment = experiment;
 //        this.buildName = experiment.getAppNameInternal();
     }
 //
