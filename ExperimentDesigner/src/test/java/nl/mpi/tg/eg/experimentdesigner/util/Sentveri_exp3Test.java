@@ -51,7 +51,7 @@ public class Sentveri_exp3Test {
     public void testCreate3c() throws IOException, JAXBException, URISyntaxException {
         System.out.println("create3c");
         Sentveri_exp3 instance = new Sentveri_exp3();
-        
+
         URI testXmlUri = this.getClass().getResource("/frinex-rest-output/sentveri_exp3.xml").toURI();
         String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
         Experiment result = new DefaultExperiments().getDefault("Sentveri_exp3");
@@ -71,6 +71,14 @@ public class Sentveri_exp3Test {
 //        jaxbMarshaller.marshal(result, System.out);
         jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "sentveri_exp3-testoutput.xml"));
         jaxbMarshaller.marshal(result, stringWriter);
-        assertEquals(expResult, stringWriter.toString());
+        final String[] splitExpectedString = expResult.split("\n");
+        final String[] splitResultString = stringWriter.toString().split("\n");
+        for (int index = 0; index < splitExpectedString.length || index < splitResultString.length; index++) {
+            // we deliberately loop on the larger array so that we throw an error if the lengths are different
+            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
+            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
+            assertEquals("Sentveri_exp3" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
+            //System.out.println(splitExpectedString[index]);
+        }
     }
 }
