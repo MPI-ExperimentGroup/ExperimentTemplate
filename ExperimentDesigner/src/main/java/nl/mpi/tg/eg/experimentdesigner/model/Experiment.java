@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * @since Sep 4, 2015 2:42:21 PM (creation date)
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @XmlRootElement
+@XmlType(propOrder = {"publishEvents", "dataChannels", "scss", "metadata", "presenterScreen", "stimuli"})
 public class Experiment implements Serializable {
 
     @Id
@@ -70,6 +72,7 @@ public class Experiment implements Serializable {
     private boolean preserveLastState = true;
     private boolean preventWindowClose = true;
     private float defaultScale = 1;
+    private String scss;
 
     @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
@@ -131,10 +134,20 @@ public class Experiment implements Serializable {
         this.textFontSize = textFontSize;
     }
 
+    @XmlElement(name = "deployment")
+    public List<PublishEvents> getPublishEvents() {
+        return publishEvents;
+    }
+
     @XmlElementWrapper(name = "administration")
     @XmlElement(name = "dataChannel")
     public List<DataChannel> getDataChannels() {
         return dataChannels;
+    }
+
+    @XmlElement(name = "scss")
+    public String getScss() {
+        return scss;
     }
 
     public void setDataChannels(List<DataChannel> dataChannels) {
@@ -192,11 +205,6 @@ public class Experiment implements Serializable {
 
     public void setResourceNetworkPath(String resourceNetworkPath) {
         this.resourceNetworkPath = resourceNetworkPath;
-    }
-
-    @XmlElement(name = "deployment")
-    public List<PublishEvents> getPublishEvents() {
-        return publishEvents;
     }
 
     public void setPrimaryColour1(String primaryColour1) {
