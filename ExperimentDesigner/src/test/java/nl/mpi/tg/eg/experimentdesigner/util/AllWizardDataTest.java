@@ -30,6 +30,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.Date;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -37,6 +38,7 @@ import javax.xml.bind.Unmarshaller;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import org.junit.Test;
@@ -77,14 +79,24 @@ public class AllWizardDataTest {
         FileWriter fileWriter = new FileWriter(new File(new File(testXmlUri).getParentFile(), testOutputName));
         jaxbMarshaller.marshal(experiment, fileWriter);
         jaxbMarshaller.marshal(experiment, stringWriter);
-        assertEquals(testOutputName, expResult, stringWriter.toString());
+        final String[] splitExpectedString = expResult.split("\n");
+        final String[] splitResultString = stringWriter.toString().split("\n");
+        for (int index = 0; index < splitExpectedString.length || index < splitResultString.length; index++) {
+            // we deliberately loop on the larger array so that we throw an error if the lengths are different
+            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
+            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
+            assertEquals(testOutputName + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
+            //System.out.println(splitExpectedString[index]);
+        }
     }
 
     private void testDeserialiseWizardData(final File serialisedFile) throws IOException, JAXBException, URISyntaxException {
         JAXBContext jaxbContext = JAXBContext.newInstance(WizardData.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         WizardData wizardData = (WizardData) jaxbUnmarshaller.unmarshal(serialisedFile);
-        testGetWizardData(wizardController.getExperiment(wizardData));
+        final Experiment experiment = wizardController.getExperiment(wizardData);
+        experiment.getPublishEvents().add(new PublishEvents(null, new Date(), new Date(), PublishEvents.PublishState.editing, true, false, false, false));
+        testGetWizardData(experiment);
     }
 
     public void testSerialiseWizardData(WizardData wizardData) throws IOException, JAXBException, URISyntaxException {
