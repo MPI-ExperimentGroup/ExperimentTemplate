@@ -474,9 +474,9 @@
         <metadataField fieldName="notificationCountWeekendSettings"/>
         <!--        <actionButton featureText="Request Notification">
                 <requestNotification listenerId="notificationA" featureText="featureText for notificationA" fieldName="notificationMatchA" dataLogFormat="dataLogFormat for notificationA"/>
-                <region regionId="regionTimerA">
+                <regionAppend regionId="regionTimerA">
                     <plainText featureText="Request Notification Done"/>
-                </region>
+                </regionAppend>
         </actionButton>-->
         <saveMetadataButton featureText="Request Range Notifications" sendData="false" networkErrorMessage=".">
             <onError>
@@ -498,13 +498,13 @@
     </presenter>
     <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
         <startTimer msToNext="150000" listenerId="timerA">
-            <region regionId="regionTimerC">
+            <regionAppend regionId="regionTimerC">
                 <plainText featureText="TimerC Completed"/>
-            </region>
+            </regionAppend>
         </startTimer>
-        <region regionId="regionTimerA">
+        <regionAppend regionId="regionTimerA">
             <plainText featureText="TimerA region"/>
-        </region>
+        </regionAppend>
         <plainText featureText="msToNext=30000 will count down 30000ms"/>
         <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="30000" styleName="countDownLabel"/>
         <plainText featureText="TimerC msToNext=0 will just count up"/>
@@ -512,9 +512,9 @@
         <actionButton featureText="Restart TimerA">
             <clearTimer listenerId="timerA"/>
             <startTimer msToNext="15000" listenerId="timerA">
-                <region regionId="regionTimerA">
+                <regionAppend regionId="regionTimerA">
                     <plainText featureText="TimerA Restart Completed"/>
-                </region>
+                </regionAppend>
             </startTimer>
         </actionButton>
     </presenter>
@@ -529,20 +529,20 @@
                 <clearTimer listenerId="sequentialDisplayTimer5"/>
                 <clearTimer listenerId="sequentialDisplayTimer6"/>
                 <clearPage/>
-                <region regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
+                <regionAppend regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
                     <htmlText featureText="sync" styleName="stimuliLabel"/>
-                </region>
-                <region regionId="hardwareLightSensor2Outline" styleName="hardwareLightSensor2Outline">
+                </regionAppend>
+                <regionAppend regionId="hardwareLightSensor2Outline" styleName="hardwareLightSensor2Outline">
                     <htmlText featureText="&amp;nbsp;" styleName="stimuliLabel"/>
-                </region>
-                <region regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
+                </regionAppend>
+                <regionAppend regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
                     <htmlText featureText="+" styleName="stimuliLabel"/>
-                </region>
-                <region regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
+                </regionAppend>
+                <regionAppend regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
                     <stimulusLabel styleName="stimuliLabel"/>
-                </region>
-                <region regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
-                <region regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                </regionAppend>
+                <regionAppend regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                <regionAppend regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
                 <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
                     <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer0&gt;ms"/>
                 </actionButton>
@@ -646,20 +646,20 @@
                 <clearTimer listenerId="sequentialDisplayTimer"/>
                 <clearPage/>
                 <timerLabel listenerId="sequentialDisplayTimer" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
-                <region regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
+                <regionAppend regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
                     <htmlText featureText="sync" styleName="stimuliLabel"/>
-                </region>
-                <region regionId="hardwareLightSensor2Outline" styleName="hardwareLightSensor2Outline">
+                </regionAppend>
+                <regionAppend regionId="hardwareLightSensor2Outline" styleName="hardwareLightSensor2Outline">
                     <htmlText featureText="&amp;nbsp;" styleName="stimuliLabel"/>
-                </region>
-                <region regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
+                </regionAppend>
+                <regionAppend regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
                     <htmlText featureText="+" styleName="stimuliLabel"/>
-                </region>
-                <region regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
+                </regionAppend>
+                <regionAppend regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
                     <stimulusLabel styleName="stimuliLabel"/>
-                </region>
-                <region regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
-                <region regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                </regionAppend>
+                <regionAppend regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                <regionAppend regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
                 <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
                     <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer&gt;ms"/>
                 </actionButton>
@@ -795,18 +795,18 @@
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Region Timer Screen" next="With_Stimuli_Screen" type="stimulus" self="Region_Timer_Screen" title="With Stimuli Screen">
-        <region regionId="regionTimerC">
+        <regionAppend regionId="regionTimerC">
             <plainText featureText="TimerC startTimer"/>
-        </region>
+        </regionAppend>
         <startTimer msToNext="30000" listenerId="timerA">
-            <region regionId="regionTimerC">
+            <regionAppend regionId="regionTimerC">
                 <plainText featureText="TimerC Completed"/>
-            </region>
+            </regionAppend>
         </startTimer>
         <timerLabel listenerId="timerA" msLabelFormat="ss" msToNext="30000" styleName="countDownLabel"/>
-        <region regionId="regionId" styleName="styleName">
+        <regionAppend regionId="regionId" styleName="styleName">
             <plainText featureText="plainText in region"/>
-        </region>
+        </regionAppend>
         <actionButton featureText="regionStyleNone">
             <regionStyle regionId="regionId" styleName=""/>
         </actionButton>
@@ -821,72 +821,72 @@
         <actionButton featureText="regionClear">
             <regionClear regionId="regionId"/>
         </actionButton>
-        <region regionId="regionTimerA">
+        <regionAppend regionId="regionTimerA">
             <plainText featureText="TimerA region"/>
-        </region>
+        </regionAppend>
         <actionButton featureText="startTimerA">
-            <region regionId="regionTimerA">
+            <regionAppend regionId="regionTimerA">
                 <plainText featureText="TimerA startTimer"/>
-            </region>
+            </regionAppend>
             <startTimer msToNext="30000" listenerId="timerA">
-                <region regionId="regionTimerA">
+                <regionAppend regionId="regionTimerA">
                     <plainText featureText="TimerA Completed"/>
-                </region>
+                </regionAppend>
             </startTimer>
         </actionButton>
         <actionButton featureText="compareTimerA">
             <compareTimer msToNext="10000" listenerId="timerA">
                 <aboveThreshold>
-                    <region regionId="regionTimerA">
+                    <regionAppend regionId="regionTimerA">
                         <plainText featureText="TimerA aboveThreshold"/>
-                    </region>
+                    </regionAppend>
                 </aboveThreshold>
                 <withinThreshold>
-                    <region regionId="regionTimerA">
+                    <regionAppend regionId="regionTimerA">
                         <plainText featureText="TimerA withinThreshold"/>
-                    </region>
+                    </regionAppend>
                 </withinThreshold>
             </compareTimer>
         </actionButton>
         <actionButton featureText="clearTimerA">
             <clearTimer listenerId="timerA"/>
-            <region regionId="regionTimerA">
+            <regionAppend regionId="regionTimerA">
                 <plainText featureText="TimerA clearTimer"/>
-            </region>
+            </regionAppend>
         </actionButton>
         <actionButton featureText="htmlTokenText TimerA">
-            <region regionId="regionTimerA">
+            <regionAppend regionId="regionTimerA">
                 <htmlTokenText featureText="TimerA &lt;timerA&gt;ms"/>
-            </region>
+            </regionAppend>
         </actionButton>
         <actionButton featureText="logTimerValueA">
             <logTimerValue listenerId="timerA" eventTag="timerAeventTag" dataChannel="3"/>
-            <region regionId="regionTimerA">
+            <regionAppend regionId="regionTimerA">
                 <plainText featureText="TimerA logTimerValue"/>
-            </region>
+            </regionAppend>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Region Toggle Example" type="stimulus" self="Region_Toggle_Example" title="Region Toggle Example">
-        <region regionId="regionA">
+        <regionAppend regionId="regionA">
             <actionButton featureText="show B">
                 <regionStyle regionId="regionA" styleName=""/>
                 <regionStyle regionId="regionB" styleName="exampleBorderedBackground"/>
             </actionButton>
-        </region>
-        <region regionId="regionB">
+        </regionAppend>
+        <regionAppend regionId="regionB">
             <actionButton featureText="exampleBorderedBackground to A and show B">
                 <regionStyle regionId="regionA" styleName="exampleBorderedBackground"/>
                 <regionStyle regionId="regionB" styleName=""/>
                 <regionStyle regionId="regionC" styleName=""/>
             </actionButton>
-        </region>
+        </regionAppend>
         <regionStyle regionId="regionB" styleName="hiddenRegion"/>
-        <region regionId="regionC">
+        <regionAppend regionId="regionC">
             <actionButton featureText="Hide region C and B">
                 <regionStyle regionId="regionB" styleName="hiddenRegion"/>
                 <regionStyle regionId="regionC" styleName="hiddenRegion"/>
             </actionButton>
-        </region>
+        </regionAppend>
     </presenter>
     <presenter back="Menu" menuLabel="Rating Toggle Example" type="stimulus" self="Rating_Toggle_Example" title="Rating Toggle Example">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -913,7 +913,7 @@
                 <addPadding/>
                 <plainText featureText="left label"/>
                 <plainText featureText="right label"/>
-                <region regionId="region1">
+                <regionAppend regionId="region1">
                     <actionButton featureText="1" styleName="toggleBox">
                         <setStimulusCodeResponse codeFormat="1" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOn"/>
@@ -922,8 +922,8 @@
                         <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
                         <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
                     </actionButton>
-                </region>
-                <region regionId="region2">
+                </regionAppend>
+                <regionAppend regionId="region2">
                     <actionButton featureText="2" styleName="toggleBox">
                         <setStimulusCodeResponse codeFormat="2" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
@@ -932,8 +932,8 @@
                         <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
                         <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
                     </actionButton>
-                </region>
-                <region regionId="region3">
+                </regionAppend>
+                <regionAppend regionId="region3">
                     <actionButton featureText="3" styleName="toggleBox">
                         <setStimulusCodeResponse codeFormat="3" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
@@ -942,8 +942,8 @@
                         <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
                         <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
                     </actionButton>
-                </region>
-                <region regionId="region4">
+                </regionAppend>
+                <regionAppend regionId="region4">
                     <actionButton featureText="4" styleName="toggleBox">
                         <setStimulusCodeResponse codeFormat="4" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
@@ -952,8 +952,8 @@
                         <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOn"/>
                         <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
                     </actionButton>
-                </region>
-                <region regionId="region5">
+                </regionAppend>
+                <regionAppend regionId="region5">
                     <actionButton featureText="5" styleName="toggleBox">
                         <setStimulusCodeResponse codeFormat="5" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
@@ -962,7 +962,7 @@
                         <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
                         <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOn"/>
                     </actionButton>
-                </region>
+                </regionAppend>
                 <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
                 <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
                 <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
@@ -1078,9 +1078,9 @@
     </presenter>
     <presenter back="Menu" menuLabel="Append Unique Date" type="stimulus" self="append_unique_date" title="Append Unique Date">
         <!--todo: complete this example-->
-        <region regionId="currentValueRegion">
+        <regionAppend regionId="currentValueRegion">
             <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
-        </region>
+        </regionAppend>
         <triggerDefinition listenerId="showCurrentValue" threshold="0" maximum="0">
             <regionReplace regionId="currentValueRegion">
                 <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
@@ -1177,18 +1177,18 @@
                 </stimulusPresent>
             </eachStimulus>
             <afterStimulus>
-                <region regionId="validateStimuliResponses"/>
+                <regionAppend regionId="validateStimuliResponses"/>
                 <actionButton featureText="validateStimuliResponses">
                     <validateStimuliResponses>
                         <conditionFalse>
-                            <region regionId="validateStimuliResponses">
+                            <regionAppend regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionFalse"/>
-                            </region>
+                            </regionAppend>
                         </conditionFalse>
                         <conditionTrue>
-                            <region regionId="validateStimuliResponses">
+                            <regionAppend regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionTrue"/>
-                            </region>
+                            </regionAppend>
                         </conditionTrue>
                     </validateStimuliResponses>
                 </actionButton>
@@ -1208,7 +1208,7 @@
             </beforeStimulus>
             <eachStimulus>
                 <stimulusMetadataField dataChannel="3" fieldName="education"/>
-                <region regionId="subquestionregion&lt;stimulusId&gt;">
+                <regionAppend regionId="subquestionregion&lt;stimulusId&gt;">
                     <plainText featureText="plainText in eachStimulus"/>
                     <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                         <mediaLoaded/>
@@ -1223,19 +1223,19 @@
                                         <conditionTrue>
                                             <column>
                                                 <actionTokenButton featureText="Rating 0 is &lt;stimulusRatingLabel_0&gt;">
-                                                    <region regionId="subquestionregion&lt;stimulusId&gt;">
+                                                    <regionAppend regionId="subquestionregion&lt;stimulusId&gt;">
                                                         <plainText featureText="Question one rating 0"/>
                                                         <plainText featureText="Question one for zin compleet"/>
                                                         <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="rating_0_for_zin_compleet"/>
-                                                    </region>
+                                                    </regionAppend>
                                                 </actionTokenButton>
                                             </column>                                            
                                             <column>
                                                 <actionTokenButton featureText="Rating 1 is &lt;stimulusRatingLabel_1&gt;">
                                                     <plainText featureText="Question one rating 1"/>
-                                                    <region regionId="subquestionregion&lt;stimulusId&gt;">
+                                                    <regionAppend regionId="subquestionregion&lt;stimulusId&gt;">
                                                         <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="rating_0_for_zin_compleet"/>
-                                                    </region>
+                                                    </regionAppend>
                                                 </actionTokenButton>
                                             </column>
                                         </conditionTrue>
@@ -1251,10 +1251,10 @@
                                                 <plainText featureText="Question three for zin compleet"/>
                                                 <ratingRadioButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="3" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" groupId="question_three_for_zin_compleet"/>
                                                 <actionButton featureText="do you want another question">
-                                                    <region regionId="subquestionregion&lt;stimulusId&gt;">
+                                                    <regionAppend regionId="subquestionregion&lt;stimulusId&gt;">
                                                         <plainText featureText="here is your question, please describe it"/>
                                                         <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" " groupId="another_question_for_zin_compleet"/>
-                                                    </region>
+                                                    </regionAppend>
                                                 </actionButton>
                                             </regionReplace>
                                         </actionButton>
@@ -1275,21 +1275,21 @@
                             </table>
                         </mediaPlaybackComplete>
                     </stimulusPresent>
-                </region>
+                </regionAppend>
             </eachStimulus>
             <afterStimulus>
-                <region regionId="validateStimuliResponses"/>
+                <regionAppend regionId="validateStimuliResponses"/>
                 <actionButton featureText="validateStimuliResponses">
                     <validateStimuliResponses>
                         <conditionFalse>
-                            <region regionId="validateStimuliResponses">
+                            <regionAppend regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionFalse"/>
-                            </region>
+                            </regionAppend>
                         </conditionFalse>
                         <conditionTrue>
-                            <region regionId="validateStimuliResponses">
+                            <regionAppend regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionTrue"/>
-                            </region>
+                            </regionAppend>
                         </conditionTrue>
                     </validateStimuliResponses>
                 </actionButton>
@@ -2291,7 +2291,7 @@
                         </regionReplace>
                     </mediaLoadFailed>
                 </stimulusImage>
-                <region regionId="stimulusImage1"></region>
+                <regionAppend regionId="stimulusImage1"></regionAppend>
                 <!-- <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                  <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>-->
@@ -2349,7 +2349,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="recordedMediaResultA"></region>
+                            <regionAppend regionId="recordedMediaResultA"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2405,7 +2405,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="recordedMediaResultB"></region>
+                            <regionAppend regionId="recordedMediaResultB"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2461,7 +2461,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="recordedMediaResultC"></region>
+                            <regionAppend regionId="recordedMediaResultC"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2473,7 +2473,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="StopRecorder"></region>
+                            <regionAppend regionId="StopRecorder"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2517,7 +2517,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="mediaRegion1"></region>
+                            <regionAppend regionId="mediaRegion1"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2561,7 +2561,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="mediaRegion2"></region>
+                            <regionAppend regionId="mediaRegion2"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2605,7 +2605,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="mediaRegion3"></region>
+                            <regionAppend regionId="mediaRegion3"></regionAppend>
                         </column>
                     </row>
                     <row>
@@ -2649,7 +2649,7 @@
                             </actionButton>
                         </column>
                         <column>
-                            <region regionId="mediaRegion4"></region>
+                            <regionAppend regionId="mediaRegion4"></regionAppend>
                         </column>
                     </row>
                 </table>
@@ -2696,7 +2696,7 @@
     <presenter back="Menu" menuLabel="Bluetooth R1" type="stimulus" self="Bluetooth_R1" title="Bluetooth remote R1">
         <htmlText featureText="Bluetooth remote R1 test page&lt;br/&gt;"/>
         <!-- the region is used here only to provide a nice border around the button groups with the menuTable style -->
-        <region regionId="regionIdMA" styleName="menuTable">
+        <regionAppend regionId="regionIdMA" styleName="menuTable">
             <htmlText featureText="Bluetooth remote R1 with mode M+A&lt;br/&gt;"/>
             <actionButton featureText="R1_MA_A" hotKey="R1_MA_A">
                 <htmlText featureText="R1_MA_A&lt;br/&gt;"/>
@@ -2710,8 +2710,8 @@
             <actionButton featureText="R1_MA_RIGHT" hotKey="R1_MA_RIGHT">
                 <htmlText featureText="R1_MA_RIGHT&lt;br/&gt;"/>
             </actionButton>
-        </region>
-        <region regionId="regionIdMB" styleName="menuTable">
+        </regionAppend>
+        <regionAppend regionId="regionIdMB" styleName="menuTable">
             <htmlText featureText="Bluetooth remote R1 with mode M+B&lt;br/&gt;"/>
             <actionButton featureText="R1_MB_A" hotKey="R1_MB_A">
                 <htmlText featureText="R1_MB_A&lt;br/&gt;"/>
@@ -2722,8 +2722,8 @@
             <actionButton featureText="R1_MB_C" hotKey="R1_MB_C">
                 <htmlText featureText="R1_MB_C&lt;br/&gt;"/>
             </actionButton>
-        </region>
-        <region regionId="regionIdMC" styleName="menuTable">
+        </regionAppend>
+        <regionAppend regionId="regionIdMC" styleName="menuTable">
             <htmlText featureText="Bluetooth remote R1 with mode M+C&lt;br/&gt;"/>
             <actionButton featureText="R1_MC_B" hotKey="R1_MC_B">
                 <htmlText featureText="R1_MC_B&lt;br/&gt;"/>
@@ -2734,13 +2734,13 @@
             <actionButton featureText="R1_MC_D" hotKey="R1_MC_D">
                 <htmlText featureText="R1_MC_D&lt;br/&gt;"/>
             </actionButton>
-        </region>
-        <region regionId="regionIdMD" styleName="menuTable">
+        </regionAppend>
+        <regionAppend regionId="regionIdMD" styleName="menuTable">
             <htmlText featureText="Bluetooth remote R1 with mode M+D&lt;br/&gt;"/>
             <actionButton featureText="R1_MD_A" hotKey="R1_MD_A">
                 <htmlText featureText="R1_MD_A&lt;br/&gt;"/>
             </actionButton>
-        </region>
+        </regionAppend>
     </presenter>
     <presenter menuLabel="showOnBackButton" type="stimulus" self="showOnBackButton" title="showOnBackButton">
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -2811,18 +2811,18 @@
                 &lt;playerCorrectStreak&gt;&lt;br/&gt;
                 "/>
                 <stimulusLabel styleName="stimuliLabel"/>
-                <region regionId="square1">
+                <regionAppend regionId="square1">
                     <htmlText featureText=".&lt;br/&gt;"/>
-                </region>
-                <region regionId="square2">
+                </regionAppend>
+                <regionAppend regionId="square2">
                     <htmlText featureText=".&lt;br/&gt;"/>
-                </region>
-                <region regionId="square3">
+                </regionAppend>
+                <regionAppend regionId="square3">
                     <htmlText featureText=".&lt;br/&gt;"/>
-                </region>
-                <region regionId="square4">
+                </regionAppend>
+                <regionAppend regionId="square4">
                     <htmlText featureText=".&lt;br/&gt;"/>
-                </region>
+                </regionAppend>
                 <setStimulusCodeResponse codeFormat="" dataChannel="8" applyScore="false"/>
                 <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
                 <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
@@ -3308,10 +3308,10 @@
     </presenter>
     <presenter back="Menu" menuLabel="RecordingQualityTest" type="stimulus" self="RecordingQualityTest" title="RecordingQualityTest">
         <resetStimulus target="RecordingQualityTest"/>
-        <region regionId="recordedMediaResult"></region>
-        <region regionId="stimulusProgress"></region>
-        <region regionId="stimulusLabel"></region>
-        <region regionId="stimulusButtons"></region>
+        <regionAppend regionId="recordedMediaResult"></regionAppend>
+        <regionAppend regionId="stimulusProgress"></regionAppend>
+        <regionAppend regionId="stimulusLabel"></regionAppend>
+        <regionAppend regionId="stimulusButtons"></regionAppend>
         <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaResult">
@@ -3444,15 +3444,15 @@
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="triggerRandomListener" type="stimulus" next="Menu" self="triggerRandomListener" title="Trigger Random Listener">
-        <region regionId="regionTriggerA">
+        <regionAppend regionId="regionTriggerA">
             <plainText featureText="regionTriggerA is unchanged"/>
-        </region>
-        <region regionId="regionTriggerB">
+        </regionAppend>
+        <regionAppend regionId="regionTriggerB">
             <plainText featureText="regionTriggerB is unchanged"/>
-        </region>
-        <region regionId="regionTriggerC">
+        </regionAppend>
+        <regionAppend regionId="regionTriggerC">
             <plainText featureText="regionTriggerC is unchanged"/>
-        </region>
+        </regionAppend>
         <triggerDefinition listenerId="triggerA" threshold="0" maximum="1">
             <regionReplace regionId="regionTriggerA">
                 <plainText featureText="regionTriggerA has triggered and will not again"/>
@@ -3475,7 +3475,7 @@
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="incrementScoreExample" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
-        <region regionId="scoreLabelsRegion"/>
+        <regionAppend regionId="scoreLabelsRegion"/>
         <triggerDefinition listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
             <regionReplace regionId="scoreLabelsRegion">
                 <htmlTokenText featureText="
@@ -3654,7 +3654,7 @@
         </pause>
     </presenter>
     <presenter back="Menu" menuLabel="table-tags inside a region-tag"  self="table_tags_inside_a_region_tag" type="stimulus" title="table-tags inside a region-tag">
-        <region regionId="missedAutors"/>
+        <regionAppend regionId="missedAutors"/>
         <regionReplace  regionId="missedAutors" styleName="">
             <addPadding/>  
             <withStimuli randomise="false" eventTag="missed_fav_author" maxStimuli="3" repeatCount="1">
@@ -3680,7 +3680,7 @@
                 </stimuli>
             </withStimuli>
         </regionReplace>
-        <region regionId="buttons"/>
+        <regionAppend regionId="buttons"/>
         <regionReplace regionId="buttons" styleName="">
             <addPadding/>
             <htmlText featureText="Heb je favoriete auteurs, die niet in deze lijst staan?"/>
