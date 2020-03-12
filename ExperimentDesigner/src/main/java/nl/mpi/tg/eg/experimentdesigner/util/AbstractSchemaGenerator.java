@@ -353,9 +353,10 @@ public class AbstractSchemaGenerator {
                         .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
                         .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
-                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are commited.", false, "debug", "staging", "production", "undeploy")
-                        .documentedAttribute("registrationUrlStaging", AttributeType.xsString, "The URL to an external registration service if this is to be used by the experiment.", true),
-                 new DocumentationElement("administration", "Administration", 0, 1,
+                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are commited.", false, "editing", "debug", "staging", "production", "undeploy")
+                        .documentedAttribute("registrationUrlStaging", AttributeType.xsString, "The URL to an external registration service if this is to be used by the staging experiment.", true)
+                        .documentedAttribute("registrationUrlProduction", AttributeType.xsString, "The URL to an external registration service if this is to be used by the production experiment.", true),
+                new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
                                     .stringAttribute("fieldName", false)
