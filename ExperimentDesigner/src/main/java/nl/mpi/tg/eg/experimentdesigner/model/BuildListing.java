@@ -43,11 +43,11 @@ public class BuildListing {
         return experiment.getPublishEvents().get(0).getState();
     }
 
-    public Date getPublishDate() {
+    public String getPublishDate() {
         return experiment.getPublishEvents().get(0).getPublishDate();
     }
 
-    public Date getExpiryDate() {
+    public String getExpiryDate() {
         return experiment.getPublishEvents().get(0).getExpiryDate();
     }
 
