@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -127,21 +128,26 @@ public class PublishEvents implements Serializable {
 //    public int isIsScalable() {
 //        return (experiment.isIsScalable()) ? 1 : 0;
 //    }
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishDate(String publishDate) {
+        try {
+            this.publishDate = new SimpleDateFormat("yyyy-MM-dd").parse(publishDate);
+        } catch (ParseException exception) {
+            System.out.println("publishDate: " + exception.getMessage());
+        }
     }
 
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryDate(String expiryDate) {
+        try {
+            this.expiryDate = new SimpleDateFormat("yyyy-MM-dd").parse(expiryDate);
+        } catch (ParseException exception) {
+            System.out.println("expiryDate: " + exception.getMessage());
+        }
     }
 
     public void setState(PublishState publishState) {
         this.publishState = publishState;
     }
 
-//    public void setState(String publishState) {
-//        this.publishState = PublishState.valueOf(publishState);
-//    }
     public void setIsWebApp(boolean isWebApp) {
         this.isWebApp = isWebApp;
     }
