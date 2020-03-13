@@ -52,9 +52,6 @@ public class PublishEvents implements Serializable {
     private Date publishDate;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date expiryDate;
-
-    private String registrationUrlStaging;
-    private String registrationUrlProduction;
     private PublishState publishState;
     private boolean isWebApp;
     private boolean isDesktop;
@@ -89,22 +86,6 @@ public class PublishEvents implements Serializable {
 //    public String getExperimentDisplayName() {
 //        return experiment.getAppNameDisplay();
 //    }
-    public String getRegistrationUrlStaging() {
-        return registrationUrlStaging;
-    }
-
-    public void setRegistrationUrlStaging(String registrationUrlStaging) {
-        this.registrationUrlStaging = registrationUrlStaging;
-    }
-
-    public String getRegistrationUrlProduction() {
-        return registrationUrlProduction;
-    }
-
-    public void setRegistrationUrlProduction(String registrationUrlProduction) {
-        this.registrationUrlProduction = registrationUrlProduction;
-    }
-
     @XmlAttribute
     public PublishState getState() {
         return publishState;
