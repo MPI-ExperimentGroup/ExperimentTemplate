@@ -356,17 +356,11 @@ public class AbstractSchemaGenerator {
                         .restrictedAttribute("state", null, "The type of deployment to be run when changes are commited.", false, "editing", "debug", "staging", "production", "undeploy")
                         .documentedAttribute("registrationUrlStaging", AttributeType.xsString, "The URL to an external registration service if this is to be used by the staging experiment.", true)
                         .documentedAttribute("registrationUrlProduction", AttributeType.xsString, "The URL to an external registration service if this is to be used by the production experiment.", true),
-                new DocumentationElement("administration", "Administration", 0, 1,
+                new DocumentationElement("validationService", "If an external validation / registration service is used, the service endpoints are defined here. When not spcified the Frinex &lt;validation&gt; service is used.", 0, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
-                                    .stringAttribute("fieldName", false)
-                                    .stringAttribute("matchingRegex", false),
-                            new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
-                                    .stringAttribute("label", false)
-                                    .booleanAttribute("logToSdCard", false, "Boolean")
-                                    .integerAttribute("channel", false),
                             new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record."
-                                    + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.", 0, 1, new DocumentationElement[]{
+                                    + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser."
+                                    + "This section is not used when an external &lt;validationService&gt; is specified.", 0, 1, new DocumentationElement[]{
                                 new DocumentationElement("recordMatch", "The value sent to the server must match the last valid record stored on in the admin system.", 0, 0, new DocumentationElement[0])
                                         .documentedAttribute("postField", AttributeType.xsString, "The value of this metadatafield is sent to the admin server for validation.", false)
                                         .documentedAttribute("adminField", AttributeType.xsString, "The value of the admin systems copy of this metadatafield is compared to the postField for validation.", false)
@@ -385,7 +379,16 @@ public class AbstractSchemaGenerator {
                                     .documentedAttribute("errorField", AttributeType.xsString, "If a validation error occurs the error message will be returned from the admin server in this metadatafield.", false)
                                     .documentedAttribute("errorMessage", AttributeType.xsString, "If no records match and a validation error occurs this is the error message that will be returned.", false)
                                     .documentedAttribute("allowValidationOnMissing", AttributeType.xsBoolean, "If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.", false)
-                        }),
+                        }).stringAttribute("stagingUrl", true).stringAttribute("productionUrl", true),
+                new DocumentationElement("administration", "Administration", 0, 1,
+                        new DocumentationElement[]{
+                            new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
+                                    .stringAttribute("fieldName", false)
+                                    .stringAttribute("matchingRegex", false),
+                            new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
+                                    .stringAttribute("label", false)
+                                    .booleanAttribute("logToSdCard", false, "Boolean")
+                                    .integerAttribute("channel", false)}),
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
                         new DocumentationElement[]{
