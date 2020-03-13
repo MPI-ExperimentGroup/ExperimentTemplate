@@ -353,10 +353,8 @@ public class AbstractSchemaGenerator {
                         .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
                         .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
-                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are commited.", false, "editing", "debug", "staging", "production", "undeploy")
-                        .documentedAttribute("registrationUrlStaging", AttributeType.xsString, "The URL to an external registration service if this is to be used by the staging experiment.", true)
-                        .documentedAttribute("registrationUrlProduction", AttributeType.xsString, "The URL to an external registration service if this is to be used by the production experiment.", true),
-                new DocumentationElement("validationService", "If an external validation / registration service is used, the service endpoints are defined here. When not spcified the Frinex &lt;validation&gt; service is used.", 0, 1,
+                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "editing", "debug", "staging", "production", "undeploy"),
+                new DocumentationElement("validationService", "Server side validation / registration services.", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record."
                                     + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser."
@@ -379,7 +377,8 @@ public class AbstractSchemaGenerator {
                                     .documentedAttribute("errorField", AttributeType.xsString, "If a validation error occurs the error message will be returned from the admin server in this metadatafield.", false)
                                     .documentedAttribute("errorMessage", AttributeType.xsString, "If no records match and a validation error occurs this is the error message that will be returned.", false)
                                     .documentedAttribute("allowValidationOnMissing", AttributeType.xsBoolean, "If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.", false)
-                        }).stringAttribute("stagingUrl", true).stringAttribute("productionUrl", true),
+                        }).documentedAttribute("stagingUrl", AttributeType.xsString, "The URL to an external staging registration service. When not spcified the Frinex &lt;validation&gt; service is used.", true)
+                        .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not spcified the Frinex &lt;validation&gt; service is used.", true),
                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
