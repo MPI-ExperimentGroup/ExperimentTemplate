@@ -23,7 +23,7 @@
             obfuscateBrowserStorage="false"
 >
     <deployment
-        publishDate="2020-02-22"
+        publishDate="2020-02-02"
         expiryDate="2025-02-22"
         registrationUrlStaging="/with_stimulus_example-admin/validate"
         registrationUrlProduction="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"
