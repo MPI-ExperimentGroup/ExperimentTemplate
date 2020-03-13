@@ -460,19 +460,21 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addElement(writer, rootElement, false);
 //        writer.append("<!--deploymentType-->\n");
         addElement(writer, rootElement.childElements[1], true);
-//        writer.append("<!--administrationType-->\n");
+//        writer.append("<!--validationService-->\n");
         addElement(writer, rootElement.childElements[2], true);
 //        writer.append("<!--validationType-->\n");
-        addElement(writer, rootElement.childElements[2].childElements[2], true);
+        addElement(writer, rootElement.childElements[2].childElements[0], true);
+//        writer.append("<!--administrationType-->\n");
+        addElement(writer, rootElement.childElements[3], true);
 //        writer.append("<!--metadataType-->\n");
-        addElement(writer, rootElement.childElements[4], true);
-        //        writer.append("<!--fieldType-->\n");
-        addElement(writer, rootElement.childElements[4].childElements[0], true);
-//        writer.append("<!--presenterType-->\n");
         addElement(writer, rootElement.childElements[5], true);
-//        writer.append("<!--stimuliType-->\n");
+        //        writer.append("<!--fieldType-->\n");
+        addElement(writer, rootElement.childElements[5].childElements[0], true);
+//        writer.append("<!--presenterType-->\n");
         addElement(writer, rootElement.childElements[6], true);
-        addElement(writer, rootElement.childElements[6].childElements[0], true);
+//        writer.append("<!--stimuliType-->\n");
+        addElement(writer, rootElement.childElements[7], true);
+        addElement(writer, rootElement.childElements[7].childElements[0], true);
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, new DocumentationElement(featureType), true);
         }
