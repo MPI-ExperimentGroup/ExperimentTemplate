@@ -25,8 +25,6 @@
     <deployment
         publishDate="2020-02-02"
         expiryDate="2025-02-22"
-        registrationUrlStaging="/with_stimulus_example-admin/validate"
-        registrationUrlProduction="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"
         isWebApp="true"
         isDesktop="true"
         isiOS="true"
@@ -34,6 +32,7 @@
         state="staging"
     />
     <administration>
+        <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
