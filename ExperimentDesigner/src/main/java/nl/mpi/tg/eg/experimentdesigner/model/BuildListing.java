@@ -17,12 +17,13 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * @since 04-03-2020 11:27 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@JsonPropertyOrder({ "publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "buildName", "registrationUrlStaging", "registrationUrlProduction", "state", "defaultScale", "experimentInternalName", "experimentDisplayName"})
 public class BuildListing {
 
     final private Experiment experiment;
