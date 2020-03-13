@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @Entity
 @XmlRootElement
-@XmlType(propOrder = {"publishEvents", "dataChannels", "scss", "metadata", "presenterScreen", "stimuli"})
+@XmlType(propOrder = {"publishEvents", "validationService", "dataChannels", "scss", "metadata", "presenterScreen", "stimuli"})
 public class Experiment implements Serializable {
 
     @Id
@@ -73,6 +73,7 @@ public class Experiment implements Serializable {
     private boolean preventWindowClose = true;
     private float defaultScale = 1;
     private String scss;
+    private ValidationService validationService;
 
     @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
@@ -148,6 +149,15 @@ public class Experiment implements Serializable {
     @XmlElement(name = "scss")
     public String getScss() {
         return scss;
+    }
+
+    @XmlElement(name = "validationService")
+    public ValidationService getValidationService() {
+        return validationService;
+    }
+
+    public void setValidationService(ValidationService validationService) {
+        this.validationService = validationService;
     }
 
     public void setDataChannels(List<DataChannel> dataChannels) {
