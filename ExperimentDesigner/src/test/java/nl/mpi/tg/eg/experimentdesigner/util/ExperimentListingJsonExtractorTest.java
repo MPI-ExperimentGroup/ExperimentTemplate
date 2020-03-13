@@ -35,7 +35,8 @@ public class ExperimentListingJsonExtractorTest {
     }
 
     /**
-     * Test of extractListingJson method, of class ExperimentListingJsonExtractor.
+     * Test of extractListingJson method, of class
+     * ExperimentListingJsonExtractor.
      */
     @Test
     public void testExtractListingJson() throws Exception {
@@ -52,20 +53,30 @@ public class ExperimentListingJsonExtractorTest {
             }
         };
         instance.extractListingJson(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), listingDirectory);
-        assertEquals("{\n"
-                + "  \"publishDate\": 2020-02-02,\n"
-                + "  \"expiryDate\": 2020-02-20,\n"
-                + "  \"isWebApp\": true,\n"
-                + "  \"isDesktop\": true,\n"
-                + "  \"isiOS\": true,\n"
-                + "  \"isAndroid\": true,\n"
-                + "  \"buildName\": \"with_stimulus_example\",\n"
-                + "  \"registrationUrlStaging\": \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
-                + "  \"state\": \"production\",\n"
-                + "  \"defaultScale\": 1.0,\n"
-                + "  \"experimentInternalName\": \"with_stimulus_example\",\n"
-                + "  \"experimentDisplayName\": \"with_stimulus_example\"\n"
-                + "}", stringWriter.toString());
+        final String expResult = "{\n"
+                + "  \"publishDate\" : \"2020-02-02\",\n"
+                + "  \"expiryDate\" : \"2025-02-22\",\n"
+                + "  \"isWebApp\" : true,\n"
+                + "  \"isDesktop\" : true,\n"
+                + "  \"isiOS\" : true,\n"
+                + "  \"isAndroid\" : true,\n"
+//                + "  \"buildName\" : \"with_stimulus_example\",\n"
+                + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
+                + "  \"state\" : \"production\",\n"
+                + "  \"defaultScale\" : 1.0,\n"
+                + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
+                + "  \"experimentDisplayName\" : \"with_stimulus_example\"\n"
+                + "}";
+        final String[] splitExpectedString = expResult.split("\n");
+        final String[] splitResultString = stringWriter.toString().split("\n");
+        for (int index = 0; index < splitExpectedString.length || index < splitResultString.length; index++) {
+            // we deliberately loop on the larger array so that we throw an error if the lengths are different
+            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
+            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
+            assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
+            //System.out.println(splitExpectedString[index]);
+        }
+        assertEquals(expResult, stringWriter.toString());
         instance.extractListingJson(new File(new File(outputDirectoryUri), "listing_json_example.xml"), listingDirectory);
         assertEquals("listing_json_example.xml", stringWriter.toString());
     }
