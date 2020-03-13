@@ -111,6 +111,30 @@ String</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
+<a href="#deploymentType"><span style="color:purple">&lt;</span><span style="color:blue">deployment</span></a></td><td><span style="color:green">expiryDate</span><span style="color:grey">=&quot;Date Value YYYY-MM-DD&quot;</span><span>
+The date after which the experiment can be undeployed.</span><br/>
+<span style="color:green">isAndroid</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true an Android version of this experiment will be generated.</span><br/>
+<span style="color:green">isDesktop</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true a desktop version of this experiment will be generated.</span><br/>
+<span style="color:green">isWebApp</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true a web version of this experiment will be generated.</span><br/>
+<span style="color:green">isiOS</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true an iOS version of this experiment will be generated.</span><br/>
+<span style="color:green">publishDate</span><span style="color:grey">=&quot;Date Value YYYY-MM-DD&quot;</span><span>
+The date from which the experiment will be deployed.</span><br/>
+<span style="color:green">state</span><span style="color:grey">=&quot;[editing, debug, staging, production, undeploy]&quot;</span><span>
+The type of deployment to be run when changes are pushed to the build server.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#validationServiceType"><span style="color:purple">&lt;</span><span style="color:blue">validationService</span></a></td><td><span style="color:green">productionUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+The URL to an external production registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+<span style="color:green">stagingUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+The URL to an external staging registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
 <a href="#administrationType"><span style="color:purple">&lt;</span><span style="color:blue">administration</span></a></td><td></td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -168,31 +192,49 @@ String</span><br/>
 <button onclick="getExample('preventWindowClose', 'preventWindowCloseTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="administrationType" style="text-transform: uppercase;">
-administration
+<h3 id="deploymentType" style="text-transform: uppercase;">
+deployment
 </h3>
-Administration
+
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">administration</span></td><td><span style="color:purple">&gt;</span></td><td>
+<span style="color:purple">&lt;</span><span style="color:blue">deployment</span></td><td><span style="color:green">expiryDate</span><span style="color:grey">=&quot;Date Value YYYY-MM-DD&quot;</span><span>
+The date after which the experiment can be undeployed.</span><br/>
+<span style="color:green">isAndroid</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true an Android version of this experiment will be generated.</span><br/>
+<span style="color:green">isDesktop</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true a desktop version of this experiment will be generated.</span><br/>
+<span style="color:green">isWebApp</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true a web version of this experiment will be generated.</span><br/>
+<span style="color:green">isiOS</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+If true an iOS version of this experiment will be generated.</span><br/>
+<span style="color:green">publishDate</span><span style="color:grey">=&quot;Date Value YYYY-MM-DD&quot;</span><span>
+The date from which the experiment will be deployed.</span><br/>
+<span style="color:green">state</span><span style="color:grey">=&quot;[editing, debug, staging, production, undeploy]&quot;</span><span>
+The type of deployment to be run when changes are pushed to the build server.</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='deploymentTarget'>
+<button onclick="getExample('deployment', 'deploymentTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="validationServiceType" style="text-transform: uppercase;">
+validationService
+</h3>
+Server side validation / registration services.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">validationService</span></td><td><span style="color:green">productionUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+The URL to an external production registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+<span style="color:green">stagingUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+The URL to an external staging registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+<span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
-<tr><td>
-<a href="#dataAgreementFieldType"><span style="color:purple">&lt;</span><span style="color:blue">dataAgreementField</span></a></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-</td><td><span style="color:purple">&gt;</span>
-</td></tr>
-<tr><td>
-<a href="#dataChannelType"><span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></a></td><td><span style="color:green">channel</span><span style="color:grey">=&quot;Integer&quot;</span><span>
-Integral Number</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
-Boolean</span><br/>
-</td><td><span style="color:purple">&gt;</span>
-</td></tr>
 <tr><td>
 <a href="#validationType"><span style="color:purple">&lt;</span><span style="color:blue">validation</span></a></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
 If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.</span><br/>
@@ -207,60 +249,18 @@ If no records match and a validation error occurs this is the error message that
 </tr>
 <tr>
 <td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">administration</span><span style="color:purple">&gt;</span></td></tr>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">validationService</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
-<td colspan='2' id='administrationTarget'>
-<button onclick="getExample('administration', 'administrationTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="dataAgreementFieldType" style="text-transform: uppercase;">
-dataAgreementField
-</h3>
-When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">dataAgreementField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='dataAgreementFieldTarget'>
-<button onclick="getExample('dataAgreementField', 'dataAgreementFieldTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="dataChannelType" style="text-transform: uppercase;">
-dataChannel
-</h3>
-
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></td><td><span style="color:green">channel</span><span style="color:grey">=&quot;Integer&quot;</span><span>
-Integral Number</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
-Boolean</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='dataChannelTarget'>
-<button onclick="getExample('dataChannel', 'dataChannelTarget');">search for examples</button>
+<td colspan='2' id='validationServiceTarget'>
+<button onclick="getExample('validationService', 'validationServiceTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="validationType" style="text-transform: uppercase;">
 validation
 </h3>
-When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.
+When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.This section is not used when an external &lt;validationService&gt; is specified.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
@@ -369,6 +369,86 @@ If provided then this regex is matched against the value for validation.</span><
 <tr>
 <td colspan='2' id='fieldMatchTarget'>
 <button onclick="getExample('fieldMatch', 'fieldMatchTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="administrationType" style="text-transform: uppercase;">
+administration
+</h3>
+Administration
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">administration</span></td><td><span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#dataAgreementFieldType"><span style="color:purple">&lt;</span><span style="color:blue">dataAgreementField</span></a></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#dataChannelType"><span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></a></td><td><span style="color:green">channel</span><span style="color:grey">=&quot;Integer&quot;</span><span>
+Integral Number</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
+Boolean</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">administration</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='administrationTarget'>
+<button onclick="getExample('administration', 'administrationTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="dataAgreementFieldType" style="text-transform: uppercase;">
+dataAgreementField
+</h3>
+When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">dataAgreementField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='dataAgreementFieldTarget'>
+<button onclick="getExample('dataAgreementField', 'dataAgreementFieldTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="dataChannelType" style="text-transform: uppercase;">
+dataChannel
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></td><td><span style="color:green">channel</span><span style="color:grey">=&quot;Integer&quot;</span><span>
+Integral Number</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
+Boolean</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='dataChannelTarget'>
+<button onclick="getExample('dataChannel', 'dataChannelTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="scssType" style="text-transform: uppercase;">
@@ -493,8 +573,8 @@ String</span><br/>
 The type of presenter which also determines the features that can be used in the presenter.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="presenterChildShow" style="display: block;" onclick="$('#presenterChildDocumentation').show();$('#presenterChildHide').show();$('#presenterChildShow').hide();">show 103 truncated items</button>
-<button id="presenterChildHide" style="display: none;" onclick="$('#presenterChildDocumentation').hide();$('#presenterChildHide').hide();$('#presenterChildShow').show();">hide 103 items</button>
+<button id="presenterChildShow" style="display: block;" onclick="$('#presenterChildDocumentation').show();$('#presenterChildHide').show();$('#presenterChildShow').hide();">show 104 truncated items</button>
+<button id="presenterChildHide" style="display: none;" onclick="$('#presenterChildDocumentation').hide();$('#presenterChildHide').hide();$('#presenterChildShow').show();">hide 104 items</button>
 <table id="presenterChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#actionButtonType"><span style="color:purple">&lt;</span><span style="color:blue">actionButton</span><span style="color:purple">&gt;</span>
@@ -636,6 +716,9 @@ The type of presenter which also determines the features that can be used in the
 </a></td></tr>
 <tr><td>
 <a href="#localStorageDataType"><span style="color:purple">&lt;</span><span style="color:blue">localStorageData</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+<tr><td>
+<a href="#logTimeStampType"><span style="color:purple">&lt;</span><span style="color:blue">logTimeStamp</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
 <a href="#logTimerValueType"><span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span><span style="color:purple">&gt;</span>
@@ -7490,6 +7573,24 @@ localStorageData
 <tr>
 <td colspan='2' id='localStorageDataTarget'>
 <button onclick="getExample('localStorageData', 'localStorageDataTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="logTimeStampType" style="text-transform: uppercase;">
+logTimeStamp
+</h3>
+Records a timestamp similar to the way image and media onLoad events etc. are logged. The logged ms is relative to the load time of the presenter.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">logTimeStamp</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='logTimeStampTarget'>
+<button onclick="getExample('logTimeStamp', 'logTimeStampTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="logTimerValueType" style="text-transform: uppercase;">
@@ -14395,26 +14496,6 @@ keepStimulus
 <tr>
 <td colspan='2' id='keepStimulusTarget'>
 <button onclick="getExample('keepStimulus', 'keepStimulusTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="logTimeStampType" style="text-transform: uppercase;">
-logTimeStamp
-</h3>
-
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">logTimeStamp</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='logTimeStampTarget'>
-<button onclick="getExample('logTimeStamp', 'logTimeStampTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="matchingStimulusGridType" style="text-transform: uppercase;">
