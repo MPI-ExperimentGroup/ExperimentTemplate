@@ -60,12 +60,12 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"isDesktop\" : true,\n"
                 + "  \"isiOS\" : true,\n"
                 + "  \"isAndroid\" : true,\n"
-//                + "  \"buildName\" : \"with_stimulus_example\",\n"
-                + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
-                + "  \"state\" : \"production\",\n"
+                + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\", \n"
+                + "  \"registrationUrlProduction\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
+                + "  \"state\" : \"staging\",\n"
                 + "  \"defaultScale\" : 1.0,\n"
                 + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
-                + "  \"experimentDisplayName\" : \"with_stimulus_example\"\n"
+                + "  \"experimentDisplayName\" : \"With Stimulus Example\"\n"
                 + "}";
         final String[] splitExpectedString = expResult.split("\n");
         final String[] splitResultString = stringWriter.toString().split("\n");
@@ -76,8 +76,7 @@ public class ExperimentListingJsonExtractorTest {
             assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
             //System.out.println(splitExpectedString[index]);
         }
-        assertEquals(expResult, stringWriter.toString());
-        instance.extractListingJson(new File(new File(outputDirectoryUri), "listing_json_example.xml"), listingDirectory);
-        assertEquals("listing_json_example.xml", stringWriter.toString());
+//        instance.extractListingJson(new File(new File(outputDirectoryUri), "invitation_validation_example"), listingDirectory);
+//        assertEquals("listing_json_example.xml", stringWriter.toString());
     }
 }
