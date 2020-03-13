@@ -679,11 +679,20 @@ or local-name() eq 'sendGroupEndOfStimuli'
         <xsl:if test="local-name() ne 'audioButton'
             and local-name() ne 'nextMatchingStimulus'
             and local-name() ne 'sendGroupEndOfStimuli'
+            and local-name() ne 'logTimeStamp'
            ">
             <xsl:text>currentStimulus,</xsl:text>
         </xsl:if>
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
-        <xsl:if test="local-name() ne 'nextStimulus' and local-name() ne 'prevStimulus' and local-name() ne 'prevStimulusButton' and local-name() ne 'nextMatchingStimulus' and local-name() ne 'nextStimulusButton' and local-name() ne 'sendGroupMessage' and local-name() ne 'sendGroupStoredMessage' and local-name() ne 'sendGroupEndOfStimuli'">
+        <xsl:if test="local-name() ne 'nextStimulus' 
+            and local-name() ne 'prevStimulus' 
+            and local-name() ne 'prevStimulusButton' 
+            and local-name() ne 'nextMatchingStimulus' 
+            and local-name() ne 'nextStimulusButton' 
+            and local-name() ne 'sendGroupMessage' 
+            and local-name() ne 'sendGroupStoredMessage' 
+            and local-name() ne 'logTimeStamp' 
+            and local-name() ne 'sendGroupEndOfStimuli'">
             <xsl:value-of select="if(@eventTag) then ',' else ''" />
             <xsl:value-of select="if(@dataChannel) then @dataChannel else '0'" />
         </xsl:if>
