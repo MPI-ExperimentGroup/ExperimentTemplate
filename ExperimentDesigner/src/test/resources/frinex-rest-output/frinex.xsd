@@ -15,6 +15,11 @@
 <xs:pattern value="[a-z]([a-z_0-9]){3,}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="dateValue">
+<xs:restriction base="xs:string">
+<xs:pattern value="[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="presenterName">
 <xs:restriction base="xs:string">
 <xs:pattern value="[a-zA-Z_0-9]{3,}"/>
@@ -194,6 +199,37 @@
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 </xs:complexType>
 </xs:element>
+<xs:element name="deployment" minOccurs="0">
+<xs:complexType>
+<xs:attribute name="publishDate" type="dateValue" use="required"/>
+<xs:attribute name="expiryDate" type="dateValue" use="required"/>
+<xs:attribute name="isWebApp" type="xs:boolean"/>
+<xs:attribute name="isDesktop" type="xs:boolean"/>
+<xs:attribute name="isiOS" type="xs:boolean"/>
+<xs:attribute name="isAndroid" type="xs:boolean"/>
+<xs:attribute name="state" use="required">
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="editing"/>
+<xs:enumeration value="debug"/>
+<xs:enumeration value="staging"/>
+<xs:enumeration value="production"/>
+<xs:enumeration value="undeploy"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
+<xs:element name="validationService" minOccurs="0" type="validationServiceType"/>
 <xs:element name="administration" minOccurs="0" type="administrationType"/>
 <xs:element name="scss" minOccurs="0" type="xs:string"/>
 <xs:element name="metadata" type="metadataType"/>
@@ -224,31 +260,51 @@
 <xs:attribute name="obfuscateBrowserStorage" type="xs:boolean"/>
 </xs:complexType>
 </xs:element>
-<xs:complexType name="administrationType">
+<xs:complexType name="deploymentType">
+<xs:annotation>
+<xs:documentation></xs:documentation>
+</xs:annotation>
+<xs:attribute name="publishDate" type="dateValue" use="required"/>
+<xs:attribute name="expiryDate" type="dateValue" use="required"/>
+<xs:attribute name="isWebApp" type="xs:boolean"/>
+<xs:attribute name="isDesktop" type="xs:boolean"/>
+<xs:attribute name="isiOS" type="xs:boolean"/>
+<xs:attribute name="isAndroid" type="xs:boolean"/>
+<xs:attribute name="state" use="required">
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="editing"/>
+<xs:enumeration value="debug"/>
+<xs:enumeration value="staging"/>
+<xs:enumeration value="production"/>
+<xs:enumeration value="undeploy"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="validationServiceType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Administration</xs:documentation>
+<xs:documentation>Server side validation / registration services.</xs:documentation>
 </xs:annotation>
-<xs:element name="dataAgreementField" minOccurs="0">
-<xs:complexType>
-<xs:attribute name="fieldName" type="xs:string" use="required"/>
-<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
-</xs:complexType>
-</xs:element>
-<xs:element name="dataChannel" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="label" type="xs:string" use="required"/>
-<xs:attribute name="logToSdCard" type="xs:boolean" use="required"/>
-<xs:attribute name="channel" type="xs:integer" use="required"/>
-</xs:complexType>
-</xs:element>
 <xs:element name="validation" minOccurs="0" type="validationType"/>
 </xs:sequence>
+<xs:attribute name="stagingUrl" type="xs:string"/>
+<xs:attribute name="productionUrl" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="validationType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.</xs:documentation>
+<xs:documentation>When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.This section is not used when an external &lt;validationService&gt; is specified.</xs:documentation>
 </xs:annotation>
 <xs:element name="recordMatch" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -274,6 +330,26 @@
 <xs:attribute name="errorField" type="xs:string" use="required"/>
 <xs:attribute name="errorMessage" type="xs:string" use="required"/>
 <xs:attribute name="allowValidationOnMissing" type="xs:boolean" use="required"/>
+</xs:complexType>
+<xs:complexType name="administrationType">
+<xs:sequence>
+<xs:annotation>
+<xs:documentation>Administration</xs:documentation>
+</xs:annotation>
+<xs:element name="dataAgreementField" minOccurs="0">
+<xs:complexType>
+<xs:attribute name="fieldName" type="xs:string" use="required"/>
+<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="dataChannel" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="label" type="xs:string" use="required"/>
+<xs:attribute name="logToSdCard" type="xs:boolean" use="required"/>
+<xs:attribute name="channel" type="xs:integer" use="required"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
 </xs:complexType>
 <xs:complexType name="metadataType">
 <xs:sequence>
@@ -362,6 +438,7 @@
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="menuItem" type="menuItemType"/>
@@ -3573,8 +3650,10 @@
 <xs:complexType name="gotoNextPresenterType">
 </xs:complexType>
 <xs:complexType name="logTimeStampType">
+<xs:annotation>
+<xs:documentation>Records a timestamp similar to the way image and media onLoad events etc. are logged. The logged ms is relative to the load time of the presenter.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="eventTag" type="xs:string" use="required"/>
-<xs:attribute name="dataChannel" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="audioButtonType">
 <xs:all>
