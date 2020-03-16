@@ -1335,23 +1335,23 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         ratingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
     }
 
-    public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, false);
+    public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, timedStimulusListener, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, false);
     }
 
-    public void stimulusRatingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, true);
+    public void stimulusRatingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, timedStimulusListener, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, true);
     }
 
-    public void ratingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, true);
+    public void ratingCheckbox(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, timedStimulusListener, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, true);
     }
 
-    public void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, false);
+    public void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListner, stimulusProvider, currentStimulus, buttonGroup, timedStimulusListener, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, dataChannel, radioGroupName, false);
     }
 
-    private void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
+    private void ratingRadioButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
         final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
         final String stimulusRatingType;
         if (buttonGroup != null || !buttonGroup.isEmpty()) {
@@ -1395,6 +1395,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         }
                         storedStimulusJSONObject.put(stimulusRatingType, new JSONString(ratingValue));
                         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+                        timedStimulusListener.postLoadTimerFired();
                     }
 
                     @Override
