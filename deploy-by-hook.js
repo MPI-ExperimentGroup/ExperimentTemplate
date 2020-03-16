@@ -80,8 +80,8 @@ function startResult() {
     resultsFile.write("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>\n");
     //resultsFile.write("<span id='buildLabel'>Building...</span>\n");
     resultsFile.write("<span id='buildDate'></span>\n");
-    resultsFile.write("<a href="frinex.html">XML Documentation</a>\n");
-    resultsFile.write("<a href="frinex.xsd">XML Schema</a>\n");
+    resultsFile.write("<a href='frinex.html'>XML Documentation</a>\n");
+    resultsFile.write("<a href='frinex.xsd'>XML Schema</a>\n");
     resultsFile.write("<table id='buildTable'>\n");
     resultsFile.write("<tr>\n");
     resultsFile.write("<td><a href=\"#1\">experiment</a></td>\n");
