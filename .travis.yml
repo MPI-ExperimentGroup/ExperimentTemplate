@@ -25,7 +25,7 @@ script:
   - mv target/with_stimulus_example-*-SNAPSHOT ../../static
   - cd ../ExperimentDesigner
   # generate the documentation and schema files (css is used as the input directory because we dont want any json files to be present)
-  - mvn exec:exec -Dexec.args="-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../../static/css ../../static" -Dexec.classpathScope=runtime -Dexec.executable=java -DversionCheck.allowSnapshots=true -DversionCheck.buildType=testing -DskipTests=true
+  - mvn exec:exec -Dexec.args="-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../../static/css ../../static ../../static" -Dexec.classpathScope=runtime -Dexec.executable=java -DversionCheck.allowSnapshots=true -DversionCheck.buildType=testing -DskipTests=true
   - mkdir ../../static/opus-recorder
   - cd ../../static/opus-recorder
   - wget $serverUrl/with_stimulus_example/opus-recorder/recorder.min.js
