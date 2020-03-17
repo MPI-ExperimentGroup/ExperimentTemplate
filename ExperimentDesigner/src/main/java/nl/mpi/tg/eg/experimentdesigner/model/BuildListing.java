@@ -49,31 +49,31 @@ public class BuildListing {
     }
 
     public PublishEvents.PublishState getState() {
-        return experiment.getPublishEvents().get(0).getState();
+        return (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getState();
     }
 
     public String getPublishDate() {
-        return experiment.getPublishEvents().get(0).getPublishDate();
+        return (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getPublishDate();
     }
 
     public String getExpiryDate() {
-        return experiment.getPublishEvents().get(0).getExpiryDate();
+        return (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getExpiryDate();
     }
 
     public boolean isIsWebApp() {
-        return experiment.getPublishEvents().get(0).isIsWebApp();
+        return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsWebApp();
     }
 
     public boolean isIsiOS() {
-        return experiment.getPublishEvents().get(0).isIsiOS();
+        return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsiOS();
     }
 
     public boolean isIsAndroid() {
-        return experiment.getPublishEvents().get(0).isIsAndroid();
+        return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsAndroid();
     }
 
     public boolean isIsDesktop() {
-        return experiment.getPublishEvents().get(0).isIsDesktop();
+        return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsDesktop();
     }
 
     public float getDefaultScale() {
