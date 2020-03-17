@@ -41,11 +41,11 @@ public class BuildListing {
     }
 
     public String getRegistrationUrlStaging() {
-        return experiment.getValidationService().getRegistrationUrlStaging();
+        return (experiment.getValidationService() == null) ? null : experiment.getValidationService().getRegistrationUrlStaging();
     }
 
     public String getRegistrationUrlProduction() {
-        return experiment.getValidationService().getRegistrationUrlProduction();
+        return (experiment.getValidationService() == null) ? null : experiment.getValidationService().getRegistrationUrlProduction();
     }
 
     public PublishEvents.PublishState getState() {
