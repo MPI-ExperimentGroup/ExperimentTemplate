@@ -893,15 +893,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void stimulusHasResponse(final AppEventListner appEventListner, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String groupId, final String matchingRegex) {
-        if (groupId == null || groupId.isEmpty()) {
-            if (localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus) != null) {
-                correctListener.postLoadTimerFired();
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+        if (storedStimulusJSONObject != null) {
+            if (groupId == null || groupId.isEmpty()) {
+                if (storedStimulusJSONObject.size() > 0) {
+                    correctListener.postLoadTimerFired();
+                } else {
+                    incorrectListener.postLoadTimerFired();
+                }
             } else {
-                incorrectListener.postLoadTimerFired();
-            }
-        } else {
-            final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-            if (storedStimulusJSONObject != null) {
                 final String formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(groupId);
                 String fieldValue = storedStimulusJSONObject.containsKey(formattedGroupId) ? storedStimulusJSONObject.get(formattedGroupId).isString().stringValue() : "";
                 if (fieldValue.matches(matchingRegex)) {
@@ -909,9 +909,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 } else {
                     incorrectListener.postLoadTimerFired();
                 }
-            } else {
-                incorrectListener.postLoadTimerFired();
             }
+        } else {
+            incorrectListener.postLoadTimerFired();
         }
     }
 
