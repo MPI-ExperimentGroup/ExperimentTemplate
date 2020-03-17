@@ -450,7 +450,7 @@
             <onSuccess>
                 <setMetadataValue fieldName="notificationMinutesSettings" replacementRegex="" dataLogFormat="in_minutes:&lt;metadataField_notificationMinutes&gt;"/>
                 <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationMinutesSettings&gt;&lt;br/&gt;"/>
-                <requestNotification targetOptions="Request_Notification_Screen,Menu,version" featureText="Minutes Notification" fieldName="notificationMinutesSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
+                <requestNotification targetOptions="Request_Notification_Screen,Menu,Timer_Label_Screen" featureText="Minutes Notification" fieldName="notificationMinutesSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
                     <onError>
                         <plainText featureText="Request Notification Failed"/>
                     </onError>
