@@ -48,6 +48,7 @@ ls -l  >> /srv/target/git-update-log.txt
 
 mkdir /srv/target/incoming
 mkdir /srv/target/processing
+mkdir /srv/target/listing
 
 while read oldrev newrev ref
 do
