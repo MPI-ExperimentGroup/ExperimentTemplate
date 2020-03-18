@@ -257,7 +257,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         timedStimulusView.endCell(isWidget);
     }
 
-    protected void region(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
+    protected void regionAppend(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
         final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
