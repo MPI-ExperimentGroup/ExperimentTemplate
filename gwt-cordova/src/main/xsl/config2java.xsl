@@ -931,8 +931,6 @@ or local-name() eq 'backgroundImage'">
             <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />    
             <xsl:value-of select="if(local-name() ne 'regionStyle' 
                                     and local-name() ne 'regionCodeStyle' 
-                                    and local-name() ne 'regionAppend' 
-                                    and local-name() ne 'regionReplace'
                                 ) then ', ' else ''" />
         </xsl:if>
         <xsl:value-of select="if(@showOnBackButton) then concat(@showOnBackButton eq 'true', ', ') else ''" />
