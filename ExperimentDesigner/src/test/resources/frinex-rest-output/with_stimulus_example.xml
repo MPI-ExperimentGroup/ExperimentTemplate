@@ -210,6 +210,7 @@
         <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationCountWeekendSettings" preventServerDuplicates="false" registrationField="Number Of Notifications Per Day On Weekends"/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationMinutes" preventServerDuplicates="false" registrationField="Show One Notifications In X Minutes "/>
         <field controlledMessage="." controlledRegex="|V1|V2|V3|V4" postName="Version" registrationField="Version"/>
+        <field controlledMessage="." controlledRegex=".*" postName="draggable_euclidian_distance" registrationField="draggable_euclidian_distance"/>        
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -1099,6 +1100,36 @@
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
     </presenter>
+<!--    <presenter back="Menu" menuLabel="Draggable Euclidian Distance" type="stimulus" self="draggable_euclidian_distance" title="Draggable Euclidian Distance">
+        <scss>loop to make styles that step around the circle</scss>
+        <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <beforeStimulus/>
+            <eachStimulus>
+                <dragable dataChannel="3" groupId="draggable">
+                    the draggable element must be in the scope of a stimulus
+                    dragable allows the element to be dragged while storing the intermediate positions in the touch input logger
+                    when the drag ends the final location is stored as a stimulus response
+                    when the next stimulus or validateStimuliLocations occurs the current position is sent to the server
+                    when the stimulus is shown a second time the last stored position can be restored
+                    <htmlTokenText styleName="positionInCircle" featureText="sentence fragments"/>
+                </dragable>
+            </eachStimulus>
+            <afterStimulus>
+                <setMetadataEvalTokens evaluateTokens="d1e269-d1e235-d1e253-d1e290" fieldName="draggable_euclidian_distance">
+                    <onError></onError>
+                    <onSuccess></onSuccess>
+                </setMetadataEvalTokens>
+                <validateStimuliDragables evaluateTokens="calculate euclidian distance between the elements (center of the item) for use in the next trials">
+                    <onError></onError>
+                    <onSuccess></onSuccess>
+                </validateStimuliDragables>
+            </afterStimulus>
+        </withStimuli>
+        <randomGrouping storageField="draggable_euclidian_distance">
+                <tag alias="v0">media</tag>
+        </randomGrouping>
+            <stimuli/>
+    </presenter>-->
     <presenter back="Menu" menuLabel="currentDate daysBetween and length" type="metadata" self="currentDate_daysBetween_and_length" title="currentDate daysBetween and length">
         <plainText featureText="In this example the current date is shown in a label. The number of days between the entered dateOfBirth and today is calculated and put into the session_step field and shown in a label. The length of the string in the educationOther field is put into the step_done field and shown in a label."/>
         <metadataField fieldName="dateOfBirth"/>
