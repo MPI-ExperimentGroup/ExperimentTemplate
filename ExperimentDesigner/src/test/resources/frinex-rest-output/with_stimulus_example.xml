@@ -1100,7 +1100,7 @@
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
     </presenter>
-<!--    <presenter back="Menu" menuLabel="Draggable Euclidian Distance" type="stimulus" self="draggable_euclidian_distance" title="Draggable Euclidian Distance">
+    <!--<presenter back="Menu" menuLabel="Draggable Euclidian Distance" type="stimulus" self="draggable_euclidian_distance" title="Draggable Euclidian Distance">
         <scss>loop to make styles that step around the circle</scss>
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <beforeStimulus/>
@@ -2973,6 +2973,86 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="stimulusRatingImageButton" type="stimulus" self="stimulusRatingImageButton" title="stimulusRatingImageButton">
+        <loadStimulus eventTag="stimulusRatingImageButton" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText="This demonstration screen provides an example usage of the stimulus rating labels to show rating images.&lt;br/&gt;"/>
+                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_0&gt;.jpg" dataChannel="8" msToNext="0">	
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                </stimulusCodeImage>
+                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8" msToNext="0">	
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                </stimulusCodeImage>
+                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8" msToNext="0">	
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                </stimulusCodeImage>
+                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_4&gt;.jpg" dataChannel="8" msToNext="0">	
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_0gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                    <mediaLoaded>
+                        <htmlText featureText="mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <htmlText featureText="onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                    <mediaLoaded>
+                        <htmlText featureText="mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <htmlText featureText="onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                    <mediaLoaded>
+                        <htmlText featureText="mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <htmlText featureText="onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_3&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                    <mediaLoaded>
+                        <htmlText featureText="mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <htmlText featureText="onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="stimulusRatingImageButton"/>
+                    <gotoPresenter target="stimulusRatingImageButton"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>ratingimages</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="if stimulus exists" type="stimulus" self="if_stimulus_exists" title="if stimulus exists">
         <loadStimulus eventTag="if_stimulus_exists" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -3762,6 +3842,11 @@
         <stimulus identifier="RecorderPauseTest8000" label="8000" pauseMs="8000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest9000" label="9000" pauseMs="9000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>
+        <stimulus identifier="ratingimages1" ratingLabels="d1e250,d1e256,d1e263,d1e275" tags="ratingimages" />
+        <stimulus identifier="ratingimages2" ratingLabels="d1e281,d1e287,d1e293,d1e223" tags="ratingimages" />
+        <stimulus identifier="ratingimages3" ratingLabels="d1e266,d1e272,d1e278,d1e284" tags="ratingimages" />
+        <stimulus identifier="ratingimages4" ratingLabels="d1e290,d1e228,d1e238,d1e244" tags="ratingimages" />
+        <stimulus identifier="ratingimages5" ratingLabels="d1e241,d1e247,d1e253,d1e259" tags="ratingimages" />
         <stimulus audioPath="d1e269_a" code="d1e269" identifier="d1e269" imagePath="d1e269.jpg" label="d1e269" pauseMs="0" tags="media" videoPath="d1e269_v"/>
         <stimulus audioPath="d1e235_a" code="d1e235" identifier="d1e235" imagePath="d1e235.jpg" label="d1e235" pauseMs="0" tags="media" videoPath="d1e235_v"/>
         <stimulus audioPath="d1e241_a" code="d1e241" identifier="d1e241" imagePath="d1e241.jpg" label="d1e241" pauseMs="0" tags="media" videoPath="d1e241_v"/>
