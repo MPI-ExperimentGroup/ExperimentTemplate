@@ -3898,6 +3898,7 @@
         <stimulus code="NN" identifier="68" correctResponses="5" ratingLabels="M,T,6,#,2" label="De meeste vrienden. 5" pauseMs="0" tags="RatingToggle rating_button_examples"/>
         <stimulus code="NC" identifier="32" correctResponses="1" ratingLabels="8,7,6,5,4,3,2,1" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle rating_button_examples"/>
         <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle rating_button_examples"/>
+        <stimulus code="NC2" identifier="323" correctResponses="punctuation" ratingLabels="good[brackets],good\,comma,good{braces},good(parentheses),meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle rating_button_examples"/>
         <stimulus  identifier="author_1"  label="Auteur 1"  tags="missed_fav_author"  pauseMs="0"  />
         <stimulus  identifier="author_2"  label="Auteur 2"  tags="missed_fav_author"  pauseMs="0"  />
         <stimulus  identifier="author_3"  label="Auteur 3"  tags="missed_fav_author"  pauseMs="0"  />
