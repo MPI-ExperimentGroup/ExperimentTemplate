@@ -82,7 +82,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
         } else if (metadataField.isCheckBox()) {
             dateOfBirthField = null;
             label = new Label();
-            focusWidget = new CheckBox(metadataField.getFieldLabel());
+            focusWidget = new CheckBox(metadataField.getFieldLabel(), true);
             ((CheckBox) focusWidget).setValue((initialValue == null) ? false : Boolean.parseBoolean(initialValue));
             ((CheckBox) focusWidget).addValueChangeHandler(new ValueChangeHandler<Boolean>() {
                 @Override
