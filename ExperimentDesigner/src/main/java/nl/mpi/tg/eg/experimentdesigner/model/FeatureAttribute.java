@@ -59,7 +59,7 @@ public enum FeatureAttribute {
     targetOptions(true),
     styleName(true),
     regionId,
-    showOnBackButton(true),
+    showOnBackButton("When true the component will be invisible until the browser back button is clicked. Repeated clicks will toggle the visibility. The feature cannot be used in conjunction with a presenter back attribute.", true, AttributeType.xsBoolean),
     eventTier,
     dataChannel(true),
     dataLogFormat(false),
