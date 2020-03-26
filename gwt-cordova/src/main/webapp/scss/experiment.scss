@@ -822,6 +822,11 @@ canvas {
 .menuTable {
     width: 100%;
 }
+.menuTable, .centredTable {
+    width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
 .gridCellLabel {
     font-size: 15pt;
     padding: 0px;
