@@ -126,7 +126,25 @@
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
                 <!--</xsl:if>-->
-                <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', replace(@ratingLabels, '\\,', '&amp;#x2C;'), '&quot;') else ',null'" />
+                <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', 
+                                            replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(@ratingLabels, 
+                                                '\|', '&amp;#x7C;'), 
+                                                '!', '&amp;#x21;'), 
+                                                '\.', '&amp;#x2E;'), 
+                                                '\?', '&amp;#x3F;'), 
+                                                '\+', '&amp;#x2B;'), 
+                                                '\*', '&amp;#x2A;'), 
+                                                '\$', '&amp;#x24;'), 
+                                                '\^', '&amp;#x5E;'), 
+                                                '\(', '&amp;#x28;'), 
+                                                '\)', '&amp;#x29;'), 
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;'), 
+                                                '\]', '&amp;#x5D;'), 
+                                                '\[', '&amp;#x5B;'), 
+                                                '\\,', '&amp;#x2C;'), 
+                                                '\\', '&amp;#x5C;'), 
+                                        '&quot;') else ',null'" />
                 <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
                 <xsl:variable name="stimuliElement" select="."/>
                 <xsl:for-each select="$parameter">
