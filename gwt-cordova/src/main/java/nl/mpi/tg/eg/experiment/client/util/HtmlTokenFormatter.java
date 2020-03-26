@@ -320,7 +320,24 @@ public class HtmlTokenFormatter {
             if (currentStimulus.hasRatingLabels()) {
                 replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
                 int index = 0;
-                for (final String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
+                for ( String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
+                    // note that these chars are escaped in the config2stimuli.xsl which is why we do not do a general url decode which would overly affect the users input
+                    ratingLabel= ratingLabel.replaceAll("&#x7C;", "|");
+                    ratingLabel= ratingLabel.replaceAll("&#x21;", "!");
+                    ratingLabel= ratingLabel.replaceAll("&#x2E;", ".");
+                    ratingLabel= ratingLabel.replaceAll("&#x3F;", "?");
+                    ratingLabel= ratingLabel.replaceAll("&#x2B;", "+");
+                    ratingLabel= ratingLabel.replaceAll("&#x2A;", "*");
+                    ratingLabel= ratingLabel.replaceAll("&#x24;", "\\$");
+                    ratingLabel= ratingLabel.replaceAll("&#x5E;", "^");
+                    ratingLabel= ratingLabel.replaceAll("&#x28;", "(");
+                    ratingLabel= ratingLabel.replaceAll("&#x29;", ")");
+                    ratingLabel= ratingLabel.replaceAll("&#x7D;", "}");
+                    ratingLabel= ratingLabel.replaceAll("&#x7B;", "{");
+                    ratingLabel= ratingLabel.replaceAll("&#x5D;", "]");
+                    ratingLabel= ratingLabel.replaceAll("&#x5B;", "[");
+                    ratingLabel= ratingLabel.replaceAll("&#x2C;", ",");
+                    ratingLabel= ratingLabel.replaceAll("&#x5C;", "\\\\");
                     replacedTokensString = replacedTokensString.replace("<rating_" + index + ">", ratingLabel); // migrated <rating_XXX> from StimuliCodeFormatter <rating_XXX> and should be deprecated
                     replacedTokensString = replacedTokensString.replace("<stimulusRatingLabel_" + index + ">", ratingLabel);
                     index++;
