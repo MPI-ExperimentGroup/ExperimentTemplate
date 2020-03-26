@@ -23,8 +23,11 @@ import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -67,7 +70,30 @@ public class HtmlTokenFormatterTest {
     }
 
     /**
-     * Test of formatString currentDateDDMMYYYY method, of class HtmlTokenFormatter.
+     * Test of formatString method, of class HtmlTokenFormatter.
+     */
+    @Test
+    public void testFormatEncodedString() {
+        System.out.println("formatEncodedString");
+
+        String inputString = "K<stimulusRatingLabel_0>M<stimulusRatingLabel_1>N<stimulusRatingLabel_2>O<stimulusRatingLabel_3>P<stimulusRatingLabel_4>Q<stimulusRatingLabel_5>U<stimulusRatingLabel_6>R<stimulusRatingLabel_7>S<stimulusRatingLabel_8>T<stimulusRatingLabel_9>U<stimulusRatingLabel_10>V<stimulusRatingLabel_11>W<stimulusRatingLabel_12>X<stimulusRatingLabel_13>L";
+        final String expectedString = "Kgood[brackets]Mgood,commaNgood{braces}Ogood(parentheses)PmeowQback\\slashUtwo^caretRdollar$signSfour*asteriskTfive+plusUquestion?markVfull.stopWeight|pipeXexclamation!markL";
+        final String ratingString = "good&#x5B;brackets&#x5D;,good&#x2C;comma,good&#x7B;braces&#x7D;,good&#x28;parentheses&#x29;,meow,back&#x5C;slash,two&#x5E;caret,dollar&#x24;sign,four&#x2A;asterisk,five&#x2B;plus,question&#x3F;mark,full&#x2E;stop,eight&#x7C;pipe,exclamation&#x21;mark";
+        HtmlTokenFormatter instance = new HtmlTokenFormatter(new AbstractStimulus("a", new Stimulus.Tag[]{}, null, null, 0, null, null, null, ratingString, null) {
+            @Override
+            public boolean isCorrect(String value) {
+                return false;
+            }
+        }, null, null, new UserData(new UserId()), new TimerService(), null);
+        final String formattedString = instance.formatString(inputString);
+        System.out.println("expectedString:" + expectedString);
+        System.out.println("formattedString: " + formattedString);
+        assertEquals(expectedString, formattedString);
+    }
+
+    /**
+     * Test of formatString currentDateDDMMYYYY method, of class
+     * HtmlTokenFormatter.
      */
     @Test
     public void testFormatStringCurrentDate() {
@@ -82,7 +108,8 @@ public class HtmlTokenFormatterTest {
     }
 
     /**
-     * Test of formatString method to ExtractNextFromList, of class HtmlTokenFormatter.
+     * Test of formatString method to ExtractNextFromList, of class
+     * HtmlTokenFormatter.
      */
     @Test
     public void testExtractNextFromList() {
