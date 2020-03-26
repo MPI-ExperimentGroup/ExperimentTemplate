@@ -144,7 +144,7 @@
                                                 '\[', '&amp;#x5B;'), 
                                                 '\\,', '&amp;#x2C;'), 
                                                 '\\', '&amp;#x5C;'), 
-                                        '&quot;') else ',null'" />
+                                        '&quot;') else ',null'" /> <!--Note that these encoded chars need to be unescaped in HtmlTokenFormatter-->
                 <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
                 <xsl:variable name="stimuliElement" select="."/>
                 <xsl:for-each select="$parameter">
