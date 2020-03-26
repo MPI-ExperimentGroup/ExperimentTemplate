@@ -76,7 +76,7 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -178,7 +178,7 @@
                 <plainText featureText="plainText in singleUser"/>
             </singleUser>
         </existingUserCheck>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -310,7 +310,7 @@
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
             <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -1616,7 +1616,7 @@
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
             <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -1705,7 +1705,7 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -1785,7 +1785,7 @@
         <editableKinEntitesDiagram msToNext="60" diagramName="diagramName">
             <plainText featureText="plainText in editableKinEntitesDiagram"/>
         </editableKinEntitesDiagram>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -1842,7 +1842,7 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -1900,7 +1900,7 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -1947,7 +1947,7 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>
@@ -2001,7 +2001,7 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
+        <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
         <row>

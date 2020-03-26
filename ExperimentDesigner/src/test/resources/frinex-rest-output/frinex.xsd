@@ -9542,7 +9542,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="styleName" type="xs:string"/>
-<xs:attribute name="showOnBackButton" type="xs:string"/>
+<xs:attribute name="showOnBackButton" type="xs:boolean"/>
 </xs:complexType>
 <xs:complexType name="rowType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
