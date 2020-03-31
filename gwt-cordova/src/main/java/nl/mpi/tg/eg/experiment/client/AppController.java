@@ -242,6 +242,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     }
                 }
             }
+            triggerNotificationCallbacks();
             canAcceptNotifications = true;
             final boolean notificationSetsTarget = checkNotificationCallbacks();
             if (!notificationSetsTarget) {
@@ -313,6 +314,10 @@ public abstract class AppController implements AppEventListner/*, AudioException
         }
     }
 
+    final protected native boolean triggerNotificationCallbacks() /*-{
+        if ($wnd.cordova) if ($wnd.cordova.plugins) $wnd.cordova.plugins.notification.local.fireQueuedEvents();
+    }-*/;
+    
     final protected native boolean checkNotificationCallbacks() /*-{
         var appController = this;
         var notificationSetsTarget = false;
