@@ -316,16 +316,20 @@ public abstract class AppController implements AppEventListner/*, AudioException
     final protected native boolean checkNotificationCallbacks() /*-{
         var appController = this;
         var notificationSetsTarget = false;
+        console.log("checkNotificationCallbacks");
         if(this.@nl.mpi.tg.eg.experiment.client.AppController::canAcceptNotifications) {
+            console.log("canAcceptNotifications");
             if ($wnd.cordova) {
                 if ($wnd.cordova.plugins) {
                     if (typeof(Storage) !== "undefined") {
                         var storedNotification = $wnd.localStorage.getItem("NotificationCallback");
+                        console.log("storedNotification: " + storedNotification);
                         if (storedNotification !== null) {
                             try {
                                 appController.@nl.mpi.tg.eg.experiment.client.AppController::logNotificationFromString(Ljava/lang/String;)("addNotificationCallback: " + storedNotification);
                                 notificationSetsTarget = appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(storedNotification);
                                 $wnd.localStorage.removeItem("NotificationCallback");
+                                console.log("cleared storedNotification");
                             } catch (error) {
                                 console.error(error);
                             }
