@@ -185,7 +185,6 @@ public abstract class LocalNotifications {
             }
             });
         } else {
-            localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
             localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
         }
      }-*/;
