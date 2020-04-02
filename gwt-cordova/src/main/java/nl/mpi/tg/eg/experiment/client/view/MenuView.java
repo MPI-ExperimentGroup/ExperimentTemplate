@@ -39,15 +39,15 @@ public class MenuView extends TimedStimulusView {
 //        outerTable = new FlexTable();
 //        outerPanel.add(outerTable);
 //    }
-    public void addSeparateMenuPanel() {
+    public void addSeparateMenuPanel(final String styleName) {
         flexTable = null;
-        checkFlexTableExists();
+        checkFlexTableExists(styleName);
     }
 
-    private void checkFlexTableExists() {
+    private void checkFlexTableExists(final String styleName) {
         if (flexTable == null) {
             flexTable = new FlexTable();
-            flexTable.setStylePrimaryName("menuTable");
+            flexTable.setStylePrimaryName((styleName == null) ? "menuTable" : styleName);
             outerPanel.setStylePrimaryName("menuOuter");
             outerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
             outerPanel.add(flexTable);
@@ -55,7 +55,7 @@ public class MenuView extends TimedStimulusView {
     }
 
     public void addMenuItem(final PresenterEventListner menuItemListerner, final boolean menuEnabled) {
-        checkFlexTableExists();
+        checkFlexTableExists(null);
         final Button menuButton = new Button(new SafeHtmlBuilder().appendEscapedLines(menuItemListerner.getLabel()).toSafeHtml());
 //        tableMap.get(flexTable).add(menuButton);
         menuButton.addStyleName("menuButton");
@@ -81,7 +81,7 @@ public class MenuView extends TimedStimulusView {
     }
 
     public void addMenuLabel(String textString, boolean boldText) {
-        checkFlexTableExists();
+        checkFlexTableExists(null);
         HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
         if (boldText) {
             html.addStyleName("highlightedText");
