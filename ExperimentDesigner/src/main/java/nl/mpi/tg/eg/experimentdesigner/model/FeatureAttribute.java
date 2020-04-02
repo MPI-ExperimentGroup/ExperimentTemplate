@@ -57,7 +57,7 @@ public enum FeatureAttribute {
     orientation(null, true, new String[]{"horizontal", "vertical", "flow"}),
     target(false), // this is probably not optional in some cases
     targetOptions(true),
-    styleName(true),
+    styleName("One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.", true,AttributeType.xsString),
     regionId,
     showOnBackButton("When true the component will be invisible until the browser back button is clicked. Repeated clicks will toggle the visibility. The feature cannot be used in conjunction with a presenter back attribute.", true, AttributeType.xsBoolean),
     eventTier,

@@ -10266,6 +10266,9 @@
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="regionClearType">
+<xs:annotation>
+<xs:documentation>If a region matching the regionId exists then it will cleared. Unlike clearPage clearing a region only removes the visual components, so any media that has been placed in the region should be stopped first.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="regionId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="stimulusPresentType">
