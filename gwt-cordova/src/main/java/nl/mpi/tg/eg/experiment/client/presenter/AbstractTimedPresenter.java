@@ -247,10 +247,6 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         timedStimulusView.endRow(isWidget);
     }
 
-    protected void column(final TimedStimulusListener timedStimulusListener) {
-        column(null, timedStimulusListener);
-    }
-
     protected void column(final String styleName, final TimedStimulusListener timedStimulusListener) {
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startCell(styleName);
         timedStimulusListener.postLoadTimerFired();
