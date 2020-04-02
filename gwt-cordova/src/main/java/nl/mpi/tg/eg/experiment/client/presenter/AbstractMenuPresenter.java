@@ -48,6 +48,7 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
     }
 
     public void allMenuItems(final AppEventListner appEventListner, final String styleName, final ApplicationController.ApplicationState selfApplicationState) {
+        ((MenuView) simpleView).addSeparateMenuPanel(styleName);
         for (final ApplicationController.ApplicationState currentAppState : ApplicationController.ApplicationState.values()) {
             if (currentAppState.label != null && selfApplicationState != currentAppState) {
                 menuItem(appEventListner, currentAppState, currentAppState.label, -1, styleName);
