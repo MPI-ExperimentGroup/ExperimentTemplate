@@ -171,7 +171,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
                 ((TimedStimulusView) simpleView).clearPageAndTimers(null);
                 setContent(appEventListner);
-                submissionService.submitTimestamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
+                //submissionService.submitTimestamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
         });
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
@@ -218,7 +218,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
                 clearKinTypeString(diagramName);
                 ((TimedStimulusView) simpleView).clearPageAndTimers(null);
                 setContent(appEventListner);
-                submissionService.submitTimestamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
+                //submissionService.submitTimestamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }
         });
     }
