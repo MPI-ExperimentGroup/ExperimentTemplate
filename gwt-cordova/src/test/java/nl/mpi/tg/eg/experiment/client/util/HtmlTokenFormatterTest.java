@@ -204,33 +204,42 @@ public class HtmlTokenFormatterTest {
     public void testEvaluateTokens() throws EvaluateTokensException {
         System.out.println("evaluateTokens");
         HtmlTokenFormatter instance = getInstance();
-        assertEquals((2 - (3 * 6 + (7 - 4 * (7.0 / 2)))) + 4, instance.evaluateTokens("(2-(3*6+(7-4*(7/2))))+4"));
-        assertEquals((2 - (3 * 6 + (7 - 4 * (7.0 + 2)))) + 4, instance.evaluateTokens("(2-(3*6+(7-4*(7+2))))+4"));
-        assertEquals(-(-2 - (-3 * -6 + (-7 - -4 * (-7.0 + -2)))) + -4, instance.evaluateTokens("-(-2-(-3*-6+(-7--4*(-7+-2))))+-4"));
-        assertEquals(-(-2 - -(-3 * -6 + -(-7 - -4 * -(-7.0 + -2)))) + -4, instance.evaluateTokens("-(-2--(-3*-6+-(-7--4*-(-7+-2))))+-4"));
-        assertEquals(2.0 - 3 + 4.0, instance.evaluateTokens("2-3+4"));
-        assertEquals(2.0 + 3 - 4.0, instance.evaluateTokens("2+3-4"));
-        assertEquals(4.0 / 5.0 * 6, instance.evaluateTokens("4/5*6"));
-        assertEquals(4.0 * 5.0 / 6, instance.evaluateTokens("4*5/6"));
-        assertEquals(-2.0 - 3 + 4.0, instance.evaluateTokens("-2-3+4"));
-        assertEquals(-2.0 + 3 - 4.0, instance.evaluateTokens("-2+3-4"));
-        assertEquals(-4.0 / 5.0 * 6, instance.evaluateTokens("-4/5*6"));
-        assertEquals(-4.0 * 5.0 / 6, instance.evaluateTokens("-4*5/6"));
-        assertEquals(3 + 4.0 / 5.0 * 6, instance.evaluateTokens("3+4/5*6"));
-        assertEquals(2.0 - 4.0 / 5.0 * 6, instance.evaluateTokens("2-4/5*6"));
-        assertEquals(2.0 - 3 + 4.0 / 5.0 * 6, instance.evaluateTokens("2-3+4/5*6"));
-        assertEquals((1.0 + 5) % 3, instance.evaluateTokens("(1 +5) % 3"));
-        assertEquals(1.0 + (5 % 3), instance.evaluateTokens("1+(5 % 3)"));
-        assertEquals(1.0 + 5 % 3, instance.evaluateTokens("1+5 % 3"));
-        assertEquals(1.0 + 5, instance.evaluateTokens("1 + 5"));
-        assertEquals(-1.0 + 5, instance.evaluateTokens("-1 + 5"));
-        assertEquals(1.0 + 5 * (1 * 3), instance.evaluateTokens("1 + 5 * (1*3)"));
-        assertEquals((1.0 + 5.1) * (1 * 3), instance.evaluateTokens("(1 + 5.1) * (1 *3 ) "));
-        assertEquals(5.1 / (1 - 3), instance.evaluateTokens("5.1 / ( 1- 3) "));
-        assertEquals(-5.1 / (1 - 3), instance.evaluateTokens("-5.1 / ( 1- 3) "));
-        assertEquals(2.0 * 3 - 4 + 5.0 / 6, instance.evaluateTokens("2*3-4+5/6"));
-        assertEquals(2.0 / 3 * 4 - 5 + 6, instance.evaluateTokens("2/3*4-5+6"));
-        assertEquals(2.0 + 3 / 4.0 * 5 - 6, instance.evaluateTokens("2+3/4*5-6"));
+        assertEquals((2 - (3 * 6 + (7 - 4 * (7.0 / 2)))) + 4, instance.evaluateTokensNumber("(2-(3*6+(7-4*(7/2))))+4"));
+        assertEquals((2 - (3 * 6 + (7 - 4 * (7.0 + 2)))) + 4, instance.evaluateTokensNumber("(2-(3*6+(7-4*(7+2))))+4"));
+        assertEquals(-(-2 - (-3 * -6 + (-7 - -4 * (-7.0 + -2)))) + -4, instance.evaluateTokensNumber("-(-2-(-3*-6+(-7--4*(-7+-2))))+-4"));
+        assertEquals(-(-2 - -(-3 * -6 + -(-7 - -4 * -(-7.0 + -2)))) + -4, instance.evaluateTokensNumber("-(-2--(-3*-6+-(-7--4*-(-7+-2))))+-4"));
+        assertEquals(2.0 - 3 + 4.0, instance.evaluateTokensNumber("2-3+4"));
+        assertEquals(2.0 + 3 - 4.0, instance.evaluateTokensNumber("2+3-4"));
+        assertEquals(4.0 / 5.0 * 6, instance.evaluateTokensNumber("4/5*6"));
+        assertEquals(4.0 * 5.0 / 6, instance.evaluateTokensNumber("4*5/6"));
+        assertEquals(-2.0 - 3 + 4.0, instance.evaluateTokensNumber("-2-3+4"));
+        assertEquals(-2.0 + 3 - 4.0, instance.evaluateTokensNumber("-2+3-4"));
+        assertEquals(-4.0 / 5.0 * 6, instance.evaluateTokensNumber("-4/5*6"));
+        assertEquals(-4.0 * 5.0 / 6, instance.evaluateTokensNumber("-4*5/6"));
+        assertEquals(3 + 4.0 / 5.0 * 6, instance.evaluateTokensNumber("3+4/5*6"));
+        assertEquals(2.0 - 4.0 / 5.0 * 6, instance.evaluateTokensNumber("2-4/5*6"));
+        assertEquals(2.0 - 3 + 4.0 / 5.0 * 6, instance.evaluateTokensNumber("2-3+4/5*6"));
+        assertEquals((1.0 + 5) % 3, instance.evaluateTokensNumber("(1 +5) % 3"));
+        assertEquals(1.0 + (5 % 3), instance.evaluateTokensNumber("1+(5 % 3)"));
+        assertEquals(1.0 + 5 % 3, instance.evaluateTokensNumber("1+5 % 3"));
+        assertEquals(1.0 + 5, instance.evaluateTokensNumber("1 + 5"));
+        assertEquals(-1.0 + 5, instance.evaluateTokensNumber("-1 + 5"));
+        assertEquals(1.0 + 5 * (1 * 3), instance.evaluateTokensNumber("1 + 5 * (1*3)"));
+        assertEquals((1.0 + 5.1) * (1 * 3), instance.evaluateTokensNumber("(1 + 5.1) * (1 *3 ) "));
+        assertEquals(5.1 / (1 - 3), instance.evaluateTokensNumber("5.1 / ( 1- 3) "));
+        assertEquals(-5.1 / (1 - 3), instance.evaluateTokensNumber("-5.1 / ( 1- 3) "));
+        assertEquals(2.0 * 3 - 4 + 5.0 / 6, instance.evaluateTokensNumber("2*3-4+5/6"));
+        assertEquals(2.0 / 3 * 4 - 5 + 6, instance.evaluateTokensNumber("2/3*4-5+6"));
+        assertEquals(2.0 + 3 / 4.0 * 5 - 6, instance.evaluateTokensNumber("2+3/4*5-6"));
+//        assertEquals(1 < 2 + 3 / 4 * 5 - 6, instance.evaluateTokensString("1<2+3/4*5-6"));
+//        assertEquals(3 < (2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("3< (2+3/4*5-6)"));
+//        assertEquals(10 > (2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("10 >(2+3/4*5-6)"));
+//        assertEquals(true && 10 > (2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("true && 10 >(2+3/4*5-6)"));
+//        assertEquals(true && true || false, instance.evaluateTokensString("true && true || false"));
+//        assertEquals(true && true && false, instance.evaluateTokensString("true && true && false"));
+//        assertEquals((true || false) && false, instance.evaluateTokensString("(true||false)&&false"));
+//        assertEquals(12 != 1, instance.evaluateTokensString("12!=1"));
+//        assertEquals(12 != 1 && 12 > 2, instance.evaluateTokensString("12!=1&&12>2"));
     }
 
     /**
@@ -242,9 +251,9 @@ public class HtmlTokenFormatterTest {
     public void testEvaluateTokensMethods() throws EvaluateTokensException {
         System.out.println("evaluateTokensMethods");
         HtmlTokenFormatter instance = getInstance();
-        assertEquals(6.0, instance.evaluateTokens("length(\"123456\")"));
-        assertEquals(9.0, instance.evaluateTokens("length(\"123456789\")"));
-        assertEquals(12.0, instance.evaluateTokens("length(\"123456123456\")"));
-        assertEquals(12.0, instance.evaluateTokens("daysBetween(\"01/12/2019\", \"13/12/2019\")"));
+        assertEquals(6.0, instance.evaluateTokensNumber("length(\"123456\")"));
+        assertEquals(9.0, instance.evaluateTokensNumber("length(\"123456789\")"));
+        assertEquals(12.0, instance.evaluateTokensNumber("length(\"123456123456\")"));
+        assertEquals(12.0, instance.evaluateTokensNumber("daysBetween(\"01/12/2019\", \"13/12/2019\")"));
     }
 }
