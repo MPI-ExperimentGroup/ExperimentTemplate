@@ -95,107 +95,112 @@ public class HtmlTokenFormatter {
         return currentDate;
     }
 
-    public Number evaluateTokens(String inputString) throws EvaluateTokensException {
+    public String evaluateTokensString(String inputString) throws EvaluateTokensException {
         final String formatedString = formatString(inputString);
         return evaluateResolve(formatedString.replaceAll("\\s", ""));
     }
 
-    private Number evaluateResolve(String inputString) throws EvaluateTokensException {
+    public Number evaluateTokensNumber(String inputString) throws EvaluateTokensException {
+        final String formatedString = formatString(inputString);
         try {
-            System.out.println(inputString);
-            RegExp regExpGroupM = RegExp.compile("(daysBetween|length)(\\([^\\)\\(]*\\))");
-            MatchResult matcherGroupM = regExpGroupM.exec(inputString);
-            while (matcherGroupM != null) {
-                if (matcherGroupM.getGroupCount() == 3) {
-                    final String methodMatch = matcherGroupM.getGroup(1);
-                    final String parameterMatch = matcherGroupM.getGroup(2);
-                    String resultValue = "";
-                    switch (methodMatch) {
-                        case "length":
-                            resultValue = Integer.toString(parameterMatch.length() - 4);
-                            break;
-                        case "daysBetween":
-                            String[] parameterParts = parameterMatch.split(",");
-                            if (parameterParts.length == 2) {
-                                final String dateStringA = parameterParts[0];
-                                final String dateStringB = parameterParts[1];
-                                final Date dateA = parseDDMMYYYDate(dateStringA);
-                                final Date dateB = parseDDMMYYYDate(dateStringB);
-                                long diffMs = dateB.getTime() - dateA.getTime();
-                                resultValue = Long.toString(diffMs / (1000 * 60 * 60 * 24));
-                            } else {
-                                throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
-                            }
-                            break;
-                        default:
-                            throw new EvaluateTokensException("unsupported match:" + matcherGroupM.getGroup(0));
-                    }
-                    inputString = inputString.replace(methodMatch + parameterMatch, resultValue);
-                } else {
-                    throw new EvaluateTokensException(inputString);
-                }
-                matcherGroupM = regExpGroupM.exec(inputString);
-            }
-            RegExp regExpGroup = RegExp.compile("(\\([^\\)\\(]*\\))");
-            MatchResult matcherGroup = regExpGroup.exec(inputString);
-            while (matcherGroup != null) {
-                for (int groupIndex = 1; groupIndex < matcherGroup.getGroupCount(); groupIndex++) {
-                    final String groupString = matcherGroup.getGroup(groupIndex);
-                    inputString = inputString.replace(groupString, "" + evaluateResolve(groupString.substring(1, groupString.length() - 1)));
-                }
-                matcherGroup = regExpGroup.exec(inputString);
-            }
-            for (String operator : new String[]{"/", "\\*", "%", "-", "\\+"}) {
-                RegExp regExpOperator = RegExp.compile("(^-|[^0-9.]-|)([0-9\\.]+)(" + operator + ")(-?)([0-9\\.]+)");
-                boolean foundMatch = true;
-                while (foundMatch) {
-                    foundMatch = false;
-                    inputString = inputString.replaceAll(operator + "--", operator);
-                    inputString = inputString.replaceAll("^--", "");
-                    MatchResult matcherOperator = regExpOperator.exec(inputString);
-                    if (matcherOperator != null) {
-                        if (matcherOperator.getGroupCount() >= 6) {
-                            foundMatch = true;
-                            final String groupSignLeftAll = matcherOperator.getGroup(1);
-                            final String groupSignLeft = (groupSignLeftAll.length() <= 1) ? groupSignLeftAll : groupSignLeftAll.substring(groupSignLeftAll.length() - 1);
-                            final String groupValueLeft = matcherOperator.getGroup(2);
-                            final String groupOperator = matcherOperator.getGroup(3);
-                            final String groupSignRight = matcherOperator.getGroup(4);
-                            final String groupValueRight = matcherOperator.getGroup(5);
-                            final Number resultNumber;
-                            switch (operator) {
-                                case "/":
-                                    resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) / Double.parseDouble(groupSignRight + groupValueRight);
-                                    break;
-                                case "\\*":
-                                    resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) * Double.parseDouble(groupSignRight + groupValueRight);
-                                    break;
-                                case "\\+":
-                                    resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) + Double.parseDouble(groupSignRight + groupValueRight);
-                                    break;
-                                case "-":
-                                    resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) - Double.parseDouble(groupSignRight + groupValueRight);
-                                    break;
-                                case "%":
-                                    resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) % Double.parseDouble(groupSignRight + groupValueRight);
-                                    break;
-                                default:
-                                    resultNumber = 0;
-                            }
-                            String groupString = groupSignLeft + groupValueLeft + groupOperator + groupSignRight + groupValueRight;
-                            inputString = inputString.replace(groupString, "" + resultNumber);
-                            System.out.print(groupString);
-                            System.out.print(" = ");
-                            System.out.println(resultNumber);
-                            System.out.println(inputString);
-                        }
-                    }
-                }
-            }
-            return Double.parseDouble(inputString);
+            return Double.parseDouble(evaluateResolve(formatedString.replaceAll("\\s", "")));
         } catch (NumberFormatException exception) {
             throw new EvaluateTokensException(exception.getMessage() + " " + inputString);
         }
+    }
+
+    private String evaluateResolve(String inputString) throws EvaluateTokensException {
+        System.out.println(inputString);
+        RegExp regExpGroupM = RegExp.compile("(daysBetween|length)(\\([^\\)\\(]*\\))");
+        MatchResult matcherGroupM = regExpGroupM.exec(inputString);
+        while (matcherGroupM != null) {
+            if (matcherGroupM.getGroupCount() == 3) {
+                final String methodMatch = matcherGroupM.getGroup(1);
+                final String parameterMatch = matcherGroupM.getGroup(2);
+                String resultValue = "";
+                switch (methodMatch) {
+                    case "length":
+                        resultValue = Integer.toString(parameterMatch.length() - 4);
+                        break;
+                    case "daysBetween":
+                        String[] parameterParts = parameterMatch.split(",");
+                        if (parameterParts.length == 2) {
+                            final String dateStringA = parameterParts[0];
+                            final String dateStringB = parameterParts[1];
+                            final Date dateA = parseDDMMYYYDate(dateStringA);
+                            final Date dateB = parseDDMMYYYDate(dateStringB);
+                            long diffMs = dateB.getTime() - dateA.getTime();
+                            resultValue = Long.toString(diffMs / (1000 * 60 * 60 * 24));
+                        } else {
+                            throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
+                        }
+                        break;
+                    default:
+                        throw new EvaluateTokensException("unsupported match:" + matcherGroupM.getGroup(0));
+                }
+                inputString = inputString.replace(methodMatch + parameterMatch, resultValue);
+            } else {
+                throw new EvaluateTokensException(inputString);
+            }
+            matcherGroupM = regExpGroupM.exec(inputString);
+        }
+        RegExp regExpGroup = RegExp.compile("(\\([^\\)\\(]*\\))");
+        MatchResult matcherGroup = regExpGroup.exec(inputString);
+        while (matcherGroup != null) {
+            for (int groupIndex = 1; groupIndex < matcherGroup.getGroupCount(); groupIndex++) {
+                final String groupString = matcherGroup.getGroup(groupIndex);
+                inputString = inputString.replace(groupString, "" + evaluateResolve(groupString.substring(1, groupString.length() - 1)));
+            }
+            matcherGroup = regExpGroup.exec(inputString);
+        }
+        for (String operator : new String[]{"/", "\\*", "%", "-", "\\+"}) {
+            RegExp regExpOperator = RegExp.compile("(^-|[^0-9.]-|)([0-9\\.]+)(" + operator + ")(-?)([0-9\\.]+)");
+            boolean foundMatch = true;
+            while (foundMatch) {
+                foundMatch = false;
+                inputString = inputString.replaceAll(operator + "--", operator);
+                inputString = inputString.replaceAll("^--", "");
+                MatchResult matcherOperator = regExpOperator.exec(inputString);
+                if (matcherOperator != null) {
+                    if (matcherOperator.getGroupCount() >= 6) {
+                        foundMatch = true;
+                        final String groupSignLeftAll = matcherOperator.getGroup(1);
+                        final String groupSignLeft = (groupSignLeftAll.length() <= 1) ? groupSignLeftAll : groupSignLeftAll.substring(groupSignLeftAll.length() - 1);
+                        final String groupValueLeft = matcherOperator.getGroup(2);
+                        final String groupOperator = matcherOperator.getGroup(3);
+                        final String groupSignRight = matcherOperator.getGroup(4);
+                        final String groupValueRight = matcherOperator.getGroup(5);
+                        final Number resultNumber;
+                        switch (operator) {
+                            case "/":
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) / Double.parseDouble(groupSignRight + groupValueRight);
+                                break;
+                            case "\\*":
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) * Double.parseDouble(groupSignRight + groupValueRight);
+                                break;
+                            case "\\+":
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) + Double.parseDouble(groupSignRight + groupValueRight);
+                                break;
+                            case "-":
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) - Double.parseDouble(groupSignRight + groupValueRight);
+                                break;
+                            case "%":
+                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) % Double.parseDouble(groupSignRight + groupValueRight);
+                                break;
+                            default:
+                                resultNumber = 0;
+                        }
+                        String groupString = groupSignLeft + groupValueLeft + groupOperator + groupSignRight + groupValueRight;
+                        inputString = inputString.replace(groupString, "" + resultNumber);
+                        System.out.print(groupString);
+                        System.out.print(" = ");
+                        System.out.println(resultNumber);
+                        System.out.println(inputString);
+                    }
+                }
+            }
+        }
+        return inputString;
     }
 
     public String formatString(String inputString) {
@@ -320,24 +325,24 @@ public class HtmlTokenFormatter {
             if (currentStimulus.hasRatingLabels()) {
                 replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
                 int index = 0;
-                for ( String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
+                for (String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
                     // note that these chars are escaped in the config2stimuli.xsl which is why we do not do a general url decode which would overly affect the users input
-                    ratingLabel= ratingLabel.replaceAll("&#x7C;", "|");
-                    ratingLabel= ratingLabel.replaceAll("&#x21;", "!");
-                    ratingLabel= ratingLabel.replaceAll("&#x2E;", ".");
-                    ratingLabel= ratingLabel.replaceAll("&#x3F;", "?");
-                    ratingLabel= ratingLabel.replaceAll("&#x2B;", "+");
-                    ratingLabel= ratingLabel.replaceAll("&#x2A;", "*");
-                    ratingLabel= ratingLabel.replaceAll("&#x24;", "\\$");
-                    ratingLabel= ratingLabel.replaceAll("&#x5E;", "^");
-                    ratingLabel= ratingLabel.replaceAll("&#x28;", "(");
-                    ratingLabel= ratingLabel.replaceAll("&#x29;", ")");
-                    ratingLabel= ratingLabel.replaceAll("&#x7D;", "}");
-                    ratingLabel= ratingLabel.replaceAll("&#x7B;", "{");
-                    ratingLabel= ratingLabel.replaceAll("&#x5D;", "]");
-                    ratingLabel= ratingLabel.replaceAll("&#x5B;", "[");
-                    ratingLabel= ratingLabel.replaceAll("&#x2C;", ",");
-                    ratingLabel= ratingLabel.replaceAll("&#x5C;", "\\\\");
+                    ratingLabel = ratingLabel.replaceAll("&#x7C;", "|");
+                    ratingLabel = ratingLabel.replaceAll("&#x21;", "!");
+                    ratingLabel = ratingLabel.replaceAll("&#x2E;", ".");
+                    ratingLabel = ratingLabel.replaceAll("&#x3F;", "?");
+                    ratingLabel = ratingLabel.replaceAll("&#x2B;", "+");
+                    ratingLabel = ratingLabel.replaceAll("&#x2A;", "*");
+                    ratingLabel = ratingLabel.replaceAll("&#x24;", "\\$");
+                    ratingLabel = ratingLabel.replaceAll("&#x5E;", "^");
+                    ratingLabel = ratingLabel.replaceAll("&#x28;", "(");
+                    ratingLabel = ratingLabel.replaceAll("&#x29;", ")");
+                    ratingLabel = ratingLabel.replaceAll("&#x7D;", "}");
+                    ratingLabel = ratingLabel.replaceAll("&#x7B;", "{");
+                    ratingLabel = ratingLabel.replaceAll("&#x5D;", "]");
+                    ratingLabel = ratingLabel.replaceAll("&#x5B;", "[");
+                    ratingLabel = ratingLabel.replaceAll("&#x2C;", ",");
+                    ratingLabel = ratingLabel.replaceAll("&#x5C;", "\\\\");
                     replacedTokensString = replacedTokensString.replace("<rating_" + index + ">", ratingLabel); // migrated <rating_XXX> from StimuliCodeFormatter <rating_XXX> and should be deprecated
                     replacedTokensString = replacedTokensString.replace("<stimulusRatingLabel_" + index + ">", ratingLabel);
                     index++;
