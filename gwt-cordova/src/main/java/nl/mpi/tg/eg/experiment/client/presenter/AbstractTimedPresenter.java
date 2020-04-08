@@ -72,8 +72,8 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void setMetadataEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokens(evaluateTokens);
-            userResults.getUserData().setMetadataValue(metadataField, resultValue.toString());
+            final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens);
+            userResults.getUserData().setMetadataValue(metadataField, resultValue);
             localStorage.storeData(userResults, metadataFieldProvider);
             onSuccess.postLoadTimerFired();
         } catch (EvaluateTokensException exception) {
@@ -121,7 +121,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void progressIndicator(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokens(evaluateTokens);
+            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
             if (resultValue.intValue() >= 0 && resultValue.intValue() <= 100) {
                 timedStimulusView.addBarGraphElement(resultValue.intValue(), 100, styleName);
                 onSuccess.postLoadTimerFired();
