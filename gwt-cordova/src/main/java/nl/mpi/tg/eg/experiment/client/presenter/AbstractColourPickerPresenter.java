@@ -266,11 +266,10 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
-    protected void loadStimulus(String eventTag, final StimulusSelector[] stimulusSelectors, final StimuliProvider stimulusProvider,
+    protected void loadStimulus(final String eventTag, final StimulusSelector[] stimulusSelectors, final StimuliProvider stimulusProvider,
             final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener
     ) {
         this.stimulusProviderInternal = stimulusProvider;
-        submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final List<Stimulus.Tag> selectionTags = new ArrayList<>();
         for (StimulusSelector selector : stimulusSelectors) {
             selectionTags.add(selector.getTag());
@@ -280,6 +279,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         this.endOfStimulusListener = endOfStimulusListener;
         stimulusResponseGroup = new StimulusResponseGroup(getTitle(), getSelfTag());
         userResults.addStimulusResponseGroup(stimulusResponseGroup);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, stimulusProviderInternal.generateStimuliStateSnapshot(), duration.elapsedMillis());
 //        showStimulus();
         triggerEvent();
     }
