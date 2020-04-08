@@ -265,7 +265,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
     }
 
-    public void submitTimestamp(final UserId userId, String eventTag, int eventMs) {
+    public void submitImmediateTimestamp(final UserId userId, String eventTag, int eventMs) {
         submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
