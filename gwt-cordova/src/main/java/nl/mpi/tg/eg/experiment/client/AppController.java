@@ -376,7 +376,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
      }-*/;
 
     public void logNotificationFromString(final String notification) {
-        submissionService.submitTimestamp(userResults.getUserData().getUserId(), notification, 0);
+        submissionService.submitImmediateTimestamp(userResults.getUserData().getUserId(), notification, 0);
     }
 
     final protected native void enableNotificationCallbacks() /*-{
