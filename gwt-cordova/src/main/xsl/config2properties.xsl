@@ -40,35 +40,45 @@
                     <xsl:if test="@featureText">
                         <xsl:value-of select="generate-id(..)" />
                         <xsl:text>=</xsl:text>
-                        <xsl:value-of select="replace(@featureText,'''','''''')"/>
+                        <xsl:value-of select="replace(replace(replace(@featureText,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                     <xsl:if test="@menuLabel">
                         <xsl:text>menuLabel</xsl:text>
                         <xsl:value-of select="../@self" />
                         <xsl:text>=</xsl:text>
-                        <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
+                        <xsl:value-of select="replace(replace(replace(@menuLabel,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                     <xsl:if test="@title">
                         <xsl:text>title</xsl:text>
                         <xsl:value-of select="../@self" />
                         <xsl:text>Presenter=</xsl:text>
-                        <xsl:value-of select="replace(@title,'''','''''')"/>
+                        <xsl:value-of select="replace(replace(replace(@title,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>    
                     <xsl:if test="@menuLabel">
                         <xsl:text>menuLabel</xsl:text>
                         <xsl:value-of select="../@self" />
                         <xsl:text>Presenter=</xsl:text>
-                        <xsl:value-of select="replace(@menuLabel,'''','''''')"/>
+                        <xsl:value-of select="replace(replace(replace(@menuLabel,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                     <xsl:if test="@closeButtonLabel">
                         <xsl:text>closeButtonLabel</xsl:text>
                         <xsl:value-of select="generate-id(..)" />
                         <xsl:text>=</xsl:text>
-                        <xsl:value-of select="replace(@closeButtonLabel,'''','''''')"/>
+                        <xsl:value-of select="replace(replace(replace(@closeButtonLabel,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
                         <xsl:text>&#xa;</xsl:text>
                     </xsl:if>
                 </xsl:for-each>
@@ -93,28 +103,36 @@
         <xsl:if test="@featureText != ''">       
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
-            <xsl:value-of select="replace(@featureText,'''','''''')"/>
+            <xsl:value-of select="replace(replace(replace(@featureText,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:if test="@networkErrorMessage != ''">   
             <xsl:text>errorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
-            <xsl:value-of select="replace(@networkErrorMessage,'''','''''')"/>
+            <xsl:value-of select="replace(replace(replace(@networkErrorMessage,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:if test="@inputErrorMessage != ''">   
             <xsl:text>inputErrorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
-            <xsl:value-of select="replace(@inputErrorMessage,'''','''''')"/>
+            <xsl:value-of select="replace(replace(replace(@inputErrorMessage,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:if test="@closeButtonLabel != ''">   
             <xsl:text>closeButtonLabel</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
-            <xsl:value-of select="replace(@closeButtonLabel,'''','''''')"/>
+            <xsl:value-of select="replace(replace(replace(@closeButtonLabel,'''',''''''),
+                                                '\}', '&amp;#x7D;'), 
+                                                '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
         <xsl:apply-templates/>
