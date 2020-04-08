@@ -145,7 +145,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
-        submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        //submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        //timedEventMonitor.registerEvent(eventTag);
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
         int seenStimulusIndextemp;
         try {
@@ -296,13 +297,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     private void loadStimulus(
             final StimuliProvider stimulusProvider,
-            String eventTag,
+            final String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
             final String consumedTagsGroupName
     ) {
-        submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+//        timedEventMonitor.registerEvent(eventTag);
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
         try {
@@ -352,6 +353,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
         stimulusProvider.getSubset(allocatedTags, storedStimulusList, seenStimulusIndex);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, stimulusProvider.generateStimuliStateSnapshot(), duration.elapsedMillis());
     }
 
     protected void sendStimuliReport(final StimuliProvider stimulusProvider, String reportType, final int dataChannel) {
@@ -2309,6 +2311,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                timedEventMonitor.registerEvent(eventTag);
                 nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, 1);
             }
         };
