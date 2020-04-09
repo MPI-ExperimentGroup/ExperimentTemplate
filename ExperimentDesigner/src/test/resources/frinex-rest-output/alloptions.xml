@@ -29,7 +29,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -94,7 +94,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -127,7 +127,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -196,7 +196,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -214,7 +214,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -251,6 +251,14 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </matchOnEvalTokens>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
         <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
@@ -330,8 +338,9 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -390,7 +399,7 @@
                 </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
-                <stimulusButton featureText="stimulusButton" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
+                <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -400,23 +409,23 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingRadioButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingRadioButton"/>
                 </ratingRadioButton>
-                <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingCheckbox"/>
                 </ratingCheckbox>
                 <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingRadio orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingRadio"/>
                 </stimulusRatingRadio>
-                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingCheckbox"/>
                 </stimulusRatingCheckbox>
                 <stimulusHasRatingOptions>
@@ -437,7 +446,7 @@
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
                 <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
-                <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingFooterButton eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
@@ -771,7 +780,7 @@
                 </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
-                <stimulusButton featureText="stimulusButton" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
+                <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -781,23 +790,23 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingRadioButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingRadioButton"/>
                 </ratingRadioButton>
-                <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingCheckbox"/>
                 </ratingCheckbox>
                 <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingRadio orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingRadio"/>
                 </stimulusRatingRadio>
-                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingCheckbox"/>
                 </stimulusRatingCheckbox>
                 <stimulusHasRatingOptions>
@@ -818,7 +827,7 @@
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
                 <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
-                <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingFooterButton eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
@@ -1152,7 +1161,7 @@
                 </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
-                <stimulusButton featureText="stimulusButton" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
+                <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -1162,23 +1171,23 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingRadioButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingRadioButton"/>
                 </ratingRadioButton>
-                <ratingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingCheckbox"/>
                 </ratingCheckbox>
                 <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
-                <stimulusRatingRadio orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingRadio orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingRadio"/>
                 </stimulusRatingRadio>
-                <stimulusRatingCheckbox orientation="flow" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingCheckbox"/>
                 </stimulusRatingCheckbox>
                 <stimulusHasRatingOptions>
@@ -1199,7 +1208,7 @@
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
                 <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
-                <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingFooterButton eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
@@ -1499,10 +1508,10 @@
         </loadSdCardStimulus>
         <clearStimulusResponses tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ"/>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <actionTokenButton featureText="actionTokenButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionTokenButton"/>
         </actionTokenButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -1540,6 +1549,14 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </matchOnEvalTokens>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
         <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
@@ -1636,11 +1653,12 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
-            <actionTokenButton featureText="actionTokenButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionTokenButton"/>
             </actionTokenButton>
         </showHtmlPopup>
@@ -1686,7 +1704,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -1723,7 +1741,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -1756,7 +1774,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -1803,7 +1821,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -1821,7 +1839,7 @@
         </image>
         <menuItem featureText="menuItem" hotKey="A" styleName="styleName" target="target"/>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -1860,7 +1878,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -1877,7 +1895,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -1918,7 +1936,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -1936,7 +1954,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -1965,7 +1983,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -1982,7 +2000,7 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -2019,7 +2037,7 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -2229,7 +2247,7 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
-        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
+        <actionFooterButton featureText="actionFooterButton">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
@@ -2258,6 +2276,14 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </matchOnEvalTokens>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <progressIndicator evaluateTokens="evaluateTokens">
             <onError>
@@ -2305,7 +2331,7 @@
             </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <logTimerValue listenerId="listenerId"/>
         <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
@@ -2337,6 +2363,7 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <logMediaTimeStamp mediaId="mediaId"/>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton">
                 <plainText featureText="plainText in actionButton"/>
@@ -2358,12 +2385,12 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <withStimuli eventTag="eventTag">
+        <withStimuli>
             <beforeStimulus>
                 <plainText featureText="plainText in beforeStimulus"/>
             </beforeStimulus>
             <eachStimulus>
-                <withMatchingStimulus eventTag="eventTag" matchingRegex="matchingRegex">
+                <withMatchingStimulus matchingRegex="matchingRegex">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -2400,7 +2427,7 @@
                 <stimulusButton featureText="stimulusButton">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" src="src">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -2453,15 +2480,15 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
-                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
+                <showStimulusGrid imageWidth="imageWidth" columnCount="3">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2602,7 +2629,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2612,7 +2639,7 @@
                 </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
-                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
                         <groupMemberCodeLabel/>
@@ -2643,9 +2670,9 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
@@ -2677,9 +2704,9 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
@@ -2711,12 +2738,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <sendGroupEndOfStimuli/>
                 </groupNetwork>
                 <clearCurrentScore/>
                 <scoreIncrement scoreValue="8"/>
@@ -2742,9 +2769,9 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </withStimuli>
-        <loadStimulus eventTag="eventTag">
+        <loadStimulus>
             <hasMoreStimulus>
-                <withMatchingStimulus eventTag="eventTag" matchingRegex="matchingRegex">
+                <withMatchingStimulus matchingRegex="matchingRegex">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -2781,7 +2808,7 @@
                 <stimulusButton featureText="stimulusButton">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" src="src">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -2834,15 +2861,15 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
-                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
+                <showStimulusGrid imageWidth="imageWidth" columnCount="3">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2983,7 +3010,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2993,7 +3020,7 @@
                 </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
-                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
                         <groupMemberCodeLabel/>
@@ -3024,9 +3051,9 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
@@ -3058,9 +3085,9 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
@@ -3092,12 +3119,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <sendGroupEndOfStimuli/>
                 </groupNetwork>
                 <clearCurrentScore/>
                 <scoreIncrement scoreValue="8"/>
@@ -3123,9 +3150,9 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <loadSdCardStimulus eventTag="eventTag" matchingRegex="matchingRegex">
+        <loadSdCardStimulus matchingRegex="matchingRegex">
             <hasMoreStimulus>
-                <withMatchingStimulus eventTag="eventTag" matchingRegex="matchingRegex">
+                <withMatchingStimulus matchingRegex="matchingRegex">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -3162,7 +3189,7 @@
                 <stimulusButton featureText="stimulusButton">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" src="src">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -3215,15 +3242,15 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
-                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
+                <showStimulusGrid imageWidth="imageWidth" columnCount="3">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -3364,7 +3391,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3374,7 +3401,7 @@
                 </startAudioRecorderApp>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
-                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
                         <groupMemberCodeLabel/>
@@ -3405,9 +3432,9 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
@@ -3439,9 +3466,9 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
@@ -3473,12 +3500,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage incrementPhase="3"/>
+                        <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <sendGroupEndOfStimuli/>
                 </groupNetwork>
                 <clearCurrentScore/>
                 <scoreIncrement scoreValue="8"/>
@@ -3517,7 +3544,7 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
-        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
+        <actionFooterButton featureText="actionFooterButton">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
@@ -3547,6 +3574,14 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </matchOnEvalTokens>
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <progressIndicator evaluateTokens="evaluateTokens">
             <onError>
@@ -3566,8 +3601,8 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <logTimeStamp eventTag="eventTag"/>
-        <audioButton eventTag="eventTag" src="src" autoPlay="true" poster="poster">
+        <logTimeStamp/>
+        <audioButton src="src" autoPlay="true" poster="poster">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3604,7 +3639,7 @@
             </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <logTimerValue listenerId="listenerId"/>
         <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
@@ -3643,6 +3678,7 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <logMediaTimeStamp mediaId="mediaId"/>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton">
                 <plainText featureText="plainText in actionButton"/>
