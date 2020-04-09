@@ -57,7 +57,7 @@ public enum FeatureAttribute {
     orientation(null, true, new String[]{"horizontal", "vertical", "flow"}),
     target(false), // this is probably not optional in some cases
     targetOptions(true),
-    styleName("One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.", true,AttributeType.xsString),
+    styleName("One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.", true, AttributeType.xsString),
     regionId,
     showOnBackButton("When true the component will be invisible until the browser back button is clicked. Repeated clicks will toggle the visibility. The feature cannot be used in conjunction with a presenter back attribute.", true, AttributeType.xsBoolean),
     eventTier,
@@ -65,7 +65,7 @@ public enum FeatureAttribute {
     dataLogFormat(false),
     evaluateTokens(false),
     filePerStimulus("When recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli"),
-    eventTag(false),
+    eventTag("When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.", true, AttributeType.xsString),
     ratingLabels,
     ratingLabelLeft(true),
     ratingLabelRight(true),
