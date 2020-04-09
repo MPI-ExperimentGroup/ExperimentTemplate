@@ -20,7 +20,8 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
 
 /**
- * this can be updated with the output of: grep match= ~/Documents/ExperimentTemplate/gwt-cordova/src/main/xsl/config2java.xsl
+ * this can be updated with the output of: grep match=
+ * ~/Documents/ExperimentTemplate/gwt-cordova/src/main/xsl/config2java.xsl
  *
  * @since Aug 18, 2015 4:29:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -47,29 +48,30 @@ public enum FeatureType {
     showStimuliReport(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     sendStimuliReport(false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName, groupId}, "Creates a button which when clicked navigates to the target presenter."),
-    actionButton(true, new FeatureAttribute[]{hotKey, styleName, groupId}, "Creates a button which when clicked evaluates the contents of its element.", Contitionals.any, Contitionals.hasActionButtons, Contitionals.none),
-    actionTokenButton(true, new FeatureAttribute[]{hotKey, styleName, groupId}, "Creates a button where any tokens in its label are evaluated before displaying. When clicked evaluates the contents of its element.", Contitionals.any, Contitionals.hasActionButtons, Contitionals.none),
+    actionButton(true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}, "Creates a button which when clicked evaluates the contents of its element.", Contitionals.any, Contitionals.hasActionButtons, Contitionals.none),
+    actionTokenButton(true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}, "Creates a button where any tokens in its label are evaluated before displaying. When clicked evaluates the contents of its element.", Contitionals.any, Contitionals.hasActionButtons, Contitionals.none),
     disableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     enableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     hideButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     showButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
-    stimulusButton(true, new FeatureAttribute[]{hotKey, dataChannel, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    stimulusButton(true, new FeatureAttribute[]{eventTag, hotKey, dataChannel, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     touchInputStimulusButton(true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.any, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    ratingButton(false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /* document the automaticly generated hot key listners for numbers and some letters z . */ /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.any, Contitionals.stimulusAction),
-    ratingRadioButton(false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
-    ratingCheckbox(false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    ratingButton(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /* document the automaticly generated hot key listners for numbers and some letters z . */ /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    ratingRadioButton(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
+    ratingCheckbox(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    // todo: stimulusFreeText has a lot of features that need to be added in this docuementation
     stimulusFreeText(true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // the hotKey in stimulusFreeText will trigger any button with the same hotkey. // todo: The current use of the featureText attribute could be changed to allowedCharErrorMessage and inputErrorMessage could be changed to validationErrorMessage
-    stimulusRatingButton(false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
-    stimulusRatingRadio(false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
-    stimulusRatingCheckbox(false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    stimulusRatingButton(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
+    stimulusRatingRadio(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    stimulusRatingCheckbox(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, new FeatureAttribute[]{groupId, matchingRegex}, "When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex. If groupId contains tokens they will be replaced with the respective values before the evaluation.", Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     setStimulusCodeResponse(false, new FeatureAttribute[]{codeFormat, dataChannel, applyScore, groupId}, "Sets a response to the current stimulus with the value of codeFormat. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId or codeFormat contain tokens they will be replaced with the respective values.", Contitionals.none, Contitionals.stimulusAction),
     addStimulusCodeResponseValidation(true, new FeatureAttribute[]{validationRegex, dataChannel, groupId}, "Adds a stimulus validation listener for StimulusCodeResponses, so that they can be validated like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.",/* this validation is specific to the StimulusCodeResponses*/ Contitionals.none, Contitionals.stimulusAction),
-    ratingFooterButton(false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, /*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
+    ratingFooterButton(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, /*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
     targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}, "Creates a button in the footer which when clicked navigates to the target presenter."),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}, "Creates a button in the footer which when clicked evaluates the contents of its element."),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
@@ -138,7 +140,8 @@ public enum FeatureType {
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     hasMetadataValue(false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
-    setMetadataValue(false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, "The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, other wise the entire string is used. The result is then stored in the specified metadata field.", Contitionals.none, Contitionals.none),
+    setMetadataValue(false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, "The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, otherwise the entire string is used. The result is then stored in the specified metadata field.", Contitionals.none, Contitionals.none),
+    matchOnEvalTokens(false, new FeatureAttribute[]{evaluateTokens, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     progressIndicator(false, new FeatureAttribute[]{evaluateTokens, styleName}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     setMetadataEvalTokens(false, new FeatureAttribute[]{fieldName, evaluateTokens}, "The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is then stored in the specified metadata field.", Contitionals.hasErrorSuccess, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}, "Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter."),
@@ -217,6 +220,7 @@ public enum FeatureType {
     playMedia(false, false, new FeatureAttribute[]{mediaId}),
     rewindMedia(false, false, new FeatureAttribute[]{mediaId}),
     pauseMedia(false, false, new FeatureAttribute[]{mediaId}),
+    logMediaTimeStamp(false, false, new FeatureAttribute[]{mediaId, eventTag}),
     stimulusImageCapture(true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -225,7 +229,7 @@ public enum FeatureType {
     startAudioRecorderApp(false, new FeatureAttribute[]{filePerStimulus, eventTag, fieldName}, "Starts the Android wav recorder, the recorded wav files will be saved on the device in a sub directories based on value of the provided metadata field and the eventTag.", Contitionals.hasErrorSuccess, Contitionals.stimulusAction),
     stopAudioRecorder(false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    stopAudioRecorder(false, false, new FeatureAttribute[]{minimum, maximum, average}, false, false, false, Contitionals.hasThreshold, Contitionals.stimulusAction),
-    startAudioRecorderTag(false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    startAudioRecorderTag(false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // also now adds a timestamp in the admin DB for the web recorder
     endAudioRecorderTag(false, new FeatureAttribute[]{eventTier, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     showHtmlPopup(true, new FeatureAttribute[]{}, false, false, false, Contitionals.hasActionButtons, Contitionals.none),
     helpDialogue(false, true, new FeatureAttribute[]{closeButtonLabel}), // helpDialogue is probably only used in SynQuiz
