@@ -751,21 +751,21 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         WizardScreenData menuScreenData = storedWizardScreenData.getBackWizardScreenData();
         storedWizardScreenData.getPresenterScreen().setBackPresenter(null); // we do not use the back menu button in this screen type so we set it do null after extracting the data
         if (menuScreenData != null) {
-            final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "");
+            final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", null, "R1_MA_ENTER", "");
             menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
             // todo: this menu stimulus button failed to cancel audio end timers in the playhouse experiment
             menuStimulusButton.addFeature(FeatureType.gotoPresenter, null, menuScreenData.getScreenTag());
         }
-        final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev (left)", "R1_MA_LEFT", "");
+        final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev (left)", null, "R1_MA_LEFT", "");
         previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         previousStimulusButton.addFeature(FeatureType.prevStimulus, null, "false");
-        final PresenterFeature repeatStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Repeat (A)", "R1_MA_A", "");
+        final PresenterFeature repeatStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Repeat (A)", null, "R1_MA_A", "");
         repeatStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         repeatStimulusButton.addFeature(FeatureType.showStimulus, null);
-        final PresenterFeature pauseStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Pause", "", "");
+        final PresenterFeature pauseStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Pause", null, "", "");
         pauseStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         pauseStimulusButton.addFeature(FeatureType.cancelPauseAll, null);
-        final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Next (right)", "R1_MA_RIGHT", "");
+        final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Next (right)", null, "R1_MA_RIGHT", "");
         nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
