@@ -438,9 +438,11 @@
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="metadataFieldConnection" type="metadataFieldConnectionType"/>
@@ -636,7 +638,7 @@
 <xs:element name="randomGrouping" minOccurs="0" type="randomGroupingType"/>
 <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
 </xs:all>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
@@ -652,7 +654,7 @@
 <xs:element name="randomGrouping" minOccurs="0" type="randomGroupingType"/>
 <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
 </xs:all>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
@@ -662,14 +664,14 @@
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
 <xs:attribute name="class" type="xs:string"/>
 <xs:anyAttribute  processContents="lax"/>
-<xs:assert test="(@class) or (not(@class)  and @eventTag)"/>
+<xs:assert test="(@class) or (not(@class) )"/>
 </xs:complexType>
 <xs:complexType name="withMatchingStimulusType">
 <xs:all>
 <xs:element name="hasMoreStimulus" type="hasMoreStimulusType"/>
 <xs:element name="endOfStimulus" type="endOfStimulusType"/>
 </xs:all>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 <xs:attribute name="randomise" type="xs:string"/>
 <xs:attribute name="repeatCount" type="xs:string"/>
@@ -683,7 +685,7 @@
 <xs:element name="randomGrouping" minOccurs="0" type="randomGroupingType"/>
 <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
 </xs:all>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
@@ -839,6 +841,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -890,6 +893,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -927,6 +931,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
@@ -1026,6 +1031,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -1077,6 +1083,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -1114,6 +1121,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
@@ -1222,6 +1230,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -1273,6 +1282,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -1310,6 +1320,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="styleName" type="xs:string"/>
@@ -1407,6 +1418,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -1458,6 +1470,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -1495,7 +1508,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="src" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
@@ -1587,6 +1600,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -1638,6 +1652,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -1766,6 +1781,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -1817,6 +1833,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -1853,6 +1870,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabels" type="xs:string" use="required"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
@@ -1947,6 +1965,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -1998,6 +2017,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -2034,6 +2054,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabels" type="xs:string" use="required"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
@@ -2128,6 +2149,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -2179,6 +2201,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -2215,6 +2238,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabels" type="xs:string" use="required"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
@@ -2327,6 +2351,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -2378,6 +2403,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -2414,6 +2440,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
 <xs:attribute name="ratingLabelRight" type="xs:string"/>
@@ -2507,6 +2534,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -2558,6 +2586,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -2594,6 +2623,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
 <xs:attribute name="ratingLabelRight" type="xs:string"/>
@@ -2687,6 +2717,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -2738,6 +2769,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -2774,6 +2806,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
 <xs:attribute name="ratingLabelRight" type="xs:string"/>
@@ -2910,6 +2943,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -2961,6 +2995,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -2997,6 +3032,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="ratingLabels" type="xs:string" use="required"/>
 <xs:attribute name="ratingLabelLeft" type="xs:string"/>
@@ -3116,6 +3152,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -3167,6 +3204,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -3204,7 +3242,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
@@ -3460,6 +3498,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -3511,6 +3550,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -3564,7 +3604,7 @@
 </xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
@@ -3580,7 +3620,7 @@
 </xs:element>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="styleName" type="xs:string"/>
@@ -3612,9 +3652,17 @@
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
+<xs:complexType name="matchOnEvalTokensType">
+<xs:all>
+<xs:element name="conditionTrue" type="conditionTrueType"/>
+<xs:element name="conditionFalse" type="conditionFalseType"/>
+</xs:all>
+<xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
+<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
+</xs:complexType>
 <xs:complexType name="setMetadataValueType">
 <xs:annotation>
-<xs:documentation>The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, other wise the entire string is used. The result is then stored in the specified metadata field.</xs:documentation>
+<xs:documentation>The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, otherwise the entire string is used. The result is then stored in the specified metadata field.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 <xs:attribute name="dataLogFormat" type="xs:string" use="required"/>
@@ -3653,7 +3701,7 @@
 <xs:annotation>
 <xs:documentation>Records a timestamp similar to the way image and media onLoad events etc. are logged. The logged ms is relative to the load time of the presenter.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="audioButtonType">
 <xs:all>
@@ -3662,7 +3710,7 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="poster" type="xs:string" use="required"/>
 <xs:attribute name="autoPlay" type="autoPlayType" use="required"/>
@@ -3764,6 +3812,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -3815,6 +3864,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -3861,7 +3911,7 @@
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="columnCount" type="xs:string" use="required"/>
 <xs:attribute name="imageWidth" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="animate" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="matchingStimulusGridType">
@@ -3963,6 +4013,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -4014,6 +4065,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -4157,6 +4209,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -4208,6 +4261,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -4260,7 +4314,7 @@
 </xs:complexType>
 <xs:complexType name="logTimerValueType">
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="timerLabelType">
@@ -4355,6 +4409,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -4406,6 +4461,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -4535,6 +4591,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -4586,6 +4643,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -4712,6 +4770,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -4763,6 +4822,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -4898,6 +4958,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -4949,6 +5010,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -5085,6 +5147,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -5136,6 +5199,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -5263,6 +5327,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -5314,6 +5379,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -5440,6 +5506,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -5491,6 +5558,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -5614,6 +5682,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -5665,6 +5734,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -5788,6 +5858,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -5839,6 +5910,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -5962,6 +6034,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -6013,6 +6086,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -6138,6 +6212,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -6189,6 +6264,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -6314,6 +6390,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -6365,6 +6442,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -6490,6 +6568,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -6541,6 +6620,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -6664,6 +6744,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -6715,6 +6796,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -6838,6 +6920,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -6889,6 +6972,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -7012,6 +7096,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -7063,6 +7148,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -7186,6 +7272,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -7237,6 +7324,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -7360,6 +7448,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -7411,6 +7500,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -7534,6 +7624,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -7585,6 +7676,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -7708,6 +7800,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -7759,6 +7852,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -7882,6 +7976,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -7933,6 +8028,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -8062,6 +8158,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -8113,6 +8210,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -8236,6 +8334,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -8287,6 +8386,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -8410,6 +8510,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -8461,6 +8562,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -8584,6 +8686,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -8635,6 +8738,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -8758,6 +8862,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -8809,6 +8914,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -8932,6 +9038,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -8983,6 +9090,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -9106,6 +9214,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -9157,6 +9266,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -9280,6 +9390,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -9331,6 +9442,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -9454,6 +9566,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -9505,6 +9618,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -9630,6 +9744,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -9681,6 +9796,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -9804,6 +9920,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -9855,6 +9972,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -9982,6 +10100,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -10033,6 +10152,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -10175,6 +10295,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -10226,6 +10347,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -10383,6 +10505,10 @@
 <xs:complexType name="pauseMediaType">
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
 </xs:complexType>
+<xs:complexType name="logMediaTimeStampType">
+<xs:attribute name="mediaId" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
+</xs:complexType>
 <xs:complexType name="stimulusImageCaptureType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
@@ -10475,6 +10601,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -10526,6 +10653,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -10661,6 +10789,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -10712,6 +10841,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -10750,7 +10880,7 @@
 </xs:choice>
 <xs:attribute name="src" type="xs:string" use="required"/>
 <xs:attribute name="poster" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="columnCount" type="xs:string" use="required"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 </xs:complexType>
@@ -10779,7 +10909,7 @@
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
 <xs:attribute name="filePerStimulus" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="stopAudioRecorderType">
@@ -10789,7 +10919,7 @@
 </xs:complexType>
 <xs:complexType name="endAudioRecorderTagType">
 <xs:attribute name="eventTier" type="xs:string" use="required"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="showHtmlPopupType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -10923,6 +11053,7 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
@@ -10974,6 +11105,7 @@
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
@@ -11063,22 +11195,22 @@
 <xs:attribute name="featureText" type="xs:string" use="required"/>
 <xs:attribute name="hotKey" type="hotKeyType"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required"/>
 <xs:attribute name="incrementPhase" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="sendGroupMessageType">
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="sendGroupStoredMessageType">
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="sendGroupEndOfStimuliType">
-<xs:attribute name="eventTag" type="xs:string" use="required"/>
+<xs:attribute name="eventTag" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="clearCurrentScoreType">
 <xs:attribute name="dataChannel" type="xs:string"/>
