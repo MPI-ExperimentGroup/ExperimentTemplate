@@ -1593,17 +1593,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void endAudioRecorderTag(int tier, String tagString, final Stimulus currentStimulus) {
-        super.endAudioRecorderTag(tier, currentStimulus.getUniqueId(), currentStimulus.getCode(), tagString);
+        super.endAudioRecorderTag(tier, currentStimulus.getUniqueId(), currentStimulus.getCode(), tagString, timedEventMonitor);
     }
 
-    @Override
     protected void startAudioRecorderTag(int tier) {
-        super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
+        super.startAudioRecorderTag(tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
     protected void startAudioRecorderWeb(final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
+        timedStimulusView.setWebRecorderMediaId(formattedMediaId);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
             public void recorderStarted() {
@@ -2076,6 +2076,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         clearButtonList();
         backEventListners.clear();
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
+    }
+
+    protected void logMediaTimeStamp(final Stimulus currentStimulus, final String mediaId, final String eventTag) {
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
+        timedStimulusView.logMediaTimeStamp(formattedMediaId, eventTag, timedEventMonitor);
     }
 
     protected void playMedia(final String mediaId, final Stimulus currentStimulus) {

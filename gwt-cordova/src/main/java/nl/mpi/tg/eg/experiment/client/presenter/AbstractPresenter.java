@@ -42,6 +42,7 @@ import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.LocalNotifications;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -418,6 +419,7 @@ public abstract class AbstractPresenter implements Presenter {
      }-*/;
 
     protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String deviceRegex, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs) /*-{
+            var abstractPresenter = this;
             if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
@@ -556,7 +558,35 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
-    protected native void startAudioRecorderTag(int tier) /*-{
+    static public native void pauseAudioRecorderWeb() /*-{
+        console.log("pauseWebAudioRecorder");
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                $wnd.recorder.pause();
+            }
+        }
+     }-*/;
+
+    static public native void resumeAudioRecorderWeb() /*-{
+        console.log("pauseWebAudioRecorder");
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                $wnd.recorder.resume();
+            }
+        }
+     }-*/;
+
+    static public native void logAudioRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+        console.log("pauseWebAudioRecorder");
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                // note that this assumes the bit rate of 48000 which is expected with this encoder
+                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Long;)(eventTag, $wnd.recorder.encodedSamplePosition / 48000);
+            }
+        }
+     }-*/;
+
+    protected native void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorderTag: " + tier);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
@@ -567,12 +597,15 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("startAudioRecorderTagError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             }, tier);
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+            // note that this assumes the bit rate of 48000 which is expected with this encoder
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Long;)("startAudioRecorderTag", $wnd.recorder.encodedSamplePosition / 48000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
      }-*/;
 
-    protected native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag) /*-{
+    protected native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         var abstractPresenter = this;
         console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
@@ -583,6 +616,9 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("endAudioRecorderTagError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             }, tier, stimulusId, stimulusCode, eventTag);
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+            // note that this assumes the bit rate of 48000 which is expected with this encoder
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Long;)(eventTag, $wnd.recorder.encodedSamplePosition / 48000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
