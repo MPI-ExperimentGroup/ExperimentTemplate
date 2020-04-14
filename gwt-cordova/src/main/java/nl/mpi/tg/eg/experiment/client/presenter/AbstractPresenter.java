@@ -30,6 +30,7 @@ import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
+import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -258,6 +259,8 @@ public abstract class AbstractPresenter implements Presenter {
         } else {
             conditionFalse.postLoadTimerFired();
         }
+    }
+    public void matchOnEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
     }
 
     @Override
