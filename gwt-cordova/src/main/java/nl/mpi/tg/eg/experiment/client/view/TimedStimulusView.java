@@ -57,6 +57,7 @@ import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
@@ -71,6 +72,7 @@ public class TimedStimulusView extends ComplexView {
 
     private final Map<String, AudioPlayer> audioList = new HashMap<>();
     private StimulusGrid stimulusGrid = null;
+    private String webRecorderMediaId = null;
     private final Map<String, Video> videoList = new HashMap<>();
     private final List<Timer> timerList = new ArrayList<>();
     private final List<CancelableStimulusListener> cancelableListnerList = new ArrayList<>();
@@ -163,6 +165,7 @@ public class TimedStimulusView extends ComplexView {
         super.clearPageAndTimers(styleName);
         videoList.clear();
         audioList.clear();
+        webRecorderMediaId = null;
     }
 
     public void addBarGraphElement(final int value, final int range, final String styleName) {
@@ -725,6 +728,9 @@ public class TimedStimulusView extends ComplexView {
                 audioPlayer.stopAll();
             }
         }
+        if (webRecorderMediaId != null) {
+            // nothing to do for stop all on a recorder
+        }
     }
 
     public void stopMedia(final String mediaId) {
@@ -742,6 +748,11 @@ public class TimedStimulusView extends ComplexView {
                 if (audioPlayer != null) {
                     audioPlayer.stop();
                 }
+            }
+        }
+        if (webRecorderMediaId != null) {
+            if (webRecorderMediaId.matches(mediaId)) {
+                AbstractPresenter.pauseAudioRecorderWeb();
             }
         }
     }
@@ -763,6 +774,11 @@ public class TimedStimulusView extends ComplexView {
                 }
             }
         }
+        if (webRecorderMediaId != null) {
+            if (webRecorderMediaId.matches(mediaId)) {
+                AbstractPresenter.resumeAudioRecorderWeb();
+            }
+        }
     }
 
     public void rewindMedia(final String mediaId) {
@@ -782,6 +798,37 @@ public class TimedStimulusView extends ComplexView {
                 }
             }
         }
+        if (webRecorderMediaId != null) {
+            // nothing to do for rewind on a recorder
+        }
+    }
+
+    public void logMediaTimeStamp(final String mediaId, final String eventTag, final TimedEventMonitor timedEventMonitor) {
+        for (String key : videoList.keySet()) {
+            if (key.matches(mediaId)) {
+                Video video = videoList.get(key);
+                if (video != null) {
+                    timedEventMonitor.registerMediaLength(eventTag, (long) (video.getCurrentTime() * 1000));
+                }
+            }
+        }
+        for (String key : audioList.keySet()) {
+            if (key.matches(mediaId)) {
+                AudioPlayer audioPlayer = audioList.get(key);
+                if (audioPlayer != null) {
+                    timedEventMonitor.registerMediaLength(eventTag, (long) (audioPlayer.getCurrentTime() * 1000));
+                }
+            }
+        }
+        if (webRecorderMediaId != null) {
+            if (webRecorderMediaId.matches(mediaId)) {
+                AbstractPresenter.logAudioRecorderWebTimeStamp(eventTag, timedEventMonitor);
+            }
+        }
+    }
+
+    public void setWebRecorderMediaId(String webRecorderMediaId) {
+        this.webRecorderMediaId = webRecorderMediaId;
     }
 
     public void stopTimers() {
