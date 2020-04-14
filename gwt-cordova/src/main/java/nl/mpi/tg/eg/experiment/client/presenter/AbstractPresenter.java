@@ -365,7 +365,7 @@ public abstract class AbstractPresenter implements Presenter {
 
             @Override
             protected void logNotificationRequest(String debugValue) {
-                dataSubmissionService.submitTimestamp(userResults.getUserData().getUserId(), debugValue, 0);
+                dataSubmissionService.submitImmediateTimestamp(userResults.getUserData().getUserId(), debugValue, 0);
             }
         }.requestNotification(messageTitle, dataLogFormat, targetStateJsonData, userResults.getUserData().getMetadataValue(metadataField));
         ((ComplexView) simpleView).addPadding();
