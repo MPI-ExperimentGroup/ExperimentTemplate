@@ -255,7 +255,7 @@ public class DefaultExperiments {
     }
 
     private PresenterFeature addFeature(Experiment experiment, PresenterType presenterType, FeatureType featureType, PresenterFeatureRepository presenterFeatureRepository, boolean addOptionalAttributes) {
-        final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? featureType.name() : null);
+        final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? (addOptionalAttributes) ? featureType.name() : "" : null);
         if (featureType.getFeatureAttributes() != null) {
             for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
                 if (addOptionalAttributes || !attribute.isOptional()) {
@@ -329,9 +329,11 @@ public class DefaultExperiments {
                             break;
                         case targetOptions:
                             presenterFeature.addFeatureAttributes(attribute, "AutoMenu,about");
+                        case target:
+                            presenterFeature.addFeatureAttributes(attribute, "target");
                             break;
                         default:
-                            presenterFeature.addFeatureAttributes(attribute, attribute.name());
+                            presenterFeature.addFeatureAttributes(attribute, (addOptionalAttributes) ? attribute.name() : "");
                     }
                 }
             }

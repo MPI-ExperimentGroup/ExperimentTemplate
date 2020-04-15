@@ -99,8 +99,8 @@
         <xsl:text>&#xa;</xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="addStimulusCodeResponseValidation[@featureText != '']|switchUserIdButton[@featureText != '']|requestNotification[@featureText != '']|preventWindowClose[@featureText != '']|countdownLabel[@featureText != '']|stimulusImageCapture[@featureText != '']|stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|showHtmlPopup[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|actionTokenButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|prevStimulusButton[@featureText != '']|touchInputStimulusButton[@featureText != '']|stimulusButton[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|htmlTokenText[@featureText != '']|userInfo[@featureText != '']|sendGroupMessageButton[@featureText != '']">
-        <xsl:if test="@featureText != ''">       
+    <xsl:template match="addStimulusCodeResponseValidation[@featureText]|switchUserIdButton[@featureText]|requestNotification[@featureText]|preventWindowClose[@featureText]|countdownLabel[@featureText]|stimulusImageCapture[@featureText]|stimulusFreeText[@featureText]|helpDialogue[@featureText]|showHtmlPopup[@featureText]|eraseUsersDataButton[@featureText]|saveMetadataButton[@featureText]|saveMetadataButton[@networkErrorMessage]|createUserButton[@featureText]|targetButton[@featureText]|actionButton[@featureText]|actionTokenButton[@featureText]|targetFooterButton[@featureText]|actionFooterButton[@featureText]|plainText[@featureText]|popupMessage[@featureText]|menuItem[@featureText]|featureText[@featureText]|prevStimulusButton[@featureText]|touchInputStimulusButton[@featureText]|stimulusButton[@featureText]|nextStimulusButton[@featureText]|htmlText[@featureText]|htmlTokenText[@featureText]|userInfo[@featureText]|sendGroupMessageButton[@featureText]">
+        <xsl:if test="@featureText">       
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
             <xsl:value-of select="replace(replace(replace(@featureText,'''',''''''),
@@ -108,7 +108,7 @@
                                                 '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
-        <xsl:if test="@networkErrorMessage != ''">   
+        <xsl:if test="@networkErrorMessage">   
             <xsl:text>errorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
@@ -117,7 +117,7 @@
                                                 '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
-        <xsl:if test="@inputErrorMessage != ''">   
+        <xsl:if test="@inputErrorMessage">   
             <xsl:text>inputErrorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
@@ -126,7 +126,7 @@
                                                 '\{', '&amp;#x7B;')"/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:if>
-        <xsl:if test="@closeButtonLabel != ''">   
+        <xsl:if test="@closeButtonLabel">   
             <xsl:text>closeButtonLabel</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>

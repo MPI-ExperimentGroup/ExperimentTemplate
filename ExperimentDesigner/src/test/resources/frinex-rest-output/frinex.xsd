@@ -841,8 +841,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -1031,8 +1031,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -1230,8 +1230,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -1418,8 +1418,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -1600,8 +1600,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -1781,8 +1781,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -1965,8 +1965,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -2149,8 +2149,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -2351,8 +2351,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -2534,8 +2534,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -2717,8 +2717,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -2943,8 +2943,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -3152,8 +3152,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -3498,8 +3498,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -3652,14 +3652,6 @@
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
-<xs:complexType name="matchOnEvalTokensType">
-<xs:all>
-<xs:element name="conditionTrue" type="conditionTrueType"/>
-<xs:element name="conditionFalse" type="conditionFalseType"/>
-</xs:all>
-<xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
-<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
-</xs:complexType>
 <xs:complexType name="setMetadataValueType">
 <xs:annotation>
 <xs:documentation>The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, otherwise the entire string is used. The result is then stored in the specified metadata field.</xs:documentation>
@@ -3667,6 +3659,14 @@
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
 <xs:attribute name="dataLogFormat" type="xs:string" use="required"/>
 <xs:attribute name="replacementRegex" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="matchOnEvalTokensType">
+<xs:all>
+<xs:element name="conditionTrue" type="conditionTrueType"/>
+<xs:element name="conditionFalse" type="conditionFalseType"/>
+</xs:all>
+<xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
+<xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="progressIndicatorType">
 <xs:all>
@@ -3812,8 +3812,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -4013,8 +4013,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -4209,8 +4209,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -4409,8 +4409,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -4591,8 +4591,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -4770,8 +4770,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -4958,8 +4958,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -5147,8 +5147,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -5327,8 +5327,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -5506,8 +5506,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -5682,8 +5682,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -5858,8 +5858,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -6034,8 +6034,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -6212,8 +6212,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -6390,8 +6390,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -6568,8 +6568,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -6744,8 +6744,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -6920,8 +6920,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -7096,8 +7096,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -7272,8 +7272,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -7448,8 +7448,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -7624,8 +7624,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -7800,8 +7800,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -7976,8 +7976,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -8158,8 +8158,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -8334,8 +8334,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -8510,8 +8510,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -8686,8 +8686,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -8862,8 +8862,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -9038,8 +9038,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -9214,8 +9214,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -9390,8 +9390,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -9566,8 +9566,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -9744,8 +9744,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -9920,8 +9920,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -10100,8 +10100,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -10295,8 +10295,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -10601,8 +10601,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -10789,8 +10789,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
@@ -11053,8 +11053,8 @@
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
-<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>

@@ -251,6 +251,7 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
         <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -259,7 +260,6 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </matchOnEvalTokens>
-        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
         <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -286,7 +286,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
-        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="AutoMenu,about" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="target" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -1549,6 +1549,7 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
         <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -1557,7 +1558,6 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </matchOnEvalTokens>
-        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
         <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -1594,7 +1594,7 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
-        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="AutoMenu,about" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="target" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2043,9 +2043,9 @@
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -2053,16 +2053,16 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
-        <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
+        <eraseUsersDataButton featureText="" target="target"/>
         <displayCompletionCode/>
         <generateCompletionCode>
             <onError>
@@ -2088,10 +2088,10 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </sendMetadata>
-        <redirectToUrl src="src"/>
+        <redirectToUrl src=""/>
         <eraseLocalStorageOnWindowClosing/>
         <centrePage/>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -2110,16 +2110,16 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -2131,7 +2131,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </validateMetadata>
-        <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
+        <transmitResults matchingRegex="" enabledRegex="" dataLogFormat="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2141,9 +2141,9 @@
         </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_minimal_attributes" type="metadata" self="metadata_minimal_attributesScreen" title="metadata_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -2151,21 +2151,21 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
-        <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
-        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
-        <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
+        <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" visibleRegex="" enabledRegex=""/>
+        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000" visibleRegex="" enabledRegex=""/>
+        <saveMetadataButton featureText="" sendData="" networkErrorMessage="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2173,8 +2173,8 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </saveMetadataButton>
-        <createUserButton featureText="createUserButton" target="target"/>
-        <switchUserIdButton featureText="switchUserIdButton" fieldName="workerId" validationRegex="validationRegex">
+        <createUserButton featureText="" target="target"/>
+        <switchUserIdButton featureText="" fieldName="workerId" validationRegex="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2185,7 +2185,7 @@
         <selectUserMenu fieldName="workerId"/>
         <selectLocaleMenu/>
         <centrePage/>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -2212,25 +2212,25 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_minimal_attributes" type="preload" self="preload_minimal_attributesScreen" title="preload_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <htmlTokenText featureText="htmlTokenText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -2238,16 +2238,16 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
-        <targetFooterButton featureText="targetFooterButton" target="target"/>
-        <actionFooterButton featureText="actionFooterButton">
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
+        <targetFooterButton featureText="" target="target"/>
+        <actionFooterButton featureText="">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
@@ -2257,10 +2257,10 @@
         <actionButton featureText="Clear Screen">
             <clearPage/>
         </actionButton>
-        <backgroundImage msToNext="60" src="src">
+        <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
         </backgroundImage>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -2268,7 +2268,7 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -2276,7 +2276,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
-        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+        <setMetadataValue fieldName="workerId" dataLogFormat=""/>
+        <matchOnEvalTokens evaluateTokens="" matchingRegex="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -2284,8 +2285,7 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </matchOnEvalTokens>
-        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
-        <progressIndicator evaluateTokens="evaluateTokens">
+        <progressIndicator evaluateTokens="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2293,7 +2293,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </progressIndicator>
-        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+        <setMetadataEvalTokens evaluateTokens="" fieldName="workerId">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2311,7 +2311,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
-        <requestNotification featureText="requestNotification" fieldName="workerId" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="" fieldName="workerId" dataLogFormat="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -2319,10 +2319,10 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </requestNotification>
-        <startTimer msToNext="60" listenerId="listenerId">
+        <startTimer msToNext="60" listenerId="">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
+        <compareTimer msToNext="60" listenerId="">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
@@ -2330,17 +2330,17 @@
                 <plainText featureText="plainText in withinThreshold"/>
             </withinThreshold>
         </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId"/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
+        <clearTimer listenerId=""/>
+        <logTimerValue listenerId=""/>
+        <timerLabel msToNext="60" listenerId="" msLabelFormat=""/>
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
+        <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
-        <triggerMatching listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
+        <triggerMatching listenerId=""/>
+        <countdownLabel featureText="" msToNext="60" msLabelFormat="">
             <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
         <table>
@@ -2352,20 +2352,20 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <playMedia mediaId="mediaId"/>
-        <rewindMedia mediaId="mediaId"/>
-        <pauseMedia mediaId="mediaId"/>
-        <logMediaTimeStamp mediaId="mediaId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <playMedia mediaId=""/>
+        <rewindMedia mediaId=""/>
+        <pauseMedia mediaId=""/>
+        <logMediaTimeStamp mediaId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -2373,11 +2373,11 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="stimulus_minimal_attributes" type="stimulus" self="stimulus_minimal_attributesScreen" title="stimulus_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <htmlTokenText featureText="htmlTokenText"/>
-        <logTokenText type="type" dataLogFormat="dataLogFormat"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
+        <logTokenText type="" dataLogFormat=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -2390,7 +2390,7 @@
                 <plainText featureText="plainText in beforeStimulus"/>
             </beforeStimulus>
             <eachStimulus>
-                <withMatchingStimulus matchingRegex="matchingRegex">
+                <withMatchingStimulus matchingRegex="">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -2423,27 +2423,27 @@
                     </conditionFalse>
                 </stimulusExists>
                 <showStimuliReport/>
-                <sendStimuliReport type="type"/>
-                <stimulusButton featureText="stimulusButton">
+                <sendStimuliReport type=""/>
+                <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" src="src">
+                <touchInputStimulusButton featureText="" src="">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit/>
-                <ratingButton ratingLabels="ratingLabels">
+                <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton ratingLabels="ratingLabels">
+                <ratingRadioButton ratingLabels="">
                     <plainText featureText="plainText in ratingRadioButton"/>
                 </ratingRadioButton>
-                <ratingCheckbox ratingLabels="ratingLabels">
+                <ratingCheckbox ratingLabels="">
                     <plainText featureText="plainText in ratingCheckbox"/>
                 </ratingCheckbox>
-                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusFreeText featureText="" validationRegex="" inputErrorMessage=""/>
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -2461,7 +2461,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse matchingRegex="matchingRegex">
+                <stimulusHasResponse matchingRegex="">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2469,26 +2469,26 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
-                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" validationRegex="validationRegex"/>
-                <ratingFooterButton ratingLabels="ratingLabels">
+                <setStimulusCodeResponse codeFormat="" applyScore="true"/>
+                <addStimulusCodeResponseValidation featureText="" validationRegex=""/>
+                <ratingFooterButton ratingLabels="">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId"/>
                 <showStimulusProgress/>
                 <keepStimulus/>
                 <removeStimulus/>
-                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <removeMatchingStimulus matchingRegex=""/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulus repeatIncorrect="repeatIncorrect"/>
-                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulus repeatIncorrect=""/>
+                <prevStimulus repeatIncorrect=""/>
                 <nextMatchingStimulus/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
-                <showStimulusGrid imageWidth="imageWidth" columnCount="3">
+                <showStimulusGrid imageWidth="" columnCount="3">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2496,7 +2496,7 @@
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
-                <matchingStimulusGrid matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                <matchingStimulusGrid matchingRegex="" columnCount="3" maxWidth="60">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2508,7 +2508,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel/>
-                <regionCodeStyle regionId="regionId"/>
+                <regionCodeStyle regionId=""/>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2531,7 +2531,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusImage>
-                <stimulusCodeImage msToNext="60" codeFormat="codeFormat">
+                <stimulusCodeImage msToNext="60" codeFormat="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2539,7 +2539,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeImageButton codeFormat="codeFormat">
+                <stimulusCodeImageButton codeFormat="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2550,7 +2550,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="" percentOfPage="56" loop="true" autoPlay="true" mediaId="" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2564,7 +2564,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" autoPlay="true" mediaId="" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2578,7 +2578,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="" autoPlay="true" mediaId="" showPlaybackIndicator="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2592,7 +2592,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="" showPlaybackIndicator="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2606,10 +2606,10 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
-                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="mediaId">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2629,7 +2629,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <startAudioRecorderApp fieldName="workerId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2640,8 +2640,8 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity groupRole="groupRole">
+                <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2670,12 +2670,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2704,12 +2704,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2738,7 +2738,7 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
@@ -2771,7 +2771,7 @@
         </withStimuli>
         <loadStimulus>
             <hasMoreStimulus>
-                <withMatchingStimulus matchingRegex="matchingRegex">
+                <withMatchingStimulus matchingRegex="">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -2804,27 +2804,27 @@
                     </conditionFalse>
                 </stimulusExists>
                 <showStimuliReport/>
-                <sendStimuliReport type="type"/>
-                <stimulusButton featureText="stimulusButton">
+                <sendStimuliReport type=""/>
+                <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" src="src">
+                <touchInputStimulusButton featureText="" src="">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit/>
-                <ratingButton ratingLabels="ratingLabels">
+                <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton ratingLabels="ratingLabels">
+                <ratingRadioButton ratingLabels="">
                     <plainText featureText="plainText in ratingRadioButton"/>
                 </ratingRadioButton>
-                <ratingCheckbox ratingLabels="ratingLabels">
+                <ratingCheckbox ratingLabels="">
                     <plainText featureText="plainText in ratingCheckbox"/>
                 </ratingCheckbox>
-                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusFreeText featureText="" validationRegex="" inputErrorMessage=""/>
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -2842,7 +2842,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse matchingRegex="matchingRegex">
+                <stimulusHasResponse matchingRegex="">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2850,26 +2850,26 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
-                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" validationRegex="validationRegex"/>
-                <ratingFooterButton ratingLabels="ratingLabels">
+                <setStimulusCodeResponse codeFormat="" applyScore="true"/>
+                <addStimulusCodeResponseValidation featureText="" validationRegex=""/>
+                <ratingFooterButton ratingLabels="">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId"/>
                 <showStimulusProgress/>
                 <keepStimulus/>
                 <removeStimulus/>
-                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <removeMatchingStimulus matchingRegex=""/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulus repeatIncorrect="repeatIncorrect"/>
-                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulus repeatIncorrect=""/>
+                <prevStimulus repeatIncorrect=""/>
                 <nextMatchingStimulus/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
-                <showStimulusGrid imageWidth="imageWidth" columnCount="3">
+                <showStimulusGrid imageWidth="" columnCount="3">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2877,7 +2877,7 @@
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
-                <matchingStimulusGrid matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                <matchingStimulusGrid matchingRegex="" columnCount="3" maxWidth="60">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -2889,7 +2889,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel/>
-                <regionCodeStyle regionId="regionId"/>
+                <regionCodeStyle regionId=""/>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2912,7 +2912,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusImage>
-                <stimulusCodeImage msToNext="60" codeFormat="codeFormat">
+                <stimulusCodeImage msToNext="60" codeFormat="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2920,7 +2920,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeImageButton codeFormat="codeFormat">
+                <stimulusCodeImageButton codeFormat="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2931,7 +2931,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="" percentOfPage="56" loop="true" autoPlay="true" mediaId="" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2945,7 +2945,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" autoPlay="true" mediaId="" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2959,7 +2959,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="" autoPlay="true" mediaId="" showPlaybackIndicator="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2973,7 +2973,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="" showPlaybackIndicator="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2987,10 +2987,10 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
-                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="mediaId">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3010,7 +3010,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <startAudioRecorderApp fieldName="workerId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3021,8 +3021,8 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity groupRole="groupRole">
+                <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3051,12 +3051,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3085,12 +3085,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3119,7 +3119,7 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
@@ -3150,9 +3150,9 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <loadSdCardStimulus matchingRegex="matchingRegex">
+        <loadSdCardStimulus matchingRegex="">
             <hasMoreStimulus>
-                <withMatchingStimulus matchingRegex="matchingRegex">
+                <withMatchingStimulus matchingRegex="">
                     <hasMoreStimulus>
                         <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
                     </hasMoreStimulus>
@@ -3185,27 +3185,27 @@
                     </conditionFalse>
                 </stimulusExists>
                 <showStimuliReport/>
-                <sendStimuliReport type="type"/>
-                <stimulusButton featureText="stimulusButton">
+                <sendStimuliReport type=""/>
+                <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" src="src">
+                <touchInputStimulusButton featureText="" src="">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit/>
-                <ratingButton ratingLabels="ratingLabels">
+                <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton ratingLabels="ratingLabels">
+                <ratingRadioButton ratingLabels="">
                     <plainText featureText="plainText in ratingRadioButton"/>
                 </ratingRadioButton>
-                <ratingCheckbox ratingLabels="ratingLabels">
+                <ratingCheckbox ratingLabels="">
                     <plainText featureText="plainText in ratingCheckbox"/>
                 </ratingCheckbox>
-                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusFreeText featureText="" validationRegex="" inputErrorMessage=""/>
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -3223,7 +3223,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
-                <stimulusHasResponse matchingRegex="matchingRegex">
+                <stimulusHasResponse matchingRegex="">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -3231,26 +3231,26 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
-                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" validationRegex="validationRegex"/>
-                <ratingFooterButton ratingLabels="ratingLabels">
+                <setStimulusCodeResponse codeFormat="" applyScore="true"/>
+                <addStimulusCodeResponseValidation featureText="" validationRegex=""/>
+                <ratingFooterButton ratingLabels="">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId"/>
                 <showStimulusProgress/>
                 <keepStimulus/>
                 <removeStimulus/>
-                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <removeMatchingStimulus matchingRegex=""/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulus repeatIncorrect="repeatIncorrect"/>
-                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulus repeatIncorrect=""/>
+                <prevStimulus repeatIncorrect=""/>
                 <nextMatchingStimulus/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
-                <showStimulusGrid imageWidth="imageWidth" columnCount="3">
+                <showStimulusGrid imageWidth="" columnCount="3">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -3258,7 +3258,7 @@
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
-                <matchingStimulusGrid matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                <matchingStimulusGrid matchingRegex="" columnCount="3" maxWidth="60">
                     <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
@@ -3270,7 +3270,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel/>
-                <regionCodeStyle regionId="regionId"/>
+                <regionCodeStyle regionId=""/>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -3293,7 +3293,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusImage>
-                <stimulusCodeImage msToNext="60" codeFormat="codeFormat">
+                <stimulusCodeImage msToNext="60" codeFormat="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3301,7 +3301,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeImageButton codeFormat="codeFormat">
+                <stimulusCodeImageButton codeFormat="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3312,7 +3312,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="" percentOfPage="56" loop="true" autoPlay="true" mediaId="" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3326,7 +3326,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" autoPlay="true" mediaId="" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3340,7 +3340,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="" autoPlay="true" mediaId="" showPlaybackIndicator="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3354,7 +3354,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="" showPlaybackIndicator="">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3368,10 +3368,10 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
-                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="mediaId">
+                <startAudioRecorderWeb downloadPermittedWindowMs="30000" mediaId="">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3391,7 +3391,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <startAudioRecorderApp fieldName="workerId" filePerStimulus="filePerStimulus">
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -3402,8 +3402,8 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity groupRole="groupRole">
+                <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3432,12 +3432,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3466,12 +3466,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity groupRole="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3500,7 +3500,7 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
@@ -3532,19 +3532,19 @@
             </stimuli>
         </loadSdCardStimulus>
         <clearStimulusResponses tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ"/>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <actionTokenButton featureText="actionTokenButton">
+        <actionTokenButton featureText="">
             <plainText featureText="plainText in actionTokenButton"/>
         </actionTokenButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
-        <targetFooterButton featureText="targetFooterButton" target="target"/>
-        <actionFooterButton featureText="actionFooterButton">
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
+        <targetFooterButton featureText="" target="target"/>
+        <actionFooterButton featureText="">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
@@ -3555,10 +3555,10 @@
         <actionButton featureText="Clear Screen">
             <clearPage/>
         </actionButton>
-        <backgroundImage msToNext="60" src="src">
+        <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
         </backgroundImage>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3566,7 +3566,7 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3574,7 +3574,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasMetadataValue>
-        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+        <setMetadataValue fieldName="workerId" dataLogFormat=""/>
+        <matchOnEvalTokens evaluateTokens="" matchingRegex="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3582,8 +3583,7 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </matchOnEvalTokens>
-        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
-        <progressIndicator evaluateTokens="evaluateTokens">
+        <progressIndicator evaluateTokens="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -3591,7 +3591,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </progressIndicator>
-        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+        <setMetadataEvalTokens evaluateTokens="" fieldName="workerId">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -3602,7 +3602,7 @@
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <logTimeStamp/>
-        <audioButton src="src" autoPlay="true" poster="poster">
+        <audioButton src="" autoPlay="true" poster="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3619,7 +3619,7 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
-        <requestNotification featureText="requestNotification" fieldName="workerId" dataLogFormat="dataLogFormat">
+        <requestNotification featureText="" fieldName="workerId" dataLogFormat="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -3627,10 +3627,10 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </requestNotification>
-        <startTimer msToNext="60" listenerId="listenerId">
+        <startTimer msToNext="60" listenerId="">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
+        <compareTimer msToNext="60" listenerId="">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
@@ -3638,24 +3638,24 @@
                 <plainText featureText="plainText in withinThreshold"/>
             </withinThreshold>
         </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId"/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
+        <clearTimer listenerId=""/>
+        <logTimerValue listenerId=""/>
+        <timerLabel msToNext="60" listenerId="" msLabelFormat=""/>
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
+        <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
+        <habituationParadigmListener listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in habituationParadigmListener"/>
         </habituationParadigmListener>
-        <triggerMatching listenerId="listenerId"/>
-        <triggerRandom matchingRegex="matchingRegex">
+        <triggerMatching listenerId=""/>
+        <triggerRandom matchingRegex="">
             <plainText featureText="plainText in triggerRandom"/>
         </triggerRandom>
-        <resetTrigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
+        <resetTrigger listenerId=""/>
+        <countdownLabel featureText="" msToNext="60" msLabelFormat="">
             <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
         <table>
@@ -3667,23 +3667,23 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <playMedia mediaId="mediaId"/>
-        <rewindMedia mediaId="mediaId"/>
-        <pauseMedia mediaId="mediaId"/>
-        <logMediaTimeStamp mediaId="mediaId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <playMedia mediaId=""/>
+        <rewindMedia mediaId=""/>
+        <pauseMedia mediaId=""/>
+        <logMediaTimeStamp mediaId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
-            <actionTokenButton featureText="actionTokenButton">
+            <actionTokenButton featureText="">
                 <plainText featureText="plainText in actionTokenButton"/>
             </actionTokenButton>
         </showHtmlPopup>
@@ -3718,9 +3718,9 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes"/>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3728,17 +3728,17 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <centrePage/>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3757,16 +3757,16 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
@@ -3788,9 +3788,9 @@
         </submitTestResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="kindiagram_minimal_attributes" type="kindiagram" self="kindiagram_minimal_attributesScreen" title="kindiagram_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3798,18 +3798,18 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <centrePage/>
-        <addKinTypeGui diagramName="diagramName"/>
-        <hasGetParameter parameterName="parameterName">
+        <addKinTypeGui diagramName=""/>
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3819,13 +3819,13 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
+        <kinTypeStringDiagram msToNext="60" kintypestring="">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
-        <loadKinTypeStringDiagram msToNext="60" diagramName="diagramName">
+        <loadKinTypeStringDiagram msToNext="60" diagramName="">
             <plainText featureText="plainText in loadKinTypeStringDiagram"/>
         </loadKinTypeStringDiagram>
-        <editableKinEntitesDiagram msToNext="60" diagramName="diagramName">
+        <editableKinEntitesDiagram msToNext="60" diagramName="">
             <plainText featureText="plainText in editableKinEntitesDiagram"/>
         </editableKinEntitesDiagram>
         <table>
@@ -3837,24 +3837,24 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_minimal_attributes" type="menu" self="menu_minimal_attributesScreen" title="menu_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3862,19 +3862,19 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <menuItem featureText="menuItem" target="target"/>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <menuItem featureText="" target="target"/>
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <centrePage/>
         <allMenuItems/>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3894,24 +3894,24 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_minimal_attributes" type="debug" self="debug_minimal_attributesScreen" title="debug_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3919,21 +3919,21 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <localStorageData/>
         <stimuliValidation/>
         <addKeyboardDebug/>
         <eraseLocalStorageButton/>
         <centrePage/>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -3952,25 +3952,25 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
         <versionData/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_minimal_attributes" type="text" self="text_minimal_attributesScreen" title="text_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -3978,14 +3978,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <centrePage/>
         <gotoPresenter target="target"/>
@@ -3999,24 +3999,24 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_minimal_attributes" type="timeline" self="timeline_minimal_attributesScreen" title="timeline_minimal_attributes">
-        <htmlText featureText="htmlText"/>
-        <plainText featureText="plainText"/>
-        <image msToNext="60" src="src">
+        <htmlText featureText=""/>
+        <plainText featureText=""/>
+        <image msToNext="60" src="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -4024,17 +4024,17 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" target="target"/>
-        <actionButton featureText="actionButton">
+        <targetButton featureText="" target="target"/>
+        <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup matchingRegex="matchingRegex"/>
-        <enableButtonGroup matchingRegex="matchingRegex"/>
-        <hideButtonGroup matchingRegex="matchingRegex"/>
-        <showButtonGroup matchingRegex="matchingRegex"/>
+        <disableButtonGroup matchingRegex=""/>
+        <enableButtonGroup matchingRegex=""/>
+        <hideButtonGroup matchingRegex=""/>
+        <showButtonGroup matchingRegex=""/>
         <addPadding/>
         <centrePage/>
-        <hasGetParameter parameterName="parameterName">
+        <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
@@ -4053,16 +4053,16 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
-        <regionAppend regionId="regionId">
+        <regionAppend regionId="">
             <plainText featureText="plainText in regionAppend"/>
         </regionAppend>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
+        <regionStyle regionId=""/>
+        <regionReplace regionId="">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
-        <regionClear regionId="regionId"/>
-        <showHtmlPopup featureText="showHtmlPopup">
-            <actionButton featureText="actionButton">
+        <regionClear regionId=""/>
+        <showHtmlPopup featureText="">
+            <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
