@@ -678,25 +678,28 @@ or local-name() eq 'nextMatchingStimulus'
 or local-name() eq 'sendGroupEndOfStimuli'
 ">
             <xsl:text>stimulusProvider</xsl:text>
-            <xsl:value-of select="if (local-name() ne 'nextMatchingStimulus') then ', ' else ''" />
+            <xsl:value-of select="if (local-name() ne 'nextMatchingStimulus' and local-name() ne 'sendGroupEndOfStimuli') then ', ' else ''" />
         </xsl:if>
         <xsl:if test="local-name() ne 'audioButton'
             and local-name() ne 'nextMatchingStimulus'
             and local-name() ne 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp'
            ">
-            <xsl:text>currentStimulus,</xsl:text>
+            <xsl:text>currentStimulus</xsl:text>
         </xsl:if>
         <xsl:if test="local-name() eq 'prevStimulusButton'
-                   or local-name() eq 'sendGroupMessageButton'
-                   or local-name() eq 'audioButton'
-                   or local-name() eq 'logTimeStamp'
-                   or local-name() eq 'sendGroupMessage'
-                   or local-name() eq 'sendGroupStoredMessage'
-                   or local-name() eq 'sendGroupEndOfStimuli'
-                   or local-name() eq 'nextStimulusButton'">
+                       or local-name() eq 'sendGroupMessageButton'
+                       or local-name() eq 'sendGroupMessage'
+                       or local-name() eq 'sendGroupStoredMessage'
+                       or local-name() eq 'sendGroupEndOfStimuli'
+                       or local-name() eq 'nextStimulusButton'">
+            <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ', null'" />
+        </xsl:if>
+        <xsl:if test="local-name() eq 'audioButton'
+                       or local-name() eq 'logTimeStamp'">
             <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else 'null'" />
         </xsl:if>
+        <!--<xsl:value-of select="if (local-name() eq 'sendGroupMessageButton') then ', ' else ''" />-->
         <xsl:if test="local-name() ne 'nextStimulus' 
             and local-name() ne 'prevStimulus' 
             and local-name() ne 'prevStimulusButton' 
@@ -706,13 +709,11 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'sendGroupStoredMessage' 
             and local-name() ne 'logTimeStamp' 
             and local-name() ne 'sendGroupEndOfStimuli'">
-            <xsl:value-of select="if(@eventTag) then ',' else ''" />
-            <xsl:value-of select="if(@dataChannel) then @dataChannel else '0'" />
+            <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'touchInputCaptureStart') then ', ' else ''" />        
-        <xsl:value-of select="if(@showControls) then @showControls eq ', true' else ''" />  
+        <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'
 or local-name() eq 'prevStimulusButton'
 or local-name() eq 'nextStimulusButton'
@@ -722,8 +723,7 @@ or local-name() eq 'sendGroupMessageButton'
         </xsl:if>    
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
-        <xsl:value-of select="if(local-name() eq 'nextStimulusButton' or local-name() eq 'sendGroupMessageButton' or local-name() eq 'prevStimulusButton') then ', ' else ''" />        
-        <xsl:value-of select="if(@repeatIncorrect) then @repeatIncorrect eq 'true' else ''" />
+        <xsl:value-of select="if(@repeatIncorrect) then if(@repeatIncorrect eq 'true') then ', true' else ', false' else ''" />
         <xsl:value-of select="if(@repeatMatching) then @repeatMatching eq 'true' else ''" />
         <xsl:value-of select="if(not (@hotKey) and (
             local-name() eq 'audioButton'
@@ -810,6 +810,7 @@ or local-name() eq 'ratingCheckbox'
                     or local-name() eq 'stimulusRatingButton'
                     or local-name() eq 'stimulusRatingRadio'
                     or local-name() eq 'stimulusRatingCheckbox'
+                    or local-name() eq 'ratingFooterButton'
                     or local-name() eq 'ratingCheckbox'">
             <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ', null'" />
         </xsl:if>
