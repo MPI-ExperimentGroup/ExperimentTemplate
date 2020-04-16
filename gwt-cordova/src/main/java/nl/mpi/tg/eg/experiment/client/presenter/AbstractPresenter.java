@@ -562,7 +562,7 @@ public abstract class AbstractPresenter implements Presenter {
      }-*/;
 
     static public native void pauseAudioRecorderWeb() /*-{
-        console.log("pauseWebAudioRecorder");
+        console.log("pauseAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 $wnd.recorder.pause();
@@ -571,7 +571,7 @@ public abstract class AbstractPresenter implements Presenter {
      }-*/;
 
     static public native void resumeAudioRecorderWeb() /*-{
-        console.log("pauseWebAudioRecorder");
+        console.log("resumeAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 $wnd.recorder.resume();
@@ -580,7 +580,7 @@ public abstract class AbstractPresenter implements Presenter {
      }-*/;
 
     static public native void logAudioRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
-        console.log("pauseWebAudioRecorder");
+        console.log("logAudioRecorderWebTimeStamp");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 // note that this assumes the bit rate of 48000 which is expected with this encoder
