@@ -273,6 +273,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         this.hasMoreStimulusListener = null;
         this.endOfStimulusListener = null;
         beforeStimuliListener.postLoadTimerFired();
+        timedEventMonitor.registerEvent(eventTag);
         while (stimulusProvider.hasNextStimulus(0)) {
             eachStimulusListener.postLoadTimerFired(stimulusProvider, stimulusProvider.getCurrentStimulus());
             stimulusProvider.nextStimulus(1);
@@ -292,6 +293,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
+        timedEventMonitor.registerEvent(eventTag);
         showStimulus(stimulusProvider, null, 0);
     }
 
