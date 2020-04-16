@@ -360,7 +360,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
                                 dataSubmitTimerList.remove(selfTimer);
                                 if (!dataSubmitTimerList.isEmpty()) {
-                                    dataSubmitTimerList.get(0).schedule(1000);
+                                    dataSubmitTimerList.get(0).schedule(500);
                                 }
                             }
 
@@ -369,21 +369,21 @@ public class DataSubmissionService extends AbstractSubmissionService {
                                 localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
                                 dataSubmitTimerList.remove(selfTimer);
                                 if (!dataSubmitTimerList.isEmpty()) {
-                                    dataSubmitTimerList.get(0).schedule(1000);
+                                    dataSubmitTimerList.get(0).schedule(500);
                                 }
                             }
                         });
                     } else {
                         dataSubmitTimerList.remove(selfTimer);
-                    }
-                    if (!dataSubmitTimerList.isEmpty()) {
-                        dataSubmitTimerList.get(0).schedule(1000);
+                        if (!dataSubmitTimerList.isEmpty()) {
+                            dataSubmitTimerList.get(0).schedule(500);
+                        }
                     }
                 }
             };
             dataSubmitTimerList.add(timer);
             if (dataSubmitTimerList.size() == 1) {
-                timer.schedule(1000);
+                timer.schedule(500);
             }
         }
     }
