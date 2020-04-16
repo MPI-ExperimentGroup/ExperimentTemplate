@@ -359,32 +359,33 @@ public class DataSubmissionService extends AbstractSubmissionService {
                             @Override
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
                                 dataSubmitTimerList.remove(selfTimer);
-                                if (!dataSubmitTimerList.isEmpty()) {
-                                    dataSubmitTimerList.get(0).schedule(500);
-                                }
+//                                if (!dataSubmitTimerList.isEmpty()) {
+//                                    dataSubmitTimerList.get(0).schedule(500);
+//                                }
                             }
 
                             @Override
                             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
                                 localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
                                 dataSubmitTimerList.remove(selfTimer);
-                                if (!dataSubmitTimerList.isEmpty()) {
-                                    dataSubmitTimerList.get(0).schedule(500);
-                                }
+//                                if (!dataSubmitTimerList.isEmpty()) {
+//                                    dataSubmitTimerList.get(0).schedule(500);
+//                                }
                             }
                         });
                     } else {
                         dataSubmitTimerList.remove(selfTimer);
-                        if (!dataSubmitTimerList.isEmpty()) {
-                            dataSubmitTimerList.get(0).schedule(500);
-                        }
+//                        if (!dataSubmitTimerList.isEmpty()) {
+//                            dataSubmitTimerList.get(0).schedule(500);
+//                        }
                     }
                 }
             };
             dataSubmitTimerList.add(timer);
-            if (dataSubmitTimerList.size() == 1) {
-                timer.schedule(500);
-            }
+            timer.schedule(1000 * dataSubmitTimerList.size());
+//            if (dataSubmitTimerList.size() == 1) {
+//                timer.schedule(500);
+//            }
         }
     }
 
