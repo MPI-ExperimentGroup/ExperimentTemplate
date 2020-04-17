@@ -273,7 +273,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         this.hasMoreStimulusListener = null;
         this.endOfStimulusListener = null;
         beforeStimuliListener.postLoadTimerFired();
-        timedEventMonitor.registerEvent(eventTag);
+        timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "withStimuli" : eventTag);
         while (stimulusProvider.hasNextStimulus(0)) {
             eachStimulusListener.postLoadTimerFired(stimulusProvider, stimulusProvider.getCurrentStimulus());
             stimulusProvider.nextStimulus(1);
@@ -293,7 +293,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        timedEventMonitor.registerEvent(eventTag);
+        timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "loadStimulus" : eventTag);
         showStimulus(stimulusProvider, null, 0);
     }
 
@@ -1588,7 +1588,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void logTimeStamp(String eventTag) {
-        timedEventMonitor.registerEvent(eventTag);
+        timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "logTimeStamp" : eventTag);;
         //logTimeStamp(stimulusProvider, currentStimulus, "logTimeStamp", eventTag, dataChannel);
     }
 
@@ -2324,7 +2324,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "nextStimulusButton" : eventTag);
-                timedEventMonitor.registerEvent(eventTag);
                 nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, 1);
             }
         };
