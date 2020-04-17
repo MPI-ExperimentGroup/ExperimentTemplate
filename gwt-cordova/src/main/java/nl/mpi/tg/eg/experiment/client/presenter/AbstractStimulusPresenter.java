@@ -355,7 +355,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
         stimulusProvider.getSubset(allocatedTags, storedStimulusList, seenStimulusIndex);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, stimulusProvider.generateStimuliStateSnapshot(), duration.elapsedMillis());
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, stimulusProvider.generateStimuliStateSnapshot(), duration.elapsedMillis());
     }
 
     protected void sendStimuliReport(final StimuliProvider stimulusProvider, String reportType, final int dataChannel) {
