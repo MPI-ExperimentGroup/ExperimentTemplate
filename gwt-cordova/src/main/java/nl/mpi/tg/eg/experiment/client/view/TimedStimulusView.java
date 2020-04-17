@@ -179,8 +179,7 @@ public class TimedStimulusView extends ComplexView {
         getActivePanel().add(bargraphOuter);
     }
 
-    public StimulusButton addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener onLoadStimulusListener, final CancelableStimulusListener postLoadMsListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
-        cancelableListnerList.add(onLoadStimulusListener);
+    public StimulusButton addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener postLoadMsListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
         cancelableListnerList.add(postLoadMsListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(clickedStimulusListener);
@@ -209,9 +208,6 @@ public class TimedStimulusView extends ComplexView {
                     timedEventMonitor.registerEvent("imageOnLoad");
                 }
                 image.setVisible(true);
-                if (onLoadStimulusListener != null) {
-                    onLoadStimulusListener.postLoadTimerFired();
-                }
                 Timer timer = new Timer() {
                     @Override
                     public void run() {
