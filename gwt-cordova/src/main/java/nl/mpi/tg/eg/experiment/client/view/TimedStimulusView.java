@@ -142,6 +142,7 @@ public class TimedStimulusView extends ComplexView {
 //
 //            @Override
 //            public void onLoad(LoadEvent event) {
+        if (postLoadMs > 0) {
         Timer timer = new Timer() {
             @Override
             public void run() {
@@ -150,6 +151,9 @@ public class TimedStimulusView extends ComplexView {
         };
         timerList.add(timer);
         timer.schedule(postLoadMs);
+        } else {
+            timedStimulusListener.postLoadTimerFired();
+        }
 //            }
 //        });
 //        outerPanel.add(image);
@@ -208,6 +212,7 @@ public class TimedStimulusView extends ComplexView {
                     timedEventMonitor.registerEvent("imageOnLoad");
                 }
                 image.setVisible(true);
+                if (postLoadMs > 0) {
                 Timer timer = new Timer() {
                     @Override
                     public void run() {
@@ -215,7 +220,10 @@ public class TimedStimulusView extends ComplexView {
                     }
                 };
                 timerList.add(timer);
-                timer.schedule(postLoadMs);
+                    timer.schedule(postLoadMs); // todo: do we remove this?
+                } else {
+                    postLoadMsListener.postLoadTimerFired();
+            }
             }
         });
         final SingleShotEventListner singleShotEventListner;
@@ -328,6 +336,7 @@ public class TimedStimulusView extends ComplexView {
                 if (shownStimulusListener != null) {
                     shownStimulusListener.postLoadTimerFired();
                 }
+                if (postLoadMs > 0) {
                 Timer timer = new Timer() {
                     @Override
                     public void run() {
@@ -335,7 +344,10 @@ public class TimedStimulusView extends ComplexView {
                     }
                 };
                 timerList.add(timer);
-                timer.schedule(postLoadMs);
+                    timer.schedule(postLoadMs); // todo: do we remove this?
+                } else {
+                    loadedStimulusListener.postLoadTimerFired();
+                }
             }
         });
         if (clickedStimulusListener != null) {
