@@ -1064,12 +1064,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
             String ogg = currentStimulus.getAudio() + ".ogg";
+            String wav = currentStimulus.getAudio() + ".wav";
             if (regex != null && replacement != null) {
                 mp3 = mp3.replaceAll(regex, replacement);
                 ogg = ogg.replaceAll(regex, replacement);
+                wav = wav.replaceAll(regex, replacement);
             }
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(mp3);
+            final SafeUri wavTrustedString = (wav == null) ? null : UriUtils.fromTrustedString(wav);
             final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                 @Override
                 protected void trigggerCancelableEvent() {
@@ -1079,7 +1082,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", currentStimulus.getAudio(), duration.elapsedMillis());
-            timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "autoStimulus");
+            timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, wavTrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "autoStimulus");
         } else if (currentStimulus.hasVideo()) {
             String ogv = currentStimulus.getVideo() + ".ogv";
             String mp4 = currentStimulus.getVideo() + ".mp4";
@@ -1136,8 +1139,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
         String mp3 = formattedCode + ".mp3";
         String ogg = formattedCode + ".ogg";
+        String wav = formattedCode + ".wav";
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString((ogg.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + ogg);
         final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString((mp3.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp3);
+        final SafeUri wavTrustedString = (wav == null) ? null : UriUtils.fromTrustedString((wav.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + wav);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeAudio", formattedCode, duration.elapsedMillis());
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
@@ -1147,7 +1152,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
-        timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
+        timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, wavTrustedString, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
     }
 
     protected void stimulusVideo(final Stimulus currentStimulus, final String styleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -1200,6 +1205,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         String ogg = audio + ".ogg";
         String mp3 = audio + ".mp3";
+        String wav = audio + ".wav";
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
@@ -1208,7 +1214,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
-        timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
+        timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), UriUtils.fromTrustedString(wav), showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
 //        timedStimulusView.addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
@@ -2319,6 +2325,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String styleName, final String imagePath, final boolean autoPlay, final int hotKey, final String buttonGroup, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String mp3Path = srcString + ".mp3";
         final String oggPath = srcString + ".ogg";
+        final String wavPath = srcString + ".wav";
         final PresenterEventListner presenterEventListner = new PresenterEventListner() {
             private boolean hasPlayed = false;
 
@@ -2343,11 +2350,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                     @Override
                     protected void trigggerCancelableEvent() {
-                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "PlayAudio", mp3Path, duration.elapsedMillis());
+                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "PlayAudio", srcString, duration.elapsedMillis());
                         loadedStimulusListener.postLoadTimerFired();
                     }
                 };
-                timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString((oggPath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + oggPath), UriUtils.fromString((mp3Path.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp3Path), false, shownStimulusListener, failedStimulusListener,
+                timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString((oggPath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + oggPath), UriUtils.fromString((mp3Path.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp3Path), UriUtils.fromString((wavPath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + wavPath), false, shownStimulusListener, failedStimulusListener,
                         new CancelableStimulusListener() {
                     @Override
                     protected void trigggerCancelableEvent() {

@@ -557,7 +557,7 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, final boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, final SafeUri wavPath, final boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -571,7 +571,7 @@ public class TimedStimulusView extends ComplexView {
                 public void audioExceptionFired(AudioException audioException) {
                     failedStimulusListener.postLoadTimerFired();
                 }
-            }, oggPath, mp3Path, autoPlay, mediaId);
+            }, oggPath, mp3Path, wavPath, autoPlay, mediaId);
             audioList.put(mediaId, audioPlayer);
             //        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
             final Label playbackIndicator = new Label();

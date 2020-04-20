@@ -40,7 +40,7 @@ public class AudioPlayer {
     final TimedEventMonitor timedEventMonitor;
     final String mediaId;
 
-    public AudioPlayer(final TimedEventMonitor timedEventMonitor, final AudioExceptionListner audioExceptionListner, final SafeUri ogg, final SafeUri mp3, final boolean autoPlay, final String mediaId) throws AudioException {
+    public AudioPlayer(final TimedEventMonitor timedEventMonitor, final AudioExceptionListner audioExceptionListner, final SafeUri ogg, final SafeUri mp3, final SafeUri wav, final boolean autoPlay, final String mediaId) throws AudioException {
         this.timedEventMonitor = timedEventMonitor;
         this.audioExceptionListner = audioExceptionListner;
         this.autoPlay = autoPlay;
@@ -53,6 +53,10 @@ public class AudioPlayer {
             }
             if (mp3 != null) {
                 final SourceElement sourceElement = audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+                onNoFoundSetup(sourceElement);
+            }
+            if (wav != null) {
+                final SourceElement sourceElement = audioPlayer.addSource(wav.asString(), AudioElement.TYPE_WAV);
                 onNoFoundSetup(sourceElement);
             }
             //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
