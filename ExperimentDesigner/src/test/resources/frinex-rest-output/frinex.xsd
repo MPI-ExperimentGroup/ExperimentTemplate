@@ -614,7 +614,7 @@
 </xs:all>
 <xs:attribute name="src" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="menuItemType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -792,6 +792,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -828,7 +829,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -982,6 +982,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -1018,7 +1019,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -1181,6 +1181,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -1217,7 +1218,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -1369,6 +1369,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -1405,7 +1406,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -1551,6 +1551,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -1587,7 +1588,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -1690,7 +1690,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="showControls" type="xs:string" use="required"/>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="touchInputReportSubmitType">
 <xs:attribute name="dataChannel" type="xs:string"/>
@@ -1732,6 +1732,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -1768,7 +1769,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -1916,6 +1916,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -1952,7 +1953,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -2100,6 +2100,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -2136,7 +2137,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -2302,6 +2302,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -2338,7 +2339,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -2485,6 +2485,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -2521,7 +2522,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -2668,6 +2668,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -2704,7 +2705,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -2820,6 +2820,12 @@
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
 </xs:complexType>
+<xs:complexType name="clearStimulusResponseType">
+<xs:annotation>
+<xs:documentation>Clears the locally stored response to the current stimulus. If groupId is provided then only the matching response group will be cleared, otherwise all responses for that stimulus are cleared.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="groupId" type="xs:string"/>
+</xs:complexType>
 <xs:complexType name="stimulusHasResponseType">
 <xs:all>
 <xs:annotation>
@@ -2894,6 +2900,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -2930,7 +2937,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -3103,6 +3109,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -3139,7 +3146,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -3405,8 +3411,6 @@
 <xs:complexType name="removeMatchingStimulusType">
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
-<xs:complexType name="clearStimulusType">
-</xs:complexType>
 <xs:complexType name="centrePageType">
 </xs:complexType>
 <xs:complexType name="clearPageType">
@@ -3449,6 +3453,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -3485,7 +3490,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -3587,7 +3591,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="src" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
@@ -3763,6 +3767,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -3799,7 +3804,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -3964,6 +3968,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -4000,7 +4005,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -4102,7 +4106,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="requestNotificationType">
 <xs:sequence>
@@ -4160,6 +4164,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -4196,7 +4201,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -4298,7 +4302,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="compareTimerType">
@@ -4306,7 +4310,7 @@
 <xs:element name="aboveThreshold" type="aboveThresholdType"/>
 <xs:element name="withinThreshold" type="withinThresholdType"/>
 </xs:all>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="clearTimerType">
@@ -4319,7 +4323,7 @@
 </xs:complexType>
 <xs:complexType name="timerLabelType">
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="msLabelFormat" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
@@ -4360,6 +4364,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -4396,7 +4401,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -4542,6 +4546,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -4578,7 +4583,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -4721,6 +4725,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -4757,7 +4762,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -4909,6 +4913,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -4945,7 +4950,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -5098,6 +5102,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -5134,7 +5139,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -5237,7 +5241,7 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 <xs:attribute name="featureText" type="xs:string" use="required"/>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="msLabelFormat" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
@@ -5278,6 +5282,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -5314,7 +5319,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -5457,6 +5461,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -5493,7 +5498,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -5633,6 +5637,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -5669,7 +5674,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -5809,6 +5813,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -5845,7 +5850,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -5985,6 +5989,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -6021,7 +6026,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -6123,7 +6127,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="kintypestring" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="loadKinTypeStringDiagramType">
@@ -6163,6 +6167,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -6199,7 +6204,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -6301,7 +6305,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="diagramName" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="editableKinEntitesDiagramType">
@@ -6341,6 +6345,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -6377,7 +6382,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -6479,7 +6483,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="diagramName" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="conditionTrueType">
@@ -6519,6 +6523,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -6555,7 +6560,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -6695,6 +6699,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -6731,7 +6736,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -6871,6 +6875,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -6907,7 +6912,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -7047,6 +7051,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -7083,7 +7088,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -7223,6 +7227,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -7259,7 +7264,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -7399,6 +7403,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -7435,7 +7440,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -7575,6 +7579,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -7611,7 +7616,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -7751,6 +7755,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -7787,7 +7792,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -7927,6 +7931,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -7963,7 +7968,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -8109,6 +8113,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -8145,7 +8150,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -8285,6 +8289,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -8321,7 +8326,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -8461,6 +8465,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -8497,7 +8502,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -8637,6 +8641,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -8673,7 +8678,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -8813,6 +8817,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -8849,7 +8854,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -8989,6 +8993,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -9025,7 +9030,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -9165,6 +9169,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -9201,7 +9206,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -9341,6 +9345,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -9377,7 +9382,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -9517,6 +9521,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -9553,7 +9558,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -9695,6 +9699,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -9731,7 +9736,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -9871,6 +9875,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -9907,7 +9912,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -10051,6 +10055,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -10087,7 +10092,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -10246,6 +10250,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -10282,7 +10287,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -10414,7 +10418,7 @@
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
 <xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
 </xs:all>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 </xs:complexType>
@@ -10423,7 +10427,7 @@
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
 <xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
 </xs:all>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="codeFormat" type="xs:string" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
@@ -10552,6 +10556,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -10588,7 +10593,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -10694,7 +10698,7 @@
 <xs:attribute name="percentOfPage" type="xs:string" use="required"/>
 <xs:attribute name="maxHeight" type="xs:string" use="required"/>
 <xs:attribute name="maxWidth" type="xs:string" use="required"/>
-<xs:attribute name="msToNext" type="xs:string" use="required"/>
+<xs:attribute name="msToNext" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="VideoPanelType">
 <xs:attribute name="src" type="xs:string" use="required"/>
@@ -10740,6 +10744,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -10776,7 +10781,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
@@ -11004,6 +11008,7 @@
 <xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
 <xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
 <xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
 <xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
 <xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
 <xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
@@ -11040,7 +11045,6 @@
 <xs:element name="keepStimulus" type="keepStimulusType"/>
 <xs:element name="removeStimulus" type="removeStimulusType"/>
 <xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
-<xs:element name="clearStimulus" type="clearStimulusType"/>
 <xs:element name="centrePage" type="centrePageType"/>
 <xs:element name="clearPage" type="clearPageType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>

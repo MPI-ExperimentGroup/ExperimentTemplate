@@ -436,6 +436,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
+                <clearStimulusResponse groupId="groupId"/>
                 <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -454,7 +455,6 @@
                 <keepStimulus/>
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
-                <clearStimulus/>
                 <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
@@ -817,6 +817,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
+                <clearStimulusResponse groupId="groupId"/>
                 <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -835,7 +836,6 @@
                 <keepStimulus/>
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
-                <clearStimulus/>
                 <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
@@ -1198,6 +1198,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
+                <clearStimulusResponse groupId="groupId"/>
                 <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -1216,7 +1217,6 @@
                 <keepStimulus/>
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
-                <clearStimulus/>
                 <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
@@ -2461,6 +2461,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
+                <clearStimulusResponse/>
                 <stimulusHasResponse matchingRegex="">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -2479,7 +2480,6 @@
                 <keepStimulus/>
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex=""/>
-                <clearStimulus/>
                 <prevStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulus repeatIncorrect=""/>
@@ -2842,6 +2842,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
+                <clearStimulusResponse/>
                 <stimulusHasResponse matchingRegex="">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -2860,7 +2861,6 @@
                 <keepStimulus/>
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex=""/>
-                <clearStimulus/>
                 <prevStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulus repeatIncorrect=""/>
@@ -3223,6 +3223,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasRatingOptions>
+                <clearStimulusResponse/>
                 <stimulusHasResponse matchingRegex="">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -3241,7 +3242,6 @@
                 <keepStimulus/>
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex=""/>
-                <clearStimulus/>
                 <prevStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulus repeatIncorrect=""/>
