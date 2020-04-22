@@ -260,7 +260,19 @@ public abstract class AbstractPresenter implements Presenter {
             conditionFalse.postLoadTimerFired();
         }
     }
-    public void matchOnEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+
+    public void matchOnEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final TimedStimulusListener onError) {
+        final String matchingRegex = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(inputRegex);
+        try {
+            final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens);
+            if (resultValue.matches(matchingRegex)) {
+                conditionTrue.postLoadTimerFired();
+            } else {
+                conditionFalse.postLoadTimerFired();
+            }
+        } catch (EvaluateTokensException exception) {
+            onError.postLoadTimerFired();
+    }
     }
 
     @Override

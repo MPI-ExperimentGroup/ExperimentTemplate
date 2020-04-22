@@ -259,6 +259,9 @@
             <conditionFalse>
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </matchOnEvalTokens>
         <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
@@ -1557,6 +1560,9 @@
             <conditionFalse>
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </matchOnEvalTokens>
         <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
@@ -2284,6 +2290,9 @@
             <conditionFalse>
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </matchOnEvalTokens>
         <progressIndicator evaluateTokens="">
             <onError>
@@ -3582,6 +3591,9 @@
             <conditionFalse>
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </matchOnEvalTokens>
         <progressIndicator evaluateTokens="">
             <onError>

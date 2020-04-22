@@ -231,15 +231,21 @@ public class HtmlTokenFormatterTest {
         assertEquals(2.0 * 3 - 4 + 5.0 / 6, instance.evaluateTokensNumber("2*3-4+5/6"));
         assertEquals(2.0 / 3 * 4 - 5 + 6, instance.evaluateTokensNumber("2/3*4-5+6"));
         assertEquals(2.0 + 3 / 4.0 * 5 - 6, instance.evaluateTokensNumber("2+3/4*5-6"));
-//        assertEquals(1 < 2 + 3 / 4 * 5 - 6, instance.evaluateTokensString("1<2+3/4*5-6"));
-//        assertEquals(3 < (2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("3< (2+3/4*5-6)"));
-//        assertEquals(10 > (2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("10 >(2+3/4*5-6)"));
-//        assertEquals(true && 10 > (2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("true && 10 >(2+3/4*5-6)"));
-//        assertEquals(true && true || false, instance.evaluateTokensString("true && true || false"));
-//        assertEquals(true && true && false, instance.evaluateTokensString("true && true && false"));
-//        assertEquals((true || false) && false, instance.evaluateTokensString("(true||false)&&false"));
-//        assertEquals(12 != 1, instance.evaluateTokensString("12!=1"));
-//        assertEquals(12 != 1 && 12 > 2, instance.evaluateTokensString("12!=1&&12>2"));
+        assertEquals(Boolean.toString(1 < 2 + 3 / 4 * 5 - 6), instance.evaluateTokensString("1<2+3/4*5-6"));
+        assertEquals(Boolean.toString(3 < (2 + 3 / 4 * 5 - 6)), instance.evaluateTokensString("3< (2+3/4*5-6)"));
+        assertEquals(Boolean.toString(10 > (2 + 3 / 4 * 5 - 6)), instance.evaluateTokensString("10 >(2+3/4*5-6)"));
+        assertEquals(Boolean.toString(true && 10 > (2 + 3 / 4 * 5 - 6)), instance.evaluateTokensString("true && 10 >(2+3/4*5-6)"));
+        assertEquals(Boolean.toString(true && true || false), instance.evaluateTokensString("true && true || false"));
+        assertEquals(Boolean.toString(true && true && false), instance.evaluateTokensString("true && true && false"));
+        assertEquals(Boolean.toString((true || false) && false), instance.evaluateTokensString("(true||false)&&false"));
+        assertEquals(Boolean.toString(12 != 1), instance.evaluateTokensString("12!=1"));
+        assertEquals(Boolean.toString(12 != 1 && 12 > 2), instance.evaluateTokensString("12!=1&&12>2"));
+        assertEquals(Boolean.toString(12 != 1 && 12 < 2), instance.evaluateTokensString("12!=1&&12<2"));
+        assertEquals(Boolean.toString(12 != 1 && 12 <= 12), instance.evaluateTokensString("12!=1&&12<=12"));
+        assertEquals(Boolean.toString(12 == 1 && 12 <= 12), instance.evaluateTokensString(" 12 = = 1 & & 1 2 < = 1 2 "));
+        assertEquals(Boolean.toString(12 != 1 && 12 >= 12), instance.evaluateTokensString("12!=1&&12>=12"));
+        assertEquals(Boolean.toString(12 != 1 && true != false), instance.evaluateTokensString("12!=1&&true!= false"));
+        assertEquals(Boolean.toString(12 != 1 || true == false), instance.evaluateTokensString("12!=1||true== false"));
     }
 
     /**

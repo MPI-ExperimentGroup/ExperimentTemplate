@@ -361,6 +361,14 @@ public class DefaultExperiments {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+            case hasTrueFalseErrorCondition:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionTrue, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionFalse, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                }
+                break;
             case hasCorrectIncorrect:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseCorrect, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseIncorrect, presenterFeatureRepository, addOptionalAttributes));

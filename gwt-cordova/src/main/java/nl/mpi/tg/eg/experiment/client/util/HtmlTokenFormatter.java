@@ -153,7 +153,7 @@ public class HtmlTokenFormatter {
             }
             matcherGroup = regExpGroup.exec(inputString);
         }
-        for (String operator : new String[]{"/", "\\*", "%", "-", "\\+"}) {
+        for (String operator : new String[]{"/", "\\*", "%", "-", "\\+", "<=", ">=", "<", ">", "==", "\\!="}) {
             RegExp regExpOperator = RegExp.compile("(^-|[^0-9.]-|)([0-9\\.]+)(" + operator + ")(-?)([0-9\\.]+)");
             boolean foundMatch = true;
             while (foundMatch) {
@@ -170,31 +170,88 @@ public class HtmlTokenFormatter {
                         final String groupOperator = matcherOperator.getGroup(3);
                         final String groupSignRight = matcherOperator.getGroup(4);
                         final String groupValueRight = matcherOperator.getGroup(5);
-                        final Number resultNumber;
+                        final String resultValue;
                         switch (operator) {
                             case "/":
-                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) / Double.parseDouble(groupSignRight + groupValueRight);
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) / Double.parseDouble(groupSignRight + groupValueRight));
                                 break;
                             case "\\*":
-                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) * Double.parseDouble(groupSignRight + groupValueRight);
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) * Double.parseDouble(groupSignRight + groupValueRight));
                                 break;
                             case "\\+":
-                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) + Double.parseDouble(groupSignRight + groupValueRight);
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) + Double.parseDouble(groupSignRight + groupValueRight));
                                 break;
                             case "-":
-                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) - Double.parseDouble(groupSignRight + groupValueRight);
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) - Double.parseDouble(groupSignRight + groupValueRight));
                                 break;
                             case "%":
-                                resultNumber = Double.parseDouble(groupSignLeft + groupValueLeft) % Double.parseDouble(groupSignRight + groupValueRight);
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) % Double.parseDouble(groupSignRight + groupValueRight));
+                                break;
+                            case "<":
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) < Double.parseDouble(groupSignRight + groupValueRight));
+                                break;
+                            case ">":
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) > Double.parseDouble(groupSignRight + groupValueRight));
+                                break;
+                            case "<=":
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) <= Double.parseDouble(groupSignRight + groupValueRight));
+                                break;
+                            case ">=":
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) >= Double.parseDouble(groupSignRight + groupValueRight));
+                                break;
+                            case "==":
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) == Double.parseDouble(groupSignRight + groupValueRight));
+                                break;
+                            case "\\!=":
+                                resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) != Double.parseDouble(groupSignRight + groupValueRight));
                                 break;
                             default:
-                                resultNumber = 0;
+                                throw new EvaluateTokensException(operator);
                         }
                         String groupString = groupSignLeft + groupValueLeft + groupOperator + groupSignRight + groupValueRight;
-                        inputString = inputString.replace(groupString, "" + resultNumber);
+                        inputString = inputString.replace(groupString, "" + resultValue);
                         System.out.print(groupString);
                         System.out.print(" = ");
-                        System.out.println(resultNumber);
+                        System.out.println(resultValue);
+                        System.out.println(inputString);
+                    }
+                }
+            }
+        }
+        for (String operator : new String[]{"==", "\\!=", "&&", "\\|\\|"}) {
+            RegExp regExpOperator = RegExp.compile("(true|false)(" + operator + ")(true|false)");
+            boolean foundMatch = true;
+            while (foundMatch) {
+                foundMatch = false;
+                MatchResult matcherOperator = regExpOperator.exec(inputString);
+                if (matcherOperator != null) {
+                    if (matcherOperator.getGroupCount() >= 4) {
+                        foundMatch = true;
+                        final String groupBooleanLeft = matcherOperator.getGroup(1);
+                        final String groupOperator = matcherOperator.getGroup(2);
+                        final String groupBooleanRight = matcherOperator.getGroup(3);
+                        final String resultValue;
+                        switch (operator) {
+                            case "==":
+                                resultValue = String.valueOf(Boolean.parseBoolean(groupBooleanLeft) == Boolean.parseBoolean(groupBooleanRight));
+                                break;
+                            case "\\!=":
+                                resultValue = String.valueOf(Boolean.parseBoolean(groupBooleanLeft) != Boolean.parseBoolean(groupBooleanRight));
+                                break;
+                            case "&&":
+                                resultValue = String.valueOf(Boolean.parseBoolean(groupBooleanLeft) && Boolean.parseBoolean(groupBooleanRight));
+                                break;
+                            case "\\|\\|":
+                                resultValue = String.valueOf(Boolean.parseBoolean(groupBooleanLeft) || Boolean.parseBoolean(groupBooleanRight));
+                                break;
+                            default:
+                                throw new EvaluateTokensException(operator);
+                        }
+                        String groupString = groupBooleanLeft + groupOperator + groupBooleanRight;
+                        inputString = inputString.replace(groupString, "" + resultValue);
+                        System.out.print(groupString);
+                        System.out.print(" = ");
+                        System.out.println(resultValue);
                         System.out.println(inputString);
                     }
                 }

@@ -3666,6 +3666,7 @@
 </xs:complexType>
 <xs:complexType name="matchOnEvalTokensType">
 <xs:all>
+<xs:element name="onError" type="onErrorType"/>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
