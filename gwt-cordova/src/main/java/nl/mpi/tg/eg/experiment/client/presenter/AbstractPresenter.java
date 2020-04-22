@@ -585,7 +585,7 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 // note that this assumes the bit rate of 48000 which is expected with this encoder
-                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Long;)(eventTag, Math.floor($wnd.recorder.encodedSamplePosition / 48000));
+                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.encodedSamplePosition / 48000);
             }
         }
      }-*/;
@@ -603,7 +603,7 @@ public abstract class AbstractPresenter implements Presenter {
             }, tier);
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             // note that this assumes the bit rate of 48000 which is expected with this encoder
-            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Long;)("startAudioRecorderTag", Math.floor($wnd.recorder.encodedSamplePosition / 48000));
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)("startAudioRecorderTag", $wnd.recorder.encodedSamplePosition / 48000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
@@ -622,7 +622,7 @@ public abstract class AbstractPresenter implements Presenter {
             }, tier, stimulusId, stimulusCode, eventTag);
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             // note that this assumes the bit rate of 48000 which is expected with this encoder
-            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Long;)(eventTag, Math.floor($wnd.recorder.encodedSamplePosition / 48000));
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.encodedSamplePosition / 48000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }

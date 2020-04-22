@@ -46,6 +46,11 @@ public class TimedEventMonitor {
         eventList.add(new TimedEvent(mediaName, (mediaLength != null) ? mediaLength : -1));
     }
 
+    public void registerMediaLength(String mediaName, Double mediaLength) {
+        // the web recorder can return a null mediaLength when recording is not permitted
+        eventList.add(new TimedEvent(mediaName, (mediaLength != null) ? mediaLength.longValue() : -1));
+    }
+
     public void clearEvents(final List<TimedEvent> completedList) {
         eventList.removeAll(completedList);
     }
