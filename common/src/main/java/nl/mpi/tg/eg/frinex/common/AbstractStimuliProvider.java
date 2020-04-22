@@ -41,6 +41,11 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
+    public List<Stimulus> getStimuliWithAllTags(final List<Stimulus.Tag> selectionTags) {
+        throw new UnsupportedOperationException("getStimuliWithAllTags");
+    }
+
+    @Override
     public void getSdCardSubset(ArrayList<String> directoryTagArray, List<String[]> directoryList, TimedStimulusListener stimulusLoadedListener, TimedStimulusListener stimulusErrorListener, String storedStimulusList, int currentStimuliIndex) {
         throw new UnsupportedOperationException("getSdCardSubset");
     }

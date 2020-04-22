@@ -42,7 +42,7 @@ public enum FeatureType {
     loadSdCardStimulus(false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex /* excludes files matching */, matchingRegex /* includes files matching */, replacementRegex /* generates stimuli code by regex replacement on the file path */, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(false, new FeatureAttribute[]{}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction), // todo: consider updating this to take a tags attribute rather than a stimuli element
-    clearStimulusResponses(false, new FeatureAttribute[]{}, true, false, false, Contitionals.none, Contitionals.none),
+    clearStimulusResponses(new FeatureAttribute[]{}, true, "Clears all locally stored responses to all stimulus that have all the supplied tags.", Contitionals.none, Contitionals.none),
     validateStimuliResponses(false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusExists(false, new FeatureAttribute[]{offset}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     showStimuliReport(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -142,7 +142,7 @@ public enum FeatureType {
     hasGetParameter(false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     hasMetadataValue(false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     setMetadataValue(false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, "The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, otherwise the entire string is used. The result is then stored in the specified metadata field.", Contitionals.none, Contitionals.none),
-    matchOnEvalTokens(false, new FeatureAttribute[]{evaluateTokens, matchingRegex}, false, false, false, Contitionals.hasTrueFalseErrorCondition, Contitionals.none),
+    matchOnEvalTokens(false, new FeatureAttribute[]{evaluateTokens, matchingRegex}, "Compares the matchingRegex against the result of evaluateTokens after any metadata field tokens have been resolved, any arithmetic and boolean comparisons have been resolved.", Contitionals.hasTrueFalseErrorCondition, Contitionals.none),
     progressIndicator(false, new FeatureAttribute[]{evaluateTokens, styleName}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     setMetadataEvalTokens(false, new FeatureAttribute[]{fieldName, evaluateTokens}, "The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is then stored in the specified metadata field.", Contitionals.hasErrorSuccess, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}, "Randomly activates one menu item on the current presenter providing that the target presenter has not already been completed. If all targets have been completed then the user will be sent to the next presenter as specified by the current presenter."),
@@ -333,6 +333,18 @@ public enum FeatureType {
         this.requiresChildType = requiresChildType;
         this.isChildType = isChildType;
         this.canHaveStimulusTags = false;
+        this.canHaveRandomGrouping = false;
+        this.canHaveUndefinedAttribute = false;
+        this.allowsCustomImplementation = false;
+        this.documentationText = documentationText;
+    }
+
+    private FeatureType(final FeatureAttribute[] featureAttributes, boolean canHaveStimulus, final String documentationText, final Contitionals requiresChildType, final Contitionals... isChildType) {
+        this.canHaveText = false;
+        this.featureAttributes = featureAttributes;
+        this.requiresChildType = requiresChildType;
+        this.isChildType = isChildType;
+        this.canHaveStimulusTags = canHaveStimulus;
         this.canHaveRandomGrouping = false;
         this.canHaveUndefinedAttribute = false;
         this.allowsCustomImplementation = false;

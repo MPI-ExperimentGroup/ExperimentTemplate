@@ -252,10 +252,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void clearStimulusResponses(final Tag[] selectionTags, final StimuliProvider stimulusProvider) {
-        stimulusProvider.getSubset(Arrays.asList(selectionTags), "", 0);
-        while (stimulusProvider.hasNextStimulus(0)) {
-            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), new JSONObject());
-            stimulusProvider.nextStimulus(1);
+        final List<Stimulus> stimuliMatchingTags = stimulusProvider.getStimuliWithAllTags(Arrays.asList(selectionTags));
+        for (Stimulus currentItem : stimuliMatchingTags) {
+            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentItem, new JSONObject());
         }
     }
 
@@ -1967,12 +1966,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         return false;
     }*/
-    protected void clearStimulus() {
-        // when is this used?
-        clearPage();
-        stimulusButtonList.clear();
-    }
-
+//    protected void clearStimulus() {
+//        // when is this used?
+//        clearPage();
+//        stimulusButtonList.clear();
+//    }
     public void stimulusExists(final int offsetInteger, final StimuliProvider stimulusProvider, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
         if (stimulusProvider.hasNextStimulus(offsetInteger)) {
             conditionTrue.postLoadTimerFired();

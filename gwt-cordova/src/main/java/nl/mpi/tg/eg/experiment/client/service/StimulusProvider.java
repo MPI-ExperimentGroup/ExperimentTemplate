@@ -576,6 +576,17 @@ public class StimulusProvider extends AbstractStimuliProvider {
         return matchingStimuli;
     }
 
+    @Override
+    public List<Stimulus> getStimuliWithAllTags(final List<Stimulus.Tag> selectionTags) {
+        final List<Stimulus> matchingStimuli = new ArrayList<>();
+        for (Stimulus stimulus : stimulusSelectionArray) {
+            if (stimulus.getTags().containsAll(selectionTags)) {
+                matchingStimuli.add(stimulus);
+            }
+        }
+        return matchingStimuli;
+    }
+
     /*public int getRemainingStimuli() {
         return stimulusSubsetArray.size() - currentStimuliIndex;
     }*/

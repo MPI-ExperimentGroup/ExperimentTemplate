@@ -705,6 +705,9 @@
 <xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
 <xs:complexType name="clearStimulusResponsesType">
+<xs:annotation>
+<xs:documentation>Clears all locally stored responses to all stimulus that have all the supplied tags.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
 <xs:complexType name="validateStimuliResponsesType">
@@ -3666,6 +3669,9 @@
 </xs:complexType>
 <xs:complexType name="matchOnEvalTokensType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Compares the matchingRegex against the result of evaluateTokens after any metadata field tokens have been resolved, any arithmetic and boolean comparisons have been resolved.</xs:documentation>
+</xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
