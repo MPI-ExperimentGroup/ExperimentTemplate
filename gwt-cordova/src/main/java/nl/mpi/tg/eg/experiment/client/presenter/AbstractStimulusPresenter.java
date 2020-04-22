@@ -259,6 +259,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
+    protected void clearStimulusResponse(final Stimulus currentStimulus, final String groupId) {
+        if (currentStimulus != null) {
+            if (groupId == null) {
+                localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, new JSONObject());
+            } else {
+                JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                storedStimulusJSONObject.put(groupId, null);
+                localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+            }
+        }
+    }
+
     protected void withStimuli(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,

@@ -894,7 +894,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -917,6 +917,7 @@ or local-name() eq 'stimulusCodeImageButton'
 or local-name() eq 'stimulusPause'
 or local-name() eq 'stimulusImageCapture'
 or local-name() eq 'setStimulusCodeResponse'
+or local-name() eq 'clearStimulusResponse'
 ">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:text>currentStimulus, </xsl:text>
@@ -989,6 +990,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@applyScore) then concat(@applyScore eq 'true',', ') else ''" />
         <xsl:value-of select="if(contains(local-name(), 'stimulusCodeImageButton')) then if (@groupId) then concat('&quot;',@groupId, '&quot;, ') else '&quot;defaultStimulusGroup&quot;, ' else ''" />
         <xsl:value-of select="if (local-name() eq 'setStimulusCodeResponse') then if(@groupId) then concat('&quot;', @groupId, '&quot;, ') else 'null, ' else ''" />
+        <xsl:value-of select="if (local-name() eq 'clearStimulusResponse') then if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null' else ''" />
         <xsl:if test="
         local-name() eq 'setStimulusCodeResponse' or
 local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeAudio' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusAudio' or local-name() eq 'stimulusCodeImage' or local-name() eq 'stimulusCodeImageButton'">
