@@ -963,7 +963,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 this.resetSingleShot();
             }
         }, hotKey, styleName, dataChannel, ((freeTextValue != null) ? freeTextValue.isString().stringValue() : null));
-        stimulusFreeTextList.add(stimulusFreeText);
+        stimulusFreeTextList.add(addButtonToGroup(buttonGroup, stimulusFreeText));
     }
 
     protected void stimulusImageCapture(final StimuliProvider stimulusProvider, final Stimulus currentStimulusO, final String captureLabel, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -2005,7 +2005,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         StimulusFreeText firstInvalidStimulusFreeText = null;
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
-            if (!stimulusFreeText.isValid()) {
+            if (stimulusFreeText.isEnabled() && !stimulusFreeText.isValid()) {
                 // by checking isValid we also set the on error style for all relevant fields, but we only set the focus on the first
                 if (firstInvalidStimulusFreeText == null) {
                     stimulusFreeText.setFocus(true);

@@ -43,6 +43,7 @@ import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.LocalNotifications;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
@@ -64,7 +65,8 @@ public abstract class AbstractPresenter implements Presenter {
     final protected ComplexView simpleView;
     private PresenterEventListner backEventListner = null;
     protected final List<TimedStimulusListener> backEventListners = new ArrayList<>();
-    final HashMap<String, ArrayList<StimulusButton>> buttonGroupsList = new HashMap<>();
+    private final HashMap<String, ArrayList<StimulusButton>> buttonGroupsList = new HashMap<>();
+    private final HashMap<String, ArrayList<StimulusFreeText>> inputGroupsList = new HashMap<>();
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
     private final Timer audioTickerTimer;
@@ -188,6 +190,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void clearButtonList() {
         buttonGroupsList.clear();
+        inputGroupsList.clear();
     }
 
     protected void addButtonToGroup(final String buttonGroup, final List<StimulusButton> stimulusButtonList) {
@@ -206,11 +209,28 @@ public abstract class AbstractPresenter implements Presenter {
         return stimulusButton;
     }
 
+    protected StimulusFreeText addButtonToGroup(final String buttonGroup, final StimulusFreeText stimulusFreeText) {
+        ArrayList<StimulusFreeText> inputList = inputGroupsList.get(buttonGroup);
+        if (inputList == null) {
+            inputList = new ArrayList<>();
+            inputGroupsList.put(buttonGroup, inputList);
+        }
+        inputList.add(stimulusFreeText);
+        return stimulusFreeText;
+    }
+
     protected void disableButtonGroup(final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
                 for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setEnabled(false);
+                }
+            }
+        }
+        for (String keyString : inputGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusFreeText stimulusFreeText : inputGroupsList.get(keyString)) {
+                    stimulusFreeText.setEnabled(false);
                 }
             }
         }
@@ -225,6 +245,13 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             }
         }
+        for (String keyString : inputGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusFreeText stimulusFreeText : inputGroupsList.get(keyString)) {
+                    stimulusFreeText.setVisible(false);
+                }
+            }
+        }
 //        simpleView.addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
@@ -233,6 +260,13 @@ public abstract class AbstractPresenter implements Presenter {
             if (keyString.matches(machingRegex)) {
                 for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setVisible(true);
+                }
+            }
+        }
+        for (String keyString : inputGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusFreeText stimulusFreeText : inputGroupsList.get(keyString)) {
+                    stimulusFreeText.setVisible(true);
                 }
             }
         }
@@ -245,6 +279,13 @@ public abstract class AbstractPresenter implements Presenter {
                 for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setEnabled(true);
                     currentButton.removeStyleName("optionButtonActivated");
+                }
+            }
+        }
+        for (String keyString : inputGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusFreeText stimulusFreeText : inputGroupsList.get(keyString)) {
+                    stimulusFreeText.setEnabled(true);
                 }
             }
         }

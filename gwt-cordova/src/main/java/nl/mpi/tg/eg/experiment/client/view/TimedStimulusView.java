@@ -507,6 +507,9 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
+            private boolean isVisible = true;
+            private boolean isEnabled = true;
+
             @Override
             public Stimulus getStimulus() {
                 return stimulus;
@@ -520,6 +523,31 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public String getResponseTimes() {
                 return responseTimes.substring(0, responseTimes.length() - 1);
+            }
+
+            @Override
+            public void setVisible(boolean isVisible) {
+                this.isVisible = isVisible;
+                textBox.setVisible(isVisible);
+                if (!isEnabled()) {
+                    errorLabel.setVisible(false);
+                    textBox.setStylePrimaryName("metadataOK");
+                }
+            }
+
+            @Override
+            public void setEnabled(boolean isEnabled) {
+                this.isEnabled = isEnabled;
+                textBox.setEnabled(isEnabled);
+                if (!isEnabled()) {
+                    errorLabel.setVisible(false);
+                    textBox.setStylePrimaryName("metadataOK");
+                }
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return isEnabled && isVisible;
             }
 
             @Override
