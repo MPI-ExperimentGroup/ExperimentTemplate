@@ -143,14 +143,14 @@ public class TimedStimulusView extends ComplexView {
 //            @Override
 //            public void onLoad(LoadEvent event) {
         if (postLoadMs > 0) {
-        Timer timer = new Timer() {
-            @Override
-            public void run() {
-                timedStimulusListener.postLoadTimerFired();
-            }
-        };
-        timerList.add(timer);
-        timer.schedule(postLoadMs);
+            Timer timer = new Timer() {
+                @Override
+                public void run() {
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            };
+            timerList.add(timer);
+            timer.schedule(postLoadMs);
         } else {
             timedStimulusListener.postLoadTimerFired();
         }
@@ -213,17 +213,17 @@ public class TimedStimulusView extends ComplexView {
                 }
                 image.setVisible(true);
                 if (postLoadMs > 0) {
-                Timer timer = new Timer() {
-                    @Override
-                    public void run() {
-                        postLoadMsListener.postLoadTimerFired();
-                    }
-                };
-                timerList.add(timer);
+                    Timer timer = new Timer() {
+                        @Override
+                        public void run() {
+                            postLoadMsListener.postLoadTimerFired();
+                        }
+                    };
+                    timerList.add(timer);
                     timer.schedule(postLoadMs); // todo: do we remove this?
                 } else {
                     postLoadMsListener.postLoadTimerFired();
-            }
+                }
             }
         });
         final SingleShotEventListner singleShotEventListner;
@@ -337,13 +337,13 @@ public class TimedStimulusView extends ComplexView {
                     shownStimulusListener.postLoadTimerFired();
                 }
                 if (postLoadMs > 0) {
-                Timer timer = new Timer() {
-                    @Override
-                    public void run() {
-                        loadedStimulusListener.postLoadTimerFired();
-                    }
-                };
-                timerList.add(timer);
+                    Timer timer = new Timer() {
+                        @Override
+                        public void run() {
+                            loadedStimulusListener.postLoadTimerFired();
+                        }
+                    };
+                    timerList.add(timer);
                     timer.schedule(postLoadMs); // todo: do we remove this?
                 } else {
                     loadedStimulusListener.postLoadTimerFired();
