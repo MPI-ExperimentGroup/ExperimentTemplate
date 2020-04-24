@@ -56,6 +56,8 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private int dataChannel;
     final DateOfBirthField dateOfBirthField;
     final private List< MetadataFieldListener> metadataFieldListeners = new ArrayList<>();
+    private boolean isVisible = true;
+    private boolean isEnabled = true;
 
     public MetadataFieldWidget(MetadataField metadataField, Stimulus stimulus, String initialValue, final int dataChannel) {
         this.metadataField = metadataField;
@@ -175,8 +177,17 @@ public class MetadataFieldWidget implements StimulusFreeText {
         return widget;
     }
 
+    @Override
     public void setVisible(boolean visible) {
+        this.isVisible = visible;
         labelPanel.setVisible(visible);
+        if (!isEnabled()) {
+            errorLabel.setVisible(false);
+            focusWidget.setStylePrimaryName("metadataOK");
+            label.setStylePrimaryName("metadataOK");
+            errorLabel.setStylePrimaryName("metadataOK");
+            errorLabel.setText("");
+        }
         if (dateOfBirthField != null) {
             dateOfBirthField.setVisible(visible);
         } else if (focusWidget instanceof CheckBox) {
@@ -190,7 +201,16 @@ public class MetadataFieldWidget implements StimulusFreeText {
         }
     }
 
+    @Override
     public void setEnabled(boolean enabled) {
+        this.isEnabled = enabled;
+        if (!isEnabled()) {
+            errorLabel.setVisible(false);
+            focusWidget.setStylePrimaryName("metadataOK");
+            label.setStylePrimaryName("metadataOK");
+            errorLabel.setStylePrimaryName("metadataOK");
+            errorLabel.setText("");
+        }
         if (dateOfBirthField != null) {
             dateOfBirthField.setEnabled(enabled);
         } else if (focusWidget instanceof CheckBox) {
@@ -202,6 +222,11 @@ public class MetadataFieldWidget implements StimulusFreeText {
         } else {
             throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
         }
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnabled && isVisible;
     }
 
     public IsWidget getLabel() {

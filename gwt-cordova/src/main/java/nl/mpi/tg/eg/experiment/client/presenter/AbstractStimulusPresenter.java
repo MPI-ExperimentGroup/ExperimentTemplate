@@ -942,7 +942,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final MetadataFieldWidget metadataFieldWidget = new MetadataFieldWidget(metadataField, currentStimulus, fieldValue, dataChannel);
         timedStimulusView.addWidget(metadataFieldWidget.getLabel());
         timedStimulusView.addWidget(metadataFieldWidget.getWidget());
-        stimulusFreeTextList.add(metadataFieldWidget);
+        stimulusFreeTextList.add(addButtonToGroup(metadataField.getPostName(), metadataFieldWidget));
     }
 
     protected void stimulusFreeText(final Stimulus currentStimulus, String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName, final String buttonGroup, final int dataChannel) {
