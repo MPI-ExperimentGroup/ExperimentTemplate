@@ -833,8 +833,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, duration.elapsedMillis());
     }
 
-    protected void scoreIncrement(final Stimulus currentStimulus, final int dataChannel, final int isCorrect) {
-        userResults.getUserData().addPotentialScore(isCorrect);
+    protected void scoreIncrement(final Stimulus currentStimulus, final int dataChannel, final int scoreValue) {
+        userResults.getUserData().addPotentialScore(scoreValue);
         localStorage.storeUserScore(userResults);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
         submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "scoreIncrement", currentStimulus, null, null, duration.elapsedMillis());

@@ -2846,7 +2846,7 @@
 </xs:annotation>
 <xs:attribute name="codeFormat" type="xs:string" use="required"/>
 <xs:attribute name="dataChannel" type="xs:string"/>
-<xs:attribute name="applyScore" type="xs:string" use="required"/>
+<xs:attribute name="applyScore" type="xs:boolean" use="required"/>
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="addStimulusCodeResponseValidationType">
@@ -11227,8 +11227,11 @@
 <xs:attribute name="dataChannel" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="scoreIncrementType">
+<xs:annotation>
+<xs:documentation>Applies the provided score. When the value is positive, both the score and potential are incremented by the value and any correct streak is maintained. When the score is negative only the potential is incremented by the value and any incorrect streak is maintained. When the score is zero no change is made to either the score or potential, however both the correct and incorrect streaks are cleared.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="dataChannel" type="xs:string"/>
-<xs:attribute name="scoreValue" type="xs:string" use="required"/>
+<xs:attribute name="scoreValue" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="bestScoreAboveThresholdType">
 <xs:all>

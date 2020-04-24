@@ -264,8 +264,8 @@ public enum FeatureAttribute {
     incrementPhase,
     //    incrementStimulus,
     phasesPerStimulus,
-    applyScore,
-    scoreValue;
+    applyScore("If set to true then the stimulus response is compared to the stimulus correctResponses and a score is given accordingly.", false, AttributeType.xsBoolean),
+    scoreValue("A positive number for achievements or a negative number for failures or zero for neither.", false, AttributeType.xsInteger);
     final boolean isOptional;
     final String[] typeValues;
     final AttributeType attributeType;
