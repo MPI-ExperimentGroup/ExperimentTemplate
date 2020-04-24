@@ -1420,6 +1420,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
         final Panel ratingStylePanel = new VerticalPanel();
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
+            private boolean isVisible = true;
+            private boolean isEnabled = true;
+
             @Override
             public Stimulus getStimulus() {
                 return currentStimulus;
@@ -1445,6 +1448,39 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     fieldValue = "";
                 }
                 return fieldValue;
+            }
+
+            @Override
+            public void setVisible(boolean isVisible) {
+                // the visibility is already handled in the ratingButtons array
+                this.isVisible = isVisible;
+                if (!isEnabled()) {
+                    for (StimulusButton stimulusButton : ratingButtons) {
+                        stimulusButton.addStyleName("metadataOK");
+                        stimulusButton.removeStyleName("metadataError");
+                    }
+                    ratingStylePanel.addStyleName("metadataOK");
+                    ratingStylePanel.removeStyleName("metadataError");
+                }
+            }
+
+            @Override
+            public void setEnabled(boolean isEnabled) {
+                // the enabled is already handled in the ratingButtons array
+                this.isEnabled = isEnabled;
+                if (!isEnabled()) {
+                    for (StimulusButton stimulusButton : ratingButtons) {
+                        stimulusButton.addStyleName("metadataOK");
+                        stimulusButton.removeStyleName("metadataError");
+                    }
+                    ratingStylePanel.addStyleName("metadataOK");
+                    ratingStylePanel.removeStyleName("metadataError");
+                }
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return isEnabled && isVisible;
             }
 
             @Override
