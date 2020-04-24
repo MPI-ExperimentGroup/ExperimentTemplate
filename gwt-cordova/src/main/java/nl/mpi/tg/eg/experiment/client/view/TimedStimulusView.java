@@ -382,6 +382,9 @@ public class TimedStimulusView extends ComplexView {
         errorLabel.setVisible(false);
         getActivePanel().add(errorLabel);
         return new StimulusFreeText() {
+            private boolean isVisible = true;
+            private boolean isEnabled = true;
+
             @Override
             public Stimulus getStimulus() {
                 return currentStimulus;
@@ -402,6 +405,28 @@ public class TimedStimulusView extends ComplexView {
                 JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userId, currentStimulus);
                 final JSONValue codeResponse = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
                 return (codeResponse != null) ? codeResponse.isString().stringValue() : null;
+            }
+
+            @Override
+            public void setVisible(boolean isVisible) {
+                this.isVisible = isVisible;
+                if (!isEnabled()) {
+                    errorLabel.setVisible(false);
+                }
+            }
+
+            @Override
+            public void setEnabled(boolean isEnabled) {
+                this.isEnabled = isEnabled;
+                if (!isEnabled()) {
+                    errorLabel.setVisible(false);
+                }
+            }
+
+            @Override
+            public boolean isEnabled() {
+                // while this has no editable components it must respond correctly to isEnabled for it to validate correctly, so we track the isEnabled and isVisible states
+                return isEnabled && isVisible;
             }
 
             @Override
