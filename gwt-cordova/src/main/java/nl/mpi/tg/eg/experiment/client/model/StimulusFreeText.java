@@ -38,7 +38,7 @@ public interface StimulusFreeText {
     public void setVisible(boolean isVisible);
 
     public void setEnabled(boolean isEnabled);
-    
+
     public boolean isEnabled();
 
     public int getDataChannel();
