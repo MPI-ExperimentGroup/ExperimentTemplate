@@ -1514,7 +1514,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
         ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, radioGroupName, allowMultiple, stimulusFreeText.getValue(), stimulusRatingType, ratingStylePanel, orientationType));
-        stimulusFreeTextList.add(stimulusFreeText);
+        stimulusFreeTextList.add(addButtonToGroup(stimulusRatingType, stimulusFreeText));
     }
 
     public void ratingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
@@ -2195,13 +2195,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "sendGroupMessageButton" : eventTag);
                 for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
-                    if (!stimulusFreeText.isValid()) {
+                    if (stimulusFreeText.isEnabled() && !stimulusFreeText.isValid()) {
                         return;
                     }
                 }
                 String messageString = "";
                 for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+                    if (stimulusFreeText.isEnabled()) {
                     messageString += stimulusFreeText.getValue();
+                }
                 }
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? currentStimulus.getUniqueId() : null, messageString, duration.elapsedMillis());
                 groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
@@ -2219,7 +2221,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(groupId);
         }
-        stimulusFreeTextList.add(timedStimulusView.addStimulusValidation(localStorage, userResults.getUserData().getUserId(), currentStimulus, formattedGroupId, validationRegex, validationChallenge, dataChannel));
+        stimulusFreeTextList.add(addButtonToGroup(groupId, timedStimulusView.addStimulusValidation(localStorage, userResults.getUserData().getUserId(), currentStimulus, formattedGroupId, validationRegex, validationChallenge, dataChannel)));
     }
 
     protected void setStimulusCodeResponse(
