@@ -154,6 +154,11 @@
         background: rgb(246,170,139);
         border-radius: 5px;
         }
+        .exampleBorderedBackground {
+        border-radius: 5px;
+        border: 1px solid blue;
+        padding: 3px;
+        }
         // Named styles for the styled checkboxes and radio buttons example
         .gwt-RadioButton.optionButton.exampleRatingRadio, .gwt-CheckBox.optionButton.exampleRatingCheckbox {
         background: none;
@@ -166,6 +171,51 @@
         }
         .gwt-RadioButton.optionButton.exampleRatingRadio > input[type=radio], .gwt-CheckBox.optionButton.exampleRatingCheckbox > input[type=checkbox] {
         display: none;
+        }
+        .stickyMenuExample > tbody > tr:first-of-type > td {
+        position: sticky;
+        top: 0;
+        }    
+        .stickyMenuExample > tbody > tr:last-of-type > td {
+        position: sticky;
+        bottom: 0;
+        }    
+        .stickyMenuExample > tbody > tr > td {
+        width: 50%;
+        }    
+        table.stickyMenuExample {
+        background: aliceblue;
+        overflow: auto;
+        height: 50vh;
+        display: inline-block;
+        border: solid;
+        border-width: 1px;
+        }
+        .stickyTableExample > tbody > tr:first-of-type > td:first-of-type {
+        background-color: aliceblue;
+        position: sticky;
+        left: 0;
+        }    
+        .stickyTableExample > tbody > tr:first-of-type > td:last-of-type {
+        background-color: aliceblue;
+        position: sticky;
+        right: 0;
+        }
+        .stickyTableExample > tbody > tr > td {
+        min-width: 25vw;
+        }
+        .stickyContent > tbody > tr:nth-child(11) > td {
+        position: sticky;
+        top: 0;
+        height: 150px;
+        width: 50vw;
+        background: cadetblue;
+        }
+        .normalRegionExample {
+        height: 25vh;
+        width: 25vw;
+        margin: 12vw;
+        background: beige;
         }
     </scss>
     <metadata>
@@ -402,6 +452,87 @@
             </row>
         </table>
     </presenter>
+    <presenter back="Menu" menuLabel="Sticky Table Example" type="text" self="sticky_table_example" title="Sticky Table Example">
+        <htmlText featureText="This table uses a custom style &quot;stickyTableExample&quot; in the SCSS section of the experiment XML."/>
+        <htmlText featureText="The custom style causes the left and right columns to stay in view regardless of page scrolling."/>
+        <htmlText featureText="Because the CSS position: sticky; has specific requirements, this is applied via the parent table not the cells."/>
+        <addPadding/>
+        <targetButton featureText="Sticky Region Example" hotKey="SPACE" target="sticky_region_example"/>
+        <addPadding/>
+        <targetButton featureText="Sticky Menu Example" hotKey="SPACE" target="sticky_menu_example"/>
+        <addPadding/>
+        <table styleName="stickyTableExample menuTable">
+            <row>
+                <column styleName="menuTable">
+                    <plainText featureText="sticky column 1"/>
+                </column>
+                <column styleName="menuTable">
+                    <plainText featureText="padding column 2"/>
+                </column>
+                <column styleName="menuTable">
+                    <plainText featureText="padding column 3"/>
+                </column>
+                <column styleName="menuTable">
+                    <plainText featureText="padding column 4"/>
+                </column>
+                <column styleName="menuTable">
+                    <plainText featureText="padding column 5"/>
+                </column>
+                <column styleName="menuTable">
+                    <plainText featureText="sticky column 6"/>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter back="Menu" menuLabel="Sticky Menu Example" type="menu" self="sticky_menu_example" title="Sticky Menu Example">
+        <htmlText featureText="This menu uses a custom style &quot;stickyMenuExample&quot; in the SCSS section of the experiment XML."/>
+        <htmlText featureText="The custom style causes the first and last menu items to stay in view regardless of menu scrolling."/>
+        <htmlText featureText="Because the CSS position: sticky; acts on a container not the component, this style is applied to the parent menu not the menu items directly."/>
+        <htmlText featureText="Please not that this example uses a feature of allMenuItems that currently is not avaiable in individual menuItems (if you want this feature please ask for a stylable menu wrapper element for menuItems)."/>
+        <addPadding/>
+        <targetButton featureText="Sticky Table Example" hotKey="SPACE" target="sticky_table_example"/>
+        <addPadding/>
+        <targetButton featureText="Sticky Region Example" hotKey="SPACE" target="sticky_region_example"/>
+        <addPadding/>
+        <allMenuItems styleName="stickyMenuExample"/>
+    </presenter>
+    <presenter back="Menu" menuLabel="Sticky Region Example" type="stimulus" self="sticky_region_example" title="Sticky Region Example">
+        <clearPage styleName="contentBody stickyContent"/>
+        <htmlText featureText="This region uses a custom style &quot;stickyContent&quot; in the SCSS section of the experiment XML."/>
+        <htmlText featureText="The custom style causes the contents of the region to stay in view regardless of page scrolling."/>
+        <htmlText featureText="Because the CSS position: sticky; acts on a container not the component, this is applied to the parent table not the cells."/>
+        <htmlText featureText="In this case the container style is set by &amp;lt;clearPage styleName=&quot;stickyContent&quot;/&amp;gt;."/>
+        <plainText featureText="Which applies to the component (region1) because it is the 11th child: .stickyContent > tbody > tr:nth-child(11) > td"/>
+        <addPadding/>
+        <targetButton featureText="Sticky Table Example" hotKey="SPACE" target="sticky_table_example"/>
+        <addPadding/>
+        <targetButton featureText="Sticky Menu Example" hotKey="SPACE" target="sticky_menu_example"/>
+        <addPadding/>
+        <regionAppend regionId="region1">
+            <plainText featureText="sticky region 1"/>
+        </regionAppend>
+        <regionAppend regionId="region2" styleName="normalRegionExample">
+            <plainText featureText="region 2"/>
+        </regionAppend>
+        <regionAppend regionId="region3" styleName="normalRegionExample">
+            <plainText featureText="region 3"/>
+        </regionAppend>
+        <regionAppend regionId="region4" styleName="normalRegionExample">
+            <plainText featureText="region 4"/>
+        </regionAppend>
+        <regionAppend regionId="region5" styleName="normalRegionExample">
+            <plainText featureText="region 5"/>
+        </regionAppend>
+        <regionAppend regionId="region6" styleName="normalRegionExample">
+            <plainText featureText="region 6"/>
+        </regionAppend>
+        <regionAppend regionId="region7" styleName="normalRegionExample">
+            <plainText featureText="region 7"/>
+        </regionAppend>
+        <regionAppend regionId="region8" styleName="normalRegionExample">
+            <plainText featureText="region 8"/>
+        </regionAppend>
+    </presenter>
     <presenter back="Menu" menuLabel="Popup Dialogue Example" type="stimulus" self="popup_dialogue_example" title="Popup Dialogue Example">
         <clearPage/>
         <plainText featureText="This presenter shows a few demonstration popups. Popups direct the user to the information and the actions of the popup. However the user can always close the browser or application if they don't like the options you give them."/>
@@ -428,17 +559,63 @@
             </showHtmlPopup>
         </actionButton>
     </presenter>
+    <presenter back="Menu" menuLabel="Compare the last two items" type="stimulus" self="compare_the_last_two_items" title="Compare the last two items">
+        <htmlTokenText featureText="This example looks at the sequence of button clicks and performs an action when the last two clicks were on the same button."/>
+        <htmlTokenText featureText="The sequence of button clicks has been: &lt;metadataField_session_steps&gt;"/>
+        <hasMetadataValue fieldName="session_steps" matchingRegex=".*AA$">
+            <conditionTrue>
+                <plainText featureText="The A button was clicked the last two times in a row."/>
+            </conditionTrue>
+            <conditionFalse>
+                <addPadding/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="session_steps" matchingRegex=".*BB$">
+            <conditionTrue>
+                <plainText featureText="The B button was clicked the last two times in a row."/>
+            </conditionTrue>
+            <conditionFalse>
+                <addPadding/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="session_steps" matchingRegex=".*CC$">
+            <conditionTrue>
+                <plainText featureText="The C button was clicked the last two times in a row."/>
+            </conditionTrue>
+            <conditionFalse>
+                <addPadding/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <actionButton featureText="ActionButton A">
+            <setMetadataValue fieldName="session_steps" replacementRegex="" dataLogFormat="&lt;metadataField_session_steps&gt;A"/>
+            <gotoPresenter target="compare_the_last_two_items"/>
+        </actionButton>
+        <actionButton featureText="ActionButton B">
+            <setMetadataValue fieldName="session_steps" replacementRegex="" dataLogFormat="&lt;metadataField_session_steps&gt;B"/>
+            <gotoPresenter target="compare_the_last_two_items"/>
+        </actionButton>
+        <actionButton featureText="ActionButton C">
+            <setMetadataValue fieldName="session_steps" replacementRegex="" dataLogFormat="&lt;metadataField_session_steps&gt;C"/>
+            <gotoPresenter target="compare_the_last_two_items"/>
+        </actionButton>
+        <addPadding/>
+        <addPadding/>
+        <actionButton featureText="Clear the sequence">
+            <setMetadataValue fieldName="session_steps" replacementRegex="" dataLogFormat=""/>
+            <gotoPresenter target="compare_the_last_two_items"/>
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="Snooze Notification Screen" type="metadata" self="Snooze" title="Snooze Notification Screen">
-        <setMetadataValue fieldName="notificationRangeSnoozed" replacementRegex="" dataLogFormat="in_minutes:5 &lt;metadataField_notificationRangeSettings&gt;"/>
+        <setMetadataValue fieldName="notificationRangeSnoozed" replacementRegex="" dataLogFormat="in_minutes:1 in_minutes:5 &lt;metadataField_notificationRangeSettings&gt;"/>
         <requestNotification targetOptions="Request_Notification_Screen,Menu,Snooze" featureText="Range Notification" fieldName="notificationRangeSnoozed" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
             <onError> 
-                <plainText featureText="Request Notification Failed"/>
+                <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
             </onError>
             <onSuccess>
                 <plainText featureText="Request Notification Done"/>
+                <htmlTokenText featureText="Your notification has been snoozed and another will show again in 1 and 5 minutes."/>
             </onSuccess>
         </requestNotification>
-        <htmlTokenText featureText="Your notification has been snoozed and another will show again in 5 minutes."/>
     </presenter>
     <presenter back="Menu" menuLabel="Request Notification Screen" type="metadata" self="Request_Notification_Screen" title="Request Notification Screen">
         <plainText featureText="This example is for Android and iOS apps and demonstrates how to request notifications at given times in the future."/>
@@ -487,7 +664,7 @@
                 <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationRangeSettings&gt;&lt;br/&gt;"/>
                 <requestNotification targetOptions="Request_Notification_Screen,Menu,Snooze" featureText="Range Notification" fieldName="notificationRangeSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
                     <onError>
-                        <plainText featureText="Request Notification Failed"/>
+                        <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
                     </onError>
                     <onSuccess>
                         <plainText featureText="Request Notification Done"/>
@@ -661,6 +838,7 @@
                 <regionAppend regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
                 <regionAppend regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
                 <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
+                    <logTimeStamp eventTag="actionButton Respond"/>
                     <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer&gt;ms"/>
                 </actionButton>
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
@@ -710,6 +888,7 @@
                                         <disableButtonGroup matchingRegex="respondButtonGroup"/>
                                         <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
                                         <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
+                                            <logTimeStamp eventTag="actionButton Volgende"/>
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
                                     </startTimer>
@@ -718,7 +897,8 @@
                                     <cancelPauseAll/>
                                     <plainText featureText="stimulusVideoFailed"/>
                                     <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
-                                    <actionButton featureText="Replay" hotKey="SPACE">
+                                    <actionButton featureText="Replay (R)" hotKey="R">
+                                        <logTimeStamp eventTag="actionButton Replay"/>
                                         <showStimulus/>
                                     </actionButton>
                                 </mediaLoadFailed>
@@ -738,10 +918,12 @@
                         <plainText featureText="stimulusAudioFailed"/>
                         <stimulusLabel/>
                         <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
-                        <actionButton featureText="Replay" hotKey="SPACE">
+                        <actionButton featureText="Replay (R)" hotKey="R">
+                            <logTimeStamp eventTag="actionButton Replay"/>
                             <showStimulus/>
                         </actionButton>
-                        <actionButton featureText="Skip" hotKey="SPACE">
+                        <actionButton featureText="Skip (S)" hotKey="S">
+                            <logTimeStamp eventTag="actionButton Skip"/>
                             <nextStimulus repeatIncorrect="false"/>
                         </actionButton>
                     </mediaLoadFailed>
@@ -756,6 +938,7 @@
                     <row>
                         <column>
                             <actionButton featureText="Media Stimulus V0">
+                                <logTimeStamp eventTag="actionButton V0"/>
                                 <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v0"/>
                                 <resetStimulus target="Sequential_Display_Example"/>
                                 <gotoPresenter target="Sequential_Display_Example"/>
@@ -763,6 +946,7 @@
                         </column>
                         <column>
                             <actionButton featureText="Tone Stimulus V1">
+                                <logTimeStamp eventTag="actionButton V1"/>
                                 <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v1"/>
                                 <resetStimulus target="Sequential_Display_Example"/>
                                 <gotoPresenter target="Sequential_Display_Example"/>
@@ -770,6 +954,7 @@
                         </column>
                         <column>
                             <actionButton featureText="Tone Stimulus V2">
+                                <logTimeStamp eventTag="actionButton V2"/>
                                 <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v2"/>
                                 <resetStimulus target="Sequential_Display_Example"/>
                                 <gotoPresenter target="Sequential_Display_Example"/>
@@ -781,6 +966,7 @@
             <endOfStimulus>
                 <clearPage/>
                 <actionButton featureText="resetStimulus">
+                    <logTimeStamp eventTag="actionButton resetStimulus"/>
                     <resetStimulus target="Sequential_Display_Example"/>
                     <gotoPresenter target="Sequential_Display_Example"/>
                 </actionButton>
@@ -1169,6 +1355,7 @@
         <metadataField fieldName="progressIndicator_steps"/>
         <addPadding/>
         <plainText featureText="The progressIndicator takes a string in evaluateTokens and uses metadata fields as numbers to calculate a percentage for the progress value."/>
+        <plainText featureText="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100"/>
         <addPadding/>
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="String (optional)">
             <onError>
@@ -1247,6 +1434,7 @@
                         <mediaPlaybackComplete>
                             <plainText featureText="plainText in mediaPlaybackComplete"/>
                             <addPadding/>
+                            <plainText featureText="Click a rating button to see its sub questions"/>
                             <table>
                                 <row>
                                     <stimulusHasRatingOptions>
@@ -2024,6 +2212,331 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Clear Stimulus Response Example" type="stimulus" self="clear_stimulus_response_example" title="Clear Stimulus Response Example">
+        <loadStimulus eventTag="clear_stimulus_response_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="This example shows various stimulus rating types and various layout options for those rating options. Some rating options in this example are fixed and others are per stimulus."/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusLabel styleName="countDownLabel"/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <stimulusExists offset="+1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="All responses for this stimulus will be stored separately according to the groupId of each including the stimulusFreeText." styleName="highlightedText"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText1"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText2"/>
+                <addPadding/>
+                <actionButton featureText="clearStimulusResponse all">
+                    <clearStimulusResponse/>
+                    <gotoPresenter target="clear_stimulus_response_example"/>
+                </actionButton>
+                <actionButton featureText="clearStimulusResponse 1">
+                    <clearStimulusResponse groupId="stimulusFreeText1"/>
+                    <gotoPresenter target="clear_stimulus_response_example"/>
+                </actionButton>
+                <actionButton featureText="clearStimulusResponse 2">
+                    <clearStimulusResponse groupId="stimulusFreeText2"/>
+                    <gotoPresenter target="clear_stimulus_response_example"/>
+                </actionButton>
+                <addPadding/>
+                <addPadding/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="clear_stimulus_response_example"/>
+                    <gotoPresenter target="clear_stimulus_response_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Visible Enable Stimulus Free Text Example" type="stimulus" self="visible_enable_stimulus_free_text_example" title="Visible Enable Stimulus Free Text Example">
+        <loadStimulus eventTag="visible_enable_stimulus_free_text_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="This example shows various stimulus inputs and the validation cases when enabled, disabled, hidden and shown. Only when the input is enabled and visible will its validity be considered."/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusLabel styleName="countDownLabel"/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <stimulusExists offset="+1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Input validation will only occur on these inputs when they are both visible and enabled." styleName="highlightedText"/>
+                <table>
+                    <row>
+                        <column>
+                            <stimulusFreeText featureText="Please enter at least three characters." validationRegex=".{3,}" hotKey="ENTER" inputErrorMessage="" styleName="minimalWidth" groupId="stimulusFreeText1"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="stimulusFreeText1"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="stimulusFreeText1"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="stimulusFreeText1"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="stimulusFreeText1"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusFreeText featureText="Please enter at least three digits." validationRegex="[0-9]{3,}" hotKey="ENTER" inputErrorMessage="" styleName="minimalWidth" groupId="stimulusFreeText2"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="stimulusFreeText2"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="stimulusFreeText2"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="stimulusFreeText2"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="stimulusFreeText2"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField dataChannel="3" fieldName="dateOfBirth"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="dateOfBirth"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="dateOfBirth"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="dateOfBirth"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="dateOfBirth"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column styleName="exampleBorderedBackground">
+                            <addStimulusCodeResponseValidation dataChannel="3" featureText="The response is not valid." groupId="nonUserInterfaceValidation" validationRegex="[0-9]{3,}"/>
+                            <actionButton featureText="Set to: 1234 (valid)">
+                                <setStimulusCodeResponse applyScore="false" codeFormat="1234" dataChannel="6" groupId="nonUserInterfaceValidation" />
+                            </actionButton>
+                            <actionButton featureText="Set to: abcd">
+                                <setStimulusCodeResponse applyScore="false" codeFormat="abcd" dataChannel="6" groupId="nonUserInterfaceValidation" />
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="nonUserInterfaceValidation"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="nonUserInterfaceValidation"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="nonUserInterfaceValidation"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="nonUserInterfaceValidation"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <ratingRadioButton ratingLabels="1,2,3,4,5,6,7" dataChannel="1" groupId="ratingRadioButtonInput"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="ratingRadioButtonInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="ratingRadioButtonInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="ratingRadioButtonInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="ratingRadioButtonInput"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusRatingRadio dataChannel="1" groupId="stimulusRatingRadioInput"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="stimulusRatingRadioInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="stimulusRatingRadioInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="stimulusRatingRadioInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="stimulusRatingRadioInput"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <ratingCheckbox ratingLabels="G,H,I,J,K,L,M" dataChannel="1" groupId="ratingCheckboxInput"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="ratingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="ratingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="ratingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="ratingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusRatingCheckbox dataChannel="1" groupId="stimulusRatingCheckboxInput"/>
+                        </column>
+                        <column>
+                            <actionButton featureText="enable">
+                                <enableButtonGroup matchingRegex="stimulusRatingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="disable">
+                                <disableButtonGroup matchingRegex="stimulusRatingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="show">
+                                <showButtonGroup matchingRegex="stimulusRatingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="hide">
+                                <hideButtonGroup matchingRegex="stimulusRatingCheckboxInput"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <!-- the feature metadataFieldVisibilityDependant is only for metadata not stimulus and so is not relevant here
+                        <metadataField fieldName="education"/>
+                        <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="education" visibleRegex="anders" enabledRegex=".*"/>
+                    -->
+                </table>
+                <addPadding/>
+                <addPadding/>
+                <actionButton featureText="Validate">
+                    <validateStimuliResponses>
+                        <conditionFalse>
+                            <regionReplace regionId="validateStimuliRegion">         
+                                <plainText featureText="Validate conditionFalse"/>
+                            </regionReplace>
+                        </conditionFalse>
+                        <conditionTrue>
+                            <regionReplace regionId="validateStimuliRegion">
+                                <plainText featureText="Validate conditionTrue"/>
+                            </regionReplace>
+                        </conditionTrue>
+                    </validateStimuliResponses>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="visible_enable_stimulus_free_text_example"/>
+                    <gotoPresenter target="visible_enable_stimulus_free_text_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Rating Button orientationType Example" type="stimulus" self="rating_button_orientationType_example" title="Rating Button orientationType Example">
         <loadStimulus eventTag="rating_button_orientationType_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -2108,8 +2621,8 @@
                 </ratingFooterButton>
                 <htmlText featureText="Example CSS styles" styleName="highlightedText"/>
                 <htmlText featureText="To style the checkboxes or radio buttons without the default input items you can use the following (see the scss element for this experiments configuration for more details):&lt;br/&gt;exampleRatingRadio &gt; input[type=radio], exampleRatingCheckbox &gt; input[type=checkbox] &amp;#123;display: none;&amp;#125;"/>
-                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingCheckbox"/>
-                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingRadio"/>
+                <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingCheckbox" groupId="stimulusRatingCheckbox CSS"/>
+                <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal" styleName="exampleRatingRadio" groupId="stimulusRatingRadio CSS"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
@@ -2128,7 +2641,7 @@
         <loadStimulus eventTag="single_line_text_box_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <plainText featureText="The stimulus text box can be single line or multi line, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can triggerMatching the next stimulus."/>
+                <plainText featureText="The stimulus text box can be single line or multi line, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can trigger the next stimulus."/>
                 <addPadding/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
@@ -2150,6 +2663,60 @@
                 <tag>First_Stimuli_Screen</tag>
             </stimuli>
         </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Single Line Text Box Without Action Example" type="stimulus" self="single_line_text_box_no_action_example" title="Single Line Text Box Without Action Example">
+        <withStimuli eventTag="single_line_text_box_no_action_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <beforeStimulus>
+                <plainText featureText="The stimulus text box can be single line or multi line, with out without an action for that hotkey."/>
+            </beforeStimulus>
+            <eachStimulus>
+                <addPadding/>
+                <stimulusLabel/>
+                <addPadding/>
+                <stimulusFreeText featureText="Please enter at least three characters." validationRegex=".{1,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth"/>
+            </eachStimulus>
+            <afterStimulus>
+                <addPadding/>
+                <actionButton featureText="Validate">
+                    <validateStimuliResponses>
+                        <conditionFalse>
+                            <plainText featureText="Validate conditionFalse"/>
+                        </conditionFalse>
+                        <conditionTrue>
+                            <plainText featureText="Validate conditionTrue"/>
+                        </conditionTrue>
+                    </validateStimuliResponses>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="Add a button with a hotkey">
+                    <addPadding/>
+                    <actionButton featureText="Validate [ENTER]" hotKey="ENTER">
+                        <validateStimuliResponses>
+                            <conditionFalse>
+                                <plainText featureText="Validate [ENTER] conditionFalse"/>
+                            </conditionFalse>
+                            <conditionTrue>
+                                <plainText featureText="Validate [ENTER] conditionTrue"/>
+                            </conditionTrue>
+                        </validateStimuliResponses>
+                    </actionButton>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="clearStimulusResponses and reaload">
+                    <clearStimulusResponses tags="First_Stimuli_Screen"/>
+                    <gotoPresenter target="single_line_text_box_no_action_example"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="single_line_text_box_no_action_example"/>
+                    <gotoPresenter target="single_line_text_box_no_action_example"/>
+                </actionButton>
+            </afterStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </withStimuli>
     </presenter>
     <presenter back="Menu" menuLabel="Second" next="Third_Informatie" type="stimulus" self="Second" title="Second">
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -2196,6 +2763,7 @@
         </actionButton>-->
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <regionAppend regionId="regionTimer"/>
                 <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
@@ -2203,31 +2771,78 @@
                 <actionButton featureText="Volgende [tab + enter]">
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
-                <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder">
+                    <disableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
                         <onError>
-                            <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                            <regionAppend regionId="regionTimer">
+                                <htmlText featureText="startAudioRecorder onError"/>
+                                <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                            </regionAppend>
                         </onError>
                         <onSuccess>
-                            <htmlText featureText="startAudioRecorder onSuccess"/>
+                            <regionAppend regionId="regionTimer">
+                                <htmlText featureText="startAudioRecorder onSuccess"/>
+                                <startTimer msToNext="0" listenerId="timerA"/>
+                                <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                            </regionAppend>
                         </onSuccess>
                         <mediaLoaded>
-                            <plainText featureText="AudioRecordingLoaded"/>
+                            <regionAppend regionId="regionTimer">
+                                <plainText featureText="AudioRecordingLoaded"/>
+                            </regionAppend>
                         </mediaLoaded>
                         <mediaLoadFailed>
-                            <plainText featureText="AudioRecordingLoadFailed"/>
+                            <regionAppend regionId="regionTimer">
+                                <plainText featureText="AudioRecordingLoadFailed"/>
+                            </regionAppend>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaLoadFailed>
                         <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
-                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            <regionAppend regionId="regionTimer">
+                                <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            </regionAppend>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb>
                 </actionButton>
-                <!--<actionButton featureText="endAudioRecorderTag (not supported in the HTML5 version)">-->
-                <!--<endAudioRecorderTag eventTier="3" eventTag="endAudioRecorderTag"/>-->
-                <!--<htmlText featureText="endAudioRecorderTag"/>-->
-                <!--</endAudioRecorderTag>-->
-                <!--</actionButton>-->
+                <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder(046d:0a45)">
+                    <disableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                        <onError>
+                            <regionAppend regionId="regionTimer">
+                            <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                            </regionAppend>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                        </onError>
+                        <onSuccess>
+                            <regionAppend regionId="regionTimer">
+                            <htmlText featureText="startAudioRecorder onSuccess"/>
+                                <startTimer msToNext="0" listenerId="timerA"/>
+                                <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                            </regionAppend>
+                        </onSuccess>
+                        <mediaLoaded>
+                            <regionAppend regionId="regionTimer">
+                            <plainText featureText="AudioRecordingLoaded"/>
+                            </regionAppend>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <regionAppend regionId="regionTimer">
+                            <plainText featureText="AudioRecordingLoadFailed"/>
+                                <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                            </regionAppend>
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted/>
+                        <mediaPlaybackComplete>
+                            <regionAppend regionId="regionTimer">
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            </regionAppend>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <gotoNextPresenter/>
@@ -2241,6 +2856,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="RecorderPauseTest" next="Menu" type="stimulus" self="RecorderPauseTest" title="RecorderPauseTest">
+        <htmlText featureText="This example starts and stops the web recorder based on the stimulus pause value."/>
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
@@ -2267,6 +2883,55 @@
                 <stimulusPause>
                     <stopAudioRecorder/>
                 </stimulusPause>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecorderTimeStampTest" next="Menu" type="stimulus" self="RecorderTimeStampTest" title="RecorderTimeStampTest">
+        <htmlText featureText="This example shows how to pause a web recording and restart it. The example also shows how to record a time stamp of the recorings current length."/>
+        <loadStimulus eventTag="RecorderTimeStampTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <startAudioRecorderWeb featureText="&lt;recording_seconds&gt;" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </onError>
+                    <onSuccess>
+                        <htmlText featureText="startAudioRecorder onSuccess"/>
+                    </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="AudioRecordingLoaded"/>
+                        <actionButton featureText="nextStimulus">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="AudioRecordingLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted/>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="AudioRecordingPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </startAudioRecorderWeb>
+                <actionButton featureText="logMediaTimeStamp">
+                    <logMediaTimeStamp eventTag="logMediaTimeStamp" mediaId="recordedMedia"/>
+                </actionButton>
+                <actionButton featureText="resume recorder">
+                    <playMedia mediaId="recordedMedia"/>
+                </actionButton>
+                <actionButton featureText="pauseMedia">
+                    <pauseMedia mediaId="recordedMedia"/>
+                </actionButton>
+                <actionButton featureText="stopAudioRecorder">
+                    <stopAudioRecorder/>
+                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder/>
@@ -2973,28 +3638,145 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Stimulus Has Response" type="stimulus" self="stimulus_has_response" title="Stimulus Has Response">
+        <table styleName="menuTable">
+            <withStimuli eventTag="stimulus_has_response" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                <beforeStimulus>
+                    <plainText featureText="This example shows a few ways to test if a stimulus has response."/>
+                </beforeStimulus>
+                <eachStimulus>
+                    <row>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="stimulus_button_region_&lt;code&gt;"/>
+                            <ratingButton dataChannel="1" groupId="rating_button" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft="">
+                                <triggerMatching listenerId="stimulus_trigger_&lt;code&gt;"/>
+                            </ratingButton>
+                            <regionReplace regionId="stimulus_check_region_&lt;code&gt;"/>
+                            <ratingCheckbox dataChannel="1" groupId="rating_check" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft="">
+                                <triggerMatching listenerId="stimulus_trigger_&lt;code&gt;"/>
+                            </ratingCheckbox>
+                            <regionReplace regionId="stimulus_radio_region_&lt;code&gt;"/>
+                            <ratingRadioButton dataChannel="1" groupId="rating_radio_button" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft="">
+                                <triggerMatching listenerId="stimulus_trigger_&lt;code&gt;"/>
+                            </ratingRadioButton>
+                        </column>    
+                    </row>
+                    <triggerDefinition listenerId="stimulus_trigger_&lt;code&gt;" threshold="0" maximum="0">
+                        <regionReplace regionId="stimulus_button_region_&lt;code&gt;">
+                            <stimulusHasResponse matchingRegex="">
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has one or more responses."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have any response."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                            <stimulusHasResponse groupId="rating_button" matchingRegex="zin compleet">	
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has the button response zin compleet."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have the button response zin compleet."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                            <stimulusHasResponse groupId="rating_button" matchingRegex="zin onvolledig">	
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has the response button zin onvolledig."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have the button response zin onvolledig."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </regionReplace>
+                        <regionReplace regionId="stimulus_check_region_&lt;code&gt;">
+                            <stimulusHasResponse groupId="rating_check" matchingRegex=".*zin compleet.*">	
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has the checkbox response zin compleet."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have the checkbox response zin compleet."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                            <stimulusHasResponse groupId="rating_check" matchingRegex=".*zin onvolledig.*">	
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has the checkbox response zin onvolledig."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have the checkbox response zin onvolledig."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </regionReplace>
+                        <regionReplace regionId="stimulus_radio_region_&lt;code&gt;">
+                            <stimulusHasResponse groupId="rating_radio_button" matchingRegex="zin compleet">	
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has the radio button response zin compleet."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have the radio button response zin compleet."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                            <stimulusHasResponse groupId="rating_radio_button" matchingRegex="zin onvolledig">	
+                                <conditionTrue>
+                                    <plainText featureText="This stimulus has the radio button response zin onvolledig."/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <plainText featureText="This stimulus does not have the radio button response zin onvolledig."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </regionReplace>
+                    </triggerDefinition>
+                    <triggerMatching listenerId="stimulus_trigger_&lt;code&gt;"/>
+                </eachStimulus>
+                <afterStimulus>
+                    <actionButton featureText="clearStimulusResponses and reaload">
+                        <clearStimulusResponses tags="First_Stimuli_Screen"/>
+                        <!--<triggerMatching listenerId="stimulus_trigger_.*"/>-->
+                        <gotoPresenter target="stimulus_has_response"/>
+                    </actionButton>
+                    <targetButton featureText="Reload" target="stimulus_has_response"/>
+                </afterStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>First_Stimuli_Screen</tag>
+                </stimuli>
+            </withStimuli>
+        </table>
+    </presenter>
     <presenter back="Menu" menuLabel="stimulusRatingImageButton" type="stimulus" self="stimulusRatingImageButton" title="stimulusRatingImageButton">
         <loadStimulus eventTag="stimulusRatingImageButton" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <htmlText featureText="This demonstration screen provides an example usage of the stimulus rating labels to show rating images.&lt;br/&gt;"/>
+                <table>
+                    <row>
+                        <column>
                 <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_0&gt;.jpg" dataChannel="8" msToNext="0">	
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                 </stimulusCodeImage>
+                        </column>
+                        <column>
                 <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8" msToNext="0">	
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                 </stimulusCodeImage>
+                        </column>
+                        <column>
                 <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8" msToNext="0">	
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                 </stimulusCodeImage>
-                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_4&gt;.jpg" dataChannel="8" msToNext="0">	
+                        </column>
+                        <column>
+                            <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_3&gt;.jpg" dataChannel="8" msToNext="0">	
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                 </stimulusCodeImage>
-                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_0gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_0&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
                     <mediaLoaded>
                         <htmlText featureText="mediaLoaded"/>
                     </mediaLoaded>
@@ -3005,6 +3787,8 @@
                         <htmlText featureText="onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
+                        </column>
+                        <column>
                 <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
                     <mediaLoaded>
                         <htmlText featureText="mediaLoaded"/>
@@ -3016,6 +3800,8 @@
                         <htmlText featureText="onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
+                        </column>
+                        <column>
                 <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
                     <mediaLoaded>
                         <htmlText featureText="mediaLoaded"/>
@@ -3027,6 +3813,8 @@
                         <htmlText featureText="onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
+                        </column>
+                        <column>
                 <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_3&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
                     <mediaLoaded>
                         <htmlText featureText="mediaLoaded"/>
@@ -3038,6 +3826,9 @@
                         <htmlText featureText="onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
+                        </column>
+                    </row>
+                </table>
                 <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -3125,6 +3916,30 @@
                 Please provide this code as a URL GET parameter (&lt;a href=&quot;?invitation_code=yourcode&quot;&gt;?invitation_code=[yourcode]&lt;/a&gt;) and reload this page."/>
             </conditionFalse>
         </hasMetadataValue>
+    </presenter>
+    <presenter back="Menu" menuLabel="MatchOnEvalTokensExample" type="stimulus" self="MatchOnEvalTokensExample" title="MatchOnEvalTokensExample">
+        <matchOnEvalTokens evaluateTokens="1000 + 222 + 12" matchingRegex="[1-4]{4,4}">
+            <conditionTrue>
+                <htmlTokenText featureText="matchOnEvalTokens conditionTrue on evaluateTokens=&quot;1000 + 222 + 12&quot; and matchingRegex=&quot;[1-4]{4,4}&quot;"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlTokenText featureText="matchOnEvalTokens conditionFalse on evaluateTokens=&quot;1000 + 222 + 12&quot; and matchingRegex=&quot;[1-4]{4,4}&quot;"/>
+            </conditionFalse>
+            <onError>
+                <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <matchOnEvalTokens evaluateTokens="1000 + 222 + 12 == 1234" matchingRegex="true">
+            <conditionTrue>
+                <htmlTokenText featureText="matchOnEvalTokens conditionTrue on evaluateTokens=&quot;1000 + 222 + 12 == 1234&quot; and matchingRegex=&quot;true&quot;"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlTokenText featureText="matchOnEvalTokens conditionFalse on evaluateTokens=&quot;1000 + 222 + 12 == 1234&quot; and matchingRegex=&quot;true&quot;"/>
+            </conditionFalse>
+            <onError>
+                <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+            </onError>
+        </matchOnEvalTokens>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationSessionStepsExample" type="transmission" self="InvitationSessionStepsExample" title="Invitation Session Steps Example">
         <hasMetadataValue fieldName="validated_uuid" matchingRegex="...*">
@@ -3314,7 +4129,14 @@
         </actionButton> 
         <addPadding/>           
         <actionButton featureText="redirectToStaging">
-            <redirectToUrl src="https://frinexstaging.mpi.nl/with_stimulus_example/?session_next_step=thenextexperiment&amp;validated_uuid=theusersid&amp;session_steps=allthesteps#RedirectToUrlExample"/>
+            <redirectToUrl src="https://frinexstaging.mpi.nl/with_stimulus_example/?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
+        </actionButton>            
+        <addPadding/>             
+        <actionButton featureText="redirectToAndroid"> 
+            <redirectToUrl src="cdvfile://localhost/assets/www/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
+        </actionButton>            
+        <actionButton featureText="redirectToElectron"> 
+            <redirectToUrl src="http://localhost:5000/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
         </actionButton>            
     </presenter>
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
@@ -3578,7 +4400,7 @@
                 <plainText featureText="regionTriggerB has triggered and will not again"/>
             </regionReplace>
         </triggerDefinition>
-        <actionButton featureText="Click to randomly triggerMatching any once">
+        <actionButton featureText="Click to randomly trigger any once">
             <triggerRandom matchingRegex="trigger[ABC]">
                 <targetButton featureText="Reset Triggers" target="triggerRandomListener"/>
             </triggerRandom>
@@ -3815,16 +4637,16 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="cond_1:Label for the stimuli" label="Label for the stimuli" pauseMs="0" tags="First_Stimuli_Screen cond_1"/>
-        <stimulus identifier="cond_2:Label1 for stimuli in condition two" label="Label1 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label2 for stimuli in condition two" label="Label2 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label3 for stimuli in condition two" label="Label3 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label4 for stimuli in condition two" label="Label4 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label5 for stimuli in condition two" label="Label5 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label6 for stimuli in condition two" label="Label6 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label7 for stimuli in condition two" label="Label7 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_2:Label8 for stimuli in condition two" label="Label8 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_3:Label for stimuli in condition three" label="Label for stimuli in condition three" pauseMs="0" tags="First_Stimuli_Screen cond_3"/>
+        <stimulus identifier="cond_1:Label for the stimuli" label="Label for the stimuli" pauseMs="0" code="Item1" tags="First_Stimuli_Screen cond_1"/>
+        <stimulus identifier="cond_2:Label1 for stimuli in condition two" label="Label1 for stimuli in condition two" pauseMs="0" code="Item2" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label2 for stimuli in condition two" label="Label2 for stimuli in condition two" pauseMs="0" code="Item3" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label3 for stimuli in condition two" label="Label3 for stimuli in condition two" pauseMs="0" code="Item4" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label4 for stimuli in condition two" label="Label4 for stimuli in condition two" pauseMs="0" code="Item5" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label5 for stimuli in condition two" label="Label5 for stimuli in condition two" pauseMs="0" code="Item6" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label6 for stimuli in condition two" label="Label6 for stimuli in condition two" pauseMs="0" code="Item7" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label7 for stimuli in condition two" label="Label7 for stimuli in condition two" pauseMs="0" code="Item8" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_2:Label8 for stimuli in condition two" label="Label8 for stimuli in condition two" pauseMs="0" code="Item9" tags="First_Stimuli_Screen cond_2"/>
+        <stimulus identifier="cond_3:Label for stimuli in condition three" label="Label for stimuli in condition three" pauseMs="0" code="Item10" tags="First_Stimuli_Screen cond_3"/>
         <stimulus identifier="second:14a" label="14a" pauseMs="0" tags="Second second"/>
         <stimulus identifier="second:14b" label="14b" pauseMs="0" tags="Second second"/>
         <stimulus identifier="second:14s" label="14s" pauseMs="0" tags="Second second"/>
@@ -3879,7 +4701,7 @@
         <stimulus audioPath="1000ms_a" code="1000ms" identifier="1000ms_c" imagePath="1000ms.jpg" label="1000ms_c" pauseMs="1000" tags="ToneVideos_c" videoPath="1000ms_c_v"/>
         <stimulus audioPath="2000ms_a" code="2000ms" identifier="2000ms_c" imagePath="2000ms.jpg" label="2000ms_c" pauseMs="2000" tags="ToneVideos_c" videoPath="2000ms_c_v"/>
         <stimulus audioPath="5000ms_a" code="5000ms" identifier="5000ms_c" imagePath="5000ms.jpg" label="5000ms_c" pauseMs="5000" tags="ToneVideos_c" videoPath="5000ms_c_v"/>
-        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should triggerMatching an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
+        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should trigger an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
         <stimulus identifier="R1" label="Speak the word &lt;b&gt;'continue'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="continue" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R2" label="Speak the word &lt;b&gt;'arrête'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="arrête" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R3" label="Speak the word &lt;b&gt;'thème'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="thème" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
