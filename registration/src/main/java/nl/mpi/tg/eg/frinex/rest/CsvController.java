@@ -32,6 +32,7 @@ import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
@@ -142,7 +143,7 @@ public class CsvController {
 
     @RequestMapping(value = "/groupdatacsv", method = RequestMethod.GET)
     @ResponseBody
-    public void getGroupData(HttpServletResponse response) throws IOException, CsvExportException {
+    public void getGroupDataLimor(HttpServletResponse response) throws IOException, CsvExportException {
 //        response.setContentType("application/text");
 //        response.addHeader("Content-Disposition", "attachment; filename=\"groupdata.csv\"");
 //        response.addHeader("Content-Transfer-Encoding", "text");
@@ -220,7 +221,8 @@ public class CsvController {
             addToZipArchive(zipOutputStream, "tagdata.csv", getTagDataCsv());
             addToZipArchive(zipOutputStream, "tagpairdata.csv", getTagPairDataCsv());
             addToZipArchive(zipOutputStream, "timestampdata.csv", getTimeStampDataCsv());
-//            addToZipArchive(zipOutputStream, "groupdata.csv", getTimeStampDataCsv());
+            addToZipArchive(zipOutputStream, "groupdata.csv", getGroupDataCsv());
+            addToZipArchive(zipOutputStream, "stimulusresponse.csv", getStimulusResponseDataCsv());
         }
     }
 
@@ -295,6 +297,73 @@ public class CsvController {
         printer.printRecord("UserId", "EventTag", "TagValue1", "TagValue2", "EventMs", "TagDate");
         for (TagPairData tagPairData : tagPairRepository.findAllDistinctRecords()) {
             printer.printRecord(tagPairData.getUserId(), tagPairData.getEventTag(), tagPairData.getTagValue1(), tagPairData.getTagValue2(), tagPairData.getEventMs(), tagPairData.getTagDate());
+        }
+        printer.close();
+        return stringBuilder.toString().getBytes();
+    }
+
+    private byte[] getGroupDataCsv() throws IOException {
+        final StringBuilder stringBuilder = new StringBuilder();
+        CSVPrinter printer = new CSVPrinter(
+                stringBuilder,
+                CSVFormat.DEFAULT
+        );
+        printer.printRecord("EventDate", "SubmitDate", "ExperimentName", "GroupUUID", "GroupName", "ScreenName", "MessageRespondentId", "AllMemberCodes", "GroupCommunicationChannels", "SenderMemberCode", "RespondentMemberCode", "StimulusId", "StimulusIndex", "ResponseStimulusId", "StimulusOptionIds", "MessageSenderId", "MessageString", "EventMs");
+        for (GroupData groupData : groupDataRepository.findAllDistinctRecords()) {
+            printer.printRecord(
+                    groupData.getEventDate(),
+                    groupData.getSubmitDate(),
+                    groupData.getExperimentName(),
+                    groupData.getGroupUUID(),
+                    groupData.getGroupName(),
+                    groupData.getScreenName(),
+                    groupData.getMessageRespondentId(),
+                    groupData.getAllMemberCodes(),
+                    groupData.getGroupCommunicationChannels(),
+                    groupData.getSenderMemberCode(),
+                    groupData.getRespondentMemberCode(),
+                    groupData.getStimulusId(),
+                    groupData.getStimulusIndex(),
+                    groupData.getResponseStimulusId(),
+                    groupData.getStimulusOptionIds(),
+                    groupData.getMessageSenderId(),
+                    groupData.getMessageString(),
+                    groupData.getEventMs());
+        }
+        printer.close();
+        return stringBuilder.toString().getBytes();
+    }
+
+    private byte[] getStimulusResponseDataCsv() throws IOException {
+        final StringBuilder stringBuilder = new StringBuilder();
+        CSVPrinter printer = new CSVPrinter(
+                stringBuilder,
+                CSVFormat.DEFAULT
+        );
+        printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "StimulusId", "Response", "IsCorrect", "UserId", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
+        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findAllDistinctRecords()) {
+            printer.printRecord(stimulusResponse.getTagDate(),
+                    stimulusResponse.getExperimentName(),
+                    stimulusResponse.getScreenName(),
+                    stimulusResponse.getDataChannel(),
+                    stimulusResponse.getResponseGroup(),
+                    stimulusResponse.getStimulusId(),
+                    stimulusResponse.getResponse(),
+                    stimulusResponse.getIsCorrect(),
+                    stimulusResponse.getUserId(),
+                    stimulusResponse.getEventMs(),
+                    stimulusResponse.getGamesPlayed(),
+                    stimulusResponse.getTotalScore(),
+                    stimulusResponse.getTotalPotentialScore(),
+                    stimulusResponse.getCurrentScore(),
+                    stimulusResponse.getCorrectStreak(),
+                    stimulusResponse.getErrorStreak(),
+                    stimulusResponse.getPotentialScore(),
+                    stimulusResponse.getMaxScore(),
+                    stimulusResponse.getMaxErrors(),
+                    stimulusResponse.getMaxCorrectStreak(),
+                    stimulusResponse.getMaxErrorStreak(),
+                    stimulusResponse.getMaxPotentialScore());
         }
         printer.close();
         return stringBuilder.toString().getBytes();

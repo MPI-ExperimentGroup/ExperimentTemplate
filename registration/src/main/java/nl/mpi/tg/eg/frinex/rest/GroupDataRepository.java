@@ -21,6 +21,7 @@ import java.util.List;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -37,6 +38,9 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     List<GroupData> findAll();
 
     public Page<GroupData> findByGroupUUID(@Param("groupUUID") String groupUUID, Pageable pageable);
+
+    @Query("select distinct new GroupData(eventDate, submitDate, experimentName, groupUUID, groupName, screenName, messageRespondentId, allMemberCodes, groupCommunicationChannels, senderMemberCode, respondentMemberCode, stimulusId, stimulusIndex, responseStimulusId, stimulusOptionIds, messageString, eventMs) from GroupData order by eventDate asc")
+    List<GroupData> findAllDistinctRecords();
 
     @Override
     @RestResource(exported = false)

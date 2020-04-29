@@ -133,6 +133,22 @@ public class TagData implements Comparable<TagData> {
         if (!Objects.equals(this.tagDate, other.tagDate)) {
             return false;
         }
+        if (!Objects.equals(this.screenName, other.screenName)) {
+            return false;
+        }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.tagDate);
+        hash = 97 * hash + Objects.hashCode(this.experimentName);
+        hash = 97 * hash + Objects.hashCode(this.screenName);
+        hash = 97 * hash + Objects.hashCode(this.eventTag);
+        hash = 97 * hash + Objects.hashCode(this.tagValue);
+        hash = 97 * hash + Objects.hashCode(this.userId);
+        hash = 97 * hash + this.eventMs;
+        return hash;
     }
 }

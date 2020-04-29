@@ -64,6 +64,34 @@ public class StimulusResponse {
     private int maxErrorStreak;
     private int maxPotentialScore;
 
+    public StimulusResponse() {
+    }
+
+    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore) {
+        this.tagDate = tagDate;
+        this.experimentName = experimentName;
+        this.screenName = screenName;
+        this.dataChannel = dataChannel;
+        this.responseGroup = responseGroup;
+        this.stimulusId = stimulusId;
+        this.response = response;
+        this.isCorrect = isCorrect;
+        this.userId = userId;
+        this.eventMs = eventMs;
+        this.gamesPlayed = gamesPlayed;
+        this.totalScore = totalScore;
+        this.totalPotentialScore = totalPotentialScore;
+        this.currentScore = currentScore;
+        this.correctStreak = correctStreak;
+        this.errorStreak = errorStreak;
+        this.potentialScore = potentialScore;
+        this.maxScore = maxScore;
+        this.maxErrors = maxErrors;
+        this.maxCorrectStreak = maxCorrectStreak;
+        this.maxErrorStreak = maxErrorStreak;
+        this.maxPotentialScore = maxPotentialScore;
+    }
+
     public long getId() {
         return id;
     }

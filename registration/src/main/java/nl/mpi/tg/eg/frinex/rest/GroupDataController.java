@@ -41,7 +41,7 @@ public class GroupDataController {
     private GroupDataRepository groupDataRepository;
 
     @RequestMapping("groupdataviewer")
-    public String tagPairViewer(Model model,
+    public String groupDataViewer(Model model,
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "size", defaultValue = "100", required = false) Integer size,
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,

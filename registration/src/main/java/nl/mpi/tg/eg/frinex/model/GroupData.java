@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,6 +59,26 @@ public class GroupData implements Comparable<GroupData> {
     private int eventMs;
 
     public GroupData() {
+    }
+
+    public GroupData(Date eventDate, Date submitDate, String experimentName, String groupUUID, String groupName, String screenName, String messageRespondentId, String allMemberCodes, String groupCommunicationChannels, String senderMemberCode, String respondentMemberCode, String stimulusId, String stimulusIndex, String responseStimulusId, String stimulusOptionIds, String messageString, int eventMs) {
+        this.eventDate = eventDate;
+        this.submitDate = submitDate;
+        this.experimentName = experimentName;
+        this.groupUUID = groupUUID;
+        this.groupName = groupName;
+        this.screenName = screenName;
+        this.messageRespondentId = messageRespondentId;
+        this.allMemberCodes = allMemberCodes;
+        this.groupCommunicationChannels = groupCommunicationChannels;
+        this.senderMemberCode = senderMemberCode;
+        this.respondentMemberCode = respondentMemberCode;
+        this.stimulusId = stimulusId;
+        this.stimulusIndex = stimulusIndex;
+        this.responseStimulusId = responseStimulusId;
+        this.stimulusOptionIds = stimulusOptionIds;
+        this.messageString = messageString;
+        this.eventMs = eventMs;
     }
 
     public long getId() {
@@ -215,5 +236,94 @@ public class GroupData implements Comparable<GroupData> {
     @Override
     public int compareTo(GroupData o) {
         return eventDate.compareTo(o.getEventDate());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GroupData other = (GroupData) obj;
+        if (this.eventMs != other.eventMs) {
+            return false;
+        }
+        if (!Objects.equals(this.experimentName, other.experimentName)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupUUID, other.groupUUID)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupName, other.groupName)) {
+            return false;
+        }
+        if (!Objects.equals(this.screenName, other.screenName)) {
+            return false;
+        }
+        if (!Objects.equals(this.messageRespondentId, other.messageRespondentId)) {
+            return false;
+        }
+        if (!Objects.equals(this.allMemberCodes, other.allMemberCodes)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupCommunicationChannels, other.groupCommunicationChannels)) {
+            return false;
+        }
+        if (!Objects.equals(this.senderMemberCode, other.senderMemberCode)) {
+            return false;
+        }
+        if (!Objects.equals(this.respondentMemberCode, other.respondentMemberCode)) {
+            return false;
+        }
+        if (!Objects.equals(this.stimulusId, other.stimulusId)) {
+            return false;
+        }
+        if (!Objects.equals(this.stimulusIndex, other.stimulusIndex)) {
+            return false;
+        }
+        if (!Objects.equals(this.responseStimulusId, other.responseStimulusId)) {
+            return false;
+        }
+        if (!Objects.equals(this.stimulusOptionIds, other.stimulusOptionIds)) {
+            return false;
+        }
+        if (!Objects.equals(this.messageSenderId, other.messageSenderId)) {
+            return false;
+        }
+        if (!Objects.equals(this.messageString, other.messageString)) {
+            return false;
+        }
+        if (!Objects.equals(this.eventDate, other.eventDate)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.eventDate);
+        hash = 89 * hash + Objects.hashCode(this.experimentName);
+        hash = 89 * hash + Objects.hashCode(this.groupUUID);
+        hash = 89 * hash + Objects.hashCode(this.groupName);
+        hash = 89 * hash + Objects.hashCode(this.screenName);
+        hash = 89 * hash + Objects.hashCode(this.messageRespondentId);
+        hash = 89 * hash + Objects.hashCode(this.allMemberCodes);
+        hash = 89 * hash + Objects.hashCode(this.groupCommunicationChannels);
+        hash = 89 * hash + Objects.hashCode(this.senderMemberCode);
+        hash = 89 * hash + Objects.hashCode(this.respondentMemberCode);
+        hash = 89 * hash + Objects.hashCode(this.stimulusId);
+        hash = 89 * hash + Objects.hashCode(this.stimulusIndex);
+        hash = 89 * hash + Objects.hashCode(this.responseStimulusId);
+        hash = 89 * hash + Objects.hashCode(this.stimulusOptionIds);
+        hash = 89 * hash + Objects.hashCode(this.messageSenderId);
+        hash = 89 * hash + Objects.hashCode(this.messageString);
+        hash = 89 * hash + this.eventMs;
+        return hash;
     }
 }
