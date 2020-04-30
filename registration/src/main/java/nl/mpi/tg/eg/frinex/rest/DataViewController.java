@@ -1,11 +1,14 @@
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,10 +40,23 @@ public class DataViewController {
     private ScreenDataRepository screenDataRepository;
 
     @RequestMapping("dataviewer")
-    public String dataViewer(Model model) {
+    public String dataViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
+            @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
+            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
         final List<ScreenData> distinctRecords = this.screenDataRepository.findAllDistinctRecords();
         model.addAttribute("count", distinctRecords.size());
-        model.addAttribute("allScreenData", distinctRecords);
+//        model.addAttribute("allScreenData", distinctRecords);
+        final Page<ScreenData> pageData = this.screenDataRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final List<ScreenData> content = pageData.getContent();
+        final List<ScreenData> contentDistinct = new ArrayList<>();
+        for (ScreenData tagData : content) {
+            if (!contentDistinct.contains(tagData)) {
+                contentDistinct.add(tagData);
+            }
+        }
+        model.addAttribute("allScreenData", contentDistinct);
+        model.addAttribute("pageData", pageData);
         return "dataviewer";
     }
 

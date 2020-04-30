@@ -20,25 +20,29 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since Jul 13, 2015 11:04:40 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Tagged Events Page</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <p th:text="'Screen Events Count, ' + ${count}" />
+        <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
-                <tr>
-                    <th>UserId</th>
+                <tr id='tableFloatingHeader'>
                     <!--<th>id</th>-->
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=userId'">UserId</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=screenName'">ScreenName</a></th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
-                    <th>ScreenName</th>
-                    <th>ViewDate</th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagDate'">TagDate</a></th>
                 </tr>
             </thead>
             <tbody>

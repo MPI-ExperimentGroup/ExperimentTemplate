@@ -20,10 +20,15 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Jul 23, 2015 3:27:13 PM (creation date)
@@ -36,9 +41,21 @@ public class TimeStampController {
     private TimeStampRepository timeStampRepository;
 
     @RequestMapping("timestampviewer")
-    public String tagPairViewer(Model model) {
+    public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
+            @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
+            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
         model.addAttribute("count", this.timeStampRepository.count());
-        model.addAttribute("allTimeStampData", this.timeStampRepository.findAllDistinctRecords());
+        final Page<TimeStamp> pageData = this.timeStampRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final List<TimeStamp> content = pageData.getContent();
+        final List<TimeStamp> contentDistinct = new ArrayList<>();
+        for (TimeStamp tagData : content) {
+            if (!contentDistinct.contains(tagData)) {
+                contentDistinct.add(tagData);
+            }
+        }
+        model.addAttribute("allTimeStampData", contentDistinct);
+        model.addAttribute("pageData", pageData);
         return "timestampviewer";
     }
 
