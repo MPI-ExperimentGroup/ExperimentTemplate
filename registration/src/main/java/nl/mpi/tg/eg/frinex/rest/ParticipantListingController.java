@@ -44,7 +44,7 @@ public class ParticipantListingController {
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size) {
+            @RequestParam(value = "size", defaultValue = "500", required = false) Integer size) {
         model.addAttribute("count", this.participantRepository.count());
         final Page<Participant> pageData = this.participantRepository.findByStaleCopy(false, new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<Participant> content = pageData.getContent();

@@ -39,6 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <span th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}">
             <a th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>&nbsp;
         </span>
+        <span>These data channel groups can be set in the administration/dataChannel section of the experiment XML configuration file.</span>
         <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>

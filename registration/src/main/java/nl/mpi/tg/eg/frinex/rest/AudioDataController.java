@@ -58,7 +58,7 @@ public class AudioDataController {
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size) {
+            @RequestParam(value = "size", defaultValue = "500", required = false) Integer size) {
         model.addAttribute("count", this.audioDataRepository.count());
         final Page<AudioData> pageData = this.audioDataRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<AudioData> content = pageData.getContent();

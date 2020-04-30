@@ -41,8 +41,8 @@ public class DataViewController {
 
     @RequestMapping("dataviewer")
     public String dataViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-            @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
-            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "sort", required = false, defaultValue = "viewDate") String sortColumn,
+            @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
         final List<ScreenData> distinctRecords = this.screenDataRepository.findAllDistinctRecords();
         model.addAttribute("count", distinctRecords.size());

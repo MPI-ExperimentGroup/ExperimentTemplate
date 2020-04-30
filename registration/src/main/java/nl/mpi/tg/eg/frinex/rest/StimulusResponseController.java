@@ -42,7 +42,7 @@ public class StimulusResponseController {
     @RequestMapping("stimulusresponseviewer")
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
-            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "dataChannel", required = false) Integer dataChannel,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
         final long count = this.stimulusResponseRepository.count();
