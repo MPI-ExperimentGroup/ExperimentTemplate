@@ -569,7 +569,7 @@ or local-name() eq 'removeStimulus'
             <!--<xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else 'currentStimulus, '" />-->
             <xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else '&quot;logTokenText&quot;, '" />
         </xsl:if>
-        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
+        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(local-name() eq 'switchUserIdButton') then ', ' else ''" />
         <xsl:if test="local-name() eq 'requestNotification'">
             <xsl:text>, submissionService</xsl:text>
@@ -1112,6 +1112,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <!--        <xsl:text>(new </xsl:text>
         <xsl:value-of select="local-name()" />-->
         <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then concat('messages.', generate-id(.), '()', ',') else ''" />
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(@msToNext and @listenerId) then ', ' else ''" />
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;') else ''" />

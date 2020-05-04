@@ -17874,12 +17874,14 @@ String</span><br/>
 <h3 id="startAudioRecorderWebType" style="text-transform: uppercase;">
 startAudioRecorderWeb
 </h3>
-Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is given a suitable period of time, the user can also listen to the recorded audio from the server for verification.
+Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is given a suitable period of time, the user can also listen to the recorded audio from the server for verification. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderWeb</span></td><td><span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">downloadPermittedWindowMs</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
@@ -17904,6 +17906,13 @@ String</span><br/>
 <tr><td>
 <a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
+<tr><td>
+<a href="#translation_featureTextType"><span style="color:purple">&lt;</span><span style="color:blue">translation</span></a></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+String</span><br/>
+<span style="color:green">locale</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
 </table>
 </td>
 </tr>

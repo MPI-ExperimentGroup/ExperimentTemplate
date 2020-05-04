@@ -2773,7 +2773,7 @@
                 </actionButton>
                 <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder">
                     <disableButtonGroup matchingRegex="startAudioButtonGroup"/>
-                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
                         <onError>
                             <regionAppend regionId="regionTimer">
                                 <htmlText featureText="startAudioRecorder onError"/>
@@ -2809,35 +2809,35 @@
                 </actionButton>
                 <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder(046d:0a45)">
                     <disableButtonGroup matchingRegex="startAudioButtonGroup"/>
-                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                         <onError>
                             <regionAppend regionId="regionTimer">
-                            <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                                <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                             </regionAppend>
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </onError>
                         <onSuccess>
                             <regionAppend regionId="regionTimer">
-                            <htmlText featureText="startAudioRecorder onSuccess"/>
+                                <htmlText featureText="startAudioRecorder onSuccess"/>
                                 <startTimer msToNext="0" listenerId="timerA"/>
                                 <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
                             </regionAppend>
                         </onSuccess>
                         <mediaLoaded>
                             <regionAppend regionId="regionTimer">
-                            <plainText featureText="AudioRecordingLoaded"/>
+                                <plainText featureText="AudioRecordingLoaded"/>
                             </regionAppend>
                         </mediaLoaded>
-                        <mediaLoadFailed>
+                        <mediaLoadFailed> 
                             <regionAppend regionId="regionTimer">
-                            <plainText featureText="AudioRecordingLoadFailed"/>
+                                <plainText featureText="AudioRecordingLoadFailed"/>
                                 <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                             </regionAppend>
                         </mediaLoadFailed>
                         <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
                             <regionAppend regionId="regionTimer">
-                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                                <plainText featureText="AudioRecordingPlaybackComplete"/>
                             </regionAppend>
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaPlaybackComplete>
@@ -2861,7 +2861,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                     </onError>
@@ -2899,7 +2899,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <startAudioRecorderWeb featureText="&lt;recording_seconds&gt;" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError"/>
                     </onError>
@@ -2994,7 +2994,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderA(USB)">
-                                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMediaA">
+                                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMediaA">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="Error"/>
@@ -3050,7 +3050,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderB(any)">
-                                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaB">
+                                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaB">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Error"/>
@@ -3106,7 +3106,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderC(any)">
-                                <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaC">
+                                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaC">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="Error"/>
@@ -3750,82 +3750,82 @@
                 <table>
                     <row>
                         <column>
-                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_0&gt;.jpg" dataChannel="8" msToNext="0">	
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                </stimulusCodeImage>
+                            <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_0&gt;.jpg" dataChannel="8" msToNext="0">	
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                            </stimulusCodeImage>
                         </column>
                         <column>
-                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8" msToNext="0">	
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                </stimulusCodeImage>
+                            <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8" msToNext="0">	
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                            </stimulusCodeImage>
                         </column>
                         <column>
-                <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8" msToNext="0">	
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                </stimulusCodeImage>
+                            <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8" msToNext="0">	
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                            </stimulusCodeImage>
                         </column>
                         <column>
                             <stimulusCodeImage codeFormat="&lt;stimulusRatingLabel_3&gt;.jpg" dataChannel="8" msToNext="0">	
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                </stimulusCodeImage>
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                            </stimulusCodeImage>
                         </column>
                     </row>
                     <row>
                         <column>
                             <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_0&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
-                    <mediaLoaded>
-                        <htmlText featureText="mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <htmlText featureText="mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <onActivate>
-                        <htmlText featureText="onActivate"/>
-                    </onActivate>
-                </stimulusCodeImageButton>
+                                <mediaLoaded>
+                                    <htmlText featureText="mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <onActivate>
+                                    <htmlText featureText="onActivate"/>
+                                </onActivate>
+                            </stimulusCodeImageButton>
                         </column>
                         <column>
-                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
-                    <mediaLoaded>
-                        <htmlText featureText="mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <htmlText featureText="mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <onActivate>
-                        <htmlText featureText="onActivate"/>
-                    </onActivate>
-                </stimulusCodeImageButton>
+                            <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_1&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                                <mediaLoaded>
+                                    <htmlText featureText="mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <onActivate>
+                                    <htmlText featureText="onActivate"/>
+                                </onActivate>
+                            </stimulusCodeImageButton>
                         </column>
                         <column>
-                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
-                    <mediaLoaded>
-                        <htmlText featureText="mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <htmlText featureText="mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <onActivate>
-                        <htmlText featureText="onActivate"/>
-                    </onActivate>
-                </stimulusCodeImageButton>
+                            <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_2&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                                <mediaLoaded>
+                                    <htmlText featureText="mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <onActivate>
+                                    <htmlText featureText="onActivate"/>
+                                </onActivate>
+                            </stimulusCodeImageButton>
                         </column>
                         <column>
-                <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_3&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
-                    <mediaLoaded>
-                        <htmlText featureText="mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <htmlText featureText="mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <onActivate>
-                        <htmlText featureText="onActivate"/>
-                    </onActivate>
-                </stimulusCodeImageButton>
+                            <stimulusCodeImageButton codeFormat="&lt;stimulusRatingLabel_3&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
+                                <mediaLoaded>
+                                    <htmlText featureText="mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <onActivate>
+                                    <htmlText featureText="onActivate"/>
+                                </onActivate>
+                            </stimulusCodeImageButton>
                         </column>
                     </row>
                 </table>
@@ -4138,7 +4138,7 @@
         <actionButton featureText="redirectToElectron"> 
             <redirectToUrl src="http://localhost:5000/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
         </actionButton>            
-    </presenter>
+    </presenter>  
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
         <generateCompletionCode>
             <onSuccess>
@@ -4247,7 +4247,7 @@
         <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaResult">
-                    <startAudioRecorderWeb downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_&lt;stimulusId&gt;">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_&lt;stimulusId&gt;">
                         <onError>
                             <regionReplace regionId="stimulusLabel"></regionReplace>
                             <regionReplace regionId="stimulusButtons"></regionReplace>
