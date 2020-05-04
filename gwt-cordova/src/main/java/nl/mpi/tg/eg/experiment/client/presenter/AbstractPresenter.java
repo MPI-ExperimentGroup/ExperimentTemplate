@@ -478,7 +478,7 @@ public abstract class AbstractPresenter implements Presenter {
             var abstractPresenter = this;
             if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
-            $win.recordingLabelString = recordingLabelString;
+            $wnd.recordingLabelString = recordingLabelString;
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
             var targetDeviceId = -1;
@@ -584,7 +584,7 @@ public abstract class AbstractPresenter implements Presenter {
             });
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             if ($wnd.recorder.state === 'recording') {
-                if ($win.recordingLabelString == '00:00:00') {
+                if ($wnd.recordingLabelString == '00:00:00') {
                     var recordingMiliSeconds = Math.floor($wnd.recorder.encodedSamplePosition / 48000);
                     var recordingTimeDate = new Date(recordingMilliSeconds);
                     var recordingTimeString = recordingTimeDate.toISOString().substr(11, 8);
