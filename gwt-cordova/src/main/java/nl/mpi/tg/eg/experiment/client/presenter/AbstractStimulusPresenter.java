@@ -1015,7 +1015,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     protected void stimulusImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         final String imageString = currentStimulus.getImage();
         timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(imageString), styleName, postLoadMs, loadedStimulusListener, failedStimulusListener, null);
-            }
+    }
 
     @Deprecated
     protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final boolean showControls, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -2202,8 +2202,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 String messageString = "";
                 for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
                     if (stimulusFreeText.isEnabled()) {
-                    messageString += stimulusFreeText.getValue();
-                }
+                        messageString += stimulusFreeText.getValue();
+                    }
                 }
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? currentStimulus.getUniqueId() : null, messageString, duration.elapsedMillis());
                 groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
