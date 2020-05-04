@@ -65,7 +65,7 @@ public class TimeStampController {
         model.addAttribute("allTimeStampData", this.timeStampRepository.findAllDistinctRecords());
         final List<String> cleanedDistinctEventTag = new ArrayList<>();
         for (String item : this.timeStampRepository.findDistinctEventTag()) {
-            if (!item.startsWith("http")) {
+            if (item != null && !item.startsWith("http")) {
                 cleanedDistinctEventTag.add(item);
             }
         }
