@@ -240,7 +240,7 @@ public enum FeatureType {
     showColourReport(false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
     groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetworkActivity, Contitionals.stimulusAction),
-    groupNetworkActivity(false, new FeatureAttribute[]{groupRole}, false, false, false, Contitionals.groupNetworkAction, Contitionals.groupNetworkActivity),
+    groupNetworkActivity(false, new FeatureAttribute[]{phaseMembers}, false, false, false, Contitionals.groupNetworkAction, Contitionals.groupNetworkActivity),
     groupMemberCodeLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     groupMemberLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     groupMessageLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),

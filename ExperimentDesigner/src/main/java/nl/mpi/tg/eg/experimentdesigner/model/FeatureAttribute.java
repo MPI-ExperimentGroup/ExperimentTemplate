@@ -258,12 +258,12 @@ public enum FeatureAttribute {
     gamesPlayed(true), // interger to make active, when empty or not present is passed as null
     showPlaybackIndicator,
     showControls(false),
-    groupRole,
-    groupMembers,
-    groupCommunicationChannels,
-    incrementPhase,
+    phaseMembers("List of members for each phase. Each phase is separated by : and in each phase the matching members are separated by , when no members match a - is given for that phase.", false, AttributeType.xsString),
+    groupMembers("List of members separated by , with preferably only a-Z being used for the member names.", false, AttributeType.xsString),
+    groupCommunicationChannels("List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.", false, AttributeType.xsString),
+    incrementPhase("Increments the current group phase and triggeres the relevant group activities for all members of the group.", false, AttributeType.xsInteger),
     //    incrementStimulus,
-    phasesPerStimulus,
+    phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimlus will be triggered.", false, AttributeType.xsInteger),
     applyScore("If set to true then the stimulus response is compared to the stimulus correctResponses and a score is given accordingly.", false, AttributeType.xsBoolean),
     scoreValue("A positive number for achievements or a negative number for failures or zero for neither.", false, AttributeType.xsInteger);
     final boolean isOptional;

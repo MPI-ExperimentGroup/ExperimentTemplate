@@ -21,14 +21,14 @@
                                     <hasMoreStimulus>
                                         <clearPage/>
                                         <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D">
-                                            <groupNetworkActivity groupRole="A,B,C,D:-">
+                                            <groupNetworkActivity phaseMembers="A,B,C,D:-">
                                                 <clearPage/>
                                                 <centrePage/>
                                                 <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                                                 <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;"/>
                                                 <sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                             </groupNetworkActivity>
-                                            <groupNetworkActivity groupRole="-:A,B,C,D">
+                                            <groupNetworkActivity phaseMembers="-:A,B,C,D">
                                                 <clearPage/>
                                                 <htmlText featureText="Welkom bij het fantasietaal spel!&lt;br/&gt;&lt;br/&gt;In dit experiment ga je een speciale taal creëren om verschillende soorten &quot;scènes&quot; te beschrijven. In deze scènes zijn verschillende voorwerpen te zien die in verschillende richtingen bewegen.&lt;br/&gt;&lt;br/&gt;Daarna ga je deze taal gebruiken om te communiceren met andere leden van je groep tijdens het spelen van het spel op de laptops. Je speelt in tweetallen en na elke ronde wissel je van partner.&lt;br/&gt;&lt;br/&gt;De bedoeling is dat de communicatie tussen jou en je partner zo succesvol mogelijk verloopt. Je krijgt 1 punt voor elke geslaagde beurt. Nadat we alle groepjes in ons experiment getest hebben (kan even duren), krijgt de groep met de hoogste gemiddelde score een extra prijs. Dit betekent dat je moet proberen om zoveel mogelijk punten te verdienen door zo goed mogelijk met elkaar te communiceren - communicatie is de enige manier om punten te verdienen!&lt;br/&gt;&lt;br/&gt;Je mag geen Nederlands of andere bestaande talen gebruiken tijdens deze taak. Gebruik ook niets dat heel erg op het Nederlands of andere talen lijkt. Als je bijvoorbeeld een scène met een blauw voorwerp er in wilt beschrijven, gebruik dan niet een andere variatie van het woord blauw zoals blaw, blu, blieblie of zelfs een ander woord beginnend met dezelfde letter. Het gebruik van afkortingen is ook niet toegestaan. Probeer creatief te zijn en niet terug te vallen op je kennis van het Nederlands of andere talen. Als je niet zeker weet of een woord is toegestaan, vraag ons dit dan van tevoren. Het doel van het spel is goed te communiceren in een nieuwe fantasietaal. Daarom moeten we helaas de hele groep uitsluiten van het spel als er een woord gebruikt wordt dat niet is toegestaan.&lt;br/&gt;&lt;br/&gt;Verder mag je niet praten, gebaren of wijzen tijdens het experiment, je communiceert enkel door beschrijvingen te typen.&lt;br/&gt;&lt;br/&gt;Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
                                                 <targetButton featureText="Volgende" target="Edit_User"/>
@@ -67,14 +67,14 @@
                                             <hasMoreStimulus>
                                                 <clearPage/>
                                                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                                                    <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
+                                                    <groupNetworkActivity phaseMembers="A,B,C,D,E,F,G,H:-">
                                                         <clearPage/>
                                                         <centrePage/>
                                                         <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                                                         <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;"/>
                                                         <sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                                     </groupNetworkActivity>
-                                                    <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
+                                                    <groupNetworkActivity phaseMembers="-:A,B,C,D,E,F,G,H">
                                                         <clearPage/>
                                                         <htmlText featureText="Welkom bij het fantasietaal spel!&lt;br/&gt;&lt;br/&gt;In dit experiment ga je een speciale taal creëren om verschillende soorten &quot;scènes&quot; te beschrijven. In deze scènes zijn verschillende voorwerpen te zien die in verschillende richtingen bewegen.&lt;br/&gt;&lt;br/&gt;Daarna ga je deze taal gebruiken om te communiceren met andere leden van je groep tijdens het spelen van het spel op de laptops. Je speelt in tweetallen en na elke ronde wissel je van partner.&lt;br/&gt;&lt;br/&gt;De bedoeling is dat de communicatie tussen jou en je partner zo succesvol mogelijk verloopt. Je krijgt 1 punt voor elke geslaagde beurt. Nadat we alle groepjes in ons experiment getest hebben (kan even duren), krijgt de groep met de hoogste gemiddelde score een extra prijs. Dit betekent dat je moet proberen om zoveel mogelijk punten te verdienen door zo goed mogelijk met elkaar te communiceren - communicatie is de enige manier om punten te verdienen!&lt;br/&gt;&lt;br/&gt;Je mag geen Nederlands of andere bestaande talen gebruiken tijdens deze taak. Gebruik ook niets dat heel erg op het Nederlands of andere talen lijkt. Als je bijvoorbeeld een scène met een blauw voorwerp er in wilt beschrijven, gebruik dan niet een andere variatie van het woord blauw zoals blaw, blu, blieblie of zelfs een ander woord beginnend met dezelfde letter. Het gebruik van afkortingen is ook niet toegestaan. Probeer creatief te zijn en niet terug te vallen op je kennis van het Nederlands of andere talen. Als je niet zeker weet of een woord is toegestaan, vraag ons dit dan van tevoren. Het doel van het spel is goed te communiceren in een nieuwe fantasietaal. Daarom moeten we helaas de hele groep uitsluiten van het spel als er een woord gebruikt wordt dat niet is toegestaan.&lt;br/&gt;&lt;br/&gt;Verder mag je niet praten, gebaren of wijzen tijdens het experiment, je communiceert enkel door beschrijvingen te typen.&lt;br/&gt;&lt;br/&gt;Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
                                                         <targetButton featureText="Volgende" target="Edit_User"/>
@@ -146,7 +146,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -170,7 +170,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
+                        <groupNetworkActivity phaseMembers="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -179,7 +179,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:&lt;br/&gt;&lt;br/&gt;"/>
                             <addPadding/>
@@ -196,7 +196,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -221,7 +221,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -245,7 +245,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
+                        <groupNetworkActivity phaseMembers="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -254,7 +254,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:&lt;br/&gt;&lt;br/&gt;"/>
                             <addPadding/>
@@ -271,7 +271,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -296,7 +296,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -320,7 +320,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
+                        <groupNetworkActivity phaseMembers="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -329,7 +329,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:&lt;br/&gt;&lt;br/&gt;"/>
                             <addPadding/>
@@ -346,7 +346,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -371,7 +371,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
+                        <groupNetworkActivity phaseMembers="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -389,19 +389,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
+                        <groupNetworkActivity phaseMembers="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
+                        <groupNetworkActivity phaseMembers="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
+                        <groupNetworkActivity phaseMembers="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -436,7 +436,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
+                        <groupNetworkActivity phaseMembers="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -512,7 +512,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
-                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
+                        <groupNetworkActivity phaseMembers="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -530,19 +530,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
+                        <groupNetworkActivity phaseMembers="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
+                        <groupNetworkActivity phaseMembers="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
+                        <groupNetworkActivity phaseMembers="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -577,7 +577,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
+                        <groupNetworkActivity phaseMembers="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -653,7 +653,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
-                        <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
+                        <groupNetworkActivity phaseMembers="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -671,19 +671,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
+                        <groupNetworkActivity phaseMembers="C,D:-:-:B,A:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
+                        <groupNetworkActivity phaseMembers="-:B,A:-:-:C,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
+                        <groupNetworkActivity phaseMembers="-:C,D:-:-:B,A:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -718,7 +718,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
+                        <groupNetworkActivity phaseMembers="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -794,7 +794,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
-                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
+                        <groupNetworkActivity phaseMembers="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -812,19 +812,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
+                        <groupNetworkActivity phaseMembers="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
+                        <groupNetworkActivity phaseMembers="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
+                        <groupNetworkActivity phaseMembers="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -859,7 +859,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:B,C,A,D:-:-:B,C,A,D">
+                        <groupNetworkActivity phaseMembers="-:-:B,C,A,D:-:-:B,C,A,D">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -935,7 +935,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
+                        <groupNetworkActivity phaseMembers="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -953,19 +953,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
+                        <groupNetworkActivity phaseMembers="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
+                        <groupNetworkActivity phaseMembers="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
+                        <groupNetworkActivity phaseMembers="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1000,7 +1000,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1076,7 +1076,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
-                        <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
+                        <groupNetworkActivity phaseMembers="C,D:-:-:B,A:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1094,19 +1094,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
+                        <groupNetworkActivity phaseMembers="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
+                        <groupNetworkActivity phaseMembers="-:C,D:-:-:B,A:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
+                        <groupNetworkActivity phaseMembers="-:B,A:-:-:C,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1141,7 +1141,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:C,D,B,A:-:-:C,D,B,A">
+                        <groupNetworkActivity phaseMembers="-:-:C,D,B,A:-:-:C,D,B,A">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1217,7 +1217,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
+                        <groupNetworkActivity phaseMembers="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1235,19 +1235,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
+                        <groupNetworkActivity phaseMembers="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
+                        <groupNetworkActivity phaseMembers="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
+                        <groupNetworkActivity phaseMembers="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1282,7 +1282,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
+                        <groupNetworkActivity phaseMembers="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1358,7 +1358,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity groupRole="A,B,C,D:-">
+                        <groupNetworkActivity phaseMembers="A,B,C,D:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1373,7 +1373,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D">
+                        <groupNetworkActivity phaseMembers="-:A,B,C,D">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -1406,7 +1406,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -1430,7 +1430,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
+                        <groupNetworkActivity phaseMembers="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -1439,7 +1439,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:&lt;br/&gt;&lt;br/&gt;"/>
                             <addPadding/>
@@ -1456,7 +1456,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -1481,7 +1481,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -1505,7 +1505,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
+                        <groupNetworkActivity phaseMembers="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -1514,7 +1514,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:&lt;br/&gt;&lt;br/&gt;"/>
                             <addPadding/>
@@ -1531,7 +1531,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -1556,7 +1556,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -1580,7 +1580,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
+                        <groupNetworkActivity phaseMembers="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -1589,7 +1589,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity phaseMembers="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:&lt;br/&gt;&lt;br/&gt;"/>
                             <addPadding/>
@@ -1606,7 +1606,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -1631,7 +1631,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity phaseMembers="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1649,19 +1649,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity phaseMembers="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity phaseMembers="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity phaseMembers="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1696,7 +1696,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
+                        <groupNetworkActivity phaseMembers="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1772,7 +1772,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
-                        <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
+                        <groupNetworkActivity phaseMembers="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1790,19 +1790,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
+                        <groupNetworkActivity phaseMembers="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
+                        <groupNetworkActivity phaseMembers="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
+                        <groupNetworkActivity phaseMembers="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1837,7 +1837,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
+                        <groupNetworkActivity phaseMembers="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1913,7 +1913,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
+                        <groupNetworkActivity phaseMembers="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1931,19 +1931,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
+                        <groupNetworkActivity phaseMembers="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
+                        <groupNetworkActivity phaseMembers="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
+                        <groupNetworkActivity phaseMembers="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -1978,7 +1978,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
+                        <groupNetworkActivity phaseMembers="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2054,7 +2054,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
-                        <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
+                        <groupNetworkActivity phaseMembers="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2072,19 +2072,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
+                        <groupNetworkActivity phaseMembers="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
+                        <groupNetworkActivity phaseMembers="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
+                        <groupNetworkActivity phaseMembers="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2119,7 +2119,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
+                        <groupNetworkActivity phaseMembers="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2195,7 +2195,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
-                        <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
+                        <groupNetworkActivity phaseMembers="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2213,19 +2213,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
+                        <groupNetworkActivity phaseMembers="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
+                        <groupNetworkActivity phaseMembers="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
+                        <groupNetworkActivity phaseMembers="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2260,7 +2260,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
+                        <groupNetworkActivity phaseMembers="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2336,7 +2336,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
-                        <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
+                        <groupNetworkActivity phaseMembers="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2354,19 +2354,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
+                        <groupNetworkActivity phaseMembers="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
+                        <groupNetworkActivity phaseMembers="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
+                        <groupNetworkActivity phaseMembers="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2401,7 +2401,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
+                        <groupNetworkActivity phaseMembers="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2477,7 +2477,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
-                        <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
+                        <groupNetworkActivity phaseMembers="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2495,19 +2495,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
+                        <groupNetworkActivity phaseMembers="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
+                        <groupNetworkActivity phaseMembers="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
+                        <groupNetworkActivity phaseMembers="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2542,7 +2542,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
+                        <groupNetworkActivity phaseMembers="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2618,7 +2618,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
+                        <groupNetworkActivity phaseMembers="A,B,C,D,E,F,G,H:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -2633,7 +2633,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity phaseMembers="-:A,B,C,D,E,F,G,H">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -2666,7 +2666,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity phaseMembers="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2684,19 +2684,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity phaseMembers="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity phaseMembers="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity phaseMembers="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2731,7 +2731,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
+                        <groupNetworkActivity phaseMembers="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2807,7 +2807,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
+                        <groupNetworkActivity phaseMembers="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2825,19 +2825,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
+                        <groupNetworkActivity phaseMembers="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
+                        <groupNetworkActivity phaseMembers="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
+                        <groupNetworkActivity phaseMembers="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2872,7 +2872,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
+                        <groupNetworkActivity phaseMembers="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2948,7 +2948,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
-                        <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
+                        <groupNetworkActivity phaseMembers="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -2966,19 +2966,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
+                        <groupNetworkActivity phaseMembers="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
+                        <groupNetworkActivity phaseMembers="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
+                        <groupNetworkActivity phaseMembers="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3013,7 +3013,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
+                        <groupNetworkActivity phaseMembers="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3089,7 +3089,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
-                        <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
+                        <groupNetworkActivity phaseMembers="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3107,19 +3107,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
+                        <groupNetworkActivity phaseMembers="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
+                        <groupNetworkActivity phaseMembers="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
+                        <groupNetworkActivity phaseMembers="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3154,7 +3154,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
+                        <groupNetworkActivity phaseMembers="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3230,7 +3230,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
-                        <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
+                        <groupNetworkActivity phaseMembers="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3248,19 +3248,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
+                        <groupNetworkActivity phaseMembers="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
+                        <groupNetworkActivity phaseMembers="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
+                        <groupNetworkActivity phaseMembers="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3295,7 +3295,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
+                        <groupNetworkActivity phaseMembers="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3371,7 +3371,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
-                        <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
+                        <groupNetworkActivity phaseMembers="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3389,19 +3389,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
+                        <groupNetworkActivity phaseMembers="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
+                        <groupNetworkActivity phaseMembers="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
+                        <groupNetworkActivity phaseMembers="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3436,7 +3436,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
+                        <groupNetworkActivity phaseMembers="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3512,7 +3512,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
-                        <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
+                        <groupNetworkActivity phaseMembers="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3530,19 +3530,19 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
+                        <groupNetworkActivity phaseMembers="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
+                        <groupNetworkActivity phaseMembers="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
+                        <groupNetworkActivity phaseMembers="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3577,7 +3577,7 @@
                             </showStimulusGrid>
                             <enableButtonGroup matchingRegex=".*"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
+                        <groupNetworkActivity phaseMembers="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
                             <clearPage/>
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
@@ -3653,7 +3653,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
+                        <groupNetworkActivity phaseMembers="A,B,C,D,E,F,G,H:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -3668,7 +3668,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity phaseMembers="-:A,B,C,D,E,F,G,H">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>

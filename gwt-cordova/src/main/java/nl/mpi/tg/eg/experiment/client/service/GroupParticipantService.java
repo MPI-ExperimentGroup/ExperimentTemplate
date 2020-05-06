@@ -88,17 +88,17 @@ public class GroupParticipantService implements GroupScoreService {
 //        this.endOfStimulusListener = endOfStimulusListener;
     }
 
-//    public void addGroupActivity(final String groupRole, final int requestedPhase, final TimedStimulusListener activityListener) {
+//    public void addGroupActivity(final String phaseMembers, final int requestedPhase, final TimedStimulusListener activityListener) {
 //
-//        ArrayList<TimedStimulusListener> currentSelfRoles = selfActivityListeners.get(groupRole);
-//        ArrayList<TimedStimulusListener> currentOthersRoles = othersActivityListeners.get(groupRole);
+//        ArrayList<TimedStimulusListener> currentSelfRoles = selfActivityListeners.get(phaseMembers);
+//        ArrayList<TimedStimulusListener> currentOthersRoles = othersActivityListeners.get(phaseMembers);
 //        if (currentSelfRoles == null) {
 //            currentSelfRoles = new ArrayList<>();
-//            selfActivityListeners.put(groupRole, currentSelfRoles);
+//            selfActivityListeners.put(phaseMembers, currentSelfRoles);
 //        }
 //        if (currentOthersRoles == null) {
 //            currentOthersRoles = new ArrayList<>();
-//            othersActivityListeners.put(groupRole, currentOthersRoles);
+//            othersActivityListeners.put(phaseMembers, currentOthersRoles);
 //        }
 //        while (currentSelfRoles.size() < requestedPhase) {
 //            currentSelfRoles.add(null);
@@ -187,12 +187,12 @@ public class GroupParticipantService implements GroupScoreService {
                     // make sure that all relevent members have responded before moving to the next phase
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
                     final List<GroupActivityListener> currentFiredListnerList = new ArrayList();
-                    for (String groupRole : activityListeners.keySet()) {
-                        final String[] splitRole = groupRole.split(":");
+                    for (String phaseMembers : activityListeners.keySet()) {
+                        final String[] splitRole = phaseMembers.split(":");
                         int roleIndex = currentRequestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
-                            final GroupActivityListener currentListner = activityListeners.get(groupRole);
-//                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
+                            final GroupActivityListener currentListner = activityListeners.get(phaseMembers);
+//                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(phaseMembers).get(this.requestedPhase).postLoadTimerFired();
                             if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
                                     || (lastFiredListnerList == null || !lastFiredListnerList.contains(currentListner))) {
                                 this.stimulusId = stimulusId;
@@ -427,13 +427,13 @@ public class GroupParticipantService implements GroupScoreService {
             });
      }-*/;
 
-    public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore, String groupRole) {
+    public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore, String phaseMembers) {
         String windowGroupId = Window.Location.getParameter("group");
         String windowMemberCode = Window.Location.getParameter("member");
         if (windowGroupId == null) {
             windowGroupId = groupId;
         }
-        messageGroup(originPhase, originPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, groupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
+        messageGroup(originPhase, originPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, phaseMembers, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
     }
 
     private native void messageGroup(int originPhase, int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{

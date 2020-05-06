@@ -79,9 +79,9 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         joinGroupActivity.getPresenterFeatureList().add(joinGroupMessageButton);
-        joinGroupActivity.addFeatureAttributes(FeatureAttribute.groupRole, groupPhasesRoles[0]);
+        joinGroupActivity.addFeatureAttributes(FeatureAttribute.phaseMembers, groupPhasesRoles[0]);
         groupNetwork.getPresenterFeatureList().add(joinGroupActivity);
-        agreementActivity.addFeatureAttributes(FeatureAttribute.groupRole, groupPhasesRoles[1]);
+        agreementActivity.addFeatureAttributes(FeatureAttribute.phaseMembers, groupPhasesRoles[1]);
         groupNetwork.getPresenterFeatureList().add(agreementActivity);
         agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
 //        agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));

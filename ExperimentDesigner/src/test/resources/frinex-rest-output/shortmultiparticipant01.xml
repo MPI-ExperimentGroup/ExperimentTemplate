@@ -33,7 +33,7 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity groupRole="A,B,C,D">
+                        <groupNetworkActivity phaseMembers="A,B,C,D">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>

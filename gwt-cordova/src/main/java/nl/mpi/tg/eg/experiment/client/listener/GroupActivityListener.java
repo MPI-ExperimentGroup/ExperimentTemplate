@@ -26,15 +26,15 @@ import java.util.Objects;
 public abstract class GroupActivityListener {
 
     final private String id;
-    final private String groupRole;
+    final private String phaseMembers;
 
-    public GroupActivityListener(String id, String groupRole) {
+    public GroupActivityListener(String id, String phaseMembers) {
         this.id = id;
-        this.groupRole = groupRole;
+        this.phaseMembers = phaseMembers;
     }
 
     public String getGroupRole() {
-        return groupRole;
+        return phaseMembers;
     }
 
     abstract public void triggerActivityListener(final int callerPhase, final String expectedRespondents);

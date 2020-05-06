@@ -32,7 +32,7 @@
             <loadStimulus eventTag="Group of Four" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity groupRole="A,B,C,D">
+                        <groupNetworkActivity phaseMembers="A,B,C,D">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All participants see this screen"/>
@@ -72,7 +72,7 @@
             <loadStimulus eventTag="GroupOf6" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F">
-                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:">
+                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -94,7 +94,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:">
+                        <groupNetworkActivity phaseMembers="-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -103,7 +103,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:-:">
+                        <groupNetworkActivity phaseMembers="-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:-:">
                             <clearPage/>
                             <htmlText featureText="Phase3"/>
                             <addPadding/>
@@ -119,7 +119,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-">
+                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>

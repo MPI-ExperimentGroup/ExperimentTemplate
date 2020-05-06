@@ -619,7 +619,7 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -653,7 +653,7 @@
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -687,7 +687,7 @@
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1000,7 +1000,7 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1034,7 +1034,7 @@
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1068,7 +1068,7 @@
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1381,7 +1381,7 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1415,7 +1415,7 @@
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1449,7 +1449,7 @@
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="groupRole">
+                    <groupNetworkActivity phaseMembers="phaseMembers">
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -2650,7 +2650,7 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2684,7 +2684,7 @@
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2718,7 +2718,7 @@
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3031,7 +3031,7 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3065,7 +3065,7 @@
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3099,7 +3099,7 @@
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3412,7 +3412,7 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3446,7 +3446,7 @@
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3480,7 +3480,7 @@
                         <sendGroupStoredMessage incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="">
+                    <groupNetworkActivity phaseMembers="">
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>

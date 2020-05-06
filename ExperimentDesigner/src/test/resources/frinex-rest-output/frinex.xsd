@@ -10983,7 +10983,7 @@
 </xs:choice>
 <xs:attribute name="groupMembers" type="xs:string" use="required"/>
 <xs:attribute name="groupCommunicationChannels" type="xs:string" use="required"/>
-<xs:attribute name="phasesPerStimulus" type="xs:string" use="required"/>
+<xs:attribute name="phasesPerStimulus" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="groupNetworkActivityType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -11160,7 +11160,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="groupRole" type="xs:string" use="required"/>
+<xs:attribute name="phaseMembers" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="groupMemberCodeLabelType">
 <xs:attribute name="styleName" type="xs:string"/>
@@ -11215,17 +11215,17 @@
 <xs:attribute name="dataChannel" type="xs:string"/>
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required"/>
-<xs:attribute name="incrementPhase" type="xs:string" use="required"/>
+<xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="sendGroupMessageType">
 <xs:attribute name="eventTag" type="xs:string"/>
-<xs:attribute name="incrementPhase" type="xs:string" use="required"/>
+<xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="sendGroupStoredMessageType">
 <xs:attribute name="eventTag" type="xs:string"/>
-<xs:attribute name="incrementPhase" type="xs:string" use="required"/>
+<xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="sendGroupEndOfStimuliType">
 <xs:attribute name="eventTag" type="xs:string"/>

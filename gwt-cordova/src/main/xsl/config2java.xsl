@@ -1005,7 +1005,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:text>new GroupActivityListener("</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@groupRole" />
+            <xsl:value-of select="@phaseMembers" />
             <xsl:text>") {
                 @Override
                 public void triggerActivityListener(final int callerPhase, final String expectedRespondents) {

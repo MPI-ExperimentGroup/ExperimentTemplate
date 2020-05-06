@@ -31,8 +31,8 @@ public class GroupParticipantServiceTest {
     public GroupParticipantServiceTest() {
     }
 
-    private void groupNetworkActivity(final StringBuilder stringBuilder, final String id, final GroupParticipantService instance, final String groupRole, final int requiredMessageCount, final String description) {
-        instance.addGroupActivity(new GroupActivityListener(id, groupRole) {
+    private void groupNetworkActivity(final StringBuilder stringBuilder, final String id, final GroupParticipantService instance, final String phaseMembers, final int requiredMessageCount, final String description) {
+        instance.addGroupActivity(new GroupActivityListener(id, phaseMembers) {
             @Override
             public void triggerActivityListener(int callerPhase, String expectedRespondents) {
                 stringBuilder.append(instance.getRequestedPhase());
@@ -43,7 +43,7 @@ public class GroupParticipantServiceTest {
                     stringBuilder.append(description);
                 }
                 stringBuilder.append("[");
-                stringBuilder.append(groupRole);
+                stringBuilder.append(phaseMembers);
                 stringBuilder.append("]\n");
             }
         });

@@ -667,36 +667,36 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         }
 
         if (!storedWizardScreenData.getGroupPhasesRoles()[0].isEmpty()) {
-            producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
+            producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[0]);
             groupNetwork.getPresenterFeatureList().add(producerNetworkActivity0);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[1].isEmpty()) {
-            guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[1]);
+            guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[1]);
             groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity0);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[2].isEmpty()) {
-            producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[2]);
+            producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[2]);
             groupNetwork.getPresenterFeatureList().add(producerNetworkActivity1);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[3].isEmpty()) {
-            guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[3]);
+            guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[3]);
             groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity1);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[4].isEmpty()) {
-            allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[4]);
+            allNetworkActivity2.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[4]);
             groupNetwork.getPresenterFeatureList().add(allNetworkActivity2);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[5].isEmpty()) {
-            trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[5]);
+            trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[5]);
             groupNetwork.getPresenterFeatureList().add(trainingDisplayNetworkActivity3);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[6].isEmpty()) {
-            groupRecordSubmission.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[6]);
+            groupRecordSubmission.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[6]);
             groupNetwork.getPresenterFeatureList().add(groupRecordSubmission);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[7].isEmpty()) {
             // this is used as a next phase phase for the testing screen that needs to only submit a group record after a message has been sent and then return to the previous phase
-            groupRecordSubmissionNext.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[7]);
+            groupRecordSubmissionNext.addFeatureAttributes(FeatureAttribute.phaseMembers, storedWizardScreenData.getGroupPhasesRoles()[7]);
             groupNetwork.getPresenterFeatureList().add(groupRecordSubmissionNext);
         }
 
