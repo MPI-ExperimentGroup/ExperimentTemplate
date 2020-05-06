@@ -40,8 +40,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var memberCodes = ['A', 'C', 'E', 'G', 'B', 'D', 'F', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
-                        iframes[frameIndex].style.width = '1920px';
-                        iframes[frameIndex].style.height = '1080px';
+                        iframes[frameIndex].style.width = document.getElementById('frameWidth').value + 'vw';
+                        iframes[frameIndex].style.height = document.getElementById('frameHeight').value + 'vh';
                         iframes[frameIndex].src = ".?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
                     }, 1000 * frameIndex, frameIndex);
                 }
@@ -129,6 +129,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <button type="button" class="startRobotButton" onclick="singleFrame('G');">G</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('H');">H</button>
         <input type="text" id="groupName" placeholder="Type a group name...">  
+        <input type="number" id="frameHeight" value="20" max="100" min="0">
+        <input type="number" id="frameWidth" value="50" max="100" min="0">
         <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
         <button type="button" onclick="reloadIframes();">reload frames</button>
