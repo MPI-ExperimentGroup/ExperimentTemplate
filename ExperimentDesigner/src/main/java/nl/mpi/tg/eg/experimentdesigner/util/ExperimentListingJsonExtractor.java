@@ -58,7 +58,7 @@ public class ExperimentListingJsonExtractor {
                 System.out.println(iOException.getMessage());
             }
         } catch (JAXBException jAXBException) {
-            result += "Could not parse the experiment XML needed to creaete the build listing: ";
+            result += "Could not parse the experiment XML needed to create the build listing: ";
             result += jAXBException.getMessage();
             System.out.println(jAXBException.getMessage());
         }

@@ -585,7 +585,7 @@ public abstract class AbstractPresenter implements Presenter {
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             if ($wnd.recorder.state === 'recording') {
                 if ($wnd.recordingLabelString == '00:00:00') {
-                    var recordingMiliSeconds = Math.floor($wnd.recorder.encodedSamplePosition / 48000);
+                    var recordingMilliSeconds = Math.floor($wnd.recorder.encodedSamplePosition / 48000);
                     var recordingTimeDate = new Date(recordingMilliSeconds);
                     var recordingTimeString = recordingTimeDate.toISOString().substr(11, 8);
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingTimeString);
