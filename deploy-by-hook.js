@@ -714,7 +714,7 @@ function buildFromListing() {
                     remainingFiles--;
                 } else if (fileNamePart === "multiparticipant") {
                     remainingFiles--;
-                    initialiseResult(fileNamePart, 'disabled', true);
+                    storeResult(fileNamePart, 'disabled', "validation", "json_xsd", true, false, false);
                     console.log("this script will not build multiparticipant without manual intervention");
                 } else if (filename === "listing.json") {
                     // read through this commited listing json file and look for undeploy targets then add them to the list if they are not already there
