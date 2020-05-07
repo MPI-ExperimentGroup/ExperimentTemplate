@@ -61,7 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var iframe = document.createElement('iframe');
                 iframe.setAttribute('width', '100%');
                 iframe.setAttribute('height', '100%');
-                iframe.src = ".?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode;
+                iframe.src = ".?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode + "#" + document.getElementById('targetPresenter').value;
                 document.getElementsByTagName("body")[0].append(iframe);
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started " + memberCode;
@@ -116,8 +116,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body style="width: 100%; height: 100%;">
         <div id="robot_messages"></div>
         <select id="sizeSelect">
-            <option value="1" selected="selected">R0_4</option>
-            <option value="2">R0_8</option>
+            <option value="1">R0_2</option>
+            <option value="2" selected="selected">R0_4</option>
+            <option value="3">R0_8</option>
         </select>
         <button type="button" class="startRobotButton" onclick="robot();">All</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('A');">A</button>
@@ -129,8 +130,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <button type="button" class="startRobotButton" onclick="singleFrame('G');">G</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('H');">H</button>
         Group Name: <input type="text" id="groupName" placeholder="Type a group name...">  
-        Frame Height: <input type="number" id="frameHeight" value="20" max="100" min="0">
-        Frame Width: <input type="number" id="frameWidth" value="50" max="100" min="0">
+        Target Presenter: <input type="text" id="targetPresenter" placeholder="Optional presenter name...">  
+        Frame Height: <input type="number" id="frameHeight" value="50" max="100" min="0">
+        Frame Width: <input type="number" id="frameWidth" value="20" max="100" min="0">
         Robot Speed: <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
         <button type="button" onclick="reloadIframes();">reload frames</button>
