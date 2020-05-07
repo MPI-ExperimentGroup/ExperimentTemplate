@@ -3,7 +3,7 @@ package nl.mpi.tg.eg.frinex.sharedobjects;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
@@ -25,7 +25,6 @@ import org.springframework.web.context.WebApplicationContext;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 /**
  * @since Nov 9, 2016 1:44:47 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>

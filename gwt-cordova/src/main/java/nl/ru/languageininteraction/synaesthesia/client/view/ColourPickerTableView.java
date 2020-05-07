@@ -17,8 +17,8 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.view;
 
+import com.google.gwt.dom.client.Element;
 import nl.mpi.tg.eg.experiment.client.view.AbstractView;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Grid;
 
 /**
