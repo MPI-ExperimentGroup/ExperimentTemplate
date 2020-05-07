@@ -166,7 +166,7 @@
                                                 </actionButton>
                                                 <actionButton featureText="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                                     <endAudioRecorderTag eventTier="2" eventTag="image bounce audio"/>
-                                                    <removeStimulus/>
+                                                    <nextStimulus repeatIncorrect="false"/>
                                                     <nextMatchingStimulus/>
                                                 </actionButton>
                                                 <startAudioRecorderTag eventTier="2"/>

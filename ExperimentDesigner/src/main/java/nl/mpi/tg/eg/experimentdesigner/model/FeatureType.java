@@ -125,7 +125,7 @@ public enum FeatureType {
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    removeStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+//    removeStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     removeMatchingStimulus(false, new FeatureAttribute[]{matchingRegex}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    clearStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     centrePage(false, false, null),

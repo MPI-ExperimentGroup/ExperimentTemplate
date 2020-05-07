@@ -456,7 +456,6 @@
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
                 <showStimulusProgress styleName="styleName"/>
                 <keepStimulus/>
-                <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
@@ -837,7 +836,6 @@
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
                 <showStimulusProgress styleName="styleName"/>
                 <keepStimulus/>
-                <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
@@ -1218,7 +1216,6 @@
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
                 <showStimulusProgress styleName="styleName"/>
                 <keepStimulus/>
-                <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
@@ -2487,7 +2484,6 @@
                 <stimulusMetadataField fieldName="workerId"/>
                 <showStimulusProgress/>
                 <keepStimulus/>
-                <removeStimulus/>
                 <removeMatchingStimulus matchingRegex=""/>
                 <prevStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulusButton featureText="" repeatIncorrect=""/>
@@ -2868,7 +2864,6 @@
                 <stimulusMetadataField fieldName="workerId"/>
                 <showStimulusProgress/>
                 <keepStimulus/>
-                <removeStimulus/>
                 <removeMatchingStimulus matchingRegex=""/>
                 <prevStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulusButton featureText="" repeatIncorrect=""/>
@@ -3249,7 +3244,6 @@
                 <stimulusMetadataField fieldName="workerId"/>
                 <showStimulusProgress/>
                 <keepStimulus/>
-                <removeStimulus/>
                 <removeMatchingStimulus matchingRegex=""/>
                 <prevStimulusButton featureText="" repeatIncorrect=""/>
                 <nextStimulusButton featureText="" repeatIncorrect=""/>

@@ -530,11 +530,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 //    private static final int STIMULUS_TIER = 2;
 
-    @Deprecated // @todo: is this really used anymore? -
-    protected void removeStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus) {
-        stimulusProvider.nextStimulus(1);
-        //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
-    }
+//    @Deprecated // @todo: is this really used anymore? -
+//    protected void removeStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus) {
+//        stimulusProvider.nextStimulus(1);
+//        //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
+//    }
 
     protected void nextMatchingStimulus(final StimuliProvider stimulusProvider) {
         matchingStimuliGroup.getNextStimulus(stimulusProvider);

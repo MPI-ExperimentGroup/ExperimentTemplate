@@ -197,7 +197,9 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTier, "2");
             endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "image bounce audio");
             nextButtonFeature2.getPresenterFeatureList().add(endAudioRecorderTagFeature2);
-            nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.removeStimulus, null));
+            final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+            presenterFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+            nextButtonFeature2.getPresenterFeatureList().add(presenterFeature);
             nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextMatchingStimulus, null));
 
             final PresenterFeature startTagFeature2 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
