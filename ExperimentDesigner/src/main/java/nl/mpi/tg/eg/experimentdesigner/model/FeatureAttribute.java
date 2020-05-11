@@ -228,7 +228,7 @@ public enum FeatureAttribute {
     //    @Deprecated
     //    webm,
     recordingFormat,
-    downloadPermittedWindowMs,
+    downloadPermittedWindowMs("A time window in milliseconds within which download from the server will be allowed.", false, AttributeType.xsInteger),
     deviceRegex(true),
     poster,
     autoPlay("When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.",
@@ -250,12 +250,12 @@ public enum FeatureAttribute {
     maxStimuli(true),
     excludeRegex(true),
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
-    scoreThreshold(true), // interger to make active, when empty or not present is passed as null
-    errorThreshold(true), // interger to make active, when empty or not present is passed as null
-    potentialThreshold(true), // interger to make active, when empty or not present is passed as null
-    correctStreak(true), // interger to make active, when empty or not present is passed as null
-    errorStreak(true), // interger to make active, when empty or not present is passed as null
-    gamesPlayed(true), // interger to make active, when empty or not present is passed as null
+    scoreThreshold(true), // integer to make active, when empty or not present is passed as null
+    errorThreshold(true), // integer to make active, when empty or not present is passed as null
+    potentialThreshold(true), // integer to make active, when empty or not present is passed as null
+    correctStreak(true), // integer to make active, when empty or not present is passed as null
+    errorStreak(true), // integer to make active, when empty or not present is passed as null
+    gamesPlayed(true), // integer to make active, when empty or not present is passed as null
     showPlaybackIndicator,
     showControls(false),
     phaseMembers("List of members for each phase. Each phase is separated by : and in each phase the matching members are separated by , when no members match a - is given for that phase.", false, AttributeType.xsString),
