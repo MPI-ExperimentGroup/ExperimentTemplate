@@ -285,7 +285,7 @@ public class HtmlTokenFormatter {
             final String allMemberCodes = groupParticipantService.getAllMemberCodes();
             final String activeChannel = groupParticipantService.getActiveChannel();
             replacedTokensString = replacedTokensString.replace("<groupAllMemberCodes>", (allMemberCodes != null) ? allMemberCodes : "---");
-            replacedTokensString = replacedTokensString.replace("<groupOtherMemberCodes>", (allMemberCodes != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
+            replacedTokensString = replacedTokensString.replace("<groupOtherMemberCodes>", (allMemberCodes != null && memberCode != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
             replacedTokensString = replacedTokensString.replace("<channelOtherMemberCodes>", (activeChannel != null) ? activeChannel.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
             replacedTokensString = replacedTokensString.replace("<groupActiveChannel>", (activeChannel != null) ? activeChannel : "---");
             final String groupCommunicationChannels = groupParticipantService.getGroupCommunicationChannels();
