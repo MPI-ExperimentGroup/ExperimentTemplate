@@ -17,8 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
-import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -55,25 +55,25 @@ public class GroupParticipantServiceTest {
     @Test
     public void testAddGroupActivity() {
         System.out.println("addGroupActivity");
-        GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2, "stimuliList", new TimedStimulusListener() {
+        GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2, "stimuliList", new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void trigggerCancelableEvent() {
             }
-        }, new TimedStimulusListener() {
+        }, new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void trigggerCancelableEvent() {
             }
-        }, new TimedStimulusListener() {
+        }, new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void trigggerCancelableEvent() {
             }
-        }, new TimedStimulusListener() {
+        }, new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void trigggerCancelableEvent() {
             }
-        }, new TimedStimulusListener() {
+        }, new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void trigggerCancelableEvent() {
             }
         });
         final StringBuilder stringBuilder = new StringBuilder();
@@ -186,34 +186,34 @@ public class GroupParticipantServiceTest {
             stringBuilder.append(expectedData[0]);
             stringBuilder.append("\n");
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_0", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H", 2,
-                    "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small", new TimedStimulusListener() {
+                    "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small", new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // connectedListener
                     stringBuilder.append("connectedListener\n");
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // groupNotReadyListener
                     stringBuilder.append("groupNotReadyListener\n");
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // screenResetRequestListner
                     stringBuilder.append("screenResetRequestListner\n");
                     groupParticipantService.setStimuliListLoaded(groupParticipantService.getStimuliListGroup());
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // stimulusSyncListner
                     stringBuilder.append("stimulusSyncListner\n");
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // groupInfoChangeListner
                     stringBuilder.append("groupInfoChangeListner\n");
                 }
@@ -246,34 +246,34 @@ public class GroupParticipantServiceTest {
             stringBuilder.append("\n");
 
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_1", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2,
-                    "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium", new TimedStimulusListener() {
+                    "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium", new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // connectedListener
                     stringBuilder.append("connectedListener\n");
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // groupNotReadyListener
                     stringBuilder.append("groupNotReadyListener\n");
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // screenResetRequestListner
                     stringBuilder.append("screenResetRequestListner\n");
                     groupParticipantService.setStimuliListLoaded(groupParticipantService.getStimuliListGroup());
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // stimulusSyncListner
                     stringBuilder.append("stimulusSyncListner\n");
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // groupInfoChangeListner
                     stringBuilder.append("groupInfoChangeListner\n");
                 }
