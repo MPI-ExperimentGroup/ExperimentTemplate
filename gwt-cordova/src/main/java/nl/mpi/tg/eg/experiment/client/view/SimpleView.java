@@ -73,20 +73,22 @@ public class SimpleView extends AbstractView {
     }
 
     public void addInfoButton(final PresenterEventListner presenterListerner) {
-        final Label headerButton = new Label(presenterListerner.getLabel());
-        headerButton.addStyleName("headerButton");
-        SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+        if (headerPanel != null) {
+            final Label headerButton = new Label(presenterListerner.getLabel());
+            headerButton.addStyleName("headerButton");
+            SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
-            @Override
-            protected void singleShotFired() {
-                presenterListerner.eventFired(null, this);
-            }
-        };
-        headerButton.addClickHandler(singleShotEventListner);
-        headerButton.addTouchStartHandler(singleShotEventListner);
-        headerButton.addTouchMoveHandler(singleShotEventListner);
-        headerButton.addTouchEndHandler(singleShotEventListner);
-        headerPanel.setWidget(0, 2, headerButton);
+                @Override
+                protected void singleShotFired() {
+                    presenterListerner.eventFired(null, this);
+                }
+            };
+            headerButton.addClickHandler(singleShotEventListner);
+            headerButton.addTouchStartHandler(singleShotEventListner);
+            headerButton.addTouchMoveHandler(singleShotEventListner);
+            headerButton.addTouchEndHandler(singleShotEventListner);
+            headerPanel.setWidget(0, 2, headerButton);
+        }
     }
 
     public void addTitle(String label, final PresenterEventListner presenterListerner) {

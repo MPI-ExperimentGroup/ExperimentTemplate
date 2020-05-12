@@ -23,8 +23,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
-import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
  * @since Nov 8, 2016 1:47:57 PM (creation date)
@@ -32,17 +32,17 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  */
 public class GroupParticipantService implements GroupScoreService {
 
-//    private final HashMap<String, ArrayList<TimedStimulusListener>> selfActivityListeners = new HashMap<>();
-//    private final HashMap<String, ArrayList<TimedStimulusListener>> othersActivityListeners = new HashMap<>();
+//    private final HashMap<String, ArrayList<CancelableStimulusListener>> selfActivityListeners = new HashMap<>();
+//    private final HashMap<String, ArrayList<CancelableStimulusListener>> othersActivityListeners = new HashMap<>();
     private final HashMap<String, GroupActivityListener> activityListeners = new HashMap<>();
-    private final TimedStimulusListener screenResetRequestListner;
-    private final TimedStimulusListener stimulusSyncListner;
-    private final TimedStimulusListener groupInfoChangeListner;
+    private final CancelableStimulusListener screenResetRequestListner;
+    private final CancelableStimulusListener stimulusSyncListner;
+    private final CancelableStimulusListener groupInfoChangeListner;
     private final String allMemberCodes;
     private final String groupCommunicationChannels;
-    private final TimedStimulusListener connectedListener;
-    private final TimedStimulusListener groupNotReadyListener;
-//    private final TimedStimulusListener endOfStimulusListener;
+    private final CancelableStimulusListener connectedListener;
+    private final CancelableStimulusListener groupNotReadyListener;
+//    private final CancelableStimulusListener endOfStimulusListener;
     private boolean isConnected = false;
     private List<GroupActivityListener> lastFiredListnerList = null;
 
@@ -71,8 +71,8 @@ public class GroupParticipantService implements GroupScoreService {
     private final HashMap<String, String> channelScores = new HashMap<>();
     private String groupUUID = null;
 
-    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner
-    //            , TimedStimulusListener endOfStimulusListener
+    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded, CancelableStimulusListener connectedListener, CancelableStimulusListener groupNotReadyListener, CancelableStimulusListener screenResetRequestListner, CancelableStimulusListener stimulusSyncListner, CancelableStimulusListener groupInfoChangeListner
+    //            , CancelableStimulusListener endOfStimulusListener
     ) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
@@ -88,10 +88,10 @@ public class GroupParticipantService implements GroupScoreService {
 //        this.endOfStimulusListener = endOfStimulusListener;
     }
 
-//    public void addGroupActivity(final String phaseMembers, final int requestedPhase, final TimedStimulusListener activityListener) {
+//    public void addGroupActivity(final String phaseMembers, final int requestedPhase, final CancelableStimulusListener activityListener) {
 //
-//        ArrayList<TimedStimulusListener> currentSelfRoles = selfActivityListeners.get(phaseMembers);
-//        ArrayList<TimedStimulusListener> currentOthersRoles = othersActivityListeners.get(phaseMembers);
+//        ArrayList<CancelableStimulusListener> currentSelfRoles = selfActivityListeners.get(phaseMembers);
+//        ArrayList<CancelableStimulusListener> currentOthersRoles = othersActivityListeners.get(phaseMembers);
 //        if (currentSelfRoles == null) {
 //            currentSelfRoles = new ArrayList<>();
 //            selfActivityListeners.put(phaseMembers, currentSelfRoles);
@@ -353,6 +353,14 @@ public class GroupParticipantService implements GroupScoreService {
 
     public String getMessageSenderMemberCode() {
         return messageSenderMemberCode;
+    }
+
+    public void stopListeners() {
+        connectedListener.cancel();
+        groupNotReadyListener.cancel();
+        screenResetRequestListner.cancel();
+        stimulusSyncListner.cancel();
+        groupInfoChangeListner.cancel();
     }
 
     public native void joinGroupNetwork(String groupServerUrl) /*-{

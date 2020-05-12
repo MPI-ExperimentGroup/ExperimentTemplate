@@ -562,9 +562,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     getSelfTag(), groupMembers, groupCommunicationChannels,
                     phasesPerStimulus,
                     stimulusProvider.generateStimuliStateSnapshot(),
-                    new TimedStimulusListener() {
+                    new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
                     clearPage();
                     ((ComplexView) simpleView).addPadding();
@@ -576,9 +576,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     timedStimulusListener.postLoadTimerFired();
                     groupKickTimer.schedule(1000);
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     clearPage();
                     ((ComplexView) simpleView).addPadding();
 //                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
@@ -586,9 +586,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     ((ComplexView) simpleView).addPadding();
                     groupKickTimer.schedule(1000);
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addText("synchronising the stimuli");
                     final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
@@ -599,9 +599,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     groupParticipantService.setStimuliListLoaded(loadedStimulusString);
                     groupKickTimer.schedule(1000);
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     if (groupParticipantService.getStimulusIndex() < stimulusProvider.getTotalStimuli()) {
                         if (groupParticipantService.getStimulusIndex() != stimulusProvider.getCurrentStimulusIndex()) {
                             groupParticipantService.setResponseStimulusId(null);
@@ -624,9 +624,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         }
                     }
                 }
-            }, new TimedStimulusListener() {
+            }, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                public void trigggerCancelableEvent() {
                     ((ComplexView) simpleView).addInfoButton(new PresenterEventListner() {
                         @Override
                         public String getLabel() {
@@ -2435,6 +2435,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.stopAudio();
         timedStimulusView.stopAllMedia();
         timedStimulusView.clearDomHandlers();
+        if (groupParticipantService != null) {
+            groupParticipantService.stopListeners();
+        }
         super.savePresenterState();
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
