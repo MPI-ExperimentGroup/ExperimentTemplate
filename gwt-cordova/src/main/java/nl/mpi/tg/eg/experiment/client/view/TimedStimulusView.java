@@ -890,6 +890,7 @@ public class TimedStimulusView extends ComplexView {
 
     public void setWebRecorderMediaId(String webRecorderMediaId) {
         this.webRecorderMediaId = webRecorderMediaId;
+        stopMedia(webRecorderMediaId);
         videoList.remove(webRecorderMediaId);
         audioList.remove(webRecorderMediaId);
     }
