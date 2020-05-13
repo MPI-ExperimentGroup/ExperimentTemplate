@@ -61,7 +61,9 @@ public class AudioPlayer {
             }
             //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
             audioPlayer.load();
-//            audioPlayer.pause();
+            if (!autoPlay) {
+                audioPlayer.pause();
+            }
         } catch (AudioException audioException) {
             if (timedEventMonitor != null) {
                 timedEventMonitor.registerEvent("audioExceptionFired");
@@ -163,6 +165,8 @@ public class AudioPlayer {
             audioEventListner.audioLoaded();
             if (autoPlay) {
                 play(audioPlayer.getAudioElement());
+            } else {
+                audioPlayer.pause();
             }
         }
     }
