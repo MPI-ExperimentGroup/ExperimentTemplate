@@ -3940,6 +3940,28 @@
                 <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
             </onError>
         </matchOnEvalTokens>
+        <matchOnEvalTokens evaluateTokens="random(21) &lt; 21" matchingRegex="true">
+            <conditionTrue>
+                <htmlTokenText featureText="matchOnEvalTokens conditionTrue on evaluateTokens=&quot;random(21) &lt; 21&quot; and matchingRegex=&quot;true&quot;"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlTokenText featureText="matchOnEvalTokens conditionFalse on evaluateTokens=&quot;random(21) &lt; 21&quot; and matchingRegex=&quot;true&quot;"/>
+            </conditionFalse>
+            <onError>
+                <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <matchOnEvalTokens evaluateTokens="random(21) &gt;= 0" matchingRegex="true">
+            <conditionTrue>
+                <htmlTokenText featureText="matchOnEvalTokens conditionTrue on evaluateTokens=&quot;random(21) &gt;= 0&quot; and matchingRegex=&quot;true&quot;"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlTokenText featureText="matchOnEvalTokens conditionFalse on evaluateTokens=&quot;random(21) &gt;= 0&quot; and matchingRegex=&quot;true&quot;"/>
+            </conditionFalse>
+            <onError>
+                <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+            </onError>
+        </matchOnEvalTokens>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationSessionStepsExample" type="transmission" self="InvitationSessionStepsExample" title="Invitation Session Steps Example">
         <hasMetadataValue fieldName="validated_uuid" matchingRegex="...*">

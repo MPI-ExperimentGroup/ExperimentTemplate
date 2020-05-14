@@ -22,6 +22,7 @@ import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
@@ -111,7 +112,7 @@ public class HtmlTokenFormatter {
 
     private String evaluateResolve(String inputString) throws EvaluateTokensException {
         System.out.println(inputString);
-        RegExp regExpGroupM = RegExp.compile("(daysBetween|length)(\\([^\\)\\(]*\\))");
+        RegExp regExpGroupM = RegExp.compile("(daysBetween|length|random)(\\([^\\)\\(]*\\))");
         MatchResult matcherGroupM = regExpGroupM.exec(inputString);
         while (matcherGroupM != null) {
             if (matcherGroupM.getGroupCount() == 3) {
@@ -131,6 +132,16 @@ public class HtmlTokenFormatter {
                             final Date dateB = parseDDMMYYYDate(dateStringB);
                             long diffMs = dateB.getTime() - dateA.getTime();
                             resultValue = Long.toString(diffMs / (1000 * 60 * 60 * 24));
+                        } else {
+                            throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
+                        }
+                        break;
+                    case "random":
+                        String[] parameterValues = parameterMatch.replaceAll("[\"\\(\\)]", "").split(",");
+                        if (parameterValues.length == 1) {
+//                            final int randomNumberOrigin = Integer.parseInt(parameterValues[0]);
+                            final int randomNumberBound = Integer.parseInt(parameterValues[0]);
+                            resultValue = Integer.toString(new Random().nextInt(randomNumberBound));
                         } else {
                             throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
                         }

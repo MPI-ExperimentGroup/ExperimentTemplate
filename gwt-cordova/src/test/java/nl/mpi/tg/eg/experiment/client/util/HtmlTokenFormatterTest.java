@@ -261,5 +261,8 @@ public class HtmlTokenFormatterTest {
         assertEquals(9.0, instance.evaluateTokensNumber("length(\"123456789\")"));
         assertEquals(12.0, instance.evaluateTokensNumber("length(\"123456123456\")"));
         assertEquals(12.0, instance.evaluateTokensNumber("daysBetween(\"01/12/2019\", \"13/12/2019\")"));
+        final Number evaluateTokensRandom = instance.evaluateTokensNumber("random(21)");
+        assertTrue("random(21) < 21", evaluateTokensRandom.intValue() < 21);
+        assertTrue("random(21) >= 0", evaluateTokensRandom.intValue() >= 0);
     }
 }
