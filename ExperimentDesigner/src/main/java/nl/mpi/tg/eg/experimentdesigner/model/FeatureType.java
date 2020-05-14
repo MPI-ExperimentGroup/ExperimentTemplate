@@ -77,9 +77,9 @@ public enum FeatureType {
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}, "Creates a button in the footer which when clicked evaluates the contents of its element."),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     addPadding(false, false, null),
-    localStorageData(false, false, null),
-    stimuliValidation(false, false, null),
-    addKeyboardDebug(false, false, null),
+    localStorageData(false, false, null, "For use in the debug type presenter to show the data stored in the local storage. Use with caution because there can be a lot of data."),
+    stimuliValidation(false, false, null, "For use in the debug type presenter to show the results of stimuli randomisation for each selection in the configuration file."),
+    addKeyboardDebug(false, false, null, "For use in the debug type presenter to show the keycodes entered by devices attached to the device. Such as bluetooth remotes or pointers."),
     // metadataField fields:
     //    displays all or one metadata field for data entry
     allMetadataFields(false, false, null),
@@ -103,7 +103,7 @@ public enum FeatureType {
     switchUserIdButton(true, new FeatureAttribute[]{styleName, groupId, fieldName, validationRegex}, "Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.", Contitionals.hasErrorSuccess, Contitionals.none),
     selectUserMenu(false, false, new FeatureAttribute[]{styleName, fieldName}, "Shows a menu listing the users in the system. The label on each menu item is determined by value of the provided metadata field. When a menu item is clicked the active user is changed and the next presenter is shown."),
     selectLocaleMenu(false, false, new FeatureAttribute[]{styleName}),
-    eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}),
+    eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}, "For use in the debug type presenter to erase the local storage data. This action cannot be undone and if the local storage data has not be sent to the server or stored in the device storage, the data will be lost permanently."),
     eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
     showCurrentMs(false, false, null),
     //    @Deprecated //???

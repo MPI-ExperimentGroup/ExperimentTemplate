@@ -642,9 +642,9 @@
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string"/>
-<xs:attribute name="repeatCount" type="xs:string"/>
-<xs:attribute name="repeatRandomWindow" type="xs:string"/>
+<xs:attribute name="randomise" type="xs:boolean"/>
+<xs:attribute name="repeatCount" type="xs:integer"/>
+<xs:attribute name="repeatRandomWindow" type="xs:integer"/>
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="loadStimulusType">
@@ -658,9 +658,9 @@
 <xs:attribute name="minStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string"/>
-<xs:attribute name="repeatCount" type="xs:string"/>
-<xs:attribute name="repeatRandomWindow" type="xs:string"/>
+<xs:attribute name="randomise" type="xs:boolean"/>
+<xs:attribute name="repeatCount" type="xs:integer"/>
+<xs:attribute name="repeatRandomWindow" type="xs:integer"/>
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
 <xs:attribute name="class" type="xs:string"/>
 <xs:anyAttribute  processContents="lax"/>
@@ -673,9 +673,9 @@
 </xs:all>
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string"/>
-<xs:attribute name="repeatCount" type="xs:string"/>
-<xs:attribute name="repeatRandomWindow" type="xs:string"/>
+<xs:attribute name="randomise" type="xs:boolean"/>
+<xs:attribute name="repeatCount" type="xs:integer"/>
+<xs:attribute name="repeatRandomWindow" type="xs:integer"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="loadSdCardStimulusType">
@@ -692,9 +692,9 @@
 <xs:attribute name="excludeRegex" type="xs:string"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 <xs:attribute name="replacementRegex" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string"/>
-<xs:attribute name="repeatCount" type="xs:string"/>
-<xs:attribute name="repeatRandomWindow" type="xs:string"/>
+<xs:attribute name="randomise" type="xs:boolean"/>
+<xs:attribute name="repeatCount" type="xs:integer"/>
+<xs:attribute name="repeatRandomWindow" type="xs:integer"/>
 <xs:attribute name="adjacencyThreshold" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="currentStimulusHasTagType">
@@ -3246,10 +3246,19 @@
 <xs:complexType name="addPaddingType">
 </xs:complexType>
 <xs:complexType name="localStorageDataType">
+<xs:annotation>
+<xs:documentation>For use in the debug type presenter to show the data stored in the local storage. Use with caution because there can be a lot of data.</xs:documentation>
+</xs:annotation>
 </xs:complexType>
 <xs:complexType name="stimuliValidationType">
+<xs:annotation>
+<xs:documentation>For use in the debug type presenter to show the results of stimuli randomisation for each selection in the configuration file.</xs:documentation>
+</xs:annotation>
 </xs:complexType>
 <xs:complexType name="addKeyboardDebugType">
+<xs:annotation>
+<xs:documentation>For use in the debug type presenter to show the keycodes entered by devices attached to the device. Such as bluetooth remotes or pointers.</xs:documentation>
+</xs:annotation>
 </xs:complexType>
 <xs:complexType name="allMetadataFieldsType">
 </xs:complexType>
@@ -3343,6 +3352,9 @@
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="eraseLocalStorageButtonType">
+<xs:annotation>
+<xs:documentation>For use in the debug type presenter to erase the local storage data. This action cannot be undone and if the local storage data has not be sent to the server or stored in the device storage, the data will be lost permanently.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="styleName" type="xs:string"/>
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
@@ -3919,7 +3931,7 @@
 <xs:attribute name="animate" type="xs:string"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
-<xs:attribute name="randomise" type="xs:string"/>
+<xs:attribute name="randomise" type="xs:boolean"/>
 </xs:complexType>
 <xs:complexType name="pauseType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -11251,7 +11263,7 @@
 <xs:complexType name="randomGroupingType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.</xs:documentation>
+<xs:documentation>List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.</xs:documentation>
 </xs:annotation>
 <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>

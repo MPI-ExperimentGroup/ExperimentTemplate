@@ -2690,7 +2690,7 @@ Randomly activates one menu item on the current presenter providing that the tar
 <h3 id="addKeyboardDebugType" style="text-transform: uppercase;">
 addKeyboardDebug
 </h3>
-
+For use in the debug type presenter to show the keycodes entered by devices attached to the device. Such as bluetooth remotes or pointers.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">addKeyboardDebug</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -5280,7 +5280,7 @@ String</span><br/>
 <h3 id="eraseLocalStorageButtonType" style="text-transform: uppercase;">
 eraseLocalStorageButton
 </h3>
-
+For use in the debug type presenter to erase the local storage data. This action cannot be undone and if the local storage data has not be sent to the server or stored in the device storage, the data will be lost permanently.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">eraseLocalStorageButton</span></td><td><span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -7300,12 +7300,12 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">randomise</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When true the items will be randomised, when false the items will not be randomised.</span><br/>
+<span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+When greater than zero the list will be repeated the number of times specified.</span><br/>
+<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
 <span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:purple">&gt;</span></td><td>
@@ -7319,9 +7319,9 @@ String</span><br/>
 </a></td></tr>
 <tr><td>
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -7343,13 +7343,13 @@ String</span><br/>
 <h3 id="randomGroupingType" style="text-transform: uppercase;">
 randomGrouping
 </h3>
-List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.
+List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -7458,12 +7458,12 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">randomise</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When true the items will be randomised, when false the items will not be randomised.</span><br/>
+<span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+When greater than zero the list will be repeated the number of times specified.</span><br/>
+<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
 <span style="color:green">*</span><span style="color:grey">=&quot;Custom attributes can be assigned in the plugin associated with this feature&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -7476,9 +7476,9 @@ String</span><br/>
 </a></td></tr>
 <tr><td>
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -7500,13 +7500,13 @@ String</span><br/>
 <h3 id="randomGroupingType" style="text-transform: uppercase;">
 randomGrouping
 </h3>
-List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.
+List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -7602,7 +7602,7 @@ tag
 <h3 id="localStorageDataType" style="text-transform: uppercase;">
 localStorageData
 </h3>
-
+For use in the debug type presenter to show the data stored in the local storage. Use with caution because there can be a lot of data.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">localStorageData</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -11760,7 +11760,7 @@ The milliseconds to delay after completion. The resulting delay is approximate a
 <h3 id="stimuliValidationType" style="text-transform: uppercase;">
 stimuliValidation
 </h3>
-
+For use in the debug type presenter to show the results of stimuli randomisation for each selection in the configuration file.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimuliValidation</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -13733,12 +13733,12 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">randomise</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When true the items will be randomised, when false the items will not be randomised.</span><br/>
+<span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+When greater than zero the list will be repeated the number of times specified.</span><br/>
+<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -13753,9 +13753,9 @@ String</span><br/>
 </a></td></tr>
 <tr><td>
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -13777,13 +13777,13 @@ String</span><br/>
 <h3 id="randomGroupingType" style="text-transform: uppercase;">
 randomGrouping
 </h3>
-List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.
+List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -14643,8 +14643,8 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">randomise</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When true the items will be randomised, when false the items will not be randomised.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -22824,12 +22824,12 @@ When present this tag will be logged in the timestamps table as close as possibl
 String</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">randomise</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
-<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When true the items will be randomised, when false the items will not be randomised.</span><br/>
+<span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+When greater than zero the list will be repeated the number of times specified.</span><br/>
+<span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>

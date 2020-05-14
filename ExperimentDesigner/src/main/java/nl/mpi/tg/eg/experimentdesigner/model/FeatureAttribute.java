@@ -72,9 +72,9 @@ public enum FeatureAttribute {
     sendData,
     networkErrorMessage,
     inputErrorMessage,
-    randomise(true),
-    repeatCount(true),
-    repeatRandomWindow(true), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
+    randomise("When true the items will be randomised, when false the items will not be randomised.", true, AttributeType.xsBoolean),
+    repeatCount("When greater than zero the list will be repeated the number of times specified.", true, AttributeType.xsInteger),
+    repeatRandomWindow("Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.",true,AttributeType.xsInteger), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
     adjacencyThreshold(true),
     repeatIncorrect,
     //    repeatMatching(true),

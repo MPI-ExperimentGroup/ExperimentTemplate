@@ -225,7 +225,10 @@ public class AbstractSchemaGenerator {
             }
             List<DocumentationElement> documentationElements = new ArrayList<>();
             if (featureType.isCanHaveRandomGrouping() && featureType.canHaveStimulusTags()) {
-                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)}).stringAttribute("storageField", true).stringAttribute("consumedTagGroup", /* todo: document how consumedTagGroup is used */ true));
+                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.", 0, 1,
+                        new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)})
+                        .documentedAttribute("storageField", AttributeType.xsString, "If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.", true)
+                        .documentedAttribute("consumedTagGroup", AttributeType.xsString, "When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters."/* todo: document how consumedTagGroup is used */, true));
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
             if (!translatableAttribites.isEmpty()) {
