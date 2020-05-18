@@ -821,20 +821,26 @@
         <!--Adding HardwareTimeStamps so that experiment timing can be tested in place.-->
         <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
+                <clearPage/>
+                <regionAppend regionId="hardwareTimeStampStatusRegion"/>
                 <hasGetParameter parameterName="hardwareTimeStamp">
                     <conditionTrue>
-                        <htmlText featureText="HardwareTimeStamp is enabled."/>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="HardwareTimeStamps is enabled."/>
+                        </regionAppend>
                     </conditionTrue>
                     <conditionFalse>
-                        <htmlText featureText="HardwareTimeStamp has not been provided as a GET parameter in the URL. HardwareTimeStamp disabled so this example will have no output."/>
-                        <htmlText featureText="&lt;a href=&quot;?HardwareTimeStamp&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="The GET parameter hardwareTimeStamp has not been provided in the URL. HardwareTimeStamps disabled so this example will have no output."/>
+                            <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
+                        </regionAppend>
                     </conditionFalse>
                 </hasGetParameter>
                 <table styleName="stimulusPanel">
                     <row>
                         <column>
                             <actionTokenButton featureText="off">
-                                <HardwareTimeStamp dtmf="off"/>
+                                <hardwareTimeStamp dtmf="off"/>
                             </actionTokenButton>
                         </column>
                         <column>
@@ -856,22 +862,22 @@
                         </column>
                         <column>
                             <actionTokenButton featureText="1">
-                                <HardwareTimeStamp dtmf="1"/>
+                                <hardwareTimeStamp dtmf="1"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="2">
-                                <HardwareTimeStamp dtmf="2"/>
+                                <hardwareTimeStamp dtmf="2"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="3">
-                                <HardwareTimeStamp dtmf="3"/>
+                                <hardwareTimeStamp dtmf="3"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="A">
-                                <HardwareTimeStamp dtmf="A"/>
+                                <hardwareTimeStamp dtmf="A"/>
                             </actionTokenButton>
                         </column>
                     </row>
@@ -881,22 +887,22 @@
                         </column>
                         <column>
                             <actionTokenButton featureText="4">
-                                <HardwareTimeStamp dtmf="4"/>
+                                <hardwareTimeStamp dtmf="4"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="5">
-                                <HardwareTimeStamp dtmf="5"/>
+                                <hardwareTimeStamp dtmf="5"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="6">
-                                <HardwareTimeStamp dtmf="6"/>
+                                <hardwareTimeStamp dtmf="6"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="B">
-                                <HardwareTimeStamp dtmf="B"/>
+                                <hardwareTimeStamp dtmf="B"/>
                             </actionTokenButton>
                         </column>
                     </row>
@@ -906,22 +912,22 @@
                         </column>
                         <column>
                             <actionTokenButton featureText="7">
-                                <HardwareTimeStamp dtmf="7"/>
+                                <hardwareTimeStamp dtmf="7"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="8">
-                                <HardwareTimeStamp dtmf="8"/>
+                                <hardwareTimeStamp dtmf="8"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="9">
-                                <HardwareTimeStamp dtmf="9"/>
+                                <hardwareTimeStamp dtmf="9"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="C">
-                                <HardwareTimeStamp dtmf="C"/>
+                                <hardwareTimeStamp dtmf="C"/>
                             </actionTokenButton>
                         </column>
                     </row>
@@ -931,22 +937,22 @@
                         </column>
                         <column>
                             <actionTokenButton featureText="*">
-                                <HardwareTimeStamp dtmf="*"/>
+                                <hardwareTimeStamp dtmf="*"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="0">
-                                <HardwareTimeStamp dtmf="0"/>
+                                <hardwareTimeStamp dtmf="0"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="#">
-                                <HardwareTimeStamp dtmf="#"/>
+                                <hardwareTimeStamp dtmf="#"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="D">
-                                <HardwareTimeStamp dtmf="D"/>
+                                <hardwareTimeStamp dtmf="D"/>
                             </actionTokenButton>
                         </column>
                     </row>
@@ -956,22 +962,22 @@
                         </column>
                         <column>
                             <actionTokenButton featureText="On 1">
-                                <HardwareTimeStamp opto1="true"/>
+                                <hardwareTimeStamp opto1="true"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Off 1">
-                                <HardwareTimeStamp opto1="false"/>
+                                <hardwareTimeStamp opto1="false"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="On 2">
-                                <HardwareTimeStamp opto2="true"/>
+                                <hardwareTimeStamp opto2="true"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Off 2">
-                                <HardwareTimeStamp opto2="false"/>
+                                <hardwareTimeStamp opto2="false"/>
                             </actionTokenButton>
                         </column>
                     </row>
@@ -980,19 +986,67 @@
                             <htmlText featureText="Video"/>
                         </column>
                         <column>
-                            <actionTokenButton featureText="Play">
+                            <actionTokenButton featureText="Load">
+                                <cancelPauseAll/>
+                                <hardwareTimeStamp dtmf="1" opto1="true" opto2="false" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="stimulusVideo stimulusVideoExample"/>
+                                </regionAppend>
+                                <regionReplace regionId="stimuliVideoRegion">
+                                    <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                                        <mediaLoaded>
+                                            <hardwareTimeStamp dtmf="2"/>
+                                            <regionAppend regionId="stimuliLabelRegion">
+                                                <plainText featureText="mediaLoaded stimulusVideoExample"/>
+                                            </regionAppend>
+                                        </mediaLoaded>
+                                        <mediaLoadFailed>
+                                            <hardwareTimeStamp dtmf="2" opto1="false" opto2="true" />
+                                            <regionAppend regionId="stimuliLabelRegion">
+                                                <plainText featureText="mediaLoadFailed stimulusVideoExample"/>
+                                            </regionAppend>
+                                        </mediaLoadFailed>
+                                        <mediaPlaybackStarted>
+                                            <hardwareTimeStamp dtmf="off" />
+                                            <regionAppend regionId="stimuliLabelRegion">
+                                                <plainText featureText="mediaPlaybackStarted stimulusVideoExample"/>
+                                            </regionAppend>
+                                        </mediaPlaybackStarted>
+                                        <mediaPlaybackComplete>
+                                            <hardwareTimeStamp dtmf="3" opto1="false" opto2="true" />
+                                            <regionAppend regionId="stimuliLabelRegion">
+                                                <plainText featureText="mediaPlaybackComplete stimulusVideoExample"/>
+                                            </regionAppend>
+                                        </mediaPlaybackComplete>
+                                    </stimulusVideo>  
+                                </regionReplace>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Pause">
+                                <hardwareTimeStamp dtmf="4" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="pauseMedia stimulusVideoExample"/>
+                                </regionAppend>
+                                <pauseMedia mediaId="stimulusVideoExample"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Resume">
+                                <hardwareTimeStamp dtmf="5" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="playMedia stimulusVideoExample"/>
+                                </regionAppend>
+                                <playMedia mediaId="stimulusVideoExample"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Rewind">
+                                <hardwareTimeStamp dtmf="6" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="rewindMedia stimulusVideoExample"/>
+                                </regionAppend>
+                                <rewindMedia mediaId="stimulusVideoExample"/>
                             </actionTokenButton>
                         </column>
                     </row>
@@ -1002,29 +1056,78 @@
                         </column>
                         <column>
                             <actionTokenButton featureText="Record">
+                                <cancelPauseAll/>
+                                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" mediaId="recordedMediaD">
+                                    <onError>
+                                        <hardwareTimeStamp dtmf="7" opto1="false" opto2="true" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="onError recordedMediaD"/>
+                                        </regionAppend>
+                                    </onError>
+                                    <onSuccess>
+                                        <hardwareTimeStamp dtmf="8" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="onSuccess recordedMediaD"/>
+                                        </regionAppend>
+                                    </onSuccess>
+                                    <mediaLoaded>
+                                        <hardwareTimeStamp dtmf="9" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaLoaded recordedMediaD"/>
+                                        </regionAppend>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>                                        
+                                        <hardwareTimeStamp dtmf="0" opto1="false" opto2="true" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaLoadFailed recordedMediaD"/>
+                                        </regionAppend>
+                                    </mediaLoadFailed>
+                                    <mediaPlaybackStarted>                                        
+                                        <hardwareTimeStamp dtmf="A" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaPlaybackStarted recordedMediaD"/>
+                                        </regionAppend>
+                                    </mediaPlaybackStarted>
+                                    <mediaPlaybackComplete>
+                                        <hardwareTimeStamp dtmf="B" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaPlaybackComplete recordedMediaD"/>
+                                        </regionAppend>
+                                    </mediaPlaybackComplete>
+                                </startAudioRecorderWeb>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Pause">
+                                <hardwareTimeStamp dtmf="C" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="pauseMedia recordedMediaD"/>
+                                </regionAppend>
+                                <pauseMedia mediaId="recordedMediaD"/>
                             </actionTokenButton>
                         </column>
                         <column>
                             <actionTokenButton featureText="Resume">
+                                <hardwareTimeStamp dtmf="D" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="playMedia recordedMediaD"/>
+                                </regionAppend>
+                                <playMedia mediaId="recordedMediaD"/>
                             </actionTokenButton>
                         </column>
                         <column>
-                            <actionTokenButton featureText="Stop">
-                            </actionTokenButton>
                         </column>
                     </row>
                 </table>
+                <regionReplace regionId="stimuliVideoRegion"/>
                 <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+                <regionAppend regionId="stimuliLabelRegion"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <actionButton featureText="resetStimulus">
-                    <resetStimulus target="HardwareTimeStamps"/>
-                    <gotoPresenter target="HardwareTimeStamps"/>
+                    <resetStimulus target="hardware_time_stamps"/>
+                    <gotoPresenter target="hardware_time_stamps"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>

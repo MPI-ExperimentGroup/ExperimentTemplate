@@ -27,6 +27,7 @@ public class HardwareTimeStamp {
 
     public HardwareTimeStamp(String hardwareTimeStampOptions) {
         this.hardwareTimeStampOptions = hardwareTimeStampOptions;
+        initialise();
     }
 
     public enum DTMF {
@@ -39,7 +40,8 @@ public class HardwareTimeStamp {
         code1(1209, 697), code2(1336, 697), code3(1477, 697), codeA(1633, 697),
         code4(1209, 770), code5(1336, 770), code6(1477, 770), codeB(1633, 770),
         code7(1209, 852), code8(1336, 852), code9(1477, 852), codeC(1633, 852),
-        codeAsterisk(1209, 941), code0(1336, 941), codeHash(1477, 941), codeD(1633, 941);
+        codeAsterisk(1209, 941), code0(1336, 941), codeHash(1477, 941), codeD(1633, 941),
+        codeoff(0, 0);
 
         private DTMF(int tone1, int tone2) {
             this.tone1 = tone1;
@@ -59,6 +61,27 @@ public class HardwareTimeStamp {
     }
 
     public void setDtmf(DTMF dtmf) {
-
+        startDtmf(dtmf.tone1, dtmf.tone2);
     }
+
+    final protected native boolean initialise() /*-{
+        if (!$wnd.oscillator1 || !$wnd.oscillator2) {
+            var audioContext = new ($wnd.AudioContext || $wnd.webkitAudioContext)();
+            $wnd.oscillator1 = audioContext.createOscillator();
+            $wnd.oscillator2 = audioContext.createOscillator();
+            $wnd.oscillator1.type = 'sine';
+            $wnd.oscillator2.type = 'sine';
+            $wnd.oscillator1.connect(audioContext.destination);
+            $wnd.oscillator2.connect(audioContext.destination);
+            $wnd.oscillator1.frequency.value = 0;
+            $wnd.oscillator2.frequency.value = 0;
+            $wnd.oscillator1.start();
+            $wnd.oscillator2.start();
+        }
+    }-*/;
+
+    final protected native boolean startDtmf(final int tone1, final int tone2) /*-{
+        $wnd.oscillator1.frequency.value = tone1;
+        $wnd.oscillator2.frequency.value = tone2;
+    }-*/;
 }
