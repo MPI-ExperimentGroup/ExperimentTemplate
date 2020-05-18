@@ -125,7 +125,7 @@ public enum FeatureType {
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-//    removeStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    //    removeStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     removeMatchingStimulus(false, new FeatureAttribute[]{matchingRegex}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    clearStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     centrePage(false, false, null),
@@ -149,6 +149,7 @@ public enum FeatureType {
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
     logTimeStamp(false, new FeatureAttribute[]{eventTag}, "Records a timestamp similar to the way image and media onLoad events etc. are logged. The logged ms is relative to the load time of the presenter.", Contitionals.none, Contitionals.none),
+    hardwareTimeStamp(false, new FeatureAttribute[]{opto1, opto2, dtmf}, "When the URL parameter &quot;hardwareTimeStamp&quot; is provided a hardware measurable marker will be produced either visually on screen or as an audible tone or both.", Contitionals.none, Contitionals.none),
     // todo: document audioButton which fires the played event once and only once after the first playback finishes
     audioButton(false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src, groupId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     preloadAllStimuli(false, null, true, false, false, Contitionals.hasErrorSuccess, Contitionals.none),

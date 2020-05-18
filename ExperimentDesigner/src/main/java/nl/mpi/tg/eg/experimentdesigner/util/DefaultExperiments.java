@@ -327,6 +327,15 @@ public class DefaultExperiments {
                         case downloadPermittedWindowMs:
                             presenterFeature.addFeatureAttributes(attribute, "30000");
                             break;
+                        case opto1:
+                            presenterFeature.addFeatureAttributes(attribute, "true");
+                            break;
+                        case opto2:
+                            presenterFeature.addFeatureAttributes(attribute, "true");
+                            break;
+                        case dtmf:
+                            presenterFeature.addFeatureAttributes(attribute, "#");
+                            break;
                         case targetOptions:
                             presenterFeature.addFeatureAttributes(attribute, "AutoMenu,about");
                         case target:

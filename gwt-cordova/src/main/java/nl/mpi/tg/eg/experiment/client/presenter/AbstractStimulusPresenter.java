@@ -70,7 +70,8 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
-import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
+import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -103,6 +104,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
+    private final HardwareTimeStamp hardwareTimeStamp;
 
     protected enum AnimateTypes {
         bounce, none, stimuliCode
@@ -128,6 +130,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                schedule(1000);
 //            }
 //        }.schedule(1000);
+        final String hardwareTimeStampOptions = Window.Location.getParameter("hardwareTimeStamp");
+        if (hardwareTimeStampOptions != null) {
+            hardwareTimeStamp = new HardwareTimeStamp(hardwareTimeStampOptions);
+        } else {
+            hardwareTimeStamp = null;
+        }
     }
 
     @Override
@@ -1624,6 +1632,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void showCurrentMs() {
 //        timedStimulusView.addText(duration.elapsedMillis() + "ms");
+    }
+
+    protected void hardwareTimeStamp(Boolean opto1, Boolean opto2, DTMF dtmf) {
+        if (hardwareTimeStamp != null) {
+            if (opto1 != null) {
+                hardwareTimeStamp.setOpto1(opto1);
+            }
+            if (opto2 != null) {
+                hardwareTimeStamp.setOpto2(opto2);
+            }
+            if (dtmf != null) {
+                hardwareTimeStamp.setDtmf(dtmf);
+            }
+        }
     }
 
     protected void logTimeStamp(String eventTag) {

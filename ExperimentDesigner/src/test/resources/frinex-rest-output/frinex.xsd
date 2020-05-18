@@ -188,6 +188,35 @@
 </xs:simpleType>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="dtmfType">
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+<xs:enumeration value="7"/>
+<xs:enumeration value="8"/>
+<xs:enumeration value="9"/>
+<xs:enumeration value="A"/>
+<xs:enumeration value="B"/>
+<xs:enumeration value="C"/>
+<xs:enumeration value="D"/>
+<xs:enumeration value="*"/>
+<xs:enumeration value="#"/>
+<xs:enumeration value="off"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+</xs:restriction>
+</xs:simpleType>
 <xs:element name="experiment">
 <xs:complexType>
 <xs:sequence>
@@ -426,6 +455,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
 <xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
 <xs:element name="helpDialogue" type="helpDialogueType"/>
@@ -851,6 +881,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -1040,6 +1071,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -1238,6 +1270,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -1425,6 +1458,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -1606,6 +1640,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -1786,6 +1821,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -1969,6 +2005,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -2152,6 +2189,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -2353,6 +2391,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -2535,6 +2574,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -2717,6 +2757,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -2948,6 +2989,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -3156,6 +3198,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -3509,6 +3552,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -3710,6 +3754,14 @@
 </xs:annotation>
 <xs:attribute name="eventTag" type="xs:string"/>
 </xs:complexType>
+<xs:complexType name="hardwareTimeStampType">
+<xs:annotation>
+<xs:documentation>When the URL parameter &quot;hardwareTimeStamp&quot; is provided a hardware measurable marker will be produced either visually on screen or as an audible tone or both.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="opto1" type="xs:boolean"/>
+<xs:attribute name="opto2" type="xs:boolean"/>
+<xs:attribute name="dtmf" type="dtmfType"/>
+</xs:complexType>
 <xs:complexType name="audioButtonType">
 <xs:all>
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
@@ -3826,6 +3878,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -4026,6 +4079,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -4221,6 +4275,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -4420,6 +4475,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -4601,6 +4657,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -4779,6 +4836,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -4966,6 +5024,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -5154,6 +5213,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -5333,6 +5393,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -5511,6 +5572,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -5686,6 +5748,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -5861,6 +5924,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -6036,6 +6100,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -6213,6 +6278,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -6390,6 +6456,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -6567,6 +6634,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -6742,6 +6810,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -6917,6 +6986,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -7092,6 +7162,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -7267,6 +7338,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -7442,6 +7514,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -7617,6 +7690,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -7792,6 +7866,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -7967,6 +8042,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -8148,6 +8224,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -8323,6 +8400,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -8498,6 +8576,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -8673,6 +8752,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -8848,6 +8928,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -9023,6 +9104,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -9198,6 +9280,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -9373,6 +9456,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -9548,6 +9632,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -9725,6 +9810,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -9900,6 +9986,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -10079,6 +10166,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -10273,6 +10361,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -10578,6 +10667,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -10765,6 +10855,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>
@@ -11035,6 +11126,7 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="showStimulus" type="showStimulusType"/>

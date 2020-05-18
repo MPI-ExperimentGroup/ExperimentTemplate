@@ -245,6 +245,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
                 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
+                import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
                 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
                 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
                 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -661,7 +662,7 @@ or local-name() eq 'removeStimulus'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
+    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -684,6 +685,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'nextMatchingStimulus'
             and local-name() ne 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp'
+            and local-name() ne 'hardwareTimeStamp'
            ">
             <xsl:text>currentStimulus</xsl:text>
         </xsl:if>
@@ -708,18 +710,22 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'sendGroupMessage' 
             and local-name() ne 'sendGroupStoredMessage' 
             and local-name() ne 'logTimeStamp' 
+            and local-name() ne 'hardwareTimeStamp' 
             and local-name() ne 'sendGroupEndOfStimuli'">
             <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto1) then if (@opto1 eq 'true') then 'true' else 'false' else 'null' else ''" />  
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then if (@opto2 eq 'true') then ', true' else ', false' else ', null' else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'&amp;#x2A;','Asterisk'),'#','Hash')) else ', null' else ''" />
         <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'
 or local-name() eq 'prevStimulusButton'
 or local-name() eq 'nextStimulusButton'
 or local-name() eq 'sendGroupMessageButton'
 ">
-            <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />    
+            <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
         </xsl:if>    
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        

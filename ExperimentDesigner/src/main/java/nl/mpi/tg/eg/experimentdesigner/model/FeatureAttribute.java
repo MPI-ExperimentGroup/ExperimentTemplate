@@ -74,7 +74,7 @@ public enum FeatureAttribute {
     inputErrorMessage,
     randomise("When true the items will be randomised, when false the items will not be randomised.", true, AttributeType.xsBoolean),
     repeatCount("When greater than zero the list will be repeated the number of times specified.", true, AttributeType.xsInteger),
-    repeatRandomWindow("Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.",true,AttributeType.xsInteger), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
+    repeatRandomWindow("Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.", true, AttributeType.xsInteger), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
     adjacencyThreshold(true),
     repeatIncorrect,
     //    repeatMatching(true),
@@ -240,6 +240,9 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     offset,
+    dtmf("Dual-tone multi-frequency signaling", true, new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "*", "#", "off"}),
+    opto1("On screen indicator for optical sensor one.", true, AttributeType.xsBoolean),
+    opto2("On screen indicator for optical sensor two.", true, AttributeType.xsBoolean),
     msToNext("The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.", false, AttributeType.xsInteger),
     groupId("This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.", true, AttributeType.xsString),
     mediaId(/*true*/), listenerId, threshold, maximum, minimum, average, ranges(true),
