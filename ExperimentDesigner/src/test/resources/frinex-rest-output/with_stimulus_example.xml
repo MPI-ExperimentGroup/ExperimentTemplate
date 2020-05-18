@@ -817,6 +817,222 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="HardwareTimeStamps" type="stimulus" self="hardware_time_stamps" title="HardwareTimeStamps">
+        <!--Adding HardwareTimeStamps so that experiment timing can be tested in place.-->
+        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
+            <hasMoreStimulus>
+                <hasGetParameter parameterName="hardwareTimeStamp">
+                    <conditionTrue>
+                        <htmlText featureText="HardwareTimeStamp is enabled."/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <htmlText featureText="HardwareTimeStamp has not been provided as a GET parameter in the URL. HardwareTimeStamp disabled so this example will have no output."/>
+                        <htmlText featureText="&lt;a href=&quot;?HardwareTimeStamp&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
+                    </conditionFalse>
+                </hasGetParameter>
+                <table styleName="stimulusPanel">
+                    <row>
+                        <column>
+                            <actionTokenButton featureText="off">
+                                <HardwareTimeStamp dtmf="off"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <htmlText featureText="1209 Hz"/>
+                        </column>
+                        <column>
+                            <htmlText featureText="1336 Hz"/>
+                        </column>
+                        <column>
+                            <htmlText featureText="1477 Hz"/>
+                        </column>
+                        <column>
+                            <htmlText featureText="1633 Hz"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="697 Hz"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="1">
+                                <HardwareTimeStamp dtmf="1"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="2">
+                                <HardwareTimeStamp dtmf="2"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="3">
+                                <HardwareTimeStamp dtmf="3"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="A">
+                                <HardwareTimeStamp dtmf="A"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="770 Hz"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="4">
+                                <HardwareTimeStamp dtmf="4"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="5">
+                                <HardwareTimeStamp dtmf="5"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="6">
+                                <HardwareTimeStamp dtmf="6"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="B">
+                                <HardwareTimeStamp dtmf="B"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="852 Hz"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="7">
+                                <HardwareTimeStamp dtmf="7"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="8">
+                                <HardwareTimeStamp dtmf="8"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="9">
+                                <HardwareTimeStamp dtmf="9"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="C">
+                                <HardwareTimeStamp dtmf="C"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="941 Hz"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="*">
+                                <HardwareTimeStamp dtmf="*"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="0">
+                                <HardwareTimeStamp dtmf="0"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="#">
+                                <HardwareTimeStamp dtmf="#"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="D">
+                                <HardwareTimeStamp dtmf="D"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="Optical"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="On 1">
+                                <HardwareTimeStamp opto1="true"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Off 1">
+                                <HardwareTimeStamp opto1="false"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="On 2">
+                                <HardwareTimeStamp opto2="true"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Off 2">
+                                <HardwareTimeStamp opto2="false"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="Video"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Play">
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Pause">
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Resume">
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Rewind">
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="Recorder"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Record">
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Pause">
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Resume">
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Stop">
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                </table>
+                <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="HardwareTimeStamps"/>
+                    <gotoPresenter target="HardwareTimeStamps"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>ToneVideos</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Sequential Display Example (single timer)" type="stimulus" self="Sequential_Display_Example" title="Sequential Display Example (single timer)">
         <loadStimulus eventTag="Sequential_Display_Example" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
