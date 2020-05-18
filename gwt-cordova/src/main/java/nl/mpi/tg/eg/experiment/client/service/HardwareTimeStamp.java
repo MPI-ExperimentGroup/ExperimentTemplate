@@ -71,8 +71,11 @@ public class HardwareTimeStamp {
             $wnd.oscillator2 = audioContext.createOscillator();
             $wnd.oscillator1.type = 'sine';
             $wnd.oscillator2.type = 'sine';
-            $wnd.oscillator1.connect(audioContext.destination);
-            $wnd.oscillator2.connect(audioContext.destination);
+            var gainNode = audioContext.createGain();
+            gainNode.gain.value = 0.5;
+            $wnd.oscillator1.connect(gainNode);
+            $wnd.oscillator2.connect(gainNode);
+            gainNode.connect(audioContext.destination);
             $wnd.oscillator1.frequency.value = 0;
             $wnd.oscillator2.frequency.value = 0;
             $wnd.oscillator1.start();
