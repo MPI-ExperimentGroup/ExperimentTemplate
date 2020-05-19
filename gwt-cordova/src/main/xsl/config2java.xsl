@@ -718,7 +718,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto1) then if (@opto1 eq 'true') then 'true' else 'false' else 'null' else ''" />  
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then if (@opto2 eq 'true') then ', true' else ', false' else ', null' else ''" />
-        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'&amp;#x2A;','Asterisk'),'#','Hash')) else ', null' else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else ', null' else ''" />
         <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'
 or local-name() eq 'prevStimulusButton'

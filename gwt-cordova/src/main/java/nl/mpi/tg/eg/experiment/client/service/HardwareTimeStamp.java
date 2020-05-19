@@ -52,13 +52,21 @@ public class HardwareTimeStamp {
 
     }
 
-    public void setOpto1(boolean optoState) {
+    final public native void setOpto1(boolean optoState) /*-{
+            if (optoState) {
+                $wnd.opto1.css('background', 'white');
+            } else {
+                $wnd.opto1.css('background', 'black');
+            }
+    }-*/;
 
-    }
-
-    public void setOpto2(boolean optoState) {
-
-    }
+    final public native void setOpto2(boolean optoState) /*-{
+            if (optoState) {
+                $wnd.opto2.css('background', 'white');
+            } else {
+                $wnd.opto2.css('background', 'black');
+            }
+    }-*/;
 
     public void setDtmf(DTMF dtmf) {
         startDtmf(dtmf.tone1, dtmf.tone2);
@@ -80,6 +88,35 @@ public class HardwareTimeStamp {
             $wnd.oscillator2.frequency.value = 0;
             $wnd.oscillator1.start();
             $wnd.oscillator2.start();
+        }
+        if (!$wnd.opto1 || !$wnd.opto2) {
+            $wnd.$("#widgetTag").append("<div id='opto1'>opto1</div>");
+            $wnd.opto1 = $wnd.$("#opto1");
+            $wnd.opto1.css('background', 'white');
+            $wnd.opto1.css('color', 'grey');
+            $wnd.opto1.css('display', 'block');
+            $wnd.opto1.css('z-index', '100');
+            $wnd.opto1.css('position', 'fixed');
+            $wnd.opto1.css('top', '0px');
+            $wnd.opto1.css('left', '50%');
+            $wnd.opto1.css('transform', 'translate(-125%,0)');
+            $wnd.opto1.css('height', '200px');
+            $wnd.opto1.css('width', '200px');
+            $wnd.opto1.css('border', '1px grey solid');
+            
+            $wnd.$("#widgetTag").append("<div id='opto2'>opto2</div>");
+            $wnd.opto2 = $wnd.$("#opto2");
+            $wnd.opto2.css('background', 'white');
+            $wnd.opto2.css('color', 'grey');
+            $wnd.opto2.css('display', 'block');
+            $wnd.opto2.css('z-index', '100');
+            $wnd.opto2.css('position', 'fixed');
+            $wnd.opto2.css('top', '0px');
+            $wnd.opto2.css('left', '50%');
+            $wnd.opto2.css('transform', 'translate(25%,0)');
+            $wnd.opto2.css('height', '200px');
+            $wnd.opto2.css('width', '200px');
+            $wnd.opto2.css('border', '1px grey solid');
         }
     }-*/;
 
