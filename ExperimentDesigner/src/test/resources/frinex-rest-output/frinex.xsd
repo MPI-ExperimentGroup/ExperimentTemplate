@@ -174,6 +174,20 @@
 </xs:simpleType>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="recordingFormatType">
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="wav"/>
+<xs:enumeration value="ogg"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="autoPlayType">
 <xs:restriction>
 <xs:simpleType>
@@ -10946,7 +10960,7 @@
 <xs:complexType name="startAudioRecorderWebType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server within that period of time for user verification, otherwise the recorded audio can be accessed from the browser memory if it is still available. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.</xs:documentation>
+<xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.</xs:documentation>
 </xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -10965,6 +10979,7 @@
 <xs:attribute name="downloadPermittedWindowMs" type="xs:integer" use="required"/>
 <xs:attribute name="deviceRegex" type="xs:string"/>
 <xs:attribute name="mediaId" type="xs:string" use="required"/>
+<xs:attribute name="recordingFormat" type="recordingFormatType"/>
 </xs:complexType>
 <xs:complexType name="startAudioRecorderAppType">
 <xs:all>

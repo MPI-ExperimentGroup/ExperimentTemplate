@@ -6017,7 +6017,7 @@ When the URL parameter &quot;hardwareTimeStamp&quot; is provided a hardware meas
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">hardwareTimeStamp</span></td><td><span style="color:green">dtmf</span><span style="color:grey">=&quot;dtmfType [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, *, #, off] (optional)&quot;</span><span>
-Dual-tone multi-frequency signaling</span><br/>
+Dual-tone multi-frequency signalling</span><br/>
 <span style="color:green">opto1</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 On screen indicator for optical sensor one.</span><br/>
 <span style="color:green">opto2</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
@@ -17883,7 +17883,7 @@ String</span><br/>
 <h3 id="startAudioRecorderWebType" style="text-transform: uppercase;">
 startAudioRecorderWeb
 </h3>
-Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server within that period of time for user verification, otherwise the recorded audio can be accessed from the browser memory if it is still available. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.
+Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderWeb</span></td><td><span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -17894,6 +17894,8 @@ A time window in milliseconds within which download from the server will be allo
 String</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
+<span style="color:green">recordingFormat</span><span style="color:grey">=&quot;recordingFormatType [wav, ogg] (optional)&quot;</span><span>
+</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>

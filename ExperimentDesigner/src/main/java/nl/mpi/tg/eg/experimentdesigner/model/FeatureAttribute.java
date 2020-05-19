@@ -227,7 +227,7 @@ public enum FeatureAttribute {
     //    ogg,
     //    @Deprecated
     //    webm,
-    recordingFormat,
+    recordingFormat("", true, new String[]{"wav", "ogg"}),
     downloadPermittedWindowMs("A time window in milliseconds within which download from the server will be allowed.", false, AttributeType.xsInteger),
     deviceRegex(true),
     poster,
@@ -240,7 +240,7 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     offset,
-    dtmf("Dual-tone multi-frequency signaling", true, new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "*", "#", "off"}),
+    dtmf("Dual-tone multi-frequency signalling", true, new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "*", "#", "off"}),
     opto1("On screen indicator for optical sensor one.", true, AttributeType.xsBoolean),
     opto2("On screen indicator for optical sensor two.", true, AttributeType.xsBoolean),
     msToNext("The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.", false, AttributeType.xsInteger),

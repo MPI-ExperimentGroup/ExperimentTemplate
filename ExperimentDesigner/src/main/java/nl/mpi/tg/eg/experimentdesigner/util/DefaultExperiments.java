@@ -309,6 +309,9 @@ public class DefaultExperiments {
                         case orientation:
                             presenterFeature.addFeatureAttributes(attribute, "flow");
                             break;
+                        case recordingFormat:
+                            presenterFeature.addFeatureAttributes(attribute, "ogg");
+                            break;
                         case randomise:
                         case autoPlay:
                         case loop:

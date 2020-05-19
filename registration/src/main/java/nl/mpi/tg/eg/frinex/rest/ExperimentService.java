@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.AudioType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -106,8 +107,8 @@ public class ExperimentService {
 //    }
     @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException {
-        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, dataBlob.getBytes(), UUID.randomUUID(), downloadPermittedWindowMs);
+    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("audioType") AudioType audioType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException {
+        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, audioType, dataBlob.getBytes(), UUID.randomUUID(), downloadPermittedWindowMs);
         audioDataRepository.save(audioData);
         // return the short lived token for the user to replay their recorded audio
         return new ResponseEntity(audioData.getShortLivedToken(), HttpStatus.OK);
@@ -116,10 +117,10 @@ public class ExperimentService {
     @RequestMapping(value = "/replayAudio/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public HttpEntity<byte[]> participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId) {
         HttpHeaders header = new HttpHeaders();
-        header.setContentType(new MediaType("audio", "ogg"));
         final List<AudioData> audioDataRecords = this.audioDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
         if (audioDataRecords.size() == 1) {
             AudioData audioData = audioDataRecords.get(0);
+            header.setContentType(new MediaType("audio", audioData.getRecordingFormat().name()));
             if (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
                 final byte[] dataBlob = audioData.getDataBlob();
                 header.setContentLength(dataBlob.length);

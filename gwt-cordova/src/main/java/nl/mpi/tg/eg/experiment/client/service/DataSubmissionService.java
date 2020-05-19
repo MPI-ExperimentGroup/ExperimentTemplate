@@ -91,13 +91,13 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "audioBlob";
     }
 
-    public native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener, final Integer downloadPermittedWindowMs) /*-{
-        var dataBlob = new Blob([dataArray], {type: 'audio/ogg'});
+    public native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener, final Integer downloadPermittedWindowMs, final String audioType) /*-{
+        var dataBlob = new Blob([dataArray], {type: 'audio/' + audioType});
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 200) {
-                    var urlAudioData = URL.createObjectURL(new Blob([dataArray], {type: 'audio/ogg'}));
+                    var urlAudioData = URL.createObjectURL(new Blob([dataArray], {type: 'audio/' + audioType}));
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;Ljava/lang/String;)(xhr.responseText,urlAudioData);
                 } else {
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataArray);
@@ -111,6 +111,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         formData.append("userId", userIdString);
         formData.append("screenName", screenName);
         formData.append("stimulusId", stimulusIdString);
+        formData.append("audioType", audioType);
         formData.append("downloadPermittedWindowMs", downloadPermittedWindowMs);
         formData.append("dataBlob", dataBlob);
         xhr.open("POST", this.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::getAudioSubmitPath()(), true);

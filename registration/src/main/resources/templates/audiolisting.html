@@ -57,7 +57,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.submitDate}">submitDate</td>
                     <td>
                         <audio controls="true">
-                            <source th:attr="src='audio/' + ${prod.userId} + '_' + ${prod.screenName} + '_' + ${prod.stimulusId} + '_' + ${prod.id}" type="audio/ogg"/>
+                            <source th:attr="src='audio/' + ${prod.userId} + '_' + ${prod.screenName} + '_' + ${prod.stimulusId} + '_' + ${prod.id},type='audio/' + ${prod.audioType}"/>
                         </audio>
                     </td>
                     <td>

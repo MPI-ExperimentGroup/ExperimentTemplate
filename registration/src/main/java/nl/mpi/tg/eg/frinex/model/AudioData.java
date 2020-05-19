@@ -42,6 +42,7 @@ public class AudioData {
     private String screenName;
     private String userId;
     private String stimulusId;
+    private AudioType recordingFormat = AudioType.ogg;
     private UUID shortLivedToken;
     private Long downloadPermittedWindowMs = null;
     @Lob
@@ -50,12 +51,13 @@ public class AudioData {
     public AudioData() {
     }
 
-    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, byte[] dataBlob, final UUID shortLivedToken, final long downloadPermittedWindowMs) {
+    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, AudioType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final long downloadPermittedWindowMs) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
         this.userId = userId;
         this.stimulusId = stimulusId;
+        this.recordingFormat = recordingFormat;
         this.dataBlob = dataBlob;
         this.shortLivedToken = shortLivedToken;
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
@@ -103,6 +105,14 @@ public class AudioData {
 
     public void setStimulusId(String stimulusId) {
         this.stimulusId = stimulusId;
+    }
+
+    public AudioType getRecordingFormat() {
+        return recordingFormat;
+    }
+
+    public void setRecordingFormat(AudioType recordingFormat) {
+        this.recordingFormat = recordingFormat;
     }
 
     public byte[] getDataBlob() {

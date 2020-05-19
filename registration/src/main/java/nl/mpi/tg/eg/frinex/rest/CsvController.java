@@ -109,7 +109,7 @@ public class CsvController {
             try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
                 zipOutputStream.setLevel(ZipOutputStream.STORED);
                 for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
-                    addToZipArchive(zipOutputStream, audioData.getUserId() + "_" + audioData.getScreenName() + "_" + audioData.getStimulusId() + "_" + audioData.getId() + ".ogg", audioData.getDataBlob());
+                    addToZipArchive(zipOutputStream, audioData.getUserId() + "_" + audioData.getScreenName() + "_" + audioData.getStimulusId() + "_" + audioData.getId() + "." + audioData.getRecordingFormat().name(), audioData.getDataBlob());
                 }
             }
             response.getOutputStream().write(outputStream.toByteArray());

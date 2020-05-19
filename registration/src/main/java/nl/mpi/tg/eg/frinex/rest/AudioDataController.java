@@ -46,9 +46,10 @@ public class AudioDataController {
     @RequestMapping(value = "audio/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public HttpEntity<byte[]> getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
         HttpHeaders header = new HttpHeaders();
-        header.setContentDispositionFormData("Content-Disposition", "audio/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + ".ogg");
-        header.setContentType(new MediaType("audio", "ogg"));
-        final byte[] dataBlob = this.audioDataRepository.findOne(id).getDataBlob();
+        final AudioData audioData = this.audioDataRepository.findOne(id);
+        header.setContentDispositionFormData("Content-Disposition", "audio/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + audioData.getRecordingFormat().name());
+        header.setContentType(new MediaType("audio", audioData.getRecordingFormat().name()));
+        final byte[] dataBlob = audioData.getDataBlob();
         header.setContentLength(dataBlob.length);
         return new HttpEntity<>(dataBlob, header);
     }

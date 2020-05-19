@@ -1665,7 +1665,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         super.startAudioRecorderTag(tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorderWeb(final String recordingLabel, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormat, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
@@ -1689,7 +1689,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                     @Override
                     public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                        submissionService.submitAudioData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs);
+                        submissionService.submitAudioData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
                     }
 
                     @Override
@@ -1712,12 +1712,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public void submissionComplete(String message, String urlAudioData) {
+                if (downloadPermittedWindowMs > 0) {
                 String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
+                    // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl)
                 timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
             }
+            }
         };
-        super.startAudioRecorderWeb(submissionService, recordingLabel, deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs);
+        super.startAudioRecorderWeb(submissionService, recordingLabel, "wav".equals(recordingFormat), deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
