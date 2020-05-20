@@ -1720,7 +1720,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             }
         };
-        super.startAudioRecorderWeb(submissionService, recordingLabel, deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        super.startAudioRecorderWeb(submissionService, recordingLabel, (deviceRegex == null) ? "" : deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
