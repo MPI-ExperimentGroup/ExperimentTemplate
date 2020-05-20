@@ -1713,14 +1713,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             @Override
             public void submissionComplete(String message, String urlAudioData) {
                 if (downloadPermittedWindowMs > 0) {
-                String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
+                    String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
                     // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl)
-                timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
-            }
+                    timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                }
             }
         };
-        super.startAudioRecorderWeb(submissionService, recordingLabel, "wav".equals(recordingFormat), deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs);
+        super.startAudioRecorderWeb(submissionService, recordingLabel, deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
