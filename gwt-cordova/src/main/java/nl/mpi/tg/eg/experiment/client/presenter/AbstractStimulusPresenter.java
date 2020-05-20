@@ -1665,10 +1665,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         super.startAudioRecorderTag(tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormat, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegex, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
+
+        final String deviceRegex = (deviceRegexL == null) ? "" : deviceRegexL;
+        final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
             public void recorderStarted() {
@@ -1720,7 +1723,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             }
         };
-        super.startAudioRecorderWeb(submissionService, recordingLabel, (deviceRegex == null) ? "" : deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        super.startAudioRecorderWeb(submissionService, recordingLabel, deviceRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
