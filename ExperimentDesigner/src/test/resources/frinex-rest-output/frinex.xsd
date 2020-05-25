@@ -11349,7 +11349,7 @@
 <xs:complexType name="validateMetadataType">
 <xs:all>
 <xs:annotation>
-<xs:documentation>Validates the current user id and the metadata fields (as listed in the administration section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from ths adminstration secion will be updated localy from the values previously saved in the admin system.</xs:documentation>
+<xs:documentation>Validates the current user id and the metadata fields (as listed in the validationService section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from this validationService section will be updated locally from the values previously saved in the admin system.</xs:documentation>
 </xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
