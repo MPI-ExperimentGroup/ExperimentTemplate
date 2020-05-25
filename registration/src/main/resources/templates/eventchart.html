@@ -37,87 +37,95 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!-- todo: check this-->
         <b>Internal timing data is indicative only. If more accuracy is needed then each experiment should be tested on the target hardware system with hardware optical and audio sensors before interpreting these results.</b>
         <!--<div th:replace="fragments/adminpagelayout :: pagemenu"></div>-->
-        <table>
-            <tr>
-                <td>
-                    Start On:
-                </td>
-                <td>
-                    Zero On:
-                </td>
-                <td>
-                    Stop On:
-                </td>
-            </tr>            
-            <tr>
-                <td>
-                    <select id="startOnValue" multiple="multiple">
-                        <option value="0">select start marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Offset1','OnsetOpto1'}, labelValue)}"></option>
-                    </select>
-                </td>
-                <td>
-                    <select id="zeroOnValue" multiple="multiple">
-                        <option value="0">select zero marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','audioStarted','videoPlay','OnsetAudio'}, labelValue)}"></option>
-                    </select>
-                </td>
-                <td>
-                    <select id="stopOnValue" multiple="multiple">
-                        <option value="0">select stop marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_out','First Stimuli Screen'}, labelValue)}"></option>
-                    </select>        
-                </td>
-            </tr>
-        </table>
         <br/>
         <br/>
-        Start Date:
-        <input type="text" id="startDate" value="2019-05-14T10:00"/>
-        End Date:
-        <input type="text" id="endDate" value="&lt;enter date&gt;"/>
         <br/>
         <br/>
-        <table>
-            <tr>
-                <td>
-                    Include With Offset:
-                </td>
-                <td>
-                    Include Without Offset:
-                </td>
-            </tr>            
-            <tr>
-                <td>
-                    <!--        <span th:each="labelValue : ${timeStampLabels}">
-                                <input type="checkbox" th:id="${labelValue}" th:value="${labelValue}" checked="checked" />
-                                <label th:text="${labelValue}" />
-                            </span>-->
-                    <select id="includeValuesOffset" multiple="multiple">
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'OffsetAudio','stimulusLabel_in','stimulusLabel_out','audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
-                    </select>
-                </td>
-                <td>
-                    <select id="includeValuesOriginal" multiple="multiple">
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusAudioExample','stimulusVideoExample'}, labelValue)}"></option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+        <button onclick="generateChart('addTimedAudio', 'addTimedAudio|stopOnValue', 'audioEnded', 200, 0, 'addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted', '', '2018', '9000', 'false', location.href.split('#'), {})">Audio Load Chart</button>
+        <a href="http://localhost:8080/with_stimulus_example-admin/eventchart?detailed#showLegend=false|showAdvanced=true|startOnValue=addTimedAudio|zeroOnValue=addTimedAudio|stopOnValue=audioEnded,audioFailed|pageSize=200|pageIndex=0|includeValuesOffset=addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted|includeValuesOriginal=stimulusAudioExample,stimulusVideoExample|startDate=2018|endDate=%3Center%20date%3E|generate=true">Audio Loading Chart</a>
         <br/>
         Show Advanced Options:
-        <input type="checkbox" id="showAdvanced" value="false"/>
-        <br/>
-        Show Legend:
-        <input type="checkbox" id="showLegend" value="false"/>
-        <br/>
-        Page Size:
-        <input type="number" id="pageSize" value="200"/>
-        Start Page:
-        <input type="number" id="pageIndex" value="0"/>
-        <br/>
-        <div id="pageInfo"/>
-        <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, location.href.split('#'), {})">Generate Chart</button>
+        <input type="checkbox" id="showAdvanced" value="false" onchange="setAdvancedVisibility();"/>
+        <div id="advancedOptions">
+            <table>
+                <tr>
+                    <td>
+                        Start On:
+                    </td>
+                    <td>
+                        Zero On:
+                    </td>
+                    <td>
+                        Stop On:
+                    </td>
+                </tr>            
+                <tr>
+                    <td>
+                        <select id="startOnValue" multiple="multiple">
+                            <option value="0">select start marker</option>
+                            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Offset1','OnsetOpto1'}, labelValue)}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="zeroOnValue" multiple="multiple">
+                            <option value="0">select zero marker</option>
+                            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','audioStarted','videoPlay','OnsetAudio'}, labelValue)}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="stopOnValue" multiple="multiple">
+                            <option value="0">select stop marker</option>
+                            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_out','First Stimuli Screen'}, labelValue)}"></option>
+                        </select>        
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <br/>
+            Start Date:
+            <input type="text" id="startDate" value="2019-05-14T10:00"/>
+            End Date:
+            <input type="text" id="endDate" value="&lt;enter date&gt;"/>
+            <br/>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        Include With Offset:
+                    </td>
+                    <td>
+                        Include Without Offset:
+                    </td>
+                </tr>            
+                <tr>
+                    <td>
+                        <!--        <span th:each="labelValue : ${timeStampLabels}">
+                                    <input type="checkbox" th:id="${labelValue}" th:value="${labelValue}" checked="checked" />
+                                    <label th:text="${labelValue}" />
+                                </span>-->
+                        <select id="includeValuesOffset" multiple="multiple">
+                            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'OffsetAudio','stimulusLabel_in','stimulusLabel_out','audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="includeValuesOriginal" multiple="multiple">
+                            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusAudioExample','stimulusVideoExample'}, labelValue)}"></option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            Show Legend:
+            <input type="checkbox" id="showLegend" value="false"/>
+            <br/>
+            Page Size:
+            <input type="number" id="pageSize" value="200"/>
+            Start Page:
+            <input type="number" id="pageIndex" value="0"/>
+            <br/>
+            <div id="pageInfo"/>
+            <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, location.href.split('#'), {})">Generate Chart</button>
+        </div>
         <br/>
         <p th:text="'Total Records: ' + ${count}" />
         <br/>
@@ -193,6 +201,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 populateFormValues();
                 showProcessedData($('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#showLegend')[0].checked);
             });
+
+            function setAdvancedVisibility() {
+                if ($('#showAdvanced')[0].checked) {
+                    $('#outputDiv').show();
+                    $('#advancedOptions').show();
+                } else {
+                    $('#outputDiv').hide();
+                    $('#advancedOptions').hide();
+                }
+            }
 
             function showProcessedData(includeValuesOffset, includeValuesOriginal, showLegend) {
                 var processedData = calculatedGraphData[location.href.split('#')];
