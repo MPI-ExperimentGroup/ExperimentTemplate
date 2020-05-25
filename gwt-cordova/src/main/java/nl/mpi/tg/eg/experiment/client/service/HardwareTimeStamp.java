@@ -97,7 +97,7 @@ public class HardwareTimeStamp {
             $wnd.opto1.css('display', 'block');
             $wnd.opto1.css('z-index', '100');
             $wnd.opto1.css('position', 'fixed');
-            $wnd.opto1.css('top', '0px');
+            $wnd.opto1.css('top', '50px');
             $wnd.opto1.css('left', '50%');
             $wnd.opto1.css('transform', 'translate(-125%,0)');
             $wnd.opto1.css('height', '200px');
@@ -111,7 +111,7 @@ public class HardwareTimeStamp {
             $wnd.opto2.css('display', 'block');
             $wnd.opto2.css('z-index', '100');
             $wnd.opto2.css('position', 'fixed');
-            $wnd.opto2.css('top', '0px');
+            $wnd.opto2.css('top', '50px');
             $wnd.opto2.css('left', '50%');
             $wnd.opto2.css('transform', 'translate(25%,0)');
             $wnd.opto2.css('height', '200px');
