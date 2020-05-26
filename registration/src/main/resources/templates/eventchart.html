@@ -42,7 +42,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <br/>
         <br/>
         <!--<button onclick="//generateChart('addTimedAudio', 'addTimedAudio|stopOnValue', 'audioEnded', 200, 0, 'addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted', '', '2018', '9000', 'false', location.href.split('#'), {})">Audio Load Chart</button>-->
-        <a href="http://localhost:8080/with_stimulus_example-admin/eventchart?detailed#showLegend=false|showAdvanced=false|startOnValue=addTimedAudio|zeroOnValue=addTimedAudio|stopOnValue=audioEnded,audioFailed|pageSize=200|pageIndex=0|includeValuesOffset=addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted|includeValuesOriginal=stimulusAudioExample,stimulusVideoExample|startDate=2018|endDate=%3Center%20date%3E|generate=true">Audio Loading Chart</a>
+        <a href="eventchart?detailed#showLegend=false|showAdvanced=false|startOnValue=addTimedAudio|zeroOnValue=addTimedAudio|stopOnValue=audioEnded,audioFailed|pageSize=200|pageIndex=0|includeValuesOffset=addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted|includeValuesOriginal=stimulusAudioExample,stimulusVideoExample|startDate=2018|endDate=%3Center%20date%3E|generate=true">Audio Loading Chart</a>
         <br/>
 
 
@@ -148,15 +148,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             /*<![CDATA[*/
             var dataReadCounter = 0;
             var calculatedGraphData = {};
+            var calculatedChartLabels = {};
             var timeStampLabels = /*[[${timeStampLabels}]]*/ null;
             var color = Chart.helpers.color;
-            function createChart(datasets, includeValuesOffset, includeValuesOriginal, showLegend) {
-                var chartLabels = includeValuesOffset.concat(includeValuesOriginal);
-                chartLabels.sort();
+            function createChart(datasets, chartLabels, showLegend) {
                 var ctx = document.getElementById('canvas').getContext('2d');
                 window.eventChart = Chart.Scatter(ctx, {
                     data: {
-                        yLabels: jQuery.unique(chartLabels),
+                        yLabels: chartLabels,
                         datasets: datasets
                     },
                     options: {
@@ -206,7 +205,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
             $(window).on('hashchange', function (e) {
                 populateFormValues();
-                showProcessedData($('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#showLegend')[0].checked);
+                showProcessedData($('#showLegend')[0].checked);
             });
 
             function setAdvancedVisibility() {
@@ -219,10 +218,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
             }
 
-            function showProcessedData(includeValuesOffset, includeValuesOriginal, showLegend) {
+            function showProcessedData(showLegend) {
                 var processedData = calculatedGraphData[location.href.split('#')[1]];
                 var datasets = [];
                 var colourIndex = 80;
+                var chartLabels = calculatedChartLabels[location.href.split('#')[1]];
                 $.each(processedData, function (key, data) {
                     if (data.data.length > 0) {
                         colourIndex += 1;
@@ -234,7 +234,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         });
                     }
                 });
-                createChart(datasets, includeValuesOffset, includeValuesOriginal, showLegend);
+                createChart(datasets, chartLabels, showLegend);
                 eventChart.update();
             }
 
@@ -305,11 +305,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 $("#totalDataProgressBar").attr("value", 0);
                 dataReadCounter = 0;
                 var processedData = {};
-                populateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, processedData);
+                var chartLabels = [];
+                populateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, processedData, chartLabels);
                 calculatedGraphData[location.href.split('#')[1]] = processedData;
+                chartLabels.sort();
+                calculatedChartLabels[location.href.split('#')[1]] = chartLabels;
             }
 
-            function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData) {
+            function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData, chartLabels) {
                 $("#outputDiv").append(startOnValue + "<br/>" + zeroOnValue + "<br/>" + stopOnValue + "<br/>" + pageSize + "<br/>" + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
                 }
@@ -334,6 +337,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             $("#outputDiv").append("set zero: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
                         if (processedData[timeStamp.userId].started) {
+                            if (chartLabels.indexOf(timeStamp.eventTag) === -1) {
+                                chartLabels.push(timeStamp.eventTag);
+                            }
                             var correctedMs = (includeValuesOffset.includes(timeStamp.eventTag)) ? timeStamp.eventMs - processedData[timeStamp.userId].offset : timeStamp.eventMs;
                             if (correctedMs >= 0
                                     && (includeValuesOffset.includes(timeStamp.eventTag) || includeValuesOriginal.includes(timeStamp.eventTag))
@@ -350,9 +356,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                     });
                     if (data.page.number < data.page.totalPages) {
-                        setTimeout(populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData), 0);
+                        setTimeout(populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData, chartLabels), 0);
                     } else {
-                        showProcessedData(includeValuesOffset, includeValuesOriginal, showLegend);
+                        showProcessedData(showLegend);
                     }
                 });
             }
