@@ -41,11 +41,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <br/>
         <br/>
         <br/>
-        <button onclick="generateChart('addTimedAudio', 'addTimedAudio|stopOnValue', 'audioEnded', 200, 0, 'addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted', '', '2018', '9000', 'false', location.href.split('#'), {})">Audio Load Chart</button>
-        <a href="http://localhost:8080/with_stimulus_example-admin/eventchart?detailed#showLegend=false|showAdvanced=true|startOnValue=addTimedAudio|zeroOnValue=addTimedAudio|stopOnValue=audioEnded,audioFailed|pageSize=200|pageIndex=0|includeValuesOffset=addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted|includeValuesOriginal=stimulusAudioExample,stimulusVideoExample|startDate=2018|endDate=%3Center%20date%3E|generate=true">Audio Loading Chart</a>
+        <!--<button onclick="//generateChart('addTimedAudio', 'addTimedAudio|stopOnValue', 'audioEnded', 200, 0, 'addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted', '', '2018', '9000', 'false', location.href.split('#'), {})">Audio Load Chart</button>-->
+        <a href="http://localhost:8080/with_stimulus_example-admin/eventchart?detailed#showLegend=false|showAdvanced=false|startOnValue=addTimedAudio|zeroOnValue=addTimedAudio|stopOnValue=audioEnded,audioFailed|pageSize=200|pageIndex=0|includeValuesOffset=addTimedAudio,audioEnded,audioFailed,audioLoaded,audioStarted|includeValuesOriginal=stimulusAudioExample,stimulusVideoExample|startDate=2018|endDate=%3Center%20date%3E|generate=true">Audio Loading Chart</a>
         <br/>
-        Show Advanced Options:
-        <input type="checkbox" id="showAdvanced" value="false" onchange="setAdvancedVisibility();"/>
+
+
+
         <div id="advancedOptions">
             <table>
                 <tr>
@@ -121,10 +122,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             Page Size:
             <input type="number" id="pageSize" value="200"/>
             Start Page:
-            <input type="number" id="pageIndex" value="0"/>
+            <input type="number" id="pageIndex" th:value="${#numbers.formatDecimal(count/200-1,0,0)}"/>
             <br/>
             <div id="pageInfo"/>
-            <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, location.href.split('#'), {})">Generate Chart</button>
+            <button onclick="generateChart()">Generate Chart</button>
         </div>
         <br/>
         <p th:text="'Total Records: ' + ${count}" />
@@ -134,6 +135,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <br/>
         Amount Of Filtered Data Read:
         <progress id="pagesProgressBar" value="0" th:max="1"/>
+        <br/>
+        <br/>
+        Show Advanced Options:
+        <input type="checkbox" id="showAdvanced" value="false" onchange="setAdvancedVisibility();"/>
+        <br/>
         <div style="width:95%">
             <canvas id="canvas"></canvas>
         </div>
@@ -195,6 +201,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
             $(window).on('load', function (e) {
                 populateFormValues();
+                generateChart();
             });
 
             $(window).on('hashchange', function (e) {
@@ -213,7 +220,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             }
 
             function showProcessedData(includeValuesOffset, includeValuesOriginal, showLegend) {
-                var processedData = calculatedGraphData[location.href.split('#')];
+                var processedData = calculatedGraphData[location.href.split('#')[1]];
                 var datasets = [];
                 var colourIndex = 80;
                 $.each(processedData, function (key, data) {
@@ -277,9 +284,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                     });
                 }
+                setAdvancedVisibility();
             }
 
-            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, requestedParameters, processedData) {
+            function generateChart() {
                 location.href = location.href.split('#')[0] + '#showLegend=' + $('#showLegend')[0].checked
                         + '|showAdvanced=' + $('#showAdvanced')[0].checked
                         + '|startOnValue=' + $('#startOnValue').val()
@@ -296,8 +304,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
                 $("#totalDataProgressBar").attr("value", 0);
                 dataReadCounter = 0;
-                populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData);
-                calculatedGraphData[requestedParameters] = processedData;
+                var processedData = {};
+                populateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), $('#showLegend')[0].checked, processedData);
+                calculatedGraphData[location.href.split('#')[1]] = processedData;
             }
 
             function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, showLegend, processedData) {
