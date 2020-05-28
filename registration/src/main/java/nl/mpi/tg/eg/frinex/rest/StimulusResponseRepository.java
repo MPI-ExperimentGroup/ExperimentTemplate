@@ -36,8 +36,8 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
     Page<StimulusResponse> findBydataChannel(Pageable pageable, Integer dataChannel);
 
-//    @Query("select distinct new StimulusResponse(userId, eventTag, eventMs, tagDate) from StimulusResponse where userId = :userId order by tagDate asc")
-    List<StimulusResponse> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore) from StimulusResponse where userId = :userId order by tagDate asc")
+    List<StimulusResponse> findByUserIdDistinctOrderByTagDateAsc(@Param("userId") String userId);
 
     List<StimulusResponse> findTop1ByUserIdOrderByTotalPotentialScoreDesc(@Param("userId") String userId);
 
