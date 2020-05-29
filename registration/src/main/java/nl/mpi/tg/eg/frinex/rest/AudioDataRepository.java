@@ -41,19 +41,19 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
 
     @Override
     @RestResource(exported = false)
-    public abstract <S extends AudioData> Iterable<S> save(Iterable<S> entities);
-
-    @Override
-    @RestResource(exported = false)
-    public abstract void delete(Long id);
-
-    @Override
-    @RestResource(exported = false)
     public abstract void delete(AudioData entity);
 
     @Override
     @RestResource(exported = false)
-    public abstract void delete(Iterable<? extends AudioData> entities);
+    public void deleteAll(Iterable<? extends AudioData> arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public void deleteById(Long arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public <S extends AudioData> Iterable<S> saveAll(Iterable<S> arg0);
 
     @Override
     @RestResource(exported = false)

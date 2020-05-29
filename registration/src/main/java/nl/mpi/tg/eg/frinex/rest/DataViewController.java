@@ -47,7 +47,7 @@ public class DataViewController {
         final List<ScreenData> distinctRecords = this.screenDataRepository.findAllDistinctRecords();
         model.addAttribute("count", distinctRecords.size());
 //        model.addAttribute("allScreenData", distinctRecords);
-        final Page<ScreenData> pageData = this.screenDataRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final Page<ScreenData> pageData = this.screenDataRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<ScreenData> content = pageData.getContent();
         final List<ScreenData> contentDistinct = new ArrayList<>();
         for (ScreenData tagData : content) {

@@ -46,7 +46,7 @@ public class TimeStampController {
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
         model.addAttribute("count", this.timeStampRepository.count());
-        final Page<TimeStamp> pageData = this.timeStampRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final Page<TimeStamp> pageData = this.timeStampRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<TimeStamp> content = pageData.getContent();
         final List<TimeStamp> contentDistinct = new ArrayList<>();
         for (TimeStamp tagData : content) {

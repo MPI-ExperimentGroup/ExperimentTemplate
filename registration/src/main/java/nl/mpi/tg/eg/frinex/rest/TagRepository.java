@@ -49,19 +49,19 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 
     @Override
     @RestResource(exported = false)
-    public abstract <S extends TagData> Iterable<S> save(Iterable<S> entities);
-
-    @Override
-    @RestResource(exported = false)
-    public abstract void delete(Long id);
-
-    @Override
-    @RestResource(exported = false)
     public abstract void delete(TagData entity);
 
     @Override
     @RestResource(exported = false)
-    public abstract void delete(Iterable<? extends TagData> entities);
+    public void deleteAll(Iterable<? extends TagData> arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public void deleteById(Long arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public <S extends TagData> Iterable<S> saveAll(Iterable<S> arg0);
 
     @Override
     @RestResource(exported = false)

@@ -50,19 +50,19 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
     @Override
     @RestResource(exported = false)
-    public abstract <S extends StimulusResponse> Iterable<S> save(Iterable<S> entities);
-
-    @Override
-    @RestResource(exported = false)
-    public abstract void delete(Long id);
-
-    @Override
-    @RestResource(exported = false)
     public abstract void delete(StimulusResponse entity);
 
     @Override
     @RestResource(exported = false)
-    public abstract void delete(Iterable<? extends StimulusResponse> entities);
+    public void deleteAll(Iterable<? extends StimulusResponse> arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public void deleteById(Long arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public <S extends StimulusResponse> Iterable<S> saveAll(Iterable<S> arg0);
 
     @Override
     @RestResource(exported = false)

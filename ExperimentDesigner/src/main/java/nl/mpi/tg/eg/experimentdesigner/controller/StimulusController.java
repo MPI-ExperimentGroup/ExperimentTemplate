@@ -76,7 +76,7 @@ public class StimulusController {
 
     @RequestMapping(value = "/experiment/{appName}/stimulus/delete", method = RequestMethod.POST)
     public String deleteStimulus(final HttpServletRequest req, Model model, @ModelAttribute Stimulus stimulus, @PathVariable String appName) {
-        final Stimulus storedStimulus = stimuliRepository.findOne(stimulus.getId());
+        final Stimulus storedStimulus = stimuliRepository.findById(stimulus.getId()).get();
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         experiment.getStimuli().remove(storedStimulus);
         experimentRepository.save(experiment);

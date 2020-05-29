@@ -61,19 +61,19 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
 
     @Override
     @RestResource(exported = false)
-    public abstract <S extends Participant> Iterable<S> save(Iterable<S> entities);
-
-    @Override
-    @RestResource(exported = false)
-    public abstract void delete(Long id);
-
-    @Override
-    @RestResource(exported = false)
     public abstract void delete(Participant entity);
 
     @Override
     @RestResource(exported = false)
-    public abstract void delete(Iterable<? extends Participant> entities);
+    public void deleteAll(Iterable<? extends Participant> arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public void deleteById(Long arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public <S extends Participant> Iterable<S> saveAll(Iterable<S> arg0);
 
     @Override
     @RestResource(exported = false)

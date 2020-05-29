@@ -46,7 +46,7 @@ public class TagController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
         final long count = this.tagRepository.count();
         model.addAttribute("count", count);
-        final Page<TagData> pageData = this.tagRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final Page<TagData> pageData = this.tagRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<TagData> content = pageData.getContent();
         final List<TagData> contentDistinct = new ArrayList<>();
         for (TagData tagData : content) {

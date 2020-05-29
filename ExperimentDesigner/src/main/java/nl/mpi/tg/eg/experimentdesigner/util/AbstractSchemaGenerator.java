@@ -19,11 +19,11 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
-import org.codehaus.groovy.runtime.AbstractComparator;
 
 /**
  * @since Feb 11, 2019 5:09:05 PM (creation date)
@@ -266,7 +266,7 @@ public class AbstractSchemaGenerator {
                     childTypeList.add(featureRef.name());
                 }
             }
-            childTypeList.sort(new AbstractComparator<String>() {
+            childTypeList.sort(new Comparator<String>() {
                 @Override
                 public int compare(String o1, String o2) {
                     return o1.compareTo(o2);

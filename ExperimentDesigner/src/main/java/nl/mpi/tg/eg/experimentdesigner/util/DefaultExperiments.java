@@ -161,7 +161,7 @@ public class DefaultExperiments {
         experiment.addMetadataOnce(metadata2);
         experiment.addMetadataOnce(metadata3);
         if (metadataRepository != null) {
-            metadataRepository.save(experiment.getMetadata());
+            metadataRepository.saveAll(experiment.getMetadata());
         }
         final Calendar datePublished = new GregorianCalendar(2020, 02, 02);
         final Calendar dateExpired = new GregorianCalendar(2020, 02, 20);
@@ -176,10 +176,10 @@ public class DefaultExperiments {
         final PresenterScreen autoMenu = addAutoMenu(0);
         final PresenterScreen aboutScreen = addAbout(1);
         if (presenterFeatureRepository != null) {
-            presenterFeatureRepository.save(aboutScreen.getPresenterFeatureList());
+            presenterFeatureRepository.saveAll(aboutScreen.getPresenterFeatureList());
         }
         if (presenterFeatureRepository != null) {
-            presenterFeatureRepository.save(autoMenu.getPresenterFeatureList());
+            presenterFeatureRepository.saveAll(autoMenu.getPresenterFeatureList());
         }
         experiment.getPresenterScreen().add(addTargetScreen(autoMenu, 0));
         experiment.getPresenterScreen().add(autoMenu);
@@ -187,7 +187,7 @@ public class DefaultExperiments {
         addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0, true);
         addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0, false);
         if (presenterFeatureRepository != null) {
-            presenterScreenRepository.save(experiment.getPresenterScreen());
+            presenterScreenRepository.saveAll(experiment.getPresenterScreen());
         }
         return experiment;
     }
@@ -245,7 +245,7 @@ public class DefaultExperiments {
                 }
             }
             if (presenterFeatureRepository != null) {
-                presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+                presenterFeatureRepository.saveAll(presenterScreen.getPresenterFeatureList());
             }
             experiment.getPresenterScreen().add(presenterScreen);
 //            if (maxScreenAddCount <= 0) {
@@ -370,7 +370,7 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionTrue, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionFalse, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasTrueFalseErrorCondition:
@@ -378,14 +378,14 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionFalse, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasCorrectIncorrect:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseCorrect, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseIncorrect, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
 //            case hasStimulusTag:
@@ -404,35 +404,35 @@ public class DefaultExperiments {
                     presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.endOfStimulus, presenterFeatureRepository, addOptionalAttributes));
                 }
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasErrorSuccess:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onSuccess, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasUserCount:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.multipleUsers, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.singleUser, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasThreshold:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.aboveThreshold, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.withinThreshold, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasMediaLoading:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasMediaLoadingButton:
@@ -440,7 +440,7 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onActivate, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasMediaPlayback:
@@ -449,7 +449,7 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackStarted, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasMediaRecorderPlayback:
@@ -460,7 +460,7 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackStarted, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case none:
@@ -469,7 +469,7 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
             default:
                 System.out.println(featureType.name());
@@ -487,7 +487,7 @@ public class DefaultExperiments {
                     }
                 }
                 if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
         }
@@ -497,7 +497,7 @@ public class DefaultExperiments {
             presenterFeature.addFeature(FeatureType.plainText, "plainText in " + featureType.name());
 //            presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.plainText, presenterFeatureRepository, ));
             if (presenterFeatureRepository != null) {
-                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
             }
         }
         return presenterFeature;

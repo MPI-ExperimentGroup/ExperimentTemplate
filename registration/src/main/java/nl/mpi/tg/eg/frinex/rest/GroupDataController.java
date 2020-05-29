@@ -50,9 +50,9 @@ public class GroupDataController {
         model.addAttribute("count", this.groupDataRepository.count());
         final Page<GroupData> pageData;
         if (groupUUID != null) {
-            pageData = this.groupDataRepository.findByGroupUUID(groupUUID, new PageRequest(page, size, Sort.Direction.ASC, sortColumn));
+            pageData = this.groupDataRepository.findByGroupUUID(groupUUID, PageRequest.of(page, size, Sort.Direction.ASC, sortColumn));
         } else {
-            pageData = this.groupDataRepository.findAll(new PageRequest(page, size, Sort.Direction.ASC, sortColumn));
+            pageData = this.groupDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.ASC, sortColumn));
         }
         final List<GroupData> content = pageData.getContent();
         final List<GroupData> contentDistinct = new ArrayList<>();

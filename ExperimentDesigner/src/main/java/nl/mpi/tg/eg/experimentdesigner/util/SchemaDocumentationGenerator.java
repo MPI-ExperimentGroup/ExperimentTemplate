@@ -23,8 +23,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
+import java.util.Comparator;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
-import org.codehaus.groovy.runtime.AbstractComparator;
 
 /**
  * @since October 1, 2018 15:38 PM (creation date)
@@ -172,7 +172,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 
     private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
         // sort the attributeTypes alphabetically
-        currentElement.attributeTypes.sort(new AbstractComparator<DocumentationAttribute>() {
+        currentElement.attributeTypes.sort(new Comparator<DocumentationAttribute>() {
             @Override
             public int compare(DocumentationAttribute o1, DocumentationAttribute o2) {
                 return o1.name.compareTo(o2.name);
@@ -451,7 +451,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         getStart(writer);
         addElement(writer, rootElement);
         FeatureType[] sortedFeatureTypes = FeatureType.values();
-        Arrays.sort(sortedFeatureTypes, new AbstractComparator<FeatureType>() {
+        Arrays.sort(sortedFeatureTypes, new Comparator<FeatureType>() {
             @Override
             public int compare(FeatureType o1, FeatureType o2) {
                 return o1.name().compareTo(o2.name());

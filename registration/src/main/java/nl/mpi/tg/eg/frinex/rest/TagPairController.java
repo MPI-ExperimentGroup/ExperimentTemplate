@@ -48,8 +48,8 @@ public class TagPairController {
         final long count = this.tagPairRepository.count();
         model.addAttribute("count", count);
         final Page<TagPairData> pageData = (dataChannel == null)
-                ? this.tagPairRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
-                : this.tagPairRepository.findBydataChannel(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
+                ? this.tagPairRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
+                : this.tagPairRepository.findBydataChannel(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
         final List<TagPairData> content = pageData.getContent();
         final List<TagPairData> contentDistinct = new ArrayList<>();
         for (TagPairData tagData : content) {

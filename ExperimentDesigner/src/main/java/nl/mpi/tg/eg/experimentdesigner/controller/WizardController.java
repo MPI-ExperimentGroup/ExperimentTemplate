@@ -70,7 +70,6 @@ public class WizardController {
 //    WizardData getJson(@PathVariable WizardData wizardData) {
 //        return wizardData;
 //    }
-    
 //    @RequestMapping(value = "/experiments/wizard/create/{wizardData}")
 //    public String create(final HttpServletRequest req, @PathVariable WizardData wizardData) {
 //        final Experiment experiment = getExperiment(wizardData);
@@ -79,7 +78,6 @@ public class WizardController {
 //        experimentRepository.save(experiment);
 //        return "redirect:/experiment/" + experiment.getId();
 //    }
-    
     @RequestMapping(value = "/wizard/update/screenText", method = RequestMethod.POST)
     public String screenText(final HttpServletRequest req,
             final Model model,
@@ -93,7 +91,7 @@ public class WizardController {
         screenTextId.setScreenText(screenText);
         screenTextRepository.save(screenTextId);
         // todo: consider adding an owner to the screentext for permissions
-        model.addAttribute("wizardFragmentValue", screenTextRepository.findOne(screenTextId.getId()).getScreenText());
+        model.addAttribute("wizardFragmentValue", screenTextRepository.findById(screenTextId.getId()).get().getScreenText());
         return "wizard :: wizardTextArea";
     }
 

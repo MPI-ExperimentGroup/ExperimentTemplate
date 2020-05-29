@@ -46,7 +46,7 @@ public class AudioDataController {
     @RequestMapping(value = "audio/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public HttpEntity<byte[]> getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
         HttpHeaders header = new HttpHeaders();
-        final AudioData audioData = this.audioDataRepository.findOne(id);
+        final AudioData audioData = this.audioDataRepository.findById(id).get();
         header.setContentDispositionFormData("Content-Disposition", "audio/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + audioData.getRecordingFormat().name());
         header.setContentType(new MediaType("audio", audioData.getRecordingFormat().name()));
         final byte[] dataBlob = audioData.getDataBlob();
@@ -61,7 +61,7 @@ public class AudioDataController {
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size) {
         model.addAttribute("count", this.audioDataRepository.count());
-        final Page<AudioData> pageData = this.audioDataRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final Page<AudioData> pageData = this.audioDataRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<AudioData> content = pageData.getContent();
         model.addAttribute("allAudioData", content);
         model.addAttribute("pageData", pageData);

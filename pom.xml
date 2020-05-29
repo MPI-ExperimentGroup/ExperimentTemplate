@@ -12,11 +12,11 @@
         <module>AdaptiveVocabularyAssessmentModule</module>
         <module>gwt-cordova</module>
         <module>registration</module>
-  </modules>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.1.RELEASE</version>
+        <version>2.3.0.RELEASE</version>
     </parent>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -78,7 +78,7 @@
         <!--<experiment.configuration.name>exampleronald</experiment.configuration.name>-->
         <!--<experiment.configuration.name>synquiz2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>zinnen_afmaken</experiment.configuration.name>-->
-                <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>Wellsprings Samoan FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
@@ -100,14 +100,18 @@
         <!--<experiment.configuration.name>ppvt</experiment.configuration.name>-->
         <!--<experiment.configuration.name>audioas2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>engadvocas</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>episodic_memory</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>sentencegeneration</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>>-->
+        <!--<experiment.configuration.name>session1auteurstest</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>nonion2_verb_object</experiment.configuration.name>-->
         <!--<experiment.configuration.name>ppvt4_en</experiment.configuration.name>-->
         <!--<experiment.configuration.name>lupyan_replication_norming</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>SynQuiz</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>userid_audio_recorder_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>stairs4words2losse</experiment.configuration.name>-->
         <!--<experiment.configuration.name>synquiz</experiment.configuration.name>-->
-<!--        <experiment.configuration.name>hbdigitspan</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>hbdigitspan</experiment.configuration.name>-->
         <!--<experiment.configuration.name>beliefs_app</experiment.configuration.name>-->
         <!--<experiment.configuration.name>rosselfieldkit1</experiment.configuration.name>-->
         <!--<experiment.configuration.name>invitation_validation_example</experiment.configuration.name>-->

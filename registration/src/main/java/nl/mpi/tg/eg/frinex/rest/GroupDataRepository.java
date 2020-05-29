@@ -48,19 +48,19 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
 
     @Override
     @RestResource(exported = false)
-    public abstract <S extends GroupData> Iterable<S> save(Iterable<S> entities);
-
-    @Override
-    @RestResource(exported = false)
-    public abstract void delete(Long id);
-
-    @Override
-    @RestResource(exported = false)
     public abstract void delete(GroupData entity);
 
     @Override
     @RestResource(exported = false)
-    public abstract void delete(Iterable<? extends GroupData> entities);
+    public void deleteAll(Iterable<? extends GroupData> arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public void deleteById(Long arg0);
+
+    @Override
+    @RestResource(exported = false)
+    public <S extends GroupData> Iterable<S> saveAll(Iterable<S> arg0);
 
     @Override
     @RestResource(exported = false)
