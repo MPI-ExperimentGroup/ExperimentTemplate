@@ -66,14 +66,19 @@ public class ParticipantDetailController {
     private List<String> fineTuningSortedKeys;
 
     @RequestMapping("participantdetail")
-    public String participantDetail(ServletRequest request, @RequestParam(value = "id", required = true) String id, Model model) {
+    public String participantDetail(ServletRequest request, @RequestParam(value = "id", required = true) String id, Model model,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
 
         List<TagPairData> tagPairData = this.tagPairRepository.findByUserIdOrderByTagDateAsc(id);
 
         this.fetchCvsTables(tagPairData);
 
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
+        
         Map<String, String[]> paramMap = request.getParameterMap();
-        boolean showStale = paramMap.containsKey("detailed");
+        boolean showStale = !simpleMode;
         if (showStale) {
             model.addAttribute("participantData", this.participantRepository.findByUserId(id));
         } else {

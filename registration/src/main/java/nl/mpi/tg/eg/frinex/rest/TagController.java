@@ -43,7 +43,9 @@ public class TagController {
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
-            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {//, Pageable pageable
         final long count = this.tagRepository.count();
         model.addAttribute("count", count);
         final Page<TagData> pageData = this.tagRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
@@ -56,6 +58,10 @@ public class TagController {
         }
         model.addAttribute("allTagData", contentDistinct);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("sortColumn", sortColumn);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
         return "tagviewer";
     }
 }

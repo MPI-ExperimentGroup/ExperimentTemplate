@@ -43,7 +43,9 @@ public class DataViewController {
     public String dataViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "viewDate") String sortColumn,
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
-            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
         final List<ScreenData> distinctRecords = this.screenDataRepository.findAllDistinctRecords();
         model.addAttribute("count", distinctRecords.size());
 //        model.addAttribute("allScreenData", distinctRecords);
@@ -57,6 +59,10 @@ public class DataViewController {
         }
         model.addAttribute("allScreenData", contentDistinct);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("sortColumn", sortColumn);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
         return "dataviewer";
     }
 

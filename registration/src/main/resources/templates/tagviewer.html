@@ -38,20 +38,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <thead>
                 <tr id='tableFloatingHeader'>
                     <!--<th>id</th>-->
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=userId'">UserId</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=screenName'">ScreenName</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;sort=userId' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">UserId</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;sort=screenName' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ScreenName</a></th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventTag'">EventTag</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagValue'">TagValue</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventMs'">EventMs</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagDate'">TagDate</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;sort=eventTag' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">EventTag</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;sort=tagValue' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">TagValue</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;sort=eventMs' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">EventMs</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;sort=tagDate' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">TagDate</a></th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="prod : ${allTagData}">
                     <!--<td th:text="${prod.id}">id</td>-->
-                    <td th:text="${prod.userId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">userId</td>
+                    <td th:text="${prod.userId}" id="clickablerow" th:userId="${prod.userId}" th:onclick="|window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=${simpleMode}';|">userId</td>
                     <!--<td th:text="${prod.submitDate}">submitDate</td>-->
                     <!--<td th:text="${prod.experimentName}">experimentName</td>-->
                     <td th:text="${prod.screenName}">screenName</td>

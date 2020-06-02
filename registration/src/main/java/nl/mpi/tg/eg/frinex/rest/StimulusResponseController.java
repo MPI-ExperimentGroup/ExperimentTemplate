@@ -44,7 +44,9 @@ public class StimulusResponseController {
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "dataChannel", required = false) Integer dataChannel,
-            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {//, Pageable pageable
         final long count = this.stimulusResponseRepository.count();
         model.addAttribute("count", count);
         final Page<StimulusResponse> pageData = (dataChannel == null)
@@ -59,6 +61,11 @@ public class StimulusResponseController {
         }
         model.addAttribute("allStimulusResponses", contentDistinct);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("sortColumn", sortColumn);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("dataChannel", dataChannel);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
         return "stimulusresponseviewer";
     }
 }

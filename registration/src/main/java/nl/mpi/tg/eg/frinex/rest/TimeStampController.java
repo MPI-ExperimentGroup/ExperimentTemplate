@@ -44,7 +44,9 @@ public class TimeStampController {
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
-            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
         model.addAttribute("count", this.timeStampRepository.count());
         final Page<TimeStamp> pageData = this.timeStampRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<TimeStamp> content = pageData.getContent();
@@ -56,11 +58,17 @@ public class TimeStampController {
         }
         model.addAttribute("allTimeStampData", contentDistinct);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
+        model.addAttribute("sortColumn", sortColumn);
+        model.addAttribute("sortDirection", sortDirection);
         return "timestampviewer";
     }
 
     @RequestMapping("eventchart")
-    public String eventChart(Model model) {
+    public String eventChart(Model model,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
         model.addAttribute("count", this.timeStampRepository.count());
         model.addAttribute("allTimeStampData", this.timeStampRepository.findAllDistinctRecords());
         final List<String> cleanedDistinctEventTag = new ArrayList<>();
@@ -71,6 +79,8 @@ public class TimeStampController {
         }
         Collections.sort(cleanedDistinctEventTag, String.CASE_INSENSITIVE_ORDER);
         model.addAttribute("timeStampLabels", cleanedDistinctEventTag);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
         return "eventchart";
     }
 }

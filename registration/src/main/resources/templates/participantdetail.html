@@ -42,10 +42,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </table>
         <h3>Application Started</h3>
         <p th:text="'Application Started Event Count, ' + ${countOfApplicationStarted}" />
-        <h3 th:if="${param.detailed}">Browser Window Closed</h3>
-        <p th:if="${param.detailed}" th:text="'Browser Window Closed Event Count, ' + ${countOfBrowserWindowClosed}" />
-        <p th:if="${param.detailed}" th:text="'Test Audio Event Count, ' + ${participantAudioTestCount}" />
-        <table th:if="${param.detailed}" id="datatable">       
+        <h3 th:if="${!simpleMode}">Browser Window Closed</h3>
+        <p th:if="${!simpleMode}" th:text="'Browser Window Closed Event Count, ' + ${countOfBrowserWindowClosed}" />
+        <p th:if="${!simpleMode}" th:text="'Test Audio Event Count, ' + ${participantAudioTestCount}" />
+        <table th:if="${!simpleMode}" id="datatable">       
             <thead>
                 <tr>
                     <th>Condition</th>
@@ -76,8 +76,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <h3 th:if="${param.detailed}">Next Button Timing</h3>
-        <table th:if="${param.detailed}" id="datatable">       
+        <h3 th:if="${!simpleMode}">Next Button Timing</h3>
+        <table th:if="${!simpleMode}" id="datatable">       
             <thead>
                 <tr>
                     <!--<th>id</th>-->
@@ -124,7 +124,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <div th:if="${param.detailed}" th:each="csvTable : ${userSummarySortedKeys}">
+        <div th:if="${!simpleMode}" th:each="csvTable : ${userSummarySortedKeys}">
             <h3 th:text="${'User summary '+csvTable}"></h3>
             <table id="datatable"> 
                 <tbody>
@@ -134,7 +134,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tbody>
             </table>
         </div>
-        <div th:if="${param.detailed}" th:each="csvTable : ${fastTrackSortedKeys}">
+        <div th:if="${!simpleMode}" th:each="csvTable : ${fastTrackSortedKeys}">
             <h3  th:text="${'Fast Track '+csvTable}"></h3>
             <table id="datatable"> 
                 <tbody>
@@ -144,7 +144,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tbody>
             </table>
         </div>
-        <div th:if="${param.detailed}" th:each="csvTable : ${fineTuningSortedKeys}">
+        <div th:if="${!simpleMode}" th:each="csvTable : ${fineTuningSortedKeys}">
             <h3  th:text="${'Fine tuning '+csvTable}"></h3>
             <table id="datatable"> 
                 <tbody>
@@ -154,8 +154,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tbody>
             </table>
         </div>
-        <h3 th:if="${param.detailed}">Tag Pair Data</h3>
-        <table th:if="${param.detailed}" id="datatable">
+        <h3 th:if="${!simpleMode}">Tag Pair Data</h3>
+        <table th:if="${!simpleMode}" id="datatable">
             <thead>
                 <tr>
                     <!--<th>id</th>-->
@@ -185,8 +185,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <h3 th:if="${param.detailed}">Tag Data</h3>
-        <table th:if="${param.detailed}" id="datatable">
+        <h3 th:if="${!simpleMode}">Tag Data</h3>
+        <table th:if="${!simpleMode}" id="datatable">
             <thead>
                 <tr>
                     <!--<th>id</th>-->
@@ -219,60 +219,60 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <thead>
                 <tr id='tableFloatingHeader'>
                     <!--<th>id</th>-->
-                    <!--<th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=userId'">UserId</a></th>-->
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=screenName'">ScreenName</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=dataChannel'">DataChannel</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=responseGroup'">ResponseGroup</a></th>
+                    <!--<th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=userId'">UserId</a></th>-->
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=screenName' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ScreenName</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=dataChannel' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">DataChannel</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=responseGroup' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ResponseGroup</a></th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">StimulusId</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=stimulusId' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">StimulusId</a></th>
 
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=response'">Response</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=isCorrect'">isCorrect</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=response' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">Response</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=isCorrect' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">isCorrect</a></th>
                     <th>
                         <span class="balloontext">Games Played</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=gamesPlayed'">GP</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=gamesPlayed' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">GP</a></th>
                     <th>
                         <span class="balloontext">Total Score</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=totalScore'">TS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=totalScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">TS</a></th>
                     <th>
                         <span class="balloontext">Total Potential Score</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=totalPotentialScore'">TPS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=totalPotentialScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">TPS</a></th>
                     <th>
                         <span class="balloontext">Current Score</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=currentScore'">CS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=currentScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">CS</a></th>
                     <th>
                         <span class="balloontext">Correct Streak</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=correctStreak'">CS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=correctStreak' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">CS</a></th>
                     <th>
                         <span class="balloontext">Error Streak</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=errorStreak'">ES</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=errorStreak' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ES</a></th>
                     <th>
                         <span class="balloontext">Potential Score</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=potentialScore'">PS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=potentialScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">PS</a></th>
                     <th>
                         <span class="balloontext">Maximum Score</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxScore'">MS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=maxScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">MS</a></th>
                     <th>
                         <span class="balloontext">Maximum Errors</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxErrors'">ME</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=maxErrors' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ME</a></th>
                     <th>
                         <span class="balloontext">Maximum Correct Streak</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxCorrectStreak'">MCS</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=maxCorrectStreak' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">MCS</a></th>
                     <th>
                         <span class="balloontext">Maximum Error Streak</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxErrorStreak'">MES</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=maxErrorStreak' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">MES</a></th>
                     <th>
                         <span class="balloontext">Maximum Potential Score</span>
-                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxPotentialScore'">MPS</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventMs'">EventMs</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagDate'">TagDate</a></th>
+                        <a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=maxPotentialScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">MPS</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=eventMs' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">EventMs</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=tagDate' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">TagDate</a></th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="prod,prodIndex : ${participantResponseData}">
                     <!--<td th:text="${prod.id}">id</td>-->
-                    <!--<td th:text="${prod.userId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">userId</td>-->
+                    <!--<td th:text="${prod.userId}" id="clickablerow" th:userId="${prod.userId}" onclick="window.location='participantdetail?id=' + this.getAttribute('userId') + ';'">userId</td>-->
                     <!--<td th:text="${prod.submitDate}">submitDate</td>-->
                     <!--<td th:text="${prod.experimentName}">experimentName</td>-->
                     <td th:text="${prod.screenName}">screenName</td>
@@ -302,10 +302,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <table id="datatable">
             <thead>
                 <tr id='tableFloatingHeader'>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=screenName'">ScreenName</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">StimulusID</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=recordingFormat'">recordingFormat</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=submitDate'">submitDate</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=screenName'">ScreenName</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=stimulusId'">StimulusID</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=recordingFormat'">recordingFormat</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + '&amp;id=' + ${paramId} + '&amp;sort=submitDate'">submitDate</a></th>
                     <th><a>Audio File</a></th>
                 </tr>
             </thead>
@@ -323,8 +323,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <h3 th:if="${param.detailed}">Time Stamp Data</h3>    
-        <table th:if="${param.detailed}" id="datatable">       
+        <h3 th:if="${!simpleMode}">Time Stamp Data</h3>    
+        <table th:if="${!simpleMode}" id="datatable">       
             <thead>
                 <tr>
                     <!--<th>id</th>-->

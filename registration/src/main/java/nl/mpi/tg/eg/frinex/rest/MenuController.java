@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Mar 14, 2019 2:49:44 PM (creation date)
@@ -33,8 +34,12 @@ public class MenuController {
     private AudioDataRepository audioDataRepository;
 
     @RequestMapping("/")
-    public String menu(Model model) {
+    public String menu(Model model,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
         model.addAttribute("audioDates", this.audioDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
         return "menu";
     }
 }

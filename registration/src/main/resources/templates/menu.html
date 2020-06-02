@@ -31,23 +31,23 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:replace="fragments/adminpagelayout :: logout"></div>
         <section>
             <h3>View Data</h3>
-            <a th:if="${param.detailed}" th:href="'dataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Screen Events Viewer</a><br th:if="${param.detailed}"/>
-            <a th:href="'participantlisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Participant Listing</a><br/>
-            <a th:if="${param.detailed}" th:href="'tagviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Viewer</a><br th:if="${param.detailed}"/>
-            <a th:href="'tagpairviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Pair Viewer</a> [
-            <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'tagpairviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
+            <a th:if="${!simpleMode}" th:href="'dataviewer?simple=' + ${simpleMode}">Screen Events Viewer</a><br th:if="${!simpleMode}"/>
+            <a th:href="'participantlisting?simple=' + ${simpleMode}">Participant Listing</a><br/>
+            <a th:if="${!simpleMode}" th:href="'tagviewer?simple=' + ${simpleMode}">Experiment Data Viewer</a><br th:if="${!simpleMode}"/>
+            <a th:href="'tagpairviewer?simple=' + ${simpleMode}">Experiment Data Pair Viewer</a> [
+            <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'tagpairviewer?simple=' + ${simpleMode} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
             ]<br/>
-            <a th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Stimulus Response Viewer</a> [
-            <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
+            <a th:href="'stimulusresponseviewer?simple=' + ${simpleMode}">Stimulus Response Viewer</a> [
+            <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'stimulusresponseviewer?simple=' + ${simpleMode} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
             ]<br/>
-            <a th:href="'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data Viewer</a><br/>
-            <a th:if="${param.detailed}" th:href="'eventchart?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Event Chart</a><br th:if="${param.detailed}"/>
-            <a th:if="${param.detailed}" th:href="'timestampviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Time Stamp Viewer</a><br th:if="${param.detailed}"/>
-            <a th:if="${param.detailed}" th:href="'audiolisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Audio Listing</a><br th:if="${param.detailed}"/>
+            <a th:href="'groupdataviewer?simple=' + ${simpleMode}">Group Data Viewer</a><br/>
+            <a th:if="${!simpleMode}" th:href="'eventchart?simple=' + ${simpleMode}">Event Chart</a><br th:if="${!simpleMode}"/>
+            <a th:if="${!simpleMode}" th:href="'timestampviewer?simple=' + ${simpleMode}">Time Stamp Viewer</a><br th:if="${!simpleMode}"/>
+            <a th:if="${!simpleMode}" th:href="'audiolisting?simple=' + ${simpleMode}">Audio Listing</a><br th:if="${!simpleMode}"/>
         </section>
         <section>
             <h3>Download Data</h3>
-            <!--<a th:href="'groupdatacsv?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Limor Group Data CSV</a><br/>-->
+            <!--<a th:href="'groupdatacsv?simple=' + ${simpleMode}">Limor Group Data CSV</a><br/>-->
             <a href="aggregate">Download Single CSV</a><br/>
             <a href="csv.zip">Download Zipped Data</a><br/>
             <div>
@@ -81,7 +81,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </section>
         <script th:inline="javascript">
             /*<![CDATA[*/
-            var detailedView = /*[[${param.detailed != null}]]*/ 'false';
+            var detailedView = /*[[${!simpleMode}]]*/ 'false';
             $.getJSON("artifacts.json", function (data) {
                 var items = [];
                 $.each(data.artifacts, function (key, val) {

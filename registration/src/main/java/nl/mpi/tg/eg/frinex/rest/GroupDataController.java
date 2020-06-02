@@ -46,7 +46,9 @@ public class GroupDataController {
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
-            @RequestParam(value = "groupUUID", required = false) String groupUUID) {
+            @RequestParam(value = "groupUUID", required = false) String groupUUID,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
         model.addAttribute("count", this.groupDataRepository.count());
         final Page<GroupData> pageData;
         if (groupUUID != null) {
@@ -64,6 +66,10 @@ public class GroupDataController {
         model.addAttribute("allGroupData", contentDistinct);
         model.addAttribute("pageData", pageData);
         model.addAttribute("stimuliTagExpander", new StimuliTagExpander());
+        model.addAttribute("sortColumn", sortColumn);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
         return "groupdataviewer";
     }
 }
