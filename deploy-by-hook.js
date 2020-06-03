@@ -114,7 +114,31 @@ function startResult() {
     resultsFile.write("tableRow.id = keyString+ '_row';\n");
     resultsFile.write("document.getElementById('buildTable').appendChild(tableRow);\n");
     // check the spring health here and show http and db status via applicationStatus array
+    // the path -admin/health is for spring boot 1.4.1
     resultsFile.write("$.getJSON('" + stagingServerUrl + "/'+keyString+'-admin/health', (function(experimentName) { return function(data) {\n");
+    resultsFile.write("$.each(data, function (key, val) {\n");
+    resultsFile.write("if (key === 'status') {\n");
+    resultsFile.write("if (val === 'UP') {\n");
+    resultsFile.write("applicationStatus[experimentName + '__staging_admin'] = 'yellow';\n");
+    resultsFile.write("} else {\n");
+    resultsFile.write("applicationStatus[experimentName + '__staging_admin'] = 'red';\n");
+    resultsFile.write("}\n");
+    resultsFile.write("}\n");
+    resultsFile.write("});\n");
+    resultsFile.write("};}(keyString)));\n");
+    resultsFile.write("$.getJSON('" + productionServerUrl + "/'+keyString+'-admin/health', (function(experimentName) { return function(data) {\n");
+    resultsFile.write("$.each(data, function (key, val) {\n");
+    resultsFile.write("if (key === 'status') {\n");
+    resultsFile.write("if (val === 'UP') {\n");
+    resultsFile.write("applicationStatus[experimentName + '__production_admin'] = 'yellow';\n");
+    resultsFile.write("} else {\n");
+    resultsFile.write("applicationStatus[experimentName + '__production_admin'] = 'red';\n");
+    resultsFile.write("}\n");
+    resultsFile.write("}\n");
+    resultsFile.write("});\n");
+    resultsFile.write("};}(keyString)));\n");
+    // the path -admin/actuator/health is for spring boot 2.3.0
+    resultsFile.write("$.getJSON('" + stagingServerUrl + "/'+keyString+'-admin/actuator/health', (function(experimentName) { return function(data) {\n");
     resultsFile.write("$.each(data, function (key, val) {\n");
     resultsFile.write("if (key === 'status') {\n");
     resultsFile.write("if (val === 'UP') {\n");
@@ -125,7 +149,7 @@ function startResult() {
     resultsFile.write("}\n");
     resultsFile.write("});\n");
     resultsFile.write("};}(keyString)));\n");
-    resultsFile.write("$.getJSON('" + productionServerUrl + "/'+keyString+'-admin/health', (function(experimentName) { return function(data) {\n");
+    resultsFile.write("$.getJSON('" + productionServerUrl + "/'+keyString+'-admin/actuator/health', (function(experimentName) { return function(data) {\n");
     resultsFile.write("$.each(data, function (key, val) {\n");
     resultsFile.write("if (key === 'status') {\n");
     resultsFile.write("if (val === 'UP') {\n");
