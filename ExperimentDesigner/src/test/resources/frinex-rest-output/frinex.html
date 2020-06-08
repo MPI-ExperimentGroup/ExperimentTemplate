@@ -7356,11 +7356,11 @@ String</span><br/>
 <span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-When true the items will be randomised, when false the items will not be randomised.</span><br/>
+When true the items will be randomised, when false the items will not be randomised once before repeats are calculated. If the selected items were 1234, the result of randomise true might be 3214 for example.</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-When greater than zero the list will be repeated the number of times specified.</span><br/>
+When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
+When greater than 0 all items will be randomised again after the repeatCount has been applied. This randomisation is constrained to the designated window of items causing the randomisation to be done in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats. For example, if a repeatCount of 3 resulted in 321432143214 a repeatRandomWindow of 2 could produce 231342413124 but cannot produce 214331322144. Whereas a repeatRandomWindow of 12 would randomise all items to any location and could produce 214331322144.</span><br/>
 <span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:purple">&gt;</span></td><td>
@@ -7514,11 +7514,11 @@ String</span><br/>
 <span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-When true the items will be randomised, when false the items will not be randomised.</span><br/>
+When true the items will be randomised, when false the items will not be randomised once before repeats are calculated. If the selected items were 1234, the result of randomise true might be 3214 for example.</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-When greater than zero the list will be repeated the number of times specified.</span><br/>
+When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
+When greater than 0 all items will be randomised again after the repeatCount has been applied. This randomisation is constrained to the designated window of items causing the randomisation to be done in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats. For example, if a repeatCount of 3 resulted in 321432143214 a repeatRandomWindow of 2 could produce 231342413124 but cannot produce 214331322144. Whereas a repeatRandomWindow of 12 would randomise all items to any location and could produce 214331322144.</span><br/>
 <span style="color:green">*</span><span style="color:grey">=&quot;Custom attributes can be assigned in the plugin associated with this feature&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -13816,11 +13816,11 @@ String</span><br/>
 <span style="color:green">minStimuliPerTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-When true the items will be randomised, when false the items will not be randomised.</span><br/>
+When true the items will be randomised, when false the items will not be randomised once before repeats are calculated. If the selected items were 1234, the result of randomise true might be 3214 for example.</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-When greater than zero the list will be repeated the number of times specified.</span><br/>
+When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
+When greater than 0 all items will be randomised again after the repeatCount has been applied. This randomisation is constrained to the designated window of items causing the randomisation to be done in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats. For example, if a repeatCount of 3 resulted in 321432143214 a repeatRandomWindow of 2 could produce 231342413124 but cannot produce 214331322144. Whereas a repeatRandomWindow of 12 would randomise all items to any location and could produce 214331322144.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -14729,7 +14729,7 @@ String</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-When true the items will be randomised, when false the items will not be randomised.</span><br/>
+When true the items will be randomised, when false the items will not be randomised once before repeats are calculated. If the selected items were 1234, the result of randomise true might be 3214 for example.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -22951,11 +22951,11 @@ String</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">randomise</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-When true the items will be randomised, when false the items will not be randomised.</span><br/>
+When true the items will be randomised, when false the items will not be randomised once before repeats are calculated. If the selected items were 1234, the result of randomise true might be 3214 for example.</span><br/>
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-When greater than zero the list will be repeated the number of times specified.</span><br/>
+When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
-Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.</span><br/>
+When greater than 0 all items will be randomised again after the repeatCount has been applied. This randomisation is constrained to the designated window of items causing the randomisation to be done in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats. For example, if a repeatCount of 3 resulted in 321432143214 a repeatRandomWindow of 2 could produce 231342413124 but cannot produce 214331322144. Whereas a repeatRandomWindow of 12 would randomise all items to any location and could produce 214331322144.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>

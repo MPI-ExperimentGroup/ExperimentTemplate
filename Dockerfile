@@ -107,5 +107,10 @@ RUN cd /ExperimentTemplate/gwt-cordova \
     && bash /ExperimentTemplate/gwt-cordova/target/setup-cordova.sh \
     && cp /ExperimentTemplate/gwt-cordova/target/app-release.apk /target/rosselfieldkit.apk
 
+# todo: move this earlier in this file when a full new image is going to be made
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt update && apt install yarn
+
 WORKDIR /target
 VOLUME ["/output"]

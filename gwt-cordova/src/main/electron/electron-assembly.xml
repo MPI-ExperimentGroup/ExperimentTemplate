@@ -26,7 +26,7 @@
             <includes>
                 <include>index.js</include>
             </includes>  
-            <outputDirectory>/src/</outputDirectory>
+            <outputDirectory>/src/main</outputDirectory>
             <filtered>true</filtered>
         </fileSet>        
         <fileSet>
@@ -39,7 +39,7 @@
                 <include>/opus-recorder/**</include>
                 <include>/${experiment.configuration.name}.xml</include>
             </includes>  
-            <outputDirectory>src</outputDirectory>
+            <outputDirectory>src/renderer</outputDirectory>
             <filtered>false</filtered>
         </fileSet>
         <fileSet>

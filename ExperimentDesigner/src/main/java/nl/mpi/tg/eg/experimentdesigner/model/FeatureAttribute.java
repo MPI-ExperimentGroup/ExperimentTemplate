@@ -72,9 +72,9 @@ public enum FeatureAttribute {
     sendData,
     networkErrorMessage,
     inputErrorMessage,
-    randomise("When true the items will be randomised, when false the items will not be randomised.", true, AttributeType.xsBoolean),
-    repeatCount("When greater than zero the list will be repeated the number of times specified.", true, AttributeType.xsInteger),
-    repeatRandomWindow("Randomises the items in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats.", true, AttributeType.xsInteger), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
+    randomise("When true the items will be randomised once before any repeats are calculated, when false the items will not be randomised. If the selected items were 1234, the result of randomise true might be 3214 for example.", true, AttributeType.xsBoolean),
+    repeatCount("When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.", true, AttributeType.xsInteger),
+    repeatRandomWindow("When greater than 0 all items will be randomised again after the repeatCount has been applied. This randomisation is constrained to the designated window of items causing the randomisation to be done in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats. For example, if a repeatCount of 3 resulted in 321432143214 a repeatRandomWindow of 2 could produce 231342413124 but cannot produce 214331322144. Whereas a repeatRandomWindow of 12 would randomise all items to any location and could produce 214331322144.", true, AttributeType.xsInteger), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
     adjacencyThreshold(true),
     repeatIncorrect,
     //    repeatMatching(true),
