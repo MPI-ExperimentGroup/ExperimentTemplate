@@ -2114,19 +2114,23 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     private void nextStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final boolean repeatIncorrect, final int increment) {
-        if (groupParticipantService != null) {
-            ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
-            throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
-        }
-        if (!validateStimuliResponses()) {
-            return;
-        }
-        if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
-            stimulusProvider.pushCurrentStimulusToEnd();
-        }
-        userResults.getUserData().clearCurrentResponse();
+        if (!stimulusProvider.getCurrentStimulus().equals(currentStimulus)) {
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "stale nextStimulus blocked", stimulusProvider.getCurrentStimulus().getUniqueId(), currentStimulus.getUniqueId(), duration.elapsedMillis());
+        } else {
+            if (groupParticipantService != null) {
+                ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
+                throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
+            }
+            if (!validateStimuliResponses()) {
+                return;
+            }
+            if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
+                stimulusProvider.pushCurrentStimulusToEnd();
+            }
+            userResults.getUserData().clearCurrentResponse();
 //        clearPage();
-        showStimulus(stimulusProvider, null, increment);
+            showStimulus(stimulusProvider, null, increment);
+        }
     }
 
     protected void clearPage() {
