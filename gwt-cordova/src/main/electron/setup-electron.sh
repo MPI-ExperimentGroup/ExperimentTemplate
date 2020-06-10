@@ -9,6 +9,15 @@ cd $appname-electron
 pwd
 ls
 
+if [ -f src/renderer/icon.png ];
+then
+    convert -resize 512x512^ -gravity center -extent 512x512 -quality 100 src/renderer/icon.png ./icon.png
+else
+    echo "icon.png not found (512x512)";
+    cd "$(dirname "$0")"
+    rm -rf $appname-electron
+    exit 1
+fi
 #/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 #NPM_CONFIG_PREFIX=/srv/ExperimentTemplate/.npm-global
 #PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
@@ -45,6 +54,7 @@ mv $appname-win32-x64/electron.exe $appname-win32-x64/@experiment.configuration.
 zip -r ../$appname-win32-x64.zip $appname-win32-x64/
 zip -r ../$appname-darwin-x64.zip $appname-darwin-x64/
 
+touch src/renderer/index.js
 #electron-forge make --platform=linux --arch=x64
 #electron-forge make --platform=linux --arch=ia32
 #electron-forge make --platform=darwin

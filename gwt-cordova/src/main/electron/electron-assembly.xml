@@ -11,13 +11,18 @@
             <outputDirectory>/src/renderer</outputDirectory>
             <destName>index.html</destName>
         </file>
+        <file>
+            <source>${project.build.directory}/${project.build.finalName}/static/icon.png</source>
+            <outputDirectory>/src/renderer</outputDirectory>
+            <destName>icon.png</destName>
+        </file>
     </files>
     <fileSets>
         <fileSet>
             <directory>${basedir}/src/main/electron</directory>
             <includes>
                 <include>package.json</include>
-            </includes>  
+            </includes>
             <outputDirectory>/</outputDirectory>
             <filtered>true</filtered>
         </fileSet>        
