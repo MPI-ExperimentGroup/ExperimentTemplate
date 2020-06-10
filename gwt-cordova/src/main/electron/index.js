@@ -1,5 +1,7 @@
-const { app, BrowserWindow } = require('electron')
+const {app, BrowserWindow} = require('electron')
 const express = require('express');
+const path = require('path');
+
 let mainWindow;
 
 const createWindow = () => {
@@ -10,7 +12,7 @@ const createWindow = () => {
         fullscreen: true
     });
 
-    app.use('/', express.static(path.join(__dirname, 'renderer')));
+    app.use('/', express.static(path.join(__dirname, '..', 'renderer')));
     app.listen(5000);
     mainWindow.loadURL(`http://localhost:5000/index.html`);
 

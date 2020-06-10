@@ -8,7 +8,7 @@
     <files>
         <file>
             <source>${project.build.directory}/${project.build.finalName}/ExperimentTemplate.html</source>
-            <outputDirectory>/src</outputDirectory>
+            <outputDirectory>/src/renderer</outputDirectory>
             <destName>index.html</destName>
         </file>
     </files>
