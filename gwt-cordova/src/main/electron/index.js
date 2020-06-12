@@ -4,11 +4,9 @@ const path = require('path');
 
 let mainWindow;
 
-//const isDebugMode = app.commandLine.hasSwitch('debug-mode');
-
 const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configuration.name@-admin/';
 
-const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl'));
+const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl')) && app.commandLine.hasSwitch('debug-mode');
 
 const createWindow = () => {
     const app = express();

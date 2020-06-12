@@ -44,16 +44,26 @@ RUN /android-sdk/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION
 #RUN npm config set strict-ssl false # todo: remove this stale ssl work around 
 RUN npm install npm -g # update npm
 RUN npm install -g cordova@9.0.0
-RUN npm install -g electron-forge asar
-RUN electron-forge init init-setup-project
-RUN cd init-setup-project \
-&& npm install express
-RUN sed -i 's/\"squirrel/\"zip/g' init-setup-project/package.json \
- && cat init-setup-project/package.json 
-RUN cd init-setup-project \
-    && electron-forge make --platform=win32
-RUN cd init-setup-project \
-    && electron-forge make --platform=darwin
+
+#RUN npm install -g electron-forge asar
+#RUN electron-forge init init-setup-project
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt update && apt install yarn
+
+RUN git clone https://github.com/electron-userland/electron-webpack-quick-start.git
+RUN cd electron-webpack-quick-start \
+    && yarn \
+    && yarn dist
+
+#RUN cd init-setup-project \
+#&& npm install express
+#RUN sed -i 's/\"squirrel/\"zip/g' init-setup-project/package.json \
+# && cat init-setup-project/package.json 
+#RUN cd init-setup-project \
+#    && electron-forge make --platform=win32
+#RUN cd init-setup-project \
+#    && electron-forge make --platform=darwin
 #RUN cd init-setup-project \
 #    && electron-forge make --platform=linux --arch=ia32 
 #RUN cd init-setup-project \
@@ -64,9 +74,10 @@ RUN cd init-setup-project \
 #WORKDIR /home/petwit/docker-testing
 COPY android-keys /android-keys
 
-RUN mkdir /electron
-RUN wget https://github.com/electron/electron/releases/download/v2.0.10/electron-v2.0.10-darwin-x64.zip -O /electron/darwin-x64.zip
-RUN wget https://github.com/electron/electron/releases/download/v2.0.10/electron-v2.0.10-win32-x64.zip -O /electron/win32-x64.zip
+
+#RUN mkdir /electron
+#RUN wget https://github.com/electron/electron/releases/download/v2.0.10/electron-v2.0.10-darwin-x64.zip -O /electron/darwin-x64.zip
+#RUN wget https://github.com/electron/electron/releases/download/v2.0.10/electron-v2.0.10-win32-x64.zip -O /electron/win32-x64.zip
 
 RUN git clone --depth 30000 https://github.com/MPI-ExperimentGroup/ExperimentTemplate.git
 
@@ -107,10 +118,6 @@ RUN cd /ExperimentTemplate/gwt-cordova \
     && bash /ExperimentTemplate/gwt-cordova/target/setup-cordova.sh \
     && cp /ExperimentTemplate/gwt-cordova/target/app-release.apk /target/rosselfieldkit.apk
 
-# todo: move this earlier in this file when a full new image is going to be made
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt update && apt install yarn
 
 WORKDIR /target
 VOLUME ["/output"]
