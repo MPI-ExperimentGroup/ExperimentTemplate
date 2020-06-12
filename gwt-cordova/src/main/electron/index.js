@@ -4,6 +4,10 @@ const path = require('path');
 
 let mainWindow;
 
+const isDebugMode = app.commandLine.hasSwitch('debug-mode');
+
+const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configuration.name@-admin/';
+
 const createWindow = () => {
     const app = express();
     mainWindow = new BrowserWindow({
@@ -13,10 +17,14 @@ const createWindow = () => {
     });
 
     app.use('/', express.static(path.join(__dirname, '..', 'renderer')));
+    app.use('/webjars', express.static(path.join(__dirname, '..', 'www', 'webjars')));
     app.listen(5000);
     mainWindow.loadURL(`http://localhost:5000/index.html`);
 
-//    mainWindow.webContents.openDevTools();
+    if (isDebugMode) {
+        window.webContents.openDevTools()
+        mainWindow.setFullScreen(false);
+    }
 //mainWindow.setFullScreen(true);
     mainWindow.on('closed', () => {
         mainWindow = null;
