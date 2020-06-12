@@ -11,11 +11,6 @@
             <outputDirectory>/src/renderer</outputDirectory>
             <destName>index.html</destName>
         </file>
-        <file>
-            <source>${project.build.directory}/${project.build.finalName}/static/icon.png</source>
-            <outputDirectory>/src/renderer</outputDirectory>
-            <destName>icon.png</destName>
-        </file>
     </files>
     <fileSets>
         <fileSet>
@@ -33,7 +28,15 @@
             </includes>  
             <outputDirectory>/src/main</outputDirectory>
             <filtered>true</filtered>
-        </fileSet>        
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/${project.build.finalName}/static/</directory>
+            <includes>
+                <include>icon.png</include>
+            </includes>  
+            <outputDirectory>/src/renderer</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>     
         <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
