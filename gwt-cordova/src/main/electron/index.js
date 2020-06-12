@@ -4,9 +4,11 @@ const path = require('path');
 
 let mainWindow;
 
-const isDebugMode = app.commandLine.hasSwitch('debug-mode');
+//const isDebugMode = app.commandLine.hasSwitch('debug-mode');
 
 const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configuration.name@-admin/';
+
+const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl'));
 
 const createWindow = () => {
     const app = express();
@@ -22,7 +24,7 @@ const createWindow = () => {
     mainWindow.loadURL(`http://localhost:5000/index.html`);
 
     if (isDebugMode) {
-        window.webContents.openDevTools()
+        mainWindow.webContents.openDevTools()
         mainWindow.setFullScreen(false);
     }
 //mainWindow.setFullScreen(true);
