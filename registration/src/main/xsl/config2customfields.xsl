@@ -18,6 +18,7 @@
 
                 import java.io.Serializable;
                 import java.util.Date;
+                import javax.persistence.Column;
                 import javax.persistence.Entity;
                 import javax.persistence.GeneratedValue;
                 import javax.persistence.GenerationType;
@@ -41,6 +42,7 @@
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
+                    @Column(length = 1024)
                     private String </xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>;
