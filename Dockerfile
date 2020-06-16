@@ -29,15 +29,18 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get -y install wine32
 ENV ANDROID_VERSION=28 \
     ANDROID_HOME=/android-sdk \
     ANDROID_BUILD_TOOLS_VERSION=29.0.0
-ENV PATH=${PATH}:/android-sdk/platform-tools:/android-sdk/tools
+ENV PATH=${PATH}:/android-sdk/platform-tools:/android-sdk/cmdline-tools/tools
 RUN mkdir /android-sdk \
     && cd /android-sdk \
-    && curl -o sdk-tools.zip "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" \
-    && unzip sdk-tools.zip \
-    && rm sdk-tools.zip \
-    && yes | /android-sdk/tools/bin/sdkmanager --licenses
-RUN /android-sdk/tools/bin/sdkmanager --update
-RUN /android-sdk/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+    && curl -o cmdline-tools.zip "https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip"
+#    && curl -o sdk-tools.zip "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" \
+RUN mkdir /android-sdk/cmdline-tools \
+    && cd /android-sdk/cmdline-tools \
+    && unzip ../cmdline-tools.zip \
+    && rm ../cmdline-tools.zip \
+    && yes | /android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses
+RUN /android-sdk/cmdline-tools/tools/bin/sdkmanager --update
+RUN /android-sdk/cmdline-tools/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
 #RUN apt-get -y install git node.js npm mono-devel
@@ -107,14 +110,20 @@ RUN mkdir /target
 
 RUN cd /ExperimentTemplate/gwt-cordova \
     && convert -gravity center -size 128x128 -background blue -fill white -pointsize 80 label:"WSE" /ExperimentTemplate/gwt-cordova/src/main/static/with_stimulus_example/icon.png \
-    && mvn clean install -Dexperiment.configuration.name=with_stimulus_example \
+    && cp /ExperimentTemplate/gwt-cordova/src/main/static/with_stimulus_example/icon.png /ExperimentTemplate/gwt-cordova/src/main/static/with_stimulus_example/splash.png
+RUN cd /ExperimentTemplate/gwt-cordova \
+    && mvn clean install -Dexperiment.configuration.name=with_stimulus_example
+RUN cd /ExperimentTemplate/gwt-cordova \
     && bash /ExperimentTemplate/gwt-cordova/target/setup-cordova.sh \
     && cp /ExperimentTemplate/gwt-cordova/target/app-release.apk /target/with_stimulus_example.apk
 
 RUN cd /ExperimentTemplate/gwt-cordova \
     && mkdir /ExperimentTemplate/gwt-cordova/src/main/static/rosselfieldkit \
     && convert -gravity center -size 128x128 -background blue -fill white -pointsize 80 label:"RFK" /ExperimentTemplate/gwt-cordova/src/main/static/rosselfieldkit/icon.png \
-    && mvn clean install -Dexperiment.configuration.name=rosselfieldkit \
+    && cp /ExperimentTemplate/gwt-cordova/src/main/static/rosselfieldkit/icon.png /ExperimentTemplate/gwt-cordova/src/main/static/rosselfieldkit/splash.png
+RUN cd /ExperimentTemplate/gwt-cordova \
+    && mvn clean install -Dexperiment.configuration.name=rosselfieldkit
+RUN cd /ExperimentTemplate/gwt-cordova \
     && bash /ExperimentTemplate/gwt-cordova/target/setup-cordova.sh \
     && cp /ExperimentTemplate/gwt-cordova/target/app-release.apk /target/rosselfieldkit.apk
 
