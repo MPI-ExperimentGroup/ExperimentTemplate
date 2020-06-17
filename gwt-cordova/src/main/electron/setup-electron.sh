@@ -33,25 +33,28 @@ pwd
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
 
-cp -r /init-setup-project/node_modules /target/$appname-electron/
+#cp -r /init-setup-project/node_modules /target/$appname-electron/
 
-mv /target/$appname-electron/www/webjars/jquery/*/*.* /target/$appname-electron/src/webjars/jquery/
-mv /target/$appname-electron/www/webjars/stomp-websocket/*/*.* /target/$appname-electron/src/webjars/stomp-websocket/
-mv /target/$appname-electron/www/webjars/sockjs-client/*/*.* /target/$appname-electron/src/webjars/sockjs-client/
+#mv /target/$appname-electron/www/webjars/jquery/*/*.* /target/$appname-electron/src/webjars/jquery/
+#mv /target/$appname-electron/www/webjars/stomp-websocket/*/*.* /target/$appname-electron/src/webjars/stomp-websocket/
+#mv /target/$appname-electron/www/webjars/sockjs-client/*/*.* /target/$appname-electron/src/webjars/sockjs-client/
 
-asar pack /target/$appname-electron/ ../$appname.asar
+#asar pack /target/$appname-electron/ ../$appname.asar
 
-unzip /electron/win32-x64.zip -d $appname-win32-x64
-unzip /electron/darwin-x64.zip -d $appname-darwin-x64
+#unzip /electron/win32-x64.zip -d $appname-win32-x64
+#unzip /electron/darwin-x64.zip -d $appname-darwin-x64
 
-rm $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
-rm $appname-win32-x64/resources/default_app.asar
+#rm $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
+#rm $appname-win32-x64/resources/default_app.asar
 
-cp ../$appname.asar $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
-cp ../$appname.asar $appname-win32-x64/resources/default_app.asar
+#cp ../$appname.asar $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
+#cp ../$appname.asar $appname-win32-x64/resources/default_app.asar
 
-mv $appname-darwin-x64/Electron.app $appname-darwin-x64/@experiment.configuration.name@.app
-mv $appname-win32-x64/electron.exe $appname-win32-x64/@experiment.configuration.name@.exe
+#mv $appname-darwin-x64/Electron.app $appname-darwin-x64/@experiment.configuration.name@.app
+#mv $appname-win32-x64/electron.exe $appname-win32-x64/@experiment.configuration.name@.exe
+
+yarn
+yarn dist --win portable
 
 zip -r ../$appname-win32-x64.zip $appname-win32-x64/
 zip -r ../$appname-darwin-x64.zip $appname-darwin-x64/
