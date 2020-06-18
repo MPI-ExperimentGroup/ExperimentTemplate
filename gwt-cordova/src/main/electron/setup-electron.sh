@@ -57,8 +57,8 @@ yarn
 yarn dist --win portable
 yarn dist --mac zip
 
-zip -r ../$appname-win32-x64.zip dist/$appname*.exe
-cp ../$appname-darwin-x64.zip $appname*-mac.zip
+zip -r ../@experiment.configuration.name@-win32-x64.zip dist/@experiment.configuration.name@*.exe
+cp dist/@experiment.configuration.name@*-mac.zip ../@experiment.configuration.name@-darwin-x64.zip
 
 
 #electron-forge make --platform=linux --arch=x64
