@@ -1,7 +1,7 @@
 {
   "name": "@experiment.configuration.name@-@project.artifactId@",
   "productName": "@experiment.configuration.displayName@",
-  "version": "@application.majorVersion@.@application.minorVersion@.0",
+  "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
   "description": "@experiment.configuration.name@",
   "main": "src/main/index.js",
   "scripts": {
