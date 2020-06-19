@@ -42,8 +42,12 @@
     }
   },
   "build": {
-    "asar": true
-  },
+    "asar": true,
+    "files": [
+        "src/**/*",
+        "www/**/*"
+     ]
+    },
   "dependencies": {
     "express": "^4.16.3",
     "source-map-support": "^0.5.16"
