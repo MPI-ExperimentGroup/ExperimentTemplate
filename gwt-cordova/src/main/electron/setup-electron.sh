@@ -56,10 +56,13 @@ pwd
 yarn
 yarn dist --win portable
 yarn dist --mac zip
+yarn dist --mac dmg
 
-zip -r ../@experiment.configuration.name@-win32-x64.zip dist/@experiment.configuration.name@*.exe
-cp dist/@experiment.configuration.name@*-mac.zip ../@experiment.configuration.name@-darwin-x64.zip
-
+cd dist
+zip -r ../../@experiment.configuration.name@-win32-x64.zip ./@experiment.configuration.name@*.exe
+cp @experiment.configuration.name@*.dmg ../../@experiment.configuration.name@-mac.dmg
+cp @experiment.configuration.name@*-mac.zip ../../@experiment.configuration.name@-darwin-x64.zip
+cd ..
 
 #electron-forge make --platform=linux --arch=x64
 #electron-forge make --platform=linux --arch=ia32

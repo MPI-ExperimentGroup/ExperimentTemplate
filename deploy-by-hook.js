@@ -648,7 +648,7 @@ function buildElectron(buildName, stage) {
                 fileTypeString = "win32";
             } else
             if (filename.indexOf("win32-x64.zip") > -1) {
-                fileTypeString = "win64";
+                fileTypeString = "win";
             } else
             if (filename.indexOf("darwin-x64.zip") > -1) {
                 fileTypeString = "mac";
@@ -671,6 +671,13 @@ function buildElectron(buildName, stage) {
             fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + filename));
             resultString += '<a href="' + filename + '">' + fileTypeString + '</a>&nbsp;';
             buildArtifactsJson.artifacts[fileTypeString] = filename;
+        }
+        if (filename.endsWith(".dmg")) {
+            var fileTypeString = "dmg";
+            var finalName = buildName + "_" + stage + ".dmg";
+            fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + finalName));
+            resultString += '<a href="' + finalName + '">' + fileTypeString + '</a>&nbsp;';
+            buildArtifactsJson.artifacts[fileTypeString] = finalName;
         }
 //                mkdir /srv/target/electron
 //cp out/make/*linux*.zip ../with_stimulus_example-linux.zip
