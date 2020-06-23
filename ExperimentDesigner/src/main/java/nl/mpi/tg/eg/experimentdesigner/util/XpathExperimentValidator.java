@@ -90,11 +90,11 @@ public class XpathExperimentValidator {
         NodeList nodeList = (NodeList) validationXPath.compile("/experiment/presenter/@self").evaluate(xmlDocument, XPathConstants.NODESET);
         for (int index = 0; index < nodeList.getLength(); index++) {
             final String presenterName = nodeList.item(index).getTextContent();
-            if (presenterNames.contains(presenterName)) {
+            if (presenterNames.contains(presenterName.toLowerCase())) {
                 returnMessage += "Each presenter name must be unique, but '" + presenterName + "' is used on another presenter.\n";
                 System.out.println(returnMessage);
             } else {
-                presenterNames.add(presenterName);
+                presenterNames.add(presenterName.toLowerCase());
             }
         }
         return returnMessage;

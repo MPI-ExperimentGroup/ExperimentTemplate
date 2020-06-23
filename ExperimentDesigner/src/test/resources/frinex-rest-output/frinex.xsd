@@ -750,7 +750,7 @@
 </xs:complexType>
 <xs:complexType name="clearStimulusResponsesType">
 <xs:annotation>
-<xs:documentation>Clears all locally stored responses to all stimulus that have all the supplied tags.</xs:documentation>
+<xs:documentation>Clears all locally stored responses to all stimulus that have all the supplied tags. Stimulus that do not have ALL the provided tags will not be affected.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
@@ -11338,6 +11338,9 @@
 <xs:attribute name="gamesPlayed" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="resetStimulusType">
+<xs:annotation>
+<xs:documentation>Clears the presenter's selected stimulus and the list of stimulus that have been seen so that the presenter can select a fresh list of stimuli.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="target" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="submitTestResultsType">

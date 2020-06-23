@@ -87,13 +87,15 @@ public class XpathExperimentValidatorTest {
     public void testValidatePresenterNames() throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
         System.out.println("validatePresenterNames");
         Document xmlOkDocument = getDocument("<experiment><presenter self=\"Toestemming\"></presenter><presenter self=\"Informatie\"></presenter></experiment>\n");
-        Document xmlFailDocument = getDocument("<experiment><presenter self=\"Informatie\"></presenter><presenter self=\"Informatie\"></presenter></experiment>\n");
+        Document xmlFailDocument1 = getDocument("<experiment><presenter self=\"Informatie\"></presenter><presenter self=\"Informatie\"></presenter></experiment>\n");
+        Document xmlFailDocument2 = getDocument("<experiment><presenter self=\"Snooze\"></presenter><presenter self=\"snooze\"></presenter></experiment>\n");
 //        Document xmlOkAccentDocument = getDocument("<experiment><presenter self=\"Informatié\"></presenter><presenter self=\"Informatie\"></presenter><presenter back=\"Menu\" menuLabel=\"Terug\" type=\"text\" self=\"cafe_test\" title=\"café encoding test\"><htmlText featureText=\"Please make sure that the accent is correctly displayed on this screen: café\"/><targetButton featureText=\"volgende [ spatiebalk ]\" hotKey=\"SPACE\" target=\"Second\"/></presenter></experiment>\n");
 //        Document xmlFailAccentDocument = getDocument("<experiment><presenter self=\"Informatié\"></presenter><presenter self=\"Informatie\"></presenter><presenter back=\"Menu\" menuLabel=\"Terug\" type=\"text\" self=\"café_test\" title=\"café encoding test\"><htmlText featureText=\"Please make sure that the accent is correctly displayed on this screen: café\"/><targetButton featureText=\"volgende [ spatiebalk ]\" hotKey=\"SPACE\" target=\"Second\"/></presenter></experiment>\n");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validatePresenterNames(xmlOkDocument));
 //        assertEquals("", instance.validatePresenterNames(xmlOkAccentDocument));
-        assertNotEquals("", instance.validatePresenterNames(xmlFailDocument));
+        assertNotEquals("", instance.validatePresenterNames(xmlFailDocument1));
+        assertNotEquals("", instance.validatePresenterNames(xmlFailDocument2));
 //        assertNotEquals("", instance.validatePresenterNames(xmlFailAccentDocument));
     }
 
