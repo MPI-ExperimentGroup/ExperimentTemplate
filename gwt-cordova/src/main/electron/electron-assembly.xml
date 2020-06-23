@@ -56,7 +56,7 @@
                 <!-- this will include one directory that must be removed by the setup sh script-->
                 <include>**/*.*</include>
             </includes>  
-            <outputDirectory>src/renderer/webjars</outputDirectory>
+            <outputDirectory>www/webjars</outputDirectory>
             <filtered>false</filtered>
         </fileSet>
     </fileSets>
