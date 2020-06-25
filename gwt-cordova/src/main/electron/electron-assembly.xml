@@ -33,6 +33,7 @@
             <directory>${project.build.directory}/${project.build.finalName}/static/</directory>
             <includes>
                 <include>icon.png</include>
+                <include>splash.png</include>
             </includes>  
             <outputDirectory>/src/renderer</outputDirectory>
             <filtered>false</filtered>
