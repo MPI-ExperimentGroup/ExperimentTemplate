@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const express = require('express');
 const path = require('path');
 
@@ -8,12 +8,16 @@ const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configurati
 
 const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl')) && app.commandLine.hasSwitch('debug-mode');
 
+if (!isDebugMode) {
+    Menu.setApplicationMenu(null);
+}
+
 const createWindow = () => {
     const app = express();
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        fullscreen: true
+        fullscreen: !isDebugMode
     });
 
     app.use('/', express.static(path.join(__dirname, 'src', 'renderer')));
@@ -23,9 +27,8 @@ const createWindow = () => {
 
     if (isDebugMode) {
         mainWindow.webContents.openDevTools()
-        mainWindow.setFullScreen(false);
     }
-//mainWindow.setFullScreen(true);
+
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
