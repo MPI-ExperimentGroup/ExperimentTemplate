@@ -328,7 +328,8 @@ public class XpathExperimentValidatorTest {
     }
 
     /**
-     * Test of validateMetadataFieldPostNames method, of class XpathExperimentValidator.
+     * Test of validateMetadataFieldPostNames method, of class
+     * XpathExperimentValidator.
      */
     @Test
     public void testValidateMetadataFieldPostNames() throws Exception {
@@ -350,5 +351,76 @@ public class XpathExperimentValidatorTest {
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateMetadataFieldPostNames(xmlOkIdentifierDocument));
         assertEquals("The metadata field postName 'daga3_cut' has been used more than once. Each postName must be unique.", instance.validateMetadataFieldPostNames(xmlFailIdentifierDocument));
+    }
+
+    /**
+     * Test of validateMetadataFieldPostNames method, of class
+     * XpathExperimentValidator.
+     */
+    @Test
+    public void testValidateMetadataFieldNamesExist() throws Exception {
+        System.out.println("validateMetadataFieldNamesExist");
+        Document xmlOkIdentifierDocument = getDocument("<experiment>"
+                + "<metadata>"
+                + "<field postName=\"referenceAngle\" />"
+                + "<field postName=\"blagNegativePositive\" />"
+                + "<field postName=\"discTransferOrder\" />"
+                + "<field postName=\"discLabelOrder\" />"
+                + "<field postName=\"subjectID\" />"
+                + "</metadata>"
+                + "<presenter>"
+                + "<hasMetadataValue fieldName=\"subjectID\">"
+                + "<conditionTrue>"
+                + "<matchOnEvalTokens>\n"
+                + "<conditionTrue>"
+                + "<setMetadataValue fieldName=\"referenceAngle\"/>\n"
+                + "<setMetadataValue fieldName=\"blagNegativePositive\"/>\n"
+                + "<setMetadataValue fieldName=\"discTransferOrder\"/>\n"
+                + "<setMetadataValue fieldName=\"discLabelOrder\"/>\n"
+                + "<gotoNextPresenter/>\n"
+                + "</conditionTrue>\n"
+                + "<conditionFalse/>\n"
+                + "<onError/>\n"
+                + "</matchOnEvalTokens>"
+                + "</conditionTrue>\n"
+                + "<conditionFalse>\n"
+                + "</conditionFalse>\n"
+                + "</hasMetadataValue>"
+                + "</presenter>"
+                + "</experiment>");
+        Document xmlFailIdentifierDocument = getDocument("<experiment>"
+                + "<metadata>"
+                + "<field postName=\"daga3_cut\" />"
+                + "<field postName=\"daga11_cut\" />"
+                + "<field postName=\"daga5_cut\" />"
+                + "</metadata>"
+                + "<presenter>"
+                + "<hasMetadataValue fieldName=\"subjectID\">"
+                + "<conditionTrue>"
+                + "<matchOnEvalTokens>\n"
+                + "<conditionTrue>"
+                + "<setMetadataValue fieldName=\"referenceAngle\"/>\n"
+                + "<setMetadataValue fieldName=\"blagNegativePositive\"/>\n"
+                + "<setMetadataValue fieldName=\"discTransferOrder\"/>\n"
+                + "<setMetadataValue fieldName=\"discLabelOrder\"/>\n"
+                + "<gotoNextPresenter/>\n"
+                + "</conditionTrue>\n"
+                + "<conditionFalse/>\n"
+                + "<onError/>\n"
+                + "</matchOnEvalTokens>"
+                + "</conditionTrue>\n"
+                + "<conditionFalse>\n"
+                + "</conditionFalse>\n"
+                + "</hasMetadataValue>"
+                + "</presenter>"
+                + "</experiment>");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("", instance.validateMetadataFields(xmlOkIdentifierDocument));
+        assertEquals("Each 'fieldName' attribute must reference a valid metadata field, but 'subjectID' is not specified the postName attribute of any metadata field.\n"
+                + "Each 'fieldName' attribute must reference a valid metadata field, but 'referenceAngle' is not specified the postName attribute of any metadata field.\n"
+                + "Each 'fieldName' attribute must reference a valid metadata field, but 'blagNegativePositive' is not specified the postName attribute of any metadata field.\n"
+                + "Each 'fieldName' attribute must reference a valid metadata field, but 'discTransferOrder' is not specified the postName attribute of any metadata field.\n"
+                + "Each 'fieldName' attribute must reference a valid metadata field, but 'discLabelOrder' is not specified the postName attribute of any metadata field.\n"
+                + "", instance.validateMetadataFields(xmlFailIdentifierDocument));
     }
 }

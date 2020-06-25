@@ -52,6 +52,7 @@ public class XpathExperimentValidator {
             result += validateStimuliTags(xmlDocument);
 //            result += validateStimuliIds(xmlDocument); // duplicate stimulus identifiers are not an issue, there might be use cases where this could be done intentionally, so we allow it here
             result += validateMetadataFieldPostNames(xmlDocument);
+            result += validateMetadataFields(xmlDocument);
             if (!result.isEmpty()) {
                 throw new XpathExperimentException(result);
             }
