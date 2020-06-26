@@ -689,7 +689,7 @@
 <xs:attribute name="randomise" type="xs:boolean"/>
 <xs:attribute name="repeatCount" type="xs:integer"/>
 <xs:attribute name="repeatRandomWindow" type="xs:integer"/>
-<xs:attribute name="adjacencyThreshold" type="xs:string"/>
+<xs:attribute name="adjacencyThreshold" type="xs:integer"/>
 </xs:complexType>
 <xs:complexType name="loadStimulusType">
 <xs:all>
@@ -705,7 +705,7 @@
 <xs:attribute name="randomise" type="xs:boolean"/>
 <xs:attribute name="repeatCount" type="xs:integer"/>
 <xs:attribute name="repeatRandomWindow" type="xs:integer"/>
-<xs:attribute name="adjacencyThreshold" type="xs:string"/>
+<xs:attribute name="adjacencyThreshold" type="xs:integer"/>
 <xs:attribute name="class" type="xs:string"/>
 <xs:anyAttribute  processContents="lax"/>
 <xs:assert test="(@class) or (not(@class) )"/>
@@ -739,7 +739,7 @@
 <xs:attribute name="randomise" type="xs:boolean"/>
 <xs:attribute name="repeatCount" type="xs:integer"/>
 <xs:attribute name="repeatRandomWindow" type="xs:integer"/>
-<xs:attribute name="adjacencyThreshold" type="xs:string"/>
+<xs:attribute name="adjacencyThreshold" type="xs:integer"/>
 </xs:complexType>
 <xs:complexType name="currentStimulusHasTagType">
 <xs:all>
