@@ -579,7 +579,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     @Override
     public List<Stimulus> getStimuliWithAllTags(final List<Stimulus.Tag> selectionTags) {
         final List<Stimulus> matchingStimuli = new ArrayList<>();
-        for (Stimulus stimulus : stimulusSelectionArray) {
+        for (Stimulus stimulus : stimulusArray) {
             if (stimulus.getTags().containsAll(selectionTags)) {
                 matchingStimuli.add(stimulus);
             }
