@@ -262,14 +262,14 @@ public class StimulusProvider extends AbstractStimuliProvider {
             }
         }
         applyRepeatRandomWindow(stimulusSubsetArrayTemp, attributeRepeatCount, attributeRepeatRandomWindow, attributeMaxStimulusCount);
-        if (attributeRandomise) {
+        if (attributeRandomise && attributeAdjacencyThreshold > 0) {
             applyAdjacencyCheck(attributeAdjacencyThreshold);
         }
     }
 
     protected void applyAdjacencyCheck(final int adjacencyThreshold) {
         for (int attemptIndex = 0; attemptIndex < 3; attemptIndex++) {
-//            System.out.println("attemptIndex: " + attemptIndex);
+            //System.out.println("attemptIndex: " + attemptIndex);
             boolean changeMade = false;
             for (int index = 0; index < stimulusSubsetArray.size(); index++) {
                 final String currentImage;
@@ -304,13 +304,17 @@ public class StimulusProvider extends AbstractStimuliProvider {
                     }
                 }
                 if (needsMoving) {
-//                    System.out.println("needs moving: " + currentImage);
+                    //System.out.println("needs moving: " + currentImage);
+                    //System.out.println("stimulus size: " + stimulusSubsetArray.size());
                     for (int destinationindex = 0; destinationindex < stimulusSubsetArray.size(); destinationindex++) {
                         boolean isSuitable = true;
                         for (int adjacencyIndex = -adjacencyThreshold - 1; adjacencyIndex < adjacencyThreshold + 1; adjacencyIndex++) {
-                            if (adjacencyIndex + destinationindex >= 0) {
-//                                System.out.println("from " + index + " to " + destinationindex);
-//                                System.out.println("adjacencyIndex: " + adjacencyIndex);
+                            //System.out.println("adjacencyIndex: " + adjacencyIndex);
+                            //System.out.println("adjacencyIndex + destinationindex: " + (adjacencyIndex + destinationindex));
+                            if (adjacencyIndex + destinationindex >= 0
+                                    && adjacencyIndex + destinationindex < stimulusSubsetArray.size()) {
+                                //System.out.println("from " + index + " to " + destinationindex);
+                                //System.out.println("adjacencyIndex: " + adjacencyIndex);
                                 final String adjacentImage;
                                 if (stimulusSubsetArray.get(index).hasImage()) {
                                     adjacentImage = stimulusSubsetArray.get(adjacencyIndex + destinationindex).getImage();
@@ -332,7 +336,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
                             }
                         }
                         if (isSuitable) {
-//                            System.out.println("moving: " + currentImage + " from " + index + " to " + destinationindex);
+                            //System.out.println("moving: " + currentImage + " from " + index + " to " + destinationindex);
                             if (destinationindex > index) {
                                 stimulusSubsetArray.add(destinationindex - 1, stimulusSubsetArray.remove(index));
                             } else {

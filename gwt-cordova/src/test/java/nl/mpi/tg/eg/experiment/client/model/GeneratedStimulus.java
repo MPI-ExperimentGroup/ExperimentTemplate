@@ -612,6 +612,15 @@ public class GeneratedStimulus implements Stimulus {
         new GeneratedStimulus("999:tgt_8_1400Hz_150ms.wav:dan,daan", new Tag[]{Tag.tag_HRPretest01}, "label_d1e1033", "code_d1e1033", 0, "tgt_8_1400Hz_150ms", null, null, "dan,daan"),
         new GeneratedStimulus("999:tgt_8_1400Hz_160ms.wav:dan,daan", new Tag[]{Tag.tag_HRPretest01}, "label_d1e1038", "code_d1e1038", 0, "tgt_8_1400Hz_160ms", null, null, "dan,daan"),
         new GeneratedStimulus("999:tgt_8_1400Hz_180ms.wav:dan,daan", new Tag[]{Tag.tag_HRPretest01}, "label_d1e1043", "code_d1e1043", 0, "tgt_8_1400Hz_180ms", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_0", new Tag[]{Tag.tag_discat_test}, "-0.1", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_1", new Tag[]{Tag.tag_discat_test}, "0.0", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_2", new Tag[]{Tag.tag_discat_test}, "0.1", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_3", new Tag[]{Tag.tag_discat_test}, "-0.1", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_4", new Tag[]{Tag.tag_discat_test}, "0.0", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_5", new Tag[]{Tag.tag_discat_test}, "0.1", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_6", new Tag[]{Tag.tag_discat_test}, "-0.1", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_7", new Tag[]{Tag.tag_discat_test}, "0.0", "discat_test", 0, "discat_test", null, null, "dan,daan"),
+        new GeneratedStimulus("discat_test_8", new Tag[]{Tag.tag_discat_test}, "0.1", "discat_test", 0, "discat_test", null, null, "dan,daan"),
         new GeneratedStimulus("2.png:shape1:version1:quadrant3:moveRotated270", new Tag[]{Tag.tag_2, Tag.tag_moveRotated270, Tag.tag_quadrant3, Tag.tag_shape1, Tag.tag_version1}, "label_d1e1791", "code_d1e1791", 0, null, null, "2.png", null),
         new GeneratedStimulus("6.png:shape1:version1:quadrant4:moveRotated300", new Tag[]{Tag.tag_6, Tag.tag_moveRotated300, Tag.tag_quadrant4, Tag.tag_shape1, Tag.tag_version1}, "label_d1e1802", "code_d1e1802", 0, null, null, "6.png", null),
         new GeneratedStimulus("27.png:shape4:version1:quadrant2:moveRotated120", new Tag[]{Tag.tag_27, Tag.tag_moveRotated120, Tag.tag_quadrant2, Tag.tag_shape4, Tag.tag_version1}, "label_d1e1813", "code_d1e1813", 0, null, null, "27.png", null),
@@ -638,7 +647,7 @@ public class GeneratedStimulus implements Stimulus {
     };
 
     public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
-        tag_HRPretest01, tag_HRPretest02, tag_grammar, tag_number, tag_interesting, tag_multiple_words, tag_FILLER_AUDIO, tag_NOISE_AUDIO, tag_sim, tag_mid, tag_diff, tag_noise, tag_termites, tag_Rocket, tag_Festival, tag_Thai, tag_ประเพณีบุญบั้งไฟ, tag_Lao, tag_ບຸນບັ້ງໄຟ, tag_scorpions, tag_centipedes, tag_bad, tag_, tag__t_n_x0B_f_r_, tag_bad_chars, tag_this_add_, tag__, tag____, tag_chars,
+        tag_discat_test, tag_HRPretest01, tag_HRPretest02, tag_grammar, tag_number, tag_interesting, tag_multiple_words, tag_FILLER_AUDIO, tag_NOISE_AUDIO, tag_sim, tag_mid, tag_diff, tag_noise, tag_termites, tag_Rocket, tag_Festival, tag_Thai, tag_ประเพณีบุญบั้งไฟ, tag_Lao, tag_ບຸນບັ້ງໄຟ, tag_scorpions, tag_centipedes, tag_bad, tag_, tag__t_n_x0B_f_r_, tag_bad_chars, tag_this_add_, tag__, tag____, tag_chars,
         tag_2, tag_moveRotated270, tag_quadrant3, tag_shape1, tag_version1, tag_6, tag_moveRotated300, tag_quadrant4, tag_27, tag_moveRotated120, tag_quadrant2, tag_shape4, tag_12, tag_moveRotated30, tag_quadrant1, tag_shape2, tag_version1round2, tag_version1round3, tag_version1round4, tag_version1round5, tag_24, tag_moveRotated180, tag_version4, tag_23, tag_moveRotated360, tag_version5, tag_3, tag_moveRotated90, tag_11, tag_moveRotated330, tag_20, tag_moveRotated240, tag_shape3, tag_14, tag_21, tag_4, tag_version5zero, tag_25, tag_moveRotated315, tag_16, tag_moveRotated45, tag_version4zero, tag_1, tag_moveRotated210, tag_7, tag_moveRotated135, tag_version1zero, tag_9, tag_10, tag_moveRotated150, tag_19, tag_22, tag_moveRotated60, tag_28, tag_moveRotated225, tag_17, tag_version2, tag_5, tag_version6
 
     }

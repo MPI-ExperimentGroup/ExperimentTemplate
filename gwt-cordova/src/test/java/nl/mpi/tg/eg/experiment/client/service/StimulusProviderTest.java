@@ -309,4 +309,86 @@ public class StimulusProviderTest {
         }
         assertEquals(23, instance.getTotalStimuli());
     }
+
+    /**
+     * Test of applyAdjacencyCheck for discat_test stimuli, of class
+     * StimulusProvider.
+     */
+    @Test
+    public void testApplyAdjacencyCheck_discat_test() {
+        System.out.println("applyAdjacencyCheck discat_test stimuli");
+        final int adjacencyThreshold = 3;
+        final String storedStimulusList = "-"
+                + "-discat_test_0"
+                + "-discat_test_1"
+                + "-discat_test_2"
+                + "-discat_test_3"
+                + "-discat_test_4"
+                + "-discat_test_5"
+                + "-discat_test_6"
+                + "-discat_test_7"
+                + "-discat_test_8"
+                + "-discat_test_0"
+                + "-discat_test_1"
+                + "-discat_test_2"
+                + "-discat_test_3"
+                + "-discat_test_4"
+                + "-discat_test_5"
+                + "-discat_test_6"
+                + "-discat_test_7"
+                + "-discat_test_8"
+                + "-discat_test_0"
+                + "-discat_test_1"
+                + "-discat_test_2"
+                + "-discat_test_3"
+                + "-discat_test_4"
+                + "-discat_test_5"
+                + "-discat_test_6"
+                + "-discat_test_7"
+                + "-discat_test_8"
+                + "-";
+        StimulusProvider instance = new StimulusProvider(GeneratedStimulus.values);
+        instance.initialiseStimuliState(storedStimulusList);
+        assertEquals(27, instance.getTotalStimuli());
+        System.out.println(instance.getCurrentStimulus().getLabel());
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
+            System.out.println(instance.getCurrentStimulus().getLabel());
+        }
+        instance.setCurrentStimuliIndex(0);
+        System.out.println("applyAdjacencyCheck");
+        instance.applyAdjacencyCheck(adjacencyThreshold);
+        System.out.println(instance.getCurrentStimulus().getLabel());
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
+            System.out.println(instance.getCurrentStimulus().getLabel());
+        }
+        System.out.println("validating the result");
+        instance.setCurrentStimuliIndex(0);
+        Stimulus stimulus0 = instance.getCurrentStimulus();
+        instance.nextStimulus(1);
+        Stimulus stimulus1 = instance.getCurrentStimulus();
+        instance.nextStimulus(1);
+        Stimulus stimulus2 = instance.getCurrentStimulus();
+
+        System.out.println(stimulus0.getLabel());
+        System.out.println(stimulus1.getLabel());
+        System.out.println(stimulus2.getLabel());
+
+        assertNotEquals(stimulus0.getLabel(), stimulus1.getLabel());
+        assertNotEquals(stimulus1.getLabel(), stimulus2.getLabel());
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
+            Stimulus stimulus3 = instance.getCurrentStimulus();
+            System.out.println(stimulus3.getLabel());
+            // because there are only three label values we do not compare 0 and 3
+            //assertNotEquals(stimulus0.getLabel(), stimulus3.getLabel());
+            assertNotEquals(stimulus1.getLabel(), stimulus3.getLabel());
+            assertNotEquals(stimulus2.getLabel(), stimulus3.getLabel());
+            stimulus0 = stimulus1;
+            stimulus1 = stimulus2;
+            stimulus2 = stimulus3;
+        }
+        assertEquals(27, instance.getTotalStimuli());
+    }
 }
