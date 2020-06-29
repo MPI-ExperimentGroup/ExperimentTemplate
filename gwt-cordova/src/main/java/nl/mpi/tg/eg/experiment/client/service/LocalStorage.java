@@ -168,7 +168,7 @@ public class LocalStorage implements LocalStorageInterface {
         String resultString = "";
         final JSONObject storedJSONObject = getStoredJSONObject(userId, stimulusId);
         if (storedJSONObject != null) {
-            if (responseKey == null || responseKey.isBlank()) {
+            if (responseKey == null || responseKey.isEmpty()) {
                 for (String currentKey : storedJSONObject.keySet()) {
                     resultString += storedJSONObject.get(currentKey).toString().replaceAll("(^\")|(\"$)", "");
                 }
