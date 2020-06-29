@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONValue;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
@@ -170,10 +171,16 @@ public class LocalStorage implements LocalStorageInterface {
         if (storedJSONObject != null) {
             if (responseKey == null || responseKey.isEmpty()) {
                 for (String currentKey : storedJSONObject.keySet()) {
-                    resultString += storedJSONObject.get(currentKey).toString().replaceAll("(^\")|(\"$)", "");
+                    final JSONValue currentValue = storedJSONObject.get(currentKey);
+                    if (currentValue != null) {
+                        resultString += currentValue.toString().replaceAll("(^\")|(\"$)", "");
+                    }
                 }
             } else {
-                resultString += storedJSONObject.get(responseKey).toString().replaceAll("(^\")|(\"$)", "");
+                final JSONValue currentValue = storedJSONObject.get(responseKey);
+                if (currentValue != null) {
+                    resultString += currentValue.toString().replaceAll("(^\")|(\"$)", "");
+                }
             }
         }
         return resultString;
