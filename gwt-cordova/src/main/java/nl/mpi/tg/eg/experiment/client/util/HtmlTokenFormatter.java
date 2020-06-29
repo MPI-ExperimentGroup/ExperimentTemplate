@@ -27,7 +27,7 @@ import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
-import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorageInterface;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -38,13 +38,13 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class HtmlTokenFormatter {
 
     final GroupScoreService groupParticipantService;
-    final LocalStorage localStorage;
+    final LocalStorageInterface localStorage;
     final UserData userData;
     final MetadataField[] metadataFieldArray;
     final TimerService timerService;
     final Stimulus currentStimulus;
 
-    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorage localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataField[] metadataFieldArray) {
+    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorageInterface localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataField[] metadataFieldArray) {
         this.localStorage = localStorage;
         this.groupParticipantService = groupParticipantService;
         this.userData = userData;
@@ -339,17 +339,24 @@ public class HtmlTokenFormatter {
                     } else {
                         final String[] subPart = splitPart.split(">", 2);
                         final String uniqueId;
+                        final String responseKey;
                         if (subPart[0].length() == 0) {
                             uniqueId = currentStimulus.getUniqueId(); // show the current stimulus response
+                            responseKey = ""; // show all response values
                         } else {
-                            uniqueId = subPart[0].substring(1); // extracted XXX from "<stimulusResponse_XXX"
-                        }
-                        final JSONObject storedJSONObject = localStorage.getStoredJSONObject(userData.getUserId(), uniqueId);
-                        if (storedJSONObject != null) {
-                            for (String key : storedJSONObject.keySet()) {
-                                resultString += storedJSONObject.get(key).toString().replaceAll("(^\")|(\"$)", "");
+                            final String[] keysPart = subPart[0].substring(1).split("_", 2);
+                            if (keysPart[0].length() == 0) {
+                                uniqueId = currentStimulus.getUniqueId(); // show the current stimulus response
+                            } else {
+                                uniqueId = keysPart[0]; // extracted XXX from "<stimulusResponse_XXX"
+                            }
+                            if (keysPart.length < 2 || keysPart[1].length() == 0) {
+                                responseKey = ""; // show all response values
+                            } else {
+                                responseKey = keysPart[1]; // extracted ZZZ from "<stimulusResponse_XXX_ZZZ"
                             }
                         }
+                        resultString +=  localStorage.getStoredStimulusValue(userData.getUserId(), uniqueId, responseKey);
                         resultString += subPart[1];
                     }
                 }

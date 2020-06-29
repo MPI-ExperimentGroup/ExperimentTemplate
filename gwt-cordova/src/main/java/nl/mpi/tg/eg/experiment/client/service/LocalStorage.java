@@ -36,7 +36,7 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataFieldProvider;
  * @since Oct 24, 2014 3:01:35 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class LocalStorage {
+public class LocalStorage implements LocalStorageInterface {
 
     protected final String appNameInternal;
     protected boolean enableObfuscation = true;
@@ -161,6 +161,22 @@ public class LocalStorage {
         }
         JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(cleanStoredData);
         return jsonObject;
+    }
+
+    @Override
+    public String getStoredStimulusValue(UserId userId, String stimulusId, String responseKey) {
+        String resultString = "";
+        final JSONObject storedJSONObject = getStoredJSONObject(userId, stimulusId);
+        if (storedJSONObject != null) {
+            if (responseKey == null || responseKey.isBlank()) {
+                for (String currentKey : storedJSONObject.keySet()) {
+                    resultString += storedJSONObject.get(currentKey).toString().replaceAll("(^\")|(\"$)", "");
+                }
+            } else {
+                resultString += storedJSONObject.get(responseKey).toString().replaceAll("(^\")|(\"$)", "");
+            }
+        }
+        return resultString;
     }
 
     public JSONObject getStoredJSONObject(UserId userId, String stimulusId) {
@@ -361,6 +377,7 @@ public class LocalStorage {
         dataStore.setItem(dataStore.getCOMPLETION_CODE(userId), completionCode);
     }
 
+    @Override
     public String getCompletionCode(UserId userId) {
         loadStorage();
         if (dataStore != null) {

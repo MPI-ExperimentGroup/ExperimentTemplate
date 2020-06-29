@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorageInterface;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -130,10 +131,21 @@ public class HtmlTokenFormatterTest {
         channelScores.put("A-B", "6");
         channelScores.put("C-D", "2");
         final UserData userData = new UserData();
+        final LocalStorageInterface localStorage = new LocalStorageInterface() {
+            @Override
+            public String getCompletionCode(UserId userId) {
+                return "YourCompletionCode";
+            }
+
+            @Override
+            public String getStoredStimulusValue(UserId userId, String stimulusId, String key) {
+                return "StoredStimulusValue(stimulusId:" + stimulusId + ",key:" + key + ")";
+            }
+        };
         final MetadataField session_steps = new MetadataField("session_steps", "session_steps", "session_steps", "session_steps", "session_steps");
         final MetadataField session_step = new MetadataField("session_step", "session_step", "session_step", "session_step", "session_step");
         userData.setMetadataValue(session_steps, "audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime");
-        HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], null, new GroupScoreService() {
+        HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], localStorage, new GroupScoreService() {
 
             @Override
             public String getActiveChannel() {
@@ -264,5 +276,22 @@ public class HtmlTokenFormatterTest {
         final Number evaluateTokensRandom = instance.evaluateTokensNumber("random(21)");
         assertTrue("random(21) < 21", evaluateTokensRandom.intValue() < 21);
         assertTrue("random(21) >= 0", evaluateTokensRandom.intValue() >= 0);
+    }
+
+    /**
+     * Test of evaluateTokensMethods method, of class HtmlTokenFormatter.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException
+     */
+    @Test
+    public void testStimulusSubResponse() throws EvaluateTokensException {
+        System.out.println("StimulusSubResponse");
+        HtmlTokenFormatter instance = getInstance();
+        assertEquals("StoredStimulusValue(stimulusId:321,key:AnotherResponse)", instance.formatString("<stimulusResponse_321_AnotherResponse>"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123_CodeResponse>_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:CodeResponse)_Midvalue_StoredStimulusValue(stimulusId:321,key:AnotherResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123_CodeResponse>_Midvalue_<stimulusResponse_321_AnotherResponse>_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse__CodeResponse>_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123>_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:)_Postvalue", instance.formatString("Prevalue_<stimulusResponse>_Postvalue"));
     }
 }
