@@ -28,9 +28,13 @@ import com.google.gwt.event.dom.client.MouseWheelHandler;
 import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InsertPanel.ForIsWidget;
+import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -134,67 +138,116 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
     }
 
     protected void stimuliValidation() {
+        final ListBox tagsListBox = new ListBox();
+//        tagsListBox.setMultipleSelect(true);
         for (final GeneratedStimulus.Tag tag : GeneratedStimulus.Tag.values()) {
-            ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
-                @Override
-                public String getLabel() {
-                    return "Stimuli Check: " + tag.name();
-                }
-
-                @Override
-                public String getStyleName() {
-                    return null;
-                }
-
-                @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                    final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("simuliValidation: " + tag.name(), null);
-                    final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount", null);
-                    final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount", null);
-                    final FlexTable outputTable = new FlexTable();
-                    ((ComplexView) simpleView).addWidget(outputTable);
-                    final FlexTable transitionTable = new FlexTable();
-                    ((ComplexView) simpleView).addWidget(transitionTable);
-                    new SimuliValidationRunner() {
-                        @Override
-                        public void appendOutput(String outputString) {
-                            simuliValidationHtmlText.setHTML(simuliValidationHtmlText.getHTML() + "<br/>" + outputString);
-                        }
-
-                        @Override
-                        public void sampleCount(int outputString) {
-                            sampleCount.setHTML("sampleCount: " + outputString);
-                        }
-
-                        @Override
-                        public void uniqueCount(int outputString) {
-                            uniqueCount.setHTML("uniqueCount: " + outputString);
-                        }
-
-                        @Override
-                        public void transitionTableValue(int column, int row, String value) {
-                            transitionTable.setText(row, column, value);
-                        }
-
-                        @Override
-                        public void appendUniqueStimuliList(String outputString) {
-                            ((ComplexView) simpleView).addText(outputString);
-                        }
-
-                        @Override
-                        public void outputTableValue(int column, int row, String value) {
-                            outputTable.setText(row, column, value);
-                        }
-
-                    }.calculate(tag);
-                }
-
-                @Override
-                public int getHotKey() {
-                    return -1;
-                }
-            });
+            tagsListBox.addItem(tag.name());
         }
+//        ForIsWidget horizontalPanel = ((ComplexView) simpleView).startHorizontalPanel();
+        ((ComplexView) simpleView).startTable("gridTable");
+        ForIsWidget startRow = ((ComplexView) simpleView).startRow();
+        ForIsWidget cell1 = ((ComplexView) simpleView).startCell(null);
+        ((ComplexView) simpleView).addText("tag");
+        ((ComplexView) simpleView).addWidget(tagsListBox);
+        ((ComplexView) simpleView).endCell(cell1);
+        ForIsWidget cell2 = ((ComplexView) simpleView).startCell(null);
+        final IntegerBox adjacencyThreshold = new IntegerBox();
+        adjacencyThreshold.setValue(3);
+        ((ComplexView) simpleView).addText("adjacencyThreshold");
+        ((ComplexView) simpleView).addWidget(adjacencyThreshold);
+        ((ComplexView) simpleView).endCell(cell2);
+        ForIsWidget cell3 = ((ComplexView) simpleView).startCell(null);
+        final IntegerBox maxStimuli = new IntegerBox();
+        maxStimuli.setValue(100);
+        ((ComplexView) simpleView).addText("maxStimuli");
+        ((ComplexView) simpleView).addWidget(maxStimuli);
+        ((ComplexView) simpleView).endCell(cell3);
+        ForIsWidget cell4 = ((ComplexView) simpleView).startCell(null);
+        final CheckBox randomise = new CheckBox();
+        randomise.setValue(true);
+        ((ComplexView) simpleView).addText("randomise");
+        ((ComplexView) simpleView).addWidget(randomise);
+        ((ComplexView) simpleView).endCell(cell4);
+        ForIsWidget cell5 = ((ComplexView) simpleView).startCell(null);
+        final IntegerBox repeatCount = new IntegerBox();
+        repeatCount.setValue(1);
+        ((ComplexView) simpleView).addText("repeatCount");
+        ((ComplexView) simpleView).addWidget(repeatCount);
+        ((ComplexView) simpleView).endCell(cell5);
+        ForIsWidget cell6 = ((ComplexView) simpleView).startCell(null);
+        final IntegerBox repeatRandomWindow = new IntegerBox();
+        repeatRandomWindow.setValue(6);
+        ((ComplexView) simpleView).addText("repeatRandomWindow");
+        ((ComplexView) simpleView).addWidget(repeatRandomWindow);
+        ((ComplexView) simpleView).endCell(cell6);
+        ForIsWidget cell7 = ((ComplexView) simpleView).startCell(null);
+        final IntegerBox cyclesToRun = new IntegerBox();
+        cyclesToRun.setValue(1000000);
+        ((ComplexView) simpleView).addText("cyclesToRun");
+        ((ComplexView) simpleView).addWidget(cyclesToRun);
+        ((ComplexView) simpleView).endCell(cell7);
+        ((ComplexView) simpleView).endRow(startRow);
+        ((ComplexView) simpleView).endTable();
+//        ((ComplexView) simpleView).endHorizontalPanel(horizontalPanel);
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+            @Override
+            public String getLabel() {
+                return "Calculate Transition Table";
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("stimuliValidation: " + tagsListBox.getSelectedItemText(), null);
+                final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount", null);
+                final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount", null);
+                final FlexTable outputTable = new FlexTable();
+                ((ComplexView) simpleView).addWidget(outputTable);
+                final FlexTable transitionTable = new FlexTable();
+                ((ComplexView) simpleView).addWidget(transitionTable);
+                new SimuliValidationRunner() {
+                    @Override
+                    public void appendOutput(String outputString) {
+                        simuliValidationHtmlText.setHTML(simuliValidationHtmlText.getHTML() + "<br/>" + outputString);
+                    }
+
+                    @Override
+                    public void sampleCount(int outputString) {
+                        sampleCount.setHTML("sampleCount: " + outputString);
+                    }
+
+                    @Override
+                    public void uniqueCount(int outputString) {
+                        uniqueCount.setHTML("uniqueCount: " + outputString);
+                    }
+
+                    @Override
+                    public void transitionTableValue(int column, int row, String value) {
+                        transitionTable.setText(row, column, value);
+                    }
+
+                    @Override
+                    public void appendUniqueStimuliList(String outputString) {
+                        ((ComplexView) simpleView).addText(outputString);
+                    }
+
+                    @Override
+                    public void outputTableValue(int column, int row, String value) {
+                        outputTable.setText(row, column, value);
+                    }
+
+                }.calculate(GeneratedStimulus.Tag.valueOf(tagsListBox.getSelectedItemText()), adjacencyThreshold.getValue(), maxStimuli.getValue(), randomise.getValue(), repeatCount.getValue(), repeatRandomWindow.getValue(), cyclesToRun.getValue());
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+        });
     }
 
     protected void addKeyboardDebug() {

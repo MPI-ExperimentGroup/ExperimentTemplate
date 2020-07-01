@@ -33,29 +33,25 @@ import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
  */
 public abstract class SimuliValidationRunner {
 
-    public void calculate(GeneratedStimulus.Tag tag) {
+    public void calculate(final GeneratedStimulus.Tag tag, final int adjacencyThreshold, final int maxStimuli, /*final int maxStimuliPerTag, final int minStimuliPerTag,*/ final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int cyclesToRun) {
         final Set<String> calculatedStimuliSet = new HashSet<>();
         final Set<String> stimuliSet = new HashSet<>();
         final HashMap<String, Integer> transionTable = new HashMap<>();
         final String eventTag = "R0-4";
         final StimulusSelector[] selectionTags = new StimulusSelector[]{new StimulusSelector("v1", tag)};
         final StimulusSelector[] randomTags = new StimulusSelector[]{};
-
-//final MetadataField stimulusAllocationField= metadataFieldProvider.stimuliMetadataField;
-        final int maxStimulusCount = 23;
-        final Integer minStimuliPerTag = 1;
-        final Integer maxStimuliPerTag = 100;
-        final boolean randomise = true;
-        final int repeatCount = 1;
-        final int repeatRandomWindow = 6;
-        final int adjacencyThreshold = 3;
         final String storedStimulusList = "";
         final List<Stimulus.Tag> allocatedTags = new ArrayList<>();
 //        final List<StimulusSelector> allocatedTags = new ArrayList<>(Arrays.asList(selectionTags));
         for (StimulusSelector selector : selectionTags) {
             allocatedTags.add(selector.getTag());
         }
-        final int cyclesToRun = 1000000;
+        appendOutput("tag: " + tag.name());
+        appendOutput("adjacencyThreshold: " + adjacencyThreshold);
+        appendOutput("maxStimuli: " + maxStimuli);
+        appendOutput("randomise: " + randomise);
+        appendOutput("repeatCount: " + repeatCount);
+        appendOutput("repeatRandomWindow: " + repeatRandomWindow);
         appendOutput("cyclesToRun: " + cyclesToRun);
         final Timer timer = new Timer() {
             int sampleCount = 0;
@@ -65,7 +61,7 @@ public abstract class SimuliValidationRunner {
 
 //        for (int sampleCount = 0; sampleCount < cyclesToRun; sampleCount++) {
                 final StimulusProvider stimulusProvider = new StimulusProvider();
-                stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, 0);
+                stimulusProvider.getSubset(allocatedTags, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, 0);
                 final String loadedStimulusString = stimulusProvider.generateStimuliStateSnapshot();
 //            appendOutput(loadedStimulusString);
                 if (calculatedStimuliSet.add(loadedStimulusString)) {
@@ -108,7 +104,7 @@ public abstract class SimuliValidationRunner {
                     transitionTableValue(1, entryIndex, transionCount.toString());
                     entryIndex++;
                 }
-                outputTableValue(0, 0, "transionTableSize: " + transionTable.size());
+                outputTableValue(0, 0, "transitionTableSize: " + transionTable.size());
                 outputTableValue(0, 1, "minTransition: " + minTransition);
                 outputTableValue(0, 2, "maxTransition: " + maxTransition);
                 outputTableValue(0, 3, "totalTransition: " + totalTransition);
