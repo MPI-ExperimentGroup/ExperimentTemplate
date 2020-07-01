@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Entity;
@@ -115,6 +116,7 @@ public class AudioData {
         this.recordingFormat = recordingFormat;
     }
 
+    @JsonIgnore
     public byte[] getDataBlob() {
         return dataBlob;
     }
