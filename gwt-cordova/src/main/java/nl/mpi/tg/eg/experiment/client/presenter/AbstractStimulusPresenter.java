@@ -1917,7 +1917,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public void triggerDefinition(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
-        triggerListeners.put(formattedListenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
+        triggerListeners.put(formattedListenerId, new TriggerListener(formattedListenerId, threshold, maximum, triggerListener));
     }
 
     public void habituationParadigmListener(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
