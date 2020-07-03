@@ -146,9 +146,9 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             loadStimuliFeature.addStimulusTag(stimulusTag);
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
-        if (storedWizardScreenData.getMaxStimuliPerTag() != null) {
-            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, Integer.toString(storedWizardScreenData.getMaxStimuliPerTag()));
-        }
+//        if (storedWizardScreenData.getMaxStimuliPerTag() != null) {
+//            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, Integer.toString(storedWizardScreenData.getMaxStimuliPerTag()));
+//        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");

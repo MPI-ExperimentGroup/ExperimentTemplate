@@ -271,8 +271,8 @@ public class DefaultExperiments {
                         case errorStreak:
                         case potentialThreshold:
                         case incrementPhase:
-                        case minStimuliPerTag:
-                        case maxStimuliPerTag:
+//                        case minStimuliPerTag:
+//                        case maxStimuliPerTag:
                         case minimum:
                             presenterFeature.addFeatureAttributes(attribute, "3");
                             break;

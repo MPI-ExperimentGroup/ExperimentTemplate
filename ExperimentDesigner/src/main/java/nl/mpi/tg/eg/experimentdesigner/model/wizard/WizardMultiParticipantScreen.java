@@ -511,8 +511,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
+//        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
+//        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(storedWizardScreenData.getRepeatCount()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(storedWizardScreenData.getRepeatRandomWindow()));

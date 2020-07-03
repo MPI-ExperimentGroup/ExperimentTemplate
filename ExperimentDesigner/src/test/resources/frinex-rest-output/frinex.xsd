@@ -683,8 +683,6 @@
 <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
 </xs:all>
 <xs:attribute name="eventTag" type="xs:string"/>
-<xs:attribute name="minStimuliPerTag" type="xs:string"/>
-<xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 <xs:attribute name="randomise" type="xs:boolean"/>
 <xs:attribute name="repeatCount" type="xs:integer"/>
@@ -699,8 +697,6 @@
 <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
 </xs:all>
 <xs:attribute name="eventTag" type="xs:string"/>
-<xs:attribute name="minStimuliPerTag" type="xs:string"/>
-<xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 <xs:attribute name="randomise" type="xs:boolean"/>
 <xs:attribute name="repeatCount" type="xs:integer"/>
@@ -730,8 +726,6 @@
 <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
 </xs:all>
 <xs:attribute name="eventTag" type="xs:string"/>
-<xs:attribute name="minStimuliPerTag" type="xs:string"/>
-<xs:attribute name="maxStimuliPerTag" type="xs:string"/>
 <xs:attribute name="maxStimuli" type="xs:string"/>
 <xs:attribute name="excludeRegex" type="xs:string"/>
 <xs:attribute name="matchingRegex" type="xs:string" use="required"/>

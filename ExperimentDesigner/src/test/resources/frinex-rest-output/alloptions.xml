@@ -363,7 +363,7 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <withStimuli adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" minStimuliPerTag="3" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
+        <withStimuli adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" maxStimuli="3" repeatCount="3">
             <beforeStimulus>
                 <plainText featureText="plainText in beforeStimulus"/>
             </beforeStimulus>
@@ -746,7 +746,7 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </withStimuli>
-        <loadStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" minStimuliPerTag="3" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
+        <loadStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" maxStimuli="3" repeatCount="3">
             <hasMoreStimulus>
                 <withMatchingStimulus eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
                     <hasMoreStimulus>
@@ -1126,7 +1126,7 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <loadSdCardStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" minStimuliPerTag="3" excludeRegex="excludeRegex" maxStimuliPerTag="3" maxStimuli="3" replacementRegex="replacementRegex" repeatCount="3">
+        <loadSdCardStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" excludeRegex="excludeRegex" maxStimuli="3" replacementRegex="replacementRegex" repeatCount="3">
             <hasMoreStimulus>
                 <withMatchingStimulus eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
                     <hasMoreStimulus>

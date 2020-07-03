@@ -248,8 +248,8 @@ public enum FeatureAttribute {
     mediaId(/*true*/), listenerId, threshold, maximum, minimum, average, ranges(true),
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
-    minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
-    maxStimuliPerTag(true), // for each tag there should be no more than N of each represented in the final list
+//    minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
+//    maxStimuliPerTag(true), // for each tag there should be no more than N of each represented in the final list
     maxStimuli(true),
     excludeRegex(true),
     //    alias, // alias is used to specify a tag or set of tags via GET parameters

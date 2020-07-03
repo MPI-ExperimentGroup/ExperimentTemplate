@@ -17,7 +17,7 @@
                     <conditionTrue>
                         <hasGetParameter parameterName="member">
                             <conditionTrue>
-                                <loadStimulus adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" minStimuliPerTag="100" maxStimuliPerTag="100" maxStimuli="100" repeatCount="1">
+                                <loadStimulus adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
                                     <hasMoreStimulus>
                                         <clearPage/>
                                         <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D">
@@ -63,7 +63,7 @@
                             <conditionTrue>
                                 <hasGetParameter parameterName="member">
                                     <conditionTrue>
-                                        <loadStimulus adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" minStimuliPerTag="100" maxStimuliPerTag="100" maxStimuli="100" repeatCount="1">
+                                        <loadStimulus adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
                                             <hasMoreStimulus>
                                                 <clearPage/>
                                                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D,E,F,G,H">
@@ -142,7 +142,7 @@
         <centrePage/>
         <htmlText featureText="Om het spel te kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. &lt;br/&gt;&lt;br/&gt;Gebruik geen bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal te creëren. Je kun de spatiebalk gebruiken om beschrijvingen te maken met meerdere woorden. Maar let op, je kunt niet alle letters gebruiken. Alleen de letters die zichtbaar zijn op het keyboard kunnen gebruikt worden. Check dus eerst of je de beschrijving die je in gedachten hebt, kunt typen voor je verder gaat. De backspace toets is bruikbaar als je de beschrijving wilt aanpassen of herschrijven. &lt;br/&gt;&lt;br/&gt;Proefpersoon 1 begint. Hij/zij zal een beschrijving geven aan de eerste scène op het scherm. Toon de beschrijving eerst aan de onderzoeker voor je verder gaat. Omdat dit de eerste ronde is van het spel willen we even checken of het aan de eisen voldoet. Als de beschrijving goed is, zal hij zeven seconden samen met de scène op het scherm getoond worden aan alle deelnemers van de groep.&lt;br/&gt;&lt;br/&gt;Daarna benoemt proefpersoon 2 de tweede scène en zo verder.&lt;br/&gt;&lt;br/&gt;Wanneer alle scènes benoemd zijn, krijg je ze nog twee keer te zien. Probeer de beschrijvingen en de bijhorende scènes zo goed mogelijk te onthouden zodat je beter kunt communiceren in de volgende rondes.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R0-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+            <loadStimulus adjacencyThreshold="3" eventTag="R0-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
@@ -217,7 +217,7 @@
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog twee keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R0.1-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+            <loadStimulus adjacencyThreshold="3" eventTag="R0.1-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
@@ -292,7 +292,7 @@
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog één keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R0.2-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+            <loadStimulus adjacencyThreshold="3" eventTag="R0.2-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
@@ -367,7 +367,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R1-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R1-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
@@ -508,7 +508,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R2-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R2-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
@@ -649,7 +649,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R3-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R3-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
@@ -790,7 +790,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R4-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R4-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
@@ -931,7 +931,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R5-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R5-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
@@ -1072,7 +1072,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R6-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R6-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
@@ -1213,7 +1213,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R7-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R7-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
@@ -1354,7 +1354,7 @@
         <centrePage/>
         <htmlText featureText="Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. Dit doe je zonder te overleggen."/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R8-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R8-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
@@ -1402,7 +1402,7 @@
         <centrePage/>
         <htmlText featureText="Om het spel te kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. &lt;br/&gt;&lt;br/&gt;Gebruik geen bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal te creëren. Je kun de spatiebalk gebruiken om beschrijvingen te maken met meerdere woorden. Maar let op, je kunt niet alle letters gebruiken. Alleen de letters die zichtbaar zijn op het keyboard kunnen gebruikt worden. Check dus eerst of je de beschrijving die je in gedachten hebt, kunt typen voor je verder gaat. De backspace toets is bruikbaar als je de beschrijving wilt aanpassen of herschrijven. &lt;br/&gt;&lt;br/&gt;Proefpersoon 1 begint. Hij/zij zal een beschrijving geven aan de eerste scène op het scherm. Toon de beschrijving eerst aan de onderzoeker voor je verder gaat. Omdat dit de eerste ronde is van het spel willen we even checken of het aan de eisen voldoet. Als de beschrijving goed is, zal hij zeven seconden samen met de scène op het scherm getoond worden aan alle deelnemers van de groep.&lt;br/&gt;&lt;br/&gt;Daarna benoemt proefpersoon 2 de tweede scène en zo verder.&lt;br/&gt;&lt;br/&gt;Wanneer alle scènes benoemd zijn, krijg je ze nog twee keer te zien. Probeer de beschrijvingen en de bijhorende scènes zo goed mogelijk te onthouden zodat je beter kunt communiceren in de volgende rondes.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R0-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+            <loadStimulus adjacencyThreshold="3" eventTag="R0-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
@@ -1477,7 +1477,7 @@
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog twee keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R0.1-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+            <loadStimulus adjacencyThreshold="3" eventTag="R0.1-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
@@ -1552,7 +1552,7 @@
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog één keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R0.2-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+            <loadStimulus adjacencyThreshold="3" eventTag="R0.2-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
@@ -1627,7 +1627,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R1-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R1-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
@@ -1768,7 +1768,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R2-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R2-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
@@ -1909,7 +1909,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R3-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R3-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
@@ -2050,7 +2050,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R4-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R4-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
@@ -2191,7 +2191,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R5-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R5-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
@@ -2332,7 +2332,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R6-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R6-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
@@ -2473,7 +2473,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R7-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R7-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
@@ -2614,7 +2614,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R8-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R8-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
@@ -2662,7 +2662,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R9-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R9-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
@@ -2803,7 +2803,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R10-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R10-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
@@ -2944,7 +2944,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R11-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R11-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
@@ -3085,7 +3085,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R12-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R12-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
@@ -3226,7 +3226,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R13-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R13-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
@@ -3367,7 +3367,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R14-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R14-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
@@ -3508,7 +3508,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R15-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R15-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
@@ -3649,7 +3649,7 @@
         <centrePage/>
         <htmlText featureText="Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. Dit doe je zonder te overleggen."/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="R16-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus adjacencyThreshold="3" eventTag="R16-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">

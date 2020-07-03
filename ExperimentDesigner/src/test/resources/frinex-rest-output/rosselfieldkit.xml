@@ -51,7 +51,7 @@
         <selectUserMenu fieldName="workerId"/>
     </presenter>
     <presenter back="Menu" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitSequential" title="FieldKit Sequential">
-        <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="FieldKit Sequential" filePerStimulus="false">
@@ -87,7 +87,7 @@
         </loadSdCardStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="FieldKit Random" type="stimulus" self="FieldKitRandom" title="FieldKit Random">
-        <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" matchingRegex="" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="FieldKit Random" filePerStimulus="false">
