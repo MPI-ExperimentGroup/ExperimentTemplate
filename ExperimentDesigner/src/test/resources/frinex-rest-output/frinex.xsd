@@ -235,7 +235,7 @@
 <xs:complexType>
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Each experiment XML configuration file must have one EXPERIMENT element of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>
+<xs:documentation>Each experiment XML configuration file must have one "experiment" element of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>
 </xs:annotation>
 <xs:element name="preventWindowClose" minOccurs="0">
 <xs:complexType>
@@ -397,7 +397,7 @@
 <xs:complexType name="metadataType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.</xs:documentation>
+<xs:documentation>The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables. </xs:documentation>
 </xs:annotation>
 <xs:element name="field" maxOccurs="unbounded" type="fieldType"/>
 </xs:sequence>

@@ -167,7 +167,15 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "    \n"
                 + "  </script>"
                 + "    </head>\n"
-                + "    <body>\n");
+                + "    <body>\n"
+                + "This document describes the Frinex markup language (XML) which is used to describe a Frinex experiment configuration. "
+                + "When used with the automated build system the experiment configuration can be committed and pushed to the build server, which triggers the build process. "
+                + "The build process can be tracked on the <a href=\"index.html#2_d\">build listing</a> page which contains links to the compiled web app, Android, iOS, Electron and administration system for both the staging and production version. "
+                + "By default only the web app and administration system for the staging version will be build. To enable other options you will need to edit the listing.json file next to your configuration file. "
+                + "Stimuli files can be added in a directory (next to your configuration file) of the same name as the experiment configuration file. "
+                + "Each experiment XML file should have the <a href=\"frinex.xsd\">Frinex XSD</a> declared in the XML document namespace. "
+                + "Adding this XSD will enable XML validation, preemptive typing and the documentation of each element and attribute to be shown in your preferred XML editing tool. "
+        );
     }
 
     private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {

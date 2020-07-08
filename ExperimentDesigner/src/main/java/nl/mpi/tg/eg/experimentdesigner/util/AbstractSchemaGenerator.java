@@ -344,7 +344,7 @@ public class AbstractSchemaGenerator {
             return this;
         }
     }
-    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Each experiment XML configuration file must have one EXPERIMENT element of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
+    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Each experiment XML configuration file must have one \"experiment\" element of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
             new DocumentationElement[]{
                 new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
                         new DocumentationElement[0]).stringAttribute("featureText", false),
