@@ -354,6 +354,93 @@ public class XpathExperimentValidatorTest {
     }
 
     /**
+     * Test of validateRegexStrings method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testValidateRegexStrings() throws Exception {
+        System.out.println("validateRegexStrings");
+        final String validateRegexString = "<experiment>"
+                + "<validation>"
+                + "<recordMatch validationRegex=\"regex_string\" />\n"
+                + "<fieldMatch validationRegex=\"regex_string\" />\n"
+                + "</validation>"
+                + "<administration>"
+                + "<dataAgreementField matchingRegex=\"regex_string\" validationRegex=\"regex_string\" />\n"
+                + "</administration>"
+                + "<metadata>"
+                + "<field controlledRegex=\"regex_string\" />\n"
+                + "</metadata>"
+                + "<presenter>"
+                + "<disableButtonGroup matchingRegex=\"regex_string\" />\n"
+                + "<enableButtonGroup matchingRegex=\"regex_string\" />\n"
+                + "<hasMetadataValue matchingRegex=\"regex_string\" />\n"
+                + "<hideButtonGroup matchingRegex=\"regex_string\" />\n"
+                + "<loadSdCardStimulus "
+                + "matchingRegex=\"regex_string\" "
+                + "excludeRegex=\"regex_string\" "
+                + "replacementRegex=\"regex_string\" "
+                + "/>\n"
+                + "<matchOnEvalTokens matchingRegex=\"regex_string\" />\n"
+                + "<metadataFieldDateTriggered "
+                + "enabledRegex=\"regex_string\" "
+                + "visibleRegex=\"regex_string\" "
+                + " />\n"
+                + "<metadataFieldVisibilityDependant "
+                + "enabledRegex=\"regex_string\" "
+                + "visibleRegex=\"regex_string\" "
+                + " />\n"
+                + "<setMetadataValue replacementRegex=\"regex_string\" />\n"
+                + "<stimulusPresent replacementRegex=\"regex_string\" />\n"
+                + "<showButtonGroup matchingRegex=\"regex_string\" />\n"
+                + "<withMatchingStimulus matchingRegex=\"regex_string\" />\n"
+                + "<switchUserIdButton validationRegex=\"regex_string\" />\n"
+                + "<transmitResults enabledRegex=\"regex_string\" matchingRegex=\"regex_string\" />\n"
+                + "<triggerRandom matchingRegex=\"regex_string\" />\n"
+                + "<addStimulusCodeResponseValidation validationRegex=\"regex_string\" />\n"
+                + "<stimulusFreeText validationRegex=\"regex_string\" />\n"
+                + "<removeMatchingStimulus matchingRegex=\"regex_string\" />\n"
+                + "<stimulusHasResponse matchingRegex=\"regex_string\" />\n"
+                + "<startAudioRecorderWeb deviceRegex=\"regex_string\" />\n"
+                + "</presenter>"
+                + "</experiment>";
+        System.out.println(validateRegexString);
+        Document xmlOkIdentifierDocument = getDocument(validateRegexString.replaceAll("regex_string", ".*"));
+        Document xmlFailIdentifierDocument = getDocument(validateRegexString.replaceAll("regex_string", "*"));
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("", instance.validateRegexStrings(xmlOkIdentifierDocument));
+        assertEquals("Invalid REGEX \"*\" found in attribute  validationRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  validationRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  validationRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  controlledRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  excludeRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  replacementRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  enabledRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  visibleRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  enabledRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  visibleRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  replacementRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  replacementRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  validationRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  enabledRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  validationRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  validationRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  matchingRegex\n"
+                + "Invalid REGEX \"*\" found in attribute  deviceRegex\n", instance.validateRegexStrings(xmlFailIdentifierDocument));
+    }
+
+    /**
      * Test of validateMetadataFieldPostNames method, of class
      * XpathExperimentValidator.
      */

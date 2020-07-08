@@ -21,6 +21,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,6 +31,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -53,6 +56,7 @@ public class XpathExperimentValidator {
 //            result += validateStimuliIds(xmlDocument); // duplicate stimulus identifiers are not an issue, there might be use cases where this could be done intentionally, so we allow it here
             result += validateMetadataFieldPostNames(xmlDocument);
             result += validateMetadataFields(xmlDocument);
+            result += validateRegexStrings(xmlDocument);
             if (!result.isEmpty()) {
                 throw new XpathExperimentException(result);
             }
@@ -210,6 +214,26 @@ public class XpathExperimentValidator {
                     System.out.println(returnMessage);
                 }
             }
+        }
+        return returnMessage;
+    }
+
+    protected String validateRegexStrings(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//@*[contains(name(), \"Regex\")]").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList.getLength(); index++) {
+            // the regex strings are later stored in properties files that need to have { and } escaped with 'swhich need to be removed for this test
+            final String attributeValue = nodeList.item(index).getTextContent().replaceAll("'\\{'", "{").replaceAll("'\\}'", "}");
+            try {
+                Pattern.compile(attributeValue);
+            } catch (PatternSyntaxException pse) {
+                final Node parentNode = nodeList.item(index).getParentNode();
+                final String elementName = (parentNode != null) ? parentNode.getLocalName() : "";
+                final String attributeName = nodeList.item(index).getNodeName();
+                returnMessage += "Invalid REGEX \"" + attributeValue + "\" found in attribute " + elementName + " " + attributeName + "\n";
+            }
+            System.out.println(returnMessage);
         }
         return returnMessage;
     }
