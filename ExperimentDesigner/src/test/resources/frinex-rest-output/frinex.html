@@ -14651,7 +14651,7 @@ String</span><br/>
 <h3 id="groupNetworkType" style="text-transform: uppercase;">
 groupNetwork
 </h3>
-
+Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupNetwork</span></td><td><span style="color:green">groupCommunicationChannels</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -14659,7 +14659,7 @@ List of communication channels separated by | for the group. The members are sep
 <span style="color:green">groupMembers</span><span style="color:grey">=&quot;String&quot;</span><span>
 List of members separated by , with preferably only a-Z being used for the member names.</span><br/>
 <span style="color:green">phasesPerStimulus</span><span style="color:grey">=&quot;Integer&quot;</span><span>
-The number of phases per round in the group. When current phase reaches this value the next stimlus will be triggered.</span><br/>
+The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -27024,7 +27024,7 @@ endOfStimulus
 <h3 id="groupFindingMembersType" style="text-transform: uppercase;">
 groupFindingMembers
 </h3>
-
+When the the connection to the group server is established the second stage is waiting for the other group members.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupFindingMembers</span></td><td><span style="color:purple">&gt;</span></td><td>
@@ -27564,7 +27564,7 @@ groupFindingMembers
 <h3 id="groupMemberActivityType" style="text-transform: uppercase;">
 groupMemberActivity
 </h3>
-
+Member activities will be triggered when the member code and the current phase coincide. This is determined by the phase matrix defined in each phaseMembers attribute.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupMemberActivity</span></td><td><span style="color:green">phaseMembers</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -28106,7 +28106,7 @@ List of members for each phase. Each phase is separated by : and in each phase t
 <h3 id="groupNetworkConnectingType" style="text-transform: uppercase;">
 groupNetworkConnecting
 </h3>
-
+The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupNetworkConnecting</span></td><td><span style="color:purple">&gt;</span></td><td>
@@ -28646,7 +28646,7 @@ groupNetworkConnecting
 <h3 id="groupNetworkSynchronisingType" style="text-transform: uppercase;">
 groupNetworkSynchronising
 </h3>
-
+For each stimulus change and phase change the group network needs to be synchronised. The contents of this element will be triggered while this synchronisation is being done.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupNetworkSynchronising</span></td><td><span style="color:purple">&gt;</span></td><td>
@@ -29186,7 +29186,7 @@ groupNetworkSynchronising
 <h3 id="groupPhaseListenersType" style="text-transform: uppercase;">
 groupPhaseListeners
 </h3>
-
+The activities in the phase/participant matrix is defined here. Not all participants will see the same activity at the same time. It is possible for one, many or none to be triggered for any given phase member code combination.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupPhaseListeners</span></td><td><span style="color:purple">&gt;</span></td><td>

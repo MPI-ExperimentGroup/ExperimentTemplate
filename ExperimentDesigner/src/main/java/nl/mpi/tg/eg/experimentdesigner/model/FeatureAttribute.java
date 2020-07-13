@@ -266,7 +266,7 @@ public enum FeatureAttribute {
     groupCommunicationChannels("List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.", false, AttributeType.xsString),
     incrementPhase("Increments the current group phase and triggeres the relevant group activities for all members of the group.", false, AttributeType.xsInteger),
     //    incrementStimulus,
-    phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimlus will be triggered.", false, AttributeType.xsInteger),
+    phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.", false, AttributeType.xsInteger),
     applyScore("If set to true then the stimulus response is compared to the stimulus correctResponses and a score is given accordingly.", false, AttributeType.xsBoolean),
     scoreValue("A positive number for achievements or a negative number for failures or zero for neither.", false, AttributeType.xsInteger);
     final boolean isOptional;

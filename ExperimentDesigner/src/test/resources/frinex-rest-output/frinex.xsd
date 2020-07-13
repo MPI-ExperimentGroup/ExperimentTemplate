@@ -11035,6 +11035,9 @@
 </xs:complexType>
 <xs:complexType name="groupNetworkType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.</xs:documentation>
+</xs:annotation>
 <xs:element name="groupFindingMembers" type="groupFindingMembersType"/>
 <xs:element name="groupNetworkConnecting" type="groupNetworkConnectingType"/>
 <xs:element name="groupNetworkSynchronising" type="groupNetworkSynchronisingType"/>
@@ -11046,6 +11049,9 @@
 </xs:complexType>
 <xs:complexType name="groupFindingMembersType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>When the the connection to the group server is established the second stage is waiting for the other group members.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -11222,6 +11228,9 @@
 </xs:complexType>
 <xs:complexType name="groupNetworkConnectingType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -11398,6 +11407,9 @@
 </xs:complexType>
 <xs:complexType name="groupNetworkSynchronisingType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>For each stimulus change and phase change the group network needs to be synchronised. The contents of this element will be triggered while this synchronisation is being done.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -11574,12 +11586,18 @@
 </xs:complexType>
 <xs:complexType name="groupPhaseListenersType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>The activities in the phase/participant matrix is defined here. Not all participants will see the same activity at the same time. It is possible for one, many or none to be triggered for any given phase member code combination.</xs:documentation>
+</xs:annotation>
 <xs:element name="groupMemberActivity" type="groupMemberActivityType"/>
 <xs:element name="sendGroupEndOfStimuli" type="sendGroupEndOfStimuliType"/>
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="groupMemberActivityType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Member activities will be triggered when the member code and the current phase coincide. This is determined by the phase matrix defined in each phaseMembers attribute.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
