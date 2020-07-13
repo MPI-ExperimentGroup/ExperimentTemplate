@@ -194,7 +194,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void postLoadTimerFired() {
                 clearPage();
                 if (directoryList.isEmpty()) {
-                    showStimulus(stimulusProvider, null, 0);
+                    showStimulus(stimulusProvider, 0);
                 } else {
                     hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
@@ -314,7 +314,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "loadStimulus" : eventTag);
-        showStimulus(stimulusProvider, null, 0);
+        showStimulus(stimulusProvider, 0);
     }
 
     private void loadStimulus(
@@ -514,10 +514,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void showStimulus(final StimuliProvider stimulusProvider) {
-        showStimulus(stimulusProvider, null, 0);
+        showStimulus(stimulusProvider, 0);
     }
 
-    protected void showStimulus(final StimuliProvider stimulusProvider, GroupActivityListener groupActivityListener, final int increment) {
+    protected void showStimulus(final StimuliProvider stimulusProvider, final int increment) {
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex + increment));
@@ -568,39 +568,34 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     userResults.getUserData().getUserId().toString(),
                     getSelfTag(), groupMembers, groupCommunicationChannels,
                     phasesPerStimulus,
-                    stimulusProvider.generateStimuliStateSnapshot(),
-                    new CancelableStimulusListener() {
+                    stimulusProvider.generateStimuliStateSnapshot()
+            //                    , endOfStimulusListener
+            ) {
                 @Override
-                public void trigggerCancelableEvent() {
+                public void groupNetworkConnecting() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
 //                    clearPage();
                     groupNetworkConnecting.postLoadTimerFired();
-//                    ((ComplexView) simpleView).addPadding();
-                    if (groupParticipantService.isConnected()) {
-                        ((ComplexView) simpleView).addText("connected, waiting for other members");
-                    } else {
-                        ((ComplexView) simpleView).addText("not connected");
-                    }
+                    ((ComplexView) simpleView).addText("not connected");
+                    // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
+                    endOfStimulusGroupMessage.postLoadTimerFired();
+                    groupKickTimer.schedule(1000);
+
+                }
+
+                @Override
+                public void groupFindingMembers() {
+                    // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
+//                    clearPage();
+                    groupFindingMembers.postLoadTimerFired();
+                    ((ComplexView) simpleView).addText("connected, waiting for other members");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
                     endOfStimulusGroupMessage.postLoadTimerFired();
                     groupKickTimer.schedule(1000);
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
-//                    todo: if debug mode then don't clear screen and log all the events as htmlText
-//                    clearPage();
-//                    clearPage();
-//                    ((ComplexView) simpleView).addPadding();
-//                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
-//                    ((ComplexView) simpleView).addHtmlText("Group not ready", "highlightedText");
-//                    ((ComplexView) simpleView).addPadding();
-                    groupFindingMembers.postLoadTimerFired();
-                    groupKickTimer.schedule(1000);
-                }
-            }, new CancelableStimulusListener() {
-                @Override
-                public void trigggerCancelableEvent() {
+                public void synchroniseStimulusList() {
 //                    ((ComplexView) simpleView).addPadding();
 //                    ((ComplexView) simpleView).addText("synchronising the stimuli");
                     final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
@@ -612,9 +607,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     groupKickTimer.schedule(1000);
                     groupNetworkSynchronising.postLoadTimerFired();
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
+                public void synchroniseCurrentStimulus() {
                     if (groupParticipantService.getStimulusIndex() < stimulusProvider.getTotalStimuli()) {
                         if (groupParticipantService.getStimulusIndex() != stimulusProvider.getCurrentStimulusIndex()) {
                             groupParticipantService.setResponseStimulusId(null);
@@ -637,9 +632,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         }
                     }
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
+                public void groupInfoChanged() {
                     ((ComplexView) simpleView).addInfoButton(new PresenterEventListner() {
                         @Override
                         public String getLabel() {
@@ -689,9 +684,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         }
                     });
                 }
-            }
-            //                    , endOfStimulusListener
-            );
+            };
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
             // todo: should this endOfStimulusGroupMessage exist?
@@ -2137,7 +2130,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
             userResults.getUserData().clearCurrentResponse();
 //        clearPage();
-            showStimulus(stimulusProvider, null, increment);
+            showStimulus(stimulusProvider, increment);
         }
     }
 

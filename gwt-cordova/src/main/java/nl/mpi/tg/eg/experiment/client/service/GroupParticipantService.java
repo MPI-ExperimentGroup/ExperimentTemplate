@@ -23,25 +23,19 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 
 /**
  * @since Nov 8, 2016 1:47:57 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class GroupParticipantService implements GroupScoreService {
+public abstract class GroupParticipantService implements GroupScoreService {
 
 //    private final HashMap<String, ArrayList<CancelableStimulusListener>> selfActivityListeners = new HashMap<>();
 //    private final HashMap<String, ArrayList<CancelableStimulusListener>> othersActivityListeners = new HashMap<>();
     private final HashMap<String, GroupActivityListener> activityListeners = new HashMap<>();
-    private final CancelableStimulusListener screenResetRequestListner;
-    private final CancelableStimulusListener stimulusSyncListner;
-    private final CancelableStimulusListener groupInfoChangeListner;
     private final String allMemberCodes;
     private final String groupCommunicationChannels;
-    private final CancelableStimulusListener connectedListener;
-    private final CancelableStimulusListener groupNotReadyListener;
 //    private final CancelableStimulusListener endOfStimulusListener;
     private boolean isConnected = false;
     private List<GroupActivityListener> lastFiredListnerList = null;
@@ -71,18 +65,13 @@ public class GroupParticipantService implements GroupScoreService {
     private final HashMap<String, String> channelScores = new HashMap<>();
     private String groupUUID = null;
 
-    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded, CancelableStimulusListener connectedListener, CancelableStimulusListener groupNotReadyListener, CancelableStimulusListener screenResetRequestListner, CancelableStimulusListener stimulusSyncListner, CancelableStimulusListener groupInfoChangeListner
+    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded
     //            , CancelableStimulusListener endOfStimulusListener
     ) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.phasesPerStimulus = phasesPerStimulus;
-        this.connectedListener = connectedListener;
-        this.groupNotReadyListener = groupNotReadyListener;
-        this.screenResetRequestListner = screenResetRequestListner;
-        this.groupInfoChangeListner = groupInfoChangeListner;
-        this.stimulusSyncListner = stimulusSyncListner;
         this.screenId = screenId;
         this.stimuliListLoaded = stimuliListLoaded;
 //        this.endOfStimulusListener = endOfStimulusListener;
@@ -151,7 +140,7 @@ public class GroupParticipantService implements GroupScoreService {
             this.stimuliListGroup = stimuliListGroup;
             if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
-                screenResetRequestListner.postLoadTimerFired();
+                synchroniseStimulusList();
                 return;
             }
         }
@@ -204,7 +193,7 @@ public class GroupParticipantService implements GroupScoreService {
                                 this.responseStimulusId = responseStimulusId;
                                 if (!endOfStimuli) {
                                     // if we are already at the end of the stimuli list then do not sync again
-                                    stimulusSyncListner.postLoadTimerFired();
+                                    synchroniseCurrentStimulus();
                                 }
                                 if (!endOfStimuli) {
                                     // if the stimulusSyncListner has put us at the end of the stimuli list then trigger any phases
@@ -223,17 +212,21 @@ public class GroupParticipantService implements GroupScoreService {
                     }
                 }
             } else {
-                groupNotReadyListener.postLoadTimerFired();
+                groupFindingMembers();
             }
         }
         if (userGroupLabelUpdateNeeded) {
-            groupInfoChangeListner.postLoadTimerFired();
+            groupInfoChanged();
         }
     }
 
     protected void setConnected(Boolean isConnected) {
         this.isConnected = isConnected;
-        connectedListener.postLoadTimerFired();
+        if (isConnected) {
+            groupFindingMembers();
+        } else {
+            groupNetworkConnecting();
+        }
     }
 
     public boolean isConnected() {
@@ -356,11 +349,6 @@ public class GroupParticipantService implements GroupScoreService {
     }
 
     public void stopListeners() {
-        connectedListener.cancel();
-        groupNotReadyListener.cancel();
-        screenResetRequestListner.cancel();
-        stimulusSyncListner.cancel();
-        groupInfoChangeListner.cancel();
     }
 
     public native void joinGroupNetwork(String groupServerUrl) /*-{
@@ -468,4 +456,13 @@ public class GroupParticipantService implements GroupScoreService {
         'groupReady': null
     }));
     }-*/;
+    public abstract void synchroniseStimulusList();
+
+    public abstract void synchroniseCurrentStimulus();
+
+    public abstract void groupInfoChanged();
+
+    public abstract void groupNetworkConnecting();
+
+    public abstract void groupFindingMembers();
 }

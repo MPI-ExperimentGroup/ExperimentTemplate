@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -55,27 +54,28 @@ public class GroupParticipantServiceTest {
     @Test
     public void testAddGroupActivity() {
         System.out.println("addGroupActivity");
-        GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2, "stimuliList", new CancelableStimulusListener() {
+        GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2, "stimuliList") {
             @Override
-            public void trigggerCancelableEvent() {
+            public void synchroniseStimulusList() {
+                // stimulusSyncListner
             }
-        }, new CancelableStimulusListener() {
+
             @Override
-            public void trigggerCancelableEvent() {
+            public void synchroniseCurrentStimulus() {
             }
-        }, new CancelableStimulusListener() {
+
             @Override
-            public void trigggerCancelableEvent() {
+            public void groupInfoChanged() {
             }
-        }, new CancelableStimulusListener() {
+
             @Override
-            public void trigggerCancelableEvent() {
+            public void groupNetworkConnecting() {
             }
-        }, new CancelableStimulusListener() {
+
             @Override
-            public void trigggerCancelableEvent() {
+            public void groupFindingMembers() {
             }
-        });
+        };
         final StringBuilder stringBuilder = new StringBuilder();
         groupMemberActivity(stringBuilder, "a", instance, "A,C,E,G:-:-:B,D,F,H:-:-", 1, null);
         groupMemberActivity(stringBuilder, "b", instance, "-:A,C,E,G:-:-:B,D,F,H:-", 1, null);
@@ -186,38 +186,38 @@ public class GroupParticipantServiceTest {
             stringBuilder.append(expectedData[0]);
             stringBuilder.append("\n");
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_0", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H", 2,
-                    "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small", new CancelableStimulusListener() {
+                    "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small") {
                 @Override
-                public void trigggerCancelableEvent() {
-                    // connectedListener
-                    stringBuilder.append("connectedListener\n");
-                }
-            }, new CancelableStimulusListener() {
-                @Override
-                public void trigggerCancelableEvent() {
-                    // groupNotReadyListener
-                    stringBuilder.append("groupNotReadyListener\n");
-                }
-            }, new CancelableStimulusListener() {
-                @Override
-                public void trigggerCancelableEvent() {
+                public void synchroniseStimulusList() {
                     // screenResetRequestListner
                     stringBuilder.append("screenResetRequestListner\n");
                     groupParticipantService.setStimuliListLoaded(groupParticipantService.getStimuliListGroup());
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
+                public void synchroniseCurrentStimulus() {
                     // stimulusSyncListner
                     stringBuilder.append("stimulusSyncListner\n");
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
+                public void groupInfoChanged() {
                     // groupInfoChangeListner
                     stringBuilder.append("groupInfoChangeListner\n");
                 }
-            });
+
+                @Override
+                public void groupNetworkConnecting() {
+                    // connectedListener
+                    stringBuilder.append("connectedListener\n");
+                }
+
+                @Override
+                public void groupFindingMembers() {
+                    // connectedListener
+                    stringBuilder.append("connectedListener\n");
+                }
+            };
 
             groupMemberActivity(stringBuilder, "1", groupParticipantService, "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", 1, "producer");
             groupMemberActivity(stringBuilder, "2", groupParticipantService, "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H", 7, "producer wait");
@@ -246,38 +246,38 @@ public class GroupParticipantServiceTest {
             stringBuilder.append("\n");
 
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_1", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2,
-                    "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium", new CancelableStimulusListener() {
+                    "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium") {
                 @Override
-                public void trigggerCancelableEvent() {
-                    // connectedListener
-                    stringBuilder.append("connectedListener\n");
-                }
-            }, new CancelableStimulusListener() {
-                @Override
-                public void trigggerCancelableEvent() {
-                    // groupNotReadyListener
-                    stringBuilder.append("groupNotReadyListener\n");
-                }
-            }, new CancelableStimulusListener() {
-                @Override
-                public void trigggerCancelableEvent() {
+                public void synchroniseStimulusList() {
                     // screenResetRequestListner
                     stringBuilder.append("screenResetRequestListner\n");
                     groupParticipantService.setStimuliListLoaded(groupParticipantService.getStimuliListGroup());
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
+                public void synchroniseCurrentStimulus() {
                     // stimulusSyncListner
                     stringBuilder.append("stimulusSyncListner\n");
                 }
-            }, new CancelableStimulusListener() {
+
                 @Override
-                public void trigggerCancelableEvent() {
+                public void groupInfoChanged() {
                     // groupInfoChangeListner
                     stringBuilder.append("groupInfoChangeListner\n");
                 }
-            });
+
+                @Override
+                public void groupNetworkConnecting() {
+                    // connectedListener
+                    stringBuilder.append("connectedListener\n");
+                }
+
+                @Override
+                public void groupFindingMembers() {
+                    // connectedListener
+                    stringBuilder.append("connectedListener\n");
+                }
+            };
 
             groupMemberActivity(stringBuilder, "q", groupParticipantService, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, "feedback");
             groupMemberActivity(stringBuilder, "w", groupParticipantService, "-:B,D,F,H:-:-:A,C,E,G:-", 1, "guesser");
