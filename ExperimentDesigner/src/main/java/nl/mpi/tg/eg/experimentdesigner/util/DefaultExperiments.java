@@ -465,9 +465,9 @@ public class DefaultExperiments {
                 break;
             case none:
                 break;
-            case groupNetworkActivity:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository, addOptionalAttributes));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository, addOptionalAttributes));
+            case groupMemberActivity:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupMemberActivity, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupMemberActivity, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }

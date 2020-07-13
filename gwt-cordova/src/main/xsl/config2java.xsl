@@ -839,9 +839,10 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold">
+    <xsl:template match="onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
+        <xsl:value-of select="concat(' /* ', local-name(), ' */ ')" />
         <xsl:text>&#xa;new </xsl:text>
         <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'CurrentStimulusListener' else if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'onActivate' or local-name() eq 'mediaPlaybackStarted' or local-name() eq 'mediaPlaybackComplete') then 'CancelableStimulusListener' else 'TimedStimulusListener'" />
         <xsl:text>() {
@@ -900,7 +901,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -989,7 +990,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@phasesPerStimulus) then concat(@phasesPerStimulus, ', ') else ''" />
+        <xsl:value-of select="if(@phasesPerStimulus) then concat(@phasesPerStimulus, ' ') else ''" />
         <xsl:if test="local-name() eq 'logTimerValue'">
             <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;, ') else 'null, '" />
         </xsl:if>
@@ -1007,7 +1008,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                                                                                                                or ancestor::*[local-name() = 'hasMoreStimulus']
                                                                                                                ) then 'currentStimulus, ' else 'null, ' else ''" />
         <!--<xsl:value-of select="if(local-name() eq 'stimulusAudio') then ',' else ''" />-->
-        <xsl:if test="local-name() eq 'groupNetworkActivity'">
+        <xsl:if test="local-name() eq 'groupMemberActivity'">
             <xsl:text>new GroupActivityListener("</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>", "</xsl:text>
@@ -1031,7 +1032,6 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
  or local-name() eq 'habituationParadigmListener'
  or local-name() eq 'countdownLabel'
  or local-name() eq 'stimulusImageCapture'
- or local-name() eq 'groupNetwork'
  or local-name() eq 'backgroundImage'
  or local-name() eq 'startTimer'
  or local-name() eq 'regionAppend'
@@ -1054,6 +1054,10 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:apply-templates select="onActivate" />
+        <xsl:apply-templates select="groupFindingMembers" />
+        <xsl:apply-templates select="groupNetworkConnecting" />
+        <xsl:apply-templates select="groupNetworkSynchronising" />
+        <xsl:apply-templates select="groupPhaseListeners" />
         <xsl:text>
             );
         </xsl:text>

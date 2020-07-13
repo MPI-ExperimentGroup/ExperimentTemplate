@@ -239,6 +239,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             }
         } else if (!isPresenterType && (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0)) {
 //            writer.append("<xs:").append((currentElement.areChildenOptional) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : "all").append(">\n");
+
             writer.append("<xs:").append((currentElement.childOption == ChildType.choiceAnyCount) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : (currentElement.childOption == ChildType.sequenceOnceOrdered) ? "sequence" : "all").append(">\n");
 //            writer.append("<xs:sequence1>");
         }
@@ -354,9 +355,9 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 ////                    writer.append("<xs:element name=\"withinThreshold\" type=\"withinThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
 ////                    writer.append("</xs:all>\n");
 ////                    break;
-////                case groupNetworkActivity:
+////                case groupMemberActivity:
 ////                    writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
-////                    writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\"/>\n");
+////                    writer.append("<xs:element name=\"groupMemberActivity\" type=\"groupMemberActivityType\"/>\n");
 ////                    writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\"/>\n");
 ////                    writer.append("</xs:choice>\n");
 ////                    break;

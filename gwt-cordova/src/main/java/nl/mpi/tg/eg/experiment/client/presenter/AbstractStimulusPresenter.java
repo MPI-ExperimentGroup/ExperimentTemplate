@@ -543,7 +543,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        stimulusProvider.nextStimulus(1);
 //        //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
 //    }
-
     protected void nextMatchingStimulus(final StimuliProvider stimulusProvider) {
         matchingStimuliGroup.getNextStimulus(stimulusProvider);
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
@@ -557,7 +556,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener timedStimulusListener) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
             final Timer groupKickTimer = new Timer() {
                 @Override
@@ -574,31 +573,36 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 public void trigggerCancelableEvent() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
-                    clearPage();
-                    ((ComplexView) simpleView).addPadding();
+//                    clearPage();
+                    groupNetworkConnecting.postLoadTimerFired();
+//                    ((ComplexView) simpleView).addPadding();
                     if (groupParticipantService.isConnected()) {
                         ((ComplexView) simpleView).addText("connected, waiting for other members");
                     } else {
                         ((ComplexView) simpleView).addText("not connected");
                     }
-                    timedStimulusListener.postLoadTimerFired();
+                    // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
+                    endOfStimulusGroupMessage.postLoadTimerFired();
                     groupKickTimer.schedule(1000);
                 }
             }, new CancelableStimulusListener() {
                 @Override
                 public void trigggerCancelableEvent() {
-                    clearPage();
-                    ((ComplexView) simpleView).addPadding();
+//                    todo: if debug mode then don't clear screen and log all the events as htmlText
+//                    clearPage();
+//                    clearPage();
+//                    ((ComplexView) simpleView).addPadding();
 //                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
-                    ((ComplexView) simpleView).addHtmlText("Group not ready", "highlightedText");
-                    ((ComplexView) simpleView).addPadding();
+//                    ((ComplexView) simpleView).addHtmlText("Group not ready", "highlightedText");
+//                    ((ComplexView) simpleView).addPadding();
+                    groupFindingMembers.postLoadTimerFired();
                     groupKickTimer.schedule(1000);
                 }
             }, new CancelableStimulusListener() {
                 @Override
                 public void trigggerCancelableEvent() {
-                    ((ComplexView) simpleView).addPadding();
-                    ((ComplexView) simpleView).addText("synchronising the stimuli");
+//                    ((ComplexView) simpleView).addPadding();
+//                    ((ComplexView) simpleView).addText("synchronising the stimuli");
                     final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
                     // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then load the group stimuli list
                     stimulusProvider.initialiseStimuliState(stimuliListGroup);
@@ -606,6 +610,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), loadedStimulusString);
                     groupParticipantService.setStimuliListLoaded(loadedStimulusString);
                     groupKickTimer.schedule(1000);
+                    groupNetworkSynchronising.postLoadTimerFired();
                 }
             }, new CancelableStimulusListener() {
                 @Override
@@ -651,7 +656,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         @Override
                         public void eventFired(ButtonBase button, final SingleShotEventListner shotEventListner) {
                             groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulusUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getCurrentScore(), groupMembers);
-//                            ((ComplexView) simpleView).showHtmlPopup(null,
+//                            ((ComplexView) simpleView).addHtmlText(
 //                                    "Group Members\n" + groupParticipantService.getAllMemberCodes()
 //                                    + "\n\nGroup Communication Channels\n" + groupParticipantService.getGroupCommunicationChannels()
 //                                    + "\n\nGroupId\n" + groupParticipantService.getGroupId()
@@ -667,7 +672,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                                    + "\n\nStimulusIndex\n" + groupParticipantService.getStimulusIndex()
 //                                    + "\n\nRequestedPhase\n" + groupParticipantService.getRequestedPhase()
 //                                    + "\n\nUserLabel\n" + groupParticipantService.getUserLabel()
-//                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady()
+//                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady(),
+//                                    null
 //                            );
                             shotEventListner.resetSingleShot();
                         }
@@ -688,13 +694,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             );
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
-            timedStimulusListener.postLoadTimerFired();
+            // todo: should this endOfStimulusGroupMessage exist?
+            endOfStimulusGroupMessage.postLoadTimerFired();
 //            groupParticipantService.messageGroup(0, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
 //              groupParticipantService.messageGroup(0, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId());
         }
     }
 
-    protected void groupNetworkActivity(final GroupActivityListener timedStimulusListener) {
+    protected void groupMemberActivity(final GroupActivityListener timedStimulusListener) {
         groupParticipantService.addGroupActivity(timedStimulusListener);
     }
 

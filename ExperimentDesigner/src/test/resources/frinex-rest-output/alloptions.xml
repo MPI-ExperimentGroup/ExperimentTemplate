@@ -618,109 +618,120 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <groupFindingMembers>
+                        <plainText featureText="plainText in groupFindingMembers"/>
+                    </groupFindingMembers>
+                    <groupNetworkConnecting>
+                        <plainText featureText="plainText in groupNetworkConnecting"/>
+                    </groupNetworkConnecting>
+                    <groupNetworkSynchronising>
+                        <plainText featureText="plainText in groupNetworkSynchronising"/>
+                    </groupNetworkSynchronising>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
@@ -998,109 +1009,120 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <groupFindingMembers>
+                        <plainText featureText="plainText in groupFindingMembers"/>
+                    </groupFindingMembers>
+                    <groupNetworkConnecting>
+                        <plainText featureText="plainText in groupNetworkConnecting"/>
+                    </groupNetworkConnecting>
+                    <groupNetworkSynchronising>
+                        <plainText featureText="plainText in groupNetworkSynchronising"/>
+                    </groupNetworkSynchronising>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
@@ -1378,109 +1400,120 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="phaseMembers">
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <groupFindingMembers>
+                        <plainText featureText="plainText in groupFindingMembers"/>
+                    </groupFindingMembers>
+                    <groupNetworkConnecting>
+                        <plainText featureText="plainText in groupNetworkConnecting"/>
+                    </groupNetworkConnecting>
+                    <groupNetworkSynchronising>
+                        <plainText featureText="plainText in groupNetworkSynchronising"/>
+                    </groupNetworkSynchronising>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="phaseMembers">
+                            <groupMemberCodeLabel styleName="styleName"/>
+                            <groupMemberLabel styleName="styleName"/>
+                            <groupMessageLabel styleName="styleName"/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel styleName="styleName"/>
+                            <groupChannelScoreLabel styleName="styleName"/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                            <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
@@ -2647,109 +2680,120 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <sendGroupEndOfStimuli/>
+                    <groupFindingMembers>
+                        <plainText featureText="plainText in groupFindingMembers"/>
+                    </groupFindingMembers>
+                    <groupNetworkConnecting>
+                        <plainText featureText="plainText in groupNetworkConnecting"/>
+                    </groupNetworkConnecting>
+                    <groupNetworkSynchronising>
+                        <plainText featureText="plainText in groupNetworkSynchronising"/>
+                    </groupNetworkSynchronising>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <sendGroupEndOfStimuli/>
+                    </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore/>
                 <scoreIncrement scoreValue="8"/>
@@ -3027,109 +3071,120 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <sendGroupEndOfStimuli/>
+                    <groupFindingMembers>
+                        <plainText featureText="plainText in groupFindingMembers"/>
+                    </groupFindingMembers>
+                    <groupNetworkConnecting>
+                        <plainText featureText="plainText in groupNetworkConnecting"/>
+                    </groupNetworkConnecting>
+                    <groupNetworkSynchronising>
+                        <plainText featureText="plainText in groupNetworkSynchronising"/>
+                    </groupNetworkSynchronising>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <sendGroupEndOfStimuli/>
+                    </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore/>
                 <scoreIncrement scoreValue="8"/>
@@ -3407,109 +3462,120 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
                 <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <groupNetworkActivity phaseMembers="">
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
-                        <sendGroupMessage incrementPhase="3"/>
-                        <sendGroupStoredMessage incrementPhase="3"/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
-                    <sendGroupEndOfStimuli/>
+                    <groupFindingMembers>
+                        <plainText featureText="plainText in groupFindingMembers"/>
+                    </groupFindingMembers>
+                    <groupNetworkConnecting>
+                        <plainText featureText="plainText in groupNetworkConnecting"/>
+                    </groupNetworkConnecting>
+                    <groupNetworkSynchronising>
+                        <plainText featureText="plainText in groupNetworkSynchronising"/>
+                    </groupNetworkSynchronising>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="">
+                            <groupMemberCodeLabel/>
+                            <groupMemberLabel/>
+                            <groupMessageLabel/>
+                            <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="plainText in mediaLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="plainText in mediaLoadFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <plainText featureText="plainText in mediaPlaybackStarted"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="plainText in mediaPlaybackComplete"/>
+                                </mediaPlaybackComplete>
+                            </groupResponseStimulusImage>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <plainText featureText="plainText in responseCorrect"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <plainText featureText="plainText in responseIncorrect"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <submitGroupEvent/>
+                            <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
+                            <sendGroupMessage incrementPhase="3"/>
+                            <sendGroupStoredMessage incrementPhase="3"/>
+                            <plainText featureText="plainText in groupMemberActivity"/>
+                        </groupMemberActivity>
+                        <sendGroupEndOfStimuli/>
+                    </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore/>
                 <scoreIncrement scoreValue="8"/>

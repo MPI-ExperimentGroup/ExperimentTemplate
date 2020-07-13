@@ -33,28 +33,51 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity phaseMembers="A,B,C,D">
-                            <clearPage/>
-                            <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
-                                <mediaLoaded/>
-                                <mediaLoadFailed/>
-                                <mediaPlaybackStarted/>
-                                <mediaPlaybackComplete>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </mediaPlaybackComplete>
-                            </stimulusPresent>
-                        </groupNetworkActivity>
+                        <groupNetworkConnecting>
+                            <htmlText featureText="groupMembers4 groupNetworkConnecting"/>
+                        </groupNetworkConnecting>
+                        <groupFindingMembers>
+                            <htmlText featureText="groupMembers4 groupFindingMembers"/>
+                        </groupFindingMembers>
+                        <groupNetworkSynchronising>
+                            <htmlText featureText="groupMembers4 groupNetworkSynchronising"/>
+                        </groupNetworkSynchronising>
+                        <groupPhaseListeners>
+                            <groupMemberActivity phaseMembers="A,B,C,D">
+                                <clearPage/>
+                                <stimulusLabel/>
+                                <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                                <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <mediaLoaded/>
+                                    <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackComplete>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </mediaPlaybackComplete>
+                                </stimulusPresent>
+                            </groupMemberActivity>
+                        </groupPhaseListeners>
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                        <groupNetworkConnecting>
+                            <htmlText featureText="endOfStimulus groupNetworkConnecting"/>
+                        </groupNetworkConnecting>
+                        <groupFindingMembers>
+                            <htmlText featureText="endOfStimulus groupFindingMembers"/>
+                        </groupFindingMembers>
+                        <groupNetworkSynchronising>
+                            <htmlText featureText="endOfStimulus groupNetworkSynchronising"/>
+                        </groupNetworkSynchronising>
+                        <groupPhaseListeners>
+                            <htmlText featureText="endOfStimulus sendGroupEndOfStimuli"/>
+                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                        </groupPhaseListeners>
                     </groupNetwork>
                     <clearPage/>
-                    <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
+                    <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="postStimuliText"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
                         <gotoNextPresenter/>

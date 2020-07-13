@@ -32,7 +32,7 @@
             <loadStimulus eventTag="Group of Four" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity phaseMembers="A,B,C,D">
+                        <groupMemberActivity phaseMembers="A,B,C,D">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All participants see this screen"/>
@@ -44,7 +44,7 @@
                                     <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
-                        </groupNetworkActivity>
+                        </groupMemberActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
@@ -72,7 +72,7 @@
             <loadStimulus eventTag="GroupOf6" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F">
-                        <groupNetworkActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:">
+                        <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue>
@@ -93,8 +93,8 @@
                                     </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity phaseMembers="-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:">
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:">
                             <clearPage/>
                             <stimulusHasResponse matchingRegex="">
                                 <conditionTrue/>
@@ -102,8 +102,8 @@
                                     <htmlText featureText="Phase2"/>
                                 </conditionFalse>
                             </stimulusHasResponse>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity phaseMembers="-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:-:">
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:-:">
                             <clearPage/>
                             <htmlText featureText="Phase3"/>
                             <addPadding/>
@@ -118,11 +118,11 @@
                                     </pause>
                                 </mediaPlaybackComplete>
                             </stimulusPresent>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-">
+                        </groupMemberActivity>
+                        <groupMemberActivity phaseMembers="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
-                        </groupNetworkActivity>
+                        </groupMemberActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>

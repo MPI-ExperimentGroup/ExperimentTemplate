@@ -67,11 +67,12 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, members);
         groupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(0));
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, communicationChannels);
-        final PresenterFeature joinGroupActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        final PresenterFeature agreementActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupFindingMembers, FeatureType.groupNetworkConnecting, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
+        final PresenterFeature joinGroupActivity = new PresenterFeature(FeatureType.groupMemberActivity, null);
+        final PresenterFeature agreementActivity = new PresenterFeature(FeatureType.groupMemberActivity, null);
         joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        joinGroupActivity.addFeature(FeatureType.logTokenText, null, "3", "groupNetworkActivity", "logTokenText", "Group:'<groupId>';Members:'<groupAllMemberCodes>';Score:<groupScore>;Channels:'<groupCommunicationChannels>';Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';<groupMemberCode>-best:<playerBestScore>;<groupMemberCode>-current:<playerScore>;GroupOther:'<groupOtherMemberCodes>';ChannelOther:'<channelOtherMemberCodes>';<groupActiveChannel>:<channelScore>;Message:'<groupMessageString>';");
+        joinGroupActivity.addFeature(FeatureType.logTokenText, null, "3", "groupMemberActivity", "logTokenText", "Group:'<groupId>';Members:'<groupAllMemberCodes>';Score:<groupScore>;Channels:'<groupCommunicationChannels>';Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';<groupMemberCode>-best:<playerBestScore>;<groupMemberCode>-current:<playerScore>;GroupOther:'<groupOtherMemberCodes>';ChannelOther:'<channelOtherMemberCodes>';<groupActiveChannel>:<channelScore>;Message:'<groupMessageString>';");
         joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, "Connected to: <groupId><br/><br/>Group members: <groupAllMemberCodes><br/><br/>As member: <groupMemberCode><br/><br/>"));
         final PresenterFeature joinGroupMessageButton = new PresenterFeature(FeatureType.sendGroupMessageButton, "Continue [enter]");
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.eventTag, "joinGroupMessageButton");
@@ -80,9 +81,9 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         joinGroupActivity.getPresenterFeatureList().add(joinGroupMessageButton);
         joinGroupActivity.addFeatureAttributes(FeatureAttribute.phaseMembers, groupPhasesRoles[0]);
-        groupNetwork.getPresenterFeatureList().add(joinGroupActivity);
+        groupNetworkListeners.getPresenterFeatureList().add(joinGroupActivity);
         agreementActivity.addFeatureAttributes(FeatureAttribute.phaseMembers, groupPhasesRoles[1]);
-        groupNetwork.getPresenterFeatureList().add(agreementActivity);
+        groupNetworkListeners.getPresenterFeatureList().add(agreementActivity);
         agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
 //        agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));

@@ -240,8 +240,12 @@ public enum FeatureType {
     //preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
-    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetworkActivity, Contitionals.stimulusAction),
-    groupNetworkActivity(false, new FeatureAttribute[]{phaseMembers}, false, false, false, Contitionals.groupNetworkAction, Contitionals.groupNetworkActivity),
+    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetwork, Contitionals.stimulusAction),
+    groupFindingMembers(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.groupNetwork),
+    groupNetworkConnecting(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.groupNetwork),
+    groupNetworkSynchronising(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.groupNetwork),
+    groupPhaseListeners(false, new FeatureAttribute[]{}, false, false, false, Contitionals.groupMemberActivity, Contitionals.groupNetwork),
+    groupMemberActivity(false, new FeatureAttribute[]{phaseMembers}, false, false, false, Contitionals.groupNetworkAction, Contitionals.groupMemberActivity),
     groupMemberCodeLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     groupMemberLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     groupMessageLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
@@ -255,7 +259,7 @@ public enum FeatureType {
     sendGroupMessageButton(true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, styleName, groupId/* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupMessage(false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupStoredMessage(false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
-    sendGroupEndOfStimuli(false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
+    sendGroupEndOfStimuli(false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupMemberActivity),
     clearCurrentScore(false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.none, Contitionals.stimulusAction),
     scoreIncrement(false, new FeatureAttribute[]{dataChannel, scoreValue}, "Applies the provided score. When the value is positive, both the score and potential are incremented by the value and any correct streak is maintained. When the score is negative only the potential is incremented by the value and any incorrect streak is maintained. When the score is zero no change is made to either the score or potential, however both the correct and incorrect streaks are cleared.", Contitionals.none, Contitionals.none, Contitionals.stimulusAction),
     // todo: document that all score parameters provided in the attribute list must be above its threshold for this to evaluate as above threshold
@@ -286,7 +290,8 @@ public enum FeatureType {
         hasErrorSuccess(false),
         hasUserCount(false),
         hasThreshold(false),
-        groupNetworkActivity(true),
+        groupNetwork(false),
+        groupMemberActivity(true),
         groupNetworkAction(true),
         hasMediaLoading(false),
         hasMediaLoadingButton(false),
@@ -363,7 +368,7 @@ public enum FeatureType {
         this.allowsCustomImplementation = false;
 //        if (requiresChildType != Contitionals.none && isChildType[0] != Contitionals.none
 //                && isChildType[0] != Contitionals.groupNetworkAction
-//                && isChildType[0] != Contitionals.groupNetworkActivity
+//                && isChildType[0] != Contitionals.groupMemberActivity
 //                // todo: this does not consider other elements in the array, which at this point never exist, so update this if that changes
 //                && requiresChildType != Contitionals.stimulusAction
 //                && canHaveFeatures) {

@@ -405,8 +405,8 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //                    writer.append("&lt;aboveThreshold&gt;<br/>\n");
 //                    writer.append("&lt;withinThreshold&gt;<br/>\n");
 //                    break;
-//                case groupNetworkActivity:
-//                    writer.append("&lt;groupNetworkActivity&gt;<br/>\n");
+//                case groupMemberActivity:
+//                    writer.append("&lt;groupMemberActivity&gt;<br/>\n");
 //                    writer.append("&lt;sendGroupEndOfStimuli&gt;<br/>\n");
 //                    break;
 //                case hasMediaPlayback:

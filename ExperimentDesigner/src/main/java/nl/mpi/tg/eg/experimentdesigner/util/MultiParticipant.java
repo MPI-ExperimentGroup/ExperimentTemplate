@@ -489,7 +489,7 @@ public class MultiParticipant {
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
-        experiment.getDataChannels().add(new DataChannel(3, "groupNetworkActivity", false));
+        experiment.getDataChannels().add(new DataChannel(3, "groupMemberActivity", false));
         experiment.setIsScalable(false);
         experiment.setDefaultScale(1.1f);
         return experiment;
