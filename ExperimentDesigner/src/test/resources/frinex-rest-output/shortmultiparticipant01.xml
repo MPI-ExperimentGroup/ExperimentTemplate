@@ -33,15 +33,9 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkConnecting>
-                            <htmlText featureText="groupMembers4 groupNetworkConnecting"/>
-                        </groupNetworkConnecting>
-                        <groupFindingMembers>
-                            <htmlText featureText="groupMembers4 groupFindingMembers"/>
-                        </groupFindingMembers>
-                        <groupNetworkSynchronising>
-                            <htmlText featureText="groupMembers4 groupNetworkSynchronising"/>
-                        </groupNetworkSynchronising>
+                        <groupNetworkConnecting/>
+                        <groupFindingMembers/>
+                        <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,B,C,D">
                                 <clearPage/>
@@ -62,17 +56,10 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkConnecting>
-                            <htmlText featureText="endOfStimulus groupNetworkConnecting"/>
-                        </groupNetworkConnecting>
-                        <groupFindingMembers>
-                            <htmlText featureText="endOfStimulus groupFindingMembers"/>
-                        </groupFindingMembers>
-                        <groupNetworkSynchronising>
-                            <htmlText featureText="endOfStimulus groupNetworkSynchronising"/>
-                        </groupNetworkSynchronising>
+                        <groupNetworkConnecting/>
+                        <groupFindingMembers/>
+                        <groupNetworkSynchronising/>
                         <groupPhaseListeners>
-                            <htmlText featureText="endOfStimulus sendGroupEndOfStimuli"/>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                         </groupPhaseListeners>
                     </groupNetwork>

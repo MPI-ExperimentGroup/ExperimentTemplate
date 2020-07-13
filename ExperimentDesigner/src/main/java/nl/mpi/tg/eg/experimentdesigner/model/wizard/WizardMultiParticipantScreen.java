@@ -354,7 +354,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
         final PresenterFeature groupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
-        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupFindingMembers, FeatureType.groupNetworkConnecting, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
+        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
         groupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(getPhasesPerStimulus(storedWizardScreenData)));
         //@todo: add groupRoleSequence
@@ -757,7 +757,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final String postStimuliText = getPostStimuliText(storedWizardScreenData);
         if (postStimuliText != null && !postStimuliText.isEmpty()) {
             final PresenterFeature endOfStimulusGroupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
-            final PresenterFeature groupNetworkEndListeners = endOfStimulusGroupNetwork.addFeatures(FeatureType.groupFindingMembers, FeatureType.groupNetworkConnecting, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
+            final PresenterFeature groupNetworkEndListeners = endOfStimulusGroupNetwork.addFeatures(FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
             endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
             endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(getPhasesPerStimulus(storedWizardScreenData)));
             endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, storedWizardScreenData.getGroupCommunicationChannels());

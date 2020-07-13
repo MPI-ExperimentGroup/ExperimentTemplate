@@ -21,8 +21,8 @@
                                     <hasMoreStimulus>
                                         <clearPage/>
                                         <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D">
-                                            <groupFindingMembers/>
                                             <groupNetworkConnecting/>
+                                            <groupFindingMembers/>
                                             <groupNetworkSynchronising/>
                                             <groupPhaseListeners>
                                                 <groupMemberActivity phaseMembers="A,B,C,D:-">
@@ -72,8 +72,8 @@
                                             <hasMoreStimulus>
                                                 <clearPage/>
                                                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                                                    <groupFindingMembers/>
                                                     <groupNetworkConnecting/>
+                                                    <groupFindingMembers/>
                                                     <groupNetworkSynchronising/>
                                                     <groupPhaseListeners>
                                                         <groupMemberActivity phaseMembers="A,B,C,D,E,F,G,H:-">
@@ -156,8 +156,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-">
@@ -236,8 +236,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-">
@@ -316,8 +316,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-">
@@ -396,8 +396,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,D:-:-:B,C:-:-">
@@ -517,8 +517,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -547,8 +547,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="C,D:-:-:A,B:-:-">
@@ -668,8 +668,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -698,8 +698,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="B,A:-:-:C,D:-:-">
@@ -819,8 +819,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -849,8 +849,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="B,C:-:-:A,D:-:-">
@@ -970,8 +970,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -1000,8 +1000,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,B:-:-:C,D:-:-">
@@ -1121,8 +1121,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -1151,8 +1151,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="C,D:-:-:B,A:-:-">
@@ -1272,8 +1272,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -1302,8 +1302,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,D:-:-:B,C:-:-">
@@ -1423,8 +1423,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -1453,8 +1453,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,B,C,D:-">
@@ -1481,8 +1481,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -1511,8 +1511,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
@@ -1591,8 +1591,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
@@ -1671,8 +1671,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
@@ -1751,8 +1751,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1872,8 +1872,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -1902,8 +1902,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="H,D,F,B:-:-:A,E,C,G:-:-">
@@ -2023,8 +2023,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2053,8 +2053,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,G,E,C:-:-:D,F,B,H:-:-">
@@ -2174,8 +2174,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2204,8 +2204,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="C,B,E,F:-:-:A,D,G,H:-:-">
@@ -2325,8 +2325,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2355,8 +2355,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,D,B,G:-:-:E,H,F,C:-:-">
@@ -2476,8 +2476,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2506,8 +2506,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="F,G,C,H:-:-:A,D,B,E:-:-">
@@ -2627,8 +2627,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2657,8 +2657,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,H,E,D:-:-:G,B,C,F:-:-">
@@ -2778,8 +2778,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2808,8 +2808,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,B,C,D,E,F,G,H:-">
@@ -2836,8 +2836,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -2866,8 +2866,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="B,D,F,H:-:-:A,C,E,G:-:-">
@@ -2987,8 +2987,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3017,8 +3017,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,E,C,G:-:-:H,D,F,B:-:-">
@@ -3138,8 +3138,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3168,8 +3168,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="D,F,B,H:-:-:A,G,E,C:-:-">
@@ -3289,8 +3289,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3319,8 +3319,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,D,G,H:-:-:C,B,E,F:-:-">
@@ -3440,8 +3440,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3470,8 +3470,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="E,H,F,C:-:-:A,D,B,G:-:-">
@@ -3591,8 +3591,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3621,8 +3621,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,D,B,E:-:-:F,G,C,H:-:-">
@@ -3742,8 +3742,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3772,8 +3772,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="G,B,C,F:-:-:A,H,E,D:-:-">
@@ -3893,8 +3893,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
@@ -3923,8 +3923,8 @@
                 <hasMoreStimulus>
                     <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <groupMemberActivity phaseMembers="A,B,C,D,E,F,G,H:-">
@@ -3951,8 +3951,8 @@
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupFindingMembers/>
                         <groupNetworkConnecting/>
+                        <groupFindingMembers/>
                         <groupNetworkSynchronising/>
                         <groupPhaseListeners>
                             <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
