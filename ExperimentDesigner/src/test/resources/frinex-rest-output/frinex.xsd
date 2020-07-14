@@ -11590,7 +11590,6 @@
 <xs:documentation>The activities in the phase/participant matrix is defined here. Not all participants will see the same activity at the same time. It is possible for one, many or none to be triggered for any given phase member code combination.</xs:documentation>
 </xs:annotation>
 <xs:element name="groupMemberActivity" type="groupMemberActivityType"/>
-<xs:element name="sendGroupEndOfStimuli" type="sendGroupEndOfStimuliType"/>
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="groupMemberActivityType">
@@ -11837,9 +11836,6 @@
 <xs:complexType name="sendGroupStoredMessageType">
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
-</xs:complexType>
-<xs:complexType name="sendGroupEndOfStimuliType">
-<xs:attribute name="eventTag" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="clearCurrentScoreType">
 <xs:attribute name="dataChannel" type="xs:string"/>

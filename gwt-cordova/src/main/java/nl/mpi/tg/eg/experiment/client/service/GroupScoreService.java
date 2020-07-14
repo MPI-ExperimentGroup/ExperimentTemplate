@@ -39,6 +39,8 @@ public interface GroupScoreService {
 
     String getGroupScore();
 
+    Integer getRequestedPhase();
+
     String getMemberCode();
 
     String getMessageString();

@@ -730,7 +730,6 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <sendGroupEndOfStimuli eventTag="eventTag"/>
                     </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore dataChannel="2"/>
@@ -1121,7 +1120,6 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <sendGroupEndOfStimuli eventTag="eventTag"/>
                     </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore dataChannel="2"/>
@@ -1512,7 +1510,6 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <sendGroupEndOfStimuli eventTag="eventTag"/>
                     </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore dataChannel="2"/>
@@ -2792,7 +2789,6 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <sendGroupEndOfStimuli/>
                     </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore/>
@@ -3183,7 +3179,6 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <sendGroupEndOfStimuli/>
                     </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore/>
@@ -3574,7 +3569,6 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <sendGroupEndOfStimuli/>
                     </groupPhaseListeners>
                 </groupNetwork>
                 <clearCurrentScore/>

@@ -756,16 +756,16 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final String postStimuliText = getPostStimuliText(storedWizardScreenData);
         if (postStimuliText != null && !postStimuliText.isEmpty()) {
-            final PresenterFeature endOfStimulusGroupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
-            final PresenterFeature groupNetworkEndListeners = endOfStimulusGroupNetwork.addFeatures(FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
-            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
-            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(getPhasesPerStimulus(storedWizardScreenData)));
-            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, storedWizardScreenData.getGroupCommunicationChannels());
-            endOfStimulusFeature.getPresenterFeatureList().add(endOfStimulusGroupNetwork);
-            final PresenterFeature endOfStimulusGroupMessage = new PresenterFeature(FeatureType.sendGroupEndOfStimuli, null);
-            groupNetworkEndListeners.getPresenterFeatureList().add(endOfStimulusGroupMessage);
+//            final PresenterFeature endOfStimulusGroupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
+//            final PresenterFeature groupNetworkEndListeners = endOfStimulusGroupNetwork.addFeatures(FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
+//            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
+//            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(getPhasesPerStimulus(storedWizardScreenData)));
+//            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, storedWizardScreenData.getGroupCommunicationChannels());
+//            endOfStimulusFeature.getPresenterFeatureList().add(endOfStimulusGroupNetwork);
+//            final PresenterFeature endOfStimulusGroupMessage = new PresenterFeature(FeatureType.sendGroupEndOfStimuli, null);
+//            groupNetworkEndListeners.getPresenterFeatureList().add(endOfStimulusGroupMessage);
             // todo: endOfStimulusGroupMessage might not be needed in the new paradgm
-            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "endOfStimulusGroupMessage");
+//            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "endOfStimulusGroupMessage");
 //            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             endOfStimulusFeature.addFeature(FeatureType.logTokenText, null, "3", "groupMemberActivity", "logTokenText", "Group:'<groupId>';Members:'<groupAllMemberCodes>';Score:<groupScore>;Channels:'<groupCommunicationChannels>';Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';<groupMemberCode>-best:<playerBestScore>;<groupMemberCode>-current:<playerScore>;GroupOther:'<groupOtherMemberCodes>';ChannelOther:'<channelOtherMemberCodes>';<groupActiveChannel>:<channelScore>;Message:'<groupMessageString>';");

@@ -60,9 +60,10 @@ public class HtmlTokenFormatterTest {
                 + "I<stimulusVideo>J"
                 + "I<stimulusImage>J"
                 + "I<stimulusTags>J"
-                + "I<stimulusCorrectResponses>J";
+                + "I<stimulusCorrectResponses>J"
+                + "K<groupRequestedPhase>L";
         // todo: implement the channelLoop
-        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJ";
+        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJK1L";
         HtmlTokenFormatter instance = getInstance();
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
@@ -200,6 +201,11 @@ public class HtmlTokenFormatterTest {
             @Override
             public String getGroupId() {
                 return "GroupId";
+            }
+
+            @Override
+            public Integer getRequestedPhase() {
+                return 1;
             }
 
         }, userData, new TimerService(), new MetadataField[]{

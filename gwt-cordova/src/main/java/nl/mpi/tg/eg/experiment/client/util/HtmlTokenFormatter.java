@@ -294,6 +294,7 @@ public class HtmlTokenFormatter {
             final String memberCode = groupParticipantService.getMemberCode();
             replacedTokensString = replacedTokensString.replace("<groupMemberCode>", (memberCode != null) ? memberCode : "---");
             final String allMemberCodes = groupParticipantService.getAllMemberCodes();
+            replacedTokensString = replacedTokensString.replace("<groupRequestedPhase>", groupParticipantService.getRequestedPhase().toString());
             final String activeChannel = groupParticipantService.getActiveChannel();
             replacedTokensString = replacedTokensString.replace("<groupAllMemberCodes>", (allMemberCodes != null) ? allMemberCodes : "---");
             replacedTokensString = replacedTokensString.replace("<groupOtherMemberCodes>", (allMemberCodes != null && memberCode != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");

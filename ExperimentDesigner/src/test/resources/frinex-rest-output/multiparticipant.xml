@@ -516,14 +516,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -667,14 +659,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -818,14 +802,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -969,14 +945,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -1120,14 +1088,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -1271,14 +1231,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -1422,14 +1374,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -1480,14 +1424,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
@@ -1871,14 +1807,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2022,14 +1950,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2173,14 +2093,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2324,14 +2236,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2475,14 +2379,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2626,14 +2522,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2777,14 +2665,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2835,14 +2715,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -2986,14 +2858,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3137,14 +3001,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3288,14 +3144,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3439,14 +3287,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3590,14 +3430,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3741,14 +3573,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3892,14 +3716,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
@@ -3950,14 +3766,6 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                        </groupPhaseListeners>
-                    </groupNetwork>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                     <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>

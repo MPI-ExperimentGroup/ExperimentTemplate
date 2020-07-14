@@ -456,6 +456,14 @@ public abstract class GroupParticipantService implements GroupScoreService {
         'groupReady': null
     }));
     }-*/;
+
+    public boolean confirmedGroupEndOfStimuli() {
+        return false;
+    }
+
+    public void sendGroupEndOfStimuli() {
+    }
+
     public abstract void synchroniseStimulusList();
 
     public abstract void synchroniseCurrentStimulus();

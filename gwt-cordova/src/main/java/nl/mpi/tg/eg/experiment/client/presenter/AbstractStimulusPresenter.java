@@ -533,7 +533,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
             submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", (currentStimulusIndex + increment) + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
             localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.generateStimuliStateSnapshot());
-            endOfStimulusListener.postLoadTimerFired();
+            if (groupParticipantService != null && !groupParticipantService.confirmedGroupEndOfStimuli()) {
+                groupParticipantService.sendGroupEndOfStimuli();
+            } else {
+                endOfStimulusListener.postLoadTimerFired();
+            }
         }
     }
 //    private static final int STIMULUS_TIER = 2;
