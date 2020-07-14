@@ -48,7 +48,7 @@ public class RegistrationService {
     private final Version version = GWT.create(Version.class);
 
     public void submitRegistration(final UserResults userResults, final String sendingRegex, final String receivingRegex, final String dataLogFormated, RegistrationListener registrationListener) {
-        final String registrationUrl = (serviceLocations.registrationUrl() != null && serviceLocations.registrationUrl().toLowerCase().startsWith("http")) ? serviceLocations.registrationUrl() : serviceLocations.dataSubmitUrl() + "/validate";
+        final String registrationUrl = (serviceLocations.registrationUrl() != null && serviceLocations.registrationUrl().toLowerCase().startsWith("http")) ? serviceLocations.registrationUrl() : serviceLocations.dataSubmitUrl() + "validate";
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registrationUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
