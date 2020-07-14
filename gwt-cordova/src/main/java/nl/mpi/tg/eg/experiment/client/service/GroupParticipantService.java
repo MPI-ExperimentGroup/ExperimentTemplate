@@ -51,7 +51,6 @@ public abstract class GroupParticipantService implements GroupScoreService {
     private String stimulusId = null;
     private String stimuliListLoaded;
     private String stimuliListGroup;
-    private Integer stimulusIndex = null;
     private Integer requestedPhase = 0;
     private String messageSenderId = null;
     private String messageSenderMemberCode = null;
@@ -140,7 +139,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
             this.stimuliListGroup = stimuliListGroup;
             if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
-                synchroniseStimulusList();
+                this.stimuliListLoaded = synchroniseStimulusList(this.stimuliListGroup);
+                synchroniseCurrentStimulus(0);
                 return;
             }
         }
@@ -186,14 +186,14 @@ public abstract class GroupParticipantService implements GroupScoreService {
                                     || (lastFiredListnerList == null || !lastFiredListnerList.contains(currentListner))) {
                                 this.stimulusId = stimulusId;
 //                                this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
-                                this.stimulusIndex = currentRequestedPhase / phasesPerStimulus;
+                                int stimulusPhaseIndex = currentRequestedPhase / phasesPerStimulus;
                                 this.requestedPhase = currentRequestedPhase;
                                 this.messageString = messageString;
                                 this.messageSenderId = userId;
                                 this.responseStimulusId = responseStimulusId;
                                 if (!endOfStimuli) {
                                     // if we are already at the end of the stimuli list then do not sync again
-                                    synchroniseCurrentStimulus();
+                                    synchroniseCurrentStimulus(stimulusPhaseIndex);
                                 }
                                 if (!endOfStimuli) {
                                     // if the stimulusSyncListner has put us at the end of the stimuli list then trigger any phases
@@ -267,22 +267,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
         return groupCommunicationChannels;
     }
 
-    public Integer getStimulusIndex() {
-        return stimulusIndex;
-    }
-
-    public String getStimuliListLoaded() {
-        return stimuliListLoaded;
-    }
-
-    public void setStimuliListLoaded(String stimuliListLoaded) {
-        this.stimuliListLoaded = stimuliListLoaded;
-    }
-
-    public String getStimuliListGroup() {
-        return stimuliListGroup;
-    }
-
+    @Override
     public Integer getRequestedPhase() {
         return requestedPhase;
     }
@@ -342,6 +327,10 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
     public void setEndOfStimuli(Boolean endofStimuli) {
         this.endOfStimuli = endofStimuli;
+    }
+
+    public boolean isEndOfStimuli() {
+        return this.endOfStimuli;
     }
 
     public String getMessageSenderMemberCode() {
@@ -457,16 +446,9 @@ public abstract class GroupParticipantService implements GroupScoreService {
     }));
     }-*/;
 
-    public boolean confirmedGroupEndOfStimuli() {
-        return false;
-    }
+    public abstract String synchroniseStimulusList(final String stimuliListGroup);
 
-    public void sendGroupEndOfStimuli() {
-    }
-
-    public abstract void synchroniseStimulusList();
-
-    public abstract void synchroniseCurrentStimulus();
+    public abstract void synchroniseCurrentStimulus(final int currentIndex);
 
     public abstract void groupInfoChanged();
 

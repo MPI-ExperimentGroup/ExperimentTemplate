@@ -158,6 +158,7 @@ public class TestData {
                 + "screenResetRequestListner\n"
                 //                + "screenResetRequestListner\n"
                 + "stimulusSyncListner\n"
+                + "stimulusSyncListner\n"
                 + "0-A-producer[A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-]\n"
                 + "groupInfoChangeListner\n" + "groupInfoChangeListner\n" + "stimulusSyncListner\n"
                 + "1-A-producer wait[-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H]\n"
@@ -189,6 +190,7 @@ public class TestData {
             },
             {"testuser-7", "testuser-7\n"
                 + "screenResetRequestListner\n"
+                + "stimulusSyncListner\n"
                 + "stimulusSyncListner\n"
                 + "0-H-guesser wait[B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-]\n"
                 + "groupInfoChangeListner\n" + "stimulusSyncListner\n"

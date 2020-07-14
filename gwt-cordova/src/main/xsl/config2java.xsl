@@ -538,6 +538,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         or local-name() eq 'sendStimuliReport' 
         or local-name() eq 'keepStimulus' 
         or local-name() eq 'removeStimulus' 
+        or local-name() eq 'submitGroupEvent' 
         or local-name() eq 'showStimulusProgress' 
         ">
             <xsl:text>stimulusProvider</xsl:text>
@@ -547,6 +548,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
 ) then ', ' else ''" />
         <xsl:value-of select="if(local-name() eq 'keepStimulus'
 or local-name() eq 'removeStimulus'
+or local-name() eq 'submitGroupEvent'
 ) then ', currentStimulus' else ''" />
         <xsl:value-of select="if(
         local-name() eq 'stimulusMetadataField'

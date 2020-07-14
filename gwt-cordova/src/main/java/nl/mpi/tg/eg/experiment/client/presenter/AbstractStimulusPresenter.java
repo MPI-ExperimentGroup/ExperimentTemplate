@@ -533,8 +533,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
             submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", (currentStimulusIndex + increment) + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
             localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.generateStimuliStateSnapshot());
-            if (groupParticipantService != null && !groupParticipantService.confirmedGroupEndOfStimuli()) {
-                groupParticipantService.sendGroupEndOfStimuli();
+            if (groupParticipantService != null && !groupParticipantService.isEndOfStimuli()) {
+                // nothing to do, the group service will send us back here when the group is ready
             } else {
                 endOfStimulusListener.postLoadTimerFired();
             }
@@ -599,23 +599,26 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void synchroniseStimulusList() {
+                public String synchroniseStimulusList(final String stimuliListGroup) {
 //                    ((ComplexView) simpleView).addPadding();
 //                    ((ComplexView) simpleView).addText("synchronising the stimuli");
-                    final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
+//                        final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
                     // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then load the group stimuli list
                     stimulusProvider.initialiseStimuliState(stimuliListGroup);
                     final String loadedStimulusString = stimulusProvider.generateStimuliStateSnapshot();
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), loadedStimulusString);
-                    groupParticipantService.setStimuliListLoaded(loadedStimulusString);
+//                    groupParticipantService.setStimuliListLoaded(loadedStimulusString);
                     groupKickTimer.schedule(1000);
                     groupNetworkSynchronising.postLoadTimerFired();
+                    return loadedStimulusString;
                 }
 
                 @Override
-                public void synchroniseCurrentStimulus() {
-                    if (groupParticipantService.getStimulusIndex() < stimulusProvider.getTotalStimuli()) {
-                        if (groupParticipantService.getStimulusIndex() != stimulusProvider.getCurrentStimulusIndex()) {
+                public void synchroniseCurrentStimulus(final int currentIndex) {
+                    // when a valid message has been received the current stimuli needs to be synchronised with the group
+                    stimulusProvider.setCurrentStimuliIndex(currentIndex);
+                    if (currentIndex < /* todo: we can rely on the showStimulus to handle this  end of stimulus check */ stimulusProvider.getTotalStimuli()) {
+                        if (currentIndex != stimulusProvider.getCurrentStimulusIndex()) {
                             groupParticipantService.setResponseStimulusId(null);
                             groupParticipantService.setResponseStimulusOptions(null);
                         } else if (groupParticipantService.getMessageString() != null && !groupParticipantService.getMessageString().isEmpty()) {
@@ -625,16 +628,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
                             // submissionService.writeJsonData would be called on next stimulus anyway: submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), storedStimulusJSONObject.toString());
                         }
-                        // when a valid message has been received the current stimuli needs to be synchronised with the group
-                        stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
                     } else {
                         // if the group message puts the stimuli list at the end then fire the end of stimulus listner
                         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "group message puts the stimuli list at the end", stimulusProvider.getCurrentStimulusUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
                         groupParticipantService.setEndOfStimuli(true); // block further messages
-                        if (endOfStimulusListener != null) {
-                            endOfStimulusListener.postLoadTimerFired();
-                        }
                     }
+                    showStimulus(stimulusProvider, stimulusProvider.getCurrentStimulusIndex());
                 }
 
                 @Override
@@ -642,14 +641,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     ((ComplexView) simpleView).addInfoButton(new PresenterEventListner() {
                         @Override
                         public String getLabel() {
-                            final Integer stimulusIndex = groupParticipantService.getStimulusIndex();
+//                            final Integer stimulusIndex = groupParticipantService.getStimulusIndex();
 //                            final String activeChannel = groupParticipantService.getActiveChannel();
-                            return groupParticipantService.getMemberCode()
-                                    //                                    + ((stimulusIndex != null) ? "("
+                            return groupParticipantService.getMemberCode() //                                    + ((stimulusIndex != null) ? "("
                                     //                                            + activeChannel
                                     //                                            + ")" : "")
-                                    + ((stimulusIndex != null) ? "-T"
-                                            + (stimulusIndex + 1) : "");
+                                    //                                    + ((stimulusIndex != null) ? "-T"
+                                    //                                            + (stimulusIndex + 1) : "")
+                                    ;
                         }
 
                         @Override
@@ -702,7 +701,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         groupParticipantService.addGroupActivity(timedStimulusListener);
     }
 
-    public void submitGroupEvent() {
+    public void submitGroupEvent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus) {
         submissionService.submitGroupEvent(userResults.getUserData().getUserId(),
                 groupParticipantService.getGroupUUID(),
                 groupParticipantService.getGroupId(),
@@ -712,7 +711,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 groupParticipantService.getMemberCode(),
                 groupParticipantService.getUserLabel(),
                 groupParticipantService.getStimulusId(),
-                groupParticipantService.getStimulusIndex(),
+                stimulusProvider.getCurrentStimulusIndex(),
                 groupParticipantService.getMessageSenderId(),
                 groupParticipantService.getMessageString(),
                 groupParticipantService.getResponseStimulusId(),
@@ -2205,8 +2204,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (groupParticipantService != null) {
             groupParticipantService.messageGroup(originPhase, incrementPhase, uniqueId, Integer.toString(stimulusProvider.getCurrentStimulusIndex()), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
         }
-        clearPage();
-        timedStimulusView.addText("Waiting for a group response."); // + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
+//        clearPage();
+//        timedStimulusView.addText("Waiting for a group response."); // + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
     }
 
     // @todo: tag pair data and tag data tables could show the number of stimuli show events and the unique stimuli (grouped by tag strings) show events per screen
@@ -2244,7 +2243,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? currentStimulus.getUniqueId() : null, messageString, duration.elapsedMillis());
                 groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
-                clearPage();
+//                clearPage();
             }
         };
         nextButtonEventListnerList.add(eventListner);
