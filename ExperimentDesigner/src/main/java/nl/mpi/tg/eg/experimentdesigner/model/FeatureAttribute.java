@@ -75,7 +75,7 @@ public enum FeatureAttribute {
     randomise("When true the items will be randomised once before any repeats are calculated, when false the items will not be randomised. If the selected items were 1234, the result of randomise true might be 3214 for example.", true, AttributeType.xsBoolean),
     repeatCount("When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.", true, AttributeType.xsInteger),
     repeatRandomWindow("When greater than 0 all items will be randomised again after the repeatCount has been applied. This randomisation is constrained to the designated window of items causing the randomisation to be done in a moving window across all items. When used in conjunction with repeatCount this allows randomisation without adjacency at the boundary of repeats. For example, if a repeatCount of 3 resulted in 321432143214 a repeatRandomWindow of 2 could produce 231342413124 but cannot produce 214331322144. Whereas a repeatRandomWindow of 12 would randomise all items to any location and could produce 214331322144.", true, AttributeType.xsInteger), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
-    adjacencyThreshold("When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. ",true,AttributeType.xsInteger),
+    adjacencyThreshold("When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. ", true, AttributeType.xsInteger),
     repeatIncorrect,
     //    repeatMatching(true),
     hotKey(null, true, new String[]{
@@ -248,8 +248,8 @@ public enum FeatureAttribute {
     mediaId(/*true*/), listenerId, threshold, maximum, minimum, average, ranges(true),
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
-//    minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
-//    maxStimuliPerTag(true), // for each tag there should be no more than N of each represented in the final list
+    //    minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
+    //    maxStimuliPerTag(true), // for each tag there should be no more than N of each represented in the final list
     maxStimuli(true),
     excludeRegex(true),
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
@@ -261,9 +261,9 @@ public enum FeatureAttribute {
     gamesPlayed(true), // integer to make active, when empty or not present is passed as null
     showPlaybackIndicator,
     showControls(false),
-    phaseMembers("List of members for each phase. Each phase is separated by : and in each phase the matching members are separated by , when no members match a - is given for that phase.", false, AttributeType.xsString),
-    groupMembers("List of members separated by , with preferably only a-Z being used for the member names.", false, AttributeType.xsString),
-    groupCommunicationChannels("List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.", false, AttributeType.xsString),
+    phaseMembers("List of members for each phase. Each phase is separated by : and in each phase the matching members are separated by , when no members match a - is given for that phase.", false, AttributeType.groupPhases),
+    groupMembers("List of members separated by , with preferably only a-Z being used for the member names.", false, AttributeType.groupMembers),
+    groupCommunicationChannels("List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.", false, AttributeType.groupChannels),
     incrementPhase("Increments the current group phase and triggeres the relevant group activities for all members of the group.", false, AttributeType.xsInteger),
     //    incrementStimulus,
     phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.", false, AttributeType.xsInteger),

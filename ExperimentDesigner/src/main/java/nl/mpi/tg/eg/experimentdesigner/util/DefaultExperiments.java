@@ -312,6 +312,15 @@ public class DefaultExperiments {
                         case recordingFormat:
                             presenterFeature.addFeatureAttributes(attribute, "ogg");
                             break;
+                        case groupMembers:
+                            presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123,_D,1_E,F,Hat,T,2");
+                            break;
+                        case groupCommunicationChannels:
+                            presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123|_D,1_E|F,Hat,T,2");
+                            break;
+                        case phaseMembers:
+                            presenterFeature.addFeatureAttributes(attribute, "-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-");
+                            break;
                         case randomise:
                         case autoPlay:
                         case loop:

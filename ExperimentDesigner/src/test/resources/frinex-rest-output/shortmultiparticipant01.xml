@@ -32,7 +32,7 @@
             <loadStimulus adjacencyThreshold="3" eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <clearPage/>
-                    <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
                         <groupNetworkConnecting/>
                         <groupFindingMembers/>
                         <groupNetworkSynchronising/>

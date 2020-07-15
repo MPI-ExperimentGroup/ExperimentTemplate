@@ -46,6 +46,9 @@ public class AbstractSchemaGenerator {
         stimulusTags("stimulusTags", "Stimulus Tags"),
         stimulusTag("stimulusTag", "Stimulus Tag"),
         integerList("integerList", "Integer List"),
+        groupMembers("groupMembers", "Group Members"),
+        groupChannels("groupChannels", "Group Channels"),
+        groupPhases("groupPhases", "Group Phases"),
         lowercaseValue("lowercaseValue", "Lowercase Value");
 //        presenterKind("type", "Presenter Type");
         public final String typeName;

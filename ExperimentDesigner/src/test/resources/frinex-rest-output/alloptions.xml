@@ -617,7 +617,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+                <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                     <groupFindingMembers>
                         <plainText featureText="plainText in groupFindingMembers"/>
                     </groupFindingMembers>
@@ -628,7 +628,7 @@
                         <plainText featureText="plainText in groupNetworkSynchronising"/>
                     </groupNetworkSynchronising>
                     <groupPhaseListeners>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -662,7 +662,7 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -696,7 +696,7 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -1007,7 +1007,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+                <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                     <groupFindingMembers>
                         <plainText featureText="plainText in groupFindingMembers"/>
                     </groupFindingMembers>
@@ -1018,7 +1018,7 @@
                         <plainText featureText="plainText in groupNetworkSynchronising"/>
                     </groupNetworkSynchronising>
                     <groupPhaseListeners>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -1052,7 +1052,7 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -1086,7 +1086,7 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -1397,7 +1397,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+                <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                     <groupFindingMembers>
                         <plainText featureText="plainText in groupFindingMembers"/>
                     </groupFindingMembers>
@@ -1408,7 +1408,7 @@
                         <plainText featureText="plainText in groupNetworkSynchronising"/>
                     </groupNetworkSynchronising>
                     <groupPhaseListeners>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -1442,7 +1442,7 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -1476,7 +1476,7 @@
                             <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="phaseMembers">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel styleName="styleName"/>
                             <groupMemberLabel styleName="styleName"/>
                             <groupMessageLabel styleName="styleName"/>
@@ -2676,7 +2676,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
+                <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                     <groupFindingMembers>
                         <plainText featureText="plainText in groupFindingMembers"/>
                     </groupFindingMembers>
@@ -2687,7 +2687,7 @@
                         <plainText featureText="plainText in groupNetworkSynchronising"/>
                     </groupNetworkSynchronising>
                     <groupPhaseListeners>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -2721,7 +2721,7 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -2755,7 +2755,7 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -3066,7 +3066,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
+                <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                     <groupFindingMembers>
                         <plainText featureText="plainText in groupFindingMembers"/>
                     </groupFindingMembers>
@@ -3077,7 +3077,7 @@
                         <plainText featureText="plainText in groupNetworkSynchronising"/>
                     </groupNetworkSynchronising>
                     <groupPhaseListeners>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -3111,7 +3111,7 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -3145,7 +3145,7 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -3456,7 +3456,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <groupNetwork groupMembers="" phasesPerStimulus="8" groupCommunicationChannels="">
+                <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                     <groupFindingMembers>
                         <plainText featureText="plainText in groupFindingMembers"/>
                     </groupFindingMembers>
@@ -3467,7 +3467,7 @@
                         <plainText featureText="plainText in groupNetworkSynchronising"/>
                     </groupNetworkSynchronising>
                     <groupPhaseListeners>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -3501,7 +3501,7 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>
@@ -3535,7 +3535,7 @@
                             <sendGroupStoredMessage incrementPhase="3"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
-                        <groupMemberActivity phaseMembers="">
+                        <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
                             <groupMemberCodeLabel/>
                             <groupMemberLabel/>
                             <groupMessageLabel/>

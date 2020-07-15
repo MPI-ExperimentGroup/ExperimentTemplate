@@ -15,6 +15,21 @@
 <xs:pattern value="[a-z]([a-z_0-9]){3,}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="groupMembers">
+<xs:restriction base="xs:string">
+<xs:pattern value="[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="groupChannels">
+<xs:restriction base="xs:string">
+<xs:pattern value="[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+(\|[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+)*"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="groupPhases">
+<xs:restriction base="xs:string">
+<xs:pattern value="(-|([A-Za-z_0-9]+(,[A-Za-z_0-9])+))(:(-|([A-Za-z_0-9]+(,[A-Za-z_0-9])+)))*"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="dateValue">
 <xs:restriction base="xs:string">
 <xs:pattern value="[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"/>
@@ -11043,8 +11058,8 @@
 <xs:element name="groupNetworkSynchronising" type="groupNetworkSynchronisingType"/>
 <xs:element name="groupPhaseListeners" type="groupPhaseListenersType"/>
 </xs:all>
-<xs:attribute name="groupMembers" type="xs:string" use="required"/>
-<xs:attribute name="groupCommunicationChannels" type="xs:string" use="required"/>
+<xs:attribute name="groupMembers" type="groupMembers" use="required"/>
+<xs:attribute name="groupCommunicationChannels" type="groupChannels" use="required"/>
 <xs:attribute name="phasesPerStimulus" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="groupFindingMembersType">
@@ -11770,7 +11785,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="phaseMembers" type="xs:string" use="required"/>
+<xs:attribute name="phaseMembers" type="groupPhases" use="required"/>
 </xs:complexType>
 <xs:complexType name="groupMemberCodeLabelType">
 <xs:attribute name="styleName" type="xs:string"/>
