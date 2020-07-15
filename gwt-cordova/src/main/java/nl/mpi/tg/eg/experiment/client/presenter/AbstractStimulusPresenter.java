@@ -2191,10 +2191,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        showStimulusProgress();
     }
 
-    protected void sendGroupStoredMessage(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
+    protected void sendGroupStoredMessage(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents, final String groupId) {
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-        final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get("groupMessage");
-        String messageString = ((freeTextValue != null) ? freeTextValue.isString().stringValue() : null);
+        final String formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString((groupId.isEmpty())? "groupMessage" : groupId);
+        String messageString = (storedStimulusJSONObject == null) ? "" : storedStimulusJSONObject.containsKey(formattedGroupId) ? storedStimulusJSONObject.get(formattedGroupId).isString().stringValue() : "";
         groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
     }
 

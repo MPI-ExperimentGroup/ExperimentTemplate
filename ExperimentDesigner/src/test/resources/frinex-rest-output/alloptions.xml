@@ -659,7 +659,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                         <groupMemberActivity phaseMembers="phaseMembers">
@@ -693,7 +693,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                         <groupMemberActivity phaseMembers="phaseMembers">
@@ -727,7 +727,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                     </groupPhaseListeners>
@@ -1049,7 +1049,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                         <groupMemberActivity phaseMembers="phaseMembers">
@@ -1083,7 +1083,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                         <groupMemberActivity phaseMembers="phaseMembers">
@@ -1117,7 +1117,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                     </groupPhaseListeners>
@@ -1439,7 +1439,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                         <groupMemberActivity phaseMembers="phaseMembers">
@@ -1473,7 +1473,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                         <groupMemberActivity phaseMembers="phaseMembers">
@@ -1507,7 +1507,7 @@
                             <submitGroupEvent/>
                             <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                             <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                            <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
                             <plainText featureText="plainText in groupMemberActivity"/>
                         </groupMemberActivity>
                     </groupPhaseListeners>

@@ -23205,11 +23205,13 @@ String</span><br/>
 <h3 id="sendGroupStoredMessageType" style="text-transform: uppercase;">
 sendGroupStoredMessage
 </h3>
-
+Sends a message to the goup members that are in the current member's communication channel. The message is the stored value of groupId for current stimulus. If groupId is not provided 'groupMessage' will be used. If the is no stored value then an empty message will be sent.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupStoredMessage</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
+<span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 Increments the current group phase and triggeres the relevant group activities for all members of the group.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>

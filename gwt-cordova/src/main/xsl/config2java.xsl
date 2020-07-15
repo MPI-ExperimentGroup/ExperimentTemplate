@@ -742,7 +742,12 @@ or local-name() eq 'sendGroupMessageButton'
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
-        <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
+        <xsl:value-of select="if(contains(local-name(), 'Button') 
+                                or contains(local-name(), 'Radio') 
+                                or contains(local-name(), 'Checkbox')
+                                ) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
+        <xsl:value-of select="if(contains(local-name(), 'sendGroupStoredMessage')
+                                ) then if (@groupId) then concat(', &quot;',@groupId, '&quot;') else ', &quot;&quot;' else ''" />
         <xsl:if test="local-name() eq 'touchInputCaptureStart'">
             <xsl:text>, new TimedStimulusListener() {
 
