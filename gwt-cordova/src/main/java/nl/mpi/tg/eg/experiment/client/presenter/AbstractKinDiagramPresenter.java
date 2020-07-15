@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
-import com.google.gwt.core.client.Duration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -63,13 +62,11 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
 
     private final DataSubmissionService submissionService;
     Stimulus currentStimulus = null;
-    private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private static final String RHOMBUS = "rhombus";
 
     public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new KinTypeView(), submissionService, userResults, localStorage, timerService);
-        duration = new Duration();
         this.submissionService = submissionService;
     }
 

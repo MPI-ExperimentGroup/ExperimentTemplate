@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
@@ -56,11 +57,13 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     final protected TimedStimulusView timedStimulusView;
     protected final DataSubmissionService submissionService;
+    protected final Duration duration;
 
     public AbstractTimedPresenter(RootLayoutPanel widgetTag, final TimedStimulusView timedStimulusView, final DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) {
         super(widgetTag, timedStimulusView, userResults, localStorage, timerService);
         this.timedStimulusView = timedStimulusView;
         this.submissionService = submissionService;
+        duration = new Duration();
     }
 
     public void setMetadataValue(final Stimulus currentStimulus, final MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
@@ -276,6 +279,10 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     protected void regionClear(final Stimulus currentStimulus, final String regionIdToken) {
         final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
+    }
+
+    public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
     @Override

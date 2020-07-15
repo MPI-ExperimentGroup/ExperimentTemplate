@@ -92,7 +92,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
     private static final String CONSUMED_TAGS_LIST = "consumedTagsList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
-    private final Duration duration;
     private final TimedEventMonitor timedEventMonitor;
     final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
     private final ArrayList<Timer> pauseTimers = new ArrayList<>();
@@ -116,7 +115,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
-        duration = new Duration();
         timedEventMonitor = new TimedEventMonitor(duration);
 
 //        final Label debugLabel = new Label();
@@ -393,10 +391,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex), true, hasMoreStimulusListener, endOfStimulusListener);
         matchingStimuliGroup.getNextStimulus(stimulusProvider);
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
-    }
-
-    public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
     protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {

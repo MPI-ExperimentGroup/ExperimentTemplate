@@ -53,11 +53,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPresenter implements Presenter {
 
-    private final Duration duration;
-
     public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
-        duration = new Duration();
     }
 
     @Override
