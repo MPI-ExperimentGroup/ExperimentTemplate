@@ -22,12 +22,12 @@
 </xs:simpleType>
 <xs:simpleType name="groupChannels">
 <xs:restriction base="xs:string">
-<xs:pattern value="[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+(\|[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+)*"/>
+<xs:pattern value="[A-Za-z_0-9]+(,[A-Za-z_0-9]+)*(\|[A-Za-z_0-9]+(,[A-Za-z_0-9]+)*)*"/>
 </xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="groupPhases">
 <xs:restriction base="xs:string">
-<xs:pattern value="(-|([A-Za-z_0-9]+(,[A-Za-z_0-9])+))(:(-|([A-Za-z_0-9]+(,[A-Za-z_0-9])+)))*"/>
+<xs:pattern value="(-|([A-Za-z_0-9]+(,[A-Za-z_0-9]+)*))(:(-|([A-Za-z_0-9]+(,[A-Za-z_0-9]+)*)))*"/>
 </xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="dateValue">
@@ -11798,6 +11798,9 @@
 </xs:complexType>
 <xs:complexType name="groupResponseStimulusImageType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Displays the stimulus image that the last group message had responded with.</xs:documentation>
+</xs:annotation>
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
 <xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
@@ -11811,6 +11814,9 @@
 </xs:complexType>
 <xs:complexType name="groupResponseFeedbackType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Compares the current stimulus to the last group response stimulus. If the group response stimulus equals the current group stimulus then it is considered to be correct.</xs:documentation>
+</xs:annotation>
 <xs:element name="responseCorrect" type="responseCorrectType"/>
 <xs:element name="responseIncorrect" type="responseIncorrectType"/>
 </xs:all>
@@ -11825,9 +11831,15 @@
 <xs:attribute name="styleName" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="submitGroupEventType">
+<xs:annotation>
+<xs:documentation>Submits a record of the current group state from the perspective of the current group member to the admin database.</xs:documentation>
+</xs:annotation>
 </xs:complexType>
 <xs:complexType name="sendGroupMessageButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Adds a button that will send a message to the goup members that are in the current member's communication channel. The message content is the concatonated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.</xs:documentation>
+</xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
@@ -11845,6 +11857,9 @@
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="sendGroupMessageType">
+<xs:annotation>
+<xs:documentation>Sends a message to the goup members that are in the current member's communication channel. The contents of the message is the last message received in the current users communication channel.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
 </xs:complexType>

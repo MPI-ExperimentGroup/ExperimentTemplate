@@ -23050,7 +23050,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="groupResponseFeedbackType" style="text-transform: uppercase;">
 groupResponseFeedback
 </h3>
-
+Compares the current stimulus to the last group response stimulus. If the group response stimulus equals the current group stimulus then it is considered to be correct.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupResponseFeedback</span></td><td><span style="color:purple">&gt;</span></td><td>
@@ -23078,7 +23078,7 @@ groupResponseFeedback
 <h3 id="groupResponseStimulusImageType" style="text-transform: uppercase;">
 groupResponseStimulusImage
 </h3>
-
+Displays the stimulus image that the last group message had responded with.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupResponseStimulusImage</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23140,7 +23140,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="sendGroupMessageType" style="text-transform: uppercase;">
 sendGroupMessage
 </h3>
-
+Sends a message to the goup members that are in the current member's communication channel. The contents of the message is the last message received in the current users communication channel.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessage</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23160,7 +23160,7 @@ Increments the current group phase and triggeres the relevant group activities f
 <h3 id="sendGroupMessageButtonType" style="text-transform: uppercase;">
 sendGroupMessageButton
 </h3>
-
+Adds a button that will send a message to the goup members that are in the current member's communication channel. The message content is the concatonated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23227,7 +23227,7 @@ Increments the current group phase and triggeres the relevant group activities f
 <h3 id="submitGroupEventType" style="text-transform: uppercase;">
 submitGroupEvent
 </h3>
-
+Submits a record of the current group state from the perspective of the current group member to the admin database.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">submitGroupEvent</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
