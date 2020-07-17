@@ -41,7 +41,7 @@ public class AbstractSchemaGenerator {
         xsInteger("xs:integer", "Integer"),
         xsDecimal("xs:decimal", "Decimal"),
         xsBoolean("xs:boolean", "Boolean"),
-        rgbHexValue("rgbHexValue", "RGB Hext Value"),
+        rgbHexValue("rgbHexValue", "RGB Hex Value"),
         dateValue("dateValue", "Date Value YYYY-MM-DD"),
         stimulusTags("stimulusTags", "Stimulus Tags"),
         stimulusTag("stimulusTag", "Stimulus Tag"),
@@ -349,7 +349,7 @@ public class AbstractSchemaGenerator {
     }
     protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Each experiment XML configuration file must have one \"experiment\" element of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
             new DocumentationElement[]{
-                new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
+                new DocumentationElement("preventWindowClose", "When true a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
                         new DocumentationElement[0]).stringAttribute("featureText", false),
                 new DocumentationElement("deployment", "", 0, 1,
                         new DocumentationElement[0])
@@ -362,8 +362,8 @@ public class AbstractSchemaGenerator {
                         .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "editing", "debug", "staging", "production", "undeploy"),
                 new DocumentationElement("validationService", "Server side validation / registration services.", 0, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record."
-                                    + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser."
+                            new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record. "
+                                    + "Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser. "
                                     + "This section is not used when an external &lt;validationService&gt; is specified.", 0, 1, new DocumentationElement[]{
                                 new DocumentationElement("recordMatch", "The value sent to the server must match the last valid record stored on in the admin system.", 0, 0, new DocumentationElement[0])
                                         .documentedAttribute("postField", AttributeType.xsString, "The value of this metadatafield is sent to the admin server for validation.", false)
@@ -372,7 +372,7 @@ public class AbstractSchemaGenerator {
                                         .documentedAttribute("errorField", AttributeType.xsString, "If a record match error occurs the error message will be returned from the admin server in this metadatafield.", false)
                                         .documentedAttribute("errorMessage", AttributeType.xsString, "If a record match error occurs this is the error message that will be returned.", false)
                                         .documentedAttribute("validationRegex", AttributeType.xsString, "If provided then this regex is matched against the postField for validation.", true),
-                                new DocumentationElement("fieldMatch", "On successful validation the values stored in the admin system can be returned to the clent. For example to restore a previous session on a new device or browser.", 0, 0, new DocumentationElement[0])
+                                new DocumentationElement("fieldMatch", "On successful validation the values stored in the admin system can be returned to the client. For example to restore a previous session on a new device or browser.", 0, 0, new DocumentationElement[0])
                                         .documentedAttribute("postField", AttributeType.xsString, "If provided the value of the postField must match the value of the adminField for validation to succeed.", true)
                                         .documentedAttribute("adminField", AttributeType.xsString, "If validation succeeds then the value this metadatafield is returned.", false)
                                         .documentedAttribute("responseField", AttributeType.xsString, "If validation succeeds the response value is returned to the client in this metadata field.", true)
@@ -383,8 +383,8 @@ public class AbstractSchemaGenerator {
                                     .documentedAttribute("errorField", AttributeType.xsString, "If a validation error occurs the error message will be returned from the admin server in this metadatafield.", false)
                                     .documentedAttribute("errorMessage", AttributeType.xsString, "If no records match and a validation error occurs this is the error message that will be returned.", false)
                                     .documentedAttribute("allowValidationOnMissing", AttributeType.xsBoolean, "If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.", false)
-                        }).documentedAttribute("stagingUrl", AttributeType.xsString, "The URL to an external staging registration service. When not spcified the Frinex &lt;validation&gt; service is used.", true)
-                        .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not spcified the Frinex &lt;validation&gt; service is used.", true),
+                        }).documentedAttribute("stagingUrl", AttributeType.xsString, "The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.", true)
+                        .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.", true),
                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
@@ -421,7 +421,7 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new DocumentationElement[]{
+                            new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, image, audio and video.", 0, 0, new DocumentationElement[]{
                         new DocumentationElement("translation", "Translated attributes for the parent stimulus element.", 0, 0, false)
                         .stringAttribute("locale", false)
                         .stringAttribute("label", true)

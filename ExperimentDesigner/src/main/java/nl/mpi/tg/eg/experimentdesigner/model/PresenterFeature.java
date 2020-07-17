@@ -242,7 +242,7 @@ public class PresenterFeature extends CanHaveFeatures {
             }
             for (FeatureAttribute featureAttribute : FeatureAttribute.values()) {
                 if (featureAttribute.toString().equals(undefinedAttribute)) {
-                    throw new IllegalArgumentException("attributeValue cannot be be a member of FeatureAttribute: " + undefinedAttribute);
+                    throw new IllegalArgumentException("attributeValue cannot be a member of FeatureAttribute: " + undefinedAttribute);
                 }
             }
             this.undefinedAttributes.put(undefinedAttribute, attributeValue);
