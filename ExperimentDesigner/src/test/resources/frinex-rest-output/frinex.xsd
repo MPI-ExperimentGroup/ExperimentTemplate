@@ -362,7 +362,7 @@
 <xs:complexType name="validationType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.This section is not used when an external &lt;validationService&gt; is specified.</xs:documentation>
+<xs:documentation>When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record. Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser. This section is not used when an external &lt;validationService&gt; is specified.</xs:documentation>
 </xs:annotation>
 <xs:element name="recordMatch" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -599,7 +599,7 @@
 <xs:complexType name="stimulusType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Each individual stimulus can be described in the form of label, audio, video</xs:documentation>
+<xs:documentation>Each individual stimulus can be described in the form of label, image, audio and video.</xs:documentation>
 </xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -759,7 +759,7 @@
 </xs:complexType>
 <xs:complexType name="clearStimulusResponsesType">
 <xs:annotation>
-<xs:documentation>Clears all locally stored responses to all stimulus that have all the supplied tags. Stimulus that do not have ALL the provided tags will not be affected.</xs:documentation>
+<xs:documentation>Clears all locally stored responses to all stimulus that have all the supplied tags. Stimuli that do not have ALL the provided tags will not be affected.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="tags" type="stimulusTags" use="required"/>
 </xs:complexType>
@@ -4587,7 +4587,7 @@
 <xs:complexType name="triggerDefinitionType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
-<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum.</xs:documentation>
+<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurrences has reached the threshold and within the maximum.</xs:documentation>
 </xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
@@ -4947,7 +4947,7 @@
 </xs:complexType>
 <xs:complexType name="triggerMatchingType">
 <xs:annotation>
-<xs:documentation>Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values. The listenerId can contain tokens eg %lt;stimulusCode&gt;.</xs:documentation>
+<xs:documentation>Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values. The listenerId can contain tokens eg &lt;stimulusCode&gt;.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="listenerId" type="xs:string" use="required"/>
 </xs:complexType>
@@ -10096,7 +10096,7 @@
 <xs:complexType name="regionAppendType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
-<xs:documentation>Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be be appended to.</xs:documentation>
+<xs:documentation>Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be appended to.</xs:documentation>
 </xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
@@ -10969,7 +10969,7 @@
 <xs:complexType name="startAudioRecorderWebType">
 <xs:sequence>
 <xs:annotation>
-<xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.</xs:documentation>
+<xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The onError will be triggered if the recorder cannot start. If the upload or playback fails then mediaLoadFailed will be triggered. Upload failure will also result in a subsequent upload attempt. When the recorded audio data has been submitted the mediaLoaded will be triggered even if playback is not enabled by downloadPermittedWindowMs, this allows upload verification before proceeding. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.</xs:documentation>
 </xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -11838,7 +11838,7 @@
 <xs:complexType name="sendGroupMessageButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
-<xs:documentation>Adds a button that will send a message to the goup members that are in the current member's communication channel. The message content is the concatonated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.</xs:documentation>
+<xs:documentation>Adds a button that will send a message to the group members that are in the current member's communication channel. The message content is the concatenated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.</xs:documentation>
 </xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -11858,14 +11858,14 @@
 </xs:complexType>
 <xs:complexType name="sendGroupMessageType">
 <xs:annotation>
-<xs:documentation>Sends a message to the goup members that are in the current member's communication channel. The contents of the message is the last message received in the current users communication channel.</xs:documentation>
+<xs:documentation>Sends a message to the group members that are in the current member's communication channel. The contents of the message is the last message received in the current users communication channel.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
 </xs:complexType>
 <xs:complexType name="sendGroupStoredMessageType">
 <xs:annotation>
-<xs:documentation>Sends a message to the goup members that are in the current member's communication channel. The message is the stored value of groupId for current stimulus. If groupId is not provided 'groupMessage' will be used. If the is no stored value then an empty message will be sent.</xs:documentation>
+<xs:documentation>Sends a message to the group members that are in the current member's communication channel. The message is the stored value of groupId for current stimulus. If groupId is not provided 'groupMessage' will be used. If the is no stored value then an empty message will be sent.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:integer" use="required"/>

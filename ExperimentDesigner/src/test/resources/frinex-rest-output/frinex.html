@@ -62,17 +62,17 @@ Each experiment XML configuration file must have one "experiment" element of whi
 String</span><br/>
 <span style="color:green">appNameInternal</span><span style="color:grey">=&quot;Lowercase Value&quot;</span><span>
 String Lowercase</span><br/>
-<span style="color:green">backgroundColour</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">backgroundColour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">complementColour0</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">complementColour0</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">complementColour1</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">complementColour1</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">complementColour2</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">complementColour2</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">complementColour3</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">complementColour3</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">complementColour4</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">complementColour4</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
 <span style="color:green">defaultScale</span><span style="color:grey">=&quot;Decimal&quot;</span><span>
 Decimal Number</span><br/>
@@ -82,15 +82,15 @@ Boolean</span><br/>
 Boolean: By default the browser local storage is obfuscated to make it difficult to cheat the system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.</span><br/>
 <span style="color:green">preserveLastState</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
 Boolean</span><br/>
-<span style="color:green">primaryColour0</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">primaryColour0</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">primaryColour1</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">primaryColour1</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">primaryColour2</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">primaryColour2</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">primaryColour3</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">primaryColour3</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">primaryColour4</span><span style="color:grey">=&quot;RGB Hext Value&quot;</span><span>
+<span style="color:green">primaryColour4</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
 <span style="color:green">rotatable</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
 Boolean</span><br/>
@@ -129,9 +129,9 @@ The type of deployment to be run when changes are pushed to the build server.</s
 </td></tr>
 <tr><td>
 <a href="#validationServiceType"><span style="color:purple">&lt;</span><span style="color:blue">validationService</span></a></td><td><span style="color:green">productionUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external production registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 <span style="color:green">stagingUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external staging registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -177,7 +177,7 @@ The type of presenter which also determines the features that can be used in the
 <h3 id="preventWindowCloseType" style="text-transform: uppercase;">
 preventWindowClose
 </h3>
-When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.
+When true a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">preventWindowClose</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -229,9 +229,9 @@ Server side validation / registration services.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">validationService</span></td><td><span style="color:green">productionUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external production registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 <span style="color:green">stagingUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external staging registration service. When not spcified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -260,7 +260,7 @@ If no records match and a validation error occurs this is the error message that
 <h3 id="validationType" style="text-transform: uppercase;">
 validation
 </h3>
-When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record.Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser.This section is not used when an external &lt;validationService&gt; is specified.
+When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record. Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser. This section is not used when an external &lt;validationService&gt; is specified.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">validation</span></td><td><span style="color:green">allowValidationOnMissing</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
@@ -346,7 +346,7 @@ If provided then this regex is matched against the postField for validation.</sp
 <h3 id="fieldMatchType" style="text-transform: uppercase;">
 fieldMatch
 </h3>
-On successful validation the values stored in the admin system can be returned to the clent. For example to restore a previous session on a new device or browser.
+On successful validation the values stored in the admin system can be returned to the client. For example to restore a previous session on a new device or browser.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">fieldMatch</span></td><td><span style="color:green">adminField</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -964,7 +964,7 @@ String</span><br/>
 <h3 id="stimulusType" style="text-transform: uppercase;">
 stimulus
 </h3>
-Each individual stimulus can be described in the form of label, audio, video
+Each individual stimulus can be described in the form of label, image, audio and video.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></td><td><span style="color:green">audioPath</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -3506,7 +3506,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="clearStimulusResponsesType" style="text-transform: uppercase;">
 clearStimulusResponses
 </h3>
-Clears all locally stored responses to all stimulus that have all the supplied tags. Stimulus that do not have ALL the provided tags will not be affected.
+Clears all locally stored responses to all stimulus that have all the supplied tags. Stimuli that do not have ALL the provided tags will not be affected.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">clearStimulusResponses</span></td><td><span style="color:green">tags</span><span style="color:grey">=&quot;Stimulus Tags&quot;</span><span>
@@ -6017,7 +6017,7 @@ When the URL parameter &quot;hardwareTimeStamp&quot; is provided a hardware meas
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">hardwareTimeStamp</span></td><td><span style="color:green">dtmf</span><span style="color:grey">=&quot;dtmfType [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, *, #, off] (optional)&quot;</span><span>
-Dual-tone multi-frequency signalling</span><br/>
+Dual-tone multi-frequency signaling</span><br/>
 <span style="color:green">opto1</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 On screen indicator for optical sensor one.</span><br/>
 <span style="color:green">opto2</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
@@ -9146,7 +9146,7 @@ String</span><br/>
 <h3 id="regionAppendType" style="text-transform: uppercase;">
 regionAppend
 </h3>
-Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be be appended to.
+Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be appended to.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionAppend</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -12628,7 +12628,7 @@ String</span><br/>
 <h3 id="triggerDefinitionType" style="text-transform: uppercase;">
 triggerDefinition
 </h3>
-The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurences has reached the threshold and within the maximum.
+The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurrences has reached the threshold and within the maximum.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">triggerDefinition</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -13174,7 +13174,7 @@ String</span><br/>
 <h3 id="triggerMatchingType" style="text-transform: uppercase;">
 triggerMatching
 </h3>
-Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values. The listenerId can contain tokens eg %lt;stimulusCode&gt;.
+Trigger all triggerListeners matching the listenerId providing the threshold and maximum values are within the required values. The listenerId can contain tokens eg &lt;stimulusCode&gt;.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">triggerMatching</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -17877,7 +17877,7 @@ String</span><br/>
 <h3 id="startAudioRecorderWebType" style="text-transform: uppercase;">
 startAudioRecorderWeb
 </h3>
-Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.
+Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The onError will be triggered if the recorder cannot start. If the upload or playback fails then mediaLoadFailed will be triggered. Upload failure will also result in a subsequent upload attempt. When the recorded audio data has been submitted the mediaLoaded will be triggered even if playback is not enabled by downloadPermittedWindowMs, this allows upload verification before proceeding. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderWeb</span></td><td><span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23140,13 +23140,13 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="sendGroupMessageType" style="text-transform: uppercase;">
 sendGroupMessage
 </h3>
-Sends a message to the goup members that are in the current member's communication channel. The contents of the message is the last message received in the current users communication channel.
+Sends a message to the group members that are in the current member's communication channel. The contents of the message is the last message received in the current users communication channel.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessage</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;Integer&quot;</span><span>
-Increments the current group phase and triggeres the relevant group activities for all members of the group.</span><br/>
+Increments the current group phase and triggers the relevant group activities for all members of the group.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -23160,7 +23160,7 @@ Increments the current group phase and triggeres the relevant group activities f
 <h3 id="sendGroupMessageButtonType" style="text-transform: uppercase;">
 sendGroupMessageButton
 </h3>
-Adds a button that will send a message to the goup members that are in the current member's communication channel. The message content is the concatonated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.
+Adds a button that will send a message to the group members that are in the current member's communication channel. The message content is the concatenated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23174,7 +23174,7 @@ This value is used in multiple ways depending on the context, to set the button 
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;hotKeyType [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE, ] (optional)&quot;</span><span>
 Option List</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;Integer&quot;</span><span>
-Increments the current group phase and triggeres the relevant group activities for all members of the group.</span><br/>
+Increments the current group phase and triggers the relevant group activities for all members of the group.</span><br/>
 <span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23205,7 +23205,7 @@ String</span><br/>
 <h3 id="sendGroupStoredMessageType" style="text-transform: uppercase;">
 sendGroupStoredMessage
 </h3>
-Sends a message to the goup members that are in the current member's communication channel. The message is the stored value of groupId for current stimulus. If groupId is not provided 'groupMessage' will be used. If the is no stored value then an empty message will be sent.
+Sends a message to the group members that are in the current member's communication channel. The message is the stored value of groupId for current stimulus. If groupId is not provided 'groupMessage' will be used. If the is no stored value then an empty message will be sent.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupStoredMessage</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23213,7 +23213,7 @@ When present this tag will be logged in the timestamps table as close as possibl
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;Integer&quot;</span><span>
-Increments the current group phase and triggeres the relevant group activities for all members of the group.</span><br/>
+Increments the current group phase and triggers the relevant group activities for all members of the group.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
