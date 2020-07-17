@@ -1680,29 +1680,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
                 // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
 //                timedStimulusView.addText("(debug) Media Submission Failed (retry not implemented): " + message);
-                onError.postLoadTimerFired();
+                failedStimulusListener.postLoadTimerFired();
                 final MediaSubmissionListener mediaSubmissionListener = this;
-                actionButton(new PresenterEventListner() {
+                Timer timer = new Timer() {
                     @Override
-                    public String getLabel() {
-                        return "Media Submission Failed"; // todo: this needs to be parameterised but with internationalisation
-                    }
-
-                    @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    public void run() {
                         submissionService.submitAudioData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
                     }
-
-                    @Override
-                    public String getStyleName() {
-                        return null;
-                    }
-
-                    @Override
-                    public int getHotKey() {
-                        return -1;
-                    }
-                }, "startAudioRecorderRetry");
+                };
+                timer.schedule(1000);
             }
 
             @Override
@@ -1718,6 +1704,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
                     // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl)
                     timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                } else {
+                    loadedStimulusListener.postLoadTimerFired();
                 }
             }
         };
@@ -2187,7 +2175,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void sendGroupStoredMessage(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents, final String groupId) {
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-        final String formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString((groupId.isEmpty())? "groupMessage" : groupId);
+        final String formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString((groupId.isEmpty()) ? "groupMessage" : groupId);
         String messageString = (storedStimulusJSONObject == null) ? "" : storedStimulusJSONObject.containsKey(formattedGroupId) ? storedStimulusJSONObject.get(formattedGroupId).isString().stringValue() : "";
         groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
     }
