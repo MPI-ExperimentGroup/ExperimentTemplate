@@ -580,7 +580,7 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>final boolean allowValidationOnMissing = </xsl:text>
-            <xsl:value-of select="if (experiment/administration/validation/@allowValidationOnMissing eq 'true') then 'true' else 'false'"/>
+            <xsl:value-of select="if (experiment/validationService/validation/@allowValidationOnMissing eq 'true') then 'true' else 'false'"/>
             <xsl:text>;
                 for(Participant participantRecord : participantRepository.findByUserId(requestingUserId)) {
             </xsl:text>
