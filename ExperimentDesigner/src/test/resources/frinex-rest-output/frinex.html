@@ -14765,7 +14765,7 @@ nextMatchingStimulus
 <h3 id="nextStimulusType" style="text-transform: uppercase;">
 nextStimulus
 </h3>
-
+Increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">nextStimulus</span></td><td><span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -14783,7 +14783,7 @@ String</span><br/>
 <h3 id="nextStimulusButtonType" style="text-transform: uppercase;">
 nextStimulusButton
 </h3>
-
+Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered whem the button is clicked.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">nextStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -14824,7 +14824,7 @@ String</span><br/>
 <h3 id="prevStimulusType" style="text-transform: uppercase;">
 prevStimulus
 </h3>
-
+Decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimulus then endOfStimulus will be triggered.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">prevStimulus</span></td><td><span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -14842,7 +14842,7 @@ String</span><br/>
 <h3 id="prevStimulusButtonType" style="text-transform: uppercase;">
 prevStimulusButton
 </h3>
-
+Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered whem the button is clicked.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">prevStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -17227,7 +17227,7 @@ showStimuliReport
 <h3 id="showStimulusType" style="text-transform: uppercase;">
 showStimulus
 </h3>
-
+Repeats the current stimulus by triggering hasMoreStimulus. If there is no current stimulus then endOfStimulus will be triggered.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">showStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>

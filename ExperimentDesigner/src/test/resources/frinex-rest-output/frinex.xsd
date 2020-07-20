@@ -3666,6 +3666,9 @@
 </xs:complexType>
 <xs:complexType name="prevStimulusButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered whem the button is clicked.</xs:documentation>
+</xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
@@ -3682,6 +3685,9 @@
 </xs:complexType>
 <xs:complexType name="nextStimulusButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered whem the button is clicked.</xs:documentation>
+</xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required"/>
@@ -3697,9 +3703,15 @@
 <xs:attribute name="groupId" type="xs:string"/>
 </xs:complexType>
 <xs:complexType name="nextStimulusType">
+<xs:annotation>
+<xs:documentation>Increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="prevStimulusType">
+<xs:annotation>
+<xs:documentation>Decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimulus then endOfStimulus will be triggered.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="nextMatchingStimulusType">
@@ -3810,6 +3822,9 @@
 </xs:complexType>
 <xs:complexType name="showStimulusType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Repeats the current stimulus by triggering hasMoreStimulus. If there is no current stimulus then endOfStimulus will be triggered.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>

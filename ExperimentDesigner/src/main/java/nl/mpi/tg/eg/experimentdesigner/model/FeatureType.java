@@ -132,10 +132,10 @@ public enum FeatureType {
     clearPage(false, false, new FeatureAttribute[]{styleName}),
     backgroundImage(true, false, new FeatureAttribute[]{msToNext, src, styleName}),
     allMenuItems(false, false, new FeatureAttribute[]{styleName}),
-    prevStimulusButton(true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    nextStimulusButton(true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    nextStimulus(false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect/*, repeatMatching*/}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    prevStimulus(false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect/*, repeatMatching*/}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    prevStimulusButton(true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, "Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered when the button is clicked.", Contitionals.none, Contitionals.stimulusAction),
+    nextStimulusButton(true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, "Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered when the button is clicked.", Contitionals.none, Contitionals.stimulusAction),
+    nextStimulus(false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect/*, repeatMatching*/}, "Increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered.", Contitionals.none, Contitionals.stimulusAction),
+    prevStimulus(false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect/*, repeatMatching*/}, "Decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimulus then endOfStimulus will be triggered.", Contitionals.none, Contitionals.stimulusAction),
     //    skipStimulus(false, false, new FeatureAttribute[]{offset /* when offset is < 1 the stimuli will not repeat, when it is > 0 the stimulus will be shown again after X items or at the end of the list, which ever is the lesser */}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextMatchingStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
@@ -153,7 +153,7 @@ public enum FeatureType {
     // todo: document audioButton which fires the played event once and only once after the first playback finishes
     audioButton(false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src, groupId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     preloadAllStimuli(false, null, true, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    showStimulus(false, null, false, false, false, Contitionals.any, Contitionals.stimulusAction), // todo: should this be here? or should it have an increment for next back etc
+    showStimulus(false, null, "Repeats the current stimulus by triggering hasMoreStimulus. If there is no current stimulus then endOfStimulus will be triggered.", Contitionals.any, Contitionals.stimulusAction), // todo: should this be here? or should it have an increment for next back etc
     showStimulusGrid(false, new FeatureAttribute[]{maxStimuli, dataChannel, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     matchingStimulusGrid(false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     pause(true, false, new FeatureAttribute[]{msToNext}),
