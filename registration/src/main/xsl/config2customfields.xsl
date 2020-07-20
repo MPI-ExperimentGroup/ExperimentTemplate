@@ -618,7 +618,7 @@
                 }
             </xsl:text>
             <xsl:text>
-                if(!allowValidationOnMissing &amp;&amp; foundRecords.isEmpty()){
+                if(!allowValidationOnMissing &amp;&amp; !foundError &amp;&amp; foundRecords.isEmpty()){
                 foundError = true;
             </xsl:text>
             <xsl:for-each select="experiment/validationService/validation">
@@ -765,6 +765,19 @@
                 if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
                 stringBuilder.deleteCharAt(stringBuilder.length() - 2);
                 }
+                } else if (foundError){</xsl:text>
+            <xsl:for-each select="distinct-values((experiment/validationService/validation/@errorField))">
+                <xsl:text>
+                    stringBuilder.append("\"</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>\":\"");
+                    stringBuilder.append(errorMessage</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>);
+                    stringBuilder.append("\",\n");
+                </xsl:text>    
+            </xsl:for-each>
+            <xsl:text>
                 }
                 if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
                 stringBuilder.deleteCharAt(stringBuilder.length() - 2);
