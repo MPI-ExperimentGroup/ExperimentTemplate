@@ -586,7 +586,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
 //                    clearPage();
                     groupFindingMembers.postLoadTimerFired();
-                    ((ComplexView) simpleView).addText("connected, waiting for other members");
+                    //((ComplexView) simpleView).addText("connected, waiting for other members");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
                     endOfStimulusGroupMessage.postLoadTimerFired();
                     groupKickTimer.schedule(1000);
