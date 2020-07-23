@@ -63,6 +63,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
     private String groupScore = null;
     private final HashMap<String, String> channelScores = new HashMap<>();
     private String groupUUID = null;
+    private String asignedMembers = null;
 
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded
     //            , CancelableStimulusListener endOfStimulusListener
@@ -129,14 +130,17 @@ public abstract class GroupParticipantService implements GroupScoreService {
 //        System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
-        final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
+        final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups???
         boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
         if (userIdMatches && screenIdMatches) {
             // handle direct messages
             this.userLabel = userLabel;
-            this.memberCode = memberCode;
-            this.groupId = groupId;
-            this.stimuliListGroup = stimuliListGroup;
+            this.memberCode = (groupUUID != null) ? memberCode : null; // only show the member code if the UUID has been assigned
+            this.groupId = (groupUUID != null) ? groupId : null; // only show the friendly name if the UUID has been assigned
+            this.asignedMembers = (groupUUID != null) ? actualRespondents : null; // only show the respondents if the UUID has been assigned
+            if (groupUUID != null) {
+                this.stimuliListGroup = stimuliListGroup;
+            }
             groupFindingMembers();
             if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
@@ -320,8 +324,14 @@ public abstract class GroupParticipantService implements GroupScoreService {
         return channelScores.keySet();
     }
 
+    @Override
     public String getGroupUUID() {
         return groupUUID;
+    }
+
+    @Override
+    public String getAsignedMemberCodes() {
+        return asignedMembers;
     }
 
     public boolean isGroupReady() {

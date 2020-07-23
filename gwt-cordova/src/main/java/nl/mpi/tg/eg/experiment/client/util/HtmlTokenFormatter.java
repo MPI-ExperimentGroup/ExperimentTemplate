@@ -294,9 +294,11 @@ public class HtmlTokenFormatter {
             final String memberCode = groupParticipantService.getMemberCode();
             replacedTokensString = replacedTokensString.replace("<groupMemberCode>", (memberCode != null) ? memberCode : "---");
             final String allMemberCodes = groupParticipantService.getAllMemberCodes();
+            final String asignedMemberCodes = groupParticipantService.getAsignedMemberCodes();
             replacedTokensString = replacedTokensString.replace("<groupRequestedPhase>", groupParticipantService.getRequestedPhase().toString());
             final String activeChannel = groupParticipantService.getActiveChannel();
             replacedTokensString = replacedTokensString.replace("<groupAllMemberCodes>", (allMemberCodes != null) ? allMemberCodes : "---");
+            replacedTokensString = replacedTokensString.replace("<groupAsignedMemberCodes>", (asignedMemberCodes != null) ? asignedMemberCodes : "---");
             replacedTokensString = replacedTokensString.replace("<groupOtherMemberCodes>", (allMemberCodes != null && memberCode != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
             replacedTokensString = replacedTokensString.replace("<channelOtherMemberCodes>", (activeChannel != null) ? activeChannel.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
             replacedTokensString = replacedTokensString.replace("<groupActiveChannel>", (activeChannel != null) ? activeChannel : "---");
@@ -306,6 +308,8 @@ public class HtmlTokenFormatter {
             replacedTokensString = replacedTokensString.replace("<groupMessageString>", (messageString != null) ? messageString : "---");
             final String groupId = groupParticipantService.getGroupId();
             replacedTokensString = replacedTokensString.replace("<groupId>", (groupId != null) ? groupId : "---");
+            final String groupUUID = groupParticipantService.getGroupUUID();
+            replacedTokensString = replacedTokensString.replace("<groupUUID>", (groupUUID != null) ? groupUUID : "---");
             final String userLabel = groupParticipantService.getUserLabel();
             replacedTokensString = replacedTokensString.replace("<groupUserLabel>", (userLabel != null) ? userLabel : "---");
             final String channelScore = groupParticipantService.getChannelScore();

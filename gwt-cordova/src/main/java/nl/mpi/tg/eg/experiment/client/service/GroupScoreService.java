@@ -49,4 +49,7 @@ public interface GroupScoreService {
 
     String getGroupId();
 
+    String getGroupUUID();
+
+    String getAsignedMemberCodes();
 }
