@@ -204,6 +204,16 @@ public class HtmlTokenFormatterTest {
             }
 
             @Override
+            public String getGroupUUID() {
+                return "GroupUUID";
+            }
+
+            @Override
+            public String getAsignedMemberCodes() {
+                return "AsignedMemberCodes";
+            }
+
+            @Override
             public Integer getRequestedPhase() {
                 return 1;
             }
