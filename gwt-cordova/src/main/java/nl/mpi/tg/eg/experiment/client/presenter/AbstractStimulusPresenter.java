@@ -574,7 +574,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
 //                    clearPage();
                     groupNetworkConnecting.postLoadTimerFired();
-                    ((ComplexView) simpleView).addText("not connected");
+//                    ((ComplexView) simpleView).addText("not connected");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
                     endOfStimulusGroupMessage.postLoadTimerFired();
                     groupKickTimer.schedule(1000);

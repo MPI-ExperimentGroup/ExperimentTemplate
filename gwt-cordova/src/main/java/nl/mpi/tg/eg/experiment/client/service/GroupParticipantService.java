@@ -137,6 +137,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
             this.memberCode = memberCode;
             this.groupId = groupId;
             this.stimuliListGroup = stimuliListGroup;
+            groupFindingMembers();
             if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
                 this.stimuliListLoaded = synchroniseStimulusList(this.stimuliListGroup);
@@ -214,6 +215,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
             } else {
                 groupFindingMembers();
             }
+        } else {
+            groupFindingMembers();
         }
         if (userGroupLabelUpdateNeeded) {
             groupInfoChanged();
@@ -343,7 +346,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
     public native void joinGroupNetwork(String groupServerUrl) /*-{
         var groupParticipantService = this;
 //        console.log("joinGroupNetwork: " + groupServerUrl + " : " + groupName);
-        
+        groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::groupNetworkConnecting()();
         var socket = new $wnd.SockJS(groupServerUrl + 'gs-guide-websocket');
         stompClient = $wnd.Stomp.over(socket);
         stompClient.connect(

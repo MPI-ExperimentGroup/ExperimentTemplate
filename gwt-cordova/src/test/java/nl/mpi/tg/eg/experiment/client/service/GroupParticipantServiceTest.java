@@ -210,13 +210,13 @@ public class GroupParticipantServiceTest {
                 @Override
                 public void groupNetworkConnecting() {
                     // connectedListener
-                    stringBuilder.append("connectedListener\n");
+                    stringBuilder.append("connectingListener\n");
                 }
 
                 @Override
                 public void groupFindingMembers() {
                     // connectedListener
-                    stringBuilder.append("connectedListener\n");
+                    stringBuilder.append("findingMembersListener\n");
                 }
             };
 
@@ -270,13 +270,13 @@ public class GroupParticipantServiceTest {
                 @Override
                 public void groupNetworkConnecting() {
                     // connectedListener
-                    stringBuilder.append("connectedListener\n");
+                    stringBuilder.append("connectingListener\n");
                 }
 
                 @Override
                 public void groupFindingMembers() {
                     // connectedListener
-                    stringBuilder.append("connectedListener\n");
+                    stringBuilder.append("findingMembersListener\n");
                 }
             };
 
