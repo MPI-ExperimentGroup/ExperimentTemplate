@@ -619,7 +619,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "group message puts the stimuli list at the end", stimulusProvider.getCurrentStimulusUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
                         groupParticipantService.setEndOfStimuli(true); // block further messages
                     }
-                    showStimulus(stimulusProvider, stimulusProvider.getCurrentStimulusIndex());
+                    showStimulus(stimulusProvider, 0/*stimulusProvider.getCurrentStimulusIndex()*/);
                 }
 
                 @Override
