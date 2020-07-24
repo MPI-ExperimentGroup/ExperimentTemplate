@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +65,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
     private final HashMap<String, String> channelScores = new HashMap<>();
     private String groupUUID = null;
     private String asignedMembers = null;
+    private Timer groupKickTimer = null;
 
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded
     //            , CancelableStimulusListener endOfStimulusListener
@@ -219,7 +221,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
             } else {
                 groupFindingMembers();
             }
-        } else {
+        } else if (groupIdMatches && screenIdMatches && originPhaseMatches) {
             groupFindingMembers();
         }
         if (userGroupLabelUpdateNeeded) {
@@ -351,6 +353,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
     }
 
     public void stopListeners() {
+        groupKickTimer.cancel();
     }
 
     public native void joinGroupNetwork(String groupServerUrl) /*-{
@@ -425,13 +428,21 @@ public abstract class GroupParticipantService implements GroupScoreService {
             });
      }-*/;
 
-    public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore, String phaseMembers) {
+    public void messageGroup(final int originPhase, final int incrementPhase, final String stimulusId, final String stimulusIndex, final String messageString, final String responseStimulusOptions, final String responseStimulusId, final int memberScore, final String phaseMembers) {
         String windowGroupId = Window.Location.getParameter("group");
-        String windowMemberCode = Window.Location.getParameter("member");
-        if (windowGroupId == null) {
-            windowGroupId = groupId;
+        final String windowMemberCode = Window.Location.getParameter("member");
+        final String currentGroupId = (windowGroupId != null) ? windowGroupId : groupId;
+        if (groupKickTimer != null) {
+            groupKickTimer.cancel();
         }
-        messageGroup(originPhase, originPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, phaseMembers, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
+        groupKickTimer = new Timer() {
+            @Override
+            public void run() {
+                GroupParticipantService.this.messageGroup(originPhase, originPhase + incrementPhase, userId, currentGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, phaseMembers, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
+            }
+        };
+//        groupKickTimer.run();
+        groupKickTimer.scheduleRepeating(1000);
     }
 
     private native void messageGroup(int originPhase, int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{

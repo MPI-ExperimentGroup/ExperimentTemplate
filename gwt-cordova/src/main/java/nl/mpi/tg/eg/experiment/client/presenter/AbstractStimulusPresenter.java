@@ -556,12 +556,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
-            final Timer groupKickTimer = new Timer() {
-                @Override
-                public void run() {
-                    groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulusUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getCurrentScore(), groupMembers);
-                }
-            };
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
                     getSelfTag(), groupMembers, groupCommunicationChannels,
@@ -577,7 +571,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                    ((ComplexView) simpleView).addText("not connected");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
                     endOfStimulusGroupMessage.postLoadTimerFired();
-                    groupKickTimer.schedule(1000);
+                    groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulusUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getCurrentScore(), groupMembers);
 
                 }
 
@@ -589,7 +583,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     //((ComplexView) simpleView).addText("connected, waiting for other members");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
                     endOfStimulusGroupMessage.postLoadTimerFired();
-                    groupKickTimer.schedule(1000);
                 }
 
                 @Override
@@ -602,7 +595,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     final String loadedStimulusString = stimulusProvider.generateStimuliStateSnapshot();
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), loadedStimulusString);
 //                    groupParticipantService.setStimuliListLoaded(loadedStimulusString);
-                    groupKickTimer.schedule(1000);
                     groupNetworkSynchronising.postLoadTimerFired();
                     return loadedStimulusString;
                 }
