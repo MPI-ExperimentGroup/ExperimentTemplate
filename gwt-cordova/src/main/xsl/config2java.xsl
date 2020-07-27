@@ -1022,7 +1022,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="@phaseMembers" />
             <xsl:text>") {
                 @Override
-                public void triggerActivityListener(final int callerPhase, final String expectedRespondents) {
+                public void triggerActivityListener(final int callerPhase, final String expectedRespondents, final Stimulus currentStimulus) {
             </xsl:text>
             <xsl:apply-templates/>
             <xsl:text>

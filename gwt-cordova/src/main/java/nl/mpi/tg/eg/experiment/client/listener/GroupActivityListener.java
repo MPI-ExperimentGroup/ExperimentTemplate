@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.listener;
 
 import java.util.Objects;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jun 12, 2017 10:31:57 AM (creation date)
@@ -37,7 +38,7 @@ public abstract class GroupActivityListener {
         return phaseMembers;
     }
 
-    abstract public void triggerActivityListener(final int callerPhase, final String expectedRespondents);
+    abstract public void triggerActivityListener(final int callerPhase, final String expectedRespondents, final Stimulus currentStimulus);
 
     @Override
     public int hashCode() {

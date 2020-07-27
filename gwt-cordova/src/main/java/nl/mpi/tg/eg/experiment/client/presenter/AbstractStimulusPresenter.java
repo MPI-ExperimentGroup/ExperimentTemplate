@@ -600,7 +600,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void synchroniseCurrentStimulus(final int currentIndex) {
+                public Stimulus synchroniseCurrentStimulus(final int currentIndex) {
                     // when a valid message has been received the current stimuli needs to be synchronised with the group
                     stimulusProvider.setCurrentStimuliIndex(currentIndex);
                     if (currentIndex < /* todo: we can rely on the showStimulus to handle this  end of stimulus check */ stimulusProvider.getTotalStimuli()) {
@@ -620,6 +620,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         groupParticipantService.setEndOfStimuli(true); // block further messages
                     }
                     showStimulus(stimulusProvider, 0/*stimulusProvider.getCurrentStimulusIndex()*/);
+                    return stimulusProvider.getCurrentStimulus();
                 }
 
                 @Override

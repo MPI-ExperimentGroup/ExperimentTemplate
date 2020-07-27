@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -33,7 +34,7 @@ public class GroupParticipantServiceTest {
     private void groupMemberActivity(final StringBuilder stringBuilder, final String id, final GroupParticipantService instance, final String phaseMembers, final int requiredMessageCount, final String description) {
         instance.addGroupActivity(new GroupActivityListener(id, phaseMembers) {
             @Override
-            public void triggerActivityListener(int callerPhase, String expectedRespondents) {
+            public void triggerActivityListener(int callerPhase, String expectedRespondents, Stimulus stimulus) {
                 stringBuilder.append(instance.getRequestedPhase());
                 stringBuilder.append("-");
                 stringBuilder.append(instance.getMemberCode());
@@ -62,7 +63,8 @@ public class GroupParticipantServiceTest {
             }
 
             @Override
-            public void synchroniseCurrentStimulus(final int currentIndex) {
+            public Stimulus synchroniseCurrentStimulus(final int currentIndex) {
+                return null;
             }
 
             @Override
@@ -196,9 +198,10 @@ public class GroupParticipantServiceTest {
                 }
 
                 @Override
-                public void synchroniseCurrentStimulus(final int currentIndex) {
+                public Stimulus synchroniseCurrentStimulus(final int currentIndex) {
                     // stimulusSyncListner
                     stringBuilder.append("stimulusSyncListner\n");
+                    return null;
                 }
 
                 @Override
@@ -256,9 +259,10 @@ public class GroupParticipantServiceTest {
                 }
 
                 @Override
-                public void synchroniseCurrentStimulus(final int currentIndex) {
+                public Stimulus synchroniseCurrentStimulus(final int currentIndex) {
                     // stimulusSyncListner
                     stringBuilder.append("stimulusSyncListner\n");
+                    return null;
                 }
 
                 @Override

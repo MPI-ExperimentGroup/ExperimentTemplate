@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Nov 8, 2016 1:47:57 PM (creation date)
@@ -200,11 +201,9 @@ public abstract class GroupParticipantService implements GroupScoreService {
                                 this.responseStimulusId = responseStimulusId;
                                 if (!endOfStimuli) {
                                     // if we are already at the end of the stimuli list then do not sync again
-                                    synchroniseCurrentStimulus(stimulusPhaseIndex);
-                                }
-                                if (!endOfStimuli) {
+                                    final Stimulus currentStimulus = synchroniseCurrentStimulus(stimulusPhaseIndex);
                                     // if the stimulusSyncListner has put us at the end of the stimuli list then trigger any phases
-                                    currentListner.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex]);
+                                    currentListner.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex], currentStimulus);
                                     currentFiredListnerList.add(currentListner);
 //                                    if (endOfStimuli) {
 //                                        // if endOfStimuli has changed state here then we must trigger the endOfStimulusListener
@@ -472,7 +471,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
     public abstract String synchroniseStimulusList(final String stimuliListGroup);
 
-    public abstract void synchroniseCurrentStimulus(final int currentIndex);
+    public abstract Stimulus synchroniseCurrentStimulus(final int currentIndex);
 
     public abstract void groupInfoChanged();
 
