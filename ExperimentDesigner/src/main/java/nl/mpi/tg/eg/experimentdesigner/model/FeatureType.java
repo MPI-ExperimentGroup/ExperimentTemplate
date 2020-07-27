@@ -36,6 +36,7 @@ public enum FeatureType {
     menuItem(false, true, new FeatureAttribute[]{target, hotKey, styleName}),
     //    popupMessage(true, true, null),
     withStimuli(false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag,*/ /*maxStimuliPerTag,*/ maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.eachStimulus, Contitionals.none), // loop over all loaded stimuli rather than using next stimulus on user input
+    groupStimuli(false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag,*/ /*maxStimuliPerTag,*/ maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.groupStimulus, Contitionals.none),
     // todo: document that Tags require all to exist on the stimuli "stimulus.getTags().containsAll(selectionTags)"
     loadStimulus(false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag,*/ /*maxStimuliPerTag,*/ maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none, true),
     withMatchingStimulus(false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus, Contitionals.stimulusAction),
@@ -186,7 +187,7 @@ public enum FeatureType {
     responseCorrect(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.hasCorrectIncorrect),
     responseIncorrect(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.hasCorrectIncorrect),
     hasMoreStimulus(false, null, false, false, false, Contitionals.stimulusAction, Contitionals.hasMoreStimulus),
-    endOfStimulus(false, null, false, false, false, Contitionals.any, Contitionals.hasMoreStimulus),
+    endOfStimulus(false, null, false, false, false, Contitionals.any, Contitionals.hasMoreStimulus, Contitionals.groupStimulus),
     beforeStimulus(false, null, false, false, false, Contitionals.any, Contitionals.eachStimulus),
     eachStimulus(false, null, false, false, false, Contitionals.stimulusAction, Contitionals.eachStimulus),
     afterStimulus(false, null, false, false, false, Contitionals.any, Contitionals.eachStimulus),
@@ -240,7 +241,7 @@ public enum FeatureType {
     //preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
-    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, "Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.", Contitionals.groupNetwork, Contitionals.stimulusAction),
+    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, "Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.", Contitionals.groupNetwork, Contitionals.groupStimulus),
     groupFindingMembers(false, new FeatureAttribute[]{}, "When the the connection to the group server is established the second stage is waiting for the other group members.", Contitionals.any, Contitionals.groupNetwork),
     groupNetworkConnecting(false, new FeatureAttribute[]{}, "The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.", Contitionals.any, Contitionals.groupNetwork),
     groupNetworkSynchronising(false, new FeatureAttribute[]{}, "For each stimulus change and phase change the group network needs to be synchronised. The contents of this element will be triggered while this synchronisation is being done.", Contitionals.any, Contitionals.groupNetwork),
@@ -286,6 +287,7 @@ public enum FeatureType {
         hasCorrectIncorrect(false),
         hasMoreStimulus(false),
         eachStimulus(false),
+        groupStimulus(false),
         stimulusAction(true),
         hasErrorSuccess(false),
         hasUserCount(false),

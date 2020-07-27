@@ -493,7 +493,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
 //            groupMemberActivity1.getPresenterFeatureList().add(stimulusFreeTextFeature);
 //        }
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
+        final PresenterFeature groupStimuliFeature = new PresenterFeature(FeatureType.groupStimuli, null);
         if (storedWizardScreenData.getStimuliRandomTags() != null) {
             final RandomGrouping randomGrouping = new RandomGrouping();
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
@@ -503,22 +503,22 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            final String metadataFieldname = "stimuliAllocation" + storedWizardScreenData.getScreenTag();
             final String metadataFieldname = "stimuli";
             randomGrouping.setStorageField(metadataFieldname);
-            loadStimuliFeature.setRandomGrouping(randomGrouping);
+            groupStimuliFeature.setRandomGrouping(randomGrouping);
             final Metadata metadataField = new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null);
             if (!experiment.getMetadata().contains(metadataField)) {
                 experiment.getMetadata().add(metadataField);
             }
         } else {
-            loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
+            groupStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         }
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
 //        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
 //        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(storedWizardScreenData.getRepeatCount()));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(storedWizardScreenData.getRepeatRandomWindow()));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.adjacencyThreshold, "3");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(storedWizardScreenData.getRepeatCount()));
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(storedWizardScreenData.getRepeatRandomWindow()));
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.adjacencyThreshold, "3");
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         if (getTimerCountDownProducerMs(storedWizardScreenData) > 0) {
             final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
             countDownFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getTimerCountDownProducerMs(storedWizardScreenData)));
@@ -647,8 +647,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             mediaLoaded.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
             mediaLoaded.getPresenterFeatureList().add(nextStimulusFeature4);
         }
-        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
+//        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
 //        presenterFeatureList.add(groupNetwork);
 //        presenterFeatureList.add(loadStimuliFeature);
 //
@@ -661,10 +661,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, preStimuliText));
             final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Volgende [enter]");
             actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
-            actionButton.getPresenterFeatureList().add(loadStimuliFeature);
+            actionButton.getPresenterFeatureList().add(groupStimuliFeature);
             presenterFeatureList.add(actionButton);
         } else {
-            presenterFeatureList.add(loadStimuliFeature);
+            presenterFeatureList.add(groupStimuliFeature);
         }
 
         if (!storedWizardScreenData.getGroupPhasesRoles()[0].isEmpty()) {
@@ -749,7 +749,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupRecordSubmissionNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "group record submitted");
         groupRecordSubmissionNextFeature.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
         presenterFeature.getPresenterFeatureList().add(groupMemberActivitySelf1);
-        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
+        groupStimuliFeature.getPresenterFeatureList().add(groupNetwork);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoNextPresenter, null);
@@ -787,7 +787,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         } else {
             endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         }
-        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+        groupStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }

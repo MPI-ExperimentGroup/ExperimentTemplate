@@ -29,31 +29,28 @@
         <centrePage/>
         <htmlText featureText="preStimuliText"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-            <loadStimulus adjacencyThreshold="3" eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
-                <hasMoreStimulus>
-                    <clearPage/>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkConnecting/>
-                        <groupFindingMembers/>
-                        <groupNetworkSynchronising/>
-                        <groupPhaseListeners>
-                            <groupMemberActivity phaseMembers="A,B,C,D">
-                                <clearPage/>
-                                <stimulusLabel/>
-                                <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                                <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
-                                    <mediaLoaded/>
-                                    <mediaLoadFailed/>
-                                    <mediaPlaybackStarted/>
-                                    <mediaPlaybackComplete>
-                                        <addPadding/>
-                                        <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </mediaPlaybackComplete>
-                                </stimulusPresent>
-                            </groupMemberActivity>
-                        </groupPhaseListeners>
-                    </groupNetwork>
-                </hasMoreStimulus>
+            <groupStimuli adjacencyThreshold="3" eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+                <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
+                    <groupNetworkConnecting/>
+                    <groupFindingMembers/>
+                    <groupNetworkSynchronising/>
+                    <groupPhaseListeners>
+                        <groupMemberActivity phaseMembers="A,B,C,D">
+                            <clearPage/>
+                            <stimulusLabel/>
+                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
+                                <mediaPlaybackComplete>
+                                    <addPadding/>
+                                    <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </mediaPlaybackComplete>
+                            </stimulusPresent>
+                        </groupMemberActivity>
+                    </groupPhaseListeners>
+                </groupNetwork>
                 <endOfStimulus>
                     <clearPage/>
                     <logTokenText headerKey="logTokenText" dataChannel="3" type="groupMemberActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
@@ -66,7 +63,7 @@
                 <stimuli>
                     <tag>Round_8_4</tag>
                 </stimuli>
-            </loadStimulus>
+            </groupStimuli>
         </actionButton>
     </presenter>
     <presenter back="Round_8___4" menuLabel="Fini" type="transmission" self="Fini" title="Fini">

@@ -936,10 +936,10 @@ or local-name() eq 'clearStimulusResponse'
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:text>currentStimulus, </xsl:text>
         </xsl:if>
-        <xsl:if test="local-name() eq 'groupNetwork'">
-            <!--some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed-->
+        <!--        <xsl:if test="local-name() eq 'groupNetwork'">
+            some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed
             <xsl:value-of select="if(local-name(..) ne 'endOfStimulus') then 'currentStimulus, ' else 'null, '" />
-        </xsl:if>
+        </xsl:if>-->
         <xsl:value-of select="if(@regionId) then if (
         contains(@regionId, '&lt;stimulus') or contains(@regionId, '&lt;code') or contains(@regionId, '&lt;rating') or 
         contains(@styleName, '&lt;stimulus') or contains(@styleName, '&lt;code') or contains(@styleName, '&lt;rating')
@@ -1103,9 +1103,10 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists">
+    <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|groupStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists">
         <xsl:if test="local-name() eq 'preloadAllStimuli' 
                    or local-name() eq 'withStimuli'
+                   or local-name() eq 'groupStimuli'
                    or local-name() eq 'loadStimulus'
                    or local-name() eq 'clearStimulusResponses'
                    or local-name() eq 'loadSdCardStimulus'">
@@ -1158,6 +1159,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                    or local-name() eq 'startAudioRecorderApp'
                    or local-name() eq 'loadSdCardStimulus'
                    or local-name() eq 'loadStimulus'
+                   or local-name() eq 'groupStimuli'
                    or local-name() eq 'withStimuli'">
             <xsl:value-of select="if(@src) then ', ' else ''" />
             <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else 'null'" />
@@ -1215,6 +1217,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@adjacencyThreshold) then concat(', ', @adjacencyThreshold) else ', 0'" />
         </xsl:if>-->
         <xsl:if test="local-name() eq 'withStimuli'
+ or local-name() eq 'groupStimuli' 
  or local-name() eq 'loadStimulus' 
 or local-name() eq 'withMatchingStimulus'
 or local-name() eq 'loadSdCardStimulus'
@@ -1237,6 +1240,17 @@ or local-name() eq 'stimulusExists'
             </xsl:text>
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'playMedia' or local-name() eq 'pauseMedia' or local-name() eq 'rewindMedia') then if (contains(@mediaId, '&lt;stimulus')) then ', currentStimulus' else ', null' else ''" />
+        <xsl:if test="local-name() eq 'groupStimuli'">
+            <xsl:text>, &#xa;new CurrentStimulusListener() {
+                @Override
+                public void postLoadTimerFired(final StimuliProvider stimulusProvider, final Stimulus currentStimulus) {
+            </xsl:text>
+            <xsl:apply-templates select="groupNetwork" />
+            <xsl:text>
+                }
+                }
+            </xsl:text>
+        </xsl:if>
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:apply-templates select="beforeStimulus" />
@@ -1263,6 +1277,7 @@ or local-name() eq 'stimulusExists'
         </xsl:text> 
         <xsl:if test="local-name() eq 'preloadAllStimuli' 
 		or local-name() eq 'withStimuli' 
+		or local-name() eq 'groupStimuli' 
 		or local-name() eq 'loadStimulus'
 		or local-name() eq 'clearStimulusResponses' 
 		or local-name() eq 'loadSdCardStimulus'">

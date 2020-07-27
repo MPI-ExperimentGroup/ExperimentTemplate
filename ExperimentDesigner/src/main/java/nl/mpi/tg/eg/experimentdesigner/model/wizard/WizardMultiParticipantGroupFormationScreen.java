@@ -91,28 +91,28 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         agreementActivity.getPresenterFeatureList().add(presenterFeature);
 //        return groupNetwork;
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        final PresenterFeature groupStimuliFeature = new PresenterFeature(FeatureType.groupStimuli, null);
+//        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
-        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        loadStimuliFeature.addStimulusTag("version1");
+        groupStimuliFeature.getPresenterFeatureList().add(groupNetwork);
+        groupStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+        groupStimuliFeature.addStimulusTag("version1");
 
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "No valid stimuli"));
 
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(false));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.adjacencyThreshold, "0");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "100");
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(false));
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.adjacencyThreshold, "0");
+        groupStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "100");
 //        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "100");
 //        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
-        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
-        return loadStimuliFeature;
+//        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
+        return groupStimuliFeature;
     }
 
     @Override

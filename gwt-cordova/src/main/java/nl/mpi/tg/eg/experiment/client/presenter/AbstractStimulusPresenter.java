@@ -299,6 +299,18 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         afterStimuliListener.postLoadTimerFired();
     }
 
+    protected void groupStimuli(String eventTag,
+            final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final StimulusSelector[] randomTags,
+            final MetadataField stimulusAllocationField,
+            final String consumedTagsGroupName,
+            final StimuliProvider stimulusProvider,
+            final CurrentStimulusListener hasMoreStimulusListener,
+            final TimedStimulusListener endOfStimulusListener
+    ) {
+        loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
+    }
+
     protected void loadStimulus(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,
@@ -554,7 +566,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
@@ -608,10 +620,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             groupParticipantService.setResponseStimulusId(null);
                             groupParticipantService.setResponseStimulusOptions(null);
                         } else if (groupParticipantService.getMessageString() != null && !groupParticipantService.getMessageString().isEmpty()) {
-                            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
                             storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
                             storedStimulusJSONObject.put("groupMessage", new JSONString(groupParticipantService.getMessageString()));
-                            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+                            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
                             // submissionService.writeJsonData would be called on next stimulus anyway: submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), storedStimulusJSONObject.toString());
                         }
                     } else {

@@ -483,6 +483,7 @@
 <xs:element name="generateCompletionCode" type="generateCompletionCodeType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="hasGetParameter" type="hasGetParameterType"/>
@@ -704,6 +705,20 @@
 <xs:attribute name="repeatRandomWindow" type="xs:integer"/>
 <xs:attribute name="adjacencyThreshold" type="xs:integer"/>
 </xs:complexType>
+<xs:complexType name="groupStimuliType">
+<xs:all>
+<xs:element name="endOfStimulus" type="endOfStimulusType"/>
+<xs:element name="groupNetwork" type="groupNetworkType"/>
+<xs:element name="randomGrouping" minOccurs="0" type="randomGroupingType"/>
+<xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
+</xs:all>
+<xs:attribute name="eventTag" type="xs:string"/>
+<xs:attribute name="maxStimuli" type="xs:string"/>
+<xs:attribute name="randomise" type="xs:boolean"/>
+<xs:attribute name="repeatCount" type="xs:integer"/>
+<xs:attribute name="repeatRandomWindow" type="xs:integer"/>
+<xs:attribute name="adjacencyThreshold" type="xs:integer"/>
+</xs:complexType>
 <xs:complexType name="loadStimulusType">
 <xs:all>
 <xs:element name="hasMoreStimulus" type="hasMoreStimulusType"/>
@@ -820,6 +835,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -963,7 +979,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -1010,6 +1025,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -1153,7 +1169,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -1209,6 +1224,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -1352,7 +1368,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -1397,6 +1412,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -1540,7 +1556,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -1579,6 +1594,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -1722,7 +1738,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -1760,6 +1775,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -1903,7 +1919,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -1944,6 +1959,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -2087,7 +2103,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -2128,6 +2143,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -2271,7 +2287,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -2330,6 +2345,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -2473,7 +2489,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -2513,6 +2528,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -2656,7 +2672,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -2696,6 +2711,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -2839,7 +2855,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -2928,6 +2943,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -3071,7 +3087,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -3137,6 +3152,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -3280,7 +3296,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -3491,6 +3506,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -3634,7 +3650,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -3667,7 +3682,7 @@
 <xs:complexType name="prevStimulusButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
-<xs:documentation>Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered whem the button is clicked.</xs:documentation>
+<xs:documentation>Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
 </xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -3686,7 +3701,7 @@
 <xs:complexType name="nextStimulusButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
-<xs:documentation>Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered whem the button is clicked.</xs:documentation>
+<xs:documentation>Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
 </xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -3832,6 +3847,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -3975,7 +3991,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -4033,6 +4048,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -4176,7 +4192,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -4229,6 +4244,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -4372,7 +4388,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -4429,6 +4444,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -4572,7 +4588,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -4611,6 +4626,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -4754,7 +4770,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -4790,6 +4805,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -4933,7 +4949,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -4978,6 +4993,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -5121,7 +5137,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -5167,6 +5182,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -5310,7 +5326,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -5347,6 +5362,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -5490,7 +5506,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -5526,6 +5541,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -5669,7 +5685,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -5702,6 +5717,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -5845,7 +5861,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -5878,6 +5893,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -6021,7 +6037,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -6054,6 +6069,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -6197,7 +6213,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -6232,6 +6247,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -6375,7 +6391,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -6410,6 +6425,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -6553,7 +6569,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -6588,6 +6603,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -6731,7 +6747,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -6764,6 +6779,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -6907,7 +6923,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -6940,6 +6955,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -7083,7 +7099,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -7116,6 +7131,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -7259,7 +7275,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -7292,6 +7307,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -7435,7 +7451,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -7468,6 +7483,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -7611,7 +7627,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -7644,6 +7659,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -7787,7 +7803,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -7820,6 +7835,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -7963,7 +7979,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -7996,6 +8011,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -8139,7 +8155,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -8178,6 +8193,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -8321,7 +8337,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -8354,6 +8369,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -8497,7 +8513,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -8530,6 +8545,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -8673,7 +8689,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -8706,6 +8721,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -8849,7 +8865,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -8882,6 +8897,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -9025,7 +9041,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -9058,6 +9073,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -9201,7 +9217,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -9234,6 +9249,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -9377,7 +9393,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -9410,6 +9425,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -9553,7 +9569,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -9586,6 +9601,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -9729,7 +9745,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -9764,6 +9779,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -9907,7 +9923,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -9940,6 +9955,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -10083,7 +10099,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -10120,6 +10135,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -10263,7 +10279,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -10315,6 +10330,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -10458,7 +10474,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -10621,6 +10636,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -10764,7 +10780,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -10809,6 +10824,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -10952,7 +10968,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -11089,6 +11104,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -11232,7 +11248,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -11268,6 +11283,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -11411,7 +11427,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -11447,6 +11462,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -11590,7 +11606,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
@@ -11634,6 +11649,7 @@
 <xs:element name="image" type="imageType"/>
 <xs:element name="menuItem" type="menuItemType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
@@ -11777,7 +11793,6 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
-<xs:element name="groupNetwork" type="groupNetworkType"/>
 <xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
 <xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
 <xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
