@@ -328,11 +328,11 @@ public class LocalStorage implements LocalStorageInterface {
     }
 
     public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider) {
-        boolean notTestUser = (Window.Location.getParameter("testuser") == null); // only store the last user id if the id is not a URL defined test user
-        storeData(userResults, metadataFieldProvider, notTestUser);
+        boolean notMockUser = (Window.Location.getParameter("mockuser") == null); // only store the last user id if the id is not a URL defined mock user
+        storeData(userResults, metadataFieldProvider, notMockUser);
     }
 
-    public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider, boolean notTestUser) {
+    public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider, boolean notMockUser) {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
@@ -353,16 +353,16 @@ public class LocalStorage implements LocalStorageInterface {
             }
         }
         storeUserScore(userResults);
-        if (notTestUser) {
-            // only store the last user id if the id is not a URL defined test user
+        if (notMockUser) {
+            // only store the last user id if the id is not a URL defined mock user
             dataStore.setItem(dataStore.getLAST_USER_ID(), userResults.getUserData().getUserId().toString());
         }
     }
 
     public void saveAppState(UserId userId, ApplicationController.ApplicationState appState) {
         loadStorage();
-        if ((Window.Location.getParameter("testuser") == null)) {
-            // only store the last user id if the id is not a URL defined test user
+        if ((Window.Location.getParameter("mockuser") == null)) {
+            // only store the last user id if the id is not a URL defined mock user
             dataStore.setItem(dataStore.getLAST_USER_ID(), userId.toString());
         }
         dataStore.setItem(dataStore.getAPP_STATE(userId), appState.name());
@@ -399,8 +399,12 @@ public class LocalStorage implements LocalStorageInterface {
     public UserId getLastUserId(String userIdGetParam) throws UserIdException {
         loadStorage();
         // todo: enable this field name "prolific_pid" being set in the configuration 
-        if (Window.Location.getParameter("testuser") != null) {
-            return new UserId("testuser-" + Window.Location.getParameter("testuser")); // 
+        if (Window.Location.getParameter("mockuser") != null) {
+            if (dataStore.getLAST_USER_ID() == null) {
+                // while unlikely if there is no last user id then we must set one here
+                dataStore.setItem(dataStore.getLAST_USER_ID(), new UserId().toString());
+            }
+            return new UserId("mockuser-" + getCleanStoredData(dataStore.getLAST_USER_ID()) + "-" + Window.Location.getParameter("mockuser")); // 
         } else if (Window.Location.getParameter("prolific_pid") != null) {
             return new UserId("prolific_pid-" + Window.Location.getParameter("prolific_pid")); // 
         } else if (userIdGetParam != null && !userIdGetParam.isEmpty() && Window.Location.getParameter(userIdGetParam) != null) {
