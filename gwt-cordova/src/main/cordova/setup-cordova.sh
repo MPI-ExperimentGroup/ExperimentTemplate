@@ -112,16 +112,16 @@ echo $splashImage
 #draw9patch platforms/splash150x150.9.png
 
 #echo "making iOS splash images"
-convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h\@2x~iphone.png
 convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
 convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
 convert -crop +0-100 -resize 2208x2208^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
-convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
+convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h\@2x~iphone.png
+convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape\@2x~ipad.png
 convert -resize 1024x1024^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
-convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
+convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait\@2x~ipad.png
 convert -resize 1024x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
-convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
+convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default\@2x~iphone.png
 convert -resize 480x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
 convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
 convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
@@ -152,9 +152,6 @@ echo "building"
 cordova prepare
 #cordova compile
 #cordova build -release
-values[0]).startsWith('8.1')
-values[0]).startsWith('11')
-/ExperimentTemplate/gwt-cordova/target/with_stimulus_example-frinex-gui-1.2.2709-testing-cordova# vi ./platforms/android/cordova/lib/check_reqs.js
 cordova build android --buildConfig /android-keys/frinex-build.json --release
 #cordova emulate ios --target="iPad"
 #cordova emulate ios --target="iPhone"
@@ -162,42 +159,40 @@ cordova build android --buildConfig /android-keys/frinex-build.json --release
 
 rm platforms/android/release-signing.properties
 #echo "make the iOS icons"
-
-convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
+convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60\@3x.png
 convert -resize 60x60 -quality 100 $iconImage $iconResourcesDir/icon-60.png
-convert -resize 120x120 -quality 100 $iconImage $iconResourcesDir/icon-60@2x.png
+convert -resize 120x120 -quality 100 $iconImage $iconResourcesDir/icon-60\@2x.png
 convert -resize 76x76 -quality 100 $iconImage $iconResourcesDir/icon-76.png
-convert -resize 152x152 -quality 100 $iconImage $iconResourcesDir/icon-76@2x.png
-convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
+convert -resize 152x152 -quality 100 $iconImage $iconResourcesDir/icon-76\@2x.png
+convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60\@3x.png
 convert -resize 40x40 -quality 100 $iconImage $iconResourcesDir/icon-40.png
-convert -resize 80x80 -quality 100 $iconImage $iconResourcesDir/icon-40@2x.png
+convert -resize 80x80 -quality 100 $iconImage $iconResourcesDir/icon-40\@2x.png
 convert -resize 57x57 -quality 100 $iconImage $iconResourcesDir/icon.png
-convert -resize 114x114 -quality 100 $iconImage $iconResourcesDir/icon@2x.png
+convert -resize 114x114 -quality 100 $iconImage $iconResourcesDir/icon\@2x.png
 convert -resize 72x72 -quality 100 $iconImage $iconResourcesDir/icon-72.png
-convert -resize 144x144 -quality 100 $iconImage $iconResourcesDir/icon-72@2x.png
+convert -resize 144x144 -quality 100 $iconImage $iconResourcesDir/icon-72\@2x.png
 convert -resize 29x29 -quality 100 $iconImage $iconResourcesDir/icon-small.png
-convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
+convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small\@2x.png
 convert -resize 50x50 -quality 100 $iconImage $iconResourcesDir/icon-50.png
-convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
-convert -resize 108x108 -quality 100 $iconImage $iconResourcesDir/icon-44@2x.png
-convert -resize 20x20 -quality 100 $iconImage $iconResourcesDir/icon-20@2x.png
+convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50\@2x.png
+convert -resize 108x108 -quality 100 $iconImage $iconResourcesDir/icon-44\@2x.png
+convert -resize 20x20 -quality 100 $iconImage $iconResourcesDir/icon-20\@2x.png
 #echo "make more iOS icons"
-
 convert -resize 20x20^ -gravity center -extent 20x20 -quality 100 $splashImage $splashResourcesDir/icon-20.png
-convert -resize 40x40^ -gravity center -extent 40x40 -quality 100 $splashImage $splashResourcesDir/icon-20@2x.png
-convert -resize 60x60^ -gravity center -extent 60x60 -quality 100 $splashImage $splashResourcesDir/icon-20@3x.png
+convert -resize 40x40^ -gravity center -extent 40x40 -quality 100 $splashImage $splashResourcesDir/icon-20\@2x.png
+convert -resize 60x60^ -gravity center -extent 60x60 -quality 100 $splashImage $splashResourcesDir/icon-20\@3x.png
 convert -resize 29x29^ -gravity center -extent 29x29 -quality 100 $splashImage $splashResourcesDir/icon-29.png
-convert -resize 29x29^ -gravity center -extent 29x29 -quality 100 $splashImage $splashResourcesDir/icon-29@1x.png
-convert -resize 58x58^ -gravity center -extent 58x58 -quality 100 $splashImage $splashResourcesDir/icon-29@2x.png
-convert -resize 87x87^ -gravity center -extent 87x87 -quality 100 $splashImage $splashResourcesDir/icon-29@3x.png
-convert -resize 167x167^ -gravity center -extent 167x167 -quality 100 $splashImage $splashResourcesDir/icon-83.5@2x.png
+convert -resize 29x29^ -gravity center -extent 29x29 -quality 100 $splashImage $splashResourcesDir/icon-29\@1x.png
+convert -resize 58x58^ -gravity center -extent 58x58 -quality 100 $splashImage $splashResourcesDir/icon-29\@2x.png
+convert -resize 87x87^ -gravity center -extent 87x87 -quality 100 $splashImage $splashResourcesDir/icon-29\@3x.png
+convert -resize 167x167^ -gravity center -extent 167x167 -quality 100 $splashImage $splashResourcesDir/icon-83.5\@2x.png
 convert -resize 1024x1024^ -gravity center -extent 1024x1024 -quality 100 $splashImage $splashResourcesDir/icon-1024.png
-convert -resize 48x48^ -gravity center -extent 48x48 -quality 100 $splashImage $splashResourcesDir/icon-24@2x.png
-convert -resize 55x55^ -gravity center -extent 55x55 -quality 100 $splashImage $splashResourcesDir/icon-27.5@2x.png
-convert -resize 88x88^ -gravity center -extent 88x88 -quality 100 $splashImage $splashResourcesDir/icon-44@2x.png
-convert -resize 172x172^ -gravity center -extent 172x172 -quality 100 $splashImage $splashResourcesDir/icon-86@2x.png
-convert -resize 196x196^ -gravity center -extent 196x196 -quality 100 $splashImage $splashResourcesDir/icon-98@2x.png
-convert -resize 216x216^ -gravity center -extent 216x216 -quality 100 $splashImage $splashResourcesDir/icon-108@2x.png
+convert -resize 48x48^ -gravity center -extent 48x48 -quality 100 $splashImage $splashResourcesDir/icon-24\@2x.png
+convert -resize 55x55^ -gravity center -extent 55x55 -quality 100 $splashImage $splashResourcesDir/icon-27.5\@2x.png
+convert -resize 88x88^ -gravity center -extent 88x88 -quality 100 $splashImage $splashResourcesDir/icon-44\@2x.png
+convert -resize 172x172^ -gravity center -extent 172x172 -quality 100 $splashImage $splashResourcesDir/icon-86\@2x.png
+convert -resize 196x196^ -gravity center -extent 196x196 -quality 100 $splashImage $splashResourcesDir/icon-98\@2x.png
+convert -resize 216x216^ -gravity center -extent 216x216 -quality 100 $splashImage $splashResourcesDir/icon-108\@2x.png
 
 # list the schemes available 
 #xcodebuild -list
@@ -240,7 +235,7 @@ zip -r ../$appname-ios.zip platforms/ios
 
 # validate the results
 #xcrun -verbose -sdk iphoneos Validation "$(pwd)/$appname.ipa"
-const match = /javac\s+([\d\d.]+)/i.exec(output);
+
 pwd
 #cd ../../../../
 # list the APK files that have been built
