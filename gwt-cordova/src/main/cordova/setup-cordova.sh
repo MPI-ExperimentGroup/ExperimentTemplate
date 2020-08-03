@@ -112,16 +112,16 @@ echo $splashImage
 #draw9patch platforms/splash150x150.9.png
 
 #echo "making iOS splash images"
-convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h\@2x~iphone.png
 convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
 convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
 convert -crop +0-100 -resize 2208x2208^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
-convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
+convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h\@2x~iphone.png
+convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape\@2x~ipad.png
 convert -resize 1024x1024^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
-convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
+convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait\@2x~ipad.png
 convert -resize 1024x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
-convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
+convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default\@2x~iphone.png
 convert -resize 480x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
 convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
 convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
@@ -152,6 +152,9 @@ echo "building"
 cordova prepare
 #cordova compile
 #cordova build -release
+values[0]).startsWith('8.1')
+values[0]).startsWith('11')
+/ExperimentTemplate/gwt-cordova/target/with_stimulus_example-frinex-gui-1.2.2709-testing-cordova# vi ./platforms/android/cordova/lib/check_reqs.js
 cordova build android --buildConfig /android-keys/frinex-build.json --release
 #cordova emulate ios --target="iPad"
 #cordova emulate ios --target="iPhone"
@@ -159,6 +162,7 @@ cordova build android --buildConfig /android-keys/frinex-build.json --release
 
 rm platforms/android/release-signing.properties
 #echo "make the iOS icons"
+
 convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60\@3x.png
 convert -resize 60x60 -quality 100 $iconImage $iconResourcesDir/icon-60.png
 convert -resize 120x120 -quality 100 $iconImage $iconResourcesDir/icon-60\@2x.png
@@ -178,6 +182,7 @@ convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50\@2x.pn
 convert -resize 108x108 -quality 100 $iconImage $iconResourcesDir/icon-44\@2x.png
 convert -resize 20x20 -quality 100 $iconImage $iconResourcesDir/icon-20\@2x.png
 #echo "make more iOS icons"
+
 convert -resize 20x20^ -gravity center -extent 20x20 -quality 100 $splashImage $splashResourcesDir/icon-20.png
 convert -resize 40x40^ -gravity center -extent 40x40 -quality 100 $splashImage $splashResourcesDir/icon-20\@2x.png
 convert -resize 60x60^ -gravity center -extent 60x60 -quality 100 $splashImage $splashResourcesDir/icon-20\@3x.png
@@ -235,7 +240,7 @@ zip -r ../$appname-ios.zip platforms/ios
 
 # validate the results
 #xcrun -verbose -sdk iphoneos Validation "$(pwd)/$appname.ipa"
-
+const match = /javac\s+([\d\d.]+)/i.exec(output);
 pwd
 #cd ../../../../
 # list the APK files that have been built
