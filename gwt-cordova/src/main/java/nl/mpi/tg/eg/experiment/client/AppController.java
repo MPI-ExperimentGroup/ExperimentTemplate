@@ -86,6 +86,9 @@ public abstract class AppController implements AppEventListner/*, AudioException
         } else {
             userResults = new UserResults(localStorage.getStoredData(lastUserId, metadataFieldProvider));
         }
+        if (hasCordova()) {
+            obfuscationDisabled = true; // always disable obfuscation for iOS
+        }
         if (obfuscationDisabled) {
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "obfuscationDisabled");
         }
