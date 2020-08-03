@@ -27,12 +27,14 @@ public class StimulusSelector {
 
     final String alias;
     final Tag tag;
+    final String list;
     final Integer minCount;
     final Integer maxCount;
 
     public StimulusSelector(Tag tag) {
         this.alias = tag.name();
         this.tag = tag;
+        this.list = null;
         this.minCount = null;
         this.maxCount = null;
     }
@@ -40,6 +42,15 @@ public class StimulusSelector {
     public StimulusSelector(String alias, Tag tag) {
         this.alias = alias;
         this.tag = tag;
+        this.list = null;
+        this.minCount = null;
+        this.maxCount = null;
+    }
+
+    public StimulusSelector(String alias, final String list) {
+        this.alias = alias;
+        this.tag = null;
+        this.list = list;
         this.minCount = null;
         this.maxCount = null;
     }
@@ -47,6 +58,7 @@ public class StimulusSelector {
     public StimulusSelector(String alias, Tag tag, int minCount, int maxCount) {
         this.alias = alias;
         this.tag = tag;
+        this.list = null;
         this.minCount = minCount;
         this.maxCount = maxCount;
     }
@@ -57,6 +69,10 @@ public class StimulusSelector {
 
     public Tag getTag() {
         return tag;
+    }
+
+    public String getList() {
+        return list;
     }
 
     public Integer getMinCount() {

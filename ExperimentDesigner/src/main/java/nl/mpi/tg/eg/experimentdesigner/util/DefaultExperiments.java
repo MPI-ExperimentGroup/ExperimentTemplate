@@ -366,6 +366,12 @@ public class DefaultExperiments {
         }
         if (featureType.isCanHaveRandomGrouping()) {
             final RandomGrouping randomGrouping = new RandomGrouping();
+            if (addOptionalAttributes) {
+                int aliasCounter = 0;
+                for (String stimuliList : new String[]{"-1-2-3-4-5-6-7-8-9-", "-a-v-s-e-e", "F-e-s-t-i-v-a-l", "Lao", "Thai", "ບຸນບັ້ງໄຟ"}) {
+                    randomGrouping.addStimuliList("L" + aliasCounter, stimuliList);
+                }
+            }
             for (String randomTag : new String[]{"ประเพณีบุญบั้งไฟ", "Rocket", "Festival", "Lao", "Thai", "ບຸນບັ້ງໄຟ"}) {
                 randomGrouping.addRandomTag(randomTag);
             }

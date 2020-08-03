@@ -107,7 +107,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </validateMetadata>
-        <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
+        <transmitResults receivingRegex="receivingRegex" dataLogFormat="dataLogFormat" sendingRegex="sendingRegex">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -632,6 +632,12 @@
                 <tag>Lao</tag>
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
+                <list alias="L0">-1-2-3-4-5-6-7-8-9-</list>
+                <list alias="L0">-a-v-s-e-e</list>
+                <list alias="L0">F-e-s-t-i-v-a-l</list>
+                <list alias="L0">Lao</list>
+                <list alias="L0">Thai</list>
+                <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
             <stimuli>
                 <tag>ประเพณีบุญบั้งไฟ</tag>
@@ -768,6 +774,12 @@
                 <tag>Lao</tag>
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
+                <list alias="L0">-1-2-3-4-5-6-7-8-9-</list>
+                <list alias="L0">-a-v-s-e-e</list>
+                <list alias="L0">F-e-s-t-i-v-a-l</list>
+                <list alias="L0">Lao</list>
+                <list alias="L0">Thai</list>
+                <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
             <stimuli>
                 <tag>ประเพณีบุญบั้งไฟ</tag>
@@ -1043,6 +1055,12 @@
                 <tag>Lao</tag>
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
+                <list alias="L0">-1-2-3-4-5-6-7-8-9-</list>
+                <list alias="L0">-a-v-s-e-e</list>
+                <list alias="L0">F-e-s-t-i-v-a-l</list>
+                <list alias="L0">Lao</list>
+                <list alias="L0">Thai</list>
+                <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
             <stimuli>
                 <tag>ประเพณีบุญบั้งไฟ</tag>
@@ -1318,6 +1336,12 @@
                 <tag>Lao</tag>
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
+                <list alias="L0">-1-2-3-4-5-6-7-8-9-</list>
+                <list alias="L0">-a-v-s-e-e</list>
+                <list alias="L0">F-e-s-t-i-v-a-l</list>
+                <list alias="L0">Lao</list>
+                <list alias="L0">Thai</list>
+                <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
             <stimuli>
                 <tag>ประเพณีบุญบั้งไฟ</tag>
@@ -1957,7 +1981,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </validateMetadata>
-        <transmitResults matchingRegex="" enabledRegex="" dataLogFormat="">
+        <transmitResults receivingRegex="" dataLogFormat="" sendingRegex="">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>

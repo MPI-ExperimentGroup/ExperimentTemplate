@@ -317,7 +317,7 @@
         <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
         <addPadding/>
         <actionButton featureText="Validate Invitation">
-            <transmitResults matchingRegex="invitation_id|token" enabledRegex="validated_invitation_id|session_id|copepod_done|validation_error|session_validation_error|session_copepods|session_copepod|session_next_copepod" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+            <transmitResults sendingRegex="invitation_id|token" receivingRegex="validated_invitation_id|session_id|copepod_done|validation_error|session_validation_error|session_copepods|session_copepod|session_next_copepod" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
                 <onError>
                     <addPadding/>
                     <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>

@@ -46,11 +46,23 @@ public class RandomGrouping implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @ElementCollection
+    private List<RandomTag> stimuliLists = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ElementCollection
     private List<RandomTag> randomTags = new ArrayList<>();
+
+    @XmlElement(name = "list")
+    public List<RandomTag> getStimuliLists() {
+        return stimuliLists;
+    }
 
     @XmlElement(name = "tag")
     public List<RandomTag> getRandomTags() {
         return randomTags;
+    }
+
+    public void addStimuliList(String alias, String stimuliList) {
+        stimuliLists.add(new RandomTag(alias, stimuliList, null, null));
     }
 
     public void addRandomTag(String tag) {

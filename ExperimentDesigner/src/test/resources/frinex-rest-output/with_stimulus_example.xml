@@ -4322,7 +4322,7 @@
                                                                 <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
                                                                 <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
                                                                 <!--// if the response uuid does not exist then transmit-->
-                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+                                                                <transmitResults sendingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" receivingRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
                                                                     <onError>
                                                                         <htmlText featureText="Transmitting the data for this session step failed."/>
                                                                     </onError>
@@ -4484,7 +4484,7 @@
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
-                <transmitResults matchingRegex="uuid|session_id|step_done|session_steps|session_step" enabledRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
+                <transmitResults sendingRegex="uuid|session_id|step_done|session_steps|session_step" receivingRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
                 &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
                     <onError>
                         <htmlText featureText="Results transmition failed."/>

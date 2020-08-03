@@ -598,6 +598,8 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@visibleRegex) then concat(',&quot;', @visibleRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@enabledRegex) then concat(',&quot;', @enabledRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@sendingRegex) then concat('&quot;', @sendingRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@receivingRegex) then concat(',&quot;', @receivingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@validationRegex) then concat(',&quot;', @validationRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:if test="@daysThresholds">
@@ -623,7 +625,7 @@ or local-name() eq 'submitGroupEvent'
         </xsl:if>
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (contains(local-name(), 'ButtonGroup')) then '' else if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
-        <xsl:value-of select="if(not(@matchingRegex) and (local-name() eq 'transmitResults' or local-name() eq 'validateMetadata')) then 'null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'validateMetadata') then 'null' else ''" />
         <xsl:value-of select="if(local-name() eq 'validateMetadata') then concat(', &quot;', string-join(distinct-values(/experiment/validationService/validation/*/@postField), '|'), '&quot;, &quot;', string-join(distinct-values((/experiment/validationService/validation/*/@responseField, /experiment/validationService/validation/@errorField, /experiment/validationService/validation/*/@errorField)), '|'),'&quot;') else ''" />
         <xsl:value-of select="if(@dataLogFormat) then concat(', &quot;', @dataLogFormat, '&quot;') else ''" />
         <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
@@ -1098,6 +1100,20 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             </xsl:if>
         </xsl:for-each>
         <xsl:text>}</xsl:text>
+        <xsl:if test="local-name() eq 'randomGrouping'">
+            <xsl:text>,&#xa;new StimulusSelector[]{</xsl:text>
+            <xsl:for-each select="list">
+                <xsl:text>new StimulusSelector("</xsl:text>
+                <xsl:value-of select="if(@alias) then @alias else text()" />
+                <xsl:text>", "</xsl:text>
+                <xsl:value-of select="text()" />
+                <xsl:text>")</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>}</xsl:text>
+        </xsl:if>
         <xsl:if test="local-name() eq 'randomGrouping'">
             <xsl:value-of select="if(@storageField) then concat(', metadataFieldProvider.', @storageField, 'MetadataField') else ',null'" />
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />

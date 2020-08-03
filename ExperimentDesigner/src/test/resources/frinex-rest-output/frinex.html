@@ -5498,7 +5498,7 @@ When greater than 0 all items will be randomised again after the repeatCount has
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -5526,12 +5526,17 @@ List of stimuli tag names one of which will be randomly selected, unless the sel
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
 <a href="#tagType"><span style="color:purple">&lt;</span><span style="color:blue">tag</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#listType"><span style="color:purple">&lt;</span><span style="color:blue">list</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -5551,7 +5556,7 @@ String</span><br/>
 <h3 id="tagType" style="text-transform: uppercase;">
 tag
 </h3>
-
+Optional stimuli tag which will be used to select stimuli when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">tag</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -5570,6 +5575,30 @@ String</span><br/>
 <tr>
 <td colspan='2' id='tagTarget'>
 <button onclick="getExample('tag', 'tagTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="listType" style="text-transform: uppercase;">
+list
+</h3>
+Optional list of stimulus IDs separated by - which will be used when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">list</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+<tr>
+<td></td><td></td><td>
+<span style="color:grey">String</span></td></tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">list</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='listTarget'>
+<button onclick="getExample('list', 'listTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimuliSelectType" style="text-transform: uppercase;">
@@ -7527,7 +7556,7 @@ String</span><br/>
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -7555,12 +7584,17 @@ List of stimuli tag names one of which will be randomly selected, unless the sel
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
 <a href="#tagType"><span style="color:purple">&lt;</span><span style="color:blue">tag</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#listType"><span style="color:purple">&lt;</span><span style="color:blue">list</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -7580,7 +7614,7 @@ String</span><br/>
 <h3 id="tagType" style="text-transform: uppercase;">
 tag
 </h3>
-
+Optional stimuli tag which will be used to select stimuli when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">tag</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -7599,6 +7633,30 @@ String</span><br/>
 <tr>
 <td colspan='2' id='tagTarget'>
 <button onclick="getExample('tag', 'tagTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="listType" style="text-transform: uppercase;">
+list
+</h3>
+Optional list of stimulus IDs separated by - which will be used when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">list</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+<tr>
+<td></td><td></td><td>
+<span style="color:grey">String</span></td></tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">list</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='listTarget'>
+<button onclick="getExample('list', 'listTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimuliSelectType" style="text-transform: uppercase;">
@@ -7680,7 +7738,7 @@ When greater than 0 all items will be randomised again after the repeatCount has
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -7708,12 +7766,17 @@ List of stimuli tag names one of which will be randomly selected, unless the sel
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
 <a href="#tagType"><span style="color:purple">&lt;</span><span style="color:blue">tag</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#listType"><span style="color:purple">&lt;</span><span style="color:blue">list</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -7733,7 +7796,7 @@ String</span><br/>
 <h3 id="tagType" style="text-transform: uppercase;">
 tag
 </h3>
-
+Optional stimuli tag which will be used to select stimuli when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">tag</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -7752,6 +7815,30 @@ String</span><br/>
 <tr>
 <td colspan='2' id='tagTarget'>
 <button onclick="getExample('tag', 'tagTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="listType" style="text-transform: uppercase;">
+list
+</h3>
+Optional list of stimulus IDs separated by - which will be used when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">list</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+<tr>
+<td></td><td></td><td>
+<span style="color:grey">String</span></td></tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">list</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='listTarget'>
+<button onclick="getExample('list', 'listTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimuliSelectType" style="text-transform: uppercase;">
@@ -12754,9 +12841,9 @@ Transmits the values of the metadata fields that match the matchingRegex to the 
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
+<span style="color:green">receivingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
+<span style="color:green">sendingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
@@ -13980,7 +14067,7 @@ When greater than 0 all items will be randomised again after the repeatCount has
 <a href="#randomGroupingType"><span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></a></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -14008,12 +14095,17 @@ List of stimuli tag names one of which will be randomly selected, unless the sel
 <span style="color:purple">&lt;</span><span style="color:blue">randomGrouping</span></td><td><span style="color:green">consumedTagGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:green">storageField</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-If this metadata field contains one of the tags, this tag will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
+If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
 <a href="#tagType"><span style="color:purple">&lt;</span><span style="color:blue">tag</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#listType"><span style="color:purple">&lt;</span><span style="color:blue">list</span></a></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -14033,7 +14125,7 @@ String</span><br/>
 <h3 id="tagType" style="text-transform: uppercase;">
 tag
 </h3>
-
+Optional stimuli tag which will be used to select stimuli when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">tag</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -14052,6 +14144,30 @@ String</span><br/>
 <tr>
 <td colspan='2' id='tagTarget'>
 <button onclick="getExample('tag', 'tagTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="listType" style="text-transform: uppercase;">
+list
+</h3>
+Optional list of stimulus IDs separated by - which will be used when the value of the storageField equals the alias. In practice the storageField would usualy be set by GET parameter in the URL.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">list</span></td><td><span style="color:green">alias</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+<tr>
+<td></td><td></td><td>
+<span style="color:grey">String</span></td></tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">list</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='listTarget'>
+<button onclick="getExample('list', 'listTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimuliSelectType" style="text-transform: uppercase;">

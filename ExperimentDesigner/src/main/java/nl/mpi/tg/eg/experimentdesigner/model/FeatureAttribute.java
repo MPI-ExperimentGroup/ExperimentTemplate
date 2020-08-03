@@ -62,6 +62,8 @@ public enum FeatureAttribute {
     showOnBackButton("When true the component will be invisible until the browser back button is clicked. Repeated clicks will toggle the visibility. The feature cannot be used in conjunction with a presenter back attribute.", true, AttributeType.xsBoolean),
     eventTier,
     dataChannel(true),
+    sendingRegex(false),
+    receivingRegex(false),
     dataLogFormat(false),
     evaluateTokens(false),
     filePerStimulus("When recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli"),
