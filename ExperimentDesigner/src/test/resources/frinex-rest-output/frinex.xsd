@@ -3483,6 +3483,9 @@
 </xs:all>
 </xs:complexType>
 <xs:complexType name="redirectToUrlType">
+<xs:annotation>
+<xs:documentation>Redirects the experiment to the URL specified in src. This feature cannot do error checking and therefore does not have onError or onSuccess because the experiment (calling page) has gone out scope by the time any error might occur.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="src" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="eraseLocalStorageOnWindowClosingType">
@@ -7476,6 +7479,9 @@
 </xs:complexType>
 <xs:complexType name="endOfStimulusType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -11969,7 +11975,7 @@
 <xs:complexType name="transmitResultsType">
 <xs:all>
 <xs:annotation>
-<xs:documentation>Transmits the values of the metadata fields that match the matchingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the enabledRegex will be updated if there is such a field returned from that service.</xs:documentation>
+<xs:documentation>Transmits the values of the metadata fields that match the sendingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the sendingRegex will be updated if there is such a field returned from that service. If the registration service returns a 200 response then onSuccess is triggered. When onSuccess is triggered this does not always indicate a validated state, you will also need to check the receiving fields. If there is a network error or the registration service returns a non 200 response then onError will be triggered. One and only one of either onError or onSuccess will always be triggered, however the time required to trigger will depend on network conditions.</xs:documentation>
 </xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>

@@ -122,7 +122,8 @@ public enum FeatureType {
     generateCompletionCode(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     sendAllData(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     sendMetadata(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    redirectToUrl(false, false, new FeatureAttribute[]{src}),
+    // The <redirectToUrl> does not have  <onError> and <onSuccess> because the calling page has gone out scope by the time the error has occurred.
+    redirectToUrl(false, false, new FeatureAttribute[]{src}, "Redirects the experiment to the URL specified in src. This feature cannot do error checking and therefore does not have onError or onSuccess because the experiment (calling page) has gone out scope by the time any error might occur."),
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -187,7 +188,7 @@ public enum FeatureType {
     responseCorrect(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.hasCorrectIncorrect),
     responseIncorrect(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.hasCorrectIncorrect),
     hasMoreStimulus(false, null, false, false, false, Contitionals.stimulusAction, Contitionals.hasMoreStimulus),
-    endOfStimulus(false, null, false, false, false, Contitionals.any, Contitionals.hasMoreStimulus, Contitionals.groupStimulus),
+    endOfStimulus(false, null, "Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.", Contitionals.any, Contitionals.hasMoreStimulus, Contitionals.groupStimulus),
     beforeStimulus(false, null, false, false, false, Contitionals.any, Contitionals.eachStimulus),
     eachStimulus(false, null, false, false, false, Contitionals.stimulusAction, Contitionals.eachStimulus),
     afterStimulus(false, null, false, false, false, Contitionals.any, Contitionals.eachStimulus),

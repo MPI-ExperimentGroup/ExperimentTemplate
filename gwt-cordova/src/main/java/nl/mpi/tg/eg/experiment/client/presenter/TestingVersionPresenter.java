@@ -53,9 +53,9 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-        ((ComplexView) simpleView).addText("This version is for software testing only, data will not be preserved in this version. This screen will not be shown in the production version.");
+        ((ComplexView) simpleView).addText("This version is for software validation only, data will not be preserved in this version. This screen will not be shown in the production version.");
         ((ComplexView) simpleView).addPadding();
-        ((ComplexView) simpleView).addText("Once you have verified that this version suits your needs, please request deployment of the production version.");
+        ((ComplexView) simpleView).addText("Once you have verified that this version suits your needs, please request deployment of the production version on which you can run your experiment.");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: "
