@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,6 +58,7 @@ public class ParticipantListingController {
             }
         }
         model.addAttribute("allParticipantData", contentDistinct);
+        model.addAttribute("insertUserUUID", UUID.randomUUID());
         model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);

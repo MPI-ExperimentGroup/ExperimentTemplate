@@ -440,7 +440,7 @@
                 &lt;tr th:fragment="participantinputfields"&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
-                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
+                &lt;td th:if="${!simpleMode}"&gt;&lt;input id="userIdInput" th:value="${insertUserUUID}" /&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
             </xsl:text>
@@ -450,7 +450,9 @@
                 <xsl:text>Input" /&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
-                &lt;td&gt;&lt;button id="addParticipantButton" class="tableButton" &gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;td&gt;
+                &lt;input th:if="${simpleMode}" id="userIdInput" th:value="${insertUserUUID}" type="hidden" /&gt;
+                &lt;button id="addParticipantButton" class="tableButton" &gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
                 &lt;/table&gt;
             &lt;/body&gt;
         &lt;/html&gt;
@@ -464,7 +466,7 @@
                 type: "POST",
                 dataType : "json",
                 contentType: "application/json; charset=utf-8",
-                data: "[{</xsl:text>
+                data: "[{\"userId\": \"" + $("#userIdInput").val() + "\",</xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>\"</xsl:text>
                 <xsl:value-of select="@postName" />
