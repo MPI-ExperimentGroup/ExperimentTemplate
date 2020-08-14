@@ -695,6 +695,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
+                        <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
@@ -729,6 +730,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
+                        <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
@@ -763,6 +765,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
+                        <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
                 </groupPhaseListeners>
@@ -2563,6 +2566,7 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
+                        <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
@@ -2597,6 +2601,7 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
+                        <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-">
@@ -2631,6 +2636,7 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
+                        <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
                 </groupPhaseListeners>

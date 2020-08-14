@@ -666,7 +666,7 @@ or local-name() eq 'submitGroupEvent'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
+    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -679,6 +679,7 @@ or local-name() eq 'nextStimulusButton'
 or local-name() eq 'sendGroupMessageButton'
 or local-name() eq 'sendGroupMessage'
 or local-name() eq 'sendGroupStoredMessage'
+or local-name() eq 'sendGroupTokenMessage'
 or local-name() eq 'nextMatchingStimulus'
 or local-name() eq 'sendGroupEndOfStimuli'
 ">
@@ -697,6 +698,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
                        or local-name() eq 'sendGroupMessageButton'
                        or local-name() eq 'sendGroupMessage'
                        or local-name() eq 'sendGroupStoredMessage'
+                       or local-name() eq 'sendGroupTokenMessage'
                        or local-name() eq 'sendGroupEndOfStimuli'
                        or local-name() eq 'nextStimulusButton'">
             <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ', null'" />
@@ -712,7 +714,8 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'nextMatchingStimulus' 
             and local-name() ne 'nextStimulusButton' 
             and local-name() ne 'sendGroupMessage' 
-            and local-name() ne 'sendGroupStoredMessage' 
+            and local-name() ne 'sendGroupStoredMessage'
+            and local-name() ne 'sendGroupTokenMessage'
             and local-name() ne 'logTimeStamp' 
             and local-name() ne 'hardwareTimeStamp' 
             and local-name() ne 'sendGroupEndOfStimuli'">
@@ -750,6 +753,8 @@ or local-name() eq 'sendGroupMessageButton'
                                 ) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'sendGroupStoredMessage')
                                 ) then if (@groupId) then concat(', &quot;',@groupId, '&quot;') else ', &quot;&quot;' else ''" />
+        <xsl:value-of select="if(contains(local-name(), 'sendGroupTokenMessage')
+                                ) then if (@dataLogFormat) then concat(', &quot;',@dataLogFormat, '&quot;') else ', &quot;&quot;' else ''" />
         <xsl:if test="local-name() eq 'touchInputCaptureStart'">
             <xsl:text>, new TimedStimulusListener() {
 

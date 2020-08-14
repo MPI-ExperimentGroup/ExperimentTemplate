@@ -991,6 +991,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -1181,6 +1182,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -1380,6 +1382,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -1568,6 +1571,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -1750,6 +1754,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -1931,6 +1936,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -2115,6 +2121,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -2299,6 +2306,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -2501,6 +2509,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -2684,6 +2693,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -2867,6 +2877,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -3099,6 +3110,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -3308,6 +3320,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -3665,6 +3678,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -4006,6 +4020,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -4207,6 +4222,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -4403,6 +4419,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -4603,6 +4620,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -4785,6 +4803,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -4964,6 +4983,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -5152,6 +5172,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -5341,6 +5362,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -5521,6 +5543,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -5700,6 +5723,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -5876,6 +5900,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -6052,6 +6077,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -6228,6 +6254,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -6406,6 +6433,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -6584,6 +6612,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -6762,6 +6791,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -6938,6 +6968,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -7114,6 +7145,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -7290,6 +7322,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -7466,6 +7499,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -7645,6 +7679,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -7821,6 +7856,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -7997,6 +8033,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -8173,6 +8210,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -8355,6 +8393,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -8531,6 +8570,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -8707,6 +8747,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -8883,6 +8924,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -9059,6 +9101,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -9235,6 +9278,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -9411,6 +9455,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -9587,6 +9632,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -9763,6 +9809,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -9941,6 +9988,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -10117,6 +10165,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -10297,6 +10346,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -10492,6 +10542,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -10798,6 +10849,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -10986,6 +11038,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -11266,6 +11319,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -11445,6 +11499,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -11624,6 +11679,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -11811,6 +11867,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
@@ -11906,6 +11963,14 @@
 <xs:attribute name="eventTag" type="xs:string"/>
 <xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
 <xs:attribute name="groupId" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="sendGroupTokenMessageType">
+<xs:annotation>
+<xs:documentation>Sends a message to the group members that are in the current member's communication channel. The contents of the message is the value of dataLogFormat after any string tokens have been replaced.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="eventTag" type="xs:string"/>
+<xs:attribute name="incrementPhase" type="xs:integer" use="required"/>
+<xs:attribute name="dataLogFormat" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="clearCurrentScoreType">
 <xs:attribute name="dataChannel" type="xs:string"/>
