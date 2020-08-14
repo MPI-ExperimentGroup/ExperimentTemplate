@@ -28,6 +28,9 @@
                 @Entity                     
                 public class Participant implements Serializable, Comparable&lt;Participant&gt; {
 
+                    public Participant(){}
+                    public Participant(final String userId){this.userId = userId;}
+
                 @Id
                 @GeneratedValue(strategy = GenerationType.AUTO)
                 private long id;
@@ -430,29 +433,31 @@
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
-                    &lt;td  th:text="${participant.</xsl:text>
+                    &lt;td th:text="${participant.</xsl:text>
                 <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
                 <xsl:text>}"&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
                 &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
                 &lt;/tr&gt;
-                &lt;tr th:fragment="participantinputfields"&gt;
+                &lt;tr th:fragment="participantinputfields(buttonLabel)"&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
-                &lt;td th:if="${!simpleMode}"&gt;&lt;input id="userIdInput" th:value="${insertUserUUID}" /&gt;&lt;/td&gt;
+                &lt;td th:if="${!simpleMode}"&gt;&lt;input id="userIdInput" th:value="${insertUserData.userId}" /&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>Input" /&gt;&lt;/td&gt;</xsl:text>
+                <xsl:text>Input" th:value="${insertUserData.</xsl:text>
+                <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
+                <xsl:text>}" /&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
                 &lt;td&gt;
-                &lt;input th:if="${simpleMode}" id="userIdInput" th:value="${insertUserUUID}" type="hidden" /&gt;
-                &lt;button id="addParticipantButton" class="tableButton" &gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;input th:if="${simpleMode}" id="userIdInput" th:value="${insertUserData.userId}" type="hidden" /&gt;
+                &lt;button id="addParticipantButton" class="tableButton" th:text="${buttonLabel}" &gt;Add Record&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
                 &lt;/table&gt;
             &lt;/body&gt;
         &lt;/html&gt;

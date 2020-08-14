@@ -58,7 +58,8 @@ public class ParticipantListingController {
             }
         }
         model.addAttribute("allParticipantData", contentDistinct);
-        model.addAttribute("insertUserUUID", UUID.randomUUID());
+        final Participant insertUserData = new Participant(UUID.randomUUID().toString());
+        model.addAttribute("insertUserData", insertUserData);
         model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);

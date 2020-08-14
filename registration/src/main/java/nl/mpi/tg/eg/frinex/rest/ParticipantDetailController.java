@@ -22,9 +22,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletRequest;
+import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,13 +76,20 @@ public class ParticipantDetailController {
 
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
-        
-        Map<String, String[]> paramMap = request.getParameterMap();
+
+//        Map<String, String[]> paramMap = request.getParameterMap();
         boolean showStale = !simpleMode;
+        final List<Participant> freshCopyUserData = this.participantRepository.findByStaleCopyAndUserId(false, id);
         if (showStale) {
             model.addAttribute("participantData", this.participantRepository.findByUserId(id));
         } else {
-            model.addAttribute("participantData", this.participantRepository.findByStaleCopyAndUserId(false, id));
+            model.addAttribute("participantData", freshCopyUserData);
+        }
+        if (freshCopyUserData.isEmpty()) {
+            final Participant insertUserData = new Participant(id);
+            model.addAttribute("insertUserData", insertUserData);
+        } else {
+            model.addAttribute("insertUserData", freshCopyUserData.get(0));
         }
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
         model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.findByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED).size());

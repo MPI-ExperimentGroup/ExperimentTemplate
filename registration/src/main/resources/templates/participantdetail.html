@@ -26,6 +26,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script th:replace="participanttable :: addparticipantscript"/>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
@@ -37,6 +39,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </thead>
             <tbody>
                 <tr th:include="participanttable :: participantrows" id="clickablerow" th:each="participant : ${participantData}">
+                </tr>
+                <tr th:replace="participanttable :: participantinputfields(buttonLabel='Update Participant')">
+                    <td></td>
                 </tr>
             </tbody>            
         </table>

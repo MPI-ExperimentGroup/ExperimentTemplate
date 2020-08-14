@@ -41,7 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <tbody>
                 <tr th:include="participanttable :: participantrows" id="clickablerow" th:each="prod : ${allParticipantData}" th:with="participant=${prod}" th:userId="${prod.userId}" th:onclick="|window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=${simpleMode}';|">
                 </tr>
-                <tr th:replace="participanttable :: participantinputfields">
+                <tr th:replace="participanttable :: participantinputfields(buttonLabel='Add Participant')">
                     <td></td>
                 </tr>
             </tbody>
