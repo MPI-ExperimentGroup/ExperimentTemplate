@@ -68,7 +68,7 @@
                             </parameters>
                         </transformationSet>
                         <transformationSet>
-                            <dir>${project.build.testSourceDirectory}/../xml/</dir>
+                            <dir>${project.build.testSourceDirectory}</dir>
                             <includes>
                                 <include>allowValidationOnMissing.xml</include>
                                 <include>preventValidationOnMissing.xml</include>
