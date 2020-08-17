@@ -526,6 +526,21 @@
             <xsl:value-of select="$classname" />
             <xsl:text>ValidationController {
 
+            </xsl:text>
+            <xsl:if test="$separateClassNames eq 'true'">
+                <xsl:text>
+                    public </xsl:text>
+                <xsl:value-of select="$classname" />
+                <xsl:text>ValidationController(ScreenDataRepository screenDataRepository, TimeStampRepository timeStampRepository, ParticipantRepository participantRepository, TagRepository tagRepository, StimulusResponseRepository stimulusResponseRepository) {
+                    this.screenDataRepository = screenDataRepository;
+                    this.timeStampRepository = timeStampRepository;
+                    this.participantRepository = participantRepository;
+                    this.tagRepository = tagRepository;
+                    this.stimulusResponseRepository = stimulusResponseRepository;
+                    }
+                </xsl:text>       
+            </xsl:if>
+            <xsl:text>
                 @Autowired
                 ScreenDataRepository screenDataRepository;
                 @Autowired
@@ -570,7 +585,7 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>
-                final String remoteAddr = request.getRemoteAddr();
+                final String remoteAddr = (request == null)? "unknown" : request.getRemoteAddr();
                 <!--final int lastIndexOfIPv4 = remoteAddr.lastIndexOf(".");-->
                 <!--final int lastIndexOfIPv6 = remoteAddr.length() / 2;-->
                 final int lastIndexOf = remoteAddr.lastIndexOf(".");
@@ -676,7 +691,9 @@
             <xsl:for-each select="experiment/validationService/validation/*[@adminField]">
                 <!--match the value to the regex-->
                 <xsl:if test="@validationRegex">
-                    <xsl:text>if (!foundRecords.get(0).get</xsl:text>
+                    <xsl:text>if (null == foundRecords.get(0).get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
+                    <xsl:text>() || !foundRecords.get(0).get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
                     <xsl:text>().matches("</xsl:text>
                     <xsl:value-of select="@validationRegex" />
