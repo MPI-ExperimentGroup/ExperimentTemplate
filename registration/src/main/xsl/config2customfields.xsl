@@ -12,6 +12,7 @@
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:param name="targetTemplateDirectory" select="targetTemplateDirectory"/>
+    <xsl:param name="separateClassNames" select="separateClassNames"/>
     <xsl:template match="/">
         <xsl:result-document href="{$targetClientDirectory}/model/Participant.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.model;
@@ -28,8 +29,8 @@
                 @Entity                     
                 public class Participant implements Serializable, Comparable&lt;Participant&gt; {
 
-                    public Participant(){}
-                    public Participant(final String userId){this.userId = userId;}
+                public Participant(){}
+                public Participant(final String userId){this.userId = userId;}
 
                 @Id
                 @GeneratedValue(strategy = GenerationType.AUTO)
@@ -496,7 +497,9 @@
                     &lt;/script&gt;
             </xsl:text>
         </xsl:result-document>
-        <xsl:result-document href="{$targetClientDirectory}/rest/ParticipantValidationController.java" method="text">
+        <xsl:variable name="filename" select="(tokenize(base-uri(), '/'))[last()]"/>
+        <xsl:variable name="classname" select="if ($separateClassNames ne 'true') then 'Participant' else substring-before($filename, '.xml')"/>
+        <xsl:result-document href="{$targetClientDirectory}/rest/{$classname}ValidationController.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.rest;
 
                 import java.io.IOException;
@@ -519,7 +522,9 @@
                 import org.springframework.web.bind.annotation.RestController;
 
                 @RestController                  
-                public class ParticipantValidationController {
+                public class </xsl:text>
+            <xsl:value-of select="$classname" />
+            <xsl:text>ValidationController {
 
                 @Autowired
                 ScreenDataRepository screenDataRepository;

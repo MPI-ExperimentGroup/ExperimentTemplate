@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>xml-maven-plugin</artifactId>
-                <version>1.0</version>
+                <version>1.0.2</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -51,15 +51,42 @@
                                 <include>${experiment.configuration.name}.xml</include>
                             </includes>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/config2customfields.xsl</stylesheet>
-                            <outputDir>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</outputDir>
+                            <outputDir>${project.build.directory}/generated-sources/main/java/nl/mpi/tg/eg/frinex</outputDir>
                             <parameters>
                                 <parameter>
                                     <name>targetClientDirectory</name>
-                                    <value>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</value>
+                                    <value>${project.build.directory}/generated-sources/main/java/nl/mpi/tg/eg/frinex</value>
                                 </parameter>
                                 <parameter>
                                     <name>targetTemplateDirectory</name>
-                                    <value>${project.build.directory}/generated-sources/resources/templates</value>
+                                    <value>${project.build.directory}/generated-sources/main/resources/templates</value>
+                                </parameter>
+                                <parameter>
+                                    <name>separateClassNames</name>
+                                    <value>false</value>
+                                </parameter>
+                            </parameters>
+                        </transformationSet>
+                        <transformationSet>
+                            <dir>${project.build.testSourceDirectory}/../xml/</dir>
+                            <includes>
+                                <include>allowValidationOnMissing.xml</include>
+                                <include>preventValidationOnMissing.xml</include>
+                            </includes>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2customfields.xsl</stylesheet>
+                            <outputDir>${project.build.directory}/generated-sources/test/java/nl/mpi/tg/eg/frinex</outputDir>
+                            <parameters>
+                                <parameter>
+                                    <name>targetClientDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/test/java/nl/mpi/tg/eg/frinex</value>
+                                </parameter>
+                                <parameter>
+                                    <name>targetTemplateDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/test/resources/templates</value>
+                                </parameter>
+                                <parameter>
+                                    <name>separateClassNames</name>
+                                    <value>true</value>
                                 </parameter>
                             </parameters>
                         </transformationSet>
@@ -79,18 +106,31 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>add-generated-sources</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>add-source</goal>
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.build.directory}/generated-sources</source>
+                                <source>${project.build.directory}/generated-sources/main/java</source>
                             </sources>
                         </configuration>
                     </execution>                    
                     <execution>
-                        <id>add-resource</id>
+                        <id>add-generated-test-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/test/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>                    
+                    <execution>
+                        <id>add-generated-resources</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>add-resource</goal>
@@ -98,7 +138,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>${project.build.directory}/generated-sources/resources/templates</directory>
+                                    <directory>${project.build.directory}/generated-sources/main/resources/templates</directory>
                                     <targetPath>templates</targetPath>
                                 </resource>
                             </resources>
