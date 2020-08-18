@@ -138,45 +138,55 @@ public class RegistrationService {
                 if (200 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
+                    String responseMetadataFields = "";
                     if (receivingRegex != null) {
-                        JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(text);
-                        if (jsonObject.containsKey("metadata")) {
-                            JSONObject metadataJson = (JSONObject) jsonObject.get("metadata");
-                            for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-                                final String postName = key.getPostName();
-                                if (postName.matches(receivingRegex)) {
-                                    if (metadataJson.containsKey(postName)) {
-                                        userResults.getUserData().setMetadataValue(key, metadataJson.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                        // todo: if the JSON is blank and the receivingRegex is non empty, should we trigger an onError
+                        try {
+                            JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(text);
+                            if (jsonObject.containsKey("metadata")) {
+                                JSONObject metadataJson = (JSONObject) jsonObject.get("metadata");
+                                for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+                                    final String postName = key.getPostName();
+                                    if (postName.matches(receivingRegex)) {
+                                        if (metadataJson.containsKey(postName)) {
+                                            responseMetadataFields = (responseMetadataFields.isEmpty()) ? postName : responseMetadataFields + "|" + postName;
+                                            userResults.getUserData().setMetadataValue(key, metadataJson.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                                        } // todo: if the response does not contain the matching metata, should we call onError?
+                                    }
+                                }
+                            } else {
+                                for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+                                    final String postName = key.getPostName();
+                                    if (postName.matches(receivingRegex)) {
+                                        if (jsonObject.containsKey(postName)) {
+                                            responseMetadataFields = (responseMetadataFields.isEmpty()) ? postName : responseMetadataFields + "|" + postName;
+                                            userResults.getUserData().setMetadataValue(key, jsonObject.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                                        }
                                     }
                                 }
                             }
-                        } else {
-                            for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-                                final String postName = key.getPostName();
-                                if (postName.matches(receivingRegex)) {
-                                    if (jsonObject.containsKey(postName)) {
-                                        userResults.getUserData().setMetadataValue(key, jsonObject.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
-                                    }
-                                }
+                            if (jsonObject.containsKey("scoredata")) {
+                                JSONObject scoreDataJson = (JSONObject) jsonObject.get("scoredata");
+                                userResults.getUserData().setGamesPlayed(Integer.parseInt(scoreDataJson.get("gamesPlayed").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setTotalScore(Integer.parseInt(scoreDataJson.get("totalScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setTotalPotentialScore(Integer.parseInt(scoreDataJson.get("totalPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setCurrentScore(Integer.parseInt(scoreDataJson.get("currentScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setCorrectStreak(Integer.parseInt(scoreDataJson.get("correctStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setErrorStreak(Integer.parseInt(scoreDataJson.get("errorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setPotentialScore(Integer.parseInt(scoreDataJson.get("potentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setMaxScore(Double.parseDouble(scoreDataJson.get("maxScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setMaxErrors(Integer.parseInt(scoreDataJson.get("maxErrors").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setMaxCorrectStreak(Integer.parseInt(scoreDataJson.get("maxCorrectStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setMaxErrorStreak(Integer.parseInt(scoreDataJson.get("maxErrorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setMaxPotentialScore(Integer.parseInt(scoreDataJson.get("maxPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
                             }
-                        }
-                        if (jsonObject.containsKey("scoredata")) {
-                            JSONObject scoreDataJson = (JSONObject) jsonObject.get("scoredata");
-                            userResults.getUserData().setGamesPlayed(Integer.parseInt(scoreDataJson.get("gamesPlayed").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setTotalScore(Integer.parseInt(scoreDataJson.get("totalScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setTotalPotentialScore(Integer.parseInt(scoreDataJson.get("totalPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setCurrentScore(Integer.parseInt(scoreDataJson.get("currentScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setCorrectStreak(Integer.parseInt(scoreDataJson.get("correctStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setErrorStreak(Integer.parseInt(scoreDataJson.get("errorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setPotentialScore(Integer.parseInt(scoreDataJson.get("potentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setMaxScore(Double.parseDouble(scoreDataJson.get("maxScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setMaxErrors(Integer.parseInt(scoreDataJson.get("maxErrors").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setMaxCorrectStreak(Integer.parseInt(scoreDataJson.get("maxCorrectStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setMaxErrorStreak(Integer.parseInt(scoreDataJson.get("maxErrorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
-                            userResults.getUserData().setMaxPotentialScore(Integer.parseInt(scoreDataJson.get("maxPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                        } catch (IllegalArgumentException iae) {
+                            // handle malformed or wrong responses like wifi login redirects etc
+                            registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.jsonError, "Error parsing JSON: " + text));
+                            logger.warning(iae.getMessage());
                         }
                     }
-                    registrationListener.registrationComplete();
+                    registrationListener.registrationComplete(responseMetadataFields);
                 } else {
                     registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.non202response, "An error occured on the server: " + response.getStatusText()));
                     logger.warning(targetUri);

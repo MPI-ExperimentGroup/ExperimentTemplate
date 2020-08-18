@@ -135,7 +135,7 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
             }
 
             @Override
-            public void registrationComplete() {
+            public void registrationComplete(String responseMetadataFields) {
                 onSuccess.postLoadTimerFired();
             }
         }, messages.reportDateFormat(), emailAddressMetadataField, scoreLog);

@@ -25,5 +25,5 @@ public interface RegistrationListener {
 
     void registrationFailed(RegistrationException exception);
 
-    void registrationComplete();
+    void registrationComplete(String responseMetadataFields);
 }

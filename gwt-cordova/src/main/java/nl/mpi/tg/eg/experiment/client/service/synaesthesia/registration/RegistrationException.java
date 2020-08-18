@@ -29,7 +29,8 @@ public class RegistrationException extends Exception {
 
         non202response,
         buildererror,
-        connectionerror
+        connectionerror,
+        jsonError
     }
 
     public RegistrationException(ErrorType errorType, Throwable cause) {
