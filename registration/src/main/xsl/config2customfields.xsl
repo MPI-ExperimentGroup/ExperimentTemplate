@@ -676,7 +676,9 @@
                 <xsl:text>stringBuilder.append("\"</xsl:text>
                 <xsl:value-of select="@responseField" />
                 <xsl:text>\":\"");
-                    stringBuilder.append(requestingUserId);
+                    stringBuilder.append(</xsl:text>
+                <xsl:value-of select="@postField" />
+                <xsl:text>);
                     stringBuilder.append("\",\n");
                 </xsl:text>
             </xsl:for-each>
