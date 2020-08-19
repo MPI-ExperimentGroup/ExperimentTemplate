@@ -65,6 +65,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
 
     public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
         final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(targetUrl);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "redirectToUrl", targetUrlFormatted, duration.elapsedMillis());
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {

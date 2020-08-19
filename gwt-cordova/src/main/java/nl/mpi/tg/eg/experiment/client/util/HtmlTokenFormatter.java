@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import java.util.Date;
@@ -43,6 +42,7 @@ public class HtmlTokenFormatter {
     final MetadataField[] metadataFieldArray;
     final TimerService timerService;
     final Stimulus currentStimulus;
+    final Random random = new Random();
 
     public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorageInterface localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataField[] metadataFieldArray) {
         this.localStorage = localStorage;
@@ -141,7 +141,7 @@ public class HtmlTokenFormatter {
                         if (parameterValues.length == 1) {
 //                            final int randomNumberOrigin = Integer.parseInt(parameterValues[0]);
                             final int randomNumberBound = Integer.parseInt(parameterValues[0]);
-                            resultValue = Integer.toString(new Random().nextInt(randomNumberBound));
+                            resultValue = Integer.toString(random.nextInt(randomNumberBound));
                         } else {
                             throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
                         }
@@ -361,7 +361,7 @@ public class HtmlTokenFormatter {
                                 responseKey = keysPart[1]; // extracted ZZZ from "<stimulusResponse_XXX_ZZZ"
                             }
                         }
-                        resultString +=  localStorage.getStoredStimulusValue(userData.getUserId(), uniqueId, responseKey);
+                        resultString += localStorage.getStoredStimulusValue(userData.getUserId(), uniqueId, responseKey);
                         resultString += subPart[1];
                     }
                 }
