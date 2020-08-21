@@ -152,8 +152,8 @@ public class ExperimentService {
 //                invalidScreenData.add(screenData);
             }
             screenData.setSubmitDate(new java.util.Date());
-            screenDataRepository.save(screenData);
         }
+        screenDataRepository.saveAll(screenDataList);
         final ResponseEntity responseEntity;
         if (screenDataList.isEmpty()) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
@@ -175,8 +175,8 @@ public class ExperimentService {
         } else {
             for (TimeStamp timeStamp : timeStampList) {
                 timeStamp.setSubmitDate(new java.util.Date());
-                timeStampRepository.save(timeStamp);
             }
+            timeStampRepository.saveAll(timeStampList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(timeStampList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
@@ -229,8 +229,8 @@ public class ExperimentService {
         } else {
             for (TagData experimentData : experimentDataList) {
                 experimentData.setSubmitDate(new java.util.Date());
-                tagRepository.save(experimentData);
             }
+            tagRepository.saveAll(experimentDataList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
@@ -244,8 +244,8 @@ public class ExperimentService {
         } else {
             for (TagPairData experimentData : experimentDataList) {
                 experimentData.setSubmitDate(new java.util.Date());
-                tagPairRepository.save(experimentData);
             }
+            tagPairRepository.saveAll(experimentDataList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
@@ -259,8 +259,8 @@ public class ExperimentService {
         } else {
             for (StimulusResponse experimentData : stimulusResponseList) {
                 experimentData.setSubmitDate(new java.util.Date());
-                stimulusResponseRepository.save(experimentData);
             }
+            stimulusResponseRepository.saveAll(stimulusResponseList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(stimulusResponseList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
@@ -274,8 +274,8 @@ public class ExperimentService {
         } else {
             for (GroupData groupData : groupDataList) {
                 groupData.setSubmitDate(new java.util.Date());
-                groupDataRepository.save(groupData);
             }
+            groupDataRepository.saveAll(groupDataList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(groupDataList.get(0).getMessageRespondentId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
