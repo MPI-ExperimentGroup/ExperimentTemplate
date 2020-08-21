@@ -1120,7 +1120,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                 <xsl:text>new StimulusSelector("</xsl:text>
                 <xsl:value-of select="if(@alias) then @alias else text()" />
                 <xsl:text>", "</xsl:text>
-                <xsl:value-of select="text()" />
+                <xsl:value-of select="replace(text(), '[ \n\t]', '')" />
                 <xsl:text>")</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>
