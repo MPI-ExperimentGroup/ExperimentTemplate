@@ -15,10 +15,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.view;
+package nl.mpi.tg.eg.experiment.client.view;
 
-import nl.mpi.tg.eg.experiment.client.view.AbstractView;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -41,24 +39,25 @@ import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
  * @since Jan 15, 2015 5:30:25 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public abstract class AbstractSvgView extends AbstractView {
+public abstract class AbstractSvgView extends ComplexView {
 
 //    protected final Messages messages = GWT.create(Messages.class);
     final VerticalPanel verticalPanel = new VerticalPanel();
-    protected final AudioPlayer audioPlayer;
+//    protected final AudioPlayer audioPlayer;
     protected PresenterEventListner backEventListner = null;
     protected PresenterEventListner nextEventListner = null;
     protected Label debugLabel = new Label();
 //    private static final String ROTATABLE_GROUP = "rotatableGroup";
 
-    public AbstractSvgView(AudioPlayer audioPlayer) throws AudioException {
-        this.audioPlayer = audioPlayer;
-    }
+//    public AbstractSvgView(AudioPlayer audioPlayer) throws AudioException {
+//        this.audioPlayer = audioPlayer;
+//    }
 
     @Override
     protected void parentResized(int height, int width, String units) {

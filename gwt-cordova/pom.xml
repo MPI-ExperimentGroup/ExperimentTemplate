@@ -184,7 +184,7 @@
                     <include>decoderWorker.min.js</include>        
                     <include>decoderWorker.min.wasm</include>        
                     <include>encoderWorker.min.js</include>        
-                    <include>encoderWorker.min.wasm</include>        
+                    <include>encoderWorker.min.wasm</include>
                     <include>recorder.min.js</include>        
                     <include>waveWorker.min.js</include>
                 </includes>
@@ -395,32 +395,45 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>-->
-                        <!--                        <transformationSet>
-                            <dir>${project.build.sourceDirectory}/../svg/graphics</dir>
-                            <includes>
-                                <include>*.svg</include>
-                            </includes>
-                            <stylesheet>${project.build.sourceDirectory}/../xsl/graphics2properties.xsl</stylesheet>
-                            <fileMappers>
-                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
-                                    <targetExtension>.properties</targetExtension>
-                                </fileMapper>
-                            </fileMappers>
-                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
-                        </transformationSet>-->
                         <transformationSet>
                             <dir>${experiment.configuration.path}</dir>
                             <includes>
-                                <include>${experiment.configuration.name}/*.svg</include>
+                                <include>/${experiment.configuration.name}/**/*.svg</include>
+                            </includes>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/graphics2properties.xsl</stylesheet>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
+                                    <pattern>${experiment.configuration.name}/(.*)\.svg$</pattern>
+                                    <replacement>$1.java</replacement>
+                                </fileMapper>
+                            </fileMappers>
+                            <parameters>
+                                <parameter>
+                                    <name>configurationName</name>
+                                    <value>${experiment.configuration.name}</value>
+                                </parameter>
+                            </parameters>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/svg</outputDir>
+                        </transformationSet>
+                        <transformationSet>
+                            <dir>${experiment.configuration.path}</dir>
+                            <includes>
+                                <include>/${experiment.configuration.name}/**/*.svg</include>
                             </includes>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/svg2java.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>\.svg$</pattern>
-                                    <replacement>Builder.java</replacement>
+                                    <pattern>${experiment.configuration.name}/(.*)\.svg$</pattern>
+                                    <replacement>$1Builder.java</replacement>
                                 </fileMapper>
                             </fileMappers>
-                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/svg</outputDir>
+                            <parameters>
+                                <parameter>
+                                    <name>configurationName</name>
+                                    <value>${experiment.configuration.name}</value>
+                                </parameter>
+                            </parameters>
                         </transformationSet>
                         <transformationSet>
                             <dir>${experiment.configuration.path}</dir>

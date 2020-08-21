@@ -34,7 +34,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView.ButtonType;
-import nl.ru.languageininteraction.language.client.util.SvgTemplate;
+import nl.mpi.tg.eg.experiment.client.util.SvgTemplate;
 
 /**
  * @since Nov 26, 2014 4:11:13 PM (creation date)

@@ -17,27 +17,31 @@
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:param name="configurationName" select="configurationName"/>
     <xsl:variable name="filename" select="(tokenize(base-uri(), '/'))[last()]"/>
-    <!--    <xsl:variable name="classpath" select="substring-before(substring-after($configurationName, base-uri()), '.svg')"/>-->
-    <xsl:variable name="classpath" select="substring-after($configurationName, base-uri())"/>
+    <xsl:variable name="classpath" select="substring-before(substring-after(base-uri(), $configurationName), concat('/', $filename))"/>
+    <!--<xsl:variable name="classpath" select="substring-after(base-uri(), $configurationName)"/>-->
     <xsl:variable name="classname" select="substring-before($filename, '.svg')"/>
     <xsl:template match="/">
-        <xsl:text>package nl.mpi.tg.eg.experiment.client.svg.</xsl:text>
-        <xsl:value-of select="$classpath" />
+        <xsl:text>package nl.mpi.tg.eg.experiment.client.svg</xsl:text>
+        <xsl:value-of select="replace($classpath, '/', '.')" />
         <xsl:text>;
-            configurationName </xsl:text>
+            // base-uri </xsl:text>
+        <xsl:value-of select="base-uri()" />
+        <xsl:text>;
+            // configurationName </xsl:text>
         <xsl:value-of select="$configurationName" />
         <xsl:text>;
-            filename </xsl:text>
+            // filename </xsl:text>
         <xsl:value-of select="$filename" />
         <xsl:text>;
-            classpath </xsl:text>
+            // classpath </xsl:text>
         <xsl:value-of select="$classpath" />
         <xsl:text>;            
             import com.google.gwt.core.client.GWT;
             import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-            import nl.ru.languageininteraction.language.client.util.SvgTemplate;
+            import nl.mpi.tg.eg.experiment.client.util.SvgTemplate;
             import com.google.gwt.user.client.DOM;
             import com.google.gwt.dom.client.Element;
+            import nl.mpi.tg.eg.experiment.client.view.AbstractSvgView;
                         
             // generated with svg2java.xsl
             public class </xsl:text>

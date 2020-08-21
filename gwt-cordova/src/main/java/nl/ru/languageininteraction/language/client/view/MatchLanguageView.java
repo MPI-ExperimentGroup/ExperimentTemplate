@@ -24,7 +24,8 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 //import nl.ru.languageininteraction.language.client.MatchLanguageBuilder.SvgGroupStates;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
-//import nl.ru.languageininteraction.language.client.util.SvgTemplate;
+import nl.mpi.tg.eg.experiment.client.view.AbstractSvgView;
+//import nl.mpi.tg.eg.experiment.client.util.SvgTemplate;
 
 /**
  * @since Nov 26, 2014 4:11:13 PM (creation date)
@@ -33,7 +34,7 @@ import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 public class MatchLanguageView extends AbstractSvgView {
 
     public MatchLanguageView(AudioPlayer audioPlayer) throws AudioException {
-        super(audioPlayer);
+//        super(audioPlayer);
     }
 //    protected final MatchLanguageBuilder matchLanguageBuilder = new MatchLanguageBuilder();
 

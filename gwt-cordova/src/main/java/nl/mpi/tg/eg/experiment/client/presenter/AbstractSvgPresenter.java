@@ -15,36 +15,37 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.presenter;
+package nl.mpi.tg.eg.experiment.client.presenter;
 
-import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+//import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
-import nl.ru.languageininteraction.language.client.view.AbstractSvgView;
+//import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.view.AbstractSvgView;
 
 /**
  * @since Feb 4, 2015 11:29:51 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public abstract class AbstractSvgPresenter implements Presenter {
+public abstract class AbstractSvgPresenter extends AbstractPresenter {
 
-    protected final RootLayoutPanel widgetTag;
+//    protected final RootLayoutPanel widgetTag;
     protected final AbstractSvgView abstractSvgView;
-    private final AudioPlayer audioPlayer;
-    protected final UserResults userResults;
+//    private final AudioPlayer audioPlayer;
+//    protected final UserResults userResults;
     private PresenterEventListner backEventListner = null;
     private PresenterEventListner nextEventListner = null;
 
-    public AbstractSvgPresenter(RootLayoutPanel widgetTag, UserResults userResults, final AudioPlayer audioPlayer, final AbstractSvgView abstractSvgView) throws AudioException {
-        this.audioPlayer = audioPlayer;
+    public AbstractSvgPresenter(RootLayoutPanel widgetTag, final AbstractSvgView abstractSvgView, final DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) /* throws AudioException*/ {
+       super(widgetTag, abstractSvgView, userResults, localStorage, timerService);
         this.widgetTag = widgetTag;
         this.userResults = userResults;
         this.abstractSvgView = abstractSvgView;
@@ -58,7 +59,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    audioPlayer.stopAll();
+//  todo:                  audioPlayer.stopAll();
                     appEventListner.requestApplicationState(prevState);
                 }
 
@@ -83,7 +84,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    audioPlayer.stopAll();
+//  todo:                  audioPlayer.stopAll();
                     appEventListner.requestApplicationState(ApplicationState.menu);
                 }
 
@@ -108,7 +109,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    audioPlayer.stopAll();
+//  todo:                audioPlayer.stopAll();
                     if (nextEventFired()) {
                         appEventListner.requestApplicationState(nextState);
                     }
@@ -159,7 +160,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
     @Override
     public void fireBackEvent() {
         if (backEventListner != null) {
-            audioPlayer.stopAll();
+//  todo:          audioPlayer.stopAll();
             backEventListner.eventFired(null, null);
         }
     }

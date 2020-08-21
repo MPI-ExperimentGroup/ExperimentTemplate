@@ -145,7 +145,7 @@
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', submissionService' else
 if(@type = 'preload') then ', submissionService' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', submissionService' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker' or @type = 'svg') then ', submissionService' else ''" />
             <!--<xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />-->
             <xsl:text>, userResults, localStorage, timerService);
                 presenter.setState(this, </xsl:text>
@@ -250,6 +250,15 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
                 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
                 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
+                </xsl:text> 
+                <xsl:if test="@type = 'svg'">
+                    <xsl:text>
+                        import nl.mpi.tg.eg.experiment.client.svg.graphics.</xsl:text>
+                        <xsl:value-of select="@self" />
+                        <xsl:text>Builder;
+                    </xsl:text> 
+                </xsl:if>
+                <xsl:text>
                         
                 // generated with config2java.xsl
                 public class </xsl:text>

@@ -17,11 +17,16 @@
     <xsl:output method="text" encoding="UTF-8" />
     
     
+    <xsl:param name="configurationName" select="configurationName"/>
     <xsl:variable name="filename" select="(tokenize(base-uri(), '/'))[last()]"/>
+    <xsl:variable name="classpath" select="substring-before(substring-after(base-uri(), $configurationName), concat('/', $filename))"/>
+    <!--<xsl:variable name="classpath" select="substring-after(base-uri(), $configurationName)"/>-->
     <xsl:variable name="classname" select="substring-before($filename, '.svg')"/>
     <xsl:template match="/">
-        <xsl:text>package nl.mpi.tg.eg.experiment.client.svg.graphics;
-            // generated with map2properties.xsls
+        <xsl:text>package nl.mpi.tg.eg.experiment.client.svg</xsl:text>
+        <xsl:value-of select="replace($classpath, '/', '.')" />
+        <xsl:text>;
+            // generated with graphics2properties.xsls
             public class </xsl:text>
         <xsl:value-of select="$classname" />
         <xsl:text> {
