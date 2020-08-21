@@ -37,17 +37,13 @@ import nl.mpi.tg.eg.experiment.client.view.AbstractSvgView;
  */
 public abstract class AbstractSvgPresenter extends AbstractPresenter {
 
-//    protected final RootLayoutPanel widgetTag;
     protected final AbstractSvgView abstractSvgView;
 //    private final AudioPlayer audioPlayer;
-//    protected final UserResults userResults;
     private PresenterEventListner backEventListner = null;
     private PresenterEventListner nextEventListner = null;
 
     public AbstractSvgPresenter(RootLayoutPanel widgetTag, final AbstractSvgView abstractSvgView, final DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) /* throws AudioException*/ {
        super(widgetTag, abstractSvgView, userResults, localStorage, timerService);
-        this.widgetTag = widgetTag;
-        this.userResults = userResults;
         this.abstractSvgView = abstractSvgView;
     }
 
