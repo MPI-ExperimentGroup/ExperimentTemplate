@@ -479,6 +479,7 @@
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseLocalStorageOnWindowClosing" type="eraseLocalStorageOnWindowClosingType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="existingUserCheck" type="existingUserCheckType"/>
 <xs:element name="generateCompletionCode" type="generateCompletionCodeType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -934,6 +935,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -1125,6 +1127,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -1325,6 +1328,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -1514,6 +1518,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -1697,6 +1702,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -1879,6 +1885,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -2064,6 +2071,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -2249,6 +2257,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -2452,6 +2461,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -2636,6 +2646,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -2820,6 +2831,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -3053,6 +3065,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -3263,6 +3276,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -3621,6 +3635,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -3963,6 +3978,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -4059,6 +4075,9 @@
 </xs:complexType>
 <xs:complexType name="pauseType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Pause in milliseconds. When the time is up the contents of this element are evaluated.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -4165,6 +4184,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -4362,6 +4382,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -4457,6 +4478,9 @@
 </xs:complexType>
 <xs:complexType name="randomMsPauseType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Pause for a random number of milliseconds that is not less than minimum and not more than maximum. When the time is up the contents of this element are evaluated.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -4563,6 +4587,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -4633,7 +4658,18 @@
 </xs:choice>
 <xs:attribute name="minimum" type="xs:string" use="required"/>
 <xs:attribute name="maximum" type="xs:string" use="required"/>
-<xs:attribute name="ranges" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="evaluatePauseType">
+<xs:all>
+<xs:annotation>
+<xs:documentation>Pause based on the value of metadata, stimulus responses or scores etc. The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is the time of the pause in milliseconds. The evaluated value will be constrained so that it is within the minimum or maximum values. When the time is up the onSuccess element will be triggered. If there is an error evaluating the token string then onError will be triggered.</xs:documentation>
+</xs:annotation>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
+</xs:all>
+<xs:attribute name="minimum" type="xs:string" use="required"/>
+<xs:attribute name="maximum" type="xs:string" use="required"/>
+<xs:attribute name="evaluateTokens" type="xs:string" use="required"/>
 </xs:complexType>
 <xs:complexType name="triggerDefinitionType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -4746,6 +4782,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -4926,6 +4963,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -5115,6 +5153,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -5305,6 +5344,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -5486,6 +5526,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -5666,6 +5707,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -5843,6 +5885,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6020,6 +6063,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6197,6 +6241,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6376,6 +6421,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6555,6 +6601,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6734,6 +6781,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6911,6 +6959,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -7088,6 +7137,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -7265,6 +7315,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -7442,6 +7493,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -7622,6 +7674,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -7799,6 +7852,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -7976,6 +8030,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -8153,6 +8208,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -8336,6 +8392,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -8513,6 +8570,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -8690,6 +8748,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -8867,6 +8926,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -9044,6 +9104,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -9221,6 +9282,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -9398,6 +9460,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -9575,6 +9638,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -9752,6 +9816,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -9931,6 +9996,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -10108,6 +10174,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -10289,6 +10356,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -10485,6 +10553,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -10792,6 +10861,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -10981,6 +11051,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -11262,6 +11333,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -11442,6 +11514,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -11622,6 +11695,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -11810,6 +11884,7 @@
 <xs:element name="logTimerValue" type="logTimerValueType"/>
 <xs:element name="timerLabel" type="timerLabelType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>

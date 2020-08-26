@@ -46,6 +46,7 @@ import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
@@ -494,8 +495,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timer.schedule(postLoadMs);
     }
 
-    protected void randomMsPause(int minimumMs, int maximumMs, final String ranges, final TimedStimulusListener timedStimulusListener) {
-        // todo: handle ranges
+    protected void randomMsPause(int minimumMs, int maximumMs, final TimedStimulusListener timedStimulusListener) {
         final Timer timer = new Timer() {
             @Override
             public void run() {
@@ -504,7 +504,26 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
         pauseTimers.add(timer);
-        timer.schedule((int) (Math.random() * (maximumMs - minimumMs) + minimumMs));
+        timer.schedule((int) (new Random().nextInt(maximumMs - minimumMs + 1) + minimumMs)); // since the attributes minimum, maximum are inclusive we convert maximumMs - minimumMs into upper bound (exclusive) by adding 1
+    }
+
+    protected void evaluatePause(final Stimulus currentStimulus, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        try {
+            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
+            final Timer timer = new Timer() {
+                @Override
+                public void run() {
+                    onSuccess.postLoadTimerFired();
+                    pauseTimers.remove(this);
+                }
+            };
+            int pauseMs = (evaluateResult.intValue() <= maximumMs) ? evaluateResult.intValue() : maximumMs;
+            pauseMs = (pauseMs >= minimumMs) ? pauseMs : minimumMs;
+            pauseTimers.add(timer);
+            timer.schedule(pauseMs);
+        } catch (EvaluateTokensException ete) {
+            onError.postLoadTimerFired();
+        }
     }
 
     protected void stimulusPause(final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener) {
@@ -1921,12 +1940,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
     }
 
-    public void triggerDefinition(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
+    public void triggerDefinition(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
         triggerListeners.put(formattedListenerId, new TriggerListener(formattedListenerId, threshold, maximum, triggerListener));
     }
 
-    public void habituationParadigmListener(final String listenerId, final int threshold, final int maximum, final Stimulus currentStimulus, final TimedStimulusListener triggerListener) {
+    public void habituationParadigmListener(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
         triggerListeners.put(formattedListenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
     }

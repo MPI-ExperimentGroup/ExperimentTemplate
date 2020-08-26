@@ -247,7 +247,7 @@ public enum FeatureAttribute {
     opto2("On screen indicator for optical sensor two.", true, AttributeType.xsBoolean),
     msToNext("The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.", false, AttributeType.xsInteger),
     groupId("This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.", true, AttributeType.xsString),
-    mediaId(/*true*/), listenerId, threshold, maximum, minimum, average, ranges(true),
+    mediaId(/*true*/), listenerId, threshold, maximum, minimum, average,
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
     //    minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list

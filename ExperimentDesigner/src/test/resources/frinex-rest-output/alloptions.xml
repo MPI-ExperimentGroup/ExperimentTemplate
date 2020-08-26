@@ -312,9 +312,17 @@
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
-        <randomMsPause ranges="10..100,1000" maximum="60" minimum="3">
+        <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
+        <evaluatePause evaluateTokens="evaluateTokens" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </evaluatePause>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -1469,9 +1477,17 @@
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
-        <randomMsPause ranges="10..100,1000" maximum="60" minimum="3">
+        <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
+        <evaluatePause evaluateTokens="evaluateTokens" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </evaluatePause>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -2192,6 +2208,14 @@
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
+        <evaluatePause evaluateTokens="" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </evaluatePause>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -3325,6 +3349,14 @@
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
+        <evaluatePause evaluateTokens="" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </evaluatePause>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
