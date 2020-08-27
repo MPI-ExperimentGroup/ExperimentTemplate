@@ -2,9 +2,12 @@
 pwd
 cd "$(dirname "$0")"
 pwd
-bash /openjdk8/switch_jdk8.sh # switch back in time for Cordova
-PATH=$(echo $PATH | sed 's#/usr/local/openjdk-11/bin#/openjdk8/jdk8u265-b01/bin#g');
-JAVA_HOME=$JAVA8_HOME
+
+if [[ -f /openjdk8/switch_jdk8.sh ]]; then
+    bash /openjdk8/switch_jdk8.sh # switch back in time for Cordova
+    PATH=$(echo $PATH | sed 's#/usr/local/openjdk-11/bin#/openjdk8/jdk8u265-b01/bin#g');
+    JAVA_HOME=$JAVA8_HOME
+fi
 
 #mvn install
 #cd target
