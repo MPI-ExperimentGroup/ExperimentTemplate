@@ -50,12 +50,14 @@ public class VersionPresenter extends AbstractPresenter {
 
     @Override
     protected void setContent(AppEventListner appEventListner) {
-        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
+        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n"
+                + "DOI 10.5281/zenodo.3522911"
+                + "FRINEX Version: " + version.majorVersion() + "."
                 + version.minorVersion() + "."
                 + version.buildVersion() + "\n"
                 + "Project Version: "
                 + version.projectVersion() + "\n"
                 + "Compile Date: " + version.compileDate() + "\n"
-                + "Last Commit Date: " + version.lastCommitDate());
+                + "Commit Date: " + version.lastCommitDate());
     }
 }

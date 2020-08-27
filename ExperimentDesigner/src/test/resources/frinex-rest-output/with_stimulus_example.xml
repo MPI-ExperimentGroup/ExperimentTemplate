@@ -3419,8 +3419,6 @@
                     <stimulusPause>
                         <hardwareTimeStamp dtmf="7" opto1="true" opto2="true" />
                         <stopAudioRecorder/> 
-                    <stopAudioRecorder/>
-                        <stopAudioRecorder/> 
                         <logTimeStamp eventTag="stop"/>
                         <pause msToNext="200">
                             <hardwareTimeStamp dtmf="off" />

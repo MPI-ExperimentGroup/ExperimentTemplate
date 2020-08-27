@@ -23,6 +23,7 @@ This template produces:
 * Web experiments
 * iOS experiments
 * Android experiments
+* Desktop experiments
 * Can produce other platforms, facebook, desktop, wince …
 
 Other templates can be developed as needed:

@@ -72,7 +72,7 @@ public class ShortMultiparticipant01 {
                 "",
                 "preStimuliText", "postStimuliText", 23, 1, 0, 0, 0,
                 0, 0, null);
-        multiParticipantScreen.setStimuliSet(new String[]{"5.png:shape1:Round_8_4:quadrant1:moveRotated30"});
+        multiParticipantScreen.setStimuliSet(new String[]{"5.png:shape1:Set1:quadrant1:moveRotated30"});
         WizardCompletionScreen completionScreen = new WizardCompletionScreen("completionScreenText1", false, true,
                 null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
                 "Redémarrer",

@@ -52,13 +52,15 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addHtmlText(messages.errorScreenText(errorMessage), "highlightedText");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
-        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
+        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n"
+        + "DOI 10.5281/zenodo.3522911"
+        + "FRINEX Version: " + version.majorVersion() + "."
                 + version.minorVersion() + "."
                 + version.buildVersion() + "\n"
                 + "Project Version: "
                 + version.projectVersion() + "\n"
                 + "Compile Date: " + version.compileDate() + "\n"
-                + "Last Commit Date: " + version.lastCommitDate());
+                + "Commit Date: " + version.lastCommitDate());
         ((ComplexView) simpleView).addPadding();
         eraseLocalStorageButton(null, "eraseLocalStorageButton");
         ((ComplexView) simpleView).addPadding();
