@@ -14,7 +14,7 @@
         <loadStimulus eventTag="Recorder_046d_0a45" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder recordingFormat="ogg" mediaId="audioRecorder" filePerStimulus="true" eventTag="startAudioRecorder" downloadPermittedWindowMs="10000" deviceRegex="(046d:0a45)">
+                <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder" downloadPermittedWindowMs="10000" deviceRegex="(046d:0a45)" featureText="00:00:00">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                         <targetButton featureText="Retry USB Device (046d:0a45)" target="Recorder_046d_0a45"/>
@@ -58,7 +58,7 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
@@ -79,7 +79,7 @@
         <loadStimulus eventTag="Recorder_Any_Device" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <startAudioRecorder recordingFormat="ogg" mediaId="audioRecorder" filePerStimulus="true" eventTag="startAudioRecorder" downloadPermittedWindowMs="10000" deviceRegex="">
+                <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder" downloadPermittedWindowMs="10000" deviceRegex="" featureText="00:00:00">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError, please enable microphone access"/>
                         <targetButton featureText="Retry USB Device (046d:0a45)" target="Recorder_046d_0a45"/>
@@ -123,7 +123,7 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                </startAudioRecorder>
+                </startAudioRecorderWeb>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>

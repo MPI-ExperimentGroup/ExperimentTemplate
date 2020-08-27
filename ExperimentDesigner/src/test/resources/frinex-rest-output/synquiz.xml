@@ -285,7 +285,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <translation menuLabel="Menu" title="Menu" locale="nl"/>
         <translation menuLabel="Men\u00fc" title="Men\u00fc" locale="de"/>
-        <region regionId="localemenu2" styleName="menuTable">
+        <regionReplace regionId="localemenu2" styleName="menuTable">
             <targetButton featureText="Begin Quiz" target="set_user" styleName="menuButton synquizButton">
                 <translation featureText="Quiz starten" locale="nl"/>
                 <translation featureText="Starte Quiz" locale="de"/>
@@ -306,7 +306,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                 <translation featureText="Over SynQuiz" locale="nl"/>
                 <translation featureText="Impressum" locale="de"/>
             </targetButton>
-        </region>
+        </regionReplace>
         <disableButtonGroup matchingRegex="registerButton"/>
         <disableButtonGroup matchingRegex="reportsButton"/>
         <hasMetadataValue fieldName="letters_numbers_short_result" matchingRegex="...*">
@@ -338,9 +338,9 @@ socialMediaPostSubject=Onderwerp bericht sociale media
     <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="localemenu" title="Language">
         <translation title="Taal" locale="nl"/>
         <translation title="Sprache" locale="de"/>
-        <region regionId="localemenu1" styleName="menuTable">
+        <regionReplace regionId="localemenu1" styleName="menuTable">
             <selectLocaleMenu styleName="synquizButton menuButton"/>
-        </region>
+        </regionReplace>
     </presenter>
     <presenter back="Menu" next="registrationScreen" menuLabel="LocaleMenu" type="metadata" self="metadataScreen" title="User details">
         <translation title="Gebruiker" locale="nl"/>
@@ -505,7 +505,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
     <presenter back="Menu" menuLabel="Quit" type="stimulus" self="quizmenu" title="Select Quiz">
         <translation title="Quiz kiezen" menuLabel="Sluiten" locale="nl"/>
         <translation title="Quiz w\u00e4hlen" menuLabel="Schliessen" locale="de"/>
-        <region regionId="quizmenu1" styleName="menuTable">
+        <regionReplace regionId="quizmenu1" styleName="menuTable">
             <htmlText featureText="Find out if you have synaesthesia!" styleName="highlightedText">
                 <translation featureText="Ontdek of u synesthesie heeft!" locale="nl"/>
                 <translation featureText="Entdecke ob du Syn\u00e4sthesie hast!" locale="de"/>
@@ -558,8 +558,8 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                     </actionTokenButton>
                 </conditionFalse>
             </hasMetadataValue>
-        </region>
-        <region regionId="quizmenu2" styleName="menuTable">
+        </regionReplace>
+        <regionReplace regionId="quizmenu2" styleName="menuTable">
             <htmlText featureText="Do you have synaesthesia?" styleName="highlightedText">
                 <translation featureText="Heeft u synesthesie?" locale="nl"/>
                 <translation featureText="Hast Du Syn\u00e4sthesie?" locale="de"/>
@@ -584,7 +584,7 @@ socialMediaPostSubject=Onderwerp bericht sociale media
                     </actionTokenButton>
                 </conditionFalse>
             </hasMetadataValue>
-        </region>
+        </regionReplace>
         <!--<targetFooterButton target="Register" styleName="synquizButton"/>-->
     </presenter>
     <presenter back="quizmenu" menuLabel="Weekdays" next="Report" type="colourPicker" self="weekdays" title="Weekdays">
