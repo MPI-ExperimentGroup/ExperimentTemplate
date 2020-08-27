@@ -81,9 +81,12 @@ public class SchemaGeneratorTest {
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
             "with_stimulus_example.xml",
+            "group_example.xml",
+            "audio_recorder_example.xml",
             "invitation_validation_example.xml",
 //            "sentenceplausibility.xml",
-            //            "synquiz2.xml"
+            "synquiz2.xml",
+            "synquiz.xml"
         };
         for (String fileName : fileNameArray) {
             System.out.println(fileName);
