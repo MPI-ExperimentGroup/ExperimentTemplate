@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" 
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" 
             userIdGetParam="uuid" 
             appNameDisplay="With Stimulus Example" 
             appNameInternal="with_stimulus_example" 
             backgroundColour="#FFFFFF" 
             complementColour0="#EAC3A3" 
-            complementColour1="#9D7B5E" 
-            complementColour2="#C69E7C" 
-            complementColour3="#FFEDDE" 
+            complementColour1="#9D7B5E"
+            complementColour2="#C69E7C"
+            complementColour3="#FFEDDE"
             complementColour4="#FFFDFB" 
             defaultScale="1.0" 
-            isScalable="true" 
+            isScalable="true"
             preserveLastState="false" 
             primaryColour0="#628D8D" 
             primaryColour1="#385E5E" 
             primaryColour2="#4A7777" 
-            primaryColour3="#96ADAD" 
+            primaryColour3="#96ADAD"
             primaryColour4="#D5D8D8" 
             rotatable="true" 
             showMenuBar="true" 
@@ -247,6 +247,7 @@
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="progressIndicator_steps" preventServerDuplicates="false" registrationField="progressIndicator steps"/>
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="progressIndicator_step" preventServerDuplicates="false" registrationField="progressIndicator step"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>
+        <field controlledMessage="." controlledRegex=".*" postName="storedDate" preventServerDuplicates="false" registrationField="StoredDate"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationMinutesSettings" preventServerDuplicates="false" registrationField="Trigger Notification Minutes"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSettings" preventServerDuplicates="false" registrationField="Trigger Notification Range"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSnoozed" preventServerDuplicates="false" registrationField="Trigger Notification Snooze"/>
@@ -259,9 +260,9 @@
         <field controlledMessage="." controlledRegex="|08:00|09:00|10:00|12:00|14:00|14:10|14:20|14:30|14:40|14:50|15:00|15:10|15:20|15:30|15:40|15:50|16:00|16:10|16:20|16:30|16:40|16:50|17:00|17:10|17:20|17:30|17:40|17:50|18:00" postName="notificationWeekendUntilSettings" preventServerDuplicates="false" registrationField="Weekend Notifications Until"/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationCountWeekendSettings" preventServerDuplicates="false" registrationField="Number Of Notifications Per Day On Weekends"/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationMinutes" preventServerDuplicates="false" registrationField="Show One Notifications In X Minutes "/>
-        <field controlledMessage="." controlledRegex="|V1|V2|V3|V4" postName="Version" registrationField="Version"/>
-        <field controlledMessage="." controlledRegex=".*" postName="draggable_euclidian_distance" registrationField="draggable_euclidian_distance"/>        
-    </metadata>
+        <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedOrder" preventServerDuplicates="false" registrationField="Used to store the randomisation sequence for the displayed stimuli in random_image_positions_remembered."/>
+        <!--field controlledMessage="." controlledRegex=".*" postName="draggable_euclidian_distance" registrationField="draggable_euclidian_distance"/-->
+    </metadata> 
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
         <targetButton featureText="Akkoord" target="Informatie"/>
@@ -544,7 +545,7 @@
                     <actionButton featureText="Show Another Popup">
                         <showHtmlPopup featureText="This popup dialogue also has text, but it has &lt;b&gt;two&lt;/b&gt; buttons not one.">
                             <actionButton featureText="ActionButtonA (close)" styleName="popupButton">
-                                <clearPage/>
+                                <clearPage/> 
                                 <plainText featureText="The second popup has closed."/>                
                                 <actionButton featureText="Reload This Presenter">
                                     <gotoPresenter target="popup_dialogue_example"/>
@@ -630,7 +631,7 @@
                 <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationMinutesSettings&gt;&lt;br/&gt;"/>
                 <requestNotification targetOptions="Request_Notification_Screen,Menu,Timer_Label_Screen" featureText="Minutes Notification" fieldName="notificationMinutesSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
                     <onError>
-                        <plainText featureText="Request Notification Failed"/>
+                        <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
                     </onError>
                     <onSuccess>
                         <plainText featureText="Request Notification Done"/>
@@ -675,24 +676,33 @@
     </presenter>
     <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
         <startTimer msToNext="150000" listenerId="timerA">
-            <regionAppend regionId="regionTimerC">
-                <plainText featureText="TimerC Completed"/>
+            <regionAppend regionId="timerRegionA">
+                <plainText featureText="Timer Completed"/>
             </regionAppend>
         </startTimer>
-        <regionAppend regionId="regionTimerA">
-            <plainText featureText="TimerA region"/>
+        <regionAppend regionId="timerRegionA">
         </regionAppend>
-        <plainText featureText="msToNext=30000 will count down 30000ms"/>
+        <plainText featureText="timerLabel msToNext=30000 will count down 30000ms"/>
         <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="30000" styleName="countDownLabel"/>
-        <plainText featureText="TimerC msToNext=0 will just count up"/>
+        <plainText featureText="timerLabel msToNext=0 will count up"/>
         <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
-        <actionButton featureText="Restart TimerA">
+        <actionButton featureText="Restart Timer">
             <clearTimer listenerId="timerA"/>
+            <regionAppend regionId="timerRegionA">
+                <plainText featureText="Timer Cleared"/>
+                <plainText featureText="Timer Started"/>
+            </regionAppend>
             <startTimer msToNext="15000" listenerId="timerA">
-                <regionAppend regionId="regionTimerA">
-                    <plainText featureText="TimerA Restart Completed"/>
+                <regionAppend regionId="timerRegionA">
+                    <plainText featureText="Restarted Timer Completed"/>
                 </regionAppend>
             </startTimer>
+        </actionButton>
+        <actionButton featureText="Clear Timer">
+            <clearTimer listenerId="timerA"/>
+            <regionAppend regionId="timerRegionA">
+                <plainText featureText="Timer Cleared"/>
+            </regionAppend>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Sequential Display Example (using 7 separate timers)" type="stimulus" self="Sequential_Display_Example0_6" title="Sequential Display Example (using 7 separate timers)">
@@ -703,7 +713,7 @@
                 <clearTimer listenerId="sequentialDisplayTimer2"/>
                 <clearTimer listenerId="sequentialDisplayTimer3"/>
                 <clearTimer listenerId="sequentialDisplayTimer4"/>
-                <clearTimer listenerId="sequentialDisplayTimer5"/>
+                <clearTimer listenerId="sequentialDisplayTimer5"/> 
                 <clearTimer listenerId="sequentialDisplayTimer6"/>
                 <clearPage/>
                 <regionAppend regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
@@ -777,7 +787,7 @@
                                         </actionButton>
                                     </startTimer>
                                 </mediaLoaded>
-                                <mediaLoadFailed>
+                                <mediaLoadFailed> 
                                     <plainText featureText="stimulusVideoFailed"/>
                                 </mediaLoadFailed>
                                 <mediaPlaybackStarted>
@@ -788,7 +798,7 @@
                                 </mediaPlaybackComplete>
                             </stimulusVideo>  
                         </regionReplace>
-                    </mediaLoaded>
+                    </mediaLoaded> 
                     <mediaLoadFailed>
                         <plainText featureText="stimulusAudioFailed"/>
                         <stimulusLabel/>
@@ -798,7 +808,7 @@
                     </mediaLoadFailed>
                     <mediaPlaybackStarted>
                         <htmlTokenText featureText="stimulusAudioPlaybackStarted (1350) &lt;sequentialDisplayTimer0&gt;ms"/>
-                    </mediaPlaybackStarted>
+                    </mediaPlaybackStarted> 
                     <mediaPlaybackComplete>
                         <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer0&gt;ms"/>
                     </mediaPlaybackComplete>
@@ -822,9 +832,11 @@
         <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
                 <clearPage/>
+                <regionAppend regionId="paddingRegion"/>
                 <regionAppend regionId="hardwareTimeStampStatusRegion"/>
                 <hasGetParameter parameterName="hardwareTimeStamp">
                     <conditionTrue>
+                        <regionStyle regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
                         <regionAppend regionId="hardwareTimeStampStatusRegion">
                             <htmlText featureText="HardwareTimeStamps is enabled."/>
                         </regionAppend>
@@ -1052,7 +1064,7 @@
                     </row>
                     <row>
                         <column>
-                            <htmlText featureText="Recorder"/>
+                            <htmlText featureText="Recorder OGG"/>
                         </column>
                         <column>
                             <actionTokenButton featureText="Record">
@@ -1116,6 +1128,82 @@
                             </actionTokenButton>
                         </column>
                         <column>
+                            <actionTokenButton featureText="Stop">
+                                <stopAudioRecorder/>	
+                                <hardwareTimeStamp dtmf="off" opto1="false" opto2="true"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="Recorder WAV"/>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Record">
+                                <cancelPauseAll/>
+                                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaE">
+                                    <onError>
+                                        <hardwareTimeStamp dtmf="7" opto1="false" opto2="true" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="onError recordedMediaE"/>
+                                        </regionAppend>
+                                    </onError>
+                                    <onSuccess>
+                                        <hardwareTimeStamp dtmf="8" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="onSuccess recordedMediaE"/>
+                                        </regionAppend>
+                                    </onSuccess>
+                                    <mediaLoaded>
+                                        <hardwareTimeStamp dtmf="9" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaLoaded recordedMediaE"/>
+                                        </regionAppend>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>                                        
+                                        <hardwareTimeStamp dtmf="0" opto1="false" opto2="true" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaLoadFailed recordedMediaE"/>
+                                        </regionAppend>
+                                    </mediaLoadFailed>
+                                    <mediaPlaybackStarted>                                        
+                                        <hardwareTimeStamp dtmf="A" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaPlaybackStarted recordedMediaE"/>
+                                        </regionAppend>
+                                    </mediaPlaybackStarted>
+                                    <mediaPlaybackComplete>
+                                        <hardwareTimeStamp dtmf="B" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="mediaPlaybackComplete recordedMediaE"/>
+                                        </regionAppend>
+                                    </mediaPlaybackComplete>
+                                </startAudioRecorderWeb>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Pause">
+                                <hardwareTimeStamp dtmf="C" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="pauseMedia recordedMediaE"/>
+                                </regionAppend>
+                                <pauseMedia mediaId="recordedMediaE"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Resume">
+                                <hardwareTimeStamp dtmf="D" />
+                                <regionAppend regionId="stimuliLabelRegion">
+                                    <plainText featureText="playMedia recordedMediaE"/>
+                                </regionAppend>
+                                <playMedia mediaId="recordedMediaE"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Stop">
+                                <stopAudioRecorder/>	
+                                <hardwareTimeStamp dtmf="off" opto1="false" opto2="true"/>
+                            </actionTokenButton>
                         </column>
                     </row>
                 </table>
@@ -1139,9 +1227,33 @@
     <presenter back="Menu" menuLabel="Sequential Display Example (single timer)" type="stimulus" self="Sequential_Display_Example" title="Sequential Display Example (single timer)">
         <loadStimulus eventTag="Sequential_Display_Example" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
-                <clearTimer listenerId="sequentialDisplayTimer"/>
+                <clearTimer listenerId="sequentialDisplayTimer"/> 
                 <clearPage/>
+                <hardwareTimeStamp dtmf="off" opto1="true" opto2="true"/>
+                <hasGetParameter parameterName="hardwareTimeStamp">
+                    <conditionTrue>
+                        <regionStyle regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="HardwareTimeStamps is enabled."/>
+                        </regionAppend>
+                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaSTE">
+                            <onError/>
+                            <onSuccess/>
+                            <mediaLoaded/>
+                            <mediaLoadFailed/>
+                            <mediaPlaybackStarted/>
+                            <mediaPlaybackComplete/>
+                        </startAudioRecorderWeb>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="The GET parameter hardwareTimeStamp has not been provided in the URL. HardwareTimeStamps disabled so this example will have no output."/>
+                            <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
+                        </regionAppend>
+                    </conditionFalse>
+                </hasGetParameter>
                 <timerLabel listenerId="sequentialDisplayTimer" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                <hardwareTimeStamp dtmf="0" opto1="false" opto2="true"/>
                 <regionAppend regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
                     <htmlText featureText="sync" styleName="stimuliLabel"/>
                 </regionAppend>
@@ -1158,6 +1270,7 @@
                 <regionAppend regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
                 <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
                     <logTimeStamp eventTag="actionButton Respond"/>
+                    <hardwareTimeStamp dtmf="1"/>
                     <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer&gt;ms"/>
                 </actionButton>
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
@@ -1166,47 +1279,58 @@
                 <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
+                        <hardwareTimeStamp opto2="true"/>
                         <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
                             <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
-                                <mediaLoaded>
+                                <mediaLoaded> 
                                     <plainText featureText="stimulusVideoLoaded"/>
                                     <clearTimer listenerId="sequentialDisplayTimer"/>
+                                    <hardwareTimeStamp dtmf="off" />
                                     <startTimer msToNext="100" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="3" opto1="true" />
                                         <regionStyle regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Outline"/>
                                         <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline"/>
                                         <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="350" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="4" opto1="true" opto2="false"/>
                                         <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide"/>
                                         <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show"/>
                                         <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="500" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="5" opto2="true"/>
                                         <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide"/>
                                         <htmlTokenText featureText="stimuliLabelHide (500) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="1000" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="6" />
                                         <playMedia mediaId="stimulusAudioExample"/>
                                         <htmlTokenText featureText="play audio request (1000) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="7000" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="7" />
                                         <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
                                         <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>-->
                                         <playMedia mediaId="stimulusVideoExample"/>
                                         <htmlTokenText featureText="stimuliVideoPlay (7000) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="11000" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="8" />
                                         <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>-->
                                         <htmlTokenText featureText="stimuliVideoHide (11000) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="400" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="9" />
                                         <enableButtonGroup matchingRegex="respondButtonGroup"/>
                                         <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="13000" listenerId="sequentialDisplayTimer">
+                                        <hardwareTimeStamp dtmf="A" />
                                         <disableButtonGroup matchingRegex="respondButtonGroup"/>
                                         <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
                                         <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
+                                            <hardwareTimeStamp dtmf="*" />
                                             <logTimeStamp eventTag="actionButton Volgende"/>
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
@@ -1222,10 +1346,12 @@
                                     </actionButton>
                                 </mediaLoadFailed>
                                 <mediaPlaybackStarted>
+                                    <hardwareTimeStamp dtmf="off" opto2="false"/>
                                     <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>
                                     <htmlTokenText featureText="stimulusVideoPlaybackStarted and show (7000) &lt;sequentialDisplayTimer&gt;ms"/>
                                 </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
+                                    <hardwareTimeStamp dtmf="off" opto2="true"/>
                                     <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
                                     <htmlTokenText featureText="stimulusVideoComplete and hide &lt;sequentialDisplayTimer&gt;ms"/>
                                 </mediaPlaybackComplete>
@@ -1247,6 +1373,7 @@
                         </actionButton>
                     </mediaLoadFailed>
                     <mediaPlaybackStarted>
+                        <hardwareTimeStamp dtmf="off" />
                         <htmlTokenText featureText="stimulusAudioPlaybackStarted (1000) &lt;sequentialDisplayTimer&gt;ms"/>
                     </mediaPlaybackStarted>
                     <mediaPlaybackComplete>
@@ -1289,7 +1416,9 @@
                     <resetStimulus target="Sequential_Display_Example"/>
                     <gotoPresenter target="Sequential_Display_Example"/>
                 </actionButton>
-            </endOfStimulus>
+                <stopAudioRecorder/>	
+                <hardwareTimeStamp dtmf="off" opto1="true" opto2="true"/>
+            </endOfStimulus> 
             <randomGrouping storageField="stimuliSequentialDisplayExample">
                 <tag alias="v0">media</tag>
                 <tag alias="v1">ToneVideos</tag>
@@ -1392,7 +1521,7 @@
                 <regionStyle regionId="regionC" styleName="hiddenRegion"/>
             </actionButton>
         </regionAppend>
-    </presenter>
+    </presenter> 
     <presenter back="Menu" menuLabel="Rating Toggle Example" type="stimulus" self="Rating_Toggle_Example" title="Rating Toggle Example">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -1416,8 +1545,7 @@
                 <addPadding/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <plainText featureText="left label"/>
-                <plainText featureText="right label"/>
+                <addPadding/>
                 <regionAppend regionId="region1">
                     <actionButton featureText="1" styleName="toggleBox">
                         <setStimulusCodeResponse codeFormat="1" dataChannel="8" applyScore="true"/>
@@ -1575,20 +1703,48 @@
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000" visibleRegex=".*" enabledRegex="nevermatches"/>
         <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
+            <onError/> 
             <onSuccess>
                 <gotoPresenter target="Metadata_Enable_Visible"/>
             </onSuccess>
         </saveMetadataButton>
-    </presenter>
+    </presenter> 
+    <presenter back="Menu" menuLabel="Metadata Current Date" type="stimulus" self="Metadata_Current_Date" title="Metadata Current Date">
+        <addPadding/>
+        <plainText featureText="In this example a metadata field is checked if it contains the current date or not."/>
+        <triggerDefinition listenerId="showCurrentValue" threshold="0" maximum="0">
+            <regionReplace regionId="currentValueRegion">
+                <htmlTokenText featureText="Stored Date: &lt;metadataField_storedDate&gt;"/>
+                <hasMetadataValue fieldName="storedDate" matchingRegex=".*&lt;currentDateDDMMYYYY&gt;$">
+                    <conditionFalse>
+                        <htmlText featureText="It's another date"/>
+                    </conditionFalse>
+                    <conditionTrue>
+                        <htmlText featureText="It's today"/>
+                    </conditionTrue>
+                </hasMetadataValue>
+            </regionReplace>
+        </triggerDefinition>
+        <triggerMatching listenerId="showCurrentValue"/>
+        <addPadding/>
+        <actionButton featureText="Set Current Date">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="&lt;currentDateDDMMYYYY&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="Set Another Date">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="01/12/3456"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+    </presenter> 
     <presenter back="Menu" menuLabel="Append Unique Date" type="stimulus" self="append_unique_date" title="Append Unique Date">
         <!--todo: complete this example-->
         <regionAppend regionId="currentValueRegion">
-            <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
+            <htmlTokenText featureText="&lt;metadataField_session_next_step&gt;"/>
         </regionAppend>
         <triggerDefinition listenerId="showCurrentValue" threshold="0" maximum="0">
             <regionReplace regionId="currentValueRegion">
-                <plainText featureText="&lt;metadataField_session_next_step&gt;"/>
+                <htmlTokenText featureText="&lt;metadataField_session_next_step&gt;"/>
             </regionReplace>
         </triggerDefinition>
         <actionButton featureText="Reset Metadata Value">
@@ -1596,12 +1752,12 @@
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
         <actionButton featureText="Append Current Date">
-            <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_steps&gt;_&lt;currentDateDDMMYYYY&gt;"/>
+            <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_next_step&gt;_&lt;currentDateDDMMYYYY&gt;"/>
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
         <actionButton featureText="Remove Current Date">
-            <setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;currentDateDDMMYYYY&gt;(_?[0-9]{8,8}_?)*[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
-            <setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+            <setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;currentDateDDMMYYYY&gt;(_?[0-9]{8,8}_?)*[_$]" dataLogFormat="&lt;metadataField_session_next_step&gt;"/>
+            <!--setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_next_step&gt;"/-->
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
     </presenter>
@@ -1660,7 +1816,7 @@
                     <onError>
                         <htmlTokenText featureText="Failed to setMetadataEvalTokens."/>
                     </onError>
-                    <onSuccess>
+                    <onSuccess> 
                         <htmlTokenText featureText="The number of days between dateOfBirth:&lt;metadataField_dateOfBirth&gt; and today:&lt;currentDateDDMMYYYY&gt; is &lt;metadataField_session_step&gt;."/>
                     </onSuccess>
                 </setMetadataEvalTokens>
@@ -2500,7 +2656,7 @@
                     <gotoPresenter target="clear_stimulus_responses_example"/>
                 </actionButton>
                 <addPadding/>
-                <addPadding/>
+                <addPadding/> 
                 <addPadding/>
                 <htmlText featureText="stimulusRatingRadio" styleName="highlightedText"/>
                 <stimulusRatingRadio ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="horizontal"/>
@@ -2535,11 +2691,19 @@
         <loadStimulus eventTag="clear_stimulus_response_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <plainText featureText="This example shows various stimulus rating types and various layout options for those rating options. Some rating options in this example are fixed and others are per stimulus."/>
+                <plainText featureText="This example shows multiple free text inputs for each stimulus. The responses to each stimulus are shown in a htmlTokenText with &lt;stimulusResponse_stimulusid_groupId&gt;"/>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <stimulusLabel styleName="countDownLabel"/>
+                <stimulusLabel styleName="countDownLabel"/> 
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="All responses for this stimulus will be stored separately according to the groupId of each including the stimulusFreeText." styleName="highlightedText"/>
+                <htmlTokenText featureText="1: &lt;stimulusResponse__stimulusFreeText1&gt;"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText1"/>
+                <htmlTokenText featureText="2: &lt;stimulusResponse__stimulusFreeText2&gt;"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText2"/>
+                <addPadding/>
                 <addPadding/>
                 <stimulusExists offset="-1">
                     <conditionTrue>
@@ -2555,11 +2719,6 @@
                 </stimulusExists>
                 <addPadding/>
                 <addPadding/>
-                <addPadding/>
-                <htmlText featureText="All responses for this stimulus will be stored separately according to the groupId of each including the stimulusFreeText." styleName="highlightedText"/>
-                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText1"/>
-                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText2"/>
-                <addPadding/>
                 <actionButton featureText="clearStimulusResponse all">
                     <clearStimulusResponse/>
                     <gotoPresenter target="clear_stimulus_response_example"/>
@@ -2573,6 +2732,28 @@
                     <gotoPresenter target="clear_stimulus_response_example"/>
                 </actionButton>
                 <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="Current stimulus all groups: &lt;stimulusResponse&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="id7_1: &lt;stimulusResponse_7_stimulusFreeText1&gt;"/>
+                <htmlTokenText featureText="id7_2: &lt;stimulusResponse_7_stimulusFreeText2&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="id68_1: &lt;stimulusResponse_68_stimulusFreeText1&gt;"/>
+                <htmlTokenText featureText="id68_2: &lt;stimulusResponse_68_stimulusFreeText2&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="id32_1: &lt;stimulusResponse_32_stimulusFreeText1&gt;"/>
+                <htmlTokenText featureText="id32_2: &lt;stimulusResponse_32_stimulusFreeText2&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="id322_1: &lt;stimulusResponse_322_stimulusFreeText1&gt;"/>
+                <htmlTokenText featureText="id322_2: &lt;stimulusResponse_322_stimulusFreeText2&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="id323_1: &lt;stimulusResponse_323_stimulusFreeText1&gt;"/>
+                <htmlTokenText featureText="id323_2: &lt;stimulusResponse_323_stimulusFreeText2&gt;"/>
                 <addPadding/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -2934,7 +3115,7 @@
                 <stimulusRatingCheckbox ratingLabelRight="zeer waarschijnlijk positief" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief" orientation="flow" groupId="stimulusRatingCheckbox flow"/>
                 <addPadding/>
                 <addPadding/>
-                <addPadding/>                
+                <addPadding/>
                 <ratingFooterButton ratingLabelRight="zeer waarschijnlijk V" ratingLabels="Z,Y,X,W,V" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk ratingFooterButton">
                     <nextStimulus repeatIncorrect="false"/>
                 </ratingFooterButton>
@@ -3051,7 +3232,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
-            <endOfStimulus>                
+            <endOfStimulus>
                 <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="Second"/>
@@ -3178,37 +3359,136 @@
         <htmlText featureText="This example starts and stops the web recorder based on the stimulus pause value."/>
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
+                <regionAppend regionId="paddingRegion"/>
+                <regionAppend regionId="hardwareTimeStampStatusRegion"/>
+                <hasGetParameter parameterName="hardwareTimeStamp">
+                    <conditionTrue>
+                        <regionStyle regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="HardwareTimeStamps is enabled."/>
+                        </regionAppend>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="The GET parameter hardwareTimeStamp has not been provided in the URL. HardwareTimeStamps disabled so this example will have no output."/>
+                            <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
+                        </regionAppend>
+                    </conditionFalse>
+                </hasGetParameter>
+                <logTimeStamp eventTag="start"/>
+                <hardwareTimeStamp dtmf="off" opto1="true" opto2="true" />
+                <!-- allow the hardware optical sensor time to register the current state -->
+                <pause msToNext="1000">
+                    <logTimeStamp eventTag="zero"/>
+                    <hardwareTimeStamp dtmf="1" opto1="false" opto2="true" />
+                    <stimulusLabel styleName="stimuliLabel"/>
+                    <actionButton groupId="dtmf8Button" featureText="DTMF 8 [space]" hotKey="SPACE">
+                        <logTimeStamp eventTag="dtmf8Button"/>
+                        <hardwareTimeStamp dtmf="8" opto2="true" />
+                        <pause msToNext="200">
+                            <hardwareTimeStamp dtmf="off" />
+                        </pause>
+                    </actionButton> 
+                    <addPadding/>
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia">
+                        <onError>
+                            <logTimeStamp eventTag="recording failed"/>
+                            <hardwareTimeStamp dtmf="off" />
+                            <htmlText featureText="startAudioRecorder onError"/>
+                        </onError>
+                        <onSuccess>
+                            <logTimeStamp eventTag="recording begun"/>
+                            <hardwareTimeStamp dtmf="off" opto2="false" />
+                            <htmlText featureText="startAudioRecorder onSuccess"/>
+                        </onSuccess>
+                        <mediaLoaded>
+                            <hardwareTimeStamp dtmf="4" />
+                            <plainText featureText="AudioRecordingLoaded"/>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <hardwareTimeStamp dtmf="5" />
+                            <plainText featureText="AudioRecordingLoadFailed"/>
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted/>
+                        <mediaPlaybackComplete>
+                            <hardwareTimeStamp dtmf="6" />
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                    <stimulusPause>
+                        <hardwareTimeStamp dtmf="7" opto1="true" opto2="true" />
+                        <stopAudioRecorder/> 
+                    <stopAudioRecorder/>
+                        <stopAudioRecorder/> 
+                        <logTimeStamp eventTag="stop"/>
+                        <pause msToNext="200">
+                            <hardwareTimeStamp dtmf="off" />
+                            <nextStimulus repeatIncorrect="false"/>
+                        </pause>
+                    </stimulusPause>
+                </pause>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <regionStyle regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                <hardwareTimeStamp dtmf="off" opto1="false" opto2="false" />
+                <stopAudioRecorder/>
+                <actionButton featureText="resetStimulus" hotKey="SPACE">
+                    <hardwareTimeStamp dtmf="9" opto1="false" opto2="false" />
+                    <resetStimulus target="RecorderPauseTest"/>
+                    <gotoPresenter target="RecorderPauseTest"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecorderNoDownloadTest" next="Menu" type="stimulus" self="RecorderNoDownloadTest" title="RecorderNoDownloadTest">
+        <htmlText featureText="This example starts the web recorder with the recording label &quot;recording&quot; and with a zero downloadPermittedWindowMs so that playback is not allowed."/>
+        <loadStimulus eventTag="RecorderNoDownloadTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                <startAudioRecorderWeb featureText="recording" downloadPermittedWindowMs="0" deviceRegex="" mediaId="recordedMedia">
                     <onError>
-                        <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                        <htmlText featureText="startAudioRecorder onError"/>
                     </onError>
                     <onSuccess>
                         <htmlText featureText="startAudioRecorder onSuccess"/>
                     </onSuccess>
                     <mediaLoaded>
                         <plainText featureText="AudioRecordingLoaded"/>
-                        <nextStimulus repeatIncorrect="false"/>
                     </mediaLoaded>
                     <mediaLoadFailed>
                         <plainText featureText="AudioRecordingLoadFailed"/>
                     </mediaLoadFailed>
-                    <mediaPlaybackStarted/>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
-                <stimulusPause>
+                <actionButton featureText="stopAudioRecorder">
                     <stopAudioRecorder/>
-                </stimulusPause>
+                </actionButton>
+                <actionButton featureText="nextStimulus">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RecorderNoDownloadTest"/>
+                    <gotoPresenter target="RecorderNoDownloadTest"/>
+                </actionButton>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>RecorderPauseTest</tag>
+                <tag>media</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -3458,7 +3738,7 @@
                                     </mediaPlaybackComplete>
                                 </startAudioRecorderWeb>
                             </actionButton>
-                        </column>
+                        </column> 
                         <column>
                             <actionButton featureText="playRecordedC">
                                 <playMedia mediaId="recordedMediaC"/>
@@ -3856,24 +4136,24 @@
                                 <pause msToNext="1000">
                                     <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_4_white"/>
                                     <regionReplace regionId="square1">
-                                        <stimulusButton featureText="1" styleName="buttonStyle">
+                                        <actionButton featureText="1" styleName="buttonStyle">
                                             <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;1" dataChannel="8" applyScore="false"/>
-                                        </stimulusButton>
+                                        </actionButton>
                                     </regionReplace>
                                     <regionReplace regionId="square2">
-                                        <stimulusButton featureText="2" styleName="buttonStyle">
+                                        <actionButton featureText="2" styleName="buttonStyle">
                                             <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;2" dataChannel="8" applyScore="false"/>
-                                        </stimulusButton>
+                                        </actionButton>
                                     </regionReplace>
                                     <regionReplace regionId="square3">
-                                        <stimulusButton featureText="3" styleName="buttonStyle">
+                                        <actionButton featureText="3" styleName="buttonStyle">
                                             <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;3" dataChannel="8" applyScore="false"/>
-                                        </stimulusButton>
+                                        </actionButton>
                                     </regionReplace>
                                     <regionReplace regionId="square4">
-                                        <stimulusButton featureText="4" styleName="buttonStyle">
+                                        <actionButton featureText="4" styleName="buttonStyle">
                                             <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;4" dataChannel="8" applyScore="false"/>
-                                        </stimulusButton>
+                                        </actionButton>
                                     </regionReplace>
                                     <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
                                     <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
@@ -4458,7 +4738,7 @@
             <stimuli>
                 <tag>Pretest_Screen</tag>
             </stimuli>
-        </loadStimulus>
+        </loadStimulus> 
     </presenter>
     <presenter back="Menu" menuLabel="RedirectToUrlExample" type="transmission" self="RedirectToUrlExample" title="RedirectToUrlExample">
         <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example/?session_next_step=thenextexperiment&amp;validated_uuid=theusersid&amp;session_steps=allthesteps#RedirectToUrlExample"/>
@@ -4467,7 +4747,7 @@
         <setMetadataValue fieldName="session_steps" dataLogFormat="allthesteps"/>
         <actionButton featureText="redirectToUrl">
             <redirectToUrl src="/&lt;metadataField_session_next_step&gt;?uuid=&lt;metadataField_validated_uuid&gt;&amp;session_steps=&lt;metadataField_session_steps&gt;"/>
-        </actionButton> 
+        </actionButton>            
         <addPadding/>           
         <actionButton featureText="redirectToStaging">
             <redirectToUrl src="https://frinexstaging.mpi.nl/with_stimulus_example/?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
@@ -4478,11 +4758,12 @@
         </actionButton>            
         <actionButton featureText="redirectToElectron"> 
             <redirectToUrl src="http://localhost:5000/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
-        </actionButton>            
+        </actionButton>
+        <htmlTokenText featureText="&lt;a href=&quot;http://localhost:5000/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample&quot;&gt;return to electron&lt;/a&gt;"/>
     </presenter>  
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
         <generateCompletionCode>
-            <onSuccess>
+            <onSuccess>  
                 <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
                 <transmitResults sendingRegex="uuid|session_id|step_done|session_steps|session_step" receivingRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
                 &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
@@ -4578,7 +4859,7 @@
     <presenter menuLabel="InvitationCodeExampleInvalid" type="transmission" self="InvitationCodeExampleInvalid" title="Invitation Code Example Invalid">
         <plainText featureText="You must delete the local data to proceed."/>
         <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationSessionStepsExample"/>
-    </presenter>
+    </presenter> 
     <presenter back="Menu" menuLabel="RecordingQualityTest" type="stimulus" self="RecordingQualityTest" title="RecordingQualityTest">
         <resetStimulus target="RecordingQualityTest"/>
         <regionAppend regionId="recordedMediaResult"></regionAppend>
@@ -4673,7 +4954,7 @@
                         <actionButton featureText="clearCurrentScore">
                             <clearCurrentScore/>
                             <gotoPresenter target="RecordingQualityTest"/>
-                        </actionButton>
+                        </actionButton>  
                         <addPadding/>
                         <actionButton featureText="resetStimulus">
                             <resetStimulus target="RecordingQualityTest"/>
@@ -4735,7 +5016,7 @@
             <regionReplace regionId="regionTriggerB">
                 <plainText featureText="regionTriggerB has triggered and will not again"/>
             </regionReplace>
-        </triggerDefinition>
+        </triggerDefinition> 
         <triggerDefinition listenerId="triggerC" threshold="0" maximum="1">
             <regionReplace regionId="regionTriggerC">
                 <plainText featureText="regionTriggerB has triggered and will not again"/>
@@ -4783,7 +5064,7 @@
                 playerGamesPlayed:
                 &lt;playerGamesPlayed&gt;&lt;br/&gt;
                 "/>
-            </regionReplace>
+            </regionReplace> 
         </triggerDefinition>
         <triggerMatching listenerId="scoreLabelsTrigger"/>
         <actionButton featureText="clearCurrentScore">
@@ -4973,9 +5254,462 @@
             </table>
         </regionReplace>
     </presenter>
+    <presenter back="Menu" menuLabel="Predefined Stimuli Example" type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
+        <withStimuli eventTag="predefined_stimuli_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <beforeStimulus>
+                <plainText featureText="The stimuli list in this example can be predetermined by the providing list alias in the URL."/>
+                <htmlTokenText featureText="Alternatively you could set the metadata field &quot;stimuliSequentialDisplayExample&quot; manually with &amp;lt;setMetadataValue fieldName=&quot;stimuliSequentialDisplayExample&quot; dataLogFormat=&quot;L1&quot;/&amp;gt;"/>
+                <addPadding/>
+                <htmlTokenText featureText="The value of stimuliSequentialDisplayExample is: &quot;&lt;metadataField_stimuliSequentialDisplayExample&gt;&quot;"/>
+                <addPadding/>
+                <plainText featureText="When no list alias is found the tag &quot;First_Stimuli_Screen&quot; will be used."/>
+                <addPadding/>
+                <plainText featureText="&lt;randomGrouping storageField=&quot;stimuliSequentialDisplayExample&quot;&gt;"/>
+                <plainText featureText="&lt;list alias=&quot;L1&quot;&gt;-R1-R2-R3-R4-Q1-Q2-Q3-Q8-&lt;/list&gt;"/>
+                <plainText featureText="&lt;list alias=&quot;L2&quot;&gt;-Q1-Q2-Q3-Q8-&lt;/list&gt;"/>
+                <plainText featureText="&lt;list alias=&quot;L3&quot;&gt;-R1-R2-R3-R4-&lt;/list&gt;"/>
+                <plainText featureText="&lt;/randomGrouping&gt;"/>
+                <plainText featureText="&lt;stimuli&gt;"/>
+                <plainText featureText="&lt;tag&gt;First_Stimuli_Screen&lt;/tag&gt;"/>
+                <plainText featureText="&lt;/stimuli&gt;"/>
+            </beforeStimulus>
+            <eachStimulus>
+                <htmlTokenText featureText="stimulusId: &lt;stimulusId&gt;"/>
+            </eachStimulus>
+            <afterStimulus>
+                <addPadding/>
+                <htmlText featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L1&quot;&gt;List 1&lt;/a&gt;"/>
+                <addPadding/>
+                <htmlText featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L2&quot;&gt;List 2&lt;/a&gt;"/>
+                <addPadding/>
+                <htmlText featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L3&quot;&gt;List 3&lt;/a&gt;"/>
+                <addPadding/>
+                <actionButton featureText="clearStimulusResponses and reaload">
+                    <clearStimulusResponses tags="First_Stimuli_Screen"/>
+                    <gotoPresenter target="single_line_text_box_no_action_example"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="single_line_text_box_no_action_example"/>
+                    <gotoPresenter target="single_line_text_box_no_action_example"/>
+                </actionButton>
+            </afterStimulus>
+            <randomGrouping storageField="stimuliSequentialDisplayExample">
+                <list alias="L1">-R1-R2-R3-R4-Q1-Q2-Q3-Q8-</list>
+                <list alias="L2">
+                    -Q1
+                    -Q2
+                    -Q3
+                    -Q8
+                    -
+                </list>
+                <list alias="L3">-R1-R2-R3-R4-</list>
+            </randomGrouping>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </withStimuli>
+    </presenter>
+    <presenter back="Menu" menuLabel="Random Image Positions Remembered" type="stimulus" self="random_image_positions_remembered" title="Random Image Positions Remembered">
+        <loadStimulus eventTag="random_image_positions_remembered" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="This example shows how to randomly assign a left or right position to a given stimulus and remember that random position when that stimulus is shown again."/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <stimulusExists offset="1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <clearStimulusResponses tags="GroupOf2Images"/>
+                    <setMetadataValue fieldName="displayedOrder" replacementRegex="" dataLogFormat=""/>
+                    <resetStimulus target="random_image_positions_remembered"/>
+                    <gotoPresenter target="random_image_positions_remembered"/>
+                </actionButton>
+                <addPadding/>
+                <addPadding/> 
+                <addPadding/>
+                <addPadding/>
+                <table styleName="menuTable">
+                    <row>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="leftImageRegion" />
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="centreImageRegion" />
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="rightImageRegion" />
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <regionReplace regionId="leftImageRegion_label" />
+                        </column>
+                        <column>
+                            <regionReplace regionId="centreImageRegion_label" />
+                        </column>
+                        <column>
+                            <regionReplace regionId="rightImageRegion_label" />
+                        </column>
+                    </row>
+                </table>
+                <addPadding/>
+                <!-- check that a sequence has been stored and if not then store a sequence for the current stimulus -->
+                <stimulusHasResponse groupId="rememberedSequenceFirst" matchingRegex="_[AB]">
+                    <conditionTrue>
+                        <htmlText featureText="Using stored sequence"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <htmlText featureText="Randomising the sequence"/>
+                        <matchOnEvalTokens evaluateTokens="random(2) &gt; 0" matchingRegex="true">
+                            <conditionTrue>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_A" groupId="rememberedSequenceFirst"/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_B" groupId="rememberedSequenceLast"/>
+                            </conditionTrue>
+                            <conditionFalse>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_B" groupId="rememberedSequenceFirst"/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_A" groupId="rememberedSequenceLast"/>
+                            </conditionFalse>
+                            <onError>
+                                <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+                            </onError>
+                        </matchOnEvalTokens>
+                        <hasMetadataValue fieldName="displayedOrder" matchingRegex=".*_A_A$">
+                            <conditionTrue>
+                                <plainText featureText="The image with the _A suffix was shown first the last two or more times. Since a sequence of three is not allowed this randomisation will be forced to show _B first for this stimulus."/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_B" groupId="rememberedSequenceFirst"/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_A" groupId="rememberedSequenceLast"/>
+                            </conditionTrue>
+                            <conditionFalse/>
+                        </hasMetadataValue>
+                        <hasMetadataValue fieldName="displayedOrder" matchingRegex=".*_B_B$">
+                            <conditionTrue>
+                                <plainText featureText="The image with the _B suffix was shown first the last two or more times. Since a sequence of three is not allowed this randomisation will be forced to show _A first for this stimulus."/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_A" groupId="rememberedSequenceFirst"/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="_B" groupId="rememberedSequenceLast"/>
+                            </conditionTrue>
+                            <conditionFalse/>
+                        </hasMetadataValue>
+                        <setMetadataValue fieldName="displayedOrder" replacementRegex="" dataLogFormat="&lt;metadataField_displayedOrder&gt;&lt;stimulusResponse__rememberedSequenceFirst&gt;"/>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <!-- check that a position has been stored and if not then store a position for the current stimulus -->
+                <stimulusHasResponse groupId="rememberedPositionA" matchingRegex="(left|right)ImageRegion">
+                    <conditionTrue>
+                        <htmlText featureText="Using stored position"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <htmlText featureText="Randomising the position"/>
+                        <matchOnEvalTokens evaluateTokens="random(2) &gt; 0" matchingRegex="true">
+                            <conditionTrue>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="leftImageRegion" groupId="rememberedPositionA"/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="rightImageRegion" groupId="rememberedPositionB"/>
+                            </conditionTrue>
+                            <conditionFalse>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="rightImageRegion" groupId="rememberedPositionA"/>
+                                <setStimulusCodeResponse applyScore="false" codeFormat="leftImageRegion" groupId="rememberedPositionB"/>
+                            </conditionFalse>
+                            <onError>
+                                <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+                            </onError>
+                        </matchOnEvalTokens>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <htmlTokenText featureText="displayedOrder: &lt;metadataField_displayedOrder&gt;" />
+                <!-- place the first stimulus in the centre position -->
+                <regionAppend regionId="centreImageRegion_label">
+                    <htmlTokenText featureText="&lt;code&gt;&lt;stimulusResponse__rememberedSequenceFirst&gt;" />
+                </regionAppend>
+                    <regionReplace regionId="centreImageRegion">
+                    <stimulusCodeImage codeFormat="&lt;code&gt;&lt;stimulusResponse__rememberedSequenceFirst&gt;.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                        <mediaLoaded>
+                            <pause msToNext="1000">
+                                <regionReplace regionId="centreImageRegion">
+                                    <!-- place the second stimulus in the centre position -->
+                                    <regionAppend regionId="centreImageRegion_label">
+                                        <htmlTokenText featureText="&lt;code&gt;&lt;stimulusResponse__rememberedSequenceLast&gt;" />
+                                    </regionAppend>
+                                    <stimulusCodeImage codeFormat="&lt;code&gt;&lt;stimulusResponse__rememberedSequenceLast&gt;.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                        <mediaLoaded>
+                                            <pause msToNext="1000">
+                                                <regionReplace regionId="centreImageRegion"/>
+                                                <!-- place the stimulus in the stored positions -->
+                                                <regionReplace regionId="&lt;stimulusResponse__rememberedPositionA&gt;">
+                                                    <stimulusCodeImage codeFormat="&lt;code&gt;_A.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                                        <mediaLoaded>
+                                                        </mediaLoaded>
+                                                        <mediaLoadFailed>
+                                                            <htmlText featureText="mediaLoadFailed"/>
+                                                        </mediaLoadFailed>
+                                                    </stimulusCodeImage>
+                                                </regionReplace>
+                                                <regionReplace regionId="&lt;stimulusResponse__rememberedPositionB&gt;">
+                                                    <stimulusCodeImage codeFormat="&lt;code&gt;_B.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                                        <mediaLoaded>
+                                                        </mediaLoaded>
+                                                        <mediaLoadFailed>
+                                                            <htmlText featureText="mediaLoadFailed"/>
+                                                        </mediaLoadFailed>
+                                                    </stimulusCodeImage>
+                                                </regionReplace>
+                                                <regionReplace regionId="leftImageRegion_label">
+                                                    <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeTextLeft"/>
+                                                </regionReplace>
+                                                <regionReplace regionId="rightImageRegion_label">
+                                                    <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeTextRight"/>
+                                                </regionReplace>
+                                            </pause>
+                                        </mediaLoaded>
+                                        <mediaLoadFailed>
+                                            <htmlText featureText="mediaLoadFailed"/>
+                                        </mediaLoadFailed>
+                                    </stimulusCodeImage>
+                                </regionReplace>
+                            </pause>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <htmlText featureText="mediaLoadFailed"/>
+                        </mediaLoadFailed>
+                    </stimulusCodeImage>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <clearStimulusResponses tags="GroupOf2Images"/>
+                    <setMetadataValue fieldName="displayedOrder" replacementRegex="" dataLogFormat=""/>
+                    <resetStimulus target="random_image_positions_remembered"/>
+                    <gotoPresenter target="random_image_positions_remembered"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>GroupOf2Images</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Preload Images Example" type="stimulus" self="preload_images_example" title="Preload Images Example">
+        <loadStimulus eventTag="preload_images_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="This example shows how load the required images before displaying them, so that they all show at the same time regardless of network delays. If any image fails to load then no images will be shown and this must be handled appropriately."/>
+                <triggerDefinition listenerId="showLoadedImages" threshold="11" maximum="1">
+                    <regionStyle regionId="regionImage2A" styleName=""/>
+                    <pause msToNext="1000">
+                        <regionStyle regionId="regionImage2A" styleName="hiddenRegion"/>
+                        <regionStyle regionId="regionImage2B" styleName=""/>
+                        <pause msToNext="1000">
+                            <regionStyle regionId="regionImage2B" styleName="hiddenRegion"/>
+                            <regionStyle regionId="regionImage2C" styleName=""/>
+                            <pause msToNext="1000">
+                                <regionStyle regionId="regionImage2C" styleName="hiddenRegion"/>
+                                <regionStyle regionId="regionImage1" styleName=""/>
+                                <regionStyle regionId="regionImage3" styleName=""/>
+                                <regionStyle regionId="regionImageA" styleName=""/>
+                                <regionStyle regionId="regionImageB" styleName=""/>
+                                <regionStyle regionId="regionImageC" styleName=""/>
+                                <regionStyle regionId="regionImageD" styleName=""/>
+                                <regionStyle regionId="regionImageE" styleName=""/>
+                                <regionStyle regionId="regionImageF" styleName=""/>
+                            </pause>
+                        </pause>
+                    </pause>
+                    <plainText featureText="The triggerDefinition showLoadedImages has reached its threshold and has triggered. The images should now be shown."/>
+                </triggerDefinition>
+                <addPadding/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <stimulusExists offset="1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+                <addPadding/>
+                <table styleName="menuTable">
+                    <row>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImage1" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImage2A" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_A.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                            <regionReplace regionId="regionImage2B" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_B.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                            <regionReplace regionId="regionImage2C" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_C.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImage3" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                    </row>
+                    <row>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImageA" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_A.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image A loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImageB" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_B.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image B loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImageC" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_C.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image C loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                    </row>
+                    <row>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImageD" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_D.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image D loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImageE" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_E.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image E loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                        <column styleName="menuTable">
+                            <regionReplace regionId="regionImageF" styleName="hiddenRegion">
+                                <stimulusCodeImage codeFormat="&lt;code&gt;_F.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
+                                    <mediaLoaded>
+                                        <plainText featureText="Image F loaded."/>
+                                        <triggerMatching listenerId="showLoadedImages"/>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <htmlText featureText="mediaLoadFailed"/>
+                                    </mediaLoadFailed>
+                                </stimulusCodeImage>
+                            </regionReplace>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="preload_images_example"/>
+                    <gotoPresenter target="preload_images_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>GroupOf2Images</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <!--todo: add an example of random pause with min max and also with ranges-->
     <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
+        <stimuliValidation/>
     </presenter>
     <stimuli>
         <stimulus identifier="cond_1:Label for the stimuli" label="Label for the stimuli" pauseMs="0" code="Item1" tags="First_Stimuli_Screen cond_1"/>
@@ -5065,5 +5799,12 @@
         <stimulus  identifier="author_1"  label="Auteur 1"  tags="missed_fav_author"  pauseMs="0"  />
         <stimulus  identifier="author_2"  label="Auteur 2"  tags="missed_fav_author"  pauseMs="0"  />
         <stimulus  identifier="author_3"  label="Auteur 3"  tags="missed_fav_author"  pauseMs="0"  />
+        <stimulus identifier="group_example_1_0" ratingLabels="8,7,6,5,4,3,2,1,0" label="group_example_1_0" tags="group_example_1" />
+        <stimulus code="1" identifier="Image1" label="1" tags="GroupOf2Images" />
+        <stimulus code="2" identifier="Image2" label="2" tags="GroupOf2Images" />
+        <stimulus code="3" identifier="Image3" label="3" tags="GroupOf2Images" />
+        <stimulus code="4" identifier="Image4" label="4" tags="GroupOf2Images" />
+        <stimulus code="5" identifier="Image5" label="5" tags="GroupOf2Images" />
+        <stimulus code="6" identifier="Image6" label="6" tags="GroupOf2Images" />
     </stimuli>
 </experiment>
