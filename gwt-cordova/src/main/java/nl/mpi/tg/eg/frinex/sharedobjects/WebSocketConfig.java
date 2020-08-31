@@ -2,7 +2,7 @@ package nl.mpi.tg.eg.frinex.sharedobjects;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
@@ -31,7 +31,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 @Configuration
 @EnableWebSocketMessageBroker
 @EnableWebSocket
-public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer /* implements WebSocketConfigurer */ {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer /* implements WebSocketConfigurer */ {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {

@@ -132,13 +132,20 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     public void submitTagValue(final UserId userId, final String screenName, String eventTag, String tagValue, int eventMs) {
-        submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
-                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
-                + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
-                + "\"screenName\": " + jsonEscape(screenName) + ",\n"
-                + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
-                + "\"tagValue\": " + jsonEscape(tagValue) + ",\n"
-                + "\"eventMs\": \"" + eventMs + "\" \n}");
+        if (tagValue == null) {
+            tagValue = "undefined";
+        }
+        while (tagValue.length() > 0) {
+            String tagValuePart = tagValue.substring(0, 255);
+            tagValue = tagValue.substring(255);
+            submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                    + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                    + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                    + "\"screenName\": " + jsonEscape(screenName) + ",\n"
+                    + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
+                    + "\"tagValue\": " + jsonEscape(tagValuePart) + ",\n"
+                    + "\"eventMs\": \"" + eventMs + "\" \n}");
+        }
     }
 
     public void submitTagPairValue(final UserId userId, final String screenName, final int dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs) {

@@ -143,17 +143,17 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     public void transmitResults(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final Duration transmitDuration = new Duration();
         final String dataLogFormatted = (dataLogFormat == null) ? null : new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(dataLogFormat);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "transmitResults", receivingRegex.substring(0, 255), transmitDuration.elapsedMillis());
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "transmitResults", receivingRegex, transmitDuration.elapsedMillis());
         new RegistrationService().submitRegistration(userResults, sendingRegex, receivingRegex, dataLogFormatted, new RegistrationListener() {
             @Override
             public void registrationFailed(RegistrationException exception) {
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "transmitFailed", exception.getMessage().substring(0, 255), transmitDuration.elapsedMillis());
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "transmitFailed", exception.getMessage(), transmitDuration.elapsedMillis());
                 onError.postLoadTimerFired();
             }
 
             @Override
             public void registrationComplete(String responseMetadataFields) {
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "transmitComplete", responseMetadataFields.substring(0, 255), transmitDuration.elapsedMillis());
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "transmitComplete", responseMetadataFields, transmitDuration.elapsedMillis());
                 // because the received data can be used to set metadata fields, we store that data here
                 localStorage.storeData(userResults, metadataFieldProvider);
                 onSuccess.postLoadTimerFired();
