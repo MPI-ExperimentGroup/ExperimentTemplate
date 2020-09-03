@@ -56,7 +56,7 @@ public abstract class LocalNotifications {
             if (currentParts.length > 1) {
                 switch (currentParts[0]) {
                     case "in_minutes":
-                        setNotificationInMinutes(notificationCount, notificationTitle, notificationText + "\n" + currentEntry, notificationActions, Integer.parseInt(currentParts[1]));
+                        setNotificationInMinutes(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, notificationActions, Integer.parseInt(currentParts[1]));
                         notificationCount++;
                         break;
                     case "weekends_between":
@@ -128,7 +128,7 @@ public abstract class LocalNotifications {
                     logNotificationRequest("adding date time notification: " + currentDate);
                     setDayNotification(notificationCount + numberAdded, notificationTitle,
                             notificationText
-                            + " : " + maxDaysInAdvance + "_" + onWeekends + "_" + hourInt + "_" + minuteInt,
+                            /*+ " : " + maxDaysInAdvance + "_" + onWeekends + "_" + hourInt + "_" + minuteInt*/,
                             notificationActions, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
                     numberAdded++;
                 } else {

@@ -1095,7 +1095,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
     </xsl:template>
     <xsl:template match="versionData">
         <xsl:text>    addText("Framework For Interactive Experiments\n"
-            + "DOI 10.5281/zenodo.3522911"
+            + "DOI 10.5281/zenodo.3522911" + "\n"
             + "FRINEX Version: " + version.majorVersion() + "."
             + version.minorVersion() + "."
             + version.buildVersion() + "\n"
