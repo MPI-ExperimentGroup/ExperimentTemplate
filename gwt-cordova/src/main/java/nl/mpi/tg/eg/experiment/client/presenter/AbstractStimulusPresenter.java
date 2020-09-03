@@ -1708,11 +1708,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
 
-        final String deviceRegex = (deviceRegexL == null) ? "" : deviceRegexL;
+        final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
-            public void recorderStarted() {
+            public void recorderStarted(final String targetDeviceId) {
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", targetDeviceId);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorderDeviceId", targetDeviceId, duration.elapsedMillis());
                 onSuccess.postLoadTimerFired();
             }
 
