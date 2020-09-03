@@ -396,7 +396,10 @@ public class AbstractSchemaGenerator {
                             new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false, "Boolean")
-                                    .integerAttribute("channel", false)}),
+                                    .integerAttribute("channel", false),
+                            new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
+                                    .documentedAttribute("name", AttributeType.xsString, "User name for access to the administration system and JSON REST interface for this experiment.", false)
+                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false)}),
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables. "
                         + "", 1, 1,
