@@ -390,16 +390,16 @@ public class AbstractSchemaGenerator {
                         .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.", true),
                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
+                            new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
+                                    .documentedAttribute("name", AttributeType.xsString, "User name for access to the administration system and JSON REST interface for this experiment.", false)
+                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
                                     .stringAttribute("fieldName", false)
                                     .stringAttribute("matchingRegex", false),
                             new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false, "Boolean")
-                                    .integerAttribute("channel", false),
-                            new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
-                                    .documentedAttribute("name", AttributeType.xsString, "User name for access to the administration system and JSON REST interface for this experiment.", false)
-                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false)}),
+                                    .integerAttribute("channel", false)}),
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables. "
                         + "", 1, 1,

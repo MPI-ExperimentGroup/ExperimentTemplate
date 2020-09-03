@@ -381,6 +381,13 @@ Administration
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
+<a href="#adminUserType"><span style="color:purple">&lt;</span><span style="color:blue">adminUser</span></a></td><td><span style="color:green">name</span><span style="color:grey">=&quot;String&quot;</span><span>
+User name for access to the administration system and JSON REST interface for this experiment.</span><br/>
+<span style="color:green">password</span><span style="color:grey">=&quot;String&quot;</span><span>
+User password for access to the administration system and JSON REST interface for this experiment.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
 <a href="#dataAgreementFieldType"><span style="color:purple">&lt;</span><span style="color:blue">dataAgreementField</span></a></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -396,13 +403,6 @@ String</span><br/>
 Boolean</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
-<tr><td>
-<a href="#adminUserType"><span style="color:purple">&lt;</span><span style="color:blue">adminUser</span></a></td><td><span style="color:green">name</span><span style="color:grey">=&quot;String&quot;</span><span>
-User name for access to the administration system and JSON REST interface for this experiment.</span><br/>
-<span style="color:green">password</span><span style="color:grey">=&quot;String&quot;</span><span>
-User password for access to the administration system and JSON REST interface for this experiment.</span><br/>
-</td><td><span style="color:purple">&gt;</span>
-</td></tr>
 </table>
 </td>
 </tr>
@@ -414,6 +414,26 @@ User password for access to the administration system and JSON REST interface fo
 <tr>
 <td colspan='2' id='administrationTarget'>
 <button onclick="getExample('administration', 'administrationTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="adminUserType" style="text-transform: uppercase;">
+adminUser
+</h3>
+User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">adminUser</span></td><td><span style="color:green">name</span><span style="color:grey">=&quot;String&quot;</span><span>
+User name for access to the administration system and JSON REST interface for this experiment.</span><br/>
+<span style="color:green">password</span><span style="color:grey">=&quot;String&quot;</span><span>
+User password for access to the administration system and JSON REST interface for this experiment.</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='adminUserTarget'>
+<button onclick="getExample('adminUser', 'adminUserTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="dataAgreementFieldType" style="text-transform: uppercase;">
@@ -456,26 +476,6 @@ Boolean</span><br/>
 <tr>
 <td colspan='2' id='dataChannelTarget'>
 <button onclick="getExample('dataChannel', 'dataChannelTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="adminUserType" style="text-transform: uppercase;">
-adminUser
-</h3>
-User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">adminUser</span></td><td><span style="color:green">name</span><span style="color:grey">=&quot;String&quot;</span><span>
-User name for access to the administration system and JSON REST interface for this experiment.</span><br/>
-<span style="color:green">password</span><span style="color:grey">=&quot;String&quot;</span><span>
-User password for access to the administration system and JSON REST interface for this experiment.</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='adminUserTarget'>
-<button onclick="getExample('adminUser', 'adminUserTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="scssType" style="text-transform: uppercase;">

@@ -394,6 +394,12 @@
 <xs:annotation>
 <xs:documentation>Administration</xs:documentation>
 </xs:annotation>
+<xs:element name="adminUser" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="name" type="xs:string" use="required"/>
+<xs:attribute name="password" type="xs:string" use="required"/>
+</xs:complexType>
+</xs:element>
 <xs:element name="dataAgreementField" minOccurs="0">
 <xs:complexType>
 <xs:attribute name="fieldName" type="xs:string" use="required"/>
@@ -405,12 +411,6 @@
 <xs:attribute name="label" type="xs:string" use="required"/>
 <xs:attribute name="logToSdCard" type="xs:boolean" use="required"/>
 <xs:attribute name="channel" type="xs:integer" use="required"/>
-</xs:complexType>
-</xs:element>
-<xs:element name="adminUser" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="name" type="xs:string" use="required"/>
-<xs:attribute name="password" type="xs:string" use="required"/>
 </xs:complexType>
 </xs:element>
 </xs:sequence>
