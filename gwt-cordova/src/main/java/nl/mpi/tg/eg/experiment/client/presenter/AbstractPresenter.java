@@ -482,6 +482,7 @@ public abstract class AbstractPresenter implements Presenter {
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
             var targetDeviceId = -1;
+            var targetDeviceLabel = -1;
             navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
                 // it is likely that the first item in the list is the default input, so we stop on the first matching device
                 for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
@@ -493,6 +494,7 @@ public abstract class AbstractPresenter implements Presenter {
                         console.log(deviceInfo.label);                    
                         console.log(deviceInfo.deviceId);  
                         targetDeviceId = deviceInfo.deviceId;
+                        targetDeviceLabel = deviceInfo.label;
                     }
                 }
                 //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
@@ -513,7 +515,7 @@ public abstract class AbstractPresenter implements Presenter {
                         dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
                     };
                     try {
-                        $wnd.startRecorder(function(){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;)(targetDeviceId)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
+                        $wnd.startRecorder(function(){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;)(targetDeviceLabel)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
                         // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
                         //$wnd.recorder.start();
                     } catch(e) {
