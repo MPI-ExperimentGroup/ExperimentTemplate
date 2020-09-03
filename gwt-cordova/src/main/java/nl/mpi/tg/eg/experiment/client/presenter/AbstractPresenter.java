@@ -481,6 +481,8 @@ public abstract class AbstractPresenter implements Presenter {
             $wnd.recordingLabelString = recordingLabelString;
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
+            var firstDeviceId = -1;
+            var firstDeviceLabel = -1;
             var targetDeviceId = -1;
             var targetDeviceLabel = -1;
             navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
@@ -489,6 +491,10 @@ public abstract class AbstractPresenter implements Presenter {
                     var deviceInfo = deviceInfos[index];
 //                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
                     console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
+                    if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
+                        firstDeviceId = deviceInfo.deviceId;
+                        firstDeviceLabel = deviceInfo.label;
+                    }
                     if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
                         console.log(deviceInfo.kind);            
                         console.log(deviceInfo.label);                    
@@ -500,6 +506,11 @@ public abstract class AbstractPresenter implements Presenter {
                 //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
                 if ($wnd.recorder) {
                     $wnd.recorder.stop();
+                }
+                if(targetDeviceId === -1) {
+                    console.log("Device not found, defaulting to first device seen.");
+                    targetDeviceId = firstDeviceId;
+                    targetDeviceLabel = firstDeviceLabel;
                 }
                 if(targetDeviceId === -1) {
                     console.log("Device not found: " + deviceRegex);
