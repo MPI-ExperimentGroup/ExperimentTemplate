@@ -14,6 +14,27 @@
     <xsl:param name="targetTemplateDirectory" select="targetTemplateDirectory"/>
     <xsl:param name="separateClassNames" select="separateClassNames"/>
     <xsl:template match="/">
+        <xsl:result-document href="{$targetClientDirectory}/AdminUserList.java" method="text">
+            <xsl:text>package nl.mpi.tg.eg.frinex;
+                public class AdminUserList {
+                public String[][] getAdminUserList(){
+                return new String[][] {                
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/adminUser">
+                <xsl:text>{"</xsl:text>
+                <xsl:value-of select="@name" />
+                <xsl:text>","</xsl:text>
+                <xsl:value-of select="@password" />
+                <xsl:text>"}</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text> 
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>
+                };
+                }
+                }    </xsl:text>
+        </xsl:result-document>
         <xsl:result-document href="{$targetClientDirectory}/model/Participant.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.model;
 

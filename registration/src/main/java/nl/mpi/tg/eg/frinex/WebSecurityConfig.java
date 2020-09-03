@@ -22,10 +22,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 /**
  * @since Aug 3, 2015 4:01:19 PM (creation date)
@@ -58,9 +58,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .withUser(USER).password(PASSWORD).roles("ADMIN");
+        final UserDetailsManagerConfigurer userDetailsManagerConfigurer = auth.inMemoryAuthentication();
+        userDetailsManagerConfigurer.withUser(USER).password("{noop}" + PASSWORD).roles("ADMIN");
+        for (String userEntry[] : new AdminUserList().getAdminUserList()) {
+            userDetailsManagerConfigurer.withUser(userEntry[0]).password("{noop}" + userEntry[1]).roles("ADMIN");
+        }
     }
 }
