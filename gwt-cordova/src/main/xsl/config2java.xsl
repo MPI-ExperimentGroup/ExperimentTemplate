@@ -928,12 +928,12 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="svgLoadGroups|svgGroupAdd|svgGroupShow|svgGroupMatching|svgGroupAction|svgSetLabel">
-        <xsl:value-of select="if(local-name() eq 'svgLoadGroups') then concat('{ final nl.mpi.tg.eg.experiment.client.svg.', replace(replace(@src,'\.[Ss][Vv][Gg]$','Builder'),'/','.'), ' svgBuilder = new nl.mpi.tg.eg.experiment.client.svg.', replace(replace(@src,'\.[Ss][Vv][Gg]$','Builder();'),'/','.')) else ''" />        
+    <xsl:template match="svgLoadGroups[@src ne '']|svgGroupAdd[@groupId]|svgGroupShow[@groupId]|svgGroupMatching[@groupId]|svgGroupAction[@groupId]|svgSetLabel[@groupId]">
+        <xsl:value-of select="if(local-name() eq 'svgLoadGroups') then concat('{ final nl.mpi.tg.eg.experiment.client.svg.', replace(replace(@src,'\.[Ss][Vv][Gg]$',''),'/','.'), 'Builder svgBuilder = new nl.mpi.tg.eg.experiment.client.svg.', replace(replace(@src,'\.[Ss][Vv][Gg]$',''),'/','.'), 'Builder();') else ''" />        
         <xsl:value-of select="if (local-name() ne 'svgLoadGroups') then concat('svgBuilder.', local-name(), '(') else ''" />
         <xsl:value-of select="if (local-name() eq 'svgLoadGroups') then concat(local-name(), '(svgBuilder.getHtml());') else ''" />
-        <xsl:value-of select="if (@groupId and local-name() ne 'svgSetLabel') then concat('nl.mpi.tg.eg.experiment.client.svg.', replace(replace(ancestor::*[local-name() = 'svgLoadGroups']/@src,'\.[Ss][Vv][Gg]$','Builder'),'/','.'), '.SvgGroupStates.', @groupId) else ''" />
-        <xsl:value-of select="if (@groupId and local-name() eq 'svgSetLabel') then concat('nl.mpi.tg.eg.experiment.client.svg.', replace(replace(ancestor::*[local-name() = 'svgLoadGroups']/@src,'\.[Ss][Vv][Gg]$','Builder'),'/','.'), '.SvgTextElements.', @groupId) else ''" />
+        <xsl:value-of select="if (@groupId and local-name() ne 'svgSetLabel') then concat('nl.mpi.tg.eg.experiment.client.svg.', replace(replace(ancestor::*[local-name() = 'svgLoadGroups']/@src,'\.[Ss][Vv][Gg]$',''),'/','.'), 'Builder.SvgGroupStates.', @groupId) else ''" />
+        <xsl:value-of select="if (@groupId and local-name() eq 'svgSetLabel') then concat('nl.mpi.tg.eg.experiment.client.svg.', replace(replace(ancestor::*[local-name() = 'svgLoadGroups']/@src,'\.[Ss][Vv][Gg]$',''),'/','.'), 'Builder.SvgTextElements.', @groupId) else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat(', new HtmlTokenFormatter(', (if(ancestor::*[local-name() = 'eachStimulus'] or ancestor::*[local-name() = 'hasMoreStimulus']) then 'currentStimulus, ' else 'null, '), ' localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;)') else ''" />
         <xsl:value-of select="if (local-name() eq 'svgGroupAction') then ', ' else ''" />
         <xsl:value-of select="if(@visible) then concat(', ', @visible eq 'true') else ''" />

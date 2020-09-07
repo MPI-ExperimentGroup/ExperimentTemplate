@@ -207,6 +207,8 @@ public class AbstractSchemaGenerator {
                             || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.none))
                             || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
                             || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.svgGroupsLoaded))
+                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.svgGroupsLoaded && featureRef.isChildType(FeatureType.Contitionals.none))
                             || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.none))
                             || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
                             || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.none))

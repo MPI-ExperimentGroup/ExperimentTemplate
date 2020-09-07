@@ -23,6 +23,7 @@ import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -182,6 +183,10 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void showHtmlPopup(String textString, final PresenterEventListner... buttonListeners) {
         simpleView.showHtmlPopup(textString, buttonListeners);
+    }
+
+    protected void svgLoadGroups(HTML svgHTML) {
+        simpleView.add(svgHTML);
     }
 
     public void targetButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
