@@ -41,12 +41,20 @@
             import nl.mpi.tg.eg.experiment.client.util.SvgTemplate;
             import com.google.gwt.user.client.DOM;
             import com.google.gwt.dom.client.Element;
-            import nl.mpi.tg.eg.experiment.client.view.AbstractSvgView;
-                        
+            import com.google.gwt.event.dom.client.ClickEvent;
+            import com.google.gwt.event.dom.client.ClickHandler;
+            import com.google.gwt.event.dom.client.TouchEndEvent;
+            import com.google.gwt.event.dom.client.TouchEndHandler;
+            import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+            import com.google.gwt.user.client.ui.HTML;
+            import java.util.HashMap;
+            import java.util.Map;
+            import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+
             // generated with svg2java.xsl
             public class </xsl:text>
         <xsl:value-of select="$classname" />
-        <xsl:text>Builder extends AbstractSvgView {
+        <xsl:text>Builder {
 
             private static final SvgTemplate SVG_TEMPLATE = GWT.create(SvgTemplate.class);
             private static final </xsl:text>
@@ -54,7 +62,8 @@
         <xsl:text> SVG_DATA = new </xsl:text>
         <xsl:value-of select="$classname" />
         <xsl:text>();
-
+            private SafeHtmlBuilder safeHtmlBuilder = new SafeHtmlBuilder();
+            private Map&lt;SvgGroupStates, TimedStimulusListener&gt; groupActions = new HashMap&lt;&gt;();
             public enum SvgGroupStates {
         </xsl:text>
         <xsl:for-each select="svg:svg//svg:g">
@@ -68,20 +77,129 @@
             public enum SvgTextElements {
         </xsl:text>
         <xsl:for-each select="svg:svg//svg:tspan">
-            <xsl:value-of select="generate-id(.)"/>
+            <xsl:value-of select="translate(@id, ' -', '__')"/>
             <xsl:text>,
             </xsl:text>
         </xsl:for-each>
         <xsl:text>end // this final element is not used
             }
-    
-            public void setLabel(SvgTextElements textElement, String label) {
+            public HTML getHtml() {
+            SafeHtmlBuilder builder = new SafeHtmlBuilder();
+            builder.append(SafeHtmlUtils.fromTrustedString("&lt;style&gt;.overlay {pointer-events: none;}&lt;/style&gt;"));
+            builder.append(SafeHtmlUtils.fromTrustedString("&lt;svg class='svgDiagram' id='</xsl:text>
+        <xsl:value-of select="$classname" />
+        <xsl:text>' width=\"100%\" height=\"100%\" viewBox='0 0 568 320' &gt;"));
+            getSvg(builder);
+            builder.append(SafeHtmlUtils.fromTrustedString("&lt;/svg&gt;"));
+            final HTML html = new HTML(builder.toSafeHtml());
+            html.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+            event.preventDefault();
+            eventTriggered(Element.as(event.getNativeEvent().getEventTarget()));
+            }
+            });
+            html.addTouchEndHandler(new TouchEndHandler() {
+
+            @Override
+            public void onTouchEnd(TouchEndEvent event) {
+            event.preventDefault();
+            eventTriggered(Element.as(event.getNativeEvent().getEventTarget()));
+            }
+            });
+            html.setStylePrimaryName("svgPanel");
+            return html;
+            }
+            private void eventTriggered(Element targetElement) {
+            boolean consumed = false;
+            while (!consumed) {
+            while (targetElement.getParentElement() != null &amp;&amp; targetElement.getId().isEmpty()) {
+            targetElement = targetElement.getParentElement();
+            }
+            final String elementId = targetElement.getId();
+            if (elementId.equals(&quot;</xsl:text>
+        <xsl:value-of select="$classname" />
+        <xsl:text>&quot;)) {
+            // we have navigated to the root node of the SVG
+            return;
+            }
+            if (!elementId.isEmpty()) {
+            try {
+            consumed = performClick(elementId);
+            } catch (IllegalArgumentException exception) {
+            // id values can exist outside of group tags, only group tags are put into the enum and so this exception is not exceptional
+            }
+            }
+            targetElement = targetElement.getParentElement();
+            }
+            }
+            public void svgSetLabel(SvgTextElements textElement, String label) {
             final Element elementById = DOM.getElementById(textElement.name());
             if (elementById != null) {
             elementById.setInnerText(label);
             }
             }
 
+            public void svgGroupAdd(SvgGroupStates group, boolean isVisible) {
+            switch(group) {
+        </xsl:text>
+        <xsl:for-each select="svg:svg//svg:g">
+            <xsl:text>case </xsl:text>
+            <xsl:value-of select="translate(if (@inkscape:label) then @inkscape:label else @id, ' -', '__')"/>
+            <xsl:text>:
+            </xsl:text>
+            <xsl:text>getSvg</xsl:text>
+            <xsl:value-of select="translate(if (@inkscape:label) then @inkscape:label else @id, ' -', '__')"/>
+            <xsl:text>(safeHtmlBuilder, (isVisible)? SvgTemplate.Visibility.visible : SvgTemplate.Visibility.hidden);
+                break;
+            </xsl:text>
+        </xsl:for-each>
+        <xsl:text>
+            }
+            }
+            
+            public void svgGroupMatching(SvgGroupStates group, String childRegex, boolean isVisible) {
+            final Element elementById = DOM.getElementById(group.name());
+            elementById.setAttribute("style", "visibility:" + SvgTemplate.Visibility.visible);
+            Element childElement = elementById.getFirstChildElement();
+            while (childElement != null) {
+            if (childElement.getId() != null) {
+            if (childElement.getId().matches(childRegex)) {
+            childElement.setAttribute("style", " visibility:" + ((isVisible) ? SvgTemplate.Visibility.visible : SvgTemplate.Visibility.hidden));
+            }
+            }
+            childElement = childElement.getNextSiblingElement();
+            }
+            }
+
+            public void svgGroupShow(SvgGroupStates group, boolean isVisible) {
+            if (isVisible) {
+            showGroup(group);
+            } else {
+            hideGroup(group);
+            }
+            }
+            
+            public void svgGroupAction(SvgGroupStates group, TimedStimulusListener listener) {
+            groupActions.put(group, listener);
+            }          
+
+            protected boolean performClick(final String svgGroupStateString) {
+            if (!svgGroupStateString.isEmpty()) {
+            final SvgGroupStates group = SvgGroupStates.valueOf(svgGroupStateString);
+            final TimedStimulusListener listener = groupActions.get(group);
+            if (listener != null) {
+            listener.postLoadTimerFired();
+            return true;
+            } else {
+            return false;
+            }
+            } else {
+            return false;
+            }
+            }
+            
             public void showGroup(SvgGroupStates group) {
             DOM.getElementById(group.name()).setAttribute("style", "visibility:" + SvgTemplate.Visibility.visible);
             }

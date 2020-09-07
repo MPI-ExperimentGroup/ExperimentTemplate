@@ -250,14 +250,15 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
                 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
                 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
+                import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
             </xsl:text> 
-            <xsl:if test="@type = 'svg'">
+            <!--            <xsl:if test="@type = 'svg'">
                 <xsl:text>
                     import nl.mpi.tg.eg.experiment.client.svg.graphics.</xsl:text>
                 <xsl:value-of select="@self" />
                 <xsl:text>Builder;
                 </xsl:text> 
-            </xsl:if>
+            </xsl:if>-->
             <xsl:text>
                         
                 // generated with config2java.xsl
@@ -290,13 +291,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                         super(widgetTag, new MenuView(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
-                <xsl:when test="@type = 'svg'">
+                <!--                <xsl:when test="@type = 'svg'">
+                    <xsl:text>
+                        super(widgetTag, submissionService, userResults, localStorage, timerService);
+                    </xsl:text>
                     <xsl:text>
                         super(widgetTag, new </xsl:text>
                     <xsl:value-of select="@self" />
                     <xsl:text>Builder(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
-                </xsl:when>
+                </xsl:when>-->
                 <xsl:when test="@type = 'text'">
                     <xsl:text>
                         super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
@@ -320,7 +324,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 <xsl:when test="@type = 'stimulus'">
                     <xsl:text>
                         super(widgetTag, submissionService, userResults, localStorage, timerService);
-                    </xsl:text>                    
+                    </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
                     <xsl:text>
@@ -923,6 +927,37 @@ or local-name() eq 'ratingCheckbox'
         </xsl:if>
         <xsl:text>);
         </xsl:text>
+    </xsl:template>
+    <xsl:template match="svgLoadGroups|svgGroupAdd|svgGroupShow|svgGroupMatching|svgGroupAction|svgSetLabel">
+        <xsl:value-of select="if(local-name() eq 'svgLoadGroups') then concat('{ final nl.mpi.tg.eg.experiment.client.svg.', replace(replace(@src,'\.[Ss][Vv][Gg]$','Builder'),'/','.'), ' svgBuilder = new nl.mpi.tg.eg.experiment.client.svg.', replace(replace(@src,'\.[Ss][Vv][Gg]$','Builder();'),'/','.')) else ''" />        
+        <xsl:value-of select="if (local-name() ne 'svgLoadGroups') then concat('svgBuilder.', local-name(), '(') else ''" />
+        <xsl:value-of select="if (local-name() eq 'svgLoadGroups') then concat(local-name(), '(svgBuilder.getHtml());') else ''" />
+        <xsl:value-of select="if (@groupId and local-name() ne 'svgSetLabel') then concat('nl.mpi.tg.eg.experiment.client.svg.', replace(replace(ancestor::*[local-name() = 'svgLoadGroups']/@src,'\.[Ss][Vv][Gg]$','Builder'),'/','.'), '.SvgGroupStates.', @groupId) else ''" />
+        <xsl:value-of select="if (@groupId and local-name() eq 'svgSetLabel') then concat('nl.mpi.tg.eg.experiment.client.svg.', replace(replace(ancestor::*[local-name() = 'svgLoadGroups']/@src,'\.[Ss][Vv][Gg]$','Builder'),'/','.'), '.SvgTextElements.', @groupId) else ''" />
+        <xsl:value-of select="if(@evaluateTokens) then concat(', new HtmlTokenFormatter(', (if(ancestor::*[local-name() = 'eachStimulus'] or ancestor::*[local-name() = 'hasMoreStimulus']) then 'currentStimulus, ' else 'null, '), ' localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;)') else ''" />
+        <xsl:value-of select="if (local-name() eq 'svgGroupAction') then ', ' else ''" />
+        <xsl:value-of select="if(@visible) then concat(', ', @visible eq 'true') else ''" />
+        <xsl:if test="local-name() eq 'svgGroupAction'">
+            <xsl:text>&#xa;new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+            </xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>
+                }
+                }
+            </xsl:text>
+        </xsl:if>
+        <xsl:if test="local-name() eq 'svgLoadGroups'">
+            <xsl:apply-templates/>            
+            <xsl:text>
+                }
+            </xsl:text>
+        </xsl:if>
+        <xsl:if test="local-name() ne 'svgLoadGroups'">
+            <xsl:text>);
+            </xsl:text>
+        </xsl:if>
     </xsl:template>
     <xsl:template match="clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
         <xsl:text>    </xsl:text>

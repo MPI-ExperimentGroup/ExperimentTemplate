@@ -44,6 +44,7 @@ public enum FeatureAttribute {
     allowedCharCodes(true),
     matchingRegex(false),
     visibleRegex, enabledRegex,
+    visible,
     replacementRegex(true),
     replacement(true),
     src,

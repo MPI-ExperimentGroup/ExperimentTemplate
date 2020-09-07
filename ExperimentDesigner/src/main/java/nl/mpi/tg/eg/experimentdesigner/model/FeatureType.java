@@ -55,6 +55,13 @@ public enum FeatureType {
     enableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     hideButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     showButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
+    svgLoadGroups(false, new FeatureAttribute[]{src}, "Load compiled SVG data for use as image groups. Each group must be named in the SVG file.", Contitionals.svgGroupsLoaded, Contitionals.none),
+    svgGroupAdd(false, new FeatureAttribute[]{groupId, visible}, "Appends the named section of the loaded SVG into the presenter.", Contitionals.any, Contitionals.svgGroupsLoaded),
+    //    svgAddMarker(false, new FeatureAttribute[]{groupId}, "Appends an overlay of horizontal and vertical lines which move in response to user input relative to the provided groupId.", Contitionals.any, Contitionals.svgGroupsLoaded),
+    svgSetLabel(false, new FeatureAttribute[]{groupId, evaluateTokens}, "Sets the text value of the SVG text element matching groupId.", Contitionals.any, Contitionals.svgGroupsLoaded),
+    svgGroupShow(false, new FeatureAttribute[]{groupId, visible}, "Sets the visibility of the section of SVG which must have already been added to the presenter.", Contitionals.any, Contitionals.svgGroupsLoaded),
+    svgGroupAction(false, new FeatureAttribute[]{groupId}, "Sets a button action to the image group as specified in the loaded SVG data.", Contitionals.any, Contitionals.svgGroupsLoaded),
+    svgGroupMatching(false, new FeatureAttribute[]{groupId, visible, evaluateTokens}, "Sets the visibility of the matching child elements of the group which must have already been added to the presenter.", Contitionals.any, Contitionals.svgGroupsLoaded),
     stimulusButton(true, new FeatureAttribute[]{eventTag, hotKey, dataChannel, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     touchInputStimulusButton(true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
@@ -303,6 +310,7 @@ public enum FeatureType {
         hasMediaPlayback(false),
         hasMediaRecorderPlayback(false),
         hasActionButtons(true),
+        svgGroupsLoaded(true),
         none(true),
         any(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element

@@ -2181,6 +2181,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
     }
 
+    protected void svgLoadGroups(HTML svgHTML) {
+        timedStimulusView.add(svgHTML);
+    }
+
     protected void logMediaTimeStamp(final Stimulus currentStimulus, final String mediaId, final String eventTag) {
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.logMediaTimeStamp(formattedMediaId, eventTag, timedEventMonitor);
