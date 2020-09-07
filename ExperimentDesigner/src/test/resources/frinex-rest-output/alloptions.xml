@@ -38,21 +38,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <eraseUsersDataButton featureText="eraseUsersDataButton" groupId="groupId" styleName="styleName" target="target"/>
@@ -153,21 +145,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <allMetadataFields/>
@@ -257,21 +241,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
@@ -1427,21 +1403,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
@@ -1630,21 +1598,13 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -1667,21 +1627,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -1754,21 +1706,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -1836,21 +1780,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -1909,21 +1845,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <localStorageData/>
@@ -1985,21 +1913,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -2048,21 +1968,13 @@
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible="visible" groupId="groupId"/>
+            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
+            <svgGroupShow visible="visible" groupId="groupId"/>
             <svgGroupAction groupId="groupId">
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -2119,21 +2031,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <eraseUsersDataButton featureText="" target="target"/>
@@ -2234,21 +2138,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <allMetadataFields/>
@@ -2338,21 +2234,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <targetFooterButton featureText="" target="target"/>
         <actionFooterButton featureText="">
@@ -3484,21 +3372,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <targetFooterButton featureText="" target="target"/>
         <actionFooterButton featureText="">
@@ -3687,21 +3567,13 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -3724,21 +3596,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -3811,21 +3675,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -3893,21 +3749,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -3966,21 +3814,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <localStorageData/>
@@ -4042,21 +3882,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
@@ -4105,21 +3937,13 @@
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
         <svgLoadGroups src="">
-            <svgGroupAdd visible="">
-                <plainText featureText="plainText in svgGroupAdd"/>
-            </svgGroupAdd>
-            <svgSetLabel evaluateTokens="">
-                <plainText featureText="plainText in svgSetLabel"/>
-            </svgSetLabel>
-            <svgGroupShow visible="">
-                <plainText featureText="plainText in svgGroupShow"/>
-            </svgGroupShow>
+            <svgGroupAdd visible=""/>
+            <svgSetLabel evaluateTokens=""/>
+            <svgGroupShow visible=""/>
             <svgGroupAction>
                 <plainText featureText="plainText in svgGroupAction"/>
             </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible="">
-                <plainText featureText="plainText in svgGroupMatching"/>
-            </svgGroupMatching>
+            <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
