@@ -17,6 +17,7 @@
             <directory>${basedir}/src/main/electron</directory>
             <includes>
                 <include>package.json</include>
+                <include>build-dmg.sh</include>
             </includes>
             <outputDirectory>/</outputDirectory>
             <filtered>true</filtered>
