@@ -1596,17 +1596,7 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
-        <svgLoadGroups src="src">
-            <svgGroupAdd visible="visible" groupId="groupId"/>
-            <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
-            <svgGroupShow visible="visible" groupId="groupId"/>
-            <svgGroupAction groupId="groupId">
-                <plainText featureText="plainText in svgGroupAction"/>
-            </svgGroupAction>
-            <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
-        </svgLoadGroups>
-    </presenter>
+    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes"/>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
@@ -3565,17 +3555,7 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
-        <svgLoadGroups src="">
-            <svgGroupAdd visible=""/>
-            <svgSetLabel evaluateTokens=""/>
-            <svgGroupShow visible=""/>
-            <svgGroupAction>
-                <plainText featureText="plainText in svgGroupAction"/>
-            </svgGroupAction>
-            <svgGroupMatching evaluateTokens="" visible=""/>
-        </svgLoadGroups>
-    </presenter>
+    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes"/>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
         <htmlText featureText=""/>
         <plainText featureText=""/>
