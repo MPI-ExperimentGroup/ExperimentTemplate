@@ -3656,7 +3656,7 @@ Space separated list of stimulus tags [a-Z0-9]</span><br/>
 <h3 id="clearTimerType" style="text-transform: uppercase;">
 clearTimer
 </h3>
-
+Clears the start time of a persistent timer matching listenerId. A subsequent startTimer with the same listenerId can be used to assign a new start time.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">clearTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -4240,7 +4240,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="compareTimerType" style="text-transform: uppercase;">
 compareTimer
 </h3>
-
+Compares the current time of a persistent timer that was started by startTimer with the same listenerId.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">compareTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -8252,7 +8252,7 @@ When present this tag will be logged in the timestamps table as close as possibl
 <h3 id="logTimerValueType" style="text-transform: uppercase;">
 logTimerValue
 </h3>
-
+Added a record in the admin system of the current milliseconds for a persistent timer which is identified by its listenerId.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -11948,7 +11948,7 @@ String</span><br/>
 <h3 id="startTimerType" style="text-transform: uppercase;">
 startTimer
 </h3>
-Starts a timer which is identified by its listenerId. The start time is the moment the first startTimer for a given listenerId is encountered. This start time is persistent over page loads and navigation and can only be reset by a clearTimer followed by a startTimer. The content of the startTimer element is scoped to the presenter and will not trigger outside of the presenter that contains it. Each startTimer creates a callback that will trigger when the timer reaches the ms value, but will not trigger if that time has already passed while the presenter was not active. Multiple startTimer tags with the same listnerId can be used, each will share the same start moment allowing multiple events to be synchronised on one timer.
+Starts a persistent timer which is identified by its listenerId. The start time is the moment the first startTimer for a given listenerId is encountered. This start time is persistent over page loads and navigation and can only be reset by a clearTimer followed by a startTimer. The content of the startTimer element is scoped to the presenter and will not trigger outside of the presenter that contains it. Each startTimer creates a callback that will trigger when the timer reaches the ms value, but will not trigger if that time has already passed while the presenter was not active. Multiple startTimer tags with the same listenerId can be used, each will share the same start moment allowing multiple events to be synchronised on one timer.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -13617,7 +13617,7 @@ String</span><br/>
 <h3 id="timerLabelType" style="text-transform: uppercase;">
 timerLabel
 </h3>
-
+Adds a label that shows the time value of listenerId minus msToNext and formats the result with msLabelFormat (similar to countdownLabel).
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">timerLabel</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
