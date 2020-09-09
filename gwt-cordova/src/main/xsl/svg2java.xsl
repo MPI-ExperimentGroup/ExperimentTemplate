@@ -161,12 +161,14 @@
             
             public void svgGroupMatching(SvgGroupStates group, String childRegex, boolean isVisible) {
             final Element elementById = DOM.getElementById(group.name());
-            elementById.setAttribute("style", "visibility:" + SvgTemplate.Visibility.visible);
+            final String styleString = elementById.getAttribute("style").replaceAll("visibility:[^;]*(;|$)", "");
+            elementById.setAttribute("style", "visibility:" + SvgTemplate.Visibility.visible + ";" + styleString);
             Element childElement = elementById.getFirstChildElement();
             while (childElement != null) {
             if (childElement.getId() != null) {
             if (childElement.getId().matches(childRegex)) {
-            childElement.setAttribute("style", " visibility:" + ((isVisible) ? SvgTemplate.Visibility.visible : SvgTemplate.Visibility.hidden));
+            final String updatedStyle = childElement.getAttribute("style").replaceAll("visibility:[^;]*(;|$)", "");
+            childElement.setAttribute("style", "visibility:" + ((isVisible) ? SvgTemplate.Visibility.visible : SvgTemplate.Visibility.hidden) + ";" + updatedStyle);
             }
             }
             childElement = childElement.getNextSiblingElement();
@@ -201,11 +203,15 @@
             }
             
             public void showGroup(SvgGroupStates group) {
-            DOM.getElementById(group.name()).setAttribute("style", "visibility:" + SvgTemplate.Visibility.visible);
+            final Element elementById = DOM.getElementById(group.name());
+            final String styleString = elementById.getAttribute("style").replaceAll("visibility:[^;]*(;|$)", "");
+            elementById.setAttribute("style", "visibility:" + SvgTemplate.Visibility.visible + ";" + styleString);
             }
 
             public void hideGroup(SvgGroupStates group) {
-            DOM.getElementById(group.name()).setAttribute("style", "visibility:" + SvgTemplate.Visibility.hidden);
+            final Element elementById = DOM.getElementById(group.name());
+            final String styleString = elementById.getAttribute("style").replaceAll("visibility:[^;]*(;|$)", "");
+            elementById.setAttribute("style", "visibility:" + SvgTemplate.Visibility.hidden + ";" + styleString);
             }
         </xsl:text>
         <!--<xsl:for-each select="svg:svg/svg:g[svg:path]">
