@@ -129,7 +129,14 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             if (!attributeTypes.optional) {
                 writer.append("\" use=\"required");
             }
-            writer.append(((!(attributeTypes.restriction != null && attributeTypes.typeName == null)) ? "\"/" : "\"") + ">\n");
+            writer.append(((!(attributeTypes.restriction != null && attributeTypes.typeName == null) && attributeTypes.documentation == null) ? "\"/" : "\"") + ">\n");
+            if (attributeTypes.documentation != null) {
+                writer.append("<xs:annotation>\n");
+                writer.append("<xs:documentation>");
+                writer.append(attributeTypes.documentation);
+                writer.append("</xs:documentation>\n");
+                writer.append("</xs:annotation>\n");
+            }
             if (attributeTypes.restriction != null && attributeTypes.typeName == null) {
                 writer.append("<xs:simpleType>\n");
                 writer.append("<xs:restriction>\n");
