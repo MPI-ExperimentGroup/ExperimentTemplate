@@ -4718,6 +4718,9 @@
 </xs:complexType>
 <xs:complexType name="startTimerType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:annotation>
+<xs:documentation>Starts a timer which is identified by its listenerId. The start time is the moment the first startTimer for a given listenerId is encountered. This start time is persistent over page loads and navigation and can only be reset by a clearTimer followed by a startTimer. The content of the startTimer element is scoped to the presenter and will not trigger outside of the presenter that contains it. Each startTimer creates a callback that will trigger when the timer reaches the ms value, but will not trigger if that time has already passed while the presenter was not active. Multiple startTimer tags with the same listnerId can be used, each will share the same start moment allowing multiple events to be synchronised on one timer.</xs:documentation>
+</xs:annotation>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
