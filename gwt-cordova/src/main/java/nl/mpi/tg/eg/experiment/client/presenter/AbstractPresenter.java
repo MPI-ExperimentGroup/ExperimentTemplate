@@ -186,7 +186,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     protected void svgLoadGroups(HTML svgHTML) {
-        simpleView.add(svgHTML);
+        simpleView.addWidget(svgHTML);
     }
 
     public void targetButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
