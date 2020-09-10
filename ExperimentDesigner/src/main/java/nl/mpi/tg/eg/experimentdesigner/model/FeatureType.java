@@ -131,7 +131,7 @@ public enum FeatureType {
     displayCompletionCode(false, false, null),
     generateCompletionCode(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     sendAllData(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    sendMetadata(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    sendMetadata(false, null, "Sends the currently stored metadata field values to the admin system. For use in transmission type presenters.", Contitionals.hasErrorSuccess, Contitionals.none),
     // The <redirectToUrl> does not have  <onError> and <onSuccess> because the calling page has gone out scope by the time the error has occurred.
     redirectToUrl(false, false, new FeatureAttribute[]{src}, "Redirects the experiment to the URL specified in src. This feature cannot do error checking and therefore does not have onError or onSuccess because the experiment (calling page) has gone out scope by the time any error might occur."),
     eraseLocalStorageOnWindowClosing(false, false, null),
@@ -152,7 +152,7 @@ public enum FeatureType {
     nextMatchingStimulus(false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
-    hasMetadataValue(false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
+    hasMetadataValue(false, new FeatureAttribute[]{fieldName, matchingRegex}, "Replaces any token values in the matchingRegex then checks if the metadata field value matches the resulting regex. If the regex matches then coditionTrue is triggered otherwise conditionFalse is triggered.", Contitionals.hasTrueFalseCondition, Contitionals.none),
     setMetadataValue(false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, "The value of dataLogFormat will have any string tokens replaced. Next if the replacementRegex is provided then the regex is applied and only the values of the regex capture groups will be kept, otherwise the entire string is used. The result is then stored in the specified metadata field.", Contitionals.none, Contitionals.none),
     matchOnEvalTokens(false, new FeatureAttribute[]{evaluateTokens, matchingRegex}, "Compares the matchingRegex against the result of evaluateTokens after any metadata field tokens have been resolved, any arithmetic and boolean comparisons have been resolved.", Contitionals.hasTrueFalseErrorCondition, Contitionals.none),
     progressIndicator(false, new FeatureAttribute[]{evaluateTokens, styleName}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),

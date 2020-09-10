@@ -5324,6 +5324,9 @@
 </xs:complexType>
 <xs:complexType name="sendMetadataType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Sends the currently stored metadata field values to the admin system. For use in transmission type presenters.</xs:documentation>
+</xs:annotation>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -5708,6 +5711,9 @@
 </xs:complexType>
 <xs:complexType name="hasMetadataValueType">
 <xs:all>
+<xs:annotation>
+<xs:documentation>Replaces any token values in the matchingRegex then checks if the metadata field value matches the resulting regex. If the regex matches then coditionTrue is triggered otherwise conditionFalse is triggered.</xs:documentation>
+</xs:annotation>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
