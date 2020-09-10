@@ -5070,6 +5070,9 @@
 </xs:complexType>
 <xs:complexType name="saveMetadataButtonType">
 <xs:sequence>
+<xs:annotation>
+<xs:documentation>Checks the currently displayed metadata fields for valid input. If there are errors the relevant field input is highlighted. If sendData is true then the metadata is sent to the admin system before proceeding and network errors will trigger an onError. If sendData is false onSuccess will be triggered if the metadata is valid regardless of network connectivity.</xs:documentation>
+</xs:annotation>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
