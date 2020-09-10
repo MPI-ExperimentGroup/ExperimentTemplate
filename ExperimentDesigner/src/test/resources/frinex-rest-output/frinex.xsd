@@ -4982,8 +4982,14 @@
 </xs:annotation>
 </xs:complexType>
 <xs:complexType name="allMetadataFieldsType">
+<xs:annotation>
+<xs:documentation>Adds an input for all metadata fields. Equivalent to metadataField for each field.</xs:documentation>
+</xs:annotation>
 </xs:complexType>
 <xs:complexType name="metadataFieldType">
+<xs:annotation>
+<xs:documentation>Adds a single metadata field input. The type of input depends on the regex of the metadata field. A date input will be used if the regex is [0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]. A checkbox will be used if the regex is true|false. A text area will be used (multiline) rather than a text box (single line) if the regex contains \\s. A select box will be used if the regex is a | separated list.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="fieldName" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>

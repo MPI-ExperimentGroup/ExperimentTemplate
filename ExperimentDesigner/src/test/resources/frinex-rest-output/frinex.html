@@ -2878,7 +2878,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="allMetadataFieldsType" style="text-transform: uppercase;">
 allMetadataFields
 </h3>
-
+Adds an input for all metadata fields. Equivalent to metadataField for each field.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">allMetadataFields</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -8370,7 +8370,7 @@ String</span><br/>
 <h3 id="metadataFieldType" style="text-transform: uppercase;">
 metadataField
 </h3>
-
+Adds a single metadata field input. The type of input depends on the regex of the metadata field. A date input will be used if the regex is [0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]. A checkbox will be used if the regex is true|false. A text area will be used (multiline) rather than a text box (single line) if the regex contains \\s. A select box will be used if the regex is a | separated list.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">metadataField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
