@@ -156,6 +156,8 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 writer.append("<xs:minLength value=\"1\"/>\n");
                 writer.append("</xs:restriction>\n");
                 writer.append("</xs:simpleType>\n");
+            }
+            if (!(attributeTypes.restriction != null && attributeTypes.typeName == null && attributeTypes.documentation == null)) {
                 writer.append("</xs:attribute>\n");
             }
         }
