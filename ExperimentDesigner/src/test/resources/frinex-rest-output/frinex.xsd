@@ -4997,6 +4997,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimulusMetadataFieldType">
+<xs:annotation>
+<xs:documentation>Adds a metadata field input for the current stimulus. The user entered value will be stored in the stimulus data identifiable via the postName of the field.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="fieldName" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -5026,6 +5029,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="metadataFieldVisibilityDependantType">
+<xs:annotation>
+<xs:documentation>Adds a metadata field input, the state of which is linked to the value of another input field. When value of the linked input field matches the visibleRegex this input field will be visible, otherwise it will be hidden. If the value of the linked input field matches the enabledRegex this input field will be enabled, otherwise it will be disabled to prevent input.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="fieldName" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -5048,6 +5054,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="metadataFieldDateTriggeredType">
+<xs:annotation>
+<xs:documentation>Adds a metadata field input, the value and state of which is linked to the value of a date input field. This field must be a selection list type and the selected item is determined by a corresponding item in the daysThresholds which is a list of values representing the days since the other field date. The intended use is to trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName. When value of the linked input field matches the visibleRegex this input field will be visible, otherwise it will be hidden. If the value of the linked input field matches the enabledRegex this input field will be enabled and the user can modify the selected value, otherwise it will be disabled to prevent the date assigned value being changed.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="fieldName" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>

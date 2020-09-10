@@ -8410,7 +8410,7 @@ String</span><br/>
 <h3 id="metadataFieldDateTriggeredType" style="text-transform: uppercase;">
 metadataFieldDateTriggered
 </h3>
-
+Adds a metadata field input, the value and state of which is linked to the value of a date input field. This field must be a selection list type and the selected item is determined by a corresponding item in the daysThresholds which is a list of values representing the days since the other field date. The intended use is to trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName. When value of the linked input field matches the visibleRegex this input field will be visible, otherwise it will be hidden. If the value of the linked input field matches the enabledRegex this input field will be enabled and the user can modify the selected value, otherwise it will be disabled to prevent the date assigned value being changed.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">metadataFieldDateTriggered</span></td><td><span style="color:green">daysThresholds</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -8436,7 +8436,7 @@ String</span><br/>
 <h3 id="metadataFieldVisibilityDependantType" style="text-transform: uppercase;">
 metadataFieldVisibilityDependant
 </h3>
-
+Adds a metadata field input, the state of which is linked to the value of another input field. When value of the linked input field matches the visibleRegex this input field will be visible, otherwise it will be hidden. If the value of the linked input field matches the enabledRegex this input field will be enabled, otherwise it will be disabled to prevent input.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">metadataFieldVisibilityDependant</span></td><td><span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -20764,7 +20764,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="stimulusMetadataFieldType" style="text-transform: uppercase;">
 stimulusMetadataField
 </h3>
-
+Adds a metadata field input for the current stimulus. The user entered value will be stored in the stimulus data identifiable via the postName of the field.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
