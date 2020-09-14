@@ -15367,7 +15367,7 @@
 <xs:extension base="xs:string">
 <xs:attribute name="alias" type="xs:string">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>This tag will be used when the contents of the storageField matches the value of alias.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:extension>
@@ -15380,7 +15380,7 @@
 <xs:extension base="xs:string">
 <xs:attribute name="alias" type="xs:string" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>This list will be used when the contents of the storageField matches the value of alias. For example storageField=&quot;selectList&quot; and alias=&quot;s6&quot; would match with GET parameter selectList=s6 in the URL.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:extension>
