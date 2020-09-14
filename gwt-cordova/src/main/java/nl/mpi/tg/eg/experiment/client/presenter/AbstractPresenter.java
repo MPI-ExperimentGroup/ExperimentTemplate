@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -476,6 +477,25 @@ public abstract class AbstractPresenter implements Presenter {
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
             onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
+        }
+     }-*/;
+
+    protected native void listAudioDevicesWeb(final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)("mock device1");
+                for (var index = 0; (index < deviceInfos.length); index++) {
+                    var deviceInfo = deviceInfos[index];
+                    console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
+                    if (deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                        deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)(deviceInfo.label);
+                    }
+                }
+            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)("mock device2");
+            });
+            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingComplete()();
+        } else {
+            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingFailed()();
         }
      }-*/;
 

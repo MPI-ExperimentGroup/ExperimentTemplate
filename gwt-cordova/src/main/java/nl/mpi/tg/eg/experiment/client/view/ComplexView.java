@@ -25,6 +25,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 //import com.google.gwt.event.dom.client.DragStartEvent;
@@ -44,6 +46,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RadioButton;
@@ -59,6 +62,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
+import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractStimulusPresenter.OrientationType;
 
 /**
@@ -740,6 +744,40 @@ public class ComplexView extends SimpleView {
         textBox.setStylePrimaryName("metadataOK");
         textBox.setText(value);
         getActivePanel().add(textBox);
+    }
+
+    public ValueChangeListener addListBox(final String selectedItem, final String[] initialItems, final String styleName, final ValueChangeListener changeListener) {
+        final ListBox listBox = new ListBox();
+        if (styleName != null && !styleName.isEmpty()) {
+            listBox.setStylePrimaryName(styleName);
+        }
+        if (initialItems != null) {
+            int selectedIndex = 0;
+            for (int index = 0; index < initialItems.length; index++) {
+                listBox.addItem(initialItems[index]);
+                if (selectedItem != null && selectedItem.equals(initialItems[index])) {
+                    selectedIndex = index;
+                }
+            }
+            listBox.setSelectedIndex(selectedIndex);
+        }
+        listBox.addChangeHandler(new ChangeHandler() {
+            @Override
+            public void onChange(ChangeEvent event) {
+                changeListener.onValueChange(listBox.getSelectedValue());
+            }
+        });
+        final ValueChangeListener itemAddedListener = new ValueChangeListener() {
+            @Override
+            public void onValueChange(String value) {
+                listBox.addItem(value);
+                if (selectedItem != null && selectedItem.equals(value)) {
+                    listBox.setSelectedIndex(listBox.getItemCount() - 1);
+                }
+            }
+        };
+        getActivePanel().add(listBox);
+        return itemAddedListener;
     }
 
     @Override

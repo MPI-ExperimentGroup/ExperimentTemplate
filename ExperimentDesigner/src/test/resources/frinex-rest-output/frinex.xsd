@@ -755,6 +755,7 @@
 <xs:element name="allMenuItems" type="allMenuItemsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="backgroundImage" type="backgroundImageType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
 <xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
@@ -1637,6 +1638,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -1863,6 +1865,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -2054,6 +2057,7 @@
 <xs:element name="rewindMedia" type="rewindMediaType"/>
 <xs:element name="pauseMedia" type="pauseMediaType"/>
 <xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="showHtmlPopup" type="showHtmlPopupType"/>
 <xs:element name="helpDialogue" type="helpDialogueType"/>
 <xs:element name="userInfo" type="userInfoType"/>
@@ -2274,6 +2278,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -2497,6 +2502,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -2725,6 +2731,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -2939,6 +2946,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -3140,6 +3148,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -3364,6 +3373,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -3588,6 +3598,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -3870,6 +3881,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -4089,6 +4101,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -4308,6 +4321,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -4628,6 +4642,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -4905,6 +4920,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -5511,6 +5527,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -6059,6 +6076,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -6323,6 +6341,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -6558,6 +6577,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -6829,6 +6849,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -7050,6 +7071,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -7249,6 +7271,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -7461,6 +7484,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -7674,6 +7698,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -7878,6 +7903,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -8069,6 +8095,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -8253,6 +8280,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -8437,6 +8465,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -8621,6 +8650,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -8815,6 +8845,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -9009,6 +9040,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -9203,6 +9235,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -9387,6 +9420,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -9571,6 +9605,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -9755,6 +9790,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -9934,6 +9970,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -10121,6 +10158,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -10305,6 +10343,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -10484,6 +10523,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -10668,6 +10708,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -10858,6 +10899,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -11042,6 +11084,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -11226,6 +11269,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -11410,6 +11454,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -11594,6 +11639,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -11778,6 +11824,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -11962,6 +12009,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -12146,6 +12194,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -12330,6 +12379,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -12524,6 +12574,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -12708,6 +12759,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -12900,6 +12952,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -13127,6 +13180,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -13657,6 +13711,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -13893,6 +13948,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -13949,6 +14005,21 @@
 <xs:attribute name="maxStimuli" type="xs:string">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="audioInputSelectWebType">
+<xs:annotation>
+<xs:documentation>Shows a select box of the available audio input devices for use with startAudioRecorderWeb. When an device is selected it will be used as the first preference when the next recording is made.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="deviceRegex" type="xs:string">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="styleName" type="xs:string">
+<xs:annotation>
+<xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -14301,6 +14372,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -14488,6 +14560,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -14675,6 +14748,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -14865,6 +14939,7 @@
 <xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
