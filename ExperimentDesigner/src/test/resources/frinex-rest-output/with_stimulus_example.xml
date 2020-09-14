@@ -1431,6 +1431,79 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Audio Input Select" type="stimulus" self="Audio_Input_Select" title="Audio Input Select">
+        <plainText featureText="This example demonstrates an audio input select box that can be used with the HTML5 audio recorder (startAudioRecorderWeb)."/>
+<!--        <audioInputSelectWeb deviceRegex=".*" styleName="">
+            <onError>
+                <plainText featureText="audioInputSelectWeb_onError"/>
+            </onError> 
+            <onSuccess>
+                <plainText featureText="audioInputSelectWeb_onSuccess"/>
+            </onSuccess>
+        </audioInputSelectWeb>-->
+        <audioInputSelectWeb>
+            <onError>
+                <plainText featureText="audioInputSelectWeb_onError"/>
+            </onError> 
+            <onSuccess>
+                <plainText featureText="audioInputSelectWeb_onSuccess"/>
+            </onSuccess>
+        </audioInputSelectWeb>
+        <loadStimulus eventTag="Audio_Input_Select" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <regionReplace regionId="recordedMediaControls">
+                    <actionButton featureText="startAudioRecorder">
+                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia">
+                            <onError>
+                                <regionReplace regionId="recordedMediaControls">
+                                    <htmlText featureText="startAudioRecorder onError"/>
+                                </regionReplace>
+                            </onError>
+                            <onSuccess>
+                                <regionReplace regionId="recordedMediaControls">
+                                    <htmlText featureText="startAudioRecorder onSuccess"/>
+                                    <actionButton featureText="stopAudioRecorder">
+                                        <stopAudioRecorder/>
+                                    </actionButton>
+                                </regionReplace>
+                            </onSuccess>
+                            <mediaLoaded>
+                                <regionReplace regionId="recordedMediaControls">
+                                    <plainText featureText="AudioRecordingLoaded"/>
+                                    <actionButton featureText="Play Media">
+                                        <playMedia mediaId="recordedMedia"/>
+                                    </actionButton>
+                                    <actionButton featureText="Pause Media">
+                                        <pauseMedia mediaId="recordedMedia"/>
+                                    </actionButton>
+                                    <nextStimulusButton featureText="Next Stimulus" eventTag="Audio_Input_Select" repeatIncorrect="false"/>
+                                </regionReplace>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <regionReplace regionId="recordedMediaControls">
+                                    <plainText featureText="AudioRecordingLoadFailed"/>
+                                </regionReplace>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted/>
+                            <mediaPlaybackComplete>
+                            </mediaPlaybackComplete>
+                        </startAudioRecorderWeb>
+                    </actionButton>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <actionButton featureText="resetStimulus" hotKey="SPACE">
+                    <resetStimulus target="Audio_Input_Select"/>
+                    <gotoPresenter target="Audio_Input_Select"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Region Timer Screen" next="With_Stimuli_Screen" type="stimulus" self="Region_Timer_Screen" title="With Stimuli Screen">
         <regionAppend regionId="regionTimerC">
             <plainText featureText="TimerC startTimer"/>
