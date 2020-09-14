@@ -102,11 +102,16 @@
         <!--<experiment.configuration.name>engadvocas</experiment.configuration.name>-->
         <!--<experiment.configuration.name>episodic_memory</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentencegeneration</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>>-->
+        <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>lingquest</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>conceptual_distance</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>discat_test</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>test_experiment2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>session1auteurstest</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonion2_verb_object</experiment.configuration.name>-->
         <!--<experiment.configuration.name>ppvt4_en</experiment.configuration.name>-->
         <!--<experiment.configuration.name>lupyan_replication_norming</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>lupyan_replication</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>SynQuiz</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>userid_audio_recorder_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>stairs4words2losse</experiment.configuration.name>-->
@@ -119,6 +124,8 @@
         <!--<experiment.configuration.name>ak_study</experiment.configuration.name>-->
         <!--<experiment.configuration.name>exemplarnormingstudy</experiment.configuration.name>-->
         <!--<experiment.configuration.name>group_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>very_large_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>hbquestionnairehealth</experiment.configuration.name>-->
         <!--<experiment.configuration.name>autoprediction</experiment.configuration.name>-->
         <!--<experiment.configuration.name>digitspanbackward</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentenceplausibility</experiment.configuration.name>-->
