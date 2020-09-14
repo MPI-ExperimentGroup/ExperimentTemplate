@@ -483,7 +483,6 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void listAudioDevicesWeb(final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
-            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)("mock device1");
                 for (var index = 0; (index < deviceInfos.length); index++) {
                     var deviceInfo = deviceInfos[index];
                     console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
@@ -491,9 +490,8 @@ public abstract class AbstractPresenter implements Presenter {
                         deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)(deviceInfo.label);
                     }
                 }
-            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)("mock device2");
+                deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingComplete()();
             });
-            deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingComplete()();
         } else {
             deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingFailed()();
         }

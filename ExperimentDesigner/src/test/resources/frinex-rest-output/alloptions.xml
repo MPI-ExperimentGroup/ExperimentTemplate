@@ -378,7 +378,14 @@
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
         <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
-        <audioInputSelectWeb deviceRegex="deviceRegex" styleName="styleName"/>
+        <audioInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </audioInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -1560,7 +1567,14 @@
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
         <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
-        <audioInputSelectWeb deviceRegex="deviceRegex" styleName="styleName"/>
+        <audioInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </audioInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2363,7 +2377,14 @@
         <rewindMedia mediaId=""/>
         <pauseMedia mediaId=""/>
         <logMediaTimeStamp mediaId=""/>
-        <audioInputSelectWeb/>
+        <audioInputSelectWeb>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </audioInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -3521,7 +3542,14 @@
         <rewindMedia mediaId=""/>
         <pauseMedia mediaId=""/>
         <logMediaTimeStamp mediaId=""/>
-        <audioInputSelectWeb/>
+        <audioInputSelectWeb>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </audioInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>

@@ -1704,6 +1704,42 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         super.startAudioRecorderTag(tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
+    protected void audioInputSelectWeb(final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        final String deviceRegex = (deviceRegexL == null) ? ".*" : deviceRegexL;
+        final String selectedDevice = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId");
+        final ValueChangeListener itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener() {
+            @Override
+            public void onValueChange(String value) {
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", value);
+            }
+        });
+        listAudioDevicesWeb(deviceRegex, new DeviceListingListener() {
+            boolean hasDeviceNames = false;
+
+            @Override
+            public void listingFailed() {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void listingComplete() {
+                if (hasDeviceNames) {
+                    onSuccess.postLoadTimerFired();
+                } else {
+                    onError.postLoadTimerFired();
+                }
+            }
+
+            @Override
+            public void deviceFound(String targetDeviceId) {
+                if (targetDeviceId != null && !targetDeviceId.isEmpty()) {
+                    hasDeviceNames = true;
+                }
+                itemAddedListener.onValueChange(targetDeviceId);
+            }
+        });
+    }
+
     protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
