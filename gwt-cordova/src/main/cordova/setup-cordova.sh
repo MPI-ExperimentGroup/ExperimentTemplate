@@ -103,11 +103,11 @@ cordova plugin add cordova-plugin-device
 #cordova plugin add cordova-plugin-splashscreen
 cordova plugin add cordova-plugin-inappbrowser
 
-splashResourcesDir=./platforms/ios/$appname/Images.xcassets/LaunchImage.launchimage
+splashResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/LaunchImage.launchimage
 echo $splashResourcesDir
 mkdir -p $splashResourcesDir
 splashImage="www/static/splash.png" #"images/splash.gif" 
-iconResourcesDir=./platforms/ios/$appname/Images.xcassets/AppIcon.appiconset
+iconResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/AppIcon.appiconset
 mkdir -p $iconResourcesDir
 iconImage="www/static/icon.png"
 
@@ -135,12 +135,12 @@ echo $splashImage
 #convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
 #convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
 #echo "making iOS Single-image launch screen images" 
-convert -resize 2732x2732^ -gravity center -extent 2732x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~anyany.png
-convert -resize 1278x2732^ -gravity center -extent 1278x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comany.png
-convert -resize 1334x750^ -gravity center -extent 1334x750 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comcom.png
-convert -resize 2208x2208^ -gravity center -extent 2208x2208 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anyany.png
-convert -resize 2208x1242^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anycom.png
-convert -resize 1242x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~comany.png
+convert -flatten -resize 2732x2732^ -gravity center -extent 2732x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~anyany.png
+convert -flatten -resize 1278x2732^ -gravity center -extent 1278x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comany.png
+convert -flatten -resize 1334x750^ -gravity center -extent 1334x750 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comcom.png
+convert -flatten -resize 2208x2208^ -gravity center -extent 2208x2208 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anyany.png
+convert -flatten -resize 2208x1242^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anycom.png
+convert -flatten -resize 1242x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~comany.png
 #echo "making Android splash images"
 mkdir -p platforms/android/res/drawable-land-hdpi
 mkdir -p platforms/android/res/drawable-land-ldpi
@@ -159,14 +159,14 @@ mkdir -p platforms/android/res/drawable-port-xhdpi
 #cp platforms/splash150x150.9.png platforms/android/res/drawable-port-mdpi/screen.png
 #cp platforms/splash320x320.9.png platforms/android/res/drawable-port-xhdpi/screen.png
 
-convert -crop +0-100 -resize 800x480^ -gravity center -extent 800x480 -quality 100 $splashImage platforms/android/res/drawable-land-hdpi/screen.png
-convert -crop +0-50 -resize 320x200^ -gravity center -extent 320x200 -quality 100 $splashImage platforms/android/res/drawable-land-ldpi/screen.png
-convert -crop +0-50 -resize 480x320^ -gravity center -extent 480x320 -quality 100 $splashImage platforms/android/res/drawable-land-mdpi/screen.png
-convert -crop +0-100 -resize 1280x720^ -gravity center -extent 1280x720 -quality 100 $splashImage platforms/android/res/drawable-land-xhdpi/screen.png
-convert -resize 480x800^ -gravity center -extent 480x800 -quality 100 $splashImage platforms/android/res/drawable-port-hdpi/screen.png
-convert -resize 200x320^ -gravity center -extent 200x320 -quality 100 $splashImage platforms/android/res/drawable-port-ldpi/screen.png
-convert -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
-convert -resize 720x1280^ -gravity center -extent 720x1280 -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
+convert -flatten -crop +0-100 -resize 800x480^ -gravity center -extent 800x480 -quality 100 $splashImage platforms/android/res/drawable-land-hdpi/screen.png
+convert -flatten -crop +0-50 -resize 320x200^ -gravity center -extent 320x200 -quality 100 $splashImage platforms/android/res/drawable-land-ldpi/screen.png
+convert -flatten -crop +0-50 -resize 480x320^ -gravity center -extent 480x320 -quality 100 $splashImage platforms/android/res/drawable-land-mdpi/screen.png
+convert -flatten -crop +0-100 -resize 1280x720^ -gravity center -extent 1280x720 -quality 100 $splashImage platforms/android/res/drawable-land-xhdpi/screen.png
+convert -flatten -resize 480x800^ -gravity center -extent 480x800 -quality 100 $splashImage platforms/android/res/drawable-port-hdpi/screen.png
+convert -flatten -resize 200x320^ -gravity center -extent 200x320 -quality 100 $splashImage platforms/android/res/drawable-port-ldpi/screen.png
+convert -flatten -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
+convert -flatten -resize 720x1280^ -gravity center -extent 720x1280 -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
 
 # copy the ant.properties file with the android key store and alias (key.store= key.alias=) information so that the APK can be signed
 #cp ~/android-keys/ant.properties platforms/android/
