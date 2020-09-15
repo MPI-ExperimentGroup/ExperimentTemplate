@@ -103,11 +103,11 @@ cordova plugin add cordova-plugin-device
 #cordova plugin add cordova-plugin-splashscreen
 cordova plugin add cordova-plugin-inappbrowser
 
-splashResourcesDir="./platforms/ios/SynQuiz/Images.xcassets/LaunchImage.launchimage"
+splashResourcesDir=./platforms/ios/$appname/Images.xcassets/LaunchImage.launchimage
 echo $splashResourcesDir
 mkdir -p $splashResourcesDir
 splashImage="www/static/splash.png" #"images/splash.gif" 
-iconResourcesDir="./platforms/ios/SynQuiz/Images.xcassets/AppIcon.appiconset"
+iconResourcesDir=./platforms/ios/$appname/Images.xcassets/AppIcon.appiconset
 mkdir -p $iconResourcesDir
 iconImage="www/static/icon.png"
 
