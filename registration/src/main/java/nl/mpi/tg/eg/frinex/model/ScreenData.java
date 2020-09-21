@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ import javax.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class ScreenData {
+public class ScreenData implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
