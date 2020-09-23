@@ -18,18 +18,18 @@
 package nl.mpi.tg.eg.experimentdesigner;
 
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-//import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @since Nov 16, 2015 1:08:26 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Configuration
-public class MvcConfig { // extends WebMvcConfigurerAdapter {
-// todo: migrate this from spring boot 1.4.1 to 2.x
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/login").setViewName("login");
-//    }
+public class MvcConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+    }
 }
