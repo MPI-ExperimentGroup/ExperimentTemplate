@@ -149,7 +149,14 @@ public class HtmlTokenFormatter {
                     default:
                         throw new EvaluateTokensException("unsupported match:" + matcherGroupM.getGroup(0));
                 }
-                inputString = inputString.replace(methodMatch + parameterMatch, resultValue);
+                //System.out.println(methodMatch + parameterMatch + " " + resultValue);
+                if (methodMatch.equals("random")) {
+                    // with random we must only replace one instance, because each instance must generate a fresh random value
+                    inputString = inputString.substring(0, matcherGroupM.getIndex()) + resultValue + inputString.substring(matcherGroupM.getIndex() + matcherGroupM.getGroup(0).length());
+                } else {
+                    // for all other cases we replace instances on the first occurence since they will produce the same value each time.
+                    inputString = inputString.replace(methodMatch + parameterMatch, resultValue);
+                }
             } else {
                 throw new EvaluateTokensException(inputString);
             }
