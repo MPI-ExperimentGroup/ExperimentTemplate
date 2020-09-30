@@ -118,7 +118,7 @@ public class HtmlTokenFormatter {
 
     private String evaluateResolve(String inputString) throws EvaluateTokensException {
         System.out.println(inputString);
-        RegExp regExpGroupM = RegExp.compile("(daysBetween|length|random)(\\([^\\)\\(]*\\))");
+        RegExp regExpGroupM = RegExp.compile("(daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
         MatchResult matcherGroupM = regExpGroupM.exec(inputString);
         while (matcherGroupM != null) {
             if (matcherGroupM.getGroupCount() == 3) {
@@ -128,6 +128,17 @@ public class HtmlTokenFormatter {
                 switch (methodMatch) {
                     case "length":
                         resultValue = Integer.toString(parameterMatch.length() - 4);
+                        break;
+                    case "replaceAll":
+                        String[] replaceAllParts = parameterMatch.split("\",\"");
+                        if (replaceAllParts.length == 3) {
+                            final String replaceableString = replaceAllParts[0].replaceAll("^\\([\"]?", "").replaceAll("\"$", "");
+                            final String regexString = replaceAllParts[1].replaceAll("^\"", "").replaceAll("\"$", "");
+                            final String replacementString = replaceAllParts[2].replaceAll("^\"", "").replaceAll("[\"]?\\)$", "");
+                            resultValue = replaceableString.replaceAll(regexString, replacementString);
+                        } else {
+                            throw new EvaluateTokensException("unsupported replaceAll parameters:" + matcherGroupM.getGroup(0));
+                        }
                         break;
                     case "daysBetween":
                         String[] parameterParts = parameterMatch.split(",");

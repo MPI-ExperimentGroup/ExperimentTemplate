@@ -316,6 +316,7 @@ public class HtmlTokenFormatterTest {
         assertEquals(6.0, instance.evaluateTokensNumber("length(\"123456\")"));
         assertEquals(9.0, instance.evaluateTokensNumber("length(\"123456789\")"));
         assertEquals(12.0, instance.evaluateTokensNumber("length(\"123456123456\")"));
+        assertEquals("testEvaluateReplacementMethod", instance.evaluateTokensString("replaceAll(\"replaceAll(\"testEvaluateTokensMethods\", \"Tokens\", \"Replacement\")\", \"ds\", \"d\")"));
         assertTrue(instance.evaluateTokensString("random(10)random(10)random(10)random(10)random(10)random(10)random(10)").matches("[0-9]{7,7}"));
         assertTrue(instance.evaluateTokensString("Arandom(10)Brandom(10)Crandom(10)Drandom(10)Erandom(10)Frandom(10)Grandom(10)H").matches("A[0-9]B[0-9]C[0-9]D[0-9]E[0-9]F[0-9]G[0-9]H"));
         assertEquals(12.0, instance.evaluateTokensNumber("daysBetween(\"01/12/2019\", \"13/12/2019\")"));
