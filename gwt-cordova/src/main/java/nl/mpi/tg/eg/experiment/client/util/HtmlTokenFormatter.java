@@ -70,9 +70,13 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
-    public String formatDDMMYYYCurrentDate() {
-        // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format
-        final Date currentDate = new Date();
+    @SuppressWarnings("deprecation")
+    public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
+        // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format      
+        // we also cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
+        final long msPerDay = 1000 * 60 * 60 * 24;
+        final Date tempDate = new Date(new Date().getTime() + (addDays * msPerDay));
+        final Date currentDate = new Date(tempDate.getYear() + addYears, tempDate.getMonth() + addMonths, tempDate.getDate());
         final String returnString
                 = ((currentDate.getDate() <= 9) ? "0" : "") + currentDate.getDate()
                 + "/" + ((currentDate.getMonth() + 1 <= 9) ? "0" : "") + (currentDate.getMonth() + 1)
@@ -80,8 +84,10 @@ public class HtmlTokenFormatter {
         return returnString;
     }
 
+    @SuppressWarnings("deprecation")
     public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
         // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format
+        // we also cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
         final String[] dateParts = inputString.replaceAll("[\"\\(\\)]", "").split("/");
         if (dateParts.length != 3) {
             throw new EvaluateTokensException("invalid date:" + inputString);
@@ -337,7 +343,45 @@ public class HtmlTokenFormatter {
         replacedTokensString = replacedTokensString.replaceAll("<playerTotalErrors>", Integer.toString(userData.getTotalPotentialScore() - userData.getTotalScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerTotalPotentialScore>", Integer.toString(userData.getTotalPotentialScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerGamesPlayed>", Integer.toString(userData.getGamesPlayed()));
-        replacedTokensString = replacedTokensString.replaceAll("<currentDateDDMMYYYY>", formatDDMMYYYCurrentDate());
+//        replacedTokensString = replacedTokensString.replaceAll("<currentDateDDMMYYYY>", formatDDMMYYYCurrentDate());
+        final String[] splitOnDateTokens = replacedTokensString.split("<currentDateDDMMYYYY");
+        if (splitOnDateTokens.length > 1) {
+            String resultString = null;
+            for (String splitPart : splitOnDateTokens) {
+                if (resultString == null) {
+                    resultString = splitPart;
+                } else {
+                    final String[] subPart = splitPart.split(">", 2);
+                    if (subPart[0].length() == 0) {
+                        resultString += formatDDMMYYYCurrentDate(0, 0, 0);
+                    } else {
+                        String dateAddPart = subPart[0];
+                        int addDays = 0;
+                        int addMonths = 0;
+                        int addYears = 0;
+                        RegExp regExp = RegExp.compile("([^DMY][0-9]*[DMY])?([^DMY][0-9]*[DMY])?([^DMY][0-9]*[DMY])?([^DMY][0-9]*[DMY])?");
+                        MatchResult dateAddMatcher = regExp.exec(dateAddPart);
+                        if (dateAddMatcher != null) {
+                            for (int dateAddIndex = 1; dateAddIndex < dateAddMatcher.getGroupCount(); dateAddIndex++) {
+                                final String dateAddGroup = dateAddMatcher.getGroup(dateAddIndex);
+                                if (dateAddGroup != null) {
+                                    if (dateAddGroup.endsWith("D")) {
+                                        addDays += Integer.parseInt(dateAddGroup.substring(0, dateAddGroup.length() - 1));
+                                    } else if (dateAddGroup.endsWith("M")) {
+                                        addMonths += Integer.parseInt(dateAddGroup.substring(0, dateAddGroup.length() - 1));
+                                    } else if (dateAddGroup.endsWith("Y")) {
+                                        addYears += Integer.parseInt(dateAddGroup.substring(0, dateAddGroup.length() - 1));
+                                    }
+                                }
+                            }
+                        }
+                        resultString += formatDDMMYYYCurrentDate(addDays, addMonths, addYears);
+                    }
+                    resultString += subPart[1];
+                }
+            }
+            replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
+        }
         for (String timerId : timerService.getTimerIds()) {
             replacedTokensString = replacedTokensString.replaceAll("<" + timerId + ">", Integer.toString(timerService.getTimerValue(timerId)));
         }

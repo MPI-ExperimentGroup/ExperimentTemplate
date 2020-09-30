@@ -81,7 +81,9 @@ public abstract class LocalNotifications {
         setNotificationSucceded();
     }
 
+    @SuppressWarnings("deprecation")
     protected int[][] findNotificationRepetitions(final int hourFromInt, final int minuteFromInt, final int hourUntilInt, final int minuteUntilInt, final int repetitionCount) {
+        // we cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar hence the deprecated usages here
         Date fromDate = new Date();
         fromDate.setHours(hourFromInt);
         fromDate.setMinutes(minuteFromInt);
@@ -108,15 +110,17 @@ public abstract class LocalNotifications {
         return repetitionArray;
     }
 
+    @SuppressWarnings("deprecation")
     protected int findNotificationDays(final int notificationCount, final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int maxDaysInAdvance, final boolean onWeekends, final int hourInt, final int minuteInt) {
+        // we cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
         int numberAdded = 0;
         Date startDate = new Date();
         startDate.setHours(hourInt);
         startDate.setMinutes(minuteInt);
-        final int secondsPerDay = 1000 * 60 * 60 * 24;
+        final long msPerDay = 1000 * 60 * 60 * 24;
         final int minimumTimeWindow = 1000 * 60 * 5;
         for (int daysInAdvance = 0; daysInAdvance <= maxDaysInAdvance; daysInAdvance++) {
-            Date currentDate = new Date(startDate.getTime() + (secondsPerDay * daysInAdvance));
+            Date currentDate = new Date(startDate.getTime() + (msPerDay * daysInAdvance));
             if ((currentDate.getDay() == 1 && !onWeekends)
                     || (currentDate.getDay() == 2 && !onWeekends)
                     || (currentDate.getDay() == 3 && !onWeekends)

@@ -169,7 +169,9 @@ public abstract class DateOfBirthField extends HorizontalPanel {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public long getDaysSince() {
+        // we cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
         final Date parseStrict = dateFormat.parseStrict(getValue());
         final Date currentDate = new Date();
         currentDate.setHours(0);
