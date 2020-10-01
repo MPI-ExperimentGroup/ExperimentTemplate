@@ -104,7 +104,7 @@ public class HtmlTokenFormatter {
 
     public String evaluateTokensString(String inputString) throws EvaluateTokensException {
         final String formatedString = formatString(inputString);
-        return evaluateResolve(formatedString.replaceAll("\\s", ""));
+        return evaluateResolve(formatedString);
     }
 
     public Number evaluateTokensNumber(String inputString) throws EvaluateTokensException {
@@ -130,7 +130,7 @@ public class HtmlTokenFormatter {
                         resultValue = Integer.toString(parameterMatch.length() - 4);
                         break;
                     case "replaceAll":
-                        String[] replaceAllParts = parameterMatch.split("\",\"");
+                        String[] replaceAllParts = parameterMatch.split("\",[\\s]?\"");
                         if (replaceAllParts.length == 3) {
                             final String replaceableString = replaceAllParts[0].replaceAll("^\\([\"]?", "").replaceAll("\"$", "");
                             final String regexString = replaceAllParts[1].replaceAll("^\"", "").replaceAll("\"$", "");
@@ -189,7 +189,7 @@ public class HtmlTokenFormatter {
             matcherGroup = regExpGroup.exec(inputString);
         }
         for (String operator : new String[]{"/", "\\*", "%", "-", "\\+", "<=", ">=", "<", ">", "==", "\\!="}) {
-            RegExp regExpOperator = RegExp.compile("(^-|[^0-9.]-|)([0-9\\.]+)(" + operator + ")(-?)([0-9\\.]+)");
+            RegExp regExpOperator = RegExp.compile("(^-|[^0-9.]-|)([0-9\\.]+)([\\s]?" + operator + "[\\s]?)(-?)([0-9\\.]+)");
             boolean foundMatch = true;
             while (foundMatch) {
                 foundMatch = false;
@@ -206,7 +206,7 @@ public class HtmlTokenFormatter {
                         final String groupSignRight = matcherOperator.getGroup(4);
                         final String groupValueRight = matcherOperator.getGroup(5);
                         final String resultValue;
-                        switch (operator) {
+                        switch (operator.trim()) {
                             case "/":
                                 resultValue = String.valueOf(Double.parseDouble(groupSignLeft + groupValueLeft) / Double.parseDouble(groupSignRight + groupValueRight));
                                 break;
@@ -254,7 +254,7 @@ public class HtmlTokenFormatter {
             }
         }
         for (String operator : new String[]{"==", "\\!=", "&&", "\\|\\|"}) {
-            RegExp regExpOperator = RegExp.compile("(true|false)(" + operator + ")(true|false)");
+            RegExp regExpOperator = RegExp.compile("(true|false)([\\s]?" + operator + "[\\s]?)(true|false)");
             boolean foundMatch = true;
             while (foundMatch) {
                 foundMatch = false;
@@ -266,7 +266,7 @@ public class HtmlTokenFormatter {
                         final String groupOperator = matcherOperator.getGroup(2);
                         final String groupBooleanRight = matcherOperator.getGroup(3);
                         final String resultValue;
-                        switch (operator) {
+                        switch (operator.trim()) {
                             case "==":
                                 resultValue = String.valueOf(Boolean.parseBoolean(groupBooleanLeft) == Boolean.parseBoolean(groupBooleanRight));
                                 break;
