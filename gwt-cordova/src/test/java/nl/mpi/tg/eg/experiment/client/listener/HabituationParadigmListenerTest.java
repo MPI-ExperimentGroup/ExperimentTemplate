@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -40,9 +40,9 @@ public class HabituationParadigmListenerTest {
         int habituationThresholdData[] = {10000, 10000, 10000, 10000, 10000, 10000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 100, 100, 100, 10000, 10000, 10000, 10000, 10000, 10000, 10, 10, 10, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
         int thresholdMsData[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 1000, 10000, 10000, 10000, 10000, 100, 10000, 10000, 10000, 10, 10000, 10000, 10000, 10000, 10, 10000, 10000, 10, 100, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
         int isSingleShowData[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
-        HabituationParadigmListener maximumShowsInstance = new HabituationParadigmListener("maximumShowsInstance", 1000, 10, new TimedStimulusListener() {
+        HabituationParadigmListener maximumShowsInstance = new HabituationParadigmListener("maximumShowsInstance", 1000, 10, new SingleStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
             }
         }, false);
@@ -54,44 +54,44 @@ public class HabituationParadigmListenerTest {
         }
         System.out.println("}");
         System.out.println(maximumShowsInstance.generateJsonResults());
-        HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener("habituationThresholdInstance", 1000, 10, new TimedStimulusListener() {
+        HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener("habituationThresholdInstance", 1000, 10, new SingleStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
             }
         }, false);
         System.out.print("input: {");
         for (int value : habituationThresholdData) {
             System.out.print(value);
-            habituationThresholdInstance.evaluateReset(value);
+            habituationThresholdInstance.evaluateReset(null, value);
             System.out.print(", ");
         }
         System.out.println("}");
         System.out.println(habituationThresholdInstance.generateJsonResults());
-        HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener("thresholdMsInstance", 1000, 10, new TimedStimulusListener() {
+        HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener("thresholdMsInstance", 1000, 10, new SingleStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
             }
         }, false);
         System.out.print("input: {");
         for (int value : thresholdMsData) {
             System.out.print(value);
-            thresholdMsInstance.evaluateReset(value);
+            thresholdMsInstance.evaluateReset(null, value);
             System.out.print(", ");
         }
         System.out.println("}");
         System.out.println(thresholdMsInstance.generateJsonResults());
-        HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener("isSingleShowInstance", 1000, 10, new TimedStimulusListener() {
+        HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener("isSingleShowInstance", 1000, 10, new SingleStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
             }
         }, true);
         System.out.print("input: {");
         for (int value : isSingleShowData) {
             System.out.print(value);
-            isSingleShowInstance.evaluateReset(value);
+            isSingleShowInstance.evaluateReset(null, value);
             System.out.print(", ");
         }
         System.out.println("}");

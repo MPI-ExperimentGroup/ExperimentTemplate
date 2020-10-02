@@ -20,7 +20,7 @@ package nl.mpi.tg.eg.experiment.client.listener;
 import com.google.gwt.core.client.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Aug 10, 2018 3:10:31 PM (creation date)
@@ -38,8 +38,9 @@ public class HabituationParadigmListener extends TriggerListener {
     private final List<Integer> baselineSamples = new ArrayList<>();
     private int showCounter = 0;
     private Duration lastTrigger = null;
+    private Stimulus lastStimulus = null;
 
-    public HabituationParadigmListener(String listenerId, int threshold, int maximum, TimedStimulusListener triggerListener, final boolean notFirstItem) {
+    public HabituationParadigmListener(String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener, final boolean notFirstItem) {
         super(listenerId, threshold, maximum, triggerListener);
         thresholdMs = threshold;
         maximumShows = maximum;
@@ -47,10 +48,11 @@ public class HabituationParadigmListener extends TriggerListener {
     }
 
     @Override
-    public void trigger() {
+    public void trigger(final Stimulus currentStimulus) {
         if (lastTrigger == null) {
             showCounter++;
             lastTrigger = new Duration();
+            lastStimulus = currentStimulus;
         }
     }
 
@@ -59,17 +61,18 @@ public class HabituationParadigmListener extends TriggerListener {
         if (lastTrigger != null) {
             final int elapsedMillis = lastTrigger.elapsedMillis();
             lastTrigger = null;
-            evaluateReset(elapsedMillis);
+            evaluateReset(lastStimulus, elapsedMillis);
+            lastStimulus = null;
         }
     }
 
-    protected void evaluateReset(final int elapsedMillis) {
+    protected void evaluateReset(final Stimulus currentStimulus, final int elapsedMillis) {
         if (isActive && elapsedMillis > thresholdMs) {
             // baseline = sampling first three
             // when current falls below 60% of the baseline then trigger
             // any viewing with a duration less that the threshold will be discarded from the average
             if (isSingleShow || showCounter > maximumShows) {
-                triggerListener.postLoadTimerFired();
+                triggerListener.postLoadTimerFired(currentStimulus);
                 isActive = false;
             } else {
                 baselineSamples.add(elapsedMillis);
@@ -87,7 +90,7 @@ public class HabituationParadigmListener extends TriggerListener {
                     }
                     int currentAverage = currentTotal / baselineWindowSize;
                     if ((baselineAverage / 100 * habituationThreshold) > currentAverage) {
-                        triggerListener.postLoadTimerFired();
+                        triggerListener.postLoadTimerFired(lastStimulus);
                         isActive = false;
                     }
                 }

@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jan 30, 2018 4:29:59 PM (creation date)
@@ -28,11 +28,11 @@ public class TriggerListener {
     final private String listenerId;
     final private int threshold;
     final private int maximum;
-    final protected TimedStimulusListener triggerListener;
+    final protected SingleStimulusListener triggerListener;
     private int maximumCounter = 0;
     private int thresholdCounter = 0;
 
-    public TriggerListener(String listenerId, int threshold, int maximum, TimedStimulusListener triggerListener) {
+    public TriggerListener(String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener) {
         this.listenerId = listenerId;
         this.threshold = threshold;
         this.maximum = maximum;
@@ -53,12 +53,12 @@ public class TriggerListener {
         return (noMaximum || maximumCounter < maximum);
     }
 
-    public void trigger() {
+    public void trigger(final Stimulus currentStimulus) {
         thresholdCounter++;
         boolean noMaximum = maximum <= 0;
         if (thresholdCounter >= threshold && (noMaximum || maximumCounter < maximum)) {
             maximumCounter++;
-            triggerListener.postLoadTimerFired();
+            triggerListener.postLoadTimerFired(currentStimulus);
         }
     }
 }

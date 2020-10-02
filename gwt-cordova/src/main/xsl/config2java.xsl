@@ -227,6 +227,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+                import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -987,9 +988,12 @@ or local-name() eq 'clearStimulusResponse'
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:text>currentStimulus, </xsl:text>
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'triggerDefinition' or local-name() eq 'habituationParadigmListener' or local-name() eq 'evaluatePause') then if(ancestor::*[local-name() = 'eachStimulus']
-                                                                                                               or ancestor::*[local-name() = 'hasMoreStimulus']
-                                                                                                               ) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'triggerDefinition' 
+                            or local-name() eq 'habituationParadigmListener'
+                            or local-name() eq 'triggerRandom'
+                            or local-name() eq 'evaluatePause') then if(ancestor::*[local-name() = 'eachStimulus']
+                            or ancestor::*[local-name() = 'hasMoreStimulus']
+                            ) then 'currentStimulus, ' else 'null, ' else ''" />
 
         <!--        <xsl:if test="local-name() eq 'groupNetwork'">
             some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed
@@ -1079,15 +1083,25 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:text>
                 }
                 }
-            </xsl:text>            
+            </xsl:text>
         </xsl:if>
-        
+        <xsl:if test="local-name() eq 'triggerDefinition'
+                    or local-name() eq 'habituationParadigmListener'
+                    ">
+            <xsl:text>&#xa;new SingleStimulusListener() {
+                @Override
+                public void postLoadTimerFired(final Stimulus currentStimulus) {
+            </xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>
+                }
+                }
+            </xsl:text>
+        </xsl:if>
         <xsl:if test="local-name() eq 'table' or local-name() eq 'row' or local-name() eq 'column'
                         or local-name() eq 'pause'
                         or local-name() eq 'stimulusPause'
                         or local-name() eq 'randomMsPause'
-                        or local-name() eq 'triggerDefinition'
-                        or local-name() eq 'habituationParadigmListener'
                         or local-name() eq 'countdownLabel'
                         or local-name() eq 'stimulusImageCapture'
                         or local-name() eq 'backgroundImage'

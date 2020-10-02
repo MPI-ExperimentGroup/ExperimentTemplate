@@ -57,6 +57,7 @@ import nl.mpi.tg.eg.experiment.client.listener.HabituationParadigmListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputZone;
@@ -1980,22 +1981,22 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
     }
 
-    public void triggerDefinition(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
+    public void triggerDefinition(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final SingleStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
         triggerListeners.put(formattedListenerId, new TriggerListener(formattedListenerId, threshold, maximum, triggerListener));
     }
 
-    public void habituationParadigmListener(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
+    public void habituationParadigmListener(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final SingleStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
         triggerListeners.put(formattedListenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
     }
 
     public void triggerMatching(final String listenerId, final Stimulus currentStimulus) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
-        triggerListeners.get(formattedListenerId).trigger();
+        triggerListeners.get(formattedListenerId).trigger(currentStimulus);
     }
 
-    public void triggerRandom(final String matchingRegex, final TimedStimulusListener endOfTriggersListener) {
+    public void triggerRandom(final Stimulus currentStimulus, final String matchingRegex, final TimedStimulusListener endOfTriggersListener) {
         ArrayList<TriggerListener> matchingListners = new ArrayList<>();
         for (TriggerListener triggerListener : triggerListeners.values()) {
             if (triggerListener.canTrigger()) {
@@ -2005,7 +2006,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         }
         if (!matchingListners.isEmpty()) {
-            matchingListners.get(new Random().nextInt(matchingListners.size())).trigger();
+            matchingListners.get(new Random().nextInt(matchingListners.size())).trigger(currentStimulus);
         } else {
             endOfTriggersListener.postLoadTimerFired();
         }
