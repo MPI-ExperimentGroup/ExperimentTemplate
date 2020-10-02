@@ -49,7 +49,7 @@ public class HabituationParadigmListenerTest {
         System.out.print("input: {");
         for (int value : maximumShowsData) {
             System.out.print(value);
-            maximumShowsInstance.evaluateReset(value);
+            maximumShowsInstance.evaluateReset(null, value);
             System.out.print(", ");
         }
         System.out.println("}");
