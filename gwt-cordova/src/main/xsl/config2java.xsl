@@ -451,7 +451,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 <xsl:text>stimulusProvider, </xsl:text>
                 <xsl:text>currentStimulus,</xsl:text>
             </xsl:if>
-            <xsl:value-of select="if(local-name() eq 'actionTokenButton') then if (contains(@featureText, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
+            <xsl:value-of select="if(local-name() eq 'actionTokenButton') then if(ancestor::*[local-name() = 'eachStimulus'] or ancestor::*[local-name() = 'hasMoreStimulus']) then 'currentStimulus, ' else 'null, ' else ''" />
         </xsl:if>
         <xsl:text>new PresenterEventListner() {
 
@@ -577,8 +577,7 @@ or local-name() eq 'submitGroupEvent'
                                 or local-name() eq 'setMetadataEvalTokens'
                                 or local-name() eq 'progressIndicator'
                                 or local-name() eq 'matchOnEvalTokens'
-                                ) then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus') or contains(@evaluateTokens, '&lt;stimulus')
-                                    or contains(@featureText, '&lt;code') or contains(@dataLogFormat, '&lt;code') or contains(@evaluateTokens, '&lt;code')) then 'currentStimulus, ' else 'null, ' else ''" />
+                                ) then if(ancestor::*[local-name() = 'eachStimulus'] or ancestor::*[local-name() = 'hasMoreStimulus']) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;, ') else ''" />
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
@@ -999,10 +998,7 @@ or local-name() eq 'clearStimulusResponse'
             some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed
             <xsl:value-of select="if(local-name(..) ne 'endOfStimulus') then 'currentStimulus, ' else 'null, '" />
         </xsl:if>-->
-        <xsl:value-of select="if(@regionId) then if (
-        contains(@regionId, '&lt;stimulus') or contains(@regionId, '&lt;code') or contains(@regionId, '&lt;rating') or 
-        contains(@styleName, '&lt;stimulus') or contains(@styleName, '&lt;code') or contains(@styleName, '&lt;rating')
-        ) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if(@regionId) then if(ancestor::*[local-name() = 'eachStimulus'] or ancestor::*[local-name() = 'hasMoreStimulus']) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
@@ -1324,7 +1320,7 @@ or local-name() eq 'stimulusExists'
                 ,currentStimulus
             </xsl:text>
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'playMedia' or local-name() eq 'pauseMedia' or local-name() eq 'rewindMedia') then if (contains(@mediaId, '&lt;stimulus')) then ', currentStimulus' else ', null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'playMedia' or local-name() eq 'pauseMedia' or local-name() eq 'rewindMedia') then if(ancestor::*[local-name() = 'eachStimulus'] or ancestor::*[local-name() = 'hasMoreStimulus']) then ', currentStimulus' else ', null' else ''" />
         <xsl:if test="local-name() eq 'groupStimuli'">
             <xsl:text>, &#xa;new CurrentStimulusListener() {
                 @Override
