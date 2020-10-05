@@ -121,19 +121,19 @@ echo $splashImage
 #draw9patch platforms/splash150x150.9.png
 
 #echo "making iOS splash images"
-#convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-#convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
-#convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
-#convert -crop +0-100 -resize 2208x2208^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
+convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
+convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
+convert -crop +0-100 -resize 2208x1242^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
 #convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-#convert -resize 2048x2048^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
-#convert -resize 1024x1024^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
-#convert -resize 2048x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
-#convert -resize 1024x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
-#convert -resize 960x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
-#convert -resize 480x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
-#convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
-#convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
+convert -resize 2048x1536^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
+convert -resize 1024x768^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
+convert -resize 1536x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
+convert -resize 768x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
+convert -resize 640x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
+convert -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
+convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
+convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
 #echo "making iOS Single-image launch screen images" 
 convert -flatten -resize 2732x2732^ -gravity center -extent 2732x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~anyany.png
 convert -flatten -resize 1278x2732^ -gravity center -extent 1278x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comany.png
