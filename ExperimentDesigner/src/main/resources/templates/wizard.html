@@ -34,7 +34,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickablerow" th:each="wizardData : ${wizardList}" th:onclick="'javascript:window.location=\'wizard/edit/' + ${wizardData.getId()} + '\';'">
+                    <tr class="clickablerow" th:each="wizardData : ${wizardList}" th:onclick="javascript:window.location='wizard/edit/[[${wizardData.getId()}]]';">
                         <td th:text="${wizardData.getAppName()}"></td>
                         <td th:text="${wizardData.getWizardScreens().size()}"></td>
                     </tr>
@@ -79,25 +79,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr>
                     <td>Experiment Name</td>
                     <td>
-                        <input th:value="${wizardData.appName}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                        <input th:value="${wizardData.appName}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
                     </td>
                 </tr>
                 <tr>
                     <td>Obfuscate Screen Names</td>
                     <td>
-                        <input type="checkbox" th:checked="${wizardData.obfuscateScreenNames}" class="wizardgrowcell" th:name="obfuscateScreenNames" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                        <input type="checkbox" th:checked="${wizardData.obfuscateScreenNames}" class="wizardgrowcell" th:name="obfuscateScreenNames" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
                     </td>
                 </tr>
                 <tr>
                     <td>Show Menu Bar</td>
                     <td>
-                        <input type="checkbox" th:checked="${wizardData.showMenuBar}" class="wizardgrowcell" th:name="showMenuBar" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                        <input type="checkbox" th:checked="${wizardData.showMenuBar}" class="wizardgrowcell" th:name="showMenuBar" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
                     </td>
                 </tr>
                 <tr>
                     <td>Text Font Size</td>
                     <td>
-                        <input type="number" th:value="${wizardData.textFontSize}" class="wizardgrowcell" th:name="textFontSize" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                        <input type="number" th:value="${wizardData.textFontSize}" class="wizardgrowcell" th:name="textFontSize" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
                     </td>
                 </tr>
                 <tr>
@@ -143,21 +143,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                              ondragstart="drag(event)"
                                              ondrop="drop(event)" 
                                              ondragover="allowDrop(event)">
-                                            <button class="deleteFeatureButton" type="button" th:onclick="${'deleteFeature(featureForm' + wizardScreen.screenTag + ')'}">Delete Screen</button>
+                                            <button class="deleteFeatureButton" type="button" th:onclick="deleteFeature('featureForm[[${wizardScreen.screenTag}]]');">Delete Screen</button>
                                             <!--<span class="featureTypeLabel" th:text="${wizardScreen.class.name}">wizardScreen.class.name</span>-->
                                             <span class="featureTypeLabel"><input name="screenTitle" th:value="${wizardScreen.getScreenTitle()}" /></span>
-                                            <select name="backWizardScreenId" th:onchange="${'$(updateFeatureButton' + wizardScreen.id + ').show();'}">
+                                            <select name="backWizardScreenId" th:onchange="$('updateFeatureButton[[${wizardScreen.id}]]').show();">
                                                 <option value="-1">&lt;none&gt;</option>
                                                 <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.id}" th:text="${wizardScreenItem.screenTitle}" th:selected="${wizardScreenItem.equals(wizardScreen.backWizardScreenData)}" />
                                             </select>
-                                            <select name="nextWizardScreenId" th:onchange="${'$(updateFeatureButton' + wizardScreen.id + ').show();'}">
+                                            <select name="nextWizardScreenId" th:onchange="$('updateFeatureButton[[${wizardScreen.id}]]').show();'}">
                                                 <option value="-1">&lt;none&gt;</option>
                                                 <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.id}" th:text="${wizardScreenItem.screenTitle}" th:selected="${wizardScreenItem.equals(wizardScreen.nextWizardScreenData)}" />
                                             </select>
-                                            <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.id}" class="saveFeatureButton" th:onclick="${'postFeatureChanges(featureForm' + wizardScreen.id + ')'}">Save Changes</button>
+                                            <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.id}" class="saveFeatureButton" th:onclick="postFeatureChanges('featureForm[[${wizardScreen.id}]]');">Save Changes</button>
                                         </div>
                                         <div class="errorDiv"/>                                        
-                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" checked="true" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails(\''+${wizardScreen.screenTag}+'\')'">Show details</input></span>
+                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" checked="true" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails('[[${wizardScreen.screenTag}]]');">Show details</input></span>
                                         <div class="featurescell" th:id="${'wizardScreenDetails' + wizardScreen.screenTag}">
                                             <div class="featuresrow featurescell">
                                                 <table>
@@ -393,7 +393,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     $('#editButton' + wizardFragmentName).show();
                     $('#editingPanel' + wizardFragmentName).hide();
                     $('#' + wizardFragmentName).val(wizardFragmentValue);
-
                 }
                 function saveEditing(typeString, wizardFragmentName) {
                     var targetUrl = /*[[${contextPath + '/wizard/update/'}]]*/'';
@@ -529,7 +528,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <span th:fragment="wizardCheckBox(wizardScreenId, wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
                 <div class="featuresrow featurescell" th:if="${wizardFragmentValue != null}">
                     <span th:text="${wizardFragmentLabel}">wizardCheckBox</span>
-                    <input type="checkbox" th:checked="${wizardFragmentValue}" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}" />
+                    <input type="checkbox" th:checked="${wizardFragmentValue}" th:name="${wizardFragmentName}" th:onchange="$('updateFeatureButton[[${wizardScreenId}]]').show();" />
                     <br/>
                 </div>
             </span>
@@ -543,7 +542,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <span th:fragment="wizardTextBox(wizardScreenId, wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
                 <div class="featuresrow featurescell wizardrow" th:if="${wizardFragmentValue != null}">
                     <span class="wizardcell" th:text="${wizardFragmentLabel}">wizardTextBox</span>
-                    <input th:value="${wizardFragmentValue}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}" />
+                    <input th:value="${wizardFragmentValue}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="$('updateFeatureButton[[${wizardScreenId}]]').show();" />
                     <br/>
                 </div>
             </span>
@@ -554,7 +553,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </div>
                     <div class="featurescell">
                         <span th:utext="${wizardFragmentValue}" />
-                        <button type="button" class="wizardScreenEditCheckBox" th:id="${'editButton' + wizardFragmentName}" th:onclick="'startEditing(\'' + ${wizardFragmentName} + '\');'">Edit</button>
+                        <button type="button" class="wizardScreenEditCheckBox" th:id="${'editButton' + wizardFragmentName}" th:onclick="startEditing('[[${wizardFragmentName}]]');'">Edit</button>
                         <div th:id="${'editingPanel' + wizardFragmentName}" style="display: none">
                             <form th:id="${'editingForm' + wizardFragmentName}">
                                 <textarea class="wizardTextbox" th:id="${wizardFragmentName}" th:name="screenText" th:text="${wizardFragmentValue}">
@@ -568,9 +567,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </form>
                             <br/>
                             <span class="wizardScreenEditCheckBox">
-                                <button type="button" th:id="${'cancelEditingButton' + wizardFragmentName}" th:onclick="'cancelEditing(\'screenText\',\'' + ${wizardFragmentName} + '\',\'' + ${wizardFragmentValue} + '\');'">Cancel</button>
+                                <button type="button" th:id="${'cancelEditingButton' + wizardFragmentName}" th:onclick="cancelEditing('screenText','[[${wizardFragmentName}]]','[[${wizardFragmentValue}]]');">Cancel</button>
                                 &nbsp;
-                                <button type="button" th:id="${'saveEditingButton' + wizardFragmentName}" th:onclick="'saveEditing(\'screenText\',\'' + ${wizardFragmentName} + '\');'">Save Changes</button>
+                                <button type="button" th:id="${'saveEditingButton' + wizardFragmentName}" th:onclick="saveEditing('screenText','[[${wizardFragmentName}]]');">Save Changes</button>
                             </span>
                         </div>
                         <div class="errorDiv" th:id="${'errorDiv' + wizardFragmentName}" style="display: none" />
@@ -585,7 +584,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </div>
                     <div class="featurescell">
                         <span th:each="wizardFragmentItem : ${wizardFragmentValue}">
-                            <input class="wizardTextbox" th:value="${wizardFragmentItem}" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}"/>
+                            <input class="wizardTextbox" th:value="${wizardFragmentItem}" th:name="${wizardFragmentName}" th:onchange="$('updateFeatureButton[[${wizardScreenId}]]').show();"/>
                             <br/>
                         </span>
                     </div>
@@ -597,12 +596,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <div class="featureTypeHeader">
                         <span class="featurescell" th:text="${wizardFragmentLabel}">wizardTextArea</span>
                     </div>
-                    &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" th:id="${'editStimuliDetailsCheckBox' + wizardScreen.id}" th:onclick="'hideShowStimuliDetails(\''+${wizardScreen.id}+'\')'">Show details</input></span>
+                    &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" th:id="${'editStimuliDetailsCheckBox' + wizardScreen.id}" th:onclick="'hideShowStimuliDetails('[[${wizardScreen.id}]]');">Show details</input></span>
                     <div class="stimulusUploadBox" th:id="${'stimulusUploadBox' + wizardScreen.id}" 
-                         th:ondragover="${'stimulusDragOver(event, ' + wizardScreen.id + ');'}"
-                         th:ondragenter="${'stimulusDragEnter(event, ' + wizardScreen.id + ');'}"
-                         th:ondragleave="${'stimulusDragLeave(event, ' + wizardScreen.id + ');'}"
-                         th:ondrop="${'stimulusDrop(event, ' + wizardScreen.id + ');'}"
+                         th:ondragover="stimulusDragOver(event, '[[${wizardScreen.id}]]');"
+                         th:ondragenter="stimulusDragEnter(event, '[[${wizardScreen.id}]]');"
+                         th:ondragleave="stimulusDragLeave(event, '[[${wizardScreen.id}]]');"
+                         th:ondrop="stimulusDrop(event, '[[${wizardScreen.id}]]');"
                          >
                         <b>Drag and drop stimulus files here.</b><br/>
                         Stimuli are identified by their file name, so an existing stimulus can be updated providing that the uploaded file name matches the stimulus identifier.<br/>

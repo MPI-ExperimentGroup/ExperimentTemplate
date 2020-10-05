@@ -261,7 +261,7 @@ function stopUpdatingResults() {
 }
 
 function unDeploy(listing, currentEntry) {
-// we create a new mvn instance for each child pom
+    // we create a new mvn instance for each child pom
     var mvngui = require('maven').create({
         cwd: __dirname + "/gwt-cordova",
         settings: m2Settings
