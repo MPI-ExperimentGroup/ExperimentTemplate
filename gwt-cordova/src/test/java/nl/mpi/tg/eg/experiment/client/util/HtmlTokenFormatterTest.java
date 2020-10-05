@@ -65,9 +65,11 @@ public class HtmlTokenFormatterTest {
                 + "I<stimulusImage>J"
                 + "I<stimulusTags>J"
                 + "I<stimulusCorrectResponses>J"
-                + "K<groupRequestedPhase>L";
+                + "K<groupRequestedPhase>L"
+                + "M<metadataField_session_step><stimulusId>N"
+                + "O <metadataField_session_step> <stimulusId> P";
         // todo: implement the channelLoop
-        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJK1L";
+        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJK1LMa_value_for_session_stepd1e286NO a_value_for_session_step d1e286 P";
         HtmlTokenFormatter instance = getInstance();
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
@@ -174,6 +176,7 @@ public class HtmlTokenFormatterTest {
         final MetadataField session_steps = new MetadataField("session_steps", "session_steps", "session_steps", "session_steps", "session_steps");
         final MetadataField session_step = new MetadataField("session_step", "session_step", "session_step", "session_step", "session_step");
         userData.setMetadataValue(session_steps, "audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime");
+        userData.setMetadataValue(session_step, "a_value_for_session_step");
         HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], localStorage, new GroupScoreService() {
 
             @Override
