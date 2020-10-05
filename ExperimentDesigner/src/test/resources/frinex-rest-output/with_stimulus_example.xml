@@ -251,6 +251,7 @@
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="progressIndicator_step" preventServerDuplicates="false" registrationField="progressIndicator step"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>
         <field controlledMessage="." controlledRegex=".*" postName="storedDate" preventServerDuplicates="false" registrationField="StoredDate"/>
+        <field controlledMessage="." controlledRegex=".*" postName="customCompletionNumber" preventServerDuplicates="false" registrationField="customCompletionNumber"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationMinutesSettings" preventServerDuplicates="false" registrationField="Trigger Notification Minutes"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSettings" preventServerDuplicates="false" registrationField="Trigger Notification Range"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSnoozed" preventServerDuplicates="false" registrationField="Trigger Notification Snooze"/>
@@ -264,7 +265,8 @@
         <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationCountWeekendSettings" preventServerDuplicates="false" registrationField="Number Of Notifications Per Day On Weekends"/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="notificationMinutes" preventServerDuplicates="false" registrationField="Show One Notifications In X Minutes "/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedOrder" preventServerDuplicates="false" registrationField="Used to store the randomisation sequence for the displayed stimuli in random_image_positions_remembered."/>
-        <!--field controlledMessage="." controlledRegex=".*" postName="draggable_euclidian_distance" registrationField="draggable_euclidian_distance"/-->
+        <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedTopic1" preventServerDuplicates="false" registrationField="Used to store the stimuli in topic 1 that have already been displayed."/>
+        <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedTopic234" preventServerDuplicates="false" registrationField="Used to store the stimuli in topics 2,3,4 that have already been displayed and when."/>
     </metadata> 
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -1812,6 +1814,179 @@
             <setMetadataValue fieldName="storedDate" dataLogFormat="01/12/3456"/>
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
+    </presenter> 
+    <presenter back="Menu" menuLabel="Last Seven Days" type="stimulus" self="last_seven_days" title="Last Seven Days">
+        <addPadding/>
+        <plainText featureText="In this example a metadata field containing a list of dates is filtered so that it only contains dates that are within the last seven days or three days."/>
+        <plainText featureText="This example expects the list of dates to be in sequence due to list being formed by appending the current day to the end of the list one or more times on each relevant day."/>
+        <triggerDefinition listenerId="showCurrentValue" threshold="0" maximum="0">
+            <regionReplace regionId="currentValueRegion">
+                <htmlTokenText featureText="Stored Date List: &lt;metadataField_storedDate&gt;"/>
+            </regionReplace>
+        </triggerDefinition>
+        <triggerMatching listenerId="showCurrentValue"/>
+        <addPadding/>
+        <actionButton featureText="Add Some Dates">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="&lt;currentDateDDMMYYYY-21D&gt;&lt;currentDateDDMMYYYY-14D&gt;&lt;currentDateDDMMYYYY-7D&gt;&lt;currentDateDDMMYYYY-6D&gt;&lt;currentDateDDMMYYYY-3D&gt;&lt;currentDateDDMMYYYY-2D&gt;&lt;currentDateDDMMYYYY-2D&gt;&lt;currentDateDDMMYYYY-2D&gt;&lt;currentDateDDMMYYYY-1D&gt;&lt;currentDateDDMMYYYY&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="Add Other Dates">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="&lt;currentDateDDMMYYYY-8D&gt;&lt;currentDateDDMMYYYY-7D&gt;&lt;currentDateDDMMYYYY-6D&gt;&lt;currentDateDDMMYYYY-5D&gt;&lt;currentDateDDMMYYYY-4D&gt;&lt;currentDateDDMMYYYY-3D&gt;&lt;currentDateDDMMYYYY-2D&gt;&lt;currentDateDDMMYYYY-1D&gt;&lt;currentDateDDMMYYYY&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="Add Earlier Dates">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="&lt;currentDateDDMMYYYY-28D&gt;&lt;currentDateDDMMYYYY-27D&gt;&lt;currentDateDDMMYYYY-16D&gt;&lt;currentDateDDMMYYYY-15D&gt;&lt;currentDateDDMMYYYY-14D&gt;&lt;currentDateDDMMYYYY-13D&gt;&lt;currentDateDDMMYYYY-12D&gt;&lt;currentDateDDMMYYYY-11D&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="Add Todays Date">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="&lt;metadataField_storedDate&gt;&lt;currentDateDDMMYYYY&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <addPadding/>
+        <actionTokenButton featureText="Keep Since &lt;currentDateDDMMYYYY-6D&gt;">
+            <!-- this replacementRegex will match on the first date that is found (only one) and then capture the rest of the string to the right of that date -->
+            <setMetadataValue fieldName="storedDate" replacementRegex="(&lt;currentDateDDMMYYYY-6D&gt;.*|&lt;currentDateDDMMYYYY-5D&gt;.*|&lt;currentDateDDMMYYYY-4D&gt;.*|&lt;currentDateDDMMYYYY-3D&gt;.*|&lt;currentDateDDMMYYYY-2D&gt;.*|&lt;currentDateDDMMYYYY-1D&gt;.*|&lt;currentDateDDMMYYYY&gt;.*)" dataLogFormat="&lt;metadataField_storedDate&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionTokenButton>
+        <addPadding/>
+        <actionTokenButton featureText="Keep Since &lt;currentDateDDMMYYYY-2D&gt;">
+            <!-- this replacementRegex will match on the first date that is found (only one) and then capture the rest of the string to the right of that date -->
+            <setMetadataValue fieldName="storedDate" replacementRegex="(&lt;currentDateDDMMYYYY-2D&gt;.*|&lt;currentDateDDMMYYYY-1D&gt;.*|&lt;currentDateDDMMYYYY&gt;.*)" dataLogFormat="&lt;metadataField_storedDate&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionTokenButton>
+    </presenter> 
+    <presenter back="Menu" menuLabel="Replace All Example" type="stimulus" self="replace_all_example" title="Replace All Example">
+        <addPadding/>
+        <plainText featureText="In this example a the contents of a metadata field is modified by replacing all instances of U with Je."/>
+        <plainText featureText="Please note that doing this type of replacement with a such short search string could easily have unintended effects."/>
+        <triggerDefinition listenerId="showCurrentValue" threshold="0" maximum="0">
+            <regionReplace regionId="currentValueRegion">
+                <htmlTokenText featureText="Current Value: &lt;metadataField_storedDate&gt;"/>
+            </regionReplace>
+        </triggerDefinition>
+        <addPadding/>
+        <addPadding/>
+        <triggerMatching listenerId="showCurrentValue"/>
+        <addPadding/>
+        <actionButton featureText="Add Some Text">
+            <setMetadataValue fieldName="storedDate" dataLogFormat="Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan."/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <addPadding/>
+        <actionTokenButton featureText="Change To Je">
+            <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_storedDate&gt;&quot;, &quot; u &quot;, &quot; je &quot;)" fieldName="storedDate">	
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
+                <onSuccess> 
+                    <triggerMatching listenerId="showCurrentValue"/>
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionTokenButton>
+        <addPadding/>
+        <actionTokenButton featureText="Do It Wrong">
+            <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_storedDate&gt;&quot;, &quot;u&quot;, &quot;&lt;b&gt;je&lt;/b&gt;&quot;)" fieldName="storedDate">	
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
+                <onSuccess> 
+                    <triggerMatching listenerId="showCurrentValue"/>
+                </onSuccess>
+            </setMetadataEvalTokens>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionTokenButton>
+    </presenter>
+    <!-- todo: It would be nice to add a version of four_different_topics that compliments the metadata field method by using stimuli responses instead -->
+    <presenter back="Menu" menuLabel="Four Different Topics" type="stimulus" self="four_different_topics" title="Four Different Topics">
+        <triggerDefinition listenerId="showTopic234" threshold="0" maximum="3">
+            <stimulusLabel styleName="stimuliLabel"/>
+            <!-- the white space between entries is just to make the lines wrap so this example presenter loops nicer -->
+            <setMetadataValue fieldName="displayedTopic234" dataLogFormat="&lt;metadataField_displayedTopic234&gt; &lt;stimulusId&gt;"/>
+        </triggerDefinition>
+        <triggerDefinition listenerId="showTopic1" threshold="0" maximum="1">
+            <stimulusLabel styleName="stimuliLabel"/>
+            <!-- the white space between entries is just to make the lines wrap so this example presenter loops nicer -->
+            <setMetadataValue fieldName="displayedTopic1" dataLogFormat="&lt;metadataField_displayedTopic1&gt; &lt;stimulusId&gt;"/>
+        </triggerDefinition>
+        <htmlTokenText featureText="This example shows stimuli from 4 different topics. For these 4 different topics, the questions for one topic will only be shown once, while the questions for the other topics can be shown multiple times but not more than once in 7 days. The questions of these 4 topics should be mixed (so not in block order) when presented." />
+        <addPadding/>
+        <withStimuli eventTag="four_different_topics" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <!-- todo: finish testing this does what it says -->
+            <beforeStimulus>
+                <hasMetadataValue fieldName="displayedTopic234" matchingRegex=".*&lt;currentDateDDMMYYYY&gt;.*">
+                    <conditionFalse> 
+                        <htmlText featureText="Appending todays date to the metadata field displayedTopic234."/>
+                        <setMetadataValue fieldName="displayedTopic234" dataLogFormat="&lt;metadataField_displayedTopic234&gt;&lt;currentDateDDMMYYYY&gt;"/>
+                        <addPadding/>
+                    </conditionFalse>
+                    <conditionTrue>
+                        <htmlText featureText="The metadata field displayedTopic234 already contains todays date."/>
+                        <addPadding/>
+                    </conditionTrue>
+                </hasMetadataValue>
+                <htmlTokenText featureText="Seen displayedTopic1: &lt;metadataField_displayedTopic1&gt;"/>
+                <htmlTokenText featureText="Seen displayedTopic234: &lt;metadataField_displayedTopic234&gt;"/>
+                <addPadding/>
+                <htmlText featureText="Trimming displayedTopic234 to keep only the last seven days."/>
+                <setMetadataValue fieldName="displayedTopic234" replacementRegex="(&lt;currentDateDDMMYYYY-6D&gt;.*|&lt;currentDateDDMMYYYY-5D&gt;.*|&lt;currentDateDDMMYYYY-4D&gt;.*|&lt;currentDateDDMMYYYY-3D&gt;.*|&lt;currentDateDDMMYYYY-2D&gt;.*|&lt;currentDateDDMMYYYY-1D&gt;.*|&lt;currentDateDDMMYYYY&gt;.*)" dataLogFormat="&lt;metadataField_displayedTopic234&gt;"/>
+                <htmlTokenText featureText="After trimming displayedTopic234: &lt;metadataField_displayedTopic234&gt;"/>
+                <addPadding/>
+            </beforeStimulus>
+            <eachStimulus>
+                <currentStimulusHasTag tags="Topic_1">	
+                    <conditionTrue>
+                        <hasMetadataValue fieldName="displayedTopic1" matchingRegex=".*&lt;stimulusId&gt;.*">
+                            <conditionFalse>
+                                <triggerMatching listenerId="showTopic1"/>
+                            </conditionFalse>
+                            <conditionTrue>
+                                <htmlTokenText featureText="Topic 1 stimulus &lt;stimulusId&gt; has already been seen."/>
+                            </conditionTrue>
+                        </hasMetadataValue>
+                    </conditionTrue>
+                    <conditionFalse>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+                <currentStimulusHasTag tags="Topic_234">
+                    <conditionTrue>
+                        <hasMetadataValue fieldName="displayedTopic234" matchingRegex=".*&lt;stimulusId&gt;.*">
+                            <conditionFalse>
+                                <triggerMatching listenerId="showTopic234"/>
+                            </conditionFalse>
+                            <conditionTrue>
+                                <htmlTokenText featureText="This stimulus &lt;stimulusId&gt; has already been seen in the last seven days."/>
+                            </conditionTrue>
+                        </hasMetadataValue>
+                    </conditionTrue>
+                    <conditionFalse>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+            </eachStimulus>
+            <afterStimulus>
+                <addPadding/>
+                <htmlTokenText featureText="Updated displayedTopic1: &lt;metadataField_displayedTopic1&gt;"/>
+                <htmlTokenText featureText="Updated displayedTopic234: &lt;metadataField_displayedTopic234&gt;"/>
+                <addPadding/>
+                <actionButton featureText="showNextTopics">
+                    <resetStimulus target="four_different_topics"/>
+                    <gotoPresenter target="four_different_topics"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="clearSeenTopics">
+                    <setMetadataValue fieldName="displayedTopic1" dataLogFormat=""/>
+                    <setMetadataValue fieldName="displayedTopic234" dataLogFormat=""/>
+                    <resetStimulus target="four_different_topics"/>
+                    <gotoPresenter target="four_different_topics"/>
+                </actionButton>
+            </afterStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Topics</tag>
+            </stimuli>
+        </withStimuli>
     </presenter> 
     <presenter back="Menu" menuLabel="Append Unique Date" type="stimulus" self="append_unique_date" title="Append Unique Date">
         <!--todo: complete this example-->
@@ -5384,6 +5559,24 @@
             </stimuli>
         </withStimuli>
     </presenter>
+    <presenter back="Menu" menuLabel="Custom Completion Number" type="transmission" self="custom_completion_number" title="Custom Completion Number">
+        <setMetadataEvalTokens evaluateTokens="random(10)random(10)random(10)random(10)random(10)random(10)random(10)" fieldName="customCompletionNumber">	
+            <onError>
+                <htmlTokenText featureText="Failed generating customCompletionNumber."/>
+            </onError>
+            <onSuccess> 
+                <htmlTokenText featureText="Generated a customCompletionNumber do not present this value until it has been transmitted to the server."/> 
+                <sendMetadata>
+                    <onError>
+                        <htmlTokenText featureText="Failed storing customCompletionNumber."/>
+                    </onError>
+                    <onSuccess>
+                        <htmlTokenText featureText="Your custom completion code is: &lt;metadataField_customCompletionNumber&gt;" />
+                    </onSuccess>
+                </sendMetadata>
+            </onSuccess>
+        </setMetadataEvalTokens>
+    </presenter>
     <presenter back="Menu" menuLabel="Random Image Positions Remembered" type="stimulus" self="random_image_positions_remembered" title="Random Image Positions Remembered">
         <loadStimulus eventTag="random_image_positions_remembered" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -5506,7 +5699,7 @@
                 <regionAppend regionId="centreImageRegion_label">
                     <htmlTokenText featureText="&lt;code&gt;&lt;stimulusResponse__rememberedSequenceFirst&gt;" />
                 </regionAppend>
-                    <regionReplace regionId="centreImageRegion">
+                <regionReplace regionId="centreImageRegion">
                     <stimulusCodeImage codeFormat="&lt;code&gt;&lt;stimulusResponse__rememberedSequenceFirst&gt;.png" dataChannel="2" msToNext="0" styleName="stimulusImageButton">
                         <mediaLoaded>
                             <pause msToNext="1000">
@@ -5880,5 +6073,17 @@
         <stimulus code="4" identifier="Image4" label="4" tags="GroupOf2Images" />
         <stimulus code="5" identifier="Image5" label="5" tags="GroupOf2Images" />
         <stimulus code="6" identifier="Image6" label="6" tags="GroupOf2Images" />
+        <stimulus identifier="topic_1_1" label="Topic_1 : 1" tags="Topic_1 Topics" />
+        <stimulus identifier="topic_1_2" label="Topic_1 : 2" tags="Topic_1 Topics" />
+        <stimulus identifier="topic_1_3" label="Topic_1 : 3" tags="Topic_1 Topics" />
+        <stimulus identifier="topic_2_1" label="Topic_2 : 1" tags="Topic_2 Topic_234 Topics" />
+        <stimulus identifier="topic_2_2" label="Topic_2 : 2" tags="Topic_2 Topic_234 Topics" />
+        <stimulus identifier="topic_2_3" label="Topic_2 : 3" tags="Topic_2 Topic_234 Topics" />
+        <stimulus identifier="topic_3_1" label="Topic_3 : 1" tags="Topic_3 Topic_234 Topics" />
+        <stimulus identifier="topic_3_2" label="Topic_3 : 2" tags="Topic_3 Topic_234 Topics" />
+        <stimulus identifier="topic_3_3" label="Topic_3 : 3" tags="Topic_3 Topic_234 Topics" />
+        <stimulus identifier="topic_4_1" label="Topic_4 : 1" tags="Topic_4 Topic_234 Topics" />
+        <stimulus identifier="topic_4_2" label="Topic_4 : 2" tags="Topic_4 Topic_234 Topics" />
+        <stimulus identifier="topic_4_3" label="Topic_4 : 3" tags="Topic_4 Topic_234 Topics" />
     </stimuli>
 </experiment>
