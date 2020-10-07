@@ -54,6 +54,7 @@ import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
+import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -172,15 +173,21 @@ public class TimedStimulusView extends ComplexView {
         webRecorderMediaId = null;
     }
 
-    public void addBarGraphElement(final int value, final int range, final String styleName) {
+    public ValueChangeListener<Double> addBarGraphElement(final int initialValue, final int range, final String styleName) {
         final HorizontalPanel bargraphOuter = new HorizontalPanel();
         final HorizontalPanel bargraphInner = new HorizontalPanel();
         bargraphOuter.setPixelSize(100, 10);
-        bargraphInner.setPixelSize((int) (100.0 / range * value), 10);
+        bargraphInner.setPixelSize((int) (100.0 / range * initialValue), 10);
         bargraphOuter.setStyleName("bargraphOuter");
         bargraphInner.setStyleName("bargraphInner");
         bargraphOuter.add(bargraphInner);
         getActivePanel().add(bargraphOuter);
+        return new ValueChangeListener<Double>() {
+            @Override
+            public void onValueChange(Double updateValue) {
+                bargraphInner.setPixelSize((int) (100.0 / range * updateValue), 10);
+            }
+        };
     }
 
     public StimulusButton addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener postLoadMsListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {

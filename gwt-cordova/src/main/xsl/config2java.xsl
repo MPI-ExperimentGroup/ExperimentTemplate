@@ -1247,6 +1247,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else 'null'" />
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'audioInputSelectWeb') then if(@styleName) then ', ' else ', null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@levelIndicatorStyle) then concat(', &quot;', @levelIndicatorStyle, '&quot; /*levelIndicatorStyle*/') else ', null /*levelIndicatorStyle*/' else ''" />
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />

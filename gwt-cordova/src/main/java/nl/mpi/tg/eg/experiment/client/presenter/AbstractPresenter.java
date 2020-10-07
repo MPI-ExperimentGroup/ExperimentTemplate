@@ -38,6 +38,7 @@ import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
+import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -77,6 +78,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected final LocalStorage localStorage;
     protected final TimerService timerService;
     protected GroupParticipantService groupParticipantService = null;
+    private final ArrayList<ValueChangeListener<Double>> audioLevelIndicators = new ArrayList<>();
 
     public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;
@@ -497,6 +499,56 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
+    public boolean updateLevelMeter(Double updatedVale) {
+        boolean hasListeners = false;
+        for (final ValueChangeListener<Double> changeListener : audioLevelIndicators) {
+            changeListener.<Double>onValueChange(updatedVale);
+            hasListeners = true;
+        }
+        return hasListeners;
+    }
+
+    protected void addRecorderLevelIndicatorWeb(final ValueChangeListener<Double> changeListener) {
+        audioLevelIndicators.add(changeListener);
+        addRecorderLevelCallbackWeb();
+    }
+
+    protected void removeRecorderLevelIndicatorWeb() {
+        audioLevelIndicators.clear();
+    }
+
+    protected native void addRecorderLevelCallbackWeb()/*-{
+         var abstractPresenter = this;
+        //$wnd.attachLevelMeter(function(){changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(updatedValue)});
+        if ($wnd.recorder) {
+            audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
+            audioAnalyser.fftSize = 2048;
+            bufferLength = audioAnalyser.frequencyBinCount;
+            dataArray = new Uint8Array(bufferLength);
+            $wnd.recorder.sourceNode.connect(audioAnalyser);
+            function updateLevelIndicator() {
+                audioAnalyser.getByteTimeDomainData(dataArray);
+                sumSqrValues = 0;
+                for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
+                    var currentValue = dataArray[bufferIndex] - 128;
+                    sumSqrValues += currentValue * currentValue;
+                }
+                rmsValue = Math.sqrt(sumSqrValues / bufferLength);
+                //console.log(dataArray);
+                percentValue = rmsValue * (100 / 127);
+                console.log(percentValue);
+                //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Lnl/mpi/tg/eg/experiment/client/listener/ValueChangeListener;Ljava/lang/Double;)(changeListener);//, rmsValue
+                //changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(rmsValue);
+                hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
+                //console.log(hasListeners);
+                if(hasListeners === true) {
+                    requestAnimationFrame(updateLevelIndicator);
+                }
+            }
+            requestAnimationFrame(updateLevelIndicator());
+        }
+    }-*/;
+
     protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
             var abstractPresenter = this;
             if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
@@ -529,6 +581,7 @@ public abstract class AbstractPresenter implements Presenter {
                 //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
                 if ($wnd.recorder) {
                     $wnd.recorder.stop();
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
                 }
                 if(targetDeviceId === -1) {
                     console.log("Device not found, defaulting to first device seen.");
@@ -660,6 +713,7 @@ public abstract class AbstractPresenter implements Presenter {
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
+        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
      }-*/;
 
     static public native void pauseAudioRecorderWeb() /*-{

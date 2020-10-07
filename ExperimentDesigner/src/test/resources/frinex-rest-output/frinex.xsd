@@ -14078,6 +14078,11 @@
 <xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="levelIndicatorStyle" type="xs:string">
+<xs:annotation>
+<xs:documentation>The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 <xs:complexType name="startAudioRecorderAppType">
 <xs:all>

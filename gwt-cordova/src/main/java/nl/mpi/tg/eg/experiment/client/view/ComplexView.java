@@ -767,7 +767,7 @@ public class ComplexView extends SimpleView {
                 changeListener.onValueChange(listBox.getSelectedValue());
             }
         });
-        final ValueChangeListener itemAddedListener = new ValueChangeListener() {
+        final ValueChangeListener itemAddedListener = new ValueChangeListener<String>() {
             @Override
             public void onValueChange(String value) {
                 listBox.addItem(value);

@@ -21,7 +21,7 @@ package nl.mpi.tg.eg.experiment.client.listener;
  * @since 11 Sep 2020 15:05:42 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface ValueChangeListener {
+public interface ValueChangeListener<T> {
 
-    void onValueChange(final String value);
+    void onValueChange(final T value);
 }

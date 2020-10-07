@@ -1708,7 +1708,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     protected void audioInputSelectWeb(final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String deviceRegex = (deviceRegexL == null) ? ".*" : deviceRegexL;
         final String selectedDevice = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId");
-        final ValueChangeListener itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener() {
+        final ValueChangeListener itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener<String>() {
             @Override
             public void onValueChange(String value) {
                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", value);
@@ -1741,12 +1741,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         });
     }
 
-    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
-
+        final ValueChangeListener<Double> changeListener;
+        if (levelIndicatorStyle != null) {
+            changeListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
+        } else {
+            changeListener = null;
+        }
         final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
@@ -1754,6 +1759,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void recorderStarted(final String targetDeviceId) {
                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", targetDeviceId);
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorderDeviceId", targetDeviceId, duration.elapsedMillis());
+                if (changeListener != null) {
+                    AbstractStimulusPresenter.super.addRecorderLevelIndicatorWeb(changeListener);
+                }
                 onSuccess.postLoadTimerFired();
             }
 
