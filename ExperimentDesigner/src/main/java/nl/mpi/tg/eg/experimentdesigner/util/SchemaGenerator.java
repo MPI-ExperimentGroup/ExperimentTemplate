@@ -246,6 +246,13 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             writer.append(currentElement.elementName);
         }
         writer.append("\">\n");
+        if (currentElement.documentationText != null) {
+            writer.append("<xs:annotation>\n");
+            writer.append("<xs:documentation>");
+            writer.append(currentElement.documentationText);
+            writer.append("</xs:documentation>\n");
+            writer.append("</xs:annotation>\n");
+        }
         if (!insertType) {
             writer.append("<xs:complexType>\n");
             if (currentElement.elementName.equals("experiment")) {
@@ -266,13 +273,6 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 
             writer.append("<xs:").append((currentElement.childOption == ChildType.choiceAnyCount) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : (currentElement.childOption == ChildType.sequenceOnceOrdered) ? "sequence" : "all").append(">\n");
 //            writer.append("<xs:sequence1>");
-        }
-        if (currentElement.documentationText != null) {
-            writer.append("<xs:annotation>\n");
-            writer.append("<xs:documentation>");
-            writer.append(currentElement.documentationText);
-            writer.append("</xs:documentation>\n");
-            writer.append("</xs:annotation>\n");
         }
         if (isPresenterType) {
             writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");

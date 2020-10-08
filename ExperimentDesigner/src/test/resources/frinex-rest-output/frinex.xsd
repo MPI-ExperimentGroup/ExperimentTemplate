@@ -247,11 +247,11 @@
 </xs:restriction>
 </xs:simpleType>
 <xs:element name="experiment">
-<xs:complexType>
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Each experiment XML configuration file must have one "experiment" element of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>
 </xs:annotation>
+<xs:complexType>
+<xs:sequence>
 <xs:element name="preventWindowClose" minOccurs="0">
 <xs:complexType>
 <xs:attribute name="featureText" type="xs:string" use="required">
@@ -496,10 +496,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="validationServiceType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Server side validation / registration services.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="validation" minOccurs="0" type="validationType"/>
 </xs:sequence>
 <xs:attribute name="stagingUrl" type="xs:string">
@@ -514,10 +514,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="validationType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record. Note that the intention of validation is not to authenticate, but to compare values in the admin system to client side equivalents such as an invitation code. Optionally metadata values in the admin system can be returned to the client to restore a session to the last stored values on a new device or browser. This section is not used when an external &lt;validationService&gt; is specified.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="recordMatch" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="postField" type="xs:string" use="required">
@@ -604,10 +604,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="administrationType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Administration</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="adminUser" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="name" type="xs:string" use="required">
@@ -658,18 +658,18 @@
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="metadataType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>The fields of data to be collected for each participant and for use as storage data. The value of each field will be stored in the admin metadata table (participant listing). It is advisable to explicitly sendMetadata at relevant points in the experiment. If the URL used to access the experiment contains a GET parameter matching the postName of a metadata field, the value of the field will be set to the value of the provided GET parameter. This for example allows links to be distributed each of which determines the initial parameters as required for a given experiment.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="field" maxOccurs="unbounded" type="fieldType"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="fieldType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation></xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -912,18 +912,18 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimuliType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>All stimulus elements must be contained in the stimuli element.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="stimulus" minOccurs="0" maxOccurs="unbounded" type="stimulusType"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="stimulusType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Each individual stimulus can be described in the form of label, image, audio and video.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -991,10 +991,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="htmlTextType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>The contents of featureText will be shown as HTML and styled with styleName if provided</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -1022,10 +1022,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="htmlTokenTextType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>When the featureText contains string tokens they will be replaced with the relevant values, eg score values &lt;groupScore&gt; &lt;channelScore&gt; etc.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -1426,10 +1426,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="targetButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Creates a button which when clicked navigates to the target presenter.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -1472,10 +1472,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="actionButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Creates a button which when clicked evaluates the contents of its element.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -1699,10 +1699,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="actionTokenButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Creates a button where any tokens in its label are evaluated before displaying. When clicked evaluates the contents of its element.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -1954,10 +1954,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="svgLoadGroupsType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Load compiled SVG data for use as image groups. Each group must be named in the SVG file.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -2126,10 +2126,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="svgGroupActionType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Sets a button action to the image group as specified in the loaded SVG data.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -4408,10 +4408,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimulusHasResponseType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>When groupId is omitted conditionTrue will trigger if the current stimulus has any response. If groupId and matchingRegex are provided this will only trigger if a the current stimulus has a response in that group that matches the regex. If groupId contains tokens they will be replaced with the respective values before the evaluation.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
@@ -4452,10 +4452,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="addStimulusCodeResponseValidationType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Adds a stimulus validation listener for StimulusCodeResponses, so that they can be validated like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -4713,10 +4713,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="targetFooterButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Creates a button in the footer which when clicked navigates to the target presenter.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -4754,10 +4754,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="actionFooterButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Creates a button in the footer which when clicked evaluates the contents of its element.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -5100,10 +5100,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="saveMetadataButtonType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Checks the currently displayed metadata fields for valid input. If there are errors the relevant field input is highlighted. If sendData is true then the metadata is sent to the admin system before proceeding and network errors will trigger an onError. If sendData is false onSuccess will be triggered if the metadata is valid regardless of network connectivity.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -5148,10 +5148,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="createUserButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Creates a button that when clicked creates a new user and then navigates to the target presenter as the new user.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -5189,10 +5189,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="switchUserIdButtonType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -5339,10 +5339,10 @@
 </xs:all>
 </xs:complexType>
 <xs:complexType name="sendMetadataType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Sends the currently stored metadata field values to the admin system. For use in transmission type presenters.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -5585,10 +5585,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="prevStimulusButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -5636,10 +5636,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="nextStimulusButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -5727,10 +5727,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="hasMetadataValueType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Replaces any token values in the matchingRegex then checks if the metadata field value matches the resulting regex. If the regex matches then coditionTrue is triggered otherwise conditionFalse is triggered.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
 </xs:all>
@@ -5766,10 +5766,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="matchOnEvalTokensType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Compares the matchingRegex against the result of evaluateTokens after any metadata field tokens have been resolved, any arithmetic and boolean comparisons have been resolved.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
@@ -5802,10 +5802,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="setMetadataEvalTokensType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is then stored in the specified metadata field.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -5924,10 +5924,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="showStimulusType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Repeats the current stimulus by triggering hasMoreStimulus. If there is no current stimulus then endOfStimulus will be triggered.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -6189,10 +6189,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="pauseType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Pause in milliseconds. When the time is up the contents of this element are evaluated.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -6382,10 +6382,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="requestNotificationType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Request mobile notifications at given times in the future on Android and iOS apps. The presenters listed in targetOptions need to be comma separated and will be shown as buttons in the notification.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -6425,10 +6425,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="startTimerType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Starts a persistent timer which is identified by its listenerId. The start time is the moment the first startTimer for a given listenerId is encountered. This start time is persistent over page loads and navigation and can only be reset by a clearTimer followed by a startTimer. The content of the startTimer element is scoped to the presenter and will not trigger outside of the presenter that contains it. Each startTimer creates a callback that will trigger when the timer reaches the ms value, but will not trigger if that time has already passed while the presenter was not active. Multiple startTimer tags with the same listenerId can be used, each will share the same start moment allowing multiple events to be synchronised on one timer.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -6623,10 +6623,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="compareTimerType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Compares the current time of a persistent timer that was started by startTimer with the same listenerId.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="aboveThreshold" type="aboveThresholdType"/>
 <xs:element name="withinThreshold" type="withinThresholdType"/>
 </xs:all>
@@ -6697,10 +6697,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="randomMsPauseType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Pause for a random number of milliseconds that is not less than minimum and not more than maximum. When the time is up the contents of this element are evaluated.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -6895,10 +6895,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="evaluatePauseType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Pause based on the value of metadata, stimulus responses or scores etc. The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is the time of the pause in milliseconds. The evaluated value will be constrained so that it is within the minimum or maximum values. When the time is up the onSuccess element will be triggered. If there is an error evaluating the token string then onError will be triggered.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -6919,10 +6919,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="triggerDefinitionType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurrences has reached the threshold and within the maximum.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -7332,10 +7332,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="triggerRandomType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Randomly trigger one any of the triggerListeners where the listenerId matches the matchingRegex and its maximum trigger count has not been reached. When there are no triggerListeners that match these criteria the child contents of tag will be triggered.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -10006,10 +10006,10 @@
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="endOfStimulusType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -12800,10 +12800,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="regionAppendType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be appended to.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -13028,10 +13028,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="regionReplaceType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>If a region matching the regionId exists then it will cleared. If no region matching the regionId exists then a new region is created in the current location. The resulting region is then appended to.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -14009,10 +14009,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="audioInputSelectWebType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Shows a select box of the available audio input devices for use with startAudioRecorderWeb. When an device is selected it will be used as the first preference when the next recording is made.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -14028,10 +14028,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="startAudioRecorderWebType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The onError will be triggered if the recorder cannot start. If the upload or playback fails then mediaLoadFailed will be triggered. Upload failure will also result in a subsequent upload attempt. When the recorded audio data has been submitted the mediaLoaded will be triggered even if playback is not enabled by downloadPermittedWindowMs, this allows upload verification before proceeding. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label. The name of the audio input device used for the recording will be stored in the admin system.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -14085,10 +14085,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="startAudioRecorderAppType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Starts the Android wav recorder, the recorded wav files will be saved on the device in a sub directories based on value of the provided metadata field and the eventTag.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -14203,10 +14203,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="groupNetworkType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="groupFindingMembers" type="groupFindingMembersType"/>
 <xs:element name="groupNetworkConnecting" type="groupNetworkConnectingType"/>
 <xs:element name="groupNetworkSynchronising" type="groupNetworkSynchronisingType"/>
@@ -14229,10 +14229,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="groupFindingMembersType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>When the the connection to the group server is established the second stage is waiting for the other group members.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -14417,10 +14417,10 @@
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="groupNetworkConnectingType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -14605,10 +14605,10 @@
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="groupNetworkSynchronisingType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>For each stimulus change and phase change the group network needs to be synchronised. The contents of this element will be triggered while this synchronisation is being done.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -14793,18 +14793,18 @@
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="groupPhaseListenersType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>The activities in the phase/participant matrix is defined here. Not all participants will see the same activity at the same time. It is possible for one, many or none to be triggered for any given phase member code combination.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="groupMemberActivity" type="groupMemberActivityType"/>
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="groupMemberActivityType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Member activities will be triggered when the member code and the current phase coincide. This is determined by the phase matrix defined in each phaseMembers attribute.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -15010,10 +15010,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="groupResponseStimulusImageType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Displays the stimulus image that the last group message had responded with.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
 <xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
@@ -15046,10 +15046,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="groupResponseFeedbackType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Compares the current stimulus to the last group response stimulus. If the group response stimulus equals the current group stimulus then it is considered to be correct.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="responseCorrect" type="responseCorrectType"/>
 <xs:element name="responseIncorrect" type="responseIncorrectType"/>
 </xs:all>
@@ -15081,10 +15081,10 @@
 </xs:annotation>
 </xs:complexType>
 <xs:complexType name="sendGroupMessageButtonType">
-<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:annotation>
 <xs:documentation>Adds a button that will send a message to the group members that are in the current member's communication channel. The message content is the concatenated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.</xs:documentation>
 </xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="locale" type="xs:string" use="required">
@@ -15333,19 +15333,19 @@
 </xs:all>
 </xs:complexType>
 <xs:complexType name="validateMetadataType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Validates the current user id and the metadata fields (as listed in the validationService section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from this validationService section will be updated locally from the values previously saved in the admin system.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
 </xs:complexType>
 <xs:complexType name="transmitResultsType">
-<xs:all>
 <xs:annotation>
 <xs:documentation>Transmits the values of the metadata fields that match the sendingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the sendingRegex will be updated if there is such a field returned from that service. If the registration service returns a 200 response then onSuccess is triggered. When onSuccess is triggered this does not always indicate a validated state, you will also need to check the receiving fields. If there is a network error or the registration service returns a non 200 response then onError will be triggered. One and only one of either onError or onSuccess will always be triggered, however the time required to trigger will depend on network conditions.</xs:documentation>
 </xs:annotation>
+<xs:all>
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
@@ -15366,10 +15366,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="randomGroupingType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:simpleContent>
@@ -15409,10 +15409,10 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimuliSelectType">
-<xs:sequence>
 <xs:annotation>
 <xs:documentation>List of stimuli tag names which determine which stimuli are selected.</xs:documentation>
 </xs:annotation>
+<xs:sequence>
 <xs:element name="tag" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
 </xs:sequence>
 </xs:complexType>
