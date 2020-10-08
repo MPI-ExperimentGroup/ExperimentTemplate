@@ -231,6 +231,7 @@ public enum FeatureAttribute {
     //    @Deprecated
     //    webm,
     recordingFormat("", true, new String[]{"wav", "ogg"}),
+    levelIndicatorStyle("The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.", true, AttributeType.xsString),
     downloadPermittedWindowMs("A time window in milliseconds within which download from the server will be allowed.", false, AttributeType.xsInteger),
     deviceRegex(true),
     poster,
