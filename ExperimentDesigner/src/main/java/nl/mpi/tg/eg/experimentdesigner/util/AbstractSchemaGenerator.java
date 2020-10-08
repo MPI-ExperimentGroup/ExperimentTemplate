@@ -149,7 +149,7 @@ public class AbstractSchemaGenerator {
             this.maxBounds = 0;
             final List<String> translatableAttribites = new ArrayList<>();
             if (featureType.canHaveText()) {
-                stringAttribute("featureText", false);
+                documentedAttribute("featureText", AttributeType.xsString, "Text that will be visible to the user.", false);
                 translatableAttribites.add("featureText");
             }
             if (featureType.getFeatureAttributes() != null) {
@@ -355,7 +355,7 @@ public class AbstractSchemaGenerator {
     protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Each experiment XML configuration file must have one \"experiment\" element of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
             new DocumentationElement[]{
                 new DocumentationElement("preventWindowClose", "When true a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
-                        new DocumentationElement[0]).stringAttribute("featureText", false),
+                        new DocumentationElement[0]).documentedAttribute("featureText", AttributeType.xsString, "Text that will be visible to the user.", false),
                 new DocumentationElement("deployment", "", 0, 1,
                         new DocumentationElement[0])
                         .documentedAttribute("publishDate", AttributeType.dateValue, "The date from which the experiment will be deployed.", false)

@@ -42,7 +42,7 @@ public enum FeatureAttribute {
     codeFormat,
     validationRegex,
     allowedCharCodes(true),
-    matchingRegex(false),
+    matchingRegex("Regular expression that will be used to determin a match.", false, AttributeType.xsString),
     visibleRegex, enabledRegex,
     visible,
     replacementRegex(true),
