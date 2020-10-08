@@ -526,6 +526,7 @@ public abstract class AbstractPresenter implements Presenter {
             bufferLength = audioAnalyser.frequencyBinCount;
             dataArray = new Uint8Array(bufferLength);
             $wnd.recorder.sourceNode.connect(audioAnalyser);
+            lastValue = 0;
             function updateLevelIndicator() {
                 audioAnalyser.getByteTimeDomainData(dataArray);
                 sumSqrValues = 0;
@@ -534,9 +535,14 @@ public abstract class AbstractPresenter implements Presenter {
                     sumSqrValues += currentValue * currentValue;
                 }
                 rmsValue = Math.sqrt(sumSqrValues / bufferLength);
+                smoothedValue = rmsValue;
+                if (rmsValue < lastValue) {
+                    smoothedValue += (lastValue - rmsValue) * 0.9;
+                }
+                lastValue = smoothedValue;
                 //console.log(dataArray);
-                percentValue = rmsValue * (100 / 127);
-                console.log(percentValue);
+                percentValue = smoothedValue * (100 / 127);
+                //console.log(percentValue);
                 //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Lnl/mpi/tg/eg/experiment/client/listener/ValueChangeListener;Ljava/lang/Double;)(changeListener);//, rmsValue
                 //changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(rmsValue);
                 hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
