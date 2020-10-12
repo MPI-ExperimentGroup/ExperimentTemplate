@@ -42,8 +42,8 @@
             <template:if jsonPath="audio_input_select.showMediaControls" descrition="include or exclude the hasMoreStimulus element and its child elements" />
             <template:metadata jsonPath="audio_input_select.participan" descrition="information to be entered by the participant" />
             <template:stimuli jsonPath="audio_input_select.stimuli" descrition="stimuli to be used for this load stimulus" />                -->
-            <template attributeName="maxStimuli" jsonPath="audio_input_select_stimuli.maxStimuli" description="Please enter the maximum stimuli that can be shown" />
-            <template ifJsonPath="audio_input_select.showMediaControls" description="include or exclude the hasMoreStimulus element and its child elements" />
+            <template attributeName="featureText" jsonPath="Toestemming.maintext" description="Please enter the text that will be shown in the Toestemming presenter." />
+            <template ifJsonPath="Toestemming.showMainText" description="include or exclude the main text of  the Toestemming presenter." />
             <template metadataJsonPath="audio_input_select.participan" description="information to be entered by the participant" />
             <template stimuliJsonPath="audio_input_select.stimuli" description="stimuli to be used for this load stimulus" />                
         </htmlText>
@@ -68,6 +68,7 @@
     </presenter>
     <presenter menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
         <loadStimulus eventTag="Zinnen afmaken" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <template attributeName="maxStimuli" jsonPath="Zinnen_afmaken.maxStimuli" description="Please enter the maximum stimuli that can be shown for the Zinnen_afmaken presenter." />
             <hasMoreStimulus>
                 <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">

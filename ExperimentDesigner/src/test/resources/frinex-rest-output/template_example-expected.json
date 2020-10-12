@@ -1,1 +1,22 @@
-todo: add JSON contents from XML containing template elements.
+{
+   "audio_input_select.participan": {
+      "metadata": [],
+      "description": "information to be entered by the participant"
+   },
+   "Zinnen_afmaken.maxStimuli": {
+      "description": "Please enter the maximum stimuli that can be shown for the Zinnen_afmaken presenter.",
+      "value": "1000"
+   },
+   "Toestemming.showMainText": {
+      "description": "include or exclude the main text of  the Toestemming presenter.",
+      "value": true
+   },
+   "Toestemming.maintext": {
+      "description": "Please enter the text that will be shown in the Toestemming presenter.",
+      "value": "Toestemmingsverklaring voor deelname aan het onderzoek:<br/><br/>Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. <br/><br/>Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.<br/><br/>Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan."
+   },
+   "audio_input_select.stimuli": {
+      "stimuli": [],
+      "description": "stimuli to be used for this load stimulus"
+   }
+}
