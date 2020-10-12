@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="Parcours01" appNameInternal="parcours01" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<experiment appNameDisplay="Parcours01" 
+            appNameInternal="parcours01"
+            backgroundColour="#FFFFFF" 
+            complementColour0="#EAC3A3" 
+            complementColour1="#9D7B5E" 
+            complementColour2="#C69E7C" 
+            complementColour3="#FFEDDE" 
+            complementColour4="#FFFDFB" 
+            defaultScale="1.0"
+            isScalable="true" 
+            preserveLastState="true" 
+            primaryColour0="#628D8D" 
+            primaryColour1="#385E5E" 
+            primaryColour2="#4A7777"
+            primaryColour3="#96ADAD" 
+            primaryColour4="#D5D8D8" 
+            rotatable="true" 
+            showMenuBar="true" 
+            textFontSize="17" 
+            xsi:noNamespaceSchemaLocation="template.xsd"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!--    xsi:noNamespaceSchemaLocation="frinex.xsd"
+    xsi:schemaLocation=
+      "http://frinexbuild.mpi.nl/ frinex.xsd
+       http://frinexbuild.mpi.nl/ template.xsd"
+    xmlns:frinex="frinex.xsd" 
+    xmlns:template="template.xsd"-->
     <administration/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -10,7 +36,17 @@
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
     </metadata>
     <presenter menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
-        <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. &lt;br/&gt;&lt;br/&gt;Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;&lt;br/&gt;Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan."/>
+        <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. &lt;br/&gt;&lt;br/&gt;Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;&lt;br/&gt;Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan.">
+<!--            <template:value xmlns="template.xml" />
+            <template:attribute name="maxStimuli" jsonPath="audio_input_select_stimuli.maxStimuli" description="Please enter the maximum stimuli that can be shown" />
+            <template:if jsonPath="audio_input_select.showMediaControls" descrition="include or exclude the hasMoreStimulus element and its child elements" />
+            <template:metadata jsonPath="audio_input_select.participan" descrition="information to be entered by the participant" />
+            <template:stimuli jsonPath="audio_input_select.stimuli" descrition="stimuli to be used for this load stimulus" />                -->
+            <template attributeName="maxStimuli" jsonPath="audio_input_select_stimuli.maxStimuli" description="Please enter the maximum stimuli that can be shown" />
+            <template ifJsonPath="audio_input_select.showMediaControls" description="include or exclude the hasMoreStimulus element and its child elements" />
+            <template metadataJsonPath="audio_input_select.participan" description="information to be entered by the participant" />
+            <template stimuliJsonPath="audio_input_select.stimuli" description="stimuli to be used for this load stimulus" />                
+        </htmlText>
         <targetButton featureText="Akkoord" target="Informatie"/>
     </presenter>
     <presenter back="Toestemming" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
