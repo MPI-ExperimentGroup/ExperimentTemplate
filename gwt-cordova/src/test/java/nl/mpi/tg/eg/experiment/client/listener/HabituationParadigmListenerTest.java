@@ -40,7 +40,7 @@ public class HabituationParadigmListenerTest {
         int habituationThresholdData[] = {10000, 10000, 10000, 10000, 10000, 10000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 100, 100, 100, 10000, 10000, 10000, 10000, 10000, 10000, 10, 10, 10, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
         int thresholdMsData[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 1000, 10000, 10000, 10000, 10000, 100, 10000, 10000, 10000, 10, 10000, 10000, 10000, 10000, 10, 10000, 10000, 10, 100, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
         int isSingleShowData[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
-        HabituationParadigmListener maximumShowsInstance = new HabituationParadigmListener("maximumShowsInstance", 1000, 10, new SingleStimulusListener() {
+        HabituationParadigmListener maximumShowsInstance = new HabituationParadigmListener(null, "maximumShowsInstance", 1000, 10, new SingleStimulusListener() {
             @Override
             public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
@@ -54,7 +54,7 @@ public class HabituationParadigmListenerTest {
         }
         System.out.println("}");
         System.out.println(maximumShowsInstance.generateJsonResults());
-        HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener("habituationThresholdInstance", 1000, 10, new SingleStimulusListener() {
+        HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener(null, "habituationThresholdInstance", 1000, 10, new SingleStimulusListener() {
             @Override
             public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
@@ -68,7 +68,7 @@ public class HabituationParadigmListenerTest {
         }
         System.out.println("}");
         System.out.println(habituationThresholdInstance.generateJsonResults());
-        HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener("thresholdMsInstance", 1000, 10, new SingleStimulusListener() {
+        HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener(null, "thresholdMsInstance", 1000, 10, new SingleStimulusListener() {
             @Override
             public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
@@ -82,7 +82,7 @@ public class HabituationParadigmListenerTest {
         }
         System.out.println("}");
         System.out.println(thresholdMsInstance.generateJsonResults());
-        HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener("isSingleShowInstance", 1000, 10, new SingleStimulusListener() {
+        HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener(null, "isSingleShowInstance", 1000, 10, new SingleStimulusListener() {
             @Override
             public void postLoadTimerFired(final Stimulus currentStimulus) {
                 System.out.print("<triggered>");
