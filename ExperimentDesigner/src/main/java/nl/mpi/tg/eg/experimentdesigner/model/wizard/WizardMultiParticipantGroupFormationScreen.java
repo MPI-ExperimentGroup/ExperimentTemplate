@@ -67,7 +67,7 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, members);
         groupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(0));
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, communicationChannels);
-        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[3];
+        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupFullError, FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[4];
         final PresenterFeature joinGroupActivity = new PresenterFeature(FeatureType.groupMemberActivity, null);
         final PresenterFeature agreementActivity = new PresenterFeature(FeatureType.groupMemberActivity, null);
         joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));

@@ -604,7 +604,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFullError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
