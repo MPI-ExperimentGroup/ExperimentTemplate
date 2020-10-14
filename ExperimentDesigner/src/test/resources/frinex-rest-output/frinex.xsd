@@ -6920,7 +6920,7 @@
 </xs:complexType>
 <xs:complexType name="triggerDefinitionType">
 <xs:annotation>
-<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurrences has reached the threshold and within the maximum.</xs:documentation>
+<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurrences has reached the threshold and within the maximum. A triggerDefinition can have more than one stimulus available (eg when it is in an eachStimulus or hasMoreStimulus). If this is the case then stimulus where triggerDefinition is defined will be used. If there is no stimulus where the triggerDefinition is defined then the stimulus from the point at which it is triggered will be used.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>

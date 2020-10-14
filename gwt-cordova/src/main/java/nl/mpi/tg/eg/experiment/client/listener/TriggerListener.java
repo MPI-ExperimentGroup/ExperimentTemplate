@@ -31,14 +31,14 @@ public class TriggerListener {
     final protected SingleStimulusListener triggerListener;
     private int maximumCounter = 0;
     private int thresholdCounter = 0;
-    final private Stimulus outerStimulus;
+    final private Stimulus definitionScopeStimulus;
 
-    public TriggerListener(final Stimulus outerStimulus, String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener) {
+    public TriggerListener(final Stimulus definitionScopeStimulus, String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener) {
         this.listenerId = listenerId;
         this.threshold = threshold;
         this.maximum = maximum;
         this.triggerListener = triggerListener;
-        this.outerStimulus = outerStimulus;
+        this.definitionScopeStimulus = definitionScopeStimulus;
     }
 
     public String getListenerId() {
@@ -55,15 +55,17 @@ public class TriggerListener {
         return (noMaximum || maximumCounter < maximum);
     }
 
-    public void trigger(final Stimulus currentStimulus) {
+    public void trigger(final Stimulus triggerScopeStimulus) {
         thresholdCounter++;
         boolean noMaximum = maximum <= 0;
         if (thresholdCounter >= threshold && (noMaximum || maximumCounter < maximum)) {
             maximumCounter++;
-            if (currentStimulus != null) {
-                triggerListener.postLoadTimerFired(currentStimulus);
+            if (definitionScopeStimulus != null) {
+                // when the trigger was defined in an existing stimulus scope only that stimulus is used
+                triggerListener.postLoadTimerFired(definitionScopeStimulus);
             } else {
-                triggerListener.postLoadTimerFired(outerStimulus);
+                // when the trigger was defined outside of any stimulus scope then the stimulus from the trigger is used
+                triggerListener.postLoadTimerFired(triggerScopeStimulus);
             }
         }
     }
