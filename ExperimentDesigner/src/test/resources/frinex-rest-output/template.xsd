@@ -43,6 +43,48 @@
                 </xs:extension>
             </xs:complexContent>
         </xs:complexType>
+        <xs:complexType name="loadStimulusType">
+            <xs:complexContent>
+                <xs:extension base="loadStimulusType">
+                    <xs:sequence>
+                        <xs:element name="template" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:attribute name="attributeName" type="xs:string" use="optional">
+                                    <xs:annotation>
+                                        <xs:documentation>Name of the attribute to be replaced.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="ifJsonPath" type="xs:string" use="optional">
+                                    <xs:annotation>
+                                        <xs:documentation>Path to the comparision value in the JSON data.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="metadataJsonPath" type="xs:string" use="optional">
+                                    <xs:annotation>
+                                        <xs:documentation>Path to the metadata entries in the JSON data.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="stimuliJsonPath" type="xs:string" use="optional">
+                                    <xs:annotation>
+                                        <xs:documentation>Path to the stimuli in the JSON data.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="jsonPath" type="xs:string" use="optional">
+                                    <xs:annotation>
+                                        <xs:documentation>Path to the replacement value in the JSON data.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="description" type="xs:string" use="required">
+                                    <xs:annotation>
+                                        <xs:documentation>Textual description of what the boolean evaluation of this value does to the flow of the experiment.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
     </xs:redefine>
     <!--            <xs:element name="template">
 <xs:complexType>
