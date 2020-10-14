@@ -40,8 +40,8 @@ public class HabituationParadigmListener extends TriggerListener {
     private Duration lastTrigger = null;
     private Stimulus lastStimulus = null;
 
-    public HabituationParadigmListener(String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener, final boolean notFirstItem) {
-        super(listenerId, threshold, maximum, triggerListener);
+    public HabituationParadigmListener(final Stimulus outerStimulus, String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener, final boolean notFirstItem) {
+        super(outerStimulus, listenerId, threshold, maximum, triggerListener);
         thresholdMs = threshold;
         maximumShows = maximum;
         isSingleShow = notFirstItem;

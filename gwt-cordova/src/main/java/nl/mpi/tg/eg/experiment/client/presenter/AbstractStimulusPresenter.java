@@ -1991,17 +1991,22 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public void triggerDefinition(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final SingleStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
-        triggerListeners.put(formattedListenerId, new TriggerListener(formattedListenerId, threshold, maximum, triggerListener));
+        triggerListeners.put(formattedListenerId, new TriggerListener(currentStimulus, formattedListenerId, threshold, maximum, triggerListener));
     }
 
     public void habituationParadigmListener(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final SingleStimulusListener triggerListener) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
-        triggerListeners.put(formattedListenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
+        triggerListeners.put(formattedListenerId, new HabituationParadigmListener(currentStimulus, listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
     }
 
     public void triggerMatching(final String listenerId, final Stimulus currentStimulus) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
-        triggerListeners.get(formattedListenerId).trigger(currentStimulus);
+        final TriggerListener matchedListener = triggerListeners.get(formattedListenerId);
+        if (matchedListener != null) {
+            matchedListener.trigger(currentStimulus);
+        } else {
+            // todo: perhaps we should have trigger not found onError
+        }
     }
 
     public void triggerRandom(final Stimulus currentStimulus, final String matchingRegex, final TimedStimulusListener endOfTriggersListener) {

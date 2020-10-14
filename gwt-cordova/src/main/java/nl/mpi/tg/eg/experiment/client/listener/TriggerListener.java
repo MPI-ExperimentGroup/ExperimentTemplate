@@ -31,12 +31,14 @@ public class TriggerListener {
     final protected SingleStimulusListener triggerListener;
     private int maximumCounter = 0;
     private int thresholdCounter = 0;
+    final private Stimulus outerStimulus;
 
-    public TriggerListener(String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener) {
+    public TriggerListener(final Stimulus outerStimulus, String listenerId, int threshold, int maximum, SingleStimulusListener triggerListener) {
         this.listenerId = listenerId;
         this.threshold = threshold;
         this.maximum = maximum;
         this.triggerListener = triggerListener;
+        this.outerStimulus = outerStimulus;
     }
 
     public String getListenerId() {
@@ -58,7 +60,11 @@ public class TriggerListener {
         boolean noMaximum = maximum <= 0;
         if (thresholdCounter >= threshold && (noMaximum || maximumCounter < maximum)) {
             maximumCounter++;
-            triggerListener.postLoadTimerFired(currentStimulus);
+            if (currentStimulus != null) {
+                triggerListener.postLoadTimerFired(currentStimulus);
+            } else {
+                triggerListener.postLoadTimerFired(outerStimulus);
+            }
         }
     }
 }
