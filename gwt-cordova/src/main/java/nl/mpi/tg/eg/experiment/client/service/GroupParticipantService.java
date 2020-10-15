@@ -133,7 +133,6 @@ public abstract class GroupParticipantService implements GroupScoreService {
 //        System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
-        final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups???
         boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
         if (userIdMatches && screenIdMatches) {
             // handle direct messages
@@ -144,18 +143,25 @@ public abstract class GroupParticipantService implements GroupScoreService {
             if (groupUUID != null) {
                 this.stimuliListGroup = stimuliListGroup;
             }
-            groupFindingMembers();
-            if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
+            if (!groupReady) {
+                if (originMemberCode != null) {
+                    groupFindingMembers();
+                } else {
+                    groupFullError();
+                }
+            }
+            if (this.stimuliListGroup != null && !this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
                 this.stimuliListLoaded = synchroniseStimulusList(this.stimuliListGroup);
                 synchroniseCurrentStimulus(0);
                 return;
             }
+            this.groupUUID = groupUUID;
         }
+        final boolean groupIdMatches = (this.groupUUID != null) ? this.groupUUID.equals(groupUUID) : false; // if a group id was provided then ignore anyother groups???
 
         if (groupReady && groupIdMatches && screenIdMatches && originPhaseMatches) {
             // handle group messages
-            this.groupUUID = groupUUID;
             this.groupReady = groupReady;
             if (this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // only if the group is ready do we try to process the group message
@@ -217,11 +223,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
                         lastFiredListnerList = currentFiredListnerList;
                     }
                 }
-            } else {
-                groupFindingMembers();
             }
-        } else if (groupIdMatches && screenIdMatches && originPhaseMatches) {
-            groupFindingMembers();
         }
         if (userGroupLabelUpdateNeeded) {
             groupInfoChanged();
@@ -478,4 +480,6 @@ public abstract class GroupParticipantService implements GroupScoreService {
     public abstract void groupNetworkConnecting();
 
     public abstract void groupFindingMembers();
+
+    public abstract void groupFullError();
 }

@@ -57,6 +57,10 @@ public class GroupParticipantServiceTest {
         System.out.println("addGroupActivity");
         GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2, "stimuliList") {
             @Override
+            public void groupFullError() {
+            }
+
+            @Override
             public String synchroniseStimulusList(final String stimuliListGroup) {
                 // stimulusSyncListner
                 return stimuliListGroup;
@@ -91,9 +95,10 @@ public class GroupParticipantServiceTest {
                 instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "A,B,C,D,E,F,G,H".split(",")[memberIndex],
                         "expectedRespondents",
                         "actualRespondents  ",
-                        "stimulusId", "0", "stimuliList", instance.getRequestedPhase().toString(), Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "groupScore", "channelScore", "responseStimulusId");
+                        "stimulusId", "0", "stimuliList", instance.getRequestedPhase().toString(), Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "groupScore", "channelScore", "groupUUID");
             }
         }
+//        System.out.println(stringBuilder.toString());
         assertEquals("0-A[A,C,E,G:-:-:B,D,F,H:-:-]\n"
                 + "0-B[B,D,F,H:-:-:A,C,E,G:-:-]\n"
                 + "0-C[A,C,E,G:-:-:B,D,F,H:-:-]\n"
@@ -191,6 +196,11 @@ public class GroupParticipantServiceTest {
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_0", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H", 2,
                     "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small") {
                 @Override
+                public void groupFullError() {
+                    stringBuilder.append("groupFullError\n");
+                }
+
+                @Override
                 public String synchroniseStimulusList(final String stimuliListGroup) {
                     // screenResetRequestListner
                     stringBuilder.append("screenResetRequestListner\n");
@@ -251,6 +261,11 @@ public class GroupParticipantServiceTest {
 
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_1", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2,
                     "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium") {
+                @Override
+                public void groupFullError() {
+                    stringBuilder.append("groupFullError\n");
+                }
+
                 @Override
                 public String synchroniseStimulusList(final String stimuliListGroup) {
                     // screenResetRequestListner

@@ -613,10 +613,21 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     stimulusProvider.generateStimuliStateSnapshot()
             //                    , endOfStimulusListener
             ) {
+                TimedStimulusListener lastTriggeredListener = null;
+
+                @Override
+                public void groupFullError() {
+                    if (!groupFullError.equals(lastTriggeredListener)) {
+                        groupFullError.postLoadTimerFired();
+                        lastTriggeredListener = groupFullError;
+                    }
+                }
+
                 @Override
                 public void groupNetworkConnecting() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
 //                    clearPage();
+                    lastTriggeredListener = null;
                     groupNetworkConnecting.postLoadTimerFired();
 //                    ((ComplexView) simpleView).addText("not connected");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
@@ -629,6 +640,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 public void groupFindingMembers() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
 //                    clearPage();
+                    lastTriggeredListener = null;
                     groupFindingMembers.postLoadTimerFired();
                     //((ComplexView) simpleView).addText("connected, waiting for other members");
                     // this endOfStimulusGroupMessage is perhaps a stray and should be "solved"
@@ -645,6 +657,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     final String loadedStimulusString = stimulusProvider.generateStimuliStateSnapshot();
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), loadedStimulusString);
 //                    groupParticipantService.setStimuliListLoaded(loadedStimulusString);
+                    lastTriggeredListener = null;
                     groupNetworkSynchronising.postLoadTimerFired();
                     return loadedStimulusString;
                 }
