@@ -6426,7 +6426,7 @@
 </xs:complexType>
 <xs:complexType name="startTimerType">
 <xs:annotation>
-<xs:documentation>Starts a persistent timer which is identified by its listenerId. The start time is the moment the first startTimer for a given listenerId is encountered. This start time is persistent over page loads and navigation and can only be reset by a clearTimer followed by a startTimer. The content of the startTimer element is scoped to the presenter and will not trigger outside of the presenter that contains it. Each startTimer creates a callback that will trigger when the timer reaches the ms value, but will not trigger if that time has already passed while the presenter was not active. Multiple startTimer tags with the same listenerId can be used, each will share the same start moment allowing multiple events to be synchronised on one timer.</xs:documentation>
+<xs:documentation>Starts a persistent timer which is identified by its listenerId. The start time is the moment the first startTimer for a given listenerId is encountered (this start time is recorded in the local storage data). This start time is persistent over page loads and navigation and can only be reset by a clearTimer followed by a startTimer. The content of the startTimer element is scoped to the presenter and will not trigger outside of the presenter that contains it. Each startTimer creates a callback that will trigger when the timer reaches the ms value, but will not trigger if that time has already passed while the presenter was not active. Multiple startTimer tags with the same listenerId can be used, each will share the same start moment allowing multiple events to be synchronised on one timer.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
@@ -6643,7 +6643,7 @@
 </xs:complexType>
 <xs:complexType name="clearTimerType">
 <xs:annotation>
-<xs:documentation>Clears the start time of a persistent timer matching listenerId. A subsequent startTimer with the same listenerId can be used to assign a new start time.</xs:documentation>
+<xs:documentation>Clears the start time of a persistent timer matching listenerId (from the local storage data). A subsequent startTimer with the same listenerId can be used to assign a new start time.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="listenerId" type="xs:string" use="required">
 <xs:annotation>
@@ -6883,14 +6883,14 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="minimum" type="xs:string" use="required">
+<xs:attribute name="minimum" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Minimum value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="maximum" type="xs:string" use="required">
+<xs:attribute name="maximum" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Maximum value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -6902,14 +6902,14 @@
 <xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
 </xs:all>
-<xs:attribute name="minimum" type="xs:string" use="required">
+<xs:attribute name="minimum" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Minimum value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="maximum" type="xs:string" use="required">
+<xs:attribute name="maximum" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Maximum value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="evaluateTokens" type="xs:string" use="required">
@@ -6920,7 +6920,7 @@
 </xs:complexType>
 <xs:complexType name="triggerDefinitionType">
 <xs:annotation>
-<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example), providing the number of trigger occurrences has reached the threshold and within the maximum. A triggerDefinition can have more than one stimulus available (eg when it is in an eachStimulus or hasMoreStimulus). If this is the case then stimulus where triggerDefinition is defined will be used. If there is no stimulus where the triggerDefinition is defined then the stimulus from the point at which it is triggered will be used.</xs:documentation>
+<xs:documentation>The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example). Based on the threshold and maximum values a trigger request does not always result in the trigger activating. The threshold is the number of activation requests before it will trigger. The maximum is the number of times the trigger can occur after which activation requests will be ignored. So a triggerDefinition with threshold 3 and maximum 1 would require three activation requests to trigger and it would not trigger again. A triggerDefinition can have more than one stimulus available (eg when it is in an eachStimulus or hasMoreStimulus). If this is the case then stimulus where triggerDefinition is defined will be used. If there is no stimulus where the triggerDefinition is defined then the stimulus from the point at which it is triggered will be used.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
@@ -7110,14 +7110,14 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="threshold" type="xs:string" use="required">
+<xs:attribute name="threshold" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Threshold value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="maximum" type="xs:string" use="required">
+<xs:attribute name="maximum" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Maximum value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -7310,14 +7310,14 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="threshold" type="xs:string" use="required">
+<xs:attribute name="threshold" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Threshold value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="maximum" type="xs:string" use="required">
+<xs:attribute name="maximum" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Maximum value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -11675,6 +11675,9 @@
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="mediaLoadFailedType">
+<xs:annotation>
+<xs:documentation>Will be triggered when the host system reports a failure. The timing of this depends on a few factors. If the network is unreachable it will fail quickly. Otherwise it will wait the timeout and probably some retry iterations. The timeout and retry parameters would differ per browser and probably are user configurable as well.</xs:documentation>
+</xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
