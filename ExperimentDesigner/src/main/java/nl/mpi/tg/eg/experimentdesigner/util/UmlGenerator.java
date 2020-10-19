@@ -50,7 +50,7 @@ import org.xml.sax.SAXException;
  */
 public class UmlGenerator {
 
-    public void generateUml(File xmlFile, File svgFileOut) throws IOException, ParserConfigurationException, SAXException, JAXBException {
+    public void generateUml(final File xmlFile, final File umlFileOut, final File svgFileOut) throws IOException, ParserConfigurationException, SAXException, JAXBException {
         final StringBuilder stringBuilder = new StringBuilder();
         FileInputStream fileInputStream = new FileInputStream(xmlFile);
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -69,11 +69,16 @@ public class UmlGenerator {
         System.out.println(desc);
         System.out.println(stringBuilder.toString());
         final String svg = new String(arrayOutputStream.toByteArray(), Charset.forName("UTF-8"));
-        FileWriter schemaOutputWriter = new FileWriter(svgFileOut);
-        final BufferedWriter bufferedWriter = new BufferedWriter(schemaOutputWriter);
-        bufferedWriter.write(svg);
-        bufferedWriter.flush();
-        bufferedWriter.close();
+        FileWriter umlOutputWriter = new FileWriter(umlFileOut);
+        final BufferedWriter umlBufferedWriter = new BufferedWriter(umlOutputWriter);
+        umlBufferedWriter.write(stringBuilder.toString());
+        umlBufferedWriter.flush();
+        umlBufferedWriter.close();
+        FileWriter svgOutputWriter = new FileWriter(svgFileOut);
+        final BufferedWriter svgBufferedWriter = new BufferedWriter(svgOutputWriter);
+        svgBufferedWriter.write(svg);
+        svgBufferedWriter.flush();
+        svgBufferedWriter.close();
     }
 
     private void populateExperimentUml(final Experiment experiment, final StringBuilder stringBuilder) {

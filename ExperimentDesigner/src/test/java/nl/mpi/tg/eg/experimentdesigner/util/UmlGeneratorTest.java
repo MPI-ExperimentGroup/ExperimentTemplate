@@ -41,16 +41,24 @@ public class UmlGeneratorTest {
         final String outputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(outputDirectory).toURI();
         System.out.println(outputDirectory);
+        final File umlActualFile = new File(new File(outputDirectoryUri), "with_stimulus_example-output.uml");
+        final File umlExpectedFile = new File(new File(outputDirectoryUri), "with_stimulus_example.uml");
         final File svgActualFile = new File(new File(outputDirectoryUri), "with_stimulus_example-output.svg");
         final File svgExpectedFile = new File(new File(outputDirectoryUri), "with_stimulus_example.svg");
 
-        instance.generateUml(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), svgActualFile);
-        String expectedResult = new String(Files.readAllBytes(Paths.get(svgExpectedFile.toURI())), StandardCharsets.UTF_8);
-        String actualResult = new String(Files.readAllBytes(Paths.get(svgActualFile.toURI())), StandardCharsets.UTF_8);
-        final String substring = actualResult.substring(393, 400);
-        System.out.println(substring);
-        actualResult = actualResult.replaceAll(substring, "f8hjwa7");
-        assertEquals("with_stimulus_example.svg", expectedResult, actualResult);
+        instance.generateUml(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), umlActualFile, svgActualFile);
+        String expectedUmlResult = new String(Files.readAllBytes(Paths.get(umlExpectedFile.toURI())), StandardCharsets.UTF_8);
+        String actualUmlResult = new String(Files.readAllBytes(Paths.get(umlActualFile.toURI())), StandardCharsets.UTF_8);
+        String expectedSvgResult = new String(Files.readAllBytes(Paths.get(svgExpectedFile.toURI())), StandardCharsets.UTF_8);
+        String actualSvgResult = new String(Files.readAllBytes(Paths.get(svgActualFile.toURI())), StandardCharsets.UTF_8);
+//        final String substring = actualSvgResult.substring(393, 400);
+//        System.out.println(substring);
+//        actualSvgResult = actualSvgResult.replaceAll(substring, "f8hjwa7");
+        actualSvgResult = actualSvgResult.replaceAll("\"[#\\(\\)0-9a-z]*\"", "\"f8hjwa7\"");
+        expectedSvgResult = expectedSvgResult.replaceAll("\"[#\\(\\)0-9a-z]*\"", "\"f8hjwa7\"");
+        actualSvgResult = actualSvgResult.replaceAll("><", ">\n<");
+        expectedSvgResult = expectedSvgResult.replaceAll("><", ">\n<");
+        assertEquals("with_stimulus_example.uml", expectedUmlResult, actualUmlResult);
+        assertEquals("with_stimulus_example.svg", expectedSvgResult, actualSvgResult);
     }
-
 }
