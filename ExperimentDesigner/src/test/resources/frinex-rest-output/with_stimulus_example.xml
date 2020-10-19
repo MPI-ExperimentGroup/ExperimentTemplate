@@ -220,6 +220,12 @@
         margin: 12vw;
         background: beige;
         }
+        .recordingLevelMeter{
+        height: 1px;
+        width: 25vw;
+        margin: 12vw;
+        background: blue;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -1455,7 +1461,7 @@
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaControls">
                     <actionButton featureText="startAudioRecorder">
-                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia">
+                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="levelIndicator">
                             <onError>
                                 <regionReplace regionId="recordedMediaControls">
                                     <htmlText featureText="startAudioRecorder onError"/>
