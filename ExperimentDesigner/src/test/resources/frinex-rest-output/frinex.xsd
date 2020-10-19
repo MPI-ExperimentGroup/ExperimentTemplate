@@ -5371,6 +5371,9 @@
 <xs:complexType name="centrePageType">
 </xs:complexType>
 <xs:complexType name="clearPageType">
+<xs:annotation>
+<xs:documentation>Clears visual elements from the current presenter, stops timers and other listeners then submits any pending timestamps.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="styleName" type="xs:string">
 <xs:annotation>
 <xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
@@ -6643,7 +6646,7 @@
 </xs:complexType>
 <xs:complexType name="clearTimerType">
 <xs:annotation>
-<xs:documentation>Clears the start time of a persistent timer matching listenerId (from the local storage data). A subsequent startTimer with the same listenerId can be used to assign a new start time.</xs:documentation>
+<xs:documentation>Clears the start time and terminates any pending events of any persistent timer matching listenerId (from the local storage data). After this a subsequent startTimer can be used to assign a new start time with this listenerId.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="listenerId" type="xs:string" use="required">
 <xs:annotation>

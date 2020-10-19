@@ -3667,7 +3667,7 @@ String</span><br/>
 <h3 id="clearPageType" style="text-transform: uppercase;">
 clearPage
 </h3>
-
+Clears visual elements from the current presenter, stops timers and other listeners then submits any pending timestamps.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">clearPage</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -3703,7 +3703,7 @@ Space separated list of stimulus tags [a-Z0-9]</span><br/>
 <h3 id="clearTimerType" style="text-transform: uppercase;">
 clearTimer
 </h3>
-Clears the start time of a persistent timer matching listenerId (from the local storage data). A subsequent startTimer with the same listenerId can be used to assign a new start time.
+Clears the start time and terminates any pending events of any persistent timer matching listenerId (from the local storage data). After this a subsequent startTimer can be used to assign a new start time with this listenerId.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">clearTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
