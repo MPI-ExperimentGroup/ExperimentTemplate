@@ -20,18 +20,28 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.SourceStringReader;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
@@ -41,15 +51,16 @@ import org.xml.sax.SAXException;
 public class UmlGenerator {
 
     public void generateUml(File xmlFile, File svgFileOut) throws IOException, ParserConfigurationException, SAXException, JAXBException {
-//        FileInputStream fileInputStream = new FileInputStream(xmlFile);
-//        DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder builder = builderFactory.newDocumentBuilder();
-//        Document xmlDocument = builder.parse(fileInputStream);
-        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
-        Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
-        final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
         final StringBuilder stringBuilder = new StringBuilder();
-        populateExperimentUml(experiment, stringBuilder);
+        FileInputStream fileInputStream = new FileInputStream(xmlFile);
+        DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = builderFactory.newDocumentBuilder();
+        Document xmlDocument = builder.parse(fileInputStream);
+        populateExperimentUml(xmlDocument, stringBuilder);
+//        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+//        Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
+//        final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
+//        populateExperimentUml(experiment, stringBuilder);
 
         SourceStringReader reader = new SourceStringReader(stringBuilder.toString());
         final ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
@@ -80,6 +91,46 @@ public class UmlGenerator {
                 stringBuilder.append(presenter.getNextPresenterTag());
                 stringBuilder.append(" : next\n");
             }
+        }
+        stringBuilder.append("@enduml\n");
+    }
+
+    private void populateExperimentUml(final Document xmlDocument, final StringBuilder stringBuilder) {
+        stringBuilder.append("@startuml\n");
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        try {
+            String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
+            stringBuilder.append("title ").append(appNameInternal).append("\n");
+            stringBuilder.append("start\n");
+
+            NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
+            for (int index = 0; index < nodeList1.getLength(); index++) {
+                final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
+//                if (index==0){
+//                    stringBuilder.append("[*] --> ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
+//                }
+                stringBuilder.append(":").append(attributes.getNamedItem("self").getNodeValue()).append(";\n");
+                if (attributes.getNamedItem("back") != null) {
+                    stringBuilder.append("if (navigation) then (back)\n");
+                    stringBuilder.append(":").append(attributes.getNamedItem("back").getNodeValue()).append(";\n");
+//                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append("\n");
+                }
+                if (attributes.getNamedItem("next") != null) {
+                    if (attributes.getNamedItem("back") != null) {
+                        stringBuilder.append("else (next)\n");
+                    } else {
+                        stringBuilder.append("if (navigation) then (next)\n");
+                    }
+                    stringBuilder.append("  :").append(attributes.getNamedItem("next").getNodeValue()).append(";\n");
+//                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" <-- ").append(attributes.getNamedItem("next").getNodeValue()).append("\n");
+                }
+                if (attributes.getNamedItem("next") != null || attributes.getNamedItem("back") != null) {
+                    stringBuilder.append("endif\n");
+                }
+            }
+        } catch (XPathExpressionException exception) {
+            stringBuilder.append("note right: ").append(exception).append("\n");
+            stringBuilder.append("end note\n");
         }
         stringBuilder.append("@enduml\n");
     }
