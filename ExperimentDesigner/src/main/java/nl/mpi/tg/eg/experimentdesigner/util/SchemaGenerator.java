@@ -506,10 +506,11 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0], true);
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], true);
         getEnd(writer);
-        System.out.println(writer);
+        //System.out.println(writer);
     }
 
     public void createSchemaFile(final File schemaOutputFile) throws IOException {
+        System.out.println("schemaOutputFile: " + schemaOutputFile);
         FileWriter schemaOutputWriter = new FileWriter(schemaOutputFile);
         BufferedWriter bufferedWriter = new BufferedWriter(schemaOutputWriter);
         appendContents(bufferedWriter);

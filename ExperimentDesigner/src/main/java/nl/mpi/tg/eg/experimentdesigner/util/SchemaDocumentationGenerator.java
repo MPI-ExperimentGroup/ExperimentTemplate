@@ -507,12 +507,13 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //            }
         writer.append("</table>\n");
         getEnd(writer);
-        System.out.println(writer);
+        //System.out.println(writer);
 //        assertEquals(expResult, stringBuilder.toString());
     }
 
     public void createHtmlFile(final File schemaOutputFile) throws IOException {
 //        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println("documentationFile: " + schemaOutputFile);
         FileWriter schemaOutputWriter = new FileWriter(schemaOutputFile);
         BufferedWriter bufferedWriter = new BufferedWriter(schemaOutputWriter);
         appendContents(bufferedWriter);

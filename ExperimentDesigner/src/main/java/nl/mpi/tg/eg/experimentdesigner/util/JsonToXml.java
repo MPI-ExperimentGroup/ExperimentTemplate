@@ -80,7 +80,7 @@ public class JsonToXml {
                 }
                 final WizardController wizardController = new WizardController();
                 for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json") && !name.endsWith("listing.json"))) {
-                    System.out.println(jsonFile);
+                    System.out.println("jsonFile: " + jsonFile);
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
@@ -88,7 +88,7 @@ public class JsonToXml {
                         final Experiment experiment = wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData());
                         System.out.println("experiment: " + experiment.getAppNameInternal());
                         final File outputFile = new File(outputDirectory, experiment.getAppNameInternal() + ".xml");
-                        System.out.println(outputFile);
+                        System.out.println("outputFile: " + outputFile);
                         experiment.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
                             // because the experiment has not been stored and retrieved from the DB we need to sort this manually
                             @Override
