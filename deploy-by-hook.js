@@ -679,6 +679,13 @@ function buildElectron(buildName, stage) {
             resultString += '<a href="' + finalName + '">' + fileTypeString + '</a>&nbsp;';
             buildArtifactsJson.artifacts[fileTypeString] = finalName;
         }
+        if (filename.endsWith(".snap")) {
+            var fileTypeString = "snap";
+            var finalName = buildName + "_" + stage + ".snap";
+            fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + finalName));
+            resultString += '<a href="' + finalName + '">' + fileTypeString + '</a>&nbsp;';
+            buildArtifactsJson.artifacts[fileTypeString] = finalName;
+        }
 //                mkdir /srv/target/electron
 //cp out/make/*linux*.zip ../with_stimulus_example-linux.zip
 //cp out/make/*win32*.zip ../with_stimulus_example-win32.zip

@@ -57,6 +57,7 @@ yarn
 yarn dist --win portable
 yarn dist --mac zip --dir -c.compression=store -c.mac.identity=null
 yarn dist --mac dmg --dir -c.compression=store -c.mac.identity=null
+yarn dist --linux snap
 
 cd dist
 zip -r ../../@experiment.configuration.name@-win32-x64.zip ./@experiment.configuration.name@*.exe

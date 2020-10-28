@@ -24,7 +24,7 @@
           "zip"
         ],
         "linux": [
-          "zip"
+          "snap"
         ]
       },
       "electronPackagerConfig": {
