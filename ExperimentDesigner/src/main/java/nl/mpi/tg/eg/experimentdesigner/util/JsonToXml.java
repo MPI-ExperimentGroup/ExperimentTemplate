@@ -128,7 +128,11 @@ public class JsonToXml {
                         experimentValidator.validateDocument(xmlFile);
                         final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
                         experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory));
-                    } catch (SAXException | IOException | IllegalArgumentException | ParserConfigurationException | XPathExpressionException | XpathExperimentException saxe) {
+                        final UmlGenerator umlGenerator = new UmlGenerator();
+                        final File outputUmlFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".uml"));
+                        final File outputSvgFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".svg"));
+                        umlGenerator.generateUml(xmlFile, outputUmlFile, outputSvgFile);
+                    } catch (SAXException | IOException | IllegalArgumentException | ParserConfigurationException | XPathExpressionException | XpathExperimentException | JAXBException saxe) {
                         System.out.println(saxe.getMessage());
                         // save the error into a log file
                         final File outputFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", "_validation_error.txt"));
