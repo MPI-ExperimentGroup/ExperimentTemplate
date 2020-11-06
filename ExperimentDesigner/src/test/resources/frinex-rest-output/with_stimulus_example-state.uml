@@ -1,0 +1,225 @@
+@startuml
+title with_stimulus_example
+[*] --> Toestemming
+state Toestemming
+Toestemming --> Menu
+Toestemming --> Informatie
+state Informatie
+Informatie --> Toestemming
+state Gegevens
+Gegevens --> Informatie
+Gegevens --> Metadata_Jump_Test
+state Metadata_Jump_Test
+Metadata_Jump_Test --> Gegevens
+state Metadata_Jump_Test_Target_1
+Metadata_Jump_Test_Target_1 --> Gegevens
+state Metadata_Jump_Test_Target_2
+Metadata_Jump_Test_Target_2 --> Gegevens
+state Metadata_Jump_Test_Target_3
+Metadata_Jump_Test_Target_3 --> Gegevens
+state Metadata_Jump_Test_Target_4
+Metadata_Jump_Test_Target_4 --> Gegevens
+state Metadata_Jump_Test_Target_5
+Metadata_Jump_Test_Target_5 --> Gegevens
+state Metadata_Jump_Test_Target_6
+Metadata_Jump_Test_Target_6 --> Gegevens
+state Metadata_Jump_Test_Target_7
+Metadata_Jump_Test_Target_7 --> Gegevens
+state Metadata_Jump_Test_Target_8
+Metadata_Jump_Test_Target_8 --> Gegevens
+state Metadata_Jump_Test_Target_9
+Metadata_Jump_Test_Target_9 --> Gegevens
+state Metadata_Jump_Test_Target_10
+Metadata_Jump_Test_Target_10 --> Gegevens
+state First_Stimuli_Screen_Informatie
+First_Stimuli_Screen_Informatie --> Menu
+state sticky_table_example
+sticky_table_example --> Menu
+state sticky_menu_example
+sticky_menu_example --> Menu
+state sticky_region_example
+sticky_region_example --> Menu
+state popup_dialogue_example
+popup_dialogue_example --> Menu
+state compare_the_last_two_items
+compare_the_last_two_items --> Menu
+state Snooze
+Snooze --> Menu
+state Request_Notification_Screen
+Request_Notification_Screen --> Menu
+state Timer_Label_Screen
+Timer_Label_Screen --> Menu
+state Sequential_Display_Example0_6
+Sequential_Display_Example0_6 --> Menu
+state hardware_time_stamps
+hardware_time_stamps --> Menu
+state Sequential_Display_Example
+Sequential_Display_Example --> Menu
+state Audio_Input_Select
+Audio_Input_Select --> Menu
+state Region_Timer_Screen
+Region_Timer_Screen --> Menu
+Region_Timer_Screen --> With_Stimuli_Screen
+state Region_Toggle_Example
+Region_Toggle_Example --> Menu
+state Rating_Toggle_Example
+Rating_Toggle_Example --> Menu
+state Rating_Token_Text_Example
+Rating_Token_Text_Example --> Menu
+state Metadata_Enable_Visible
+Metadata_Enable_Visible --> Menu
+state Metadata_Current_Date
+Metadata_Current_Date --> Menu
+state last_seven_days
+last_seven_days --> Menu
+state replace_all_example
+replace_all_example --> Menu
+state four_different_topics
+four_different_topics --> Menu
+state append_unique_date
+append_unique_date --> Menu
+state currentDate_daysBetween_and_length
+currentDate_daysBetween_and_length --> Menu
+state progressIndicator_example
+progressIndicator_example --> Menu
+state With_Stimuli_Screen
+With_Stimuli_Screen --> Menu
+With_Stimuli_Screen --> First_Stimuli_Screen_Informatie
+state Stimulus_Subquestions
+Stimulus_Subquestions --> Menu
+state Has_Stimulus_Response
+Has_Stimulus_Response --> Menu
+state First_Stimuli_Screen
+First_Stimuli_Screen --> Menu
+First_Stimuli_Screen --> stimulusRatingRadio
+state stimulusResponse_logTokenText
+stimulusResponse_logTokenText --> Menu
+state stimulusRatingRadio
+stimulusRatingRadio --> Menu
+stimulusRatingRadio --> Second_Informatie
+state Metadata_HtmlTokenText
+Metadata_HtmlTokenText --> Menu
+state Second_Informatie
+Second_Informatie --> Menu
+state hasGetParameter
+hasGetParameter --> Menu
+state cafe_test
+cafe_test --> Menu
+state Single_Image_Example
+Single_Image_Example --> Menu
+state rating_buttons_example
+rating_buttons_example --> Menu
+state clear_stimulus_responses_example
+clear_stimulus_responses_example --> Menu
+state clear_stimulus_response_example
+clear_stimulus_response_example --> Menu
+state visible_enable_stimulus_free_text_example
+visible_enable_stimulus_free_text_example --> Menu
+state rating_button_orientationType_example
+rating_button_orientationType_example --> Menu
+state single_line_text_box_example
+single_line_text_box_example --> Menu
+state single_line_text_box_no_action_example
+single_line_text_box_no_action_example --> Menu
+state Second
+Second --> Menu
+Second --> Third_Informatie
+state Recorder
+Recorder --> Menu
+Recorder --> Menu
+state RecorderPauseTest
+RecorderPauseTest --> Menu
+RecorderPauseTest --> Menu
+state RecorderNoDownloadTest
+RecorderNoDownloadTest --> Menu
+RecorderNoDownloadTest --> Menu
+state RecorderTimeStampTest
+RecorderTimeStampTest --> Menu
+RecorderTimeStampTest --> Menu
+state Third_Informatie
+Third_Informatie --> Menu
+state Third
+Third --> Menu
+Third --> completion
+state Media_Playback_Demo
+Media_Playback_Demo --> Menu
+state USB_LP310
+USB_LP310 --> Menu
+state Bluetooth_R1
+Bluetooth_R1 --> Menu
+state showOnBackButton
+state AppendStimulusResponse
+AppendStimulusResponse --> Menu
+state enter_in_the_text_box
+enter_in_the_text_box --> Menu
+state stimulusCodeImageButton
+stimulusCodeImageButton --> Menu
+state stimulus_has_response
+stimulus_has_response --> Menu
+state stimulusRatingImageButton
+stimulusRatingImageButton --> Menu
+state if_stimulus_exists
+if_stimulus_exists --> Menu
+state completion
+completion --> Menu
+completion --> Toestemming
+state InvitationCodeExample
+InvitationCodeExample --> Menu
+state MatchOnEvalTokensExample
+MatchOnEvalTokensExample --> Menu
+state InvitationSessionStepsExample
+InvitationSessionStepsExample --> Menu
+state InvitationCodeExampleStimuliScreen
+InvitationCodeExampleStimuliScreen --> Menu
+InvitationCodeExampleStimuliScreen --> InvitationCodeExampleCompletion
+state RedirectToUrlExample
+RedirectToUrlExample --> Menu
+state InvitationCodeExampleCompletion
+state InvitationCodeExampleFinished
+InvitationCodeExampleFinished --> InvitationCodeExampleRestart
+state NextStepExample
+NextStepExample --> Menu
+state InvitationCodeExampleRestart
+state InvitationCodeExampleInvalid
+state RecordingQualityTest
+RecordingQualityTest --> Menu
+state Menu
+state menuItemStyle
+menuItemStyle --> Menu
+state allMenuItemsStyle
+allMenuItemsStyle --> Menu
+state activateRandomItem
+activateRandomItem --> Menu
+state triggerRandomListener
+triggerRandomListener --> Menu
+triggerRandomListener --> Menu
+state incrementScoreExample
+incrementScoreExample --> Menu
+incrementScoreExample --> Menu
+state EditParticipant
+EditParticipant --> Menu
+EditParticipant --> ListParticipants
+state ListParticipants
+ListParticipants --> Menu
+ListParticipants --> Admin
+state Admin
+Admin --> ListParticipants
+state DataManagement
+DataManagement --> Menu
+DataManagement --> DataUpload
+state DataUpload
+DataUpload --> DataManagement
+DataUpload --> DataManagement
+state table_tags_inside_a_region_tag
+table_tags_inside_a_region_tag --> Menu
+state predefined_stimuli_example
+predefined_stimuli_example --> Menu
+state custom_completion_number
+custom_completion_number --> Menu
+state random_image_positions_remembered
+random_image_positions_remembered --> Menu
+state preload_images_example
+preload_images_example --> Menu
+state about
+about --> Menu
+@enduml
