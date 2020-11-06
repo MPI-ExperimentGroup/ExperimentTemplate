@@ -50,13 +50,24 @@ import org.xml.sax.SAXException;
  */
 public class UmlGenerator {
 
-    public void generateUml(final File xmlFile, final File umlFileOut, final File svgFileOut) throws IOException, ParserConfigurationException, SAXException, JAXBException {
+    public enum DiagramType {
+        state, activity
+    }
+
+    public void generateUml(final File xmlFile, final File umlFileOut, final File svgFileOut, DiagramType diagramType) throws IOException, ParserConfigurationException, SAXException, JAXBException {
         final StringBuilder stringBuilder = new StringBuilder();
         FileInputStream fileInputStream = new FileInputStream(xmlFile);
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
         Document xmlDocument = builder.parse(fileInputStream);
-        populateExperimentUml(xmlDocument, stringBuilder);
+        switch (diagramType) {
+            case state:
+                populateExperimentStateUml(xmlDocument, stringBuilder);
+                break;
+            case activity:
+                populateExperimentActivityUml(xmlDocument, stringBuilder);
+                break;
+        }
 //        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
 //        Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
 //        final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
@@ -81,26 +92,34 @@ public class UmlGenerator {
         svgBufferedWriter.close();
     }
 
-    private void populateExperimentUml(final Experiment experiment, final StringBuilder stringBuilder) {
+    private void populateExperimentStateUml(final Document xmlDocument, final StringBuilder stringBuilder) {
         stringBuilder.append("@startuml\n");
-        for (PresenterScreen presenter : experiment.getPresenterScreen()) {
-            if (presenter.getBackPresenterTag() != null) {
-                stringBuilder.append(presenter.getSelfPresenterTag());
-                stringBuilder.append(" <- ");
-                stringBuilder.append(presenter.getBackPresenterTag());
-                stringBuilder.append(" : back\n");
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        try {
+            String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
+            stringBuilder.append("title ").append(appNameInternal).append("\n");
+            NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
+            for (int index = 0; index < nodeList1.getLength(); index++) {
+                final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
+                if (index == 0) {
+                    stringBuilder.append("[*] --> ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
+                }
+                stringBuilder.append("state ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
+                if (attributes.getNamedItem("back") != null) {
+                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append("\n");
+                }
+                if (attributes.getNamedItem("next") != null) {
+                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("next").getNodeValue()).append("\n");
+                }
             }
-            if (presenter.getNextPresenterTag() != null) {
-                stringBuilder.append(presenter.getSelfPresenterTag());
-                stringBuilder.append(" -> ");
-                stringBuilder.append(presenter.getNextPresenterTag());
-                stringBuilder.append(" : next\n");
-            }
+        } catch (XPathExpressionException exception) {
+            stringBuilder.append("note right: ").append(exception).append("\n");
+            stringBuilder.append("end note\n");
         }
         stringBuilder.append("@enduml\n");
     }
 
-    private void populateExperimentUml(final Document xmlDocument, final StringBuilder stringBuilder) {
+    private void populateExperimentActivityUml(final Document xmlDocument, final StringBuilder stringBuilder) {
         stringBuilder.append("@startuml\n");
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         try {
@@ -111,14 +130,10 @@ public class UmlGenerator {
             NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList1.getLength(); index++) {
                 final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
-//                if (index==0){
-//                    stringBuilder.append("[*] --> ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
-//                }
                 stringBuilder.append(":").append(attributes.getNamedItem("self").getNodeValue()).append(";\n");
                 if (attributes.getNamedItem("back") != null) {
                     stringBuilder.append("if (navigation) then (back)\n");
                     stringBuilder.append(":").append(attributes.getNamedItem("back").getNodeValue()).append(";\n");
-//                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append("\n");
                 }
                 if (attributes.getNamedItem("next") != null) {
                     if (attributes.getNamedItem("back") != null) {
@@ -127,7 +142,6 @@ public class UmlGenerator {
                         stringBuilder.append("if (navigation) then (next)\n");
                     }
                     stringBuilder.append("  :").append(attributes.getNamedItem("next").getNodeValue()).append(";\n");
-//                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" <-- ").append(attributes.getNamedItem("next").getNodeValue()).append("\n");
                 }
                 if (attributes.getNamedItem("next") != null || attributes.getNamedItem("back") != null) {
                     stringBuilder.append("endif\n");
