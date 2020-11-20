@@ -790,7 +790,7 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
-        <xsl:if test="local-name() eq 'stimulusRatingButton'
+<!--        <xsl:if test="local-name() eq 'stimulusRatingButton'
 or local-name() eq 'stimulusRatingRadio'
 or local-name() eq 'stimulusRatingCheckbox'
 or local-name() eq 'ratingButton'
@@ -799,7 +799,7 @@ or local-name() eq 'ratingCheckbox'
 or local-name() eq 'ratingFooterButton'
 ">
             <xsl:text>, stimulusProvider</xsl:text>
-        </xsl:if>
+        </xsl:if>-->
         <xsl:if test="local-name() eq 'stimulusRatingButton'
 or local-name() eq 'stimulusRatingRadio'
 or local-name() eq 'stimulusRatingCheckbox'
