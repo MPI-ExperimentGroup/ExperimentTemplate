@@ -76,6 +76,9 @@
         <redirectToUrl src="src"/>
         <eraseLocalStorageOnWindowClosing/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="src" styleName="styleName">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -179,6 +182,9 @@
         <selectUserMenu fieldName="workerId" styleName="styleName"/>
         <selectLocaleMenu styleName="styleName"/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="src" styleName="styleName">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -1725,6 +1731,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="src" styleName="styleName">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <addKinTypeGui diagramName="diagramName"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -1799,6 +1808,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="src" styleName="styleName">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <allMenuItems styleName="styleName"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -1932,6 +1944,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="src" styleName="styleName">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <table showOnBackButton="true" styleName="styleName">
@@ -1987,6 +2002,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="src" styleName="styleName">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -2078,6 +2096,9 @@
         <redirectToUrl src=""/>
         <eraseLocalStorageOnWindowClosing/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -2181,6 +2202,9 @@
         <selectUserMenu fieldName="workerId"/>
         <selectLocaleMenu/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
@@ -3703,6 +3727,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <addKinTypeGui diagramName=""/>
         <hasGetParameter parameterName="">
             <conditionTrue>
@@ -3777,6 +3804,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <allMenuItems/>
         <hasGetParameter parameterName="">
             <conditionTrue>
@@ -3910,6 +3940,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <table>
@@ -3965,6 +3998,9 @@
         </svgLoadGroups>
         <addPadding/>
         <centrePage/>
+        <backgroundImage msToNext="60" src="">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
         <hasGetParameter parameterName="">
             <conditionTrue>
                 <plainText featureText="plainText in conditionTrue"/>
