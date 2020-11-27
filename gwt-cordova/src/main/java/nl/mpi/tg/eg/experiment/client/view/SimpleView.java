@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.safehtml.shared.SafeUri;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
@@ -28,9 +30,12 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
  * @since Oct 7, 2014 2:06:28 PM (creation date)
@@ -47,6 +52,7 @@ public class SimpleView extends AbstractView {
     private final VerticalPanel borderedContentPanel;
     private final ScrollPanel scrollPanel;
     protected int HEADER_SIZE;
+    protected final List<Timer> timerList = new ArrayList<>();
 
     public SimpleView() {
 
@@ -144,6 +150,47 @@ public class SimpleView extends AbstractView {
     public void removeFooterButtons() {
         footerPanel.clear();
         footerPanel.setVisible(footerPanel.getWidgetCount() > 0);
+    }
+
+    public void addBackgroundImage(final SafeUri imagePath, final String styleName, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        //        final Image image = new Image(imagePath);
+        //            this.getElement().getStyle().setBackgroundColor("green");
+                if (imagePath == null) {
+                    this.getElement().getStyle().clearBackgroundImage();
+                } else {
+                    this.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
+                }
+                this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
+        //            this.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
+                this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
+                this.getElement().getStyle().setProperty("backgroundPosition", "50% 50%");
+                // remove the custom styles but keep the page width style
+                this.setStyleName(this.getStyleName().contains("normalWidth") ? "normalWidth" : "narrowWidth");
+                if (styleName != null && !styleName.isEmpty()) {
+                    this.addStyleName(styleName);
+                } else {
+                    this.getElement().getStyle().setProperty("backgroundSize", "cover");
+        //            resizeView(); // this is to put back the screen size styles
+                }
+        //        image.addLoadHandler(new LoadHandler() {
+        //
+        //            @Override
+        //            public void onLoad(LoadEvent event) {
+                if (postLoadMs > 0) {
+                    Timer timer = new Timer() {
+                        @Override
+                        public void run() {
+                            timedStimulusListener.postLoadTimerFired();
+                        }
+                    };
+                    timerList.add(timer);
+                    timer.schedule(postLoadMs);
+                } else {
+                    timedStimulusListener.postLoadTimerFired();
+                }
+        //            }
+        //        });
+        //        outerPanel.add(image);
     }
 
     protected void scrollToPosition(int position) {

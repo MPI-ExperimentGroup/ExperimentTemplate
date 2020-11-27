@@ -75,7 +75,6 @@ public class TimedStimulusView extends ComplexView {
     private StimulusGrid stimulusGrid = null;
     private String webRecorderMediaId = null;
     private final Map<String, Video> videoList = new HashMap<>();
-    private final List<Timer> timerList = new ArrayList<>();
     private final List<CancelableStimulusListener> cancelableListnerList = new ArrayList<>();
 
     public TimedStimulusView() {
@@ -117,47 +116,6 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         getActivePanel().add(image);
-    }
-
-    public void addBackgroundImage(final SafeUri imagePath, final String styleName, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-//        final Image image = new Image(imagePath);
-//            this.getElement().getStyle().setBackgroundColor("green");
-        if (imagePath == null) {
-            this.getElement().getStyle().clearBackgroundImage();
-        } else {
-            this.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
-        }
-        this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
-//            this.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
-        this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
-        this.getElement().getStyle().setProperty("backgroundPosition", "50% 50%");
-        // remove the custom styles but keep the page width style
-        this.setStyleName(this.getStyleName().contains("normalWidth") ? "normalWidth" : "narrowWidth");
-        if (styleName != null && !styleName.isEmpty()) {
-            this.addStyleName(styleName);
-        } else {
-            this.getElement().getStyle().setProperty("backgroundSize", "cover");
-//            resizeView(); // this is to put back the screen size styles
-        }
-//        image.addLoadHandler(new LoadHandler() {
-//
-//            @Override
-//            public void onLoad(LoadEvent event) {
-        if (postLoadMs > 0) {
-            Timer timer = new Timer() {
-                @Override
-                public void run() {
-                    timedStimulusListener.postLoadTimerFired();
-                }
-            };
-            timerList.add(timer);
-            timer.schedule(postLoadMs);
-        } else {
-            timedStimulusListener.postLoadTimerFired();
-        }
-//            }
-//        });
-//        outerPanel.add(image);
     }
 
     @Override
