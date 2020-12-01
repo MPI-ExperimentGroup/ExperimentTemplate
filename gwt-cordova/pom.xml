@@ -286,6 +286,30 @@
                                     </includes>
                                 </resource>
                                 <resource>
+                                    <directory>/srv/bq4/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                        <include>**/*.wav</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>/srv/dennis/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                        <include>**/*.wav</include>
+                                    </includes>
+                                </resource>
+                                <resource>
                                     <directory>/srv/pol/${experiment.configuration.name}</directory>
                                     <includes>
                                         <include>**/*.jpg</include>
