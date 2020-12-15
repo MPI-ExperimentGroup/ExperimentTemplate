@@ -180,6 +180,7 @@ public enum FeatureType {
     timerLabel(false, false, new FeatureAttribute[]{listenerId, msToNext, msLabelFormat, styleName}, "Adds a label that shows the time value of listenerId minus msToNext and formats the result with msLabelFormat (similar to countdownLabel)."),
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}, "Pause for a random number of milliseconds that is not less than minimum and not more than maximum. When the time is up the contents of this element are evaluated."),
     evaluatePause(false, new FeatureAttribute[]{minimum, maximum, evaluateTokens}, "Pause based on the value of metadata, stimulus responses or scores etc. The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is the time of the pause in milliseconds. The evaluated value will be constrained so that it is within the minimum or maximum values. When the time is up the onSuccess element will be triggered. If there is an error evaluating the token string then onError will be triggered.", Contitionals.hasErrorSuccess, Contitionals.none),
+    addTimerTrigger(false, new FeatureAttribute[]{minimum, maximum, evaluateTokens, listenerId}, "Adds an onTimer action to the named persistent timer that will be triggered at the moment in ms defined in evaluateTokens. If the named persistent timer is not running it will be started. The persistent timer is identified by its listenerId based on the value of metadata, stimulus responses or scores etc. The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The resulting number is the time in milliseconds at which the onTimer should occur. The evaluated value will be constrained so that it is within the minimum or maximum values. When the time is up the onTimer element will be triggered. If there is an error evaluating the token string then onError will be triggered.", Contitionals.hasErrorTimer, Contitionals.none),
     // todo: does triggerListener maximum value of 0 allow infinit? document this
     triggerDefinition(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}, "The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example). Based on the threshold and maximum values a trigger request does not always result in the trigger activating. The threshold is the number of activation requests before it will trigger. The maximum is the number of times the trigger can occur after which activation requests will be ignored. So a triggerDefinition with threshold 3 and maximum 1 would require three activation requests to trigger and it would not trigger again. A triggerDefinition can have more than one stimulus available (eg when it is in an eachStimulus or hasMoreStimulus). If this is the case then stimulus where triggerDefinition is defined will be used. If there is no stimulus where the triggerDefinition is defined then the stimulus from the point at which it is triggered will be used."),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
@@ -189,7 +190,8 @@ public enum FeatureType {
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
     stimulusPause(false, null, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     stimulusLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    onError(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess, Contitionals.hasTrueFalseErrorCondition),
+    onTimer(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorTimer),
+    onError(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess, Contitionals.hasTrueFalseErrorCondition, Contitionals.hasErrorTimer),
     onSuccess(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess),
     onActivate(false, null, false, false, false, Contitionals.any, Contitionals.hasMediaLoadingButton),
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),
@@ -306,6 +308,7 @@ public enum FeatureType {
         groupStimulus(false),
         stimulusAction(true),
         hasErrorSuccess(false),
+        hasErrorTimer(false),
         hasUserCount(false),
         hasThreshold(false),
         groupNetwork(false),

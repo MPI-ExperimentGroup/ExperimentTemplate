@@ -651,6 +651,7 @@ or local-name() eq 'submitGroupEvent'
         <xsl:apply-templates select="conditionFalse" />
         <xsl:apply-templates select="onError" />        
         <xsl:apply-templates select="onSuccess" />
+        <xsl:apply-templates select="onTimer" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -866,7 +867,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupFullError">
+    <xsl:template match="onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupFullError">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:value-of select="concat(' /* ', local-name(), ' */ ')" />
@@ -959,7 +960,7 @@ or local-name() eq 'ratingCheckbox'
             </xsl:text>
         </xsl:if>
     </xsl:template>
-    <xsl:template match="clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
+    <xsl:template match="clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|logTimerValue|startTimer|clearTimer|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -990,6 +991,7 @@ or local-name() eq 'clearStimulusResponse'
         <xsl:value-of select="if(local-name() eq 'triggerDefinition' 
                             or local-name() eq 'habituationParadigmListener'
                             or local-name() eq 'triggerRandom'
+                            or local-name() eq 'addTimerTrigger'
                             or local-name() eq 'evaluatePause') then if(ancestor::*[local-name() = 'eachStimulus']
                             or ancestor::*[local-name() = 'hasMoreStimulus']
                             or ancestor::*[local-name() = 'triggerDefinition']
@@ -1126,6 +1128,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:apply-templates select="onActivate" />
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
+        <xsl:apply-templates select="onTimer" />
         <xsl:apply-templates select="groupFullError" />
         <xsl:apply-templates select="groupFindingMembers" />
         <xsl:apply-templates select="groupNetworkConnecting" />
@@ -1358,6 +1361,7 @@ or local-name() eq 'stimulusExists'
         <xsl:apply-templates select="withinThreshold" />
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
+        <xsl:apply-templates select="onTimer" />
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
         <xsl:apply-templates select="mediaPlaybackStarted" />

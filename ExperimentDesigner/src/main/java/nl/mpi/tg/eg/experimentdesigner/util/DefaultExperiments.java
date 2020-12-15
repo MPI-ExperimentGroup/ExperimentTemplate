@@ -429,6 +429,13 @@ public class DefaultExperiments {
                     presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+            case hasErrorTimer:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onTimer, presenterFeatureRepository, addOptionalAttributes));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
+                }
+                break;
             case hasUserCount:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.multipleUsers, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.singleUser, presenterFeatureRepository, addOptionalAttributes));
