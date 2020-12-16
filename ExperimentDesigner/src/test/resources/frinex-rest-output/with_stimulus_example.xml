@@ -1439,6 +1439,69 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
+    <presenter self="RunTrialsSimple1000" type="stimulus" title="">
+        <logTimeStamp eventTag="run_main"/>
+        <loadStimulus eventTag="loadTargetPicture" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <!-- prepare everything before the time critical section -->
+                <regionAppend regionId="crossRegion" styleName="hiddenRegion">
+                    <htmlText featureText="&lt;div style=&quot;font-size: 75px; font-weight: normal;&quot;&gt;+&lt;/div&gt;" />
+                </regionAppend>
+                <regionAppend regionId="stimulusRegion" styleName="hiddenRegion">
+                    <stimulusImage msToNext="0">
+                        <mediaLoadFailed>
+                            <logTimeStamp eventTag="image_load_failed"/>
+                            <htmlText featureText="Hetplaatje kon niet worden geladen. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
+                            <actionButton featureText="Probeer opnieuw">
+                                <clearPage/>   
+                                <showStimulus/>
+                            </actionButton>
+                        </mediaLoadFailed>
+                        <mediaLoaded>
+                            <!-- start the display sequence after the jitter has passed, msToNext="500" should be enough time here to be outside the known jitter -->
+                            <clearTimer listenerId="singleTimebaseTimer"/>
+                            <startTimer msToNext="500" listenerId="singleTimebaseTimer"> 
+                                <regionStyle regionId="crossRegion" styleName="centeredVerticalHorizontal"/>
+                                <logTimeStamp eventTag="cross_shown"/>
+                                <logTimeStamp eventTag="next_stimulus"/>
+                            </startTimer>
+                            <!-- the use of stimulusPause will like all pauses introduce jitter at the start of period -->
+                            <!-- we need to determine an alternative to this <stimulusPause > but from memory I think startTimer will process tokens ie <code>+500 -->
+                            <startTimer msToNext="toBeDeterminedSeeAbove" listenerId="singleTimebaseTimer"> 
+                                <logTimeStamp eventTag="pause_ended"/>
+                                <regionClear regionId="crossRegion"/>
+                                <regionStyle regionId="stimulusRegion" styleName="centeredVerticalHorizontal"/>
+                                 <hardwareTimeStamp dtmf="1"/>
+                                <logTimeStamp eventTag="image_revealed"/>
+                            </startTimer>
+                            <startTimer msToNext="1500" listenerId="singleTimebaseTimer"> <!-- 500 is added here to accommodate the initial 500 anti jitter delay -->
+                                <hardwareTimeStamp dtmf="off"/>
+                                <clearPage/>
+                                <clearTimer listenerId="singleTimebaseTimer"/> <!-- this terminates the single timer and therefore the next event which I think is equivalent to your original, if not then this line should be removed -->
+                            </startTimer>
+                            <startTimer msToNext="2500" listenerId="singleTimebaseTimer"> <!-- the previous 1000 and 500 is added here to accommodate the initial 500 anti jitter delay -->
+                                <logTimeStamp eventTag="to_next_stimulus"/>
+                                <clearTimer listenerId="singleTimebaseTimer"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </startTimer>
+                        </mediaLoaded>
+                    </stimulusImage>
+                </regionAppend>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <logTimeStamp eventTag="end_main"/>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RunTrialsSimple1000"/>
+                    <gotoPresenter target="RunTrialsSimple1000"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>TestrunSimple</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Audio Input Select" type="stimulus" self="Audio_Input_Select" title="Audio Input Select">
         <plainText featureText="This example demonstrates an audio input select box that can be used with the HTML5 audio recorder (startAudioRecorderWeb)."/>
 <!--        <audioInputSelectWeb deviceRegex=".*" styleName="">
@@ -6091,5 +6154,25 @@
         <stimulus identifier="topic_4_1" label="Topic_4 : 1" tags="Topic_4 Topic_234 Topics" />
         <stimulus identifier="topic_4_2" label="Topic_4 : 2" tags="Topic_4 Topic_234 Topics" />
         <stimulus identifier="topic_4_3" label="Topic_4 : 3" tags="Topic_4 Topic_234 Topics" />
+        <stimulus identifier="Picture_09_2875" imagePath="triangle_area.jpg"  pauseMs="2875" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_10_1372" imagePath="triangle_area.jpg"  pauseMs="1372" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_11_2348" imagePath="triangle_area.jpg"  pauseMs="2348" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_12_2700" imagePath="triangle_area.jpg"  pauseMs="2700" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_13_1921" imagePath="triangle_area.jpg"  pauseMs="1921" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_14_2663" imagePath="triangle_area.jpg"  pauseMs="2663" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_15_2012" imagePath="triangle_area.jpg"   pauseMs="2012" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_16_2509" imagePath="triangle_area.jpg"   pauseMs="2509" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_17_2088" imagePath="triangle_area.jpg"   pauseMs="2088" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_18_1200" imagePath="triangle_area.jpg"   pauseMs="1200" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_19_1332" imagePath="triangle_area.jpg"  pauseMs="1332" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_20_3000" imagePath="triangle_area.jpg"   pauseMs="3000" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_21_2472" imagePath="triangle_area.jpg"  pauseMs="2472" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_22_1585" imagePath="triangle_area.jpg"  pauseMs="1585" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_23_1109" imagePath="triangle_area.jpg"  pauseMs="1109" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_24_1194" imagePath="triangle_area.jpg"  pauseMs="1194" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_25_1528" imagePath="triangle_area.jpg" pauseMs="1528" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_26_1911" imagePath="triangle_area.jpg" pauseMs="1911" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_27_1735" imagePath="triangle_area.jpg" pauseMs="1735" tags="TestrunSimple"/>
+        <stimulus identifier="Picture_28_2575" imagePath="triangle_area.jpg" pauseMs="2575" tags="TestrunSimple"/>
     </stimuli>
 </experiment>
