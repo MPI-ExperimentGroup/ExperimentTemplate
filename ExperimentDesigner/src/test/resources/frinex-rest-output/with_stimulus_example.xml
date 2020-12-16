@@ -1467,23 +1467,41 @@
                             </startTimer>
                             <!-- the use of stimulusPause will like all pauses introduce jitter at the start of period -->
                             <!-- we need to determine an alternative to this <stimulusPause > but from memory I think startTimer will process tokens ie <code>+500 -->
-                            <startTimer msToNext="toBeDeterminedSeeAbove" listenerId="singleTimebaseTimer"> 
-                                <logTimeStamp eventTag="pause_ended"/>
-                                <regionClear regionId="crossRegion"/>
-                                <regionStyle regionId="stimulusRegion" styleName="centeredVerticalHorizontal"/>
-                                 <hardwareTimeStamp dtmf="1"/>
-                                <logTimeStamp eventTag="image_revealed"/>
-                            </startTimer>
-                            <startTimer msToNext="1500" listenerId="singleTimebaseTimer"> <!-- 500 is added here to accommodate the initial 500 anti jitter delay -->
-                                <hardwareTimeStamp dtmf="off"/>
-                                <clearPage/>
-                                <clearTimer listenerId="singleTimebaseTimer"/> <!-- this terminates the single timer and therefore the next event which I think is equivalent to your original, if not then this line should be removed -->
-                            </startTimer>
-                            <startTimer msToNext="2500" listenerId="singleTimebaseTimer"> <!-- the previous 1000 and 500 is added here to accommodate the initial 500 anti jitter delay -->
-                                <logTimeStamp eventTag="to_next_stimulus"/>
-                                <clearTimer listenerId="singleTimebaseTimer"/>
-                                <nextStimulus repeatIncorrect="false"/>
-                            </startTimer>
+                            <addTimerTrigger evaluateTokens="<code>+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                                <onError>
+                                    <plainText featureText="addTimerTrigger onError"/>
+                                </onError>
+                                <onTimer>
+                                    <logTimeStamp eventTag="pause_ended"/>
+                                    <regionClear regionId="crossRegion"/>
+                                    <regionStyle regionId="stimulusRegion" styleName="centeredVerticalHorizontal"/>
+                                    <hardwareTimeStamp dtmf="1"/>
+                                    <logTimeStamp eventTag="image_revealed"/>
+                                </onTimer>
+                            </addTimerTrigger>
+                            <!-- 500 is added here to accommodate the initial 500 anti jitter delay -->
+                            <addTimerTrigger evaluateTokens="1000+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                                <onError>
+                                    <plainText featureText="addTimerTrigger onError"/>
+                                </onError>
+                                <onTimer>                            
+                                    <hardwareTimeStamp dtmf="off"/>
+                                    <clearPage/>
+                                    <!-- this clearTimer terminates the single timer and therefore the next event -->
+                                    <clearTimer listenerId="singleTimebaseTimer"/>
+                                </onTimer>
+                            </addTimerTrigger>
+                            <!-- the previous 1000 and 500 is added here to accommodate the initial 500 anti jitter delay -->
+                            <addTimerTrigger evaluateTokens="1000+1000+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                                <onError>
+                                    <plainText featureText="addTimerTrigger onError"/>
+                                </onError>
+                                <onTimer>
+                                    <logTimeStamp eventTag="to_next_stimulus"/>
+                                    <clearTimer listenerId="singleTimebaseTimer"/>
+                                    <nextStimulus repeatIncorrect="false"/>
+                                </onTimer>
+                            </addTimerTrigger>
                         </mediaLoaded>
                     </stimulusImage>
                 </regionAppend>
