@@ -55,6 +55,8 @@ state hardware_time_stamps
 hardware_time_stamps --> Menu
 state Sequential_Display_Example
 Sequential_Display_Example --> Menu
+state RunTrialsSimple1000
+RunTrialsSimple1000 --> Menu
 state Audio_Input_Select
 Audio_Input_Select --> Menu
 state Region_Timer_Screen

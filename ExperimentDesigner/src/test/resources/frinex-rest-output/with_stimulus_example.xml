@@ -1439,7 +1439,7 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter self="RunTrialsSimple1000" type="stimulus" title="">
+    <presenter back="Menu" self="RunTrialsSimple1000" type="stimulus" title="">
         <logTimeStamp eventTag="run_main"/>
         <loadStimulus eventTag="loadTargetPicture" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
