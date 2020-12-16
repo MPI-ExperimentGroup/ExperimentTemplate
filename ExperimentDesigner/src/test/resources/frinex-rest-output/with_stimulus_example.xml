@@ -1467,7 +1467,7 @@
                             </startTimer>
                             <!-- the use of stimulusPause will like all pauses introduce jitter at the start of period -->
                             <!-- we need to determine an alternative to this <stimulusPause > but from memory I think startTimer will process tokens ie <code>+500 -->
-                            <addTimerTrigger evaluateTokens="&lt;code&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                            <addTimerTrigger evaluateTokens="&lt;code&gt; + 500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
                                     <plainText featureText="addTimerTrigger onError"/>
                                 </onError>
