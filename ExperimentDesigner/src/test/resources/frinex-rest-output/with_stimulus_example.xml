@@ -1439,7 +1439,7 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" self="RunTrialsSimple1000" type="stimulus" title="">
+    <presenter back="Menu" self="RunTrialsSimple1000" type="stimulus" title="RunTrialsSimple1000">
         <logTimeStamp eventTag="run_main"/>
         <loadStimulus eventTag="loadTargetPicture" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -1467,32 +1467,33 @@
                             </startTimer>
                             <!-- the use of stimulusPause will like all pauses introduce jitter at the start of period -->
                             <!-- we need to determine an alternative to this <stimulusPause > but from memory I think startTimer will process tokens ie <code>+500 -->
-                            <addTimerTrigger evaluateTokens="&lt;code&gt; + 500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                            <addTimerTrigger evaluateTokens="&lt;stimulusPauseMs&gt; + 500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
                                     <plainText featureText="addTimerTrigger onError"/>
                                 </onError>
                                 <onTimer>
                                     <logTimeStamp eventTag="pause_ended"/>
-                                    <regionClear regionId="crossRegion"/>
+                                    <!-- to hide the cross we only change the CSS and avoid modifying the HTML because that could cause delays -->
+                                    <regionStyle regionId="crossRegion" styleName="hiddenRegion"/>
                                     <regionStyle regionId="stimulusRegion" styleName="centeredVerticalHorizontal"/>
                                     <hardwareTimeStamp dtmf="1"/>
                                     <logTimeStamp eventTag="image_revealed"/>
                                 </onTimer>
                             </addTimerTrigger>
                             <!-- 500 is added here to accommodate the initial 500 anti jitter delay -->
-                            <addTimerTrigger evaluateTokens="1000+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                            <addTimerTrigger evaluateTokens="1000+&lt;stimulusPauseMs&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
                                     <plainText featureText="addTimerTrigger onError"/>
                                 </onError>
                                 <onTimer>                            
                                     <hardwareTimeStamp dtmf="off"/>
                                     <clearPage/>
-                                    <!-- this clearTimer terminates the single timer and therefore the next event -->
-                                    <clearTimer listenerId="singleTimebaseTimer"/>
+                                    <!-- a clearTimer here would terminate the single timer and therefore block the next event -->
+                                    <!-- <clearTimer listenerId="singleTimebaseTimer"/> -->
                                 </onTimer>
                             </addTimerTrigger>
                             <!-- the previous 1000 and 500 is added here to accommodate the initial 500 anti jitter delay -->
-                            <addTimerTrigger evaluateTokens="1000+1000+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
+                            <addTimerTrigger evaluateTokens="1000+1000+&lt;stimulusPauseMs&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
                                     <plainText featureText="addTimerTrigger onError"/>
                                 </onError>
