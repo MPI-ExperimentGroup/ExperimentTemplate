@@ -2192,7 +2192,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="progressIndicator" type="metadata" self="progressIndicator_example" title="progressIndicator Example">
-        <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>
+        <plainText featureText="In this example two metadata fields are used to display a percentage in progress indicator."/>
         <metadataField fieldName="progressIndicator_step"/>
         <metadataField fieldName="progressIndicator_steps"/>
         <addPadding/>
