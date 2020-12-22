@@ -226,6 +226,34 @@
         margin: 12vw;
         background: blue;
         }
+        .progressIndicatorHorizontal {            
+        height: 15px;
+        width: 100%;
+        }
+        .bargraphInner.progressIndicatorHorizontal {
+        min-height: 15px;
+        background: blue;
+        }
+        .progressIndicatorVertical {
+        height: 100px;
+        width: 20px;
+        }
+        .progressIndicatorVertical td {
+        transform: rotate(180deg);
+        }
+        .bargraphInner.progressIndicatorVertical {
+        min-width: 20px;
+        background: d3def6;
+        }
+        .progressIndicatorRight {
+        height: 15px;
+        width: 100%;
+        }
+        .bargraphInner.progressIndicatorRight {
+        min-height: 15px;
+        background: green;
+        margin-left: auto;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -2168,10 +2196,66 @@
         <metadataField fieldName="progressIndicator_step"/>
         <metadataField fieldName="progressIndicator_steps"/>
         <addPadding/>
+        <table>
+            <row>
+                <column>
+                    <actionButton featureText="0%">
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="0"/>
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100"/>
+                        <gotoPresenter target="progressIndicator_example"/>
+                    </actionButton>
+                </column><column>
+                    <actionButton featureText="25%">
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="25"/>
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100"/>
+                        <gotoPresenter target="progressIndicator_example"/>
+                    </actionButton>
+                </column><column>
+                    <actionButton featureText="50%">
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="25"/>
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="50"/>
+                        <gotoPresenter target="progressIndicator_example"/>
+                    </actionButton>
+                </column><column>
+                    <actionButton featureText="75%">
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="75"/>
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100"/>
+                        <gotoPresenter target="progressIndicator_example"/>
+                    </actionButton>
+                </column><column>
+                    <actionButton featureText="100%">
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="1000"/>
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="1000"/>
+                        <gotoPresenter target="progressIndicator_example"/>
+                    </actionButton>
+                </column>
+            </row>
+        </table>
         <plainText featureText="The progressIndicator takes a string in evaluateTokens and uses metadata fields as numbers to calculate a percentage for the progress value."/>
         <plainText featureText="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100"/>
         <addPadding/>
-        <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="String (optional)">
+        <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100">
+            <onError>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+            </onError>
+            <onSuccess/>
+        </progressIndicator>      
+        <addPadding/>
+        <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorVertical">
+            <onError>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+            </onError>
+            <onSuccess/>
+        </progressIndicator>
+        <addPadding/>
+        <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorHorizontal">
+            <onError>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+            </onError>
+            <onSuccess/>
+        </progressIndicator>      
+        <addPadding/>
+        <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorRight">
             <onError>
                 <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
             </onError>

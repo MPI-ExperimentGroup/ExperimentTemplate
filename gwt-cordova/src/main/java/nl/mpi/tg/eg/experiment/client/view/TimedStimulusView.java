@@ -134,16 +134,28 @@ public class TimedStimulusView extends ComplexView {
     public ValueChangeListener<Double> addBarGraphElement(final int initialValue, final int range, final String styleName) {
         final HorizontalPanel bargraphOuter = new HorizontalPanel();
         final HorizontalPanel bargraphInner = new HorizontalPanel();
-        bargraphOuter.setPixelSize(100, 10);
-        bargraphInner.setPixelSize((int) (100.0 / range * initialValue), 10);
+        if (styleName != null && !styleName.isEmpty()) {
+            bargraphInner.setSize(((int) (100.0 / range * initialValue)) + "%", ((int) (100.0 / range * initialValue)) + "%");
+        } else {
+            bargraphOuter.setPixelSize(100, 10);
+            bargraphInner.setPixelSize((int) (100.0 / range * initialValue), 10);
+        }
         bargraphOuter.setStyleName("bargraphOuter");
         bargraphInner.setStyleName("bargraphInner");
+        if (styleName != null && !styleName.isEmpty()) {
+            bargraphOuter.addStyleName(styleName);
+            bargraphInner.addStyleName(styleName);
+        }
         bargraphOuter.add(bargraphInner);
         getActivePanel().add(bargraphOuter);
         return new ValueChangeListener<Double>() {
             @Override
             public void onValueChange(Double updateValue) {
-                bargraphInner.setPixelSize((int) (100.0 / range * updateValue), 10);
+                if (styleName != null && !styleName.isEmpty()) {
+                    bargraphInner.setSize(((int) (100.0 / range * updateValue)) + "%", "100%");
+                } else {
+                    bargraphInner.setPixelSize((int) (100.0 / range * updateValue), 10);
+                }
             }
         };
     }
