@@ -46,6 +46,12 @@ public class AdVocAsStimuliFromStringTest {
     private final String answerNonWordNL ="NEE&#44; ik ken dit woord niet";
     private final int nNonwordsNL = 676;
     
+    private final int wordsPerBandHUN = 15;
+    private final int numberOfBandsHUN = 50;
+    private final String answerWordHUN = "Igen&#44; ismerem a szót" ;
+    private final String answerNonWordHUN ="Nem&#44; ismerem a szót";
+    private final int nNonwordsHUN = 125;
+    
     public AdVocAsStimuliFromStringTest() {
     }
     
@@ -110,6 +116,15 @@ public class AdVocAsStimuliFromStringTest {
        this.testParseWordsInputCSVString("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "kleding", "saguweer", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
     }
     
+    @Test
+    public void testParseWordsInputCSVString_HUN_round1() throws Exception{
+       this.testParseWordsInputCSVString("Words_HUN_round_1", "NonWords_HUN_round_1", "remény", "anzágol", this.answerNonWordHUN, this.answerWordHUN, this.numberOfBandsHUN, this.wordsPerBandHUN);
+    }
+    
+    @Test
+    public void testParseWordsInputCSVString_HUN_round2() throws Exception{
+       this.testParseWordsInputCSVString("Words_HUN_round_2", "NonWords_HUN_round_2", "osztályú", "farizeizmus", this.answerNonWordHUN, this.answerWordHUN, this.numberOfBandsHUN, this.wordsPerBandHUN);
+    }
     
     @Test
     public void testParseWordsInputCSVString_NL_1() throws Exception{
@@ -162,6 +177,16 @@ public class AdVocAsStimuliFromStringTest {
     @Test
     public void testParseNonWordsInputCSVString_NL_22() throws Exception{
        this.testParseNonWordsInputCSVString("NonWords_NL_2rounds_2", "Words_NL_2rounds_2","pretebentie", "berrillelijk", this.answerNonWordNL, this.answerWordNL, this.nNonwordsNL);
+    }
+    
+    @Test
+    public void testParseNonWordsInputCSVString_HUN_round_1() throws Exception{
+       this.testParseNonWordsInputCSVString("NonWords_HUN_round_1", "Words_HUN_round_1","szeudor", "kilukát", this.answerNonWordHUN, this.answerWordHUN, this.nNonwordsHUN);
+    }
+    
+    @Test
+    public void testParseNonWordsInputCSVString_HUN_round_2() throws Exception{
+       this.testParseNonWordsInputCSVString("NonWords_HUN_round_2", "Words_HUN_round_2","stalp", "boldódi", this.answerNonWordHUN, this.answerWordHUN, this.nNonwordsHUN);
     }
     
     @Test

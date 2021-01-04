@@ -35,7 +35,8 @@ import static org.junit.Assert.*;
 public class VocabularyTest {
 
     private final int numberOfBands_NL = 54;
-    private final int wordsPerBand_NL = 40;
+    private final int wordsPerBand_NL = 20;
+     private final int wordsPerBand_NL_1_round = 40;
     private final String wordsResponse_NL = "JA&#44; ik ken dit woord";
     private final String nonwordsResponse_NL = "NEE&#44; ik ken dit woord niet";
 
@@ -43,6 +44,11 @@ public class VocabularyTest {
     private final int wordsPerBand_EN = 20;
     private final String wordsResponse_EN = "YES&#44; I know this word";
     private final String nonwordsResponse_EN = "NO&#44; I don’t know this word";
+    
+    private final int wordsPerBand_HUN = 15;
+    private final int numberOfBands_HUN = 50;
+    private final String wordsResponse_HUN = "Igen&#44; ismerem a szót" ;
+    private final String nonwordsResponse_HUN ="Nem&#44; ismerem a szót";
 
     public VocabularyTest() {
     }
@@ -94,7 +100,7 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords1() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL, "Words_NL_1round", "NonWords_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL_1_round, "Words_NL_1round", "NonWords_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     /**
@@ -102,7 +108,7 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords21() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_1", "NonWords_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL , "Words_NL_2rounds_1", "NonWords_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     /**
@@ -110,7 +116,23 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords22() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_2", "NonWords_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL , "Words_NL_2rounds_2", "NonWords_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
+    }
+    
+    /**
+     * Test of initialiseWords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseWords_HUN_round_1() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_HUN, this.wordsPerBand_HUN, "Words_HUN_round_1", "NonWords_HUN_round_1", this.wordsResponse_HUN, this.nonwordsResponse_HUN );
+    }
+
+    /**
+     * Test of initialiseWords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseWords_HUN_round_2() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_HUN, this.wordsPerBand_HUN, "Words_HUN_round_2", "NonWords_HUN_round_2", this.wordsResponse_HUN, this.nonwordsResponse_HUN );
     }
 
     /**

@@ -481,7 +481,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     private boolean switchToFineTuning() {
         this.timeTickEndFastTrack = this.responseRecord.size() - 1; // the last time on fast track (if we start counting form zero)
-        this.currentBandIndexFineTuning = this.lastCorrectBandFastTrack > 0 ? this.lastCorrectBandFastTrack - 1 : 19;
+        this.currentBandIndexFineTuning = this.lastCorrectBandFastTrack > 0 ? this.lastCorrectBandFastTrack - 1 : (this.startBand-1);
         this.fineTuningShablonPosition = 0;
         this.ftToBeContinued = true;
         return this.initialiseNextFineTuningTuple();
