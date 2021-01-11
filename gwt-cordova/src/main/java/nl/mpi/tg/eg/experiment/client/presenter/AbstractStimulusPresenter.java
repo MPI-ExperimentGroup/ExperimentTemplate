@@ -318,6 +318,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         loadStimulus(eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
     }
 
+    protected void loadStimulusPlugin(String eventTag,
+            final StimulusSelector[] selectionTags,
+            final StimulusSelector[] randomTags,
+            final StimulusSelector[] stimuliLists,
+            final MetadataField stimulusAllocationField,
+            final String consumedTagsGroupName,
+            final StimuliProvider stimulusProvider,
+            final CurrentStimulusListener hasMoreStimulusListener,
+            final TimedStimulusListener endOfStimulusListener
+    ) {
+        loadStimulus(eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
+    }
+
     protected void loadStimulus(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,

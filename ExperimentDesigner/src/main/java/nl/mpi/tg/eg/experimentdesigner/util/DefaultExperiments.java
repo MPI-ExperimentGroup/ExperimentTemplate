@@ -241,6 +241,9 @@ public class DefaultExperiments {
                         presenterScreen.getPresenterFeatureList().add(clearScreenButton);
                     } else {
                         presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
+                        if (featureType.allowsCustomImplementation()) {
+                            presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes, true));
+                        }
                     }
                 }
             }
@@ -255,106 +258,126 @@ public class DefaultExperiments {
     }
 
     private PresenterFeature addFeature(Experiment experiment, PresenterType presenterType, FeatureType featureType, PresenterFeatureRepository presenterFeatureRepository, boolean addOptionalAttributes) {
-        final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? (addOptionalAttributes) ? featureType.name() : "" : null);
+        return addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes, false);
+    }
+
+    private PresenterFeature addFeature(Experiment experiment, PresenterType presenterType, FeatureType featureType, PresenterFeatureRepository presenterFeatureRepository, boolean addOptionalAttributes, final boolean usedAsPlugin) {
+        final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? (addOptionalAttributes) ? featureType.name() : "" : null, usedAsPlugin);
         if (featureType.getFeatureAttributes() != null) {
-            for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
-                if (addOptionalAttributes || !attribute.isOptional()) {
-                    switch (attribute) {
-                        case columnCount:
-                        case maxStimuli:
-                        case repeatCount:
-                        case repeatRandomWindow:
-                        case scoreThreshold:
-                        case gamesPlayed:
-                        case errorThreshold:
-                        case correctStreak:
-                        case errorStreak:
-                        case potentialThreshold:
-                        case incrementPhase:
+            if (usedAsPlugin) {
+//                presenterFeature.addUndefinedAttribute("class", "nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsLearningStimuliProvider");
+//                presenterFeature.addUndefinedAttribute("stimuliDir", "/static/stimuli/");
+//                presenterFeature.addUndefinedAttribute("maxDurationMin", "10");
+//                presenterFeature.addUndefinedAttribute("firstStimulusDurationMs", "1500");
+//                presenterFeature.addUndefinedAttribute("learningTrials", "1000,1737,2045");
+                presenterFeature.addUndefinedAttribute("class", "nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider");
+//                presenterFeature.addUndefinedAttribute("eventTag", "stimuliN");
+                presenterFeature.addUndefinedAttribute("numberOfBands", "54");
+                presenterFeature.addUndefinedAttribute("fineTuningUpperBoundForCycles", "2");
+                presenterFeature.addUndefinedAttribute("wordsSource", "Words_NL_2rounds_1");
+                presenterFeature.addUndefinedAttribute("nonwordsSource", "NonWords_NL_2rounds_1");
+                presenterFeature.addUndefinedAttribute("fastTrackShablonSource", "FastTrackShablonOrigin_NL");
+                presenterFeature.addUndefinedAttribute("fineTuningShablonSource", "FineTuningShablonOrigin_NL");
+            } else {
+                for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
+                    if (addOptionalAttributes || !attribute.isOptional()) {
+                        switch (attribute) {
+                            case columnCount:
+                            case maxStimuli:
+                            case repeatCount:
+                            case repeatRandomWindow:
+                            case scoreThreshold:
+                            case gamesPlayed:
+                            case errorThreshold:
+                            case correctStreak:
+                            case errorStreak:
+                            case potentialThreshold:
+                            case incrementPhase:
 //                        case minStimuliPerTag:
 //                        case maxStimuliPerTag:
-                        case minimum:
-                            presenterFeature.addFeatureAttributes(attribute, "3");
-                            break;
-                        case offset:
-                        case dataChannel:
-                        case adjacencyThreshold:
-                            presenterFeature.addFeatureAttributes(attribute, "2");
-                            break;
-                        case maxHeight:
-                        case maxWidth:
-                        case msToNext:
-                        case maximum:
-                            presenterFeature.addFeatureAttributes(attribute, "60");
-                            break;
-                        case hotKey:
-                            presenterFeature.addFeatureAttributes(attribute, "A");
-                            break;
-                        case percentOfPage:
-                            presenterFeature.addFeatureAttributes(attribute, "56");
-                            break;
-                        case eventTier:
-                        case threshold:
-                        case phasesPerStimulus:
-                        case scoreValue:
-                            presenterFeature.addFeatureAttributes(attribute, "8");
-                            break;
-                        case fieldName:
-                        case linkedFieldName:
-                            presenterFeature.addFeatureAttributes(attribute, "workerId");
-                            break;
-                        case animate:
-                            presenterFeature.addFeatureAttributes(attribute, "bounce");
-                            break;
-                        case orientation:
-                            presenterFeature.addFeatureAttributes(attribute, "flow");
-                            break;
-                        case recordingFormat:
-                            presenterFeature.addFeatureAttributes(attribute, "ogg");
-                            break;
-                        case groupMembers:
-                            presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123,_D,1_E,F,Hat,T,2");
-                            break;
-                        case groupCommunicationChannels:
-                            presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123|_D,1_E|F,Hat,T,2");
-                            break;
-                        case phaseMembers:
-                            presenterFeature.addFeatureAttributes(attribute, "-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-");
-                            break;
-                        case randomise:
-                        case autoPlay:
-                        case loop:
-                        case showControls:
-                        case oneToMany:
-                        case applyScore:
-                        case showOnBackButton:
-                            presenterFeature.addFeatureAttributes(attribute, "true");
-                            break;
-                        case daysThresholds:
-                            presenterFeature.addFeatureAttributes(attribute, "10 100 1000");
-                            break;
+                            case minimum:
+                                presenterFeature.addFeatureAttributes(attribute, "3");
+                                break;
+                            case offset:
+                            case dataChannel:
+                            case adjacencyThreshold:
+                                presenterFeature.addFeatureAttributes(attribute, "2");
+                                break;
+                            case maxHeight:
+                            case maxWidth:
+                            case msToNext:
+                            case maximum:
+                                presenterFeature.addFeatureAttributes(attribute, "60");
+                                break;
+                            case hotKey:
+                                presenterFeature.addFeatureAttributes(attribute, "A");
+                                break;
+                            case percentOfPage:
+                                presenterFeature.addFeatureAttributes(attribute, "56");
+                                break;
+                            case eventTier:
+                            case threshold:
+                            case phasesPerStimulus:
+                            case scoreValue:
+                                presenterFeature.addFeatureAttributes(attribute, "8");
+                                break;
+                            case fieldName:
+                            case linkedFieldName:
+                                presenterFeature.addFeatureAttributes(attribute, "workerId");
+                                break;
+                            case animate:
+                                presenterFeature.addFeatureAttributes(attribute, "bounce");
+                                break;
+                            case orientation:
+                                presenterFeature.addFeatureAttributes(attribute, "flow");
+                                break;
+                            case recordingFormat:
+                                presenterFeature.addFeatureAttributes(attribute, "ogg");
+                                break;
+                            case groupMembers:
+                                presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123,_D,1_E,F,Hat,T,2");
+                                break;
+                            case groupCommunicationChannels:
+                                presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123|_D,1_E|F,Hat,T,2");
+                                break;
+                            case phaseMembers:
+                                presenterFeature.addFeatureAttributes(attribute, "-:-:Ant,Bat,C123:-:_D,1_E:F,Hat,T,2:-");
+                                break;
+                            case randomise:
+                            case autoPlay:
+                            case loop:
+                            case showControls:
+                            case oneToMany:
+                            case applyScore:
+                            case showOnBackButton:
+                                presenterFeature.addFeatureAttributes(attribute, "true");
+                                break;
+                            case daysThresholds:
+                                presenterFeature.addFeatureAttributes(attribute, "10 100 1000");
+                                break;
 //                        case ranges:
 //                            presenterFeature.addFeatureAttributes(attribute, "10..100,1000");
 //                            break;
-                        case downloadPermittedWindowMs:
-                            presenterFeature.addFeatureAttributes(attribute, "30000");
-                            break;
-                        case opto1:
-                            presenterFeature.addFeatureAttributes(attribute, "true");
-                            break;
-                        case opto2:
-                            presenterFeature.addFeatureAttributes(attribute, "true");
-                            break;
-                        case dtmf:
-                            presenterFeature.addFeatureAttributes(attribute, "#");
-                            break;
-                        case targetOptions:
-                            presenterFeature.addFeatureAttributes(attribute, "AutoMenu,about");
-                        case target:
-                            presenterFeature.addFeatureAttributes(attribute, "target");
-                            break;
-                        default:
-                            presenterFeature.addFeatureAttributes(attribute, (addOptionalAttributes) ? attribute.name() : "");
+                            case downloadPermittedWindowMs:
+                                presenterFeature.addFeatureAttributes(attribute, "30000");
+                                break;
+                            case opto1:
+                                presenterFeature.addFeatureAttributes(attribute, "true");
+                                break;
+                            case opto2:
+                                presenterFeature.addFeatureAttributes(attribute, "true");
+                                break;
+                            case dtmf:
+                                presenterFeature.addFeatureAttributes(attribute, "#");
+                                break;
+                            case targetOptions:
+                                presenterFeature.addFeatureAttributes(attribute, "AutoMenu,about");
+                            case target:
+                                presenterFeature.addFeatureAttributes(attribute, "target");
+                                break;
+                            default:
+                                presenterFeature.addFeatureAttributes(attribute, (addOptionalAttributes) ? attribute.name() : "");
+                        }
                     }
                 }
             }

@@ -215,13 +215,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append(attributeTypes.documentation);
             writer.append("</span><br/>\n");
         }
-        if (currentElement.allowsCustomImplementation) {
-            writer.append("<span style=\"color:green\">");
-            writer.append("*");
-            writer.append("</span><span style=\"color:grey\">=&quot;");
-            writer.append("Custom attributes can be assigned in the plugin associated with this feature");
-            writer.append("&quot;</span><br/>\n");
-        }
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
@@ -339,6 +332,22 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             if (!childElement.elementName.equals("translation")) {
                 addElement(writer, childElement);
             }
+        }
+        if (currentElement.allowsCustomImplementation) {
+            writer.append("<h3 id=\"" + currentElement.elementName + "PluginType\" style=\"text-transform: uppercase;\">\n");
+            writer.append(currentElement.elementName);
+            writer.append("Plugin\n</h3>\n");
+            writer.append("This feature allows plugins to be used to extend the functionality of " + currentElement.typeName + ".\" style=\"text-transform: uppercase;\">\n");
+            writer.append("<span style=\"color:green\">");
+            writer.append("class");
+            writer.append("</span><span style=\"color:grey\">=&quot;");
+            writer.append("Classpath to the required plugin which must be available at compile time.");
+            writer.append("&quot;</span><br/>\n");
+            writer.append("<span style=\"color:green\">");
+            writer.append("*");
+            writer.append("</span><span style=\"color:grey\">=&quot;");
+            writer.append("Custom attributes can be assigned in the plugin associated with this feature.");
+            writer.append("&quot;</span><br/>\n");
         }
     }
 

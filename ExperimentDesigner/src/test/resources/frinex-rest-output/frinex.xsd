@@ -796,6 +796,7 @@
 <xs:element name="loadKinTypeStringDiagram" type="loadKinTypeStringDiagramType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
@@ -1271,9 +1272,14 @@
 <xs:documentation>When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. </xs:documentation>
 </xs:annotation>
 </xs:attribute>
+</xs:complexType>
+<xs:complexType name="loadStimulusPluginType">
+<xs:complexContent>
+<xs:extension base="loadStimulusType">
 <xs:attribute name="class" type="xs:string"/>
 <xs:anyAttribute  processContents="lax"/>
-<xs:assert test="(@class) or (not(@class) )"/>
+</xs:extension>
+</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="withMatchingStimulusType">
 <xs:all>
@@ -1500,6 +1506,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -1728,6 +1735,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -1970,6 +1978,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
 <xs:element name="targetButton" type="targetButtonType"/>
@@ -2143,6 +2152,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -2368,6 +2378,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -2598,6 +2609,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -2814,6 +2826,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -3017,6 +3030,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -3243,6 +3257,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -3469,6 +3484,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -3753,6 +3769,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -3974,6 +3991,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -4195,6 +4213,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -4517,6 +4536,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -4796,6 +4816,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -5407,6 +5428,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -5957,6 +5979,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -6223,6 +6246,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -6460,6 +6484,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -6733,6 +6758,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -6985,6 +7011,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -7186,6 +7213,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -7400,6 +7428,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -7615,6 +7644,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -7821,6 +7851,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -8014,6 +8045,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -8200,6 +8232,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -8386,6 +8419,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -8572,6 +8606,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -8758,6 +8793,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -8954,6 +8990,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -9150,6 +9187,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -9346,6 +9384,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -9532,6 +9571,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -9718,6 +9758,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -9904,6 +9945,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -10090,6 +10132,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -10274,6 +10317,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -10460,6 +10504,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -10646,6 +10691,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -10827,6 +10873,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -11019,6 +11066,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -11205,6 +11253,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -11391,6 +11440,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -11577,6 +11627,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -11763,6 +11814,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -11952,6 +12004,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -12138,6 +12191,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -12324,6 +12378,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -12510,6 +12565,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -12706,6 +12762,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -12892,6 +12949,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -13086,6 +13144,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -13315,6 +13374,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -13847,6 +13907,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -14085,6 +14146,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -14520,6 +14582,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -14709,6 +14772,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -14898,6 +14962,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -15087,6 +15152,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
@@ -15284,6 +15350,7 @@
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="groupStimuli" type="groupStimuliType"/>
 <xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
 <xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
 <xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
 <xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>

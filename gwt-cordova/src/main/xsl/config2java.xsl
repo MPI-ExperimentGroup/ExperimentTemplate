@@ -1188,11 +1188,12 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|groupStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists|audioInputSelectWeb">
+    <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|groupStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists|audioInputSelectWeb|loadStimulusPlugin"> <!-- this loadStimulusPlugin might be changed to *[@class] when more plugins are used -->
         <xsl:if test="local-name() eq 'preloadAllStimuli' 
                    or local-name() eq 'withStimuli'
                    or local-name() eq 'groupStimuli'
                    or local-name() eq 'loadStimulus'
+                   or local-name() eq 'loadStimulusPlugin'
                    or local-name() eq 'clearStimulusResponses'
                    or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
@@ -1247,6 +1248,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                    or local-name() eq 'startAudioRecorderApp'
                    or local-name() eq 'loadSdCardStimulus'
                    or local-name() eq 'loadStimulus'
+                   or local-name() eq 'loadStimulusPlugin'
                    or local-name() eq 'groupStimuli'
                    or local-name() eq 'withStimuli'">
             <xsl:value-of select="if(@src) then ', ' else ''" />
@@ -1311,6 +1313,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:if test="local-name() eq 'withStimuli'
  or local-name() eq 'groupStimuli' 
  or local-name() eq 'loadStimulus' 
+ or local-name() eq 'loadStimulusPlugin' 
 or local-name() eq 'withMatchingStimulus'
 or local-name() eq 'loadSdCardStimulus'
 or local-name() eq 'preloadAllStimuli'
@@ -1372,6 +1375,7 @@ or local-name() eq 'stimulusExists'
 		or local-name() eq 'withStimuli' 
 		or local-name() eq 'groupStimuli' 
 		or local-name() eq 'loadStimulus'
+		or local-name() eq 'loadStimulusPlugin'
 		or local-name() eq 'clearStimulusResponses' 
 		or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>}</xsl:text>

@@ -1134,6 +1134,287 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
+        <loadStimulusPlugin fineTuningUpperBoundForCycles="2" numberOfBands="54" fastTrackShablonSource="FastTrackShablonOrigin_NL" fineTuningShablonSource="FineTuningShablonOrigin_NL" wordsSource="Words_NL_2rounds_1" class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" nonwordsSource="NonWords_NL_2rounds_1">
+            <hasMoreStimulus>
+                <withMatchingStimulus eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
+                    <hasMoreStimulus>
+                        <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <plainText featureText="endOfStimulus in withMatchingStimulus"/>
+                    </endOfStimulus>
+                </withMatchingStimulus>
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
+                <stimulusExists offset="2">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
+                <showStimuliReport/>
+                <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
+                <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
+                    <plainText featureText="plainText in stimulusButton"/>
+                </stimulusButton>
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
+                    <plainText featureText="plainText in touchInputStimulusButton"/>
+                </touchInputStimulusButton>
+                <touchInputCaptureStart msToNext="60" showControls="true">
+                    <plainText featureText="plainText in touchInputCaptureStart"/>
+                </touchInputCaptureStart>
+                <touchInputReportSubmit dataChannel="2"/>
+                <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in ratingButton"/>
+                </ratingButton>
+                <ratingRadioButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in ratingRadioButton"/>
+                </ratingRadioButton>
+                <ratingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in ratingCheckbox"/>
+                </ratingCheckbox>
+                <stimulusFreeText featureText="stimulusFreeText" groupId="groupId" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
+                <stimulusRatingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in stimulusRatingButton"/>
+                </stimulusRatingButton>
+                <stimulusRatingRadio orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in stimulusRatingRadio"/>
+                </stimulusRatingRadio>
+                <stimulusRatingCheckbox orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in stimulusRatingCheckbox"/>
+                </stimulusRatingCheckbox>
+                <stimulusHasRatingOptions>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasRatingOptions>
+                <clearStimulusResponse groupId="groupId"/>
+                <stimulusHasResponse matchingRegex="matchingRegex" groupId="groupId">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <setStimulusCodeResponse codeFormat="codeFormat" groupId="groupId" applyScore="true" dataChannel="2"/>
+                <addStimulusCodeResponseValidation featureText="addStimulusCodeResponseValidation" groupId="groupId" dataChannel="2" validationRegex="validationRegex"/>
+                <ratingFooterButton eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                    <plainText featureText="plainText in ratingFooterButton"/>
+                </ratingFooterButton>
+                <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
+                <showStimulusProgress styleName="styleName"/>
+                <keepStimulus/>
+                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <nextMatchingStimulus/>
+                <showStimulus>
+                    <plainText featureText="plainText in showStimulus"/>
+                </showStimulus>
+                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce">
+                    <responseCorrect>
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect>
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </showStimulusGrid>
+                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce" maxWidth="60">
+                    <responseCorrect>
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect>
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </matchingStimulusGrid>
+                <stimulusPause>
+                    <plainText featureText="plainText in stimulusPause"/>
+                </stimulusPause>
+                <stimulusLabel styleName="styleName"/>
+                <regionCodeStyle regionId="regionId" styleName="styleName"/>
+                <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+                <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusImage>
+                <stimulusCodeImage msToNext="60" codeFormat="codeFormat" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeVideo>
+                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
+                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>
+                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                    <plainText featureText="plainText in stimulusImageCapture"/>
+                </stimulusImageCapture>
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" deviceRegex="deviceRegex" mediaId="mediaId">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <clearCurrentScore dataChannel="2"/>
+                <scoreIncrement dataChannel="2" scoreValue="8"/>
+                <plainText featureText="plainText in hasMoreStimulus"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="plainText in endOfStimulus"/>
+            </endOfStimulus>
+            <randomGrouping storageField="groupAllocation_loadStimulus">
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+                <list alias="L0">-1-2-3-4-5-6-7-8-9-</list>
+                <list alias="L0">-a-v-s-e-e</list>
+                <list alias="L0">F-e-s-t-i-v-a-l</list>
+                <list alias="L0">Lao</list>
+                <list alias="L0">Thai</list>
+                <list alias="L0">ບຸນບັ້ງໄຟ</list>
+            </randomGrouping>
+            <stimuli>
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </stimuli>
+        </loadStimulusPlugin>
         <loadSdCardStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" excludeRegex="excludeRegex" maxStimuli="3" replacementRegex="replacementRegex" repeatCount="3">
             <hasMoreStimulus>
                 <withMatchingStimulus eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
@@ -3152,6 +3433,281 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
+        <loadStimulusPlugin fineTuningUpperBoundForCycles="2" numberOfBands="54" fastTrackShablonSource="FastTrackShablonOrigin_NL" fineTuningShablonSource="FineTuningShablonOrigin_NL" wordsSource="Words_NL_2rounds_1" class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" nonwordsSource="NonWords_NL_2rounds_1">
+            <hasMoreStimulus>
+                <withMatchingStimulus matchingRegex="">
+                    <hasMoreStimulus>
+                        <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <plainText featureText="endOfStimulus in withMatchingStimulus"/>
+                    </endOfStimulus>
+                </withMatchingStimulus>
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
+                <stimulusExists offset="2">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
+                <showStimuliReport/>
+                <sendStimuliReport type=""/>
+                <stimulusButton featureText="">
+                    <plainText featureText="plainText in stimulusButton"/>
+                </stimulusButton>
+                <touchInputStimulusButton featureText="" src="">
+                    <plainText featureText="plainText in touchInputStimulusButton"/>
+                </touchInputStimulusButton>
+                <touchInputCaptureStart msToNext="60" showControls="true">
+                    <plainText featureText="plainText in touchInputCaptureStart"/>
+                </touchInputCaptureStart>
+                <touchInputReportSubmit/>
+                <ratingButton ratingLabels="">
+                    <plainText featureText="plainText in ratingButton"/>
+                </ratingButton>
+                <ratingRadioButton ratingLabels="">
+                    <plainText featureText="plainText in ratingRadioButton"/>
+                </ratingRadioButton>
+                <ratingCheckbox ratingLabels="">
+                    <plainText featureText="plainText in ratingCheckbox"/>
+                </ratingCheckbox>
+                <stimulusFreeText featureText="" validationRegex="" inputErrorMessage=""/>
+                <stimulusRatingButton>
+                    <plainText featureText="plainText in stimulusRatingButton"/>
+                </stimulusRatingButton>
+                <stimulusRatingRadio>
+                    <plainText featureText="plainText in stimulusRatingRadio"/>
+                </stimulusRatingRadio>
+                <stimulusRatingCheckbox>
+                    <plainText featureText="plainText in stimulusRatingCheckbox"/>
+                </stimulusRatingCheckbox>
+                <stimulusHasRatingOptions>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasRatingOptions>
+                <clearStimulusResponse/>
+                <stimulusHasResponse matchingRegex="">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <setStimulusCodeResponse codeFormat="" applyScore="true"/>
+                <addStimulusCodeResponseValidation featureText="" validationRegex=""/>
+                <ratingFooterButton ratingLabels="">
+                    <plainText featureText="plainText in ratingFooterButton"/>
+                </ratingFooterButton>
+                <stimulusMetadataField fieldName="workerId"/>
+                <showStimulusProgress/>
+                <keepStimulus/>
+                <removeMatchingStimulus matchingRegex=""/>
+                <prevStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulusButton featureText="" repeatIncorrect=""/>
+                <nextStimulus repeatIncorrect=""/>
+                <prevStimulus repeatIncorrect=""/>
+                <nextMatchingStimulus/>
+                <showStimulus>
+                    <plainText featureText="plainText in showStimulus"/>
+                </showStimulus>
+                <showStimulusGrid imageWidth="" columnCount="3">
+                    <responseCorrect>
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect>
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </showStimulusGrid>
+                <matchingStimulusGrid matchingRegex="" columnCount="3" maxWidth="60">
+                    <responseCorrect>
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect>
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </matchingStimulusGrid>
+                <stimulusPause>
+                    <plainText featureText="plainText in stimulusPause"/>
+                </stimulusPause>
+                <stimulusLabel/>
+                <regionCodeStyle regionId=""/>
+                <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+                <stimulusImage msToNext="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusImage>
+                <stimulusCodeImage msToNext="60" codeFormat="">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <stimulusCodeVideo maxHeight="60" codeFormat="" percentOfPage="56" loop="true" autoPlay="true" mediaId="" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeVideo>
+                <stimulusVideo loop="true" autoPlay="true" mediaId="" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
+                <stimulusCodeAudio codeFormat="" autoPlay="true" mediaId="" showPlaybackIndicator="">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>
+                <stimulusAudio autoPlay="true" mediaId="" showPlaybackIndicator="">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                    <plainText featureText="plainText in stimulusImageCapture"/>
+                </stimulusImageCapture>
+                <startAudioRecorderWeb featureText="" downloadPermittedWindowMs="30000" mediaId="">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <plainText featureText="plainText in mediaPlaybackStarted"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </startAudioRecorderWeb>
+                <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorderApp>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8"/>
+                <clearCurrentScore/>
+                <scoreIncrement scoreValue="8"/>
+                <plainText featureText="plainText in hasMoreStimulus"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="plainText in endOfStimulus"/>
+            </endOfStimulus>
+            <randomGrouping storageField="groupAllocation_loadStimulus">
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </stimuli>
+        </loadStimulusPlugin>
         <loadSdCardStimulus matchingRegex="">
             <hasMoreStimulus>
                 <withMatchingStimulus matchingRegex="">

@@ -161,7 +161,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 writer.append("</xs:attribute>\n");
             }
         }
-        if (currentElement.allowsCustomImplementation) {
+        /*        if (currentElement.allowsCustomImplementation) {
             writer.append("<xs:attribute name=\"class\" type=\"xs:string\"/>\n");
             writer.append("<xs:anyAttribute  processContents=\"lax\"/>\n");
 
@@ -173,7 +173,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 }
             }
             writer.append(")\"/>\n");
-        }
+//        }*/
 //            // add documentation indicating that when true the menu bar will be hidden when no back value is given
 ////            The showMenuBar attribute has a relation to the back attribute. This is because if you provide a back attribute, then you presumably want it to be shown. 
 ////
@@ -316,6 +316,21 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("</xs:complexType>\n");
         if (!insertType) {
             writer.append("</xs:element>\n");
+        }
+        if (currentElement.allowsCustomImplementation) {
+            // when a feature type allows custom implimentations it gets the name plus Plugin and must have a class attribute, then it can have any other attributes as defined in the plugin
+            writer.append("<xs:complexType name=\"");
+            writer.append(currentElement.elementName);
+            writer.append("PluginType\">\n");
+            writer.append("<xs:complexContent>\n");
+            writer.append("<xs:extension base=\"");
+            writer.append(currentElement.typeName);
+            writer.append("\">\n");
+            writer.append("<xs:attribute name=\"class\" type=\"xs:string\"/>\n");
+            writer.append("<xs:anyAttribute  processContents=\"lax\"/>\n");
+            writer.append("</xs:extension>\n");
+            writer.append("</xs:complexContent>\n");
+            writer.append("</xs:complexType>\n");
         }
     }
 
