@@ -179,7 +179,7 @@ public class PresenterScreen extends CanHaveFeatures {
     public List<JAXBElement<PresenterFeature>> getPresenterFeatures() {
         List<JAXBElement<PresenterFeature>> elements = new ArrayList<>();
         presenterFeatures.stream().forEach((feature) -> {
-            elements.add(new JAXBElement<>(new QName(feature.getFeatureType().name()), PresenterFeature.class, feature));
+            elements.add(new JAXBElement<>(new QName(feature.getFeatureTypeName()), PresenterFeature.class, feature));
         });
         return elements;
     }
