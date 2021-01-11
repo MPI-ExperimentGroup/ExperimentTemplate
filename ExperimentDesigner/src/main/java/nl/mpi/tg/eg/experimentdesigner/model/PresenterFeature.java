@@ -56,6 +56,7 @@ public class PresenterFeature extends CanHaveFeatures {
     private long id;
     private long displayOrder;
     static long globalfeatureCounter = 0;
+    private boolean usedAsPlugin = false;
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
     @ElementCollection
@@ -80,6 +81,16 @@ public class PresenterFeature extends CanHaveFeatures {
         this.translatable = new FeatureText(featureText, null);
 //        this.featureAttributes = new HashMap<>();
         displayOrder = globalfeatureCounter;
+        globalfeatureCounter++;
+    }
+
+    public PresenterFeature(FeatureType featureType, String featureText, final boolean usedAsPlugin) {
+        this.featureType = featureType;
+//        this.presenterFeatures = new ArrayList<>();
+        this.translatable = new FeatureText(featureText, null);
+//        this.featureAttributes = new HashMap<>();
+        displayOrder = globalfeatureCounter;
+        this.usedAsPlugin = usedAsPlugin;
         globalfeatureCounter++;
     }
 
@@ -123,7 +134,7 @@ public class PresenterFeature extends CanHaveFeatures {
     public List<JAXBElement<PresenterFeature>> getPresenterFeatures() {
         List<JAXBElement<PresenterFeature>> elements = new ArrayList<>();
         presenterFeatures.stream().forEach((feature) -> {
-            elements.add(new JAXBElement<>(new QName(feature.getFeatureType().name()), PresenterFeature.class, feature));
+            elements.add(new JAXBElement<>(new QName(feature.getFeatureTypeName()), PresenterFeature.class, feature));
         });
         return elements;
     }
@@ -135,6 +146,11 @@ public class PresenterFeature extends CanHaveFeatures {
     @XmlTransient
     public FeatureType getFeatureType() {
         return featureType;
+    }
+
+    @XmlTransient
+    public String getFeatureTypeName() {
+        return featureType + ((usedAsPlugin) ? "Plugin" : "");
     }
 
     public void setFeatureType(FeatureType featureType) {
