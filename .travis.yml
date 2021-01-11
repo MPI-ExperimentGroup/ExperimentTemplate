@@ -7,6 +7,7 @@ jdk:
 #  - $HOME/.m2
 install:
   - mvn install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - apk add graphviz
 script:
   - mvn clean test -B -V -Duser.timezone=CET
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=rosselfieldkit
