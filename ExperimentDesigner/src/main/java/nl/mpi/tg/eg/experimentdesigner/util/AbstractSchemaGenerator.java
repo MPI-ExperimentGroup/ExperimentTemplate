@@ -218,6 +218,9 @@ public class AbstractSchemaGenerator {
                         // currently allowing all groupNetworkAction in any element
                         // currently allowing all stimulusAction in any element
                         childTypeList.add(featureRef.name());
+                        if (featureRef.allowsCustomImplementation()) {
+                            childTypeList.add(featureRef.name() + "Plugin");
+                        }
                     }
                 }
             } else {
@@ -272,6 +275,9 @@ public class AbstractSchemaGenerator {
             for (final FeatureType featureRef : FeatureType.values()) {
                 if (featureRef.isChildType(FeatureType.Contitionals.none)) {
                     childTypeList.add(featureRef.name());
+                    if (featureRef.allowsCustomImplementation()) {
+                        childTypeList.add(featureRef.name() + "Plugin");
+                    }
                 }
             }
             childTypeList.sort(new Comparator<String>() {
