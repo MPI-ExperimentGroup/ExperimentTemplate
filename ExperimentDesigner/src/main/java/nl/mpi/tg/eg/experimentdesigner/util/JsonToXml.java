@@ -22,6 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Comparator;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -114,6 +116,14 @@ public class JsonToXml {
                             System.out.println(iOException.getMessage());
                         }
                     }
+                    if (!inputDirectory.equals(outputDirectory)) {
+                        try {
+                            // if inputDirectory is not the same as the outputDirectory then move the processed XML and JSON files
+                            Files.move(jsonFile.toPath(), new File(outputDirectory, jsonFile.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        } catch (IOException iOException) {
+                            System.out.println(iOException.getMessage());
+                        }
+                    }
                 }
                 for (File xmlFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".xml"))) {
                     System.out.println(xmlFile);
@@ -143,6 +153,14 @@ public class JsonToXml {
                             fileWriter.close();
                         } catch (IOException exception) {
                             System.out.println(exception.getMessage());
+                        }
+                    }
+                    if (!inputDirectory.equals(outputDirectory)) {
+                        try {
+                            // if inputDirectory is not the same as the outputDirectory then move the processed XML and JSON files
+                            Files.move(xmlFile.toPath(), new File(outputDirectory, xmlFile.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        } catch (IOException iOException) {
+                            System.out.println(iOException.getMessage());
                         }
                     }
                 }
