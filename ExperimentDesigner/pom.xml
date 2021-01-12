@@ -13,8 +13,6 @@
     </parent>
     <properties>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
