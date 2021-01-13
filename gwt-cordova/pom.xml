@@ -235,6 +235,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                     <!--                                    <excludes>
                                         <exclude>**/*.xlsx</exclude>
@@ -259,6 +261,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -271,6 +275,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -283,6 +289,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -295,6 +303,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -307,6 +317,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -319,6 +331,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -331,6 +345,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource>
                                 <resource>
@@ -343,6 +359,8 @@
                                         <include>**/*.mp4</include>
                                         <include>**/*.mp3</include>
                                         <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
                                     </includes>
                                 </resource> 
                             </resources>              
