@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>1.3-testing-SNASHOT</version>
+    <version>1.3-testing-SNAPSHOT</version>
     <name>FRINEX GWT-Cordova Template</name>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
