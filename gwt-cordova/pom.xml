@@ -9,12 +9,12 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>1.2-testing-SNAPSHOT</version>
+    <version>1.3-testing-SNASHOT</version>
     <name>FRINEX GWT-Cordova Template</name>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
         <artifactId>frinex-parent</artifactId>
-        <version>1.2-testing-SNAPSHOT</version>
+        <version>1.3-testing-SNAPSHOT</version>
     </parent>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>nl.mpi.tg.eg.frinex</groupId>
             <artifactId>common</artifactId>
-            <version>1.2-testing-SNAPSHOT</version>
+            <version>1.3-testing-SNAPSHOT</version>
         </dependency>        
         <dependency>
             <groupId>nl.mpi</groupId>
@@ -120,7 +120,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>adaptive-vocabulary-assessment-module</artifactId>
-            <version>1.2-testing-SNAPSHOT</version>
+            <version>1.3-testing-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -679,7 +679,7 @@
                     <dependency>
                         <groupId>nl.mpi.tg.eg.frinex</groupId>
                         <artifactId>common</artifactId>
-                        <version>1.2-testing-SNAPSHOT</version>
+                        <version>1.3-testing-SNAPSHOT</version>
                     </dependency>     
                 </dependencies>
             </plugin>
