@@ -363,6 +363,20 @@
                                         <include>**/*.svg</include>
                                     </includes>
                                 </resource> 
+                                <resource>
+                                    <directory>/FrinexBuildService/incoming/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                        <include>**/*.wav</include>
+                                        <include>**/*.pdf</include>
+                                        <include>**/*.svg</include>
+                                    </includes>
+                                </resource> 
                             </resources>              
                         </configuration>                                                    
                     </execution>                   
