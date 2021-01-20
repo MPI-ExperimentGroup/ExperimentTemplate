@@ -927,7 +927,7 @@ function moveIncomingToProcessing() {
                     }
                     if (fs.existsSync(validationErrorTxtP)) {
                         fs.unlinkSync(validationErrorTxtP);
-                    }
+                    } 
                     var processingName = path.resolve(processingDirectory, filename);
                     // preserve the current XML by copying it to /srv/target which will be accessed via a link in the first column of the results table
                     var configStoreFile = path.resolve(targetDirectory, filename);
