@@ -433,7 +433,8 @@
                 <version>1.0.2</version>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <!-- changed the phase from generate-sources to post-clean so that complilaiton errors cause by XML issues can be identified much faster -->
+                        <phase>post-clean</phase>
                         <goals>
                             <goal>transform</goal>
                         </goals>
