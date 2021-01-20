@@ -908,6 +908,8 @@ function moveIncomingToProcessing() {
                     var mavenLogPathSA = targetDirectory + "/" + baseName + "_staging_admin.txt";
                     var mavenLogPathPG = targetDirectory + "/" + baseName + "_production.txt";
                     var mavenLogPathPA = targetDirectory + "/" + baseName + "_production_admin.txt";
+                    var validationErrorTxtT = targetDirectory + "/" + baseName + "_validation_error.txt";
+                    var validationErrorTxtP = processingDirectory + "/" + baseName + "_validation_error.txt";
                     if (fs.existsSync(mavenLogPathSG)) {
                         fs.unlinkSync(mavenLogPathSG);
                     }
@@ -919,6 +921,12 @@ function moveIncomingToProcessing() {
                     }
                     if (fs.existsSync(mavenLogPathPA)) {
                         fs.unlinkSync(mavenLogPathPA);
+                    }
+                    if (fs.existsSync(validationErrorTxtT)) {
+                        fs.unlinkSync(validationErrorTxtT);
+                    }
+                    if (fs.existsSync(validationErrorTxtP)) {
+                        fs.unlinkSync(validationErrorTxtP);
                     }
                     var processingName = path.resolve(processingDirectory, filename);
                     // preserve the current XML by copying it to /srv/target which will be accessed via a link in the first column of the results table
