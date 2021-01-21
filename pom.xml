@@ -40,6 +40,7 @@
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
         <!--<experiment.configuration.path>../frinex-rest-output</experiment.configuration.path>-->
         <experiment.configuration.path>../ExperimentDesigner/src/test/resources/frinex-rest-output/</experiment.configuration.path>
+        <experiment.artifactsJsonDirectory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</experiment.artifactsJsonDirectory>
         <experiment.webservice></experiment.webservice>   
         <experiment.scriptSrcUrl>http://127.0.0.1:9876 http://localhost:8080 http://localhost:9876</experiment.scriptSrcUrl>   
         <experiment.synQuizRegistrationUrl></experiment.synQuizRegistrationUrl>

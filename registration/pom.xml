@@ -166,7 +166,7 @@
                             </includes>
                         </resource>
                         <resource>
-                            <directory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</directory>
+                            <directory>${experiment.artifactsJsonDirectory}</directory>
                             <filtering>false</filtering>                
                             <includes>
                                 <include>artifacts.json</include>
