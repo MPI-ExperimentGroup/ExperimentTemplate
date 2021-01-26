@@ -107,6 +107,13 @@ public class UmlGenerator {
                 if (attributes.getNamedItem("next") != null) {
                     stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("next").getNodeValue()).append("\n");
                 }
+                NodeList targetNodes = (NodeList) validationXPath.compile("*[@target]").evaluate(nodeList1.item(index), XPathConstants.NODESET);
+                for (int targetNodeIndex = 0; targetNodeIndex < targetNodes.getLength(); targetNodeIndex++) {
+                    final NamedNodeMap targetAttributes = targetNodes.item(targetNodeIndex).getAttributes();
+                    if (targetAttributes.getNamedItem("target") != null) {
+                        stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(targetAttributes.getNamedItem("target").getNodeValue()).append("\n");
+                    }
+                }
             }
         } catch (XPathExpressionException exception) {
             stringBuilder.append("note right: ").append(exception).append("\n");

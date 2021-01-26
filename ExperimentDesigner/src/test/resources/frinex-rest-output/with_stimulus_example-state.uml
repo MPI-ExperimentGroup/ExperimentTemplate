@@ -4,8 +4,10 @@ title with_stimulus_example
 state Toestemming
 Toestemming --> Menu
 Toestemming --> Informatie
+Toestemming --> Informatie
 state Informatie
 Informatie --> Toestemming
+Informatie --> Gegevens
 state Gegevens
 Gegevens --> Informatie
 Gegevens --> Metadata_Jump_Test
@@ -33,12 +35,19 @@ state Metadata_Jump_Test_Target_10
 Metadata_Jump_Test_Target_10 --> Gegevens
 state First_Stimuli_Screen_Informatie
 First_Stimuli_Screen_Informatie --> Menu
+First_Stimuli_Screen_Informatie --> First_Stimuli_Screen
 state sticky_table_example
 sticky_table_example --> Menu
+sticky_table_example --> sticky_region_example
+sticky_table_example --> sticky_menu_example
 state sticky_menu_example
 sticky_menu_example --> Menu
+sticky_menu_example --> sticky_table_example
+sticky_menu_example --> sticky_region_example
 state sticky_region_example
 sticky_region_example --> Menu
+sticky_region_example --> sticky_table_example
+sticky_region_example --> sticky_menu_example
 state popup_dialogue_example
 popup_dialogue_example --> Menu
 state compare_the_last_two_items
@@ -103,10 +112,12 @@ state Metadata_HtmlTokenText
 Metadata_HtmlTokenText --> Menu
 state Second_Informatie
 Second_Informatie --> Menu
+Second_Informatie --> Second
 state hasGetParameter
 hasGetParameter --> Menu
 state cafe_test
 cafe_test --> Menu
+cafe_test --> Second
 state Single_Image_Example
 Single_Image_Example --> Menu
 state rating_buttons_example
@@ -140,6 +151,7 @@ RecorderTimeStampTest --> Menu
 RecorderTimeStampTest --> Menu
 state Third_Informatie
 Third_Informatie --> Menu
+Third_Informatie --> Third
 state Third
 Third --> Menu
 Third --> completion
@@ -179,19 +191,32 @@ RedirectToUrlExample --> Menu
 state InvitationCodeExampleCompletion
 state InvitationCodeExampleFinished
 InvitationCodeExampleFinished --> InvitationCodeExampleRestart
+InvitationCodeExampleFinished --> InvitationCodeExampleRestart
 state NextStepExample
 NextStepExample --> Menu
 state InvitationCodeExampleRestart
 state InvitationCodeExampleInvalid
+InvitationCodeExampleInvalid --> InvitationSessionStepsExample
 state RecordingQualityTest
 RecordingQualityTest --> Menu
+RecordingQualityTest --> RecordingQualityTest
 state Menu
 state menuItemStyle
 menuItemStyle --> Menu
+menuItemStyle --> Timer_Label_Screen
+menuItemStyle --> Region_Timer_Screen
+menuItemStyle --> Region_Toggle_Example
+menuItemStyle --> Rating_Toggle_Example
+menuItemStyle --> With_Stimuli_Screen
 state allMenuItemsStyle
 allMenuItemsStyle --> Menu
 state activateRandomItem
 activateRandomItem --> Menu
+activateRandomItem --> Timer_Label_Screen
+activateRandomItem --> Region_Timer_Screen
+activateRandomItem --> Region_Toggle_Example
+activateRandomItem --> Rating_Toggle_Example
+activateRandomItem --> With_Stimuli_Screen
 state triggerRandomListener
 triggerRandomListener --> Menu
 triggerRandomListener --> Menu
@@ -203,6 +228,7 @@ EditParticipant --> Menu
 EditParticipant --> ListParticipants
 state ListParticipants
 ListParticipants --> Menu
+ListParticipants --> Admin
 ListParticipants --> Admin
 state Admin
 Admin --> ListParticipants
