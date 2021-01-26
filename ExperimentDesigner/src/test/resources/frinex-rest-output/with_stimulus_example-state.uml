@@ -13,6 +13,16 @@ Gegevens --> Informatie
 Gegevens --> Metadata_Jump_Test
 state Metadata_Jump_Test
 Metadata_Jump_Test --> Gegevens
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_1
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_2
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_3
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_4
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_5
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_6
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_7
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_8
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_9
+Metadata_Jump_Test --> Metadata_Jump_Test_Target_10
 state Metadata_Jump_Test_Target_1
 Metadata_Jump_Test_Target_1 --> Gegevens
 state Metadata_Jump_Test_Target_2
@@ -50,8 +60,14 @@ sticky_region_example --> sticky_table_example
 sticky_region_example --> sticky_menu_example
 state popup_dialogue_example
 popup_dialogue_example --> Menu
+popup_dialogue_example --> popup_dialogue_example
+popup_dialogue_example --> popup_dialogue_example
 state compare_the_last_two_items
 compare_the_last_two_items --> Menu
+compare_the_last_two_items --> compare_the_last_two_items
+compare_the_last_two_items --> compare_the_last_two_items
+compare_the_last_two_items --> compare_the_last_two_items
+compare_the_last_two_items --> compare_the_last_two_items
 state Snooze
 Snooze --> Menu
 state Request_Notification_Screen
@@ -60,14 +76,30 @@ state Timer_Label_Screen
 Timer_Label_Screen --> Menu
 state Sequential_Display_Example0_6
 Sequential_Display_Example0_6 --> Menu
+Sequential_Display_Example0_6 --> Sequential_Display_Example
+Sequential_Display_Example0_6 --> Sequential_Display_Example
 state hardware_time_stamps
 hardware_time_stamps --> Menu
+hardware_time_stamps --> hardware_time_stamps
+hardware_time_stamps --> hardware_time_stamps
 state Sequential_Display_Example
 Sequential_Display_Example --> Menu
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
+Sequential_Display_Example --> Sequential_Display_Example
 state RunTrialsSimple1000
 RunTrialsSimple1000 --> Menu
+RunTrialsSimple1000 --> RunTrialsSimple1000
+RunTrialsSimple1000 --> RunTrialsSimple1000
 state Audio_Input_Select
 Audio_Input_Select --> Menu
+Audio_Input_Select --> Audio_Input_Select
+Audio_Input_Select --> Audio_Input_Select
 state Region_Timer_Screen
 Region_Timer_Screen --> Menu
 Region_Timer_Screen --> With_Stimuli_Screen
@@ -75,10 +107,17 @@ state Region_Toggle_Example
 Region_Toggle_Example --> Menu
 state Rating_Toggle_Example
 Rating_Toggle_Example --> Menu
+Rating_Toggle_Example --> Rating_Toggle_Example
+Rating_Toggle_Example --> Rating_Toggle_Example
+Rating_Toggle_Example --> Rating_Toggle_Example
 state Rating_Token_Text_Example
 Rating_Token_Text_Example --> Menu
+Rating_Token_Text_Example --> Rating_Token_Text_Example
+Rating_Token_Text_Example --> Rating_Token_Text_Example
+Rating_Token_Text_Example --> Rating_Token_Text_Example
 state Metadata_Enable_Visible
 Metadata_Enable_Visible --> Menu
+Metadata_Enable_Visible --> Metadata_Enable_Visible
 state Metadata_Current_Date
 Metadata_Current_Date --> Menu
 state last_seven_days
@@ -87,27 +126,50 @@ state replace_all_example
 replace_all_example --> Menu
 state four_different_topics
 four_different_topics --> Menu
+four_different_topics --> four_different_topics
+four_different_topics --> four_different_topics
+four_different_topics --> four_different_topics
+four_different_topics --> four_different_topics
 state append_unique_date
 append_unique_date --> Menu
 state currentDate_daysBetween_and_length
 currentDate_daysBetween_and_length --> Menu
 state progressIndicator_example
 progressIndicator_example --> Menu
+progressIndicator_example --> progressIndicator_example
+progressIndicator_example --> progressIndicator_example
+progressIndicator_example --> progressIndicator_example
+progressIndicator_example --> progressIndicator_example
+progressIndicator_example --> progressIndicator_example
+progressIndicator_example --> progressIndicator_example
 state With_Stimuli_Screen
 With_Stimuli_Screen --> Menu
 With_Stimuli_Screen --> First_Stimuli_Screen_Informatie
+With_Stimuli_Screen --> First_Stimuli_Screen_Informatie
 state Stimulus_Subquestions
 Stimulus_Subquestions --> Menu
+Stimulus_Subquestions --> First_Stimuli_Screen_Informatie
 state Has_Stimulus_Response
 Has_Stimulus_Response --> Menu
+Has_Stimulus_Response --> Has_Stimulus_Response
+Has_Stimulus_Response --> Has_Stimulus_Response
 state First_Stimuli_Screen
 First_Stimuli_Screen --> Menu
 First_Stimuli_Screen --> stimulusRatingRadio
+First_Stimuli_Screen --> First_Stimuli_Screen
+First_Stimuli_Screen --> First_Stimuli_Screen
+First_Stimuli_Screen --> First_Stimuli_Screen
 state stimulusResponse_logTokenText
 stimulusResponse_logTokenText --> Menu
+stimulusResponse_logTokenText --> stimulusResponse_logTokenText
+stimulusResponse_logTokenText --> stimulusResponse_logTokenText
+stimulusResponse_logTokenText --> stimulusResponse_logTokenText
 state stimulusRatingRadio
 stimulusRatingRadio --> Menu
 stimulusRatingRadio --> Second_Informatie
+stimulusRatingRadio --> stimulusRatingRadio
+stimulusRatingRadio --> stimulusRatingRadio
+stimulusRatingRadio --> stimulusRatingRadio
 state Metadata_HtmlTokenText
 Metadata_HtmlTokenText --> Menu
 state Second_Informatie
@@ -122,30 +184,55 @@ state Single_Image_Example
 Single_Image_Example --> Menu
 state rating_buttons_example
 rating_buttons_example --> Menu
+rating_buttons_example --> rating_buttons_example
+rating_buttons_example --> rating_buttons_example
 state clear_stimulus_responses_example
 clear_stimulus_responses_example --> Menu
+clear_stimulus_responses_example --> clear_stimulus_responses_example
+clear_stimulus_responses_example --> clear_stimulus_responses_example
+clear_stimulus_responses_example --> clear_stimulus_responses_example
 state clear_stimulus_response_example
 clear_stimulus_response_example --> Menu
+clear_stimulus_response_example --> clear_stimulus_response_example
+clear_stimulus_response_example --> clear_stimulus_response_example
+clear_stimulus_response_example --> clear_stimulus_response_example
+clear_stimulus_response_example --> clear_stimulus_response_example
+clear_stimulus_response_example --> clear_stimulus_response_example
 state visible_enable_stimulus_free_text_example
 visible_enable_stimulus_free_text_example --> Menu
+visible_enable_stimulus_free_text_example --> visible_enable_stimulus_free_text_example
+visible_enable_stimulus_free_text_example --> visible_enable_stimulus_free_text_example
 state rating_button_orientationType_example
 rating_button_orientationType_example --> Menu
+rating_button_orientationType_example --> rating_button_orientationType_example
+rating_button_orientationType_example --> rating_button_orientationType_example
 state single_line_text_box_example
 single_line_text_box_example --> Menu
+single_line_text_box_example --> single_line_text_box_example
+single_line_text_box_example --> single_line_text_box_example
 state single_line_text_box_no_action_example
 single_line_text_box_no_action_example --> Menu
+single_line_text_box_no_action_example --> single_line_text_box_no_action_example
+single_line_text_box_no_action_example --> single_line_text_box_no_action_example
+single_line_text_box_no_action_example --> single_line_text_box_no_action_example
 state Second
 Second --> Menu
 Second --> Third_Informatie
+Second --> Second
+Second --> Second
 state Recorder
 Recorder --> Menu
 Recorder --> Menu
 state RecorderPauseTest
 RecorderPauseTest --> Menu
 RecorderPauseTest --> Menu
+RecorderPauseTest --> RecorderPauseTest
+RecorderPauseTest --> RecorderPauseTest
 state RecorderNoDownloadTest
 RecorderNoDownloadTest --> Menu
 RecorderNoDownloadTest --> Menu
+RecorderNoDownloadTest --> RecorderNoDownloadTest
+RecorderNoDownloadTest --> RecorderNoDownloadTest
 state RecorderTimeStampTest
 RecorderTimeStampTest --> Menu
 RecorderTimeStampTest --> Menu
@@ -162,43 +249,79 @@ USB_LP310 --> Menu
 state Bluetooth_R1
 Bluetooth_R1 --> Menu
 state showOnBackButton
+showOnBackButton --> Menu
+showOnBackButton --> Menu
+showOnBackButton --> showOnBackButton
+showOnBackButton --> showOnBackButton
+showOnBackButton --> Menu
 state AppendStimulusResponse
+AppendStimulusResponse --> Menu
+AppendStimulusResponse --> AppendStimulusResponse
+AppendStimulusResponse --> AppendStimulusResponse
 AppendStimulusResponse --> Menu
 state enter_in_the_text_box
 enter_in_the_text_box --> Menu
+enter_in_the_text_box --> showOnBackButton
+enter_in_the_text_box --> showOnBackButton
 state stimulusCodeImageButton
 stimulusCodeImageButton --> Menu
+stimulusCodeImageButton --> stimulusCodeImageButton
+stimulusCodeImageButton --> stimulusCodeImageButton
 state stimulus_has_response
 stimulus_has_response --> Menu
+stimulus_has_response --> stimulus_has_response
+stimulus_has_response --> stimulus_has_response
 state stimulusRatingImageButton
 stimulusRatingImageButton --> Menu
+stimulusRatingImageButton --> stimulusRatingImageButton
+stimulusRatingImageButton --> stimulusRatingImageButton
 state if_stimulus_exists
 if_stimulus_exists --> Menu
+if_stimulus_exists --> if_stimulus_exists
+if_stimulus_exists --> if_stimulus_exists
 state completion
 completion --> Menu
 completion --> Toestemming
+completion --> Toestemming
+completion --> completion
 state InvitationCodeExample
 InvitationCodeExample --> Menu
+InvitationCodeExample --> InvitationCodeExampleStimuliScreen
 state MatchOnEvalTokensExample
 MatchOnEvalTokensExample --> Menu
 state InvitationSessionStepsExample
 InvitationSessionStepsExample --> Menu
+InvitationSessionStepsExample --> InvitationCodeExampleStimuliScreen
+InvitationSessionStepsExample --> InvitationCodeExampleInvalid
+InvitationSessionStepsExample --> InvitationCodeExampleStimuliScreen
 state InvitationCodeExampleStimuliScreen
 InvitationCodeExampleStimuliScreen --> Menu
+InvitationCodeExampleStimuliScreen --> InvitationCodeExampleCompletion
+InvitationCodeExampleStimuliScreen --> InvitationCodeExampleStimuliScreen
+InvitationCodeExampleStimuliScreen --> InvitationCodeExampleStimuliScreen
+InvitationCodeExampleStimuliScreen --> InvitationCodeExampleStimuliScreen
 InvitationCodeExampleStimuliScreen --> InvitationCodeExampleCompletion
 state RedirectToUrlExample
 RedirectToUrlExample --> Menu
 state InvitationCodeExampleCompletion
+InvitationCodeExampleCompletion --> InvitationCodeExampleFinished
+InvitationCodeExampleCompletion --> InvitationCodeExampleCompletion
 state InvitationCodeExampleFinished
 InvitationCodeExampleFinished --> InvitationCodeExampleRestart
 InvitationCodeExampleFinished --> InvitationCodeExampleRestart
 state NextStepExample
 NextStepExample --> Menu
 state InvitationCodeExampleRestart
+InvitationCodeExampleRestart --> InvitationCodeExample
+InvitationCodeExampleRestart --> InvitationCodeExampleRestart
 state InvitationCodeExampleInvalid
 InvitationCodeExampleInvalid --> InvitationSessionStepsExample
 state RecordingQualityTest
 RecordingQualityTest --> Menu
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
 RecordingQualityTest --> RecordingQualityTest
 state Menu
 state menuItemStyle
@@ -220,6 +343,7 @@ activateRandomItem --> With_Stimuli_Screen
 state triggerRandomListener
 triggerRandomListener --> Menu
 triggerRandomListener --> Menu
+triggerRandomListener --> triggerRandomListener
 state incrementScoreExample
 incrementScoreExample --> Menu
 incrementScoreExample --> Menu
@@ -232,22 +356,45 @@ ListParticipants --> Admin
 ListParticipants --> Admin
 state Admin
 Admin --> ListParticipants
+Admin --> EditParticipant
+Admin --> EditParticipant
+Admin --> Admin
+Admin --> EditParticipant
+Admin --> EditParticipant
+Admin --> Admin
+Admin --> EditParticipant
+Admin --> EditParticipant
 state DataManagement
 DataManagement --> Menu
 DataManagement --> DataUpload
 state DataUpload
 DataUpload --> DataManagement
 DataUpload --> DataManagement
+DataUpload --> DataManagement
+DataUpload --> DataManagement
+DataUpload --> DataUpload
+DataUpload --> DataManagement
+DataUpload --> DataUpload
+DataUpload --> DataManagement
 state table_tags_inside_a_region_tag
 table_tags_inside_a_region_tag --> Menu
 state predefined_stimuli_example
 predefined_stimuli_example --> Menu
+predefined_stimuli_example --> single_line_text_box_no_action_example
+predefined_stimuli_example --> single_line_text_box_no_action_example
+predefined_stimuli_example --> single_line_text_box_no_action_example
 state custom_completion_number
 custom_completion_number --> Menu
 state random_image_positions_remembered
 random_image_positions_remembered --> Menu
+random_image_positions_remembered --> random_image_positions_remembered
+random_image_positions_remembered --> random_image_positions_remembered
+random_image_positions_remembered --> random_image_positions_remembered
+random_image_positions_remembered --> random_image_positions_remembered
 state preload_images_example
 preload_images_example --> Menu
+preload_images_example --> preload_images_example
+preload_images_example --> preload_images_example
 state about
 about --> Menu
 @enduml
