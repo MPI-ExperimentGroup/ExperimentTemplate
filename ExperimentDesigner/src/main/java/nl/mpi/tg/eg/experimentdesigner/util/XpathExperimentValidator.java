@@ -232,8 +232,8 @@ public class XpathExperimentValidator {
                 final String elementName = (parentNode != null) ? parentNode.getLocalName() : "";
                 final String attributeName = nodeList.item(index).getNodeName();
                 returnMessage += "Invalid REGEX \"" + attributeValue + "\" found in attribute " + elementName + " " + attributeName + "\n";
+                System.out.println(returnMessage);
             }
-            System.out.println(returnMessage);
         }
         return returnMessage;
     }
