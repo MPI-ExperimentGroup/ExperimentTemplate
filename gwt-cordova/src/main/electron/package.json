@@ -1,8 +1,8 @@
 {
   "name": "@experiment.configuration.name@-@project.artifactId@",
-  "productName": "@experiment.configuration.displayName@",
+  "productName": "@experiment.configuration.name@-@project.artifactId@",
   "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
-  "description": "@experiment.configuration.name@",
+  "description": "@experiment.configuration.displayName@",
   "main": "src/main/index.js",
   "scripts": {
     "start": "electron .",
