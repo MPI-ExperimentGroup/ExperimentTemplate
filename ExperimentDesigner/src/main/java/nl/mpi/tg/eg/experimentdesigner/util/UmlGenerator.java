@@ -102,16 +102,20 @@ public class UmlGenerator {
                 }
                 stringBuilder.append("state ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
                 if (attributes.getNamedItem("back") != null) {
-                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append("\n");
+                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append(" : back\n");
                 }
                 if (attributes.getNamedItem("next") != null) {
-                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("next").getNodeValue()).append("\n");
+                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("next").getNodeValue()).append(" : next\n");
                 }
                 NodeList targetNodes = (NodeList) validationXPath.compile("descendant::*[@target]").evaluate(nodeList1.item(index), XPathConstants.NODESET);
                 for (int targetNodeIndex = 0; targetNodeIndex < targetNodes.getLength(); targetNodeIndex++) {
                     final NamedNodeMap targetAttributes = targetNodes.item(targetNodeIndex).getAttributes();
                     if (targetAttributes.getNamedItem("target") != null) {
-                        stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(targetAttributes.getNamedItem("target").getNodeValue()).append("\n");
+                        stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(targetAttributes.getNamedItem("target").getNodeValue());
+                        if (targetAttributes.getNamedItem("featureText") != null) {
+                            stringBuilder.append(" : ").append(targetAttributes.getNamedItem("featureText").getNodeValue());
+                        }
+                        stringBuilder.append("\n");
                     }
                 }
                 NodeList allMenuItemsNodes = (NodeList) validationXPath.compile("descendant::allMenuItems").evaluate(nodeList1.item(index), XPathConstants.NODESET);
