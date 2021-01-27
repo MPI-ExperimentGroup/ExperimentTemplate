@@ -62,6 +62,7 @@ public class UmlGeneratorTest {
             expectedSvgResult = expectedSvgResult.replaceAll("\\\"[ -.%#:;\\(\\)0-9a-zA-Z]*\\\"", "\"blank\"");
             actualSvgResult = actualSvgResult.replaceAll("><", ">\n<");
             expectedSvgResult = expectedSvgResult.replaceAll("><", ">\n<");
+            System.out.println("expectedSvgResult: " + expectedSvgResult);
             assertEquals("with_stimulus_example.svg", expectedSvgResult, actualSvgResult);
         }
     }
