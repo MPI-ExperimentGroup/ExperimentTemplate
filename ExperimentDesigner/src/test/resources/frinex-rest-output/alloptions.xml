@@ -1779,7 +1779,7 @@
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <logTimeStamp eventTag="eventTag"/>
-        <hardwareTimeStamp opto1="true" dtmf="#" opto2="true"/>
+        <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
         <audioButton eventTag="eventTag" src="src" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>

@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import nl.mpi.tg.eg.experiment.client.model.BooleanToggle;
+
 /**
  * @since 15 May 2020 16:03:59 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -24,6 +26,8 @@ package nl.mpi.tg.eg.experiment.client.service;
 public class HardwareTimeStamp {
 
     final String hardwareTimeStampOptions;
+    private boolean opto1State = true;
+    private boolean opto2State = true;
 
     public HardwareTimeStamp(String hardwareTimeStampOptions) {
         this.hardwareTimeStampOptions = hardwareTimeStampOptions;
@@ -50,6 +54,36 @@ public class HardwareTimeStamp {
         final int tone1;
         final int tone2;
 
+    }
+
+    final public void setOpto1(BooleanToggle optoState) {
+        switch (optoState) {
+            case OPTO_FALSE:
+                opto1State = false;
+                break;
+            case OPTO_TRUE:
+                opto1State = true;
+                break;
+            case OPTO_INVERT:
+                opto1State = !opto1State;
+                break;
+        }
+        setOpto1(opto1State);
+    }
+
+    final public void setOpto2(BooleanToggle optoState) {
+        switch (optoState) {
+            case OPTO_FALSE:
+                opto2State = false;
+                break;
+            case OPTO_TRUE:
+                opto2State = true;
+                break;
+            case OPTO_INVERT:
+                opto2State = !opto2State;
+                break;
+        }
+        setOpto2(opto2State);
     }
 
     final public native void setOpto1(boolean optoState) /*-{

@@ -362,7 +362,7 @@ public class DefaultExperiments {
                                 presenterFeature.addFeatureAttributes(attribute, "30000");
                                 break;
                             case opto1:
-                                presenterFeature.addFeatureAttributes(attribute, "true");
+                                presenterFeature.addFeatureAttributes(attribute, "invert");
                                 break;
                             case opto2:
                                 presenterFeature.addFeatureAttributes(attribute, "true");

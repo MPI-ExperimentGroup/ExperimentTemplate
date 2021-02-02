@@ -215,7 +215,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
     
                 import com.google.gwt.core.client.GWT;     
-                import nl.mpi.tg.eg.experiment.client.model.ExtendedKeyCodes;    
+                import nl.mpi.tg.eg.experiment.client.model.ExtendedKeyCodes;
+                import nl.mpi.tg.eg.experiment.client.model.BooleanToggle;
                 import com.google.gwt.safehtml.shared.UriUtils;
                 import com.google.gwt.user.client.ui.ButtonBase;
                 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -737,8 +738,8 @@ or local-name() eq 'sendGroupEndOfStimuli'
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
-        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto1) then if (@opto1 eq 'true') then 'true' else 'false' else 'null' else ''" />  
-        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then if (@opto2 eq 'true') then ', true' else ', false' else ', null' else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto1) then concat('BooleanToggle.OPTO_', upper-case(@opto1)) else 'null' else ''" />  
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then concat(', BooleanToggle.OPTO_', upper-case(@opto2)) else ', null' else ''" />
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else ', null' else ''" />
         <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'

@@ -41,6 +41,7 @@ public class AbstractSchemaGenerator {
         xsInteger("xs:integer", "Integer"),
         xsDecimal("xs:decimal", "Decimal"),
         xsBoolean("xs:boolean", "Boolean"),
+        xsBooleanToggle("booleanToggle", "false, true, invert"),
         rgbHexValue("rgbHexValue", "RGB Hex Value"),
         dateValue("dateValue", "Date Value YYYY-MM-DD"),
         stimulusTags("stimulusTags", "Stimulus Tags"),

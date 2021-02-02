@@ -5,6 +5,13 @@
 <xs:pattern value="#[\dA-Fa-f]{6}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="booleanToggle">
+<xs:restriction base="xs:string">
+<xs:enumeration value="false"/>
+<xs:enumeration value="true"/>
+<xs:enumeration value="invert"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="rangesValue">
 <xs:restriction base="xs:token">
 <xs:pattern value="[0-9]*((..|,)[0-9]+)*"/>
@@ -5890,12 +5897,12 @@
 <xs:annotation>
 <xs:documentation>When the URL parameter &quot;hardwareTimeStamp&quot; is provided hardware measurable markers will be produced either visually on screen or as an audible tone or both. The visual markers are in the form of two black/white squares at the top of the screen. The audio markers are in the form of tones. These markers are equivalent to &lt;logTimeStamp&gt; and should be used in a similar way.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="opto1" type="xs:boolean">
+<xs:attribute name="opto1" type="booleanToggle">
 <xs:annotation>
 <xs:documentation>Sets the state of the on screen indicator for optical sensor one.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="opto2" type="xs:boolean">
+<xs:attribute name="opto2" type="booleanToggle">
 <xs:annotation>
 <xs:documentation>Sets the state of the on screen indicator for optical sensor two.</xs:documentation>
 </xs:annotation>

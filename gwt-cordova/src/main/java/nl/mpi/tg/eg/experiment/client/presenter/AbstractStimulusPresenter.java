@@ -63,6 +63,7 @@ import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputZone;
 import nl.mpi.tg.eg.experiment.client.listener.TriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
+import nl.mpi.tg.eg.experiment.client.model.BooleanToggle;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -1707,7 +1708,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText(duration.elapsedMillis() + "ms");
     }
 
-    protected void hardwareTimeStamp(Boolean opto1, Boolean opto2, DTMF dtmf) {
+    protected void hardwareTimeStamp(BooleanToggle opto1, BooleanToggle opto2, DTMF dtmf) {
         if (hardwareTimeStamp != null) {
             if (opto1 != null) {
                 hardwareTimeStamp.setOpto1(opto1);

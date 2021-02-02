@@ -42,6 +42,13 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:pattern value=\"#[\\dA-Fa-f]{6}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"booleanToggle\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:enumeration value=\"false\"/>\n");
+        writer.append("<xs:enumeration value=\"true\"/>\n");
+        writer.append("<xs:enumeration value=\"invert\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"rangesValue\">\n");
         writer.append("<xs:restriction base=\"xs:token\">\n");
         writer.append("<xs:pattern value=\"[0-9]*((..|,)[0-9]+)*\"/>\n");
