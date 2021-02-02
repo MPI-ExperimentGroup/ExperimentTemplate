@@ -644,7 +644,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1073,7 +1073,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1354,7 +1354,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1635,7 +1635,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>

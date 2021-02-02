@@ -19460,16 +19460,22 @@ startAudioRecorderWeb
 Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The onError will be triggered if the recorder cannot start. If the upload or playback fails then mediaLoadFailed will be triggered. Upload failure will also result in a subsequent upload attempt. When the recorded audio data has been submitted the mediaLoaded will be triggered even if playback is not enabled by downloadPermittedWindowMs, this allows upload verification before proceeding. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label. The name of the audio input device used for the recording will be stored in the admin system.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderWeb</span></td><td><span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+<span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderWeb</span></td><td><span style="color:green">autoGainControl</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.</span><br/>
+<span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">downloadPermittedWindowMs</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 A time window in milliseconds within which download from the server will be allowed.</span><br/>
+<span style="color:green">echoCancellation</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 Text that will be visible to the user.</span><br/>
 <span style="color:green">levelIndicatorStyle</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
+<span style="color:green">noiseSuppression</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.</span><br/>
 <span style="color:green">recordingFormat</span><span style="color:grey">=&quot;recordingFormatType [wav, ogg] (optional)&quot;</span><span>
 </span><br/>
 <span style="color:purple">&gt;</span></td><td>

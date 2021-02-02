@@ -14429,6 +14429,21 @@
 <xs:documentation>The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="echoCancellation" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="noiseSuppression" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="autoGainControl" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 <xs:complexType name="startAudioRecorderAppType">
 <xs:annotation>

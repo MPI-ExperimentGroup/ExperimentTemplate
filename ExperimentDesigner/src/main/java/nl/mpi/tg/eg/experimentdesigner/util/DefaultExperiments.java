@@ -350,6 +350,9 @@ public class DefaultExperiments {
                             case oneToMany:
                             case applyScore:
                             case showOnBackButton:
+                            case echoCancellation:
+                            case noiseSuppression:
+                            case autoGainControl:
                                 presenterFeature.addFeatureAttributes(attribute, "true");
                                 break;
                             case daysThresholds:
