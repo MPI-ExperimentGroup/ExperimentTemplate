@@ -2223,80 +2223,84 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="progressIndicator" type="metadata" self="progressIndicator_example" title="progressIndicator Example">
-        <plainText featureText="In this example two metadata fields are used to display a percentage in progress indicator."/>
-        <metadataField fieldName="progressIndicator_step"/>
-        <metadataField fieldName="progressIndicator_steps"/>
-        <addPadding/>
+        <plainText featureText="In this example two metadata fields are used to display a percentage in progress indicator." />
+        <metadataField fieldName="progressIndicator_step" />
+        <metadataField fieldName="progressIndicator_steps" />
+        <addPadding />
         <table>
             <row>
                 <column>
                     <actionButton featureText="0%">
-                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="0"/>
-                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100"/>
-                        <gotoPresenter target="progressIndicator_example"/>
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="0" />
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100" />
+                        <gotoPresenter target="progressIndicator_example" />
                     </actionButton>
-                </column><column>
+                </column>
+                <column>
                     <actionButton featureText="25%">
-                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="25"/>
-                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100"/>
-                        <gotoPresenter target="progressIndicator_example"/>
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="25" />
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100" />
+                        <gotoPresenter target="progressIndicator_example" />
                     </actionButton>
-                </column><column>
+                </column>
+                <column>
                     <actionButton featureText="50%">
-                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="25"/>
-                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="50"/>
-                        <gotoPresenter target="progressIndicator_example"/>
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="25" />
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="50" />
+                        <gotoPresenter target="progressIndicator_example" />
                     </actionButton>
-                </column><column>
+                </column>
+                <column>
                     <actionButton featureText="75%">
-                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="75"/>
-                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100"/>
-                        <gotoPresenter target="progressIndicator_example"/>
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="75" />
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="100" />
+                        <gotoPresenter target="progressIndicator_example" />
                     </actionButton>
-                </column><column>
+                </column>
+                <column>
                     <actionButton featureText="100%">
-                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="1000"/>
-                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="1000"/>
-                        <gotoPresenter target="progressIndicator_example"/>
+                        <setMetadataValue fieldName="progressIndicator_step" dataLogFormat="1000" />
+                        <setMetadataValue fieldName="progressIndicator_steps" dataLogFormat="1000" />
+                        <gotoPresenter target="progressIndicator_example" />
                     </actionButton>
                 </column>
             </row>
         </table>
-        <plainText featureText="The progressIndicator takes a string in evaluateTokens and uses metadata fields as numbers to calculate a percentage for the progress value."/>
-        <plainText featureText="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100"/>
-        <addPadding/>
+        <plainText featureText="The progressIndicator takes a string in evaluateTokens and uses metadata fields as numbers to calculate a percentage for the progress value." />
+        <plainText featureText="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" />
+        <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100">
             <onError>
-                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess/>
-        </progressIndicator>      
-        <addPadding/>
+            <onSuccess />
+        </progressIndicator>
+        <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorVertical">
             <onError>
-                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess/>
+            <onSuccess />
         </progressIndicator>
-        <addPadding/>
+        <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorHorizontal">
             <onError>
-                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess/>
-        </progressIndicator>      
-        <addPadding/>
+            <onSuccess />
+        </progressIndicator>
+        <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorRight">
             <onError>
-                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError"/>
+                <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess/>
-        </progressIndicator>      
-        <addPadding/>
+            <onSuccess />
+        </progressIndicator>
+        <addPadding />
         <saveMetadataButton featureText="Update" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
+            <onError />
             <onSuccess>
-                <gotoPresenter target="progressIndicator_example"/>
+                <gotoPresenter target="progressIndicator_example" />
             </onSuccess>
         </saveMetadataButton>
     </presenter>
