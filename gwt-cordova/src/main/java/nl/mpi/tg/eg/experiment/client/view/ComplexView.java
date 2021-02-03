@@ -27,6 +27,8 @@ import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 //import com.google.gwt.event.dom.client.DragStartEvent;
@@ -58,12 +60,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
+import nl.mpi.tg.eg.experiment.client.listener.ButtonGroupMember;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractStimulusPresenter.OrientationType;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
  * @since Jan 8, 2015 5:01:05 PM (creation date)
@@ -432,7 +436,38 @@ public class ComplexView extends SimpleView {
         domHandlerArray.add(Event.addNativePreviewHandler(touchInputCapture));
     }
 
-    private void addHotKeyListner(final PresenterEventListner presenterListener, final SingleShotEventListner singleShotEventListner) {
+    public void addHotKeyListner(final int hotKey, final ButtonGroupMember buttonGroupMember, final TimedStimulusListener onKeyDownListener, final TimedStimulusListener onKeyUpListener) {
+        if (hotKey > 0) {
+            RootPanel root = RootPanel.get();
+            domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
+                @Override
+                public void onKeyDown(KeyDownEvent event) {
+                    if (buttonGroupMember.isEnabled()) {
+                        final int nativeKeyCode = event.getNativeKeyCode();
+                        // we map 190 which is the period key to the numeric period key
+                        if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == hotKey) {
+                            event.stopPropagation();
+                            onKeyDownListener.postLoadTimerFired();
+                        }
+                    }
+                }
+            }, KeyDownEvent.getType()));
+            domHandlerArray.add(root.addDomHandler(new KeyUpHandler() {
+                @Override
+                public void onKeyUp(KeyUpEvent event) {
+                    if (buttonGroupMember.isEnabled()) {
+                        final int nativeKeyCode = event.getNativeKeyCode();
+                        // we map 190 which is the period key to the numeric period key
+                        if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == hotKey) {
+                            event.stopPropagation();
+                            onKeyUpListener.postLoadTimerFired();
+                        }
+                    }
+                }
+            }, KeyUpEvent.getType()));
+        }
+    }
+
         if (presenterListener.getHotKey() > 0) {
             RootPanel root = RootPanel.get();
             domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {

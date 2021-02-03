@@ -34,6 +34,7 @@ import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.ButtonGroupMember;
 import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -69,7 +70,7 @@ public abstract class AbstractPresenter implements Presenter {
     final protected ComplexView simpleView;
     private PresenterEventListner backEventListner = null;
     protected final List<TimedStimulusListener> backEventListners = new ArrayList<>();
-    private final HashMap<String, ArrayList<StimulusButton>> buttonGroupsList = new HashMap<>();
+    private final HashMap<String, ArrayList<ButtonGroupMember>> buttonGroupsList = new HashMap<>();
     private final HashMap<String, ArrayList<StimulusFreeText>> inputGroupsList = new HashMap<>();
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
@@ -202,6 +203,41 @@ public abstract class AbstractPresenter implements Presenter {
         inputGroupsList.clear();
     }
 
+    public void hotKeyInput(final int hotKey, final String buttonGroup, final TimedStimulusListener onKeyDownListener, final TimedStimulusListener onKeyUpListener) {
+        ArrayList<ButtonGroupMember> buttonList = buttonGroupsList.get(buttonGroup);
+        if (buttonList == null) {
+            buttonList = new ArrayList<>();
+            buttonGroupsList.put(buttonGroup, buttonList);
+        }
+        final ButtonGroupMember buttonGroupMember = new ButtonGroupMember() {
+            private boolean enabledState = true;
+
+            @Override
+            public void addStyleName(String styleName) {
+            }
+
+            @Override
+            public void removeStyleName(String styleName) {
+            }
+
+            @Override
+            public void setEnabled(boolean enabled) {
+                enabledState = enabled;
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return enabledState;
+            }
+
+            @Override
+            public void setVisible(boolean visible) {
+            }
+        };
+        buttonList.add(buttonGroupMember);
+        simpleView.addHotKeyListner(hotKey, buttonGroupMember, onKeyDownListener, onKeyUpListener);
+    }
+
     protected void addButtonToGroup(final String buttonGroup, final List<StimulusButton> stimulusButtonList) {
         for (StimulusButton stimulusButton : stimulusButtonList) {
             addButtonToGroup(buttonGroup, stimulusButton);
@@ -209,7 +245,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     protected StimulusButton addButtonToGroup(final String buttonGroup, final StimulusButton stimulusButton) {
-        ArrayList<StimulusButton> buttonList = buttonGroupsList.get(buttonGroup);
+        ArrayList<ButtonGroupMember> buttonList = buttonGroupsList.get(buttonGroup);
         if (buttonList == null) {
             buttonList = new ArrayList<>();
             buttonGroupsList.put(buttonGroup, buttonList);
@@ -231,7 +267,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected void disableButtonGroup(final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
-                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setEnabled(false);
                 }
             }
@@ -249,7 +285,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected void hideButtonGroup(final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
-                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setVisible(false);
                 }
             }
@@ -267,7 +303,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected void showButtonGroup(final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
-                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setVisible(true);
                 }
             }
@@ -285,7 +321,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected void enableButtonGroup(final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
-                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setEnabled(true);
                     currentButton.removeStyleName("optionButtonActivated");
                 }

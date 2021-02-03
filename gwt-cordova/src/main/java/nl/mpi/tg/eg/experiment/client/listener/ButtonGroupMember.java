@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Max Planck Institute for Psycholinguistics, Nijmegen
+ * Copyright (C) 2021 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,19 +17,19 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.user.client.ui.Widget;
-
 /**
- * @since Nov 30, 2017 4:04:58 PM (creation date)
+ * @since 2 Feb 2021 16:06:32 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class StimulusButton implements ButtonGroupMember {
+public interface ButtonGroupMember {
 
-    abstract public Widget getWidget();
+    void addStyleName(String styleName);
 
-    abstract public boolean isChecked();
+    void removeStyleName(String styleName);
 
-    abstract public String getValue();
+    void setEnabled(boolean enabled);
 
-    abstract public void triggerSingleShotEventListner();
+    boolean isEnabled();
+
+    void setVisible(boolean visible);
 }

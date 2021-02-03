@@ -681,7 +681,7 @@ or local-name() eq 'submitGroupEvent'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
+    <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -705,6 +705,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'nextMatchingStimulus'
             and local-name() ne 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp'
+            and local-name() ne 'hotKeyInput'
             and local-name() ne 'hardwareTimeStamp'
            ">
             <xsl:text>currentStimulus</xsl:text>
@@ -732,6 +733,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'sendGroupStoredMessage'
             and local-name() ne 'sendGroupTokenMessage'
             and local-name() ne 'logTimeStamp' 
+            and local-name() ne 'hotKeyInput' 
             and local-name() ne 'hardwareTimeStamp' 
             and local-name() ne 'sendGroupEndOfStimuli'">
             <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
@@ -757,7 +759,8 @@ or local-name() eq 'sendGroupMessageButton'
             local-name() eq 'audioButton'
             or local-name() eq 'sendGroupMessageButton'
             )) then ', -1' else ''" />
-        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ''" />
+        <xsl:value-of select="if(local-name() ne 'hotKeyInput') then if (@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else '' else ''" />
+        <xsl:value-of select="if(local-name() eq 'hotKeyInput') then if (@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1' else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase, ',expectedRespondents') else ''" />
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
@@ -767,6 +770,7 @@ or local-name() eq 'sendGroupMessageButton'
                                 or contains(local-name(), 'Checkbox')
                                 ) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'sendGroupStoredMessage')
+                                or local-name() eq 'hotKeyInput'
                                 ) then if (@groupId) then concat(', &quot;',@groupId, '&quot;') else ', &quot;&quot;' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'sendGroupTokenMessage')
                                 ) then if (@dataLogFormat) then concat(', &quot;',@dataLogFormat, '&quot;') else ', &quot;&quot;' else ''" />
@@ -785,6 +789,8 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:apply-templates select="mediaLoadFailed" />
         <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
+        <xsl:apply-templates select="onKeyDown" />
+        <xsl:apply-templates select="onKeyUp" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -868,7 +874,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupFullError">
+    <xsl:template match="onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupFullError">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:value-of select="concat(' /* ', local-name(), ' */ ')" />

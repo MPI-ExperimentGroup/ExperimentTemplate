@@ -422,6 +422,13 @@ public class DefaultExperiments {
                     presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+            case hasKeyInputsCondition:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onKeyUp, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onKeyDown, presenterFeatureRepository, addOptionalAttributes));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
+                }
+                break;
             case hasCorrectIncorrect:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseCorrect, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseIncorrect, presenterFeatureRepository, addOptionalAttributes));

@@ -30,6 +30,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -140,6 +148,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -239,6 +255,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -1698,6 +1722,14 @@
         </loadSdCardStimulus>
         <clearStimulusResponses tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ"/>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -1931,6 +1963,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2010,6 +2050,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2087,6 +2135,14 @@
         </image>
         <menuItem featureText="menuItem" hotKey="A" styleName="styleName" target="target"/>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2155,6 +2211,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2223,6 +2287,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2281,6 +2353,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <hotKeyInput groupId="groupId" hotKey="A">
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2347,6 +2427,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2457,6 +2545,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -2556,6 +2652,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -3985,6 +4089,14 @@
         </loadSdCardStimulus>
         <clearStimulusResponses tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ"/>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -4218,6 +4330,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -4297,6 +4417,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -4374,6 +4502,14 @@
         </image>
         <menuItem featureText="" target="target"/>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -4442,6 +4578,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -4510,6 +4654,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
@@ -4568,6 +4720,14 @@
             </mediaLoadFailed>
         </image>
         <targetButton featureText="" target="target"/>
+        <hotKeyInput>
+            <onKeyUp>
+                <plainText featureText="plainText in onKeyUp"/>
+            </onKeyUp>
+            <onKeyDown>
+                <plainText featureText="plainText in onKeyDown"/>
+            </onKeyDown>
+        </hotKeyInput>
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
