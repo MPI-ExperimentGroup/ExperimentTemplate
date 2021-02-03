@@ -241,7 +241,7 @@ public class AbstractSchemaGenerator {
                         })
                         .documentedAttribute("storageField", AttributeType.xsString, "If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.", true)
                         .documentedAttribute("consumedTagGroup", AttributeType.xsString, "When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters."/* todo: document how consumedTagGroup is used */, true));
-                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
+                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
             if (!translatableAttribites.isEmpty()) {
                 Collections.sort(translatableAttribites);
