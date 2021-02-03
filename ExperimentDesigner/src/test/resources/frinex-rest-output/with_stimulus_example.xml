@@ -3595,6 +3595,47 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Holding Button Down Example" type="stimulus" self="holding_button_down_example" title="Holding Button Down Example">
+        <htmlText featureText="This example offers a button with a hotkey. If the hotkey is held down, the button will not be retriggerd until the hotkey is released for 1 second."/>
+        <actionButton groupId="blockButtonGroup" featureText="Block [SPACE]" hotKey="SPACE">
+            <cancelPauseAll/>
+            <htmlText featureText="Button blocked."/>
+            <pause msToNext="1000">
+                <disableButtonGroup matchingRegex="blockButtonGroup"/>
+                <enableButtonGroup matchingRegex="exampleButtonGroup"/>
+                <htmlText featureText="Button enabled."/>
+            </pause>
+        </actionButton>
+        <actionButton groupId="exampleButtonGroup" featureText="Stimulus [SPACE]" hotKey="SPACE">
+            <disableButtonGroup matchingRegex="exampleButtonGroup"/>
+            <enableButtonGroup matchingRegex="blockButtonGroup"/>
+            <htmlText featureText="Button triggered."/>
+            <pause msToNext="1000">
+                <htmlText featureText="Button enabled."/>
+                <disableButtonGroup matchingRegex="blockButtonGroup"/>
+                <enableButtonGroup matchingRegex="exampleButtonGroup"/>
+            </pause>
+        </actionButton>                
+        <disableButtonGroup matchingRegex="blockButtonGroup"/>
+        <enableButtonGroup matchingRegex="exampleButtonGroup"/>
+    </presenter>
+    <presenter back="Menu" menuLabel="Hotkey Enable Example" type="stimulus" self="hotkey_enable_example" title="Hotkey Enable Example">
+        <htmlText featureText="This example assigns a button a hotkey and adds a button with the same kotkey. When the hotkey is pressed the button triggers and disables itself. When the hotkey is released the button is enabled again by the hotKeyInput listener."/>
+        <hotKeyInput groupId="blockButtonGroup" hotKey="SPACE">
+            <onKeyUp>
+                <htmlText featureText="hotKeyInput onKeyUp."/>
+                <htmlText featureText="Button enabled."/>
+                <enableButtonGroup matchingRegex="exampleButtonGroup"/>
+            </onKeyUp>
+            <onKeyDown>
+                <htmlText featureText="hotKeyInput onKeyDown."/>
+            </onKeyDown>
+        </hotKeyInput>
+        <actionButton groupId="exampleButtonGroup" featureText="Stimulus [SPACE]" hotKey="SPACE">
+            <disableButtonGroup matchingRegex="exampleButtonGroup"/>
+            <htmlText featureText="Button triggered and disabled."/>
+        </actionButton>                
+    </presenter>
     <presenter back="Menu" menuLabel="Single Line Text Box Example" type="stimulus" self="single_line_text_box_example" title="Single Line Text Box Example">
         <loadStimulus eventTag="single_line_text_box_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
