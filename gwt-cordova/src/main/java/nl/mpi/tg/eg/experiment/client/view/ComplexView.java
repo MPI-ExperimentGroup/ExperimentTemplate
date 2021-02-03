@@ -468,6 +468,7 @@ public class ComplexView extends SimpleView {
         }
     }
 
+    private void addHotKeyListner(final PresenterEventListner presenterListener, final SingleShotEventListner singleShotEventListner) {
         if (presenterListener.getHotKey() > 0) {
             RootPanel root = RootPanel.get();
             domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
