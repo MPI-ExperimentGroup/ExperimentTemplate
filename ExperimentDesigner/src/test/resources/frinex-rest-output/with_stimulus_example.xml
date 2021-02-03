@@ -4038,6 +4038,137 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="RecorderNoiseEchoGainTest" next="Menu" type="stimulus" self="RecorderNoiseEchoGainTest" title="Recorder NoiseSuppression EchoCancellation AutoGainControl Test">
+        <htmlText featureText="This example shows how to use the NoiseSuppression EchoCancellation AutoGainControl controls in the web based audio recorder." />
+        <loadStimulus eventTag="RecorderTimeStampTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel" />
+                <addPadding />
+                <actionButton featureText="record with noiseSuppression on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="true" echoCancellation="false" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <htmlText featureText="startAudioRecorder onSuccess" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <plainText featureText="AudioRecordingLoaded" />
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <actionButton featureText="record with echoCancellation on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="true" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <htmlText featureText="startAudioRecorder onSuccess" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <plainText featureText="AudioRecordingLoaded" />
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <actionButton featureText="record with autoGainControl on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <htmlText featureText="startAudioRecorder onSuccess" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <plainText featureText="AudioRecordingLoaded" />
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="true" echoCancellation="true" autoGainControl="true">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <htmlText featureText="startAudioRecorder onSuccess" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <plainText featureText="AudioRecordingLoaded" />
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl off">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <htmlText featureText="startAudioRecorder onSuccess" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <plainText featureText="AudioRecordingLoaded" />
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <actionButton featureText="logMediaTimeStamp">
+                    <logMediaTimeStamp eventTag="logMediaTimeStamp" mediaId="recordedMedia" />
+                </actionButton>
+                <actionButton featureText="resume recorder">
+                    <playMedia mediaId="recordedMedia" />
+                </actionButton>
+                <actionButton featureText="pauseMedia">
+                    <pauseMedia mediaId="recordedMedia" />
+                </actionButton>
+                <actionButton featureText="stopAudioRecorder">
+                    <stopAudioRecorder />
+                </actionButton>
+                <actionButton featureText="nextStimulus">
+                    <nextStimulus repeatIncorrect="false" />
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder />
+            </endOfStimulus>
+            <randomGrouping />
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Terug" type="text" self="Third_Informatie" title="Third Informatie">
         <htmlText featureText="Instructies Deel 3: &lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Third"/>
