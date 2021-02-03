@@ -1840,42 +1840,73 @@
                 <stimulusLabel styleName="stimuliLabel"/>
                 <htmlTokenText featureText="
                 Please choose one out of &lt;stimulusRatingLabel_0&gt;, &lt;stimulusRatingLabel_1&gt;, &lt;stimulusRatingLabel_2&gt;, &lt;stimulusRatingLabel_3&gt;, &lt;stimulusRatingLabel_4&gt;"/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_0&gt;">
-                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_0&gt;" dataChannel="8" applyScore="true"/>
-                    <nextStimulus repeatIncorrect="false"/>
-                </actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_1&gt;">
-                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_1&gt;" dataChannel="8" applyScore="true"/>
-                    <nextStimulus repeatIncorrect="false"/>
-                </actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_2&gt;">
-                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_2&gt;" dataChannel="8" applyScore="true"/>
-                    <nextStimulus repeatIncorrect="false"/>
-                </actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_3&gt;">
-                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_3&gt;" dataChannel="8" applyScore="true"/>
-                    <nextStimulus repeatIncorrect="false"/>
-                </actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_4&gt;">
-                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_4&gt;" dataChannel="8" applyScore="true"/>
-                    <nextStimulus repeatIncorrect="false"/>
-                </actionTokenButton>
-                <addPadding/>
+                <addPadding />
+                <addPadding />
+                <addPadding />
+                <addPadding />
+                <table>
+                    <row>
+                        <column>
+                            <actionTokenButton featureText="&lt;stimulusRatingLabel_0&gt;">
+                                <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_0&gt;" dataChannel="8" applyScore="true" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="&lt;stimulusRatingLabel_1&gt;">
+                                <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_1&gt;" dataChannel="8" applyScore="true" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="&lt;stimulusRatingLabel_2&gt;">
+                                <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_2&gt;" dataChannel="8" applyScore="true" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="&lt;stimulusRatingLabel_3&gt;">
+                                <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_3&gt;" dataChannel="8" applyScore="true" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="&lt;stimulusRatingLabel_4&gt;">
+                                <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_4&gt;" dataChannel="8" applyScore="true" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionTokenButton>
+                        </column>
+                        <!-- a metadata field can be combined with the rating buttons -->
+                        <hasMetadataValue fieldName="educationOther" matchingRegex=".+">
+                            <conditionFalse />
+                            <conditionTrue>
+                                <column>
+                                    <actionTokenButton featureText="&lt;metadataField_educationOther&gt;">
+                                        <setStimulusCodeResponse codeFormat="User clicked &lt;metadataField_educationOther&gt;" dataChannel="8" applyScore="true" />
+                                        <nextStimulus repeatIncorrect="false" />
+                                    </actionTokenButton>
+                                </column>
+                            </conditionTrue>
+                        </hasMetadataValue>
+                    </row>
+                </table>
+                <addPadding />
+                <actionButton featureText="Set metadata value">
+                    <setMetadataValue fieldName="educationOther" replacementRegex="" dataLogFormat="Cat" />
+                    <gotoPresenter target="Rating_Token_Text_Example" />
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="Clear metadata value">
+                    <setMetadataValue fieldName="educationOther" replacementRegex="" dataLogFormat="" />
+                    <gotoPresenter target="Rating_Token_Text_Example" />
+                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <clearPage/>
-                <addPadding/>
+                <clearPage />
+                <addPadding />
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore/>
-                    <gotoPresenter target="Rating_Token_Text_Example"/>
+                    <clearCurrentScore />
+                    <gotoPresenter target="Rating_Token_Text_Example" />
                 </actionButton>
                 <addPadding/>
                 <actionButton featureText="resetStimulus">
