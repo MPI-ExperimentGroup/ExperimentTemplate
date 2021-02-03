@@ -110,6 +110,8 @@ sticky_menu_example --> clear_stimulus_responses_example
 sticky_menu_example --> clear_stimulus_response_example
 sticky_menu_example --> visible_enable_stimulus_free_text_example
 sticky_menu_example --> rating_button_orientationType_example
+sticky_menu_example --> holding_button_down_example
+sticky_menu_example --> hotkey_enable_example
 sticky_menu_example --> single_line_text_box_example
 sticky_menu_example --> single_line_text_box_no_action_example
 sticky_menu_example --> Second
@@ -117,6 +119,7 @@ sticky_menu_example --> Recorder
 sticky_menu_example --> RecorderPauseTest
 sticky_menu_example --> RecorderNoDownloadTest
 sticky_menu_example --> RecorderTimeStampTest
+sticky_menu_example --> RecorderNoiseEchoGainTest
 sticky_menu_example --> Third_Informatie
 sticky_menu_example --> Third
 sticky_menu_example --> Media_Playback_Demo
@@ -219,6 +222,8 @@ Rating_Token_Text_Example --> Menu : back
 Rating_Token_Text_Example --> Rating_Token_Text_Example
 Rating_Token_Text_Example --> Rating_Token_Text_Example
 Rating_Token_Text_Example --> Rating_Token_Text_Example
+Rating_Token_Text_Example --> Rating_Token_Text_Example
+Rating_Token_Text_Example --> Rating_Token_Text_Example
 state Metadata_Enable_Visible
 Metadata_Enable_Visible --> Menu : back
 Metadata_Enable_Visible --> Metadata_Enable_Visible
@@ -310,6 +315,10 @@ state rating_button_orientationType_example
 rating_button_orientationType_example --> Menu : back
 rating_button_orientationType_example --> rating_button_orientationType_example
 rating_button_orientationType_example --> rating_button_orientationType_example
+state holding_button_down_example
+holding_button_down_example --> Menu : back
+state hotkey_enable_example
+hotkey_enable_example --> Menu : back
 state single_line_text_box_example
 single_line_text_box_example --> Menu : back
 single_line_text_box_example --> single_line_text_box_example
@@ -340,6 +349,9 @@ RecorderNoDownloadTest --> RecorderNoDownloadTest
 state RecorderTimeStampTest
 RecorderTimeStampTest --> Menu : back
 RecorderTimeStampTest --> Menu : next
+state RecorderNoiseEchoGainTest
+RecorderNoiseEchoGainTest --> Menu : back
+RecorderNoiseEchoGainTest --> Menu : next
 state Third_Informatie
 Third_Informatie --> Menu : back
 Third_Informatie --> Third : volgende [ spatiebalk ]
@@ -484,6 +496,8 @@ Menu --> clear_stimulus_responses_example
 Menu --> clear_stimulus_response_example
 Menu --> visible_enable_stimulus_free_text_example
 Menu --> rating_button_orientationType_example
+Menu --> holding_button_down_example
+Menu --> hotkey_enable_example
 Menu --> single_line_text_box_example
 Menu --> single_line_text_box_no_action_example
 Menu --> Second
@@ -491,6 +505,7 @@ Menu --> Recorder
 Menu --> RecorderPauseTest
 Menu --> RecorderNoDownloadTest
 Menu --> RecorderTimeStampTest
+Menu --> RecorderNoiseEchoGainTest
 Menu --> Third_Informatie
 Menu --> Third
 Menu --> Media_Playback_Demo
@@ -597,6 +612,8 @@ allMenuItemsStyle --> clear_stimulus_responses_example
 allMenuItemsStyle --> clear_stimulus_response_example
 allMenuItemsStyle --> visible_enable_stimulus_free_text_example
 allMenuItemsStyle --> rating_button_orientationType_example
+allMenuItemsStyle --> holding_button_down_example
+allMenuItemsStyle --> hotkey_enable_example
 allMenuItemsStyle --> single_line_text_box_example
 allMenuItemsStyle --> single_line_text_box_no_action_example
 allMenuItemsStyle --> Second
@@ -604,6 +621,7 @@ allMenuItemsStyle --> Recorder
 allMenuItemsStyle --> RecorderPauseTest
 allMenuItemsStyle --> RecorderNoDownloadTest
 allMenuItemsStyle --> RecorderTimeStampTest
+allMenuItemsStyle --> RecorderNoiseEchoGainTest
 allMenuItemsStyle --> Third_Informatie
 allMenuItemsStyle --> Third
 allMenuItemsStyle --> Media_Playback_Demo
