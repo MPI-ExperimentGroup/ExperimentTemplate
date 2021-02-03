@@ -237,6 +237,14 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:holding_button_down_example;
+if (navigation) then (back)
+:Menu;
+endif
+:hotkey_enable_example;
+if (navigation) then (back)
+:Menu;
+endif
 :single_line_text_box_example;
 if (navigation) then (back)
 :Menu;
@@ -270,6 +278,12 @@ else (next)
   :Menu;
 endif
 :RecorderTimeStampTest;
+if (navigation) then (back)
+:Menu;
+else (next)
+  :Menu;
+endif
+:RecorderNoiseEchoGainTest;
 if (navigation) then (back)
 :Menu;
 else (next)
