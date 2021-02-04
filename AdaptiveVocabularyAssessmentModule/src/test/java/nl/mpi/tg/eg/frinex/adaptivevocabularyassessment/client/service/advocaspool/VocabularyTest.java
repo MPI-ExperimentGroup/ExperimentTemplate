@@ -48,7 +48,7 @@ public class VocabularyTest {
     private final int wordsPerBand_HUN = 15;
     private final int numberOfBands_HUN = 50;
     private final String wordsResponse_HUN = "Igen&#44; ismerem a szót" ;
-    private final String nonwordsResponse_HUN ="Nem&#44; ismerem a szót";
+    private final String nonwordsResponse_HUN ="Nem ismerem a szót";
 
     public VocabularyTest() {
     }

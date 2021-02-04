@@ -49,7 +49,7 @@ public class AdVocAsStimuliFromStringTest {
     private final int wordsPerBandHUN = 15;
     private final int numberOfBandsHUN = 50;
     private final String answerWordHUN = "Igen&#44; ismerem a szót" ;
-    private final String answerNonWordHUN ="Nem&#44; ismerem a szót";
+    private final String answerNonWordHUN ="Nem ismerem a szót";
     private final int nNonwordsHUN = 125;
     
     public AdVocAsStimuliFromStringTest() {

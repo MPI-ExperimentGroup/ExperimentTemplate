@@ -71,8 +71,8 @@ public class SourcenameIndices {
         RESPONSES_INDEX.put("NonWords_NL_1round", "NEE&#44; ik ken dit woord niet");
         RESPONSES_INDEX.put("Words_NL_1round", "JA&#44; ik ken dit woord");
         
-        RESPONSES_INDEX.put("NonWords_HUN_round_1", "Nem&#44; ismerem a szót");
-        RESPONSES_INDEX.put("NonWords_HUN_round_2", "Nem&#44; ismerem a szót");
+        RESPONSES_INDEX.put("NonWords_HUN_round_1", "Nem ismerem a szót");
+        RESPONSES_INDEX.put("NonWords_HUN_round_2", "Nem ismerem a szót");
         RESPONSES_INDEX.put("Words_HUN_round_1", "Igen&#44; ismerem a szót");
         RESPONSES_INDEX.put("Words_HUN_round_2", "Igen&#44; ismerem a szót");
     }
