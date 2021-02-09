@@ -17,20 +17,30 @@
  */
 package nl.mpi.tg.eg.experimentdesigner;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @since Nov 16, 2015 11:57:18 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Configuration
-@EnableWebSecurity 
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Value("${ldap.userDnPatterns}")
+    private String userDnPatterns;
+    @Value("${ldap.groupSearchBase}")
+    private String groupSearchBase;
+    @Value("${ldap.url}")
+    private String ldapUrl;
+    @Value("${ldap.passwordAttribute}")
+    private String passwordAttribute;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -48,9 +58,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // todo: add a user table
-        auth.inMemoryAuthentication().withUser("user").password("{noop}" + "password").roles("USER");
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .ldapAuthentication()
+                .userDnPatterns(userDnPatterns)
+                .groupSearchBase(groupSearchBase)
+                .contextSource()
+                .url(ldapUrl)
+                .and()
+                .passwordCompare()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .passwordAttribute(passwordAttribute);
     }
 }
