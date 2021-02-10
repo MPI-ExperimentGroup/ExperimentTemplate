@@ -18,11 +18,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 <html>
     <head>
-        <title>Imitation Mobile Frame</title>
+        <title>Testing Robot</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="background: black; color: white;">
+    <body style="background: black; color: white;" onload="readSettings()">
         <script language="javascript" type="text/javascript">
             function rotate() {
                 var frameToRotate = document.getElementById("testingFrame");
@@ -109,13 +109,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         if (buttons[randomIndex] !== 'undefined' && buttons[randomIndex] !== null) {
                             if (document.getElementById('excludeButtons').value.length === 0 || !buttons[randomIndex].firstChild.nodeValue.includes(document.getElementById('excludeButtons').value)) {
                                 if (document.getElementById('includeButtons').value.length === 0 || buttons[randomIndex].firstChild.nodeValue.includes(document.getElementById('includeButtons').value)) {
-                                    console.log("included: " + buttons[randomIndex].firstChild.nodeValue);
-                                    buttons[randomIndex].click();
+                                    if (document.getElementById('regexButtons').value.length === 0 || new RegExp(document.getElementById('regexButtons').value).test(buttons[randomIndex].firstChild.nodeValue)) {
+                                        console.log("included: " + buttons[randomIndex].firstChild.nodeValue);
+                                        buttons[randomIndex].click();
+                                    } else {
+                                        console.log("regexButtons excluded: " + buttons[randomIndex].firstChild.nodeValue);
+                                    }
                                 } else {
-                                    console.log("excluded: " + buttons[randomIndex].firstChild.nodeValue);
+                                    console.log("includeButtons excluded: " + buttons[randomIndex].firstChild.nodeValue);
                                 }
                             } else {
-                                console.log("excluded: " + buttons[randomIndex].firstChild.nodeValue);
+                                console.log("excludeButtons excluded: " + buttons[randomIndex].firstChild.nodeValue);
                             }
                         }
                     }
@@ -124,6 +128,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         findAndClick();
                 }, document.getElementById('robotSpeed').value);
             }
+
+            function readSettings() {
+                const urlSettings = new URLSearchParams(window.location.search);
+                if (urlSettings.has('includeButtons')) {
+                    document.getElementById('includeButtons').value = urlSettings.get('includeButtons');
+                }
+                if (urlSettings.has('excludeButtons')) {
+                    document.getElementById('excludeButtons').value = urlSettings.get('excludeButtons');
+                }
+                if (urlSettings.has('regexButtons')) {
+                    document.getElementById('regexButtons').value = urlSettings.get('regexButtons');
+                }
+                if (urlSettings.has('robotSpeed')) {
+                    document.getElementById('robotSpeed').value = new Number(urlSettings.get('robotSpeed'));
+                }
+                if (urlSettings.has('fullwindow')) {
+                    fullwindow();
+                }
+            }
         </script>
         <div style="color: white;" id="robot_messages"></div>
         <table>
@@ -131,6 +154,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 Robot Speed: <input type="number" id="robotSpeed" value="1000" max="10000" min="100">&nbsp;
                 Exclude Buttons: <input type="text" id="excludeButtons" placeholder="Optional button text...">&nbsp;
                 Include Buttons: <input type="text" id="includeButtons" placeholder="Optional button text...">&nbsp;
+                Regex Buttons: <input type="text" id="regexButtons" placeholder="Optional button text...">&nbsp;
                 Pause Robot: <input type="checkbox" id="pauseRobot" />
             </td></tr>
             <tr><td><button type="button" onclick="fullwindow();">fullwindow</button></td><td rowspan="7"><iframe style="margin-left: auto; margin-right: auto; height:360px; width:640px;" id="testingFrame" src=""></iframe></td></tr>
