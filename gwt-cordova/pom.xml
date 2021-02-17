@@ -364,7 +364,7 @@
                                     </includes>
                                 </resource> 
                                 <resource>
-                                    <directory>/FrinexBuildService/incoming/${experiment.configuration.name}</directory>
+                                    <directory>/FrinexBuildService/incoming/static/${experiment.configuration.name}</directory>
                                     <includes>
                                         <include>**/*.jpg</include>
                                         <include>**/*.png</include>
