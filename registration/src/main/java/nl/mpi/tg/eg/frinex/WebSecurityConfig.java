@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/actuator/health", "/validate", "/mock_validate", "/replayAudio/*/*", "/audioBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css").permitAll()
+                .antMatchers("/actuator/health", "/validate", "/mock_validate", "/replayAudio/*/*", "/audioBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css", "/public_usage_stats").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();

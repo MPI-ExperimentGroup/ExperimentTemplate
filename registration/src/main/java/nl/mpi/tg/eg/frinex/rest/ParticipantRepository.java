@@ -49,7 +49,14 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
     @Query("select distinct userId from Participant")
     List<String> findDistinctUserIdByOrderBySubmitDateDesc();
 
+    @Query("select count(distinct userId) from Participant")
+    long countDistinctUserId();
 //    int countByWorkerId(@Param("workerId") String workerId);
+
+    Participant findTop1ByOrderBySubmitDateAsc();
+
+    Participant findTop1ByOrderBySubmitDateDesc();
+
     @Transactional
     @Modifying
     @Query("update Participant set staleCopy = true where userId = :userId")
