@@ -50,7 +50,8 @@ public class UsageStatsService {
         usageStats.totalDeploymentsAccessed = tagRepository.countDistinctCompileDateByEventTag("compileDate");
         usageStats.firstParticipantSeen = participantRepository.findTop1ByOrderBySubmitDateAsc().getSubmitDate();
         usageStats.lastParticipantSeen = participantRepository.findTop1ByOrderBySubmitDateDesc().getSubmitDate();
-        usageStats.participantsFirstAndLastSeen =  participantRepository.findFirstAndLastAccessDateOfUsers();
+        usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();
+        usageStats.sessionFirstAndLastSeen = tagRepository.findFirstAndLastSessionAccess();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
     }
 }

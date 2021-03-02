@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import org.springframework.data.domain.Page;
@@ -43,8 +44,8 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
 
     List<Participant> findByStaleCopyAndUserId(@Param("staleCopy") boolean staleCopy, @Param("userId") String userId);
 
-    @Query(value = "select to_char(min(submitDate),'YYYY-MM-DD') as firstAccess, to_char(max(submitDate),'YYYY-MM-DD') as lastAccess from Participant group by userId order by firstAccess asc")
-    String[] findFirstAndLastAccessDateOfUsers();
+    @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from Participant group by userId order by firstAccess asc")
+    Date[][] findFirstAndLastUsersAccess();
     
 //    @Query("select distinct new Participant() from Participant order by submitDate desc")
     List<Participant> findAllByOrderBySubmitDateDesc();

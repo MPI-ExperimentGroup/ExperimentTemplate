@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.jpa.repository.Query;
@@ -42,6 +43,9 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
+
+    @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from TagData group by userId order by firstAccess asc")
+    Date[][] findFirstAndLastSessionAccess();
 
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 

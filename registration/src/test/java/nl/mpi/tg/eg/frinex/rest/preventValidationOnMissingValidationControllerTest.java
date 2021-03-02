@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
@@ -217,7 +218,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new ParticipantRepository() {
             @Override
-            public String[] findFirstAndLastAccessDateOfUsers() {
+            public Date[][] findFirstAndLastUsersAccess() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
@@ -331,6 +332,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new TagRepository() {
+            @Override
+            public Date[][] findFirstAndLastSessionAccess() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
             @Override
             public long countDistinctCompileDateByEventTag(String eventTag) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
