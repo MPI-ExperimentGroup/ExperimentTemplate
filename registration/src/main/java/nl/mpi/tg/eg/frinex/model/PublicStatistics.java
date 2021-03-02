@@ -34,5 +34,5 @@ public class PublicStatistics {
     public Date[][] sessionFirstAndLastSeen;
 
     public PublicStatistics() {
-    }
+    } 
 }
