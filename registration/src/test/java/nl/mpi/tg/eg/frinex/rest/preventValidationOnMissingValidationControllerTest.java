@@ -46,6 +46,15 @@ public class preventValidationOnMissingValidationControllerTest {
 
         return new preventValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
+            public ScreenData findTop1ByOrderBySubmitDateAsc() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override
+            public ScreenData findTop1ByOrderBySubmitDateDesc() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
             public List<ScreenData> findAllDistinctRecords() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -207,6 +216,21 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new ParticipantRepository() {
             @Override
+            public Participant findTop1ByOrderBySubmitDateAsc() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public Participant findTop1ByOrderBySubmitDateDesc() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public long countDistinctUserId() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
             public Page<Participant> findByStaleCopy(boolean staleCopy, Pageable pageable) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -301,6 +325,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new TagRepository() {
+            @Override
+            public long countDistinctCompileDateByEventTag(String eventTag) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
             @Override
             public List<TagData> findAllDistinctRecords() {
                 throw new UnsupportedOperationException("Not required for this test class.");
