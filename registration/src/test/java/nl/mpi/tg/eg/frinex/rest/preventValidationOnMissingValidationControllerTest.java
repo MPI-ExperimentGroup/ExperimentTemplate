@@ -49,6 +49,7 @@ public class preventValidationOnMissingValidationControllerTest {
             public ScreenData findTop1ByOrderBySubmitDateAsc() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
+
             @Override
             public ScreenData findTop1ByOrderBySubmitDateDesc() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -215,6 +216,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new ParticipantRepository() {
+            @Override
+            public String[] findFirstAndLastAccessDateOfUsers() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
             @Override
             public Participant findTop1ByOrderBySubmitDateAsc() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

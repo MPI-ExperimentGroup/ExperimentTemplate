@@ -43,6 +43,9 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
 
     List<Participant> findByStaleCopyAndUserId(@Param("staleCopy") boolean staleCopy, @Param("userId") String userId);
 
+    @Query(value = "select to_char(min(submitDate),'YYYY-MM-DD') as firstAccess, to_char(max(submitDate),'YYYY-MM-DD') as lastAccess from Participant group by userId order by firstAccess asc")
+    String[] findFirstAndLastAccessDateOfUsers();
+    
 //    @Query("select distinct new Participant() from Participant order by submitDate desc")
     List<Participant> findAllByOrderBySubmitDateDesc();
 

@@ -30,6 +30,7 @@ public class PublicStatistics {
     public long totalParticipantsSeen;
     public Date firstParticipantSeen;
     public Date lastParticipantSeen;
+    public String[] participantsFirstAndLastSeen;
 
     public PublicStatistics() {
     }
