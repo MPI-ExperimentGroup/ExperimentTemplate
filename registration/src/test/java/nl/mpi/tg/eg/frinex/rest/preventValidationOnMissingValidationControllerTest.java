@@ -338,7 +338,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public long countDistinctCompileDateByEventTag(String eventTag) {
+            public long countDistinctTagValueByEventTag(String eventTag) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 

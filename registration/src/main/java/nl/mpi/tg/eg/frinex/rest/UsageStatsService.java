@@ -47,7 +47,7 @@ public class UsageStatsService {
         final PublicStatistics usageStats = new PublicStatistics();
         usageStats.firstDeploymentAccessed = screenDataRepository.findTop1ByOrderBySubmitDateAsc().getSubmitDate();
         usageStats.totalParticipantsSeen = participantRepository.countDistinctUserId();
-        usageStats.totalDeploymentsAccessed = tagRepository.countDistinctCompileDateByEventTag("compileDate");
+        usageStats.totalDeploymentsAccessed = tagRepository.countDistinctTagValueByEventTag("compileDate");
         usageStats.firstParticipantSeen = participantRepository.findTop1ByOrderBySubmitDateAsc().getSubmitDate();
         usageStats.lastParticipantSeen = participantRepository.findTop1ByOrderBySubmitDateDesc().getSubmitDate();
         usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();

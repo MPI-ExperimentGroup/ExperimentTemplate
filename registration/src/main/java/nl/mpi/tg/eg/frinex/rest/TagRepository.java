@@ -36,7 +36,8 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
     List<TagData> findAllDistinctRecords();
 
-    long countDistinctCompileDateByEventTag(String eventTag);
+    @Query("select count(distinct tagValue) from TagData where eventTag = :eventTag")
+    long countDistinctTagValueByEventTag(String eventTag);
 
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
     List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
