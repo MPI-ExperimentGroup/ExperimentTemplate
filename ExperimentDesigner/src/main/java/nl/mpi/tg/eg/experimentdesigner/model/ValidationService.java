@@ -17,18 +17,33 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @since 13/03/2020 10:59 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class ValidationService {
+@Entity
+public class ValidationService implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String stagingUrl;
     private String productionUrl;
 
     public ValidationService() {
+    }
+
+    @XmlTransient
+    public long getId() {
+        return id;
     }
 
     @XmlAttribute(name = "stagingUrl")
