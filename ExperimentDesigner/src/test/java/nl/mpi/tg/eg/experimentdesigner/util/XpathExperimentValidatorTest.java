@@ -520,6 +520,7 @@ public class XpathExperimentValidatorTest {
         XpathExperimentValidator instance = new XpathExperimentValidator();
         String commonFaultTests[][] = {
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><loadStimulus/></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><table><row><col><loadStimulus/></col></row></table></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><menuItem/></presenter></experiment>", ""},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""}
         };
