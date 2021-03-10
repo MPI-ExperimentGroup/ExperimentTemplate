@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class PublishEvents implements Serializable {
 
     public enum PublishState {
-        editing,
+        validate,
         debug,
         staging,
         production,
