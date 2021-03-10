@@ -60,7 +60,7 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"isDesktop\" : true,\n"
                 + "  \"isiOS\" : true,\n"
                 + "  \"isAndroid\" : true,\n"
-                + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\", \n"
+                + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\",\n"
                 + "  \"registrationUrlProduction\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
                 + "  \"state\" : \"staging\",\n"
                 + "  \"defaultScale\" : 1.0,\n"
@@ -73,10 +73,11 @@ public class ExperimentListingJsonExtractorTest {
             // we deliberately loop on the larger array so that we throw an error if the lengths are different
             assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
             assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
-            assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
+           assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
             //System.out.println(splitExpectedString[index]);
         }
 //        instance.extractListingJson(new File(new File(outputDirectoryUri), "invitation_validation_example"), listingDirectory);
 //        assertEquals("listing_json_example.xml", stringWriter.toString());
+        assertEquals(expResult, stringWriter.toString());
     }
 }

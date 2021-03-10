@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="All Options" appNameInternal="alloptions" backgroundColour="#FFFFFF" complementColour0="#777151" complementColour1="#999891" complementColour2="#85816F" complementColour3="#7B6F34" complementColour4="#8B770E" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#413B52" primaryColour1="#656469" primaryColour2="#514E5C" primaryColour3="#342954" primaryColour4="#271460" rotatable="true" showMenuBar="true" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <deployment expiryDate="2020-03-20" isAndroid="true" isDesktop="true" isWebApp="true" isiOS="true" publishDate="2020-03-02" state="editing"/>
+    <deployment expiryDate="2020-03-20" isAndroid="true" isDesktop="true" isWebApp="true" isiOS="true" publishDate="2020-03-02" state="validate"/>
     <administration/>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" duplicatesControlledMessage="This test can only be done once per worker." postName="workerId" preventServerDuplicates="true" registrationField="Reporter name *"/>
