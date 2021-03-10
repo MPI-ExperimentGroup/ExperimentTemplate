@@ -21,8 +21,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.8.2</gwtVersion>
-        <!-- GWT needs at least java 1.5 -->
+        <gwtVersion>2.9.0</gwtVersion>
+        <!-- GWT 2.9.0 needs at least java 8 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>
@@ -224,131 +224,7 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${webappDirectory}/static</outputDirectory>
-                            <resources>          
-                                <resource>
-                                    <directory>/srv/experiments/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                    <!--                                    <excludes>
-                                        <exclude>**/*.xlsx</exclude>
-                                        <exclude>**/*.docx</exclude>
-                                        <exclude>**/*.mov</exclude>
-                                        <exclude>**/*.wav</exclude>
-                                        <exclude>**/*.avi</exclude>
-                                        <exclude>**/*.mpeg</exclude>
-                                        <exclude>**/*.zip</exclude>
-                                        <exclude>**/*.tar</exclude>
-                                        <exclude>**/*.txt</exclude>
-                                        <exclude>**/*.sh</exclude>
-                                    </excludes>            -->
-                                </resource>
-                                <resource>
-                                    <directory>/srv/ladd/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>/srv/ronald/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>/srv/maarten/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>/srv/bq4/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>/srv/dennis/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>/srv/pol/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>/srv/nbl/${experiment.configuration.name}</directory>
-                                    <includes>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.ogg</include>
-                                        <include>**/*.ogv</include>
-                                        <include>**/*.mp4</include>
-                                        <include>**/*.mp3</include>
-                                        <include>**/*.wav</include>
-                                        <include>**/*.pdf</include>
-                                        <include>**/*.svg</include>
-                                    </includes>
-                                </resource>
+                            <resources>   
                                 <resource>
                                     <directory>src/main/static/${experiment.configuration.name}</directory>
                                     <includes>
@@ -362,7 +238,7 @@
                                         <include>**/*.pdf</include>
                                         <include>**/*.svg</include>
                                     </includes>
-                                </resource> 
+                                </resource>
                                 <resource>
                                     <directory>/FrinexBuildService/incoming/static/${experiment.configuration.name}</directory>
                                     <includes>
@@ -433,8 +309,8 @@
                 <version>1.0.2</version>
                 <executions>
                     <execution>
-                        <!-- changed the phase from generate-sources to validate so that complilaiton errors cause by XML issues can be identified faster -->
-                        <phase>validate</phase>
+                        <!-- reverted the changed of phase from generate-sources to validate so that complilaiton errors cause by XML issues can be identified faster -->
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>transform</goal>
                         </goals>
