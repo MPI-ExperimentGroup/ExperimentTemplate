@@ -510,4 +510,22 @@ public class XpathExperimentValidatorTest {
                 + "Each 'fieldName' attribute must reference a valid metadata field, but 'discLabelOrder' is not specified the postName attribute of any metadata field.\n"
                 + "", instance.validateMetadataFields(xmlFailIdentifierDocument));
     }
+
+    /**
+     * Test of validatePresenterTypes method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testValidatePresenterTypes() throws Exception {
+        System.out.println("validatePresenterTypes");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        String commonFaultTests[][] = {
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><loadStimulus/></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><menuItem/></presenter></experiment>", ""},
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""}
+        };
+        for (String currentFault[] : commonFaultTests) {
+            Document loadStimulusMenuFalutDocument = getDocument(currentFault[0]);
+            assertEquals(currentFault[1], instance.validatePresenterTypes(loadStimulusMenuFalutDocument));
+        }
+    }
 }

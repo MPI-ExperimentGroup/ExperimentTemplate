@@ -237,6 +237,21 @@ public class XpathExperimentValidator {
         }
         return returnMessage;
     }
+
+    protected String validatePresenterTypes(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        String commonFaults[][] = {{"menu", "loadStimulus"}};
+        for (String currentFault[] : commonFaults) {
+            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + currentFault[0] + "'][//" + currentFault[1] + "]/@self").evaluate(xmlDocument, XPathConstants.NODESET);
+            for (int index = 0; index < faultList.getLength(); index++) {
+                final String presenterName = faultList.item(index).getTextContent();
+                returnMessage += "The Presenter " + presenterName + " is of the type " + currentFault[0] + " and cannot be used with " + currentFault[1] + ".";
+            }
+        }
+        return returnMessage;
+    }
+
     // todo: validate that stimulusButton etc at in a load stimulus tag
     // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
     // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
