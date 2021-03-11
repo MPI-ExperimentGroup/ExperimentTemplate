@@ -371,7 +371,7 @@ public class AbstractSchemaGenerator {
                         .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
                         .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
-                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "editing", "debug", "staging", "production", "undeploy"),
+                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "validate", "debug", "staging", "production", "undeploy"),
                 new DocumentationElement("validationService", "Server side validation / registration services.", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record. "
