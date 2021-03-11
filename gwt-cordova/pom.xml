@@ -614,16 +614,17 @@
                     <execution>
                         <goals>
                             <goal>compile</goal>
-                            <goal>test</goal>
-                            <goal>i18n</goal>
-                            <goal>generateAsync</goal>
+                            <!--goal>test</goal-->
+                            <!--goal>i18n</goal-->
+                            <!--goal>generateAsync</goal-->
                         </goals>
                     </execution>
                 </executions>
                 <!-- Plugin configuration. There are many available options, see 
                 gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
-                    <extraJvmArgs>-Xmx1g</extraJvmArgs>
+                    <!--extraJvmArgs>-Xmx1g</extraJvmArgs-->
+                    <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                     <runTarget>ExperimentTemplate.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundles>
