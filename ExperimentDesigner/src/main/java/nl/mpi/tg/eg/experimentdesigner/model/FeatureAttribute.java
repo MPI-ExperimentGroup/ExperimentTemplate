@@ -53,7 +53,7 @@ public enum FeatureAttribute {
     headerKey(true), separator(true), // these attributes are used by the administration system to process the tabular data from custom stimuli modules eg advocas
     percentOfPage,
     maxHeight,
-    maxWidth,
+    maxWidth, 
     align,
     orientation(null, true, new String[]{"horizontal", "vertical", "flow"}),
     target(false), // this is probably not optional in some cases
