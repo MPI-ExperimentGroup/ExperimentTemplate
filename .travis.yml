@@ -32,6 +32,8 @@ script:
   - wget $serverUrl/with_stimulus_example/opus-recorder/recorder.min.js
   - wget $serverUrl/with_stimulus_example/opus-recorder/encoderWorker.min.wasm
   - wget $serverUrl/with_stimulus_example/opus-recorder/encoderWorker.min.js
+  - wget $serverUrl/with_stimulus_example/opus-recorder/decoderWorker.min.wasm
+  - wget $serverUrl/with_stimulus_example/opus-recorder/decoderWorker.min.js
   - ls ../../static/opus-recorder
   - mkdir ../../static/webjars
   - mkdir ../../static/webjars/jquery
