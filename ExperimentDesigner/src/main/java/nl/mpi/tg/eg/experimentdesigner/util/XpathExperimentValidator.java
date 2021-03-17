@@ -57,6 +57,7 @@ public class XpathExperimentValidator {
             result += validateMetadataFieldPostNames(xmlDocument);
             result += validateMetadataFields(xmlDocument);
             result += validateRegexStrings(xmlDocument);
+            result += validatePresenterTypes(xmlDocument);
             if (!result.isEmpty()) {
                 throw new XpathExperimentException(result);
             }
