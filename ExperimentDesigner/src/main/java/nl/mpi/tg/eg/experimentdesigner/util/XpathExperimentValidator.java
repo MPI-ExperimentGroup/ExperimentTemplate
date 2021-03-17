@@ -244,7 +244,7 @@ public class XpathExperimentValidator {
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         String commonFaults[][] = {{"menu", "loadStimulus"}};
         for (String currentFault[] : commonFaults) {
-            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + currentFault[0] + "'][//" + currentFault[1] + "]/@self").evaluate(xmlDocument, XPathConstants.NODESET);
+            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + currentFault[0] + "'][descendant::" + currentFault[1] + "]/@self").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < faultList.getLength(); index++) {
                 final String presenterName = faultList.item(index).getTextContent();
                 returnMessage += "The Presenter " + presenterName + " is of the type " + currentFault[0] + " and cannot be used with " + currentFault[1] + ".";

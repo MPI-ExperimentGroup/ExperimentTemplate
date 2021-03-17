@@ -522,7 +522,8 @@ public class XpathExperimentValidatorTest {
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><loadStimulus/></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><table><row><col><loadStimulus/></col></row></table></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><menuItem/></presenter></experiment>", ""},
-            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""}
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""},
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><menuItem/></presenter><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""}
         };
         for (String currentFault[] : commonFaultTests) {
             Document loadStimulusMenuFalutDocument = getDocument(currentFault[0]);
