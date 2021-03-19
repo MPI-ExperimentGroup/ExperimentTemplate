@@ -312,6 +312,7 @@
 <xs:restriction base="xs:token">
 <xs:enumeration value="validate"/>
 <xs:enumeration value="debug"/>
+<xs:enumeration value="draft"/>
 <xs:enumeration value="staging"/>
 <xs:enumeration value="production"/>
 <xs:enumeration value="undeploy"/>

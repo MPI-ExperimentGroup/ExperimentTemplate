@@ -39,6 +39,7 @@ public class PublishEvents implements Serializable {
     public enum PublishState {
         validate,
         debug,
+        draft,
         staging,
         production,
         undeploy
