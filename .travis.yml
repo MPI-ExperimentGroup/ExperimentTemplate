@@ -30,7 +30,8 @@ script:
   - mkdir ../../static/opus-recorder
   - cd ../../static/opus-recorder
   - wget $serverUrl/with_stimulus_example/opus-recorder/recorder.min.js
-  - wget $serverUrl/with_stimulus_example/opus-recorder/encoderWorker.min.wasm
+  # encoderWorker.min.wasm has not been seens since version 6.2.0 
+  #- wget $serverUrl/with_stimulus_example/opus-recorder/encoderWorker.min.wasm
   - wget $serverUrl/with_stimulus_example/opus-recorder/encoderWorker.min.js
   - wget $serverUrl/with_stimulus_example/opus-recorder/decoderWorker.min.wasm
   - wget $serverUrl/with_stimulus_example/opus-recorder/decoderWorker.min.js
