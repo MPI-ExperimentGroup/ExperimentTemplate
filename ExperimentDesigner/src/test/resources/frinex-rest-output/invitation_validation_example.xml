@@ -264,7 +264,7 @@
         <metadataField fieldName="session_copepod"/>
         <metadataField fieldName="copepod_done"/>
         <htmlText featureText="This example has some additional metadata fields, which do not directly interact with the validation process: &quot;session_copepods&quot;, &quot;session_copepod&quot; and &quot;session_next_copepod&quot;."/>
-        <!--<htmlText featureText="Assuming the list contains session_copepod we act as if the name of this experiment is session_copepod and using setMetadataValue get the next item which is peabodyas."/>-->
+        <!--<htmlText featureText="Assuming the list contains session_copepod we act as if the name of this experiment is session_copepod and using setMetadataValue get the next item which is bdsmas."/>-->
         <htmlText featureText="In some experiments the value in &quot;session_next_copepod&quot; would later be used to redirect the user to that next experiment after the current one is complete."/>
         <setMetadataValue fieldName="session_copepods" dataLogFormat="Copepod_Antrisocopia prehensilis_Karllangia pulchra_Misophrioida_Monstrilloida_Mormonillidae_Platycopiidae_Poecilostomatoida_Siphonostomatoida_Speleophria bivexilla_Speleophria scottodicarloi_Speleophriidae_Tigriopus brevicornis"/>
         <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>

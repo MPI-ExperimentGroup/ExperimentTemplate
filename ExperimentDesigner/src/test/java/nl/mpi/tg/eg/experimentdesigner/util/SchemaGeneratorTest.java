@@ -76,7 +76,6 @@ public class SchemaGeneratorTest {
 //            "heoexp01.xml", "joseco02.xml",
             "onlinepretest.xml", "shortmultiparticipant01.xml",
 //            "engadvocas.xml", 
-//            "ravensas.xml", "peabodyas.xml", "peabodyas.xml",
 //            "lilbq4.xml",
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",

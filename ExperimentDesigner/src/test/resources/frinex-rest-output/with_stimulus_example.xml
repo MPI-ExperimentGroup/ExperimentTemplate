@@ -5221,10 +5221,10 @@
                                             <conditionTrue>
                                                 <hasMetadataValue fieldName="session_id" matchingRegex="[0-6]">
                                                     <conditionTrue>
-                                                        <hasMetadataValue fieldName="session_steps" matchingRegex="audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime">
+                                                        <hasMetadataValue fieldName="session_steps" matchingRegex="audiosimplereactiontime_lilbq4_audioas2_bdsmas_audiononwordmonitoring_grammaras_visualsimplereactiontime">
                                                             <conditionTrue>
-                                                                <htmlText featureText="This example takes the list &quot;session_steps&quot; and extracts the next item after &quot;audioas2&quot; from that list which will be &quot;peabodyas&quot;. That value is then placed into the &quot;session_next_step&quot; metadata field."/>
-                                                                <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
+                                                                <htmlText featureText="This example takes the list &quot;session_steps&quot; and extracts the next item after &quot;audioas2&quot; from that list which will be &quot;bdsmas&quot;. That value is then placed into the &quot;session_next_step&quot; metadata field."/>
+                                                                <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is bdsmas."/>-->
                                                                 <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
                                                                 <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
                                                                 <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
@@ -5259,7 +5259,7 @@
                                                             </conditionTrue>
                                                             <conditionFalse>
                                                                 <htmlText featureText="The session_steps value is incorrect, please provide it exactly as described below and reload this page."/>
-                                                                <htmlText featureText="The get parameter session_steps is a _ separated list and should contain the value &quot;audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime&quot;."/>
+                                                                <htmlText featureText="The get parameter session_steps is a _ separated list and should contain the value &quot;audiosimplereactiontime_lilbq4_audioas2_bdsmas_audiononwordmonitoring_grammaras_visualsimplereactiontime&quot;."/>
                                                             </conditionFalse>
                                                         </hasMetadataValue>
                                                     </conditionTrue>
@@ -5291,7 +5291,7 @@
                 </hasGetParameter>
             </conditionFalse>
         </hasMetadataValue>
-        <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?uuid=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_steps=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
+        <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?uuid=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_steps=audiosimplereactiontime_lilbq4_audioas2_bdsmas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
     </presenter>
     <presenter back="Menu" menuLabel="InvitationCodeExampleStimuliScreen" next="InvitationCodeExampleCompletion" type="stimulus" self="InvitationCodeExampleStimuliScreen" title="InvitationCodeExampleStimuliScreen">
         <startTimer msToNext="150000" listenerId="invitationTimer"/>
