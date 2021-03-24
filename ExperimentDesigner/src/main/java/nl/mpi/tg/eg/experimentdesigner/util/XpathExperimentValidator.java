@@ -173,7 +173,7 @@ public class XpathExperimentValidator {
 //                    System.out.println("targetTag: " + targetTag);
                     if (!tagNames.contains(targetTag)) {
                         returnMessage += "Each '" + testType + "' attribute must reference a valid stimuli tag, but '" + targetTag + "' is not specified any stimuli.\n";
-                        System.out.println(returnMessage);
+                        //System.out.println(returnMessage);
                     }
                 }
             }
@@ -214,7 +214,7 @@ public class XpathExperimentValidator {
                 final String targetName = nodeList2.item(index).getTextContent();
                 if (!fieldNames.contains(targetName)) {
                     returnMessage += "Each '" + testType + "' attribute must reference a valid metadata field, but '" + targetName + "' is not specified the postName attribute of any metadata field.\n";
-                    System.out.println(returnMessage);
+                    //System.out.println(returnMessage);
                 }
             }
         }
@@ -235,7 +235,7 @@ public class XpathExperimentValidator {
                 final String elementName = (parentNode != null) ? parentNode.getLocalName() : "";
                 final String attributeName = nodeList.item(index).getNodeName();
                 returnMessage += "Invalid REGEX \"" + attributeValue + "\" found in attribute " + elementName + " " + attributeName + "\n";
-                System.out.println(returnMessage);
+                //System.out.println(returnMessage);
             }
         }
         return returnMessage;
