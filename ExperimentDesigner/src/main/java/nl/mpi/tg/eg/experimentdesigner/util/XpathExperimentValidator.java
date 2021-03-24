@@ -30,6 +30,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -242,14 +244,23 @@ public class XpathExperimentValidator {
     protected String validatePresenterTypes(Document xmlDocument) throws XPathExpressionException {
         String returnMessage = "";
         XPath validationXPath = XPathFactory.newInstance().newXPath();
-        String commonFaults[][] = {{"menu", "loadStimulus"}};
-        for (String currentFault[] : commonFaults) {
-            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + currentFault[0] + "'][descendant::" + currentFault[1] + "]/@self").evaluate(xmlDocument, XPathConstants.NODESET);
-            for (int index = 0; index < faultList.getLength(); index++) {
-                final String presenterName = faultList.item(index).getTextContent();
-                returnMessage += "The Presenter " + presenterName + " is of the type " + currentFault[0] + " and cannot be used with " + currentFault[1] + ".";
+        for (PresenterType presenterType : PresenterType.values()) {
+            for (FeatureType featureType : presenterType.getExcludedFeatureTypes()) {
+                NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + presenterType.name() + "'][descendant::" + featureType.name() + "]/@self").evaluate(xmlDocument, XPathConstants.NODESET);
+                for (int index = 0; index < faultList.getLength(); index++) {
+                    final String presenterName = faultList.item(index).getTextContent();
+                    returnMessage += "The Presenter " + presenterName + " is of the type " + presenterType.name() + " and cannot be used with " + featureType.name() + ". ";
+                }
             }
         }
+//        String commonFaults[][] = {{"menu", "loadStimulus"}};
+//        for (String currentFault[] : commonFaults) {
+//            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + currentFault[0] + "'][descendant::" + currentFault[1] + "]/@self").evaluate(xmlDocument, XPathConstants.NODESET);
+//            for (int index = 0; index < faultList.getLength(); index++) {
+//                final String presenterName = faultList.item(index).getTextContent();
+//                returnMessage += "The Presenter " + presenterName + " is of the type " + currentFault[0] + " and cannot be used with " + currentFault[1] + ". ";
+//            }
+//        }
         return returnMessage;
     }
 

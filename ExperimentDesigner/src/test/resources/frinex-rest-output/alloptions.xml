@@ -20,6 +20,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission_all_attributes" type="transmission" self="transmission_all_attributesScreen" title="transmission_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -55,6 +56,15 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <createUserButton featureText="createUserButton" groupId="groupId" styleName="styleName" target="target"/>
+        <switchUserIdButton featureText="switchUserIdButton" fieldName="workerId" groupId="groupId" styleName="styleName" validationRegex="validationRegex">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </switchUserIdButton>
         <eraseUsersDataButton featureText="eraseUsersDataButton" groupId="groupId" styleName="styleName" target="target"/>
         <displayCompletionCode/>
         <generateCompletionCode>
@@ -95,8 +105,28 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -138,6 +168,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_all_attributes" type="metadata" self="metadata_all_attributesScreen" title="metadata_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -209,8 +240,52 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="target" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -1950,7 +2025,11 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes"/>
+    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
+        <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
+        <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
+    </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
@@ -2021,6 +2100,7 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
+        <versionData/>
         <showColourReport scoreThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
@@ -2173,6 +2253,34 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
@@ -2277,6 +2385,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_all_attributes" type="text" self="text_all_attributesScreen" title="text_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -2316,6 +2425,42 @@
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
         </backgroundImage>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat" replacementRegex="replacementRegex"/>
+        <matchOnEvalTokens evaluateTokens="evaluateTokens" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <setMetadataEvalTokens evaluateTokens="evaluateTokens" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <table showOnBackButton="true" styleName="styleName">
@@ -2417,6 +2562,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
         <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -2452,6 +2598,15 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <createUserButton featureText="" target="target"/>
+        <switchUserIdButton featureText="" fieldName="workerId" validationRegex="">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </switchUserIdButton>
         <eraseUsersDataButton featureText="" target="target"/>
         <displayCompletionCode/>
         <generateCompletionCode>
@@ -2492,8 +2647,28 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat=""/>
+        <setMetadataEvalTokens evaluateTokens="" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -2535,6 +2710,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_minimal_attributes" type="metadata" self="metadata_minimal_attributesScreen" title="metadata_minimal_attributes">
         <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -2606,8 +2782,52 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat=""/>
+        <matchOnEvalTokens evaluateTokens="" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <progressIndicator evaluateTokens="">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
+        <setMetadataEvalTokens evaluateTokens="" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="" fieldName="workerId" dataLogFormat="">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -4317,7 +4537,11 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes"/>
+    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
+        <htmlTokenText featureText=""/>
+        <actionButton featureText=""/>
+        <helpDialogue featureText="" closeButtonLabel=""/>
+    </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
         <htmlText featureText=""/>
         <plainText featureText=""/>
@@ -4388,6 +4612,7 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
+        <versionData/>
         <showColourReport>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
@@ -4540,6 +4765,34 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat=""/>
+        <matchOnEvalTokens evaluateTokens="" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <setMetadataEvalTokens evaluateTokens="" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
@@ -4644,6 +4897,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_minimal_attributes" type="text" self="text_minimal_attributesScreen" title="text_minimal_attributes">
         <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -4683,6 +4937,42 @@
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
         </backgroundImage>
+        <hasGetParameter parameterName="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat=""/>
+        <matchOnEvalTokens evaluateTokens="" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </matchOnEvalTokens>
+        <setMetadataEvalTokens evaluateTokens="" fieldName="workerId">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <table>

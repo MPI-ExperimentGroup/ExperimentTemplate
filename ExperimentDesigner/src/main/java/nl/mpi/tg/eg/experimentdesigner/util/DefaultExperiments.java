@@ -240,9 +240,11 @@ public class DefaultExperiments {
                         clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
                         presenterScreen.getPresenterFeatureList().add(clearScreenButton);
                     } else {
-                        presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
-                        if (featureType.allowsCustomImplementation()) {
-                            presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes, true));
+                        if (!((presenterType == PresenterType.timeline || presenterType == PresenterType.colourPicker || presenterType == PresenterType.colourReport) && featureType.canHaveStimulusTags())) {
+                            presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
+                            if (featureType.allowsCustomImplementation()) {
+                                presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes, true));
+                            }
                         }
                     }
                 }
@@ -527,7 +529,7 @@ public class DefaultExperiments {
                     presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
             default:
-                System.out.println(featureType.name());
+                //System.out.println(featureType.name());
                 for (FeatureType featureType1 : presenterType.getFeatureTypes()) {
 //                    if (featureType1.getIsChildType() == FeatureType.Contitionals.eachStimulus
 //                            || featureType1.getIsChildType() == FeatureType.Contitionals.hasMoreStimulus) {
@@ -549,7 +551,9 @@ public class DefaultExperiments {
         if (featureType.getRequiresChildType() == FeatureType.Contitionals.any
                 || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction
                 || featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction) {
-            presenterFeature.addFeature(FeatureType.plainText, "plainText in " + featureType.name());
+            if (presenterType != PresenterType.colourPicker) {
+                presenterFeature.addFeature(FeatureType.plainText, "plainText in " + featureType.name());
+            }
 //            presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.plainText, presenterFeatureRepository, ));
             if (presenterFeatureRepository != null) {
                 presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());

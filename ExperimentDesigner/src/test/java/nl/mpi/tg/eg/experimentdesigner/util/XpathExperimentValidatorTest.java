@@ -399,7 +399,7 @@ public class XpathExperimentValidatorTest {
                 + "<startAudioRecorderWeb deviceRegex=\"regex_string\" />\n"
                 + "</presenter>"
                 + "</experiment>";
-        System.out.println(validateRegexString);
+        //System.out.println(validateRegexString);
         Document xmlOkIdentifierDocument = getDocument(validateRegexString.replaceAll("regex_string", ".*"));
         Document xmlFailIdentifierDocument = getDocument(validateRegexString.replaceAll("regex_string", "*"));
         XpathExperimentValidator instance = new XpathExperimentValidator();
@@ -515,8 +515,8 @@ public class XpathExperimentValidatorTest {
         System.out.println("validatePresenterTypes");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         String commonFaultTests[][] = {
-            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><loadStimulus/></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
-            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><table><row><col><loadStimulus/></col></row></table></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus."},
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><loadStimulus/></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus. "},
+            {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><table><row><col><loadStimulus/></col></row></table></presenter></experiment>", "The Presenter loadStimulusMenu is of the type menu and cannot be used with loadStimulus. "},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><menuItem/></presenter></experiment>", ""},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""},
             {"<experiment><presenter self=\"loadStimulusMenu\" type=\"menu\"><menuItem/></presenter><presenter self=\"loadStimulusMenu\" type=\"stimulus\"><loadStimulus/></presenter></experiment>", ""}

@@ -43,8 +43,8 @@ public class XmlJsonTemplate {
     private void appendJsonContents(final Node templateElement, final JSONObject jSONObject, final BufferedWriter bufferedWriter) throws IOException {
         Node currentElement = templateElement;
         while (currentElement != null) {
-            System.out.println(currentElement.getLocalName());
-            System.out.println(currentElement.getNodeName());
+//            System.out.println(currentElement.getLocalName());
+//            System.out.println(currentElement.getNodeName());
             if ("template".equals(currentElement.getNodeName())) {
                 final NamedNodeMap attributes = currentElement.getAttributes();
                 final Node jsonPath = attributes.getNamedItem("jsonPath");

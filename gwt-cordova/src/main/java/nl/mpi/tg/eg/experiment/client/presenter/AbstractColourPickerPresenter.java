@@ -185,6 +185,11 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         setContent(appEventListner);
     }
 
+    public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName) {
+        // addText and htmlTokenText with styleName are not offered by the ColourPicker, but these features are used in the auto generated test builds
+        htmlTokenText(currentStimulus, textString);
+    }
+
     public void htmlTokenText(final Stimulus currentStimulus, String textString) {
         progressLabelFormatString = textString;
         // formatting options are <colourPicker_total> <colourPicker_index> <colourPicker_percent>
