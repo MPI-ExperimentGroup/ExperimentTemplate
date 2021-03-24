@@ -45,6 +45,7 @@ public class XpathExperimentValidator {
 
     public void validateDocument(File xmlFile) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
         try {
+            System.out.println("validateDocument: " + xmlFile.getName());
             FileInputStream fileInputStream = new FileInputStream(xmlFile);
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
