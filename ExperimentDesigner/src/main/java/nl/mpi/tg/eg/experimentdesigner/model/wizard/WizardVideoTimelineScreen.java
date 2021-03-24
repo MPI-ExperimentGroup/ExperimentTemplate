@@ -80,7 +80,7 @@ public class WizardVideoTimelineScreen extends AbstractWizardScreen {
         presenterFeature1.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(loadStimulus);
         final PresenterFeature hasMoreStimulus = loadStimulus.addFeature(FeatureType.hasMoreStimulus, null);
-        hasMoreStimulus.addFeature(FeatureType.clearPage, null);
+//        hasMoreStimulus.addFeature(FeatureType.clearPage, null); // it is not clear when this clear became to be unsupported, perhaps it is not required.
         hasMoreStimulus.getPresenterFeatureList().add(presenterFeature1);
         loadStimulus.addFeature(FeatureType.endOfStimulus, null);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
