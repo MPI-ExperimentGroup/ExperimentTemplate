@@ -21,6 +21,7 @@
     <presenter back="AutoMenu" menuLabel="transmission_all_attributes" type="transmission" self="transmission_all_attributesScreen" title="transmission_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
+        <logTokenText headerKey="headerKey" dataChannel="2" type="type" dataLogFormat="dataLogFormat"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -190,6 +191,9 @@
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionTokenButton"/>
+        </actionTokenButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
@@ -203,6 +207,10 @@
             </svgGroupAction>
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
+        <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
+        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionFooterButton"/>
+        </actionFooterButton>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
@@ -315,6 +323,9 @@
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
+            <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionTokenButton"/>
+            </actionTokenButton>
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
@@ -2032,6 +2043,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -2066,6 +2078,10 @@
             </svgGroupAction>
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
+        <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
+        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionFooterButton"/>
+        </actionFooterButton>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -2076,6 +2092,22 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <progressIndicator evaluateTokens="evaluateTokens" styleName="styleName">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <table showOnBackButton="true" styleName="styleName">
@@ -2563,6 +2595,7 @@
     <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
         <htmlText featureText=""/>
         <htmlTokenText featureText=""/>
+        <logTokenText type="" dataLogFormat=""/>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -2732,6 +2765,9 @@
         <actionButton featureText="">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <actionTokenButton featureText="">
+            <plainText featureText="plainText in actionTokenButton"/>
+        </actionTokenButton>
         <disableButtonGroup matchingRegex=""/>
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
@@ -2745,6 +2781,10 @@
             </svgGroupAction>
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
+        <targetFooterButton featureText="" target="target"/>
+        <actionFooterButton featureText="">
+            <plainText featureText="plainText in actionFooterButton"/>
+        </actionFooterButton>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
@@ -2857,6 +2897,9 @@
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
+            <actionTokenButton featureText="">
+                <plainText featureText="plainText in actionTokenButton"/>
+            </actionTokenButton>
         </showHtmlPopup>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_minimal_attributes" type="preload" self="preload_minimal_attributesScreen" title="preload_minimal_attributes">
@@ -4544,6 +4587,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
         <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -4578,6 +4622,10 @@
             </svgGroupAction>
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
+        <targetFooterButton featureText="" target="target"/>
+        <actionFooterButton featureText="">
+            <plainText featureText="plainText in actionFooterButton"/>
+        </actionFooterButton>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="">
@@ -4588,6 +4636,22 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <progressIndicator evaluateTokens="">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </progressIndicator>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <table>
