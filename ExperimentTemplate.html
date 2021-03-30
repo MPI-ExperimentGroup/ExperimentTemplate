@@ -1,0 +1,81 @@
+<!doctype html>
+<!--
+Copyright (C) 2015 
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+    Author     : Peter Withers <peter.withers@mpi.nl>
+-->
+<!--
+    Frinex Experiment: with_stimulus_example<br/>           
+    ems13<br/>
+    https://frinexstaging.mpi.nl<br/>
+    http://127.0.0.1:9876 http://localhost:8080 http://localhost:9876<br/>
+    https://mpi-experimentgroup.github.io<br/>
+    Version: 1.3-testing-SNAPSHOT<br/>
+-->
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes' name='viewport' />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready; style-src 'self' http://127.0.0.1:9876 http://localhost:8080 http://localhost:9876 'unsafe-inline'; script-src http://127.0.0.1:9876 http://localhost:8080 http://localhost:9876 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://frinexstaging.mpi.nl ws://frinexstaging.mpi.nl https://frinexstaging.mpi.nl/registrationUrl/demo_submit.pl; media-src 'self' http://corpus1.mpi.nl/media-archive/ https://mpi-experimentgroup.github.io blob:;">
+<!--
+                <meta name="format-detection" content="telephone=no">
+                <meta name="msapplication-tap-highlight" content="no">
+                <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
+        <!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+        <link type="text/css" rel="stylesheet" href="css/experiment.css?20210330-0917">
+        <title>ExperimentTemplate</title>
+        <script type="text/javascript">
+            window.skipLocalNotificationReady = true;
+        </script>
+        <script type="text/javascript" language="javascript" src="ExperimentTemplate/ExperimentTemplate.nocache.js?20210330-0917"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script src="webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="opus-recorder/recorder.min.js"></script>
+        <script>
+            function startRecorder(successHandler, errorHandler) {
+                recorder.onstart = successHandler;
+
+                recorder.start().catch(function (e) {
+                    console.log("startRecorder: " + e.message);
+                    errorHandler(e.message);
+                });
+            }
+            function playMedia(mediaElement, successHandler, errorHandler) {
+                var promise = mediaElement.play();
+                if (promise !== undefined) {
+                    promise.then(_ => {
+                        successHandler();
+                    }).catch(e => {
+                        errorHandler();
+                    });
+                }
+            }
+        </script>
+    </head>
+    <body style="background-image: url('static/splash.png'); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100vh;">        
+        <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+        <noscript>
+        <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+            Your web browser must have JavaScript enabled in order for this application to display correctly.
+        </div>
+        </noscript>
+        <h1 id="prerunMessage"></h1> 
+    </body>
+</html>
