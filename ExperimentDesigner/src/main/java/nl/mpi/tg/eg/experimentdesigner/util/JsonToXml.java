@@ -68,18 +68,19 @@ public class JsonToXml {
             } else if (!new File(listingDirectory).exists()) {
                 System.out.println("listingDirectory does not exist");
             } else {
-                try {
-                    final File schemaOutputFile = new File(outputDirectory, "frinex.xsd");
-                    new SchemaGenerator().createSchemaFile(schemaOutputFile);
-                } catch (IOException exception) {
-                    System.out.println("Failed to create schema file: " + exception.getMessage());
-                }
-                try {
-                    final File htmlOutputFile = new File(outputDirectory, "frinex.html");
-                    new SchemaDocumentationGenerator().createHtmlFile(htmlOutputFile);
-                } catch (IOException exception) {
-                    System.out.println("Failed to create documentation file: " + exception.getMessage());
-                }
+                // the schemaOutputFile and htmlOutputFile generation has been moved to a dedicated DocumentationGenerator
+//                try {
+//                    final File schemaOutputFile = new File(outputDirectory, "frinex.xsd");
+//                    new SchemaGenerator().createSchemaFile(schemaOutputFile);
+//                } catch (IOException exception) {
+//                    System.out.println("Failed to create schema file: " + exception.getMessage());
+//                }
+//                try {
+//                    final File htmlOutputFile = new File(outputDirectory, "frinex.html");
+//                    new SchemaDocumentationGenerator().createHtmlFile(htmlOutputFile);
+//                } catch (IOException exception) {
+//                    System.out.println("Failed to create documentation file: " + exception.getMessage());
+//                }
                 final WizardController wizardController = new WizardController();
                 for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json") && !name.endsWith("listing.json"))) {
                     System.out.println("jsonFile: " + jsonFile);
