@@ -23,8 +23,5 @@
         <field controlledMessage="" controlledRegex="" postName="" registrationField=""></field>
     </metadata>
     <presenter self="example" type="text"></presenter>
-    <stimuli>
-        <stimulus identifier="">
-        </stimulus>
-    </stimuli>
+    <stimuli/>
 </experiment>
