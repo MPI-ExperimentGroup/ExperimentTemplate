@@ -47,6 +47,11 @@ import org.xml.sax.SAXException;
  */
 public class JsonToXml {
 
+    public Schema geFrinexSchema() throws SAXException {
+        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+        return schemaFactory.newSchema(getClass().getClassLoader().getResource("/frinex-rest-output/frinex.xsd"));
+    }
+
     /**
      * @param args, input directory path, output directory path
      */
@@ -129,10 +134,8 @@ public class JsonToXml {
                 for (File xmlFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".xml"))) {
                     System.out.println(xmlFile);
                     Source xmlFileStream = new StreamSource(xmlFile);
-                    SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
                     try {
-                        final File schemaFile = new File(outputDirectory, "frinex.xsd");
-                        Schema schema = schemaFactory.newSchema(schemaFile);
+                        Schema schema = new JsonToXml().geFrinexSchema();
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
                         final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
