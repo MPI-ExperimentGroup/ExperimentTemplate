@@ -39,7 +39,7 @@ import org.xml.sax.SAXException;
 public class DocumentationGenerator {
 
     public InputStream getMinimalExampleStream() throws IOException, SAXException, URISyntaxException {
-        return this.getClass().getResourceAsStream("/frinex-rest-output/mimimal_example.xml");
+        return this.getClass().getResourceAsStream("/frinex-rest-output/minimal_example.xml");
     }
 
     public static void main(String[] args) {

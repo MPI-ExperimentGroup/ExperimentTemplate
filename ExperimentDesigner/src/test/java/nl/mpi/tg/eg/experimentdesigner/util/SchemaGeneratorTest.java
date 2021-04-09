@@ -86,7 +86,7 @@ public class SchemaGeneratorTest {
 //            "sentenceplausibility.xml",
             "synquiz2.xml",
             "synquiz.xml",
-            "mimimal_example.xml"
+            "minimal_example.xml"
         };
         for (String fileName : fileNameArray) {
             System.out.println(fileName);
