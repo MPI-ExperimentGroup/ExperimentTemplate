@@ -85,8 +85,8 @@ public class SchemaGeneratorTest {
             "invitation_validation_example.xml",
 //            "sentenceplausibility.xml",
             "synquiz2.xml",
-            "synquiz.xml",
-            "minimal_example.xml"
+            "synquiz.xml"
+            // "minimal_example.xml" // this example is in the main resources not test resources and is validated in the DocumentationGenerator test
         };
         for (String fileName : fileNameArray) {
             System.out.println(fileName);
