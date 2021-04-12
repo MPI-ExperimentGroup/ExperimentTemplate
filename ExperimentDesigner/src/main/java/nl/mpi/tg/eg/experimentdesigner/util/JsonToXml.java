@@ -47,31 +47,30 @@ import org.xml.sax.SAXException;
  */
 public class JsonToXml {
 
-    public Schema geFrinexSchema() throws SAXException {
-        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
-        return schemaFactory.newSchema(getClass().getClassLoader().getResource("/frinex-rest-output/frinex.xsd"));
-    }
-
     /**
      * @param args, input directory path, output directory path
      */
     public static void main(String[] args) {
         System.out.println("JsonToXml");
-        if (args.length < 2) {
+        if (args.length < 3) {
             System.out.println("both inputDirectory and outputDirectory must be specified");
         } else {
             final String inputDirectory = args[0];
             final String outputDirectory = args[1];
             final String listingDirectory = args[2];
+            final String schemaDirectory = args[3];
             System.out.println("inputDirectory: " + inputDirectory);
             System.out.println("outputDirectory: " + outputDirectory);
             System.out.println("listingDirectory: " + listingDirectory);
+            System.out.println("schemaDirectory: " + schemaDirectory);
             if (!new File(inputDirectory).exists()) {
                 System.out.println("inputDirectory does not exist");
             } else if (!new File(outputDirectory).exists()) {
                 System.out.println("outputDirectory does not exist");
             } else if (!new File(listingDirectory).exists()) {
                 System.out.println("listingDirectory does not exist");
+            } else if (!new File(schemaDirectory).exists()) {
+                System.out.println("schemaDirectory does not exist");
             } else {
                 // the schemaOutputFile and htmlOutputFile generation has been moved to a dedicated DocumentationGenerator
 //                try {
@@ -135,7 +134,8 @@ public class JsonToXml {
                     System.out.println(xmlFile);
                     Source xmlFileStream = new StreamSource(xmlFile);
                     try {
-                        Schema schema = new JsonToXml().geFrinexSchema();
+                        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+                        Schema schema = schemaFactory.newSchema(new File(schemaDirectory + "/frinex.xsd"));
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
                         final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
