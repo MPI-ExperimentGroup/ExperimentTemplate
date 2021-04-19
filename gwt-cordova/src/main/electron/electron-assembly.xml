@@ -7,7 +7,7 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <files>
         <file>
-            <source>${project.build.directory}/${project.build.finalName}/ExperimentTemplate.html</source>
+            <source>${project.build.directory}/${project.build.finalName}/index.html</source>
             <outputDirectory>/src/renderer</outputDirectory>
             <destName>index.html</destName>
         </file>
