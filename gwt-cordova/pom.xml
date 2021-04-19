@@ -171,7 +171,7 @@
                 <directory>${basedir}/src/main/html</directory>
                 <targetPath>${webappDirectory}/</targetPath>
                 <includes>
-                    <include>ExperimentTemplate.html</include>        
+                    <include>index.html</include>        
                     <include>version.json</include>
                 </includes>
                 <filtering>true</filtering>
@@ -625,7 +625,7 @@
                 <configuration>
                     <extraJvmArgs>-Xmx1g</extraJvmArgs>
                     <!--<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>-->
-                    <runTarget>ExperimentTemplate.html</runTarget>
+                    <runTarget>index.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundles>
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.Messages</i18nMessagesBundle>
