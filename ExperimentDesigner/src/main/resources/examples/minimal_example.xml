@@ -20,7 +20,7 @@
         showMenuBar="true" 
         textFontSize="17">
     <metadata>
-        <field controlledMessage="" controlledRegex="" postName="" registrationField=""></field>
+        <field controlledMessage="" controlledRegex="" postName="abc" registrationField=""></field>
     </metadata>
     <presenter self="example" type="text"></presenter>
     <stimuli/>

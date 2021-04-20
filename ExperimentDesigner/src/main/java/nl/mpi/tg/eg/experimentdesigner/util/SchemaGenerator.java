@@ -59,6 +59,11 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"postName\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:pattern value=\"[a-zA-Z]([a-zA-Z_0-9]){2,}\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"groupMembers\">\n");
         writer.append("<xs:restriction base=\"xs:string\">\n");
         writer.append("<xs:pattern value=\"[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+\"/>\n");

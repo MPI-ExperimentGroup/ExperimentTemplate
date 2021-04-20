@@ -93,7 +93,7 @@ public class DefaultExperiments {
         experimentRepository.save(new PlaybackPreferenceMeasureExperiment().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
-            eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.validate, true, false, false, false));
+            eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.validate, true, false, false, false, null));
         }
     }
 
@@ -165,7 +165,7 @@ public class DefaultExperiments {
         }
         final Calendar datePublished = new GregorianCalendar(2020, 02, 02);
         final Calendar dateExpired = new GregorianCalendar(2020, 02, 20);
-        experiment.getPublishEvents().add(new PublishEvents(experiment, datePublished.getTime(), dateExpired.getTime(), PublishEvents.PublishState.validate, true, true, true, true));
+        experiment.getPublishEvents().add(new PublishEvents(experiment, datePublished.getTime(), dateExpired.getTime(), PublishEvents.PublishState.validate, true, true, true, true, null));
         addStimuli(experiment);
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));

@@ -22,6 +22,11 @@
 <xs:pattern value="[a-z]([a-z_0-9]){3,}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="postName">
+<xs:restriction base="xs:string">
+<xs:pattern value="[a-zA-Z]([a-zA-Z_0-9]){2,}"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="groupMembers">
 <xs:restriction base="xs:string">
 <xs:pattern value="[A-Za-z_0-9]+(,[A-Za-z_0-9]+)+"/>
@@ -280,6 +285,11 @@
 <xs:documentation>The date after which the experiment can be undeployed.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="productionServer" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which production server the experiment is deployed to.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="isWebApp" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>If true a web version of this experiment will be generated.</xs:documentation>
@@ -457,6 +467,11 @@
 <xs:attribute name="expiryDate" type="dateValue" use="required">
 <xs:annotation>
 <xs:documentation>The date after which the experiment can be undeployed.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="productionServer" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which production server the experiment is deployed to.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isWebApp" type="xs:boolean">
@@ -709,9 +724,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="postName" type="xs:string" use="required">
+<xs:attribute name="postName" type="postName" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>An identifying name for each metadata field, also used in the column names of the admin system.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="registrationField" type="xs:string" use="required">

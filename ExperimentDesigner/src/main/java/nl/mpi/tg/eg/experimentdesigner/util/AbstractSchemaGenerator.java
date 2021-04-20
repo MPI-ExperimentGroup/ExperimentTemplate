@@ -50,7 +50,8 @@ public class AbstractSchemaGenerator {
         groupMembers("groupMembers", "Group Members"),
         groupChannels("groupChannels", "Group Channels"),
         groupPhases("groupPhases", "Group Phases"),
-        lowercaseValue("lowercaseValue", "Lowercase Value");
+        lowercaseValue("lowercaseValue", "Lowercase Value"),
+        postName("postName", "Post Name String");
 //        presenterKind("type", "Presenter Type");
         public final String typeName;
         public final String typeLabel;
@@ -367,6 +368,7 @@ public class AbstractSchemaGenerator {
                         new DocumentationElement[0])
                         .documentedAttribute("publishDate", AttributeType.dateValue, "The date from which the experiment will be deployed.", false)
                         .documentedAttribute("expiryDate", AttributeType.dateValue, "The date after which the experiment can be undeployed.", false)
+                        .documentedAttribute("productionServer", AttributeType.xsString, "When provided determines which production server the experiment is deployed to.", true)
                         .booleanAttribute("isWebApp", true, "If true a web version of this experiment will be generated.")
                         .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
@@ -421,7 +423,7 @@ public class AbstractSchemaGenerator {
                     })
                                     .stringAttribute("controlledMessage", false)
                                     .stringAttribute("controlledRegex", false)
-                                    .stringAttribute("postName", false)
+                                    .documentedAttribute("postName", AttributeType.postName, "An identifying name for each metadata field, also used in the column names of the admin system.", false) // this must not be empty and should have constrained characters
                                     .stringAttribute("registrationField", false)
                                     .stringAttribute("duplicatesControlledMessage", true)
                                     .booleanAttribute("preventServerDuplicates", true, "Boolean")
