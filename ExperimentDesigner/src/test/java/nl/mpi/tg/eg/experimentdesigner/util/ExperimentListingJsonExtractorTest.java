@@ -63,6 +63,7 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\",\n"
                 + "  \"registrationUrlProduction\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
                 + "  \"state\" : \"staging\",\n"
+                + "  \"productionServer\" : \"production\",\n"
                 + "  \"defaultScale\" : 1.0,\n"
                 + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
                 + "  \"experimentDisplayName\" : \"With Stimulus Example\"\n"

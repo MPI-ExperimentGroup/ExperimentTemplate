@@ -29,6 +29,7 @@
         isDesktop="true"
         isiOS="true"
         isAndroid="true"
+        productionServer="production"
         state="staging"
     />
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
