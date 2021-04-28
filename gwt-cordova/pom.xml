@@ -20,6 +20,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
+        <!-- webjars versions which must be used in the dependency and the resource unpacking sections of this pom -->
+        <stompVersion>2.3.4</stompVersion>
+        <jqueryVersion>3.6.0</jqueryVersion>
+        <sockjsVersion>1.5.1</sockjsVersion>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.9.0</gwtVersion>
         <!-- GWT 2.9.0 needs at least java 8 -->
@@ -95,27 +99,27 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator</artifactId>
-            <version>0.38</version>
+            <version>0.40</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>sockjs-client</artifactId>
-            <version>1.1.2</version>
+            <version>${sockjsVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>stomp-websocket</artifactId>
-            <version>2.3.3-1</version>
+            <version>${stompVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>4.4.1</version>
+            <version>4.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>3.4.1</version>
+            <version>${jqueryVersion}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -176,20 +180,6 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
-            <resource>
-                <!--the webjars for recorderjs are all very out of date, so we reply on a checked out copy of https://github.com/chris-rudmin/opus-recorder.git-->
-                <directory>${basedir}/../../opus-recorder/dist</directory>
-                <targetPath>${webappDirectory}/opus-recorder/</targetPath>
-                <includes>
-                    <include>decoderWorker.min.js</include>        
-                    <include>decoderWorker.min.wasm</include>        
-                    <include>encoderWorker.min.js</include>        
-                    <include>encoderWorker.min.wasm</include>
-                    <include>recorder.min.js</include>        
-                    <include>waveWorker.min.js</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -199,12 +189,13 @@
                 <executions>
                     <execution>
                         <id>copy-webjars-for-electron-cordova</id>
-                        <phase>prepare-package</phase>
+                        <phase>validate</phase>
                         <goals>
                             <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
-                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js,META-INF/resources/**/recorder.min.js</includes>
+                            <!-- the recorder jars are now taken directly from the git repository rather than via webjars ,META-INF/resources/**/recorder.min.js -->
+                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js</includes>
                             <outputDirectory>${project.build.directory}/webjars</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
@@ -298,6 +289,56 @@
                                         <include>${experiment.configuration.name}.json</include>        
                                     </includes>
                                 </resource>
+                            </resources>              
+                        </configuration>                  
+                    </execution>    
+                    <execution>
+                        <id>copy-static-webjars</id>
+                        <phase>initialize</phase> <!-- this needs to be done after the webjars unpack event in validate -->
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${webappDirectory}/</outputDirectory>
+                            <resources>          
+                                <resource>
+                                    <!--the webjars for recorderjs are all very out of date, so we rely on a checked out copy of https://github.com/chris-rudmin/opus-recorder.git-->
+                                    <directory>${basedir}/../../opus-recorder/dist</directory>
+                                    <targetPath>${webappDirectory}/opus-recorder/</targetPath>
+                                    <includes>
+                                        <include>decoderWorker.min.js</include>        
+                                        <include>decoderWorker.min.wasm</include>        
+                                        <include>encoderWorker.min.js</include>        
+                                        <include>encoderWorker.min.wasm</include>
+                                        <include>recorder.min.js</include>        
+                                        <include>waveWorker.min.js</include>
+                                    </includes>
+                                    <filtering>false</filtering>
+                                </resource>
+                                <resource>
+                                    <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
+                                    <directory>${project.build.directory}/webjars/META-INF/resources/webjars/jquery/${jqueryVersion}</directory>
+                                    <targetPath>${webappDirectory}/webjars/</targetPath>
+                                    <includes>
+                                        <include>jquery.min.js</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
+                                    <directory>${project.build.directory}/webjars/META-INF/resources/webjars/sockjs-client/${sockjsVersion}</directory>
+                                    <targetPath>${webappDirectory}/webjars/</targetPath>
+                                    <includes>
+                                        <include>sockjs.min.js</include>
+                                    </includes>
+                                </resource> 
+                                <resource>
+                                    <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
+                                    <directory>${project.build.directory}/webjars/META-INF/resources/webjars/stomp-websocket/${stompVersion}</directory>
+                                    <targetPath>${webappDirectory}/webjars/</targetPath>
+                                    <includes>
+                                        <include>stomp.min.js</include>
+                                    </includes>
+                                </resource> 
                             </resources>              
                         </configuration>                  
                     </execution>    
