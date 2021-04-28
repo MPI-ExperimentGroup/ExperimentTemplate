@@ -66,20 +66,25 @@
                 <include>/scss/**</include>
                 <include>/static/**</include>
                 <include>/opus-recorder/**</include>
+                <include>/jquery/**</include>
+                <include>/sockjs-client/**</include>
+                <include>/stomp-websocket/**</include>
+                <include>/bootstrap/**</include>
                 <include>/${experiment.configuration.name}.xml</include>
             </includes>  
             <outputDirectory>www</outputDirectory>
             <filtered>false</filtered>
         </fileSet>
+        <!-- this webjars copy is not required anymore since it is done in the pom and the directory has changed
         <fileSet>
             <directory>${project.build.directory}/webjars/META-INF/resources/webjars</directory>
             <includes>
-                <!-- this will include one directory that must be removed by the setup sh script-->
+                < ! - - this will include one directory that must be removed by the setup sh script - - >
                 <include>**/*.*</include>
             </includes>  
             <outputDirectory>www/webjars</outputDirectory>
             <filtered>false</filtered>
-        </fileSet>
+        </fileSet>-->
         <!--        <fileSet>
             <directory>${basedir}/src/main/static/${experiment.configuration.name}</directory>
             <excludes>

@@ -35,9 +35,10 @@ pwd
 
 #cp -r /init-setup-project/node_modules /target/$appname-electron/
 
-mv /target/$appname-electron/src/renderer/webjars/jquery/*/*.* /target/$appname-electron/src/renderer/webjars/jquery/
-mv /target/$appname-electron/src/renderer/webjars/stomp-websocket/*/*.* /target/$appname-electron/src/renderer/webjars/stomp-websocket/
-mv /target/$appname-electron/src/renderer/webjars/sockjs-client/*/*.* /target/$appname-electron/src/renderer/webjars/sockjs-client/
+# this webjars copy is not required anymore since it is done in the pom and the directory has changed
+#mv /target/$appname-electron/src/renderer/webjars/jquery/*/*.* /target/$appname-electron/src/renderer/webjars/jquery/
+#mv /target/$appname-electron/src/renderer/webjars/stomp-websocket/*/*.* /target/$appname-electron/src/renderer/webjars/stomp-websocket/
+#mv /target/$appname-electron/src/renderer/webjars/sockjs-client/*/*.* /target/$appname-electron/src/renderer/webjars/sockjs-client/
 
 #asar pack /target/$appname-electron/ ../$appname.asar
 

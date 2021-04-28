@@ -24,6 +24,7 @@
         <stompVersion>2.3.4</stompVersion>
         <jqueryVersion>3.6.0</jqueryVersion>
         <sockjsVersion>1.5.1</sockjsVersion>
+        <bootstrapVersion>4.6.0</bootstrapVersion>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.9.0</gwtVersion>
         <!-- GWT 2.9.0 needs at least java 8 -->
@@ -114,7 +115,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>4.6.0</version>
+            <version>${bootstrapVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -195,7 +196,7 @@
                         </goals>
                         <configuration>
                             <!-- the recorder jars are now taken directly from the git repository rather than via webjars ,META-INF/resources/**/recorder.min.js -->
-                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js</includes>
+                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js,META-INF/resources/webjars/bootstrap/**/css/bootstrap.min.css</includes>
                             <outputDirectory>${project.build.directory}/webjars</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
@@ -318,7 +319,7 @@
                                 <resource>
                                     <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
                                     <directory>${project.build.directory}/webjars/META-INF/resources/webjars/jquery/${jqueryVersion}</directory>
-                                    <targetPath>${webappDirectory}/webjars/</targetPath>
+                                    <targetPath>${webappDirectory}/jquery/</targetPath>
                                     <includes>
                                         <include>jquery.min.js</include>
                                     </includes>
@@ -326,7 +327,7 @@
                                 <resource>
                                     <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
                                     <directory>${project.build.directory}/webjars/META-INF/resources/webjars/sockjs-client/${sockjsVersion}</directory>
-                                    <targetPath>${webappDirectory}/webjars/</targetPath>
+                                    <targetPath>${webappDirectory}/sockjs-client/</targetPath>
                                     <includes>
                                         <include>sockjs.min.js</include>
                                     </includes>
@@ -334,9 +335,17 @@
                                 <resource>
                                     <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
                                     <directory>${project.build.directory}/webjars/META-INF/resources/webjars/stomp-websocket/${stompVersion}</directory>
-                                    <targetPath>${webappDirectory}/webjars/</targetPath>
+                                    <targetPath>${webappDirectory}/stomp-websocket/</targetPath>
                                     <includes>
                                         <include>stomp.min.js</include>
+                                    </includes>
+                                </resource> 
+                                <resource>
+                                    <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
+                                    <directory>${project.build.directory}/webjars/META-INF/resources/webjars/bootstrap/${bootstrapVersion}</directory>
+                                    <targetPath>${webappDirectory}/bootstrap/</targetPath>
+                                    <includes>
+                                        <include>css/bootstrap.min.css</include>
                                     </includes>
                                 </resource> 
                             </resources>              

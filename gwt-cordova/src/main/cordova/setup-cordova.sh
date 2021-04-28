@@ -16,9 +16,10 @@ rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
 
-mv www/webjars/jquery/*/*.* www/webjars/jquery/
-mv www/webjars/stomp-websocket/*/*.* www/webjars/stomp-websocket/
-mv www/webjars/sockjs-client/*/*.* www/webjars/sockjs-client/
+# this webjars copy is not required anymore since it is done in the pom and the directory has changed
+#mv www/webjars/jquery/*/*.* www/webjars/jquery/
+#mv www/webjars/stomp-websocket/*/*.* www/webjars/stomp-websocket/
+#mv www/webjars/sockjs-client/*/*.* www/webjars/sockjs-client/
 
 #bash ../generate-icons.sh
 
