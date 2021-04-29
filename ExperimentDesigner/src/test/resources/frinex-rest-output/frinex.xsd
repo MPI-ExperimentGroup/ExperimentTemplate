@@ -290,6 +290,11 @@
 <xs:documentation>When provided determines which production server the experiment is deployed to.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="frinexVersion" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="isWebApp" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>If true a web version of this experiment will be generated.</xs:documentation>
@@ -472,6 +477,11 @@
 <xs:attribute name="productionServer" type="xs:string">
 <xs:annotation>
 <xs:documentation>When provided determines which production server the experiment is deployed to.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="frinexVersion" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isWebApp" type="xs:boolean">

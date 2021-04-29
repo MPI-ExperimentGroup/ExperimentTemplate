@@ -59,6 +59,7 @@ public class PublishEvents implements Serializable {
     private boolean isiOS;
     private boolean isAndroid;
     private String productionServer;
+    private String frinexVersion;
     @ManyToOne
     private Experiment experiment;
 //    private String buildName;
@@ -66,7 +67,7 @@ public class PublishEvents implements Serializable {
     public PublishEvents() {
     }
 
-    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop, String productionServer) {
+    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop, String productionServer, String frinexVersion) {
         this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
@@ -75,7 +76,7 @@ public class PublishEvents implements Serializable {
         this.isAndroid = isAndroid;
         this.isDesktop = isDesktop;
         this.experiment = experiment;
-        this.productionServer = productionServer;
+        this.frinexVersion = frinexVersion;
 //        this.buildName = experiment.getAppNameInternal();
     }
 //
@@ -129,6 +130,11 @@ public class PublishEvents implements Serializable {
         return productionServer;
     }
 
+    @XmlAttribute
+    public String getFrinexVersion() {
+        return frinexVersion;
+    }
+
 //    public float getDefaultScale() {
 //        return experiment.getDefaultScale();
 //    }
@@ -173,5 +179,9 @@ public class PublishEvents implements Serializable {
     
     public void setProductionServer(String productionServer) {
         this.productionServer = productionServer;
+    }
+
+    public void setFrinexVersion(String frinexVersion) {
+        this.frinexVersion = frinexVersion;
     }
 }

@@ -369,6 +369,7 @@ public class AbstractSchemaGenerator {
                         .documentedAttribute("publishDate", AttributeType.dateValue, "The date from which the experiment will be deployed.", false)
                         .documentedAttribute("expiryDate", AttributeType.dateValue, "The date after which the experiment can be undeployed.", false)
                         .documentedAttribute("productionServer", AttributeType.xsString, "When provided determines which production server the experiment is deployed to.", true)
+                        .documentedAttribute("frinexVersion", AttributeType.xsString, "When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).", true)
                         .booleanAttribute("isWebApp", true, "If true a web version of this experiment will be generated.")
                         .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
