@@ -165,7 +165,7 @@ public class DefaultExperiments {
         }
         final Calendar datePublished = new GregorianCalendar(2020, 02, 02);
         final Calendar dateExpired = new GregorianCalendar(2020, 02, 20);
-        experiment.getPublishEvents().add(new PublishEvents(experiment, datePublished.getTime(), dateExpired.getTime(), PublishEvents.PublishState.validate, true, true, true, true, null));
+        experiment.getPublishEvents().add(new PublishEvents(experiment, datePublished.getTime(), dateExpired.getTime(), PublishEvents.PublishState.validate, true, true, true, true, null, null));
         addStimuli(experiment);
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
