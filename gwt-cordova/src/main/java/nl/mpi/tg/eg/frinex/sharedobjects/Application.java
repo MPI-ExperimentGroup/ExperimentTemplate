@@ -1,11 +1,9 @@
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
 
 /*
@@ -29,21 +27,17 @@ import org.springframework.web.context.WebApplicationContext;
  * @since Nov 9, 2016 1:44:47 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
+@SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(applicationClass, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(applicationClass);
+        return application.sources(Application.class);
     }
-
-    private static Class<Application> applicationClass = Application.class;
 
     @Override
     protected WebApplicationContext run(SpringApplication application) {
