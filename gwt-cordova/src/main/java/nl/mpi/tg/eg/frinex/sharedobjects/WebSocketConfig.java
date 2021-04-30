@@ -30,7 +30,6 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
  */
 @Configuration
 @EnableWebSocketMessageBroker
-@EnableWebSocket
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer /* implements WebSocketConfigurer */ {
 
     @Override
