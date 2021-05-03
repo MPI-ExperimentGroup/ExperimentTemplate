@@ -58,11 +58,11 @@ public class UmlGeneratorTest {
         if (actualSvgResult.contains("Dot Executable: ")) {
             System.out.println("graphviz not found, ignoring test");
         } else {
-            actualSvgResult = actualSvgResult.replaceAll("\\\"[ -.%#:;\\(\\)0-9a-zA-Z]*\\\"", "\"blank\"");
-            expectedSvgResult = expectedSvgResult.replaceAll("\\\"[ -.%#:;\\(\\)0-9a-zA-Z]*\\\"", "\"blank\"");
-            actualSvgResult = actualSvgResult.replaceAll("><", ">\n<");
-            expectedSvgResult = expectedSvgResult.replaceAll("><", ">\n<");
-            System.out.println("expectedSvgResult: " + expectedSvgResult);
+            //actualSvgResult = actualSvgResult.replaceAll("\\\"[ -.%#:;\\(\\)0-9a-zA-Z]*\\\"", "\"blank\"");
+            //expectedSvgResult = expectedSvgResult.replaceAll("\\\"[ -.%#:;\\(\\)0-9a-zA-Z]*\\\"", "\"blank\"");
+            //actualSvgResult = actualSvgResult.replaceAll("><", ">\n<");
+            //expectedSvgResult = expectedSvgResult.replaceAll("><", ">\n<");
+            //System.out.println("expectedSvgResult: " + expectedSvgResult);
             // it is not necessary to check the SVG output on regular builds since the UML file should catch most issues
             //assertEquals("with_stimulus_example.svg", expectedSvgResult, actualSvgResult);
         }
