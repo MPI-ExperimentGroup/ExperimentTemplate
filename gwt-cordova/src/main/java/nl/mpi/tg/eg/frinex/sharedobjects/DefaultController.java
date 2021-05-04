@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.experiment.controller;
+package nl.mpi.tg.eg.frinex.sharedobjects;
 
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
