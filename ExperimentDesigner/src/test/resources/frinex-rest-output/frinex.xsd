@@ -420,12 +420,12 @@
 </xs:attribute>
 <xs:attribute name="preserveLastState" type="xs:boolean" use="required">
 <xs:annotation>
-<xs:documentation>Boolean</xs:documentation>
+<xs:documentation>When true the use of browser navigation buttons will be restricted.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="splashPresenter" type="xs:string">
+<xs:attribute name="splashPresenter" type="presenterName">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>When provided the named presenter will be used as the intitial presenter on page reloads.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="userIdGetParam" type="xs:string">
