@@ -425,7 +425,7 @@
 </xs:attribute>
 <xs:attribute name="splashPresenter" type="presenterName">
 <xs:annotation>
-<xs:documentation>When provided the named presenter will be used as the intitial presenter on page reloads.</xs:documentation>
+<xs:documentation>When provided the named presenter will be used as the initial presenter on page reloads.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="userIdGetParam" type="xs:string">

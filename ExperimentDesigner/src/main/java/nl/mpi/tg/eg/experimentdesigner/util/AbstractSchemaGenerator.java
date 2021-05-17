@@ -472,7 +472,7 @@ public class AbstractSchemaGenerator {
             .colourRGBAttribute("primaryColour4", false)
             .booleanAttribute("isScalable", false, "Boolean")
             .booleanAttribute("preserveLastState", false, "When true the use of browser navigation buttons will be restricted.")
-            .documentedAttribute("splashPresenter", AttributeType.presenterName, "When provided the named presenter will be used as the intitial presenter on page reloads.", true)
+            .documentedAttribute("splashPresenter", AttributeType.presenterName, "When provided the named presenter will be used as the initial presenter on page reloads.", true)
             .stringAttribute("userIdGetParam", true)
             .booleanAttribute("rotatable", false, "Boolean")
             .booleanAttribute("showMenuBar", false, "Boolean")
