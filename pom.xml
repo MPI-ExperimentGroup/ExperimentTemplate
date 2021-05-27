@@ -131,6 +131,7 @@
         <!--<experiment.configuration.name>sentenceplausibility</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>
+        <experiment.configuration.db.host>localhost:5432</experiment.configuration.db.host>
         
         <!--<experiment.configuration.name>kinoath</experiment.configuration.name>-->
         <!--        <experiment.configuration.admin.password></experiment.configuration.admin.password>
