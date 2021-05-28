@@ -119,6 +119,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
         if (Window.Location.getParameter("version") != null) {
             localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.version);
         }
+        addWindowOnBlurEvents();
 //        detectWindowDefocus(widgetTag);
     }
 
@@ -144,8 +145,26 @@ public abstract class AppController implements AppEventListner/*, AudioException
         });
     }
 
+    private native void addWindowOnBlurEvents() /*-{
+        //console.log('adding focus listners');
+        var appController = this;
+        $wnd.addEventListener('blur', function() {
+            //console.log('blur');
+            appController.@nl.mpi.tg.eg.experiment.client.AppController::submitWindowBlurEvent(Ljava/lang/String;)("WindowFocusLost");
+        });
+        $wnd.addEventListener('focus', function() {
+            //console.log('focus');
+            appController.@nl.mpi.tg.eg.experiment.client.AppController::submitWindowBlurEvent(Ljava/lang/String;)("WindowFocusGained");
+        });
+    }-*/;
+
+    private void submitWindowBlurEvent(String eventString) {
+        submissionService.submitScreenChange(userResults.getUserData().getUserId(), eventString);
+    }
+
 //    private void detectWindowDefocus(RootLayoutPanel widgetTag) {
 //        // this will most likely not work on a non input tag, however we are interested in stats on cases where it does
+//        // this method would be usable if the widgetTag is given a tabindex="-1" but $wnd.addEventListener in addWindowOnBlurEvents does the job
 //        widgetTag.addHandler(new BlurHandler() {
 //
 //            @Override
