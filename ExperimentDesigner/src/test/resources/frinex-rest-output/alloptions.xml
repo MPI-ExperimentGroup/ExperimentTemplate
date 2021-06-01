@@ -474,6 +474,9 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
+        <addMediaTrigger msToNext="60" mediaId="mediaId">
+            <plainText featureText="plainText in addMediaTrigger"/>
+        </addMediaTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -1956,6 +1959,9 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
+        <addMediaTrigger msToNext="60" mediaId="mediaId">
+            <plainText featureText="plainText in addMediaTrigger"/>
+        </addMediaTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -3048,6 +3054,9 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
+        <addMediaTrigger msToNext="60" mediaId="">
+            <plainText featureText="plainText in addMediaTrigger"/>
+        </addMediaTrigger>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -4500,6 +4509,9 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
+        <addMediaTrigger msToNext="60" mediaId="">
+            <plainText featureText="plainText in addMediaTrigger"/>
+        </addMediaTrigger>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>

@@ -371,7 +371,9 @@ public class AbstractSchemaGenerator {
                         .documentedAttribute("productionServer", AttributeType.xsString, "When provided determines which production server the experiment is deployed to.", true)
                         .documentedAttribute("frinexVersion", AttributeType.xsString, "When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).", true)
                         .booleanAttribute("isWebApp", true, "If true a web version of this experiment will be generated.")
-                        .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated.")
+                        .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated. "
+                                + "To debug the desktop app you can run pass the --debug-mode switch from the terminal. This is only available in the non production versions. "
+                                + "On osX this can be done with &quot;open with_stimulus_example.app --args --debug-mode&quot; and on Windows &quot;with_stimulus_example.exe --debug-mode&quot;.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
                         .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
                         .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "validate", "debug", "draft", "staging", "production", "undeploy"),
