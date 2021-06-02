@@ -3856,6 +3856,78 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="RecorderMediaTrigger" next="Menu" type="stimulus" self="RecorderMediaTrigger" title="RecorderMediaTrigger">
+        <actionButton featureText="stopAudioRecorder">
+            <stopAudioRecorder />
+        </actionButton>
+        <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder">
+                    <disableButtonGroup matchingRegex="startAudioButtonGroup" />
+                    <addMediaTrigger msToNext="50" mediaId="mediaId">
+                        <plainText featureText="MediaTrigger 50ms" />
+                        <startAudioRecorderTag eventTier="3" />
+                        <endAudioRecorderTag eventTag="MediaTrigger 50ms" eventTier="3" />
+                    </addMediaTrigger>
+                    <addMediaTrigger msToNext="150" mediaId="mediaId">
+                        <plainText featureText="MediaTrigger 150ms" />
+                        <startAudioRecorderTag eventTier="4" />
+                        <endAudioRecorderTag eventTag="MediaTrigger 150ms" eventTier="4" />
+                    </addMediaTrigger>
+                    <addMediaTrigger msToNext="600" mediaId="mediaId">
+                        <plainText featureText="MediaTrigger 600ms" />
+                        <startAudioRecorderTag eventTier="5" />
+                        <endAudioRecorderTag eventTag="MediaTrigger 600ms" eventTier="5" />
+                    </addMediaTrigger>
+                    <addMediaTrigger msToNext="6000" mediaId="mediaId">
+                        <plainText featureText="MediaTrigger 6000ms" />
+                        <startAudioRecorderTag eventTier="5" />
+                        <endAudioRecorderTag eventTag="MediaTrigger 6000ms" eventTier="5" />
+                    </addMediaTrigger>
+                    <addMediaTrigger msToNext="12000" mediaId="mediaId">
+                        <plainText featureText="MediaTrigger 12000ms" />
+                        <startAudioRecorderTag eventTier="5" />
+                        <endAudioRecorderTag eventTag="MediaTrigger 12000ms" eventTier="5" />
+                    </addMediaTrigger>
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                        <onError>
+                                <htmlText featureText="startAudioRecorder onError" />
+                                <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                        </onError>
+                        <onSuccess>
+                                <htmlText featureText="startAudioRecorder onSuccess"/>
+                                <startTimer msToNext="0" listenerId="timerA"/>
+                                <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                        </onSuccess>
+                        <mediaLoaded>
+                                <plainText featureText="AudioRecordingLoaded"/>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                                <plainText featureText="AudioRecordingLoadFailed"/>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted/>
+                        <mediaPlaybackComplete>
+                                <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus" hotKey="SPACE">
+                    <resetStimulus target="RecorderMediaTrigger"/>
+                    <gotoPresenter target="RecorderMediaTrigger"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping storageField="item">
+                <tag>second</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>Second</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="RecorderPauseTest" next="Menu" type="stimulus" self="RecorderPauseTest" title="RecorderPauseTest">
         <htmlText featureText="This example starts and stops the web recorder based on the stimulus pause value."/>
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">

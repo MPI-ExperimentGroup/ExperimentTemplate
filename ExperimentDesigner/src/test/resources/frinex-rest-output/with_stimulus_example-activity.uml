@@ -265,6 +265,12 @@ if (navigation) then (back)
 else (next)
   :Menu;
 endif
+:RecorderMediaTrigger;
+if (navigation) then (back)
+:Menu;
+else (next)
+  :Menu;
+endif
 :RecorderPauseTest;
 if (navigation) then (back)
 :Menu;

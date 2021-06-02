@@ -116,6 +116,7 @@ sticky_menu_example --> single_line_text_box_example
 sticky_menu_example --> single_line_text_box_no_action_example
 sticky_menu_example --> Second
 sticky_menu_example --> Recorder
+sticky_menu_example --> RecorderMediaTrigger
 sticky_menu_example --> RecorderPauseTest
 sticky_menu_example --> RecorderNoDownloadTest
 sticky_menu_example --> RecorderTimeStampTest
@@ -336,6 +337,11 @@ Second --> Second
 state Recorder
 Recorder --> Menu : back
 Recorder --> Menu : next
+state RecorderMediaTrigger
+RecorderMediaTrigger --> Menu : back
+RecorderMediaTrigger --> Menu : next
+RecorderMediaTrigger --> RecorderMediaTrigger
+RecorderMediaTrigger --> RecorderMediaTrigger
 state RecorderPauseTest
 RecorderPauseTest --> Menu : back
 RecorderPauseTest --> Menu : next
@@ -502,6 +508,7 @@ Menu --> single_line_text_box_example
 Menu --> single_line_text_box_no_action_example
 Menu --> Second
 Menu --> Recorder
+Menu --> RecorderMediaTrigger
 Menu --> RecorderPauseTest
 Menu --> RecorderNoDownloadTest
 Menu --> RecorderTimeStampTest
@@ -618,6 +625,7 @@ allMenuItemsStyle --> single_line_text_box_example
 allMenuItemsStyle --> single_line_text_box_no_action_example
 allMenuItemsStyle --> Second
 allMenuItemsStyle --> Recorder
+allMenuItemsStyle --> RecorderMediaTrigger
 allMenuItemsStyle --> RecorderPauseTest
 allMenuItemsStyle --> RecorderNoDownloadTest
 allMenuItemsStyle --> RecorderTimeStampTest
