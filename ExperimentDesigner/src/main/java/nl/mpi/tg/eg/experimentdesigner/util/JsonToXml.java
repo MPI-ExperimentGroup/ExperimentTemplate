@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -134,11 +135,17 @@ public class JsonToXml {
                     System.out.println(xmlFile);
                     Source xmlFileStream = new StreamSource(xmlFile);
                     try {
+                        final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
+                        // look for a frinex version element otherwise use the default schema file
+                        final String frinexSchemaName = experimentValidator.extractFrinexVersion(new FileReader(xmlFile), "/frinex");
                         SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
-                        Schema schema = schemaFactory.newSchema(new File(schemaDirectory + "/frinex.xsd"));
+                        final File schemaFile = new File(schemaDirectory + "/" + frinexSchemaName + ".xsd");
+                        if (!schemaFile.exists()) {
+                            throw new IOException("The requested frinexVersion does not have a schema file available: " + frinexSchemaName);
+                        }
+                        Schema schema = schemaFactory.newSchema(schemaFile);
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
-                        final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
                         experimentValidator.validateDocument(xmlFile);
                         final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
                         experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory));

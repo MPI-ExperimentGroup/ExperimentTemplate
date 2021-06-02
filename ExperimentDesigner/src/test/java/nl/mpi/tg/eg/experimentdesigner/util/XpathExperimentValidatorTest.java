@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import javax.xml.parsers.DocumentBuilder;
@@ -45,6 +46,20 @@ public class XpathExperimentValidatorTest {
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
         ByteArrayInputStream inputStream = new ByteArrayInputStream(stringXml.getBytes("UTF-8"));
         return builder.parse(inputStream);
+    }
+
+    /**
+     * Test of extractFrinexVersion method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testExtractFrinexVersion() throws Exception {
+        System.out.println("extractFrinexVersion");
+        String defaultSchemaName = "testdefault";
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("found", instance.extractFrinexVersion(new StringReader("<experiment><deployment frinexVersion=\"found\"/></experiment>"), defaultSchemaName));
+        assertEquals(defaultSchemaName, instance.extractFrinexVersion(new StringReader("<experiment><deployment frinexVersion=\"\"/></experiment>"), defaultSchemaName));
+        assertEquals(defaultSchemaName, instance.extractFrinexVersion(new StringReader("<experiment><deployment/></experiment>"), defaultSchemaName));
+        assertEquals(defaultSchemaName, instance.extractFrinexVersion(new StringReader("<experiment></experiment>"), defaultSchemaName));
     }
 
     /**

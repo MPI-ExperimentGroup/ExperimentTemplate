@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -36,6 +37,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
@@ -43,6 +45,16 @@ import org.xml.sax.SAXException;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class XpathExperimentValidator {
+
+    public String extractFrinexVersion(Reader xmlFileSource, String defaultSchemaName) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        String frinexVersion = (String) validationXPath.compile("/experiment/deployment/@frinexVersion").evaluate(new InputSource(xmlFileSource), XPathConstants.STRING);
+        if (frinexVersion != null && !frinexVersion.isEmpty()) {
+            return frinexVersion;
+        } else {
+            return defaultSchemaName;
+        }
+    }
 
     public void validateDocument(File xmlFile) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
         try {
