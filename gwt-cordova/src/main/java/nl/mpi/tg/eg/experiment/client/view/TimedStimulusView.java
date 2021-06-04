@@ -926,8 +926,11 @@ public class TimedStimulusView extends ComplexView {
         stopMedia(webRecorderMediaId);
         videoList.remove(webRecorderMediaId);
         audioList.remove(webRecorderMediaId);
-        mediaTriggerListenerList.get(webRecorderMediaId).clearTriggers();
-        mediaTriggerListenerList.remove(webRecorderMediaId);
+        final MediaTriggerListener existingTriggers = mediaTriggerListenerList.get(webRecorderMediaId);
+        if (existingTriggers != null) {
+            existingTriggers.clearTriggers();
+            mediaTriggerListenerList.remove(webRecorderMediaId);
+        }
     }
 
     public void stopTimers() {
