@@ -80,7 +80,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected ApplicationState nextState;
     protected final UserResults userResults;
     protected final LocalStorage localStorage;
-    protected final TimerService timerService;
+    protected final TimerService timerService; // todo: this maybe needs to be avaiable in all presenter types
     protected GroupParticipantService groupParticipantService = null;
     private final ArrayList<ValueChangeListener<Double>> audioLevelIndicators = new ArrayList<>();
     private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
@@ -605,25 +605,25 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void addRecorderTriggersWeb(long triggerMs, SingleStimulusListener singleStimulusListener) {
         if (recorderMediaTriggerListener.addMediaTriggerListener(triggerMs, singleStimulusListener)) {
-            startRecorderTriggersWeb();
+            startRecorderTriggersWeb(recorderMediaTriggerListener);
         }
     }
 
-    protected native void startRecorderTriggersWeb()/*-{
-        var recorderTriggerListener = this.recorderMediaTriggerListener;      
+    protected native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // console.log("startRecorderTriggersWeb");
         function updateRecorderTriggers() {
             if ($wnd.recorder) {
-                var hasMoreListeners = recorderTriggerListener.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Long;)($wnd.recorder.encodedSamplePosition / 48);
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)($wnd.recorder.encodedSamplePosition / 48);
                 if(hasMoreListeners === true) {
                     requestAnimationFrame(updateRecorderTriggers);
-                }
+                } // else console.log("end RecorderTriggersWeb");
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
-                requestAnimationFrame(updateRecorderTriggers());
+                requestAnimationFrame(updateRecorderTriggers);
             }
         }
-        requestAnimationFrame(updateRecorderTriggers());
+        requestAnimationFrame(updateRecorderTriggers);
     }-*/;
 
     protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
@@ -635,50 +635,49 @@ public abstract class AbstractPresenter implements Presenter {
                     $wnd.recorder.stop();
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
-            } else {
-//            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
-                console.log("enumerateDevices: ");
-                var firstDeviceId = -1;
-                var firstDeviceLabel = -1;
-                var targetDeviceId = -1;
-                var targetDeviceLabel = -1;
-                navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
-                    // it is likely that the first item in the list is the default input, so we stop on the first matching device
-                    for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
-                        var deviceInfo = deviceInfos[index];
-    //                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
-                        console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
-                        if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
-                            firstDeviceId = deviceInfo.deviceId;
-                            firstDeviceLabel = deviceInfo.label;
-                        }
-                        if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
-                            console.log(deviceInfo.kind);            
-                            console.log(deviceInfo.label);                    
-                            console.log(deviceInfo.deviceId);  
-                            targetDeviceId = deviceInfo.deviceId;
-                            targetDeviceLabel = deviceInfo.label;
-                        }
-                    }
-                    //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
-                    if(targetDeviceId === -1) {
-                        console.log("Device not found, defaulting to first device seen.");
-                        targetDeviceId = firstDeviceId;
-                        targetDeviceLabel = firstDeviceLabel;
-                    }
-                    if(targetDeviceId === -1) {
-                        console.log("Device not found: " + deviceRegex);
-                        mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
-                    } else {
-                        if (recordingFormat === 'wav') {
-                            $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
-                        } else {
-                            $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
-                        }
-                    }
-                });
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    $wnd.recorder.close();
+                    $wnd.recorder = null;
             }
-            if ($wnd.recorder) {
+//            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+            console.log("enumerateDevices: ");
+            var firstDeviceId = -1;
+            var firstDeviceLabel = -1;
+            var targetDeviceId = -1;
+            var targetDeviceLabel = -1;
+            navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+                // it is likely that the first item in the list is the default input, so we stop on the first matching device
+                for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
+                    var deviceInfo = deviceInfos[index];
+//                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
+                    console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
+                    if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
+                        firstDeviceId = deviceInfo.deviceId;
+                        firstDeviceLabel = deviceInfo.label;
+                    }
+                    if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                        console.log(deviceInfo.kind);            
+                        console.log(deviceInfo.label);                    
+                        console.log(deviceInfo.deviceId);  
+                        targetDeviceId = deviceInfo.deviceId;
+                        targetDeviceLabel = deviceInfo.label;
+                    }
+                }
+                //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+                if(targetDeviceId === -1) {
+                    console.log("Device not found, defaulting to first device seen.");
+                    targetDeviceId = firstDeviceId;
+                    targetDeviceLabel = firstDeviceLabel;
+                }
+                if(targetDeviceId === -1) {
+                    console.log("Device not found: " + deviceRegex);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
+                } else {
+                    if (recordingFormat === 'wav') {
+                        $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                    } else {
+                        $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                    }
                     $wnd.recorder.ondataavailable = function( typedArray ){
                         console.log("ondataavailable: " + typedArray.length);
                         dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
@@ -692,7 +691,8 @@ public abstract class AbstractPresenter implements Presenter {
                         mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(e.message);
                         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
                     };
-            }
+                }
+            });
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
             mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(null);

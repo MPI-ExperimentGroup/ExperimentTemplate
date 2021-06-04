@@ -36,7 +36,7 @@ public class MediaTriggerListener {
         return isFirst;
     }
 
-    public boolean triggerWhenReady(Long currentTime) {
+    public boolean triggerWhenReady(Double currentTime) {
         while (currentTime >= currentKey) {
             listenerMap.remove(currentKey).postLoadTimerFired(null);
             if (listenerMap.isEmpty()) {
