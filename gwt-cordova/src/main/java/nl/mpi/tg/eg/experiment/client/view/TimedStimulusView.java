@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.MediaElement;
@@ -51,8 +52,10 @@ import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
+import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -75,6 +78,7 @@ public class TimedStimulusView extends ComplexView {
     private StimulusGrid stimulusGrid = null;
     private String webRecorderMediaId = null;
     private final Map<String, Video> videoList = new HashMap<>();
+    private final Map<String, MediaTriggerListener> mediaTriggerListenerList = new HashMap<>();
     private final List<CancelableStimulusListener> cancelableListnerList = new ArrayList<>();
 
     public TimedStimulusView() {
@@ -128,6 +132,10 @@ public class TimedStimulusView extends ComplexView {
         super.clearPageAndTimers(styleName);
         videoList.clear();
         audioList.clear();
+        for (MediaTriggerListener mediaTriggerListener : mediaTriggerListenerList.values()) {
+            mediaTriggerListener.clearTriggers();
+        }
+        mediaTriggerListenerList.clear();
         webRecorderMediaId = null;
     }
 
@@ -603,6 +611,8 @@ public class TimedStimulusView extends ComplexView {
                 }
             }, oggPath, mp3Path, wavPath, autoPlay, mediaId);
             audioList.put(mediaId, audioPlayer);
+            mediaTriggerListenerList.get(mediaId).clearTriggers();
+            mediaTriggerListenerList.remove(mediaId);
             //        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
             final Label playbackIndicator = new Label();
             final Timer playbackIndicatorTimer = new Timer() {
@@ -663,6 +673,8 @@ public class TimedStimulusView extends ComplexView {
         } else {
             video.setAutoplay(autoPlay);
             videoList.put(mediaId, video);
+            mediaTriggerListenerList.get(mediaId).clearTriggers();
+            mediaTriggerListenerList.remove(mediaId);
 //            video.setPoster(poster);
             video.setControls(showControls);
             video.setPreload(MediaElement.PRELOAD_AUTO);
@@ -841,6 +853,42 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
+    public void addMediaTriggers(long triggerMs, final String mediaId, SingleStimulusListener singleStimulusListener) {
+        final MediaTriggerListener mediaTriggerListener;
+        if (mediaTriggerListenerList.containsKey(mediaId)) {
+            mediaTriggerListener = mediaTriggerListenerList.get(mediaId);
+        } else {
+            mediaTriggerListener = new MediaTriggerListener();
+            mediaTriggerListenerList.put(mediaId, mediaTriggerListener);
+        }
+        if (mediaTriggerListener.addMediaTriggerListener(triggerMs, singleStimulusListener)) {
+            final Video video = videoList.get(mediaId);
+            if (video != null) {
+                AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+                    @Override
+                    public void execute(double arg0) {
+                        boolean hasMoreListeners = mediaTriggerListener.triggerWhenReady(video.getCurrentTime() * 1000);
+                        if (hasMoreListeners) {
+                            AnimationScheduler.get().requestAnimationFrame(this);
+                        }
+                    }
+                });
+            }
+            final AudioPlayer audioPlayer = audioList.get(mediaId);
+            if (audioPlayer != null) {
+                AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+                    @Override
+                    public void execute(double arg0) {
+                        boolean hasMoreListeners = mediaTriggerListener.triggerWhenReady(audioPlayer.getCurrentTime() * 1000);
+                        if (hasMoreListeners) {
+                            AnimationScheduler.get().requestAnimationFrame(this);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
     public void logMediaTimeStamp(final String mediaId, final String eventTag, final TimedEventMonitor timedEventMonitor) {
         for (String key : videoList.keySet()) {
             if (key.matches(mediaId)) {
@@ -872,12 +920,14 @@ public class TimedStimulusView extends ComplexView {
             return this.webRecorderMediaId.equals(webRecorderMediaId);
         }
     }
-    
+
     public void setWebRecorderMediaId(String webRecorderMediaId) {
         this.webRecorderMediaId = webRecorderMediaId;
         stopMedia(webRecorderMediaId);
         videoList.remove(webRecorderMediaId);
         audioList.remove(webRecorderMediaId);
+        mediaTriggerListenerList.get(webRecorderMediaId).clearTriggers();
+        mediaTriggerListenerList.remove(webRecorderMediaId);
     }
 
     public void stopTimers() {

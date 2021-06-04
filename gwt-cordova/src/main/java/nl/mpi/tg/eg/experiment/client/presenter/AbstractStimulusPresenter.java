@@ -2025,10 +2025,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void addMediaTrigger(final Stimulus currentStimulus, final String mediaId, final int msToNext, final SingleStimulusListener triggerListener) {
-        // todo: add playback media to the potential targets for formattedMediaId
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
             addRecorderTriggersWeb(msToNext, triggerListener);
+        } else {
+            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, triggerListener);
         }
     }
 
