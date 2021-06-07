@@ -2024,12 +2024,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
     }
 
-    public void addMediaTrigger(final Stimulus currentStimulus, final String mediaId, final int msToNext, final SingleStimulusListener triggerListener) {
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
+    public void addMediaTrigger(final Stimulus definitionScopeStimulus, final String mediaId, final int msToNext, final SingleStimulusListener triggerListener) {
+        final String formattedMediaId = new HtmlTokenFormatter(definitionScopeStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
+        final SingleStimulusListener stimulusListener = new SingleStimulusListener() {
+            @Override
+            public void postLoadTimerFired(final Stimulus triggerScopeStimulus) {
+                // the web recorder does not have stimulus in scope so we rely on the definition scope stimulus
+                triggerListener.postLoadTimerFired(definitionScopeStimulus);
+            }
+        };
         if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
-            addRecorderTriggersWeb(msToNext, triggerListener);
+            addRecorderTriggersWeb(msToNext, stimulusListener);
         } else {
-            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, triggerListener);
+            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, stimulusListener);
         }
     }
 
