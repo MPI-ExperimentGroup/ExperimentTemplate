@@ -611,8 +611,11 @@ public class TimedStimulusView extends ComplexView {
                 }
             }, oggPath, mp3Path, wavPath, autoPlay, mediaId);
             audioList.put(mediaId, audioPlayer);
-            mediaTriggerListenerList.get(mediaId).clearTriggers();
-            mediaTriggerListenerList.remove(mediaId);
+            final MediaTriggerListener existingTriggers = mediaTriggerListenerList.get(mediaId);
+            if (existingTriggers != null) {
+                existingTriggers.clearTriggers();
+                mediaTriggerListenerList.remove(mediaId);
+            }
             //        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
             final Label playbackIndicator = new Label();
             final Timer playbackIndicatorTimer = new Timer() {
@@ -673,8 +676,11 @@ public class TimedStimulusView extends ComplexView {
         } else {
             video.setAutoplay(autoPlay);
             videoList.put(mediaId, video);
-            mediaTriggerListenerList.get(mediaId).clearTriggers();
-            mediaTriggerListenerList.remove(mediaId);
+            final MediaTriggerListener existingTriggers = mediaTriggerListenerList.get(mediaId);
+            if (existingTriggers != null) {
+                existingTriggers.clearTriggers();
+                mediaTriggerListenerList.remove(mediaId);
+            }
 //            video.setPoster(poster);
             video.setControls(showControls);
             video.setPreload(MediaElement.PRELOAD_AUTO);
