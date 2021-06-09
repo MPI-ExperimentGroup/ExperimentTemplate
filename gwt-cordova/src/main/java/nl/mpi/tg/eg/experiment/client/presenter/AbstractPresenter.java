@@ -613,7 +613,8 @@ public abstract class AbstractPresenter implements Presenter {
         // console.log("startRecorderTriggersWeb");
         function updateRecorderTriggers() {
             if ($wnd.recorder) {
-                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)($wnd.recorder.encodedSamplePosition / 48);
+                // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)($wnd.recorder.audioContext.currentTime * 1000);
                 if(hasMoreListeners === true) {
                     requestAnimationFrame(updateRecorderTriggers);
                 } // else console.log("end RecorderTriggersWeb");
@@ -758,8 +759,14 @@ public abstract class AbstractPresenter implements Presenter {
             });
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             if ($wnd.recorder.state === 'recording') {
-                if ($wnd.recordingLabelString == '00:00:00') {
-                    var recordingMilliSeconds = Math.floor($wnd.recorder.encodedSamplePosition / 48);
+                if ($wnd.recordingLabelString == 'ms') {
+                    // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                    var recordingMilliSeconds = Math.floor($wnd.recorder.audioContext.currentTime * 1000);
+                    var recordingMsString = (recordingMilliSeconds) + 'ms';
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingMsString);
+                } else if ($wnd.recordingLabelString == '00:00:00') {
+                    // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                    var recordingMilliSeconds = Math.floor($wnd.recorder.audioContext.currentTime * 1000);
                     var recordingTimeDate = new Date(recordingMilliSeconds);
                     var recordingTimeString = recordingTimeDate.toISOString().substr(11, 8);
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingTimeString);
@@ -822,7 +829,8 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 // note that this assumes the bit rate of 48000 which is expected with this encoder
-                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.encodedSamplePosition / 48);
+                // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.audioContext.currentTime * 1000);
             }
         }
      }-*/;
@@ -840,7 +848,8 @@ public abstract class AbstractPresenter implements Presenter {
             }, tier);
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             // note that this assumes the bit rate of 48000 which is expected with this encoder
-            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)("startAudioRecorderTag", $wnd.recorder.encodedSamplePosition / 48);
+            // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)("startAudioRecorderTag", $wnd.recorder.audioContext.currentTime * 1000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
@@ -859,7 +868,8 @@ public abstract class AbstractPresenter implements Presenter {
             }, tier, stimulusId, stimulusCode, eventTag);
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             // note that this assumes the bit rate of 48000 which is expected with this encoder
-            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.encodedSamplePosition / 48);
+            // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.audioContext.currentTime * 1000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
