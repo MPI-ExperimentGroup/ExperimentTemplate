@@ -1776,9 +1776,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+        super.clearRecorderTriggersWeb();
+        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, levelIndicatorStyle, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 2);
+    }
+
+    private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
         // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
-        super.clearRecorderTriggersWeb();
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
         final ValueChangeListener<Double> changeListener;
@@ -1790,29 +1794,44 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
+            boolean recordingAborted = false;
+
             @Override
-            public void recorderStarted(final String targetDeviceId) {
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", targetDeviceId);
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorderDeviceId", targetDeviceId, duration.elapsedMillis());
-                if (changeListener != null) {
-                    AbstractStimulusPresenter.super.addRecorderLevelIndicatorWeb(changeListener);
+            public void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS) {
+                if (audioContextCurrentMS > 100) {
+                    recordingAborted = true;
+                    submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorder", "rejecting due to audioContextCurrentMS out of spec" + audioContextCurrentMS, duration.elapsedMillis());
+                    stopAudioRecorder();
+                    if (retryCount > 0) {
+                        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, levelIndicatorStyle, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
+                    } else {
+                        onError.postLoadTimerFired();
+                    }
+                } else {
+                    localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", targetDeviceId);
+                    submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorderDeviceId", targetDeviceId, duration.elapsedMillis());
+                    if (changeListener != null) {
+                        AbstractStimulusPresenter.super.addRecorderLevelIndicatorWeb(changeListener);
+                    }
+                    onSuccess.postLoadTimerFired();
                 }
-                onSuccess.postLoadTimerFired();
             }
 
             @Override
             public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
-                // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
+                if (!recordingAborted) {
+                    // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
 //                timedStimulusView.addText("(debug) Media Submission Failed (retry not implemented): " + message);
-                failedStimulusListener.postLoadTimerFired();
-                final MediaSubmissionListener mediaSubmissionListener = this;
-                Timer timer = new Timer() {
-                    @Override
-                    public void run() {
-                        submissionService.submitAudioData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
-                    }
-                };
-                timer.schedule(1000);
+                    failedStimulusListener.postLoadTimerFired();
+                    final MediaSubmissionListener mediaSubmissionListener = this;
+                    Timer timer = new Timer() {
+                        @Override
+                        public void run() {
+                            submissionService.submitAudioData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                        }
+                    };
+                    timer.schedule(1000);
+                }
             }
 
             @Override
@@ -1823,13 +1842,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public void submissionComplete(String message, String urlAudioData) {
-                if (downloadPermittedWindowMs > 0) {
-                    String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
+                if (!recordingAborted) {
+                    if (downloadPermittedWindowMs > 0) {
+                        String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
-                    // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl)
-                    timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
-                } else {
-                    loadedStimulusListener.postLoadTimerFired();
+                        // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl)
+                        timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                    } else {
+                        loadedStimulusListener.postLoadTimerFired();
+                    }
                 }
             }
         };

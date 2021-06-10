@@ -27,7 +27,7 @@ public interface MediaSubmissionListener {
 
     void recorderFailed(final String message);
 
-    void recorderStarted(final String targetDeviceId);
+    void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS);
 
     void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray);
 
