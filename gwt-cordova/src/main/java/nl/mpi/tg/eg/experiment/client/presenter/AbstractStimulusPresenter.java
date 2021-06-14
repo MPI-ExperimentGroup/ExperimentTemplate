@@ -108,7 +108,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
-    private final HardwareTimeStamp hardwareTimeStamp;
+    private final HardwareTimeStamp hardwareTimeStamp; // note that this hardwareTimeStamp instance of HardwareTimeStamp is different from the toneGenerator used in AbstractPresenter although the tone generator objects are shared
 
     protected enum AnimateTypes {
         bounce, none, stimuliCode
@@ -135,7 +135,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        }.schedule(1000);
         final String hardwareTimeStampOptions = Window.Location.getParameter("hardwareTimeStamp");
         if (hardwareTimeStampOptions != null) {
-            hardwareTimeStamp = new HardwareTimeStamp(hardwareTimeStampOptions);
+            hardwareTimeStamp = new HardwareTimeStamp(hardwareTimeStampOptions, false);
         } else {
             hardwareTimeStamp = null;
         }

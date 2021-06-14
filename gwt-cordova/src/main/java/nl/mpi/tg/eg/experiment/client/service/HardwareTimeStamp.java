@@ -29,9 +29,12 @@ public class HardwareTimeStamp {
     private boolean opto1State = true;
     private boolean opto2State = true;
 
-    public HardwareTimeStamp(String hardwareTimeStampOptions) {
+    public HardwareTimeStamp(String hardwareTimeStampOptions, final boolean dtmfOnly) {
         this.hardwareTimeStampOptions = hardwareTimeStampOptions;
-        initialise();
+        initialiseDtmf();
+        if (!dtmfOnly) {
+            initialiseOpto();
+        }
     }
 
     public enum DTMF {
@@ -106,7 +109,7 @@ public class HardwareTimeStamp {
         startDtmf(dtmf.tone1, dtmf.tone2);
     }
 
-    final protected native boolean initialise() /*-{
+    final protected native boolean initialiseDtmf() /*-{
         if (!$wnd.oscillator1 || !$wnd.oscillator2) {
             var audioContext = new ($wnd.AudioContext || $wnd.webkitAudioContext)();
             $wnd.oscillator1 = audioContext.createOscillator();
@@ -123,6 +126,9 @@ public class HardwareTimeStamp {
             $wnd.oscillator1.start();
             $wnd.oscillator2.start();
         }
+    }-*/;
+
+    final protected native boolean initialiseOpto() /*-{
         if (!$wnd.opto1 || !$wnd.opto2) {
             $wnd.$("#widgetTag").append("<div id='opto1'>opto1</div>");
             $wnd.opto1 = $wnd.$("#opto1");

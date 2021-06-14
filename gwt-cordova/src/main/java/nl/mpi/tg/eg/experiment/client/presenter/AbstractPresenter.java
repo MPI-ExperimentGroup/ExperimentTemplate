@@ -39,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.RecorderDtmfListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
@@ -51,8 +52,10 @@ import nl.mpi.tg.eg.experiment.client.service.LocalNotifications;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
+import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
@@ -83,7 +86,9 @@ public abstract class AbstractPresenter implements Presenter {
     protected final TimerService timerService; // todo: this maybe needs to be avaiable in all presenter types
     protected GroupParticipantService groupParticipantService = null;
     private final ArrayList<ValueChangeListener<Double>> audioLevelIndicators = new ArrayList<>();
+    private final RecorderDtmfListener recorderDtmfListener = new RecorderDtmfListener();
     private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
+    private HardwareTimeStamp toneGenerator = null; // note that this toneGenerator instance of HardwareTimeStamp is different from the hardwareTimeStamp used in AbstractStimulusPresenter although the tone generator objects are shared
 
     public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;
@@ -368,6 +373,21 @@ public abstract class AbstractPresenter implements Presenter {
         simpleView.addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
+    protected void dtmfTone(final DTMF dtmfCode, final int msToNext) {
+        if (toneGenerator == null) {
+            toneGenerator = new HardwareTimeStamp(null, true);
+        }
+        toneGenerator.setDtmf(dtmfCode);
+        if (msToNext > 0) {
+            Timer timer = new Timer() {
+                public void run() {
+                    toneGenerator.setDtmf(DTMF.codeoff);
+                }
+            };
+            timer.schedule(msToNext);
+        }
+    }
+
     @Override
     public void fireBackEvent() {
         if (backEventListner != null) {
@@ -552,6 +572,11 @@ public abstract class AbstractPresenter implements Presenter {
         return hasListeners;
     }
 
+    public boolean updateDtmfListener(Integer peekLevel1, Integer peekLevel2, Integer peekLevel3, Integer peekLevel4, Integer peekLevel5, Integer peekLevel6, Integer peekLevel7, Integer peekLevel8, Integer averageLevel, Integer peekLevel) {
+        boolean hasListeners = recorderDtmfListener.triggerOnMatching(peekLevel1, peekLevel2, peekLevel3, peekLevel4, peekLevel5, peekLevel6, peekLevel7, peekLevel8, averageLevel, peekLevel);
+        return hasListeners;
+    }
+
     protected void addRecorderLevelIndicatorWeb(final ValueChangeListener<Double> changeListener) {
         audioLevelIndicators.add(changeListener);
         addRecorderLevelCallbackWeb();
@@ -589,7 +614,7 @@ public abstract class AbstractPresenter implements Presenter {
                 //console.log(percentValue);
                 //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Lnl/mpi/tg/eg/experiment/client/listener/ValueChangeListener;Ljava/lang/Double;)(changeListener);//, rmsValue
                 //changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(rmsValue);
-                hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
+                var hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
                 //console.log(hasListeners);
                 if(hasListeners === true) {
                     requestAnimationFrame(updateLevelIndicator);
@@ -601,11 +626,25 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void clearRecorderTriggersWeb() {
         recorderMediaTriggerListener.clearTriggers();
+        recorderDtmfListener.clearTriggers();
     }
 
     protected void addRecorderTriggersWeb(long triggerMs, SingleStimulusListener singleStimulusListener) {
         if (recorderMediaTriggerListener.addMediaTriggerListener(triggerMs, singleStimulusListener)) {
             startRecorderTriggersWeb(recorderMediaTriggerListener);
+        }
+    }
+
+    protected void addRecorderDtmfTrigger(final Stimulus definitionScopeStimulus, HardwareTimeStamp.DTMF triggerCode, SingleStimulusListener triggerListener) {
+        final SingleStimulusListener definitionScopeStimulusListener = new SingleStimulusListener() {
+            @Override
+            public void postLoadTimerFired(final Stimulus triggerScopeStimulus) {
+                // the web recorder does not have stimulus in scope so we rely on the definition scope stimulus
+                triggerListener.postLoadTimerFired(definitionScopeStimulus);
+            }
+        };
+        if (recorderDtmfListener.addDtmfListener(triggerCode, definitionScopeStimulusListener)) {
+            startRecorderDtmfTriggersWeb(recorderMediaTriggerListener);
         }
     }
 
@@ -625,6 +664,62 @@ public abstract class AbstractPresenter implements Presenter {
             }
         }
         requestAnimationFrame(updateRecorderTriggers);
+    }-*/;
+
+    protected native void startRecorderDtmfTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        var abstractPresenter = this;
+        audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
+        audioAnalyser.fftSize = 2048;
+        // console.log("startRecorderDtmfTriggersWeb");
+        //              1209 Hz	1336 Hz	1477 Hz	1633 Hz
+        //    697 Hz	1	2	3	A
+        //    770 Hz	4	5	6	B
+        //    852 Hz	7	8	9	C
+        //    941 Hz	*	0	#	D
+        var sampleRate = $wnd.recorder.audioContext.sampleRate;
+        var index697 = Math.round(697 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index770 = Math.round(770 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index852 = Math.round(852 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index941 = Math.round(941 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index1209 = Math.round(1209 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index1336 = Math.round(1336 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index1477 = Math.round(1477 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index1633 = Math.round(1633 / sampleRate / 2 * audioAnalyser.fftSize);
+
+        function updateRecorderDtmfTriggers() {
+            if ($wnd.recorder) {
+                var bufferLength = audioAnalyser.frequencyBinCount;
+                //console.log(bufferLength);
+                var dataArray = new Uint8Array(bufferLength);
+                audioAnalyser.getByteFrequencyData(dataArray);
+                var index697Level = dataArray[index697];
+                var index770Level = dataArray[index770];
+                var index852Level = dataArray[index852];
+                var index941Level = dataArray[index941];
+                var index1209Level = dataArray[index1209];
+                var index1336Level = dataArray[index1336];
+                var index1477Level = dataArray[index1477];
+                var index1633Level = dataArray[index1633];
+                var totalLevel = 0;
+                var peekLevel = 0;
+                for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
+                    var currentLevel = dataArray[bufferIndex];
+                    totalLevel != currentLevel;
+                    peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
+                }
+                var averageLevel = totalLevel / bufferLength;
+                var hasDtmfListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(index697Level, index770Level, index852Level, index941Level, index1209Level, index1336Level, index1477Level, index1633Level, averageLevel, peekLevel);
+                //console.log(hasDtmfListeners);
+                if(hasDtmfListeners === true) {
+                    requestAnimationFrame(updateRecorderDtmfTriggers);
+                } // else console.log("end RecorderTriggersWeb");
+                // if there are no more listeners then the animation requests will stop here.
+            } else {
+                // if the recorder is not yet running then we let the animation requests continue
+                requestAnimationFrame(updateRecorderDtmfTriggers);
+            }
+        }
+        requestAnimationFrame(updateRecorderDtmfTriggers);
     }-*/;
 
     protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
@@ -806,7 +901,7 @@ public abstract class AbstractPresenter implements Presenter {
         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
      }-*/;
 
-     /* pausing the recorder causes problems with the display of time code for the recording
+    /* pausing the recorder causes problems with the display of time code for the recording
     static public native void pauseAudioRecorderWeb() *-{
         console.log("pauseAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
