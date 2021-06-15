@@ -26,6 +26,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -573,8 +574,8 @@ public abstract class AbstractPresenter implements Presenter {
         return hasListeners;
     }
 
-    public boolean updateDtmfListener(Integer peekLevel1, Integer peekLevel2, Integer peekLevel3, Integer peekLevel4, Integer peekLevel5, Integer peekLevel6, Integer peekLevel7, Integer peekLevel8, Integer averageLevel, Integer peekLevel) {
-        boolean hasListeners = recorderDtmfListener.triggerOnMatching(peekLevel1, peekLevel2, peekLevel3, peekLevel4, peekLevel5, peekLevel6, peekLevel7, peekLevel8, averageLevel, peekLevel);
+    public boolean updateDtmfListener(Double row, Double column) {
+        boolean hasListeners = recorderDtmfListener.triggerOnMatching(row.intValue(), column.intValue());
         return hasListeners;
     }
 
@@ -647,13 +648,17 @@ public abstract class AbstractPresenter implements Presenter {
             }
         };
         if (recorderDtmfListener.addDtmfListener(triggerCode, definitionScopeStimulusListener)) {
-            final Canvas frequencyCanvas = Canvas.createIfSupported();
-            if (frequencyCanvas != null) {
-                frequencyCanvas.getCanvasElement().setId("frequencyCanvas");
-                frequencyCanvas.setCoordinateSpaceHeight(256);
-                frequencyCanvas.setCoordinateSpaceWidth(2048);
-                frequencyCanvas.setSize("2048px", "256px");
-                simpleView.addWidget(frequencyCanvas);
+            if (simpleView.hasRegion("dtmfFrequencyCanvas")) {
+                final Canvas frequencyCanvas = Canvas.createIfSupported();
+                if (frequencyCanvas != null) {
+                    frequencyCanvas.getCanvasElement().setId("frequencyCanvas");
+                    frequencyCanvas.setCoordinateSpaceHeight(256);
+                    frequencyCanvas.setCoordinateSpaceWidth(2048);
+                    frequencyCanvas.setSize("2048px", "256px");
+                    final InsertPanel.ForIsWidget canvasRegion = simpleView.startRegion("dtmfFrequencyCanvas", null);
+                    simpleView.addWidget(frequencyCanvas);
+                    simpleView.endRegion(canvasRegion);
+                }
             }
             startRecorderDtmfTriggersWeb(recorderMediaTriggerListener);
         }
@@ -729,6 +734,7 @@ public abstract class AbstractPresenter implements Presenter {
                     peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
                 }
                 var averageLevel = totalLevel / bufferLength;
+                var dtmfAverage = (index697Level + index770Level + index852Level + index941Level + index1209Level + index1336Level + index1477Level + index1633Level) / 8;
                 // draw graph
                 frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
                 frequencyCanvasContext.fillRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
@@ -742,14 +748,52 @@ public abstract class AbstractPresenter implements Presenter {
                     } else {
                         frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
                     }
-                    frequencyCanvasContext.fillRect(positionX, 0, barWidth, barHeight);
+                    frequencyCanvasContext.fillRect(positionX, frequencyCanvasHeight - barHeight, barWidth, frequencyCanvasHeight);
                     positionX += barWidth + 1;
                 }
-                //var hasDtmfListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(index697Level, index770Level, index852Level, index941Level, index1209Level, index1336Level, index1477Level, index1633Level, averageLevel, peekLevel);
+                var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 10);
+                var triggerThresholdHeight = triggerThreshold / 4;
+                var peekLevelHeight = peekLevel / 4;
+                var dtmfAverageHeight = dtmfAverage / 4;
+                frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - triggerThresholdHeight, frequencyCanvasWidth, 1);
+                frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
+                frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - peekLevelHeight, frequencyCanvasWidth, 1);
+                frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - dtmfAverageHeight, frequencyCanvasWidth, 1);
+                var row = -1;
+                if (index697Level > triggerThreshold && index770Level < triggerThreshold && index852Level < triggerThreshold && index941Level < triggerThreshold) {
+                    // 697 Hz	1	2	3	A
+                    var row = 0;
+                } else if (index697Level < triggerThreshold && index770Level > triggerThreshold && index852Level < triggerThreshold && index941Level < triggerThreshold) {
+                    // 770 Hz	4	5	6	B
+                    var row = 1;
+                } else if (index697Level < triggerThreshold && index770Level < triggerThreshold && index852Level > triggerThreshold && index941Level < triggerThreshold) {
+                    // 852 Hz	7	8	9	C    
+                    var row = 2
+                } else if (index697Level < triggerThreshold && index770Level < triggerThreshold && index852Level < triggerThreshold && index941Level > triggerThreshold) {
+                    // 941 Hz	*	0	#	D
+                    var row = 3;
+                }
+                var column = -1;
+                if (index1209Level > triggerThreshold && index1336Level < triggerThreshold && index1477Level < triggerThreshold && index1633Level < triggerThreshold) {
+                    // 1209 Hz
+                    column = 0;
+                } else if (index1209Level < triggerThreshold && index1336Level > triggerThreshold && index1477Level < triggerThreshold && index1633Level < triggerThreshold) {
+                    // 1336 Hz
+                    column = 1;
+                } else if (index1209Level < triggerThreshold && index1336Level < triggerThreshold && index1477Level > triggerThreshold && index1633Level < triggerThreshold) {
+                    // 1477 Hz
+                    column = 2;
+                } else if (index1209Level < triggerThreshold && index1336Level < triggerThreshold && index1477Level < triggerThreshold && index1633Level > triggerThreshold) {
+                    // 1633 Hz
+                    column = 3;
+                }
+                // console.log(row + "," + column);
+                var hasDtmfListeners = (dtmfAverage === peekLevel)? true : abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Double;Ljava/lang/Double;)(row, column);
                 //console.log(hasDtmfListeners);
-                //if(hasDtmfListeners === true) {
+                if(hasDtmfListeners === true) {
                     requestAnimationFrame(updateRecorderDtmfTriggers);
-                //} // else console.log("end RecorderTriggersWeb");
+                } // else console.log("end RecorderTriggersWeb");
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue

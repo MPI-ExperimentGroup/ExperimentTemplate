@@ -29,6 +29,7 @@ public class RecorderDtmfListener {
 
     private final Map<HardwareTimeStamp.DTMF, SingleStimulusListener> listenerMap = new HashMap();
     private HardwareTimeStamp.DTMF lastCodeDetected = null;
+    private HardwareTimeStamp.DTMF lastCodeTriggered = null;
     private int lastCodeCounter = 0;
 
     public boolean addDtmfListener(HardwareTimeStamp.DTMF triggerCode, SingleStimulusListener singleStimulusListener) {
@@ -37,40 +38,55 @@ public class RecorderDtmfListener {
         return isFirst;
     }
 
-    public boolean triggerOnMatching(Integer peekLevel1, Integer peekLevel2, Integer peekLevel3, Integer peekLevel4, Integer peekLevel5, Integer peekLevel6, Integer peekLevel7, Integer peekLevel8, Integer averageLevel, Integer peekLevel) {
-        int triggerThreshold = averageLevel + ((peekLevel - averageLevel) / 4);
+    public boolean triggerOnMatching(Integer row, Integer column) {
         final HardwareTimeStamp.DTMF codeRow[];
-        if (peekLevel1 > triggerThreshold && peekLevel2 < triggerThreshold && peekLevel3 < triggerThreshold && peekLevel4 < triggerThreshold) {
-            // 697 Hz	1	2	3	A
-            codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.code1, HardwareTimeStamp.DTMF.code2, HardwareTimeStamp.DTMF.code3, HardwareTimeStamp.DTMF.codeA};
-        } else if (peekLevel1 < triggerThreshold && peekLevel2 > triggerThreshold && peekLevel3 < triggerThreshold && peekLevel4 < triggerThreshold) {
-            // 770 Hz	4	5	6	B
-            codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.code4, HardwareTimeStamp.DTMF.code5, HardwareTimeStamp.DTMF.code6, HardwareTimeStamp.DTMF.codeB};
-        } else if (peekLevel1 < triggerThreshold && peekLevel2 < triggerThreshold && peekLevel3 > triggerThreshold && peekLevel4 < triggerThreshold) {
-            // 852 Hz	7	8	9	C    
-            codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.code7, HardwareTimeStamp.DTMF.code8, HardwareTimeStamp.DTMF.code9, HardwareTimeStamp.DTMF.codeC};
-        } else if (peekLevel1 < triggerThreshold && peekLevel2 < triggerThreshold && peekLevel3 < triggerThreshold && peekLevel4 > triggerThreshold) {
-            // 941 Hz	*	0	#	D
-            codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.codeAsterisk, HardwareTimeStamp.DTMF.code0, HardwareTimeStamp.DTMF.codeHash, HardwareTimeStamp.DTMF.codeD};
-        } else {
+        if (null == row) {
             codeRow = null;
+        } else switch (row) {
+            case 0:
+                // 697 Hz	1	2	3	A
+                codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.code1, HardwareTimeStamp.DTMF.code2, HardwareTimeStamp.DTMF.code3, HardwareTimeStamp.DTMF.codeA};
+                break;
+            case 1:
+                // 770 Hz	4	5	6	B
+                codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.code4, HardwareTimeStamp.DTMF.code5, HardwareTimeStamp.DTMF.code6, HardwareTimeStamp.DTMF.codeB};
+                break;
+            case 2:
+                // 852 Hz	7	8	9	C
+                codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.code7, HardwareTimeStamp.DTMF.code8, HardwareTimeStamp.DTMF.code9, HardwareTimeStamp.DTMF.codeC};
+                break;
+            case 3:
+                // 941 Hz	*	0	#	D
+                codeRow = new HardwareTimeStamp.DTMF[]{HardwareTimeStamp.DTMF.codeAsterisk, HardwareTimeStamp.DTMF.code0, HardwareTimeStamp.DTMF.codeHash, HardwareTimeStamp.DTMF.codeD};
+                break;
+            default:
+                codeRow = null;
+                break;
         }
         if (codeRow != null) {
             final HardwareTimeStamp.DTMF codeDetected;
-            if (peekLevel5 > triggerThreshold && peekLevel6 < triggerThreshold && peekLevel7 < triggerThreshold && peekLevel8 < triggerThreshold) {
-                // 1209 Hz
-                codeDetected = codeRow[0];
-            } else if (peekLevel5 < triggerThreshold && peekLevel6 > triggerThreshold && peekLevel7 < triggerThreshold && peekLevel8 < triggerThreshold) {
-                // 1336 Hz
-                codeDetected = codeRow[1];
-            } else if (peekLevel5 < triggerThreshold && peekLevel6 < triggerThreshold && peekLevel7 > triggerThreshold && peekLevel8 < triggerThreshold) {
-                // 1477 Hz
-                codeDetected = codeRow[2];
-            } else if (peekLevel5 < triggerThreshold && peekLevel6 < triggerThreshold && peekLevel7 < triggerThreshold && peekLevel8 > triggerThreshold) {
-                // 1633 Hz
-                codeDetected = codeRow[3];
-            } else {
+            if (null == column) {
                 codeDetected = null;
+            } else switch (column) {
+                case 0:
+                    // 1209 Hz
+                    codeDetected = codeRow[0];
+                    break;
+                case 1:
+                    // 1336 Hz
+                    codeDetected = codeRow[1];
+                    break;
+                case 2:
+                    // 1477 Hz
+                    codeDetected = codeRow[2];
+                    break;
+                case 3:
+                    // 1633 Hz
+                    codeDetected = codeRow[3];
+                    break;
+                default:
+                    codeDetected = null;
+                    break;
             }
             if (codeDetected != null) {
                 if (codeDetected.equals(lastCodeDetected)) {
@@ -78,14 +94,21 @@ public class RecorderDtmfListener {
                 } else {
                     lastCodeCounter = 1;
                 }
-                if (lastCodeCounter > 100) {
+                lastCodeDetected = codeDetected;
+                if (lastCodeCounter > 50 && !codeDetected.equals(lastCodeTriggered)) {
                     final SingleStimulusListener triggerForCode = listenerMap.get(codeDetected);
                     if (triggerForCode != null) {
                         triggerForCode.postLoadTimerFired(null);
                     }
+                    lastCodeTriggered = codeDetected;
                 }
             } else {
-                lastCodeDetected = null;
+                if (lastCodeCounter > 0) {
+                    lastCodeCounter--;
+                }
+                if (lastCodeCounter <= 0) {
+                    lastCodeTriggered = null;
+                }
             }
         }
         return true;
