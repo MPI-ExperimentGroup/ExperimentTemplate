@@ -655,6 +655,7 @@ public abstract class AbstractPresenter implements Presenter {
                     frequencyCanvas.setCoordinateSpaceHeight(256);
                     frequencyCanvas.setCoordinateSpaceWidth(2048);
                     frequencyCanvas.setSize("2048px", "256px");
+                    simpleView.clearRegion("dtmfFrequencyCanvas");
                     final InsertPanel.ForIsWidget canvasRegion = simpleView.startRegion("dtmfFrequencyCanvas", null);
                     simpleView.addWidget(frequencyCanvas);
                     simpleView.endRegion(canvasRegion);
