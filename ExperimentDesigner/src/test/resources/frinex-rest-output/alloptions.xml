@@ -477,6 +477,9 @@
         <addMediaTrigger msToNext="60" mediaId="mediaId">
             <plainText featureText="plainText in addMediaTrigger"/>
         </addMediaTrigger>
+        <addRecorderDtmfTrigger dtmf="#">
+            <plainText featureText="plainText in addRecorderDtmfTrigger"/>
+        </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -1901,6 +1904,7 @@
         <gotoNextPresenter/>
         <logTimeStamp eventTag="eventTag"/>
         <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
+        <dtmfTone msToNext="60" dtmf="#"/>
         <audioButton eventTag="eventTag" src="src" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
@@ -1962,6 +1966,9 @@
         <addMediaTrigger msToNext="60" mediaId="mediaId">
             <plainText featureText="plainText in addMediaTrigger"/>
         </addMediaTrigger>
+        <addRecorderDtmfTrigger dtmf="#">
+            <plainText featureText="plainText in addRecorderDtmfTrigger"/>
+        </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -3057,6 +3064,9 @@
         <addMediaTrigger msToNext="60" mediaId="">
             <plainText featureText="plainText in addMediaTrigger"/>
         </addMediaTrigger>
+        <addRecorderDtmfTrigger>
+            <plainText featureText="plainText in addRecorderDtmfTrigger"/>
+        </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -4451,6 +4461,7 @@
         <gotoNextPresenter/>
         <logTimeStamp/>
         <hardwareTimeStamp/>
+        <dtmfTone msToNext="60"/>
         <audioButton src="" autoPlay="true" poster="">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
@@ -4512,6 +4523,9 @@
         <addMediaTrigger msToNext="60" mediaId="">
             <plainText featureText="plainText in addMediaTrigger"/>
         </addMediaTrigger>
+        <addRecorderDtmfTrigger>
+            <plainText featureText="plainText in addRecorderDtmfTrigger"/>
+        </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>

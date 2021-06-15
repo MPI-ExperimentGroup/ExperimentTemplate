@@ -153,6 +153,10 @@ public class ComplexView extends SimpleView {
             regionTemp.clear();
         }
     }
+    
+    public boolean hasRegion(final String regionId) {
+       return regionPanels.containsKey(regionId);
+    }
 
     public FlexTable gridPanel() {
         final int index = gridPanelList.size() - 1;
