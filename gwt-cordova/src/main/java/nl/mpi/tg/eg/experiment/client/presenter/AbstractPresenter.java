@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
@@ -590,14 +591,16 @@ public abstract class AbstractPresenter implements Presenter {
          var abstractPresenter = this;
         //$wnd.attachLevelMeter(function(){changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(updatedValue)});
         if ($wnd.recorder) {
-            audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
-            audioAnalyser.fftSize = 2048;
-            bufferLength = audioAnalyser.frequencyBinCount;
+            if (!$wnd.audioAnalyser) {
+                $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
+                $wnd.audioAnalyser.fftSize = 2048;
+                $wnd.recorder.sourceNode.connect($wnd.audioAnalyser);
+            }
+            bufferLength = $wnd.audioAnalyser.frequencyBinCount;
             dataArray = new Uint8Array(bufferLength);
-            $wnd.recorder.sourceNode.connect(audioAnalyser);
             lastValue = 0;
             function updateLevelIndicator() {
-                audioAnalyser.getByteTimeDomainData(dataArray);
+                $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
                 sumSqrValues = 0;
                 for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
                     var currentValue = dataArray[bufferIndex] - 128;
@@ -620,7 +623,7 @@ public abstract class AbstractPresenter implements Presenter {
                     requestAnimationFrame(updateLevelIndicator);
                 }
             }
-            requestAnimationFrame(updateLevelIndicator());
+            requestAnimationFrame(updateLevelIndicator);
         }
     }-*/;
 
@@ -644,6 +647,14 @@ public abstract class AbstractPresenter implements Presenter {
             }
         };
         if (recorderDtmfListener.addDtmfListener(triggerCode, definitionScopeStimulusListener)) {
+            final Canvas frequencyCanvas = Canvas.createIfSupported();
+            if (frequencyCanvas != null) {
+                frequencyCanvas.getCanvasElement().setId("frequencyCanvas");
+                frequencyCanvas.setCoordinateSpaceHeight(256);
+                frequencyCanvas.setCoordinateSpaceWidth(2048);
+                frequencyCanvas.setSize("2048px", "256px");
+                simpleView.addWidget(frequencyCanvas);
+            }
             startRecorderDtmfTriggersWeb(recorderMediaTriggerListener);
         }
     }
@@ -667,9 +678,13 @@ public abstract class AbstractPresenter implements Presenter {
     }-*/;
 
     protected native void startRecorderDtmfTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
         var abstractPresenter = this;
-        audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
-        audioAnalyser.fftSize = 2048;
+        if (!$wnd.audioAnalyser) {
+            $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
+            $wnd.audioAnalyser.fftSize = 2048;
+            $wnd.recorder.sourceNode.connect($wnd.audioAnalyser);
+        }
         // console.log("startRecorderDtmfTriggersWeb");
         //              1209 Hz	1336 Hz	1477 Hz	1633 Hz
         //    697 Hz	1	2	3	A
@@ -677,21 +692,27 @@ public abstract class AbstractPresenter implements Presenter {
         //    852 Hz	7	8	9	C
         //    941 Hz	*	0	#	D
         var sampleRate = $wnd.recorder.audioContext.sampleRate;
-        var index697 = Math.round(697 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index770 = Math.round(770 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index852 = Math.round(852 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index941 = Math.round(941 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index1209 = Math.round(1209 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index1336 = Math.round(1336 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index1477 = Math.round(1477 / sampleRate / 2 * audioAnalyser.fftSize);
-        var index1633 = Math.round(1633 / sampleRate / 2 * audioAnalyser.fftSize);
+        var index697 = Math.round(697 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index770 = Math.round(770 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index852 = Math.round(852 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index941 = Math.round(941 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1209 = Math.round(1209 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1336 = Math.round(1336 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1477 = Math.round(1477 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
 
+        var frequencyCanvas = $doc.querySelector('#frequencyCanvas');
+        var frequencyCanvasContext = frequencyCanvas.getContext('2d');
+        var frequencyCanvasHeight = 256;
+        var frequencyCanvasWidth = 2048;
+        frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+            
         function updateRecorderDtmfTriggers() {
             if ($wnd.recorder) {
-                var bufferLength = audioAnalyser.frequencyBinCount;
+                var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
                 //console.log(bufferLength);
                 var dataArray = new Uint8Array(bufferLength);
-                audioAnalyser.getByteFrequencyData(dataArray);
+                $wnd.audioAnalyser.getByteFrequencyData(dataArray);
                 var index697Level = dataArray[index697];
                 var index770Level = dataArray[index770];
                 var index852Level = dataArray[index852];
@@ -708,11 +729,27 @@ public abstract class AbstractPresenter implements Presenter {
                     peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
                 }
                 var averageLevel = totalLevel / bufferLength;
-                var hasDtmfListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(index697Level, index770Level, index852Level, index941Level, index1209Level, index1336Level, index1477Level, index1633Level, averageLevel, peekLevel);
+                // draw graph
+                frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
+                frequencyCanvasContext.fillRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+                var barWidth = 1;//(frequencyCanvasWidth / bufferLength) / 4;
+                var barHeight;
+                var positionX = 0;
+                for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
+                    barHeight = dataArray[bufferIndex] / 4;
+                    if (bufferIndex === index697 || bufferIndex === index770 || bufferIndex === index852 || bufferIndex === index941 || bufferIndex === index1209 || bufferIndex === index1336 || bufferIndex === index1477 || bufferIndex === index1633) {
+                        frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                    } else {
+                        frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
+                    }
+                    frequencyCanvasContext.fillRect(positionX, 0, barWidth, barHeight);
+                    positionX += barWidth + 1;
+                }
+                //var hasDtmfListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(index697Level, index770Level, index852Level, index941Level, index1209Level, index1336Level, index1477Level, index1633Level, averageLevel, peekLevel);
                 //console.log(hasDtmfListeners);
-                if(hasDtmfListeners === true) {
+                //if(hasDtmfListeners === true) {
                     requestAnimationFrame(updateRecorderDtmfTriggers);
-                } // else console.log("end RecorderTriggersWeb");
+                //} // else console.log("end RecorderTriggersWeb");
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
@@ -734,6 +771,7 @@ public abstract class AbstractPresenter implements Presenter {
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
                     $wnd.recorder.close();
                     $wnd.recorder = null;
+                    $wnd.audioAnalyser = null;
             }
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
@@ -769,6 +807,7 @@ public abstract class AbstractPresenter implements Presenter {
                     console.log("Device not found: " + deviceRegex);
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
                 } else {
+                    $wnd.audioAnalyser = null;
                     if (recordingFormat === 'wav') {
                         $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
                     } else {
@@ -893,6 +932,7 @@ public abstract class AbstractPresenter implements Presenter {
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
                 $wnd.recorder.close();
                 $wnd.recorder = null;
+                $wnd.audioAnalyser = null;
             }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
@@ -912,7 +952,7 @@ public abstract class AbstractPresenter implements Presenter {
      }-*;
      */
 
-    /* pausing the recorder causes problems with the display of time code for the recording
+ /* pausing the recorder causes problems with the display of time code for the recording
     static public native void resumeAudioRecorderWeb() *-{
         console.log("resumeAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
@@ -922,7 +962,6 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*;
      */
-
     static public native void logAudioRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("logAudioRecorderWebTimeStamp");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
