@@ -1587,8 +1587,8 @@
                                         <addFrameTimeTrigger msToNext="13000">
                                             <hardwareTimeStamp dtmf="A" />
                                             <disableButtonGroup matchingRegex="respondButtonGroup"/>
-                                            <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
                                             <doLater msToNext="0">
+                                                <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
                                                 <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
                                                     <hardwareTimeStamp dtmf="*" />
                                                     <logTimeStamp eventTag="actionButton Volgende"/>
