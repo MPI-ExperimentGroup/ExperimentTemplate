@@ -1469,6 +1469,230 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Sequential Display Example (FrameRateTimer)" type="stimulus" self="Sequential_Display_FrameRateTimer" title="Sequential Display Example (FrameRateTimer)">
+        <loadStimulus eventTag="Sequential_Display_FrameRateTimer" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
+            <hasMoreStimulus>
+                <clearPage/>
+                <clearTimer listenerId="sequentialDisplayTimer"/>
+                <hardwareTimeStamp dtmf="off" opto1="true" opto2="true"/>
+                <regionAppend regionId="paddingRegion1" styleName="hiddenRegion"/>
+                <hasGetParameter parameterName="hardwareTimeStamp">
+                    <conditionTrue>
+                        <regionStyle regionId="paddingRegion1" styleName="hardwareLightSensorPadding"/>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="HardwareTimeStamps are enabled."/>
+                        </regionAppend>
+                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaSTE">
+                            <onError/>
+                            <onSuccess/>
+                            <mediaLoaded/>
+                            <mediaLoadFailed/>
+                            <mediaPlaybackStarted/>
+                            <mediaPlaybackComplete/>
+                        </startAudioRecorderWeb>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <regionAppend regionId="hardwareTimeStampStatusRegion">
+                            <htmlText featureText="The GET parameter hardwareTimeStamp has not been provided in the URL. HardwareTimeStamps disabled so this example will have no output."/>
+                            <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
+                        </regionAppend>
+                    </conditionFalse>
+                </hasGetParameter>
+                <timerLabel listenerId="sequentialDisplayTimer" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                <hardwareTimeStamp dtmf="0" opto1="false" opto2="true"/>
+                <regionAppend regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
+                    <htmlText featureText="+" styleName="stimuliLabel"/>
+                </regionAppend>
+                <regionAppend regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
+                    <stimulusLabel styleName="stimuliLabel"/>
+                </regionAppend>
+                <regionAppend regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                <regionAppend regionId="paddingRegion2" styleName="hardwareLightSensorPadding"/>
+                <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
+                    <logTimeStamp eventTag="actionButton Respond"/>
+                    <hardwareTimeStamp dtmf="1"/>
+                </actionButton>
+                <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <!-- load the media in a hidden state -->
+                <!--todo: load either audio or video based on a get parameter-->
+                <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
+                    <mediaLoaded>
+                        <plainText featureText="stimulusAudioLoaded"/>
+                        <hardwareTimeStamp opto2="true"/>
+                        <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
+                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                                <mediaLoaded> 
+                                    <plainText featureText="stimulusVideoLoaded"/>
+                                    <plainText featureText="The ms values shown here are taken from a timer and not the FrameRateTimer, so this example needs to be evaluated with hardware rather than just the displayed values."/>
+                                    <hardwareTimeStamp dtmf="off" />
+                                    <clearTimer listenerId="sequentialDisplayTimer"/>
+                                    <startTimer msToNext="100" listenerId="sequentialDisplayTimer">
+                                        <!-- this timer is not used for events, but is used for displaying approximate ms values in labels -->
+                                    </startTimer>
+                                    <startFrameRateTimer>
+                                        <addFrameTimeTrigger msToNext="100">
+                                            <hardwareTimeStamp dtmf="3" opto1="true" />
+                                            <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline"/>
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="350">
+                                            <hardwareTimeStamp dtmf="4" opto1="true" opto2="false"/>
+                                            <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide"/>
+                                            <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show"/>
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="500">
+                                            <hardwareTimeStamp dtmf="5" opto2="true"/>
+                                            <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide"/>
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="stimuliLabelHide (500) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="1000">
+                                            <hardwareTimeStamp dtmf="6" />
+                                            <playMedia mediaId="stimulusAudioExample"/>
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="play audio request (1000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="7000">
+                                            <hardwareTimeStamp dtmf="7" />
+                                            <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
+                                            <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>-->
+                                            <playMedia mediaId="stimulusVideoExample"/>
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="stimuliVideoPlay (7000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="11000">
+                                            <hardwareTimeStamp dtmf="8" />
+                                            <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>-->
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="stimuliVideoHide (11000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="400">
+                                            <hardwareTimeStamp dtmf="9" />
+                                            <enableButtonGroup matchingRegex="respondButtonGroup"/>
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="13000">
+                                            <hardwareTimeStamp dtmf="A" />
+                                            <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                                            <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                            <doLater msToNext="0">
+                                                <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
+                                                    <hardwareTimeStamp dtmf="*" />
+                                                    <logTimeStamp eventTag="actionButton Volgende"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </actionButton>
+                                            </doLater>
+                                        </addFrameTimeTrigger>
+                                        <addFrameTimeTrigger msToNext="13500">
+                                            <hardwareTimeStamp dtmf="off" />
+                                        </addFrameTimeTrigger>
+                                    </startFrameRateTimer>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <cancelPauseAll/>
+                                    <plainText featureText="stimulusVideoFailed"/>
+                                    <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
+                                    <actionButton featureText="Replay (R)" hotKey="R">
+                                        <logTimeStamp eventTag="actionButton Replay"/>
+                                        <showStimulus/>
+                                    </actionButton>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <hardwareTimeStamp dtmf="off" opto2="false"/>
+                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>
+                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted and show (7000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <hardwareTimeStamp dtmf="off" opto2="true"/>
+                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                                    <htmlTokenText featureText="stimulusVideoComplete and hide &lt;sequentialDisplayTimer&gt;ms"/>
+                                </mediaPlaybackComplete>
+                            </stimulusVideo>  
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <cancelPauseAll/>
+                        <plainText featureText="stimulusAudioFailed"/>
+                        <stimulusLabel/>
+                        <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
+                        <actionButton featureText="Replay (R)" hotKey="R">
+                            <logTimeStamp eventTag="actionButton Replay"/>
+                            <showStimulus/>
+                        </actionButton>
+                        <actionButton featureText="Skip (S)" hotKey="S">
+                            <logTimeStamp eventTag="actionButton Skip"/>
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <hardwareTimeStamp dtmf="off" />
+                        <htmlTokenText featureText="stimulusAudioPlaybackStarted (1000) &lt;sequentialDisplayTimer&gt;ms"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer&gt;ms"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <table>
+                    <row>
+                        <column>
+                            <actionButton featureText="Media Stimulus V0">
+                                <logTimeStamp eventTag="actionButton V0"/>
+                                <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v0"/>
+                                <resetStimulus target="Sequential_Display_FrameRateTimer"/>
+                                <gotoPresenter target="Sequential_Display_FrameRateTimer"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="Tone Stimulus V1">
+                                <logTimeStamp eventTag="actionButton V1"/>
+                                <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v1"/>
+                                <resetStimulus target="Sequential_Display_FrameRateTimer"/>
+                                <gotoPresenter target="Sequential_Display_FrameRateTimer"/>
+                            </actionButton>
+                        </column>
+                        <column>
+                            <actionButton featureText="Tone Stimulus V2">
+                                <logTimeStamp eventTag="actionButton V2"/>
+                                <setMetadataValue fieldName="stimuliSequentialDisplayExample" dataLogFormat="v2"/>
+                                <resetStimulus target="Sequential_Display_FrameRateTimer"/>
+                                <gotoPresenter target="Sequential_Display_FrameRateTimer"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <logTimeStamp eventTag="actionButton resetStimulus"/>
+                    <resetStimulus target="Sequential_Display_FrameRateTimer"/>
+                    <gotoPresenter target="Sequential_Display_FrameRateTimer"/>
+                </actionButton>
+                <stopAudioRecorder/>	
+                <hardwareTimeStamp dtmf="off" opto1="true" opto2="true"/>
+            </endOfStimulus> 
+            <randomGrouping storageField="stimuliSequentialDisplayExample">
+                <tag alias="v0">media</tag>
+                <tag alias="v1">ToneVideos</tag>
+                <tag alias="v2">ToneVideos_c</tag>
+                <!-- A metadata field for this storageField must be declaired above: <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>-->
+            </randomGrouping>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" self="RunTrialsSimple1000" type="stimulus" title="RunTrialsSimple1000">
         <logTimeStamp eventTag="run_main"/>
         <loadStimulus eventTag="loadTargetPicture" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -3859,42 +4083,75 @@
     <presenter back="Menu" menuLabel="RecorderMediaTrigger" next="Menu" type="stimulus" self="RecorderMediaTrigger" title="RecorderMediaTrigger">
         <actionButton featureText="stopAudioRecorder">
             <stopAudioRecorder />
+            <enableButtonGroup matchingRegex="startAudioButtonGroup" />
+            <enableButtonGroup matchingRegex="playAudioButtonGroup" />
+        </actionButton>
+        <actionButton  groupId="playAudioButtonGroup" featureText="PlayRecording">
+            <playMedia mediaId="recordedMedia"/>
+        </actionButton>
+        <actionButton  groupId="pauseAudioButtonGroup" featureText="Pause">
+            <pauseMedia mediaId="recordedMedia"/>
         </actionButton>
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder">
                     <disableButtonGroup matchingRegex="startAudioButtonGroup" />
-                    <addMediaTrigger msToNext="50" mediaId="mediaId">
-                        <plainText featureText="MediaTrigger 50ms" />
-                        <startAudioRecorderTag eventTier="3" />
-                        <endAudioRecorderTag eventTag="MediaTrigger 50ms" eventTier="3" />
-                    </addMediaTrigger>
-                    <addMediaTrigger msToNext="150" mediaId="mediaId">
-                        <plainText featureText="MediaTrigger 150ms" />
-                        <startAudioRecorderTag eventTier="4" />
-                        <endAudioRecorderTag eventTag="MediaTrigger 150ms" eventTier="4" />
-                    </addMediaTrigger>
-                    <addMediaTrigger msToNext="600" mediaId="mediaId">
-                        <plainText featureText="MediaTrigger 600ms" />
-                        <startAudioRecorderTag eventTier="5" />
-                        <endAudioRecorderTag eventTag="MediaTrigger 600ms" eventTier="5" />
-                    </addMediaTrigger>
-                    <addMediaTrigger msToNext="6000" mediaId="mediaId">
-                        <plainText featureText="MediaTrigger 6000ms" />
-                        <startAudioRecorderTag eventTier="5" />
-                        <endAudioRecorderTag eventTag="MediaTrigger 6000ms" eventTier="5" />
-                    </addMediaTrigger>
-                    <addMediaTrigger msToNext="12000" mediaId="mediaId">
-                        <plainText featureText="MediaTrigger 12000ms" />
-                        <startAudioRecorderTag eventTier="5" />
-                        <endAudioRecorderTag eventTag="MediaTrigger 12000ms" eventTier="5" />
-                    </addMediaTrigger>
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                    <disableButtonGroup matchingRegex="playAudioButtonGroup" />
+                    <startAudioRecorderWeb featureText="ms" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
                         <onError>
                                 <htmlText featureText="startAudioRecorder onError" />
                                 <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </onError>
                         <onSuccess>
+                                <!-- it is reasobable to assume that triggers during the first 100ms or so might be less reliable due to the process of setting up the recording -->
+                                <addMediaTrigger msToNext="50" mediaId="recordedMedia">
+                                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 50ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 50ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="150" mediaId="recordedMedia">
+                                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 150ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 150ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="600" mediaId="recordedMedia">
+				                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 600ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 600ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="6000" mediaId="recordedMedia">
+                                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 6000ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6000ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="6010" mediaId="recordedMedia">
+				                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 6010ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6010ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="6050" mediaId="recordedMedia">
+				                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 6050ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6050ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="6100" mediaId="recordedMedia">
+				                    <doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 6100ms" />
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6100ms"/>
+                                </addMediaTrigger>
+                                <addMediaTrigger msToNext="12000" mediaId="recordedMedia">
+                    				<doLater msToNext="0">
+                                        <plainText featureText="Recording MediaTrigger 12000ms" />
+				                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 12000ms"/>
+                                </addMediaTrigger>
                                 <htmlText featureText="startAudioRecorder onSuccess"/>
                                 <startTimer msToNext="0" listenerId="timerA"/>
                                 <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
@@ -3906,12 +4163,37 @@
                                 <plainText featureText="AudioRecordingLoadFailed"/>
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaLoadFailed>
-                        <mediaPlaybackStarted/>
+                        <mediaPlaybackStarted>
+                            <addMediaTrigger msToNext="70" mediaId="recordedMedia">
+                                <doLater msToNext="0">
+                                    <plainText featureText="Playback MediaTrigger 70ms" />
+                                </doLater>
+                                <logTimeStamp eventTag="Playback MediaTrigger 70ms"/>
+                            </addMediaTrigger>
+                            <addMediaTrigger msToNext="700" mediaId="recordedMedia">
+                                <doLater msToNext="0">
+                                    <plainText featureText="Playback MediaTrigger 700ms" />
+                                </doLater>
+                                <logTimeStamp eventTag="Playback MediaTrigger 700ms"/>
+                            </addMediaTrigger>
+                            <addMediaTrigger msToNext="7000" mediaId="recordedMedia">
+                                <doLater msToNext="0">
+                                    <plainText featureText="Playback MediaTrigger 7000ms" />
+                                </doLater>
+                                <logTimeStamp eventTag="Playback MediaTrigger 7000ms"/>
+                            </addMediaTrigger>
+                            <addMediaTrigger msToNext="70000" mediaId="recordedMedia">
+                                <doLater msToNext="0">
+                                    <plainText featureText="Playback MediaTrigger 70000ms" />
+                                </doLater>
+                                <logTimeStamp eventTag="Playback MediaTrigger 70000ms"/>
+                            </addMediaTrigger>
+                            </mediaPlaybackStarted>
                         <mediaPlaybackComplete>
                                 <plainText featureText="AudioRecordingPlaybackComplete"/>
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaPlaybackComplete>
-                    </startAudioRecorderWeb>
+                    </startAudioRecorderWeb> 
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
