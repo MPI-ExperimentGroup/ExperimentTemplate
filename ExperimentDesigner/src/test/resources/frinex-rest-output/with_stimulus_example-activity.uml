@@ -109,6 +109,10 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:Sequential_Display_FrameRateTimer;
+if (navigation) then (back)
+:Menu;
+endif
 :RunTrialsSimple1000;
 if (navigation) then (back)
 :Menu;

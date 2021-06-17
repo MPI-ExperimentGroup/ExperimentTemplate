@@ -80,6 +80,7 @@ sticky_menu_example --> Timer_Label_Screen
 sticky_menu_example --> Sequential_Display_Example0_6
 sticky_menu_example --> hardware_time_stamps
 sticky_menu_example --> Sequential_Display_Example
+sticky_menu_example --> Sequential_Display_FrameRateTimer
 sticky_menu_example --> RunTrialsSimple1000
 sticky_menu_example --> Audio_Input_Select
 sticky_menu_example --> Region_Timer_Screen
@@ -200,6 +201,16 @@ Sequential_Display_Example --> Sequential_Display_Example
 Sequential_Display_Example --> Sequential_Display_Example
 Sequential_Display_Example --> Sequential_Display_Example
 Sequential_Display_Example --> Sequential_Display_Example
+state Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Menu : back
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
+Sequential_Display_FrameRateTimer --> Sequential_Display_FrameRateTimer
 state RunTrialsSimple1000
 RunTrialsSimple1000 --> Menu : back
 RunTrialsSimple1000 --> RunTrialsSimple1000
@@ -472,6 +483,7 @@ Menu --> Timer_Label_Screen
 Menu --> Sequential_Display_Example0_6
 Menu --> hardware_time_stamps
 Menu --> Sequential_Display_Example
+Menu --> Sequential_Display_FrameRateTimer
 Menu --> RunTrialsSimple1000
 Menu --> Audio_Input_Select
 Menu --> Region_Timer_Screen
@@ -589,6 +601,7 @@ allMenuItemsStyle --> Timer_Label_Screen
 allMenuItemsStyle --> Sequential_Display_Example0_6
 allMenuItemsStyle --> hardware_time_stamps
 allMenuItemsStyle --> Sequential_Display_Example
+allMenuItemsStyle --> Sequential_Display_FrameRateTimer
 allMenuItemsStyle --> RunTrialsSimple1000
 allMenuItemsStyle --> Audio_Input_Select
 allMenuItemsStyle --> Region_Timer_Screen
