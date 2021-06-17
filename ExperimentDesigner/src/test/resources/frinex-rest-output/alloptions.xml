@@ -128,6 +128,9 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -236,6 +239,7 @@
         </switchUserIdButton>
         <selectUserMenu fieldName="workerId" styleName="styleName"/>
         <selectLocaleMenu styleName="styleName"/>
+        <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -286,6 +290,12 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
         <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="target" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -294,6 +304,42 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </requestNotification>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
+        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
+        <addTimerTrigger evaluateTokens="evaluateTokens" listenerId="listenerId" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onTimer>
+                <plainText featureText="plainText in onTimer"/>
+            </onTimer>
+        </addTimerTrigger>
+        <startFrameRateTimer>
+            <addFrameTimeTrigger msToNext="60">
+                <disableButtonGroup matchingRegex="matchingRegex"/>
+                <enableButtonGroup matchingRegex="matchingRegex"/>
+                <hideButtonGroup matchingRegex="matchingRegex"/>
+                <showButtonGroup matchingRegex="matchingRegex"/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId="regionId" styleName="styleName"/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -1922,6 +1968,9 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
         <requestNotification featureText="requestNotification" fieldName="workerId" targetOptions="target" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -1963,6 +2012,28 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
+        <startFrameRateTimer>
+            <addFrameTimeTrigger msToNext="60">
+                <disableButtonGroup matchingRegex="matchingRegex"/>
+                <enableButtonGroup matchingRegex="matchingRegex"/>
+                <hideButtonGroup matchingRegex="matchingRegex"/>
+                <showButtonGroup matchingRegex="matchingRegex"/>
+                <logTimeStamp eventTag="eventTag"/>
+                <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
+                <dtmfTone msToNext="60" dtmf="#"/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId="regionId" styleName="styleName"/>
+                <playMedia mediaId="mediaId"/>
+                <rewindMedia mediaId="mediaId"/>
+                <pauseMedia mediaId="mediaId"/>
+                <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
         <addMediaTrigger msToNext="60" mediaId="mediaId">
             <plainText featureText="plainText in addMediaTrigger"/>
         </addMediaTrigger>
@@ -2285,6 +2356,7 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -2329,6 +2401,48 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
+        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
+        <addTimerTrigger evaluateTokens="evaluateTokens" listenerId="listenerId" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onTimer>
+                <plainText featureText="plainText in onTimer"/>
+            </onTimer>
+        </addTimerTrigger>
+        <startFrameRateTimer>
+            <addFrameTimeTrigger msToNext="60">
+                <disableButtonGroup matchingRegex="matchingRegex"/>
+                <enableButtonGroup matchingRegex="matchingRegex"/>
+                <hideButtonGroup matchingRegex="matchingRegex"/>
+                <showButtonGroup matchingRegex="matchingRegex"/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId="regionId" styleName="styleName"/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -2715,6 +2829,9 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -2823,6 +2940,7 @@
         </switchUserIdButton>
         <selectUserMenu fieldName="workerId"/>
         <selectLocaleMenu/>
+        <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
@@ -2873,6 +2991,12 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
         <requestNotification featureText="" fieldName="workerId" dataLogFormat="">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -2881,6 +3005,42 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </requestNotification>
+        <startTimer msToNext="60" listenerId="">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
+        <clearTimer listenerId=""/>
+        <logTimerValue listenerId=""/>
+        <timerLabel msToNext="60" listenerId="" msLabelFormat=""/>
+        <addTimerTrigger evaluateTokens="" listenerId="" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onTimer>
+                <plainText featureText="plainText in onTimer"/>
+            </onTimer>
+        </addTimerTrigger>
+        <startFrameRateTimer>
+            <addFrameTimeTrigger msToNext="60">
+                <disableButtonGroup matchingRegex=""/>
+                <enableButtonGroup matchingRegex=""/>
+                <hideButtonGroup matchingRegex=""/>
+                <showButtonGroup matchingRegex=""/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId=""/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -4479,6 +4639,9 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
         <requestNotification featureText="" fieldName="workerId" dataLogFormat="">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -4520,6 +4683,28 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
+        <startFrameRateTimer>
+            <addFrameTimeTrigger msToNext="60">
+                <disableButtonGroup matchingRegex=""/>
+                <enableButtonGroup matchingRegex=""/>
+                <hideButtonGroup matchingRegex=""/>
+                <showButtonGroup matchingRegex=""/>
+                <logTimeStamp/>
+                <hardwareTimeStamp/>
+                <dtmfTone msToNext="60"/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId=""/>
+                <playMedia mediaId=""/>
+                <rewindMedia mediaId=""/>
+                <pauseMedia mediaId=""/>
+                <logMediaTimeStamp mediaId=""/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8"/>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
         <addMediaTrigger msToNext="60" mediaId="">
             <plainText featureText="plainText in addMediaTrigger"/>
         </addMediaTrigger>
@@ -4842,6 +5027,7 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
@@ -4886,6 +5072,48 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
+        <doLater msToNext="60">
+            <plainText featureText="plainText in doLater"/>
+        </doLater>
+        <startTimer msToNext="60" listenerId="">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
+        <clearTimer listenerId=""/>
+        <logTimerValue listenerId=""/>
+        <timerLabel msToNext="60" listenerId="" msLabelFormat=""/>
+        <addTimerTrigger evaluateTokens="" listenerId="" maximum="60" minimum="3">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onTimer>
+                <plainText featureText="plainText in onTimer"/>
+            </onTimer>
+        </addTimerTrigger>
+        <startFrameRateTimer>
+            <addFrameTimeTrigger msToNext="60">
+                <disableButtonGroup matchingRegex=""/>
+                <enableButtonGroup matchingRegex=""/>
+                <hideButtonGroup matchingRegex=""/>
+                <showButtonGroup matchingRegex=""/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId=""/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
         <table>
             <plainText featureText="plainText in table"/>
         </table>

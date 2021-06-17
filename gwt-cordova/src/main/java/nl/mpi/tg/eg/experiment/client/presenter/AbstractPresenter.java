@@ -38,6 +38,7 @@ import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.ButtonGroupMember;
 import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
+import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -633,8 +634,8 @@ public abstract class AbstractPresenter implements Presenter {
         recorderDtmfListener.clearTriggers();
     }
 
-    protected void addRecorderTriggersWeb(long triggerMs, SingleStimulusListener singleStimulusListener) {
-        if (recorderMediaTriggerListener.addMediaTriggerListener(triggerMs, singleStimulusListener)) {
+    protected void addRecorderTriggersWeb(final long triggerMs, final FrameTimeTrigger triggerListener) {
+        if (recorderMediaTriggerListener.addMediaTriggerListener(triggerMs, triggerListener)) {
             startRecorderTriggersWeb(recorderMediaTriggerListener);
         }
     }

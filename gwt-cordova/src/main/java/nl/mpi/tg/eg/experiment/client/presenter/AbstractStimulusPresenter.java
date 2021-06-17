@@ -99,7 +99,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
     private final TimedEventMonitor timedEventMonitor;
     final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
-    private final ArrayList<Timer> pauseTimers = new ArrayList<>();
     private CurrentStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
@@ -439,32 +438,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
-    protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
-        final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
-        final HTML html = timedStimulusView.addHtmlText("", styleName);
-        Timer labelTimer = new Timer() {
-            @Override
-            public void run() {
-                final int timerValue = timerService.getTimerValue(listenerId);
-                final long remainingMs;
-                if (postLoadMs > 0) {
-                    if (postLoadMs > timerValue) {
-                        remainingMs = (long) postLoadMs - timerValue;
-                    } else {
-                        remainingMs = 0;
-                    }
-                } else {
-                    remainingMs = (long) timerValue;
-                }
-                Date msBasedDate = new Date(remainingMs);
-                String labelText = formatter.format(msBasedDate);
-                html.setHTML(labelText);
-                schedule(500);
-            }
-        };
-        labelTimer.schedule(5);
-    }
-
     protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
         countdownLabel(timesUpLabel, null, postLoadMs, msLabelFormat, timedStimulusListener);
     }
@@ -489,69 +462,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
         labelTimer.schedule(500);
-    }
-
-    private int pauseRegionCounter = 0;
-
-    protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        // pauseRegionCounter is used to keep the position in the page where the pause is expected, rather than appending to the end of the page on trigger
-        final String pauseRegionId = "pauseRegionCounter_" + pauseRegionCounter;
-        pauseRegionCounter++;
-        final InsertPanel.ForIsWidget isWidget1 = ((ComplexView) simpleView).startRegion(pauseRegionId, null);
-        ((ComplexView) simpleView).endRegion(isWidget1);
-        final Timer timer = new Timer() {
-            @Override
-            public void run() {
-                final InsertPanel.ForIsWidget isWidget2 = ((ComplexView) simpleView).startRegion(pauseRegionId, null);
-                timedStimulusListener.postLoadTimerFired();
-                pauseTimers.remove(this);
-                ((ComplexView) simpleView).endRegion(isWidget2);
-            }
-        };
-        pauseTimers.add(timer);
-        timer.schedule(postLoadMs);
-    }
-
-    protected void randomMsPause(int minimumMs, int maximumMs, final TimedStimulusListener timedStimulusListener) {
-        final Timer timer = new Timer() {
-            @Override
-            public void run() {
-                timedStimulusListener.postLoadTimerFired();
-                pauseTimers.remove(this);
-            }
-        };
-        pauseTimers.add(timer);
-        timer.schedule((int) (new Random().nextInt(maximumMs - minimumMs + 1) + minimumMs)); // since the attributes minimum, maximum are inclusive we convert maximumMs - minimumMs into upper bound (exclusive) by adding 1
-    }
-
-    protected void addTimerTrigger(final Stimulus currentStimulus, final String listenerId, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onTimer) {
-        try {
-            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
-            int pauseMs = (evaluateResult.intValue() <= maximumMs) ? evaluateResult.intValue() : maximumMs;
-            pauseMs = (pauseMs >= minimumMs) ? pauseMs : minimumMs;
-            startTimer(pauseMs, listenerId, onTimer);
-        } catch (EvaluateTokensException ete) {
-            onError.postLoadTimerFired();
-        }
-    }
-
-    protected void evaluatePause(final Stimulus currentStimulus, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-        try {
-            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
-            final Timer timer = new Timer() {
-                @Override
-                public void run() {
-                    onSuccess.postLoadTimerFired();
-                    pauseTimers.remove(this);
-                }
-            };
-            int pauseMs = (evaluateResult.intValue() <= maximumMs) ? evaluateResult.intValue() : maximumMs;
-            pauseMs = (pauseMs >= minimumMs) ? pauseMs : minimumMs;
-            pauseTimers.add(timer);
-            timer.schedule(pauseMs);
-        } catch (EvaluateTokensException ete) {
-            onError.postLoadTimerFired();
-        }
     }
 
     protected void stimulusPause(final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener) {
@@ -1728,11 +1638,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void logTagPairStamp(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventName, final String eventTag, final int dataChannel) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), eventName, duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, (currentStimulus != null) ? currentStimulus.getUniqueId() : "", eventName, duration.elapsedMillis());
     }
 
     protected void endAudioRecorderTag(int tier, String tagString, final Stimulus currentStimulus) {
-        super.endAudioRecorderTag(tier, currentStimulus.getUniqueId(), currentStimulus.getCode(), tagString, timedEventMonitor);
+        super.endAudioRecorderTag(tier, (currentStimulus != null) ? currentStimulus.getUniqueId() : "", (currentStimulus != null) ? currentStimulus.getCode() : "", tagString, timedEventMonitor);
     }
 
     protected void startAudioRecorderTag(int tier) {
@@ -2047,17 +1957,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public void addMediaTrigger(final Stimulus definitionScopeStimulus, final String mediaId, final int msToNext, final SingleStimulusListener triggerListener) {
         final String formattedMediaId = new HtmlTokenFormatter(definitionScopeStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
-        final SingleStimulusListener stimulusListener = new SingleStimulusListener() {
-            @Override
-            public void postLoadTimerFired(final Stimulus triggerScopeStimulus) {
-                // the web recorder does not have stimulus in scope so we rely on the definition scope stimulus
-                triggerListener.postLoadTimerFired(definitionScopeStimulus);
-            }
-        };
+        // the web recorder does not have stimulus in scope so we rely on the definition scope stimulus
         if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
-            addRecorderTriggersWeb(msToNext, stimulusListener);
+            addRecorderTriggersWeb(msToNext, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
         } else {
-            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, stimulusListener);
+            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
         }
     }
 
@@ -2102,35 +2006,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         triggerListeners.get(formattedListenerId).reset();
     }
 
-    protected void /* this could be changed to addTimer or setTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
-        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
-        final long initialTimerStartMs;
-        if (storedDataValue == null || storedDataValue.isEmpty()) {
-            initialTimerStartMs = new Date().getTime();
-            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId, Long.toString(initialTimerStartMs));
-        } else {
-            initialTimerStartMs = Long.parseLong(storedDataValue);
-        }
-        timerService.startTimer(initialTimerStartMs, msToNext, listenerId, timeoutListener);
-    }
-
-    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
-        if (timerService.getTimerValue(listenerId) > msToNext) {
-            aboveThreshold.postLoadTimerFired();
-        } else {
-            withinThreshold.postLoadTimerFired();
-        }
-    }
-
-    protected void clearTimer(final String listenerId) {
-        localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
-        timerService.clearTimer(listenerId);
-    }
-
-    protected void logTimerValue(final String listenerId, final String eventTag, final int dataChannel) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, listenerId, Integer.toString(timerService.getTimerValue(listenerId)), duration.elapsedMillis());
-    }
-
     public void cancelPauseAll() {
         cancelPauseTimers();
         timedStimulusView.stopListeners();
@@ -2141,16 +2016,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
-    }
+        
 
-    public void cancelPauseTimers() {
-//        timedStimulusView.stopTimers();
-        for (Timer currentTimer : pauseTimers) {
-            if (currentTimer != null) {
-                currentTimer.cancel();
-            }
-        }
-        pauseTimers.clear();
     }
 
     public void disableStimulusButtons() {

@@ -52,6 +52,7 @@ import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
+import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -861,7 +862,7 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addMediaTriggers(long triggerMs, final String mediaId, SingleStimulusListener singleStimulusListener) {
+    public void addMediaTriggers(long triggerMs, final String mediaId, FrameTimeTrigger frameTimeTrigger) {
         final MediaTriggerListener mediaTriggerListener;
         if (mediaTriggerListenerList.containsKey(mediaId)) {
             mediaTriggerListener = mediaTriggerListenerList.get(mediaId);
@@ -869,7 +870,7 @@ public class TimedStimulusView extends ComplexView {
             mediaTriggerListener = new MediaTriggerListener();
             mediaTriggerListenerList.put(mediaId, mediaTriggerListener);
         }
-        if (mediaTriggerListener.addMediaTriggerListener(triggerMs, singleStimulusListener)) {
+        if (mediaTriggerListener.addMediaTriggerListener(triggerMs, frameTimeTrigger)) {
             final Video video = videoList.get(mediaId);
             if (video != null) {
                 AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {

@@ -808,6 +808,7 @@
 <xs:element name="createUserButton" type="createUserButtonType"/>
 <xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
 <xs:element name="displayCompletionCode" type="displayCompletionCodeType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="editableKinEntitesDiagram" type="editableKinEntitesDiagramType"/>
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
@@ -877,6 +878,7 @@
 <xs:element name="showColourReport" type="showColourReportType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
 <xs:element name="showHtmlPopup" type="showHtmlPopupType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
@@ -1662,6 +1664,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -1671,6 +1674,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -1895,6 +1899,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -1904,6 +1909,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -2002,6 +2008,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="disableButtonGroupType">
+<xs:annotation>
+<xs:documentation>Disables any buttons with a groupId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="matchingRegex" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
@@ -2009,6 +2018,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="enableButtonGroupType">
+<xs:annotation>
+<xs:documentation>Enables any buttons with a groupId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="matchingRegex" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
@@ -2016,6 +2028,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="hideButtonGroupType">
+<xs:annotation>
+<xs:documentation>Hides any buttons with a groupId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="matchingRegex" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
@@ -2023,6 +2038,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="showButtonGroupType">
+<xs:annotation>
+<xs:documentation>Shows any buttons with a groupId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="matchingRegex" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
@@ -2107,6 +2125,7 @@
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -2116,6 +2135,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -2320,6 +2340,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -2329,6 +2350,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -2550,6 +2572,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -2559,6 +2582,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -2785,6 +2809,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -2794,6 +2819,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -3006,6 +3032,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -3015,6 +3042,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -3214,6 +3242,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -3223,6 +3252,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -3445,6 +3475,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -3454,6 +3485,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -3676,6 +3708,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -3685,6 +3718,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -3965,6 +3999,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -3974,6 +4009,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -4191,6 +4227,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -4200,6 +4237,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -4417,6 +4455,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -4426,6 +4465,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -4744,6 +4784,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -4753,6 +4794,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -5028,6 +5070,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -5037,6 +5080,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -5535,6 +5579,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="backgroundImageType">
+<xs:annotation>
+<xs:documentation>Sets the background with the provided image.</xs:documentation>
+</xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
@@ -5644,6 +5691,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -5653,6 +5701,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -6214,6 +6263,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -6223,6 +6273,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -6485,6 +6536,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -6494,6 +6546,208 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
+<xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
+<xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="triggerDefinition" type="triggerDefinitionType"/>
+<xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
+<xs:element name="triggerMatching" type="triggerMatchingType"/>
+<xs:element name="triggerRandom" type="triggerRandomType"/>
+<xs:element name="resetTrigger" type="resetTriggerType"/>
+<xs:element name="countdownLabel" type="countdownLabelType"/>
+<xs:element name="stimulusPause" type="stimulusPauseType"/>
+<xs:element name="stimulusLabel" type="stimulusLabelType"/>
+<xs:element name="kinTypeStringDiagram" type="kinTypeStringDiagramType"/>
+<xs:element name="loadKinTypeStringDiagram" type="loadKinTypeStringDiagramType"/>
+<xs:element name="editableKinEntitesDiagram" type="editableKinEntitesDiagramType"/>
+<xs:element name="existingUserCheck" type="existingUserCheckType"/>
+<xs:element name="table" type="tableType"/>
+<xs:element name="row" type="rowType"/>
+<xs:element name="column" type="columnType"/>
+<xs:element name="regionAppend" type="regionAppendType"/>
+<xs:element name="regionStyle" type="regionStyleType"/>
+<xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
+<xs:element name="regionReplace" type="regionReplaceType"/>
+<xs:element name="regionClear" type="regionClearType"/>
+<xs:element name="stimulusPresent" type="stimulusPresentType"/>
+<xs:element name="stimulusImage" type="stimulusImageType"/>
+<xs:element name="stimulusCodeImage" type="stimulusCodeImageType"/>
+<xs:element name="stimulusCodeImageButton" type="stimulusCodeImageButtonType"/>
+<xs:element name="stimulusCodeVideo" type="stimulusCodeVideoType"/>
+<xs:element name="stimulusVideo" type="stimulusVideoType"/>
+<xs:element name="stimulusCodeAudio" type="stimulusCodeAudioType"/>
+<xs:element name="stimulusAudio" type="stimulusAudioType"/>
+<xs:element name="playMedia" type="playMediaType"/>
+<xs:element name="rewindMedia" type="rewindMediaType"/>
+<xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
+<xs:element name="stimulusImageCapture" type="stimulusImageCaptureType"/>
+<xs:element name="VideoPanel" type="VideoPanelType"/>
+<xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
+<xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
+<xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
+<xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
+<xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
+<xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
+<xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
+<xs:element name="showHtmlPopup" type="showHtmlPopupType"/>
+<xs:element name="helpDialogue" type="helpDialogueType"/>
+<xs:element name="userInfo" type="userInfoType"/>
+<xs:element name="versionData" type="versionDataType"/>
+<xs:element name="showColourReport" type="showColourReportType"/>
+<xs:element name="groupMemberCodeLabel" type="groupMemberCodeLabelType"/>
+<xs:element name="groupMemberLabel" type="groupMemberLabelType"/>
+<xs:element name="groupMessageLabel" type="groupMessageLabelType"/>
+<xs:element name="groupResponseStimulusImage" type="groupResponseStimulusImageType"/>
+<xs:element name="groupResponseFeedback" type="groupResponseFeedbackType"/>
+<xs:element name="groupScoreLabel" type="groupScoreLabelType"/>
+<xs:element name="groupChannelScoreLabel" type="groupChannelScoreLabelType"/>
+<xs:element name="scoreLabel" type="scoreLabelType"/>
+<xs:element name="submitGroupEvent" type="submitGroupEventType"/>
+<xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
+<xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
+<xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
+<xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
+<xs:element name="scoreIncrement" type="scoreIncrementType"/>
+<xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>
+<xs:element name="totalScoreAboveThreshold" type="totalScoreAboveThresholdType"/>
+<xs:element name="scoreAboveThreshold" type="scoreAboveThresholdType"/>
+<xs:element name="resetStimulus" type="resetStimulusType"/>
+<xs:element name="submitTestResults" type="submitTestResultsType"/>
+<xs:element name="validateMetadata" type="validateMetadataType"/>
+<xs:element name="transmitResults" type="transmitResultsType"/>
+</xs:choice>
+<xs:attribute name="msToNext" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="doLaterType">
+<xs:annotation>
+<xs:documentation>After the specified milliseconds have passed the contents of this element are evaluated.</xs:documentation>
+</xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="htmlText" type="htmlTextType"/>
+<xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="logTokenText" type="logTokenTextType"/>
+<xs:element name="plainText" type="plainTextType"/>
+<xs:element name="image" type="imageType"/>
+<xs:element name="menuItem" type="menuItemType"/>
+<xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="groupStimuli" type="groupStimuliType"/>
+<xs:element name="loadStimulus" type="loadStimulusType"/>
+<xs:element name="loadStimulusPlugin" type="loadStimulusPluginType"/>
+<xs:element name="withMatchingStimulus" type="withMatchingStimulusType"/>
+<xs:element name="loadSdCardStimulus" type="loadSdCardStimulusType"/>
+<xs:element name="currentStimulusHasTag" type="currentStimulusHasTagType"/>
+<xs:element name="clearStimulusResponses" type="clearStimulusResponsesType"/>
+<xs:element name="validateStimuliResponses" type="validateStimuliResponsesType"/>
+<xs:element name="stimulusExists" type="stimulusExistsType"/>
+<xs:element name="showStimuliReport" type="showStimuliReportType"/>
+<xs:element name="sendStimuliReport" type="sendStimuliReportType"/>
+<xs:element name="targetButton" type="targetButtonType"/>
+<xs:element name="hotKeyInput" type="hotKeyInputType"/>
+<xs:element name="actionButton" type="actionButtonType"/>
+<xs:element name="actionTokenButton" type="actionTokenButtonType"/>
+<xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
+<xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
+<xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
+<xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
+<xs:element name="svgGroupAdd" type="svgGroupAddType"/>
+<xs:element name="svgSetLabel" type="svgSetLabelType"/>
+<xs:element name="svgGroupShow" type="svgGroupShowType"/>
+<xs:element name="svgGroupAction" type="svgGroupActionType"/>
+<xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
+<xs:element name="stimulusButton" type="stimulusButtonType"/>
+<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
+<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="ratingButton" type="ratingButtonType"/>
+<xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
+<xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
+<xs:element name="stimulusFreeText" type="stimulusFreeTextType"/>
+<xs:element name="stimulusRatingButton" type="stimulusRatingButtonType"/>
+<xs:element name="stimulusRatingRadio" type="stimulusRatingRadioType"/>
+<xs:element name="stimulusRatingCheckbox" type="stimulusRatingCheckboxType"/>
+<xs:element name="stimulusHasRatingOptions" type="stimulusHasRatingOptionsType"/>
+<xs:element name="clearStimulusResponse" type="clearStimulusResponseType"/>
+<xs:element name="stimulusHasResponse" type="stimulusHasResponseType"/>
+<xs:element name="setStimulusCodeResponse" type="setStimulusCodeResponseType"/>
+<xs:element name="addStimulusCodeResponseValidation" type="addStimulusCodeResponseValidationType"/>
+<xs:element name="ratingFooterButton" type="ratingFooterButtonType"/>
+<xs:element name="targetFooterButton" type="targetFooterButtonType"/>
+<xs:element name="actionFooterButton" type="actionFooterButtonType"/>
+<xs:element name="addPadding" type="addPaddingType"/>
+<xs:element name="localStorageData" type="localStorageDataType"/>
+<xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
+<xs:element name="metadataField" type="metadataFieldType"/>
+<xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
+<xs:element name="metadataFieldConnection" type="metadataFieldConnectionType"/>
+<xs:element name="metadataFieldVisibilityDependant" type="metadataFieldVisibilityDependantType"/>
+<xs:element name="metadataFieldDateTriggered" type="metadataFieldDateTriggeredType"/>
+<xs:element name="saveMetadataButton" type="saveMetadataButtonType"/>
+<xs:element name="createUserButton" type="createUserButtonType"/>
+<xs:element name="switchUserIdButton" type="switchUserIdButtonType"/>
+<xs:element name="selectUserMenu" type="selectUserMenuType"/>
+<xs:element name="selectLocaleMenu" type="selectLocaleMenuType"/>
+<xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
+<xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
+<xs:element name="showCurrentMs" type="showCurrentMsType"/>
+<xs:element name="cancelPauseTimers" type="cancelPauseTimersType"/>
+<xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
+<xs:element name="showStimulusProgress" type="showStimulusProgressType"/>
+<xs:element name="displayCompletionCode" type="displayCompletionCodeType"/>
+<xs:element name="generateCompletionCode" type="generateCompletionCodeType"/>
+<xs:element name="sendAllData" type="sendAllDataType"/>
+<xs:element name="sendMetadata" type="sendMetadataType"/>
+<xs:element name="redirectToUrl" type="redirectToUrlType"/>
+<xs:element name="eraseLocalStorageOnWindowClosing" type="eraseLocalStorageOnWindowClosingType"/>
+<xs:element name="keepStimulus" type="keepStimulusType"/>
+<xs:element name="removeMatchingStimulus" type="removeMatchingStimulusType"/>
+<xs:element name="centrePage" type="centrePageType"/>
+<xs:element name="clearPage" type="clearPageType"/>
+<xs:element name="backgroundImage" type="backgroundImageType"/>
+<xs:element name="allMenuItems" type="allMenuItemsType"/>
+<xs:element name="prevStimulusButton" type="prevStimulusButtonType"/>
+<xs:element name="nextStimulusButton" type="nextStimulusButtonType"/>
+<xs:element name="nextStimulus" type="nextStimulusType"/>
+<xs:element name="prevStimulus" type="prevStimulusType"/>
+<xs:element name="nextMatchingStimulus" type="nextMatchingStimulusType"/>
+<xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
+<xs:element name="hasGetParameter" type="hasGetParameterType"/>
+<xs:element name="hasMetadataValue" type="hasMetadataValueType"/>
+<xs:element name="setMetadataValue" type="setMetadataValueType"/>
+<xs:element name="matchOnEvalTokens" type="matchOnEvalTokensType"/>
+<xs:element name="progressIndicator" type="progressIndicatorType"/>
+<xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
+<xs:element name="activateRandomItem" type="activateRandomItemType"/>
+<xs:element name="gotoPresenter" type="gotoPresenterType"/>
+<xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
+<xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
+<xs:element name="dtmfTone" type="dtmfToneType"/>
+<xs:element name="audioButton" type="audioButtonType"/>
+<xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
+<xs:element name="showStimulus" type="showStimulusType"/>
+<xs:element name="showStimulusGrid" type="showStimulusGridType"/>
+<xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
+<xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
+<xs:element name="requestNotification" type="requestNotificationType"/>
+<xs:element name="startTimer" type="startTimerType"/>
+<xs:element name="compareTimer" type="compareTimerType"/>
+<xs:element name="clearTimer" type="clearTimerType"/>
+<xs:element name="logTimerValue" type="logTimerValueType"/>
+<xs:element name="timerLabel" type="timerLabelType"/>
+<xs:element name="randomMsPause" type="randomMsPauseType"/>
+<xs:element name="evaluatePause" type="evaluatePauseType"/>
+<xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -6727,6 +6981,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -6736,6 +6991,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -7005,6 +7261,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -7014,6 +7271,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -7149,6 +7407,42 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
+<xs:complexType name="startFrameRateTimerType">
+<xs:annotation>
+<xs:documentation>Starts a timer that evaluates its triggers before each frame is rendered in the browser. The resolution of these triggering events will be no less that the framerate, but the actual time resolution is browser dependant.</xs:documentation>
+</xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="addFrameTimeTrigger" type="addFrameTimeTriggerType"/>
+</xs:choice>
+</xs:complexType>
+<xs:complexType name="addFrameTimeTriggerType">
+<xs:annotation>
+<xs:documentation>Adds a trigger to the containing frame timer. When the timer has a value equal or greater than the specified milliseconds this trigger. Only one trigger per millisecond value can be assigned.</xs:documentation>
+</xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
+<xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
+<xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
+<xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
+<xs:element name="dtmfTone" type="dtmfToneType"/>
+<xs:element name="doLater" type="doLaterType"/>
+<xs:element name="regionStyle" type="regionStyleType"/>
+<xs:element name="playMedia" type="playMediaType"/>
+<xs:element name="rewindMedia" type="rewindMediaType"/>
+<xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
+<xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
+<xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
+<xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
+</xs:choice>
+<xs:attribute name="msToNext" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
 <xs:complexType name="addMediaTriggerType">
 <xs:annotation>
 <xs:documentation>Adds a media recording or playback event that will trigger when the media first passes the provided milliseconds value. The timing of this event will have a resolution not less than the length of the recording buffer.</xs:documentation>
@@ -7262,6 +7556,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -7271,6 +7566,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -7466,6 +7762,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -7475,6 +7772,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -7665,6 +7963,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -7674,6 +7973,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -7871,6 +8171,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -7880,6 +8181,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -8090,6 +8392,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -8099,6 +8402,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -8310,6 +8614,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -8319,6 +8624,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -8521,6 +8827,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -8530,6 +8837,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -8719,6 +9027,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -8728,6 +9037,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -8910,6 +9220,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -8919,6 +9230,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -9101,6 +9413,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -9110,6 +9423,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -9292,6 +9606,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -9301,6 +9616,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -9483,6 +9799,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -9492,6 +9809,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -9684,6 +10002,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -9693,6 +10012,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -9885,6 +10205,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -9894,6 +10215,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -10086,6 +10408,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -10095,6 +10418,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -10277,6 +10601,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -10286,6 +10611,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -10468,6 +10794,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -10477,6 +10804,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -10659,6 +10987,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -10668,6 +10997,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -10850,6 +11180,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -10859,6 +11190,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -11041,6 +11373,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -11050,6 +11383,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -11227,6 +11561,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -11236,6 +11571,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -11421,6 +11757,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -11430,6 +11767,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -11612,6 +11950,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -11621,6 +11960,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -11798,6 +12138,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -11807,6 +12148,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -11989,6 +12331,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -11998,6 +12341,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -12186,6 +12530,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -12195,6 +12540,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -12377,6 +12723,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -12386,6 +12733,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -12568,6 +12916,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -12577,6 +12926,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -12759,6 +13109,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -12768,6 +13119,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -12950,6 +13302,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -12959,6 +13312,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -13144,6 +13498,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -13153,6 +13508,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -13335,6 +13691,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -13344,6 +13701,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -13526,6 +13884,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -13535,6 +13894,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -13717,6 +14077,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -13726,6 +14087,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -13918,6 +14280,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -13927,6 +14290,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -14109,6 +14473,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -14118,6 +14483,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -14308,6 +14674,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -14317,6 +14684,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -14542,6 +14910,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -14551,6 +14920,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -14923,6 +15293,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="playMediaType">
+<xs:annotation>
+<xs:documentation>Triggers play on any media with a mediaId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="mediaId" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -14930,6 +15303,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="rewindMediaType">
+<xs:annotation>
+<xs:documentation>Rewinds any media with a mediaId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="mediaId" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -14937,6 +15313,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="pauseMediaType">
+<xs:annotation>
+<xs:documentation>Triggers pause on any media with a mediaId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="mediaId" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -14944,6 +15323,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="logMediaTimeStampType">
+<xs:annotation>
+<xs:documentation>Logs a timestamp with the current time position for any media with a mediaId that matches the provided regex string.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="mediaId" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -15079,6 +15461,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -15088,6 +15471,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -15322,6 +15706,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -15331,6 +15716,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -15777,6 +16163,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -15786,6 +16173,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -15971,6 +16359,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -15980,6 +16369,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -16165,6 +16555,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -16174,6 +16565,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -16359,6 +16751,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -16368,6 +16761,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
@@ -16556,6 +16950,7 @@
 <xs:element name="showStimulusGrid" type="showStimulusGridType"/>
 <xs:element name="matchingStimulusGrid" type="matchingStimulusGridType"/>
 <xs:element name="pause" type="pauseType"/>
+<xs:element name="doLater" type="doLaterType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="compareTimer" type="compareTimerType"/>
@@ -16565,6 +16960,7 @@
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
+<xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>

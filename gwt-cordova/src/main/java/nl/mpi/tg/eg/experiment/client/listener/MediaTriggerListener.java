@@ -25,20 +25,32 @@ import java.util.TreeMap;
  */
 public class MediaTriggerListener {
 
-    private long currentKey = -1;
+    private double currentKey = -1;
     // keep all listeners in a sorted map so that only tha smallest msToNext need be compared. When triggered the the listeners are removed from the map.
-    private final TreeMap<Long, SingleStimulusListener> listenerMap = new TreeMap<>();
+    private final TreeMap<Double, FrameTimeTrigger> listenerMap = new TreeMap<>();
 
-    public boolean addMediaTriggerListener(Long triggerMs, SingleStimulusListener singleStimulusListener) {
+    public boolean addMediaTriggerListener(double triggerMs, FrameTimeTrigger frameTimeTrigger) {
         boolean isFirst = listenerMap.isEmpty();
-        listenerMap.put(triggerMs, singleStimulusListener);
+        listenerMap.put(triggerMs, frameTimeTrigger);
         currentKey = listenerMap.firstKey();
         return isFirst;
     }
 
     public boolean triggerWhenReady(Double currentTime) {
         while (currentTime >= currentKey) {
-            listenerMap.remove(currentKey).postLoadTimerFired(null);
+            listenerMap.remove(currentKey).trigger();
+            if (listenerMap.isEmpty()) {
+                return false;
+            } else {
+                currentKey = listenerMap.firstKey();
+            }
+        }
+        return true;
+    }
+
+    public boolean triggerWhenReady(int currentTime) {
+        while (currentTime >= currentKey) {
+            listenerMap.remove(currentKey).trigger();
             if (listenerMap.isEmpty()) {
                 return false;
             } else {

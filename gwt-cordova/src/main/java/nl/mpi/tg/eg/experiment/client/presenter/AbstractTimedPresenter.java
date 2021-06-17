@@ -17,23 +17,33 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
+import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -58,6 +68,8 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     final protected TimedStimulusView timedStimulusView;
     protected final DataSubmissionService submissionService;
     protected final Duration duration;
+    private final ArrayList<Timer> pauseTimers = new ArrayList<>();
+    private int pauseRegionCounter = 0;
 
     public AbstractTimedPresenter(RootLayoutPanel widgetTag, final TimedStimulusView timedStimulusView, final DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) {
         super(widgetTag, timedStimulusView, userResults, localStorage, timerService);
@@ -220,8 +232,157 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         return optionButton;
     }
 
-    protected void table(final TimedStimulusListener timedStimulusListener) {
-        table(null, timedStimulusListener);
+    protected void doLater(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        pause(postLoadMs, timedStimulusListener);
+    }
+
+    protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        // pauseRegionCounter is used to keep the position in the page where the pause is expected, rather than appending to the end of the page on trigger
+        final String pauseRegionId = "pauseRegionCounter_" + pauseRegionCounter;
+        pauseRegionCounter++;
+        final InsertPanel.ForIsWidget isWidget1 = ((ComplexView) simpleView).startRegion(pauseRegionId, null);
+        ((ComplexView) simpleView).endRegion(isWidget1);
+        final Timer timer = new Timer() {
+            @Override
+            public void run() {
+                final InsertPanel.ForIsWidget isWidget2 = ((ComplexView) simpleView).startRegion(pauseRegionId, null);
+                timedStimulusListener.postLoadTimerFired();
+                pauseTimers.remove(this);
+                ((ComplexView) simpleView).endRegion(isWidget2);
+            }
+        };
+        pauseTimers.add(timer);
+        timer.schedule(postLoadMs);
+    }
+
+    public void cancelPauseTimers() {
+//        timedStimulusView.stopTimers();
+        for (Timer currentTimer : pauseTimers) {
+            if (currentTimer != null) {
+                currentTimer.cancel();
+            }
+        }
+        pauseTimers.clear();
+    }
+
+    protected void addTimerTrigger(final Stimulus currentStimulus, final String listenerId, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onTimer) {
+        try {
+            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
+            int pauseMs = (evaluateResult.intValue() <= maximumMs) ? evaluateResult.intValue() : maximumMs;
+            pauseMs = (pauseMs >= minimumMs) ? pauseMs : minimumMs;
+            startTimer(pauseMs, listenerId, onTimer);
+        } catch (EvaluateTokensException ete) {
+            onError.postLoadTimerFired();
+        }
+    }
+
+    protected void /* this could be changed to addTimer or setTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
+        final long initialTimerStartMs;
+        if (storedDataValue == null || storedDataValue.isEmpty()) {
+            initialTimerStartMs = new Date().getTime();
+            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId, Long.toString(initialTimerStartMs));
+        } else {
+            initialTimerStartMs = Long.parseLong(storedDataValue);
+        }
+        timerService.startTimer(initialTimerStartMs, msToNext, listenerId, timeoutListener);
+    }
+
+    protected void randomMsPause(int minimumMs, int maximumMs, final TimedStimulusListener timedStimulusListener) {
+        final Timer timer = new Timer() {
+            @Override
+            public void run() {
+                timedStimulusListener.postLoadTimerFired();
+                pauseTimers.remove(this);
+            }
+        };
+        pauseTimers.add(timer);
+        timer.schedule((int) (new Random().nextInt(maximumMs - minimumMs + 1) + minimumMs)); // since the attributes minimum, maximum are inclusive we convert maximumMs - minimumMs into upper bound (exclusive) by adding 1
+    }
+
+    protected void evaluatePause(final Stimulus currentStimulus, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        try {
+            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
+            final Timer timer = new Timer() {
+                @Override
+                public void run() {
+                    onSuccess.postLoadTimerFired();
+                    pauseTimers.remove(this);
+                }
+            };
+            int pauseMs = (evaluateResult.intValue() <= maximumMs) ? evaluateResult.intValue() : maximumMs;
+            pauseMs = (pauseMs >= minimumMs) ? pauseMs : minimumMs;
+            pauseTimers.add(timer);
+            timer.schedule(pauseMs);
+        } catch (EvaluateTokensException ete) {
+            onError.postLoadTimerFired();
+        }
+    }
+
+    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+        if (timerService.getTimerValue(listenerId) > msToNext) {
+            aboveThreshold.postLoadTimerFired();
+        } else {
+            withinThreshold.postLoadTimerFired();
+        }
+    }
+
+    protected void clearTimer(final String listenerId) {
+        localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
+        timerService.clearTimer(listenerId);
+    }
+
+    protected void logTimerValue(final String listenerId, final String eventTag, final int dataChannel) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, listenerId, Integer.toString(timerService.getTimerValue(listenerId)), duration.elapsedMillis());
+    }
+
+    protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
+        final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
+        final HTML html = timedStimulusView.addHtmlText("", styleName);
+        Timer labelTimer = new Timer() {
+            @Override
+            public void run() {
+                final int timerValue = timerService.getTimerValue(listenerId);
+                final long remainingMs;
+                if (postLoadMs > 0) {
+                    if (postLoadMs > timerValue) {
+                        remainingMs = (long) postLoadMs - timerValue;
+                    } else {
+                        remainingMs = 0;
+                    }
+                } else {
+                    remainingMs = (long) timerValue;
+                }
+                Date msBasedDate = new Date(remainingMs);
+                String labelText = formatter.format(msBasedDate);
+                html.setHTML(labelText);
+                schedule(500);
+            }
+        };
+        labelTimer.schedule(5);
+    }
+
+    protected void startFrameRateTimer(final FrameTimeTrigger... frameTimeTriggers) {
+// todo: write the FrameRateTimerListener based on the MediaTimeListner
+//continue here
+        final MediaTriggerListener frameTriggerListener = new MediaTriggerListener();
+        for (final FrameTimeTrigger currentTrigger : frameTimeTriggers) {
+            frameTriggerListener.addMediaTriggerListener(currentTrigger.msToNext, currentTrigger);
+        }
+        Duration frameDuration = new Duration();
+        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+            @Override
+            public void execute(double arg0) {
+                boolean hasMoreListeners = frameTriggerListener.triggerWhenReady(frameDuration.elapsedMillis());
+                if (hasMoreListeners) {
+                    AnimationScheduler.get().requestAnimationFrame(this);
+                }
+            }
+        });
+    }
+
+    protected FrameTimeTrigger addFrameTimeTrigger(final Stimulus currentStimulus, final int msToNext, final SingleStimulusListener listener) {
+        return new FrameTimeTrigger(currentStimulus, listener, msToNext);
     }
 
     protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {
