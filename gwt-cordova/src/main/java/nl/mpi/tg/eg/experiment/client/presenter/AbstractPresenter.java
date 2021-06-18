@@ -602,27 +602,31 @@ public abstract class AbstractPresenter implements Presenter {
             dataArray = new Uint8Array(bufferLength);
             lastValue = 0;
             function updateLevelIndicator() {
-                $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
-                sumSqrValues = 0;
+                if ($wnd.recorder) {
+                    $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
+                    sumSqrValues = 0;
+                    for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
                 for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
-                    var currentValue = dataArray[bufferIndex] - 128;
-                    sumSqrValues += currentValue * currentValue;
-                }
-                rmsValue = Math.sqrt(sumSqrValues / bufferLength);
-                smoothedValue = rmsValue;
-                if (rmsValue < lastValue) {
-                    smoothedValue += (lastValue - rmsValue) * 0.9;
-                }
-                lastValue = smoothedValue;
-                //console.log(dataArray);
-                percentValue = smoothedValue * (100 / 127);
-                //console.log(percentValue);
-                //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Lnl/mpi/tg/eg/experiment/client/listener/ValueChangeListener;Ljava/lang/Double;)(changeListener);//, rmsValue
-                //changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(rmsValue);
-                var hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
-                //console.log(hasListeners);
-                if(hasListeners === true) {
-                    requestAnimationFrame(updateLevelIndicator);
+                    for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
+                        var currentValue = dataArray[bufferIndex] - 128;
+                        sumSqrValues += currentValue * currentValue;
+                    }
+                    rmsValue = Math.sqrt(sumSqrValues / bufferLength);
+                    smoothedValue = rmsValue;
+                    if (rmsValue < lastValue) {
+                        smoothedValue += (lastValue - rmsValue) * 0.9;
+                    }
+                    lastValue = smoothedValue;
+                    //console.log(dataArray);
+                    percentValue = smoothedValue * (100 / 127);
+                    //console.log(percentValue);
+                    //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Lnl/mpi/tg/eg/experiment/client/listener/ValueChangeListener;Ljava/lang/Double;)(changeListener);//, rmsValue
+                    //changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(rmsValue);
+                    var hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
+                    //console.log(hasListeners);
+                    if(hasListeners === true) {
+                        requestAnimationFrame(updateLevelIndicator);
+                    }
                 }
             }
             requestAnimationFrame(updateLevelIndicator);
