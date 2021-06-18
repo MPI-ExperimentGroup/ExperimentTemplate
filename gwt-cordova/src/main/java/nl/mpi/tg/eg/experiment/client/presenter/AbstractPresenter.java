@@ -709,11 +709,12 @@ public abstract class AbstractPresenter implements Presenter {
         var index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
 
         var frequencyCanvas = $doc.querySelector('#frequencyCanvas');
-        var frequencyCanvasContext = frequencyCanvas.getContext('2d');
-        var frequencyCanvasHeight = 256;
-        var frequencyCanvasWidth = 2048;
-        frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
-            
+        if (frequencyCanvas) {
+            var frequencyCanvasContext = frequencyCanvas.getContext('2d');
+            var frequencyCanvasHeight = 256;
+            var frequencyCanvasWidth = 2048;
+            frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+        }
         function updateRecorderDtmfTriggers() {
             if ($wnd.recorder) {
                 var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
@@ -737,31 +738,33 @@ public abstract class AbstractPresenter implements Presenter {
                 }
                 var averageLevel = totalLevel / bufferLength;
                 var dtmfAverage = (index697Level + index770Level + index852Level + index941Level + index1209Level + index1336Level + index1477Level + index1633Level) / 8;
-                // draw graph
-                frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
-                frequencyCanvasContext.fillRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
-                var barWidth = 1;//(frequencyCanvasWidth / bufferLength) / 4;
-                var barHeight;
-                var positionX = 0;
-                for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
-                    barHeight = dataArray[bufferIndex] / 4;
-                    if (bufferIndex === index697 || bufferIndex === index770 || bufferIndex === index852 || bufferIndex === index941 || bufferIndex === index1209 || bufferIndex === index1336 || bufferIndex === index1477 || bufferIndex === index1633) {
-                        frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
-                    } else {
-                        frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
-                    }
-                    frequencyCanvasContext.fillRect(positionX, frequencyCanvasHeight - barHeight, barWidth, frequencyCanvasHeight);
-                    positionX += barWidth + 1;
-                }
                 var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 3);
-                var triggerThresholdHeight = triggerThreshold / 4;
-                var peekLevelHeight = peekLevel / 4;
-                var dtmfAverageHeight = dtmfAverage / 4;
-                frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
-                frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - triggerThresholdHeight, frequencyCanvasWidth, 1);
-                frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
-                frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - peekLevelHeight, frequencyCanvasWidth, 1);
-                frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - dtmfAverageHeight, frequencyCanvasWidth, 1);
+                if (frequencyCanvas) {
+                    // draw graph
+                    frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
+                    frequencyCanvasContext.fillRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+                    var barWidth = 1;//(frequencyCanvasWidth / bufferLength) / 4;
+                    var barHeight;
+                    var positionX = 0;
+                    for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
+                        barHeight = dataArray[bufferIndex] / 4;
+                        if (bufferIndex === index697 || bufferIndex === index770 || bufferIndex === index852 || bufferIndex === index941 || bufferIndex === index1209 || bufferIndex === index1336 || bufferIndex === index1477 || bufferIndex === index1633) {
+                            frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                        } else {
+                            frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
+                        }
+                        frequencyCanvasContext.fillRect(positionX, frequencyCanvasHeight - barHeight, barWidth, frequencyCanvasHeight);
+                        positionX += barWidth + 1;
+                    }
+                    var triggerThresholdHeight = triggerThreshold / 4;
+                    var peekLevelHeight = peekLevel / 4;
+                    var dtmfAverageHeight = dtmfAverage / 4;
+                    frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - triggerThresholdHeight, frequencyCanvasWidth, 1);
+                    frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
+                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - peekLevelHeight, frequencyCanvasWidth, 1);
+                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - dtmfAverageHeight, frequencyCanvasWidth, 1);
+                }
                 var row = -1;
                 if (index697Level > triggerThreshold && index770Level < triggerThreshold && index852Level < triggerThreshold && index941Level < triggerThreshold) {
                     // 697 Hz	1	2	3	A
