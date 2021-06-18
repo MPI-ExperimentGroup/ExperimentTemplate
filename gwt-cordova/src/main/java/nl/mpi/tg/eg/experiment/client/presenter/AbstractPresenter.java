@@ -753,7 +753,7 @@ public abstract class AbstractPresenter implements Presenter {
                     frequencyCanvasContext.fillRect(positionX, frequencyCanvasHeight - barHeight, barWidth, frequencyCanvasHeight);
                     positionX += barWidth + 1;
                 }
-                var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 10);
+                var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 3);
                 var triggerThresholdHeight = triggerThreshold / 4;
                 var peekLevelHeight = peekLevel / 4;
                 var dtmfAverageHeight = dtmfAverage / 4;
