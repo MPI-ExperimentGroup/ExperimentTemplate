@@ -63,10 +63,12 @@ public class RecorderDtmfListener {
                 codeRow = null;
                 break;
         }
-        if (codeRow != null) {
+        if (codeRow != null | row == -1) {
             final HardwareTimeStamp.DTMF codeDetected;
             if (null == column) {
                 codeDetected = null;
+            } else if (row == -1 | column == -1) {
+                codeDetected = HardwareTimeStamp.DTMF.codeoff;
             } else switch (column) {
                 case 0:
                     // 1209 Hz
@@ -92,10 +94,10 @@ public class RecorderDtmfListener {
                 if (codeDetected.equals(lastCodeDetected)) {
                     lastCodeCounter++;
                 } else {
-                    lastCodeCounter = 1;
+                    lastCodeCounter = 0;
                 }
                 lastCodeDetected = codeDetected;
-                if (lastCodeCounter > 50 && !codeDetected.equals(lastCodeTriggered)) {
+                if (lastCodeCounter > 5 && !codeDetected.equals(lastCodeTriggered)) {
                     final SingleStimulusListener triggerForCode = listenerMap.get(codeDetected);
                     if (triggerForCode != null) {
                         triggerForCode.postLoadTimerFired(null);
