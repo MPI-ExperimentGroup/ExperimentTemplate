@@ -606,8 +606,6 @@ public abstract class AbstractPresenter implements Presenter {
                     $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
                     sumSqrValues = 0;
                     for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
-                for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
-                    for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
                         var currentValue = dataArray[bufferIndex] - 128;
                         sumSqrValues += currentValue * currentValue;
                     }
