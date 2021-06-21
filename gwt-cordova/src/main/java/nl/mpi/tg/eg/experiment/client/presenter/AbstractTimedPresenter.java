@@ -69,6 +69,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     protected final DataSubmissionService submissionService;
     protected final Duration duration;
     private final ArrayList<Timer> pauseTimers = new ArrayList<>();
+    private final ArrayList<MediaTriggerListener> frameTriggerListeners = new ArrayList<>();
     private int pauseRegionCounter = 0;
 
     public AbstractTimedPresenter(RootLayoutPanel widgetTag, final TimedStimulusView timedStimulusView, final DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) {
@@ -263,6 +264,11 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
             }
         }
         pauseTimers.clear();
+        for (MediaTriggerListener frameTriggerListener : frameTriggerListeners) {
+            if (frameTriggerListener != null) {
+                frameTriggerListener.clearTriggers();
+            }
+        }
     }
 
     protected void addTimerTrigger(final Stimulus currentStimulus, final String listenerId, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onTimer) {
@@ -363,9 +369,8 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void startFrameRateTimer(final FrameTimeTrigger... frameTimeTriggers) {
-// todo: write the FrameRateTimerListener based on the MediaTimeListner
-//continue here
         final MediaTriggerListener frameTriggerListener = new MediaTriggerListener();
+        frameTriggerListeners.add(frameTriggerListener);
         for (final FrameTimeTrigger currentTrigger : frameTimeTriggers) {
             frameTriggerListener.addMediaTriggerListener(currentTrigger.msToNext, currentTrigger);
         }
