@@ -161,9 +161,9 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public void onValueChange(Double updateValue) {
                 if (styleName != null && !styleName.isEmpty()) {
-                    bargraphInner.setSize(((int) (100.0 / range * updateValue)) + "%", "100%");
+                    bargraphInner.setSize(((int) (100.0 / range * updateValue)) + "%", ((int) (100.0 / range * updateValue)) + "%");
                 } else {
-                    bargraphInner.setPixelSize((int) (100.0 / range * updateValue), 10);
+                    bargraphInner.setPixelSize((int) (100.0 / range * updateValue), (int) (100.0 / range * updateValue));
                 }
             }
         };
