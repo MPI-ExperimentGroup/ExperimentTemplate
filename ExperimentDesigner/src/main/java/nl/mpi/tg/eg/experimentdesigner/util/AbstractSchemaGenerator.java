@@ -171,6 +171,9 @@ public class AbstractSchemaGenerator {
             this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
                     : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;
             List<String> childTypeList = new ArrayList<>();
+            if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType)) {
+                childTypeList.add(featureType.name());
+            }
             switch (featureType.getRequiresChildType()) {
                 // these items link to separate lists of element groups: general, stimuli, group...
                 case stimulusAction:
