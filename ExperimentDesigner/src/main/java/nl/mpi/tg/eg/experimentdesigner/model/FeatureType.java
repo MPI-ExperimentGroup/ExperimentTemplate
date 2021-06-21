@@ -187,7 +187,7 @@ public enum FeatureType {
     startFrameRateTimer(new FeatureAttribute[]{}, false, "Starts a timer that evaluates its triggers before each frame is rendered in the browser. The resolution of these triggering events will be no less that the framerate, but the actual time resolution is browser dependant.", Contitionals.hasFrameRateTriggers, Contitionals.none),
     addFrameTimeTrigger(new FeatureAttribute[]{msToNext}, false, "Adds a trigger to the containing frame timer. When the timer has a value equal or greater than the specified milliseconds this trigger. Only one trigger per millisecond value can be assigned.", Contitionals.isTimeCritical, Contitionals.hasFrameRateTriggers),
     addMediaTrigger(false, new FeatureAttribute[]{msToNext, mediaId}, "Adds a media recording or playback event that will trigger when the media first passes the provided milliseconds value. The timing of this event will have a resolution not less than the length of the recording buffer.", Contitionals.isTimeCritical, Contitionals.none),
-    addRecorderDtmfTrigger(false, new FeatureAttribute[]{dtmf}, "Adds a web recorder event that will trigger when the the provided DTMF tone is detected in the recorded audio stream. Only one trigger can be assigned per DTMF code.", Contitionals.isTimeCritical, Contitionals.none),
+    addRecorderDtmfTrigger(false, new FeatureAttribute[]{dtmf}, "Adds a web recorder event that will trigger when the the provided DTMF tone is detected in the recorded audio stream. Only one trigger can be assigned per DTMF code.", Contitionals.isTimeCritical, Contitionals.isRecursiveType, Contitionals.none),
     // todo: does triggerListener maximum value of 0 allow infinit? document this
     triggerDefinition(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}, "The contents of this element will be activated when matched by the listenerId attribute of trigger or triggerRandom (for example). Based on the threshold and maximum values a trigger request does not always result in the trigger activating. The threshold is the number of activation requests before it will trigger. The maximum is the number of times the trigger can occur after which activation requests will be ignored. So a triggerDefinition with threshold 3 and maximum 1 would require three activation requests to trigger and it would not trigger again. A triggerDefinition can have more than one stimulus available (eg when it is in an eachStimulus or hasMoreStimulus). If this is the case then stimulus where triggerDefinition is defined will be used. If there is no stimulus where the triggerDefinition is defined then the stimulus from the point at which it is triggered will be used."),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
@@ -332,6 +332,7 @@ public enum FeatureType {
         svgGroupsLoaded(true),
         hasFrameRateTriggers(true),
         isTimeCritical(true),
+        isRecursiveType(true),
         none(true),
         any(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element

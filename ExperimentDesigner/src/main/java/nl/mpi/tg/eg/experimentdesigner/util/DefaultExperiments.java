@@ -548,6 +548,9 @@ public class DefaultExperiments {
                 }
                 break;
         }
+        if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType) && addOptionalAttributes){
+            presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, false));
+        }
         if (featureType.getRequiresChildType() == FeatureType.Contitionals.any
                 || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction
                 || featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction) {

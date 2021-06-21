@@ -7481,6 +7481,7 @@
 <xs:documentation>Adds a web recorder event that will trigger when the the provided DTMF tone is detected in the recorded audio stream. Only one trigger can be assigned per DTMF code.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
 <xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>

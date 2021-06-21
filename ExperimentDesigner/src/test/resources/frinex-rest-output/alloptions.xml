@@ -547,6 +547,20 @@
             <stopAudioRecorder/>
             <startAudioRecorderTag eventTier="8"/>
             <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+            <addRecorderDtmfTrigger>
+                <disableButtonGroup matchingRegex=""/>
+                <enableButtonGroup matchingRegex=""/>
+                <hideButtonGroup matchingRegex=""/>
+                <showButtonGroup matchingRegex=""/>
+                <regionStyle regionId=""/>
+                <playMedia mediaId=""/>
+                <rewindMedia mediaId=""/>
+                <pauseMedia mediaId=""/>
+                <logMediaTimeStamp mediaId=""/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8"/>
+            </addRecorderDtmfTrigger>
         </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
@@ -2095,6 +2109,26 @@
             <stopAudioRecorder/>
             <startAudioRecorderTag eventTier="8"/>
             <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+            <addRecorderDtmfTrigger>
+                <disableButtonGroup matchingRegex=""/>
+                <enableButtonGroup matchingRegex=""/>
+                <hideButtonGroup matchingRegex=""/>
+                <showButtonGroup matchingRegex=""/>
+                <logTimeStamp/>
+                <hardwareTimeStamp/>
+                <dtmfTone msToNext="60"/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <regionStyle regionId=""/>
+                <playMedia mediaId=""/>
+                <rewindMedia mediaId=""/>
+                <pauseMedia mediaId=""/>
+                <logMediaTimeStamp mediaId=""/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8"/>
+            </addRecorderDtmfTrigger>
         </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
