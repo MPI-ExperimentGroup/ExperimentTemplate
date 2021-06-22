@@ -1687,20 +1687,22 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         super.clearRecorderTriggersWeb();
-        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, levelIndicatorStyle, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 2);
-    }
-
-    private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
-        // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
-        // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
-        timedStimulusView.setWebRecorderMediaId(formattedMediaId);
         final ValueChangeListener<Double> changeListener;
         if (levelIndicatorStyle != null) {
+            // the levelIndicator is added separately so that it does not get added more than once when the (audioContextCurrentMS > 100) triggers a restart of the recorder
             changeListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
         } else {
             changeListener = null;
         }
+        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 2);
+    }
+
+    private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final ValueChangeListener<Double> changeListener, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
+        // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
+        // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
+        timedStimulusView.setWebRecorderMediaId(formattedMediaId);
+
         final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
@@ -1713,7 +1715,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorder", "rejecting due to audioContextCurrentMS out of spec" + audioContextCurrentMS, duration.elapsedMillis());
                     stopAudioRecorder();
                     if (retryCount > 0) {
-                        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, levelIndicatorStyle, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
+                        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
                     } else {
                         onError.postLoadTimerFired();
                     }
