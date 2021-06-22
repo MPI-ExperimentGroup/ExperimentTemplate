@@ -376,18 +376,27 @@ public abstract class AbstractPresenter implements Presenter {
         simpleView.addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
+    Timer inaccurateToneOffTimer = null;
+
     protected void dtmfTone(final DTMF dtmfCode, final int msToNext) {
         if (toneGenerator == null) {
             toneGenerator = new HardwareTimeStamp(null, true);
         }
+        if (inaccurateToneOffTimer != null) {
+            inaccurateToneOffTimer.cancel();
+            inaccurateToneOffTimer = null;
+        }
         toneGenerator.setDtmf(dtmfCode);
         if (msToNext > 0) {
-            Timer timer = new Timer() {
+            inaccurateToneOffTimer = new Timer() {
                 public void run() {
-                    toneGenerator.setDtmf(DTMF.codeoff);
+                    // there will still be cases where the hardware timestamps might have set the same DTMF code and this timer could have an effect on the duration.
+                    if (toneGenerator.getCurrentTone() == dtmfCode) {
+                        toneGenerator.setDtmf(DTMF.codeoff);
+                    }
                 }
             };
-            timer.schedule(msToNext);
+            inaccurateToneOffTimer.schedule(msToNext);
         }
     }
 

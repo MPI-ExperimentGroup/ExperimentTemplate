@@ -28,6 +28,7 @@ public class HardwareTimeStamp {
     final String hardwareTimeStampOptions;
     private boolean opto1State = true;
     private boolean opto2State = true;
+    private DTMF currentTone = DTMF.codeoff;
 
     public HardwareTimeStamp(String hardwareTimeStampOptions, final boolean dtmfOnly) {
         this.hardwareTimeStampOptions = hardwareTimeStampOptions;
@@ -105,8 +106,13 @@ public class HardwareTimeStamp {
             }
     }-*/;
 
+    public DTMF getCurrentTone() {
+        return currentTone;
+    }
+
     public void setDtmf(DTMF dtmf) {
         startDtmf(dtmf.tone1, dtmf.tone2);
+        currentTone = dtmf;
     }
 
     final protected native boolean initialiseDtmf() /*-{
