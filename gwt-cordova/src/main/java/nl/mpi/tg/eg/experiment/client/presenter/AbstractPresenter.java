@@ -559,8 +559,11 @@ public abstract class AbstractPresenter implements Presenter {
      }-*/;
 
     protected native void listAudioDevicesWeb(final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
+        // first we trigger the request to record because when permission is not given then the list is always empty
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
-            navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+            $wnd.requestPermissions(false, true,
+            function() {
+                navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
                 for (var index = 0; (index < deviceInfos.length); index++) {
                     var deviceInfo = deviceInfos[index];
                     console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
@@ -569,6 +572,9 @@ public abstract class AbstractPresenter implements Presenter {
                     }
                 }
                 deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingComplete()();
+            });
+            }, function(errorMessage) {
+                deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingFailed()();
             });
         } else {
             deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingFailed()();
