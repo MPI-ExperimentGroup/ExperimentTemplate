@@ -617,7 +617,7 @@ public abstract class AbstractPresenter implements Presenter {
             dataArray = new Uint8Array(bufferLength);
             lastValue = 0;
             function updateLevelIndicator() {
-                if ($wnd.recorder) {
+                if ($wnd.recorder && $wnd.audioAnalyser) {
                     $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
                     sumSqrValues = 0;
                     for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
@@ -733,7 +733,7 @@ public abstract class AbstractPresenter implements Presenter {
             frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
         }
         function updateRecorderDtmfTriggers() {
-            if ($wnd.recorder) {
+            if ($wnd.recorder && $wnd.audioAnalyser) {
                 var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
                 //console.log(bufferLength);
                 var dataArray = new Uint8Array(bufferLength);

@@ -38,7 +38,10 @@ public class MediaTriggerListener {
 
     public boolean triggerWhenReady(Double currentTime) {
         while (currentTime >= currentKey) {
-            listenerMap.remove(currentKey).trigger();
+            final FrameTimeTrigger currentListener = listenerMap.remove(currentKey);
+            if (currentListener != null) {
+                currentListener.trigger();
+            }
             if (listenerMap.isEmpty()) {
                 return false;
             } else {
