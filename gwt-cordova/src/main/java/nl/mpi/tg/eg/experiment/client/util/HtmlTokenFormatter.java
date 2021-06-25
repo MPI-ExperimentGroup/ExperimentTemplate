@@ -21,7 +21,6 @@ import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.i18n.client.TimeZone;
 import com.google.gwt.i18n.shared.DateTimeFormat;
-import com.google.gwt.user.client.Window;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -396,7 +395,7 @@ public class HtmlTokenFormatter {
             }
             replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
         }
-        final String[] splitOnTimeTokens = replacedTokensString.split("<formatDateTime");
+        final String[] splitOnTimeTokens = replacedTokensString.split("<formatDateTime_");
         if (splitOnTimeTokens.length > 1) {
             String resultString = null;
             for (String splitPart : splitOnTimeTokens) {
