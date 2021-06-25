@@ -6078,7 +6078,7 @@
 </xs:complexType>
 <xs:complexType name="dtmfToneType">
 <xs:annotation>
-<xs:documentation>Produces the specified DTMF tone for the given time in milliseconds. When the milliseconds is set to 0 or omitted the tone will continue until it is stoped by setting the DTMF code to off.</xs:documentation>
+<xs:documentation>Produces the specified DTMF tone for the given time in milliseconds. When the milliseconds is set to 0 or omitted the tone will continue until it is stopped by setting the DTMF code to off.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="msToNext" type="xs:integer" use="required">
 <xs:annotation>

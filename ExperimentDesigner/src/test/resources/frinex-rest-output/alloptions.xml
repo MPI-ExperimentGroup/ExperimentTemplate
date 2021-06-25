@@ -131,6 +131,14 @@
         <doLater msToNext="60">
             <plainText featureText="plainText in doLater"/>
         </doLater>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -2712,6 +2720,14 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -2922,6 +2938,14 @@
         <doLater msToNext="60">
             <plainText featureText="plainText in doLater"/>
         </doLater>
+        <compareTimer msToNext="60" listenerId="">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -5439,6 +5463,14 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <compareTimer msToNext="60" listenerId="">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
+        </compareTimer>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
