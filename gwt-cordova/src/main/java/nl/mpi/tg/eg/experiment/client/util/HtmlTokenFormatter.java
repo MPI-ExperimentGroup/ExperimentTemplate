@@ -406,7 +406,7 @@ public class HtmlTokenFormatter {
                     if (subPart[0].length() > 0) {
                         Date date = new Date();
                         DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat(subPart[0]);
-                        resultString += dateTimeFormat.format(date, TimeZone.createTimeZone(0));
+                        resultString += dateTimeFormat.format(date);
                     }
                     resultString += subPart[1];
                 }
