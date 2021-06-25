@@ -19,6 +19,9 @@ package nl.mpi.tg.eg.experiment.client.util;
 
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
+import com.google.gwt.i18n.client.TimeZone;
+import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -387,6 +390,25 @@ public class HtmlTokenFormatter {
                             }
                         }
                         resultString += formatDDMMYYYCurrentDate(addDays, addMonths, addYears);
+                    }
+                    resultString += subPart[1];
+                }
+            }
+            replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
+        }
+        final String[] splitOnTimeTokens = replacedTokensString.split("<formatDateTime");
+        if (splitOnTimeTokens.length > 1) {
+            String resultString = null;
+            for (String splitPart : splitOnTimeTokens) {
+                if (resultString == null) {
+                    resultString = splitPart;
+                } else {
+                    final String[] subPart = splitPart.split(">", 2);
+                    if (subPart[0].length() > 0) {
+                    } else {
+                        Date date = new Date();
+                        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat(subPart[0]);
+                        resultString += dateTimeFormat.format(date, TimeZone.createTimeZone(0));
                     }
                     resultString += subPart[1];
                 }
