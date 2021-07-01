@@ -90,6 +90,27 @@ public class HardwareTimeStamp {
         setOpto2(opto2State);
     }
 
+    final public native void terminate() /*-{
+            if ($wnd.opto1) {
+                $wnd.opto1.remove();
+                $wnd.opto1 = null;
+            }
+            if ($wnd.opto2) {
+                $wnd.opto2.remove();
+                $wnd.opto2 = null;
+            }
+            if ($wnd.oscillator1) {
+                $wnd.oscillator1.frequency.value = 0;
+                $wnd.oscillator1.stop();
+                $wnd.oscillator1 = null;
+            }
+            if ($wnd.oscillator2) {
+                $wnd.oscillator2.frequency.value = 0;
+                $wnd.oscillator2.stop();  
+                $wnd.oscillator2 = null;
+            }
+    }-*/;
+    
     final public native void setOpto1(boolean optoState) /*-{
             if (optoState) {
                 $wnd.opto1.css('background', 'white');
