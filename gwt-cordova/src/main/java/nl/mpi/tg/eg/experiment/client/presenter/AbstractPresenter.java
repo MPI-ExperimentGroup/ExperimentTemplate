@@ -810,8 +810,6 @@ public abstract class AbstractPresenter implements Presenter {
                         var row = 1;
                     } else if (index697Level < dtmfAverageHeight && index770Level < dtmfAverageHeight && index852Level > triggerThreshold && index941Level < dtmfAverageHeight) {
                         // 852 Hz	7	8	9	C    
-                    // 852 Hz	7	8	9	C    
-                        // 852 Hz	7	8	9	C    
                         var row = 2
                     } else if (index697Level < dtmfAverageHeight && index770Level < dtmfAverageHeight && index852Level < dtmfAverageHeight && index941Level > triggerThreshold) {
                         // 941 Hz	*	0	#	D
