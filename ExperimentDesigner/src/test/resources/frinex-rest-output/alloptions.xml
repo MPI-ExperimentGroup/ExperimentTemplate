@@ -343,6 +343,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId="listenerId"/>
                 <regionStyle regionId="regionId" styleName="styleName"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -533,6 +534,7 @@
             <enableButtonGroup matchingRegex="matchingRegex"/>
             <hideButtonGroup matchingRegex="matchingRegex"/>
             <showButtonGroup matchingRegex="matchingRegex"/>
+            <clearTimer listenerId="listenerId"/>
             <regionStyle regionId="regionId" styleName="styleName"/>
             <playMedia mediaId="mediaId"/>
             <rewindMedia mediaId="mediaId"/>
@@ -547,6 +549,7 @@
             <enableButtonGroup matchingRegex="matchingRegex"/>
             <hideButtonGroup matchingRegex="matchingRegex"/>
             <showButtonGroup matchingRegex="matchingRegex"/>
+            <clearTimer listenerId="listenerId"/>
             <regionStyle regionId="regionId" styleName="styleName"/>
             <playMedia mediaId="mediaId"/>
             <rewindMedia mediaId="mediaId"/>
@@ -560,6 +563,7 @@
                 <enableButtonGroup matchingRegex=""/>
                 <hideButtonGroup matchingRegex=""/>
                 <showButtonGroup matchingRegex=""/>
+                <clearTimer listenerId=""/>
                 <regionStyle regionId=""/>
                 <playMedia mediaId=""/>
                 <rewindMedia mediaId=""/>
@@ -2068,6 +2072,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId="listenerId"/>
                 <regionStyle regionId="regionId" styleName="styleName"/>
                 <playMedia mediaId="mediaId"/>
                 <rewindMedia mediaId="mediaId"/>
@@ -2089,6 +2094,7 @@
             <doLater msToNext="60">
                 <plainText featureText="plainText in doLater"/>
             </doLater>
+            <clearTimer listenerId="listenerId"/>
             <regionStyle regionId="regionId" styleName="styleName"/>
             <playMedia mediaId="mediaId"/>
             <rewindMedia mediaId="mediaId"/>
@@ -2109,6 +2115,7 @@
             <doLater msToNext="60">
                 <plainText featureText="plainText in doLater"/>
             </doLater>
+            <clearTimer listenerId="listenerId"/>
             <regionStyle regionId="regionId" styleName="styleName"/>
             <playMedia mediaId="mediaId"/>
             <rewindMedia mediaId="mediaId"/>
@@ -2128,6 +2135,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId=""/>
                 <regionStyle regionId=""/>
                 <playMedia mediaId=""/>
                 <rewindMedia mediaId=""/>
@@ -2536,6 +2544,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId="listenerId"/>
                 <regionStyle regionId="regionId" styleName="styleName"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -3150,6 +3159,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId=""/>
                 <regionStyle regionId=""/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -3340,6 +3350,7 @@
             <enableButtonGroup matchingRegex=""/>
             <hideButtonGroup matchingRegex=""/>
             <showButtonGroup matchingRegex=""/>
+            <clearTimer listenerId=""/>
             <regionStyle regionId=""/>
             <playMedia mediaId=""/>
             <rewindMedia mediaId=""/>
@@ -3354,6 +3365,7 @@
             <enableButtonGroup matchingRegex=""/>
             <hideButtonGroup matchingRegex=""/>
             <showButtonGroup matchingRegex=""/>
+            <clearTimer listenerId=""/>
             <regionStyle regionId=""/>
             <playMedia mediaId=""/>
             <rewindMedia mediaId=""/>
@@ -4831,6 +4843,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId=""/>
                 <regionStyle regionId=""/>
                 <playMedia mediaId=""/>
                 <rewindMedia mediaId=""/>
@@ -4852,6 +4865,7 @@
             <doLater msToNext="60">
                 <plainText featureText="plainText in doLater"/>
             </doLater>
+            <clearTimer listenerId=""/>
             <regionStyle regionId=""/>
             <playMedia mediaId=""/>
             <rewindMedia mediaId=""/>
@@ -4872,6 +4886,7 @@
             <doLater msToNext="60">
                 <plainText featureText="plainText in doLater"/>
             </doLater>
+            <clearTimer listenerId=""/>
             <regionStyle regionId=""/>
             <playMedia mediaId=""/>
             <rewindMedia mediaId=""/>
@@ -5279,6 +5294,7 @@
                 <doLater msToNext="60">
                     <plainText featureText="plainText in doLater"/>
                 </doLater>
+                <clearTimer listenerId=""/>
                 <regionStyle regionId=""/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>

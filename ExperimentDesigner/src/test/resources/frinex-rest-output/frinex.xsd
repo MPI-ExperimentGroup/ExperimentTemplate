@@ -7428,6 +7428,7 @@
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="doLater" type="doLaterType"/>
+<xs:element name="clearTimer" type="clearTimerType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
@@ -7456,6 +7457,7 @@
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="doLater" type="doLaterType"/>
+<xs:element name="clearTimer" type="clearTimerType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
@@ -7490,6 +7492,7 @@
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="doLater" type="doLaterType"/>
+<xs:element name="clearTimer" type="clearTimerType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
 <xs:element name="playMedia" type="playMediaType"/>
 <xs:element name="rewindMedia" type="rewindMediaType"/>
