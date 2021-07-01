@@ -671,8 +671,9 @@ public abstract class AbstractPresenter implements Presenter {
                 if (frequencyCanvas != null) {
                     frequencyCanvas.getCanvasElement().setId("frequencyCanvas");
                     frequencyCanvas.setCoordinateSpaceHeight(256);
-                    frequencyCanvas.setCoordinateSpaceWidth(2048);
-                    frequencyCanvas.setSize("2048px", "256px");
+                    // we are only visualising the lower half of the spectrum here so 1024 is enough
+                    frequencyCanvas.setCoordinateSpaceWidth(1024);
+                    frequencyCanvas.setSize("1024px", "256px");
                     simpleView.clearRegion("dtmfFrequencyCanvas");
                     final InsertPanel.ForIsWidget canvasRegion = simpleView.startRegion("dtmfFrequencyCanvas", null);
                     simpleView.addWidget(frequencyCanvas);
@@ -729,14 +730,19 @@ public abstract class AbstractPresenter implements Presenter {
         if (frequencyCanvas) {
             var frequencyCanvasContext = frequencyCanvas.getContext('2d');
             var frequencyCanvasHeight = 256;
-            var frequencyCanvasWidth = 2048;
+            // we are only visualising the lower half of the spectrum
+            var frequencyCanvasWidth = 1024;
             frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
         }
+        var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
+        var dataArray = new Uint8Array(bufferLength);
+        var initialMs = performance.now();
         function updateRecorderDtmfTriggers() {
+            var frameMs = performance.now() - initialMs;
+            initialMs = performance.now();
             if ($wnd.recorder && $wnd.audioAnalyser) {
-                var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
+                var nextAnimationRequest = requestAnimationFrame(updateRecorderDtmfTriggers);
                 //console.log(bufferLength);
-                var dataArray = new Uint8Array(bufferLength);
                 $wnd.audioAnalyser.getByteFrequencyData(dataArray);
                 var index697Level = dataArray[index697];
                 var index770Level = dataArray[index770];
@@ -746,16 +752,16 @@ public abstract class AbstractPresenter implements Presenter {
                 var index1336Level = dataArray[index1336];
                 var index1477Level = dataArray[index1477];
                 var index1633Level = dataArray[index1633];
-                var totalLevel = 0;
                 var peekLevel = 0;
                 for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
                     var currentLevel = dataArray[bufferIndex];
-                    totalLevel != currentLevel;
                     peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
                 }
-                var averageLevel = totalLevel / bufferLength;
                 var dtmfAverage = (index697Level + index770Level + index852Level + index941Level + index1209Level + index1336Level + index1477Level + index1633Level) / 8;
                 var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 3);
+                var isAmplitudeOk = (peekLevel - dtmfAverage) > 100;
+                var isFrameRateOk = frameMs < 100;
+                //console.log(peekLevel - dtmfAverage);
                 if (frequencyCanvas) {
                     // draw graph
                     frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
@@ -763,7 +769,8 @@ public abstract class AbstractPresenter implements Presenter {
                     var barWidth = 1;//(frequencyCanvasWidth / bufferLength) / 4;
                     var barHeight;
                     var positionX = 0;
-                    for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
+                    // we are only visualising the lower half of the spectrum
+                    for(var bufferIndex = 0; bufferIndex < bufferLength && bufferIndex < frequencyCanvasWidth; bufferIndex++) {
                         barHeight = dataArray[bufferIndex] / 4;
                         if (bufferIndex === index697 || bufferIndex === index770 || bufferIndex === index852 || bufferIndex === index941 || bufferIndex === index1209 || bufferIndex === index1336 || bufferIndex === index1477 || bufferIndex === index1633) {
                             frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
@@ -776,51 +783,67 @@ public abstract class AbstractPresenter implements Presenter {
                     var triggerThresholdHeight = triggerThreshold / 4;
                     var peekLevelHeight = peekLevel / 4;
                     var dtmfAverageHeight = dtmfAverage / 4;
-                    frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                    if (isAmplitudeOk) {
+                        frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                    } else {
+                        frequencyCanvasContext.fillStyle = 'rgb(0, 255, 255)';
+                    }
                     frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - triggerThresholdHeight, frequencyCanvasWidth, 1);
                     frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
                     frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - peekLevelHeight, frequencyCanvasWidth, 1);
                     frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - dtmfAverageHeight, frequencyCanvasWidth, 1);
+                    if (isFrameRateOk) {
+                        frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                    } else {
+                        frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                    }
+                    frequencyCanvasContext.fillText(Math.floor(frameMs), 10, 10);
                 }
                 var row = -1;
-                if (index697Level > triggerThreshold && index770Level < triggerThreshold && index852Level < triggerThreshold && index941Level < triggerThreshold) {
-                    // 697 Hz	1	2	3	A
-                    var row = 0;
-                } else if (index697Level < triggerThreshold && index770Level > triggerThreshold && index852Level < triggerThreshold && index941Level < triggerThreshold) {
-                    // 770 Hz	4	5	6	B
-                    var row = 1;
-                } else if (index697Level < triggerThreshold && index770Level < triggerThreshold && index852Level > triggerThreshold && index941Level < triggerThreshold) {
-                    // 852 Hz	7	8	9	C    
-                    var row = 2
-                } else if (index697Level < triggerThreshold && index770Level < triggerThreshold && index852Level < triggerThreshold && index941Level > triggerThreshold) {
-                    // 941 Hz	*	0	#	D
-                    var row = 3;
-                }
                 var column = -1;
-                if (index1209Level > triggerThreshold && index1336Level < triggerThreshold && index1477Level < triggerThreshold && index1633Level < triggerThreshold) {
-                    // 1209 Hz
-                    column = 0;
-                } else if (index1209Level < triggerThreshold && index1336Level > triggerThreshold && index1477Level < triggerThreshold && index1633Level < triggerThreshold) {
-                    // 1336 Hz
-                    column = 1;
-                } else if (index1209Level < triggerThreshold && index1336Level < triggerThreshold && index1477Level > triggerThreshold && index1633Level < triggerThreshold) {
-                    // 1477 Hz
-                    column = 2;
-                } else if (index1209Level < triggerThreshold && index1336Level < triggerThreshold && index1477Level < triggerThreshold && index1633Level > triggerThreshold) {
-                    // 1633 Hz
-                    column = 3;
+                if (isAmplitudeOk && isFrameRateOk) {
+                    if (index697Level > triggerThreshold && index770Level < dtmfAverageHeight && index852Level < dtmfAverageHeight && index941Level < dtmfAverageHeight) {
+                        // 697 Hz	1	2	3	A
+                        var row = 0;
+                    } else if (index697Level < dtmfAverageHeight && index770Level > triggerThreshold && index852Level < dtmfAverageHeight && index941Level < dtmfAverageHeight) {
+                        // 770 Hz	4	5	6	B
+                        var row = 1;
+                    } else if (index697Level < dtmfAverageHeight && index770Level < dtmfAverageHeight && index852Level > triggerThreshold && index941Level < dtmfAverageHeight) {
+                        // 852 Hz	7	8	9	C    
+                    // 852 Hz	7	8	9	C    
+                        // 852 Hz	7	8	9	C    
+                        var row = 2
+                    } else if (index697Level < dtmfAverageHeight && index770Level < dtmfAverageHeight && index852Level < dtmfAverageHeight && index941Level > triggerThreshold) {
+                        // 941 Hz	*	0	#	D
+                        var row = 3;
+                    }
+                    if (index1209Level > triggerThreshold && index1336Level < dtmfAverageHeight && index1477Level < dtmfAverageHeight && index1633Level < dtmfAverageHeight) {
+                        // 1209 Hz
+                        column = 0;
+                    } else if (index1209Level < dtmfAverageHeight && index1336Level > triggerThreshold && index1477Level < dtmfAverageHeight && index1633Level < dtmfAverageHeight) {
+                        // 1336 Hz
+                        column = 1;
+                    } else if (index1209Level < dtmfAverageHeight && index1336Level < dtmfAverageHeight && index1477Level > triggerThreshold && index1633Level < dtmfAverageHeight) {
+                        // 1477 Hz
+                        column = 2;
+                    } else if (index1209Level < dtmfAverageHeight && index1336Level < dtmfAverageHeight && index1477Level < dtmfAverageHeight && index1633Level > triggerThreshold) {
+                        // 1633 Hz
+                        column = 3;
+                    }
                 }
-                // console.log(row + "," + column);
+                //console.log(row + ", " + column + " - " + dtmfAverage + ", " + peekLevel);
                 var hasDtmfListeners = (dtmfAverage === peekLevel)? true : abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Double;Ljava/lang/Double;)(row, column);
                 //console.log(hasDtmfListeners);
-                if(hasDtmfListeners === true) {
-                    requestAnimationFrame(updateRecorderDtmfTriggers);
+                if(hasDtmfListeners !== true) {
+                    $win.cancelAnimationFrame(nextAnimationRequest);
                 } // else console.log("end RecorderTriggersWeb");
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
                 requestAnimationFrame(updateRecorderDtmfTriggers);
             }
+            //var finalMs = performance.now() - initialMs;
+            //console.log(frameMs + "ms" + "," + finalMs + "ms");
         }
         requestAnimationFrame(updateRecorderDtmfTriggers);
     }-*/;
