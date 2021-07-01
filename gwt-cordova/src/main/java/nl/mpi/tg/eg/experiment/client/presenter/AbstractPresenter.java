@@ -1105,6 +1105,9 @@ public abstract class AbstractPresenter implements Presenter {
         if (simpleView instanceof ComplexView) {
             ((ComplexView) simpleView).clearDomHandlers();
         }
+        if (toneGenerator != null) {
+            // terminate any tones when the presenter exits
+            toneGenerator.terminate();
+        }
     }
-
 }

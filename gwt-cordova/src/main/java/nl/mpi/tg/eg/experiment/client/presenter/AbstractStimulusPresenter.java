@@ -2021,8 +2021,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
-        
-
     }
 
     public void disableStimulusButtons() {
@@ -2504,5 +2502,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
         triggerListeners.clear();
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
+        if (hardwareTimeStamp != null) {
+            // terminate any tones and clear the opto indicators when the presenter exits
+            hardwareTimeStamp.terminate();
+        }
     }
 }
