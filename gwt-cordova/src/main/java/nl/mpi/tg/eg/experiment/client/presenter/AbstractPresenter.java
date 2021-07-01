@@ -802,29 +802,29 @@ public abstract class AbstractPresenter implements Presenter {
                 var row = -1;
                 var column = -1;
                 if (isAmplitudeOk && isFrameRateOk) {
-                    if (index697Level > triggerThreshold && index770Level < dtmfAverageHeight && index852Level < dtmfAverageHeight && index941Level < dtmfAverageHeight) {
+                    if (index697Level > triggerThreshold && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level < dtmfAverage) {
                         // 697 Hz	1	2	3	A
                         var row = 0;
-                    } else if (index697Level < dtmfAverageHeight && index770Level > triggerThreshold && index852Level < dtmfAverageHeight && index941Level < dtmfAverageHeight) {
+                    } else if (index697Level < dtmfAverage && index770Level > triggerThreshold && index852Level < dtmfAverage && index941Level < dtmfAverage) {
                         // 770 Hz	4	5	6	B
                         var row = 1;
-                    } else if (index697Level < dtmfAverageHeight && index770Level < dtmfAverageHeight && index852Level > triggerThreshold && index941Level < dtmfAverageHeight) {
+                    } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level > triggerThreshold && index941Level < dtmfAverage) {
                         // 852 Hz	7	8	9	C    
                         var row = 2
-                    } else if (index697Level < dtmfAverageHeight && index770Level < dtmfAverageHeight && index852Level < dtmfAverageHeight && index941Level > triggerThreshold) {
+                    } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level > triggerThreshold) {
                         // 941 Hz	*	0	#	D
                         var row = 3;
                     }
-                    if (index1209Level > triggerThreshold && index1336Level < dtmfAverageHeight && index1477Level < dtmfAverageHeight && index1633Level < dtmfAverageHeight) {
+                    if (index1209Level > triggerThreshold && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
                         // 1209 Hz
                         column = 0;
-                    } else if (index1209Level < dtmfAverageHeight && index1336Level > triggerThreshold && index1477Level < dtmfAverageHeight && index1633Level < dtmfAverageHeight) {
+                    } else if (index1209Level < dtmfAverage && index1336Level > triggerThreshold && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
                         // 1336 Hz
                         column = 1;
-                    } else if (index1209Level < dtmfAverageHeight && index1336Level < dtmfAverageHeight && index1477Level > triggerThreshold && index1633Level < dtmfAverageHeight) {
+                    } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level > triggerThreshold && index1633Level < dtmfAverage) {
                         // 1477 Hz
                         column = 2;
-                    } else if (index1209Level < dtmfAverageHeight && index1336Level < dtmfAverageHeight && index1477Level < dtmfAverageHeight && index1633Level > triggerThreshold) {
+                    } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level > triggerThreshold) {
                         // 1633 Hz
                         column = 3;
                     }
