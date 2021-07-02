@@ -198,7 +198,7 @@ public enum FeatureType {
     stimulusPause(false, null, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     stimulusLabel(false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     onTimer(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorTimer),
-    onError(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess, Contitionals.hasTrueFalseErrorCondition, Contitionals.hasErrorTimer),
+    onError(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess, Contitionals.hasTrueFalseErrorCondition, Contitionals.hasErrorTimer, Contitionals.hasFrameRateTriggers),
     onSuccess(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess),
     onActivate(false, null, false, false, false, Contitionals.any, Contitionals.hasMediaLoadingButton),
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),

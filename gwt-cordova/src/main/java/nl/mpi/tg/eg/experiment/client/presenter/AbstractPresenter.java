@@ -90,7 +90,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected GroupParticipantService groupParticipantService = null;
     private final ArrayList<ValueChangeListener<Double>> audioLevelIndicators = new ArrayList<>();
     private final RecorderDtmfListener recorderDtmfListener = new RecorderDtmfListener();
-    private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
+    private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener(null); // todo: set this with the recorder onError or similar
     private HardwareTimeStamp toneGenerator = null; // note that this toneGenerator instance of HardwareTimeStamp is different from the hardwareTimeStamp used in AbstractStimulusPresenter although the tone generator objects are shared
 
     public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {

@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.listener;
 
 import java.util.TreeMap;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
  * @since 1 Jun 2021 11:26:02 (creation date)
@@ -25,9 +26,14 @@ import java.util.TreeMap;
  */
 public class MediaTriggerListener {
 
+    private final TimedStimulusListener onLateError;
     private double currentKey = -1;
     // keep all listeners in a sorted map so that only tha smallest msToNext need be compared. When triggered the the listeners are removed from the map.
     private final TreeMap<Double, FrameTimeTrigger> listenerMap = new TreeMap<>();
+
+    public MediaTriggerListener(TimedStimulusListener onLateError) {
+        this.onLateError = onLateError;
+    }
 
     public boolean addMediaTriggerListener(double triggerMs, FrameTimeTrigger frameTimeTrigger) {
         boolean isFirst = listenerMap.isEmpty();
@@ -38,6 +44,14 @@ public class MediaTriggerListener {
 
     public boolean triggerWhenReady(Double currentTime) {
         while (currentTime >= currentKey) {
+            if (currentKey == -1) {
+                return false;
+            }
+            if (onLateError != null && currentTime - currentKey > 30) {
+                clearTriggers();
+                onLateError.postLoadTimerFired();
+                return false;
+            }
             final FrameTimeTrigger currentListener = listenerMap.remove(currentKey);
             if (currentListener != null) {
                 currentListener.trigger();

@@ -7413,6 +7413,7 @@
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="addFrameTimeTrigger" type="addFrameTimeTriggerType"/>
+<xs:element name="onError" type="onErrorType"/>
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="addFrameTimeTriggerType">

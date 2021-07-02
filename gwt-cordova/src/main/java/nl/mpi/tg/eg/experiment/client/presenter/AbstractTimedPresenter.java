@@ -368,8 +368,8 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         labelTimer.schedule(5);
     }
 
-    protected void startFrameRateTimer(final FrameTimeTrigger... frameTimeTriggers) {
-        final MediaTriggerListener frameTriggerListener = new MediaTriggerListener();
+    protected void startFrameRateTimer(final TimedStimulusListener onLateError, final FrameTimeTrigger... frameTimeTriggers) {
+        final MediaTriggerListener frameTriggerListener = new MediaTriggerListener(onLateError);
         frameTriggerListeners.add(frameTriggerListener);
         for (final FrameTimeTrigger currentTrigger : frameTimeTriggers) {
             frameTriggerListener.addMediaTriggerListener(currentTrigger.msToNext, currentTrigger);

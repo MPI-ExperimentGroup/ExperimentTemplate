@@ -1966,7 +1966,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
             addRecorderTriggersWeb(msToNext, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
         } else {
-            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
+            final TimedStimulusListener onLateError = null;
+            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, onLateError, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
         }
     }
 

@@ -348,6 +348,9 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
             </addFrameTimeTrigger>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </startFrameRateTimer>
         <existingUserCheck>
             <multipleUsers>
@@ -2082,6 +2085,9 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
             </addFrameTimeTrigger>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </startFrameRateTimer>
         <addMediaTrigger msToNext="60" mediaId="mediaId">
             <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -2549,6 +2555,9 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
             </addFrameTimeTrigger>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </startFrameRateTimer>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -3164,6 +3173,9 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
             </addFrameTimeTrigger>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </startFrameRateTimer>
         <existingUserCheck>
             <multipleUsers>
@@ -4853,6 +4865,9 @@
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
             </addFrameTimeTrigger>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </startFrameRateTimer>
         <addMediaTrigger msToNext="60" mediaId="">
             <disableButtonGroup matchingRegex=""/>
@@ -5299,6 +5314,9 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
             </addFrameTimeTrigger>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
         </startFrameRateTimer>
         <table>
             <plainText featureText="plainText in table"/>

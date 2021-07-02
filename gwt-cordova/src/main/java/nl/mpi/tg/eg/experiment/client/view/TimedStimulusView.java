@@ -862,12 +862,12 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addMediaTriggers(long triggerMs, final String mediaId, FrameTimeTrigger frameTimeTrigger) {
+    public void addMediaTriggers(long triggerMs, final String mediaId, final TimedStimulusListener onLateError, final FrameTimeTrigger frameTimeTrigger) {
         final MediaTriggerListener mediaTriggerListener;
         if (mediaTriggerListenerList.containsKey(mediaId)) {
             mediaTriggerListener = mediaTriggerListenerList.get(mediaId);
         } else {
-            mediaTriggerListener = new MediaTriggerListener();
+            mediaTriggerListener = new MediaTriggerListener(onLateError);
             mediaTriggerListenerList.put(mediaId, mediaTriggerListener);
         }
         if (mediaTriggerListener.addMediaTriggerListener(triggerMs, frameTimeTrigger)) {
