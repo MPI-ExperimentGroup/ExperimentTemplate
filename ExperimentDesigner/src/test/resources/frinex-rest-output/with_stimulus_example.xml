@@ -1558,17 +1558,27 @@
                                         <!-- this timer is not used for events, but is used for displaying approximate ms values in labels -->
                                     </startTimer>
                                     <!-- these addMediaTriggers are attached to the audio media playback time -->
-                                    <addMediaTrigger msToNext="70" mediaId="stimulusAudioExample">
-                                        <logTimeStamp eventTag="Playback MediaTrigger 70ms"/>
-                                        <doLater msToNext="0">
-                                            <htmlTokenText featureText="Playback MediaTrigger 70ms &lt;sequentialDisplayTimer&gt;ms"/>
-                                        </doLater>
+                                    <addMediaTrigger evaluateMs="70" threshold="20" mediaId="stimulusAudioExample">
+                                        <onTime>
+                                            <logTimeStamp eventTag="Playback MediaTrigger 70ms" />
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="Playback MediaTrigger 70ms &lt;sequentialDisplayTimer&gt;ms" />
+                                            </doLater>
+                                        </onTime>
+                                        <onError>
+                                            <htmlText featureText="addMediaTrigger onError" />
+                                        </onError>
                                     </addMediaTrigger>
-                                    <addMediaTrigger msToNext="700" mediaId="stimulusAudioExample">
-                                        <logTimeStamp eventTag="Playback MediaTrigger 700ms"/>
-                                        <doLater msToNext="0">
-                                            <htmlTokenText featureText="Playback MediaTrigger 700ms &lt;sequentialDisplayTimer&gt;ms"/>
-                                        </doLater>
+                                    <addMediaTrigger evaluateMs="700" threshold="20" mediaId="stimulusAudioExample">
+                                        <onTime>
+                                            <logTimeStamp eventTag="Playback MediaTrigger 700ms" />
+                                            <doLater msToNext="0">
+                                                <htmlTokenText featureText="Playback MediaTrigger 700ms &lt;sequentialDisplayTimer&gt;ms" />
+                                            </doLater>
+                                        </onTime>
+                                        <onError>
+                                            <htmlText featureText="addMediaTrigger onError" />
+                                        </onError>
                                     </addMediaTrigger>
                                     <!-- these addFrameTimeTriggers are attached to the outer startFrameRateTimer and trigger before each time the browser redraws its window and should therefore have better visual timing accuracy -->
                                     <startFrameRateTimer>
