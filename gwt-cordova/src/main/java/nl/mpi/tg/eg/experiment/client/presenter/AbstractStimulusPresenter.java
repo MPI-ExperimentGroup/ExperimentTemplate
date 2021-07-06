@@ -52,6 +52,7 @@ import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
+import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.HabituationParadigmListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
@@ -1960,15 +1961,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
     }
 
-    public void addMediaTrigger(final Stimulus definitionScopeStimulus, final String mediaId, final int msToNext, final SingleStimulusListener triggerListener) {
+    public void addMediaTrigger(final Stimulus definitionScopeStimulus, final String mediaId, final String evaluateMs, final int threshold, final TimedStimulusListener onLateListener, final SingleStimulusListener triggerListener) {
         final String formattedMediaId = new HtmlTokenFormatter(definitionScopeStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         // the web recorder does not have stimulus in scope so we rely on the definition scope stimulus
-        if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
-            addRecorderTriggersWeb(msToNext, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
-        } else {
-            final TimedStimulusListener onLateError = null;
-            timedStimulusView.addMediaTriggers(msToNext, formattedMediaId, onLateError, addFrameTimeTrigger(definitionScopeStimulus, msToNext, triggerListener));
-        }
+            final FrameTimeTrigger frameTimeTrigger = addFrameTimeTrigger(definitionScopeStimulus, evaluateMs, threshold, onLateListener, triggerListener);
+            if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
+                addRecorderTriggersWeb(frameTimeTrigger);
+            } else {
+                timedStimulusView.addMediaTriggers(formattedMediaId, frameTimeTrigger);
+            }
     }
 
     public void triggerDefinition(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final SingleStimulusListener triggerListener) {

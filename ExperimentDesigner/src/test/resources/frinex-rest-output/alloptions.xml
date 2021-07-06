@@ -335,22 +335,24 @@
             </onTimer>
         </addTimerTrigger>
         <startFrameRateTimer>
-            <addFrameTimeTrigger msToNext="60">
-                <disableButtonGroup matchingRegex="matchingRegex"/>
-                <enableButtonGroup matchingRegex="matchingRegex"/>
-                <hideButtonGroup matchingRegex="matchingRegex"/>
-                <showButtonGroup matchingRegex="matchingRegex"/>
-                <doLater msToNext="60">
-                    <plainText featureText="plainText in doLater"/>
-                </doLater>
-                <clearTimer listenerId="listenerId"/>
-                <regionStyle regionId="regionId" styleName="styleName"/>
-                <stopAudioRecorder/>
-                <startAudioRecorderTag eventTier="8"/>
+            <addFrameTimeTrigger evaluateMs="evaluateMs" threshold="8">
+                <onTime>
+                    <disableButtonGroup matchingRegex="matchingRegex"/>
+                    <enableButtonGroup matchingRegex="matchingRegex"/>
+                    <hideButtonGroup matchingRegex="matchingRegex"/>
+                    <showButtonGroup matchingRegex="matchingRegex"/>
+                    <doLater msToNext="60">
+                        <plainText featureText="plainText in doLater"/>
+                    </doLater>
+                    <clearTimer listenerId="listenerId"/>
+                    <regionStyle regionId="regionId" styleName="styleName"/>
+                    <stopAudioRecorder/>
+                    <startAudioRecorderTag eventTier="8"/>
+                </onTime>
+                <onError>
+                    <plainText featureText="plainText in onError"/>
+                </onError>
             </addFrameTimeTrigger>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
         </startFrameRateTimer>
         <existingUserCheck>
             <multipleUsers>
@@ -532,21 +534,6 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
-        <addMediaTrigger msToNext="60" mediaId="mediaId">
-            <disableButtonGroup matchingRegex="matchingRegex"/>
-            <enableButtonGroup matchingRegex="matchingRegex"/>
-            <hideButtonGroup matchingRegex="matchingRegex"/>
-            <showButtonGroup matchingRegex="matchingRegex"/>
-            <clearTimer listenerId="listenerId"/>
-            <regionStyle regionId="regionId" styleName="styleName"/>
-            <playMedia mediaId="mediaId"/>
-            <rewindMedia mediaId="mediaId"/>
-            <pauseMedia mediaId="mediaId"/>
-            <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
-            <stopAudioRecorder/>
-            <startAudioRecorderTag eventTier="8"/>
-            <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-        </addMediaTrigger>
         <addRecorderDtmfTrigger dtmf="#">
             <disableButtonGroup matchingRegex="matchingRegex"/>
             <enableButtonGroup matchingRegex="matchingRegex"/>
@@ -2064,7 +2051,35 @@
             </onTimer>
         </addTimerTrigger>
         <startFrameRateTimer>
-            <addFrameTimeTrigger msToNext="60">
+            <addFrameTimeTrigger evaluateMs="evaluateMs" threshold="8">
+                <onTime>
+                    <disableButtonGroup matchingRegex="matchingRegex"/>
+                    <enableButtonGroup matchingRegex="matchingRegex"/>
+                    <hideButtonGroup matchingRegex="matchingRegex"/>
+                    <showButtonGroup matchingRegex="matchingRegex"/>
+                    <logTimeStamp eventTag="eventTag"/>
+                    <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
+                    <dtmfTone msToNext="60" dtmf="#"/>
+                    <doLater msToNext="60">
+                        <plainText featureText="plainText in doLater"/>
+                    </doLater>
+                    <clearTimer listenerId="listenerId"/>
+                    <regionStyle regionId="regionId" styleName="styleName"/>
+                    <playMedia mediaId="mediaId"/>
+                    <rewindMedia mediaId="mediaId"/>
+                    <pauseMedia mediaId="mediaId"/>
+                    <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
+                    <stopAudioRecorder/>
+                    <startAudioRecorderTag eventTier="8"/>
+                    <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                </onTime>
+                <onError>
+                    <plainText featureText="plainText in onError"/>
+                </onError>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
+        <addMediaTrigger evaluateMs="evaluateMs" threshold="8" mediaId="mediaId">
+            <onTime>
                 <disableButtonGroup matchingRegex="matchingRegex"/>
                 <enableButtonGroup matchingRegex="matchingRegex"/>
                 <hideButtonGroup matchingRegex="matchingRegex"/>
@@ -2084,31 +2099,10 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-            </addFrameTimeTrigger>
+            </onTime>
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
-        </startFrameRateTimer>
-        <addMediaTrigger msToNext="60" mediaId="mediaId">
-            <disableButtonGroup matchingRegex="matchingRegex"/>
-            <enableButtonGroup matchingRegex="matchingRegex"/>
-            <hideButtonGroup matchingRegex="matchingRegex"/>
-            <showButtonGroup matchingRegex="matchingRegex"/>
-            <logTimeStamp eventTag="eventTag"/>
-            <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
-            <dtmfTone msToNext="60" dtmf="#"/>
-            <doLater msToNext="60">
-                <plainText featureText="plainText in doLater"/>
-            </doLater>
-            <clearTimer listenerId="listenerId"/>
-            <regionStyle regionId="regionId" styleName="styleName"/>
-            <playMedia mediaId="mediaId"/>
-            <rewindMedia mediaId="mediaId"/>
-            <pauseMedia mediaId="mediaId"/>
-            <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
-            <stopAudioRecorder/>
-            <startAudioRecorderTag eventTier="8"/>
-            <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
         </addMediaTrigger>
         <addRecorderDtmfTrigger dtmf="#">
             <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -2542,22 +2536,24 @@
             </onTimer>
         </addTimerTrigger>
         <startFrameRateTimer>
-            <addFrameTimeTrigger msToNext="60">
-                <disableButtonGroup matchingRegex="matchingRegex"/>
-                <enableButtonGroup matchingRegex="matchingRegex"/>
-                <hideButtonGroup matchingRegex="matchingRegex"/>
-                <showButtonGroup matchingRegex="matchingRegex"/>
-                <doLater msToNext="60">
-                    <plainText featureText="plainText in doLater"/>
-                </doLater>
-                <clearTimer listenerId="listenerId"/>
-                <regionStyle regionId="regionId" styleName="styleName"/>
-                <stopAudioRecorder/>
-                <startAudioRecorderTag eventTier="8"/>
+            <addFrameTimeTrigger evaluateMs="evaluateMs" threshold="8">
+                <onTime>
+                    <disableButtonGroup matchingRegex="matchingRegex"/>
+                    <enableButtonGroup matchingRegex="matchingRegex"/>
+                    <hideButtonGroup matchingRegex="matchingRegex"/>
+                    <showButtonGroup matchingRegex="matchingRegex"/>
+                    <doLater msToNext="60">
+                        <plainText featureText="plainText in doLater"/>
+                    </doLater>
+                    <clearTimer listenerId="listenerId"/>
+                    <regionStyle regionId="regionId" styleName="styleName"/>
+                    <stopAudioRecorder/>
+                    <startAudioRecorderTag eventTier="8"/>
+                </onTime>
+                <onError>
+                    <plainText featureText="plainText in onError"/>
+                </onError>
             </addFrameTimeTrigger>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
         </startFrameRateTimer>
         <table showOnBackButton="true" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -3160,22 +3156,24 @@
             </onTimer>
         </addTimerTrigger>
         <startFrameRateTimer>
-            <addFrameTimeTrigger msToNext="60">
-                <disableButtonGroup matchingRegex=""/>
-                <enableButtonGroup matchingRegex=""/>
-                <hideButtonGroup matchingRegex=""/>
-                <showButtonGroup matchingRegex=""/>
-                <doLater msToNext="60">
-                    <plainText featureText="plainText in doLater"/>
-                </doLater>
-                <clearTimer listenerId=""/>
-                <regionStyle regionId=""/>
-                <stopAudioRecorder/>
-                <startAudioRecorderTag eventTier="8"/>
+            <addFrameTimeTrigger evaluateMs="" threshold="8">
+                <onTime>
+                    <disableButtonGroup matchingRegex=""/>
+                    <enableButtonGroup matchingRegex=""/>
+                    <hideButtonGroup matchingRegex=""/>
+                    <showButtonGroup matchingRegex=""/>
+                    <doLater msToNext="60">
+                        <plainText featureText="plainText in doLater"/>
+                    </doLater>
+                    <clearTimer listenerId=""/>
+                    <regionStyle regionId=""/>
+                    <stopAudioRecorder/>
+                    <startAudioRecorderTag eventTier="8"/>
+                </onTime>
+                <onError>
+                    <plainText featureText="plainText in onError"/>
+                </onError>
             </addFrameTimeTrigger>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
         </startFrameRateTimer>
         <existingUserCheck>
             <multipleUsers>
@@ -3357,21 +3355,6 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
-        <addMediaTrigger msToNext="60" mediaId="">
-            <disableButtonGroup matchingRegex=""/>
-            <enableButtonGroup matchingRegex=""/>
-            <hideButtonGroup matchingRegex=""/>
-            <showButtonGroup matchingRegex=""/>
-            <clearTimer listenerId=""/>
-            <regionStyle regionId=""/>
-            <playMedia mediaId=""/>
-            <rewindMedia mediaId=""/>
-            <pauseMedia mediaId=""/>
-            <logMediaTimeStamp mediaId=""/>
-            <stopAudioRecorder/>
-            <startAudioRecorderTag eventTier="8"/>
-            <endAudioRecorderTag eventTier="8"/>
-        </addMediaTrigger>
         <addRecorderDtmfTrigger>
             <disableButtonGroup matchingRegex=""/>
             <enableButtonGroup matchingRegex=""/>
@@ -4844,7 +4827,35 @@
             </onTimer>
         </addTimerTrigger>
         <startFrameRateTimer>
-            <addFrameTimeTrigger msToNext="60">
+            <addFrameTimeTrigger evaluateMs="" threshold="8">
+                <onTime>
+                    <disableButtonGroup matchingRegex=""/>
+                    <enableButtonGroup matchingRegex=""/>
+                    <hideButtonGroup matchingRegex=""/>
+                    <showButtonGroup matchingRegex=""/>
+                    <logTimeStamp/>
+                    <hardwareTimeStamp/>
+                    <dtmfTone msToNext="60"/>
+                    <doLater msToNext="60">
+                        <plainText featureText="plainText in doLater"/>
+                    </doLater>
+                    <clearTimer listenerId=""/>
+                    <regionStyle regionId=""/>
+                    <playMedia mediaId=""/>
+                    <rewindMedia mediaId=""/>
+                    <pauseMedia mediaId=""/>
+                    <logMediaTimeStamp mediaId=""/>
+                    <stopAudioRecorder/>
+                    <startAudioRecorderTag eventTier="8"/>
+                    <endAudioRecorderTag eventTier="8"/>
+                </onTime>
+                <onError>
+                    <plainText featureText="plainText in onError"/>
+                </onError>
+            </addFrameTimeTrigger>
+        </startFrameRateTimer>
+        <addMediaTrigger evaluateMs="" threshold="8" mediaId="">
+            <onTime>
                 <disableButtonGroup matchingRegex=""/>
                 <enableButtonGroup matchingRegex=""/>
                 <hideButtonGroup matchingRegex=""/>
@@ -4864,31 +4875,10 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-            </addFrameTimeTrigger>
+            </onTime>
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
-        </startFrameRateTimer>
-        <addMediaTrigger msToNext="60" mediaId="">
-            <disableButtonGroup matchingRegex=""/>
-            <enableButtonGroup matchingRegex=""/>
-            <hideButtonGroup matchingRegex=""/>
-            <showButtonGroup matchingRegex=""/>
-            <logTimeStamp/>
-            <hardwareTimeStamp/>
-            <dtmfTone msToNext="60"/>
-            <doLater msToNext="60">
-                <plainText featureText="plainText in doLater"/>
-            </doLater>
-            <clearTimer listenerId=""/>
-            <regionStyle regionId=""/>
-            <playMedia mediaId=""/>
-            <rewindMedia mediaId=""/>
-            <pauseMedia mediaId=""/>
-            <logMediaTimeStamp mediaId=""/>
-            <stopAudioRecorder/>
-            <startAudioRecorderTag eventTier="8"/>
-            <endAudioRecorderTag eventTier="8"/>
         </addMediaTrigger>
         <addRecorderDtmfTrigger>
             <disableButtonGroup matchingRegex=""/>
@@ -5301,22 +5291,24 @@
             </onTimer>
         </addTimerTrigger>
         <startFrameRateTimer>
-            <addFrameTimeTrigger msToNext="60">
-                <disableButtonGroup matchingRegex=""/>
-                <enableButtonGroup matchingRegex=""/>
-                <hideButtonGroup matchingRegex=""/>
-                <showButtonGroup matchingRegex=""/>
-                <doLater msToNext="60">
-                    <plainText featureText="plainText in doLater"/>
-                </doLater>
-                <clearTimer listenerId=""/>
-                <regionStyle regionId=""/>
-                <stopAudioRecorder/>
-                <startAudioRecorderTag eventTier="8"/>
+            <addFrameTimeTrigger evaluateMs="" threshold="8">
+                <onTime>
+                    <disableButtonGroup matchingRegex=""/>
+                    <enableButtonGroup matchingRegex=""/>
+                    <hideButtonGroup matchingRegex=""/>
+                    <showButtonGroup matchingRegex=""/>
+                    <doLater msToNext="60">
+                        <plainText featureText="plainText in doLater"/>
+                    </doLater>
+                    <clearTimer listenerId=""/>
+                    <regionStyle regionId=""/>
+                    <stopAudioRecorder/>
+                    <startAudioRecorderTag eventTier="8"/>
+                </onTime>
+                <onError>
+                    <plainText featureText="plainText in onError"/>
+                </onError>
             </addFrameTimeTrigger>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
         </startFrameRateTimer>
         <table>
             <plainText featureText="plainText in table"/>

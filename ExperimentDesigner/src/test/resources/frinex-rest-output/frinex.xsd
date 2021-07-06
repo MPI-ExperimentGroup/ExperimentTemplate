@@ -7413,69 +7413,48 @@
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="addFrameTimeTrigger" type="addFrameTimeTriggerType"/>
-<xs:element name="onError" type="onErrorType"/>
 </xs:choice>
 </xs:complexType>
 <xs:complexType name="addFrameTimeTriggerType">
 <xs:annotation>
-<xs:documentation>Adds a trigger to the containing frame timer. When the timer has a value equal or greater than the specified milliseconds this trigger. Only one trigger per millisecond value can be assigned.</xs:documentation>
+<xs:documentation>Adds a trigger to the containing frame timer. When the timer has a value equal or greater than the specified milliseconds this trigger. Only one trigger per millisecond value can be assigned. If the events is triggered later than the threshold value in milliseconds (20ms is the minimum recommended value) beyond the requested time the onError will be triggered and the framerate timer will stop processing further events.</xs:documentation>
 </xs:annotation>
-<xs:choice minOccurs="0" maxOccurs="unbounded">
-<xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
-<xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
-<xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
-<xs:element name="showButtonGroup" type="showButtonGroupType"/>
-<xs:element name="logTimeStamp" type="logTimeStampType"/>
-<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="dtmfTone" type="dtmfToneType"/>
-<xs:element name="doLater" type="doLaterType"/>
-<xs:element name="clearTimer" type="clearTimerType"/>
-<xs:element name="regionStyle" type="regionStyleType"/>
-<xs:element name="playMedia" type="playMediaType"/>
-<xs:element name="rewindMedia" type="rewindMediaType"/>
-<xs:element name="pauseMedia" type="pauseMediaType"/>
-<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
-<xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
-<xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
-<xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
-</xs:choice>
-<xs:attribute name="msToNext" type="xs:integer" use="required">
+<xs:all>
+<xs:element name="onTime" type="onTimeType"/>
+<xs:element name="onError" type="onErrorType"/>
+</xs:all>
+<xs:attribute name="evaluateMs" type="xs:string" use="required">
 <xs:annotation>
-<xs:documentation>The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</xs:documentation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="threshold" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>Threshold value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="addMediaTriggerType">
 <xs:annotation>
-<xs:documentation>Adds a media recording or playback event that will trigger when the media first passes the provided milliseconds value. The timing of this event will have a resolution not less than the length of the recording buffer.</xs:documentation>
+<xs:documentation>Adds a media recording or playback event that will trigger when the media first passes the provided milliseconds value. The timing of this event will have a resolution not less than the length of the recording buffer. If the events is triggered later than the threshold value in milliseconds (20ms is the minimum recommended value) beyond the requested time the onError will be triggered.</xs:documentation>
 </xs:annotation>
-<xs:choice minOccurs="0" maxOccurs="unbounded">
-<xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
-<xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
-<xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
-<xs:element name="showButtonGroup" type="showButtonGroupType"/>
-<xs:element name="logTimeStamp" type="logTimeStampType"/>
-<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="dtmfTone" type="dtmfToneType"/>
-<xs:element name="doLater" type="doLaterType"/>
-<xs:element name="clearTimer" type="clearTimerType"/>
-<xs:element name="regionStyle" type="regionStyleType"/>
-<xs:element name="playMedia" type="playMediaType"/>
-<xs:element name="rewindMedia" type="rewindMediaType"/>
-<xs:element name="pauseMedia" type="pauseMediaType"/>
-<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
-<xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
-<xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
-<xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
-</xs:choice>
-<xs:attribute name="msToNext" type="xs:integer" use="required">
+<xs:all>
+<xs:element name="onTime" type="onTimeType"/>
+<xs:element name="onError" type="onErrorType"/>
+</xs:all>
+<xs:attribute name="evaluateMs" type="xs:string" use="required">
 <xs:annotation>
-<xs:documentation>The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</xs:documentation>
+<xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="mediaId" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="threshold" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>Threshold value.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -8575,6 +8554,27 @@
 <xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+</xs:complexType>
+<xs:complexType name="onTimeType">
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="disableButtonGroup" type="disableButtonGroupType"/>
+<xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
+<xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
+<xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
+<xs:element name="dtmfTone" type="dtmfToneType"/>
+<xs:element name="doLater" type="doLaterType"/>
+<xs:element name="clearTimer" type="clearTimerType"/>
+<xs:element name="regionStyle" type="regionStyleType"/>
+<xs:element name="playMedia" type="playMediaType"/>
+<xs:element name="rewindMedia" type="rewindMediaType"/>
+<xs:element name="pauseMedia" type="pauseMediaType"/>
+<xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
+<xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
+<xs:element name="startAudioRecorderTag" type="startAudioRecorderTagType"/>
+<xs:element name="endAudioRecorderTag" type="endAudioRecorderTagType"/>
+</xs:choice>
 </xs:complexType>
 <xs:complexType name="onTimerType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -15711,7 +15711,7 @@
 </xs:complexType>
 <xs:complexType name="groupFullErrorType">
 <xs:annotation>
-<xs:documentation>When the specified group already has enough members new members cannot assign to it and the contents of this element will be triggered. It is recomended that the paricipant is instructed here to request a new group which can be assigned in the URL. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.</xs:documentation>
+<xs:documentation>When the specified group already has enough members new members cannot assign to it and the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>

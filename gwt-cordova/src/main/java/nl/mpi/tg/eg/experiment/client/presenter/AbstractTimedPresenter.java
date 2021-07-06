@@ -368,11 +368,11 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         labelTimer.schedule(5);
     }
 
-    protected void startFrameRateTimer(final TimedStimulusListener onLateError, final FrameTimeTrigger... frameTimeTriggers) {
-        final MediaTriggerListener frameTriggerListener = new MediaTriggerListener(onLateError);
+    protected void startFrameRateTimer(final FrameTimeTrigger... frameTimeTriggers) {
+        final MediaTriggerListener frameTriggerListener = new MediaTriggerListener();
         frameTriggerListeners.add(frameTriggerListener);
         for (final FrameTimeTrigger currentTrigger : frameTimeTriggers) {
-            frameTriggerListener.addMediaTriggerListener(currentTrigger.msToNext, currentTrigger);
+            frameTriggerListener.addMediaTriggerListener(currentTrigger);
         }
         Duration frameDuration = new Duration();
         AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
@@ -386,8 +386,14 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         });
     }
 
-    protected FrameTimeTrigger addFrameTimeTrigger(final Stimulus currentStimulus, final int msToNext, final SingleStimulusListener listener) {
-        return new FrameTimeTrigger(currentStimulus, listener, msToNext);
+    protected FrameTimeTrigger addFrameTimeTrigger(final Stimulus currentStimulus, final String evaluateMs, final int threshold, final TimedStimulusListener onLateListener, SingleStimulusListener onTimeListener) {
+        try {
+            final int msToNext = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateMs).intValue();
+            return new FrameTimeTrigger(currentStimulus, onLateListener, onTimeListener, msToNext, threshold);
+        } catch (EvaluateTokensException exception) {
+            onLateListener.postLoadTimerFired();
+        }
+        return null;
     }
 
     protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {

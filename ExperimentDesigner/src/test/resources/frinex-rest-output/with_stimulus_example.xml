@@ -1532,59 +1532,81 @@
                                         <!-- this timer is not used for events, but is used for displaying approximate ms values in labels -->
                                     </startTimer>
                                     <startFrameRateTimer>
-                                        <addFrameTimeTrigger msToNext="100">
+                                        <addFrameTimeTrigger evaluateMs="100" threshold="20">
+                                        <onTime>
                                             <hardwareTimeStamp dtmf="3" opto1="true" />
                                             <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline"/>
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="350">
+                                        <addFrameTimeTrigger evaluateMs="350" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="4" opto1="true" opto2="false"/>
                                             <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide"/>
                                             <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show"/>
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="500">
+                                        <addFrameTimeTrigger evaluateMs="500" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="5" opto2="true"/>
                                             <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide"/>
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="stimuliLabelHide (500) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="1000">
+                                        <addFrameTimeTrigger evaluateMs="1000" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="6" />
                                             <playMedia mediaId="stimulusAudioExample"/>
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="play audio request (1000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="7000">
+                                        <addFrameTimeTrigger evaluateMs="7000" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="7" />
                                             <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
                                             <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>-->
                                             <playMedia mediaId="stimulusVideoExample"/>
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="stimuliVideoPlay (7000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="11000">
+                                        <addFrameTimeTrigger evaluateMs="11000" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="8" />
                                             <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>-->
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="stimuliVideoHide (11000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="400">
+                                        <addFrameTimeTrigger evaluateMs="400" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="9" />
                                             <enableButtonGroup matchingRegex="respondButtonGroup"/>
                                             <doLater msToNext="0">
                                                 <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="13000">
+                                        <addFrameTimeTrigger evaluateMs="13000" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="A" />
                                             <disableButtonGroup matchingRegex="respondButtonGroup"/>
                                             <doLater msToNext="0">
@@ -1594,10 +1616,17 @@
                                                     <logTimeStamp eventTag="actionButton Volgende"/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </actionButton>
-                                            </doLater>
+                                            </doLater></onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                            </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger msToNext="13500">
+                                        <addFrameTimeTrigger evaluateMs="13500" threshold="20"><onTime>
                                             <hardwareTimeStamp dtmf="off" />
+                                        </onTime>
+                                        <onError>
+                                            <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                        </onError>
                                         </addFrameTimeTrigger>
                                     </startFrameRateTimer>
                                 </mediaLoaded>
@@ -4100,61 +4129,101 @@
                     <startAudioRecorderWeb featureText="ms" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
                         <onError>
                                 <htmlText featureText="startAudioRecorder onError" />
-                                <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup" />
                         </onError>
                         <onSuccess>
-                                <!-- it is reasobable to assume that triggers during the first 100ms or so might be less reliable due to the process of setting up the recording -->
-                                <addMediaTrigger msToNext="50" mediaId="recordedMedia">
+                            <!-- it is reasobable to assume that triggers during the first 100ms or so might be less reliable due to the process of setting up the recording -->
+                            <addMediaTrigger evaluateMs="50" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                     <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 50ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 50ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="150" mediaId="recordedMedia">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 50ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="150" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                     <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 150ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 150ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="600" mediaId="recordedMedia">
-				                    <doLater msToNext="0">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 150ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="600" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 600ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 600ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="6000" mediaId="recordedMedia">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 600ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="6000" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                     <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 6000ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 6000ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="6010" mediaId="recordedMedia">
-				                    <doLater msToNext="0">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6000ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="6010" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 6010ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 6010ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="6050" mediaId="recordedMedia">
-				                    <doLater msToNext="0">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6010ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="6050" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 6050ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 6050ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="6100" mediaId="recordedMedia">
-				                    <doLater msToNext="0">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6050ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="6100" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 6100ms" />
                                     </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 6100ms"/>
-                                </addMediaTrigger>
-                                <addMediaTrigger msToNext="12000" mediaId="recordedMedia">
-                    				<doLater msToNext="0">
+                                    <logTimeStamp eventTag="Recording MediaTrigger 6100ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="12000" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 12000ms" />
-				                    </doLater>
-                                    <logTimeStamp eventTag="Recording MediaTrigger 12000ms"/>
-                                </addMediaTrigger>
-                                <htmlText featureText="startAudioRecorder onSuccess"/>
-                                <startTimer msToNext="0" listenerId="timerA"/>
-                                <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                                    </doLater>
+                                    <logTimeStamp eventTag="Recording MediaTrigger 12000ms" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <htmlText featureText="startAudioRecorder onSuccess" />
+                            <startTimer msToNext="0" listenerId="timerA" />
+                            <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel" />
                         </onSuccess>
                         <mediaLoaded>
                                 <plainText featureText="AudioRecordingLoaded"/>
@@ -4164,29 +4233,49 @@
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaLoadFailed>
                         <mediaPlaybackStarted>
-                            <addMediaTrigger msToNext="70" mediaId="recordedMedia">
+                            <addMediaTrigger evaluateMs="70" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                 <doLater msToNext="0">
                                     <plainText featureText="Playback MediaTrigger 70ms" />
                                 </doLater>
                                 <logTimeStamp eventTag="Playback MediaTrigger 70ms"/>
+                            </onTime>
+                            <onError>
+                                <htmlText featureText="addMediaTrigger onError" />
+                            </onError>
                             </addMediaTrigger>
-                            <addMediaTrigger msToNext="700" mediaId="recordedMedia">
+                            <addMediaTrigger evaluateMs="700" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                 <doLater msToNext="0">
                                     <plainText featureText="Playback MediaTrigger 700ms" />
                                 </doLater>
                                 <logTimeStamp eventTag="Playback MediaTrigger 700ms"/>
+                            </onTime>
+                            <onError>
+                                <htmlText featureText="addMediaTrigger onError" />
+                            </onError>
                             </addMediaTrigger>
-                            <addMediaTrigger msToNext="7000" mediaId="recordedMedia">
+                            <addMediaTrigger evaluateMs="7000" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                 <doLater msToNext="0">
                                     <plainText featureText="Playback MediaTrigger 7000ms" />
                                 </doLater>
                                 <logTimeStamp eventTag="Playback MediaTrigger 7000ms"/>
+                            </onTime>
+                            <onError>
+                                <htmlText featureText="addMediaTrigger onError" />
+                            </onError>
                             </addMediaTrigger>
-                            <addMediaTrigger msToNext="70000" mediaId="recordedMedia">
+                            <addMediaTrigger evaluateMs="70000" threshold="20" mediaId="recordedMedia">
+                                <onTime>
                                 <doLater msToNext="0">
                                     <plainText featureText="Playback MediaTrigger 70000ms" />
                                 </doLater>
                                 <logTimeStamp eventTag="Playback MediaTrigger 70000ms"/>
+                            </onTime>
+                            <onError>
+                                <htmlText featureText="addMediaTrigger onError" />
+                            </onError>
                             </addMediaTrigger>
                             </mediaPlaybackStarted>
                         <mediaPlaybackComplete>

@@ -178,7 +178,7 @@ public enum PresenterType {
 //        targetFooterButton, actionFooterButton
     }),
     preload(new FeatureType[]{
-        logTimeStamp, hardwareTimeStamp, dtmfTone, logTokenText, actionTokenButton, habituationParadigmListener, triggerRandom, resetTrigger,
+        logTimeStamp, hardwareTimeStamp, dtmfTone, logTokenText, actionTokenButton, habituationParadigmListener, triggerRandom, resetTrigger, addMediaTrigger,
         versionData,
         withStimuli, eachStimulus, groupStimuli,
         activateRandomItem,
