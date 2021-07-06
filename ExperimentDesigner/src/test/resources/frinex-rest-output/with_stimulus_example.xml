@@ -747,7 +747,7 @@
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Sequential Display Example (using 7 separate timers)" type="stimulus" self="Sequential_Display_Example0_6" title="Sequential Display Example (using 7 separate timers)">
-        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
+        <loadStimulus eventTag="Sequential_Display_Example0_6" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
                 <clearTimer listenerId="sequentialDisplayTimer0"/>
                 <clearTimer listenerId="sequentialDisplayTimer1"/>
@@ -858,8 +858,8 @@
             <endOfStimulus>
                 <clearPage/>
                 <actionButton featureText="resetStimulus">
-                    <resetStimulus target="Sequential_Display_Example"/>
-                    <gotoPresenter target="Sequential_Display_Example"/>
+                    <resetStimulus target="Sequential_Display_Example0_6"/>
+                    <gotoPresenter target="Sequential_Display_Example0_6"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
@@ -870,7 +870,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="HardwareTimeStamps" type="stimulus" self="hardware_time_stamps" title="HardwareTimeStamps">
         <!--Adding HardwareTimeStamps so that experiment timing can be tested in place.-->
-        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
+        <loadStimulus eventTag="hardware_time_stamps" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
                 <clearPage/>
                 <regionAppend regionId="paddingRegion"/>
@@ -1009,9 +1009,12 @@
                             </actionTokenButton>
                         </column>
                     </row>
+                </table>
+                <addPadding/>
+                <table styleName="stimulusPanel">
                     <row>
                         <column>
-                            <htmlText featureText="Optical"/>
+                            <htmlText featureText="Optical 1"/>
                         </column>
                         <column>
                             <actionTokenButton featureText="On 1">
@@ -1024,6 +1027,16 @@
                             </actionTokenButton>
                         </column>
                         <column>
+                            <actionTokenButton featureText="Toggle 1">
+                                <hardwareTimeStamp opto1="invert"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <htmlText featureText="Optical 2"/>
+                        </column>
+                        <column>
                             <actionTokenButton featureText="On 2">
                                 <hardwareTimeStamp opto2="true"/>
                             </actionTokenButton>
@@ -1032,8 +1045,16 @@
                             <actionTokenButton featureText="Off 2">
                                 <hardwareTimeStamp opto2="false"/>
                             </actionTokenButton>
+                        </column> 
+                        <column>
+                            <actionTokenButton featureText="Toggle 2">
+                                <hardwareTimeStamp opto2="invert"/>
+                            </actionTokenButton>
                         </column>
                     </row>
+                </table>
+                <addPadding/>
+                <table styleName="stimulusPanel">
                     <row>
                         <column>
                             <htmlText featureText="Video"/>
@@ -1248,8 +1269,11 @@
                         </column>
                     </row>
                 </table>
+                <addPadding/>
                 <regionReplace regionId="stimuliVideoRegion"/>
+                <addPadding/>
                 <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+                <addPadding/>
                 <regionAppend regionId="stimuliLabelRegion"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -1275,7 +1299,7 @@
                     <conditionTrue>
                         <regionStyle regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
                         <regionAppend regionId="hardwareTimeStampStatusRegion">
-                            <htmlText featureText="HardwareTimeStamps is enabled."/>
+                            <htmlText featureText="HardwareTimeStamps are enabled."/>
                         </regionAppend>
                         <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaSTE">
                             <onError/>
@@ -1526,130 +1550,162 @@
                                 <mediaLoaded> 
                                     <plainText featureText="stimulusVideoLoaded"/>
                                     <plainText featureText="The ms values shown here are taken from a timer and not the FrameRateTimer, so this example needs to be evaluated with hardware rather than just the displayed values."/>
+                                    <plainText featureText="The ms offsets in the values below are perhaps a good indication of how doLater and pause can introduce up to 100ms or so deviation in time accuracy."/>
+                                    <plainText featureText="The Playback MediaTriggers are based on the media playback time which is an entirely different timebase than the sequentialDisplayTimer and the startFrameRateTimer."/>
                                     <hardwareTimeStamp dtmf="off" />
                                     <clearTimer listenerId="sequentialDisplayTimer"/>
                                     <startTimer msToNext="100" listenerId="sequentialDisplayTimer">
                                         <!-- this timer is not used for events, but is used for displaying approximate ms values in labels -->
                                     </startTimer>
+                                    <!-- these addMediaTriggers are attached to the audio media playback time -->
+                                    <addMediaTrigger msToNext="70" mediaId="stimulusAudioExample">
+                                        <logTimeStamp eventTag="Playback MediaTrigger 70ms"/>
+                                        <doLater msToNext="0">
+                                            <htmlTokenText featureText="Playback MediaTrigger 70ms &lt;sequentialDisplayTimer&gt;ms"/>
+                                        </doLater>
+                                    </addMediaTrigger>
+                                    <addMediaTrigger msToNext="700" mediaId="stimulusAudioExample">
+                                        <logTimeStamp eventTag="Playback MediaTrigger 700ms"/>
+                                        <doLater msToNext="0">
+                                            <htmlTokenText featureText="Playback MediaTrigger 700ms &lt;sequentialDisplayTimer&gt;ms"/>
+                                        </doLater>
+                                    </addMediaTrigger>
+                                    <!-- these addFrameTimeTriggers are attached to the outer startFrameRateTimer and trigger before each time the browser redraws its window and should therefore have better visual timing accuracy -->
                                     <startFrameRateTimer>
                                         <addFrameTimeTrigger evaluateMs="100" threshold="20">
-                                        <onTime>
-                                            <hardwareTimeStamp dtmf="3" opto1="true" />
-                                            <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="3" opto1="true" />
+                                                <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="350" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="4" opto1="true" opto2="false"/>
-                                            <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide"/>
-                                            <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="350" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="4" opto1="true" opto2="false" />
+                                                <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide" />
+                                                <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="500" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="5" opto2="true"/>
-                                            <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="stimuliLabelHide (500) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="500" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="5" opto2="true" />
+                                                <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="stimuliLabelHide (500) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="1000" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="6" />
-                                            <playMedia mediaId="stimulusAudioExample"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="play audio request (1000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="1000" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="6" />
+                                                <playMedia mediaId="stimulusAudioExample" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="play audio request (1000) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="7000" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="7" />
-                                            <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
-                                            <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>-->
-                                            <playMedia mediaId="stimulusVideoExample"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="stimuliVideoPlay (7000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="7000" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="7" />
+                                                <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
+                                                <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>-->
+                                                <playMedia mediaId="stimulusVideoExample" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="stimuliVideoPlay (7000) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="11000" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="8" />
-                                            <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>-->
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="stimuliVideoHide (11000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="11000" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="8" />
+                                                <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>-->
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="stimuliVideoHide (11000) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="400" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="9" />
-                                            <enableButtonGroup matchingRegex="respondButtonGroup"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms"/>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="400" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="9" />
+                                                <enableButtonGroup matchingRegex="respondButtonGroup" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms" />
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="13000" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="A" />
-                                            <disableButtonGroup matchingRegex="respondButtonGroup"/>
-                                            <doLater msToNext="0">
-                                                <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
-                                                <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
-                                                    <hardwareTimeStamp dtmf="*" />
-                                                    <logTimeStamp eventTag="actionButton Volgende"/>
-                                                    <nextStimulus repeatIncorrect="false"/>
-                                                </actionButton>
-                                            </doLater></onTime>
+                                        <addFrameTimeTrigger evaluateMs="13000" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="A" />
+                                                <disableButtonGroup matchingRegex="respondButtonGroup" />
+                                                <doLater msToNext="0">
+                                                    <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms" />
+                                                    <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
+                                                        <hardwareTimeStamp dtmf="*" />
+                                                        <logTimeStamp eventTag="actionButton Volgende" />
+                                                        <nextStimulus repeatIncorrect="false" />
+                                                    </actionButton>
+                                                </doLater>
+                                            </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
-                                        <addFrameTimeTrigger evaluateMs="13500" threshold="20"><onTime>
-                                            <hardwareTimeStamp dtmf="off" />
-                                        </onTime>
-                                        <onError>
-                                            <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited."/>
-                                        </onError>
+                                        <addFrameTimeTrigger evaluateMs="13500" threshold="20">
+                                            <onTime>
+                                                <hardwareTimeStamp dtmf="off" />
+                                            </onTime>
+                                            <onError>
+                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                            </onError>
                                         </addFrameTimeTrigger>
                                     </startFrameRateTimer>
                                 </mediaLoaded>
                                 <mediaLoadFailed>
-                                    <cancelPauseAll/>
-                                    <plainText featureText="stimulusVideoFailed"/>
-                                    <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
+                                    <cancelPauseAll />
+                                    <plainText featureText="stimulusVideoFailed" />
+                                    <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback." />
                                     <actionButton featureText="Replay (R)" hotKey="R">
-                                        <logTimeStamp eventTag="actionButton Replay"/>
-                                        <showStimulus/>
+                                        <logTimeStamp eventTag="actionButton Replay" />
+                                        <showStimulus />
                                     </actionButton>
                                 </mediaLoadFailed>
                                 <mediaPlaybackStarted>
-                                    <hardwareTimeStamp dtmf="off" opto2="false"/>
-                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>
-                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted and show (7000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    <hardwareTimeStamp dtmf="off" opto2="false" />
+                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show" />
+                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted and show (7000) &lt;sequentialDisplayTimer&gt;ms" />
                                 </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
-                                    <hardwareTimeStamp dtmf="off" opto2="true"/>
-                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
-                                    <htmlTokenText featureText="stimulusVideoComplete and hide &lt;sequentialDisplayTimer&gt;ms"/>
+                                    <hardwareTimeStamp dtmf="off" opto2="true" />
+                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide" />
+                                    <htmlTokenText featureText="stimulusVideoComplete and hide &lt;sequentialDisplayTimer&gt;ms" />
                                 </mediaPlaybackComplete>
-                            </stimulusVideo>  
+                            </stimulusVideo>
                         </regionReplace>
                     </mediaLoaded>
                     <mediaLoadFailed>
@@ -1722,7 +1778,7 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" self="RunTrialsSimple1000" type="stimulus" title="RunTrialsSimple1000">
+    <presenter back="Menu" self="RunTrialsSimple1000" menuLabel="RunTrialsSimple1000" type="stimulus" title="RunTrialsSimple1000">
         <logTimeStamp eventTag="run_main"/>
         <loadStimulus eventTag="loadTargetPicture" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
