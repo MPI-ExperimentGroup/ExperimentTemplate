@@ -185,8 +185,8 @@ state Timer_Label_Screen
 Timer_Label_Screen --> Menu : back
 state Sequential_Display_Example0_6
 Sequential_Display_Example0_6 --> Menu : back
-Sequential_Display_Example0_6 --> Sequential_Display_Example
-Sequential_Display_Example0_6 --> Sequential_Display_Example
+Sequential_Display_Example0_6 --> Sequential_Display_Example0_6
+Sequential_Display_Example0_6 --> Sequential_Display_Example0_6
 state hardware_time_stamps
 hardware_time_stamps --> Menu : back
 hardware_time_stamps --> hardware_time_stamps
