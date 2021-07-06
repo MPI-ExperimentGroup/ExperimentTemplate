@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -26,16 +27,24 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class FrameTimeTrigger {
 
     final private Stimulus currentStimulus;
-    final private SingleStimulusListener listener;
-    final public int msToNext;
+    final TimedStimulusListener onLateListener;
+    final private SingleStimulusListener onTimeListener;
+    final public int triggerMs;
+    final public int threshold;
 
-    public FrameTimeTrigger(Stimulus currentStimulus, SingleStimulusListener listener, int msToNext) {
+    public FrameTimeTrigger(Stimulus currentStimulus, final TimedStimulusListener onLateListener, SingleStimulusListener onTimeListener, int triggerMs, final int threshold) {
         this.currentStimulus = currentStimulus;
-        this.listener = listener;
-        this.msToNext = msToNext;
+        this.onLateListener = onLateListener;
+        this.onTimeListener = onTimeListener;
+        this.triggerMs = triggerMs;
+        this.threshold = threshold;
     }
 
     public void trigger() {
-        listener.postLoadTimerFired(currentStimulus);
+        onTimeListener.postLoadTimerFired(currentStimulus);
+    }
+
+    public void triggerLateError() {
+        onLateListener.postLoadTimerFired();
     }
 }
