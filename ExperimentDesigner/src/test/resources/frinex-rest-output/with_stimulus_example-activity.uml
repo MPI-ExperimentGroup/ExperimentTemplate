@@ -121,6 +121,14 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:Many_Short_Recordings;
+if (navigation) then (back)
+:Menu;
+endif
+:One_Long_Recording;
+if (navigation) then (back)
+:Menu;
+endif
 :Region_Timer_Screen;
 if (navigation) then (back)
 :Menu;

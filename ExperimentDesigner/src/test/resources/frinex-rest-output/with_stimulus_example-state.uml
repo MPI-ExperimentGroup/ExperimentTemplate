@@ -83,6 +83,8 @@ sticky_menu_example --> Sequential_Display_Example
 sticky_menu_example --> Sequential_Display_FrameRateTimer
 sticky_menu_example --> RunTrialsSimple1000
 sticky_menu_example --> Audio_Input_Select
+sticky_menu_example --> Many_Short_Recordings
+sticky_menu_example --> One_Long_Recording
 sticky_menu_example --> Region_Timer_Screen
 sticky_menu_example --> Region_Toggle_Example
 sticky_menu_example --> Rating_Toggle_Example

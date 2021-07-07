@@ -222,10 +222,12 @@
         margin: 12vw;
         background: beige;
         }
-        .recordingLevelMeter{
-        height: 1px;
+        .recordingLevelIndicator {
+        height: 5px;
         width: 25vw;
-        margin: 12vw;
+        }
+        .bargraphInner.recordingLevelIndicator {
+        min-height: 5px;
         background: blue;
         }
         .progressIndicatorHorizontal {            
@@ -1719,10 +1721,10 @@
                         </regionReplace>
                     </mediaLoaded>
                     <mediaLoadFailed>
-                        <cancelPauseAll/>
-                        <plainText featureText="stimulusAudioFailed"/>
-                        <stimulusLabel/>
-                        <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback."/>
+                        <cancelPauseAll />
+                        <plainText featureText="stimulusAudioFailed" />
+                        <stimulusLabel />
+                        <plainText featureText="Either the media failed to load or the media playback failed. This can be caused by a missing file or by an attempt to play the media before the user interacts with the page after it has loaded. If it is the latter, it can be overcome by clicking the retry button below, which firstly is a user interaction and secondly restarts the media playback." />
                         <actionButton featureText="Replay (R)" hotKey="R">
                             <logTimeStamp eventTag="actionButton Replay"/>
                             <showStimulus/>
@@ -1872,7 +1874,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Audio Input Select" type="stimulus" self="Audio_Input_Select" title="Audio Input Select">
         <plainText featureText="This example demonstrates an audio input select box that can be used with the HTML5 audio recorder (startAudioRecorderWeb)."/>
-<!--        <audioInputSelectWeb deviceRegex=".*" styleName="">
+        <!--        <audioInputSelectWeb deviceRegex=".*" styleName="">
             <onError>
                 <plainText featureText="audioInputSelectWeb_onError"/>
             </onError> 
@@ -1883,43 +1885,278 @@
         <audioInputSelectWeb>
             <onError>
                 <plainText featureText="audioInputSelectWeb_onError"/>
+                <plainText featureText="Please check the audio recording permissions in the browser."/>
             </onError> 
             <onSuccess>
-                <plainText featureText="audioInputSelectWeb_onSuccess"/>
+                <plainText featureText="Select the audio input before starting to record."/>
+                <loadStimulus eventTag="Audio_Input_Select" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <hasMoreStimulus>
+                        <regionReplace regionId="recordedMediaControls">
+                            <actionButton featureText="startAudioRecorder">
+                                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaControls">
+                                            <htmlText featureText="startAudioRecorder onError"/>
+                                        </regionReplace>
+                                    </onError>
+                                    <onSuccess>
+                                        <regionReplace regionId="recordedMediaControls">
+                                            <htmlText featureText="startAudioRecorder onSuccess"/>
+                                            <actionButton featureText="stopAudioRecorder">
+                                                <stopAudioRecorder/>
+                                            </actionButton>
+                                        </regionReplace>
+                                    </onSuccess>
+                                    <mediaLoaded>
+                                        <regionReplace regionId="recordedMediaControls">
+                                            <plainText featureText="AudioRecordingLoaded"/>
+                                            <actionButton featureText="Play Media">
+                                                <playMedia mediaId="recordedMedia"/>
+                                            </actionButton>
+                                            <actionButton featureText="Pause Media">
+                                                <pauseMedia mediaId="recordedMedia"/>
+                                            </actionButton>
+                                            <nextStimulusButton featureText="Next Stimulus" eventTag="Audio_Input_Select" repeatIncorrect="false"/>
+                                        </regionReplace>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <regionReplace regionId="recordedMediaControls">
+                                            <plainText featureText="AudioRecordingLoadFailed"/>
+                                        </regionReplace>
+                                    </mediaLoadFailed>
+                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackComplete>
+                                    </mediaPlaybackComplete>
+                                </startAudioRecorderWeb>
+                            </actionButton>
+                        </regionReplace>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <stopAudioRecorder/>
+                        <actionButton featureText="resetStimulus" hotKey="SPACE">
+                            <resetStimulus target="Audio_Input_Select"/>
+                            <gotoPresenter target="Audio_Input_Select"/>
+                        </actionButton>
+                    </endOfStimulus>
+                    <randomGrouping/>
+                    <stimuli>
+                        <tag>RecorderPauseTest</tag>
+                    </stimuli>
+                </loadStimulus>
             </onSuccess>
         </audioInputSelectWeb>
-        <loadStimulus eventTag="Audio_Input_Select" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <!-- if a region with the ID of AudioRecorderWebLevelIndicator exists and the levelIndicatorStyle is set, then the region allocates the location of the recording level indicator -->
+        <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+    </presenter>
+    <presenter back="Menu" menuLabel="Many_Short_Recordings (until failure)" type="stimulus" self="Many_Short_Recordings" title="Many_Short_Recordings (until failure)">
+        <plainText featureText="This example tests how many short audio recordings can be made in a quick sequence before the browser blocks further requests to record or any number of potential errors occur."/>
+        <plainText featureText="Each recording uses the DTMF tone detection to verify that the sound from the speaker is captured in the the recording."/>
+        <addPadding/>
+        <triggerDefinition listenerId="startAnotherRecording" threshold="0" maximum="0">
+            <regionReplace regionId="recordedMediaMessages"/>
+            <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
+                <onError>
+                    <dtmfTone dtmf="off" msToNext="0"/>
+                    <regionAppend regionId="recordedMediaMessages">
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </regionAppend>
+                    <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                </onError>
+                <onSuccess>
+                    <!-- adding the addMediaTriggers and addRecorderDtmfTriggers first before we do any slow actions like htmlTokenText -->
+                    <addMediaTrigger msToNext="100" mediaId="recordedMedia">
+                        <dtmfTone dtmf="9" msToNext="0"/>
+                    </addMediaTrigger>
+                    <addMediaTrigger msToNext="150" mediaId="recordedMedia">
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                    </addMediaTrigger>
+                    <addMediaTrigger msToNext="500" mediaId="recordedMedia">
+                        <dtmfTone dtmf="#" msToNext="1000"/>
+                    </addMediaTrigger>
+                    <!--addMediaTrigger msToNext="550" mediaId="recordedMedia">
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                        <stopAudioRecorder/>
+                        <doLater msToNext="0">
+                            <triggerMatching listenerId="startAnotherRecording"/>
+                        </doLater>
+                    </addMediaTrigger-->
+                    <addRecorderDtmfTrigger dtmf="#">
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                        <stopAudioRecorder/>
+                        <doLater msToNext="0">
+                            <triggerMatching listenerId="startAnotherRecording"/>
+                        </doLater>
+                    </addRecorderDtmfTrigger>
+                    <addMediaTrigger msToNext="1000" mediaId="recordedMedia">
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                        <doLater msToNext="0">
+                            <regionAppend regionId="recordedMediaMessages">
+                                <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                            </regionAppend>
+                            <stopAudioRecorder/>
+                            <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                            <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                        </doLater>
+                    </addMediaTrigger>
+                    <scoreIncrement scoreValue="1"/>
+                    <regionReplace regionId="recordedMediaCounter">
+                        <htmlTokenText featureText="
+                            playerScore:
+                            &lt;playerScore&gt;&lt;br/&gt;
+                            playerErrors:
+                            &lt;playerErrors&gt;&lt;br/&gt;
+                            playerPotentialScore:
+                            &lt;playerPotentialScore&gt;&lt;br/&gt;
+                            "/>
+                    </regionReplace>
+                    <disableButtonGroup matchingRegex="recordButtonGroup"/>
+                    <enableButtonGroup matchingRegex="abortButtonGroup"/>
+                </onSuccess>
+                <mediaLoaded>
+                    <regionReplace regionId="loadedMediaMessages">
+                        <plainText featureText="AudioRecordingLoaded"/>
+                    </regionReplace>
+                </mediaLoaded>
+                <mediaLoadFailed>
+                    <regionReplace regionId="loadedMediaMessages">
+                        <plainText featureText="AudioRecordingLoadFailed"/>
+                    </regionReplace>
+                </mediaLoadFailed>
+                <mediaPlaybackStarted/>
+                <mediaPlaybackComplete>
+                </mediaPlaybackComplete>
+            </startAudioRecorderWeb>
+        </triggerDefinition>
+        <loadStimulus eventTag="Many_Short_Recordings" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaControls">
-                    <actionButton featureText="startAudioRecorder">
-                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="levelIndicator">
+                    <actionButton groupId="recordButtonGroup" featureText="Start Many Recordings (until failure)">
+                        <clearCurrentScore/>
+                        <triggerMatching listenerId="startAnotherRecording"/>
+                    </actionButton>
+                    <addPadding/>
+                    <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                    <addPadding/>
+                    <actionButton groupId="abortButtonGroup" featureText="Abort Many Recordings">
+                        <stopAudioRecorder/>
+                        <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                    </actionButton>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                    <addPadding/>
+                    <regionReplace regionId="recordedMediaCounter"/>
+                    <addPadding/>
+                    <regionReplace regionId="recordedMediaMessages"/>
+                    <addPadding/>
+                    <regionReplace regionId="loadedMediaMessages"/>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <actionButton featureText="resetStimulus" hotKey="SPACE">
+                    <resetStimulus target="Many_Short_Recordings"/>
+                    <gotoPresenter target="Many_Short_Recordings"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="One_Long_Recording (until failure)" type="stimulus" self="One_Long_Recording" title="One_Long_Recording (until failure)">
+        <plainText featureText="This example tests how one long audio recording can be made to include a quick repetative sequence without issues of browser requests to record or any number of potential errors that occur with short recordings."/>
+        <plainText featureText="Each iteration uses the DTMF tone detection to verify that the sound from the speaker is captured in the the recording."/>
+        <addPadding/>
+        <triggerDefinition listenerId="startAnotherSequence" threshold="0" maximum="0">
+            <!-- adding the addMediaTriggers and addRecorderDtmfTriggers first before we do any slow actions like htmlTokenText -->        
+            <startFrameRateTimer>
+                <addFrameTimeTrigger evaluateMs="100" threshold="20">
+                    <onTime>
+                        <dtmfTone dtmf="9" msToNext="0"/>
+                    </onTime>
+                    <onError>
+                        <plainText featureText="The requested FrameTimeTrigger was late so the sequence has been aborted. Please check that your computer does not have any power throttling enabled and browser that your browser has the required settings to provide adequate performance on this page."/>
+                    </onError>
+                    </addFrameTimeTrigger>
+                <addFrameTimeTrigger evaluateMs="150" threshold="20">
+                    <onTime>
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                    </onTime>
+                    <onError>
+                        <plainText featureText="The requested FrameTimeTrigger was late so the sequence has been aborted. Please check that your computer does not have any power throttling enabled and browser that your browser has the required settings to provide adequate performance on this page."/>
+                    </onError>
+                    </addFrameTimeTrigger>
+                <addFrameTimeTrigger evaluateMs="500" threshold="20">
+                    <onTime>
+                        <dtmfTone dtmf="#" msToNext="500"/>
+                    </onTime>
+                    <onError>
+                        <plainText featureText="The requested FrameTimeTrigger was late so the sequence has been aborted. Please check that your computer does not have any power throttling enabled and browser that your browser has the required settings to provide adequate performance on this page."/>
+                    </onError>
+                    </addFrameTimeTrigger>
+                <!--addFrameTimeTrigger msToNext="550">
+                    <dtmfTone dtmf="off" msToNext="0"/>
+                    <doLater msToNext="0">
+                        <triggerMatching listenerId="startAnotherSequence"/>
+                    </doLater>
+                </addFrameTimeTrigger-->
+            </startFrameRateTimer>
+            <clearTimer listenerId="toneDetectionTimer"/>
+            <startTimer msToNext="1000" listenerId="toneDetectionTimer">
+                <dtmfTone dtmf="off" msToNext="0"/>
+                <regionAppend regionId="recordedMediaMessages">
+                    <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                </regionAppend>
+                <stopAudioRecorder/>
+                <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                <disableButtonGroup matchingRegex="abortButtonGroup"/>
+            </startTimer>
+            <scoreIncrement scoreValue="1"/>
+            <regionReplace regionId="recordedMediaCounter">
+                <htmlTokenText featureText="
+                    playerScore:
+                    &lt;playerScore&gt;&lt;br/&gt;
+                    playerErrors:
+                    &lt;playerErrors&gt;&lt;br/&gt;
+                    playerPotentialScore:
+                    &lt;playerPotentialScore&gt;&lt;br/&gt;
+                    "/>
+            </regionReplace>
+            <disableButtonGroup matchingRegex="recordButtonGroup"/>
+            <enableButtonGroup matchingRegex="abortButtonGroup"/>
+        </triggerDefinition>
+        <loadStimulus eventTag="One_Long_Recording" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <regionReplace regionId="recordedMediaControls">
+                    <actionButton groupId="recordButtonGroup" featureText="Start One Long Recording (until failure)">
+                        <clearCurrentScore/>
+                        <regionReplace regionId="recordedMediaMessages"/>
+                        <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
                             <onError>
-                                <regionReplace regionId="recordedMediaControls">
+                                <dtmfTone dtmf="off" msToNext="0"/>
+                                <regionAppend regionId="recordedMediaMessages">
                                     <htmlText featureText="startAudioRecorder onError"/>
-                                </regionReplace>
+                                </regionAppend>
+                                <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                                <disableButtonGroup matchingRegex="abortButtonGroup"/>
                             </onError>
                             <onSuccess>
-                                <regionReplace regionId="recordedMediaControls">
-                                    <htmlText featureText="startAudioRecorder onSuccess"/>
-                                    <actionButton featureText="stopAudioRecorder">
-                                        <stopAudioRecorder/>
-                                    </actionButton>
-                                </regionReplace>
+                                <addRecorderDtmfTrigger dtmf="#">
+                                    <dtmfTone dtmf="off" msToNext="0"/>
+                                    <doLater msToNext="100">
+                                        <triggerMatching listenerId="startAnotherSequence"/>
+                                    </doLater>
+                                </addRecorderDtmfTrigger>
+                                <triggerMatching listenerId="startAnotherSequence"/>
                             </onSuccess>
                             <mediaLoaded>
-                                <regionReplace regionId="recordedMediaControls">
+                                <regionReplace regionId="loadedMediaMessages">
                                     <plainText featureText="AudioRecordingLoaded"/>
-                                    <actionButton featureText="Play Media">
-                                        <playMedia mediaId="recordedMedia"/>
-                                    </actionButton>
-                                    <actionButton featureText="Pause Media">
-                                        <pauseMedia mediaId="recordedMedia"/>
-                                    </actionButton>
-                                    <nextStimulusButton featureText="Next Stimulus" eventTag="Audio_Input_Select" repeatIncorrect="false"/>
                                 </regionReplace>
                             </mediaLoaded>
                             <mediaLoadFailed>
-                                <regionReplace regionId="recordedMediaControls">
+                                <regionReplace regionId="loadedMediaMessages">
                                     <plainText featureText="AudioRecordingLoadFailed"/>
                                 </regionReplace>
                             </mediaLoadFailed>
@@ -1928,13 +2165,34 @@
                             </mediaPlaybackComplete>
                         </startAudioRecorderWeb>
                     </actionButton>
+                    <addPadding/>
+                    <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                    <addPadding/>
+                    <actionButton groupId="abortButtonGroup" featureText="Abort Long Recording">
+                        <clearTimer listenerId="toneDetectionTimer"/>
+                        <addRecorderDtmfTrigger dtmf="#"/> <!-- clear the dtmf listener to break the loop -->
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                        <stopAudioRecorder/>
+                        <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                        <pause msToNext="1000">
+                            <dtmfTone dtmf="off" msToNext="0"/> <!-- stopping the tone again in case where the last iteration of addFrameTimeTrigger starts the tone again before it terminates -->
+                            <regionReplace regionId="recordedMediaMessages"/>
+                        </pause>
+                    </actionButton>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                    <addPadding/>
+                    <regionReplace regionId="recordedMediaCounter"/>
+                    <addPadding/>
+                    <regionReplace regionId="recordedMediaMessages"/>
+                    <addPadding/>
+                    <regionReplace regionId="loadedMediaMessages"/>
                 </regionReplace>
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder/>
                 <actionButton featureText="resetStimulus" hotKey="SPACE">
-                    <resetStimulus target="Audio_Input_Select"/>
-                    <gotoPresenter target="Audio_Input_Select"/>
+                    <resetStimulus target="One_Long_Recording"/>
+                    <gotoPresenter target="One_Long_Recording"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
