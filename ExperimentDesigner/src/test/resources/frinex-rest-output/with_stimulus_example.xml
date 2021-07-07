@@ -1568,7 +1568,7 @@
                                             </doLater>
                                         </onTime>
                                         <onError>
-                                            <htmlText featureText="addMediaTrigger onError" />
+                                            <htmlText featureText="addMediaTrigger 70 onError" />
                                         </onError>
                                     </addMediaTrigger>
                                     <addMediaTrigger evaluateMs="700" threshold="20" mediaId="stimulusAudioExample">
@@ -1579,7 +1579,7 @@
                                             </doLater>
                                         </onTime>
                                         <onError>
-                                            <htmlText featureText="addMediaTrigger onError" />
+                                            <htmlText featureText="addMediaTrigger 700 onError" />
                                         </onError>
                                     </addMediaTrigger>
                                     <!-- these addFrameTimeTriggers are attached to the outer startFrameRateTimer and trigger before each time the browser redraws its window and should therefore have better visual timing accuracy -->
@@ -1593,7 +1593,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 100 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="350" threshold="20">
@@ -1606,7 +1606,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 350 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="500" threshold="20">
@@ -1618,7 +1618,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 500 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="1000" threshold="20">
@@ -1630,7 +1630,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 1000 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="7000" threshold="20">
@@ -1644,7 +1644,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 7000 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="11000" threshold="20">
@@ -1656,7 +1656,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 11000 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="400" threshold="20">
@@ -1668,7 +1668,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 400 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="13000" threshold="20">
@@ -1685,7 +1685,7 @@
                                                 </doLater>
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 13000 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                         <addFrameTimeTrigger evaluateMs="13500" threshold="20">
@@ -1693,7 +1693,7 @@
                                                 <hardwareTimeStamp dtmf="off" />
                                             </onTime>
                                             <onError>
-                                                <plainText featureText="Error evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
+                                                <plainText featureText="Error 13500 evaluating the ms values or the the brower frame rate is running slow and the times will be incorrect, so this startFrameRateTimer has exited." />
                                             </onError>
                                         </addFrameTimeTrigger>
                                     </startFrameRateTimer>
@@ -1820,7 +1820,7 @@
                             <!-- we need to determine an alternative to this <stimulusPause > but from memory I think startTimer will process tokens ie <code>+500 -->
                             <addTimerTrigger evaluateTokens="&lt;stimulusPauseMs&gt; + 500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
-                                    <plainText featureText="addTimerTrigger onError"/>
+                                    <plainText featureText="addTimerTrigger P+500 onError"/>
                                 </onError>
                                 <onTimer>
                                     <logTimeStamp eventTag="pause_ended"/>
@@ -1834,7 +1834,7 @@
                             <!-- 500 is added here to accommodate the initial 500 anti jitter delay -->
                             <addTimerTrigger evaluateTokens="1000+&lt;stimulusPauseMs&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
-                                    <plainText featureText="addTimerTrigger onError"/>
+                                    <plainText featureText="addTimerTrigger 1000+P+500 onError"/>
                                 </onError>
                                 <onTimer>                            
                                     <hardwareTimeStamp dtmf="off"/>
@@ -1846,7 +1846,7 @@
                             <!-- the previous 1000 and 500 is added here to accommodate the initial 500 anti jitter delay -->
                             <addTimerTrigger evaluateTokens="1000+1000+&lt;stimulusPauseMs&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
                                 <onError>
-                                    <plainText featureText="addTimerTrigger onError"/>
+                                    <plainText featureText="addTimerTrigger 1000+1000+P+500 onError"/>
                                 </onError>
                                 <onTimer>
                                     <logTimeStamp eventTag="to_next_stimulus"/>
@@ -1874,7 +1874,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Audio Input Select" type="stimulus" self="Audio_Input_Select" title="Audio Input Select">
         <plainText featureText="This example demonstrates an audio input select box that can be used with the HTML5 audio recorder (startAudioRecorderWeb)."/>
-        <!--        <audioInputSelectWeb deviceRegex=".*" styleName="">
+<!--        <audioInputSelectWeb deviceRegex=".*" styleName="">
             <onError>
                 <plainText featureText="audioInputSelectWeb_onError"/>
             </onError> 
@@ -1965,16 +1965,49 @@
                 </onError>
                 <onSuccess>
                     <!-- adding the addMediaTriggers and addRecorderDtmfTriggers first before we do any slow actions like htmlTokenText -->
-                    <addMediaTrigger msToNext="100" mediaId="recordedMedia">
-                        <dtmfTone dtmf="9" msToNext="0"/>
+                    <addMediaTrigger evaluateMs="100" threshold="50" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="9" msToNext="0" />
+                        </onTime>
+                        <onError>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <regionAppend regionId="recordedMediaMessages">
+                                <htmlText featureText="addMediaTrigger 100 onError" />
+                            </regionAppend>
+                            <stopAudioRecorder />
+                            <enableButtonGroup matchingRegex="recordButtonGroup" />
+                            <disableButtonGroup matchingRegex="abortButtonGroup" />
+                        </onError>
                     </addMediaTrigger>
-                    <addMediaTrigger msToNext="150" mediaId="recordedMedia">
-                        <dtmfTone dtmf="off" msToNext="0"/>
+                    <addMediaTrigger evaluateMs="150" threshold="50" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                        </onTime>
+                        <onError>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <regionAppend regionId="recordedMediaMessages">
+                                <htmlText featureText="addMediaTrigger 150 onError" />
+                            </regionAppend>
+                            <stopAudioRecorder />
+                            <enableButtonGroup matchingRegex="recordButtonGroup" />
+                            <disableButtonGroup matchingRegex="abortButtonGroup" />
+                        </onError>
                     </addMediaTrigger>
-                    <addMediaTrigger msToNext="500" mediaId="recordedMedia">
-                        <dtmfTone dtmf="#" msToNext="1000"/>
+                    <addMediaTrigger evaluateMs="500" threshold="50" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="#" msToNext="1000" />
+                        </onTime>
+                        <onError>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <regionAppend regionId="recordedMediaMessages">
+                                <htmlText featureText="addMediaTrigger 500 onError" />
+                            </regionAppend>
+                            <stopAudioRecorder />
+                            <enableButtonGroup matchingRegex="recordButtonGroup" />
+                            <disableButtonGroup matchingRegex="abortButtonGroup" />
+                        </onError>
                     </addMediaTrigger>
-                    <!--addMediaTrigger msToNext="550" mediaId="recordedMedia">
+                    <!--addMediaTrigger evaluateMs="550" threshold="20" mediaId="recordedMedia">
                         <dtmfTone dtmf="off" msToNext="0"/>
                         <stopAudioRecorder/>
                         <doLater msToNext="0">
@@ -1988,18 +2021,23 @@
                             <triggerMatching listenerId="startAnotherRecording"/>
                         </doLater>
                     </addRecorderDtmfTrigger>
-                    <addMediaTrigger msToNext="1000" mediaId="recordedMedia">
-                        <dtmfTone dtmf="off" msToNext="0"/>
-                        <doLater msToNext="0">
-                            <regionAppend regionId="recordedMediaMessages">
-                                <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
-                            </regionAppend>
-                            <stopAudioRecorder/>
-                            <enableButtonGroup matchingRegex="recordButtonGroup"/>
-                            <disableButtonGroup matchingRegex="abortButtonGroup"/>
-                        </doLater>
+                    <addMediaTrigger evaluateMs="1000" threshold="20" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <doLater msToNext="0">
+                                <regionAppend regionId="recordedMediaMessages">
+                                    <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                                </regionAppend>
+                                <stopAudioRecorder />
+                                <enableButtonGroup matchingRegex="recordButtonGroup" />
+                                <disableButtonGroup matchingRegex="abortButtonGroup" />
+                            </doLater>
+                        </onTime>
+                        <onError>
+                            <htmlText featureText="addMediaTrigger onError" />
+                        </onError>
                     </addMediaTrigger>
-                    <scoreIncrement scoreValue="1"/>
+                    <scoreIncrement scoreValue="1" />
                     <regionReplace regionId="recordedMediaCounter">
                         <htmlTokenText featureText="
                             playerScore:
@@ -2737,6 +2775,49 @@
             <!--setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_next_step&gt;"/-->
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Format Current DateTime" type="stimulus" self="Format_Current_DateTime" title="Format Current DateTime">
+        <plainText featureText="In this example the current time and date is shown in a few labels with various formatting options."/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_yyyy.MM.dd G&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_yyyy.MM.dd G&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_HH:mm:ss&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_HH:mm:ss&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_h:mm a&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_h:mm a&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_EEE, d MMM yy&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_EEE, d MMM yy&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_yyyyy.MMMMM.dd GGG hh:mm aaa&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_yyyyy.MMMMM.dd GGG hh:mm aaa&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_z&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_z&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_Z&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_Z&gt;"/>
+            <addPadding/>
+            <htmlText featureText="&amp;lt;formatDateTime_v&amp;gt;"/>
+            <htmlTokenText featureText="&lt;formatDateTime_v&gt;"/>
+            <addPadding/>
+            <addPadding/>
+            <htmlText featureText="This &amp;lt;matchOnEvalTokens evaluateTokens=&quot;&amp;lt;formatDateTime_HH&amp;gt; &amp;lt; 12&quot; matchingRegex=&quot;true&quot;&gt; checks if the participant loaded the page before or after 12 noon."/>
+            <matchOnEvalTokens evaluateTokens="&lt;formatDateTime_HH&gt; &lt; 12" matchingRegex="true">
+                <conditionTrue>
+                    <htmlTokenText featureText="It is &lt;formatDateTime_HH:mm&gt; in the morning."/>
+                </conditionTrue>
+                <conditionFalse>
+                    <htmlTokenText featureText="It is &lt;formatDateTime_HH:mm&gt; in the afternoon."/>
+                </conditionFalse>
+                <onError>
+                    <htmlTokenText featureText="matchOnEvalTokens triggered onError"/>
+                </onError>
+            </matchOnEvalTokens>
+            <addPadding/>
+            <addPadding/>
     </presenter>
     <!--<presenter back="Menu" menuLabel="Draggable Euclidian Distance" type="stimulus" self="draggable_euclidian_distance" title="Draggable Euclidian Distance">
         <scss>loop to make styles that step around the circle</scss>
@@ -4199,7 +4280,8 @@
         <enableButtonGroup matchingRegex="exampleButtonGroup"/>
     </presenter>
     <presenter back="Menu" menuLabel="Hotkey Enable Example" type="stimulus" self="hotkey_enable_example" title="Hotkey Enable Example">
-        <htmlText featureText="This example assigns a button a hotkey and adds a button with the same kotkey. When the hotkey is pressed the button triggers and disables itself. When the hotkey is released the button is enabled again by the hotKeyInput listener."/>
+        <htmlText featureText="This example assigns a hotkey to a hotKeyInput and adds a button with the same kotkey. When the hotkey is pressed the button triggers and disables itself. When the hotkey is released the button is enabled again by the hotKeyInput listener."/>
+        <htmlText featureText="Hold and release the SPACE key to see the effect of this example."/>
         <hotKeyInput groupId="blockButtonGroup" hotKey="SPACE">
             <onKeyUp>
                 <htmlText featureText="hotKeyInput onKeyUp."/>
@@ -4325,6 +4407,31 @@
             </randomGrouping>
             <stimuli>
                 <tag>Second</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Terug" type="text" self="Third_Informatie" title="Third Informatie">
+        <htmlText featureText="Instructies Deel 3: &lt;br/&gt;&lt;br/&gt;"/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Third"/>
+    </presenter>
+    <presenter back="Menu" menuLabel="Third" next="completion" type="stimulus" self="Third" title="Third">
+        <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                <actionButton featureText="Volgende [tab + enter]">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping storageField="item">
+                <tag>thirdexample</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>Third</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -4457,7 +4564,7 @@
                         </onError>
                         <onSuccess>
                             <!-- it is reasobable to assume that triggers during the first 100ms or so might be less reliable due to the process of setting up the recording -->
-                            <addMediaTrigger evaluateMs="50" threshold="20" mediaId="recordedMedia">
+                            <addMediaTrigger evaluateMs="50" threshold="100" mediaId="recordedMedia">
                                 <onTime>
                                     <doLater msToNext="0">
                                         <plainText featureText="Recording MediaTrigger 50ms" />
@@ -4465,7 +4572,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 50ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 50 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="150" threshold="20" mediaId="recordedMedia">
@@ -4476,7 +4583,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 150ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 150 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="600" threshold="20" mediaId="recordedMedia">
@@ -4487,7 +4594,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 600ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 600 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="6000" threshold="20" mediaId="recordedMedia">
@@ -4498,7 +4605,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 6000ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 6000 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="6010" threshold="20" mediaId="recordedMedia">
@@ -4509,7 +4616,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 6010ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 6010 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="6050" threshold="20" mediaId="recordedMedia">
@@ -4520,7 +4627,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 6050ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 6050 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="6100" threshold="20" mediaId="recordedMedia">
@@ -4531,7 +4638,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 6100ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 6100 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="12000" threshold="20" mediaId="recordedMedia">
@@ -4542,7 +4649,7 @@
                                     <logTimeStamp eventTag="Recording MediaTrigger 12000ms" />
                                 </onTime>
                                 <onError>
-                                    <htmlText featureText="addMediaTrigger onError" />
+                                    <htmlText featureText="addMediaTrigger 12000 onError" />
                                 </onError>
                             </addMediaTrigger>
                             <htmlText featureText="startAudioRecorder onSuccess" />
@@ -4565,7 +4672,7 @@
                                 <logTimeStamp eventTag="Playback MediaTrigger 70ms"/>
                             </onTime>
                             <onError>
-                                <htmlText featureText="addMediaTrigger onError" />
+                                <htmlText featureText="addMediaTrigger 70 onError" />
                             </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="700" threshold="20" mediaId="recordedMedia">
@@ -4576,7 +4683,7 @@
                                 <logTimeStamp eventTag="Playback MediaTrigger 700ms"/>
                             </onTime>
                             <onError>
-                                <htmlText featureText="addMediaTrigger onError" />
+                                <htmlText featureText="addMediaTrigger 700 onError" />
                             </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="7000" threshold="20" mediaId="recordedMedia">
@@ -4587,7 +4694,7 @@
                                 <logTimeStamp eventTag="Playback MediaTrigger 7000ms"/>
                             </onTime>
                             <onError>
-                                <htmlText featureText="addMediaTrigger onError" />
+                                <htmlText featureText="addMediaTrigger 7000 onError" />
                             </onError>
                             </addMediaTrigger>
                             <addMediaTrigger evaluateMs="70000" threshold="20" mediaId="recordedMedia">
@@ -4598,12 +4705,12 @@
                                 <logTimeStamp eventTag="Playback MediaTrigger 70000ms"/>
                             </onTime>
                             <onError>
-                                <htmlText featureText="addMediaTrigger onError" />
+                                <htmlText featureText="addMediaTrigger 7000 onError" />
                             </onError>
                             </addMediaTrigger>
-                            </mediaPlaybackStarted>
+                        </mediaPlaybackStarted>
                         <mediaPlaybackComplete>
-                                <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb> 
@@ -4807,130 +4914,1059 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" menuLabel="RecorderNoiseEchoGainTest" next="Menu" type="stimulus" self="RecorderNoiseEchoGainTest" title="Recorder NoiseSuppression EchoCancellation AutoGainControl Test">
-        <htmlText featureText="This example shows how to use the NoiseSuppression EchoCancellation AutoGainControl controls in the web based audio recorder." />
-        <loadStimulus eventTag="RecorderTimeStampTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+    <presenter back="Menu" menuLabel="RecordingDTMFQualityTest" next="Menu" type="stimulus" self="RecordingDTMFQualityTest" title="RecordingDTMFQualityTest">
+        <htmlText featureText="This example shows one way to mandate that the DTMF tones produced by the the experiment are detectable in the audio recording made via the web recorder."/>
+            <loadStimulus eventTag="RecordingDTMFQualityTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusLabel styleName="stimuliLabel" />
-                <addPadding />
-                <actionButton featureText="record with noiseSuppression on">
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="true" echoCancellation="false" autoGainControl="false">
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Please arrange your microphone and speaker so that both your speach and the tone produced by this experiment are recorded by the microphone."/>
+                <addPadding/>
+                <actionButton groupId="recordButtonGroup" featureText="Test Recording Setup">
+                    <startAudioRecorderWeb featureText="00:00:00" levelIndicatorStyle="progressIndicatorVertical" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
                         <onError>
                             <htmlText featureText="startAudioRecorder onError" />
                         </onError>
                         <onSuccess>
-                            <htmlText featureText="startAudioRecorder onSuccess" />
+                            <disableButtonGroup matchingRegex="recordButtonGroup" />
+                            <addRecorderDtmfTrigger dtmf="#">
+                                <enableButtonGroup matchingRegex="nextButtonGroup" />
+                                <stopAudioRecorder />
+                            </addRecorderDtmfTrigger>
+                            <addMediaTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <dtmfTone dtmf="#" msToNext="1000" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger 500 onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="2000" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
+                                        <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                                        <stopAudioRecorder />
+                                        <actionButton featureText="Reset Audio Test">
+                                            <gotoPresenter target="RecordingDTMFQualityTest" />
+                                        </actionButton>
+                                    </doLater>
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger 2000 onError" />
+                                </onError>
+                            </addMediaTrigger>
                         </onSuccess>
-                        <mediaLoaded>
-                            <plainText featureText="AudioRecordingLoaded" />
-                        </mediaLoaded>
-                        <mediaLoadFailed>
-                            <plainText featureText="AudioRecordingLoadFailed" />
-                        </mediaLoadFailed>
+                        <mediaLoaded />
+                        <mediaLoadFailed />
                         <mediaPlaybackStarted />
                         <mediaPlaybackComplete>
                             <plainText featureText="AudioRecordingPlaybackComplete" />
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb>
                 </actionButton>
-                <actionButton featureText="record with echoCancellation on">
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="true" autoGainControl="false">
+                <addPadding/>
+                <addPadding/>
+                <actionButton groupId="nextButtonGroup" featureText="Tone detected, you can procede [space]" hotKey="SPACE">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+                <disableButtonGroup matchingRegex="nextButtonGroup"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder />
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RecordingDTMFQualityTest" />
+                    <gotoPresenter target="RecordingDTMFQualityTest" />
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecordingDTMFExtendedTest" next="Menu" type="stimulus" self="RecordingDTMFExtendedTest" title="RecordingDTMFExtendedTest">
+        <htmlText featureText="This extended example shows one way to mandate that a sequence of DTMF tones produced by the the experiment are detectable in the audio recording made via the web recorder."/>
+            <loadStimulus eventTag="RecordingDTMFExtendedTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Please arrange your microphone and speaker so that both your speach and the tone produced by this experiment are recorded by the microphone."/>
+                <addPadding/>
+                <actionButton groupId="recordButtonGroup" featureText="Test Recording Setup">
+                    <startAudioRecorderWeb featureText="00:00:00" levelIndicatorStyle="progressIndicatorVertical" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
                         <onError>
                             <htmlText featureText="startAudioRecorder onError" />
                         </onError>
                         <onSuccess>
-                            <htmlText featureText="startAudioRecorder onSuccess" />
+                            <disableButtonGroup matchingRegex="recordButtonGroup" />
+                            <addRecorderDtmfTrigger dtmf="#">
+                                <addRecorderDtmfTrigger dtmf="*">
+                                    <addRecorderDtmfTrigger dtmf="A">
+                                        <disableButtonGroup matchingRegex="recordButtonGroup" />
+                                        <enableButtonGroup matchingRegex="nextButtonGroup" />
+                                        <stopAudioRecorder />
+                                    </addRecorderDtmfTrigger>
+                                    <dtmfTone dtmf="A" msToNext="1000" />
+                                </addRecorderDtmfTrigger>
+                                <dtmfTone dtmf="*" msToNext="1000" />
+                            </addRecorderDtmfTrigger>
+                            <addMediaTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <dtmfTone dtmf="#" msToNext="1000" />
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger 500 onError" />
+                                </onError>
+                            </addMediaTrigger>
+                            <addMediaTrigger evaluateMs="4000" threshold="20" mediaId="recordedMedia">
+                                <onTime>
+                                    <doLater msToNext="0">
+                                        <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                                        <stopAudioRecorder />
+                                        <actionButton featureText="Reset Audio Test">
+                                            <gotoPresenter target="RecordingDTMFExtendedTest" />
+                                        </actionButton>
+                                    </doLater>
+                                </onTime>
+                                <onError>
+                                    <htmlText featureText="addMediaTrigger 4000 onError" />
+                                </onError>
+                            </addMediaTrigger>
                         </onSuccess>
-                        <mediaLoaded>
-                            <plainText featureText="AudioRecordingLoaded" />
-                        </mediaLoaded>
-                        <mediaLoadFailed>
-                            <plainText featureText="AudioRecordingLoadFailed" />
-                        </mediaLoadFailed>
+                        <mediaLoaded />
+                        <mediaLoadFailed />
                         <mediaPlaybackStarted />
                         <mediaPlaybackComplete>
                             <plainText featureText="AudioRecordingPlaybackComplete" />
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb>
                 </actionButton>
-                <actionButton featureText="record with autoGainControl on">
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
+                <addPadding/>
+                <addPadding/>
+                <actionButton groupId="nextButtonGroup" featureText="Tone detected, you can procede [space]" hotKey="SPACE">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+                <disableButtonGroup matchingRegex="nextButtonGroup"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder />
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RecordingDTMFExtendedTest" />
+                    <gotoPresenter target="RecordingDTMFExtendedTest" />
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecorderDtmfTriggerExample" next="Menu" type="stimulus" self="RecorderDtmfTriggerExample" title="RecorderDtmfTriggerExample">
+        <htmlText featureText="This example shows how to use DTMF triggers when recording audio via the web recorder. These tone combinations are designed to be both machine detectable and not to be triggered by human voice. In this case we are producing 500ms of tone, which is quite short, so keep this in mind when testing this example. The quality of the recording, microphone distance from the speaker and any noise cancelation settings on your microphone and in the browser will have a big impact on the ability to detect these tones. For each tone to be detected both components must have adequate amplitude and duration without disruption during the tone. The point of these triggers demonstrated in this example is to provide an automated way to detect issues with the recording before the participant proceeds with an experiment. "/>
+        <regionReplace regionId="dtmfButtonsRegion" styleName="hiddenRegion">
+            <table styleName="stimulusPanel">
+                <row>
+                    <column>
+                        <actionTokenButton featureText="off">
+                            <dtmfTone dtmf="off" msToNext="0"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <htmlText featureText="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"/>
+                    </column> 
+                    <column>
+                        <htmlText featureText="1209 Hz"/>
+                    </column>
+                    <column>
+                        <htmlText featureText="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"/>
+                    </column>
+                    <column>
+                        <htmlText featureText="1336 Hz"/>
+                    </column>
+                    <column>
+                        <htmlText featureText="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"/>
+                    </column>
+                    <column>
+                        <htmlText featureText="1477 Hz"/>
+                    </column>
+                    <column>
+                        <htmlText featureText="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"/>
+                    </column>
+                    <column>
+                        <htmlText featureText="1633 Hz"/>
+                    </column>
+                </row>
+                <row>
+                    <column>
+                        <htmlText featureText="697 Hz"/>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator1" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="1">
+                            <dtmfTone msToNext="500" dtmf="1"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator2" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="2">
+                            <dtmfTone msToNext="500" dtmf="2"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator3" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="3">
+                            <dtmfTone msToNext="500" dtmf="3"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicatorA" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="A">
+                            <dtmfTone msToNext="500" dtmf="A"/>
+                        </actionTokenButton>
+                    </column>
+                </row>
+                <row>
+                    <column>
+                        <htmlText featureText="770 Hz"/>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator4" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="4">
+                            <dtmfTone msToNext="500" dtmf="4"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator5" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="5">
+                            <dtmfTone msToNext="500" dtmf="5"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator6" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="6">
+                            <dtmfTone msToNext="500" dtmf="6"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicatorB" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="B">
+                            <dtmfTone msToNext="500" dtmf="B"/>
+                        </actionTokenButton>
+                    </column>
+                </row>
+                <row>
+                    <column>
+                        <htmlText featureText="852 Hz"/>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator7" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="7">
+                            <dtmfTone msToNext="500" dtmf="7"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator8" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="8">
+                            <dtmfTone msToNext="500" dtmf="8"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator9" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="9">
+                            <dtmfTone msToNext="500" dtmf="9"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicatorC" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="C">
+                            <dtmfTone msToNext="500" dtmf="C"/>
+                        </actionTokenButton>
+                    </column>
+                </row>
+                <row>
+                    <column>
+                        <htmlText featureText="941 Hz"/>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="*">
+                            <dtmfTone msToNext="500" dtmf="*"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicator0" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="0">
+                            <dtmfTone msToNext="500" dtmf="0"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicatorHash" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="#">
+                            <dtmfTone msToNext="500" dtmf="#"/>
+                        </actionTokenButton>
+                    </column>
+                    <column>
+                        <regionReplace regionId="dtmfIndicatorD" styleName="hiddenRegion">
+                            <htmlText featureText="--&gt;"/>
+                        </regionReplace>
+                    </column>
+                    <column>
+                        <actionTokenButton featureText="D">
+                            <dtmfTone msToNext="500" dtmf="D"/>
+                        </actionTokenButton>
+                    </column>
+                </row>
+            </table>
+        </regionReplace>
+        <regionReplace regionId="dtmfFrequencyCanvas"/>
+        <triggerDefinition listenerId="addAllListeners" threshold="0" maximum="0">
+            <regionStyle regionId="dtmfButtonsRegion" styleName=""/>
+            <regionReplace regionId="recordingTonesRegion">
+                <htmlText featureText="Listening for DTMF tones in the recording:"/>
+            </regionReplace>
+            <addRecorderDtmfTrigger dtmf="1">
+                <regionStyle regionId="dtmfIndicator1" styleName=""/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="1"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="2">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName=""/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="2"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="3">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName=""/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="3"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="4">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName=""/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="4"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="5">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName=""/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="5"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="6">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName=""/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="6"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="7">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName=""/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="7"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="8">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName=""/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="8"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="9">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName=""/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="9"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="0">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName=""/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="0"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="#">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName=""/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="#"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="*">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName=""/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="*"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="A">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName=""/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="A"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="B">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName=""/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="B"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="C">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName=""/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="C"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="D">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName=""/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="D"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+            <addRecorderDtmfTrigger dtmf="off">
+                <regionStyle regionId="dtmfIndicator1" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator2" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator3" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator4" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator5" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator6" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator7" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator8" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator9" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicator0" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorA" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorB" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorC" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorD" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorAsterisk" styleName="hiddenRegion"/>
+                <regionStyle regionId="dtmfIndicatorHash" styleName="hiddenRegion"/>
+                <doLater msToNext="0">
+                    <regionAppend regionId="recordingTonesRegion">
+                        <plainText featureText="off"/>
+                    </regionAppend>
+                </doLater>
+            </addRecorderDtmfTrigger>
+        </triggerDefinition>
+        <loadStimulus eventTag="RecorderDtmfTriggerExample" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <regionReplace regionId="recordingTonesRegion" />
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>                
+                <actionButton featureText="Record With NoiseSuppression">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="true" echoCancellation="false" autoGainControl="false">
                         <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
                         </onError>
                         <onSuccess>
-                            <htmlText featureText="startAudioRecorder onSuccess" />
+                            <triggerMatching listenerId="addAllListeners"/>
+                            <regionAppend regionId="recordingTonesRegion">
+                                <htmlText featureText="Record With NoiseSuppression"/>
+                            </regionAppend>
                         </onSuccess>
-                        <mediaLoaded>
-                            <plainText featureText="AudioRecordingLoaded" />
-                        </mediaLoaded>
-                        <mediaLoadFailed>
-                            <plainText featureText="AudioRecordingLoadFailed" />
-                        </mediaLoadFailed>
-                        <mediaPlaybackStarted />
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
-                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb>
                 </actionButton>
-                <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl on">
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="true" echoCancellation="true" autoGainControl="true">
+                <actionButton featureText="Record With EchoCancellation">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="true" autoGainControl="false">
                         <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
                         </onError>
                         <onSuccess>
-                            <htmlText featureText="startAudioRecorder onSuccess" />
+                            <triggerMatching listenerId="addAllListeners"/>
+                            <regionAppend regionId="recordingTonesRegion">
+                                <htmlText featureText="Record With EchoCancellation"/>
+                            </regionAppend>
                         </onSuccess>
-                        <mediaLoaded>
-                            <plainText featureText="AudioRecordingLoaded" />
-                        </mediaLoaded>
-                        <mediaLoadFailed>
-                            <plainText featureText="AudioRecordingLoadFailed" />
-                        </mediaLoadFailed>
-                        <mediaPlaybackStarted />
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
-                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb>
                 </actionButton>
-                <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl off">
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="false">
+                <actionButton featureText="Record With AutoGainControl">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
                         <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
                         </onError>
                         <onSuccess>
-                            <htmlText featureText="startAudioRecorder onSuccess" />
+                            <triggerMatching listenerId="addAllListeners"/>
+                            <regionAppend regionId="recordingTonesRegion">
+                                <htmlText featureText="Record With AutoGainControl"/>
+                            </regionAppend>
                         </onSuccess>
-                        <mediaLoaded>
-                            <plainText featureText="AudioRecordingLoaded" />
-                        </mediaLoaded>
-                        <mediaLoadFailed>
-                            <plainText featureText="AudioRecordingLoadFailed" />
-                        </mediaLoadFailed>
-                        <mediaPlaybackStarted />
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
-                            <plainText featureText="AudioRecordingPlaybackComplete" />
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
                         </mediaPlaybackComplete>
                     </startAudioRecorderWeb>
                 </actionButton>
-                <actionButton featureText="logMediaTimeStamp">
-                    <logMediaTimeStamp eventTag="logMediaTimeStamp" mediaId="recordedMedia" />
+                <actionButton featureText="Record Without NoiseSuppression EchoCancellation AutoGainControl">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
+                        </onError>
+                        <onSuccess>
+                            <triggerMatching listenerId="addAllListeners"/>
+                            <regionAppend regionId="recordingTonesRegion">
+                                <htmlText featureText="Record Without NoiseSuppression EchoCancellation AutoGainControl"/>
+                            </regionAppend>
+                        </onSuccess>
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
                 </actionButton>
-                <actionButton featureText="resume recorder">
-                    <playMedia mediaId="recordedMedia" />
-                </actionButton>
-                <actionButton featureText="pauseMedia">
-                    <pauseMedia mediaId="recordedMedia" />
+                <actionButton featureText="Clear Detected Tones">
+                    <regionClear regionId="recordingTonesRegion" />
                 </actionButton>
                 <actionButton featureText="stopAudioRecorder">
-                    <stopAudioRecorder />
-                </actionButton>
-                <actionButton featureText="nextStimulus">
-                    <nextStimulus repeatIncorrect="false" />
+                    <stopAudioRecorder/>
+                    <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder />
+                <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RecorderDtmfTriggerExample" />
+                    <gotoPresenter target="RecorderDtmfTriggerExample" />
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecorderNoiseEchoGainTest" next="Menu" type="stimulus" self="RecorderNoiseEchoGainTest" title="Recorder NoiseSuppression EchoCancellation AutoGainControl Test">
+        <loadStimulus eventTag="RecorderNoiseEchoGainTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <addPadding />
+                <addPadding />
+                <addPadding />
+                <htmlText featureText="This example shows how to use the NoiseSuppression EchoCancellation AutoGainControl controls in the web based audio recorder." />
+                <htmlText featureText="You can enable &lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt; to observe the effect of these settings on recording DTMF tones." />
+                <addPadding />
+                <actionButton featureText="record with noiseSuppression on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaNoiseSuppressionOn" noiseSuppression="true" echoCancellation="false" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedMediaNoiseSuppressionOn">
+                                <playMedia mediaId="recordedMediaNoiseSuppressionOn" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="record with echoCancellation on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaEchoCancellationOn" noiseSuppression="false" echoCancellation="true" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedMediaEchoCancellationOn">
+                                <playMedia mediaId="recordedMediaEchoCancellationOn" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="record with autoGainControl on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaAutoGainControlOn" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedMediaAutoGainControlOn">
+                                <playMedia mediaId="recordedMediaAutoGainControlOn" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOn" noiseSuppression="true" echoCancellation="true" autoGainControl="true">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOn">
+                                <playMedia mediaId="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOn" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl off">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOff" noiseSuppression="false" echoCancellation="false" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOff">
+                                <playMedia mediaId="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOff" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="record WAV with noiseSuppression and echoCancellation and autoGainControl on">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" deviceRegex="" mediaId="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOn" noiseSuppression="true" echoCancellation="true" autoGainControl="true">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOn">
+                                <playMedia mediaId="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOn" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="record WAV with noiseSuppression and echoCancellation and autoGainControl off">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" deviceRegex="" mediaId="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOff" noiseSuppression="false" echoCancellation="false" autoGainControl="false">
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <onSuccess>
+                            <hardwareTimeStamp dtmf="1" />
+                        </onSuccess>
+                        <mediaLoaded>
+                            <addPadding />
+                            <addPadding />
+                            <actionButton featureText="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOff">
+                                <playMedia mediaId="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOff" />
+                            </actionButton>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed" />
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete />
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <addPadding />
+                <actionButton featureText="stopAudioRecorder">
+                    <stopAudioRecorder />
+                    <hardwareTimeStamp dtmf="off" />
+                </actionButton>
+                <addPadding />
+                <addPadding />
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder />
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RecorderNoiseEchoGainTest" />
+                    <gotoPresenter target="RecorderNoiseEchoGainTest" />
+                </actionButton>
             </endOfStimulus>
             <randomGrouping />
             <stimuli>
@@ -4938,28 +5974,116 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" menuLabel="Terug" type="text" self="Third_Informatie" title="Third Informatie">
-        <htmlText featureText="Instructies Deel 3: &lt;br/&gt;&lt;br/&gt;"/>
-        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Third"/>
-    </presenter>
-    <presenter back="Menu" menuLabel="Third" next="completion" type="stimulus" self="Third" title="Third">
-        <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+    <presenter back="Menu" menuLabel="RecordingQualityTest" type="stimulus" self="RecordingQualityTest" title="RecordingQualityTest">
+        <resetStimulus target="RecordingQualityTest"/>
+        <regionAppend regionId="recordedMediaResult"></regionAppend>
+        <regionAppend regionId="stimulusProgress"></regionAppend>
+        <regionAppend regionId="stimulusLabel"></regionAppend>
+        <regionAppend regionId="stimulusButtons"></regionAppend>
+        <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusLabel styleName="stimuliLabel"/>
-                <addPadding/>
-                <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
-                <actionButton featureText="Volgende [tab + enter]">
-                    <nextStimulus repeatIncorrect="false"/>
-                </actionButton>
+                <regionReplace regionId="recordedMediaResult">
+                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_&lt;stimulusId&gt;">
+                        <onError>
+                            <regionReplace regionId="stimulusLabel"></regionReplace>
+                            <regionReplace regionId="stimulusButtons"></regionReplace>
+                            <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="Recording Error"/>
+                                <plainText featureText="Please make sure you are using the HTTPS version of this page."/>
+                                <plainText featureText="Please check that your USB headset is pluged in and that you have allowed this web page to access the microphone."/>
+                                <actionButton featureText="Retry">
+                                    <showStimulus/>
+                                </actionButton>
+                            </regionReplace>
+                        </onError>
+                        <onSuccess>
+                            <regionReplace regionId="stimulusLabel">
+                                <stimulusLabel/>
+                            </regionReplace>
+                            <regionReplace regionId="stimulusButtons">
+                                <actionButton featureText="Continue">
+                                    <pause msToNext="1000">
+                                        <stopAudioRecorder/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </pause>
+                                </actionButton>
+                            </regionReplace>
+                        </onSuccess>
+                        <mediaLoaded>
+                            <!-- <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="AudioRecordingLoaded"/>
+                            </regionReplace>-->
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="AudioRecordingLoadFailed"/>
+                            </regionReplace>
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted/>
+                        <mediaPlaybackComplete>
+                            <!-- <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            </regionReplace>-->
+                        </mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </regionReplace>
             </hasMoreStimulus>
-            <endOfStimulus>
-                <gotoNextPresenter/>
+            <endOfStimulus>                
+                <regionReplace regionId="stimulusProgress"></regionReplace>
+                <regionReplace regionId="stimulusLabel"></regionReplace>
+                <regionReplace regionId="stimulusButtons"></regionReplace>
+                <resetStimulus target="RecordingQualityTest"/>
+                <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <hasMoreStimulus>
+                        <regionReplace regionId="stimulusProgress">
+                            <showStimulusProgress/>
+                            <addPadding/>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusLabel">
+                            <htmlText featureText="Listen to the recorded audio and click the button that corresponds to the recording."/>
+                            <addPadding/>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusButtons">
+                            <playMedia mediaId="recordedMedia_&lt;stimulusId&gt;"/>
+                            <actionButton featureText="replay">
+                                <playMedia mediaId="recordedMedia_&lt;stimulusId&gt;"/>
+                            </actionButton>
+                            <addPadding/>
+                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </regionReplace>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <clearPage/>
+                        <scoreAboveThreshold correctStreak="3">
+                            <aboveThreshold>
+                                <htmlText featureText="Your efforts have proved adequate."/>
+                            </aboveThreshold>
+                            <withinThreshold>
+                                <htmlText featureText="Your efforts have proved inadequate."/>
+                            </withinThreshold>
+                        </scoreAboveThreshold>
+                        <addPadding/>
+                        <actionButton featureText="clearCurrentScore">
+                            <clearCurrentScore/>
+                            <gotoPresenter target="RecordingQualityTest"/>
+                        </actionButton>  
+                        <addPadding/>
+                        <actionButton featureText="resetStimulus">
+                            <resetStimulus target="RecordingQualityTest"/>
+                            <gotoPresenter target="RecordingQualityTest"/>
+                        </actionButton>
+                    </endOfStimulus>
+                    <randomGrouping/>
+                    <stimuli>
+                        <tag>RecordingQualityTest</tag>
+                    </stimuli>
+                </loadStimulus>
             </endOfStimulus>
-            <randomGrouping storageField="item">
-                <tag>thirdexample</tag>
-            </randomGrouping>
+            <randomGrouping/>
             <stimuli>
-                <tag>Third</tag>
+                <tag>RecordingQualityTest</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -6256,119 +7380,6 @@
     <presenter menuLabel="InvitationCodeExampleInvalid" type="transmission" self="InvitationCodeExampleInvalid" title="Invitation Code Example Invalid">
         <plainText featureText="You must delete the local data to proceed."/>
         <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationSessionStepsExample"/>
-    </presenter> 
-    <presenter back="Menu" menuLabel="RecordingQualityTest" type="stimulus" self="RecordingQualityTest" title="RecordingQualityTest">
-        <resetStimulus target="RecordingQualityTest"/>
-        <regionAppend regionId="recordedMediaResult"></regionAppend>
-        <regionAppend regionId="stimulusProgress"></regionAppend>
-        <regionAppend regionId="stimulusLabel"></regionAppend>
-        <regionAppend regionId="stimulusButtons"></regionAppend>
-        <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <hasMoreStimulus>
-                <regionReplace regionId="recordedMediaResult">
-                    <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_&lt;stimulusId&gt;">
-                        <onError>
-                            <regionReplace regionId="stimulusLabel"></regionReplace>
-                            <regionReplace regionId="stimulusButtons"></regionReplace>
-                            <regionReplace regionId="recordedMediaResult">
-                                <plainText featureText="Recording Error"/>
-                                <plainText featureText="Please make sure you are using the HTTPS version of this page."/>
-                                <plainText featureText="Please check that your USB headset is pluged in and that you have allowed this web page to access the microphone."/>
-                                <actionButton featureText="Retry">
-                                    <showStimulus/>
-                                </actionButton>
-                            </regionReplace>
-                        </onError>
-                        <onSuccess>
-                            <regionReplace regionId="stimulusLabel">
-                                <stimulusLabel/>
-                            </regionReplace>
-                            <regionReplace regionId="stimulusButtons">
-                                <actionButton featureText="Continue">
-                                    <pause msToNext="1000">
-                                        <stopAudioRecorder/>
-                                        <nextStimulus repeatIncorrect="false"/>
-                                    </pause>
-                                </actionButton>
-                            </regionReplace>
-                        </onSuccess>
-                        <mediaLoaded>
-                            <!-- <regionReplace regionId="recordedMediaResult">
-                                <plainText featureText="AudioRecordingLoaded"/>
-                            </regionReplace>-->
-                        </mediaLoaded>
-                        <mediaLoadFailed>
-                            <regionReplace regionId="recordedMediaResult">
-                                <plainText featureText="AudioRecordingLoadFailed"/>
-                            </regionReplace>
-                        </mediaLoadFailed>
-                        <mediaPlaybackStarted/>
-                        <mediaPlaybackComplete>
-                            <!-- <regionReplace regionId="recordedMediaResult">
-                                <plainText featureText="AudioRecordingPlaybackComplete"/>
-                            </regionReplace>-->
-                        </mediaPlaybackComplete>
-                    </startAudioRecorderWeb>
-                </regionReplace>
-            </hasMoreStimulus>
-            <endOfStimulus>                
-                <regionReplace regionId="stimulusProgress"></regionReplace>
-                <regionReplace regionId="stimulusLabel"></regionReplace>
-                <regionReplace regionId="stimulusButtons"></regionReplace>
-                <resetStimulus target="RecordingQualityTest"/>
-                <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                    <hasMoreStimulus>
-                        <regionReplace regionId="stimulusProgress">
-                            <showStimulusProgress/>
-                            <addPadding/>
-                        </regionReplace>
-                        <regionReplace regionId="stimulusLabel">
-                            <htmlText featureText="Listen to the recorded audio and click the button that corresponds to the recording."/>
-                            <addPadding/>
-                        </regionReplace>
-                        <regionReplace regionId="stimulusButtons">
-                            <playMedia mediaId="recordedMedia_&lt;stimulusId&gt;"/>
-                            <actionButton featureText="replay">
-                                <playMedia mediaId="recordedMedia_&lt;stimulusId&gt;"/>
-                            </actionButton>
-                            <addPadding/>
-                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusRatingButton>
-                        </regionReplace>
-                    </hasMoreStimulus>
-                    <endOfStimulus>
-                        <clearPage/>
-                        <scoreAboveThreshold correctStreak="3">
-                            <aboveThreshold>
-                                <htmlText featureText="Your efforts have proved adequate."/>
-                            </aboveThreshold>
-                            <withinThreshold>
-                                <htmlText featureText="Your efforts have proved inadequate."/>
-                            </withinThreshold>
-                        </scoreAboveThreshold>
-                        <addPadding/>
-                        <actionButton featureText="clearCurrentScore">
-                            <clearCurrentScore/>
-                            <gotoPresenter target="RecordingQualityTest"/>
-                        </actionButton>  
-                        <addPadding/>
-                        <actionButton featureText="resetStimulus">
-                            <resetStimulus target="RecordingQualityTest"/>
-                            <gotoPresenter target="RecordingQualityTest"/>
-                        </actionButton>
-                    </endOfStimulus>
-                    <randomGrouping/>
-                    <stimuli>
-                        <tag>RecordingQualityTest</tag>
-                    </stimuli>
-                </loadStimulus>
-            </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>RecordingQualityTest</tag>
-            </stimuli>
-        </loadStimulus>
     </presenter>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
@@ -6914,7 +7925,7 @@
                 <tag>GroupOf2Images</tag>
             </stimuli>
         </loadStimulus>
-    </presenter>
+    </presenter> 
     <presenter back="Menu" menuLabel="Preload Images Example" type="stimulus" self="preload_images_example" title="Preload Images Example">
         <loadStimulus eventTag="preload_images_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
