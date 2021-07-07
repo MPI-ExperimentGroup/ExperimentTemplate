@@ -134,13 +134,7 @@ public class PublishEvents implements Serializable {
     public String getFrinexVersion() {
         return frinexVersion;
     }
-
-//    public float getDefaultScale() {
-//        return experiment.getDefaultScale();
-//    }
-//    public int isIsScalable() {
-//        return (experiment.isIsScalable()) ? 1 : 0;
-//    }
+    
     public void setPublishDate(String publishDate) {
         try {
             this.publishDate = new SimpleDateFormat("yyyy-MM-dd").parse(publishDate);

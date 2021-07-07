@@ -139,7 +139,7 @@
         <!--<experiment.configuration.name>dobes</experiment.configuration.name>-->
         <!--<experiment.configuration.admin.password></experiment.configuration.admin.password>-->
         <!--<experiment.configuration.db.password></experiment.configuration.db.password>-->
-        <experiment.isScaleable>yes</experiment.isScaleable>
+        <experiment.isScalable>yes</experiment.isScalable>
         <experiment.defaultScale>1.0</experiment.defaultScale>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>

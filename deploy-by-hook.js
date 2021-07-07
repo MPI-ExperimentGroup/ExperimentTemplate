@@ -387,7 +387,7 @@ function deployStagingGui(listing, currentEntry) {
         'experiment.destinationServer': stagingServer,
         'experiment.destinationServerUrl': stagingServerUrl,
         'experiment.groupsSocketUrl': stagingGroupsSocketUrl,
-        'experiment.isScaleable': currentEntry.isScaleable,
+        'experiment.isScalable': currentEntry.isScalable,
         'experiment.defaultScale': currentEntry.defaultScale,
         'experiment.registrationUrl': currentEntry.registrationUrlStaging
 //                    'experiment.scriptSrcUrl': stagingServerUrl,
@@ -496,7 +496,7 @@ function deployProductionGui(listing, currentEntry) {
                     'experiment.destinationServer': productionServer,
                     'experiment.destinationServerUrl': productionServerUrl,
                     'experiment.groupsSocketUrl': productionGroupsSocketUrl,
-                    'experiment.isScaleable': currentEntry.isScaleable,
+                    'experiment.isScalable': currentEntry.isScalable,
                     'experiment.defaultScale': currentEntry.defaultScale,
                     'experiment.registrationUrl': currentEntry.registrationUrlProduction
 //                            'experiment.scriptSrcUrl': productionServerUrl,

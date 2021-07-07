@@ -111,7 +111,7 @@ var PropertiesReader = require('properties-reader');
                         'experiment.destinationServer': stagingServer,
                         'experiment.destinationServerUrl': stagingServerUrl,
                         'experiment.groupsSocketUrl': stagingGroupsSocketUrl,
-                        'experiment.isScaleable': currentEntry.isScaleable,
+                        'experiment.isScalable': currentEntry.isScalable,
                         'experiment.defaultScale': currentEntry.defaultScale
 //                    'experiment.scriptSrcUrl': stagingServerUrl,
 //                    'experiment.staticFilesUrl': stagingServerUrl
@@ -153,7 +153,7 @@ var PropertiesReader = require('properties-reader');
 //                                    'experiment.destinationServer': productionServer,
 //                                    'experiment.destinationServerUrl': productionServerUrl,
 //                                    'experiment.groupsSocketUrl': productionGroupsSocketUrl,
-//                                    'experiment.isScaleable': currentEntry.isScaleable,
+//                                    'experiment.isScalable': currentEntry.isScalable,
 //                                    'experiment.defaultScale': currentEntry.defaultScale
 ////                            'experiment.scriptSrcUrl': productionServerUrl,
 ////                            'experiment.staticFilesUrl': productionServerUrl
