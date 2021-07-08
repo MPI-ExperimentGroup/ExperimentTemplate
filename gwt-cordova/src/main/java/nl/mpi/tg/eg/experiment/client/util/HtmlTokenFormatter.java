@@ -92,11 +92,11 @@ public class HtmlTokenFormatter {
         return returnString;
     }
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
     public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
         // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format
         // we also cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
-        final String[] dateParts = inputString.replaceAll("[\"\\(\\)]", "").split("/");
+        /*final String[] dateParts = inputString.replaceAll("[\"\\(\\)]", "").split("/");
         if (dateParts.length != 3) {
             throw new EvaluateTokensException("invalid date:" + inputString);
         }
@@ -107,7 +107,13 @@ public class HtmlTokenFormatter {
         currentDate.setHours(0);
         currentDate.setMinutes(0);
         currentDate.setSeconds(0);
-        return currentDate;
+        return currentDate;*/
+        try {
+            DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
+            return dateTimeFormat.parse(inputString);
+        } catch (IllegalArgumentException exception) {
+            throw new EvaluateTokensException("invalid date:" + inputString);
+        }
     }
 
     public String evaluateTokensString(String inputString) throws EvaluateTokensException {
