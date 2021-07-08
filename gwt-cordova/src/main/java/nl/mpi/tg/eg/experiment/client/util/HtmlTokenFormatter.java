@@ -116,6 +116,12 @@ public class HtmlTokenFormatter {
         }
     }
 
+    public String formatCurrentDateTime(final String formatString) {
+        Date date = new Date();
+        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat(formatString);
+        return dateTimeFormat.format(date);
+    }
+
     public String evaluateTokensString(String inputString) throws EvaluateTokensException {
         final String formatedString = formatString(inputString);
         return evaluateResolve(formatedString);
@@ -157,8 +163,8 @@ public class HtmlTokenFormatter {
                     case "daysBetween":
                         String[] parameterParts = parameterMatch.split(",");
                         if (parameterParts.length == 2) {
-                            final String dateStringA = parameterParts[0];
-                            final String dateStringB = parameterParts[1];
+                            final String dateStringA = parameterParts[0].replaceAll("[\"\\(\\)]", "");
+                            final String dateStringB = parameterParts[1].replaceAll("[\"\\(\\)]", "");
                             final Date dateA = parseDDMMYYYDate(dateStringA);
                             final Date dateB = parseDDMMYYYDate(dateStringB);
                             long diffMs = dateB.getTime() - dateA.getTime();
@@ -416,9 +422,7 @@ public class HtmlTokenFormatter {
                 } else {
                     final String[] subPart = splitPart.split(">", 2);
                     if (subPart[0].length() > 0) {
-                        Date date = new Date();
-                        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat(subPart[0]);
-                        resultString += dateTimeFormat.format(date);
+                        resultString += formatCurrentDateTime(subPart[0]);
                     }
                     resultString += subPart[1];
                 }

@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.util;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -110,7 +111,7 @@ public class HtmlTokenFormatterTest {
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer##:##qwrwerqwer".replaceAll("##:##", dateFormat.format(new Date()));
+        final String expectedString = "qwerqwer12:23qwrwerqwer";
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -127,7 +128,7 @@ public class HtmlTokenFormatterTest {
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer##/##/####qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
+        final String expectedString = "qwerqwer0/0/2000qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -150,7 +151,7 @@ public class HtmlTokenFormatterTest {
         calendar.add(Calendar.MONTH, -13);
         calendar.add(Calendar.YEAR, 1);
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer##/##/####qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(calendar.getTime()));
+        final String expectedString = "qwerqwer45/13/2001qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(calendar.getTime()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -270,13 +271,23 @@ public class HtmlTokenFormatterTest {
             session_steps, session_step}) {
             @Override
             public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
-                return "##/##/####";
+                return Math.abs(addDays) + "/" + Math.abs(addMonths) + "/" + (2000 + addYears);
             }
 
             @Override
             public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
-                return new Date();
+                try {
+                    return new SimpleDateFormat("dd/MM/yyyy").parse(inputString);
+                } catch (ParseException exception) {
+                    throw new EvaluateTokensException(exception.getMessage());
+                }
             }
+
+            @Override
+            public String formatCurrentDateTime(String formatString) {
+                return "12:23";
+            }
+
         };
         return instance;
     }
