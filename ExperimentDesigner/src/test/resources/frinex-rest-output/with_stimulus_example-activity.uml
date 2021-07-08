@@ -171,6 +171,10 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:Format_Current_DateTime;
+if (navigation) then (back)
+:Menu;
+endif
 :currentDate_daysBetween_and_length;
 if (navigation) then (back)
 :Menu;
@@ -271,6 +275,16 @@ if (navigation) then (back)
 else (next)
   :Third_Informatie;
 endif
+:Third_Informatie;
+if (navigation) then (back)
+:Menu;
+endif
+:Third;
+if (navigation) then (back)
+:Menu;
+else (next)
+  :completion;
+endif
 :Recorder;
 if (navigation) then (back)
 :Menu;
@@ -301,21 +315,33 @@ if (navigation) then (back)
 else (next)
   :Menu;
 endif
+:RecordingDTMFQualityTest;
+if (navigation) then (back)
+:Menu;
+else (next)
+  :Menu;
+endif
+:RecordingDTMFExtendedTest;
+if (navigation) then (back)
+:Menu;
+else (next)
+  :Menu;
+endif
+:RecorderDtmfTriggerExample;
+if (navigation) then (back)
+:Menu;
+else (next)
+  :Menu;
+endif
 :RecorderNoiseEchoGainTest;
 if (navigation) then (back)
 :Menu;
 else (next)
   :Menu;
 endif
-:Third_Informatie;
+:RecordingQualityTest;
 if (navigation) then (back)
 :Menu;
-endif
-:Third;
-if (navigation) then (back)
-:Menu;
-else (next)
-  :completion;
 endif
 :Media_Playback_Demo;
 if (navigation) then (back)
@@ -393,10 +419,6 @@ if (navigation) then (back)
 endif
 :InvitationCodeExampleRestart;
 :InvitationCodeExampleInvalid;
-:RecordingQualityTest;
-if (navigation) then (back)
-:Menu;
-endif
 :Menu;
 :menuItemStyle;
 if (navigation) then (back)
