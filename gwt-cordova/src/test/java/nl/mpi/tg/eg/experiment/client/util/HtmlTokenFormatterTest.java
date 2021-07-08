@@ -104,13 +104,30 @@ public class HtmlTokenFormatterTest {
      * HtmlTokenFormatter.
      */
     @Test
+    public void testFormatDateTime() {
+        System.out.println("testFormatDateTime");
+        String inputString = "qwerqwer<formatDateTime_HH:mm>qwrwerqwer";
+        HtmlTokenFormatter instance = getInstance();
+        final DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        final String formattedString = instance.formatString(inputString);
+        final String expectedString = "qwerqwer##:##qwrwerqwer".replaceAll("##:##", dateFormat.format(new Date()));
+        System.out.println("expectedString:" + expectedString);
+        System.out.println("formattedString: " + formattedString);
+        assertEquals(expectedString, formattedString);
+    }
+
+    /**
+     * Test of formatString currentDateDDMMYYYY method, of class
+     * HtmlTokenFormatter.
+     */
+    @Test
     public void testFormatStringCurrentDate() {
         System.out.println("testFormatStringCurrentDate");
         String inputString = "qwerqwer<currentDateDDMMYYYY>qwrwerqwer";
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer##/##/####qwrwerqwer".replaceAll("##/##/####", dateFormat.format(new Date()));
+        final String expectedString = "qwerqwer##/##/####qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -133,7 +150,7 @@ public class HtmlTokenFormatterTest {
         calendar.add(Calendar.MONTH, -13);
         calendar.add(Calendar.YEAR, 1);
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer##/##/####qwrwerqwer".replaceAll("##/##/####", dateFormat.format(calendar.getTime()));
+        final String expectedString = "qwerqwer##/##/####qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(calendar.getTime()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
