@@ -95,6 +95,7 @@ sticky_menu_example --> last_seven_days
 sticky_menu_example --> replace_all_example
 sticky_menu_example --> four_different_topics
 sticky_menu_example --> append_unique_date
+sticky_menu_example --> Format_Current_DateTime
 sticky_menu_example --> currentDate_daysBetween_and_length
 sticky_menu_example --> progressIndicator_example
 sticky_menu_example --> With_Stimuli_Screen
@@ -118,14 +119,18 @@ sticky_menu_example --> hotkey_enable_example
 sticky_menu_example --> single_line_text_box_example
 sticky_menu_example --> single_line_text_box_no_action_example
 sticky_menu_example --> Second
+sticky_menu_example --> Third_Informatie
+sticky_menu_example --> Third
 sticky_menu_example --> Recorder
 sticky_menu_example --> RecorderMediaTrigger
 sticky_menu_example --> RecorderPauseTest
 sticky_menu_example --> RecorderNoDownloadTest
 sticky_menu_example --> RecorderTimeStampTest
+sticky_menu_example --> RecordingDTMFQualityTest
+sticky_menu_example --> RecordingDTMFExtendedTest
+sticky_menu_example --> RecorderDtmfTriggerExample
 sticky_menu_example --> RecorderNoiseEchoGainTest
-sticky_menu_example --> Third_Informatie
-sticky_menu_example --> Third
+sticky_menu_example --> RecordingQualityTest
 sticky_menu_example --> Media_Playback_Demo
 sticky_menu_example --> USB_LP310
 sticky_menu_example --> Bluetooth_R1
@@ -147,7 +152,6 @@ sticky_menu_example --> InvitationCodeExampleFinished
 sticky_menu_example --> NextStepExample
 sticky_menu_example --> InvitationCodeExampleRestart
 sticky_menu_example --> InvitationCodeExampleInvalid
-sticky_menu_example --> RecordingQualityTest
 sticky_menu_example --> Menu
 sticky_menu_example --> menuItemStyle
 sticky_menu_example --> allMenuItemsStyle
@@ -221,6 +225,14 @@ state Audio_Input_Select
 Audio_Input_Select --> Menu : back
 Audio_Input_Select --> Audio_Input_Select
 Audio_Input_Select --> Audio_Input_Select
+state Many_Short_Recordings
+Many_Short_Recordings --> Menu : back
+Many_Short_Recordings --> Many_Short_Recordings
+Many_Short_Recordings --> Many_Short_Recordings
+state One_Long_Recording
+One_Long_Recording --> Menu : back
+One_Long_Recording --> One_Long_Recording
+One_Long_Recording --> One_Long_Recording
 state Region_Timer_Screen
 Region_Timer_Screen --> Menu : back
 Region_Timer_Screen --> With_Stimuli_Screen : next
@@ -255,6 +267,8 @@ four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
 state append_unique_date
 append_unique_date --> Menu : back
+state Format_Current_DateTime
+Format_Current_DateTime --> Menu : back
 state currentDate_daysBetween_and_length
 currentDate_daysBetween_and_length --> Menu : back
 state progressIndicator_example
@@ -347,6 +361,12 @@ Second --> Menu : back
 Second --> Third_Informatie : next
 Second --> Second
 Second --> Second
+state Third_Informatie
+Third_Informatie --> Menu : back
+Third_Informatie --> Third : volgende [ spatiebalk ]
+state Third
+Third --> Menu : back
+Third --> completion : next
 state Recorder
 Recorder --> Menu : back
 Recorder --> Menu : next
@@ -368,15 +388,35 @@ RecorderNoDownloadTest --> RecorderNoDownloadTest
 state RecorderTimeStampTest
 RecorderTimeStampTest --> Menu : back
 RecorderTimeStampTest --> Menu : next
+state RecordingDTMFQualityTest
+RecordingDTMFQualityTest --> Menu : back
+RecordingDTMFQualityTest --> Menu : next
+RecordingDTMFQualityTest --> RecordingDTMFQualityTest
+RecordingDTMFQualityTest --> RecordingDTMFQualityTest
+RecordingDTMFQualityTest --> RecordingDTMFQualityTest
+state RecordingDTMFExtendedTest
+RecordingDTMFExtendedTest --> Menu : back
+RecordingDTMFExtendedTest --> Menu : next
+RecordingDTMFExtendedTest --> RecordingDTMFExtendedTest
+RecordingDTMFExtendedTest --> RecordingDTMFExtendedTest
+RecordingDTMFExtendedTest --> RecordingDTMFExtendedTest
+state RecorderDtmfTriggerExample
+RecorderDtmfTriggerExample --> Menu : back
+RecorderDtmfTriggerExample --> Menu : next
+RecorderDtmfTriggerExample --> RecorderDtmfTriggerExample
+RecorderDtmfTriggerExample --> RecorderDtmfTriggerExample
 state RecorderNoiseEchoGainTest
 RecorderNoiseEchoGainTest --> Menu : back
 RecorderNoiseEchoGainTest --> Menu : next
-state Third_Informatie
-Third_Informatie --> Menu : back
-Third_Informatie --> Third : volgende [ spatiebalk ]
-state Third
-Third --> Menu : back
-Third --> completion : next
+RecorderNoiseEchoGainTest --> RecorderNoiseEchoGainTest
+RecorderNoiseEchoGainTest --> RecorderNoiseEchoGainTest
+state RecordingQualityTest
+RecordingQualityTest --> Menu : back
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
+RecordingQualityTest --> RecordingQualityTest
 state Media_Playback_Demo
 Media_Playback_Demo --> Menu : back
 state USB_LP310
@@ -451,13 +491,6 @@ InvitationCodeExampleRestart --> InvitationCodeExample : Opnieuw beginnen
 InvitationCodeExampleRestart --> InvitationCodeExampleRestart : Retry
 state InvitationCodeExampleInvalid
 InvitationCodeExampleInvalid --> InvitationSessionStepsExample : Opnieuw beginnen
-state RecordingQualityTest
-RecordingQualityTest --> Menu : back
-RecordingQualityTest --> RecordingQualityTest
-RecordingQualityTest --> RecordingQualityTest
-RecordingQualityTest --> RecordingQualityTest
-RecordingQualityTest --> RecordingQualityTest
-RecordingQualityTest --> RecordingQualityTest
 state Menu
 Menu --> Toestemming
 Menu --> Informatie
@@ -488,6 +521,8 @@ Menu --> Sequential_Display_Example
 Menu --> Sequential_Display_FrameRateTimer
 Menu --> RunTrialsSimple1000
 Menu --> Audio_Input_Select
+Menu --> Many_Short_Recordings
+Menu --> One_Long_Recording
 Menu --> Region_Timer_Screen
 Menu --> Region_Toggle_Example
 Menu --> Rating_Toggle_Example
@@ -498,6 +533,7 @@ Menu --> last_seven_days
 Menu --> replace_all_example
 Menu --> four_different_topics
 Menu --> append_unique_date
+Menu --> Format_Current_DateTime
 Menu --> currentDate_daysBetween_and_length
 Menu --> progressIndicator_example
 Menu --> With_Stimuli_Screen
@@ -521,14 +557,18 @@ Menu --> hotkey_enable_example
 Menu --> single_line_text_box_example
 Menu --> single_line_text_box_no_action_example
 Menu --> Second
+Menu --> Third_Informatie
+Menu --> Third
 Menu --> Recorder
 Menu --> RecorderMediaTrigger
 Menu --> RecorderPauseTest
 Menu --> RecorderNoDownloadTest
 Menu --> RecorderTimeStampTest
+Menu --> RecordingDTMFQualityTest
+Menu --> RecordingDTMFExtendedTest
+Menu --> RecorderDtmfTriggerExample
 Menu --> RecorderNoiseEchoGainTest
-Menu --> Third_Informatie
-Menu --> Third
+Menu --> RecordingQualityTest
 Menu --> Media_Playback_Demo
 Menu --> USB_LP310
 Menu --> Bluetooth_R1
@@ -550,7 +590,6 @@ Menu --> InvitationCodeExampleFinished
 Menu --> NextStepExample
 Menu --> InvitationCodeExampleRestart
 Menu --> InvitationCodeExampleInvalid
-Menu --> RecordingQualityTest
 Menu --> Menu
 Menu --> menuItemStyle
 Menu --> allMenuItemsStyle
@@ -606,6 +645,8 @@ allMenuItemsStyle --> Sequential_Display_Example
 allMenuItemsStyle --> Sequential_Display_FrameRateTimer
 allMenuItemsStyle --> RunTrialsSimple1000
 allMenuItemsStyle --> Audio_Input_Select
+allMenuItemsStyle --> Many_Short_Recordings
+allMenuItemsStyle --> One_Long_Recording
 allMenuItemsStyle --> Region_Timer_Screen
 allMenuItemsStyle --> Region_Toggle_Example
 allMenuItemsStyle --> Rating_Toggle_Example
@@ -616,6 +657,7 @@ allMenuItemsStyle --> last_seven_days
 allMenuItemsStyle --> replace_all_example
 allMenuItemsStyle --> four_different_topics
 allMenuItemsStyle --> append_unique_date
+allMenuItemsStyle --> Format_Current_DateTime
 allMenuItemsStyle --> currentDate_daysBetween_and_length
 allMenuItemsStyle --> progressIndicator_example
 allMenuItemsStyle --> With_Stimuli_Screen
@@ -639,14 +681,18 @@ allMenuItemsStyle --> hotkey_enable_example
 allMenuItemsStyle --> single_line_text_box_example
 allMenuItemsStyle --> single_line_text_box_no_action_example
 allMenuItemsStyle --> Second
+allMenuItemsStyle --> Third_Informatie
+allMenuItemsStyle --> Third
 allMenuItemsStyle --> Recorder
 allMenuItemsStyle --> RecorderMediaTrigger
 allMenuItemsStyle --> RecorderPauseTest
 allMenuItemsStyle --> RecorderNoDownloadTest
 allMenuItemsStyle --> RecorderTimeStampTest
+allMenuItemsStyle --> RecordingDTMFQualityTest
+allMenuItemsStyle --> RecordingDTMFExtendedTest
+allMenuItemsStyle --> RecorderDtmfTriggerExample
 allMenuItemsStyle --> RecorderNoiseEchoGainTest
-allMenuItemsStyle --> Third_Informatie
-allMenuItemsStyle --> Third
+allMenuItemsStyle --> RecordingQualityTest
 allMenuItemsStyle --> Media_Playback_Demo
 allMenuItemsStyle --> USB_LP310
 allMenuItemsStyle --> Bluetooth_R1
@@ -668,7 +714,6 @@ allMenuItemsStyle --> InvitationCodeExampleFinished
 allMenuItemsStyle --> NextStepExample
 allMenuItemsStyle --> InvitationCodeExampleRestart
 allMenuItemsStyle --> InvitationCodeExampleInvalid
-allMenuItemsStyle --> RecordingQualityTest
 allMenuItemsStyle --> Menu
 allMenuItemsStyle --> menuItemStyle
 allMenuItemsStyle --> allMenuItemsStyle
