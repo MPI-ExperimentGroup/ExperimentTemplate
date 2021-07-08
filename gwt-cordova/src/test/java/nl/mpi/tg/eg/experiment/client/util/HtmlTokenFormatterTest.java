@@ -179,14 +179,6 @@ public class HtmlTokenFormatterTest {
         userData.setMetadataValue(session_step, "a_value_for_session_step");
         HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], localStorage, new GroupScoreService() {
 
-            public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
-                return "##/##/####";
-            }
-
-            public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
-                return new Date();
-            }
-
             @Override
             public String getActiveChannel() {
                 return "ActiveChannel";
@@ -258,7 +250,17 @@ public class HtmlTokenFormatterTest {
             }
 
         }, userData, new TimerService(), new MetadataField[]{
-            session_steps, session_step});
+            session_steps, session_step}) {
+            @Override
+            public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
+                return "##/##/####";
+            }
+
+            @Override
+            public Date parseDDMMYYYDate(String inputString) throws EvaluateTokensException {
+                return new Date();
+            }
+        };
         return instance;
     }
 
