@@ -19,8 +19,8 @@ package nl.mpi.tg.eg.experiment.client.util;
 
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
-import com.google.gwt.i18n.client.TimeZone;
 import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.user.datepicker.client.CalendarUtil;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -72,17 +72,23 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
     public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
         // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format      
         // we also cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
-        final long msPerDay = 1000 * 60 * 60 * 24;
+        /*final long msPerDay = 1000 * 60 * 60 * 24;
         final Date tempDate = new Date(new Date().getTime() + (addDays * msPerDay));
         final Date currentDate = new Date(tempDate.getYear() + addYears, tempDate.getMonth() + addMonths, tempDate.getDate());
         final String returnString
                 = ((currentDate.getDate() <= 9) ? "0" : "") + currentDate.getDate()
                 + "/" + ((currentDate.getMonth() + 1 <= 9) ? "0" : "") + (currentDate.getMonth() + 1)
-                + "/" + (1900 + currentDate.getYear());
+                + "/" + (1900 + currentDate.getYear());*/
+        final Date date = new Date();
+        CalendarUtil.addDaysToDate(date, addDays);
+        CalendarUtil.addMonthsToDate(date, addMonths);
+        CalendarUtil.addMonthsToDate(date, addYears * 12);
+        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
+        final String returnString = dateTimeFormat.format(date);
         return returnString;
     }
 
