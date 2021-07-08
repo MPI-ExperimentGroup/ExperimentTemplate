@@ -93,6 +93,6 @@ public class BuildListing {
     }
 
     public boolean getIsRotatable() {
-        return (experiment.isIsRotatable());
+        return (experiment.isRotatable());
     }
 }

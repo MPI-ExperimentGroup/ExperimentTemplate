@@ -174,7 +174,7 @@ public class Experiment implements Serializable {
     }
 
     @XmlAttribute
-    public boolean isIsRotatable() {
+    public boolean isRotatable() {
         return isRotatable;
     }
 
