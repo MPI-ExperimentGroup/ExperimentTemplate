@@ -52,8 +52,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <a href="csv.zip">Download Zipped Data</a><br/>
             <div>
                 Download Zipped Audio [
-                    <a th:each="dateString,dateIndex : ${audioDates}" th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>
-                ]
+                <th:block th:each="dateString,dateIndex : ${audioDates}">
+                    <a th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>&nbsp;
+                </th:block>]
             </div>
         </section>
         <section>
