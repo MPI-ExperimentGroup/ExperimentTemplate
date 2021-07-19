@@ -20,14 +20,19 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletRequest;
+import javax.validation.constraints.NotNull;
 import nl.mpi.tg.eg.frinex.model.Participant;
+import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +58,10 @@ public class ParticipantDetailController {
     private StimulusResponseRepository stimulusResponseRepository;
     @Autowired
     private AudioDataRepository audioDataRepository;
+
+    @NotNull
+    @Value("${nl.mpi.tg.eg.frinex.admin.allowDelete}")
+    protected boolean allowDelete;
 
     // the first ibdex is the label report, e.g. screen1 or screen2
     // the first index is the row number
@@ -94,6 +103,7 @@ public class ParticipantDetailController {
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
         model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.findByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED).size());
         model.addAttribute("countOfApplicationStarted", this.screenDataRepository.findByUserIdAndScreenName(id, APPLICATION_STARTED).size());
+        model.addAttribute("allowDelete", this.allowDelete);
         model.addAttribute("userSummary", this.userSummary);
         model.addAttribute("fastTrack", this.fastTrack);
         model.addAttribute("fineTuning", this.fineTuning);
@@ -111,6 +121,66 @@ public class ParticipantDetailController {
         model.addAttribute("participantAudioData", this.audioDataRepository.findByUserIdOrderBySubmitDateAsc(id));
         return "participantdetail";
     }
+
+    @Transactional
+    @RequestMapping("participantdelete")
+    /*
+        This method will have no effect if the application.properties does not specify allowDelete true.
+    */
+    public String participantDataDelete(ServletRequest request, @RequestParam(value = "id", required = true) String id, @RequestParam(value = "providedChecksum", required = false) String providedChecksum, @RequestParam(value = "deleteOption", defaultValue = "false", required = false) String deleteOption, Model model,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
+            @RequestParam(value = "id", required = false) String paramId) {
+        final boolean deleteAudio = "deleteAudio".equals(deleteOption);
+        final boolean deleteAll = "deleteAll".equals(deleteOption);
+        final String requiredChecksum = "Please delete " + ((deleteAudio) ? "audio" : "all") + " data for the participant " + id + ". I understand that this is permanent and cannot be reverted.";
+        model.addAttribute("requiredChecksum", requiredChecksum);
+        model.addAttribute("deleteAudio", deleteAudio);
+        model.addAttribute("deleteAll", deleteAll);
+        model.addAttribute("simpleMode", simpleMode);
+        model.addAttribute("paramId", paramId);
+        model.addAttribute("allowDelete", allowDelete);
+        if (allowDelete) {
+            if (requiredChecksum.equals(providedChecksum)) {
+                final String screenName = "administration system";
+                final String eventTag = (deleteAudio) ? "delete participant audio" : "delete participant data";
+                final int eventMs = 0;
+                final Date tagDate = new java.util.Date();
+                final String remoteAddr = request.getRemoteAddr();
+                final int lastIndexOf = remoteAddr.lastIndexOf(".");
+                final String tagValue = (lastIndexOf > 0) ? remoteAddr.substring(0, lastIndexOf) + ".0" : "";
+                // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
+                // log the ip address that requested this action
+                final TagData deletionLogEntry = new TagData("participantdelete", screenName, eventTag, tagValue, eventMs, tagDate);
+                this.tagRepository.save(deletionLogEntry);
+                // delete the audio
+                this.audioDataRepository.deleteByUserId(id);
+                if (deleteAudio) {
+                    model.addAttribute("deletionSuccess", true);
+                } else if (deleteAll) {
+                    participantRepository.deleteByUserId(id);
+                    screenDataRepository.deleteByUserId(id);
+                    tagPairRepository.deleteByUserId(id);
+                    tagRepository.deleteByUserId(id);
+                    timeStampRepository.deleteByUserId(id);
+                    stimulusResponseRepository.deleteByUserId(id);
+                    model.addAttribute("deletionSuccess", true);
+                } else {
+                    model.addAttribute("deletionSuccess", false);
+                }
+            } else {
+                model.addAttribute("deletionSuccess", false);
+            }
+        }
+        model.addAttribute("countOfMetadata", participantRepository.countByUserId(id));
+        model.addAttribute("countOfScreenData", screenDataRepository.countByUserId(id));
+        model.addAttribute("countOfTagPair", tagPairRepository.countByUserId(id));
+        model.addAttribute("countOfTags", tagRepository.countByUserId(id));
+        model.addAttribute("countOfTimestamps", timeStampRepository.countByUserId(id));
+        model.addAttribute("countOfAudio", audioDataRepository.countByUserId(id));
+        model.addAttribute("countOfStimulusResponse", stimulusResponseRepository.countByUserId(id));
+        return "participantdelete";
+    }
+
     private static final String DATA_SUBMISSION = "DataSubmission";
     private static final String APPLICATION_STARTED = "ApplicationStarted";
     private static final String CARLY_BLUE_CHAIROGG = "carly_blue_chair.ogg";

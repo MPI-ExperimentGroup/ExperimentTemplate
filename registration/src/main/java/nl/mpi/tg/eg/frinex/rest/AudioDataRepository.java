@@ -51,6 +51,12 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
+    @Transactional
+    @RestResource(exported = false)
+    public void deleteByUserId(@Param("userId") String userId);
+
+    public int countByUserId(@Param("userId") String userId);
+
     @Override
     @RestResource(exported = false)
     public <S extends AudioData> Iterable<S> saveAll(Iterable<S> arg0);

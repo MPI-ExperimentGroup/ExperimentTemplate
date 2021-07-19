@@ -50,6 +50,8 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 
+    int countByUserId(@Param("userId") String userId);
+
     @Override
     @RestResource(exported = false)
     public abstract <S extends TagData> S save(S entity);
@@ -73,4 +75,7 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
+
+    @RestResource(exported = false)
+    public void deleteByUserId(@Param("userId") String userId);
 }

@@ -45,6 +45,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>            
         </table>
+        <th:block th:if="${allowDelete} and ${!simpleMode}">
+            <h3>Advanced</h3>
+            <input type="checkbox" value="enableAdvanced" name="enableAdvanced" id="enableAdvanced" onclick="$('#deleteSubmit').attr('hidden', false); $('#enableAdvanced').attr('disabled', 'disabled');"/><label for="enableAdvanced">Enable Advanced</label><br/>
+            <form action="participantdelete">
+                <!--<input type="radio" value="deleteAudio" name="deleteOption" id="deleteAudio" onclick="$('#deleteSubmit').attr('disabled', false);"/><label for="deleteAudio">Delete Audio</label><br/>-->
+                <!--<input type="radio" value="deleteAll" name="deleteOption" id="deleteAll" onclick="$('#deleteSubmit').attr('disabled', false);"/><label for="deleteAll">Delete All</label><br/>-->
+                <input type="hidden" th:value="${paramId}" name="id"/>
+                <input type="hidden" th:value="${simpleMode}" name="simple"/>
+                <input type="submit" value="View Delete Options" id ="deleteSubmit" hidden="hidden" />
+            </form>
+        </th:block>
         <h3>Application Started</h3>
         <p th:text="'Application Started Event Count, ' + ${countOfApplicationStarted}" />
         <h3 th:if="${!simpleMode}">Browser Window Closed</h3>

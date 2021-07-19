@@ -69,4 +69,9 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
+
+    @RestResource(exported = false)
+    public void deleteByUserId(@Param("userId") String userId);
+
+    public int countByUserId(@Param("userId") String userId);
 }
