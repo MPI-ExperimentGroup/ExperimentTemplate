@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -1698,7 +1699,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             changeListener = null;
         }
-        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 2);
+        startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 15);
     }
 
     private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final ValueChangeListener<Double> changeListener, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
@@ -1716,7 +1717,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS) {
                 if (audioContextCurrentMS > 100) {
                     recordingAborted = true;
-                    submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorder", "rejecting due to audioContextCurrentMS out of spec" + audioContextCurrentMS, duration.elapsedMillis());
+                    final String errorMessage = "rejecting due to audioContextCurrentMS out of spec: " + audioContextCurrentMS;
+                    submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorder", errorMessage, duration.elapsedMillis());
+                    GWT.log("stimulusPath: " + errorMessage);
                     stopAudioRecorder();
                     if (retryCount > 0) {
                         startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
