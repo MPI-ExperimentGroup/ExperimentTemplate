@@ -236,7 +236,7 @@ public enum FeatureAttribute {
     echoCancellation("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean), 
     noiseSuppression("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean), 
     autoGainControl("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean),
-    downloadPermittedWindowMs("A time window in milliseconds within which download from the server will be allowed. If playback of the recorded audio is not needed then this should be set to 0 to save bandwith.", false, AttributeType.xsInteger),
+    downloadPermittedWindowMs("A time window in milliseconds within which download from the server will be allowed. When set to a non zero value the recording will be downloaded from the server ready for playback. So if playback of the recorded audio is not needed then this should be set to 0 to save bandwidth.", false, AttributeType.xsInteger),
     deviceRegex(true),
     poster,
     autoPlay("When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.",
