@@ -1967,12 +1967,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void addMediaTrigger(final Stimulus definitionScopeStimulus, final String mediaId, final String evaluateMs, final int threshold, final TimedStimulusListener onLateListener, final SingleStimulusListener triggerListener) {
         final String formattedMediaId = new HtmlTokenFormatter(definitionScopeStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         // the web recorder does not have stimulus in scope so we rely on the definition scope stimulus
-            final FrameTimeTrigger frameTimeTrigger = addFrameTimeTrigger(definitionScopeStimulus, evaluateMs, threshold, onLateListener, triggerListener);
-            if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
-                addRecorderTriggersWeb(frameTimeTrigger);
-            } else {
-                timedStimulusView.addMediaTriggers(formattedMediaId, frameTimeTrigger);
-            }
+        final FrameTimeTrigger frameTimeTrigger = addFrameTimeTrigger(definitionScopeStimulus, evaluateMs, threshold, onLateListener, triggerListener);
+        if (timedStimulusView.isWebRecorderMediaId(formattedMediaId)) {
+            addRecorderTriggersWeb(frameTimeTrigger);
+        } else {
+            timedStimulusView.addMediaTriggers(formattedMediaId, frameTimeTrigger);
+        }
     }
 
     public void triggerDefinition(final Stimulus currentStimulus, final String listenerId, final int threshold, final int maximum, final SingleStimulusListener triggerListener) {
