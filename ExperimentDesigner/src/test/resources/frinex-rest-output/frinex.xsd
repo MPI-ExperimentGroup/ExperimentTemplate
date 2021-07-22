@@ -15525,7 +15525,7 @@
 </xs:attribute>
 <xs:attribute name="downloadPermittedWindowMs" type="xs:integer" use="required">
 <xs:annotation>
-<xs:documentation>A time window in milliseconds within which download from the server will be allowed. If playback of the recorded audio is not needed then this should be set to 0 to save bandwith.</xs:documentation>
+<xs:documentation>A time window in milliseconds within which download from the server will be allowed. When set to a non zero value the recording will be downloaded from the server ready for playback. So if playback of the recorded audio is not needed then this should be set to 0 to save bandwidth.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="deviceRegex" type="xs:string">
