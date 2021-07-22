@@ -852,13 +852,17 @@ public abstract class AbstractPresenter implements Presenter {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
             if ($wnd.recorder) {
-                    $wnd.recorder.stop();
+                $wnd.recorderTemp = $wnd.recorder;
+                $wnd.recorder.onstop = function(){
+                    console.log("startAudioRecorderWeb: onstop");
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
-                    $wnd.recorder.close();
-                    $wnd.recorder = null;
-                    $wnd.audioAnalyser = null;
+                    $wnd.recorderTemp.close();
+                };
+                $wnd.recorder.stop();
+                $wnd.recorder = null;
+                $wnd.audioAnalyser = null;
             }
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
@@ -1015,9 +1019,14 @@ public abstract class AbstractPresenter implements Presenter {
             });
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
+                $wnd.recorderTemp = $wnd.recorder;
+                $wnd.recorder.onstop = function(){
+                    console.log("stopAudioRecorder: onstop");
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    $wnd.recorderTemp.close();
+                    // OggOpusEncoder.prototype.destroy
+                }
                 $wnd.recorder.stop();
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
-                $wnd.recorder.close();
                 $wnd.recorder = null;
                 $wnd.audioAnalyser = null;
             }
