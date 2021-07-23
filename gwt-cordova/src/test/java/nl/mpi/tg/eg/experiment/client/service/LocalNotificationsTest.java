@@ -49,7 +49,7 @@ public class LocalNotificationsTest {
         }
 
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+        for (int repetitionIndex = repetitionCount - 1; repetitionIndex <= 0; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
             if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 2);
@@ -90,7 +90,7 @@ public class LocalNotificationsTest {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
         }
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+        for (int repetitionIndex = repetitionCount - 1; repetitionIndex <= 0; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 //            if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 20);
@@ -196,7 +196,7 @@ public class LocalNotificationsTest {
             System.out.println(values[0] + ":" + values[1]);
         }
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 0; repetitionIndex < 10; repetitionIndex++) {
+        for (int repetitionIndex = 9; repetitionIndex <= 0; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 
             System.out.println("expectedMinutesR: " + minuteFromInt + " - " + minuteUntilInt);
