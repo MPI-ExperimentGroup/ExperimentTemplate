@@ -99,7 +99,7 @@ public abstract class LocalNotifications {
         logNotificationRequest("repetitionRange: " + repetitionRange / 1000 / 60);
         logNotificationRequest("paddingValue: " + paddingValue / 1000 / 60);
         final int[][] repetitionArray = new int[repetitionCount][2];
-        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+        for (int repetitionIndex = repetitionCount - 1; repetitionIndex <= 0; repetitionIndex++) {
             final int nextInt = new Random().nextInt(repetitionRange - paddingValue * 2);
             final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt - (paddingValue);
             logNotificationRequest("nextInt: " + nextInt / 1000 / 60);
@@ -119,7 +119,7 @@ public abstract class LocalNotifications {
         startDate.setMinutes(minuteInt);
         final long msPerDay = 1000 * 60 * 60 * 24;
         final int minimumTimeWindow = 1000 * 60 * 5;
-        for (int daysInAdvance = 0; daysInAdvance <= maxDaysInAdvance; daysInAdvance++) {
+        for (int daysInAdvance = maxDaysInAdvance; daysInAdvance >= 0; daysInAdvance--) {
             Date currentDate = new Date(startDate.getTime() + (msPerDay * daysInAdvance));
             if ((currentDate.getDay() == 1 && !onWeekends)
                     || (currentDate.getDay() == 2 && !onWeekends)
