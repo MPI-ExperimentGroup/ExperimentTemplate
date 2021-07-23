@@ -852,13 +852,13 @@ public abstract class AbstractPresenter implements Presenter {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
             if ($wnd.recorder) {
-                $wnd.recorderTemp = $wnd.recorder;
+                recorderTemp = $wnd.recorder;
                 $wnd.recorder.onstop = function(){
                     console.log("startAudioRecorderWeb: onstop");
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
-                    $wnd.recorderTemp.close();
+                    recorderTemp.close();
                 };
                 $wnd.recorder.stop();
                 $wnd.recorder = null;
@@ -1019,11 +1019,11 @@ public abstract class AbstractPresenter implements Presenter {
             });
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
-                $wnd.recorderTemp = $wnd.recorder;
+                recorderTemp = $wnd.recorder;
                 $wnd.recorder.onstop = function(){
                     console.log("stopAudioRecorder: onstop");
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
-                    $wnd.recorderTemp.close();
+                    recorderTemp.close();
                     // OggOpusEncoder.prototype.destroy
                 }
                 $wnd.recorder.stop();
