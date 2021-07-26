@@ -49,7 +49,7 @@ public class LocalNotificationsTest {
         }
 
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = repetitionCount - 1; repetitionIndex <= 0; repetitionIndex++) {
+        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
             if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 2);
@@ -90,7 +90,7 @@ public class LocalNotificationsTest {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
         }
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = repetitionCount - 1; repetitionIndex <= 0; repetitionIndex++) {
+        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 //            if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 20);
@@ -173,9 +173,12 @@ public class LocalNotificationsTest {
         assertEquals("weekdays_between", resultStringBuilder.toString());
         instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:10:30:15:30:9");
         assertEquals("weekdays_between:10:30:15:30:9", resultStringBuilder.toString());
+        resultStringBuilder.append(" haswhitespace");
+        instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:09:00:17:00:5                             weekends_between:10:00:18:00:5");
+        assertEquals("weekdays_between:10:30:15:30:9 haswhitespace:9:0:17:0:5:10:0:18:0:5", resultStringBuilder.toString());
         resultStringBuilder.append(" weekdays_between");
         instance.setNotification("notificationTitle", "notificationText", null, "weekdays_between:17:20:17:50:5");
-        assertEquals("weekdays_between:10:30:15:30:9 weekdays_between:17:20:17:50:5", resultStringBuilder.toString());
+        assertEquals("weekdays_between:10:30:15:30:9 haswhitespace:9:0:17:0:5:10:0:18:0:5 weekdays_between:17:20:17:50:5", resultStringBuilder.toString());
     }
 
     /**
@@ -196,7 +199,7 @@ public class LocalNotificationsTest {
             System.out.println(values[0] + ":" + values[1]);
         }
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 9; repetitionIndex <= 0; repetitionIndex++) {
+        for (int repetitionIndex = 0; repetitionIndex < 10; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 
             System.out.println("expectedMinutesR: " + minuteFromInt + " - " + minuteUntilInt);
