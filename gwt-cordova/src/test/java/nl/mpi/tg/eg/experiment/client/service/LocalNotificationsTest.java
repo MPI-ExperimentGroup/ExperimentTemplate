@@ -49,7 +49,7 @@ public class LocalNotificationsTest {
         }
 
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+        for (int repetitionIndex = repetitionCount - 1; repetitionIndex >= 0; repetitionIndex--) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
             if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 2);
@@ -60,7 +60,7 @@ public class LocalNotificationsTest {
             }
             System.out.println("expectedHourF: " + expectedHour);
             assertEquals(expectedHour, result[repetitionIndex][0]);
-            if (repetitionIndex % 2 == 0) {
+            if (repetitionIndex % 2 == 1) {
                 expectedHour++;
             }
             if (result[repetitionIndex][0] == hourFromInt) {
@@ -93,8 +93,8 @@ public class LocalNotificationsTest {
         for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 //            if (result[repetitionIndex][1] < 31) {
-                assertTrue(result[repetitionIndex][1] >= 20);
-                assertTrue(result[repetitionIndex][1] <= 50);
+            assertTrue(result[repetitionIndex][1] >= 20);
+            assertTrue(result[repetitionIndex][1] <= 50);
 //            } else {
 //                assertTrue(result[repetitionIndex][1] >= 32);
 //                assertTrue(result[repetitionIndex][1] <= 58);
@@ -182,7 +182,8 @@ public class LocalNotificationsTest {
     }
 
     /**
-     * Test of reverse findNotificationRepetitions method, of class LocalNotifications.
+     * Test of reverse findNotificationRepetitions method, of class
+     * LocalNotifications.
      */
     @Test
     public void testFindNotificationRepetitionsReverse() {
