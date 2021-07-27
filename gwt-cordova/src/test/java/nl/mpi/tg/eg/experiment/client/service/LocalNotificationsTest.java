@@ -195,11 +195,17 @@ public class LocalNotificationsTest {
         LocalNotifications instance = new LocalNotificationsImpl();
         int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
         assertEquals(repetitionCount, result.length);
+        int prevHour = 25;
+        int prevMinute = 61;
         for (int[] values : result) {
             System.out.println(values[0] + ":" + values[1]);
+            assertTrue("the notifications must be in reverse time order ", prevHour > values[0] || (prevHour == values[0] && values[1] <= prevMinute) || prevHour == 0);
+            prevHour = values[0];
+            prevMinute = values[1];
         }
         int expectedHour = hourFromInt;
-        for (int repetitionIndex = 0; repetitionIndex < 10; repetitionIndex++) {
+        boolean isSecond = true;
+        for (int repetitionIndex = repetitionCount - 1; repetitionIndex >= 0; repetitionIndex--) {
             System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 
             System.out.println("expectedMinutesR: " + minuteFromInt + " - " + minuteUntilInt);
@@ -210,13 +216,16 @@ public class LocalNotificationsTest {
                 assertTrue(result[repetitionIndex][1] >= 32);
                 assertTrue(result[repetitionIndex][1] <= 58);
             }
-            System.out.println("expectedHourR: " + expectedHour);
+            //System.out.println("expectedHourR: " + expectedHour + " == " + result[repetitionIndex][0]);
             assertEquals(expectedHour, result[repetitionIndex][0]);
-            if (repetitionIndex % 2 == 0) {
+            if (isSecond) {
+                isSecond = false;
                 expectedHour++;
                 if (expectedHour > 23) {
                     expectedHour = 0;
                 }
+            } else {
+                isSecond = true;
             }
             if (result[repetitionIndex][0] == hourFromInt) {
                 assertTrue(result[repetitionIndex][1] >= minuteFromInt);

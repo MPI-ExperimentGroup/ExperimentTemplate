@@ -99,13 +99,13 @@ public abstract class LocalNotifications {
         logNotificationRequest("repetitionRange: " + repetitionRange / 1000 / 60);
         logNotificationRequest("paddingValue: " + paddingValue / 1000 / 60);
         final int[][] repetitionArray = new int[repetitionCount][2];
-        for (int repetitionIndex = repetitionCount - 1; repetitionIndex >= 0; repetitionIndex--) {
+        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
             final int nextInt = new Random().nextInt(repetitionRange - paddingValue * 2);
             final int nextPeriod = repetitionRange + (repetitionRange * repetitionIndex) - nextInt - (paddingValue);
             logNotificationRequest("nextInt: " + nextInt / 1000 / 60);
             logNotificationRequest("nextPeriod: " + nextPeriod / 1000 / 60);
             final Date repetitionDate = new Date(fromDate.getTime() + nextPeriod);
-            repetitionArray[repetitionIndex] = new int[]{repetitionDate.getHours(), repetitionDate.getMinutes()};
+            repetitionArray[repetitionCount - 1 - repetitionIndex] = new int[]{repetitionDate.getHours(), repetitionDate.getMinutes()};
         }
         return repetitionArray;
     }
