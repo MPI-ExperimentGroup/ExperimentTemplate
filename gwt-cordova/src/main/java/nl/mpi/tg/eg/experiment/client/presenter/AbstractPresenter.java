@@ -517,7 +517,11 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void audioOk(Boolean isRecording, String message) {
         if (simpleView instanceof ComplexView) {
-            ((ComplexView) simpleView).setRecorderState(message, isRecording);
+            if ("hidden".equals(message)) {
+                ((ComplexView) simpleView).clearRecorderIndicator();
+            } else {
+                ((ComplexView) simpleView).setRecorderState(message, isRecording);
+            }
 //            if (isRecording) {
             bumpAudioTicker();
 //            }

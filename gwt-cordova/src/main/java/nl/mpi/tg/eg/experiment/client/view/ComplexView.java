@@ -268,6 +268,12 @@ public class ComplexView extends SimpleView {
         getActivePanel().add(new HTML("&nbsp;"));
     }
 
+    public void clearRecorderIndicator() {
+        if (recordingLabel != null) {
+            outerPanel.remove(recordingLabel);
+        }
+    }
+    
     public void setRecorderState(String message, boolean isRecording) {
         if (recordingLabel == null) {
             recordingLabel = new Label();

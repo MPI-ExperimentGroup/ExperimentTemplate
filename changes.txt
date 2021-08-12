@@ -1,5 +1,9 @@
 #Changes in Frinex 1.4
 
+Reenabled the use of pause and resume on the web audio recorder due to popular request although it can cause timing issues when used.
+
+Modified startAudioRecorderWeb and startAudioRecorderApp so that the recording label will not be shown when it is set to "hidden".
+
 Tweaked the local notifications so that they are requested in reverse date and reverse time order, so that if any are rejected by the device the most immediate notifications will be preserved.
 
 Added evaluateMs to addFrameTimeTrigger and addMediaTrigger. Added a sub elements of onTime and onError to addFrameTimeTrigger and addMediaTrigger. Added an error threshold ms attribute to all time critical triggers.
