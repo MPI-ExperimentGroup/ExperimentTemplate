@@ -1037,27 +1037,26 @@ public abstract class AbstractPresenter implements Presenter {
         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
      }-*/;
 
-    /* pausing the recorder causes problems with the display of time code for the recording
-    static public native void pauseAudioRecorderWeb() *-{
+    /* pausing the recorder causes problems with the display of time code for the recording however it has been added back in due to popular request */
+    static public native void pauseAudioRecorderWeb() /*-{
         console.log("pauseAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 $wnd.recorder.pause();
             }
         }
-     }-*;
-     */
+     }-*/;
 
- /* pausing the recorder causes problems with the display of time code for the recording
-    static public native void resumeAudioRecorderWeb() *-{
+    /* pausing the recorder causes problems with the display of time code for the recording however it has been added back in due to popular request */
+    static public native void resumeAudioRecorderWeb() /*-{
         console.log("resumeAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 $wnd.recorder.resume();
             }
         }
-     }-*;
-     */
+     }-*/;
+
     static public native void logAudioRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("logAudioRecorderWebTimeStamp");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {

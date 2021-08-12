@@ -808,10 +808,10 @@ public class TimedStimulusView extends ComplexView {
             }
         }
         if (webRecorderMediaId != null) {
-            // nothing to do for stop all on a recorder
-            /*if (webRecorderMediaId.matches(mediaId)) {
+            // pauseAudioRecorderWeb on a recorder has been added back in due to popular request although it will cause timing issues
+            if (webRecorderMediaId.matches(mediaId)) {
                 AbstractPresenter.pauseAudioRecorderWeb();
-            }*/
+            }
         }
     }
 
@@ -833,10 +833,10 @@ public class TimedStimulusView extends ComplexView {
             }
         }
         if (webRecorderMediaId != null) {
-            // nothing to do for start all on a recorder
-            /*if (webRecorderMediaId.matches(mediaId)) {
+            // resumeAudioRecorderWeb on a recorder has been added back in due to popular request although it will cause timing issues
+            if (webRecorderMediaId.matches(mediaId)) {
                 AbstractPresenter.resumeAudioRecorderWeb();
-            }*/
+            }
         }
     }
 
