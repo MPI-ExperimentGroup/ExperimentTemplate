@@ -138,7 +138,7 @@ public class HtmlTokenFormatter {
 
     private String evaluateResolve(String inputString) throws EvaluateTokensException {
         System.out.println(inputString);
-        RegExp regExpGroupM = RegExp.compile("(daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
+        RegExp regExpGroupM = RegExp.compile("(addTime|daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
         MatchResult matcherGroupM = regExpGroupM.exec(inputString);
         while (matcherGroupM != null) {
             if (matcherGroupM.getGroupCount() == 3) {
@@ -169,6 +169,35 @@ public class HtmlTokenFormatter {
                             final Date dateB = parseDDMMYYYDate(dateStringB);
                             long diffMs = dateB.getTime() - dateA.getTime();
                             resultValue = Long.toString(diffMs / (1000 * 60 * 60 * 24));
+                        } else {
+                            throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
+                        }
+                        break;
+                    case "addTime":
+                        String[] parameterTimeParts = parameterMatch.split(",");
+                        if (parameterTimeParts.length == 2) {
+                            boolean isNegative = (parameterTimeParts[1].startsWith("-"));
+                            final String timeStringA = parameterTimeParts[0].replaceAll("[\"\\(\\)]", "");
+                            final String timeStringB = parameterTimeParts[1].replaceAll("[-+\"\\(\\)]", "");
+                            final String[] timePartsA = timeStringA.split(":");
+                            final String[] timePartsB = timeStringB.split(":");
+                            final int hoursA = Integer.parseInt(timePartsA[0]);
+                            final int minutesA = Integer.parseInt(timePartsA[1]);
+                            final int hoursB = Integer.parseInt(timePartsB[0]);
+                            final int minutesB = Integer.parseInt(timePartsB[1]);
+                            final int hoursResult;
+                            final int minutesValue;
+                            final int minutesResult;
+                            if (isNegative) {
+                                minutesValue = minutesA - minutesB;
+                                minutesResult = (minutesValue % 60) + ((minutesValue < 0)? 60 : 0);
+                                hoursResult = (((hoursA - hoursB) + ((minutesValue - minutesResult) / 60))) % 24;
+                            } else {
+                                minutesValue = minutesA + minutesB;
+                                minutesResult= minutesValue % 60;
+                                hoursResult = ((hoursA + hoursB) + (minutesValue / 60)) % 24;
+                            }
+                            resultValue = ((hoursResult<10)? "0" : "") + hoursResult + ":" + ((minutesResult<10)? "0" : "") + minutesResult;
                         } else {
                             throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
                         }

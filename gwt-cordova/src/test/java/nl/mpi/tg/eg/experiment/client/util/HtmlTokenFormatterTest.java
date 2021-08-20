@@ -118,6 +118,27 @@ public class HtmlTokenFormatterTest {
     }
 
     /**
+     * Test of evaluateResolve addTime method, of class HtmlTokenFormatter.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException
+     */
+    @Test
+    public void testFormatAddDate() throws EvaluateTokensException {
+        System.out.println("testAddTime");
+        HtmlTokenFormatter instance = getInstance();
+        assertEquals("14:09", instance.evaluateTokensString("addTime(12:24,01:45)"));
+        assertEquals("10:39", instance.evaluateTokensString("addTime(12:24,-01:45)"));
+        assertEquals("14:09", instance.evaluateTokensString("addTime(12:24,+01:45)"));
+        assertEquals("00:00", instance.evaluateTokensString("addTime(23:24,00:36)"));
+        assertEquals("04:00", instance.evaluateTokensString("addTime(3:04,00:56)"));
+        assertEquals("04:01", instance.evaluateTokensString("addTime(3:04,00:57)"));
+        assertEquals("03:59", instance.evaluateTokensString("addTime(3:04,00:55)"));
+        assertEquals("02:08", instance.evaluateTokensString("addTime(3:04,-00:56)"));
+        assertEquals("02:07", instance.evaluateTokensString("addTime(3:04,-00:57)"));
+        assertEquals("02:09", instance.evaluateTokensString("addTime(3:04,-00:55)"));
+    }
+
+    /**
      * Test of formatString currentDateDDMMYYYY method, of class
      * HtmlTokenFormatter.
      */
