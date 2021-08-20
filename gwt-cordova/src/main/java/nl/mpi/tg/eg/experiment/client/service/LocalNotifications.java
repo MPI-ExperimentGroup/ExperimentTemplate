@@ -65,7 +65,7 @@ public abstract class LocalNotifications {
                         if (currentParts.length > 5) {
                             if (!currentParts[1].isEmpty() && !currentParts[2].isEmpty() && !currentParts[3].isEmpty() && !currentParts[4].isEmpty() && !currentParts[5].isEmpty()) {
                                 for (int[] repetitionTimes : findNotificationRepetitions(Integer.parseInt(currentParts[1]), Integer.parseInt(currentParts[2]), Integer.parseInt(currentParts[3]), Integer.parseInt(currentParts[4]), Integer.parseInt(currentParts[5]))) {
-                                    notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText + "\n" + currentEntry, notificationActions, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
+                                    notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, notificationActions, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
                                 }
                             }
                         }
@@ -73,7 +73,7 @@ public abstract class LocalNotifications {
                     case "weekends":
                         onWeekends = true;
                     case "weekdays":
-                        notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText + "\n" + currentEntry, notificationActions, 7, onWeekends, Integer.parseInt(currentParts[1]), (currentParts.length > 2) ? Integer.parseInt(currentParts[2]) : 0);
+                        notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, notificationActions, 7, onWeekends, Integer.parseInt(currentParts[1]), (currentParts.length > 2) ? Integer.parseInt(currentParts[2]) : 0);
                         break;
                 }
             }
