@@ -58,6 +58,7 @@ public class PublishEvents implements Serializable {
     private boolean isDesktop;
     private boolean isiOS;
     private boolean isAndroid;
+    private boolean isUnity;
     private String productionServer;
     private String frinexVersion;
     @ManyToOne
@@ -67,13 +68,14 @@ public class PublishEvents implements Serializable {
     public PublishEvents() {
     }
 
-    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop, String productionServer, String frinexVersion) {
+    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isUnity, boolean isDesktop, String productionServer, String frinexVersion) {
         this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
         this.isWebApp = isWebApp;
         this.isiOS = isiOS;
         this.isAndroid = isAndroid;
+        this.isUnity = isUnity;
         this.isDesktop = isDesktop;
         this.experiment = experiment;
         this.frinexVersion = frinexVersion;
@@ -118,6 +120,11 @@ public class PublishEvents implements Serializable {
     @XmlAttribute
     public boolean isIsAndroid() {
         return isAndroid;
+    }
+
+    @XmlAttribute
+    public boolean isIsUnity() {
+        return isUnity;
     }
 
     @XmlAttribute
@@ -169,6 +176,10 @@ public class PublishEvents implements Serializable {
 
     public void setIsAndroid(boolean isAndroid) {
         this.isAndroid = isAndroid;
+    }
+
+    public void setIsUnity(boolean isUnity) {
+        this.isUnity = isUnity;
     }
     
     public void setProductionServer(String productionServer) {

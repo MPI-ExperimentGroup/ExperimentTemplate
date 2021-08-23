@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * @since 04-03-2020 11:27 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@JsonPropertyOrder({"publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "buildName", "registrationUrlStaging", "registrationUrlProduction", "state", "productionServer", "frinexVersion", "defaultScale", "isScalable", "isRotatable", "experimentInternalName", "experimentDisplayName"})
+@JsonPropertyOrder({"publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "isUnity", "buildName", "registrationUrlStaging", "registrationUrlProduction", "state", "productionServer", "frinexVersion", "defaultScale", "isScalable", "isRotatable", "experimentInternalName", "experimentDisplayName"})
 public class BuildListing {
 
     final private Experiment experiment;
@@ -78,6 +78,10 @@ public class BuildListing {
 
     public boolean isIsAndroid() {
         return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsAndroid();
+    }
+    
+    public boolean isIsUnity() {
+        return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsUnity();
     }
 
     public boolean isIsDesktop() {

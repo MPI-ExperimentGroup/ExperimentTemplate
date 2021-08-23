@@ -379,6 +379,7 @@ public class AbstractSchemaGenerator {
                                 + "On osX this can be done with &quot;open with_stimulus_example.app --args --debug-mode&quot; and on Windows &quot;with_stimulus_example.exe --debug-mode&quot;.")
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
                         .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
+                        .booleanAttribute("isUnity", true, "Experimental feature, if true a Unity version of this experiment will be generated.")
                         .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "validate", "debug", "draft", "staging", "production", "undeploy"),
                 new DocumentationElement("validationService", "Server side validation / registration services.", 0, 1,
                         new DocumentationElement[]{

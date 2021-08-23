@@ -60,6 +60,7 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"isDesktop\" : true,\n"
                 + "  \"isiOS\" : true,\n"
                 + "  \"isAndroid\" : true,\n"
+                + "  \"isUnity\" : false,\n"
                 + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\",\n"
                 + "  \"registrationUrlProduction\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
                 + "  \"state\" : \"staging\",\n"

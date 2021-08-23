@@ -315,6 +315,11 @@
 <xs:documentation>If true an Android version of this experiment will be generated.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="isUnity" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>Experimental feature, if true a Unity version of this experiment will be generated.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="state" use="required">
 <xs:annotation>
 <xs:documentation>The type of deployment to be run when changes are pushed to the build server.</xs:documentation>
@@ -502,6 +507,11 @@
 <xs:attribute name="isAndroid" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>If true an Android version of this experiment will be generated.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="isUnity" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>Experimental feature, if true a Unity version of this experiment will be generated.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="state" use="required">
