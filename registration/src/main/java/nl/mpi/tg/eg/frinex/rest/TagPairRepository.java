@@ -48,6 +48,12 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag and tagValue1 = :tagValue1 order by tagDate asc")
     List<TagPairData> findByUserIdAndEventTagAndTagValue1OrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag, @Param("tagValue1") String tagValue1);
 
+    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where eventTag = :eventTag order by tagDate asc")
+    List<TagPairData> findByEventTagOrderByTagDateAsc(@Param("eventTag") String eventTag);
+
+    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where tagValue1 = :tagValue1 order by tagDate asc")
+    List<TagPairData> findByTagValue1OrderByTagDateAsc(@Param("tagValue1") String tagValue1);
+
     Page<TagPairData> findBydataChannel(Pageable pageable, Integer dataChannel);
 
     @Override
