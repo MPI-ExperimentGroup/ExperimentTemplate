@@ -35,7 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "participants", path = "participants")
-public interface ParticipantRepository extends PagingAndSortingRepository<Participant, Long> {
+public interface ParticipantRepository extends ParticipantColumnsRepository, PagingAndSortingRepository<Participant, Long> {
 
 //    Participant findById(@Param("id") long id);
     Page<Participant> findByStaleCopy(@Param("staleCopy") boolean staleCopy, Pageable pageable);

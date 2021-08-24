@@ -54,8 +54,12 @@
                             <outputDir>${project.build.directory}/generated-sources/main/java/nl/mpi/tg/eg/frinex</outputDir>
                             <parameters>
                                 <parameter>
-                                    <name>targetClientDirectory</name>
+                                    <name>targetJavaDirectory</name>
                                     <value>${project.build.directory}/generated-sources/main/java/nl/mpi/tg/eg/frinex</value>
+                                </parameter>
+                                <parameter>
+                                    <name>targetTestDirectory</name>
+                                    <value>${project.build.directory}/generated-test-sources/test/java/nl/mpi/tg/eg/frinex</value>
                                 </parameter>
                                 <parameter>
                                     <name>targetTemplateDirectory</name>
@@ -64,6 +68,14 @@
                                 <parameter>
                                     <name>separateClassNames</name>
                                     <value>false</value>
+                                </parameter>
+                                <parameter>
+                                    <name>usingMockXml</name>
+                                    <value>false</value>
+                                </parameter>
+                                <parameter>
+                                    <name>outputPrefix</name>
+                                    <value></value>
                                 </parameter>
                             </parameters>
                         </transformationSet>
@@ -74,19 +86,32 @@
                                 <include>preventValidationOnMissing.xml</include>
                             </includes>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/config2customfields.xsl</stylesheet>
-                            <outputDir>${project.build.directory}/generated-sources/test/java/nl/mpi/tg/eg/frinex</outputDir>
+                            <outputDir>${project.build.directory}/generated-test-sources/test/java/nl/mpi/tg/eg/frinex</outputDir>
                             <parameters>
+                                <!-- this section only creates test classes and should not need java main path from targetMainDirectory -->
                                 <parameter>
-                                    <name>targetClientDirectory</name>
-                                    <value>${project.build.directory}/generated-sources/test/java/nl/mpi/tg/eg/frinex</value>
+                                    <name>targetTestDirectory</name>
+                                    <value>${project.build.directory}/generated-test-sources/test/java/nl/mpi/tg/eg/frinex</value>
+                                </parameter>
+                                <parameter>
+                                    <name>targetJavaDirectory</name>
+                                    <value>${project.build.directory}/generated-test-sources/test/java/nl/mpi/tg/eg/frinex</value>
                                 </parameter>
                                 <parameter>
                                     <name>targetTemplateDirectory</name>
-                                    <value>${project.build.directory}/generated-sources/test/resources/templates</value>
+                                    <value>${project.build.directory}/generated-test-sources/test/resources/templates</value>
                                 </parameter>
                                 <parameter>
                                     <name>separateClassNames</name>
                                     <value>true</value>
+                                </parameter>
+                                <parameter>
+                                    <name>usingMockXml</name>
+                                    <value>true</value>
+                                </parameter>
+                                <parameter>
+                                    <name>outputPrefix</name>
+                                    <value>Mock</value>
                                 </parameter>
                             </parameters>
                         </transformationSet>
@@ -125,7 +150,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.build.directory}/generated-sources/test/java</source>
+                                <source>${project.build.directory}/generated-test-sources/test/java</source>
                             </sources>
                         </configuration>
                     </execution>                    

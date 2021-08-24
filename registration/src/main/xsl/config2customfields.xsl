@@ -10,32 +10,39 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
-    <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
-    <xsl:param name="targetTemplateDirectory" select="targetTemplateDirectory"/>
-    <xsl:param name="separateClassNames" select="separateClassNames"/>
+    <xsl:param name="targetJavaDirectory" select="targetJavaDirectory" />
+    <xsl:param name="targetTemplateDirectory" select="targetTemplateDirectory" />
+    <xsl:param name="separateClassNames" select="separateClassNames" />
+    <xsl:param name="outputPrefix" select="outputPrefix" />
+    <xsl:param name="usingMockXml" select="usingMockXml" />
+    <xsl:param name="targetTestDirectory" select="targetTestDirectory" />
     <xsl:template match="/">
-        <xsl:result-document href="{$targetClientDirectory}/AdminUserList.java" method="text">
-            <xsl:text>package nl.mpi.tg.eg.frinex;
-                public class AdminUserList {
-                public String[][] getAdminUserList(){
-                return new String[][] {                
-            </xsl:text>
-            <xsl:for-each select="experiment/administration/adminUser">
-                <xsl:text>{"</xsl:text>
-                <xsl:value-of select="@name" />
-                <xsl:text>","</xsl:text>
-                <xsl:value-of select="@password" />
-                <xsl:text>"}</xsl:text>
-                <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text> 
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:text>
-                };
-                }
-                }    </xsl:text>
-        </xsl:result-document>
-        <xsl:result-document href="{$targetClientDirectory}/model/Participant.java" method="text">
+        <xsl:if test="$usingMockXml eq 'false'">
+            <xsl:result-document href="{$targetJavaDirectory}/{$outputPrefix}AdminUserList.java" method="text">
+                <xsl:text>package nl.mpi.tg.eg.frinex;
+                    public class </xsl:text>
+                <xsl:value-of select="$outputPrefix" />
+                <xsl:text>AdminUserList {
+                    public String[][] getAdminUserList(){
+                    return new String[][] {                
+                </xsl:text>
+                <xsl:for-each select="experiment/administration/adminUser">
+                    <xsl:text>{"</xsl:text>
+                    <xsl:value-of select="@name" />
+                    <xsl:text>","</xsl:text>
+                    <xsl:value-of select="@password" />
+                    <xsl:text>"}</xsl:text>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>
+                    };
+                    }
+                    }    </xsl:text>
+            </xsl:result-document>
+        </xsl:if>
+        <xsl:result-document href="{$targetJavaDirectory}/model/Participant.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.model;
 
                 import java.io.Serializable;
@@ -48,10 +55,10 @@
                 import javax.persistence.Temporal;
 
                 @Entity                     
-                public class Participant implements Serializable, Comparable&lt;Participant&gt; {
+                public class <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant implements Serializable, Comparable&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; {
 
-                public Participant(){}
-                public Participant(final String userId){this.userId = userId;}
+                public <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant(){}
+                public <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant(final String userId){this.userId = userId;}
 
                 @Id
                 @GeneratedValue(strategy = GenerationType.AUTO)
@@ -74,12 +81,12 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>
-                
+            
                 @Override
-                public int compareTo(Participant o) {
+                public int compareTo(<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant o) {
                 return (this.userId != null) ? this.userId.compareTo(o.getUserId()) : 1;
                 }
-                
+            
                 public long getId() {
                 return id;
                 }
@@ -87,11 +94,11 @@
                 public boolean getStaleCopy() {
                 return (staleCopy == null) ? false : staleCopy;
                 }
-                
+            
                 public String getUserId() {
                 return userId;
                 }
-                
+            
                 public Date getSubmitDate() {
                 return submitDate;
                 }
@@ -103,7 +110,7 @@
                 public String getRemoteAddr() {
                 return remoteAddr;
                 }
-                
+            
                 public void setRemoteAddr(String remoteAddr) {
                 this.remoteAddr = remoteAddr;
                 }
@@ -149,278 +156,339 @@
             <xsl:text>              
                 }    </xsl:text>
         </xsl:result-document>
-        <xsl:result-document href="{$targetClientDirectory}/model/ReportTypes.java" method="text">
-            <xsl:text>package nl.mpi.tg.eg.frinex.model;
+        <xsl:if test="$usingMockXml eq 'false'">
+            <xsl:result-document href="{$targetJavaDirectory}/rest/{$outputPrefix}ParticipantColumnsRepository.java" method="text">
+                <xsl:text>package nl.mpi.tg.eg.frinex.rest;
+            
+                    import java.util.List;
+                    import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
+                    import org.springframework.data.jpa.repository.Query;
+                    import org.springframework.data.repository.NoRepositoryBean;
+                    import org.springframework.data.repository.query.Param;
 
-                public class ReportTypes {
-                
-                enum CsvReportTypes {
-            </xsl:text>
-            <xsl:for-each select="experiment//sendStimuliReport">
-                <xsl:value-of select="generate-id(.)" />
-                <xsl:text>("</xsl:text>
-                <xsl:value-of select="@type" />
-                <xsl:text>","</xsl:text>
-                <xsl:value-of select="@headerKey" />
-                <xsl:text>","</xsl:text>
-                <xsl:value-of select="@separator" />
-                <xsl:text>")
+                    @NoRepositoryBean
+                    public interface <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->ParticipantColumnsRepository {
                 </xsl:text>
-                <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text> 
-                </xsl:if>
-                <xsl:if test="position() = last()">
-                    <xsl:text>;
-                    </xsl:text> 
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:if test="experiment//sendStimuliReport">
-                <xsl:text>
-                    public final String type;
-                    public final String separator;
-                    public final String headerKey;
-
-                    private CsvReportTypes(final String type, final String separator, final String headerKey) {
-                    this.type = type;
-                    this.separator = separator;
-                    this.headerKey = headerKey;
-                    }
-                    static public CsvReportTypes getCsvReportType(final String eventTag) {
-                    for (CsvReportTypes crt : values()) {
-                    if (eventTag.equals(crt.type)) {
-                    return crt;
-                    }
-                    }
-                    return null;
-                    }
-
-                    public boolean isHeader(final String eventTag, final String tagValue1) {
-                    return eventTag.equals(type) &amp;&amp; tagValue1.equals(headerKey);
-                    }
-
-                    public boolean isRow(final String eventTag, final String tagValue1) {
-                    return eventTag.equals(type) &amp;&amp; !tagValue1.equals(headerKey);
-                    }
-                </xsl:text> 
-            </xsl:if>
-            <xsl:text>
-                }
-                enum ScreenReports {
-            </xsl:text>
-            <xsl:for-each select="experiment/presenter">
-                <xsl:value-of select="@self" />
-                <xsl:text>,
-                </xsl:text>
-            </xsl:for-each>
-            <xsl:text>
-                }
-                enum LoadStimulusReports {
-            </xsl:text>
-            <xsl:for-each select="experiment/presenter[loadStimulus]">
-                <xsl:value-of select="@self" />
-                <xsl:text>,
-                </xsl:text>
-            </xsl:for-each>
-            <xsl:text>
-                }
-                public enum DataChannels {
-            </xsl:text>
-            <!--Convert the administration datachannels segment of the configuration file into a data structure consumable by the administration web interface.-->
-            <xsl:for-each select="experiment/administration/dataChannel">
-                <xsl:value-of select="generate-id(.)" />
-                <xsl:text>(</xsl:text>
-                <xsl:value-of select="@channel" />
-                <xsl:text>,"</xsl:text>
-                <xsl:value-of select="@label" />
-                <xsl:text>",</xsl:text>
-                <xsl:value-of select="if(@logToSdCard) then @logToSdCard else 'false'" />
-                <xsl:text>)</xsl:text>
-                <xsl:if test="position() != last()">
-                    <xsl:text>,
-                    </xsl:text> 
-                </xsl:if>
-                <xsl:if test="position() = last()">
+                <xsl:for-each select="experiment/metadata/field">
+                <xsl:if test="not(contains(@postName, '_'))">
                     <xsl:text>
-                    </xsl:text> 
+                        <!--@Query("select p from Participant where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'_','__')" /><xsl:text> = :</xsl:text><xsl:value-of select="@postName" /><xsl:text>")-->
+                        public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /><!-- replace(@postName,'_','__') -->
+                    <xsl:text>(@Param("staleCopy") boolean staleCopy, @Param("</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>") String </xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>);
+                    </xsl:text>
                 </xsl:if>
-            </xsl:for-each>
-            <xsl:text>;
-                public final int channel; public final String label; public final boolean logToSdCard;
-                DataChannels(int channel, String label, boolean logToSdCard){
-                this.channel=channel;
-                this.label = label;
-                this.logToSdCard = logToSdCard;
-                }
+                </xsl:for-each>
+                <xsl:text>
+                    }
+                </xsl:text>
+            </xsl:result-document>
+            <xsl:result-document href="{$targetTestDirectory}/rest/MockParticipantColumnsRepository.java" method="text">
+                <xsl:text>package nl.mpi.tg.eg.frinex.rest;
 
-                }
-                }
-            </xsl:text>
-        </xsl:result-document>
-        <xsl:result-document href="{$targetClientDirectory}/util/ParticipantCsvExporter.java" method="text">
-            <xsl:text>package nl.mpi.tg.eg.frinex.util;
-                
-                import java.io.IOException;
-                import java.text.SimpleDateFormat;
-                import java.util.List;
-                import nl.mpi.tg.eg.frinex.model.Participant;
-                import nl.mpi.tg.eg.frinex.model.TagData;
-                import org.apache.commons.csv.CSVPrinter;
-                
-                public class ParticipantCsvExporter {
-            </xsl:text>
-            <!--            <xsl:if test="count(experiment/stimuli/stimulus) gt 200">
+                    import java.util.List;
+                    import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
+
+                    public abstract class MockParticipantColumnsRepository implements ParticipantRepository {
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                <xsl:if test="not(contains(@postName, '_'))">
+                    <xsl:text>
+                        @Override                    
+                        public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /> <!-- replace(@postName,'_','__') -->
+                    <xsl:text>(boolean staleCopy, String </xsl:text>
+                    <xsl:value-of select="@postName" /> <!-- replace(@postName,'_','__') -->
+                    <xsl:text>) {
+                        throw new UnsupportedOperationException("This is a test only class.");
+                        }
+                    </xsl:text>
+                </xsl:if>
+                </xsl:for-each>
+                <xsl:text>
+                    }
+                </xsl:text>
+            </xsl:result-document>
+            <xsl:result-document href="{$targetJavaDirectory}/model/{$outputPrefix}ReportTypes.java" method="text">
+                <xsl:text>package nl.mpi.tg.eg.frinex.model;
+
+                    public class </xsl:text>
+                <xsl:value-of select="$outputPrefix" />
+                <xsl:text>ReportTypes {
+            
+                    enum CsvReportTypes {
+                </xsl:text>
+                <xsl:for-each select="experiment//sendStimuliReport">
+                    <xsl:value-of select="generate-id(.)" />
+                    <xsl:text>("</xsl:text>
+                    <xsl:value-of select="@type" />
+                    <xsl:text>","</xsl:text>
+                    <xsl:value-of select="@headerKey" />
+                    <xsl:text>","</xsl:text>
+                    <xsl:value-of select="@separator" />
+                    <xsl:text>")
+                    </xsl:text>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="position() = last()">
+                        <xsl:text>;
+                        </xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:if test="experiment//sendStimuliReport">
+                    <xsl:text>
+                        public final String type;
+                        public final String separator;
+                        public final String headerKey;
+
+                        private CsvReportTypes(final String type, final String separator, final String headerKey) {
+                        this.type = type;
+                        this.separator = separator;
+                        this.headerKey = headerKey;
+                        }
+                        static public CsvReportTypes getCsvReportType(final String eventTag) {
+                        for (CsvReportTypes crt : values()) {
+                        if (eventTag.equals(crt.type)) {
+                        return crt;
+                        }
+                        }
+                        return null;
+                        }
+
+                        public boolean isHeader(final String eventTag, final String tagValue1) {
+                        return eventTag.equals(type) &amp;&amp; tagValue1.equals(headerKey);
+                        }
+
+                        public boolean isRow(final String eventTag, final String tagValue1) {
+                        return eventTag.equals(type) &amp;&amp; !tagValue1.equals(headerKey);
+                        }
+                    </xsl:text>
+                </xsl:if>
+                <xsl:text>
+                    }
+                    enum ScreenReports {
+                </xsl:text>
+                <xsl:for-each select="experiment/presenter">
+                    <xsl:value-of select="@self" />
+                    <xsl:text>,
+                    </xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    }
+                    enum LoadStimulusReports {
+                </xsl:text>
+                <xsl:for-each select="experiment/presenter[loadStimulus]">
+                    <xsl:value-of select="@self" />
+                    <xsl:text>,
+                    </xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    }
+                    public enum DataChannels {
+                </xsl:text>
+                <!--Convert the administration datachannels segment of the configuration file into a data structure consumable by the administration web interface.-->
+                <xsl:for-each select="experiment/administration/dataChannel">
+                    <xsl:value-of select="generate-id(.)" />
+                    <xsl:text>(</xsl:text>
+                    <xsl:value-of select="@channel" />
+                    <xsl:text>,"</xsl:text>
+                    <xsl:value-of select="@label" />
+                    <xsl:text>",</xsl:text>
+                    <xsl:value-of select="if(@logToSdCard) then @logToSdCard else 'false'" />
+                    <xsl:text>)</xsl:text>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,
+                        </xsl:text>
+                    </xsl:if>
+                    <xsl:if test="position() = last()">
+                        <xsl:text></xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>;
+                    public final int channel; public final String label; public final boolean logToSdCard;
+                    DataChannels(int channel, String label, boolean logToSdCard){
+                    this.channel=channel;
+                    this.label = label;
+                    this.logToSdCard = logToSdCard;
+                    }
+
+                    }
+                    }
+                </xsl:text>
+            </xsl:result-document>
+            <xsl:result-document href="{$targetJavaDirectory}/util/{$outputPrefix}ParticipantCsvExporter.java" method="text">
+                <xsl:text>package nl.mpi.tg.eg.frinex.util;
+            
+                    import java.io.IOException;
+                    import java.text.SimpleDateFormat;
+                    import java.util.List;
+                    import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
+                    import nl.mpi.tg.eg.frinex.model.TagData;
+                    import org.apache.commons.csv.CSVPrinter;
+            
+                    public class </xsl:text>
+                <xsl:value-of select="$outputPrefix" />
+                <xsl:text>ParticipantCsvExporter {
+                </xsl:text>
+                <!--            <xsl:if test="count(experiment/stimuli/stimulus) gt 200">
+                    <xsl:text>
+                        public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
+                        printer.printRecord("Too many stimuli items (</xsl:text>
+                    <xsl:value-of select="count(experiment/stimuli/stimulus)"/>
+                    <xsl:text>)for this CSV export type to be produced. Please refer to the other CSV files provided.");
+                        }
+                        public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) {
+                        }</xsl:text>
+                </xsl:if>-->
+                <!--<xsl:if test="count(experiment/stimuli/stimulus) le 200">-->
+                <!--<xsl:value-of select="count(experiment/stimuli/stimulus)"/>-->
                 <xsl:text>
                     public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
-                    printer.printRecord("Too many stimuli items (</xsl:text>
-                <xsl:value-of select="count(experiment/stimuli/stimulus)"/>
-                <xsl:text>)for this CSV export type to be produced. Please refer to the other CSV files provided.");
+                    printer.printRecord("UserId"</xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>,"</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
+                    <xsl:text>"</xsl:text>
+                </xsl:for-each>
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
+                    <xsl:text>,"</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>","</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>_datetime",</xsl:text>
+                    <xsl:text>"</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>_ms"</xsl:text>
+                    <!--                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>-->
+                </xsl:for-each>
+                <xsl:text>);
                     }
-                    public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) {
-                    }</xsl:text>
-            </xsl:if>-->
-            <!--<xsl:if test="count(experiment/stimuli/stimulus) le 200">-->
-            <!--<xsl:value-of select="count(experiment/stimuli/stimulus)"/>-->
-            <xsl:text>
-                public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
-                printer.printRecord("UserId"</xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>,"</xsl:text>
-                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>"</xsl:text>           
-            </xsl:for-each>
-            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
-                <xsl:text>,"</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text>","</xsl:text>  
-                <xsl:value-of select="." /> 
-                <xsl:text>_datetime",</xsl:text>
-                <xsl:text>"</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text>_ms"</xsl:text>
-                <!--                    <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text>
-                </xsl:if>-->
-            </xsl:for-each>
-            <xsl:text>);
-                }
-                public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) throws IOException, CsvExportException {
-                SimpleDateFormat format = new SimpleDateFormat ("yyyy/MM/dd hh:mm:ss");
-            </xsl:text>
-            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
-                <xsl:text>String stimulus_</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text> = "";&#xa;</xsl:text>
-                <xsl:text>String datetime_</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text> = "";&#xa;</xsl:text>
-                <xsl:text>String ms_</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text> = "";&#xa;</xsl:text>
-            </xsl:for-each>
-            <xsl:text>
-                TagData startData=null;
-                for (TagData currentData : participantTagData) {
-                if ("NextStimulus".equals(currentData.getEventTag())) {
-                <!--                if(startData!=null){
-                ms_</xsl:text>
-            <xsl:value-of select="@code" />
-            <xsl:text> += "no end event ";
-                throw new CsvExportException("no end tag for for: " + startData.getEventTag() + " " + startData.getTagValue() + " " + startData.getUserId() + " " + startData.getTagDate());
-                }-->
-                startData=currentData;
-                switch(startData.getTagValue()){
-            </xsl:text>
-            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
-                <xsl:text>case "</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text>":
-                    datetime_</xsl:text>
-                <xsl:value-of select="." />
-                <xsl:text> += format.format(startData.getTagDate()) + " ";
-                    break;
+                    public void appendAggregateCsvRow(CSVPrinter printer, <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant participant, List&lt;TagData&gt; participantTagData) throws IOException, CsvExportException {
+                    SimpleDateFormat format = new SimpleDateFormat ("yyyy/MM/dd hh:mm:ss");
                 </xsl:text>
-            </xsl:for-each>    
-            <xsl:text>
-                default:
-                throw new CsvExportException("no case for: " + startData.getEventTag() + " " + startData.getTagValue() + " " + startData.getUserId());
-                }}
-                if ("RatingButton".equals(currentData.getEventTag()) || "volgende [ spatiebalk ]".equals(currentData.getTagValue())) {
-                TagData endData=currentData;
-                String msString = (startData==null)?"no start event ":Integer.toString(endData.getEventMs()-startData.getEventMs());   
-                if(startData!=null) //throw new CsvExportException("no start for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId() + " " + endData.getTagDate());
-                switch(startData.getTagValue()){
-            </xsl:text>
-            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
-                <xsl:text>case "</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text>":
-                    stimulus_</xsl:text>
-                <xsl:value-of select="." />
-                <xsl:text> += endData.getTagValue() + " ";
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
+                    <xsl:text>String stimulus_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text> = "";&#xa;</xsl:text>
+                    <xsl:text>String datetime_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text> = "";&#xa;</xsl:text>
+                    <xsl:text>String ms_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text> = "";&#xa;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    TagData startData=null;
+                    for (TagData currentData : participantTagData) {
+                    if ("NextStimulus".equals(currentData.getEventTag())) {
+                    <!--                if(startData!=null){
                     ms_</xsl:text>
-                <xsl:value-of select="." />
-                <xsl:text> += msString + " ";
-                    break;
+                <xsl:value-of select="@code" />
+                <xsl:text> += "no end event ";
+                    throw new CsvExportException("no end tag for for: " + startData.getEventTag() + " " + startData.getTagValue() + " " + startData.getUserId() + " " + startData.getTagDate());
+                    }-->
+                    startData=currentData;
+                    switch(startData.getTagValue()){
                 </xsl:text>
-            </xsl:for-each>    
-            <xsl:text>
-                default:
-                throw new CsvExportException("no case for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId());
-                }
-                startData=null;
-                }                
-                }
-                printer.printRecord(participant.getUserId()</xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>,&#xa;participant.get</xsl:text>
-                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>()</xsl:text>
-            </xsl:for-each>
-            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
-                <xsl:text>,&#xa;stimulus_</xsl:text>  
-                <xsl:value-of select="." />                
-                <xsl:text>, datetime_</xsl:text>                
-                <xsl:value-of select="." />                
-                <xsl:text>, ms_</xsl:text>                
-                <xsl:value-of select="." />                
-                <!--                    <xsl:if test="position() != last()">
-                    <xsl:text>,&#xa;</xsl:text>
-                </xsl:if>-->
-            </xsl:for-each>
-            <xsl:text>);
-                }
-            </xsl:text>
-            <!--</xsl:if>-->
-            <xsl:text>
-                public void appendCsvHeader(CSVPrinter printer) throws IOException {
-                printer.printRecord("UserId",</xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>"</xsl:text>
-                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>"</xsl:text>
-                <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:text>);
-                }
-                public void appendCsvRow(CSVPrinter printer, Participant participant) throws IOException {
-                printer.printRecord(participant.getUserId(),</xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>participant.get</xsl:text>
-                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>()</xsl:text>
-                <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:text>);
-                }
-                }
-            </xsl:text>
-        </xsl:result-document>
-        <xsl:result-document href="{$targetTemplateDirectory}/participanttable.html" method="text">
-            <xsl:text>&lt;!DOCTYPE html&gt;
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
+                    <xsl:text>case "</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>":
+                        datetime_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text> += format.format(startData.getTagDate()) + " ";
+                        break;
+                    </xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    default:
+                    throw new CsvExportException("no case for: " + startData.getEventTag() + " " + startData.getTagValue() + " " + startData.getUserId());
+                    }}
+                    if ("RatingButton".equals(currentData.getEventTag()) || "volgende [ spatiebalk ]".equals(currentData.getTagValue())) {
+                    TagData endData=currentData;
+                    String msString = (startData==null)?"no start event ":Integer.toString(endData.getEventMs()-startData.getEventMs());   
+                    if(startData!=null) //throw new CsvExportException("no start for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId() + " " + endData.getTagDate());
+                    switch(startData.getTagValue()){
+                </xsl:text>
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
+                    <xsl:text>case "</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>":
+                        stimulus_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text> += endData.getTagValue() + " ";
+                        ms_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text> += msString + " ";
+                        break;
+                    </xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    default:
+                    throw new CsvExportException("no case for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId());
+                    }
+                    startData=null;
+                    }                
+                    }
+                    printer.printRecord(participant.getUserId()</xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>,&#xa;participant.get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
+                    <xsl:text>()</xsl:text>
+                </xsl:for-each>
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
+                    <xsl:text>,&#xa;stimulus_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>, datetime_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:text>, ms_</xsl:text>
+                    <xsl:value-of select="." />
+                    <!--                    <xsl:if test="position() != last()">
+                        <xsl:text>,&#xa;</xsl:text>
+                    </xsl:if>-->
+                </xsl:for-each>
+                <xsl:text>);
+                    }
+                </xsl:text>
+                <!--</xsl:if>-->
+                <xsl:text>
+                    public void appendCsvHeader(CSVPrinter printer) throws IOException {
+                    printer.printRecord("UserId",</xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>"</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
+                    <xsl:text>"</xsl:text>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>);
+                    }
+                    public void appendCsvRow(CSVPrinter printer, <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant participant) throws IOException {
+                    printer.printRecord(participant.getUserId(),</xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>participant.get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
+                    <xsl:text>()</xsl:text>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>);
+                    }
+                    }
+                </xsl:text>
+            </xsl:result-document>
+            <xsl:result-document href="{$targetTemplateDirectory}/{$outputPrefix}participanttable.html" method="text">
+                <xsl:text>
+                &lt;!DOCTYPE html&gt;
                 &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"&gt;
                     &lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
     &lt;body&gt;
@@ -431,18 +499,18 @@
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userId'"&gt;Participant ID&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=acceptLang'"&gt;Browser Language&lt;/a&gt;&lt;/th&gt;
-                <!--&lt;th&gt;&lt;a th:attr="href='?sort=remoteAddr'"&gt;remoteAddr&lt;/a&gt;&lt;/th&gt;-->
-            </xsl:text>
-            <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>&lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=</xsl:text>
-                <xsl:value-of select="replace(@postName,'_','\\_')" />
-                <xsl:text>'"&gt;</xsl:text>
-                <xsl:value-of select="@registrationField" />
-                <xsl:text>&lt;/a&gt;&lt;/th&gt;
+                    <!--&lt;th&gt;&lt;a th:attr="href='?sort=remoteAddr'"&gt;remoteAddr&lt;/a&gt;&lt;/th&gt;-->
                 </xsl:text>
-            </xsl:for-each>
-            <xsl:text>    
+                <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>&lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=</xsl:text>
+                    <xsl:value-of select="replace(@postName,'_','\\_')" />
+                    <xsl:text>'"&gt;</xsl:text>
+                    <xsl:value-of select="@registrationField" />
+                    <xsl:text>&lt;/a&gt;&lt;/th&gt;
+                    </xsl:text>
+                </xsl:for-each>
+                <xsl:text>
                 &lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=submitDate'"&gt;Date&lt;/a&gt;&lt;/th&gt;
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
@@ -451,15 +519,15 @@
                     &lt;td th:if="${!simpleMode}" th:text="${participant.userId}"&gt;userId&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.userAgent}"&gt;userAgent&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.acceptLang}"&gt;acceptLang&lt;/td&gt;
-                <!--&lt;td th:text="${participant.remoteAddr}"&gt;remoteAddr&lt;/td&gt;-->
-            </xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>
+                    <!--&lt;td th:text="${participant.remoteAddr}"&gt;remoteAddr&lt;/td&gt;-->
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>
                     &lt;td th:text="${participant.</xsl:text>
-                <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
-                <xsl:text>}"&gt;&lt;/td&gt;</xsl:text>
-            </xsl:for-each>
-            <xsl:text>    
+                    <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
+                    <xsl:text>}"&gt;&lt;/td&gt;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>    
                 &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr th:fragment="participantinputfields(buttonLabel)"&gt;
@@ -468,59 +536,61 @@
                 &lt;td th:if="${!simpleMode}"&gt;&lt;input id="userIdInput" th:value="${insertUserData.userId}" /&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
-            </xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
-                <xsl:value-of select="@postName" />
-                <xsl:text>Input" th:value="${insertUserData.</xsl:text>
-                <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
-                <xsl:text>}" /&gt;&lt;/td&gt;</xsl:text>
-            </xsl:for-each>
-            <xsl:text>    
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>Input" th:value="${insertUserData.</xsl:text>
+                    <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
+                    <xsl:text>}" /&gt;&lt;/td&gt;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>    
                 &lt;td&gt;
                 &lt;input th:if="${simpleMode}" id="userIdInput" th:value="${insertUserData.userId}" type="hidden" /&gt;
                 &lt;button id="addParticipantButton" class="tableButton" th:text="${buttonLabel}" &gt;Add Record&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
                 &lt;/table&gt;
             &lt;/body&gt;
         &lt;/html&gt;
-            </xsl:text>
-            <xsl:text>    
+                </xsl:text>
+                <xsl:text>    
                     &lt;script th:fragment="addparticipantscript"&gt;
-                $(document).ready(function () {
-                $("#addParticipantButton").on('click', function () {
-                $.ajax({
-                url: 'metadata',
-                type: "POST",
-                dataType : "json",
-                contentType: "application/json; charset=utf-8",
-                data: "[{\"userId\": \"" + $("#userIdInput").val() + "\",</xsl:text>
-            <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>\"</xsl:text>
-                <xsl:value-of select="@postName" />
-                <xsl:text>\": \"" + $("#</xsl:text>
-                <xsl:value-of select="@postName" />
-                <xsl:text>Input").val() + "\"</xsl:text>
-                <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:text>}]",
-                success: function (result) {
-                location.reload();
-                },
-                error: function (xhr, resp, text) {
-                console.log(xhr, resp, text);
-                }
-                })
-                });
-                });
+                    $(document).ready(function () {
+                    $("#addParticipantButton").on('click', function () {
+                    $.ajax({
+                    url: 'metadata',
+                    type: "POST",
+                    dataType : "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: "[{\"userId\": \"" + $("#userIdInput").val() + "\",</xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>\"</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>\": \"" + $("#</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>Input").val() + "\"</xsl:text>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>}]",
+                    success: function (result) {
+                    location.reload();
+                    },
+                    error: function (xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                    }
+                    })
+                    });
+                    });
 
                     &lt;/script&gt;
-            </xsl:text>
-        </xsl:result-document>
-        <xsl:variable name="filename" select="(tokenize(base-uri(), '/'))[last()]"/>
-        <xsl:variable name="classname" select="if ($separateClassNames ne 'true') then 'Participant' else substring-before($filename, '.xml')"/>
-        <xsl:result-document href="{$targetClientDirectory}/rest/{$classname}ValidationController.java" method="text">
+                </xsl:text>
+            </xsl:result-document>
+        </xsl:if>
+        <xsl:variable name="filename" select="(tokenize(base-uri(), '/'))[last()]" />
+        <xsl:variable name="classname" select="if ($separateClassNames ne 'true') then concat($outputPrefix, 'Participant') else substring-before($filename, '.xml')" />
+        <xsl:variable name="targetOutputDirectory" select="if ($usingMockXml ne 'true') then $targetJavaDirectory else $targetTestDirectory" />
+        <xsl:result-document href="{$targetOutputDirectory}/rest/{$classname}ValidationController.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.rest;
 
                 import java.io.IOException;
@@ -529,7 +599,7 @@
                 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
                 import java.util.List;
                 import javax.servlet.http.HttpServletRequest;
-                import nl.mpi.tg.eg.frinex.model.Participant;
+                import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
                 import nl.mpi.tg.eg.frinex.model.TagData;
                 import org.springframework.beans.factory.annotation.Autowired;
                 import org.springframework.http.HttpStatus;
@@ -552,14 +622,14 @@
                 <xsl:text>
                     public </xsl:text>
                 <xsl:value-of select="$classname" />
-                <xsl:text>ValidationController(ScreenDataRepository screenDataRepository, TimeStampRepository timeStampRepository, ParticipantRepository participantRepository, TagRepository tagRepository, StimulusResponseRepository stimulusResponseRepository) {
+                <xsl:text>ValidationController(ScreenDataRepository screenDataRepository, TimeStampRepository timeStampRepository, <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->ParticipantRepository participantRepository, TagRepository tagRepository, StimulusResponseRepository stimulusResponseRepository) {
                     this.screenDataRepository = screenDataRepository;
                     this.timeStampRepository = timeStampRepository;
                     this.participantRepository = participantRepository;
                     this.tagRepository = tagRepository;
                     this.stimulusResponseRepository = stimulusResponseRepository;
                     }
-                </xsl:text>       
+                </xsl:text>
             </xsl:if>
             <xsl:text>
                 @Autowired
@@ -567,7 +637,7 @@
                 @Autowired
                 TimeStampRepository timeStampRepository;
                 @Autowired
-                ParticipantRepository participantRepository;
+                <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->ParticipantRepository participantRepository;
                 @Autowired
                 TagRepository tagRepository;
                 @Autowired
@@ -617,7 +687,7 @@
                 tagRepository.save(new TagData(requestingUserId, "validate", "userAgent", userAgent, 0, tagDate));
                 tagRepository.save(new TagData(requestingUserId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
                 if (datalog!=null &amp;&amp; !datalog.isEmpty()) {tagRepository.save(new TagData(requestingUserId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));}
-                final List&lt;Participant&gt; foundRecords = new ArrayList();
+                final List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; foundRecords = new ArrayList();
                 boolean foundError = false;
             </xsl:text>
             <xsl:for-each select="distinct-values((experiment/validationService/validation/@errorField, experiment/validationService/validation/*/@errorField))">
@@ -628,14 +698,14 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>final boolean allowValidationOnMissing = </xsl:text>
-            <xsl:value-of select="if (experiment/validationService/validation/@allowValidationOnMissing eq 'true') then 'true' else 'false'"/>
+            <xsl:value-of select="if (experiment/validationService/validation/@allowValidationOnMissing eq 'true') then 'true' else 'false'" />
             <xsl:text>;
-                for(Participant participantRecord : participantRepository.findByUserId(requestingUserId)) {
+                for(<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant participantRecord : participantRepository.findByUserId(requestingUserId)) {
             </xsl:text>
             <xsl:for-each select="experiment/validationService/validation/recordMatch">
                 <xsl:if test="@postField">
                     <xsl:text>if (!</xsl:text>
-                    <xsl:value-of select="@postField"/>
+                    <xsl:value-of select="@postField" />
                     <xsl:text>.equals(participantRecord.get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@adminField,1,1)), substring(@adminField, 2))" />
                     <xsl:text>())) {
@@ -650,7 +720,7 @@
                         }
                         } else </xsl:text>
                 </xsl:if>
-            </xsl:for-each>  
+            </xsl:for-each>
             <xsl:text> {
                 foundRecords.add(participantRecord);
                 foundError = false;
@@ -660,7 +730,7 @@
                 <xsl:value-of select="@errorField" />
                 <!--only one initial error message should be shown, so this clears any previous messages-->
                 <xsl:text> = "";</xsl:text>
-            </xsl:for-each>  
+            </xsl:for-each>
             <xsl:text>
                 }
                 }
@@ -680,7 +750,7 @@
             </xsl:for-each>
             <xsl:text>
                 }
-            </xsl:text>              
+            </xsl:text>
             <xsl:text>
                 while (foundRecords.size() > 1) {
                 if (foundRecords.get(0).getSubmitDate().before(foundRecords.get(1).getSubmitDate())) {
@@ -788,7 +858,7 @@
                 <xsl:value-of select="." />
                 <xsl:text>, 0, tagDate));
                     }
-                </xsl:text>    
+                </xsl:text>
             </xsl:for-each>
             <xsl:text>
                 if (','==(stringBuilder.charAt(stringBuilder.length() - 2))) {
@@ -827,7 +897,7 @@
                 <xsl:value-of select="." />
                 <xsl:text>);
                     stringBuilder.append("\",\n");
-                </xsl:text>    
+                </xsl:text>
             </xsl:for-each>
             <xsl:text>
                 }

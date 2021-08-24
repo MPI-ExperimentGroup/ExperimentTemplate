@@ -236,7 +236,7 @@ public class preventValidationOnMissingValidationControllerTest {
             public long count() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-        }, new ParticipantRepository() {
+        }, new MockParticipantColumnsRepository() {
             @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
