@@ -1,5 +1,11 @@
 #Changes in Frinex 1.4
 
+Added REST interface methods that allow seaching for values in each custom field of the participant table (seach custom metadata fields).
+
+Added extra search methods for tag pair data based on eventTag or tagValue1, which will for example make it possible to list all completion codes.
+
+Added add an evaluate method addTime() for adding together two times, for example adding 30 minutes to 15:00.
+
 Reenabled the use of pause and resume on the web audio recorder due to popular request although it can cause timing issues when used.
 
 Modified startAudioRecorderWeb and startAudioRecorderApp so that the recording label will not be shown when it is set to "hidden".
