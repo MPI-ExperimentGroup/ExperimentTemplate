@@ -170,18 +170,21 @@
                     public interface <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->ParticipantColumnsRepository {
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
-                <xsl:if test="not(contains(@postName, '_'))">
+                <!--xsl:if test="not(contains(@postName, '_'))"-->
                     <xsl:text>
                         <!--@Query("select p from Participant where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'_','__')" /><xsl:text> = :</xsl:text><xsl:value-of select="@postName" /><xsl:text>")-->
                         public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /><!-- replace(@postName,'_','__') -->
+                        <xsl:for-each select="tokenize(@postName,'_')">
+                            <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                        </xsl:for-each>
+                    <!--xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /--><!-- replace(@postName,'_','__') -->
                     <xsl:text>(@Param("staleCopy") boolean staleCopy, @Param("</xsl:text>
                     <xsl:value-of select="@postName" />
                     <xsl:text>") String </xsl:text>
                     <xsl:value-of select="@postName" />
                     <xsl:text>);
                     </xsl:text>
-                </xsl:if>
+                <!--/xsl:if-->
                 </xsl:for-each>
                 <xsl:text>
                     }
@@ -196,18 +199,21 @@
                     public abstract class MockParticipantColumnsRepository implements ParticipantRepository {
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
-                <xsl:if test="not(contains(@postName, '_'))">
+                <!--xsl:if test="not(contains(@postName, '_'))"-->
                     <xsl:text>
                         @Override                    
                         public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /> <!-- replace(@postName,'_','__') -->
+                        <xsl:for-each select="tokenize(@postName,'_')">
+                            <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                        </xsl:for-each>
+                    <!--xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /--> <!-- replace(@postName,'_','__') -->
                     <xsl:text>(boolean staleCopy, String </xsl:text>
                     <xsl:value-of select="@postName" /> <!-- replace(@postName,'_','__') -->
                     <xsl:text>) {
                         throw new UnsupportedOperationException("This is a test only class.");
                         }
                     </xsl:text>
-                </xsl:if>
+                <!--/xsl:if-->
                 </xsl:for-each>
                 <xsl:text>
                     }
