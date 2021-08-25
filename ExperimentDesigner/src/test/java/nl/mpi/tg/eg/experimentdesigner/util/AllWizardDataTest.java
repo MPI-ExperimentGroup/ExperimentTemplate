@@ -95,7 +95,7 @@ public class AllWizardDataTest {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         WizardData wizardData = (WizardData) jaxbUnmarshaller.unmarshal(serialisedFile);
         final Experiment experiment = wizardController.getExperiment(wizardData);
-        experiment.getPublishEvents().add(new PublishEvents(null, new Date(), new Date(), PublishEvents.PublishState.validate, true, false, false, false, null, null));
+        experiment.getPublishEvents().add(new PublishEvents(null, new Date(), new Date(), PublishEvents.PublishState.validate, true, false, false, false, false, null, null));
         testGetWizardData(experiment);
     }
 
