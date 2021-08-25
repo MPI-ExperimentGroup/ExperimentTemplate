@@ -172,7 +172,8 @@
                 <xsl:for-each select="experiment/metadata/field">
                 <!--xsl:if test="not(contains(@postName, '_'))"-->
                     <xsl:text>
-                        <!--@Query("select p from Participant where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'_','__')" /><xsl:text> = :</xsl:text><xsl:value-of select="@postName" /><xsl:text>")-->
+                        <!-- the use of the field name from the XML into the query here is not without risk, so it is important that any characters not matching 0-9a-zA-Z_ are removed from the postName -->
+                        @Query("select p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> = :</xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text>")
                         public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
