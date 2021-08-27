@@ -176,6 +176,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"screenName\": " + jsonEscape(screenName) + ",\n"
                 + "\"dataChannel\": " + dataChannel + ",\n"
                 + "\"responseGroup\": " + jsonEscape(responseGroup) + ",\n"
+                + "\"scoreGroup\": " + jsonEscape(userData.getCurrentScoreGroup()) + ",\n"
                 + "\"stimulusId\": " + ((stimulus != null) ? jsonEscape(stimulus.getUniqueId()) : "\"\"") + ",\n"
                 + "\"response\": " + jsonEscape(response) + ",\n"
                 + "\"isCorrect\": " + ((isCorrect != null) ? isCorrect.toString() : "null") + ",\n"

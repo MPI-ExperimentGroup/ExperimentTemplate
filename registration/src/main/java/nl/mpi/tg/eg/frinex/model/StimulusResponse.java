@@ -44,6 +44,7 @@ public class StimulusResponse {
     private String screenName;
     private Integer dataChannel;
     private String responseGroup;
+    private String scoreGroup;
     private String stimulusId;
     @Column(length = 1024)
     private String response;
@@ -67,12 +68,13 @@ public class StimulusResponse {
     public StimulusResponse() {
     }
 
-    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore) {
+    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore) {
         this.tagDate = tagDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
         this.dataChannel = dataChannel;
         this.responseGroup = responseGroup;
+        this.scoreGroup = scoreGroup;
         this.stimulusId = stimulusId;
         this.response = response;
         this.isCorrect = isCorrect;
@@ -118,6 +120,10 @@ public class StimulusResponse {
 
     public String getResponseGroup() {
         return responseGroup;
+    }
+
+    public String getScoreGroup() {
+        return scoreGroup;
     }
 
     public String getStimulusId() {
@@ -200,6 +206,7 @@ public class StimulusResponse {
         hash = 47 * hash + Objects.hashCode(this.screenName);
         hash = 47 * hash + Objects.hashCode(this.dataChannel);
         hash = 47 * hash + Objects.hashCode(this.responseGroup);
+        hash = 47 * hash + Objects.hashCode(this.scoreGroup);
         hash = 47 * hash + Objects.hashCode(this.stimulusId);
         hash = 47 * hash + Objects.hashCode(this.response);
         hash = 47 * hash + Objects.hashCode(this.isCorrect);
@@ -278,6 +285,9 @@ public class StimulusResponse {
             return false;
         }
         if (!Objects.equals(this.responseGroup, other.responseGroup)) {
+            return false;
+        }
+        if (!Objects.equals(this.scoreGroup, other.scoreGroup)) {
             return false;
         }
         if (!Objects.equals(this.stimulusId, other.stimulusId)) {

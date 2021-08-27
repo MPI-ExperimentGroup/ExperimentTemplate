@@ -49,6 +49,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=screenName' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ScreenName</a></th>
                     <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=dataChannel' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">DataChannel</a></th>
                     <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=responseGroup' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ResponseGroup</a></th>
+                    <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=scoreGroup' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">ScoreGroup</a></th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
                     <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=stimulusId' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">StimulusID</a></th>
@@ -104,6 +105,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.screenName}">screenName</td>
                     <td th:text="${prod.dataChannel}">dataChannel</td>
                     <td th:text="${prod.responseGroup}">responseGroup</td>
+                    <td th:text="${prod.scoreGroup}">scoreGroup</td>
                     <td th:text="${prod.stimulusId}">stimulusId</td>
                     <td th:text="${prod.response}">response</td>
                     <td th:text="${prod.isCorrect}">isCorrect</td>

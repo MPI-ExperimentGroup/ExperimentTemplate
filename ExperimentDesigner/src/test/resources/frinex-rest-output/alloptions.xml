@@ -605,7 +605,7 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <clearCurrentScore dataChannel="2"/>
+        <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="stimulus_all_attributes" type="stimulus" self="stimulus_all_attributesScreen" title="stimulus_all_attributes">
@@ -875,7 +875,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <clearCurrentScore dataChannel="2"/>
+                <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
@@ -1304,7 +1304,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <clearCurrentScore dataChannel="2"/>
+                <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -1585,7 +1585,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <clearCurrentScore dataChannel="2"/>
+                <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -1866,7 +1866,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <clearCurrentScore dataChannel="2"/>
+                <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -2198,7 +2198,7 @@
             </actionTokenButton>
         </showHtmlPopup>
         <scoreLabel styleName="styleName"/>
-        <clearCurrentScore dataChannel="2"/>
+        <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
         <scoreIncrement dataChannel="2" scoreValue="8"/>
         <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" gamesPlayed="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
@@ -3411,7 +3411,7 @@
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
         </showHtmlPopup>
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="stimulus_minimal_attributes" type="stimulus" self="stimulus_minimal_attributesScreen" title="stimulus_minimal_attributes">
@@ -3681,7 +3681,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <clearCurrentScore/>
+                <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
@@ -4098,7 +4098,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <clearCurrentScore/>
+                <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -4373,7 +4373,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <clearCurrentScore/>
+                <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -4648,7 +4648,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <clearCurrentScore/>
+                <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -4953,7 +4953,7 @@
             </actionTokenButton>
         </showHtmlPopup>
         <scoreLabel/>
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <scoreIncrement scoreValue="8"/>
         <bestScoreAboveThreshold>
             <aboveThreshold>

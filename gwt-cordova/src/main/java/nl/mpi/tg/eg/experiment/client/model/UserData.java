@@ -35,6 +35,7 @@ public class UserData {
     private int gamesPlayed = 0;
     private int totalScore = 0;
     private int totalPotentialScore = 0;
+    private String currentScoreGroup = "";
     private int currentScore = 0;
     private int correctStreak = 0;
     private int errorStreak = 0;
@@ -138,11 +139,20 @@ public class UserData {
         this.errorStreak = errorStreak;
     }
 
-    public void clearCurrentScore() {
+    public void clearCurrentScore(final String scoreGroup) {
         this.currentScore = 0;
         this.potentialScore = 0;
         this.correctStreak = 0;
         this.errorStreak = 0;
+        this.currentScoreGroup = scoreGroup;
+    }
+
+    public String getCurrentScoreGroup() {
+        return currentScoreGroup;
+    }
+    
+    public String setCurrentScoreGroup(final String scoreGroup) {
+        return currentScoreGroup = scoreGroup;
     }
 
     public void clearCurrentResponse() {

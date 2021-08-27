@@ -74,6 +74,7 @@ public class ValidationController {
             stringBuilder.append("\"gamesPlayed\": \"").append(stimulusResponse.getGamesPlayed()).append("\",");
             stringBuilder.append("\"totalScore\": \"").append(stimulusResponse.getTotalScore()).append("\",");
             stringBuilder.append("\"totalPotentialScore\": \"").append(stimulusResponse.getTotalPotentialScore()).append("\",");
+            stringBuilder.append("\"currentScoreGroup\": \"").append(stimulusResponse.getScoreGroup()).append("\",");
             stringBuilder.append("\"currentScore\": \"").append(stimulusResponse.getCurrentScore()).append("\",");
             stringBuilder.append("\"correctStreak\": \"").append(stimulusResponse.getCorrectStreak()).append("\",");
             stringBuilder.append("\"errorStreak\": \"").append(stimulusResponse.getErrorStreak()).append("\",");

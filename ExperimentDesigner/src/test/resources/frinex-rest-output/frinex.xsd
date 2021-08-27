@@ -16916,7 +16916,15 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="clearCurrentScoreType">
+<xs:annotation>
+<xs:documentation>Clears the current score and sets the current score group string based on the evaluateTokens. The score group is a marker shown in the admin system to keep track of the records and does not affect the score collection process.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="dataChannel" type="xs:string">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="evaluateTokens" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
 </xs:annotation>

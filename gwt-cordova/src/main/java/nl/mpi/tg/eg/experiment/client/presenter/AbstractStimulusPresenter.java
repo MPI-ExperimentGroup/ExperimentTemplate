@@ -822,11 +822,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void clearCurrentScore(final Stimulus currentStimulus, final int dataChannel) {
+    protected void clearCurrentScore(final Stimulus currentStimulus, final String scoreGroupTokens, final int dataChannel) {
         if (userResults.getUserData().getPotentialScore() > 0) {
             userResults.getUserData().addGamePlayed();
         }
-        userResults.getUserData().clearCurrentScore();
+        final String formattedScoreGroup = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(scoreGroupTokens);
+        userResults.getUserData().clearCurrentScore(formattedScoreGroup);
         localStorage.storeUserScore(userResults);
         submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, duration.elapsedMillis());
     }

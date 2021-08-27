@@ -340,13 +340,14 @@ public class CsvController {
                 stringBuilder,
                 CSVFormat.DEFAULT
         );
-        printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "StimulusId", "Response", "IsCorrect", "UserId", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
+        printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "ScoreGroup", "StimulusId", "Response", "IsCorrect", "UserId", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
         for (StimulusResponse stimulusResponse : stimulusResponseRepository.findAllDistinctRecords()) {
             printer.printRecord(stimulusResponse.getTagDate(),
                     stimulusResponse.getExperimentName(),
                     stimulusResponse.getScreenName(),
                     stimulusResponse.getDataChannel(),
                     stimulusResponse.getResponseGroup(),
+                    stimulusResponse.getScoreGroup(),
                     stimulusResponse.getStimulusId(),
                     stimulusResponse.getResponse(),
                     stimulusResponse.getIsCorrect(),

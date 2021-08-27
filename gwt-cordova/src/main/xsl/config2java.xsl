@@ -1367,6 +1367,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                                                                                                                or ancestor::*[local-name() = 'addRecorderDtmfTrigger']
                                                                                                                or ancestor::*[local-name() = 'groupNetwork']
                                                                                                                ) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;, ') else ''" />
         <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(@dataChannel) then @dataChannel else '0' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat(', ', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />

@@ -170,6 +170,7 @@ public class RegistrationService {
                                 userResults.getUserData().setGamesPlayed(Integer.parseInt(scoreDataJson.get("gamesPlayed").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
                                 userResults.getUserData().setTotalScore(Integer.parseInt(scoreDataJson.get("totalScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
                                 userResults.getUserData().setTotalPotentialScore(Integer.parseInt(scoreDataJson.get("totalPotentialScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
+                                userResults.getUserData().setCurrentScoreGroup(scoreDataJson.get("scoreGroup").toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
                                 userResults.getUserData().setCurrentScore(Integer.parseInt(scoreDataJson.get("currentScore").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
                                 userResults.getUserData().setCorrectStreak(Integer.parseInt(scoreDataJson.get("correctStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
                                 userResults.getUserData().setErrorStreak(Integer.parseInt(scoreDataJson.get("errorStreak").toString().replaceFirst("^\"", "").replaceFirst("\"$", "")));
