@@ -144,7 +144,7 @@
         <htmlText featureText="R0_4&lt;br/&gt;R0_8&lt;br/&gt;"/>
     </presenter>
     <presenter menuLabel="R0-4" next="R0_1_4" type="stimulus" self="R0_4" title="R0-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Om het spel te kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. &lt;br/&gt;&lt;br/&gt;Gebruik geen bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal te creëren. Je kun de spatiebalk gebruiken om beschrijvingen te maken met meerdere woorden. Maar let op, je kunt niet alle letters gebruiken. Alleen de letters die zichtbaar zijn op het keyboard kunnen gebruikt worden. Check dus eerst of je de beschrijving die je in gedachten hebt, kunt typen voor je verder gaat. De backspace toets is bruikbaar als je de beschrijving wilt aanpassen of herschrijven. &lt;br/&gt;&lt;br/&gt;Proefpersoon 1 begint. Hij/zij zal een beschrijving geven aan de eerste scène op het scherm. Toon de beschrijving eerst aan de onderzoeker voor je verder gaat. Omdat dit de eerste ronde is van het spel willen we even checken of het aan de eisen voldoet. Als de beschrijving goed is, zal hij zeven seconden samen met de scène op het scherm getoond worden aan alle deelnemers van de groep.&lt;br/&gt;&lt;br/&gt;Daarna benoemt proefpersoon 2 de tweede scène en zo verder.&lt;br/&gt;&lt;br/&gt;Wanneer alle scènes benoemd zijn, krijg je ze nog twee keer te zien. Probeer de beschrijvingen en de bijhorende scènes zo goed mogelijk te onthouden zodat je beter kunt communiceren in de volgende rondes.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -222,7 +222,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R0.1-4" next="R0_2_4" type="stimulus" self="R0_1_4" title="R0.1-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog twee keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -300,7 +300,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R0.2-4" next="R1_4" type="stimulus" self="R0_2_4" title="R0.2-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog één keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -378,7 +378,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R1-4" next="R2_4" type="stimulus" self="R1_4" title="R1-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -519,7 +519,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R2-4" next="R3_4" type="stimulus" self="R2_4" title="R2-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -660,7 +660,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R3-4" next="R4_4" type="stimulus" self="R3_4" title="R3-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -801,7 +801,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R4-4" next="R5_4" type="stimulus" self="R4_4" title="R4-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -942,7 +942,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R5-4" next="R6_4" type="stimulus" self="R5_4" title="R5-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1083,7 +1083,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R6-4" next="R7_4" type="stimulus" self="R6_4" title="R6-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1224,7 +1224,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R7-4" next="R8_4" type="stimulus" self="R7_4" title="R7-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1365,7 +1365,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R8-4" next="Einde_van_het_experiment2" type="stimulus" self="R8_4" title="R8-4">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. Dit doe je zonder te overleggen."/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1413,7 +1413,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R0-8" next="R0_1_8" type="stimulus" self="R0_8" title="R0-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Om het spel te kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. &lt;br/&gt;&lt;br/&gt;Gebruik geen bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal te creëren. Je kun de spatiebalk gebruiken om beschrijvingen te maken met meerdere woorden. Maar let op, je kunt niet alle letters gebruiken. Alleen de letters die zichtbaar zijn op het keyboard kunnen gebruikt worden. Check dus eerst of je de beschrijving die je in gedachten hebt, kunt typen voor je verder gaat. De backspace toets is bruikbaar als je de beschrijving wilt aanpassen of herschrijven. &lt;br/&gt;&lt;br/&gt;Proefpersoon 1 begint. Hij/zij zal een beschrijving geven aan de eerste scène op het scherm. Toon de beschrijving eerst aan de onderzoeker voor je verder gaat. Omdat dit de eerste ronde is van het spel willen we even checken of het aan de eisen voldoet. Als de beschrijving goed is, zal hij zeven seconden samen met de scène op het scherm getoond worden aan alle deelnemers van de groep.&lt;br/&gt;&lt;br/&gt;Daarna benoemt proefpersoon 2 de tweede scène en zo verder.&lt;br/&gt;&lt;br/&gt;Wanneer alle scènes benoemd zijn, krijg je ze nog twee keer te zien. Probeer de beschrijvingen en de bijhorende scènes zo goed mogelijk te onthouden zodat je beter kunt communiceren in de volgende rondes.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1491,7 +1491,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R0.1-8" next="R0_2_8" type="stimulus" self="R0_1_8" title="R0.1-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog twee keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1569,7 +1569,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R0.2-8" next="R1_8" type="stimulus" self="R0_2_8" title="R0.2-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Je krijgt de scenes nog één keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1647,7 +1647,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R1-8" next="R2_8" type="stimulus" self="R1_8" title="R1-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1788,7 +1788,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R2-8" next="R3_8" type="stimulus" self="R2_8" title="R2-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -1929,7 +1929,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R3-8" next="R4_8" type="stimulus" self="R3_8" title="R3-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2070,7 +2070,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R4-8" next="R5_8" type="stimulus" self="R4_8" title="R4-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2211,7 +2211,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R5-8" next="R6_8" type="stimulus" self="R5_8" title="R5-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2352,7 +2352,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R6-8" next="R7_8" type="stimulus" self="R6_8" title="R6-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2493,7 +2493,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R7-8" next="R8_8" type="stimulus" self="R7_8" title="R7-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2634,7 +2634,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R8-8" next="R9_8" type="stimulus" self="R8_8" title="R8-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2682,7 +2682,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R9-8" next="R10_8" type="stimulus" self="R9_8" title="R9-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2823,7 +2823,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R10-8" next="R11_8" type="stimulus" self="R10_8" title="R10-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -2964,7 +2964,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R11-8" next="R12_8" type="stimulus" self="R11_8" title="R11-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -3105,7 +3105,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R12-8" next="R13_8" type="stimulus" self="R12_8" title="R12-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -3246,7 +3246,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R13-8" next="R14_8" type="stimulus" self="R13_8" title="R13-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -3387,7 +3387,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R14-8" next="R15_8" type="stimulus" self="R14_8" title="R14-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -3528,7 +3528,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R15-8" next="R16_8" type="stimulus" self="R15_8" title="R15-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
@@ -3669,7 +3669,7 @@
         </actionButton>
     </presenter>
     <presenter menuLabel="R16-8" next="Einde_van_het_experiment2" type="stimulus" self="R16_8" title="R16-8">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. Dit doe je zonder te overleggen."/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">

@@ -381,7 +381,7 @@
                 </pause>
             </hasMoreStimulus>
             <endOfStimulus>
-                <clearCurrentScore/>
+                <clearCurrentScore evaluateTokens=""/>
                 <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>

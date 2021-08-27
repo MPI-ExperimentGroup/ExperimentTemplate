@@ -2070,7 +2070,7 @@
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaControls">
                     <actionButton groupId="recordButtonGroup" featureText="Start Many Recordings (until failure)">
-                        <clearCurrentScore/>
+                        <clearCurrentScore evaluateTokens=""/>
                         <triggerMatching listenerId="startAnotherRecording"/>
                     </actionButton>
                     <addPadding/>
@@ -2168,7 +2168,7 @@
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaControls">
                     <actionButton groupId="recordButtonGroup" featureText="Start One Long Recording (until failure)">
-                        <clearCurrentScore/>
+                        <clearCurrentScore evaluateTokens=""/>
                         <regionReplace regionId="recordedMediaMessages"/>
                         <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
                             <onError>
@@ -2424,7 +2424,7 @@
                 <clearPage/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore/>
+                    <clearCurrentScore evaluateTokens=""/>
                     <gotoPresenter target="Rating_Toggle_Example"/>
                 </actionButton>
                 <addPadding/>
@@ -2522,7 +2522,7 @@
                 <clearPage />
                 <addPadding />
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore />
+                    <clearCurrentScore evaluateTokens=""/>
                     <gotoPresenter target="Rating_Token_Text_Example" />
                 </actionButton>
                 <addPadding/>
@@ -3463,7 +3463,7 @@
                 "/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore/>
+                    <clearCurrentScore evaluateTokens=""/>
                     <gotoPresenter target="First_Stimuli_Screen"/>
                 </actionButton>
                 <addPadding/>
@@ -3533,7 +3533,7 @@
                 <clearPage/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore/>
+                    <clearCurrentScore evaluateTokens=""/>
                     <gotoPresenter target="stimulusResponse_logTokenText"/>
                 </actionButton>
                 <addPadding/>
@@ -3636,7 +3636,7 @@
                 "/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore/>
+                    <clearCurrentScore evaluateTokens=""/>
                     <gotoPresenter target="stimulusRatingRadio"/>
                 </actionButton>
                 <addPadding/>
@@ -6066,7 +6066,7 @@
                         </scoreAboveThreshold>
                         <addPadding/>
                         <actionButton featureText="clearCurrentScore">
-                            <clearCurrentScore/>
+                            <clearCurrentScore evaluateTokens=""/>
                             <gotoPresenter target="RecordingQualityTest"/>
                         </actionButton>  
                         <addPadding/>
@@ -7243,7 +7243,7 @@
                 </scoreAboveThreshold>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
-                    <clearCurrentScore/>
+                    <clearCurrentScore evaluateTokens=""/>
                     <gotoPresenter target="InvitationCodeExampleStimuliScreen"/>
                 </actionButton>
                 <addPadding/>
@@ -7476,7 +7476,7 @@
         </triggerDefinition>
         <triggerMatching listenerId="scoreLabelsTrigger"/>
         <actionButton featureText="clearCurrentScore">
-            <clearCurrentScore/>
+            <clearCurrentScore evaluateTokens=""/>
             <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 5">

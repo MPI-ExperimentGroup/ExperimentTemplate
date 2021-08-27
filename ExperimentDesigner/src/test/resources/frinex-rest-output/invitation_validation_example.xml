@@ -191,7 +191,7 @@
         </triggerDefinition>
         <triggerMatching listenerId="scoreLabelsTrigger"/>
         <actionButton featureText="clearCurrentScore">
-            <clearCurrentScore/>
+            <clearCurrentScore evaluateTokens=""/>
             <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 5">

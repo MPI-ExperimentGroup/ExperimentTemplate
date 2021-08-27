@@ -25,7 +25,7 @@
         <targetButton featureText="alternateButtonLabel" target="Instruction"/>
     </presenter>
     <presenter back="screenTag" menuLabel="Set1" next="Fini" type="stimulus" self="Set1" title="Set1">
-        <clearCurrentScore/>
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage/>
         <htmlText featureText="preStimuliText"/>
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">

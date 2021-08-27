@@ -146,7 +146,7 @@
         <targetButton featureText="alternateButtonLabel" target="Instruction"/>
     </presenter-->
     <presenter back="GroupOf6" menuLabel="GroupOf4" type="stimulus" self="GroupOf4" title="GroupOf4">
-        <clearCurrentScore />
+        <clearCurrentScore evaluateTokens=""/>
         <triggerDefinition listenerId="groupDebugTrigger" threshold="0" maximum="0">
             <regionReplace regionId="groupDebugRegion">
                 <htmlTokenText featureText="&lt;channelLoop&gt;&lt;channelLabel&gt;:&lt;channelScore&gt;&amp;nbsp;&lt;/channelLoop&gt;" />
@@ -287,7 +287,7 @@
         <!--/actionButton-->
     </presenter>
     <presenter back="Instruction" menuLabel="GroupOf6" next="Fini" type="stimulus" self="GroupOf6" title="GroupOf6">
-        <clearCurrentScore />
+        <clearCurrentScore evaluateTokens=""/>
         <centrePage />
         <htmlText featureText="GroupOf6" />
         <regionReplace regionId="groupButtonsRegion">
