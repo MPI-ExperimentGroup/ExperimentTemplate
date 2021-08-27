@@ -349,7 +349,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
-        presenterFeatureList.add(new PresenterFeature(FeatureType.clearCurrentScore, null));
+        final PresenterFeature clearCurrentScore = new PresenterFeature(FeatureType.clearCurrentScore, null);
+        clearCurrentScore.addFeatureAttributes(FeatureAttribute.evaluateTokens, "");
+        presenterFeatureList.add(clearCurrentScore);
         if (storedWizardScreenData.isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }

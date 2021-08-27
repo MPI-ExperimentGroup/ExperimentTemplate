@@ -123,20 +123,21 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
             final PresenterFeature minimumScoreThreshold = hasMetadataValueFalse.addFeature(FeatureType.scoreAboveThreshold, null, Integer.toString(storedWizardScreenData.getScreenInteger(0)), null, null, null, null);
             final PresenterFeature minimumScoreAboveThreshold = minimumScoreThreshold.addFeature(FeatureType.aboveThreshold, null);
             minimumScoreAboveThreshold.addFeature(FeatureType.setMetadataValue, null, postNameStart, loggedValue);
-            minimumScoreAboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
+            minimumScoreAboveThreshold.addFeature(FeatureType.clearCurrentScore, null, "");
             minimumScoreAboveThreshold.addFeature(FeatureType.gotoNextPresenter, null);
             final PresenterFeature minimumWithinThreshold = minimumScoreThreshold.addFeature(FeatureType.withinThreshold, null);
-            minimumWithinThreshold.addFeature(FeatureType.clearCurrentScore, null);
+            minimumWithinThreshold.addFeature(FeatureType.clearCurrentScore, null, "");
             minimumWithinThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(0)));
             if (storedWizardScreenData.getScreenText(3) != null) {
                 final String postNameExit = cleanScreenTag(storedWizardScreenData.getScreenText(3));
                 wizardScreenData.getMetadataFields().add(new Metadata(postNameExit, postNameExit, ".*", ".", false, null));
 
                 final PresenterFeature maximumErrorThreshold = hasMetadataValueTrue.addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
-                maximumErrorThreshold.addFeature(FeatureType.withinThreshold, null).addFeatures(FeatureType.clearCurrentScore, FeatureType.gotoNextPresenter);
+                maximumErrorThreshold.addFeature(FeatureType.withinThreshold, null).addFeature(FeatureType.clearCurrentScore, null, "");
+                maximumErrorThreshold.addFeature(FeatureType.withinThreshold, null).addFeatures(FeatureType.gotoNextPresenter);
                 final PresenterFeature maximumErrorAboveThreshold = maximumErrorThreshold.addFeature(FeatureType.aboveThreshold, null);
                 maximumErrorAboveThreshold.addFeature(FeatureType.setMetadataValue, null, postNameExit, loggedValue);
-                maximumErrorAboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
+                maximumErrorAboveThreshold.addFeature(FeatureType.clearCurrentScore, null, "");
                 maximumErrorAboveThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(2)));
             }
         }
