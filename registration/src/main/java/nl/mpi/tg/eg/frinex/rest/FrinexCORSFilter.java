@@ -39,6 +39,9 @@ public class FrinexCORSFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        // serving content with same-origin and require-corp headers will allow high resolution timers in firefox
+        response.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+        response.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
 //        response.setHeader("Access-Control-Max-Age", "3600");
 //        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
         response.setHeader("Access-Control-Allow-Headers", "Content-type");
