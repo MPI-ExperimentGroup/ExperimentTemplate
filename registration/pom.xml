@@ -194,16 +194,16 @@
                             <directory>${experiment.artifactsJsonDirectory}</directory>
                             <filtering>false</filtering>                
                             <includes>
-                                <include>artifacts.json</include>
-                                <include>*.apk</include>
-                                <include>*.asar</include>
-                                <include>*win32.zip</include>
-                                <include>*win64.zip</include>
-                                <include>*darwin.zip</include>
-                                <include>*mac.zip</include>
-                                <include>*linux.zip</include>
-                                <include>*android.zip</include>
-                                <include>*ios.zip</include>
+                                <include>${experiment.configuration.name}_artifacts.json</include>
+                                <include>${experiment.configuration.name}_*.apk</include>
+                                <include>${experiment.configuration.name}_*.asar</include>
+                                <include>${experiment.configuration.name}_*win32*.zip</include>
+                                <include>${experiment.configuration.name}_*win64*.zip</include>
+                                <include>${experiment.configuration.name}_*darwin*.zip</include>
+                                <include>${experiment.configuration.name}_*mac.zip</include>
+                                <include>${experiment.configuration.name}_*linux.zip</include>
+                                <include>${experiment.configuration.name}_*android.zip</include>
+                                <include>${experiment.configuration.name}_*ios.zip</include>
                             </includes>
                         </resource>
                     </webResources>
