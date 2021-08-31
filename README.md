@@ -16,6 +16,10 @@ Experiment Group, MPI Nijmegen.
 * Provide experiments on mobile devices and via the web.
 * Modularise development so that components can be added / changed / replaced.
 
+# Publications
+Withers, P. (2016). Frinex: Framework for Interactive Experiments. Poster presented at the IT-Verantwortlichen-Treffen, Berlin, Germany.
+https://pure.mpg.de/rest/items/item_2353700_1/component/file_2353699/content
+
 # Templates
 The current template is based on [SynQuiz](https://github.com/languageininteraction/GraphemeColourSynaesthesiaApp) and [LingQuest](https://github.com/languageininteraction/LanguageMemoryApp), which are iOS and Android applications developed in the Language In Interaction 3 project. These apps are already in the various app stores.
 
@@ -36,6 +40,16 @@ Other templates can be developed as needed:
 # System Overview
 ( [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/Frinex.svg) )
 
+# Configuration XML Stylesheet
+( [XSD Stylesheet](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.xsd) )
+https://raw.githubusercontent.com/MPI-ExperimentGroup/ExperimentTemplate/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.xsd
+XSD 
+
+# Configuration XML Documentation
+( [HTML Documentation](https://htmlpreview.github.io/?https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.html) )
+https://raw.githubusercontent.com/MPI-ExperimentGroup/ExperimentTemplate/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.html
+XSD 
+
 1. Experiment designer interface
    * Configure: screens, metadata, stimulus…
 
@@ -54,7 +68,8 @@ Other templates can be developed as needed:
 
 # Automated Build Service
 ( [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/BuildServer.svg) )
-Experiments can be built using the automated build service. To use this service you either need to be given access to a relevant GIT repository where you can commit your JSON or XML configuration files. Any stimuli files also need to be committed alongside the JSON or XML in a directory of the same name.
+Experiments can be built using the automated build service. Any stimuli files also need to be committed alongside the JSON or XML in a directory of the same name. To use this service you either need to be given access to a relevant GIT repository where you can commit your JSON or XML configuration files. Or you can install and manage an instance of the build service on your local network. 
+[FrinexBuildService](https://github.com/MPI-ExperimentGroup/FrinexBuildService)
 
 # Submodules    
 
