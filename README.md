@@ -56,19 +56,20 @@ Other templates can be developed as needed:
    * Viewing and downloading experiment results
    * Managing participants
 
-# Experiment Descriptor XML Documentation
+# Experiment Descriptor XML
+Each experiment is defined in an experiment description XML file which is used to compile the web, mobile, desktop versions of the experiment. The compiled experiment software consists of a standalone server side and client side applications that can be deployed by the build system or deployed independently.
+
 ( [HTML Documentation](https://raw.githubusercontent.com/MPI-ExperimentGroup/ExperimentTemplate/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.html) )
 https://htmlpreview.github.io/?https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.html
-XSD 
 
-# Experiment Descriptor XML Stylesheet
+
 ( [XSD Stylesheet](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.xsd) )
 https://raw.githubusercontent.com/MPI-ExperimentGroup/ExperimentTemplate/master/ExperimentDesigner/src/test/resources/frinex-rest-output/frinex.xsd
-XSD 
 
 # Automated Build Service
 ( [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/BuildServer.svg) )
-Experiments can be built using the automated build service. Any stimuli files also need to be committed alongside the JSON or XML in a directory of the same name. To use this service you either need to be given access to a relevant GIT repository where you can commit your JSON or XML configuration files. Or you can install and manage an instance of the build service on your local network. 
+Experiments can be built using the automated build service. Any stimuli files also need to be committed alongside the JSON or XML in a directory of the same name. To use this service you either need to be given access to a relevant GIT repository where you can commit your JSON or XML configuration files. Or you can install and manage an instance of the build service on your local network.
+
 ( [FrinexBuildService](https://github.com/MPI-ExperimentGroup/FrinexBuildService) )
 https://github.com/MPI-ExperimentGroup/FrinexBuildService
 
