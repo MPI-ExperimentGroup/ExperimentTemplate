@@ -1089,7 +1089,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", currentStimulus.getAudio(), duration.elapsedMillis());
-            timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, wavTrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "autoStimulus");
+            timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, wavTrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "audio-" + currentStimulus.getUniqueId());
         } else if (currentStimulus.hasVideo()) {
             String ogv = currentStimulus.getVideo() + ".ogv";
             String mp4 = currentStimulus.getVideo() + ".mp4";
@@ -1108,7 +1108,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     loadedStimulusListener.postLoadTimerFired();
                 }
             };
-            timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, !showControls, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
+            timedStimulusView.addTimedVideo(timedEventMonitor, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, !showControls, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "video-" + currentStimulus.getUniqueId());
         } else if (currentStimulus.getLabel() != null) {
             timedStimulusView.addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
