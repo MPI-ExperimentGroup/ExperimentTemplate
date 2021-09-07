@@ -1,5 +1,9 @@
 #Changes in Frinex 1.4
 
+Modified the mediaId produced when using stimulusPresent from "autoStimulus" and "stimulusPresent" to use "audio-" + stimulusId and "video-" + stimulusId.
+
+Added a score group to the clearCurrentScore action to provide a way to keep track of BQ4 sessions. The clearCurrentScore clears the current score and sets the current score group string based on the evaluateTokens. The score group is a marker shown in the admin system to keep track of the records and does not affect the score collection process.
+
 Added REST interface methods that allow seaching for values in each custom field of the participant table (seach custom metadata fields).
 
 Added extra search methods for tag pair data based on eventTag or tagValue1, which will for example make it possible to list all completion codes.
