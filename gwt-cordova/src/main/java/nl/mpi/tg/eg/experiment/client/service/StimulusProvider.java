@@ -62,7 +62,13 @@ public class StimulusProvider extends AbstractStimuliProvider {
     private boolean attributeRandomise = true;
     private int attributeRepeatCount = 1;
     private int attributeRepeatRandomWindow = 6;
-    private int attributeAdjacencyThreshold = 3;
+    // TODO: The loadStimulus feature has a optional attribute adjacencyThreshold which is used to prevent undesirable  
+    // stimuli randomisation conditions. The initial use case for this was to prevent stimuli with given properties 
+    // from being adjacent after randomisation. However it can be used for any type of stimuli. Because this is an 
+    // optional attribute it will often not be specified and therefore set to the default value of 3. However this 
+    // is not obvious and perhaps adjacencyThreshold can be changed to be disabled by default. In which case to 
+    // maintain the current behaviour it would need to be specified with <loadStimulus adjacencyThreshold="3" ...
+    private int attributeAdjacencyThreshold = 3;// -1;
     private boolean rememberLastStimuli = true;
     private String attributeExcludeRegex = null;
     private String attributeIncludeRegex = null;

@@ -6,6 +6,7 @@ pwd
 if [[ -f /openjdk8/switch_jdk8.sh ]]; then
     bash /openjdk8/switch_jdk8.sh # switch back in time for Cordova
     PATH=$(echo $PATH | sed 's#/usr/local/openjdk-11/bin#/openjdk8/jdk8u265-b01/bin#g');
+    #PATH=$(echo $PATH | sed 's#$JAVA_HOME#$JAVA8_HOME#g');
     JAVA_HOME=$JAVA8_HOME
 fi
 
@@ -107,6 +108,7 @@ cordova plugin add cordova-plugin-inappbrowser
 splashResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/LaunchImage.launchimage
 echo $splashResourcesDir
 mkdir -p $splashResourcesDir
+# TODO: update iOS icons including Default@2x~universal~anyany.png which cannot be found, congig.xml says res/screen/ios/ but this script says ./platforms/ios/@experiment.configuration.name@/Images.xcassets/
 splashImage="www/static/splash.png" #"images/splash.gif" 
 iconResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/AppIcon.appiconset
 mkdir -p $iconResourcesDir

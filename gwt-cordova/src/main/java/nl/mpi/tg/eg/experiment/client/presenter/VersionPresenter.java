@@ -59,5 +59,8 @@ public class VersionPresenter extends AbstractPresenter {
                 + version.projectVersion() + "\n"
                 + "Compile Date: " + version.compileDate() + "\n"
                 + "Commit Date: " + version.lastCommitDate());
+        // TODO: add the audio recorder version / branch 
+        // TODO: add all the jar version numbers
+        // TODO: add the webjars version numbers
     }
 }

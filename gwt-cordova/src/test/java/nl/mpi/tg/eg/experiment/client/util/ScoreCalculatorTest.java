@@ -283,7 +283,6 @@ public class ScoreCalculatorTest {
 //        double expResult = 0.0;
 //        double result = instance.getScore();
 //        assertEquals(expResult, result, 0.0);
-//        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
     /**
@@ -296,7 +295,6 @@ public class ScoreCalculatorTest {
 //        double expResult = 0.0;
 //        double result = instance.getAccuracy();
 //        assertEquals(expResult, result, 0.0);
-//        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
     private GroupScoreData getGroupScoreData() {

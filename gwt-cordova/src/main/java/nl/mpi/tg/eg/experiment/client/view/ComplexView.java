@@ -101,14 +101,12 @@ public class ComplexView extends SimpleView {
         super();
         outerPanel = new VerticalPanel();
         activePanels.add(outerPanel);
-//
+// TODO: draggable stimilus responses
 //        outerPanel.getElement().setDraggable(Element.DRAGGABLE_TRUE);
 //        outerPanel.addDragStartHandler(new DragStartHandler() {
 //
 //            @Override
 //            public void onDragStart(DragStartEvent event) {
-//                // TODO Auto-generated method stub
-//                event.setData("text", "i am widget1");
 //            }
 //        ;
 //        });

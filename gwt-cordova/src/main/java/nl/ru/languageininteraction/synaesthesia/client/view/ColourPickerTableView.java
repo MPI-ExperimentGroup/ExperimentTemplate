@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package nl.ru.languageininteraction.synaesthesia.client.view;
-
+// todo: check that the change from import com.google.gwt.user.client.Element; does not cause any issues
 import com.google.gwt.dom.client.Element;
 import nl.mpi.tg.eg.experiment.client.view.AbstractView;
 import com.google.gwt.user.client.ui.Grid;

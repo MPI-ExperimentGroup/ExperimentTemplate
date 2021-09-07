@@ -150,6 +150,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
+        // TODO: consider if this could use evaluateTokensString rather than just formatString, however keep in mind that some additional syntax is going to be required to mark the evaluatable sections from plain text
         timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(textString), styleName);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
@@ -282,6 +283,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         }
     }
 
+    // TODO: persistant timer stored in the admin system that returns the ms (remaining or count) as a metadata field which can be used like the local persistant timer
     protected void /* this could be changed to addTimer or setTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
         final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
         final long initialTimerStartMs;

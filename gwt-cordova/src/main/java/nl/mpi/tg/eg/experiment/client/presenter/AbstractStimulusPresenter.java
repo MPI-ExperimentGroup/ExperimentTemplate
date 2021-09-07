@@ -1716,6 +1716,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS) {
+                // ((ComplexView) simpleView).addText("audioContextCurrentMS: " + audioContextCurrentMS);
                 if (audioContextCurrentMS > 100) {
                     recordingAborted = true;
                     final String errorMessage = "rejecting due to audioContextCurrentMS out of spec: " + audioContextCurrentMS;
@@ -1767,6 +1768,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
                         // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl)
+                        // TODO: this callback loadedStimulusListener might be able to traverse the nextStimulus and then trigger another nextStimulus in mskonopka
                         timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
                     } else {
                         loadedStimulusListener.postLoadTimerFired();
@@ -1988,6 +1990,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public void triggerMatching(final String listenerId, final Stimulus currentStimulus) {
         final String formattedListenerId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(listenerId);
+        // TODO: this would be nice to match on regex, but this will require a loop on the keys which would cause issues for time critical sections
         final TriggerListener matchedListener = triggerListeners.get(formattedListenerId);
         if (matchedListener != null) {
             matchedListener.trigger(currentStimulus);
