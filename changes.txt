@@ -1,5 +1,7 @@
 #Changes in Frinex 1.4
 
+Added informational text to the header of the administration pages "Please be aware that that while the data is displayed in milliseconds, that does not mean millisecond accuracy. There are many factors that affect accuracy, so to determine the accuracy each experiment would need to be physically measured in a browser on some typical hardware used by the participants".
+
 Modified the mediaId produced when using stimulusPresent from "autoStimulus" and "stimulusPresent" to use "audio-" + stimulusId and "video-" + stimulusId.
 
 Added a score group to the clearCurrentScore action to provide a way to keep track of BQ4 sessions. The clearCurrentScore clears the current score and sets the current score group string based on the evaluateTokens. The score group is a marker shown in the admin system to keep track of the records and does not affect the score collection process.
