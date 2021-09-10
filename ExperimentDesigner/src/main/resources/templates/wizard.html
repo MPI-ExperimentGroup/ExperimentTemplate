@@ -120,7 +120,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 ondrop="drop(event)" 
                                 ondragover="allowDrop(event)"
                                 class="wizardScreenPanel featurestable">
-                                <div class="errorDiv"/>
+                                <div class="errorDiv">&nbsp;</div>
                                 <form class="eaturesrow">
                                     <div class="featureTypeHeader">
                                         <span>screenTitle</span><input name="screenTitle" th:value="${wizardScreen.getScreenTitle()}" /><br/>
@@ -156,7 +156,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             </select>
                                             <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.id}" class="saveFeatureButton" th:onclick="postFeatureChanges('featureForm[[${wizardScreen.id}]]');">Save Changes</button>
                                         </div>
-                                        <div class="errorDiv"/>                                        
+                                        <div class="errorDiv">&nbsp;</div>                                    
                                         &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" checked="true" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails('[[${wizardScreen.screenTag}]]');">Show details</input></span>
                                         <div class="featurescell" th:id="${'wizardScreenDetails' + wizardScreen.screenTag}">
                                             <div class="featuresrow featurescell">
@@ -362,7 +362,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <!--                            <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
                                                         <form th:id="${'addForm' + objectType + presenterScreen.getId()}" method="post">
                                                             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                                                            <div class="errorDiv"/>
+                                                            <div class="errorDiv">&nbsp;</div>
                                                             <select id="FeatureType" name="FeatureType">
                                                                 <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
                                                             </select>

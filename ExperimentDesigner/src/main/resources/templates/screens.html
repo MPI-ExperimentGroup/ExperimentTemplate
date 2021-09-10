@@ -147,7 +147,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 <span class="featureTypeLabel" th:text="${features.getFeatureType()}">getFeatureType</span>
                                                 <button type="button" style="display: none" th:id="${'updateFeatureButton' + features.getId()}" class="saveFeatureButton" th:onclick="${'postFeatureChanges(featureForm' + features.getId() + ')'}">Save Changes</button>
                                             </div>
-                                            <div class="errorDiv"/>
+                                            <div class="errorDiv">&nbsp;</div>
                                             <!--<span th:text="${features.getFeatureText()}"></span>-->  
                                             <span class="td featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
                                                 <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}" th:onchange="${'$(updateFeatureButton' + features.getId() + ').show();'}"></textarea>                                     
@@ -178,7 +178,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
                                 <form th:id="${'addForm' + objectType + presenterScreen.getId()}" method="post">
                                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                                    <div class="errorDiv"/>
+                                    <div class="errorDiv">&nbsp;</div>
                                     <select id="FeatureType" name="FeatureType">
                                         <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
                                     </select>
