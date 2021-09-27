@@ -165,5 +165,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <tr><td><button type="button" onclick="rotate();">rotate</button></td><td></td></tr>
             <tr><td style="height: 100%"></td><td></td></tr>
         </table>
+        <h3>Instructions:</h3>
+        <li>Robot Speed: Is the minimum pause between robot operations. While this affects the button click speed it is not the number of clicks per time, it is the pause between robot operations.</li>
+        <li>Exclude Buttons: Will exclude any button containing the string provided. So for example "Next" and "Continue" can both be included or excluded with just the letter "n".</li>
+        <li>Include Buttons: Will include any button containing the string provided. Functionally similar to Exclude Buttons.</li>
+        <li>Regex Buttons: Will include any button matching the regex provided.</li>
+        <li>Pause Robot: Will block robot actions and can be used to intervene by clicking and entering text manually.</li>
+        <br/>
+        <h3>URL Automation:</h3>
+        The robot can be started with predefined settings by passing them in the URL as GET parameters.
+        These include 'includeButtons', 'excludeButtons', 'regexButtons', 'robotSpeed' and 'fullwindow'.
+        For example "TestingFrame.html?regexButtons=yourregex&fullwindow".
     </body>
 </html>
