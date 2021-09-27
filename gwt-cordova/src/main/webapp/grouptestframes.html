@@ -34,9 +34,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var sizeSelectElement = document.getElementById("sizeSelect");
                 var sizeSelectValue = sizeSelectElement.options[sizeSelectElement.selectedIndex].text;
                 var iframes = document.getElementsByTagName("iframe");
-//                if (document.getElementById('groupName').value === "") {
-                document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
-//                }
+                // its not clear why was this check was disabled, but it has been reenabled so custom group names can be tested
+                if (document.getElementById('groupName').value === "") {
+                    document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
+                }
                 var memberCodes = ['A', 'C', 'E', 'G', 'B', 'D', 'F', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
@@ -129,7 +130,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <button type="button" class="startRobotButton" onclick="singleFrame('F');">F</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('G');">G</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('H');">H</button>
-        Group Name: <input type="text" id="groupName" placeholder="Type a group name...">  
+        Group Name: <input type="text" id="groupName" placeholder="Optional group name...">  
         Target Presenter: <input type="text" id="targetPresenter" placeholder="Optional presenter name...">  
         Frame Height: <input type="number" id="frameHeight" value="50" max="100" min="0">
         Frame Width: <input type="number" id="frameWidth" value="25" max="100" min="0">
