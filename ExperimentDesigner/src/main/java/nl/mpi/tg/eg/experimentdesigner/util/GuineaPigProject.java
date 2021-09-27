@@ -59,7 +59,7 @@ public class GuineaPigProject {
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-
+        // TODO: insert the zoomToGarden etc into the CSS section of the XML and remove it from the SCSS of Frinex
         final WizardTextScreen bluetoothInstructionsScreen = new WizardTextScreen("Bluetooth Instructions", "When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.", "Volgende");
         bluetoothInstructionsScreen.setNextHotKey("ENTER");
         wizardData.addScreen(bluetoothInstructionsScreen);
