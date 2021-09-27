@@ -245,7 +245,7 @@ public class AbstractSchemaGenerator {
                         })
                         .documentedAttribute("storageField", AttributeType.xsString, "If this metadata field contains one of the tags or alias, it will be used. Otherwise a random tag is selected for use, it is then stored in this metadata field. This allows a stimuli selection process to carry over between presenters.", true)
                         .documentedAttribute("consumedTagGroup", AttributeType.xsString, "When a tag is selected for use, it is put into this named list and will not be selected again, providing this named list is used. This allows a stimuli selection process to carry over between presenters."/* todo: document how consumedTagGroup is used */, true)
-                        // TODO: allocateMetadata participant allocation service with attribute allocationServiceName, to preserve the allocation across browsers and devices
+                        // TODO: (3 of 3) allocateMetadata participant allocation service with attribute allocationServiceName, to preserve the allocation across browsers and devices
                         //.documentedAttribute("allocationServiceName", AttributeType.xsString, "When provided the named service will be created on the sever and used to allocate the least used tag for use in stimuli allocation. If multiple tags are equally the least used, one of them will randomly be allocated. Any number of allocation service names can be used and they can be shared across different stimuli lists. Please note that the use of this feature prevents the experiment being used offline. The allocation of a tag does not mean that it will be used by the participant, for example if after allocation the browser is closed and the participant does not complete the experiment then the distribution will necessarily be affected.", true));
                 );
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
@@ -480,6 +480,7 @@ public class AbstractSchemaGenerator {
             .colourRGBAttribute("primaryColour3", false)
             .colourRGBAttribute("primaryColour4", false)
             .booleanAttribute("isScalable", false, "Boolean")
+            // TODO: preserveLastState would perhaps be better renamed to restrictBrowserNavigation
             .booleanAttribute("preserveLastState", false, "When true the use of browser navigation buttons will be restricted.")
             .documentedAttribute("splashPresenter", AttributeType.presenterName, "When provided the named presenter will be used as the initial presenter on page reloads.", true)
             .stringAttribute("userIdGetParam", true)

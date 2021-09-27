@@ -277,7 +277,7 @@ public enum FeatureAttribute {
     //    incrementStimulus,
     phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.", false, AttributeType.xsInteger),
     applyScore("If set to true then the stimulus response is compared to the stimulus correctResponses and a score is given accordingly.", false, AttributeType.xsBoolean),
-    // TODO: participant allocation service with attribute allocationServiceName, to preserve the allocation across browsers and devices
+    // TODO: (1 of 3) participant allocation service with attribute allocationServiceName, to preserve the allocation across browsers and devices
     scoreValue("A positive number for achievements or a negative number for failures or zero for neither.", false, AttributeType.xsInteger);
     final boolean isOptional;
     final String[] typeValues;
