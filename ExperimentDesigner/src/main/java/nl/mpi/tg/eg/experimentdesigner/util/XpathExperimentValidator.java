@@ -255,6 +255,23 @@ public class XpathExperimentValidator {
         return returnMessage;
     }
 
+    /* TODO: add flexible validation of the SCSS section of the XML to detect and prevent compilation errors
+    protected String validateScssStrings(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//scss").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList.getLength(); index++) {
+            final String scssValue = nodeList.item(index).getTextContent();
+//                ([#.@]?[\w.:> ]+)[\s]{[\r\n]?([A-Za-z\- \r\n\t]+[:][\s]*[\w .\/()\-!]+;[\r\n]*(?:[A-Za-z\- \r\n\t]+[:][\s]*[\w .\/()\-!]+;[\r\n]*(?2)*)*)}
+//                 .gwt-Button.optionButton.hiddenButton{ background-color: Transparent; } .testBorder { padding-top: 300px; opacity: 0.2 position: fixed: left: 100px; } 
+            if (!scssValue.matches("([^:;\\{]+\\{[^:;\\{]+:[^:;\\{]+;[^:;\\{]+\\}[^:;\\{]*)*")) {
+                returnMessage += "Invalid SCSS \"" + scssValue + "\"\n";
+                //System.out.println(returnMessage);
+            }
+        }
+        return returnMessage;
+    } */
+
     protected String validatePresenterTypes(Document xmlDocument) throws XPathExpressionException {
         String returnMessage = "";
         XPath validationXPath = XPathFactory.newInstance().newXPath();
