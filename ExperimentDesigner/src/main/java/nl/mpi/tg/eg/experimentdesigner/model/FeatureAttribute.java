@@ -66,7 +66,8 @@ public enum FeatureAttribute {
     sendingRegex(false),
     receivingRegex(false),
     dataLogFormat(false),
-    evaluateTokens(false),
+    // TODO: add documentation for daysBetween|length|random|replaceAll etc.
+    evaluateTokens(false), // TODO: this is one of only a few attributes can take a &quot;. For other string attributes the &quot; will cause the compile to fail ungracefully and should be prevented in the XSD
     evaluateMs(false), 
     filePerStimulus("When recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli"),
     eventTag("When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.", true, AttributeType.xsString),
@@ -74,7 +75,7 @@ public enum FeatureAttribute {
     ratingLabelLeft(true),
     ratingLabelRight(true),
     sendData,
-    networkErrorMessage,
+    networkErrorMessage, // TODO: networkErrorMessage= could be replaced with onError which is a lot more flexible
     inputErrorMessage,
     randomise("When true the items will be randomised once before any repeats are calculated, when false the items will not be randomised. If the selected items were 1234, the result of randomise true might be 3214 for example.", true, AttributeType.xsBoolean),
     repeatCount("When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.", true, AttributeType.xsInteger),
@@ -276,6 +277,7 @@ public enum FeatureAttribute {
     //    incrementStimulus,
     phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.", false, AttributeType.xsInteger),
     applyScore("If set to true then the stimulus response is compared to the stimulus correctResponses and a score is given accordingly.", false, AttributeType.xsBoolean),
+    // TODO: participant allocation service with attribute allocationServiceName, to preserve the allocation across browsers and devices
     scoreValue("A positive number for achievements or a negative number for failures or zero for neither.", false, AttributeType.xsInteger);
     final boolean isOptional;
     final String[] typeValues;
