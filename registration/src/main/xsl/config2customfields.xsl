@@ -777,6 +777,7 @@
                     stringBuilder.append(</xsl:text>
                 <xsl:value-of select="@postField" />
                 <xsl:text>);
+                    <!-- TODO: investigate if all @responseField should return the requestingUserId as its return value? -->
                     stringBuilder.append("\",\n");
                 </xsl:text>
             </xsl:for-each>
