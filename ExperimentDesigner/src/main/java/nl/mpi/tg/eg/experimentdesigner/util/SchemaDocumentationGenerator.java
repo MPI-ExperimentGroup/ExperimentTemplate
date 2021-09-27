@@ -25,6 +25,10 @@ import java.io.Writer;
 import java.util.Arrays;
 import java.util.Comparator;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+/* TODO: add information on the presenter types to the HTML documentation
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterType; */
 
 /**
  * @since October 1, 2018 15:38 PM (creation date)
@@ -519,6 +523,24 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         //System.out.println(writer);
 //        assertEquals(expResult, stringBuilder.toString());
     }
+
+/* TODO: add information on the presenter types to the HTML documentation
+    private void addPresenterTypeDocumentation() {
+        for (PresenterType presenterType : PresenterType.values()) {
+            final PresenterScreen presenterScreen = new PresenterScreen(presenterName, presenterName, backPresenter, presenterName + "Screen", null, presenterType, displayOrder);
+            for (FeatureType featureType : presenterType.getFeatureTypes()) {
+                if (featureType.isChildType(FeatureType.Contitionals.none)) {
+                    if (featureType == FeatureType.clearPage) {
+                        final PresenterFeature clearScreenButton = new PresenterFeature(FeatureType.actionButton, "Clear Screen");
+                        clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
+                        presenterScreen.getPresenterFeatureList().add(clearScreenButton);
+                    } else {
+                        presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
+                    }
+                }
+            }
+        }
+    } */
 
     public void createHtmlFile(final File schemaOutputFile) throws IOException {
 //        StringBuilder stringBuilder = new StringBuilder();
