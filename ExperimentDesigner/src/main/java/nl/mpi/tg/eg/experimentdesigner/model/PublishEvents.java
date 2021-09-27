@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlAttribute;
  */
 @Entity
 public class PublishEvents implements Serializable {
-
+ // TODO: tie this into the XSD
     public enum PublishState {
         validate,
         debug,
