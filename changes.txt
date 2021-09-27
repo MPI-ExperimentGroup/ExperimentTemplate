@@ -1,5 +1,11 @@
 #Changes in Frinex 1.4
 
+Added usage documentation for the group robot settings and the standard robot settings.
+
+Added default content to <progress/> elements after observing chrome treating them as a starting progress and putting subsequent elements into the already closed progress.
+
+Added default content to <div/> elements after observing chrome treating them as a starting div and putting subsequent elements into the already closed div.
+
 Added informational text to the header of the administration pages "Please be aware that that while the data is displayed in milliseconds, that does not mean millisecond accuracy. There are many factors that affect accuracy, so to determine the accuracy each experiment would need to be physically measured in a browser on some typical hardware used by the participants".
 
 Modified the mediaId produced when using stimulusPresent from "autoStimulus" and "stimulusPresent" to use "audio-" + stimulusId and "video-" + stimulusId.
