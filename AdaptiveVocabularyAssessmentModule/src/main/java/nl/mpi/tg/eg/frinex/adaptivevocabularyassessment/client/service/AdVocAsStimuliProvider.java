@@ -123,7 +123,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
             this.percentageBandTable = this.generatePercentageBandTable();
 
-            if (stimuliStateSnapshot.trim().isEmpty()) {
+           // if (stimuliStateSnapshot.trim().isEmpty()) {
 
                 this.bandIndexScore = 0;
                 this.bandVisitCounter = new Integer[this.numberOfBands];
@@ -169,9 +169,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                     this.totalStimuli += this.words.get(i).size();
                 }
 
-            } else {
-                this.deserialise(stimuliStateSnapshot);
-            }
+          //  } else {
+          //      this.deserialise(stimuliStateSnapshot);
+          //  }
         } catch (Exception ex) {
             this.exceptionLogging(ex);
         }
