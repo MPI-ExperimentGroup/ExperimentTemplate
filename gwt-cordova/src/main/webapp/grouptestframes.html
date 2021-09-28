@@ -117,8 +117,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body style="width: 100%; height: 100%;">
         <h3>Instructions:</h3>
         <li>Options R0_2, R0_4, R0_8: Will be passed to the experiment under test as a GET parameter.</li>
-        <li>All: Will start all eight robot frames in this page and start the robot (if it is not already paused). Each robot frame is passed a different &member= value out of A, B, C, D, E, F, G, H.</li>
-        <li>A, B, C, D, E, F, G, H: Will start a single robot frame and start the robot (if it is not already paused). This allows a separate browser tab or window for each robot frame.</li>
+        <li>Button All: Will start all eight robot frames in this page and start the robot (if it is not already paused). Each robot frame is passed a different &member= value out of A, B, C, D, E, F, G, H.</li>
+        <li>Buttons A, B, C, D, E, F, G, H: Will start a single robot frame and start the robot (if it is not already paused). This allows a separate browser tab or window for each robot frame.</li>
+        <li>Group Name: Will be used to start each robot frame in the same named group. Note that each time the robot is started eight new user ids are generated and when that group is full from a previous run you must assign a new group name to create a new empty group.</li>
         <li>Target Presenter: Will be passed to the experiment under test. Note that not all experiments allow setting the presenter via the URL.</li>
         <li>Robot Speed: Is the minimum pause between robot operations. While this affects the button click speed it is not the number of clicks per time, it is the pause between robot operations.</li>
         <li>Pause Robot: Will block robot actions and can be used to intervene by clicking and entering text manually.</li>
