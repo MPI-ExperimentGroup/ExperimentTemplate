@@ -235,6 +235,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "compileDate", version.compileDate(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.platform", Window.Navigator.getPlatform(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.userAgentData", getUserAgentData(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.appVersion", Window.Navigator.getAppVersion(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.appName", Window.Navigator.getAppName(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.appCodeName", Window.Navigator.getAppCodeName(), 0);
@@ -320,7 +321,11 @@ public abstract class AppController implements AppEventListner/*, AudioException
     protected native void exitApplication() /*-{
      $doc.navigator.app.exitApp();
      }-*/;
-
+    
+    public native String getUserAgentData() /*-{
+      return $wnd.navigator.userAgentData;
+    }-*/;
+    
     protected native boolean hasCordova() /*-{
      if ($wnd.device) return true; else return false;
      }-*/;

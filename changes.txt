@@ -1,5 +1,7 @@
 #Changes in Frinex 1.4
 
+Added logging of the webbrowser's userAgentData.
+
 Added usage documentation for the group robot settings and the standard robot settings.
 
 Added default content to <progress/> elements after observing chrome treating them as a starting progress and putting subsequent elements into the already closed progress.
