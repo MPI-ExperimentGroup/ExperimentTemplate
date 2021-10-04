@@ -1715,6 +1715,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             boolean recordingAborted = false;
 
             @Override
+            public void recorderNotReady() {
+                Timer pauseTimer = new Timer() {
+                    public void run() {
+                        if (retryCount > 0) {
+                            startAudioRecorderWeb(recordingLabel, recordingFormatL, downloadPermittedWindowMs, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
+                        } else {
+                            onError.postLoadTimerFired();
+                        }
+                    }
+                };
+                pauseTimer.schedule(50);
+            }
+
+            @Override
             public void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS) {
                 // ((ComplexView) simpleView).addText("audioContextCurrentMS: " + audioContextCurrentMS);
                 if (audioContextCurrentMS > 100) {

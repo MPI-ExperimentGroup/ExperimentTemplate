@@ -315,6 +315,18 @@
                                     </includes>
                                     <filtering>false</filtering>
                                 </resource>
+                                <!-- to run the OPUS examples the script path in the example HMTL needs to be adjusted from ../dist/ to ../opus-recorder/ -->
+                                <!--opus-examples 
+                                <resource>
+                                    <directory>${basedir}/../../opus-recorder/example</directory>
+                                    <targetPath>${webappDirectory}/opus-recorder/</targetPath>
+                                    <targetPath>${webappDirectory}/opus-examples/</targetPath>
+                                    <includes>
+                                        <include>*</include>
+                                    </includes>
+                                    <filtering>false</filtering>
+                                </resource> 
+                                opus-examples-->
                                 <resource>
                                     <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
                                     <directory>${project.build.directory}/webjars/META-INF/resources/webjars/jquery/${jqueryVersion}</directory>

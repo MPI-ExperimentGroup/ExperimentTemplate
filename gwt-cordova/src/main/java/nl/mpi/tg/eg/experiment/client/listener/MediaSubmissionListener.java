@@ -25,6 +25,8 @@ import com.google.gwt.typedarrays.shared.Uint8Array;
  */
 public interface MediaSubmissionListener {
 
+    void recorderNotReady();
+
     void recorderFailed(final String message);
 
     void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS);

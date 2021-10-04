@@ -693,7 +693,7 @@ public abstract class AbstractPresenter implements Presenter {
         function updateRecorderTriggers() {
             if ($wnd.recorder) {
                 // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)($wnd.recorder.audioContext.currentTime * 1000);
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
                 if(hasMoreListeners === true) {
                     requestAnimationFrame(updateRecorderTriggers);
                 } // else console.log("end RecorderTriggersWeb");
@@ -856,73 +856,82 @@ public abstract class AbstractPresenter implements Presenter {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
             if ($wnd.recorder) {
-                recorderTemp = $wnd.recorder;
-                $wnd.recorder.onstop = function(){
-                    console.log("startAudioRecorderWeb: onstop");
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
-                    recorderTemp.close();
-                };
-                $wnd.recorder.stop();
-                $wnd.recorder = null;
-                $wnd.audioAnalyser = null;
-            }
-//            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
-            console.log("enumerateDevices: ");
-            var firstDeviceId = -1;
-            var firstDeviceLabel = -1;
-            var targetDeviceId = -1;
-            var targetDeviceLabel = -1;
-            navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
-                // it is likely that the first item in the list is the default input, so we stop on the first matching device
-                for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
-                    var deviceInfo = deviceInfos[index];
-//                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
-                    console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
-                    if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
-                        firstDeviceId = deviceInfo.deviceId;
-                        firstDeviceLabel = deviceInfo.label;
+                // if the recorder is non null then we must wait for the stop to complete before starting a new recording.
+                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderNotReady()();
+                return;
+                // recorderTemp = $wnd.recorder;
+                // $wnd.recorder.onstop = function(){
+                    // console.log("startAudioRecorderWeb: onstop");
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    // recorderTemp.close();
+                    // posting done has not been shown to terminate the worker: recorderTemp.encoder.postMessage("done");
+                    // calling terminate has not been shown to terminate the worker: recorderTemp.encoder.terminate();
+                // };
+                // $wnd.recorder.stop();
+                // $wnd.recorder = null;
+                // $wnd.audioAnalyser = null;
+            } else {
+    //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+                console.log("enumerateDevices: ");
+                var firstDeviceId = -1;
+                var firstDeviceLabel = -1;
+                var targetDeviceId = -1;
+                var targetDeviceLabel = -1;
+                navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+                    // it is likely that the first item in the list is the default input, so we stop on the first matching device
+                    for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
+                        var deviceInfo = deviceInfos[index];
+    //                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
+                        console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
+                        if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
+                            firstDeviceId = deviceInfo.deviceId;
+                            firstDeviceLabel = deviceInfo.label;
+                        }
+                        if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                            console.log(deviceInfo.kind);        
+                            console.log(deviceInfo.label);                
+                            console.log(deviceInfo.deviceId);
+                            targetDeviceId = deviceInfo.deviceId;
+                            targetDeviceLabel = deviceInfo.label;
+                        }
                     }
-                    if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
-                        console.log(deviceInfo.kind);            
-                        console.log(deviceInfo.label);                    
-                        console.log(deviceInfo.deviceId);  
-                        targetDeviceId = deviceInfo.deviceId;
-                        targetDeviceLabel = deviceInfo.label;
+                    //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+                    if(targetDeviceId === -1) {
+                        console.log("Device not found, defaulting to first device seen.");
+                        targetDeviceId = firstDeviceId;
+                        targetDeviceLabel = firstDeviceLabel;
                     }
-                }
-                //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
-                if(targetDeviceId === -1) {
-                    console.log("Device not found, defaulting to first device seen.");
-                    targetDeviceId = firstDeviceId;
-                    targetDeviceLabel = firstDeviceLabel;
-                }
-                if(targetDeviceId === -1) {
-                    console.log("Device not found: " + deviceRegex);
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
-                } else {
-                    $wnd.audioAnalyser = null;
-                    if (recordingFormat === 'wav') {
-                        $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                    if(targetDeviceId === -1) {
+                        console.log("Device not found: " + deviceRegex);
+                        mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
                     } else {
-                        $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                        $wnd.audioAnalyser = null;
+                        if (!$wnd.recorderInstance){
+                            if (recordingFormat === 'wav') {
+                                $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                            } else {
+                                $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                            }
+                        }
+                        $wnd.recorder = $wnd.recorderInstance;
+                        $wnd.recorder.ondataavailable = function( typedArray ){
+                            console.log("ondataavailable: " + typedArray.length);
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                        };
+                        try {
+                            $wnd.startRecorder(function(){$wnd.recorderStartOffset = $wnd.recorder.audioContext.currentTime; mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
+                            // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
+                            //$wnd.recorder.start();
+                        } catch(e) {
+                            console.log(e.message);
+                            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(e.message);
+                            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+                        };
                     }
-                    $wnd.recorder.ondataavailable = function( typedArray ){
-                        console.log("ondataavailable: " + typedArray.length);
-                        dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
-                    };
-                    try {
-                        $wnd.startRecorder(function(){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, $wnd.recorder.audioContext.currentTime * 1000)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
-                        // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
-                        //$wnd.recorder.start();
-                    } catch(e) {
-                        console.log(e.message);
-                        mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(e.message);
-                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
-                    };
-                }
-            });
+                });
+            }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
             mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(null);
@@ -990,12 +999,12 @@ public abstract class AbstractPresenter implements Presenter {
             if ($wnd.recorder.state === 'recording') {
                 if ($wnd.recordingLabelString == 'ms') {
                     // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-                    var recordingMilliSeconds = Math.floor($wnd.recorder.audioContext.currentTime * 1000);
+                    var recordingMilliSeconds = Math.floor(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
                     var recordingMsString = (recordingMilliSeconds) + 'ms';
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingMsString);
                 } else if ($wnd.recordingLabelString == '00:00:00') {
                     // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-                    var recordingMilliSeconds = Math.floor($wnd.recorder.audioContext.currentTime * 1000);
+                    var recordingMilliSeconds = Math.floor(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
                     var recordingTimeDate = new Date(recordingMilliSeconds);
                     var recordingTimeString = recordingTimeDate.toISOString().substr(11, 8);
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingTimeString);
@@ -1027,12 +1036,15 @@ public abstract class AbstractPresenter implements Presenter {
                 $wnd.recorder.onstop = function(){
                     console.log("stopAudioRecorder: onstop");
                     abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
-                    recorderTemp.close();
+                    // closing the recorder is known to leave the worker running and the documented methods to terminate the worker have not helped, so we keep the recorder open for new recordings.
+                    // recorderTemp.close();
+                    // recorderTemp.encoder.postMessage("done");
+                    // recorderTemp.encoder.terminate();
                     // OggOpusEncoder.prototype.destroy
+                    $wnd.recorder = null;
+                    $wnd.audioAnalyser = null;
                 }
                 $wnd.recorder.stop();
-                $wnd.recorder = null;
-                $wnd.audioAnalyser = null;
             }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
@@ -1067,7 +1079,7 @@ public abstract class AbstractPresenter implements Presenter {
             if ($wnd.recorder) {
                 // note that this assumes the bit rate of 48000 which is expected with this encoder
                 // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.audioContext.currentTime * 1000);
+                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
             }
         }
      }-*/;
@@ -1086,7 +1098,7 @@ public abstract class AbstractPresenter implements Presenter {
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             // note that this assumes the bit rate of 48000 which is expected with this encoder
             // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)("startAudioRecorderTag", $wnd.recorder.audioContext.currentTime * 1000);
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)("startAudioRecorderTag", ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
@@ -1106,7 +1118,7 @@ public abstract class AbstractPresenter implements Presenter {
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             // note that this assumes the bit rate of 48000 which is expected with this encoder
             // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, $wnd.recorder.audioContext.currentTime * 1000);
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
