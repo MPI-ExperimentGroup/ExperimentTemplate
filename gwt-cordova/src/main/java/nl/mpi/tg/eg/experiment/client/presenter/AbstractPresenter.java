@@ -907,7 +907,7 @@ public abstract class AbstractPresenter implements Presenter {
                         console.log("Device not found: " + deviceRegex);
                         mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
                     } else {
-                        $wnd.audioAnalyser = null;
+                        // $wnd.audioAnalyser = null;
                         if (!$wnd.recorderInstance){
                             if (recordingFormat === 'wav') {
                                 $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
@@ -1042,7 +1042,7 @@ public abstract class AbstractPresenter implements Presenter {
                     // recorderTemp.encoder.terminate();
                     // OggOpusEncoder.prototype.destroy
                     $wnd.recorder = null;
-                    $wnd.audioAnalyser = null;
+                    // $wnd.audioAnalyser = null;
                 }
                 $wnd.recorder.stop();
             }
