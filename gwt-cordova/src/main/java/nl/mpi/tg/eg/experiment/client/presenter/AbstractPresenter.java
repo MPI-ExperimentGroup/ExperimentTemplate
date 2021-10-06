@@ -620,6 +620,7 @@ public abstract class AbstractPresenter implements Presenter {
             bufferLength = $wnd.audioAnalyser.frequencyBinCount;
             dataArray = new Uint8Array(bufferLength);
             lastValue = 0;
+            console.log("start updateLevelIndicator");
             function updateLevelIndicator() {
                 if ($wnd.recorder && $wnd.audioAnalyser) {
                     $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
@@ -643,7 +644,11 @@ public abstract class AbstractPresenter implements Presenter {
                     //console.log(hasListeners);
                     if(hasListeners === true) {
                         requestAnimationFrame(updateLevelIndicator);
+                    } else {
+                        console.log("end updateLevelIndicator");
                     }
+                } else {
+                    console.log("end updateLevelIndicator");
                 }
             }
             requestAnimationFrame(updateLevelIndicator);
@@ -690,17 +695,19 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
         // console.log("startRecorderTriggersWeb");
+        console.log("start updateRecorderTriggers");
         function updateRecorderTriggers() {
             if ($wnd.recorder) {
                 // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
                 var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
                 if(hasMoreListeners === true) {
                     requestAnimationFrame(updateRecorderTriggers);
-                } // else console.log("end RecorderTriggersWeb");
+                } else console.log("end updateRecorderTriggers no more listeners");
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
-                requestAnimationFrame(updateRecorderTriggers);
+                // requestAnimationFrame(updateRecorderTriggers);
+                console.log("end updateRecorderTriggers");
             }
         }
         requestAnimationFrame(updateRecorderTriggers);
@@ -741,10 +748,11 @@ public abstract class AbstractPresenter implements Presenter {
         var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
         var dataArray = new Uint8Array(bufferLength);
         var initialMs = performance.now();
+        console.log("start updateRecorderDtmfTriggers");
         function updateRecorderDtmfTriggers() {
             var frameMs = performance.now() - initialMs;
             initialMs = performance.now();
-            if ($wnd.recorder && $wnd.audioAnalyser) {
+            if ($wnd.audioAnalyser) {
                 var nextAnimationRequest = requestAnimationFrame(updateRecorderDtmfTriggers);
                 //console.log(bufferLength);
                 $wnd.audioAnalyser.getByteFrequencyData(dataArray);
@@ -842,7 +850,9 @@ public abstract class AbstractPresenter implements Presenter {
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
-                requestAnimationFrame(updateRecorderDtmfTriggers);
+                // requestAnimationFrame(updateRecorderDtmfTriggers);
+                // if the audioAnalyser is null then end the animation requests
+                console.log("end updateRecorderDtmfTriggers");
             }
             //var finalMs = performance.now() - initialMs;
             //console.log(frameMs + "ms" + "," + finalMs + "ms");
