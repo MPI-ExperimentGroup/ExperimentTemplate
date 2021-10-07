@@ -645,7 +645,7 @@ public abstract class AbstractPresenter implements Presenter {
                     if(hasListeners === true) {
                         requestAnimationFrame(updateLevelIndicator);
                     } else {
-                        console.log("end updateLevelIndicator");
+                        console.log("end updateLevelIndicator no more listeners");
                     }
                 } else {
                     console.log("end updateLevelIndicator");
@@ -752,7 +752,7 @@ public abstract class AbstractPresenter implements Presenter {
         function updateRecorderDtmfTriggers() {
             var frameMs = performance.now() - initialMs;
             initialMs = performance.now();
-            if ($wnd.audioAnalyser) {
+            if ($wnd.audioAnalyser && $wnd.recorder) {
                 var nextAnimationRequest = requestAnimationFrame(updateRecorderDtmfTriggers);
                 //console.log(bufferLength);
                 $wnd.audioAnalyser.getByteFrequencyData(dataArray);
@@ -846,7 +846,7 @@ public abstract class AbstractPresenter implements Presenter {
                 //console.log(hasDtmfListeners);
                 if(hasDtmfListeners !== true) {
                     $win.cancelAnimationFrame(nextAnimationRequest);
-                } // else console.log("end RecorderTriggersWeb");
+                } else console.log("end updateRecorderDtmfTriggers no more listeners");
                 // if there are no more listeners then the animation requests will stop here.
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
