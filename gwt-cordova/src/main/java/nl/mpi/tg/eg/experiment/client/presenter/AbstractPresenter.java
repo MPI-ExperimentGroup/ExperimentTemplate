@@ -611,7 +611,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void addRecorderLevelCallbackWeb()/*-{
          var abstractPresenter = this;
         //$wnd.attachLevelMeter(function(){changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(updatedValue)});
-        if ($wnd.recorder) {
+        if ($wnd.recorder || $wnd.audioAnalyser) {
             if (!$wnd.audioAnalyser) {
                 $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
                 $wnd.audioAnalyser.fftSize = 2048;
@@ -845,9 +845,10 @@ public abstract class AbstractPresenter implements Presenter {
                 var hasDtmfListeners = (dtmfAverage === peekLevel)? true : abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Double;Ljava/lang/Double;)(row, column);
                 //console.log(hasDtmfListeners);
                 if(hasDtmfListeners !== true) {
+                    // if there are no more listeners then the animation requests will stop here.
                     $win.cancelAnimationFrame(nextAnimationRequest);
-                } else console.log("end updateRecorderDtmfTriggers no more listeners");
-                // if there are no more listeners then the animation requests will stop here.
+                    console.log("end updateRecorderDtmfTriggers no more listeners");
+                }
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
                 // requestAnimationFrame(updateRecorderDtmfTriggers);
@@ -865,7 +866,10 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
+            //if ($wnd.recorder && $wnd.recorder.state !== 'inactive') {
             if ($wnd.recorder) {
+                console.log("waiting for recorder to finish");
+                // console.log($wnd.recorder.state);
                 // if the recorder is non null then we must wait for the stop to complete before starting a new recording.
                 mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderNotReady()();
                 return;
@@ -883,37 +887,40 @@ public abstract class AbstractPresenter implements Presenter {
                 // $wnd.recorder = null;
                 // $wnd.audioAnalyser = null;
             } else {
-    //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
-                console.log("enumerateDevices: ");
-                var firstDeviceId = -1;
-                var firstDeviceLabel = -1;
-                var targetDeviceId = -1;
-                var targetDeviceLabel = -1;
-                navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
-                    // it is likely that the first item in the list is the default input, so we stop on the first matching device
-                    for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
-                        var deviceInfo = deviceInfos[index];
+                    navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+                    var firstDeviceId = -1;
+                    var firstDeviceLabel = -1;
+                    var targetDeviceId = -1;
+                    var targetDeviceLabel = -1;
+                    // look for the device only if the recorder has not already been constructed
+                    if (!$wnd.recorderInstance) {
+                        // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+                        console.log("enumerateDevices: ");
+                        // it is likely that the first item in the list is the default input, so we stop on the first matching device
+                        for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
+                            var deviceInfo = deviceInfos[index];
     //                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
-                        console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
-                        if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
-                            firstDeviceId = deviceInfo.deviceId;
-                            firstDeviceLabel = deviceInfo.label;
+                            console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
+                            if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
+                                firstDeviceId = deviceInfo.deviceId;
+                                firstDeviceLabel = deviceInfo.label;
+                            }
+                            if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                                console.log(deviceInfo.kind);    
+                                console.log(deviceInfo.label);            
+                                console.log(deviceInfo.deviceId);
+                                targetDeviceId = deviceInfo.deviceId;
+                                targetDeviceLabel = deviceInfo.label;
+                            }
                         }
-                        if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
-                            console.log(deviceInfo.kind);        
-                            console.log(deviceInfo.label);                
-                            console.log(deviceInfo.deviceId);
-                            targetDeviceId = deviceInfo.deviceId;
-                            targetDeviceLabel = deviceInfo.label;
+                        //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+                        if(targetDeviceId === -1) {
+                            console.log("Device not found, defaulting to first device seen.");
+                            targetDeviceId = firstDeviceId;
+                            targetDeviceLabel = firstDeviceLabel;
                         }
                     }
-                    //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
-                    if(targetDeviceId === -1) {
-                        console.log("Device not found, defaulting to first device seen.");
-                        targetDeviceId = firstDeviceId;
-                        targetDeviceLabel = firstDeviceLabel;
-                    }
-                    if(targetDeviceId === -1) {
+                    if(targetDeviceId === -1 && !$wnd.recorderInstance) {
                         console.log("Device not found: " + deviceRegex);
                         mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
                     } else {
@@ -1052,8 +1059,9 @@ public abstract class AbstractPresenter implements Presenter {
                     // recorderTemp.encoder.terminate();
                     // OggOpusEncoder.prototype.destroy
                     $wnd.recorder = null;
-                    // $wnd.audioAnalyser = null;
                 }
+                $wnd.recorder.sourceNode.disconnect($wnd.audioAnalyser);
+                $wnd.audioAnalyser = null;
                 $wnd.recorder.stop();
             }
         } else {
