@@ -56,7 +56,6 @@ import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -66,6 +65,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.util.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
+import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
 import nl.mpi.tg.eg.experiment.client.util.VideoPlayer;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -810,7 +810,7 @@ public class TimedStimulusView extends ComplexView {
         if (webRecorderMediaId != null) {
             // pauseAudioRecorderWeb on a recorder has been added back in due to popular request although it will cause timing issues
             if (webRecorderMediaId.matches(mediaId)) {
-                AbstractPresenter.pauseAudioRecorderWeb();
+                AudioRecorder.pauseAudioRecorderWeb();
             }
         }
     }
@@ -835,7 +835,7 @@ public class TimedStimulusView extends ComplexView {
         if (webRecorderMediaId != null) {
             // resumeAudioRecorderWeb on a recorder has been added back in due to popular request although it will cause timing issues
             if (webRecorderMediaId.matches(mediaId)) {
-                AbstractPresenter.resumeAudioRecorderWeb();
+                AudioRecorder.resumeAudioRecorderWeb();
             }
         }
     }
@@ -917,7 +917,7 @@ public class TimedStimulusView extends ComplexView {
         }
         if (webRecorderMediaId != null) {
             if (webRecorderMediaId.matches(mediaId)) {
-                AbstractPresenter.logAudioRecorderWebTimeStamp(eventTag, timedEventMonitor);
+                AudioRecorder.logAudioRecorderWebTimeStamp(eventTag, timedEventMonitor);
             }
         }
     }

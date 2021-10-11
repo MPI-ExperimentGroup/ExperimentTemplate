@@ -32,7 +32,7 @@ public class AudioRecorder {
     public AudioRecorder() {
     }
 
-    protected native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+    public native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
         // console.log("startRecorderTriggersWeb");
         console.log("start updateRecorderTriggers");
         function updateRecorderTriggers() {
@@ -52,7 +52,7 @@ public class AudioRecorder {
         requestAnimationFrame(updateRecorderTriggers);
     }-*/;
 
-    protected native void startRecorderDtmfTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+    public native void startRecorderDtmfTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
         // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
         var abstractPresenter = this;
         if (!$wnd.audioAnalyser) {
@@ -200,7 +200,7 @@ public class AudioRecorder {
         requestAnimationFrame(updateRecorderDtmfTriggers);
     }-*/;
 
-    protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+    public native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
         var abstractPresenter = this;
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
@@ -310,7 +310,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void requestFilePermissions() /*-{
+    public native void requestFilePermissions() /*-{
         var abstractPresenter = this;
         console.log("requestFilePermissions");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
@@ -341,7 +341,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void getAudioRecorderTime() /*-{
+    public native void getAudioRecorderTime() /*-{
         var abstractPresenter = this;
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
@@ -375,7 +375,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void stopAudioRecorder() /*-{
+    public native void stopAudioRecorder() /*-{
         var abstractPresenter = this;
         console.log("stopAudioRecorder");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
@@ -441,7 +441,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) /*-{
+    public native void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorderTag: " + tier);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
@@ -461,7 +461,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+    public native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         var abstractPresenter = this;
         console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){

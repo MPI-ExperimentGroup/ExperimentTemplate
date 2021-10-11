@@ -39,7 +39,6 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.ButtonGroupMember;
 import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
 import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
-import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.RecorderDtmfListener;
@@ -56,7 +55,6 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
-import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
 import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
@@ -93,7 +91,7 @@ public abstract class AbstractPresenter implements Presenter {
     private final RecorderDtmfListener recorderDtmfListener = new RecorderDtmfListener();
     private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
     private HardwareTimeStamp toneGenerator = null; // note that this toneGenerator instance of HardwareTimeStamp is different from the hardwareTimeStamp used in AbstractStimulusPresenter although the tone generator objects are shared
-    private AudioRecorder audioRecorder = new AudioRecorder();
+    protected AudioRecorder audioRecorder = new AudioRecorder();
 
     public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;
@@ -693,6 +691,10 @@ public abstract class AbstractPresenter implements Presenter {
             }
             audioRecorder.startRecorderDtmfTriggersWeb(recorderMediaTriggerListener);
         }
+    }
+
+    protected void requestFilePermissions() {
+        audioRecorder.requestFilePermissions();
     }
 
     @Override
