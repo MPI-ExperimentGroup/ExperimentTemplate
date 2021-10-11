@@ -58,6 +58,7 @@ import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
 import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
+import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
@@ -92,6 +93,7 @@ public abstract class AbstractPresenter implements Presenter {
     private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
     private HardwareTimeStamp toneGenerator = null; // note that this toneGenerator instance of HardwareTimeStamp is different from the hardwareTimeStamp used in AbstractStimulusPresenter although the tone generator objects are shared
     protected AudioRecorder audioRecorder = new AudioRecorder();
+    protected VideoRecorder videoRecorder = new VideoRecorder();
 
     public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;

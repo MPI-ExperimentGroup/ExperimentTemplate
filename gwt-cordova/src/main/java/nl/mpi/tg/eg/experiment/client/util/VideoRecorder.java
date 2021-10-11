@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
+import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 
 /**
  * @since 11 October 2019 10:40:23 AM (creation date)
@@ -26,4 +29,45 @@ public class VideoRecorder {
 
     public VideoRecorder() {
     }
+
+    public native void startVideoRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            console.log("isVideoSupported");
+            $wnd.recordingVideoLabelString = recordingVideoLabelString;
+            if ($wnd.videoRecorder) {
+                console.log("waiting for video recorder to finish");
+                // if the recorder is non null then we must wait for the stop to complete before starting a new recording.
+                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderNotReady()();
+                return;
+            } else {
+                var constraints = {
+                    video: true,
+                    audio: true
+                };
+                var videoElement = $doc.createElement("video");
+                videoElement.autoplay = 'true';
+                $doc.body.appendChild(videoElement);
+                try {
+                    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
+                        // TODO: mute your speakers or connect headphones before connecting the source
+                        // videoElement.srcObject = stream;
+                    });
+                } catch(e) {
+                    console.log(e.message);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(e.message);
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+                }
+            }
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    // TODO: impliment other video recorder features based on the audio recorder usage
+    // TODO: add the XML features for startVideoRecorderWeb and other video recorder features based on the audio recorder features
+    // TODO: send the recorded video to the admin system
+    // TODO: update the admin system to store video data
+    // TODO: update the admin system to display video records
+    // TODO: expand on the aggressive_audio_test example to test and demonstrate the video recorder
 }
