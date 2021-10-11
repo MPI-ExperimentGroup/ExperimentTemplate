@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.util;
 
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
@@ -52,9 +53,8 @@ public class AudioRecorder {
         requestAnimationFrame(updateRecorderTriggers);
     }-*/;
 
-    public native void startRecorderDtmfTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+    public native void startRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
         // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
-        var abstractPresenter = this;
         if (!$wnd.audioAnalyser) {
             $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
             $wnd.audioAnalyser.fftSize = 2048;
@@ -200,8 +200,7 @@ public class AudioRecorder {
         requestAnimationFrame(updateRecorderDtmfTriggers);
     }-*/;
 
-    public native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
-        var abstractPresenter = this;
+    public native void startAudioRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
@@ -294,8 +293,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void requestRecorderPermissions() /*-{
-        var abstractPresenter = this;
+    protected native void requestRecorderPermissions(final AbstractPresenter abstractPresenter) /*-{
         console.log("requestRecorderPermissions");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
@@ -310,8 +308,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void requestFilePermissions() /*-{
-        var abstractPresenter = this;
+    public native void requestFilePermissions(final AbstractPresenter abstractPresenter) /*-{
         console.log("requestFilePermissions");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
@@ -326,8 +323,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void isAudioRecording() /*-{
-        var abstractPresenter = this;
+    protected native void isAudioRecording(final AbstractPresenter abstractPresenter) /*-{
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.isRecording(function () {
 //                console.log("isAudioRecording");
@@ -341,8 +337,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void getAudioRecorderTime() /*-{
-        var abstractPresenter = this;
+    public native void getAudioRecorderTime(final AbstractPresenter abstractPresenter) /*-{
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
 //                console.log("isAudioRecording: " + " : " + currentTime);
@@ -375,8 +370,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void stopAudioRecorder() /*-{
-        var abstractPresenter = this;
+    public native void stopAudioRecorder(final AbstractPresenter abstractPresenter) /*-{
         console.log("stopAudioRecorder");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
@@ -441,8 +435,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) /*-{
-        var abstractPresenter = this;
+    public native void startAudioRecorderTag(final AbstractPresenter abstractPresenter, int tier, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("startAudioRecorderTag: " + tier);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
@@ -461,8 +454,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
-        var abstractPresenter = this;
+    public native void endAudioRecorderTag(final AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {

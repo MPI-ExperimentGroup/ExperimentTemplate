@@ -102,7 +102,7 @@ public abstract class AbstractPresenter implements Presenter {
         audioTickerTimer = new Timer() {
             public void run() {
 //                isAudioRecording();
-                audioRecorder.getAudioRecorderTime();
+                audioRecorder.getAudioRecorderTime(AbstractPresenter.this);
             }
         };
     }
@@ -689,12 +689,12 @@ public abstract class AbstractPresenter implements Presenter {
                     simpleView.endRegion(canvasRegion);
                 }
             }
-            audioRecorder.startRecorderDtmfTriggersWeb(recorderMediaTriggerListener);
+            audioRecorder.startRecorderDtmfTriggersWeb(this, recorderMediaTriggerListener);
         }
     }
 
     protected void requestFilePermissions() {
-        audioRecorder.requestFilePermissions();
+        audioRecorder.requestFilePermissions(this);
     }
 
     @Override

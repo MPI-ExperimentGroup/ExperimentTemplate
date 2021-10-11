@@ -1645,11 +1645,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void endAudioRecorderTag(int tier, String tagString, final Stimulus currentStimulus) {
-        audioRecorder.endAudioRecorderTag(tier, (currentStimulus != null) ? currentStimulus.getUniqueId() : "", (currentStimulus != null) ? currentStimulus.getCode() : "", tagString, timedEventMonitor);
+        audioRecorder.endAudioRecorderTag(this, tier, (currentStimulus != null) ? currentStimulus.getUniqueId() : "", (currentStimulus != null) ? currentStimulus.getCode() : "", tagString, timedEventMonitor);
     }
 
     protected void startAudioRecorderTag(int tier) {
-        audioRecorder.startAudioRecorderTag(tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
+        audioRecorder.startAudioRecorderTag(this, tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
     protected void audioInputSelectWeb(final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
@@ -1790,11 +1790,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             }
         };
-        audioRecorder.startAudioRecorderWeb(submissionService, recordingLabel, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        audioRecorder.startAudioRecorderWeb(this, submissionService, recordingLabel, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void stopAudioRecorder() {
-        audioRecorder.stopAudioRecorder();
+        audioRecorder.stopAudioRecorder(this);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
