@@ -40,17 +40,23 @@ public class VideoRecorder {
                 mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderNotReady()();
                 return;
             } else {
-                var constraints = {
+                var recordingConstraints = {
                     video: true,
                     audio: true
+                };
+                var previewConstraints = {
+                    video: true
                 };
                 var videoElement = $doc.createElement("video");
                 videoElement.autoplay = 'true';
                 $doc.body.appendChild(videoElement);
                 try {
-                    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
-                        // TODO: mute your speakers or connect headphones before connecting the source
-                        // videoElement.srcObject = stream;
+                    navigator.mediaDevices.getUserMedia(recordingConstraints).then(function (recordingStream) {
+                        // TODO: to prevent audio feedback we preview without audio and will record via this separate stream that has audio
+                    });
+                    navigator.mediaDevices.getUserMedia(previewConstraints).then(function (previewStream) {
+                        // to prevent audio feedback we preview without audio
+                        videoElement.srcObject = previewStream;
                     });
                 } catch(e) {
                     console.log(e.message);
