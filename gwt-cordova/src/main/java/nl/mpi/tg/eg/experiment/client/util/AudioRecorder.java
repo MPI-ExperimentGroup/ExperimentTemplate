@@ -17,6 +17,11 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
+import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
+
 
 /**
  * @since 11 October 2019 10:40:23 AM (creation date)
@@ -26,4 +31,453 @@ public class AudioRecorder {
 
     public AudioRecorder() {
     }
+
+    protected native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // console.log("startRecorderTriggersWeb");
+        console.log("start updateRecorderTriggers");
+        function updateRecorderTriggers() {
+            if ($wnd.recorder) {
+                // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+                if(hasMoreListeners === true) {
+                    requestAnimationFrame(updateRecorderTriggers);
+                } else console.log("end updateRecorderTriggers no more listeners");
+                // if there are no more listeners then the animation requests will stop here.
+            } else {
+                // if the recorder is not yet running then we let the animation requests continue
+                // requestAnimationFrame(updateRecorderTriggers);
+                console.log("end updateRecorderTriggers");
+            }
+        }
+        requestAnimationFrame(updateRecorderTriggers);
+    }-*/;
+
+    protected native void startRecorderDtmfTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
+        var abstractPresenter = this;
+        if (!$wnd.audioAnalyser) {
+            $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
+            $wnd.audioAnalyser.fftSize = 2048;
+            $wnd.recorder.sourceNode.connect($wnd.audioAnalyser);
+        }
+        // console.log("startRecorderDtmfTriggersWeb");
+        //              1209 Hz	1336 Hz	1477 Hz	1633 Hz
+        //    697 Hz	1	2	3	A
+        //    770 Hz	4	5	6	B
+        //    852 Hz	7	8	9	C
+        //    941 Hz	*	0	#	D
+        var sampleRate = $wnd.recorder.audioContext.sampleRate;
+        var index697 = Math.round(697 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index770 = Math.round(770 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index852 = Math.round(852 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index941 = Math.round(941 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1209 = Math.round(1209 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1336 = Math.round(1336 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1477 = Math.round(1477 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
+
+        var frequencyCanvas = $doc.querySelector('#frequencyCanvas');
+        if (frequencyCanvas) {
+            var frequencyCanvasContext = frequencyCanvas.getContext('2d');
+            var frequencyCanvasHeight = 256;
+            // we are only visualising the lower half of the spectrum
+            var frequencyCanvasWidth = 1024;
+            frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+        }
+        var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
+        var dataArray = new Uint8Array(bufferLength);
+        var initialMs = performance.now();
+        console.log("start updateRecorderDtmfTriggers");
+        function updateRecorderDtmfTriggers() {
+            var frameMs = performance.now() - initialMs;
+            initialMs = performance.now();
+            if ($wnd.audioAnalyser && $wnd.recorder) {
+                var nextAnimationRequest = requestAnimationFrame(updateRecorderDtmfTriggers);
+                //console.log(bufferLength);
+                $wnd.audioAnalyser.getByteFrequencyData(dataArray);
+                var index697Level = dataArray[index697];
+                var index770Level = dataArray[index770];
+                var index852Level = dataArray[index852];
+                var index941Level = dataArray[index941];
+                var index1209Level = dataArray[index1209];
+                var index1336Level = dataArray[index1336];
+                var index1477Level = dataArray[index1477];
+                var index1633Level = dataArray[index1633];
+                var peekLevel = 0;
+                for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
+                    var currentLevel = dataArray[bufferIndex];
+                    peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
+                }
+                var dtmfAverage = (index697Level + index770Level + index852Level + index941Level + index1209Level + index1336Level + index1477Level + index1633Level) / 8;
+                var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 3);
+                var isAmplitudeOk = (peekLevel - dtmfAverage) > 100;
+                var isFrameRateOk = frameMs < 100;
+                //console.log(peekLevel - dtmfAverage);
+                if (frequencyCanvas) {
+                    // draw graph
+                    frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
+                    frequencyCanvasContext.fillRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+                    var barWidth = 1;//(frequencyCanvasWidth / bufferLength) / 4;
+                    var barHeight;
+                    var positionX = 0;
+                    // we are only visualising the lower half of the spectrum
+                    for(var bufferIndex = 0; bufferIndex < bufferLength && bufferIndex < frequencyCanvasWidth; bufferIndex++) {
+                        barHeight = dataArray[bufferIndex] / 4;
+                        if (bufferIndex === index697 || bufferIndex === index770 || bufferIndex === index852 || bufferIndex === index941 || bufferIndex === index1209 || bufferIndex === index1336 || bufferIndex === index1477 || bufferIndex === index1633) {
+                            frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                        } else {
+                            frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
+                        }
+                        frequencyCanvasContext.fillRect(positionX, frequencyCanvasHeight - barHeight, barWidth, frequencyCanvasHeight);
+                        positionX += barWidth + 1;
+                    }
+                    var triggerThresholdHeight = triggerThreshold / 4;
+                    var peekLevelHeight = peekLevel / 4;
+                    var dtmfAverageHeight = dtmfAverage / 4;
+                    if (isAmplitudeOk) {
+                        frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                    } else {
+                        frequencyCanvasContext.fillStyle = 'rgb(0, 255, 255)';
+                    }
+                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - triggerThresholdHeight, frequencyCanvasWidth, 1);
+                    frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
+                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - peekLevelHeight, frequencyCanvasWidth, 1);
+                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - dtmfAverageHeight, frequencyCanvasWidth, 1);
+                    if (isFrameRateOk) {
+                        frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                    } else {
+                        frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                    }
+                    frequencyCanvasContext.fillText(Math.floor(frameMs), 10, 10);
+                }
+                var row = -1;
+                var column = -1;
+                if (isAmplitudeOk && isFrameRateOk) {
+                    if (index697Level > triggerThreshold && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level < dtmfAverage) {
+                        // 697 Hz	1	2	3	A
+                        var row = 0;
+                    } else if (index697Level < dtmfAverage && index770Level > triggerThreshold && index852Level < dtmfAverage && index941Level < dtmfAverage) {
+                        // 770 Hz	4	5	6	B
+                        var row = 1;
+                    } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level > triggerThreshold && index941Level < dtmfAverage) {
+                        // 852 Hz	7	8	9	C    
+                        var row = 2
+                    } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level > triggerThreshold) {
+                        // 941 Hz	*	0	#	D
+                        var row = 3;
+                    }
+                    if (index1209Level > triggerThreshold && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
+                        // 1209 Hz
+                        column = 0;
+                    } else if (index1209Level < dtmfAverage && index1336Level > triggerThreshold && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
+                        // 1336 Hz
+                        column = 1;
+                    } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level > triggerThreshold && index1633Level < dtmfAverage) {
+                        // 1477 Hz
+                        column = 2;
+                    } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level > triggerThreshold) {
+                        // 1633 Hz
+                        column = 3;
+                    }
+                }
+                //console.log(row + ", " + column + " - " + dtmfAverage + ", " + peekLevel);
+                var hasDtmfListeners = (dtmfAverage === peekLevel)? true : abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Double;Ljava/lang/Double;)(row, column);
+                //console.log(hasDtmfListeners);
+                if(hasDtmfListeners !== true) {
+                    // if there are no more listeners then the animation requests will stop here.
+                    $win.cancelAnimationFrame(nextAnimationRequest);
+                    console.log("end updateRecorderDtmfTriggers no more listeners");
+                }
+            } else {
+                // if the recorder is not yet running then we let the animation requests continue
+                // requestAnimationFrame(updateRecorderDtmfTriggers);
+                // if the audioAnalyser is null then end the animation requests
+                console.log("end updateRecorderDtmfTriggers");
+            }
+            //var finalMs = performance.now() - initialMs;
+            //console.log(frameMs + "ms" + "," + finalMs + "ms");
+        }
+        requestAnimationFrame(updateRecorderDtmfTriggers);
+    }-*/;
+
+    protected native void startAudioRecorderWeb(final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+        var abstractPresenter = this;
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            console.log("isRecordingSupported");
+            $wnd.recordingLabelString = recordingLabelString;
+            //if ($wnd.recorder && $wnd.recorder.state !== 'inactive') {
+            if ($wnd.recorder) {
+                console.log("waiting for recorder to finish");
+                // console.log($wnd.recorder.state);
+                // if the recorder is non null then we must wait for the stop to complete before starting a new recording.
+                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderNotReady()();
+                return;
+                // recorderTemp = $wnd.recorder;
+                // $wnd.recorder.onstop = function(){
+                    // console.log("startAudioRecorderWeb: onstop");
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    // recorderTemp.close();
+                    // posting done has not been shown to terminate the worker: recorderTemp.encoder.postMessage("done");
+                    // calling terminate has not been shown to terminate the worker: recorderTemp.encoder.terminate();
+                // };
+                // $wnd.recorder.stop();
+                // $wnd.recorder = null;
+                // $wnd.audioAnalyser = null;
+            } else {
+                    navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+                    var firstDeviceId = -1;
+                    var firstDeviceLabel = -1;
+                    var targetDeviceId = -1;
+                    var targetDeviceLabel = -1;
+                    // look for the device only if the recorder has not already been constructed
+                    if (!$wnd.recorderInstance) {
+                        // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+                        console.log("enumerateDevices: ");
+                        // it is likely that the first item in the list is the default input, so we stop on the first matching device
+                        for (var index = 0; (index < deviceInfos.length && targetDeviceId === -1); index++) {
+                            var deviceInfo = deviceInfos[index];
+    //                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
+                            console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
+                            if(deviceInfo.kind === 'audioinput' && firstDeviceId === -1){
+                                firstDeviceId = deviceInfo.deviceId;
+                                firstDeviceLabel = deviceInfo.label;
+                            }
+                            if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                                console.log(deviceInfo.kind);    
+                                console.log(deviceInfo.label);            
+                                console.log(deviceInfo.deviceId);
+                                targetDeviceId = deviceInfo.deviceId;
+                                targetDeviceLabel = deviceInfo.label;
+                            }
+                        }
+                        //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+                        if(targetDeviceId === -1) {
+                            console.log("Device not found, defaulting to first device seen.");
+                            targetDeviceId = firstDeviceId;
+                            targetDeviceLabel = firstDeviceLabel;
+                        }
+                    }
+                    if(targetDeviceId === -1 && !$wnd.recorderInstance) {
+                        console.log("Device not found: " + deviceRegex);
+                        mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex);
+                    } else {
+                        // $wnd.audioAnalyser = null;
+                        if (!$wnd.recorderInstance){
+                            if (recordingFormat === 'wav') {
+                                $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                            } else {
+                                $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
+                            }
+                        }
+                        $wnd.recorder = $wnd.recorderInstance;
+                        $wnd.recorder.ondataavailable = function( typedArray ){
+                            console.log("ondataavailable: " + typedArray.length);
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                        };
+                        try {
+                            $wnd.startRecorder(function(){$wnd.recorderStartOffset = $wnd.recorder.audioContext.currentTime; mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
+                            // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
+                            //$wnd.recorder.start();
+                        } catch(e) {
+                            console.log(e.message);
+                            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(e.message);
+                            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+                        };
+                    }
+                });
+            }
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void requestRecorderPermissions() /*-{
+        var abstractPresenter = this;
+        console.log("requestRecorderPermissions");
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
+                console.log("requestRecorderPermissionsOk");
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+            }, function (tagvalue) {
+                console.log("requestRecorderPermissionsError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            });
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void requestFilePermissions() /*-{
+        var abstractPresenter = this;
+        console.log("requestFilePermissions");
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
+                console.log("requestFilePermissionsOk");
+//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+            }, function (tagvalue) {
+                console.log("requestFilePermissionsError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            });
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void isAudioRecording() /*-{
+        var abstractPresenter = this;
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.isRecording(function () {
+//                console.log("isAudioRecording");
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+            }, function (tagvalue) {
+//                console.log("isAudioRecording: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+            });
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void getAudioRecorderTime() /*-{
+        var abstractPresenter = this;
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
+//                console.log("isAudioRecording: " + " : " + currentTime);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, currentTime);
+            }, function (tagvalue) {
+//                console.log("isAudioRecording: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+            });
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+            if ($wnd.recorder.state === 'recording') {
+                if ($wnd.recordingLabelString == 'ms') {
+                    // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                    var recordingMilliSeconds = Math.floor(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+                    var recordingMsString = (recordingMilliSeconds) + 'ms';
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingMsString);
+                } else if ($wnd.recordingLabelString == '00:00:00') {
+                    // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                    var recordingMilliSeconds = Math.floor(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+                    var recordingTimeDate = new Date(recordingMilliSeconds);
+                    var recordingTimeString = recordingTimeDate.toISOString().substr(11, 8);
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingTimeString);
+                } else {
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recordingLabelString);
+                }
+            } else {
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+            }
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void stopAudioRecorder() /*-{
+        var abstractPresenter = this;
+        console.log("stopAudioRecorder");
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
+                console.log("stopAudioRecorderOk: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, tagvalue);
+            }, function (tagvalue) {
+                console.log("stopAudioRecorderError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            });
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                recorderTemp = $wnd.recorder;
+                $wnd.recorder.onstop = function(){
+                    console.log("stopAudioRecorder: onstop");
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    // closing the recorder is known to leave the worker running and the documented methods to terminate the worker have not helped, so we keep the recorder open for new recordings.
+                    // recorderTemp.close();
+                    // recorderTemp.encoder.postMessage("done");
+                    // recorderTemp.encoder.terminate();
+                    // OggOpusEncoder.prototype.destroy
+                    $wnd.recorder = null;
+                }
+                $wnd.recorder.sourceNode.disconnect($wnd.audioAnalyser);
+                $wnd.audioAnalyser = null;
+                $wnd.recorder.stop();
+            }
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
+        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
+     }-*/;
+
+    /* pausing the recorder causes problems with the display of time code for the recording however it has been added back in due to popular request */
+    static public native void pauseAudioRecorderWeb() /*-{
+        console.log("pauseAudioRecorderWeb");
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                $wnd.recorder.pause();
+            }
+        }
+     }-*/;
+
+    /* pausing the recorder causes problems with the display of time code for the recording however it has been added back in due to popular request */
+    static public native void resumeAudioRecorderWeb() /*-{
+        console.log("resumeAudioRecorderWeb");
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                $wnd.recorder.resume();
+            }
+        }
+     }-*/;
+
+    static public native void logAudioRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+        console.log("logAudioRecorderWebTimeStamp");
+        if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                // note that this assumes the bit rate of 48000 which is expected with this encoder
+                // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+            }
+        }
+     }-*/;
+
+    protected native void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) /*-{
+        var abstractPresenter = this;
+        console.log("startAudioRecorderTag: " + tier);
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
+                console.log("startAudioRecorderTagOk: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+            }, function (tagvalue) {
+                console.log("startAudioRecorderTagError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            }, tier);
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+            // note that this assumes the bit rate of 48000 which is expected with this encoder
+            // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)("startAudioRecorderTag", ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+        var abstractPresenter = this;
+        console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
+                console.log("endAudioRecorderTagOk: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+            }, function (tagvalue) {
+                console.log("endAudioRecorderTagError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            }, tier, stimulusId, stimulusCode, eventTag);
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+            // note that this assumes the bit rate of 48000 which is expected with this encoder
+            // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerMediaLength(Ljava/lang/String;Ljava/lang/Double;)(eventTag, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
 }
