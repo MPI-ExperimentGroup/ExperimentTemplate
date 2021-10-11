@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.experiment.client.service;
+package nl.mpi.tg.eg.experiment.client.util;
 
 import com.google.gwt.dom.client.AudioElement;
 import com.google.gwt.dom.client.SourceElement;
@@ -24,6 +24,7 @@ import com.google.gwt.safehtml.shared.SafeUri;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
 /**
  * @since Jan 6, 2015 10:27:57 AM (creation date)
@@ -99,33 +100,33 @@ public class AudioPlayer {
 
     private native void onNoFoundSetup(final SourceElement sourceElement) /*-{
         var audioPlayer = this;
-        audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::incrementSourceLoadingCounter()();
+        audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::incrementSourceLoadingCounter()();
         sourceElement.addEventListener("error", function(){
             // todo: check to second instance of onerror
-            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::registerSourceLoadingError()();
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::registerSourceLoadingError()();
         }, false);
     }-*/;
 
     private native void onEndedSetup(final AudioElement audioElement) /*-{
         var audioPlayer = this;
         audioElement.addEventListener("play", function(){
-            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onStartedAction()();
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onStartedAction()();
         }, false);
         audioElement.addEventListener("ended", function(){
-            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onEndedAction()();
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onEndedAction()();
         }, false);
         audioElement.addEventListener("canplaythrough", function(){
-            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onLoadedAction()();
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onLoadedAction()();
         }, false);
         audioElement.addEventListener("error", function(){
             // todo: check to second instance of onerror
-            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed()();
         }, false);
      }-*/;
 
     private native void play(final AudioElement audioElement) /*-{
         var audioPlayer = this;
-        $wnd.playMedia(audioElement, function(){}, function(){audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()()});
+        $wnd.playMedia(audioElement, function(){}, function(){audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed()()});
      }-*/;
 
     public void onStartedAction() {

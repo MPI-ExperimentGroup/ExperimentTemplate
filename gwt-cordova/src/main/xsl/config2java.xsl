@@ -22,7 +22,7 @@
             import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
             import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
             import nl.mpi.tg.eg.experiment.client.presenter.*;
-            import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+            import nl.mpi.tg.eg.experiment.client.util.AudioPlayer;
 
             public class ApplicationController extends AppController {
 
@@ -240,7 +240,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;
-                import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+                import nl.mpi.tg.eg.experiment.client.util.AudioPlayer;
                 import nl.mpi.tg.eg.experiment.client.service.TimerService;
                 import nl.mpi.tg.eg.experiment.client.model.UserResults;    
                 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 

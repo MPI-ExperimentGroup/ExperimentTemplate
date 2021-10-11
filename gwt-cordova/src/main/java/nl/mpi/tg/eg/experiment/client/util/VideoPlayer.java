@@ -15,10 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.experiment.client.service;
+package nl.mpi.tg.eg.experiment.client.util;
 
 import com.google.gwt.dom.client.VideoElement;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
 /**
  * @since Jan 22, 2019 11:47:23 AM (creation date)

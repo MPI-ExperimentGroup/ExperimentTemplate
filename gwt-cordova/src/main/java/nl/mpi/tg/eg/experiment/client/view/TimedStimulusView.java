@@ -63,10 +63,10 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.util.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
-import nl.mpi.tg.eg.experiment.client.service.VideoPlayer;
+import nl.mpi.tg.eg.experiment.client.util.VideoPlayer;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -706,7 +706,7 @@ public class TimedStimulusView extends ComplexView {
                             video.play();
                         }
                         if (video.getError() != null) {
-                            // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
+                            // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed()();
                             failedStimulusListener.postLoadTimerFired();
                         }
                     }
@@ -753,7 +753,7 @@ public class TimedStimulusView extends ComplexView {
             video.setLoop(loop);
             video.load();
             if (video.getError() != null) {
-                // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
+                // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed()();
                 failedStimulusListener.postLoadTimerFired();
             }
             videoElement = video.getElement();
