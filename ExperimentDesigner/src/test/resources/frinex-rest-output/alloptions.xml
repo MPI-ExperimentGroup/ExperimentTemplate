@@ -346,8 +346,6 @@
                     </doLater>
                     <clearTimer listenerId="listenerId"/>
                     <regionStyle regionId="regionId" styleName="styleName"/>
-                    <stopAudioRecorder/>
-                    <startAudioRecorderTag eventTier="8"/>
                 </onTime>
                 <onError>
                     <plainText featureText="plainText in onError"/>
@@ -534,36 +532,6 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
-        <addRecorderDtmfTrigger dtmf="#">
-            <disableButtonGroup matchingRegex="matchingRegex"/>
-            <enableButtonGroup matchingRegex="matchingRegex"/>
-            <hideButtonGroup matchingRegex="matchingRegex"/>
-            <showButtonGroup matchingRegex="matchingRegex"/>
-            <clearTimer listenerId="listenerId"/>
-            <regionStyle regionId="regionId" styleName="styleName"/>
-            <playMedia mediaId="mediaId"/>
-            <rewindMedia mediaId="mediaId"/>
-            <pauseMedia mediaId="mediaId"/>
-            <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
-            <stopAudioRecorder/>
-            <startAudioRecorderTag eventTier="8"/>
-            <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-            <addRecorderDtmfTrigger>
-                <disableButtonGroup matchingRegex=""/>
-                <enableButtonGroup matchingRegex=""/>
-                <hideButtonGroup matchingRegex=""/>
-                <showButtonGroup matchingRegex=""/>
-                <clearTimer listenerId=""/>
-                <regionStyle regionId=""/>
-                <playMedia mediaId=""/>
-                <rewindMedia mediaId=""/>
-                <pauseMedia mediaId=""/>
-                <logMediaTimeStamp mediaId=""/>
-                <stopAudioRecorder/>
-                <startAudioRecorderTag eventTier="8"/>
-                <endAudioRecorderTag eventTier="8"/>
-            </addRecorderDtmfTrigger>
-        </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -2547,8 +2515,6 @@
                     </doLater>
                     <clearTimer listenerId="listenerId"/>
                     <regionStyle regionId="regionId" styleName="styleName"/>
-                    <stopAudioRecorder/>
-                    <startAudioRecorderTag eventTier="8"/>
                 </onTime>
                 <onError>
                     <plainText featureText="plainText in onError"/>
@@ -3167,8 +3133,6 @@
                     </doLater>
                     <clearTimer listenerId=""/>
                     <regionStyle regionId=""/>
-                    <stopAudioRecorder/>
-                    <startAudioRecorderTag eventTier="8"/>
                 </onTime>
                 <onError>
                     <plainText featureText="plainText in onError"/>
@@ -3355,21 +3319,6 @@
                 <plainText featureText="plainText in onTimer"/>
             </onTimer>
         </addTimerTrigger>
-        <addRecorderDtmfTrigger>
-            <disableButtonGroup matchingRegex=""/>
-            <enableButtonGroup matchingRegex=""/>
-            <hideButtonGroup matchingRegex=""/>
-            <showButtonGroup matchingRegex=""/>
-            <clearTimer listenerId=""/>
-            <regionStyle regionId=""/>
-            <playMedia mediaId=""/>
-            <rewindMedia mediaId=""/>
-            <pauseMedia mediaId=""/>
-            <logMediaTimeStamp mediaId=""/>
-            <stopAudioRecorder/>
-            <startAudioRecorderTag eventTier="8"/>
-            <endAudioRecorderTag eventTier="8"/>
-        </addRecorderDtmfTrigger>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -5302,8 +5251,6 @@
                     </doLater>
                     <clearTimer listenerId=""/>
                     <regionStyle regionId=""/>
-                    <stopAudioRecorder/>
-                    <startAudioRecorderTag eventTier="8"/>
                 </onTime>
                 <onError>
                     <plainText featureText="plainText in onError"/>

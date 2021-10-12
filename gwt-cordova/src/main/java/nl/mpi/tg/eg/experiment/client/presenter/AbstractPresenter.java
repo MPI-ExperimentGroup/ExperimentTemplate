@@ -57,6 +57,7 @@ import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
 import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
