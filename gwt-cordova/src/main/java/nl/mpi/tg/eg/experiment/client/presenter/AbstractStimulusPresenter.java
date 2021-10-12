@@ -47,7 +47,6 @@ import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
-import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
@@ -1795,6 +1794,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void stopAudioRecorder() {
         audioRecorder.stopAudioRecorder(this);
+    }
+
+    protected void requestRecorderPermissions() {
+        audioRecorder.requestRecorderPermissions(this);
+    }
+
+    protected void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) {
+        audioRecorder.startAudioRecorderTag(this, 8, null);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {

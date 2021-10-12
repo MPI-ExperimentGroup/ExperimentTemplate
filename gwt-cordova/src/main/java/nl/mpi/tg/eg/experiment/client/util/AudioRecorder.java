@@ -23,7 +23,6 @@ import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
-
 /**
  * @since 11 October 2019 10:40:23 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -293,7 +292,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void requestRecorderPermissions(final AbstractPresenter abstractPresenter) /*-{
+    public native void requestRecorderPermissions(final AbstractPresenter abstractPresenter) /*-{
         console.log("requestRecorderPermissions");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
