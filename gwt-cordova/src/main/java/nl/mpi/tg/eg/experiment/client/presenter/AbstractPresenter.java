@@ -105,7 +105,7 @@ public abstract class AbstractPresenter implements Presenter {
         audioTickerTimer = new Timer() {
             public void run() {
 //                isAudioRecording();
-                audioRecorder.getAudioRecorderTime(AbstractPresenter.this);
+                audioRecorder.getRecorderTime(AbstractPresenter.this);
             }
         };
     }

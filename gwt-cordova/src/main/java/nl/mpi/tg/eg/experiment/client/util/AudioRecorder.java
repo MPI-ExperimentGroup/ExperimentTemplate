@@ -199,7 +199,7 @@ public class AudioRecorder {
         requestAnimationFrame(updateRecorderDtmfTriggers);
     }-*/;
 
-    public native void startAudioRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
@@ -322,7 +322,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    protected native void isAudioRecording(final AbstractPresenter abstractPresenter) /*-{
+    protected native void isRecording(final AbstractPresenter abstractPresenter) /*-{
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.isRecording(function () {
 //                console.log("isAudioRecording");
@@ -336,7 +336,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void getAudioRecorderTime(final AbstractPresenter abstractPresenter) /*-{
+    public native void getRecorderTime(final AbstractPresenter abstractPresenter) /*-{
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
 //                console.log("isAudioRecording: " + " : " + currentTime);
@@ -369,7 +369,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void stopAudioRecorder(final AbstractPresenter abstractPresenter) /*-{
+    public native void stopRecorder(final AbstractPresenter abstractPresenter) /*-{
         console.log("stopAudioRecorder");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
@@ -404,7 +404,7 @@ public class AudioRecorder {
      }-*/;
 
     /* pausing the recorder causes problems with the display of time code for the recording however it has been added back in due to popular request */
-    static public native void pauseAudioRecorderWeb() /*-{
+    static public native void pauseRecorderWeb() /*-{
         console.log("pauseAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
@@ -414,7 +414,7 @@ public class AudioRecorder {
      }-*/;
 
     /* pausing the recorder causes problems with the display of time code for the recording however it has been added back in due to popular request */
-    static public native void resumeAudioRecorderWeb() /*-{
+    static public native void resumeRecorderWeb() /*-{
         console.log("resumeAudioRecorderWeb");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
@@ -423,7 +423,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    static public native void logAudioRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+    static public native void logRecorderWebTimeStamp(String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("logAudioRecorderWebTimeStamp");
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
@@ -434,7 +434,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void startAudioRecorderTag(final AbstractPresenter abstractPresenter, int tier, final TimedEventMonitor timedEventMonitor) /*-{
+    public native void startRecorderTag(final AbstractPresenter abstractPresenter, int tier, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("startAudioRecorderTag: " + tier);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
@@ -453,7 +453,7 @@ public class AudioRecorder {
         }
      }-*/;
 
-    public native void endAudioRecorderTag(final AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+    public native void endRecorderTag(final AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
         console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
