@@ -30,7 +30,7 @@ public class VideoRecorder {
     public VideoRecorder() {
     }
 
-    public native void startVideoRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             console.log("isVideoSupported");
             $wnd.recordingVideoLabelString = recordingVideoLabelString;
@@ -53,6 +53,11 @@ public class VideoRecorder {
                 try {
                     navigator.mediaDevices.getUserMedia(recordingConstraints).then(function (recordingStream) {
                         // TODO: to prevent audio feedback we preview without audio and will record via this separate stream that has audio
+                        $wnd.mediaRecorder = new MediaRecorder(recordingStream);
+                        $wnd.videoRecorderChunks = [];
+                        $wnd.mediaRecorder.ondataavailable = function(e) {
+                          $wnd.videoRecorderChunks.push(e.data);
+                        }
                     });
                     navigator.mediaDevices.getUserMedia(previewConstraints).then(function (previewStream) {
                         // to prevent audio feedback we preview without audio
