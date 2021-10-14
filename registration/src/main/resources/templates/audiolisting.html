@@ -58,9 +58,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.recordingFormat}">recordingFormat</td>
                     <td th:text="${prod.submitDate}">submitDate</td>
                     <td>
-                        <audio controls="true">
+                        <audio th:if="${!prod.isVideo()}" controls="true">
                             <source th:attr="src='audio/' + ${prod.userId} + '_' + ${prod.screenName} + '_' + ${prod.stimulusId} + '_' + ${prod.id},type='audio/' + ${prod.recordingFormat}"/>
                         </audio>
+                        <video th:if="${prod.isVideo()}" controls="true" width="320" height="240">
+                            <!--- TODO: change the use of the term audio to media eg in href='audio/ --->
+                            <source th:attr="src='audio/' + ${prod.userId} + '_' + ${prod.screenName} + '_' + ${prod.stimulusId} + '_' + ${prod.id},type='video/ogg'"/>
+                        </video>
                     </td>
                     <td>
                         <a class="downloadLink" th:attr="href='audio/' + ${prod.userId} + '_' + ${prod.screenName} + '_' + ${prod.stimulusId} + '_' + ${prod.id}"><i class="fa fa-download"></i></a>

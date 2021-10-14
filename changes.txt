@@ -1,5 +1,9 @@
 #Changes in Frinex 1.4
 
+Added storage, retrieval and playback of OGV video files in the admin system.
+
+Refactored the audio player, video player and the audio recorder to enable the addition of video recording features.
+
 Changed the method of collecting sequential recordings because closing the recorder leaves the encoder worker running and the documented methods to terminate the worker have not helped, so we keep the recorder open for new recordings. This will have implications for timing and recording alignment to events. This change should make it possible to collect more than 100 recordings sequentially.
 
 Added logging of the webbrowser's userAgentData.

@@ -26,6 +26,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 
 /**
  * @since Aug 13, 2018 4:01:36 PM (creation date)
@@ -108,6 +109,11 @@ public class AudioData {
         this.stimulusId = stimulusId;
     }
 
+    @Transient
+    public boolean isVideo() {
+        return recordingFormat == AudioType.ogv;
+    }
+    
     public AudioType getRecordingFormat() {
         return recordingFormat;
     }

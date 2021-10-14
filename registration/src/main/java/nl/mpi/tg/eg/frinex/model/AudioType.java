@@ -22,5 +22,5 @@ package nl.mpi.tg.eg.frinex.model;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum AudioType {
-    ogg, wav
+    ogg, wav, ogv
 }

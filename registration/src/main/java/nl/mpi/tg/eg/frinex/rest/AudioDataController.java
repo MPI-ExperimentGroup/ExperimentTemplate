@@ -47,8 +47,9 @@ public class AudioDataController {
     public HttpEntity<byte[]> getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
         HttpHeaders header = new HttpHeaders();
         final AudioData audioData = this.audioDataRepository.findById(id).get();
-        header.setContentDispositionFormData("Content-Disposition", "audio/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + audioData.getRecordingFormat().name());
-        header.setContentType(new MediaType("audio", audioData.getRecordingFormat().name()));
+        // TODO: video/ogv is not quite correct and should be video/ogg
+        header.setContentDispositionFormData("Content-Disposition", (audioData.isVideo() ? "video" : "audio") + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + audioData.getRecordingFormat().name());
+        header.setContentType(new MediaType((audioData.isVideo() ? "video" : "audio"), audioData.getRecordingFormat().name()));
         final byte[] dataBlob = audioData.getDataBlob();
         header.setContentLength(dataBlob.length);
         return new HttpEntity<>(dataBlob, header);
