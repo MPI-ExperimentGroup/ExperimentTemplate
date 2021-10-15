@@ -232,7 +232,7 @@ public enum FeatureAttribute {
     //    ogg,
     //    @Deprecated
     //    webm,
-    recordingFormat("", true, new String[]{"wav", "ogg"}),
+    recordingFormat("", true, new String[]{"wav", "ogg", "ogv"}),
     levelIndicatorStyle("The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.", true, AttributeType.xsString),
     echoCancellation("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean), 
     noiseSuppression("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean), 

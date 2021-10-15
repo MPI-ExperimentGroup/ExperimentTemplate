@@ -1,5 +1,7 @@
 #Changes in Frinex 1.4
 
+Enabled OGV format in the XML for the audio/media recorder.
+
 Added storage, retrieval and playback of OGV video files in the admin system.
 
 Refactored the audio player, video player and the audio recorder to enable the addition of video recording features.
