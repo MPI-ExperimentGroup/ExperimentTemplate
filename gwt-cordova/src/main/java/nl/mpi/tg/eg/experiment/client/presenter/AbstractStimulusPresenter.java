@@ -81,8 +81,11 @@ import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.util.AbstractRecorder;
+import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MetadataFieldWidget;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
@@ -1644,11 +1647,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void endAudioRecorderTag(int tier, String tagString, final Stimulus currentStimulus) {
-        audioRecorder.endRecorderTag(this, tier, (currentStimulus != null) ? currentStimulus.getUniqueId() : "", (currentStimulus != null) ? currentStimulus.getCode() : "", tagString, timedEventMonitor);
+        mediaRecorder.endRecorderTag(this, tier, (currentStimulus != null) ? currentStimulus.getUniqueId() : "", (currentStimulus != null) ? currentStimulus.getCode() : "", tagString, timedEventMonitor);
     }
 
     protected void startAudioRecorderTag(int tier) {
-        audioRecorder.startRecorderTag(this, tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
+        mediaRecorder.startRecorderTag(this, tier, timedEventMonitor); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
     protected void audioInputSelectWeb(final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
@@ -1687,6 +1690,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         });
     }
 
+    // TODO: replace all startAudioRecorderWeb methods with startMediaRecorderWeb type="ogg" / type="ogv" etc.
     protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         super.clearRecorderTriggersWeb();
         final ValueChangeListener<Double> changeListener;
@@ -1761,7 +1765,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     Timer timer = new Timer() {
                         @Override
                         public void run() {
-                            submissionService.submitAudioData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                            submissionService.submitMediaData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
                         }
                     };
                     timer.schedule(1000);
@@ -1789,19 +1793,26 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             }
         };
-        audioRecorder.startRecorderWeb(this, submissionService, recordingLabel, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        if (recordingFormat.equals("ogv")) {
+            // TODO: this could be more elegant in relation to the termination of the preceding recording type
+            mediaRecorder = new VideoRecorder();
+        } else {
+            // TODO: this could be more elegant in relation to the termination of the preceding recording type
+            mediaRecorder = new AudioRecorder();
+        }
+        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void stopAudioRecorder() {
-        audioRecorder.stopRecorder(this);
+        mediaRecorder.stopRecorder(this);
     }
 
     protected void requestRecorderPermissions() {
-        audioRecorder.requestRecorderPermissions(this);
+        mediaRecorder.requestRecorderPermissions(this);
     }
 
     protected void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) {
-        audioRecorder.startRecorderTag(this, 8, null);
+        mediaRecorder.startRecorderTag(this, 8, null);
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {

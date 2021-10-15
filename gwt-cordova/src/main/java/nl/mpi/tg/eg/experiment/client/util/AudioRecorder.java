@@ -27,7 +27,7 @@ import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
  * @since 11 October 2019 10:40:23 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AudioRecorder {
+public class AudioRecorder extends AbstractRecorder {
 
     public AudioRecorder() {
     }

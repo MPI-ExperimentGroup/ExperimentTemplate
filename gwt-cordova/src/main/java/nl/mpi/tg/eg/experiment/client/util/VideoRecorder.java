@@ -18,17 +18,40 @@
 package nl.mpi.tg.eg.experiment.client.util;
 
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
 /**
  * @since 11 October 2019 10:40:23 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class VideoRecorder {
+public class VideoRecorder extends AbstractRecorder {
 
     public VideoRecorder() {
     }
+
+    public native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // TODO: merge this video startRecorderTriggersWeb with the audio startRecorderTriggersWeb in an abstract class
+        // console.log("startRecorderTriggersWeb");
+        console.log("start updateRecorderTriggers");
+        function updateRecorderTriggers() {
+            if ($wnd.mediaRecorder) {
+                var currentMediaTime = performance.now() - $wnd.videoStartOffset;
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime * 1000);
+                if(hasMoreListeners === true) {
+                    requestAnimationFrame(updateRecorderTriggers);
+                } else console.log("end updateRecorderTriggers no more listeners");
+                // if there are no more listeners then the animation requests will stop here.
+            } else {
+                // if the recorder is not yet running then we let the animation requests continue
+                // requestAnimationFrame(updateRecorderTriggers);
+                console.log("end updateRecorderTriggers");
+            }
+        }
+        requestAnimationFrame(updateRecorderTriggers);
+    }-*/;
 
     public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -47,9 +70,12 @@ public class VideoRecorder {
                 var previewConstraints = {
                     video: true
                 };
-                var videoElement = $doc.createElement("video");
-                videoElement.autoplay = 'true';
-                $doc.body.appendChild(videoElement);
+                var videoPreviewElement = $doc.querySelector('#videoRecorderPreview');
+                if (videoPreviewElement) {
+                    var videoElement = $doc.createElement("video");
+                    videoElement.autoplay = 'true';
+                    videoPreviewElement.appendChild(videoElement);
+                }
                 try {
                     navigator.mediaDevices.getUserMedia(recordingConstraints).then(function (recordingStream) {
                         // TODO: to prevent audio feedback we preview without audio and will record via this separate stream that has audio
@@ -58,11 +84,31 @@ public class VideoRecorder {
                         $wnd.mediaRecorder.ondataavailable = function(e) {
                           $wnd.videoRecorderChunks.push(e.data);
                         }
+                        $wnd.mediaRecorder.onstart = function() {
+                            // TODO: get the time from the recorded stream
+                            $wnd.videoStartOffset = performance.now();
+                            // TODO: set the target device with its label
+                            var targetDeviceLabel = -1;
+                            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, 
+                            //($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000
+                            0
+                            );
+                        }
+                        $wnd.mediaRecorder.onstop = function(e) {
+                            console.log("stopVideoRecorderOk: " + e);
+                            var videoRecorderBlob = new Blob($wnd.videoRecorderChunks, { 'type' : 'video/ogg; codecs=opus' });
+                            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, e.typeArg);
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, videoRecorderBlob, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                            $wnd.videoRecorderChunks = [];
+                        }
+                        $wnd.mediaRecorder.start();
                     });
-                    navigator.mediaDevices.getUserMedia(previewConstraints).then(function (previewStream) {
-                        // to prevent audio feedback we preview without audio
-                        videoElement.srcObject = previewStream;
-                    });
+                    if (videoPreviewElement) {
+                        navigator.mediaDevices.getUserMedia(previewConstraints).then(function (previewStream) {
+                            // to prevent audio feedback we preview without audio
+                            videoElement.srcObject = previewStream;
+                        });
+                    }
                 } catch(e) {
                     console.log(e.message);
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(e.message);
@@ -81,4 +127,42 @@ public class VideoRecorder {
     // TODO: update the admin system to store video data
     // TODO: update the admin system to display video records
     // TODO: expand on the aggressive_audio_test example to test and demonstrate the video recorder
+
+    public native void getRecorderTime(final AbstractPresenter abstractPresenter) /*-{
+     }-*/;
+
+    public native void stopRecorder(final AbstractPresenter abstractPresenter) /*-{
+        console.log("stopVideoRecorder");
+        if($wnd.mediaRecorder){
+            // TODO: finish checking the stop process is completed
+            $wnd.mediaRecorder.stop();
+            //$wnd.mediaRecorder = null;
+            // console.log("stopVideoRecorderError: " + tagvalue);
+            // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
+        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
+     }-*/;
+
+    @Override
+    public void requestRecorderPermissions(AbstractPresenter abstractPresenter) {
+        // TODO: implement this method
+    }
+
+    @Override
+    public void startRecorderTag(AbstractPresenter abstractPresenter, int tier, TimedEventMonitor timedEventMonitor) {
+        // TODO: implement this method
+    }
+
+    @Override
+    public void startRecorderDtmfTriggersWeb(AbstractPresenter abstractPresenter, MediaTriggerListener recorderMediaTriggerListenerL) {
+        // TODO: implement this method
+    }
+
+    @Override
+    public void endRecorderTag(AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, TimedEventMonitor timedEventMonitor) {
+        // TODO: implement this method
+    }
 }

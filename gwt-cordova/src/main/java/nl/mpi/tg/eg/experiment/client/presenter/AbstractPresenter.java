@@ -58,9 +58,10 @@ import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
+import nl.mpi.tg.eg.experiment.client.util.AbstractRecorder;
 import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
-import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -93,8 +94,7 @@ public abstract class AbstractPresenter implements Presenter {
     private final RecorderDtmfListener recorderDtmfListener = new RecorderDtmfListener();
     private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
     private HardwareTimeStamp toneGenerator = null; // note that this toneGenerator instance of HardwareTimeStamp is different from the hardwareTimeStamp used in AbstractStimulusPresenter although the tone generator objects are shared
-    protected AudioRecorder audioRecorder = new AudioRecorder();
-    protected VideoRecorder videoRecorder = new VideoRecorder();
+    protected AbstractRecorder mediaRecorder = new AudioRecorder();
 
     public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;
@@ -105,7 +105,7 @@ public abstract class AbstractPresenter implements Presenter {
         audioTickerTimer = new Timer() {
             public void run() {
 //                isAudioRecording();
-                audioRecorder.getRecorderTime(AbstractPresenter.this);
+                mediaRecorder.getRecorderTime(AbstractPresenter.this);
             }
         };
     }
@@ -665,7 +665,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void addRecorderTriggersWeb(final FrameTimeTrigger triggerListener) {
         if (recorderMediaTriggerListener.addMediaTriggerListener(triggerListener)) {
-            audioRecorder.startRecorderTriggersWeb(recorderMediaTriggerListener);
+            mediaRecorder.startRecorderTriggersWeb(recorderMediaTriggerListener);
         }
     }
 
@@ -692,12 +692,12 @@ public abstract class AbstractPresenter implements Presenter {
                     simpleView.endRegion(canvasRegion);
                 }
             }
-            audioRecorder.startRecorderDtmfTriggersWeb(this, recorderMediaTriggerListener);
+            mediaRecorder.startRecorderDtmfTriggersWeb(this, recorderMediaTriggerListener);
         }
     }
 
     protected void requestFilePermissions() {
-        audioRecorder.requestFilePermissions(this);
+        mediaRecorder.requestFilePermissions(this);
     }
 
     @Override
