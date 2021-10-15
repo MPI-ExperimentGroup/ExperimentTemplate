@@ -165,4 +165,9 @@ public class VideoRecorder extends AbstractRecorder {
     public void endRecorderTag(AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, TimedEventMonitor timedEventMonitor) {
         // TODO: implement this method
     }
+
+    @Override
+    public void requestFilePermissions(AbstractPresenter abstractPresenter) {
+        // this method is not required for the video recorder
+    }    
 }

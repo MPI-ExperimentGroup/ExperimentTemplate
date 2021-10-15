@@ -45,4 +45,5 @@ public abstract class AbstractRecorder {
 
     public abstract void endRecorderTag(final AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor);
 
+    public abstract void requestFilePermissions(final AbstractPresenter abstractPresenter);
 }
