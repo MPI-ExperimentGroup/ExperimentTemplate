@@ -628,7 +628,7 @@ public abstract class AbstractPresenter implements Presenter {
                 if ($wnd.recorder && $wnd.audioAnalyser) {
                     $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
                     sumSqrValues = 0;
-                    for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {                   
+                    for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
                         var currentValue = dataArray[bufferIndex] - 128;
                         sumSqrValues += currentValue * currentValue;
                     }
@@ -693,6 +693,17 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             }
             mediaRecorder.startRecorderDtmfTriggersWeb(this, recorderMediaTriggerListener);
+        }
+    }
+
+    protected void clearVideoRecorderPreview() {
+        if (simpleView.hasRegion("VideoRecorderPreview")) {
+            simpleView.clearRegion("VideoRecorderPreview");
+            final InsertPanel.ForIsWidget videoRecorderPreview = simpleView.startRegion("VideoRecorderPreview", null);
+            final HTML videoRecorderPreviewContainer = new HTML();
+            videoRecorderPreviewContainer.getElement().setId("VideoRecorderPreview");
+            simpleView.addWidget(videoRecorderPreviewContainer);
+            simpleView.endRegion(videoRecorderPreview);
         }
     }
 

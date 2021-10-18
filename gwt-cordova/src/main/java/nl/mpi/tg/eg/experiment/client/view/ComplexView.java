@@ -152,6 +152,13 @@ public class ComplexView extends SimpleView {
         }
     }
     
+//    public void setRegionId(final String regionId) {
+//        VerticalPanel regionTemp = regionPanels.get(regionId);
+//        if (regionTemp != null) {
+//            regionTemp.getElement().setId(regionId);
+//        }
+//    }
+    
     public boolean hasRegion(final String regionId) {
        return regionPanels.containsKey(regionId);
     }

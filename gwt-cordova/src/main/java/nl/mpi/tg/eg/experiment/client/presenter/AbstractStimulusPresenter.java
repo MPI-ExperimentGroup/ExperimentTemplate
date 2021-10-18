@@ -1690,7 +1690,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         });
     }
 
-    // TODO: replace all startAudioRecorderWeb methods with startMediaRecorderWeb type="ogg" / type="ogv" etc.
+    // TODO: replace all AudioRecorderWeb methods with startMediaRecorderWeb type="ogg" / type="ogv" etc.
     protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         super.clearRecorderTriggersWeb();
         final ValueChangeListener<Double> changeListener;

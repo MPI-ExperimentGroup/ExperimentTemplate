@@ -371,6 +371,7 @@ public class AudioRecorder extends AbstractRecorder {
      }-*/;
 
     public native void stopRecorder(final AbstractPresenter abstractPresenter) /*-{
+        // TODO: prevent the level indicator from having a non zero display after the recording stops
         console.log("stopAudioRecorder");
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {

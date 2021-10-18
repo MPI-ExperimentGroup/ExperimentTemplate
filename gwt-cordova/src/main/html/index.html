@@ -71,10 +71,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             }
             function requestPermissions(wantsVideo, wantsAudio, successHandler, errorHandler) {
                 navigator.mediaDevices.getUserMedia({video: wantsVideo, audio: wantsAudio}).then(function (stream) {
-                    successHandler();
+                    successHandler(stream);
                 }).catch(function (e) {
                     console.log("requestPermissions " + e.message);
-                    errorHandler();
+                    errorHandler(e);
                 });
             }
         </script>

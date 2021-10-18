@@ -70,7 +70,8 @@ public class VideoRecorder extends AbstractRecorder {
                 var previewConstraints = {
                     video: true
                 };
-                var videoPreviewElement = $doc.querySelector('#videoRecorderPreview');
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearVideoRecorderPreview()();
+                var videoPreviewElement = $doc.querySelector('#VideoRecorderPreview');
                 if (videoPreviewElement) {
                     var videoElement = $doc.createElement("video");
                     videoElement.autoplay = 'true';
@@ -112,9 +113,10 @@ public class VideoRecorder extends AbstractRecorder {
                 if (videoPreviewElement) {
                     // previewConstraints
                     $wnd.requestPermissions(true, false,
-                        function(recordingStream) {
+                        function(previewStream) {
                             // TODO: investigate why this preview is not apparent
                             // to prevent audio feedback we preview without audio
+                            // TODO try to use the video track of the recording stream for this preview
                             videoElement.srcObject = previewStream;
                         }, function(error) {
                             console.log(error.message);
