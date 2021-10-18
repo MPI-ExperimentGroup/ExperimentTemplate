@@ -39,11 +39,15 @@ public class VideoRecorder extends AbstractRecorder {
         function updateRecorderTriggers() {
             if ($wnd.mediaRecorder) {
                 var currentMediaTime = performance.now() - $wnd.videoStartOffset;
-                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime * 1000);
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime);
                 if(hasMoreListeners === true) {
                     requestAnimationFrame(updateRecorderTriggers);
-                } else console.log("end updateRecorderTriggers no more listeners");
-                // if there are no more listeners then the animation requests will stop here.
+                } else {
+                    console.log("videoStartOffset: "+ $wnd.videoStartOffset);
+                    console.log("currentMediaTime: "+ currentMediaTime);
+                    console.log("end updateRecorderTriggers no more listeners");
+                    // if there are no more listeners then the animation requests will stop here.
+                }
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
                 // requestAnimationFrame(updateRecorderTriggers);

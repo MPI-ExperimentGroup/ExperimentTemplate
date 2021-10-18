@@ -38,11 +38,16 @@ public class AudioRecorder extends AbstractRecorder {
         function updateRecorderTriggers() {
             if ($wnd.recorder) {
                 // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
+                var currentMediaTime = ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000;
+                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime);
                 if(hasMoreListeners === true) {
                     requestAnimationFrame(updateRecorderTriggers);
-                } else console.log("end updateRecorderTriggers no more listeners");
-                // if there are no more listeners then the animation requests will stop here.
+                } else {
+                    console.log("recorderStartOffset: "+ ($wnd.recorderStartOffset * 1000));
+                    console.log("currentMediaTime: "+ currentMediaTime);
+                    console.log("end updateRecorderTriggers no more listeners");
+                    // if there are no more listeners then the animation requests will stop here.
+                }
             } else {
                 // if the recorder is not yet running then we let the animation requests continue
                 // requestAnimationFrame(updateRecorderTriggers);
