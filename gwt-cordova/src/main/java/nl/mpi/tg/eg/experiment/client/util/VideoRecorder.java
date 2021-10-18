@@ -63,13 +63,6 @@ public class VideoRecorder extends AbstractRecorder {
                 mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderNotReady()();
                 return;
             } else {
-                var recordingConstraints = {
-                    video: true,
-                    audio: true
-                };
-                var previewConstraints = {
-                    video: true
-                };
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearVideoRecorderPreview()();
                 var videoPreviewElement = $doc.querySelector('#VideoRecorderPreview');
                 if (videoPreviewElement) {
@@ -77,7 +70,6 @@ public class VideoRecorder extends AbstractRecorder {
                     videoElement.autoplay = 'true';
                     videoPreviewElement.appendChild(videoElement);
                 }
-                // recordingConstraints
                 $wnd.requestPermissions(true, true,
                     function(recordingStream) {
                         // TODO: to prevent audio feedback we preview without audio and will record via this separate stream that has audio
@@ -102,29 +94,29 @@ public class VideoRecorder extends AbstractRecorder {
                             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, e.typeArg);
                             dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, videoRecorderBlob, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
                             $wnd.videoRecorderChunks = [];
+                            if (videoElement) {
+                                videoElement.srcObject = null;
+                            }
+                        }
+                        if (videoElement) {
+                            // TODO: investigate why this preview is not apparent
+                            // to prevent audio feedback we preview without audio
+                            // TODO try to use the video track of the recording stream for this preview
+                            var previewStream = new MediaStream($wnd.mediaRecorder.stream.getVideoTracks());
+                            videoElement.srcObject = previewStream;
                         }
                         $wnd.mediaRecorder.start();
                     }, function(error) {
                         console.log(error.message);
                         mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(error.message);
                         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+                        if($wnd.mediaRecorder){
+                            if ($wnd.mediaRecorder.state !== "inactive") {$wnd.mediaRecorder.stop();}
+                            $wnd.mediaRecorder.stream.getTracks().forEach(function (track) { track.stop(); });
+                            $wnd.mediaRecorder = null;
+                        }
                     }
                 );
-                if (videoPreviewElement) {
-                    // previewConstraints
-                    $wnd.requestPermissions(true, false,
-                        function(previewStream) {
-                            // TODO: investigate why this preview is not apparent
-                            // to prevent audio feedback we preview without audio
-                            // TODO try to use the video track of the recording stream for this preview
-                            videoElement.srcObject = previewStream;
-                        }, function(error) {
-                            console.log(error.message);
-                            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(error.message);
-                            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
-                        }
-                    );
-                }
             }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
@@ -145,8 +137,7 @@ public class VideoRecorder extends AbstractRecorder {
     public native void stopRecorder(final AbstractPresenter abstractPresenter) /*-{
         console.log("stopVideoRecorder");
         if($wnd.mediaRecorder){
-            // TODO: finish checking the stop process is completed
-            $wnd.mediaRecorder.stop();
+            if ($wnd.mediaRecorder.state !== "inactive") {$wnd.mediaRecorder.stop();}
             $wnd.mediaRecorder.stream.getTracks().forEach(function (track) { track.stop(); });
             $wnd.mediaRecorder = null;
             // console.log("stopVideoRecorderError: " + tagvalue);
