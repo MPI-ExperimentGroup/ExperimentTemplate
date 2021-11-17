@@ -2084,6 +2084,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
+// TODO: to overcome mid experiment network issues preventing stimuli from loading, some possible solutions could be:
+// TODO: 1) provide some degree of network monitoring to show poor connection warnings on screen for the participant to see
+// TODO: 2) resurrect the preload features and force all images to be held in memory before preceding
+// TODO: 3) add a feature to preload the next stimulus image while showing the current and allow retries on failure for the preload
+
 //    public void popupMessage(final PresenterEventListner presenterListener, String message) {
 //        timedStimulusView.showHtmlPopup(presenterListener, message);
 //    }
