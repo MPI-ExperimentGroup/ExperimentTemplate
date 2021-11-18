@@ -37,6 +37,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
+import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -182,12 +183,22 @@ public class TimedStimulusView extends ComplexView {
         }
         image.setVisible(false);
         image.addErrorHandler(new ErrorHandler() {
+            int retryCount = 10;
+
             @Override
             public void onError(ErrorEvent event) {
-                if (timedEventMonitor != null) {
-                    timedEventMonitor.registerEvent("imageOnError");
+                if (retryCount > 0) {
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("imageRetry");
+                    }
+                    retryCount--;
+                    image.setUrl(UriUtils.fromString(imagePath.asString() + "?retryCount=" + retryCount));
+                } else {
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("imageOnError");
+                    }
+                    failedStimulusListener.postLoadTimerFired();
                 }
-                failedStimulusListener.postLoadTimerFired();
             }
         });
         image.addLoadHandler(new LoadHandler() {
