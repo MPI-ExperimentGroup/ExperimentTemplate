@@ -39,6 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private String groupSearchBase;
     @Value("${ldap.url}")
     private String ldapUrl;
+    @Value("${ldap.managerDn}")
+    private String managerDn;
+    @Value("${ldap.managerPassword}")
+    private String managerPassword;    
     @Value("${ldap.passwordAttribute}")
     private String passwordAttribute;
 
@@ -66,6 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .groupSearchBase(groupSearchBase)
                 .contextSource()
                 .url(ldapUrl)
+                .managerDn(managerDn)
+                .managerPassword(managerPassword)
                 .and()
                 .passwordCompare()
                 .passwordEncoder(new BCryptPasswordEncoder())
