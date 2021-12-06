@@ -58,7 +58,9 @@
         <metadataField fieldName="age"/>
         <metadataField fieldName="education"/>
         <metadataField fieldName="educationOther"/>
-        <metadataField fieldName="gender"/>
+        <metadataField fieldName="gender">
+            <template attributeName="metadataField" jsonPath="Gegevens.gender" description="You can edit the metadatafield registrationField and controlledRegex. Perhaps you can also click a checkbox to hide or show this metadata field here." />
+        </metadataField>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>

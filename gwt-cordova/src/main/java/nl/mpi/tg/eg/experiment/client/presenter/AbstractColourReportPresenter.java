@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -64,7 +65,7 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
     }
 
     @Override
-    public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName) {
+    public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName, XmlId xmlId) {
         switch (styleName) {
             case "reportScreenScore":
                 reportScreenScore = textString;
@@ -73,7 +74,7 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
                 userfeedbackscreentext = textString;
                 break;
             default:
-                htmlTokenText(currentStimulus, textString, styleName);
+                htmlTokenText(currentStimulus, textString, styleName, xmlId);
         }
     }
 

@@ -54,6 +54,7 @@ import nl.mpi.tg.eg.experiment.client.service.LocalNotifications;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
+import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
@@ -189,15 +190,19 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     protected void addText(String textString) {
-        simpleView.addText(textString);
+        simpleView.addText(textString, null);
     }
 
-    protected void addHtmlText(String textString) {
-        simpleView.addHtmlText(textString, null);
+    protected void addText(String textString, XmlId xmlId) {
+        simpleView.addText(textString, xmlId);
     }
 
-    protected void addHtmlText(String textString, String styleName) {
-        simpleView.addHtmlText(textString, styleName);
+    protected void addHtmlText(String textString, XmlId xmlId) {
+        simpleView.addHtmlText(textString, null, xmlId);
+    }
+
+    protected void addHtmlText(String textString, String styleName, XmlId xmlId) {
+        simpleView.addHtmlText(textString, styleName, xmlId);
     }
 
     protected void showHtmlPopup(String textString, final PresenterEventListner... buttonListeners) {
@@ -710,6 +715,16 @@ public abstract class AbstractPresenter implements Presenter {
     protected void requestFilePermissions() {
         mediaRecorder.requestFilePermissions(this);
     }
+
+    protected native void templateFeature(String domId, String featureAttribute, String jsonPath, String instructionalText)/*-{
+        console.log("domId: " + domId);
+        console.log("featureAttribute: " + featureAttribute);
+        console.log("jsonPath: " + jsonPath);
+        console.log("instructionalText: " + instructionalText);
+            
+            // TODO: add an onClick handler to the element so that when clicked the text becomes editable and on focus lost send the updated text to the wizard code
+            // TODO: when editing 
+    }-*/;
 
     @Override
     public void savePresenterState() {
