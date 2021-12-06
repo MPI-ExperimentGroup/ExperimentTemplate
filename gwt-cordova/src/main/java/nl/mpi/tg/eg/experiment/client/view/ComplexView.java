@@ -66,6 +66,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
+import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractStimulusPresenter.OrientationType;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
@@ -151,16 +152,15 @@ public class ComplexView extends SimpleView {
             regionTemp.clear();
         }
     }
-    
+
 //    public void setRegionId(final String regionId) {
 //        VerticalPanel regionTemp = regionPanels.get(regionId);
 //        if (regionTemp != null) {
 //            regionTemp.getElement().setId(regionId);
 //        }
 //    }
-    
     public boolean hasRegion(final String regionId) {
-       return regionPanels.containsKey(regionId);
+        return regionPanels.containsKey(regionId);
     }
 
     public FlexTable gridPanel() {
@@ -250,14 +250,28 @@ public class ComplexView extends SimpleView {
     }
 
     public void addText(String textString) {
+        addText(textString, null);
+    }
+
+    public void addText(String textString, XmlId xmlId) {
         HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
+        if (xmlId != null) {
+            html.getElement().setId(xmlId.getXmlId());
+        }
         getActivePanel().add(html);
     }
 
     public HTML addHtmlText(String textString, String styleName) {
+        return addHtmlText(textString, styleName, null);
+    }
+
+    public HTML addHtmlText(String textString, String styleName, XmlId xmlId) {
         HTML html = new HTML(new SafeHtmlBuilder().appendHtmlConstant(textString).toSafeHtml());
         if (styleName != null && !styleName.isEmpty()) {
             html.addStyleName(styleName);
+        }
+        if (xmlId != null) {
+            html.getElement().setId(xmlId.getXmlId());
         }
         getActivePanel().add(html);
         return html;
@@ -278,7 +292,7 @@ public class ComplexView extends SimpleView {
             outerPanel.remove(recordingLabel);
         }
     }
-    
+
     public void setRecorderState(String message, boolean isRecording) {
         if (recordingLabel == null) {
             recordingLabel = new Label();

@@ -253,6 +253,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
                 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
                 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+                import nl.mpi.tg.eg.experiment.client.model.XmlId;
             </xsl:text> 
             <!--            <xsl:if test="@type = 'svg'">
                 <xsl:text>
@@ -372,12 +373,15 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>(), </xsl:text>
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
+        <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
         <xsl:text>);</xsl:text>
+        <xsl:apply-templates select="template" />
     </xsl:template>
     <xsl:template match="plainText">
         <xsl:text>    addText(messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
-        <xsl:text>());
+        <xsl:value-of select="concat('(), new XmlId(&quot;', generate-id(.), '&quot;)')" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <!--    <xsl:template match="image">

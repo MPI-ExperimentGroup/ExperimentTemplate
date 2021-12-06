@@ -49,6 +49,7 @@ import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractStimulusPresenter.OrientationType;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -149,18 +150,18 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         }
     }
 
-    public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
+    public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName, XmlId xmlId) {
         // TODO: consider if this could use evaluateTokensString rather than just formatString, however keep in mind that some additional syntax is going to be required to mark the evaluatable sections from plain text
-        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(textString), styleName);
+        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(textString), styleName, xmlId);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
-    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
-        htmlTokenText(currentStimulus, textString, null);
+    public void htmlTokenText(final Stimulus currentStimulus, String textString, XmlId xmlId) {
+        htmlTokenText(currentStimulus, textString, null, xmlId);
     }
 
-    public void htmlText(String textString, final String styleName) {
-        timedStimulusView.addHtmlText(textString, styleName);
+    public void htmlText(String textString, final String styleName, XmlId xmlId) {
+        timedStimulusView.addHtmlText(textString, styleName, xmlId);
     }
 
     protected void image(final String imageString, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
