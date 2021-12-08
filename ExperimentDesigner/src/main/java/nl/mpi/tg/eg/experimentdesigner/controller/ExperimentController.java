@@ -109,6 +109,13 @@ public class ExperimentController {
         return "design";
     }
 
+    @RequestMapping("/preview")
+    public String previewWizard(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "preview");
+        return "preview";
+    }
+
     @RequestMapping("/wizard")
     public String listWizard(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
