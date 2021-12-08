@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,8 @@ public class ScreenText implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Size(max = 6000)
+    //@Size(max = 6000)
+    @Column(length = 6000)
     protected String screenText = null;
 
     public long getId() {

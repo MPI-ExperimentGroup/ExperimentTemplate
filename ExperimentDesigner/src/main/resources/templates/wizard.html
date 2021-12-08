@@ -79,25 +79,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr>
                     <td>Experiment Name</td>
                     <td>
-                        <input th:value="${wizardData.appName}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
+                        <input th:value="${wizardData.appName}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();" />
                     </td>
                 </tr>
                 <tr>
                     <td>Obfuscate Screen Names</td>
                     <td>
-                        <input type="checkbox" th:checked="${wizardData.obfuscateScreenNames}" class="wizardgrowcell" th:name="obfuscateScreenNames" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
+                        <input type="checkbox" th:checked="${wizardData.obfuscateScreenNames}" class="wizardgrowcell" th:name="obfuscateScreenNames" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();" />
                     </td>
                 </tr>
                 <tr>
                     <td>Show Menu Bar</td>
                     <td>
-                        <input type="checkbox" th:checked="${wizardData.showMenuBar}" class="wizardgrowcell" th:name="showMenuBar" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
+                        <input type="checkbox" th:checked="${wizardData.showMenuBar}" class="wizardgrowcell" th:name="showMenuBar" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();" />
                     </td>
                 </tr>
                 <tr>
                     <td>Text Font Size</td>
                     <td>
-                        <input type="number" th:value="${wizardData.textFontSize}" class="wizardgrowcell" th:name="textFontSize" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();'}" />
+                        <input type="number" th:value="${wizardData.textFontSize}" class="wizardgrowcell" th:name="textFontSize" th:onchange="$('updateExperimentButton[[${wizardData.getId()}]]').show();" />
                     </td>
                 </tr>
                 <tr>
@@ -150,14 +150,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 <option value="-1">&lt;none&gt;</option>
                                                 <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.id}" th:text="${wizardScreenItem.screenTitle}" th:selected="${wizardScreenItem.equals(wizardScreen.backWizardScreenData)}" />
                                             </select>
-                                            <select name="nextWizardScreenId" th:onchange="$('updateFeatureButton[[${wizardScreen.id}]]').show();'}">
+                                            <select name="nextWizardScreenId" th:onchange="$('updateFeatureButton[[${wizardScreen.id}]]').show();">
                                                 <option value="-1">&lt;none&gt;</option>
                                                 <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.id}" th:text="${wizardScreenItem.screenTitle}" th:selected="${wizardScreenItem.equals(wizardScreen.nextWizardScreenData)}" />
                                             </select>
                                             <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.id}" class="saveFeatureButton" th:onclick="postFeatureChanges('featureForm[[${wizardScreen.id}]]');">Save Changes</button>
                                         </div>
                                         <div class="errorDiv">&nbsp;</div>                                    
-                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" checked="true" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails('[[${wizardScreen.screenTag}]]');">Show details</input></span>
+                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" checked="true" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="hideShowDetails('[[${wizardScreen.screenTag}]]');">Show details</input></span>
                                         <div class="featurescell" th:id="${'wizardScreenDetails' + wizardScreen.screenTag}">
                                             <div class="featuresrow featurescell">
                                                 <table>
