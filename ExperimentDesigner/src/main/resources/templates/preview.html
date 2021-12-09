@@ -21,17 +21,49 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
 <html>
-    <head>
-        <title>Wizard Preview</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/ExperimentDesigner/designer.css"/>
-        <script src="/ExperimentDesigner/webjars/jquery/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="inspectPanel"></div>
-        <div class="previewPanel">
-            <iframe src="/template_example/index.html" scrolling="no" style="border:1; overflow:hidden; height:95vh; width:80vw;" align="right"></iframe>
-          </div>
-    </body>
+
+<head>
+    <title>Wizard Preview</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./designer.css" />
+    <script src="./webjars/jquery/jquery.min.js"></script>
+    <style>
+        .inspectPanel {
+            vertical-align: top;
+        }
+
+        .presenterPanel {
+            min-height: 100px;
+            background: lightblue;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td id="inspectPanel" class="inspectPanel"></td>
+            <td class="previewPanel">
+                <iframe id="previewFrame" src="previewframe" scrolling="no"
+                    style="border:1; overflow:hidden; height:95vh; width:80vw;" align="right"></iframe>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function initTemplateWizard() {
+            $.each($("iframe")[0].contentWindow.applicationStates, function (presenterName, presenterTitle) {
+                console.log(presenterName, presenterTitle);
+                $("#inspectPanel").append("<div class='presenterPanel' id='" + presenterName + "'>" + presenterTitle + "</div>");
+            });
+        }
+        $('#previewFrame').on('load', function () {
+            console.log("previewFrame loaded");
+            initTemplateWizard();
+        });
+    </script>
+</body>
+
 </html>
