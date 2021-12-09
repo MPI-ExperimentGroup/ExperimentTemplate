@@ -110,6 +110,13 @@
         </xsl:for-each>
         <xsl:text>
             enableNotificationCallbacks();
+        </xsl:text>
+        <xsl:if test="descendant::template">
+            <xsl:text>
+            exportTemplateController();
+            </xsl:text>
+        </xsl:if>
+        <xsl:text>
             }
             
             @Override
@@ -205,6 +212,25 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:if>
         <xsl:text>
             }
+        </xsl:text>
+        <xsl:if test="descendant::template">
+            <xsl:text>
+                public final native void exportTemplateController() /*-{
+                $wnd.templateController = this;
+                $wnd.applicationStates = {
+            </xsl:text>
+            <xsl:for-each select="experiment/presenter">
+                <xsl:value-of select="concat('&quot;', @self, '&quot;:&quot;', @title, '&quot;')" />
+                <xsl:if test="position() != last()">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>
+                }
+                }-*/;
+            </xsl:text>
+        </xsl:if>
+        <xsl:text>
             }</xsl:text>
 
         <xsl:apply-templates select="experiment"/>
