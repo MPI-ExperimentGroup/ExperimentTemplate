@@ -47,6 +47,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.StorageFullPresenter;
 import nl.mpi.tg.eg.experiment.client.presenter.TestingVersionPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.presenter.TemplateVersionPresenter;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 
@@ -125,7 +126,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
 
     final protected void preventWindowClose(final String messageString) {
 
-        // on page close, back etc. provide a warning that their session will be invalide and they will not be paid etc.
+        // on page close, back etc. provide a warning that their session will be invalid and they will not be paid etc.
         Window.addWindowClosingHandler(new Window.ClosingHandler() {
 
             @Override
@@ -187,6 +188,8 @@ public abstract class AppController implements AppEventListner/*, AudioException
 //        presenter.setState(this, ApplicationState.start, null);
 //    }
     abstract boolean preserveLastState();
+
+    abstract boolean compiledAsTemplate();
 
     abstract ApplicationState splashPresenter();
 
@@ -273,7 +276,10 @@ public abstract class AppController implements AppEventListner/*, AudioException
             final boolean notificationSetsTarget = checkNotificationCallbacks();
             if (!notificationSetsTarget) {
                 lastAppState = (splashPresenter() != null) ? splashPresenter() : lastAppState;
-                if (!submissionService.isProductionVersion()) {
+                if (compiledAsTemplate()) {
+                    this.presenter = new TemplateVersionPresenter(widgetTag, lastAppState);
+                    presenter.setState(this, null, null);
+                } else if (!submissionService.isProductionVersion()) {
                     this.presenter = new TestingVersionPresenter(widgetTag, lastAppState);
                     presenter.setState(this, null, null);
                 } else {

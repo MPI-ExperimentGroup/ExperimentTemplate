@@ -89,6 +89,12 @@
         <xsl:text>;
             }
             @Override
+            boolean compiledAsTemplate() {
+            return </xsl:text>
+        <xsl:value-of select="if(descendant::template) then 'true' else 'false'" />
+        <xsl:text>;
+            }
+            @Override
             ApplicationState splashPresenter() {
             return </xsl:text>
         <xsl:value-of select="if(experiment/@splashPresenter) then concat('ApplicationState.', experiment/@splashPresenter) else 'null'" />
