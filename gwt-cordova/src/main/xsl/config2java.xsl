@@ -216,7 +216,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:if test="descendant::template">
             <xsl:text>
                 public final native void exportTemplateController() /*-{
-                $wnd.templateController = this;
+                var appController = this;
                 $wnd.applicationStates = {
             </xsl:text>
             <xsl:for-each select="experiment/presenter">
@@ -226,6 +226,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:if>
             </xsl:for-each>
             <xsl:text>
+                }
+                $wnd.requestState = function(presenterName) {
+                    return appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(presenterName);
                 }
                 }-*/;
             </xsl:text>
