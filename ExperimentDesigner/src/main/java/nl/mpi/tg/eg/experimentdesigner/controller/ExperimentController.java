@@ -116,6 +116,13 @@ public class ExperimentController {
         return "preview";
     }
 
+/*    @RequestMapping("/previewframe") // TODO: accept parameters of template name and file being requested
+    public String previewFrame(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        // TODO: return the requested file for the given template from the Docker volume containing the template files
+        return "previewframe";
+    } */
+
     @RequestMapping("/wizard")
     public String listWizard(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
