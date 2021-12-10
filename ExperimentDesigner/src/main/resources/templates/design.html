@@ -35,7 +35,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <td><a th:attr="class=${detailType eq 'preview' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/preview'">Preview Wizard</a></td>
                 <td><a th:attr="class=${detailType eq 'wizard' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/wizard'">Experiment Wizard</a></td>
                 <td><a th:attr="class=${detailType eq 'experiments' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments'">Experiment List</a></td>                
-                <td><a th:attr="class=${detailType eq 'translations' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/translations'">Translations</a></td>
+                <td><a th:attr="class=${detailType eq 'translations' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/translations'">Translations</a></td>
                 <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
                 <td><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out"/></form></td>
             </tr>
