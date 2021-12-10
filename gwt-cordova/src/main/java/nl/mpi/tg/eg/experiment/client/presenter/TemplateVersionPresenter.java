@@ -53,7 +53,7 @@ public class TemplateVersionPresenter extends LocalStoragePresenter implements P
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-        ((ComplexView) simpleView).addText("This version is a template that you can edit, data will not be preserved in this version. This screen will not be shown in the production version.");
+        ((ComplexView) simpleView).addText("This version is a template that you can edit, data will not be collected in this version. This screen will not be shown in the production version.");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Once you have edited this template to suits your needs you can trigger the deployment of the staging or production version of your experiment.");
         ((ComplexView) simpleView).addPadding();

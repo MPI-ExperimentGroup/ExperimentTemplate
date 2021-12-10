@@ -261,7 +261,7 @@ public class ExperimentController {
         return "design";
     }
 
-    @RequestMapping("/experiments/translations")
+    @RequestMapping("/translations")
     public String showTranslations(Model model, HttpServletRequest request) {
 //        Experiment createdExperiment = DefaultExperiments.getDefault();
 //        experimentRepository.save(createdExperiment);
