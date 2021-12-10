@@ -322,7 +322,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         };
         $(document).ready(function () {
             var $templateSelector = $("#templateSelector");
-            $.each(result, function (templateId, templateEntry) {
+            $.each(availableTemplates, function (templateId, templateEntry) {
                 $templateSelector.append($("<option />").val(templateId).text(templateEntry.english_name));
             });
         });
