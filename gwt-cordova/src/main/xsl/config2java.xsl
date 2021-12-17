@@ -91,7 +91,7 @@
             @Override
             boolean compiledAsTemplate() {
             return </xsl:text>
-        <xsl:value-of select="if(descendant::template) then 'true' else 'false'" />
+        <xsl:value-of select="if(descendant::templateFeature) then 'true' else 'false'" />
         <xsl:text>;
             }
             @Override
@@ -117,7 +117,7 @@
         <xsl:text>
             enableNotificationCallbacks();
         </xsl:text>
-        <xsl:if test="descendant::template">
+        <xsl:if test="descendant::templateFeature">
             <xsl:text>
             exportTemplateController();
             </xsl:text>
@@ -219,7 +219,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>
             }
         </xsl:text>
-        <xsl:if test="descendant::template">
+        <xsl:if test="descendant::templateFeature">
             <xsl:text>
                 public final native void exportTemplateController() /*-{
                 var appController = this;
@@ -410,7 +410,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
         <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
         <xsl:text>);</xsl:text>
-        <xsl:apply-templates select="template" />
+        <xsl:apply-templates select="templateFeature" />
     </xsl:template>
     <xsl:template match="plainText">
         <xsl:text>    addText(messages.</xsl:text>
