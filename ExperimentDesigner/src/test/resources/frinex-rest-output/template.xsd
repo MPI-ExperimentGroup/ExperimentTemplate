@@ -5,7 +5,7 @@
             <xs:complexContent>
                 <xs:extension base="htmlTextType">
                     <xs:sequence>
-                        <xs:element name="template" minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="templateFeature" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:attribute name="attributeName" type="xs:string" use="optional">
                                     <xs:annotation>
@@ -47,7 +47,7 @@
             <xs:complexContent>
                 <xs:extension base="loadStimulusType">
                     <xs:sequence>
-                        <xs:element name="template" minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="templateFeature" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:attribute name="attributeName" type="xs:string" use="optional">
                                     <xs:annotation>
@@ -86,7 +86,7 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:redefine>
-    <!--            <xs:element name="template">
+    <!--            <xs:element name="templateFeature">
 <xs:complexType>
             <xs:choice>
                 <xs:element name="value" minOccurs="0">

@@ -732,11 +732,11 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(@fieldName) then concat(', metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:text>);
         </xsl:text>
-        <xsl:apply-templates select="template" />
+        <xsl:apply-templates select="templateFeature" />
     </xsl:template>
-    <xsl:template match="template">
-        <!--xsl:value-of select="if(@featureText and template@attributeName eq 'featureText') then concat('templateFeature(', generate-id(.), ');') else ''" /-->        
-        <xsl:value-of select="concat('templateFeature(&quot;', generate-id(.), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;);')" />        
+    <xsl:template match="templateFeature">
+        <!--xsl:value-of select="if(@featureText and templateFeature@attributeName eq 'featureText') then concat('templateFeature(', generate-id(.), ');') else ''" /-->        
+        <xsl:value-of select="concat('templateFeature(getSelfTag(), &quot;', generate-id(.), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;);')" />        
     </xsl:template>
     <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>

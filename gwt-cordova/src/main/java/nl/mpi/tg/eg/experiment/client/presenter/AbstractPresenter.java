@@ -716,14 +716,16 @@ public abstract class AbstractPresenter implements Presenter {
         mediaRecorder.requestFilePermissions(this);
     }
 
-    protected native void templateFeature(String domId, String featureAttribute, String jsonPath, String instructionalText)/*-{
+    protected native void templateFeature(String presenterName, String domId, String featureAttribute, String jsonPath, String instructionalText)/*-{
         console.log("domId: " + domId);
         console.log("featureAttribute: " + featureAttribute);
         console.log("jsonPath: " + jsonPath);
         console.log("instructionalText: " + instructionalText);
-            
-            // TODO: add an onClick handler to the element so that when clicked the text becomes editable and on focus lost send the updated text to the wizard code
-            // TODO: when editing 
+            if (typeof $wnd.templateFeatureHandler !== 'undefined') {
+                // TODO: add an onClick handler to the element so that when clicked the text becomes editable and on focus lost send the updated text to the wizard code
+                // TODO: when editing
+                $wnd.templateFeatureHandler(presenterName, domId, featureAttribute, jsonPath, instructionalText);
+            }
     }-*/;
 
     @Override
