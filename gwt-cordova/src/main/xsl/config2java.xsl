@@ -736,7 +736,7 @@ or local-name() eq 'submitGroupEvent'
     </xsl:template>
     <xsl:template match="templateFeature">
         <!--xsl:value-of select="if(@featureText and templateFeature@attributeName eq 'featureText') then concat('templateFeature(', generate-id(.), ');') else ''" /-->        
-        <xsl:value-of select="concat('templateFeature(getSelfTag(), &quot;', generate-id(.), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;);')" />        
+        <xsl:value-of select="concat('templateFeature(getSelfTag(), &quot;', generate-id(parent::element()), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;);')" />        
     </xsl:template>
     <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
