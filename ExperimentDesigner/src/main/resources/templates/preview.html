@@ -385,12 +385,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         $("iframe")[0].contentWindow.requestState(presenterName)
                     });
                 });
-                $("iframe")[0].contentWindow.templateFeatureHandler = function(presenterName, domId, featureAttribute, jsonPath, instructionalText) {
+                $("iframe")[0].contentWindow.templateFeatureHandler = function (presenterName, domId, featureAttribute, jsonPath, instructionalText) {
                     console.log("templateFeatureHandler: ", presenterName, domId, featureAttribute, jsonPath, instructionalText);
-                    $("iframe").contents().find("#" + domId).focusout(function() {
-                        console.log("focusout: ", presenterName, domId, $("iframe").contents().find("#" + domId).html());
-                    })
-                    $("iframe").contents().find("#" + domId).attr("contenteditable","true");
+                    if (typeof $("iframe").contents().find("#" + domId) !== 'undefined') {
+                        $("iframe").contents().find("#" + domId).focusout(function () {
+                            console.log("focusout: ", presenterName, domId, $("iframe").contents().find("#" + domId).html());
+                        })
+                        $("iframe").contents().find("#" + domId).attr("contenteditable", "true");
+                    } else {
+                        // TODO: solve this loading issue and then remove this setTimeout
+                        setTimeout(function () {
+                            $("iframe")[0].contentWindow.templateFeatureHandler(presenterName, domId, featureAttribute, jsonPath, instructionalText);
+                        }, 1000);
+                    }
                 }
             } else {
                 // TODO: solve this loading issue and then remove this setTimeout
