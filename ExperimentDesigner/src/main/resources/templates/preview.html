@@ -387,6 +387,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 });
                 $("iframe")[0].contentWindow.templateFeatureHandler = function(presenterName, domId, featureAttribute, jsonPath, instructionalText) {
                     console.log("templateFeatureHandler: ", presenterName, domId, featureAttribute, jsonPath, instructionalText);
+                    $("iframe").contents().find("#" + domId).focusout(function() {
+                        console.log("focusout: ", presenterName, domId, $("iframe").contents().find("#" + domId).html());
+                    })
+                    $("iframe").contents().find("#" + domId).attr("contenteditable","true");
                 }
             } else {
                 // TODO: solve this loading issue and then remove this setTimeout
