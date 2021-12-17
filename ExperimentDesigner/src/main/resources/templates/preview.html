@@ -387,7 +387,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 });
                 $("iframe")[0].contentWindow.templateFeatureHandler = function (presenterName, domId, featureAttribute, jsonPath, instructionalText) {
                     console.log("templateFeatureHandler: ", presenterName, domId, featureAttribute, jsonPath, instructionalText);
-                    if (typeof $("iframe").contents().find("#" + domId) !== 'undefined') {
+                    if ($("iframe").contents().find("#" + domId).length > 0) {
                         $("iframe").contents().find("#" + domId).focusout(function () {
                             console.log("focusout: ", presenterName, domId, $("iframe").contents().find("#" + domId).html());
                         })
