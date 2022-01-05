@@ -105,12 +105,14 @@ cordova plugin add cordova-plugin-device
 #cordova plugin add cordova-plugin-splashscreen
 cordova plugin add cordova-plugin-inappbrowser
 
-splashResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/LaunchImage.launchimage
+#splashResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/LaunchImage.launchimage
+splashResourcesDir=./platforms/ios/res/Images.xcassets/LaunchImage.launchimage
 echo $splashResourcesDir
 mkdir -p $splashResourcesDir
-# TODO: update iOS icons including Default@2x~universal~anyany.png which cannot be found, congig.xml says res/screen/ios/ but this script says ./platforms/ios/@experiment.configuration.name@/Images.xcassets/
+# TODO: update iOS icons including Default@2x~universal~anyany.png which cannot be found, config.xml says res/screen/ios/ but this script says ./platforms/ios/@experiment.configuration.name@/Images.xcassets/
 splashImage="www/static/splash.png" #"images/splash.gif" 
-iconResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/AppIcon.appiconset
+#iconResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/AppIcon.appiconset
+iconResourcesDir=./platforms/ios/res/Images.xcassets/AppIcon.appiconset
 mkdir -p $iconResourcesDir
 iconImage="www/static/icon.png"
 
@@ -202,8 +204,8 @@ convert -resize 29x29 -quality 100 $iconImage $iconResourcesDir/icon-small.png
 convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
 convert -resize 50x50 -quality 100 $iconImage $iconResourcesDir/icon-50.png
 convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
-convert -resize 108x108 -quality 100 $iconImage $iconResourcesDir/icon-44@2x.png
-convert -resize 20x20 -quality 100 $iconImage $iconResourcesDir/icon-20@2x.png
+convert -resize 88x88 -quality 100 $iconImage $iconResourcesDir/icon-44@2x.png
+convert -resize 40x40 -quality 100 $iconImage $iconResourcesDir/icon-20@2x.png
 #echo "make more iOS icons"
 convert -resize 20x20^ -gravity center -extent 20x20 -quality 100 $splashImage $splashResourcesDir/icon-20.png
 convert -resize 40x40^ -gravity center -extent 40x40 -quality 100 $splashImage $splashResourcesDir/icon-20@2x.png
