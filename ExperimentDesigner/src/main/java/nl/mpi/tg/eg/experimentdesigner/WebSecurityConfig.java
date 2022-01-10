@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-                http.antMatcher("/previewframe").antMatcher("/template_example/**").headers().frameOptions().sameOrigin();
+                http.antMatcher("/previewframe").antMatcher("/compiled_templates/**").headers().frameOptions().sameOrigin();
     }
 
     @Override
