@@ -44,6 +44,11 @@ public class allowValidationOnMissingValidationControllerTest {
 
         return new allowValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -139,6 +144,11 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new TimeStampRepository() {
+            @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -360,6 +370,11 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -464,6 +479,11 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new StimulusResponseRepository() {
+            @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");

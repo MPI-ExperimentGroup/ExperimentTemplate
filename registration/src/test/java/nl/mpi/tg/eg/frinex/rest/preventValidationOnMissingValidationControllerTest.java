@@ -47,6 +47,11 @@ public class preventValidationOnMissingValidationControllerTest {
 
         return new preventValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -143,6 +148,11 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new TimeStampRepository() {
             @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -237,6 +247,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new MockParticipantColumnsRepository() {
+            @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -363,6 +378,11 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -467,6 +487,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new StimulusResponseRepository() {
+            @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public int countByUserId(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");

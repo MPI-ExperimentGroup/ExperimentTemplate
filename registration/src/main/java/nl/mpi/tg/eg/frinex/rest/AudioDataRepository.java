@@ -65,6 +65,10 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @RestResource(exported = false)
     public abstract void deleteAll();
 
+    @Override
+    @RestResource(exported = false)
+    public void deleteAllById(Iterable<? extends Long> ids);
+
     @Transactional
     @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from AudioData order by resultString asc")
     public List<String> findSubmitDateDistinctByOrderBySubmitDateAsc();

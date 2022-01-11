@@ -60,6 +60,10 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
     @Override
     @RestResource(exported = false)
+    public void deleteAllById(Iterable<? extends Long> ids);
+            
+    @Override
+    @RestResource(exported = false)
     public void deleteById(Long arg0);
 
     @Override

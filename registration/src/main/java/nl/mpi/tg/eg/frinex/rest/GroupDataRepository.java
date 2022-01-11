@@ -65,4 +65,8 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
+
+    @Override
+    @RestResource(exported = false)
+    public void deleteAllById(Iterable<? extends Long> ids);
 }

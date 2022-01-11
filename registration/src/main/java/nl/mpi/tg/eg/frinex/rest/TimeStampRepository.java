@@ -68,6 +68,10 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     @RestResource(exported = false)
     public abstract void deleteAll();
 
+    @Override
+    @RestResource(exported = false)
+    public void deleteAllById(Iterable<? extends Long> ids);
+
     @RestResource(exported = false)
     public void deleteByUserId(@Param("userId") String userId);
 
