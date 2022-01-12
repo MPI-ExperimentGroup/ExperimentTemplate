@@ -33,8 +33,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${ldap.userDnPatterns}")
-    private String userDnPatterns;
+    @Value("${ldap.userSearchFilter}")
+    private String userSearchFilter;
     @Value("${ldap.groupSearchBase}")
     private String groupSearchBase;
     @Value("${ldap.url}")
@@ -67,8 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .ldapAuthentication()
-                .userDnPatterns(userDnPatterns)
-                .groupSearchBase(groupSearchBase)
+                .userSearchFilter(userSearchFilter)
+                // .groupSearchBase(groupSearchBase)
                 .contextSource()
                 .url(ldapUrl)
                 .managerDn(managerDn)
