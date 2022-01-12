@@ -73,9 +73,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .url(ldapUrl)
                 .managerDn(managerDn)
                 .managerPassword(managerPassword)
-                .and()
-                .passwordCompare()
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .passwordAttribute(passwordAttribute);
+//                .and()
+//                .passwordCompare()
+//                .passwordEncoder(new BCryptPasswordEncoder())
+//                .passwordAttribute(passwordAttribute)
+                ;
     }
 }
