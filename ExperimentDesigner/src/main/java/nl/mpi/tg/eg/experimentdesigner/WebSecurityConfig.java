@@ -48,19 +48,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                // todo: consider adding localhost limit to the configuration/**
-                .antMatchers("/configuration/**", "/listing/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
-                http.antMatcher("/previewframe").antMatcher("/compiled_templates/**").headers().frameOptions().sameOrigin();
+//        http
+//               .authorizeRequests()
+//               // todo: consider adding localhost limit to the configuration/**
+//               .antMatchers("/configuration/**", "/listing/**").permitAll()
+//               .anyRequest().authenticated()
+//               .and()
+//               .formLogin()
+//               .loginPage("/login")
+//               .permitAll()
+//               .and()
+//               .logout()
+//               .permitAll();
+               http.antMatcher("/previewframe").antMatcher("/compiled_templates/**").headers().frameOptions().sameOrigin();
+         http
+                 .authorizeRequests()
+                 .anyRequest().fullyAuthenticated()
+                 .and()
+                 .formLogin();
     }
 
     @Override
