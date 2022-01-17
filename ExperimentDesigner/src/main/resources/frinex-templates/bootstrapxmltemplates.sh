@@ -6,7 +6,7 @@
 #    </templateInfo>
 
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Stairs4Words \(receptive vocabulary\)\""\
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Stairs4Words (receptive vocabulary)\""\
 " dutch_name=\"Stairs4Words\""\
 " duration=\"7\""\
 " category=\"Linguistic experience\""\
@@ -15,7 +15,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpistairs4words2.xml
 
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Antonym production \(productive vocabulary\)\""\
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Antonym production (productive vocabulary)\""\
 " dutch_name=\"Tegenstellingen\""\
 " duration=\"5\""\
 " category=\"Linguistic experience\""\
@@ -35,7 +35,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Spellingtest\""\
 " duration=\"5\""\
 " category=\"Linguistic experience\""\
-" description=\"Participants identify incorrectly spelled words in a list of 60 words \(half of which are spelled incorrectly\).\""\
+" description=\"Participants identify incorrectly spelled words in a list of 60 words (half of which are spelled incorrectly).\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpispellingtest.xml
 
@@ -43,7 +43,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Auteurstest\""\
 " duration=\"5\""\
 " category=\"Linguistic experience\""\
-" description=\"Participants identify fictional writers in a list of 132 names \(90 are writers\).\""\
+" description=\"Participants identify fictional writers in a list of 132 names (90 are writers).\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpiauteurstest.xml
 
@@ -51,7 +51,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Grammaticatest\""\
 " duration=\"10\""\
 " category=\"Linguistic experience\""\
-" description=\"Participants carry out grammaticality judgements on spoken sentences featuring morpho-syntactic constructions known to be difficult for adult speakers of Dutch \(e.g., ik vs. mij, als vs. dan, ze vs. hun\).\""\
+" description=\"Participants carry out grammaticality judgements on spoken sentences featuring morpho-syntactic constructions known to be difficult for adult speakers of Dutch (e.g., ik vs. mij, als vs. dan, ze vs. hun).\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpiprescriptivegrammar.xml
 
@@ -68,7 +68,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Auditieve reactietijdtaak 2\""\
 " duration=\"4\""\
 " category=\"Processing speed\""\
-" description=\"Participants respond as quickly as possible to the presentation of one of two beeps \(high or low\) by pressing one of two buttons.\""\
+" description=\"Participants respond as quickly as possible to the presentation of one of two beeps (high or low) by pressing one of two buttons.\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpiauchoicereactiontime.xml
 
@@ -104,7 +104,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Cijferreeksen\""\
 " duration=\"7\""\
 " category=\"Working memory\""\
-" description=\"Participants are instructed to recall sequences of digits in the order they were encountered \(forward version\) or in the reversed order \(backward version\).\""\
+" description=\"Participants are instructed to recall sequences of digits in the order they were encountered (forward version) or in the reversed order (backward version).\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpidigitspan.xml
 
@@ -112,7 +112,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Corsi block clicking test\""\
 " duration=\"7\""\
 " category=\"Working memory\""\
-" description=\"Participants are instructed to recall sequences of identical spatially separated blocks by clicking on them in the order they were encountered \(forward version\) and in the reversed order \(backward version\).\""\
+" description=\"Participants are instructed to recall sequences of identical spatially separated blocks by clicking on them in the order they were encountered (forward version) and in the reversed order (backward version).\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpicorsi.xml
 
@@ -137,7 +137,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Woorden opnoemen\""\
 " duration=\"5\""\
 " category=\"Word production\""\
-" description=\"Participants name as many words as possible belonging to pre-specified categories \(semantic part\) and starting with letters provided ahead of time \(phonological version\) within one minute.\""\
+" description=\"Participants name as many words as possible belonging to pre-specified categories (semantic part) and starting with letters provided ahead of time (phonological version) within one minute.\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpiverbalfluency.xml
 
@@ -158,15 +158,15 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpiwords2phrases.xml
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Sentence generation \(structured\)\""\
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Sentence generation (structured)\""\
 " dutch_name=\"Zinnen maken 1\""\
 " duration=\"12\""\
 " category=\"Sentence production\""\
-" description=\"Participants describe scenes depicting transitive actions \(intransitives serve as fillers\) as quickly as possible using pre-specified verbal material. Colour-coding of the characters in the scenes coerces the production of active and passive sentences.\""\
+" description=\"Participants describe scenes depicting transitive actions (intransitives serve as fillers) as quickly as possible using pre-specified verbal material. Colour-coding of the characters in the scenes coerces the production of active and passive sentences.\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpisentencegeneration.xml
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Sentence generation \(unstructured\)\""\
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Sentence generation (unstructured)\""\
 " dutch_name=\"Zinnen maken 2\""\
 " duration=\"10\""\
 " category=\"Sentence production\""\
@@ -236,7 +236,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Plaatjes-lidwoord test\""\
 " duration=\"10\""\
 " category=\"Sentence comprehension\""\
-" description=\"Participants indicate for 80 objects whether their names are de- or het-nouns \(both common gender in English\).\""\
+" description=\"Participants indicate for 80 objects whether their names are de- or het-nouns (both common gender in English).\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpigrammaticalgendercues1.xml
 
@@ -244,7 +244,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Plaatjeskliktest 2\""\
 " duration=\"10\""\
 " category=\"Sentence comprehension\""\
-" description=\"Participants are presented with two objects \(the same as in the Gender cue identification test\) on the computer screen and a spoken sentence containing a target noun, which refers to one of the two objects. In half of the sentences, the target is predictable based on a determiner expressing the grammatical gender of the target noun. Participants indicate by button press which of the two objects is referred to in the sentence. On predictable trials, participants may respond before target noun onset.\""\
+" description=\"Participants are presented with two objects (the same as in the Gender cue identification test) on the computer screen and a spoken sentence containing a target noun, which refers to one of the two objects. In half of the sentences, the target is predictable based on a determiner expressing the grammatical gender of the target noun. Participants indicate by button press which of the two objects is referred to in the sentence. On predictable trials, participants may respond before target noun onset.\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpigrammaticalgendercues2.xml
 
@@ -281,11 +281,11 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpibq5bfi2.xml
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Receptive vocabulary test \(multiple choice\)\""\
-" dutch_name=\"Woordenschattest \(multiple choice\)\""\
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment backgroundColour=\"#FFFFFF\" complementColour0=\"#EAC3A3\" complementColour1=\"#9D7B5E\" complementColour2=\"#C69E7C\" complementColour3=\"#FFEDDE\" complementColour4=\"#FFFDFB\" defaultScale=\"1.0\" isScalable=\"true\" preserveLastState=\"true\" primaryColour0=\"#628D8D\" primaryColour1=\"#385E5E\" primaryColour2=\"#4A7777\" primaryColour3=\"#96ADAD\" primaryColour4=\"#D5D8D8\" rotatable=\"true\" showMenuBar=\"true\" textFontSize=\"17\" xsi:noNamespaceSchemaLocation=\"template.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><templateInfo name=\"Receptive vocabulary test (multiple choice)\""\
+" dutch_name=\"Woordenschattest (multiple choice)\""\
 " duration=\"7\""\
 " category=\"Extra tests\""\
-" description=\"Participants read target words \(varying in difficulty\) and select the correct meaning among four written alternatives.\""\
+" description=\"Participants read target words (varying in difficulty) and select the correct meaning among four written alternatives.\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpiwoordenschattest.xml
 
@@ -294,7 +294,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><experiment b
 " dutch_name=\"Een-minute leesttest\""\
 " duration=\"3\""\
 " category=\"Extra tests production\""\
-" description=\"Participants read as many words \(increasing in difficulty\) as possible within one minute.\""\
+" description=\"Participants read as many words (increasing in difficulty) as possible within one minute.\""\
 " /><metadata><field controlledMessage=\"Voer een getal.\" controlledRegex=\"[0-9]+\" postName=\"age\" preventServerDuplicates=\"false\" registrationField=\"Leeftijd\"/></metadata>
 <presenter menuLabel=\"Toestemming\" type=\"metadata\" self=\"Toestemming\" title=\"Toestemming\"><htmlText featureText=\"Toestemmingsverklaring\"/></presenter><stimuli/></experiment>" > template_mpioneminutereading.xml
 
