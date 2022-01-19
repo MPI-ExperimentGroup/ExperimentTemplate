@@ -26,6 +26,7 @@
        http://frinexbuild.mpi.nl/ template.xsd"
     xmlns:frinex="frinex.xsd" 
     xmlns:template="template.xsd"-->
+    <templateInfo name="Template Example" duration="5" category="Example Templates" description="An example of the Frinex template structure." />
     <administration/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
