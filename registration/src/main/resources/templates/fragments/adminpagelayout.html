@@ -73,6 +73,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div th:fragment="logout" align="right">
                 <!--<div>-->        
                 <form th:action="@{/logout}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <input type="submit" value="Sign Out"/>
                 </form>
                 <span style="color: red; border-bottom: solid 1px; padding: 10px; display: flex;" th:if="${!#strings.contains(#httpServletRequest.requestURL, 'ems12') and !#strings.contains(#httpServletRequest.requestURL, 'production')}"> 
