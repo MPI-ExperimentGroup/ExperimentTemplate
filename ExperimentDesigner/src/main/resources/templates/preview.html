@@ -324,7 +324,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             $.getJSON("/compiled_templates/templates.json", function (availableTemplates) {
                 var $templateSelector = $("#templateSelector");
                 $.each(availableTemplates, function (templateId, templateEntry) {
-                    $templateSelector.append($("<option />").val(templateId).text(templateEntry.english_name));
+                    $templateSelector.append($("<option />").val(templateId).text(templateEntry.name));
                 });
             });
         }
@@ -371,6 +371,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <body>
     <select id="templateSelector">
         <!-- TODO: indicate when the compiled_templates list has not yet been loaded into this select box -->
+        <!-- TODO: onSelect: display the description and other information for the selected template item and update the preview window with the template GWT -->
         <option value="template_example">template_example</option>
     </select>
     <table>
