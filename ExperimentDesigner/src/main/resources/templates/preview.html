@@ -356,7 +356,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 th:href="${contextPath} + '/translations'">Translations</a></td>
         <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
         <td>
-            <form th:action="@{/logout}" method="post"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /><input type="submit" value="Sign Out" /></form>
+            <form th:action="@{/logout}" method="post"><input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /><input type="submit" value="Sign Out" /></form>
         </td>
     </tr>
 </table>

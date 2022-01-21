@@ -136,7 +136,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <div>
                                 <div th:fragment="featuresrow" class="featuresrow">
                                     <div th:id="${'wizardScreenForm' + wizardScreen.screenTag}">
-                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                                         <div class="featureTypeHeader"
                                              th:id="${'wizardScreenHeader' + wizardScreen.getScreenTag()}"
                                              draggable="true"
@@ -361,7 +361,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         </div>
                         <!--                            <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
                                                         <form th:id="${'addForm' + objectType + presenterScreen.getId()}" method="post">
-                                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                                            <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                                                             <div class="errorDiv">&nbsp;</div>
                                                             <select id="FeatureType" name="FeatureType">
                                                                 <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
@@ -563,7 +563,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <input type="hidden" name="screenTextId" th:value="${screenTextId}" />
                                 <input type="hidden" name="wizardFragmentLabel" th:value="${wizardFragmentLabel}" />
                                 <input type="hidden" name="wizardFragmentName" th:value="${wizardFragmentName}" />
-                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                             </form>
                             <br/>
                             <span class="wizardScreenEditCheckBox">
