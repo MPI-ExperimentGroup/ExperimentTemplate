@@ -24,18 +24,41 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Frinex Experiment Designer</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="designer.css"/>
     </head>
     <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
+        <div id="header"><h1>Frinex Experiment Designer</h1></div>
+        <table id="menu" class="menu">
+            <tr><td>&nbsp;</td></tr>
+        </table>
+        <table id="main">
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td id="editarea">
+                    <div>
+                        <div class="presenter">
+                            <div class="table">
+                                <div th:if="${param.error}" class="tr">
+                                    <span class="td">Invalid username and password.</span>
+                                </div>
+                                <div th:if="${param.logout}" class="tr">
+                                    <span class="td">You have been logged out.</span>
+                                </div>
+                                <form th:action="@{/login}" method="post" class="tr">
+                                    <div class="tr"><span class="td">User Name:</span><span class="td"><input type="text" name="username"/></span></div>
+                                    <div class="tr"><span class="td">Password:</span><span class="td"><input type="password" name="password"/></span></div>
+                                    <div class="tr"><span class="td"></span><span class="td"><button type="submit">Sign In</button></span></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>          
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+        </table>
+        <footer>&nbsp;</footer>
     </body>
 </html>

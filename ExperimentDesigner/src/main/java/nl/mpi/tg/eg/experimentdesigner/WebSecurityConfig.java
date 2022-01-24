@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //               .permitAll();
         http.headers().frameOptions().sameOrigin()
                 .and().authorizeRequests()
+                .antMatchers("/designer.css").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login").permitAll()
