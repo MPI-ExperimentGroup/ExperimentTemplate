@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </div>
                     <form th:each="presenterScreen : ${(updatedPresenterScreen != null)? updatedPresenterScreen : experiment.getPresenterScreen()}" th:fragment="screenRow" class="tr" th:id="${'updateRowForm' + presenterScreen.getId()}">
                         <input type="hidden" name="id" th:value="${presenterScreen.getId()}" />
-                        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <span class="td" th:if="${detailType} eq 'screen'"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Delete Screen</button></span>
                         <span class="td"><input type="text" name="title" th:value="${presenterScreen.getTitle()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="menuLabel" th:value="${presenterScreen.getMenuLabel()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
@@ -62,7 +62,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </a></span>
                     </form>
                     <form action="#" id="addScreenForm" class="tr" method="post">
-                        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <span class="td"><input type="text" name="title" id="title" /></span>
                         <span class="td"><input type="text" name="menuLabel" id="menuLabel" /></span>
                         <span class="td">
@@ -141,7 +141,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <div th:each="features : ${presenterScreen.getPresenterFeatureList()}">
                                     <div th:fragment="featuresrow" th:if="${features != null}" class="featuresrow">
                                         <form th:if="${features != null}" th:id="${'featureForm' + features.getId()}">
-                                            <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                                             <div class="featureTypeHeader">
                                                 <button class="deleteFeatureButton" type="button" th:onclick="${'deleteFeature(featureForm' + features.getId() + ')'}">Delete Feature</button>
                                                 <span class="featureTypeLabel" th:text="${features.getFeatureType()}">getFeatureType</span>
@@ -177,7 +177,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </div>
                             <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
                                 <form th:id="${'addForm' + objectType + presenterScreen.getId()}" method="post">
-                                    <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                                     <div class="errorDiv">&nbsp;</div>
                                     <select id="FeatureType" name="FeatureType">
                                         <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />

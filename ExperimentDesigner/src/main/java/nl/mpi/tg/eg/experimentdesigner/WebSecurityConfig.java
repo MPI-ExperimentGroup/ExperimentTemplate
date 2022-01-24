@@ -23,7 +23,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @since Nov 16, 2015 11:57:18 AM (creation date)
@@ -42,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${ldap.managerDn}")
     private String managerDn;
     @Value("${ldap.managerPassword}")
-    private String managerPassword;    
+    private String managerPassword;
     @Value("${ldap.passwordAttribute}")
     private String passwordAttribute;
 
@@ -60,8 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //               .and()
 //               .logout()
 //               .permitAll();
-        http.antMatcher("/previewframe").antMatcher("/compiled_templates/**").headers().frameOptions().sameOrigin();
-        http.authorizeRequests()
+        http.headers().frameOptions().sameOrigin()
+                .and().authorizeRequests()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login").permitAll()
@@ -69,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .ldapAuthentication()
                 .userSearchFilter(userSearchFilter)

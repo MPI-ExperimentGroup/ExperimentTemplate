@@ -47,7 +47,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </div>
                 <form th:each="stimulus : ${(updatedStimulus != null)? updatedStimulus : stimuliList}" th:fragment="stimulusRow" class="tr" th:id="${'updateRowForm' + stimulus.id}">
                     <span class="td"><button type="button" th:onclick="${'deleteRow(' + stimulus.id + ')'}">Remove</button></span>
-                    <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <input type="hidden" name="id" th:value="${stimulus.id}" />
                     <span class="td">
                         <input type="text" name="audioPath" th:value="${stimulus.audioPath}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" />
@@ -76,7 +76,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </form>
                 <div id="metadataErrorDiv"></div>
                 <form action="#" id="addMetadataForm" class="tr" method="post">
-                    <span class="td"><input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /></span>
+                    <span class="td"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /></span>
                     <span class="td"><input type="text" name="audioPath" /></span>
                     <span class="td"><input type="text" name="videoPath" /></span>
                     <span class="td"><input type="text" name="imagePath" /></span>
