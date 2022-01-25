@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
@@ -53,6 +56,7 @@ import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
 import nl.mpi.tg.eg.experimentdesigner.util.TransmissionChain;
 import nl.mpi.tg.eg.experimentdesigner.util.WellspringsSamoanFieldKit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -60,6 +64,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @since Nov 4, 2015 1:59:50 PM (creation date)
@@ -114,6 +119,16 @@ public class ExperimentController {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "preview");
         return "preview";
+    }
+
+    @RequestMapping(
+            value = "/buildhistory.json",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public @ResponseBody
+    String buildHistory() throws IOException {
+        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
+        return new String(Files.readAllBytes(buildhistory.toPath()));
     }
 
 /*    @RequestMapping("/previewframe") // TODO: accept parameters of template name and file being requested
