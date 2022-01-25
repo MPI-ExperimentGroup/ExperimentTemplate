@@ -113,9 +113,11 @@ button:hover {
     margin-right: auto; 
     width: 100%;
 }
+table.presenter {
+    width: 100%;
+}
 .presenter {
     margin-top: 10px;
-    width: 100%;
     border-color: #1f305a;
     border-style: dotted;
     border-width: 1px;
