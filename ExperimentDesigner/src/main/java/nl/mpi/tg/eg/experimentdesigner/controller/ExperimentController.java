@@ -118,7 +118,14 @@ public class ExperimentController {
     public String previewWizard(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "preview");
-        return "preview";
+        return "design";
+    }
+
+    @RequestMapping("/builds")
+    public String buildListing(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "builds");
+        return "design";
     }
 
     @RequestMapping(
