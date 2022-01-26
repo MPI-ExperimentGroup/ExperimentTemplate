@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since 08 December 2021 14:45 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Wizard Preview</title>
@@ -320,17 +320,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //            }
 //        };
 
-        function loadTemplatesListing() {
-            $.getJSON("/compiled_templates/templates.json", function (availableTemplates) {
-                var $templateSelector = $("#templateSelector");
-                $.each(availableTemplates, function (templateId, templateEntry) {
-                    $templateSelector.append($("<option />").val(templateId).text(templateEntry.name));
-                });
-            });
-        }
-        $(document).ready(function () {
-            loadTemplatesListing();
-        });
     </script>
     <style>
         .inspectPanel {
@@ -362,65 +351,78 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!-- <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td> -->
         <td><a th:href="${contextPath} + '/builds'">Build Listing</a></td>
         <td>
-            <form th:action="@{/logout}" method="post"><input type="hidden" 
-                    th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /><input type="submit"
-                    value="Sign Out" /></form>
+            <form th:action="@{/logout}" method="post"><input type="hidden" th:name="${_csrf.parameterName}"
+                    th:value="${_csrf.token}" /><input type="submit" value="Sign Out" /></form>
         </td>
     </tr>
 </table>
 
 <body>
-    <select id="templateSelector">
-        <!-- TODO: indicate when the compiled_templates list has not yet been loaded into this select box -->
-        <!-- TODO: onSelect: display the description and other information for the selected template item and update the preview window with the template GWT -->
-        <option value="template_example">template_example</option>
-    </select>
-    <table>
-        <tr>
-            <td id="inspectPanel" class="inspectPanel"></td>
-            <td class="previewPanel">
-                <!-- TODO: set up the previewframe to return the template files <iframe id="previewFrame" src="previewframe" scrolling="no" -->
-                <iframe id="previewFrame" src="./compiled_templates/template_example/index.html" scrolling="no"
-                    style="border:1; overflow:hidden; height:95vh; width:80vw;" align="right"></iframe>
-            </td>
-        </tr>
-    </table>
-    <script>
-        function initTemplateWizard() {
-            if (typeof $("iframe")[0].contentWindow.applicationStates !== 'undefined') {
-                $.each($("iframe")[0].contentWindow.applicationStates, function (presenterName, presenterTitle) {
-                    console.log(presenterName, presenterTitle);
-                    $("#inspectPanel").append("<div class='presenterPanel' id='" + presenterName + "Panel'>" + presenterTitle + "</div>");
-                    $("#" + presenterName + "Panel").click(function () {
-                        $("iframe")[0].contentWindow.requestState(presenterName)
+    <div th:fragment="previewPanel">
+        <select id="templateSelector">
+            <!-- TODO: indicate when the compiled_templates list has not yet been loaded into this select box -->
+            <!-- TODO: onSelect: display the description and other information for the selected template item and update the preview window with the template GWT -->
+            <option value="template_example">template_example</option>
+        </select>
+        <table>
+            <tr>
+                <td id="inspectPanel" class="inspectPanel"></td>
+                <td class="previewPanel">
+                    <!-- TODO: set up the previewframe to return the template files <iframe id="previewFrame" src="previewframe" scrolling="no" -->
+                    <iframe id="previewFrame" src="./compiled_templates/template_example/index.html" scrolling="no"
+                        style="border:1; overflow:hidden; height:95vh; width:80vw;" align="right"></iframe>
+                </td>
+            </tr>
+        </table>
+        <script>
+            function initTemplateWizard() {
+                if (typeof $("iframe")[0].contentWindow.applicationStates !== 'undefined') {
+                    $.each($("iframe")[0].contentWindow.applicationStates, function (presenterName, presenterTitle) {
+                        console.log(presenterName, presenterTitle);
+                        $("#inspectPanel").append("<div class='presenterPanel' id='" + presenterName + "Panel'>" + presenterTitle + "</div>");
+                        $("#" + presenterName + "Panel").click(function () {
+                            $("iframe")[0].contentWindow.requestState(presenterName)
+                        });
+                    });
+                    $("iframe")[0].contentWindow.templateFeatureHandler = function (presenterName, domId, featureAttribute, jsonPath, instructionalText) {
+                        console.log("templateFeatureHandler: ", presenterName, domId, featureAttribute, jsonPath, instructionalText);
+                        if ($("iframe").contents().find("#" + domId).length > 0) {
+                            $("iframe").contents().find("#" + domId).focusout(function () {
+                                console.log("focusout: ", presenterName, domId, $("iframe").contents().find("#" + domId).html());
+                            })
+                            $("iframe").contents().find("#" + domId).attr("contenteditable", "true");
+                        } else {
+                            // TODO: solve this loading issue and then remove this setTimeout
+                            setTimeout(function () {
+                                $("iframe")[0].contentWindow.templateFeatureHandler(presenterName, domId, featureAttribute, jsonPath, instructionalText);
+                            }, 1000);
+                        }
+                    }
+                } else {
+                    // TODO: solve this loading issue and then remove this setTimeout
+                    setTimeout(function () {
+                        initTemplateWizard();
+                    }, 1000);
+                }
+            }
+            $('#previewFrame').on('load', function () {
+                console.log("previewFrame loaded");
+                initTemplateWizard();
+            });
+
+            function loadTemplatesListing() {
+                $.getJSON("/compiled_templates/templates.json", function (availableTemplates) {
+                    var $templateSelector = $("#templateSelector");
+                    $.each(availableTemplates, function (templateId, templateEntry) {
+                        $templateSelector.append($("<option />").val(templateId).text(templateEntry.name));
                     });
                 });
-                $("iframe")[0].contentWindow.templateFeatureHandler = function (presenterName, domId, featureAttribute, jsonPath, instructionalText) {
-                    console.log("templateFeatureHandler: ", presenterName, domId, featureAttribute, jsonPath, instructionalText);
-                    if ($("iframe").contents().find("#" + domId).length > 0) {
-                        $("iframe").contents().find("#" + domId).focusout(function () {
-                            console.log("focusout: ", presenterName, domId, $("iframe").contents().find("#" + domId).html());
-                        })
-                        $("iframe").contents().find("#" + domId).attr("contenteditable", "true");
-                    } else {
-                        // TODO: solve this loading issue and then remove this setTimeout
-                        setTimeout(function () {
-                            $("iframe")[0].contentWindow.templateFeatureHandler(presenterName, domId, featureAttribute, jsonPath, instructionalText);
-                        }, 1000);
-                    }
-                }
-            } else {
-                // TODO: solve this loading issue and then remove this setTimeout
-                setTimeout(function () {
-                    initTemplateWizard();
-                }, 1000);
             }
-        }
-        $('#previewFrame').on('load', function () {
-            console.log("previewFrame loaded");
-            initTemplateWizard();
-        });
-    </script>
+            $(document).ready(function () {
+                loadTemplatesListing();
+            });
+        </script>
+    </div>
 </body>
 
 </html>
