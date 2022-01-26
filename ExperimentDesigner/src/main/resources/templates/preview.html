@@ -321,44 +321,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //        };
 
     </script>
-    <style>
-        .inspectPanel {
-            vertical-align: top;
-        }
-
-        .presenterPanel {
-            min-height: 100px;
-            background: lightblue;
-            margin: 10px;
-            padding: 10px;
-        }
-    </style>
 </head>
-<div id="header">
-    <h1>Frinex Experiment Designer</h1>
-</div>
-<table id="menu" class="menu">
-    <!-- TODO: move this header and menu into a thymeleaf template -->
-    <tr>
-        <td><a th:attr="class=${detailType eq 'preview' ? 'sel' : 'unsel'}"
-                th:href="${contextPath} + '/preview'">Preview Wizard</a></td>
-        <td><a th:attr="class=${detailType eq 'wizard' ? 'sel' : 'unsel'}"
-                th:href="${contextPath} + '/wizard'">Experiment Wizard</a></td>
-        <td><a th:attr="class=${detailType eq 'experiments' ? 'sel' : 'unsel'}"
-                th:href="${contextPath} + '/experiments'">Experiment List</a></td>
-        <td><a th:attr="class=${detailType eq 'translations' ? 'sel' : 'unsel'}"
-                th:href="${contextPath} + '/translations'">Translations</a></td>
-        <!-- <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td> -->
-        <td><a th:href="${contextPath} + '/builds'">Build Listing</a></td>
-        <td>
-            <form th:action="@{/logout}" method="post"><input type="hidden" th:name="${_csrf.parameterName}"
-                    th:value="${_csrf.token}" /><input type="submit" value="Sign Out" /></form>
-        </td>
-    </tr>
-</table>
 
 <body>
     <div th:fragment="previewPanel">
+        <style>
+            .inspectPanel {
+                vertical-align: top;
+            }
+
+            .presenterPanel {
+                min-height: 100px;
+                background: lightblue;
+                margin: 10px;
+                padding: 10px;
+            }
+        </style>
         <select id="templateSelector">
             <!-- TODO: indicate when the compiled_templates list has not yet been loaded into this select box -->
             <!-- TODO: onSelect: display the description and other information for the selected template item and update the preview window with the template GWT -->
