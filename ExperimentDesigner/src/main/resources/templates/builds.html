@@ -24,6 +24,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <head><title>Frinex Experiment Wizard</title></head>
     <body>
         <div th:fragment="buildListing">
+            <span id='buildLabel'>Build Host</span>
+            <span id='buildDate'></span>
+            <span style='width: 100px;background-color: lightgray;display: inline-block; margin: 3px;'>
+                <span id='diskFree' style='background-color: mediumaquamarine;width: 0%; display: block; white-space: nowrap;'>Disk</span>
+            </span>
+            <span style='width: 100px;background-color: lightgray;display: inline-block; margin: 3px;'>
+                <span id='memoryFree' style='background-color: mediumaquamarine;width: 0%; display: block; white-space: nowrap;'>Memory</span>
+            </span>
+            <br /><br />
             <div class="presenter">
                 <table id='buildTable'>
                     <tr>
