@@ -121,23 +121,6 @@ public class ExperimentController {
         return "design";
     }
 
-    @RequestMapping("/builds")
-    public String buildListing(Model model, HttpServletRequest request) {
-        model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "builds");
-        return "design";
-    }
-
-    @RequestMapping(
-            value = "/buildhistory.json",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public @ResponseBody
-    String buildHistory() throws IOException {
-        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
-        return new String(Files.readAllBytes(buildhistory.toPath()));
-    }
-
 /*    @RequestMapping("/previewframe") // TODO: accept parameters of template name and file being requested
     public String previewFrame(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
