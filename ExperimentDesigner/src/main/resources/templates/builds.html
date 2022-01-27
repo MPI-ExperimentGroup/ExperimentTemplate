@@ -21,10 +21,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head><title>Frinex Experiment Wizard</title></head>
     <body>
         <div th:fragment="buildListing">
             <div class="presenter">
-                <div class="table">
+                <table id='buildTable'>
+                    <tr>
+                        <td><a href="#1">repository</a></td>
+                        <td><a href="#2">committer</a></td>
+                        <td><a href="#3">experiment</a></td>
+                        <td><a href="#4">last update</a></td>
+                        <td><a href="#5">version</a></td>
+                        <td><a href="#6">validation</a></td>
+                        <td><a href="#7">staging web</a></td>
+                        <td><a href="#8">staging mobile</a></td>
+                        <td><a href="#9">staging desktop</a></td>
+                        <td><a href="#10">staging admin</a></td>
+                        <td><a href="#11">production server</a></td>
+                        <td><a href="#12">production web</a></td>
+                        <td><a href="#13">production mobile</a></td>
+                        <td><a href="#14">production desktop</a></td>
+                        <td><a href="#15">production admin</a></td>
+                    </tr>
+                </table>
+                <!--                <div class="table">
                     <div class="tr">
                         <span class="td"></span>
                     </div>
@@ -33,13 +53,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"></span>
                         <span class="td"></span>
                         <span class="td"></span>
-                    </form>
+                                    </form>-->
                     <script src='buildlisting.js'></script>
                     <!-- <script th:inline="javascript">
                         /*<![CDATA[*/
                         /*]]>*/
                     </script>-->
-                </div>
+                <!--</div>-->
             </div>
         </div>
     </body>
