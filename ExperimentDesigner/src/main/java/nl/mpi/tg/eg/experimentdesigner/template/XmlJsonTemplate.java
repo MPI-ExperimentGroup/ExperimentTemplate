@@ -45,7 +45,7 @@ public class XmlJsonTemplate {
         while (currentElement != null) {
 //            System.out.println(currentElement.getLocalName());
 //            System.out.println(currentElement.getNodeName());
-            if ("template".equals(currentElement.getNodeName())) {
+            if ("templateFeature".equals(currentElement.getNodeName())) {
                 final NamedNodeMap attributes = currentElement.getAttributes();
                 final Node jsonPath = attributes.getNamedItem("jsonPath");
                 final Node ifJsonPath = attributes.getNamedItem("ifJsonPath");
