@@ -37,6 +37,7 @@ import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.view.ColourPickerCanvasView;
 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -185,12 +186,12 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         setContent(appEventListner);
     }
 
-    public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName) {
+    public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName, XmlId xmlId) {
         // addText and htmlTokenText with styleName are not offered by the ColourPicker, but these features are used in the auto generated test builds
-        htmlTokenText(currentStimulus, textString);
+        htmlTokenText(currentStimulus, textString, xmlId);
     }
 
-    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
+    public void htmlTokenText(final Stimulus currentStimulus, String textString, XmlId xmlId) {
         progressLabelFormatString = textString;
         // formatting options are <colourPicker_total> <colourPicker_index> <colourPicker_percent>
     }

@@ -679,8 +679,9 @@ or local-name() eq 'submitGroupEvent'
         </xsl:if>
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
-        <!--<xsl:if test="local-name() eq 'htmlTokenText'">-->
-        <!--</xsl:if>-->
+        <xsl:if test="local-name() eq 'htmlTokenText'">
+            <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
+        </xsl:if>
         <xsl:if test="local-name() eq 'generateCompletionCode'
  or local-name() eq 'sendStimuliReport'
  or local-name() eq 'stimulusMetadataField'
