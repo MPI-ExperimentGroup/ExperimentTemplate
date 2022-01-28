@@ -24,6 +24,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <head><title>Frinex Experiment Wizard</title></head>
     <body>
         <div th:fragment="buildListing">
+            <style>
+                .buildTable tr td:nth-child(1),
+                .buildTable tr td:nth-child(2),
+                .buildTable tr td:nth-child(5),
+                .buildTable tr td:nth-child(11)
+                {
+                    /* hiding columns that would be confusing in the wizard context */
+                    display: none;
+                }
+                /* TODO: hide rows that are not for this logged in user */
+            </style>
             <span id='buildLabel'>Build Host</span>
             <span id='buildDate'></span>
             <span style='width: 100px;background-color: lightgray;display: inline-block; margin: 3px;'>
@@ -33,7 +44,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <span id='memoryFree' style='background-color: mediumaquamarine;width: 0%; display: block; white-space: nowrap;'>Memory</span>
             </span>
             <br /><br />
-            <div class="presenter">
+            <!-- <div class="presenter"> -->
                 <table id='buildTable' class='buildTable'>
                     <tr>
                         <td><a href="#1">repository</a></td>
@@ -69,7 +80,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         /*]]>*/
                     </script>-->
                 <!--</div>-->
-            </div>
+            <!-- </div> -->
         </div>
     </body>
 </html>
