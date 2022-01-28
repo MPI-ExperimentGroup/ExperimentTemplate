@@ -337,7 +337,7 @@ textarea.wizardTextbox {
 }
 
 /* build listing table styles */
-.buildTable table,
+.buildTable,
 .buildTable th,
 .buildTable td {
     border: 1px solid #d4d4d4;
