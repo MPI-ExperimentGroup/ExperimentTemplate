@@ -335,3 +335,37 @@ textarea.wizardTextbox {
 .wizardgrowcell{
     flex-grow: 15;
 }
+
+/* build listing table styles */
+.buildTable table,
+.buildTable th,
+.buildTable td {
+    border: 1px solid #d4d4d4;
+    border-spacing: 0px;
+}
+
+.shortmessage {
+    border-bottom: 1px solid;
+    position: relative;
+    display: inline-block;
+}
+
+.shortmessage .longmessage {
+    visibility: hidden;
+    width: 300px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: centre;
+    position: absolute;
+}
+
+.shortmessage:hover .longmessage {
+    visibility: visible;
+}
+
+.buildTable tr:hover {
+    background-color: #3f51b521;
+}
+/* end build listing table styles */
