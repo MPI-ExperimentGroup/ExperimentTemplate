@@ -737,7 +737,19 @@ or local-name() eq 'submitGroupEvent'
     </xsl:template>
     <xsl:template match="templateFeature">
         <!--xsl:value-of select="if(@featureText and templateFeature@attributeName eq 'featureText') then concat('templateFeature(', generate-id(.), ');') else ''" /-->        
-        <xsl:value-of select="concat('templateFeature(getSelfTag(), &quot;', generate-id(parent::element()), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;);')" />        
+        <xsl:value-of select="concat('templateFeature(getSelfTag(), &quot;', generate-id(parent::element()), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;')" />
+        <xsl:text>, "</xsl:text>
+        <!-- TODO: utilise this generated JSON path in the editing and JSON compilation processes -->
+        <xsl:for-each select="ancestor-or-self::*">
+            <xsl:if test="local-name() eq 'presenter'"><xsl:value-of select="concat('/', @self)"/></xsl:if>
+            <xsl:if test="local-name(current()) ne 'experiment' and local-name() ne 'presenter' and local-name() ne 'templateFeature'">
+            <xsl:value-of select="concat('/', local-name())"/>
+            <!-- <xsl:if test="(preceding-sibling::*|following-sibling::*)[local-name() eq local-name(current())]"> -->
+                <xsl:value-of select="concat('[', count(preceding-sibling::*[local-name() eq local-name(current())]) + 1, ']')"/>
+            <!-- </xsl:if> -->
+            </xsl:if>
+        </xsl:for-each>
+        <xsl:text>");</xsl:text>
     </xsl:template>
     <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
