@@ -467,6 +467,8 @@ public class TimedStimulusView extends ComplexView {
         final Duration duration = new Duration();
         final StringBuilder responseTimes = new StringBuilder();
         final TextArea textBox = new TextArea();
+        // the DB currently has a 1024 char limit, so we set the max length on the element
+        textBox.getElement().setAttribute("maxlength", "1024");
         if (textValue != null) {
             textBox.setText(textValue);
         }

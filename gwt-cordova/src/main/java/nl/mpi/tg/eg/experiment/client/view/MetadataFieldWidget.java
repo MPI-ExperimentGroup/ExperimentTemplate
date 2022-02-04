@@ -125,6 +125,8 @@ public class MetadataFieldWidget implements StimulusFreeText {
             } else {
                 focusWidget = new TextBox();
             }
+            // the DB currently has a 1024 char limit, so we set the max length on the element
+            focusWidget.getElement().setAttribute("maxlength", "1024");
             ((TextBoxBase) focusWidget).setText((initialValue == null) ? "" : initialValue);
             ((TextBoxBase) focusWidget).addValueChangeHandler(new ValueChangeHandler<String>() {
                 @Override
