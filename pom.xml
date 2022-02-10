@@ -47,6 +47,7 @@
         <experiment.groupsSocketUrl>ws://localhost:8080/</experiment.groupsSocketUrl>   
         <experiment.destinationServer>http://localhost:8080</experiment.destinationServer>   
         <experiment.staticFilesUrl>http://localhost:8080</experiment.staticFilesUrl>   
+        <experiment.configuration.locales>en,de,nl,es</experiment.configuration.locales>
         <!--<experiment.destinationName>localhost</experiment.destinationName>-->      
         <experiment.destinationServerUrl>http://localhost:8080/</experiment.destinationServerUrl>      
         <!--<experiment.destinationServerUrl></experiment.destinationServerUrl>-->      
