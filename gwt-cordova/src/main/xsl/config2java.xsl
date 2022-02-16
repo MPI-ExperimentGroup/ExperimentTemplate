@@ -751,7 +751,7 @@ or local-name() eq 'submitGroupEvent'
         </xsl:for-each>
         <xsl:text>");</xsl:text>
     </xsl:template>
-    <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
+    <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|recorderTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -812,7 +812,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto1) then concat('BooleanToggle.OPTO_', upper-case(@opto1)) else 'null' else ''" />  
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then concat(', BooleanToggle.OPTO_', upper-case(@opto2)) else ', null' else ''" />
-        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else ', null' else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp' or local-name() eq 'recorderTimeStamp') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else ', null' else ''" />
         <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'
 or local-name() eq 'prevStimulusButton'
