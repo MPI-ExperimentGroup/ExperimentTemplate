@@ -4914,6 +4914,61 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="RecorderToneInjection" next="Menu" type="stimulus" self="RecorderToneInjection" title="RecorderToneInjection">
+        <htmlText featureText="This example shows how to inject a DTMF tone into the current recording. On start of the recording the * tone is injected. At 500ms into the recording the B tone is injected and if that event is late by 20m the C tone is injected. Button clicks can inject tones # and A."/>
+        <loadStimulus eventTag="RecorderToneInjection" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </onError>
+                    <onSuccess>
+                        <htmlText featureText="startAudioRecorder onSuccess *"/>
+                        <recorderToneInjection dtmf="*" />
+                    </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="AudioRecordingLoaded"/>
+                        <actionButton featureText="nextStimulus">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="AudioRecordingLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted/>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="AudioRecordingPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                    <addMediaTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
+                        <onTime>
+                            <recorderToneInjection dtmf="B" />
+                        </onTime>
+                        <onError>
+                            <recorderToneInjection dtmf="C" />
+                        </onError>
+                    </addMediaTrigger>
+                </startAudioRecorderWeb>
+                <actionButton featureText="Inject tone #">
+                    <recorderToneInjection dtmf="#" />
+                </actionButton>
+                <actionButton featureText="Inject tone A">
+                    <recorderToneInjection dtmf="A" />
+                </actionButton>
+                <actionButton featureText="stopAudioRecorder">
+                    <stopAudioRecorder/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="RecordingDTMFQualityTest" next="Menu" type="stimulus" self="RecordingDTMFQualityTest" title="RecordingDTMFQualityTest">
         <htmlText featureText="This example shows one way to mandate that the DTMF tones produced by the the experiment are detectable in the audio recording made via the web recorder."/>
             <loadStimulus eventTag="RecordingDTMFQualityTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">

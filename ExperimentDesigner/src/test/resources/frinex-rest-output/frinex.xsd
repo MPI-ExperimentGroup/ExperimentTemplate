@@ -865,7 +865,7 @@
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
 <xs:element name="progressIndicator" type="progressIndicatorType"/>
 <xs:element name="randomMsPause" type="randomMsPauseType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="redirectToUrl" type="redirectToUrlType"/>
 <xs:element name="regionAppend" type="regionAppendType"/>
 <xs:element name="regionClear" type="regionClearType"/>
@@ -1669,7 +1669,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -1905,7 +1905,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -2135,7 +2135,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -2348,7 +2348,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -2581,7 +2581,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -2819,7 +2819,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -3043,7 +3043,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -3254,7 +3254,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -3488,7 +3488,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -3722,7 +3722,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -4014,7 +4014,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -4243,7 +4243,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -4472,7 +4472,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -4802,7 +4802,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -5089,7 +5089,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -5711,7 +5711,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -6104,7 +6104,7 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="recorderTimeStampType">
+<xs:complexType name="recorderToneInjectionType">
 <xs:annotation>
 <xs:documentation>Injects an audible tone into the current recording stream (providing there is an active recording) for use as a timestamp when processing the resulting data. The audio marker is in the form a DTMF tone. A timestamp will also be stored in the database similar to that produced by &lt;logTimeStamp&gt;.</xs:documentation>
 </xs:annotation>
@@ -6294,7 +6294,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -6568,7 +6568,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -6770,7 +6770,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -7015,7 +7015,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -7296,7 +7296,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -7513,7 +7513,7 @@
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="doLater" type="doLaterType"/>
 <xs:element name="clearTimer" type="clearTimerType"/>
@@ -7638,7 +7638,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -7847,7 +7847,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -8069,7 +8069,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -8292,7 +8292,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -8506,7 +8506,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -8612,7 +8612,7 @@
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="doLater" type="doLaterType"/>
 <xs:element name="clearTimer" type="clearTimerType"/>
@@ -8729,7 +8729,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -8923,7 +8923,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -9117,7 +9117,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -9311,7 +9311,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -9505,7 +9505,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -9709,7 +9709,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -9913,7 +9913,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -10117,7 +10117,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -10311,7 +10311,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -10505,7 +10505,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -10699,7 +10699,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -10893,7 +10893,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -11087,7 +11087,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -11276,7 +11276,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -11473,7 +11473,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -11667,7 +11667,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -11856,7 +11856,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -12050,7 +12050,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -12250,7 +12250,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -12444,7 +12444,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -12638,7 +12638,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -12832,7 +12832,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -13026,7 +13026,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -13223,7 +13223,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -13417,7 +13417,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -13611,7 +13611,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -13805,7 +13805,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -14009,7 +14009,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -14203,7 +14203,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -14405,7 +14405,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -14642,7 +14642,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -15194,7 +15194,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -15440,7 +15440,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -15898,7 +15898,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -16095,7 +16095,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -16292,7 +16292,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -16489,7 +16489,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
@@ -16689,7 +16689,7 @@
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
-<xs:element name="recorderTimeStamp" type="recorderTimeStampType"/>
+<xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
 <xs:element name="audioButton" type="audioButtonType"/>
 <xs:element name="preloadAllStimuli" type="preloadAllStimuliType"/>
