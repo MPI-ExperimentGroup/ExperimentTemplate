@@ -1623,6 +1623,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText(duration.elapsedMillis() + "ms");
     }
 
+    protected void recorderToneInjection(DTMF dtmf) {
+        mediaRecorder.injectTone(dtmf);
+    }
+
     protected void hardwareTimeStamp(BooleanToggle opto1, BooleanToggle opto2, DTMF dtmf) {
         if (hardwareTimeStamp != null) {
             if (opto1 != null) {

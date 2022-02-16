@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
 /**
@@ -46,4 +47,6 @@ public abstract class AbstractRecorder {
     public abstract void endRecorderTag(final AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor);
 
     public abstract void requestFilePermissions(final AbstractPresenter abstractPresenter);
+
+    public abstract void injectTone(final HardwareTimeStamp.DTMF dtmf);
 }
