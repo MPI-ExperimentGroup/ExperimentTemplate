@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
 /**
@@ -401,6 +402,8 @@ public class AudioRecorder extends AbstractRecorder {
                 }
                 $wnd.recorder.sourceNode.disconnect($wnd.audioAnalyser);
                 $wnd.audioAnalyser = null;
+                $wnd.injectOscillator1 = null;
+                $wnd.injectOscillator2 = null;
                 $wnd.recorder.stop();
             }
         } else {
@@ -478,4 +481,40 @@ public class AudioRecorder extends AbstractRecorder {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
      }-*/;
+
+    public void injectTone(final HardwareTimeStamp.DTMF dtmf, final TimedEventMonitor timedEventMonitor) {
+        // inject DTMF tones into the recorded audio stream
+        startDtmfInjection(dtmf.tone1, dtmf.tone2, dtmf.name(), timedEventMonitor);
+    }
+
+    final protected native boolean startDtmfInjection(final int tone1, final int tone2, final String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
+        if (&& $wnd.recorder) {
+            if (!$wnd.injectOscillator1 || !$wnd.injectOscillator2) {
+                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("starting tone injection");
+                var audioContext = new ($wnd.AudioContext || $wnd.webkitAudioContext)();
+                $wnd.injectOscillator1 = audioContext.createOscillator();
+                $wnd.injectOscillator2 = audioContext.createOscillator();
+                $wnd.injectOscillator1.type = 'sine';
+                $wnd.injectOscillator2.type = 'sine';
+                var gainNode = audioContext.createGain();
+                gainNode.gain.value = 0.5;
+                $wnd.injectOscillator1.connect(gainNode);
+                $wnd.injectOscillator2.connect(gainNode);
+                var merger = audioContext.createChannelMerger(2);
+                gainNode.connect(audioContext.destination);
+                gainNode.connect(merger);
+                merger.connect($wnd.recorder.sourceNode);
+                $wnd.injectOscillator1.frequency.value = 0;
+                $wnd.injectOscillator2.frequency.value = 0;
+                $wnd.injectOscillator1.start();
+                $wnd.injectOscillator2.start();
+            }
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(eventTag);
+            $wnd.injectOscillator1.frequency.value = tone1;
+            $wnd.injectOscillator2.frequency.value = tone2;
+        } else {
+            timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("cannot inject tone");
+        }
+    }-*/;
+    // TODO: https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelMerger
 }

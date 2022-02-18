@@ -48,5 +48,5 @@ public abstract class AbstractRecorder {
 
     public abstract void requestFilePermissions(final AbstractPresenter abstractPresenter);
 
-    public abstract void injectTone(final HardwareTimeStamp.DTMF dtmf);
+    public abstract void injectTone(final HardwareTimeStamp.DTMF dtmf, final TimedEventMonitor timedEventMonitor);
 }

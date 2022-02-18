@@ -180,7 +180,7 @@ public class VideoRecorder extends AbstractRecorder {
     }
 
     @Override
-    public void injectTone(final HardwareTimeStamp.DTMF dtmf) {
+    public void injectTone(final HardwareTimeStamp.DTMF dtmf, final TimedEventMonitor timedEventMonitor) {
         // TODO: implement this method for video
     }
 }

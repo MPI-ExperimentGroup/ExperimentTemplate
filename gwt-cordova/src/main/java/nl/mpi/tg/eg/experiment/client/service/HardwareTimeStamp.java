@@ -55,8 +55,8 @@ public class HardwareTimeStamp {
             this.tone1 = tone1;
             this.tone2 = tone2;
         }
-        final int tone1;
-        final int tone2;
+        public final int tone1;
+        public final int tone2;
 
     }
 
