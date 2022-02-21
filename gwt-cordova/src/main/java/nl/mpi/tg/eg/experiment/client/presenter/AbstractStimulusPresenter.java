@@ -1624,7 +1624,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void recorderToneInjection(DTMF dtmf) {
-        mediaRecorder.injectTone(dtmf, final TimedEventMonitor timedEventMonitor);
+        mediaRecorder.injectTone(dtmf, timedEventMonitor);
     }
 
     protected void hardwareTimeStamp(BooleanToggle opto1, BooleanToggle opto2, DTMF dtmf) {
