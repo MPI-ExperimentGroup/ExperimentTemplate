@@ -173,6 +173,7 @@
                     <include>**/ServiceLocations.properties</include>
                     <include>**/Messages.properties</include>
                     <include>**/StimulusStrings.properties</include>
+                    <include>**/ExperimentTemplate.gwt.xml</include>
                 </includes>
             </resource>
             <resource>
