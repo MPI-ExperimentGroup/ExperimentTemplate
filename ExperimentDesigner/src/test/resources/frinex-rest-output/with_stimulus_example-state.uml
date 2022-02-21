@@ -126,6 +126,7 @@ sticky_menu_example --> RecorderMediaTrigger
 sticky_menu_example --> RecorderPauseTest
 sticky_menu_example --> RecorderNoDownloadTest
 sticky_menu_example --> RecorderTimeStampTest
+sticky_menu_example --> RecorderToneInjection
 sticky_menu_example --> RecordingDTMFQualityTest
 sticky_menu_example --> RecordingDTMFExtendedTest
 sticky_menu_example --> RecorderDtmfTriggerExample
@@ -388,6 +389,9 @@ RecorderNoDownloadTest --> RecorderNoDownloadTest
 state RecorderTimeStampTest
 RecorderTimeStampTest --> Menu : back
 RecorderTimeStampTest --> Menu : next
+state RecorderToneInjection
+RecorderToneInjection --> Menu : back
+RecorderToneInjection --> Menu : next
 state RecordingDTMFQualityTest
 RecordingDTMFQualityTest --> Menu : back
 RecordingDTMFQualityTest --> Menu : next
@@ -564,6 +568,7 @@ Menu --> RecorderMediaTrigger
 Menu --> RecorderPauseTest
 Menu --> RecorderNoDownloadTest
 Menu --> RecorderTimeStampTest
+Menu --> RecorderToneInjection
 Menu --> RecordingDTMFQualityTest
 Menu --> RecordingDTMFExtendedTest
 Menu --> RecorderDtmfTriggerExample
@@ -688,6 +693,7 @@ allMenuItemsStyle --> RecorderMediaTrigger
 allMenuItemsStyle --> RecorderPauseTest
 allMenuItemsStyle --> RecorderNoDownloadTest
 allMenuItemsStyle --> RecorderTimeStampTest
+allMenuItemsStyle --> RecorderToneInjection
 allMenuItemsStyle --> RecordingDTMFQualityTest
 allMenuItemsStyle --> RecordingDTMFExtendedTest
 allMenuItemsStyle --> RecorderDtmfTriggerExample
