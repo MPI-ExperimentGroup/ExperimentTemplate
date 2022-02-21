@@ -4941,14 +4941,14 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <addMediaTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
+                    <addFrameTimeTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
                         <onTime>
                             <recorderToneInjection dtmf="B" />
                         </onTime>
                         <onError>
                             <recorderToneInjection dtmf="C" />
                         </onError>
-                    </addMediaTrigger>
+                    </addFrameTimeTrigger>
                 </startAudioRecorderWeb>
                 <actionButton featureText="Inject tone #">
                     <recorderToneInjection dtmf="#" />
