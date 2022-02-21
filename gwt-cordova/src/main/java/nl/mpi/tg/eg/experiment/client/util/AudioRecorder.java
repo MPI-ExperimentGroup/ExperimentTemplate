@@ -488,7 +488,7 @@ public class AudioRecorder extends AbstractRecorder {
     }
 
     final protected native boolean startDtmfInjection(final int tone1, final int tone2, final String eventTag, final TimedEventMonitor timedEventMonitor) /*-{
-        if (&& $wnd.recorder) {
+        if ($wnd.recorder) {
             if (!$wnd.injectOscillator1 || !$wnd.injectOscillator2) {
                 timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("starting tone injection");
                 var audioContext = new ($wnd.AudioContext || $wnd.webkitAudioContext)();
