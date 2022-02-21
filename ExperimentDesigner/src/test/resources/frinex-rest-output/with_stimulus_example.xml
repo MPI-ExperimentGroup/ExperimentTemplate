@@ -4927,6 +4927,14 @@
                     <onSuccess>
                         <htmlText featureText="startAudioRecorder onSuccess *"/>
                         <recorderToneInjection dtmf="*" />
+                        <addMediaTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
+                            <onTime>
+                                <recorderToneInjection dtmf="B" />
+                            </onTime>
+                            <onError>
+                                <recorderToneInjection dtmf="C" />
+                            </onError>
+                        </addMediaTrigger>
                     </onSuccess>
                     <mediaLoaded>
                         <plainText featureText="AudioRecordingLoaded"/>
@@ -4941,14 +4949,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <addFrameTimeTrigger evaluateMs="500" threshold="20" mediaId="recordedMedia">
-                        <onTime>
-                            <recorderToneInjection dtmf="B" />
-                        </onTime>
-                        <onError>
-                            <recorderToneInjection dtmf="C" />
-                        </onError>
-                    </addFrameTimeTrigger>
                 </startAudioRecorderWeb>
                 <actionButton featureText="Inject tone #">
                     <recorderToneInjection dtmf="#" />
