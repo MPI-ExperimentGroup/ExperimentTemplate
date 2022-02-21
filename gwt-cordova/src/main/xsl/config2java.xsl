@@ -680,6 +680,7 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
         <xsl:if test="local-name() eq 'htmlTokenText'">
+            <!-- TODO: should htmlTokenText be editable in the templates due to the requirement to update the tokens -->
             <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
         </xsl:if>
         <xsl:if test="local-name() eq 'generateCompletionCode'
@@ -777,6 +778,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp'
             and local-name() ne 'hotKeyInput'
             and local-name() ne 'hardwareTimeStamp'
+            and local-name() ne 'recorderToneInjection'
            ">
             <xsl:text>currentStimulus</xsl:text>
         </xsl:if>
@@ -805,6 +807,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp' 
             and local-name() ne 'hotKeyInput' 
             and local-name() ne 'hardwareTimeStamp' 
+            and local-name() ne 'recorderToneInjection' 
             and local-name() ne 'sendGroupEndOfStimuli'">
             <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
         </xsl:if>
@@ -812,7 +815,8 @@ or local-name() eq 'sendGroupEndOfStimuli'
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto1) then concat('BooleanToggle.OPTO_', upper-case(@opto1)) else 'null' else ''" />  
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then concat(', BooleanToggle.OPTO_', upper-case(@opto2)) else ', null' else ''" />
-        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp' or local-name() eq 'recorderToneInjection') then if(@dtmf) then concat(', DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else ', null' else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then ', ' else ''" />
+        <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp' or local-name() eq 'recorderToneInjection') then if(@dtmf) then concat('DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else ', null' else ''" />
         <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'
 or local-name() eq 'prevStimulusButton'
