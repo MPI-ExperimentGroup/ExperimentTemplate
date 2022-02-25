@@ -94,7 +94,7 @@ public class AudioPlayer {
     private void registerSourceLoadingError() {
         sourceLoadingCounter--;
         if (sourceLoadingCounter <= 0) {
-            onAudioFailed();
+            onAudioFailed("audioSourceLoadingError");
         }
     }
 
@@ -120,13 +120,13 @@ public class AudioPlayer {
         }, false);
         audioElement.addEventListener("error", function(){
             // todo: check to second instance of onerror
-            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed()();
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed(Ljava/lang/String;)("audioElement EventListener");
         }, false);
      }-*/;
 
     private native void play(final AudioElement audioElement) /*-{
         var audioPlayer = this;
-        $wnd.playMedia(audioElement, function(){}, function(){audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed()()});
+        $wnd.playMedia(audioElement, function(){}, function(){audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed(Ljava/lang/String;)("audio wnd.playMedia")});
      }-*/;
 
     public void onStartedAction() {
@@ -148,9 +148,10 @@ public class AudioPlayer {
         }
     }
 
-    public void onAudioFailed() {
+    public void onAudioFailed(String reason) {
         if (timedEventMonitor != null) {
             timedEventMonitor.registerEvent("audioFailed");
+            timedEventMonitor.registerEvent(reason);
         }
         if (audioEventListner != null) {
             audioEventListner.audioFailed();
@@ -203,7 +204,7 @@ public class AudioPlayer {
         if (audioPlayer != null) {
             play(audioPlayer.getAudioElement());
         } else {
-            onAudioFailed();
+            onAudioFailed("audioPlayer is null");
         }
     }
 
