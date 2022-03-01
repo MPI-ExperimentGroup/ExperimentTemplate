@@ -1107,6 +1107,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="logTokenTextType">
+<xs:annotation>
+<xs:documentation>Logs data to the tag pair data table. The value of dataLogFormat will have any string tokens replaced and stored in the TagValue2 column. When provided the value of type and headerKey will be stored in the EventTag	and TagValue1 columns respectively.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="dataChannel" type="xs:string">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
