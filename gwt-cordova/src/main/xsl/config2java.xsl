@@ -482,12 +482,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         </xsl:text>
     </xsl:template>
     <!--it should be possible to merge the two following templates into one-->
-    <xsl:template match="touchInputStimulusButton|stimulusButton|targetButton|actionButton|actionTokenButton|targetFooterButton|actionFooterButton"> 
+    <xsl:template match="touchInputStimulusButton|stimulusButton|stimulusSlider|targetButton|actionButton|actionTokenButton|targetFooterButton|actionFooterButton"> 
         <xsl:if test="parent::element()/local-name() eq 'showHtmlPopup'">, </xsl:if>
         <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
             <xsl:value-of select="local-name()"/>
             <xsl:text>(</xsl:text>
-            <xsl:if test="local-name() eq 'stimulusButton'">
+            <xsl:if test="local-name() eq 'stimulusButton' or local-name() eq 'stimulusSlider'">
                 <xsl:text>stimulusProvider, </xsl:text>
                 <xsl:text>currentStimulus,</xsl:text>
             </xsl:if>
@@ -544,14 +544,20 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                        or local-name() eq 'stimulusButton'">
             <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ', null'" />
         </xsl:if>
-        <xsl:if test="local-name() eq 'stimulusButton'">
-            <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
+        <xsl:if test="local-name() eq 'stimulusButton' or local-name() eq 'stimulusSlider'">
+            <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel, ' /* dataChannel */') else ', 0'" />
+        </xsl:if>
+        <xsl:if test="local-name() eq 'stimulusSlider'">
+            <xsl:value-of select="if(@orientation) then concat(', OrientationType.', @orientation) else ', OrientationType.horizontal'" />
+            <xsl:value-of select="if(@initial) then concat(', ', @initial, ' /* initial */') else ', 50'" />
+            <xsl:value-of select="if(@minimum) then concat(', ', @minimum, ' /* minimum */') else ', 0'" />
+            <xsl:value-of select="if(@maximum) then concat(', ', @maximum, ' /* maximum */, ') else ', 100, '" />
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then if(@src) then concat(', &quot;', @src, '&quot;') else ', null' else ''" />
         <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
             <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
             <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
-            <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
+            <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox') or contains(local-name(), 'Slider')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
             <xsl:text>);
             </xsl:text>
         </xsl:if>

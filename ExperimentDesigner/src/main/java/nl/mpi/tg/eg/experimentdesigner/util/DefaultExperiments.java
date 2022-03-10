@@ -300,6 +300,9 @@ public class DefaultExperiments {
                             case minimum:
                                 presenterFeature.addFeatureAttributes(attribute, "3");
                                 break;
+                            case initial:
+                                presenterFeature.addFeatureAttributes(attribute, "35");
+                                break;
                             case offset:
                             case dataChannel:
                             case adjacencyThreshold:

@@ -44,6 +44,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -455,6 +456,82 @@ public class TimedStimulusView extends ComplexView {
                 // todo: we could use a scroll to method to focus the message here
             }
         };
+    }
+
+    public StimulusFreeText addSlider(final Stimulus stimulus, final String postName, final PresenterEventListner presenterListener, final double initial, final int minimum, final int maximum, final int dataChannel) {
+        TextBox slider = new TextBox();
+        slider.getElement().setAttribute("type", "range");
+        slider.getElement().setAttribute("min", Integer.toString(minimum));
+        slider.getElement().setAttribute("max", Integer.toString(maximum));
+        slider.getElement().setAttribute("value", Double.toString(initial));
+        if (presenterListener.getStyleName() != null && !presenterListener.getStyleName().isEmpty()) {
+            slider.addStyleName(presenterListener.getStyleName());
+        }
+        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+
+            @Override
+            protected void singleShotFired() {
+                if (slider.isEnabled()) {
+                    presenterListener.eventFired(null, this);
+                }
+                resetSingleShot();
+            }
+        };
+        slider.addClickHandler(singleShotEventListner);
+        slider.addTouchEndHandler(singleShotEventListner);
+        StimulusFreeText stimulusFreeText = new StimulusFreeText() {
+            @Override
+            public Stimulus getStimulus() {
+                return stimulus;
+            }
+
+            @Override
+            public String getPostName() {
+                return postName;
+            }
+
+            @Override
+            public String getResponseTimes() {
+                return "";
+            }
+
+            @Override
+            public String getValue() {
+                return slider.getValue();
+            }
+
+            @Override
+            public boolean isValid() {
+                return true;
+            }
+
+            @Override
+            public void setVisible(boolean isVisible) {
+                slider.setVisible(isVisible);
+            }
+
+            @Override
+            public void setEnabled(boolean isEnabled) {
+                slider.setEnabled(isEnabled);
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return slider.isEnabled() && slider.isVisible();
+            }
+
+            @Override
+            public int getDataChannel() {
+                return dataChannel;
+            }
+
+            @Override
+            public void setFocus(boolean wantsFocus) {
+                slider.setFocus(wantsFocus);
+            }
+        };
+        getActivePanel().add(slider);
+        return stimulusFreeText;
     }
 
     public StimulusFreeText addStimulusFreeText(final Stimulus stimulus, final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final int dataChannel, final String textValue) {

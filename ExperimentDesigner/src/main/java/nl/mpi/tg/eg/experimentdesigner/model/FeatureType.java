@@ -64,6 +64,7 @@ public enum FeatureType {
     svgGroupAction(false, new FeatureAttribute[]{groupId}, "Sets a button action to the image group as specified in the loaded SVG data.", Contitionals.any, Contitionals.svgGroupsLoaded),
     svgGroupMatching(false, new FeatureAttribute[]{groupId, visible, evaluateTokens}, "Sets the visibility of the matching child elements of the group which must have already been added to the presenter.", Contitionals.none, Contitionals.svgGroupsLoaded),
     stimulusButton(true, new FeatureAttribute[]{eventTag, hotKey, dataChannel, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    stimulusSlider(true, new FeatureAttribute[]{dataChannel, styleName, groupId, initial, minimum, maximum, orientation}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     touchInputStimulusButton(true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.any, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
