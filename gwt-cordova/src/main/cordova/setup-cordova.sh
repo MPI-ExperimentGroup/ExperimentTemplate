@@ -188,40 +188,41 @@ cordova build android --buildConfig /android-keys/frinex-build.json --release
 
 rm platforms/android/release-signing.properties
 #echo "make the iOS icons"
-convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
-convert -resize 60x60 -quality 100 $iconImage $iconResourcesDir/icon-60.png
-convert -resize 120x120 -quality 100 $iconImage $iconResourcesDir/icon-60@2x.png
-convert -resize 76x76 -quality 100 $iconImage $iconResourcesDir/icon-76.png
-convert -resize 152x152 -quality 100 $iconImage $iconResourcesDir/icon-76@2x.png
-convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
-convert -resize 40x40 -quality 100 $iconImage $iconResourcesDir/icon-40.png
-convert -resize 80x80 -quality 100 $iconImage $iconResourcesDir/icon-40@2x.png
-convert -resize 57x57 -quality 100 $iconImage $iconResourcesDir/icon.png
-convert -resize 114x114 -quality 100 $iconImage $iconResourcesDir/icon@2x.png
-convert -resize 72x72 -quality 100 $iconImage $iconResourcesDir/icon-72.png
-convert -resize 144x144 -quality 100 $iconImage $iconResourcesDir/icon-72@2x.png
-convert -resize 29x29 -quality 100 $iconImage $iconResourcesDir/icon-small.png
-convert -resize 58x58 -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
-convert -resize 50x50 -quality 100 $iconImage $iconResourcesDir/icon-50.png
-convert -resize 100x100 -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
-convert -resize 88x88 -quality 100 $iconImage $iconResourcesDir/icon-44@2x.png
-convert -resize 40x40 -quality 100 $iconImage $iconResourcesDir/icon-20@2x.png
+convert -resize 180x180! -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
+convert -resize 60x60! -quality 100 $iconImage $iconResourcesDir/icon-60.png
+convert -resize 120x120! -quality 100 $iconImage $iconResourcesDir/icon-60@2x.png
+convert -resize 76x76! -quality 100 $iconImage $iconResourcesDir/icon-76.png
+convert -resize 152x152! -quality 100 $iconImage $iconResourcesDir/icon-76@2x.png
+convert -resize 40x40! -quality 100 $iconImage $iconResourcesDir/icon-40.png
+convert -resize 80x80! -quality 100 $iconImage $iconResourcesDir/icon-40@2x.png
+convert -resize 57x57! -quality 100 $iconImage $iconResourcesDir/icon.png
+convert -resize 114x114! -quality 100 $iconImage $iconResourcesDir/icon@2x.png
+convert -resize 72x72! -quality 100 $iconImage $iconResourcesDir/icon-72.png
+convert -resize 144x144! -quality 100 $iconImage $iconResourcesDir/icon-72@2x.png
+convert -resize 29x29! -quality 100 $iconImage $iconResourcesDir/icon-small.png
+convert -resize 58x58! -quality 100 $iconImage $iconResourcesDir/icon-small@2x.png
+convert -resize 50x50! -quality 100 $iconImage $iconResourcesDir/icon-50.png
+convert -resize 100x100! -quality 100 $iconImage $iconResourcesDir/icon-50@2x.png
+convert -resize 88x88! -quality 100 $iconImage $iconResourcesDir/icon-44@2x.png
+convert -resize 40x40! -quality 100 $iconImage $iconResourcesDir/icon-20@2x.png
 #echo "make more iOS icons"
-convert -resize 20x20^ -gravity center -extent 20x20 -quality 100 $splashImage $splashResourcesDir/icon-20.png
-convert -resize 40x40^ -gravity center -extent 40x40 -quality 100 $splashImage $splashResourcesDir/icon-20@2x.png
-convert -resize 60x60^ -gravity center -extent 60x60 -quality 100 $splashImage $splashResourcesDir/icon-20@3x.png
-convert -resize 29x29^ -gravity center -extent 29x29 -quality 100 $splashImage $splashResourcesDir/icon-29.png
-convert -resize 29x29^ -gravity center -extent 29x29 -quality 100 $splashImage $splashResourcesDir/icon-29@1x.png
-convert -resize 58x58^ -gravity center -extent 58x58 -quality 100 $splashImage $splashResourcesDir/icon-29@2x.png
-convert -resize 87x87^ -gravity center -extent 87x87 -quality 100 $splashImage $splashResourcesDir/icon-29@3x.png
-convert -resize 167x167^ -gravity center -extent 167x167 -quality 100 $splashImage $splashResourcesDir/icon-83.5@2x.png
-convert -resize 1024x1024^ -gravity center -extent 1024x1024 -quality 100 $splashImage $splashResourcesDir/icon-1024.png
-convert -resize 48x48^ -gravity center -extent 48x48 -quality 100 $splashImage $splashResourcesDir/icon-24@2x.png
-convert -resize 55x55^ -gravity center -extent 55x55 -quality 100 $splashImage $splashResourcesDir/icon-27.5@2x.png
-convert -resize 88x88^ -gravity center -extent 88x88 -quality 100 $splashImage $splashResourcesDir/icon-44@2x.png
-convert -resize 172x172^ -gravity center -extent 172x172 -quality 100 $splashImage $splashResourcesDir/icon-86@2x.png
-convert -resize 196x196^ -gravity center -extent 196x196 -quality 100 $splashImage $splashResourcesDir/icon-98@2x.png
-convert -resize 216x216^ -gravity center -extent 216x216 -quality 100 $splashImage $splashResourcesDir/icon-108@2x.png
+convert -resize 20x20! -quality 100 $iconImage $iconResourcesDir/icon-20.png
+convert -resize 60x60! -quality 100 $iconImage $iconResourcesDir/icon-20@3x.png
+convert -resize 29x29! -quality 100 $iconImage $iconResourcesDir/icon-29.png
+convert -resize 29x29! -quality 100 $iconImage $iconResourcesDir/icon-29@1x.png
+convert -resize 58x58! -quality 100 $iconImage $iconResourcesDir/icon-29@2x.png
+convert -resize 87x87! -quality 100 $iconImage $iconResourcesDir/icon-29@3x.png
+convert -resize 66x66! -quality 100 $iconImage $iconResourcesDir/icon-30@2x.png
+convert -resize 66x66! -quality 100 $iconImage $iconResourcesDir/icon-46@2x.png
+convert -resize 66x66! -quality 100 $iconImage $iconResourcesDir/icon-51@2x.png
+convert -resize 66x66! -quality 100 $iconImage $iconResourcesDir/icon-117@2x.png
+convert -resize 167x167! -quality 100 $iconImage $iconResourcesDir/icon-83.5@2x.png
+convert -resize 1024x1024! -gravity center -extent 1024x1024 -quality 100 $iconImage $iconResourcesDir/icon-1024.png
+convert -resize 48x48! -quality 100 $iconImage $iconResourcesDir/icon-24@2x.png
+convert -resize 55x55! -quality 100 $iconImage $iconResourcesDir/icon-27.5@2x.png
+convert -resize 172x172! -quality 100 $iconImage $iconResourcesDir/icon-86@2x.png
+convert -resize 196x196! -quality 100 $iconImage $iconResourcesDir/icon-98@2x.png
+convert -resize 216x216! -quality 100 $iconImage $iconResourcesDir/icon-108@2x.png
 
 # list the schemes available 
 #xcodebuild -list
