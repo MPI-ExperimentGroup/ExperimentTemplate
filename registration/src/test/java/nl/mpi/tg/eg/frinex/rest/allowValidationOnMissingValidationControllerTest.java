@@ -375,6 +375,11 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
+            public long countDistinctDateByEventTag(String eventTag) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -484,6 +489,11 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new StimulusResponseRepository() {
+            @Override
+            public long countDistinctRecords() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");

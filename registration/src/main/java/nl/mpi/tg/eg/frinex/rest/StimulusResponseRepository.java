@@ -46,6 +46,9 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore) from StimulusResponse order by tagDate asc")
     List<StimulusResponse> findAllDistinctRecords();
 
+    @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
+    long countDistinctRecords();
+
     @Override
     @RestResource(exported = false)
     public abstract <S extends StimulusResponse> S save(S entity);
@@ -61,7 +64,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
-            
+
     @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);

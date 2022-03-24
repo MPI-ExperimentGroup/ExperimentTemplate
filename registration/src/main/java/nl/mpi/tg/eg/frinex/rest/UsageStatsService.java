@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.PublicStatistics;
+import nl.mpi.tg.eg.frinex.model.ScreenData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -40,16 +42,23 @@ public class UsageStatsService {
     TagRepository tagRepository;
     @Autowired
     ParticipantRepository participantRepository;
+    @Autowired
+    StimulusResponseRepository stimulusResponseRepository;
 
     @RequestMapping(value = "/public_usage_stats", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<PublicStatistics> publicUsageStats() {
         final PublicStatistics usageStats = new PublicStatistics();
-        usageStats.firstDeploymentAccessed = screenDataRepository.findTop1ByOrderBySubmitDateAsc().getSubmitDate();
+        final ScreenData screenData = screenDataRepository.findTop1ByOrderBySubmitDateAsc();
+        usageStats.firstDeploymentAccessed = (screenData != null) ? screenData.getSubmitDate() : null;
         usageStats.totalParticipantsSeen = participantRepository.countDistinctUserId();
         usageStats.totalDeploymentsAccessed = tagRepository.countDistinctTagValueByEventTag("compileDate");
-        usageStats.firstParticipantSeen = participantRepository.findTop1ByOrderBySubmitDateAsc().getSubmitDate();
-        usageStats.lastParticipantSeen = participantRepository.findTop1ByOrderBySubmitDateDesc().getSubmitDate();
+        usageStats.totalPageLoads = tagRepository.countDistinctDateByEventTag("compileDate");
+        usageStats.totalStimulusResponses = stimulusResponseRepository.countDistinctRecords();
+        final Participant participantFirst = participantRepository.findTop1ByOrderBySubmitDateAsc();
+        usageStats.firstParticipantSeen = (participantFirst != null) ? participantFirst.getSubmitDate() : null;
+        final Participant participantLast = participantRepository.findTop1ByOrderBySubmitDateDesc();
+        usageStats.lastParticipantSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
         usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();
         usageStats.sessionFirstAndLastSeen = tagRepository.findFirstAndLastSessionAccess();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);

@@ -27,7 +27,9 @@ public class PublicStatistics {
 
     public Date firstDeploymentAccessed;
     public long totalDeploymentsAccessed;
+    public long totalPageLoads;
     public long totalParticipantsSeen;
+    public long totalStimulusResponses;
     public Date firstParticipantSeen;
     public Date lastParticipantSeen;
     public Date[][] participantsFirstAndLastSeen;
