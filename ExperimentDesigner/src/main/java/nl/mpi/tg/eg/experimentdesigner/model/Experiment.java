@@ -46,12 +46,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"publishEvents", "validationService", "dataChannels", "scss", "metadata", "presenterScreen", "stimuli"})
 public class Experiment implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String appNameDisplay;
     private boolean showMenuBar = true;
-    @Column(unique = true)
     private String appNameInternal;
     private String resourceNetworkPath; // path to MPI_Scratch that contains any resource files needed for the experiment
 //    private String nextPresenterTag;
@@ -71,29 +68,28 @@ public class Experiment implements Serializable {
     private boolean isRotatable = true;
     private boolean preserveLastState = true;
     private boolean preventWindowClose = true;
+    private String defaultLocale;
+    private String availableLocales;
     private float defaultScale = 1;
     private String scss;
     private ValidationService validationService;
 
-    @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderBy("displayOrder ASC")
     private List<PresenterScreen> presenterScreen = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadata = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Stimulus> stimuli = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<DataChannel> dataChannels = new ArrayList<>();
 
     public Experiment() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @XmlTransient
     public long getId() {
         return id;
@@ -108,6 +104,7 @@ public class Experiment implements Serializable {
         this.appNameDisplay = appNameDisplay;
     }
 
+    @Column(unique = true)
     @XmlAttribute
     public String getAppNameInternal() {
         return appNameInternal;
@@ -135,11 +132,13 @@ public class Experiment implements Serializable {
         this.textFontSize = textFontSize;
     }
 
+    @OneToMany(mappedBy = "experiment")
     @XmlElement(name = "deployment")
     public List<PublishEvents> getPublishEvents() {
         return publishEvents;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @XmlElementWrapper(name = "administration")
     @XmlElement(name = "dataChannel")
     public List<DataChannel> getDataChannels() {
@@ -162,6 +161,24 @@ public class Experiment implements Serializable {
 
     public void setDataChannels(List<DataChannel> dataChannels) {
         this.dataChannels = dataChannels;
+    }
+
+    @XmlAttribute
+    public String getDefaultLocale() {
+        return (defaultLocale == null || defaultLocale.isEmpty()) ? "en" : defaultLocale;
+    }
+
+    public void setDefaultLocale(String defaultLocale) {
+        this.defaultLocale = defaultLocale;
+    }
+
+    @XmlAttribute
+    public String getAvailableLocales() {
+        return (availableLocales == null || availableLocales.isEmpty()) ? "en" : availableLocales;
+    }
+
+    public void setAvailableLocales(String availableLocales) {
+        this.availableLocales = availableLocales;
     }
 
     @XmlAttribute
@@ -323,6 +340,7 @@ public class Experiment implements Serializable {
 //    public void setNextPresenterTag(String nextPresenterTag) {
 //        this.nextPresenterTag = nextPresenterTag;
 //    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @XmlElement(name = "presenter")
     public List<PresenterScreen> getPresenterScreen() {
         return presenterScreen;
@@ -332,6 +350,7 @@ public class Experiment implements Serializable {
         this.presenterScreen = PresenterScreen;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @XmlElementWrapper(name = "metadata")
     @XmlElement(name = "field")
     public List<Metadata> getMetadata() {
@@ -353,6 +372,7 @@ public class Experiment implements Serializable {
         this.metadata = metadata;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @XmlElementWrapper(name = "stimuli")
     @XmlElement(name = "stimulus")
     public List<Stimulus> getStimuli() {

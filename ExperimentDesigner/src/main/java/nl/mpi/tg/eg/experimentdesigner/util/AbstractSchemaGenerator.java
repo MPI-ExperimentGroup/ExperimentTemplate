@@ -479,6 +479,8 @@ public class AbstractSchemaGenerator {
             .colourRGBAttribute("primaryColour2", false)
             .colourRGBAttribute("primaryColour3", false)
             .colourRGBAttribute("primaryColour4", false)
+            .documentedAttribute("defaultLocale", AttributeType.xsString, "The default locale to be shown when the user preferred locale is not specified. For example &quot;en&quot; or &quot;en_GB&quot;.",true)
+            .documentedAttribute("availableLocales",AttributeType.xsString, "List of all locales provided in this experiment. The list of locales must be comma separated without whitespace characters. For example &quot;en,de,nl,es&quot; or &quot;en_GB,en_US,en_SG&quot;.", true)
             .booleanAttribute("isScalable", false, "Boolean")
             // TODO: preserveLastState would perhaps be better renamed to restrictBrowserNavigation
             .booleanAttribute("preserveLastState", false, "When true the use of browser navigation buttons will be restricted.")

@@ -419,6 +419,16 @@
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="defaultLocale" type="xs:string">
+<xs:annotation>
+<xs:documentation>The default locale to be shown when the user preferred locale is not specified. For example &quot;en&quot; or &quot;en_GB&quot;.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="availableLocales" type="xs:string">
+<xs:annotation>
+<xs:documentation>List of all locales provided in this experiment. The list of locales must be comma separated without whitespace characters. For example &quot;en,de,nl,es&quot; or &quot;en_GB,en_US,en_SG&quot;.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="isScalable" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>Boolean</xs:documentation>

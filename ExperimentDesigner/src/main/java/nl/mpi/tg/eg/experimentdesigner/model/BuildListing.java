@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * @since 04-03-2020 11:27 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@JsonPropertyOrder({"publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "isUnity", "buildName", "registrationUrlStaging", "registrationUrlProduction", "state", "productionServer", "frinexVersion", "defaultScale", "isScalable", "isRotatable", "experimentInternalName", "experimentDisplayName"})
+@JsonPropertyOrder({"publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "isUnity", "buildName", "registrationUrlStaging", "registrationUrlProduction", "state", "productionServer", "frinexVersion", "defaultScale", "isScalable", "isRotatable", "experimentInternalName", "experimentDisplayName", "defaultLocale", "availableLocales"})
 public class BuildListing {
 
     final private Experiment experiment;
@@ -55,7 +55,7 @@ public class BuildListing {
     public String getProductionServer() {
         return (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getProductionServer();
     }
-    
+
     public String getFrinexVersion() {
         return (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getFrinexVersion();
     }
@@ -79,13 +79,21 @@ public class BuildListing {
     public boolean isIsAndroid() {
         return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsAndroid();
     }
-    
+
     public boolean isIsUnity() {
         return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsUnity();
     }
 
     public boolean isIsDesktop() {
         return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsDesktop();
+    }
+
+    public String availableLocales() {
+        return experiment.getAvailableLocales();
+    }
+
+    public String defaultLocale() {
+        return experiment.getDefaultLocale();
     }
 
     public float getDefaultScale() {
