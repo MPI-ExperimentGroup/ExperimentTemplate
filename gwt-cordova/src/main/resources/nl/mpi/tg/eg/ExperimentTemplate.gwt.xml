@@ -25,8 +25,8 @@
     <inherits name="nl.mpi.kinnate.KinOathDiagram"/> 
     <inherits name="nl.mpi.kinoath.KinOathGraphSorter"/> 
     <inherits name="nl.mpi.kinnate.KinOathKinTypeStringParser"/> 
-    <extend-property name="locale" values="@experiment.configuration.locales@" />
-    <set-property-fallback name="locale" value="en"/>
+    <extend-property name="locale" values="@experiment.configuration.availableLocales@" />
+    <set-property-fallback name="locale" value="@experiment.configuration.defaultLocale@"/>
     
     <!-- Specify the app entry point class.                         -->
     <entry-point class='nl.mpi.tg.eg.experiment.client.ExperimentTemplate' />
