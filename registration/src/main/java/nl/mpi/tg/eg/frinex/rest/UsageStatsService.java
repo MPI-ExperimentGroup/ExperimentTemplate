@@ -44,6 +44,8 @@ public class UsageStatsService {
     ParticipantRepository participantRepository;
     @Autowired
     StimulusResponseRepository stimulusResponseRepository;
+    @Autowired
+    private AudioDataRepository audioDataRepository;
 
     @RequestMapping(value = "/public_usage_stats", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -61,6 +63,7 @@ public class UsageStatsService {
         usageStats.lastParticipantSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
         usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();
         usageStats.sessionFirstAndLastSeen = tagRepository.findFirstAndLastSessionAccess();
+        usageStats.totalMediaResponses = audioDataRepository.count();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
     }
 }
