@@ -66,4 +66,21 @@ public class UsageStatsService {
         usageStats.totalMediaResponses = audioDataRepository.count();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/public_quick_stats", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<PublicStatistics> publicQuickStats() {
+        final PublicStatistics usageStats = new PublicStatistics();
+        usageStats.firstDeploymentAccessed = null;
+        usageStats.totalParticipantsSeen = participantRepository.countDistinctUserId();
+        usageStats.totalDeploymentsAccessed = tagRepository.countDistinctTagValueByEventTag("compileDate");
+        usageStats.totalPageLoads = tagRepository.countDistinctDateByEventTag("compileDate");
+        usageStats.totalStimulusResponses = stimulusResponseRepository.countDistinctRecords();
+        usageStats.firstParticipantSeen = null;
+        usageStats.lastParticipantSeen = null;
+        usageStats.participantsFirstAndLastSeen = null;
+        usageStats.sessionFirstAndLastSeen = null;
+        usageStats.totalMediaResponses = audioDataRepository.count();
+        return new ResponseEntity<>(usageStats, HttpStatus.OK);
+    }
 }
