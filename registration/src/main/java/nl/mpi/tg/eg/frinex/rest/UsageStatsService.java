@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.PublicStatistics;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -67,6 +69,7 @@ public class UsageStatsService {
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
     }
 
+    @JsonInclude(Include.NON_NULL)
     @RequestMapping(value = "/public_quick_stats", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<PublicStatistics> publicQuickStats() {
