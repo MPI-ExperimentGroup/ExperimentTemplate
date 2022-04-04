@@ -68,7 +68,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <!--<preference name="KeepRunning" value="true"/>-->
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="none"/>
-    <allow-navigation href="http://ems12.mpi.nl/*"/>
+    <allow-navigation href="@experiment.destinationServerUrl@/*"/>
     <allow-navigation href="http://ems13.mpi.nl/*"/>
     <allow-navigation href="https://frinexstaging.mpi.nl/*"/>
     <allow-navigation href="https://frinexproduction.mpi.nl/*"/>
@@ -79,7 +79,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <access origin="gap:*" />
     <allow-navigation href="gap:*" />
     <!--<allow-navigation href="file:///android_asset/www/opus-recorder/encoderWorker.min.wasm"/>-->
-    <access origin="http://ems12.mpi.nl"/>
+    <access origin="@experiment.destinationServerUrl@"/>
     <access origin="http://ems13.mpi.nl"/>
     <access origin="https://frinexstaging.mpi.nl"/>
     <access origin="https://frinexproduction.mpi.nl"/>
