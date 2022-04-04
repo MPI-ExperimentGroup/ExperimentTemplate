@@ -42,15 +42,16 @@
         <experiment.configuration.path>../ExperimentDesigner/src/test/resources/frinex-rest-output/</experiment.configuration.path>
         <experiment.artifactsJsonDirectory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</experiment.artifactsJsonDirectory>
         <experiment.webservice></experiment.webservice>   
-        <experiment.scriptSrcUrl>http://127.0.0.1:9876 http://localhost:8080 http://localhost:9876</experiment.scriptSrcUrl>   
+        <experiment.scriptSrcUrl>http://127.0.0.1:9876 http://localhost:8443 http://localhost:9876</experiment.scriptSrcUrl>   
         <experiment.synQuizRegistrationUrl></experiment.synQuizRegistrationUrl>
-        <experiment.groupsSocketUrl>ws://localhost:8080/</experiment.groupsSocketUrl>   
-        <experiment.destinationServer>http://localhost:8080</experiment.destinationServer>   
-        <experiment.staticFilesUrl>http://localhost:8080</experiment.staticFilesUrl>   
+        <experiment.groupsSocketUrl>ws://localhost:8443/</experiment.groupsSocketUrl>   
+        <experiment.destinationServer>http://localhost:8443</experiment.destinationServer>   
+        <experiment.staticFilesUrl>http://localhost:8443</experiment.staticFilesUrl>   
         <experiment.configuration.defaultLocale>en</experiment.configuration.defaultLocale>
         <experiment.configuration.availableLocales>en,de,nl,es</experiment.configuration.availableLocales>
         <!--<experiment.destinationName>localhost</experiment.destinationName>-->      
-        <experiment.destinationServerUrl>http://localhost:8080/</experiment.destinationServerUrl>      
+        <experiment.destinationServerUrl>http://localhost:8443</experiment.destinationServerUrl>     
+        <experiment.productionCheckString>frinexproduction</experiment.productionCheckString>
         <!--<experiment.destinationServerUrl></experiment.destinationServerUrl>-->      
         <!--<experiment.destinationServer></experiment.destinationServer>-->
         <!--<experiment.configuration.name>parcours01</experiment.configuration.name>-->
@@ -105,12 +106,23 @@
         <!--<experiment.configuration.name>engadvocas</experiment.configuration.name>-->
         <!--<experiment.configuration.name>episodic_memory</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentencegeneration</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>with_stimulus_example</experiment.configuration.name>-->
+        <!-- <experiment.configuration.name>with_stimulus_example</experiment.configuration.name> -->
+        <!--<experiment.configuration.name>aggressive_audio_test</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>template_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>mpistairs4words2</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>image_naming_noise</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>recording_triggers_timestudy</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>thijs_test</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>zinnen_lezen_v1</experiment.configuration.name>-->
         <!--<experiment.configuration.name>lingquest</experiment.configuration.name>-->
         <!--<experiment.configuration.name>conceptual_distance</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>data_erase_test</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>mskonopka</experiment.configuration.name>-->
         <!--<experiment.configuration.name>discat_test</experiment.configuration.name>-->
         <!--<experiment.configuration.name>test_experiment2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>session1auteurstest</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>UpPerCaSeTest</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>minimal_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonion2_verb_object</experiment.configuration.name>-->
         <!--<experiment.configuration.name>lupyan_replication_norming</experiment.configuration.name>-->
         <!--<experiment.configuration.name>lupyan_replication</experiment.configuration.name>-->
@@ -125,6 +137,7 @@
         <!--<experiment.configuration.name>taal_visuelepuzzels</experiment.configuration.name>-->
         <!--<experiment.configuration.name>ak_study</experiment.configuration.name>-->
         <!--<experiment.configuration.name>exemplarnormingstudy</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>mpiquestionnairehealth</experiment.configuration.name>-->
         <!--<experiment.configuration.name>group_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>very_large_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>hbquestionnairehealth</experiment.configuration.name>-->
