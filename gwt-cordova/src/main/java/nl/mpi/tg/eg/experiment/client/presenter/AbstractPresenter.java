@@ -319,6 +319,16 @@ public abstract class AbstractPresenter implements Presenter {
 //        simpleView.addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
+    protected void requestFocus(final String machingRegex) {
+        for (String keyString : inputGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusFreeText stimulusFreeText : inputGroupsList.get(keyString)) {
+                    stimulusFreeText.setFocus(true);
+                }
+            }
+        }
+    }
+
     protected void showButtonGroup(final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {

@@ -881,6 +881,7 @@
 <xs:element name="regionClear" type="regionClearType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
 <xs:element name="regionStyle" type="regionStyleType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="requestNotification" type="requestNotificationType"/>
 <xs:element name="resetStimulus" type="resetStimulusType"/>
 <xs:element name="resetTrigger" type="resetTriggerType"/>
@@ -1607,6 +1608,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -1844,6 +1846,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -2076,6 +2079,16 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
+<xs:complexType name="requestFocusType">
+<xs:annotation>
+<xs:documentation>Requests focus to a single input specified by the matchingRegex if it exists and is visible. Only one input can have focus at a time so if multiple inputs match then the rest will be fail to gain focus.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="matchingRegex" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
 <xs:complexType name="svgLoadGroupsType">
 <xs:annotation>
 <xs:documentation>Load compiled SVG data for use as image groups. Each group must be named in the SVG file.</xs:documentation>
@@ -2101,6 +2114,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -2288,6 +2302,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -2522,6 +2537,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -2761,6 +2777,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -3010,6 +3027,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -3235,6 +3253,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -3447,6 +3466,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -3682,6 +3702,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -3917,6 +3938,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -4210,6 +4232,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -4440,6 +4463,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -4670,6 +4694,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -5001,6 +5026,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -5289,6 +5315,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -5912,6 +5939,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -6496,6 +6524,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -6771,6 +6800,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -6974,6 +7004,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -7220,6 +7251,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -7502,6 +7534,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -7793,6 +7826,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
@@ -7845,6 +7879,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -8055,6 +8090,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -8278,6 +8314,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -8502,6 +8539,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -8717,6 +8755,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -8897,6 +8936,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
@@ -8941,6 +8981,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -9136,6 +9177,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -9331,6 +9373,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -9526,6 +9569,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -9721,6 +9765,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -9926,6 +9971,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -10131,6 +10177,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -10336,6 +10383,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -10531,6 +10579,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -10726,6 +10775,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -10921,6 +10971,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -11116,6 +11167,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -11311,6 +11363,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -11506,6 +11559,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
@@ -11699,6 +11753,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -11894,6 +11949,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -12089,6 +12145,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
@@ -12279,6 +12336,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -12480,6 +12538,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -12675,6 +12734,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -12870,6 +12930,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -13065,6 +13126,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -13260,6 +13322,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -13458,6 +13521,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -13653,6 +13717,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -13848,6 +13913,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -14043,6 +14109,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -14248,6 +14315,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -14443,6 +14511,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -14646,6 +14715,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -14884,6 +14954,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -15437,6 +15508,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -15684,6 +15756,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -16143,6 +16216,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -16341,6 +16415,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -16539,6 +16614,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -16737,6 +16813,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="svgGroupAdd" type="svgGroupAddType"/>
 <xs:element name="svgSetLabel" type="svgSetLabelType"/>
@@ -16943,6 +17020,7 @@
 <xs:element name="enableButtonGroup" type="enableButtonGroupType"/>
 <xs:element name="hideButtonGroup" type="hideButtonGroupType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
+<xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>

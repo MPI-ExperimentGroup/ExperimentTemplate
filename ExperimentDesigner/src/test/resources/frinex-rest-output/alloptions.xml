@@ -47,6 +47,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -209,6 +210,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -341,6 +343,7 @@
                     <enableButtonGroup matchingRegex="matchingRegex"/>
                     <hideButtonGroup matchingRegex="matchingRegex"/>
                     <showButtonGroup matchingRegex="matchingRegex"/>
+                    <requestFocus matchingRegex="matchingRegex"/>
                     <doLater msToNext="60">
                         <plainText featureText="plainText in doLater"/>
                     </doLater>
@@ -414,6 +417,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -1896,6 +1900,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2038,6 +2043,7 @@
                     <enableButtonGroup matchingRegex="matchingRegex"/>
                     <hideButtonGroup matchingRegex="matchingRegex"/>
                     <showButtonGroup matchingRegex="matchingRegex"/>
+                    <requestFocus matchingRegex="matchingRegex"/>
                     <logTimeStamp eventTag="eventTag"/>
                     <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
                     <recorderToneInjection dtmf="#"/>
@@ -2066,6 +2072,7 @@
                 <enableButtonGroup matchingRegex="matchingRegex"/>
                 <hideButtonGroup matchingRegex="matchingRegex"/>
                 <showButtonGroup matchingRegex="matchingRegex"/>
+                <requestFocus matchingRegex="matchingRegex"/>
                 <logTimeStamp eventTag="eventTag"/>
                 <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
                 <recorderToneInjection dtmf="#"/>
@@ -2092,6 +2099,7 @@
             <enableButtonGroup matchingRegex="matchingRegex"/>
             <hideButtonGroup matchingRegex="matchingRegex"/>
             <showButtonGroup matchingRegex="matchingRegex"/>
+            <requestFocus matchingRegex="matchingRegex"/>
             <logTimeStamp eventTag="eventTag"/>
             <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
             <recorderToneInjection dtmf="#"/>
@@ -2113,6 +2121,7 @@
                 <enableButtonGroup matchingRegex=""/>
                 <hideButtonGroup matchingRegex=""/>
                 <showButtonGroup matchingRegex=""/>
+                <requestFocus matchingRegex=""/>
                 <logTimeStamp/>
                 <hardwareTimeStamp/>
                 <recorderToneInjection/>
@@ -2244,6 +2253,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2352,6 +2362,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2437,6 +2448,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2527,6 +2539,7 @@
                     <enableButtonGroup matchingRegex="matchingRegex"/>
                     <hideButtonGroup matchingRegex="matchingRegex"/>
                     <showButtonGroup matchingRegex="matchingRegex"/>
+                    <requestFocus matchingRegex="matchingRegex"/>
                     <doLater msToNext="60">
                         <plainText featureText="plainText in doLater"/>
                     </doLater>
@@ -2588,6 +2601,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2665,6 +2679,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2775,6 +2790,7 @@
         <enableButtonGroup matchingRegex="matchingRegex"/>
         <hideButtonGroup matchingRegex="matchingRegex"/>
         <showButtonGroup matchingRegex="matchingRegex"/>
+        <requestFocus matchingRegex="matchingRegex"/>
         <svgLoadGroups src="src">
             <svgGroupAdd visible="visible" groupId="groupId"/>
             <svgSetLabel evaluateTokens="evaluateTokens" groupId="groupId"/>
@@ -2851,6 +2867,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -3013,6 +3030,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -3145,6 +3163,7 @@
                     <enableButtonGroup matchingRegex=""/>
                     <hideButtonGroup matchingRegex=""/>
                     <showButtonGroup matchingRegex=""/>
+                    <requestFocus matchingRegex=""/>
                     <doLater msToNext="60">
                         <plainText featureText="plainText in doLater"/>
                     </doLater>
@@ -3218,6 +3237,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -4670,6 +4690,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -4812,6 +4833,7 @@
                     <enableButtonGroup matchingRegex=""/>
                     <hideButtonGroup matchingRegex=""/>
                     <showButtonGroup matchingRegex=""/>
+                    <requestFocus matchingRegex=""/>
                     <logTimeStamp/>
                     <hardwareTimeStamp/>
                     <recorderToneInjection/>
@@ -4840,6 +4862,7 @@
                 <enableButtonGroup matchingRegex=""/>
                 <hideButtonGroup matchingRegex=""/>
                 <showButtonGroup matchingRegex=""/>
+                <requestFocus matchingRegex=""/>
                 <logTimeStamp/>
                 <hardwareTimeStamp/>
                 <recorderToneInjection/>
@@ -4866,6 +4889,7 @@
             <enableButtonGroup matchingRegex=""/>
             <hideButtonGroup matchingRegex=""/>
             <showButtonGroup matchingRegex=""/>
+            <requestFocus matchingRegex=""/>
             <logTimeStamp/>
             <hardwareTimeStamp/>
             <recorderToneInjection/>
@@ -4996,6 +5020,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -5104,6 +5129,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -5189,6 +5215,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -5279,6 +5306,7 @@
                     <enableButtonGroup matchingRegex=""/>
                     <hideButtonGroup matchingRegex=""/>
                     <showButtonGroup matchingRegex=""/>
+                    <requestFocus matchingRegex=""/>
                     <doLater msToNext="60">
                         <plainText featureText="plainText in doLater"/>
                     </doLater>
@@ -5340,6 +5368,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -5417,6 +5446,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>
@@ -5527,6 +5557,7 @@
         <enableButtonGroup matchingRegex=""/>
         <hideButtonGroup matchingRegex=""/>
         <showButtonGroup matchingRegex=""/>
+        <requestFocus matchingRegex=""/>
         <svgLoadGroups src="">
             <svgGroupAdd visible=""/>
             <svgSetLabel evaluateTokens=""/>

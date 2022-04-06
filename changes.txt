@@ -1,3 +1,13 @@
+Added the feature requestFocus that requests focus on the input specified by the matchingRegex if it exists and is visible.
+
+Added default locale and available locales to the XML to enable customisation of the translation elements 
+
+Added a feature recorderToneInjection to in inject an DTMF tone in to the current audio recording stream.
+
+Limited the free text input and metadata fields to the current DB limit of 1024 characters.
+
+Switching to serving content with same-origin and require-corp headers which should allow higher resolution timers in firefox.
+
 #Changes in Frinex 1.4
 
 Enabled OGV format in the XML for the audio/media recorder.
