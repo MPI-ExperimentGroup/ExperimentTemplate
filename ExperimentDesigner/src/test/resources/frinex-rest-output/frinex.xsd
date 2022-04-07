@@ -2737,20 +2737,6 @@
 </xs:complexType>
 <xs:complexType name="stimulusSliderType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="featureText" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
@@ -2944,11 +2930,6 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="featureText" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="dataChannel" type="xs:string">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>

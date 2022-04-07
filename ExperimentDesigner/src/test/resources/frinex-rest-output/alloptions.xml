@@ -635,7 +635,7 @@
                 <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="stimulusSlider" orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
+                <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -1067,7 +1067,7 @@
                 <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="stimulusSlider" orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
+                <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -1351,7 +1351,7 @@
                 <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="stimulusSlider" orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
+                <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -1635,7 +1635,7 @@
                 <stimulusButton featureText="stimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="stimulusSlider" orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
+                <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -3455,7 +3455,7 @@
                 <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="" initial="35" maximum="60" minimum="3">
+                <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="" src="">
@@ -3875,7 +3875,7 @@
                 <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="" initial="35" maximum="60" minimum="3">
+                <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="" src="">
@@ -4153,7 +4153,7 @@
                 <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="" initial="35" maximum="60" minimum="3">
+                <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="" src="">
@@ -4431,7 +4431,7 @@
                 <stimulusButton featureText="">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <stimulusSlider featureText="" initial="35" maximum="60" minimum="3">
+                <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
                 <touchInputStimulusButton featureText="" src="">
