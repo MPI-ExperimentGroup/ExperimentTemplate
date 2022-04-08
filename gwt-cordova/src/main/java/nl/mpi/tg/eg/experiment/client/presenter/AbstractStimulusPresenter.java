@@ -1287,7 +1287,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final double initialValue;
         if (storedStimulusJSONObject != null) {
-            initialValue = storedStimulusJSONObject.containsKey(postName) ? storedStimulusJSONObject.get(postName).isNumber().doubleValue() : initial;
+            initialValue = storedStimulusJSONObject.containsKey(postName) ? (storedStimulusJSONObject.get(postName).isNumber() != null) ? storedStimulusJSONObject.get(postName).isNumber().doubleValue() : initial : initial;
         } else {
             initialValue = initial;
         }
