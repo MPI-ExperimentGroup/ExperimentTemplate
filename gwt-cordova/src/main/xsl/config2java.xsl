@@ -503,9 +503,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
 
             @Override
             public String getLabel() {
-            return messages.</xsl:text>
-        <xsl:value-of select="generate-id(.)" />
-        <xsl:text>();
+            return </xsl:text>
+            <xsl:value-of select="if(local-name() ne 'stimulusSlider') then concat('messages.', generate-id(.), '()') else 'null'" />
+        <xsl:text>;
             }
             
             @Override
