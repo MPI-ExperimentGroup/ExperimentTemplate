@@ -2,7 +2,9 @@ Added the feature requestFocus that requests focus on the input specified by the
 
 Corrected an issue which caused the staging warning to be shown when deployed to custom production servers.
 
-Added default locale and available locales to the XML to enable customisation of the translation elements 
+Added default locale and available locales to the XML to enable customisation of the translation elements.
+
+Added a feature stimulusSlider to to provide a slider input for stimuli responses.
 
 Added a feature recorderToneInjection to in inject an DTMF tone in to the current audio recording stream.
 

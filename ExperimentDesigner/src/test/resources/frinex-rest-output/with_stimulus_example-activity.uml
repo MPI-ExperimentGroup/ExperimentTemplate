@@ -1,6 +1,11 @@
 @startuml
 title with_stimulus_example
 start
+:Menu;
+:LocaleMenu;
+if (navigation) then (back)
+:Menu;
+endif
 :Toestemming;
 if (navigation) then (back)
 :Menu;
@@ -129,6 +134,10 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:Aggressive_Short_Recordings;
+if (navigation) then (back)
+:Menu;
+endif
 :Region_Timer_Screen;
 if (navigation) then (back)
 :Menu;
@@ -167,6 +176,14 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:request_focus_example;
+if (navigation) then (back)
+:Menu;
+endif
+:input_slider_example;
+if (navigation) then (back)
+:Menu;
+endif
 :append_unique_date;
 if (navigation) then (back)
 :Menu;
@@ -176,6 +193,10 @@ if (navigation) then (back)
 :Menu;
 endif
 :currentDate_daysBetween_and_length;
+if (navigation) then (back)
+:Menu;
+endif
+:add_times_example;
 if (navigation) then (back)
 :Menu;
 endif
@@ -425,7 +446,6 @@ if (navigation) then (back)
 endif
 :InvitationCodeExampleRestart;
 :InvitationCodeExampleInvalid;
-:Menu;
 :menuItemStyle;
 if (navigation) then (back)
 :Menu;

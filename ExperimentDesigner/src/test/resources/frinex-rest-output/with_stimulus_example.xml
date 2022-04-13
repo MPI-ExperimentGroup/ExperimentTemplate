@@ -17,11 +17,12 @@
             primaryColour2="#4A7777" 
             primaryColour3="#96ADAD"
             primaryColour4="#D5D8D8" 
-            rotatable="true" 
-            showMenuBar="true" 
-            textFontSize="17" 
-            obfuscateBrowserStorage="false"
->
+            rotatable="true"
+            showMenuBar="true"
+            textFontSize="17"  
+            obfuscateBrowserStorage="false"       
+            availableLocales="en,es,de,fr,nl" defaultLocale="nl"
+> 
     <deployment
         publishDate="2020-02-02"
         expiryDate="2025-02-22"
@@ -258,6 +259,9 @@
         background: green;
         margin-left: auto;
         }
+        .a_slider_style {
+        width: 100%;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -281,6 +285,7 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_step" preventServerDuplicates="false" registrationField="session step"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_step" preventServerDuplicates="false" registrationField="session_next_step"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_invitation_code" preventServerDuplicates="false" registrationField="validated invitation code"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentScore" preventServerDuplicates="false" registrationField="Current Score"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/>
@@ -289,6 +294,8 @@
         <field controlledMessage="." controlledRegex=".'{'0,'}'" postName="progressIndicator_step" preventServerDuplicates="false" registrationField="progressIndicator step"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliSequentialDisplayExample" preventServerDuplicates="false" registrationField="Stimuli Allocation Field"/>
         <field controlledMessage="." controlledRegex=".*" postName="storedDate" preventServerDuplicates="false" registrationField="StoredDate"/>
+        <field controlledMessage="Please use the time format 00:00, eg 09:00 or 00:30" controlledRegex="[0-2][0-9]:[0-5][0-9]" postName="storedTime" preventServerDuplicates="false" registrationField="StoredTime"/>
+        <field controlledMessage="." controlledRegex="[0-2][0-9]:[0-5][0-9]" postName="resultTime" preventServerDuplicates="false" registrationField="ResultTime"/>
         <field controlledMessage="." controlledRegex=".*" postName="customCompletionNumber" preventServerDuplicates="false" registrationField="customCompletionNumber"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationMinutesSettings" preventServerDuplicates="false" registrationField="Trigger Notification Minutes"/>
         <field controlledMessage="." controlledRegex=".*" postName="notificationRangeSettings" preventServerDuplicates="false" registrationField="Trigger Notification Range"/>
@@ -305,7 +312,14 @@
         <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedOrder" preventServerDuplicates="false" registrationField="Used to store the randomisation sequence for the displayed stimuli in random_image_positions_remembered."/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedTopic1" preventServerDuplicates="false" registrationField="Used to store the stimuli in topic 1 that have already been displayed."/>
         <field controlledMessage="." controlledRegex="[0-9]*" postName="displayedTopic234" preventServerDuplicates="false" registrationField="Used to store the stimuli in topics 2,3,4 that have already been displayed and when."/>
-    </metadata> 
+    </metadata>
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu"> 
+        <allMenuItems/>
+    </presenter>
+    <presenter back="Menu" menuLabel="LocaleMenu" type="metadata" self="LocaleMenu" title="LocaleMenu">
+        <htmlText featureText="This selectLocaleMenu menu gets its values availableLocales=&quot;en,es,de,fr,nl&quot; and the default locale is defined in defaultLocale=&quot;nl&quot;, both of which are addtibutes defined in the &amp;lt;experiment&amp;gt; element."/>
+        <selectLocaleMenu/>
+    </presenter>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
         <targetButton featureText="Akkoord" target="Informatie"/>
@@ -2026,7 +2040,7 @@
                             <dtmfTone dtmf="off" msToNext="0" />
                             <doLater msToNext="0">
                                 <regionAppend regionId="recordedMediaMessages">
-                                    <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                                    <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and volume." />
                                 </regionAppend>
                                 <stopAudioRecorder />
                                 <enableButtonGroup matchingRegex="recordButtonGroup" />
@@ -2144,7 +2158,7 @@
             <startTimer msToNext="1000" listenerId="toneDetectionTimer">
                 <dtmfTone dtmf="off" msToNext="0"/>
                 <regionAppend regionId="recordedMediaMessages">
-                    <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                    <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and volume." />
                 </regionAppend>
                 <stopAudioRecorder/>
                 <enableButtonGroup matchingRegex="recordButtonGroup"/>
@@ -2231,6 +2245,141 @@
                 <actionButton featureText="resetStimulus" hotKey="SPACE">
                     <resetStimulus target="One_Long_Recording"/>
                     <gotoPresenter target="One_Long_Recording"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Aggressive_Short_Recordings (until failure)" type="stimulus" self="Aggressive_Short_Recordings" title="Aggressive_Short_Recordings (until failure)">
+        <plainText featureText="This example tests how many short audio recordings can be made in a quick sequence before the browser blocks further requests to record or any number of potential errors occur."/>
+        <plainText featureText="Each recording is stopped when it reaches a given length."/>
+        <addPadding/>
+        <triggerDefinition listenerId="startAnotherRecording" threshold="0" maximum="0">
+            <regionReplace regionId="recordedMediaMessages"/>
+            <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
+                <onError>
+                    <dtmfTone dtmf="off" msToNext="0"/>
+                    <regionAppend regionId="recordedMediaMessages">
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </regionAppend>
+                    <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                </onError>
+                <onSuccess>
+                    <!-- adding the addMediaTriggers and addRecorderDtmfTriggers first before we do any slow actions like htmlTokenText -->
+                    <addMediaTrigger evaluateMs="100" threshold="50" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="9" msToNext="0" />
+                        </onTime>
+                        <onError>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <regionAppend regionId="recordedMediaMessages">
+                                <htmlText featureText="addMediaTrigger 100 onError" />
+                            </regionAppend>
+                            <stopAudioRecorder />
+                            <enableButtonGroup matchingRegex="recordButtonGroup" />
+                            <disableButtonGroup matchingRegex="abortButtonGroup" />
+                        </onError>
+                    </addMediaTrigger>
+                    <addMediaTrigger evaluateMs="150" threshold="50" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                        </onTime>
+                        <onError>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <regionAppend regionId="recordedMediaMessages">
+                                <htmlText featureText="addMediaTrigger 150 onError" />
+                            </regionAppend>
+                            <stopAudioRecorder />
+                            <enableButtonGroup matchingRegex="recordButtonGroup" />
+                            <disableButtonGroup matchingRegex="abortButtonGroup" />
+                        </onError>
+                    </addMediaTrigger>
+                    <addMediaTrigger evaluateMs="200" threshold="50" mediaId="recordedMedia">
+                        <onTime>
+                            <dtmfTone dtmf="off" msToNext="0"/>
+                            <stopAudioRecorder/>
+                            <doLater msToNext="0">
+                                <triggerMatching listenerId="startAnotherRecording"/>
+                            </doLater>
+                        </onTime>
+                        <onError>
+                            <dtmfTone dtmf="off" msToNext="0" />
+                            <regionAppend regionId="recordedMediaMessages">
+                                <htmlText featureText="addMediaTrigger 500 onError" />
+                            </regionAppend>
+                            <stopAudioRecorder />
+                            <enableButtonGroup matchingRegex="recordButtonGroup" />
+                            <disableButtonGroup matchingRegex="abortButtonGroup" />
+                        </onError>
+                    </addMediaTrigger>
+                    <!--addMediaTrigger evaluateMs="550" threshold="20" mediaId="recordedMedia">
+                        <dtmfTone dtmf="off" msToNext="0"/>
+                        <stopAudioRecorder/>
+                        <doLater msToNext="0">
+                            <triggerMatching listenerId="startAnotherRecording"/>
+                        </doLater>
+                    </addMediaTrigger-->
+                    <scoreIncrement scoreValue="1" />
+                    <regionReplace regionId="recordedMediaCounter">
+                        <htmlTokenText featureText="
+                            playerScore:
+                            &lt;playerScore&gt;&lt;br/&gt;
+                            playerErrors:
+                            &lt;playerErrors&gt;&lt;br/&gt;
+                            playerPotentialScore:
+                            &lt;playerPotentialScore&gt;&lt;br/&gt;
+                            "/>
+                    </regionReplace>
+                    <disableButtonGroup matchingRegex="recordButtonGroup"/>
+                    <enableButtonGroup matchingRegex="abortButtonGroup"/>
+                </onSuccess>
+                <mediaLoaded>
+                    <regionReplace regionId="loadedMediaMessages">
+                        <plainText featureText="AudioRecordingLoaded"/>
+                    </regionReplace>
+                </mediaLoaded>
+                <mediaLoadFailed>
+                    <regionReplace regionId="loadedMediaMessages">
+                        <plainText featureText="AudioRecordingLoadFailed"/>
+                    </regionReplace>
+                </mediaLoadFailed>
+                <mediaPlaybackStarted/>
+                <mediaPlaybackComplete>
+                </mediaPlaybackComplete>
+            </startAudioRecorderWeb>
+        </triggerDefinition>
+        <loadStimulus eventTag="Aggressive_Short_Recordings" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <regionReplace regionId="recordedMediaControls">
+                    <actionButton groupId="recordButtonGroup" featureText="Start Many Recordings (until failure)">
+                        <clearCurrentScore evaluateTokens=""/>
+                        <triggerMatching listenerId="startAnotherRecording"/>
+                    </actionButton>
+                    <addPadding/>
+                    <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                    <addPadding/>
+                    <actionButton groupId="abortButtonGroup" featureText="Abort Many Recordings">
+                        <stopAudioRecorder/>
+                        <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                    </actionButton>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                    <addPadding/>
+                    <regionReplace regionId="recordedMediaCounter"/>
+                    <addPadding/>
+                    <regionReplace regionId="recordedMediaMessages"/>
+                    <addPadding/>
+                    <regionReplace regionId="loadedMediaMessages"/>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <actionButton featureText="resetStimulus" hotKey="SPACE">
+                    <resetStimulus target="Aggressive_Short_Recordings"/>
+                    <gotoPresenter target="Aggressive_Short_Recordings"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
@@ -2752,8 +2901,98 @@
             </stimuli>
         </withStimuli>
     </presenter> 
+    <presenter back="Menu" menuLabel="Request Focus Example" type="stimulus" self="request_focus_example" title="Request Focus Example">
+        <addPadding/>
+        <loadStimulus eventTag="request_focus_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlTokenText featureText="This example shows how to request the focus on some free text inputs. Note that only one input can have focus at a time, so the second input to be rendered will probably have the initial focus." />
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="1: &lt;stimulusResponse__stimulusFreeText1&gt;"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText1"/>
+                <actionButton featureText="requestFocus on stimulusFreeText1">
+                    <requestFocus matchingRegex="stimulusFreeText1"/>
+                </actionButton>
+                <addPadding/>
+                <htmlTokenText featureText="2: &lt;stimulusResponse__stimulusFreeText2&gt;"/>
+                <stimulusFreeText featureText="." validationRegex=".{0,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" groupId="stimulusFreeText2"/>
+                <actionButton featureText="requestFocus stimulusFreeText2">
+                    <requestFocus matchingRegex="stimulusFreeText2"/>
+                </actionButton>
+                <addPadding/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <stimulusExists offset="+1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="request_focus_example"/>
+                    <gotoPresenter target="request_focus_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>   
+    <presenter back="Menu" menuLabel="Input Slider Example" type="stimulus" self="input_slider_example" title="Input Slider Example">
+        <loadStimulus eventTag="input_slider_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlTokenText featureText="This example shows stimulus slider input." />
+                <addPadding/>
+                <addPadding/>
+                <htmlTokenText featureText="Last Value: &lt;stimulusResponse__slider_group1&gt;"/>
+                <stimulusSlider dataChannel="3" styleName="a_slider_style" groupId="slider_group1" initial="50" minimum="0" maximum="100" orientation="horizontal"/>
+                <addPadding/>
+                <htmlTokenText featureText="Last Value: &lt;stimulusResponse__slider_group2&gt;"/>
+                <stimulusSlider dataChannel="3" styleName="a_slider_style" groupId="slider_group2" initial="50" minimum="0" maximum="100" orientation="horizontal"/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusExists offset="-1">
+                    <conditionTrue>
+                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <stimulusExists offset="+1">
+                    <conditionTrue>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse/>
+                </stimulusExists>
+                <addPadding/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="input_slider_example"/>
+                    <gotoPresenter target="input_slider_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter> 
     <presenter back="Menu" menuLabel="Append Unique Date" type="stimulus" self="append_unique_date" title="Append Unique Date">
-        <!--todo: complete this example-->
+        <htmlText featureText="This example shows a method of keeping a list of dates that an event occurred regardless of how often it occurs on the same date."/>
+        <htmlText featureText="The length of the list of unique dates can also be used to calculate the number of days on which the event has occurred."/>
         <regionAppend regionId="currentValueRegion">
             <htmlTokenText featureText="&lt;metadataField_session_next_step&gt;"/>
         </regionAppend>
@@ -2762,18 +3001,43 @@
                 <htmlTokenText featureText="&lt;metadataField_session_next_step&gt;"/>
             </regionReplace>
         </triggerDefinition>
+        <actionButton featureText="Clear Metadata Value">
+            <setMetadataValue fieldName="session_next_step" dataLogFormat=""/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
         <actionButton featureText="Reset Metadata Value">
             <setMetadataValue fieldName="session_next_step" dataLogFormat="25112020_26112020_27112020_28112020_29112020"/>
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
-        <actionButton featureText="Append Current Date">
-            <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_next_step&gt;_&lt;currentDateDDMMYYYY&gt;"/>
+        <actionButton featureText="Append Current Date (multiple)">
+            <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_next_step&gt;_&lt;formatDateTime_ddMMyyyy&gt;"/>
+            <triggerMatching listenerId="showCurrentValue"/>
+        </actionButton>
+        <actionButton featureText="Append Current Date (once)">
+            <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_session_next_step&gt;&quot;, &quot;[_]?&lt;formatDateTime_ddMMyyyy&gt;&quot;, &quot;&quot;)_&lt;formatDateTime_ddMMyyyy&gt;" fieldName="session_next_step">	
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
+                <onSuccess> 
+                    <triggerMatching listenerId="showCurrentValue"/>
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <actionButton featureText="Append Some Dates">
+            <setMetadataValue fieldName="session_next_step" dataLogFormat="&lt;metadataField_session_next_step&gt;_13122022_21012021_14112019_211062020_18052020"/>
             <triggerMatching listenerId="showCurrentValue"/>
         </actionButton>
         <actionButton featureText="Remove Current Date">
-            <setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;currentDateDDMMYYYY&gt;(_?[0-9]{8,8}_?)*[_$]" dataLogFormat="&lt;metadataField_session_next_step&gt;"/>
+            <!--setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;formatDateTime_ddMMyyyy&gt;(_?[0-9]{8,8})*" dataLogFormat="&lt;metadataField_session_next_step&gt;"/-->
             <!--setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_next_step&gt;"/-->
-            <triggerMatching listenerId="showCurrentValue"/>
+            <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_session_next_step&gt;&quot;, &quot;[_]?&lt;formatDateTime_ddMMyyyy&gt;&quot;, &quot;&quot;)" fieldName="session_next_step">	
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
+                <onSuccess> 
+                    <triggerMatching listenerId="showCurrentValue"/>
+                </onSuccess>
+            </setMetadataEvalTokens>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Format Current DateTime" type="stimulus" self="Format_Current_DateTime" title="Format Current DateTime">
@@ -2881,6 +3145,166 @@
                 <!--<targetButton featureText="edit values" target="currentDate_daysBetween_and_length"/>-->
             </onSuccess>
         </saveMetadataButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Add Times Example" type="metadata" self="add_times_example" title="Add Times Example">
+        <plainText featureText="In this example the provided time has another time added and then shown in a label."/>
+        <metadataField fieldName="notificationWeekendFromSettings"/>
+        <metadataField fieldName="notificationWeekendUntilSettings"/>
+        <metadataField fieldName="storedTime"/>
+        <addPadding/>
+        <saveMetadataButton featureText="update" styleName="minimalWidth" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+            <onError>
+                <htmlTokenText featureText="Failed to update."/>
+            </onError>
+            <onSuccess>
+                <gotoPresenter target="add_times_example" />
+            </onSuccess>
+        </saveMetadataButton>
+        <addPadding/>
+        <htmlTokenText featureText="The from time is: &lt;metadataField_notificationWeekendFromSettings&gt;"/>
+        <htmlTokenText featureText="The until time is: &lt;metadataField_notificationWeekendUntilSettings&gt;"/>
+        <htmlTokenText featureText="The stored time is: &lt;metadataField_storedTime&gt;"/>
+        <addPadding/>
+        <htmlTokenText featureText="The resulting time is: &lt;metadataField_resultTime&gt;"/>
+        <addPadding/>
+        <!--htmlTokenText featureText="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,&lt;metadataField_storedTime&gt;)"/>
+        <htmlTokenText featureText="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,&lt;metadataField_storedTime&gt;)"/>
+        <addPadding/>
+        <htmlTokenText featureText="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-&lt;metadataField_storedTime&gt;)"/>
+        <htmlTokenText featureText="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-&lt;metadataField_storedTime&gt;)"/>
+        <addPadding/-->
+        <actionButton featureText="addTime until time + storedTime" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,&lt;metadataField_storedTime&gt;)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time - storedTime" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-&lt;metadataField_storedTime&gt;)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time + 01:45" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,01:45)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time - 01:45" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-01:45)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time + 00:36" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,00:36)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time + 00:56" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,00:56)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time + 00:30" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,00:30)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time - 00:30" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-00:30)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time - 23:30" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-23:30)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time + 23:30" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,23:30)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time - 12:00" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-12:00)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
+        <actionButton featureText="addTime until time + 12:00" styleName="minimalWidth">
+            <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,12:00)" fieldName="resultTime">
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
+                <onSuccess> 
+                    <gotoPresenter target="add_times_example" />
+                </onSuccess>
+            </setMetadataEvalTokens>
+        </actionButton>
+        <addPadding/>
     </presenter>
     <presenter back="Menu" menuLabel="progressIndicator" type="metadata" self="progressIndicator_example" title="progressIndicator Example">
         <plainText featureText="In this example two metadata fields are used to display a percentage in progress indicator." />
@@ -4999,7 +5423,7 @@
                             <addMediaTrigger evaluateMs="2000" threshold="20" mediaId="recordedMedia">
                                 <onTime>
                                     <doLater msToNext="0">
-                                        <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                                        <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and volume." />
                                         <stopAudioRecorder />
                                         <actionButton featureText="Reset Audio Test">
                                             <gotoPresenter target="RecordingDTMFQualityTest" />
@@ -5076,7 +5500,7 @@
                             <addMediaTrigger evaluateMs="4000" threshold="20" mediaId="recordedMedia">
                                 <onTime>
                                     <doLater msToNext="0">
-                                        <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and voloume." />
+                                        <plainText featureText="Cannot detect the required tone in the microphone. Please try a different arrangement between your microphone, speaker and volume." />
                                         <stopAudioRecorder />
                                         <actionButton featureText="Reset Audio Test">
                                             <gotoPresenter target="RecordingDTMFExtendedTest" />
@@ -7436,9 +7860,6 @@
         <plainText featureText="You must delete the local data to proceed."/>
         <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationSessionStepsExample"/>
     </presenter>
-    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
-        <allMenuItems/>
-    </presenter>
     <presenter menuLabel="menuItemStyle" type="menu" back="Menu" self="menuItemStyle" title="menuItemStyle">
         <menuItem featureText="Timer_Label_Screen" target="Timer_Label_Screen" styleName="menuButtonDemoAStyle"/>
         <menuItem featureText="Region_Timer_Screen" target="Region_Timer_Screen" styleName="menuButtonDemoAStyle"/>
@@ -7531,7 +7952,7 @@
         </triggerDefinition>
         <triggerMatching listenerId="scoreLabelsTrigger"/>
         <actionButton featureText="clearCurrentScore">
-            <clearCurrentScore evaluateTokens=""/>
+            <clearCurrentScore evaluateTokens="Score cleared &lt;formatDateTime_yyyy-MM-dd hh:mm&gt;"/>
             <triggerMatching listenerId="scoreLabelsTrigger"/>
         </actionButton>
         <actionButton featureText="scoreIncrement 5">

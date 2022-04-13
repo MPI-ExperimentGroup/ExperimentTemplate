@@ -1,6 +1,130 @@
 @startuml
 title with_stimulus_example
-[*] --> Toestemming
+[*] --> Menu
+state Menu
+Menu --> Menu
+Menu --> LocaleMenu
+Menu --> Toestemming
+Menu --> Informatie
+Menu --> Gegevens
+Menu --> Metadata_Jump_Test
+Menu --> Metadata_Jump_Test_Target_1
+Menu --> Metadata_Jump_Test_Target_2
+Menu --> Metadata_Jump_Test_Target_3
+Menu --> Metadata_Jump_Test_Target_4
+Menu --> Metadata_Jump_Test_Target_5
+Menu --> Metadata_Jump_Test_Target_6
+Menu --> Metadata_Jump_Test_Target_7
+Menu --> Metadata_Jump_Test_Target_8
+Menu --> Metadata_Jump_Test_Target_9
+Menu --> Metadata_Jump_Test_Target_10
+Menu --> First_Stimuli_Screen_Informatie
+Menu --> sticky_table_example
+Menu --> sticky_menu_example
+Menu --> sticky_region_example
+Menu --> popup_dialogue_example
+Menu --> compare_the_last_two_items
+Menu --> Snooze
+Menu --> Request_Notification_Screen
+Menu --> Timer_Label_Screen
+Menu --> Sequential_Display_Example0_6
+Menu --> hardware_time_stamps
+Menu --> Sequential_Display_Example
+Menu --> Sequential_Display_FrameRateTimer
+Menu --> RunTrialsSimple1000
+Menu --> Audio_Input_Select
+Menu --> Many_Short_Recordings
+Menu --> One_Long_Recording
+Menu --> Aggressive_Short_Recordings
+Menu --> Region_Timer_Screen
+Menu --> Region_Toggle_Example
+Menu --> Rating_Toggle_Example
+Menu --> Rating_Token_Text_Example
+Menu --> Metadata_Enable_Visible
+Menu --> Metadata_Current_Date
+Menu --> last_seven_days
+Menu --> replace_all_example
+Menu --> four_different_topics
+Menu --> request_focus_example
+Menu --> input_slider_example
+Menu --> append_unique_date
+Menu --> Format_Current_DateTime
+Menu --> currentDate_daysBetween_and_length
+Menu --> add_times_example
+Menu --> progressIndicator_example
+Menu --> With_Stimuli_Screen
+Menu --> Stimulus_Subquestions
+Menu --> Has_Stimulus_Response
+Menu --> First_Stimuli_Screen
+Menu --> stimulusResponse_logTokenText
+Menu --> stimulusRatingRadio
+Menu --> Metadata_HtmlTokenText
+Menu --> Second_Informatie
+Menu --> hasGetParameter
+Menu --> cafe_test
+Menu --> Single_Image_Example
+Menu --> rating_buttons_example
+Menu --> clear_stimulus_responses_example
+Menu --> clear_stimulus_response_example
+Menu --> visible_enable_stimulus_free_text_example
+Menu --> rating_button_orientationType_example
+Menu --> holding_button_down_example
+Menu --> hotkey_enable_example
+Menu --> single_line_text_box_example
+Menu --> single_line_text_box_no_action_example
+Menu --> Second
+Menu --> Third_Informatie
+Menu --> Third
+Menu --> Recorder
+Menu --> RecorderMediaTrigger
+Menu --> RecorderPauseTest
+Menu --> RecorderNoDownloadTest
+Menu --> RecorderTimeStampTest
+Menu --> RecorderToneInjection
+Menu --> RecordingDTMFQualityTest
+Menu --> RecordingDTMFExtendedTest
+Menu --> RecorderDtmfTriggerExample
+Menu --> RecorderNoiseEchoGainTest
+Menu --> RecordingQualityTest
+Menu --> Media_Playback_Demo
+Menu --> USB_LP310
+Menu --> Bluetooth_R1
+Menu --> showOnBackButton
+Menu --> AppendStimulusResponse
+Menu --> enter_in_the_text_box
+Menu --> stimulusCodeImageButton
+Menu --> stimulus_has_response
+Menu --> stimulusRatingImageButton
+Menu --> if_stimulus_exists
+Menu --> completion
+Menu --> InvitationCodeExample
+Menu --> MatchOnEvalTokensExample
+Menu --> InvitationSessionStepsExample
+Menu --> InvitationCodeExampleStimuliScreen
+Menu --> RedirectToUrlExample
+Menu --> InvitationCodeExampleCompletion
+Menu --> InvitationCodeExampleFinished
+Menu --> NextStepExample
+Menu --> InvitationCodeExampleRestart
+Menu --> InvitationCodeExampleInvalid
+Menu --> menuItemStyle
+Menu --> allMenuItemsStyle
+Menu --> activateRandomItem
+Menu --> triggerRandomListener
+Menu --> incrementScoreExample
+Menu --> EditParticipant
+Menu --> ListParticipants
+Menu --> Admin
+Menu --> DataManagement
+Menu --> DataUpload
+Menu --> table_tags_inside_a_region_tag
+Menu --> predefined_stimuli_example
+Menu --> custom_completion_number
+Menu --> random_image_positions_remembered
+Menu --> preload_images_example
+Menu --> about
+state LocaleMenu
+LocaleMenu --> Menu : back
 state Toestemming
 Toestemming --> Menu : back
 Toestemming --> Informatie : next
@@ -54,6 +178,8 @@ state sticky_menu_example
 sticky_menu_example --> Menu : back
 sticky_menu_example --> sticky_table_example : Sticky Table Example
 sticky_menu_example --> sticky_region_example : Sticky Region Example
+sticky_menu_example --> Menu
+sticky_menu_example --> LocaleMenu
 sticky_menu_example --> Toestemming
 sticky_menu_example --> Informatie
 sticky_menu_example --> Gegevens
@@ -85,6 +211,7 @@ sticky_menu_example --> RunTrialsSimple1000
 sticky_menu_example --> Audio_Input_Select
 sticky_menu_example --> Many_Short_Recordings
 sticky_menu_example --> One_Long_Recording
+sticky_menu_example --> Aggressive_Short_Recordings
 sticky_menu_example --> Region_Timer_Screen
 sticky_menu_example --> Region_Toggle_Example
 sticky_menu_example --> Rating_Toggle_Example
@@ -94,9 +221,12 @@ sticky_menu_example --> Metadata_Current_Date
 sticky_menu_example --> last_seven_days
 sticky_menu_example --> replace_all_example
 sticky_menu_example --> four_different_topics
+sticky_menu_example --> request_focus_example
+sticky_menu_example --> input_slider_example
 sticky_menu_example --> append_unique_date
 sticky_menu_example --> Format_Current_DateTime
 sticky_menu_example --> currentDate_daysBetween_and_length
+sticky_menu_example --> add_times_example
 sticky_menu_example --> progressIndicator_example
 sticky_menu_example --> With_Stimuli_Screen
 sticky_menu_example --> Stimulus_Subquestions
@@ -153,7 +283,6 @@ sticky_menu_example --> InvitationCodeExampleFinished
 sticky_menu_example --> NextStepExample
 sticky_menu_example --> InvitationCodeExampleRestart
 sticky_menu_example --> InvitationCodeExampleInvalid
-sticky_menu_example --> Menu
 sticky_menu_example --> menuItemStyle
 sticky_menu_example --> allMenuItemsStyle
 sticky_menu_example --> activateRandomItem
@@ -234,6 +363,10 @@ state One_Long_Recording
 One_Long_Recording --> Menu : back
 One_Long_Recording --> One_Long_Recording
 One_Long_Recording --> One_Long_Recording
+state Aggressive_Short_Recordings
+Aggressive_Short_Recordings --> Menu : back
+Aggressive_Short_Recordings --> Aggressive_Short_Recordings
+Aggressive_Short_Recordings --> Aggressive_Short_Recordings
 state Region_Timer_Screen
 Region_Timer_Screen --> Menu : back
 Region_Timer_Screen --> With_Stimuli_Screen : next
@@ -266,12 +399,35 @@ four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
+state request_focus_example
+request_focus_example --> Menu : back
+request_focus_example --> request_focus_example
+request_focus_example --> request_focus_example
+state input_slider_example
+input_slider_example --> Menu : back
+input_slider_example --> input_slider_example
+input_slider_example --> input_slider_example
 state append_unique_date
 append_unique_date --> Menu : back
 state Format_Current_DateTime
 Format_Current_DateTime --> Menu : back
 state currentDate_daysBetween_and_length
 currentDate_daysBetween_and_length --> Menu : back
+state add_times_example
+add_times_example --> Menu : back
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
+add_times_example --> add_times_example
 state progressIndicator_example
 progressIndicator_example --> Menu : back
 progressIndicator_example --> progressIndicator_example
@@ -495,123 +651,6 @@ InvitationCodeExampleRestart --> InvitationCodeExample : Opnieuw beginnen
 InvitationCodeExampleRestart --> InvitationCodeExampleRestart : Retry
 state InvitationCodeExampleInvalid
 InvitationCodeExampleInvalid --> InvitationSessionStepsExample : Opnieuw beginnen
-state Menu
-Menu --> Toestemming
-Menu --> Informatie
-Menu --> Gegevens
-Menu --> Metadata_Jump_Test
-Menu --> Metadata_Jump_Test_Target_1
-Menu --> Metadata_Jump_Test_Target_2
-Menu --> Metadata_Jump_Test_Target_3
-Menu --> Metadata_Jump_Test_Target_4
-Menu --> Metadata_Jump_Test_Target_5
-Menu --> Metadata_Jump_Test_Target_6
-Menu --> Metadata_Jump_Test_Target_7
-Menu --> Metadata_Jump_Test_Target_8
-Menu --> Metadata_Jump_Test_Target_9
-Menu --> Metadata_Jump_Test_Target_10
-Menu --> First_Stimuli_Screen_Informatie
-Menu --> sticky_table_example
-Menu --> sticky_menu_example
-Menu --> sticky_region_example
-Menu --> popup_dialogue_example
-Menu --> compare_the_last_two_items
-Menu --> Snooze
-Menu --> Request_Notification_Screen
-Menu --> Timer_Label_Screen
-Menu --> Sequential_Display_Example0_6
-Menu --> hardware_time_stamps
-Menu --> Sequential_Display_Example
-Menu --> Sequential_Display_FrameRateTimer
-Menu --> RunTrialsSimple1000
-Menu --> Audio_Input_Select
-Menu --> Many_Short_Recordings
-Menu --> One_Long_Recording
-Menu --> Region_Timer_Screen
-Menu --> Region_Toggle_Example
-Menu --> Rating_Toggle_Example
-Menu --> Rating_Token_Text_Example
-Menu --> Metadata_Enable_Visible
-Menu --> Metadata_Current_Date
-Menu --> last_seven_days
-Menu --> replace_all_example
-Menu --> four_different_topics
-Menu --> append_unique_date
-Menu --> Format_Current_DateTime
-Menu --> currentDate_daysBetween_and_length
-Menu --> progressIndicator_example
-Menu --> With_Stimuli_Screen
-Menu --> Stimulus_Subquestions
-Menu --> Has_Stimulus_Response
-Menu --> First_Stimuli_Screen
-Menu --> stimulusResponse_logTokenText
-Menu --> stimulusRatingRadio
-Menu --> Metadata_HtmlTokenText
-Menu --> Second_Informatie
-Menu --> hasGetParameter
-Menu --> cafe_test
-Menu --> Single_Image_Example
-Menu --> rating_buttons_example
-Menu --> clear_stimulus_responses_example
-Menu --> clear_stimulus_response_example
-Menu --> visible_enable_stimulus_free_text_example
-Menu --> rating_button_orientationType_example
-Menu --> holding_button_down_example
-Menu --> hotkey_enable_example
-Menu --> single_line_text_box_example
-Menu --> single_line_text_box_no_action_example
-Menu --> Second
-Menu --> Third_Informatie
-Menu --> Third
-Menu --> Recorder
-Menu --> RecorderMediaTrigger
-Menu --> RecorderPauseTest
-Menu --> RecorderNoDownloadTest
-Menu --> RecorderTimeStampTest
-Menu --> RecorderToneInjection
-Menu --> RecordingDTMFQualityTest
-Menu --> RecordingDTMFExtendedTest
-Menu --> RecorderDtmfTriggerExample
-Menu --> RecorderNoiseEchoGainTest
-Menu --> RecordingQualityTest
-Menu --> Media_Playback_Demo
-Menu --> USB_LP310
-Menu --> Bluetooth_R1
-Menu --> showOnBackButton
-Menu --> AppendStimulusResponse
-Menu --> enter_in_the_text_box
-Menu --> stimulusCodeImageButton
-Menu --> stimulus_has_response
-Menu --> stimulusRatingImageButton
-Menu --> if_stimulus_exists
-Menu --> completion
-Menu --> InvitationCodeExample
-Menu --> MatchOnEvalTokensExample
-Menu --> InvitationSessionStepsExample
-Menu --> InvitationCodeExampleStimuliScreen
-Menu --> RedirectToUrlExample
-Menu --> InvitationCodeExampleCompletion
-Menu --> InvitationCodeExampleFinished
-Menu --> NextStepExample
-Menu --> InvitationCodeExampleRestart
-Menu --> InvitationCodeExampleInvalid
-Menu --> Menu
-Menu --> menuItemStyle
-Menu --> allMenuItemsStyle
-Menu --> activateRandomItem
-Menu --> triggerRandomListener
-Menu --> incrementScoreExample
-Menu --> EditParticipant
-Menu --> ListParticipants
-Menu --> Admin
-Menu --> DataManagement
-Menu --> DataUpload
-Menu --> table_tags_inside_a_region_tag
-Menu --> predefined_stimuli_example
-Menu --> custom_completion_number
-Menu --> random_image_positions_remembered
-Menu --> preload_images_example
-Menu --> about
 state menuItemStyle
 menuItemStyle --> Menu : back
 menuItemStyle --> Timer_Label_Screen : Timer_Label_Screen
@@ -621,6 +660,8 @@ menuItemStyle --> Rating_Toggle_Example : Rating_Toggle_Example
 menuItemStyle --> With_Stimuli_Screen : With_Stimuli_Screen
 state allMenuItemsStyle
 allMenuItemsStyle --> Menu : back
+allMenuItemsStyle --> Menu
+allMenuItemsStyle --> LocaleMenu
 allMenuItemsStyle --> Toestemming
 allMenuItemsStyle --> Informatie
 allMenuItemsStyle --> Gegevens
@@ -652,6 +693,7 @@ allMenuItemsStyle --> RunTrialsSimple1000
 allMenuItemsStyle --> Audio_Input_Select
 allMenuItemsStyle --> Many_Short_Recordings
 allMenuItemsStyle --> One_Long_Recording
+allMenuItemsStyle --> Aggressive_Short_Recordings
 allMenuItemsStyle --> Region_Timer_Screen
 allMenuItemsStyle --> Region_Toggle_Example
 allMenuItemsStyle --> Rating_Toggle_Example
@@ -661,9 +703,12 @@ allMenuItemsStyle --> Metadata_Current_Date
 allMenuItemsStyle --> last_seven_days
 allMenuItemsStyle --> replace_all_example
 allMenuItemsStyle --> four_different_topics
+allMenuItemsStyle --> request_focus_example
+allMenuItemsStyle --> input_slider_example
 allMenuItemsStyle --> append_unique_date
 allMenuItemsStyle --> Format_Current_DateTime
 allMenuItemsStyle --> currentDate_daysBetween_and_length
+allMenuItemsStyle --> add_times_example
 allMenuItemsStyle --> progressIndicator_example
 allMenuItemsStyle --> With_Stimuli_Screen
 allMenuItemsStyle --> Stimulus_Subquestions
@@ -720,7 +765,6 @@ allMenuItemsStyle --> InvitationCodeExampleFinished
 allMenuItemsStyle --> NextStepExample
 allMenuItemsStyle --> InvitationCodeExampleRestart
 allMenuItemsStyle --> InvitationCodeExampleInvalid
-allMenuItemsStyle --> Menu
 allMenuItemsStyle --> menuItemStyle
 allMenuItemsStyle --> allMenuItemsStyle
 allMenuItemsStyle --> activateRandomItem
