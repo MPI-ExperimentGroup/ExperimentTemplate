@@ -1285,11 +1285,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void stimulusSlider(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner presenterListener, final int dataChannel, final OrientationType orientationType, final int initial, final int minimum, final int maximum, final String buttonGroup) {
         final String postName = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : "stimulusSlider";
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-        final double initialValue;
+        final String initialValue;
         if (storedStimulusJSONObject != null) {
-            initialValue = storedStimulusJSONObject.containsKey(postName) ? (storedStimulusJSONObject.get(postName).isNumber() != null) ? storedStimulusJSONObject.get(postName).isNumber().doubleValue() : initial : initial;
+            initialValue = storedStimulusJSONObject.containsKey(postName) ? storedStimulusJSONObject.get(postName).toString().replaceAll("\\\"", "") : Integer.toString(initial);
         } else {
-            initialValue = initial;
+            initialValue = Integer.toString(initial);
         }
         final StimulusFreeText slider = timedStimulusView.addSlider(currentStimulus, postName, presenterListener, initialValue, minimum, maximum, dataChannel);
         stimulusFreeTextList.add(addButtonToGroup(buttonGroup, slider));

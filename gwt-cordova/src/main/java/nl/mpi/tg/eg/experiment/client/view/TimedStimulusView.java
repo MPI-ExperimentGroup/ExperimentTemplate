@@ -458,12 +458,12 @@ public class TimedStimulusView extends ComplexView {
         };
     }
 
-    public StimulusFreeText addSlider(final Stimulus stimulus, final String postName, final PresenterEventListner presenterListener, final double initial, final int minimum, final int maximum, final int dataChannel) {
+    public StimulusFreeText addSlider(final Stimulus stimulus, final String postName, final PresenterEventListner presenterListener, final String initial, final int minimum, final int maximum, final int dataChannel) {
         TextBox slider = new TextBox();
         slider.getElement().setAttribute("type", "range");
         slider.getElement().setAttribute("min", Integer.toString(minimum));
         slider.getElement().setAttribute("max", Integer.toString(maximum));
-        slider.getElement().setAttribute("value", Double.toString(initial));
+        slider.getElement().setAttribute("value", initial);
         if (presenterListener.getStyleName() != null && !presenterListener.getStyleName().isEmpty()) {
             slider.addStyleName(presenterListener.getStyleName());
         }
