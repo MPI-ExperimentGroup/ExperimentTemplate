@@ -491,19 +491,20 @@ public class AudioRecorder extends AbstractRecorder {
         if ($wnd.recorder) {
             if (!$wnd.injectOscillator1 || !$wnd.injectOscillator2) {
                 timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("starting tone injection");
-                var audioContext = new ($wnd.AudioContext || $wnd.webkitAudioContext)();
-                $wnd.injectOscillator1 = audioContext.createOscillator();
-                $wnd.injectOscillator2 = audioContext.createOscillator();
+                //var audioContext = new ($wnd.AudioContext || $wnd.webkitAudioContext)();
+                $wnd.injectOscillator1 = $wnd.recorder.audioContext.createOscillator();
+                $wnd.injectOscillator2 = $wnd.recorder.audioContext.createOscillator();
                 $wnd.injectOscillator1.type = 'sine';
                 $wnd.injectOscillator2.type = 'sine';
-                var gainNode = audioContext.createGain();
+                var gainNode = $wnd.recorder.audioContext.createGain();
                 gainNode.gain.value = 0.5;
                 $wnd.injectOscillator1.connect(gainNode);
                 $wnd.injectOscillator2.connect(gainNode);
-                var merger = audioContext.createChannelMerger(2);
-                gainNode.connect(audioContext.destination);
-                gainNode.connect(merger);
-                merger.connect($wnd.recorder.sourceNode);
+                //var merger = $wnd.recorder.audioContext.createChannelMerger(2);
+                // gainNode.connect($wnd.recorder.audioContext.destination);
+                gainNode.connect($wnd.recorder.recordingGainNode);
+                //gainNode.connect(merger);
+                //merger.connect($wnd.recorder.recordingGainNode);
                 $wnd.injectOscillator1.frequency.value = 0;
                 $wnd.injectOscillator2.frequency.value = 0;
                 $wnd.injectOscillator1.start();

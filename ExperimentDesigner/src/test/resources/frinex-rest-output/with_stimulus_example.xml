@@ -5343,8 +5343,14 @@
         <loadStimulus eventTag="RecorderToneInjection" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
+                <!-- <regionReplace regionId="dtmfFrequencyCanvas"/> -->
+                <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                <!-- <triggerDefinition listenerId="addAllListeners" threshold="0" maximum="0">
+                    <addRecorderDtmfTrigger dtmf="B"><htmlText featureText="dtmf=B"/></addRecorderDtmfTrigger>
+                    <addRecorderDtmfTrigger dtmf="C"><htmlText featureText="dtmf=C"/></addRecorderDtmfTrigger>
+                </triggerDefinition> -->
                 <addPadding/>
-                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
+                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError"/>
                     </onError>
@@ -5379,6 +5385,9 @@
                 </actionButton>
                 <actionButton featureText="Inject tone A">
                     <recorderToneInjection dtmf="A" />
+                </actionButton>
+                <actionButton featureText="Stop tone">
+                    <recorderToneInjection dtmf="off" />
                 </actionButton>
                 <actionButton featureText="stopAudioRecorder">
                     <stopAudioRecorder/>
