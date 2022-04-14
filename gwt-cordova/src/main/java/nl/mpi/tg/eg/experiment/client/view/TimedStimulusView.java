@@ -193,6 +193,7 @@ public class TimedStimulusView extends ComplexView {
                         timedEventMonitor.registerEvent("imageRetry");
                     }
                     retryCount--;
+                    // TODO: handle FILE based images here that will have issues with the ?retryCount=
                     image.setUrl(UriUtils.fromString(imagePath.asString() + "?retryCount=" + retryCount));
                 } else {
                     if (timedEventMonitor != null) {
