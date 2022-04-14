@@ -60,7 +60,7 @@ public class AudioRecorder extends AbstractRecorder {
 
     public native void startRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
         // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
-        if (!$wnd.audioAnalyser) {
+        if (!$wnd.audioAnalyser && $wnd.recorder.sourceNode) {
             $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
             $wnd.audioAnalyser.fftSize = 2048;
             $wnd.recorder.sourceNode.connect($wnd.audioAnalyser);
@@ -400,7 +400,9 @@ public class AudioRecorder extends AbstractRecorder {
                     // OggOpusEncoder.prototype.destroy
                     $wnd.recorder = null;
                 }
-                $wnd.recorder.sourceNode.disconnect($wnd.audioAnalyser);
+                if ($wnd.recorder.sourceNode) {
+                    $wnd.recorder.sourceNode.disconnect($wnd.audioAnalyser);
+                }
                 $wnd.audioAnalyser = null;
                 $wnd.injectOscillator1 = null;
                 $wnd.injectOscillator2 = null;
