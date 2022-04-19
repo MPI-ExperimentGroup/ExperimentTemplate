@@ -88,11 +88,11 @@ public class BuildListing {
         return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsDesktop();
     }
 
-    public String availableLocales() {
+    public String getAvailableLocales() {
         return experiment.getAvailableLocales();
     }
 
-    public String defaultLocale() {
+    public String getDefaultLocale() {
         return experiment.getDefaultLocale();
     }
 

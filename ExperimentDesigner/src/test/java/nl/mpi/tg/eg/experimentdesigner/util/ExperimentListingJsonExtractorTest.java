@@ -70,7 +70,9 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"isScalable\" : true,\n"
                 + "  \"isRotatable\" : true,\n"
                 + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
-                + "  \"experimentDisplayName\" : \"With Stimulus Example\"\n"
+                + "  \"experimentDisplayName\" : \"With Stimulus Example\",\n"
+                + "  \"defaultLocale\" : \"nl\",\n"
+                + "  \"availableLocales\" : \"en,es,de,fr,nl\"\n"
                 + "}";
         final String[] splitExpectedString = expResult.split("\n");
         final String[] splitResultString = stringWriter.toString().split("\n");
