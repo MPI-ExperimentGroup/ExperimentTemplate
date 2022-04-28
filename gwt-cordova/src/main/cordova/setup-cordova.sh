@@ -181,7 +181,8 @@ echo "building"
 cordova prepare
 #cordova compile
 #cordova build -release
-cordova build android --buildConfig /android-keys/frinex-build.json --release
+cordova build android --buildConfig /android-keys/frinex-build.json --release --packageType apk
+cordova build android --buildConfig /android-keys/frinex-build.json --release --packageType bundle
 #cordova emulate ios --target="iPad"
 #cordova emulate ios --target="iPhone"
 #cordova emulate android 
@@ -235,6 +236,7 @@ convert -resize 216x216! -strip -quality 100 $iconImage $iconResourcesDir/icon-1
 pwd
 #cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
 cp platforms/android/app/build/outputs/apk/release/*.apk ../
+cp platforms/android/app/build/outputs/apk/release/*.aab ../
 zip -r ../$appname-android.zip platforms/android
 zip -r ../$appname-ios.zip platforms/ios
 #cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
@@ -270,6 +272,7 @@ pwd
 #cd ../../../../
 # list the APK files that have been built
 find .. -iname *.apk
+find .. -iname *.aab
 
 # list the IPA files that have been built
 find .. -iname *.ipa

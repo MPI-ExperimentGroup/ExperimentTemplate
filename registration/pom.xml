@@ -197,6 +197,7 @@
                             <includes>
                                 <include>${experiment.configuration.name}_artifacts.json</include>
                                 <include>${experiment.configuration.name}_*.apk</include>
+                                <include>${experiment.configuration.name}_*.aab</include>
                                 <include>${experiment.configuration.name}_*.asar</include>
                                 <include>${experiment.configuration.name}_*win32*.zip</include>
                                 <include>${experiment.configuration.name}_*win64*.zip</include>

@@ -593,6 +593,11 @@ function buildApk(buildName, stage) {
             resultString += '<a href="' + buildName + "_" + stage + "_cordova.apk" + '">apk</a>&nbsp;';
             buildArtifactsJson.artifacts.apk = filename;
         }
+        if (filename.endsWith(".aab")) {
+            fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + buildName + "_" + stage + "_cordova.aab"));
+            resultString += '<a href="' + buildName + "_" + stage + "_cordova.aab" + '">aab</a>&nbsp;';
+            buildArtifactsJson.artifacts.aab = filename;
+        }
         if (filename.endsWith("cordova.zip")) {
             fs.createReadStream(__dirname + "/gwt-cordova/target/" + filename).pipe(fs.createWriteStream(targetDirectory + "/" + buildName + "_" + stage + "_cordova.zip"));
             resultString += '<a href="' + buildName + "_" + stage + "_cordova.zip" + '">src</a>&nbsp;';
