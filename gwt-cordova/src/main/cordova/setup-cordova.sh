@@ -181,8 +181,8 @@ echo "building"
 cordova prepare
 #cordova compile
 #cordova build -release
-cordova build android --packageType apk --release --buildConfig /android-keys/frinex-build.json
-cordova build android --packageType bundle --release --buildConfig /android-keys/frinex-build.json
+cordova build android --packageType=apk --release --buildConfig /android-keys/frinex-build.json
+cordova build android --packageType=bundle --release --buildConfig /android-keys/frinex-build.json
 #cordova emulate ios --target="iPad"
 #cordova emulate ios --target="iPhone"
 #cordova emulate android 
