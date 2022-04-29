@@ -109,6 +109,7 @@ cordova plugin add cordova-plugin-inappbrowser
 splashResourcesDir=./platforms/ios/res/Images.xcassets/LaunchImage.launchimage
 echo $splashResourcesDir
 mkdir -p $splashResourcesDir
+mkdir -p ./platforms/ios/res/screen/ios
 # TODO: update iOS icons including Default@2x~universal~anyany.png which cannot be found, config.xml says res/screen/ios/ but this script says ./platforms/ios/@experiment.configuration.name@/Images.xcassets/
 splashImage="www/static/splash.png" #"images/splash.gif" 
 #iconResourcesDir=./platforms/ios/@experiment.configuration.name@/Images.xcassets/AppIcon.appiconset
