@@ -180,21 +180,6 @@ convert -flatten -resize 200x320^ -gravity center -extent 200x320 -strip -qualit
 convert -flatten -resize 320x480^ -gravity center -extent 320x480 -strip -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
 convert -flatten -resize 720x1280^ -gravity center -extent 720x1280 -strip -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
 
-# copy the ant.properties file with the android key store and alias (key.store= key.alias=) information so that the APK can be signed
-#cp ~/android-keys/ant.properties platforms/android/
-#cp ~/android-keys/release-signing.properties platforms/android/
-
-echo "building"
-cordova prepare
-#cordova compile
-#cordova build -release
-cordova build android --packageType=apk --release --buildConfig /android-keys/frinex-build.json
-cordova build android --packageType=bundle --release --buildConfig /android-keys/frinex-build.json
-#cordova emulate ios --target="iPad"
-#cordova emulate ios --target="iPhone"
-#cordova emulate android 
-
-rm platforms/android/release-signing.properties
 #echo "make the iOS icons"
 convert -resize 180x180! -strip -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
 convert -resize 60x60! -strip -quality 100 $iconImage $iconResourcesDir/icon-60.png
@@ -231,6 +216,22 @@ convert -resize 55x55! -strip -quality 100 $iconImage $iconResourcesDir/icon-27.
 convert -resize 172x172! -strip -quality 100 $iconImage $iconResourcesDir/icon-86@2x.png
 convert -resize 196x196! -strip -quality 100 $iconImage $iconResourcesDir/icon-98@2x.png
 convert -resize 216x216! -strip -quality 100 $iconImage $iconResourcesDir/icon-108@2x.png
+
+# copy the ant.properties file with the android key store and alias (key.store= key.alias=) information so that the APK can be signed
+#cp ~/android-keys/ant.properties platforms/android/
+#cp ~/android-keys/release-signing.properties platforms/android/
+
+echo "building"
+cordova prepare
+#cordova compile
+#cordova build -release
+cordova build android --packageType=apk --release --buildConfig /android-keys/frinex-build.json
+cordova build android --packageType=bundle --release --buildConfig /android-keys/frinex-build.json
+#cordova emulate ios --target="iPad"
+#cordova emulate ios --target="iPhone"
+#cordova emulate android 
+
+rm platforms/android/release-signing.properties
 
 # list the schemes available 
 #xcodebuild -list
