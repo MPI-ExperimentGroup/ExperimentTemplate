@@ -27,7 +27,7 @@ cd $appname-cordova
 if [ -f www/static/icon.png ];
 then
     #cp www/static/icon.png ./icon.png
-    convert -resize 512x512^ -gravity center -extent 512x512 -quality 100 www/static/icon.png ./icon.png
+    convert -resize 512x512^ -gravity center -extent 512x512 -strip -quality 100 www/static/icon.png ./icon.png
 else
     echo "icon.png not found";
     cd "$(dirname "$0")"
@@ -126,26 +126,32 @@ echo $splashImage
 #draw9patch platforms/splash150x150.9.png
 
 #echo "making iOS splash images"
-convert -resize 640x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-convert -resize 1334x1334^ -gravity center -extent 750x1334 -quality 100 $splashImage $splashResourcesDir/Default-667h.png
-convert -resize 2208x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default-736h.png
-convert -crop +0-100 -resize 2208x1242^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
-#convert -resize 1136x1136^ -gravity center -extent 640x1136 -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
-convert -resize 2048x1536^ -gravity center -extent 2048x1536 -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
-convert -resize 1024x768^ -gravity center -extent 1024x768 -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
-convert -resize 1536x2048^ -gravity center -extent 1536x2048 -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
-convert -resize 768x1024^ -gravity center -extent 768x1024 -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
-convert -resize 640x960^ -gravity center -extent 640x960 -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
-convert -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
-convert -resize 2436x1125^ -gravity center -extent 2436x1125 -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
-convert -resize 1125x2436^ -gravity center -extent 1125x2436 -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
+convert -resize 640x1136^ -gravity center -extent 640x1136 -strip -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 1334x1334^ -gravity center -extent 750x1334 -strip -quality 100 $splashImage $splashResourcesDir/Default-667h.png
+convert -resize 2208x2208^ -gravity center -extent 1242x2208 -strip -quality 100 $splashImage $splashResourcesDir/Default-736h.png
+convert -crop +0-100 -resize 2208x1242^ -gravity center -extent 2208x1242 -strip -quality 100 $splashImage $splashResourcesDir/Default-Landscape-736h.png
+#convert -resize 1136x1136^ -gravity center -extent 640x1136 -strip -quality 100 $splashImage $splashResourcesDir/Default-568h@2x~iphone.png
+convert -resize 2048x1536^ -gravity center -extent 2048x1536 -strip -quality 100 $splashImage $splashResourcesDir/Default-Landscape@2x~ipad.png
+convert -resize 1024x768^ -gravity center -extent 1024x768 -strip -quality 100 $splashImage $splashResourcesDir/Default-Landscape~ipad.png
+convert -resize 1536x2048^ -gravity center -extent 1536x2048 -strip -quality 100 $splashImage $splashResourcesDir/Default-Portrait@2x~ipad.png
+convert -resize 768x1024^ -gravity center -extent 768x1024 -strip -quality 100 $splashImage $splashResourcesDir/Default-Portrait~ipad.png
+convert -resize 640x960^ -gravity center -extent 640x960 -strip -quality 100 $splashImage $splashResourcesDir/Default@2x~iphone.png
+convert -resize 320x480^ -gravity center -extent 320x480 -strip -quality 100 $splashImage $splashResourcesDir/Default~iphone.png
+convert -resize 2436x1125^ -gravity center -extent 2436x1125 -strip -quality 100 $splashImage $splashResourcesDir/Default-Landscape-2436h.png
+convert -resize 1125x2436^ -gravity center -extent 1125x2436 -strip -quality 100 $splashImage $splashResourcesDir/Default-2436h.png
+convert -flatten -resize 2732x2732^ -gravity center -extent 2732x2732 -strip -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~anyany.png
+convert -flatten -resize 1278x2732^ -gravity center -extent 1278x2732 -strip -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comany.png
+convert -flatten -resize 1334x750^ -gravity center -extent 1334x750 -strip -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comcom.png
+convert -flatten -resize 2208x2208^ -gravity center -extent 2208x2208 -strip -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anyany.png
+convert -flatten -resize 2208x1242^ -gravity center -extent 2208x1242 -strip -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anycom.png
+convert -flatten -resize 1242x2208^ -gravity center -extent 1242x2208 -strip -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~comany.png
 #echo "making iOS Single-image launch screen images" 
-convert -flatten -resize 2732x2732^ -gravity center -extent 2732x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~anyany.png
-convert -flatten -resize 1278x2732^ -gravity center -extent 1278x2732 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comany.png
-convert -flatten -resize 1334x750^ -gravity center -extent 1334x750 -quality 100 $splashImage $splashResourcesDir/Default@2x~universal~comcom.png
-convert -flatten -resize 2208x2208^ -gravity center -extent 2208x2208 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anyany.png
-convert -flatten -resize 2208x1242^ -gravity center -extent 2208x1242 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~anycom.png
-convert -flatten -resize 1242x2208^ -gravity center -extent 1242x2208 -quality 100 $splashImage $splashResourcesDir/Default@3x~universal~comany.png
+convert -flatten -resize 2732x2732^ -gravity center -extent 2732x2732 -strip -quality 100 $splashImage ./platforms/ios/res/screen/ios/Default@2x~universal~anyany.png
+convert -flatten -resize 1278x2732^ -gravity center -extent 1278x2732 -strip -quality 100 $splashImage ./platforms/ios/res/screen/ios/Default@2x~universal~comany.png
+convert -flatten -resize 1334x750^ -gravity center -extent 1334x750 -strip -quality 100 $splashImage ./platforms/ios/res/screen/ios/Default@2x~universal~comcom.png
+convert -flatten -resize 2208x2208^ -gravity center -extent 2208x2208 -strip -quality 100 $splashImage ./platforms/ios/res/screen/ios/Default@3x~universal~anyany.png
+convert -flatten -resize 2208x1242^ -gravity center -extent 2208x1242 -strip -quality 100 $splashImage ./platforms/ios/res/screen/ios/Default@3x~universal~anycom.png
+convert -flatten -resize 1242x2208^ -gravity center -extent 1242x2208 -strip -quality 100 $splashImage ./platforms/ios/res/screen/ios/Default@3x~universal~comany.png
 #echo "making Android splash images"
 mkdir -p platforms/android/res/drawable-land-hdpi
 mkdir -p platforms/android/res/drawable-land-ldpi
@@ -164,14 +170,14 @@ mkdir -p platforms/android/res/drawable-port-xhdpi
 #cp platforms/splash150x150.9.png platforms/android/res/drawable-port-mdpi/screen.png
 #cp platforms/splash320x320.9.png platforms/android/res/drawable-port-xhdpi/screen.png
 
-convert -flatten -crop +0-100 -resize 800x480^ -gravity center -extent 800x480 -quality 100 $splashImage platforms/android/res/drawable-land-hdpi/screen.png
-convert -flatten -crop +0-50 -resize 320x200^ -gravity center -extent 320x200 -quality 100 $splashImage platforms/android/res/drawable-land-ldpi/screen.png
-convert -flatten -crop +0-50 -resize 480x320^ -gravity center -extent 480x320 -quality 100 $splashImage platforms/android/res/drawable-land-mdpi/screen.png
-convert -flatten -crop +0-100 -resize 1280x720^ -gravity center -extent 1280x720 -quality 100 $splashImage platforms/android/res/drawable-land-xhdpi/screen.png
-convert -flatten -resize 480x800^ -gravity center -extent 480x800 -quality 100 $splashImage platforms/android/res/drawable-port-hdpi/screen.png
-convert -flatten -resize 200x320^ -gravity center -extent 200x320 -quality 100 $splashImage platforms/android/res/drawable-port-ldpi/screen.png
-convert -flatten -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
-convert -flatten -resize 720x1280^ -gravity center -extent 720x1280 -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
+convert -flatten -crop +0-100 -resize 800x480^ -gravity center -extent 800x480 -strip -quality 100 $splashImage platforms/android/res/drawable-land-hdpi/screen.png
+convert -flatten -crop +0-50 -resize 320x200^ -gravity center -extent 320x200 -strip -quality 100 $splashImage platforms/android/res/drawable-land-ldpi/screen.png
+convert -flatten -crop +0-50 -resize 480x320^ -gravity center -extent 480x320 -strip -quality 100 $splashImage platforms/android/res/drawable-land-mdpi/screen.png
+convert -flatten -crop +0-100 -resize 1280x720^ -gravity center -extent 1280x720 -strip -quality 100 $splashImage platforms/android/res/drawable-land-xhdpi/screen.png
+convert -flatten -resize 480x800^ -gravity center -extent 480x800 -strip -quality 100 $splashImage platforms/android/res/drawable-port-hdpi/screen.png
+convert -flatten -resize 200x320^ -gravity center -extent 200x320 -strip -quality 100 $splashImage platforms/android/res/drawable-port-ldpi/screen.png
+convert -flatten -resize 320x480^ -gravity center -extent 320x480 -strip -quality 100 $splashImage platforms/android/res/drawable-port-mdpi/screen.png
+convert -flatten -resize 720x1280^ -gravity center -extent 720x1280 -strip -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
 
 # copy the ant.properties file with the android key store and alias (key.store= key.alias=) information so that the APK can be signed
 #cp ~/android-keys/ant.properties platforms/android/
@@ -236,7 +242,7 @@ convert -resize 216x216! -strip -quality 100 $iconImage $iconResourcesDir/icon-1
 pwd
 #cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
 cp platforms/android/app/build/outputs/apk/release/*.apk ../
-cp platforms/android/app/build/outputs/apk/release/*.aab ../
+cp platforms/android/app/build/outputs/aab/release/*.aab ../
 zip -r ../$appname-android.zip platforms/android
 zip -r ../$appname-ios.zip platforms/ios
 #cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
