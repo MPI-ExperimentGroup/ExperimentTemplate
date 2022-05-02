@@ -248,7 +248,7 @@ rm platforms/android/release-signing.properties
 pwd
 #cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
 cp platforms/android/app/build/outputs/apk/release/*.apk ../
-cp platforms/android/app/build/outputs/aab/release/*.aab ../
+cp platforms/android/app/build/outputs/bundle/release/*.aab ../
 zip -r ../$appname-android.zip platforms/android
 zip -r ../$appname-ios.zip platforms/ios
 #cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
