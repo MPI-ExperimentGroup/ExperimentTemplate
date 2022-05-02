@@ -169,7 +169,7 @@ public class ScoreCalculatorTest {
         while (scanner.hasNext()) {
             String user = scanner.next();
             if (!"1772837".equals(user)) {
-                System.out.print("\n new group: " + user);
+                // System.out.print("\n new group: " + user);
 //                if (lettersNumbersGroup.getGroupLabel().equals(user)) {
 //                    stimulusResponseGroup = lettersNumbersGroup;
 //                } else {
@@ -180,9 +180,9 @@ public class ScoreCalculatorTest {
                 user = scanner.next().trim();
             }
             assertEquals("1772837", user);
-            System.out.print("\n user" + user);
+            // System.out.print("\n user" + user);
             String grapheme = scanner.next();
-            System.out.print(" grapheme" + grapheme);
+            // System.out.print(" grapheme" + grapheme);
             final Stimulus stimulus = getStimulus(grapheme);
             if (!stimulusList.contains(stimulus)) {
                 stimulusList.add(stimulus);
@@ -190,17 +190,17 @@ public class ScoreCalculatorTest {
 //            int trialNumber = scanner.nextInt();
 //            System.out.print(" trialNumber" + trialNumber);
             String hexcolor = scanner.next();
-            System.out.print(" hexcolor" + hexcolor);
+            // System.out.print(" hexcolor" + hexcolor);
             int decimalRed = scanner.nextInt();
-            System.out.print(" decimalRed" + decimalRed);
+            // System.out.print(" decimalRed" + decimalRed);
             int decimalGreen = scanner.nextInt();
-            System.out.print(" decimalGreen" + decimalGreen);
+            // System.out.print(" decimalGreen" + decimalGreen);
             int decimalBlue = Integer.parseInt(scanner.nextLine().trim());
-            System.out.print(" decimalBlue" + decimalBlue);
+            // System.out.print(" decimalBlue" + decimalBlue);
             final ColourData colourData = (decimalRed == -1) ? null : new ColourData(decimalRed, decimalGreen, decimalBlue);
             stimulusResponseGroup.addResponse(stimulus, new StimulusResponse(colourData, new Date(), 1000));
         }
-        System.out.print("\n");
+        // System.out.print("\n");
         scanner.close();
         return userResults;
     }
