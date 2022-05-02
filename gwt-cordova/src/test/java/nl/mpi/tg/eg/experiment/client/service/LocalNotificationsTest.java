@@ -44,13 +44,13 @@ public class LocalNotificationsTest {
         LocalNotifications instance = new LocalNotificationsImpl();
         int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
         assertEquals(repetitionCount, result.length);
-        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
-            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
-        }
+        // for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+        //     System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+        // }
 
         int expectedHour = hourFromInt;
         for (int repetitionIndex = repetitionCount - 1; repetitionIndex >= 0; repetitionIndex--) {
-            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+            // System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
             if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 2);
                 assertTrue(result[repetitionIndex][1] <= 28);
@@ -58,7 +58,7 @@ public class LocalNotificationsTest {
                 assertTrue(result[repetitionIndex][1] >= 32);
                 assertTrue(result[repetitionIndex][1] <= 58);
             }
-            System.out.println("expectedHourF: " + expectedHour);
+            // System.out.println("expectedHourF: " + expectedHour);
             assertEquals(expectedHour, result[repetitionIndex][0]);
             if (repetitionIndex % 2 == 1) {
                 expectedHour++;
@@ -85,13 +85,13 @@ public class LocalNotificationsTest {
         LocalNotifications instance = new LocalNotificationsImpl();
         int[][] result = instance.findNotificationRepetitions(hourFromInt, minuteFromInt, hourUntilInt, minuteUntilInt, repetitionCount);
         assertEquals(repetitionCount, result.length);
-        System.out.println("repetitionCountN: " + result.length);
-        for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
-            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
-        }
+        // System.out.println("repetitionCountN: " + result.length);
+        // for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
+        //     System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+        // }
         int expectedHour = hourFromInt;
         for (int repetitionIndex = 0; repetitionIndex < repetitionCount; repetitionIndex++) {
-            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+            // System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 //            if (result[repetitionIndex][1] < 31) {
             assertTrue(result[repetitionIndex][1] >= 20);
             assertTrue(result[repetitionIndex][1] <= 50);
@@ -99,7 +99,7 @@ public class LocalNotificationsTest {
 //                assertTrue(result[repetitionIndex][1] >= 32);
 //                assertTrue(result[repetitionIndex][1] <= 58);
 //            }
-            System.out.println("expectedHourN: " + expectedHour);
+            // System.out.println("expectedHourN: " + expectedHour);
             assertEquals(expectedHour, result[repetitionIndex][0]);
             if (result[repetitionIndex][0] == hourFromInt) {
                 assertTrue(result[repetitionIndex][1] >= minuteFromInt);
@@ -152,7 +152,7 @@ public class LocalNotificationsTest {
 
             @Override
             public void logNotificationRequest(String logString) {
-                System.out.println(logString);
+                // System.out.println(logString);
             }
 
         };
@@ -199,7 +199,7 @@ public class LocalNotificationsTest {
         int prevHour = 25;
         int prevMinute = 61;
         for (int[] values : result) {
-            System.out.println(values[0] + ":" + values[1]);
+            // System.out.println(values[0] + ":" + values[1]);
             assertTrue("the notifications must be in reverse time order ", prevHour > values[0] || (prevHour == values[0] && values[1] <= prevMinute) || prevHour == 0);
             prevHour = values[0];
             prevMinute = values[1];
@@ -207,9 +207,9 @@ public class LocalNotificationsTest {
         int expectedHour = hourFromInt;
         boolean isSecond = true;
         for (int repetitionIndex = repetitionCount - 1; repetitionIndex >= 0; repetitionIndex--) {
-            System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
+            // System.out.println(result[repetitionIndex][0] + ":" + result[repetitionIndex][1]);
 
-            System.out.println("expectedMinutesR: " + minuteFromInt + " - " + minuteUntilInt);
+            // System.out.println("expectedMinutesR: " + minuteFromInt + " - " + minuteUntilInt);
             if (result[repetitionIndex][1] < 31) {
                 assertTrue(result[repetitionIndex][1] >= 2);
                 assertTrue(result[repetitionIndex][1] <= 28);
@@ -248,7 +248,7 @@ public class LocalNotificationsTest {
 
         @Override
         public void logNotificationRequest(String logString) {
-            System.out.println(logString);
+            // System.out.println(logString);
         }
     }
 }
