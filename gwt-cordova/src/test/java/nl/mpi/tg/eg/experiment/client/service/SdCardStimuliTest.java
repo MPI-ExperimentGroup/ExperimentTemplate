@@ -91,16 +91,16 @@ public class SdCardStimuliTest {
         }
         assertEquals(42, stimuliList.size());
         for (Stimulus stimulus : stimuliList) {
-            System.out.println("getImage " + stimulus.getImage());
-            System.out.println("getLabel " + stimulus.getLabel());
-            System.out.println("getAudio " + stimulus.getAudio());
-            System.out.println("getVideo " + stimulus.getVideo());
-            System.out.println("getCode " + stimulus.getCode());
+            // System.out.println("getImage " + stimulus.getImage());
+            // System.out.println("getLabel " + stimulus.getLabel());
+            // System.out.println("getAudio " + stimulus.getAudio());
+            // System.out.println("getVideo " + stimulus.getVideo());
+            // System.out.println("getCode " + stimulus.getCode());
 //            System.out.println(stimulus.getTags());
-            System.out.println("getUniqueId " + stimulus.getUniqueId());
-            System.out.println("hasImage " + stimulus.hasImage());
-            System.out.println("hasAudio " + stimulus.hasAudio());
-            System.out.println("hasVideo " + stimulus.hasVideo());
+            // System.out.println("getUniqueId " + stimulus.getUniqueId());
+            // System.out.println("hasImage " + stimulus.hasImage());
+            // System.out.println("hasAudio " + stimulus.hasAudio());
+            // System.out.println("hasVideo " + stimulus.hasVideo());
 
             assertEquals(stimulus.hasAudio(), stimulus.getAudio() != null);
             assertEquals(stimulus.hasVideo(), stimulus.getVideo() != null);
@@ -163,17 +163,17 @@ public class SdCardStimuliTest {
         }
         assertEquals(12, stimuliList.size());
         for (Stimulus stimulus : stimuliList) {
-            System.out.println("getImage " + stimulus.getImage());
-            System.out.println("getLabel " + stimulus.getLabel());
-            System.out.println("getAudio " + stimulus.getAudio());
-            System.out.println("getVideo " + stimulus.getVideo());
-            System.out.println("getCode " + stimulus.getCode());
+            // System.out.println("getImage " + stimulus.getImage());
+            // System.out.println("getLabel " + stimulus.getLabel());
+            // System.out.println("getAudio " + stimulus.getAudio());
+            // System.out.println("getVideo " + stimulus.getVideo());
+            // System.out.println("getCode " + stimulus.getCode());
             assertEquals(stimulus.getCode(), 48, stimulus.getCode().length());
 //            System.out.println(stimulus.getTags());
-            System.out.println("getUniqueId " + stimulus.getUniqueId());
-            System.out.println("is image " + stimulus.hasImage());
-            System.out.println("hasImage " + stimulus.hasAudio());
-            System.out.println("hasVideo " + stimulus.hasVideo());
+            // System.out.println("getUniqueId " + stimulus.getUniqueId());
+            // System.out.println("is image " + stimulus.hasImage());
+            // System.out.println("hasImage " + stimulus.hasAudio());
+            // System.out.println("hasVideo " + stimulus.hasVideo());
 
             assertEquals(stimulus.hasAudio(), stimulus.getAudio() != null);
             assertEquals(stimulus.hasVideo(), stimulus.getVideo() != null);
