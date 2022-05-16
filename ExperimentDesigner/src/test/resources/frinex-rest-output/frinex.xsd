@@ -1458,6 +1458,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="validateStimuliResponsesType">
+<xs:annotation>
+<xs:documentation>Validates the current stimulus input that is visible in the presenter. Only when the stimulus input is enabled and visible will its validity be considered. After validation the stimulus response can be accessed via htmlTokenText and similar methods.</xs:documentation>
+</xs:annotation>
 <xs:all>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
