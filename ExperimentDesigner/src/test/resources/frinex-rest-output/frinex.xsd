@@ -4131,6 +4131,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimulusFreeTextType">
+<xs:annotation>
+<xs:documentation>Adds a free text input for stimulus responses to be entered. If allowedCharCodes is provided then only those characters can be entered into the text box, if a disallowed character is entered then the inputErrorMessage will be shown. The stimulus response text is validated against the validationRegex which can also contain tokens such as &lt;stimulusCorrectResponses&gt;. If the stimulus response text does not match the validationRegex then the featureText message will be shown on validation. If a hotKey is provided and its value corresponds to the hotKey of a button in the presenter then that button will be activated by that key in the free text field. If the hotKey="ENTER" then the text input will be limited to a single line (because only one line can be entered without the enter key).</xs:documentation>
+</xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>

@@ -947,10 +947,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void stimulusFreeText(final Stimulus currentStimulus, String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName, final String buttonGroup, final int dataChannel) {
+        String validationRegexFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(validationRegex);
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final String postName = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : "freeText";
         final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
-        StimulusFreeText stimulusFreeText = timedStimulusView.addStimulusFreeText(currentStimulus, postName, validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
+        StimulusFreeText stimulusFreeText = timedStimulusView.addStimulusFreeText(currentStimulus, postName, validationRegexFormatted, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
             protected void singleShotFired() {
                 for (PresenterEventListner nextButtonEventListner : nextButtonEventListnerList) {
