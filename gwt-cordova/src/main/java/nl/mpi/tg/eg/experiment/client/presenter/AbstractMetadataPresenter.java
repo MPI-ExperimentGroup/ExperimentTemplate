@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.HTML;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
@@ -61,14 +62,14 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
     }
 
     protected void saveMetadataButton(final String buttonLabel, final String styleName, final boolean sendData, final String buttonGroup, final String networkErrorMessage, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+        final HTML errorHtmlText = ((MetadataView) simpleView).addHtmlText("", null);
         PresenterEventListner saveEventListner = new PresenterEventListner() {
 
             @Override
             public void eventFired(final ButtonBase button, final SingleShotEventListner singleShotEventListner) {
-                try {
-                    ((MetadataView) simpleView).setButtonError(false, button, null);
-                    ((MetadataView) simpleView).clearErrors();
-                    validateFields();
+                ((MetadataView) simpleView).setButtonError(false, button, errorHtmlText, null);
+                ((MetadataView) simpleView).clearErrors();
+                if (((MetadataView) simpleView).validateFields()) {
                     saveFields();
                     if (sendData) {
                         // this assumes that the user will not get to this page unless they have already agreed to submit data
@@ -77,9 +78,9 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                             @Override
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
                                 if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
-                                    ((MetadataView) simpleView).setButtonError(true, button, exception.getMessage());
+                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
                                 } else {
-                                    ((MetadataView) simpleView).setButtonError(true, button, networkErrorMessage);
+                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, networkErrorMessage);
                                     errorEventListner.postLoadTimerFired();
                                 }
                                 submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
@@ -93,8 +94,6 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                     } else {
                         successEventListner.postLoadTimerFired();
                     }
-                } catch (MetadataFieldException exception) {
-                    ((MetadataView) simpleView).showFieldError(exception.getMetadataField());
                 }
             }
 
@@ -114,13 +113,6 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
             }
         };
         optionButton(saveEventListner, buttonGroup);
-    }
-
-    protected void validateFields() throws MetadataFieldException {
-        for (MetadataField fieldName : ((MetadataView) simpleView).getFieldNames()) {
-            String fieldString = ((MetadataView) simpleView).getFieldValue(fieldName);
-            fieldName.validateValue(fieldString);
-        }
     }
 
     protected void saveFields() {

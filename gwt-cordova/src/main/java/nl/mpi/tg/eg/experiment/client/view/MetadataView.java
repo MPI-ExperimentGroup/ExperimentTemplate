@@ -18,9 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.user.client.ui.ButtonBase;
-import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -40,27 +39,22 @@ import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
  */
 public class MetadataView extends TimedStimulusView {
 
-    private FlexTable flexTable = null;
     final private HashMap<MetadataField, MetadataFieldWidget> fieldBoxes;
     final private HashMap<MetadataField, ListBox> fieldConnections;
     final private ArrayList<MetadataField> orderedFields;
     private MetadataFieldWidget firstTextBox = null;
-    private final Label errorText;
     private final VerticalPanel keyboardPadding;
 
     public MetadataView() {
         fieldBoxes = new HashMap<>();
         fieldConnections = new HashMap<>();
         orderedFields = new ArrayList<>();
-        errorText = new Label();
         keyboardPadding = new VerticalPanel();
         keyboardPadding.add(new Label(""));
-        errorText.setStylePrimaryName("metadataErrorMessage");
     }
 
     public void addField(final MetadataField metadataField, final String existingValue, final String labelString, final List<UserLabelData> allUsersList, final List<UserId> selectedUsers, final boolean oneToMany) {
         MetadataFieldWidget stimulusMetadataField = addField(metadataField, existingValue, labelString);
-        final int rowCount = flexTable.getRowCount();
         if (allUsersList != null) {
             ListBox listBox = new ListBox();
             listBox.setStylePrimaryName("metadataOK");
@@ -79,7 +73,7 @@ public class MetadataView extends TimedStimulusView {
             HorizontalPanel fieldPanel = new HorizontalPanel();
             fieldPanel.add(stimulusMetadataField.getWidget());
             fieldPanel.add(listBox);
-            flexTable.setWidget(rowCount - 1, 0, fieldPanel);
+            getActivePanel().add(fieldPanel);
             fieldConnections.put(metadataField, listBox);
         }
     }
@@ -161,17 +155,10 @@ public class MetadataView extends TimedStimulusView {
     }
 
     public MetadataFieldWidget addField(final MetadataField metadataField, final String existingValue, String labelString) {
-        if (flexTable == null) {
-            flexTable = new FlexTable();
-            flexTable.setStylePrimaryName("metadataTable");
-            outerPanel.add(flexTable);
-        }
-        final int rowCount = flexTable.getRowCount();
         final MetadataFieldWidget stimulusMetadataField = new MetadataFieldWidget(metadataField, null, existingValue, 0);
-
-        flexTable.setWidget(rowCount, 0, stimulusMetadataField.getLabel());
-        flexTable.setWidget(rowCount + 1, 0, stimulusMetadataField.getWidget());
-
+        // TODO: do we want to provide vertical or horizontal options for the label and widget
+        getActivePanel().add(stimulusMetadataField.getLabel());
+        getActivePanel().add(stimulusMetadataField.getWidget());
 //        textBox.addBlurHandler(new BlurHandler() {
 //
 //            @Override
@@ -233,48 +220,37 @@ public class MetadataView extends TimedStimulusView {
         return selectedUserIds;
     }
 
-    public void showFieldError(MetadataField metadataField) {
-        final Widget focusWidget = fieldBoxes.get(metadataField).getWidget();
-        focusWidget.setStylePrimaryName("metadataError");
-        errorText.setText(metadataField.getControlledMessage());
-        for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
-            if (focusWidget.equals(flexTable.getWidget(rowCounter, 0))) {
-                flexTable.insertRow(rowCounter);
-                flexTable.setWidget(rowCounter, 0, errorText);
-                break;
-            }
-        }
-        fieldBoxes.get(metadataField).setFocus(true);
-    }
-
-    public void setButtonError(boolean isError, ButtonBase button, String errorMessage) {
+    public void setButtonError(final boolean isError, final ButtonBase button, final HTML errorHtmlText, final String errorMessage) {
         if (isError) {
             if (errorMessage != null) {
-                errorText.setText(errorMessage);
-                final int rowCount = flexTable.getRowCount();
-                flexTable.insertRow(rowCount);
-                flexTable.setWidget(rowCount, 0, errorText);
+                errorHtmlText.setText(errorMessage);
+                errorHtmlText.setStylePrimaryName("metadataErrorMessage");
+                errorHtmlText.setVisible(true);
+            } else {
+                errorHtmlText.setVisible(false);
             }
             button.addStyleName("metadataError");
         } else {
             clearErrors();
+            errorHtmlText.setVisible(false);
             button.removeStyleName("metadataError");
         }
+    }
+
+    public boolean validateFields() {
+        boolean isValid = true;
+        for (MetadataFieldWidget metadataField : fieldBoxes.values()) {
+            if (!metadataField.isValid()) {
+                isValid = false;
+            }
+        }
+        return isValid;
     }
 
     public void clearErrors() {
         for (MetadataFieldWidget stimulusMetadataFields : fieldBoxes.values()) {
             Widget focusWidget = stimulusMetadataFields.getWidget();
             focusWidget.setStylePrimaryName("metadataOK");
-        }
-        if (flexTable != null) {
-            for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
-                if (flexTable.getWidget(rowCounter, 0) == errorText) {
-                    // remove the error message and the tabel row that was added for the error message
-                    flexTable.removeRow(rowCounter);
-                    break;
-                }
-            }
         }
     }
 
