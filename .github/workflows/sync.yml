@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: repository-sync
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-    - run: git checkout HEAD^; pwd; ls -l; git push https://${{ secrets.access_token_name }}:${{ secrets.access_token }}@${{ secrets.mirror_destination }}
+    # - uses: actions/checkout@v3
+      # with:
+        # fetch-depth: 0
+    - run: git clone https://github.com/MPI-ExperimentGroup/ExperimentTemplate.git; cd ExperimentTemplate; pwd; ls -l; git push https://${{ secrets.access_token_name }}:${{ secrets.access_token }}@${{ secrets.mirror_destination }}
         
