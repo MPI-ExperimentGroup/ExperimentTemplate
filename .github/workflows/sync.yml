@@ -1,13 +1,13 @@
 name: repository-sync
 on: 
   push
-environment: repository-sync
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - run: git push ${{ secrets.mirror_destination }}
+      environment: repository-sync
       with:
         token: ${{ secrets.access_token }}
         
