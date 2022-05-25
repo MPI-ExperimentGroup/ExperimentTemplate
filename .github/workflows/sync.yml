@@ -4,10 +4,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: repository-sync
     steps:
     - uses: actions/checkout@v3
     - run: git push ${{ secrets.mirror_destination }}
-      environment: repository-sync
       with:
         token: ${{ secrets.access_token }}
         
