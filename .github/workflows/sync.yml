@@ -7,7 +7,5 @@ jobs:
     environment: repository-sync
     steps:
     - uses: actions/checkout@v3
-    - run: git push ${{ secrets.mirror_destination }}
-      with:
-        token: ${{ secrets.access_token }}
+    - run: git push https://InboundRepositorySync:${{ secrets.access_token }}@${{ secrets.mirror_destination }}
         
