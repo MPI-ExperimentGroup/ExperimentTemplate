@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: repository-sync
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@master
       with:
         fetch-depth: ''
     - run: pwd; ls -l; git push https://${{ secrets.access_token_name }}:${{ secrets.access_token }}@${{ secrets.mirror_destination }}
