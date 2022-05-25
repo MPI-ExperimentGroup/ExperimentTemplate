@@ -247,7 +247,7 @@
         <pluginRepository>
             <id>VersionControlCheck</id>
             <name>VersionControlCheck Repository</name>
-            <url>http://kinshipsoftware.github.io/VersionControlCheck/</url>
+            <url>https://kinshipsoftware.github.io/VersionControlCheck/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
