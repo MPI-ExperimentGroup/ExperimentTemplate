@@ -7,5 +7,7 @@ jobs:
     environment: repository-sync
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: ''
     - run: git push https://${{ secrets.access_user }}:${{ secrets.access_token }}@${{ secrets.mirror_destination }}
         
