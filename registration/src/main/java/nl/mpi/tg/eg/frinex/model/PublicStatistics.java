@@ -17,12 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Date;
 
 /**
  * @since 26 Feb 2021 15:06:33 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PublicStatistics {
 
     public Date firstDeploymentAccessed;
@@ -37,5 +39,5 @@ public class PublicStatistics {
     public Date[][] sessionFirstAndLastSeen;
 
     public PublicStatistics() {
-    } 
+    }
 }
