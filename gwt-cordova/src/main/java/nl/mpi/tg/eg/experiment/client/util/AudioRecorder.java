@@ -498,13 +498,13 @@ public class AudioRecorder extends AbstractRecorder {
                 $wnd.injectOscillator2 = $wnd.recorder.audioContext.createOscillator();
                 $wnd.injectOscillator1.type = 'sine';
                 $wnd.injectOscillator2.type = 'sine';
-                var gainNode = $wnd.recorder.audioContext.createGain();
-                gainNode.gain.value = 0.0;
-                $wnd.injectOscillator1.connect(gainNode);
-                $wnd.injectOscillator2.connect(gainNode);
+                $wnd.gainNode = $wnd.recorder.audioContext.createGain();
+                $wnd.gainNode.gain.value = 0.0;
+                $wnd.injectOscillator1.connect($wnd.gainNode);
+                $wnd.injectOscillator2.connect($wnd.gainNode);
                 //var merger = $wnd.recorder.audioContext.createChannelMerger(2);
                 // gainNode.connect($wnd.recorder.audioContext.destination);
-                gainNode.connect($wnd.recorder.recordingGainNode);
+                $wnd.gainNode.connect($wnd.recorder.recordingGainNode);
                 //gainNode.connect(merger);
                 //merger.connect($wnd.recorder.recordingGainNode);
                 $wnd.injectOscillator1.frequency.value = 0;
@@ -515,7 +515,7 @@ public class AudioRecorder extends AbstractRecorder {
             timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(eventTag);
             $wnd.injectOscillator1.frequency.value = tone1;
             $wnd.injectOscillator2.frequency.value = tone2;
-            gainNode.gain.value = (tone1 == 0 && tone2 == 0)? 0 : 0.2;
+            $wnd.gainNode.gain.value = (tone1 == 0 && tone2 == 0)? 0 : 0.2;
         } else {
             timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("cannot inject tone");
         }
