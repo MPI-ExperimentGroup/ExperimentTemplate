@@ -499,7 +499,7 @@ public class AudioRecorder extends AbstractRecorder {
                 $wnd.injectOscillator1.type = 'sine';
                 $wnd.injectOscillator2.type = 'sine';
                 var gainNode = $wnd.recorder.audioContext.createGain();
-                gainNode.gain.value = 0.5;
+                gainNode.gain.value = 0.0;
                 $wnd.injectOscillator1.connect(gainNode);
                 $wnd.injectOscillator2.connect(gainNode);
                 //var merger = $wnd.recorder.audioContext.createChannelMerger(2);
@@ -515,6 +515,7 @@ public class AudioRecorder extends AbstractRecorder {
             timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(eventTag);
             $wnd.injectOscillator1.frequency.value = tone1;
             $wnd.injectOscillator2.frequency.value = tone2;
+            gainNode.gain.value = (tone1 == 0 && tone2 == 0)? 0 : 0.2;
         } else {
             timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("cannot inject tone");
         }
