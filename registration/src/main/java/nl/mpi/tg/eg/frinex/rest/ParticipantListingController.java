@@ -48,7 +48,7 @@ public class ParticipantListingController {
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        model.addAttribute("count", this.participantRepository.count());
+        model.addAttribute("count", this.participantRepository.countDistinctUserId());
         final Page<Participant> pageData = this.participantRepository.findByStaleCopy(false, PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<Participant> content = pageData.getContent();
         final List<Participant> contentDistinct = new ArrayList<>();
