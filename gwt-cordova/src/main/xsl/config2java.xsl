@@ -592,7 +592,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="startFrameRateTimer|matchOnEvalTokens|setMetadataEvalTokens|progressIndicator|requestNotification|redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|switchUserIdButton|transmitResults|validateMetadata|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimuliValidation|addKeyboardDebug|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|requestFocus|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="startFrameRateTimer|matchOnEvalTokens|setMetadataEvalTokens|progressIndicator|requestNotification|redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|evaluateTokenText|switchUserIdButton|transmitResults|validateMetadata|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimuliValidation|addKeyboardDebug|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|requestFocus|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -624,6 +624,7 @@ or local-name() eq 'submitGroupEvent'
         ) then ', ' else ''" />
         <xsl:value-of select="if (local-name() eq 'logTokenText' 
                                 or local-name() eq 'htmlTokenText' 
+                                or local-name() eq 'evaluateTokenText' 
                                 or @dataLogFormat or local-name() eq 'setMetadataValue' 
                                 or local-name() eq 'hasMetadataValue'
                                 or local-name() eq 'setMetadataEvalTokens'
@@ -685,7 +686,7 @@ or local-name() eq 'submitGroupEvent'
         </xsl:if>
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
-        <xsl:if test="local-name() eq 'htmlTokenText'">
+        <xsl:if test="local-name() eq 'htmlTokenText' or local-name() eq 'evaluateTokenText'">
             <!-- TODO: should htmlTokenText be editable in the templates due to the requirement to update the tokens -->
             <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
         </xsl:if>
