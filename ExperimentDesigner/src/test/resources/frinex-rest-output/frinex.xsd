@@ -837,6 +837,7 @@
 <xs:element name="eraseLocalStorageOnWindowClosing" type="eraseLocalStorageOnWindowClosingType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="evaluatePause" type="evaluatePauseType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="existingUserCheck" type="existingUserCheckType"/>
 <xs:element name="generateCompletionCode" type="generateCompletionCodeType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
@@ -1109,6 +1110,25 @@
 <xs:attribute name="featureText" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>Text that will be visible to the user.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="styleName" type="xs:string">
+<xs:annotation>
+<xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="evaluateTokenTextType">
+<xs:annotation>
+<xs:documentation>The value of evaluateTokens will have any string tokens replaced, followed by mathematical evaluation. The result be shown as HTML and styled with styleName if provided.</xs:documentation>
+</xs:annotation>
+<xs:all>
+<xs:element name="onError" type="onErrorType"/>
+<xs:element name="onSuccess" type="onSuccessType"/>
+</xs:all>
+<xs:attribute name="evaluateTokens" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="styleName" type="xs:string">
@@ -1587,6 +1607,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -1825,6 +1846,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -2099,6 +2121,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -2281,6 +2304,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -2516,6 +2540,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -2742,6 +2767,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -2987,6 +3013,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -3213,6 +3240,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -3426,6 +3454,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -3662,6 +3691,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -3898,6 +3928,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -4195,6 +4226,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -4426,6 +4458,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -4657,6 +4690,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -4989,6 +5023,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -5278,6 +5313,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -5902,6 +5938,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -6487,6 +6524,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -6763,6 +6801,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -6967,6 +7006,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -7214,6 +7254,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -7497,6 +7538,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -7842,6 +7884,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -8053,6 +8096,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -8277,6 +8321,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -8502,6 +8547,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -8718,6 +8764,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -8944,6 +8991,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -9140,6 +9188,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -9336,6 +9385,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -9532,6 +9582,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -9728,6 +9779,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -9934,6 +9986,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -10140,6 +10193,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -10346,6 +10400,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -10542,6 +10597,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -10738,6 +10794,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -10934,6 +10991,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -11130,6 +11188,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -11326,6 +11385,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -11522,6 +11582,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -11716,6 +11777,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -11912,6 +11974,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -12108,6 +12171,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -12299,6 +12363,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -12501,6 +12566,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -12697,6 +12763,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -12893,6 +12960,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -13089,6 +13157,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -13285,6 +13354,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -13484,6 +13554,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -13680,6 +13751,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -13876,6 +13948,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -14072,6 +14145,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -14278,6 +14352,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -14474,6 +14549,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -14678,6 +14754,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -14917,6 +14994,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -15471,6 +15549,7 @@
 </xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -15719,6 +15798,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -16179,6 +16259,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -16378,6 +16459,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -16577,6 +16659,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -16776,6 +16859,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>
@@ -16983,6 +17067,7 @@
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
+<xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
 <xs:element name="logTokenText" type="logTokenTextType"/>
 <xs:element name="plainText" type="plainTextType"/>
 <xs:element name="image" type="imageType"/>

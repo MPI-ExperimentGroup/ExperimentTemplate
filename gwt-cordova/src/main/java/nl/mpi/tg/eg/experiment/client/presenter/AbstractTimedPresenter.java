@@ -152,8 +152,14 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void evaluateTokenText(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, XmlId xmlId, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         // Adding evaluateTokenText since htmlTokenText does not use evaluateTokensString but just uses formatString, because of the additional syntax required to mark the evaluatable sections from plain text
-        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens), styleName, xmlId);
+        try {
+            timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens), styleName, xmlId);
+            onSuccess.postLoadTimerFired();
+        } catch (EvaluateTokensException exception) {
+            onError.postLoadTimerFired();
+        }
     }
+
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName, XmlId xmlId) {
         // htmlTokenText does not use evaluateTokensString rather it just uses formatString
         timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(textString), styleName, xmlId);
