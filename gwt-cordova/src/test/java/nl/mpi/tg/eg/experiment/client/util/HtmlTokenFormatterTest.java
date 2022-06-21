@@ -379,6 +379,7 @@ public class HtmlTokenFormatterTest {
         assertEquals(9.0, instance.evaluateTokensNumber("length(\"123456789\")"));
         assertEquals(12.0, instance.evaluateTokensNumber("length(\"123456123456\")"));
         assertEquals("testEvaluateReplacementMethod", instance.evaluateTokensString("replaceAll(\"replaceAll(\"testEvaluateTokensMethods\", \"Tokens\", \"Replacement\")\", \"ds\", \"d\")"));
+        assertEquals("The result is: TFJQYPK", instance.evaluateTokensString("The result is: replaceAll(\"[Tt][Ff][Jf][Qq][Yy][Pp][Kk]|TFJQYPK\", \"[^|]*\\|\", \"\")"));
         assertEquals("Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als je besluit niet deel te nemen aan het experiment, kunt je de pagina sluiten of naar een andere website gaan.", instance.evaluateTokensString("replaceAll(\"Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan.\", \" u \", \" je \")"));
         assertTrue(instance.evaluateTokensString("random(10)random(10)random(10)random(10)random(10)random(10)random(10)").matches("[0-9]{7,7}"));
         assertTrue(instance.evaluateTokensString("Arandom(10)Brandom(10)Crandom(10)Drandom(10)Erandom(10)Frandom(10)Grandom(10)H").matches("A[0-9]B[0-9]C[0-9]D[0-9]E[0-9]F[0-9]G[0-9]H"));
