@@ -688,7 +688,8 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
         <xsl:if test="local-name() eq 'htmlTokenText' or local-name() eq 'evaluateTokenText'">
             <!-- TODO: should htmlTokenText be editable in the templates due to the requirement to update the tokens -->
-            <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
+            <xsl:value-of select="if(@styleName or local-name() eq 'htmlTokenText') then ', ' else ''" />
+            <xsl:value-of select="concat('new XmlId(&quot;', generate-id(.), '&quot;)')" />
         </xsl:if>
         <xsl:if test="local-name() eq 'generateCompletionCode'
  or local-name() eq 'sendStimuliReport'
