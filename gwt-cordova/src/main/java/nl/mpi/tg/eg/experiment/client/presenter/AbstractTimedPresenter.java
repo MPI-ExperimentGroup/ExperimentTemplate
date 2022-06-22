@@ -150,6 +150,10 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         }
     }
 
+    public void evaluateTokenText(final Stimulus currentStimulus, final String evaluateTokens, XmlId xmlId, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        evaluateTokenText(currentStimulus, evaluateTokens, null, xmlId, onError, onSuccess);
+    }
+
     public void evaluateTokenText(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, XmlId xmlId, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         // Adding evaluateTokenText since htmlTokenText does not use evaluateTokensString but just uses formatString, because of the additional syntax required to mark the evaluatable sections from plain text
         try {
