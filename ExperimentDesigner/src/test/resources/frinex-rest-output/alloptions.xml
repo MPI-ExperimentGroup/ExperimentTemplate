@@ -2254,10 +2254,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
-        <evaluateTokenText evaluateTokens="evaluateTokens" styleName="styleName">
-            <onError/>
-            <onSuccess/>
-        </evaluateTokenText>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
         <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
     </presenter>
@@ -2381,14 +2377,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="kindiagram_all_attributes" type="kindiagram" self="kindiagram_all_attributesScreen" title="kindiagram_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <evaluateTokenText evaluateTokens="evaluateTokens" styleName="styleName">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </evaluateTokenText>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -2474,6 +2462,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_all_attributes" type="menu" self="menu_all_attributesScreen" title="menu_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <evaluateTokenText evaluateTokens="evaluateTokens" styleName="styleName">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -2636,14 +2625,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_all_attributes" type="debug" self="debug_all_attributesScreen" title="debug_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <evaluateTokenText evaluateTokens="evaluateTokens" styleName="styleName">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </evaluateTokenText>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -2841,14 +2822,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_all_attributes" type="timeline" self="timeline_all_attributesScreen" title="timeline_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <evaluateTokenText evaluateTokens="evaluateTokens" styleName="styleName">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </evaluateTokenText>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -5105,10 +5078,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <htmlTokenText featureText=""/>
-        <evaluateTokenText evaluateTokens="">
-            <onError/>
-            <onSuccess/>
-        </evaluateTokenText>
         <actionButton featureText=""/>
         <helpDialogue featureText="" closeButtonLabel=""/>
     </presenter>
@@ -5232,14 +5201,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="kindiagram_minimal_attributes" type="kindiagram" self="kindiagram_minimal_attributesScreen" title="kindiagram_minimal_attributes">
         <htmlText featureText=""/>
-        <evaluateTokenText evaluateTokens="">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </evaluateTokenText>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -5325,6 +5286,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_minimal_attributes" type="menu" self="menu_minimal_attributesScreen" title="menu_minimal_attributes">
         <htmlText featureText=""/>
+        <htmlTokenText featureText=""/>
         <evaluateTokenText evaluateTokens="">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -5487,14 +5449,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_minimal_attributes" type="debug" self="debug_minimal_attributesScreen" title="debug_minimal_attributes">
         <htmlText featureText=""/>
-        <evaluateTokenText evaluateTokens="">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </evaluateTokenText>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
@@ -5692,14 +5646,6 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_minimal_attributes" type="timeline" self="timeline_minimal_attributesScreen" title="timeline_minimal_attributes">
         <htmlText featureText=""/>
-        <evaluateTokenText evaluateTokens="">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </evaluateTokenText>
         <plainText featureText=""/>
         <image msToNext="60" src="">
             <mediaLoaded>
