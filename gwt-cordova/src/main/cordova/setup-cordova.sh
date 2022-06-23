@@ -230,9 +230,10 @@ cordova prepare
 # cordova does not seem to accept --packageType when --buildConfig is provided
 # so we first build the APK then modify the frinex-build.json to build the AAB
 # because this is run in a docker image the changes to the frinex-build.json file are not kept
-cordova build android --packageType=apk --release --buildConfig /android-keys/frinex-build.json
+sed "s/\"keystore\"/\"packageType\": \"apk\",\"keystore\"/g" /android-keys/frinex-build.json > /android-keys/frinex-build-apk.json
+cordova build android --release --buildConfig /android-keys/frinex-build-apk.json
 sed "s/\"keystore\"/\"packageType\": \"bundle\",\"keystore\"/g" /android-keys/frinex-build.json > /android-keys/frinex-build-aab.json
-cordova build android --packageType=bundle --release --buildConfig /android-keys/frinex-build-aab.json
+cordova build android --release --buildConfig /android-keys/frinex-build-aab.json
 #cordova emulate ios --target="iPad"
 #cordova emulate ios --target="iPhone"
 #cordova emulate android 
