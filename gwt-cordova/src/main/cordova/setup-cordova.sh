@@ -96,6 +96,8 @@ else
     echo false > requestNotification-false.txt
     echo "requestNotification false"
 fi
+# the cordova-plugin-androidx-adapter is used to get older plugins to work
+cordova plugin add cordova-plugin-androidx-adapter
 cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
 #cordova plugin add cordova-plugin-media-capture
