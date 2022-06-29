@@ -33,7 +33,7 @@ function acceptVideo() {
     initialiseConnection();
     var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
     peerConnection.setRemoteDescription(sessionDesc).then(function () {
-        return navigator.mediaDevices.getUserMedia(mediaConstraints);
+        return navigator.mediaDevices.getUserMedia({ audio: true, video: true });
     }).then(function (stream) {
         localStream = stream;
         document.getElementById("localVideo").srcObject = localStream;
