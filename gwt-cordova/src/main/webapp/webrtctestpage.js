@@ -31,7 +31,7 @@ function offerVideo() {
 
 function acceptVideo() {
     initialiseConnection();
-    var sessionDesc = new RTCSessionDescription($("#connectionInfo").val());
+    var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
     peerConnection.setRemoteDescription(sessionDesc).then(function () {
         return navigator.mediaDevices.getUserMedia(mediaConstraints);
     }).then(function (stream) {
@@ -43,23 +43,31 @@ function acceptVideo() {
     }).then(function (answer) {
         return peerConnection.setLocalDescription(answer);
     }).then(function () {
-        sendToGroup({
-            name: userId,
-            target: "targetname",
-            type: "video-answer",
-            sdp: peerConnection.localDescription
-        });
+        sendToGroup("video-answer", peerConnection.localDescription);
     }).catch(handleError);
 }
 
-function sendToGroup(message) {
+function sendToGroup(status, sdp) {
     stompClient.send("/app/group", {}, JSON.stringify({
+        'groupId': windowGroupId,
+        'screenId': screenId,
+        'groupCommunicationChannels': null,
+        'expectedRespondents': null,
+        'originMemberCode': null,
+        'originPhase': null,
+        'requestedPhase': null,
+        'stimulusIndex': null,
+        'stimuliList': status, // status used in this field is only for testing in this page
+        'responseStimulusOptions': null,
+        'responseStimulusId': null,
+        'memberScore': null,
+        'groupReady': null,
         'userId': userId,
         'userLabel': null,
         'allMemberCodes': 'A,B,C,D,E,F,G',
         'memberCode': null,
         'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
-        'messageString': JSON.stringify(message),
+        'messageString': sdp,
         'groupReady': null
     }));
 }
@@ -101,10 +109,7 @@ function initialiseConnection() {
     peerConnection = new RTCPeerConnection(configuration);
     peerConnection.onicecandidate = function (event) {
         if (event.candidate) {
-            sendToGroup({
-                event: "candidate",
-                data: event.candidate
-            });
+            sendToGroup("candidate", event.candidate);
         }
     };
 
@@ -132,12 +137,8 @@ function initialiseConnection() {
         peerConnection.createOffer().then(function (offer) {
             return peerConnection.setLocalDescription(offer);
         }).then(function () {
-            sendToGroup({
-                name: userId,
-                target: "targetname",
-                type: "video-offer",
-                sdp: peerConnection.localDescription
-            });
+            sendToGroup("video-offer", peerConnection.localDescription);
+            $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
         }).catch(handleError);
     }
 
@@ -159,7 +160,7 @@ function initialiseConnection() {
     peerConnection.onsignalingstatechange = function () {
         console.log("onsignalingstatechange");
     };
-    
+
     peerConnection.onicegatheringstatechange = function () {
         console.log("onicegatheringstatechange");
     };
@@ -314,6 +315,9 @@ function connect() {
             //     Boolean groupReady, 
             //     String responseStimulusId, 
             //     String groupUUID
+            if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
+                $("#connectionInfo").val(JSON.stringify(contentData.messageString));
+            }
         });
     });
 }
