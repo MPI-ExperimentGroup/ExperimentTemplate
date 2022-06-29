@@ -22,18 +22,46 @@
  */
 
 function offerVideo() {
+    initialiseConnection();
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
+        document.getElementById("localVideo").srcObject = localStream;
+        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+    }).catch(handleError);
 }
 
 function acceptVideo() {
+    initialiseConnection();
+    var sessionDesc = new RTCSessionDescription($("#connectionInfo").val());
+    peerConnection.setRemoteDescription(sessionDesc).then(function () {
+        return navigator.mediaDevices.getUserMedia(mediaConstraints);
+    }).then(function (stream) {
+        localStream = stream;
+        document.getElementById("localVideo").srcObject = localStream;
+        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+    }).then(function () {
+        return peerConnection.createAnswer();
+    }).then(function (answer) {
+        return peerConnection.setLocalDescription(answer);
+    }).then(function () {
+        sendToGroup({
+            name: userId,
+            target: "targetname",
+            type: "video-answer",
+            sdp: peerConnection.localDescription
+        });
+    }).catch(handleError);
 }
 
-function connectVideo() {
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-        .then(function (localStream) {
-            document.getElementById("localVideo").srcObject = localStream;
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-        })
-        .catch(handleGetUserMediaError);
+function sendToGroup(message) {
+    stompClient.send("/app/group", {}, JSON.stringify({
+        'userId': userId,
+        'userLabel': null,
+        'allMemberCodes': 'A,B,C,D,E,F,G',
+        'memberCode': null,
+        'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
+        'messageString': JSON.stringify(message),
+        'groupReady': null
+    }));
 }
 
 function disconnectVideo() {
@@ -63,17 +91,17 @@ function disconnectVideo() {
     remoteVideo.removeAttribute("srcObject");
 }
 
-function handleGetUserMediaError(e) {
+function handleError(e) {
     console.log(e.name, e.message);
     disconnectVideo();
 }
 
-function initialise() {
+function initialiseConnection() {
     var configuration = null;
     peerConnection = new RTCPeerConnection(configuration);
     peerConnection.onicecandidate = function (event) {
         if (event.candidate) {
-            send({
+            sendToGroup({
                 event: "candidate",
                 data: event.candidate
             });
@@ -98,6 +126,42 @@ function initialise() {
 
     peerConnection.ondatachannel = function (event) {
         dataChannel = event.channel;
+    };
+
+    peerConnection.onnegotiationneeded = function () {
+        peerConnection.createOffer().then(function (offer) {
+            return peerConnection.setLocalDescription(offer);
+        }).then(function () {
+            sendToGroup({
+                name: userId,
+                target: "targetname",
+                type: "video-offer",
+                sdp: peerConnection.localDescription
+            });
+        }).catch(handleError);
+    }
+
+    peerConnection.ontrack = function () {
+        console.log("ontrack");
+    };
+
+    peerConnection.onremovetrack = function () {
+        console.log("onremovetrack");
+    };
+    peerConnection.onremovestream = function () {
+        console.log("onremovestream");
+    };
+
+    peerConnection.oniceconnectionstatechange = function () {
+        console.log("oniceconnectionstatechange");
+    };
+
+    peerConnection.onsignalingstatechange = function () {
+        console.log("onsignalingstatechange");
+    };
+    
+    peerConnection.onicegatheringstatechange = function () {
+        console.log("onicegatheringstatechange");
     };
 }
 
