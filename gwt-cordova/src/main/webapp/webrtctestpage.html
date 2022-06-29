@@ -21,30 +21,82 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
 <html>
-    <head>
-        <title>WebRTC Test Page</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!--<link href="main.css" rel="stylesheet">-->
-        <script src="jquery/jquery.min.js"></script>
-        <script src="sockjs-client/sockjs.min.js"></script>
-        <script src="stomp-websocket/stomp.min.js"></script>
-        <script src="groups.js"></script>
-        <style>
-            td {
-                border-style: solid;
-                border-width: 2px;
-                padding: 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <div>Use this page to validate the WebRTC functionality within Frinex</div>
-        <button type="button" onclick='createOffer()'>Create Offer</button>
-        <input id="messageInput" type="text" placeholder="message">
-        <button type="button" onclick='sendMessage()'>SEND</button>
-        <script src="webrtctestpage.js"></script>
-    </body>
+<head>
+    <title>WebRTC Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="main.css" rel="stylesheet">-->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="sockjs-client/sockjs.min.js"></script>
+    <script src="stomp-websocket/stomp.min.js"></script>
+    <!-- <script src="groups.js"></script> -->
+    <script src="webrtctestpage.js"></script>
+    <style>
+        td {
+            border-style: solid;
+            border-width: 2px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Use this page to validate the WebRTC functionality within Frinex</div>
+    <a href="about://webrtc-internals">WebRTC stats for Chrome</a>
+    <a href="opera://webrtc-internals">WebRTC stats for Opera</a>
+    <a href="about:webrtc">WebRTC stats for Firefox</a>
+    <div id="main-content" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="connect">WebSocket connection:</label>
+                        <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                        <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <button id="startBar" class="btn btn-default" type="submit">Start</button>
+                </form>
+                <div id="animateTarget"></div>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <input type="text" id="messageString" class="form-control" placeholder="Type a message...">
+                    <button id="join" class="btn btn-default" type="submit">Group</button>
+                </form>
+                <form class="form-inline">
+                    <button type="button" class="btn btn-default" onclick='initialise()'>Initialise</button>
+                    <button type="button" class="btn btn-default" onclick='offerVideo()'>Offer Video</button>
+                    <button type="button" class="btn btn-default" onclick='acceptVideo();'>Accept Video</button>
+                    <button type="button" class="btn btn-default" onclick='disconnectVideo();'>Disconnect Video</button>
+                    <input id="connectionInfo" class="form-control" type="text" placeholder="connection info">
+                    <button type="button" onclick='sendMessage()'>SEND</button>
+                </form>
+                <div class="form-group">
+                    <div>
+                      <video id="remoteVideo" autoplay></video>
+                      <video id="localVideo" autoplay muted></video>
+                      <button id="hangupButton" onclick="disconnectVideo();" disabled>Disconnect Video</button>
+                    </div>
+                  </div>
+                <table class="table table-striped" id="groupTarget"></table>
+            </div>
+        </div>
+    </div>
+    <table id="unittestdata"> </table>
+</body>
+
 </html>
