@@ -50,7 +50,7 @@ function acceptVideo() {
 function sendToGroup(status, sdp) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'groupId': null,
-        'screenId': screenId,
+        'screenId': null,
         'groupCommunicationChannels': null,
         'expectedRespondents': null,
         'originMemberCode': null,
