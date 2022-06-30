@@ -21,7 +21,7 @@
  */
 
 var stompClient = null;
-var userId = Math.floor((1 + Math.random()) * 0x10000);
+var userId = "grouptestpage-" + Math.floor((1 + Math.random()) * 0x10000);
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
