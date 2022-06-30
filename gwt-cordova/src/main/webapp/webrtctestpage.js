@@ -333,12 +333,20 @@ function connect() {
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
                 console.log("video-offer: " + contentData.messageString);
-                $("#connectionInfo").val(contentData.messageString);
+                if (peerConnection) {
+                    $("#connectionInfo").val(contentData.messageString);
+                } else {
+                    console.log("No peer connection");
+                }
             }
             if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                 console.log("candidate: " + contentData.messageString);
                 var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
-                peerConnection.addIceCandidate(candidate).catch(reportError);
+                if (peerConnection) {
+                    peerConnection.addIceCandidate(candidate).catch(reportError);
+                } else {
+                    console.log("No peer connection");
+                }
             }
         });
     });
