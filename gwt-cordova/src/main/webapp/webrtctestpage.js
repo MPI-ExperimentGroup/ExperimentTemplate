@@ -109,75 +109,77 @@ function handleDisconnectError(e) {
 }
 
 function initialiseConnection() {
-    var configuration = {
-        iceServers: [{
-            urls: "stun:stun.stunprotocol.org"
-        }]
-    };
-    peerConnection = new RTCPeerConnection(configuration);
-    peerConnection.onicecandidate = function (event) {
-        console.log("onicecandidate");
-        if (event.candidate) {
-            sendToGroup("candidate", event.candidate);
+    if (!peerConnection) {
+        var configuration = {
+            iceServers: [{
+                urls: "stun:stun.stunprotocol.org"
+            }]
+        };
+        peerConnection = new RTCPeerConnection(configuration);
+        peerConnection.onicecandidate = function (event) {
+            console.log("onicecandidate");
+            if (event.candidate) {
+                sendToGroup("candidate", event.candidate);
+            }
+        };
+
+        dataChannel = peerConnection.createDataChannel("dataChannel", {
+            reliable: true
+        });
+
+        dataChannel.onerror = function (error) {
+            console.log("onerror: " + error);
+        };
+
+        dataChannel.onmessage = function (event) {
+            console.log("onmessage: " + event.data);
+        };
+
+        dataChannel.onconnectionstatechange = function (event) {
+            console.log("onconnectionstatechange");
+        };
+
+        dataChannel.onclose = function () {
+            console.log("onclose");
+        };
+
+        peerConnection.ondatachannel = function (event) {
+            dataChannel = event.channel;
+        };
+
+        peerConnection.onnegotiationneeded = function () {
+            peerConnection.createOffer().then(function (offer) {
+                return peerConnection.setLocalDescription(offer);
+            }).then(function () {
+                sendToGroup("video-offer", peerConnection.localDescription);
+                // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
+            }).catch(handleDisconnectError);
         }
-    };
 
-    dataChannel = peerConnection.createDataChannel("dataChannel", {
-        reliable: true
-    });
+        peerConnection.ontrack = function (event) {
+            console.log("ontrack");
+            document.getElementById("remoteVideo").srcObject = event.streams[0];
+        };
 
-    dataChannel.onerror = function (error) {
-        console.log("onerror: " + error);
-    };
+        peerConnection.onremovetrack = function () {
+            console.log("onremovetrack");
+        };
+        peerConnection.onremovestream = function () {
+            console.log("onremovestream");
+        };
 
-    dataChannel.onmessage = function (event) {
-        console.log("onmessage: " + event.data);
-    };
+        peerConnection.oniceconnectionstatechange = function () {
+            console.log("oniceconnectionstatechange");
+        };
 
-    dataChannel.onconnectionstatechange = function (event) {
-        console.log("onconnectionstatechange");
-    };
+        peerConnection.onsignalingstatechange = function () {
+            console.log("onsignalingstatechange");
+        };
 
-    dataChannel.onclose = function () {
-        console.log("onclose");
-    };
-
-    peerConnection.ondatachannel = function (event) {
-        dataChannel = event.channel;
-    };
-
-    peerConnection.onnegotiationneeded = function () {
-        peerConnection.createOffer().then(function (offer) {
-            return peerConnection.setLocalDescription(offer);
-        }).then(function () {
-            sendToGroup("video-offer", peerConnection.localDescription);
-            // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
-        }).catch(handleDisconnectError);
+        peerConnection.onicegatheringstatechange = function () {
+            console.log("onicegatheringstatechange");
+        };
     }
-
-    peerConnection.ontrack = function (event) {
-        console.log("ontrack");
-        document.getElementById("remoteVideo").srcObject = event.streams[0];
-    };
-
-    peerConnection.onremovetrack = function () {
-        console.log("onremovetrack");
-    };
-    peerConnection.onremovestream = function () {
-        console.log("onremovestream");
-    };
-
-    peerConnection.oniceconnectionstatechange = function () {
-        console.log("oniceconnectionstatechange");
-    };
-
-    peerConnection.onsignalingstatechange = function () {
-        console.log("onsignalingstatechange");
-    };
-
-    peerConnection.onicegatheringstatechange = function () {
-        console.log("onicegatheringstatechange");
-    };
 }
 
 var stompClient = null;
