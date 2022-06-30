@@ -105,9 +105,14 @@ function handleError(e) {
 }
 
 function initialiseConnection() {
-    var configuration = null;
+    var configuration = {
+        iceServers: [{
+            urls: "stun:stun.stunprotocol.org"
+        }]
+    };
     peerConnection = new RTCPeerConnection(configuration);
     peerConnection.onicecandidate = function (event) {
+        console.log("onicecandidate");
         if (event.candidate) {
             sendToGroup("candidate", event.candidate);
         }
@@ -123,6 +128,10 @@ function initialiseConnection() {
 
     dataChannel.onmessage = function (event) {
         console.log("onmessage: " + event.data);
+    };
+
+    dataChannel.onconnectionstatechange = function (event) {
+        console.log("onconnectionstatechange");
     };
 
     dataChannel.onclose = function () {
