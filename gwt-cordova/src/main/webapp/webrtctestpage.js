@@ -47,7 +47,7 @@ function acceptVideo() {
     }).catch(handleError);
 }
 
-function sendToGroup(status, sdp) {
+function sendToGroup(status, messageObject) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'groupId': null,
         'screenId': null,
@@ -67,7 +67,7 @@ function sendToGroup(status, sdp) {
         'allMemberCodes': 'A,B,C,D,E,F,G',
         'memberCode': null,
         'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
-        'messageString': sdp,
+        'messageString': JSON.stringify(messageObject),
         'groupReady': null
     }));
 }
@@ -327,11 +327,11 @@ function connect() {
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
                 console.log("video-offer: " + contentData.messageString);
-                $("#connectionInfo").val(JSON.stringify(contentData.messageString));
+                $("#connectionInfo").val(contentData.messageString);
             }
             if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                 console.log("candidate: " + contentData.messageString);
-                var candidate = new RTCIceCandidate(contentData.messageString);
+                var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
                 peerConnection.addIceCandidate(candidate).catch(handleError);
             }
         });
