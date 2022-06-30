@@ -142,8 +142,9 @@ function initialiseConnection() {
         }).catch(handleError);
     }
 
-    peerConnection.ontrack = function () {
+    peerConnection.ontrack = function (event) {
         console.log("ontrack");
+        document.getElementById("remoteVideo").srcObject = event.streams[0];
     };
 
     peerConnection.onremovetrack = function () {
