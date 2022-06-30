@@ -26,7 +26,7 @@ function offerVideo() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
         document.getElementById("localVideo").srcObject = localStream;
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-    }).catch(handleError);
+    }).catch(handleDisconnectError);
 }
 
 function acceptVideo() {
@@ -44,7 +44,7 @@ function acceptVideo() {
         return peerConnection.setLocalDescription(answer);
     }).then(function () {
         sendToGroup("video-answer", peerConnection.localDescription);
-    }).catch(handleError);
+    }).catch(handleDisconnectError);
 }
 
 function sendToGroup(status, messageObject) {
@@ -99,7 +99,11 @@ function disconnectVideo() {
     remoteVideo.removeAttribute("srcObject");
 }
 
-function handleError(e) {
+function reportError(e) {
+    console.log(e.name, e.message);
+}
+
+function handleDisconnectError(e) {
     console.log(e.name, e.message);
     disconnectVideo();
 }
@@ -148,7 +152,7 @@ function initialiseConnection() {
         }).then(function () {
             sendToGroup("video-offer", peerConnection.localDescription);
             // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
-        }).catch(handleError);
+        }).catch(handleDisconnectError);
     }
 
     peerConnection.ontrack = function (event) {
@@ -332,7 +336,7 @@ function connect() {
             if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                 console.log("candidate: " + contentData.messageString);
                 var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
-                peerConnection.addIceCandidate(candidate).catch(handleError);
+                peerConnection.addIceCandidate(candidate).catch(reportError);
             }
         });
     });
