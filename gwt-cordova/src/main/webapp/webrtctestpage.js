@@ -182,6 +182,7 @@ function initialiseConnection() {
     }
 }
 
+var peerConnection = null;
 var stompClient = null;
 var userId = "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
 function setConnected(connected) {
