@@ -147,7 +147,7 @@ function initialiseConnection() {
             return peerConnection.setLocalDescription(offer);
         }).then(function () {
             sendToGroup("video-offer", peerConnection.localDescription);
-            $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
+            // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
         }).catch(handleError);
     }
 
@@ -326,7 +326,13 @@ function connect() {
             //     String responseStimulusId, 
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
+                console.log("video-offer: " + contentData.messageString);
                 $("#connectionInfo").val(JSON.stringify(contentData.messageString));
+            }
+            if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
+                console.log("candidate: " + contentData.messageString);
+                var candidate = new RTCIceCandidate(contentData.messageString);
+                peerConnection.addIceCandidate(candidate).catch(handleError);
             }
         });
     });
