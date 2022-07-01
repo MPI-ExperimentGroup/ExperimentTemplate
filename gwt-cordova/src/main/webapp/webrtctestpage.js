@@ -349,11 +349,10 @@ function connect() {
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
                 console.log("video-offer: " + contentData.messageString);
-                $("#connectionInfo").val(contentData.messageString);
-                initialiseConnection();
-                $("#acceptButton").prop("disabled", false);
                 if (!peerConnection) {
-                    console.log("No peer connection");
+                    $("#connectionInfo").val(contentData.messageString);
+                    initialiseConnection();
+                    $("#acceptButton").prop("disabled", false);
                 }
             }
             if (contentData.userId !== userId && contentData.stimuliList === "video-answer") {
