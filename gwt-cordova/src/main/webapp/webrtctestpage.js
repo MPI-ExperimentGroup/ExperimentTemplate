@@ -34,12 +34,6 @@ function acceptVideo() {
         localStream = stream;
         document.getElementById("localVideo").srcObject = localStream;
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-    }).then(function () {
-        return peerConnection.createAnswer();
-    }).then(function (answer) {
-        return peerConnection.setLocalDescription(answer);
-    }).then(function () {
-        sendToGroup("video-answer", peerConnection.localDescription);
     }).catch(handleDisconnectError);
 }
 
@@ -348,7 +342,13 @@ function connect() {
                 $("#connectionInfo").val(contentData.messageString);
                 $("#acceptButton").prop("disabled", false);
                 var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
-                peerConnection.setRemoteDescription(sessionDesc);
+                peerConnection.setRemoteDescription(sessionDesc).then(function () {
+                    return peerConnection.createAnswer();
+                }).then(function (answer) {
+                    return peerConnection.setLocalDescription(answer);
+                }).then(function () {
+                    sendToGroup("video-answer", peerConnection.localDescription);
+                });
             }
             if (contentData.userId !== userId && contentData.stimuliList === "video-answer") {
                 console.log("video-answer: " + contentData.messageString);
