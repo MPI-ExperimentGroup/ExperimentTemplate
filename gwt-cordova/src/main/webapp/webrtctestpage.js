@@ -367,7 +367,11 @@ function connect() {
                 console.log("candidate: " + contentData.messageString);
                 var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
                 if (peerConnection) {
-                    peerConnection.addIceCandidate(candidate).catch(reportError);
+                    if (peerConnection.remoteDescription) {
+                        peerConnection.addIceCandidate(candidate).catch(reportError);
+                    } else {
+                        console.log("No remote description");
+                    }
                 } else {
                     console.log("No peer connection");
                 }
