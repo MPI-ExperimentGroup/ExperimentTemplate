@@ -340,6 +340,14 @@ function connect() {
                     console.log("No peer connection");
                 }
             }
+            if (contentData.userId !== userId && contentData.stimuliList === "video-answer") {
+                console.log("video-answer: " + contentData.messageString);
+                if (peerConnection) {
+                    peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
+                } else {
+                    console.log("No peer connection");
+                }
+            }
             if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                 console.log("candidate: " + contentData.messageString);
                 var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
