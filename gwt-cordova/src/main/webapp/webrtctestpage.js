@@ -22,7 +22,6 @@
  */
 
 function offerVideo() {
-    initialiseConnection();
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
         document.getElementById("localVideo").srcObject = localStream;
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
@@ -31,11 +30,7 @@ function offerVideo() {
 }
 
 function acceptVideo() {
-    initialiseConnection();
-    var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
-    peerConnection.setRemoteDescription(sessionDesc).then(function () {
-        return navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-    }).then(function (stream) {
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (stream) {
         localStream = stream;
         document.getElementById("localVideo").srcObject = localStream;
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
@@ -349,11 +344,11 @@ function connect() {
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
                 console.log("video-offer: " + contentData.messageString);
-                if (!peerConnection) {
-                    $("#connectionInfo").val(contentData.messageString);
-                    initialiseConnection();
-                    $("#acceptButton").prop("disabled", false);
-                }
+                initialiseConnection();
+                $("#connectionInfo").val(contentData.messageString);
+                $("#acceptButton").prop("disabled", false);
+                var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
+                peerConnection.setRemoteDescription(sessionDesc);
             }
             if (contentData.userId !== userId && contentData.stimuliList === "video-answer") {
                 console.log("video-answer: " + contentData.messageString);
