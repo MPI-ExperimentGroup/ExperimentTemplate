@@ -26,6 +26,7 @@ function offerVideo() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
         document.getElementById("localVideo").srcObject = localStream;
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+        peerConnection.addStream(stream);
     }).catch(handleDisconnectError);
 }
 
@@ -178,6 +179,11 @@ function initialiseConnection() {
 
         peerConnection.onicegatheringstatechange = function () {
             console.log("onicegatheringstatechange");
+        };
+
+        peerConnection.onaddstream = function (event) {
+            console.log("onaddstream");
+            document.getElementById("remoteVideo").srcObject = event.stream;
         };
     }
 }
