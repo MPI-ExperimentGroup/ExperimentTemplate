@@ -26,7 +26,7 @@ function offerVideo() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
         document.getElementById("localVideo").srcObject = localStream;
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-        peerConnection.addStream(stream);
+        // peerConnection.addStream(localStream);
     }).catch(handleDisconnectError);
 }
 
@@ -98,6 +98,10 @@ function disconnectVideo() {
     remoteVideo.removeAttribute("srcObject");
     localVideo.removeAttribute("src");
     remoteVideo.removeAttribute("srcObject");
+    $("#initialiseButton").prop("disabled", peerConnection);
+    $("#offerButton").prop("disabled", !peerConnection);
+    $("#acceptButton").prop("disabled", !peerConnection);
+    $("#disconnectButton").prop("disabled", !peerConnection);
 }
 
 function reportError(e) {
@@ -181,11 +185,16 @@ function initialiseConnection() {
             console.log("onicegatheringstatechange");
         };
 
-        peerConnection.onaddstream = function (event) {
-            console.log("onaddstream");
-            document.getElementById("remoteVideo").srcObject = event.stream;
-        };
+        // peerConnection.onaddstream = function (event) {
+        //     console.log("onaddstream");
+        //     document.getElementById("remoteVideo").srcObject = event.stream;
+        // };
+
+        $("#acceptButton").prop("disabled", true);
     }
+    $("#initialiseButton").prop("disabled", peerConnection);
+    $("#offerButton").prop("disabled", !peerConnection);
+    $("#disconnectButton").prop("disabled", !peerConnection);
 }
 
 var peerConnection = null;
@@ -340,9 +349,10 @@ function connect() {
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
                 console.log("video-offer: " + contentData.messageString);
-                if (peerConnection) {
-                    $("#connectionInfo").val(contentData.messageString);
-                } else {
+                $("#connectionInfo").val(contentData.messageString);
+                initialiseConnection();
+                $("#acceptButton").prop("disabled", false);
+                if (!peerConnection) {
                     console.log("No peer connection");
                 }
             }
