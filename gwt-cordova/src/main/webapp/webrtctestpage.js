@@ -352,7 +352,7 @@ function connect() {
                     $("#connectionInfo").val(contentData.messageString);
                     // $("#acceptButton").prop("disabled", false);
                     // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
-                    peerConnection.setRemoteDescription(contentData.messageString).then(function () {
+                    peerConnection.setRemoteDescription(JSON.parse(contentData.messageString)).then(function () {
                         return peerConnection.createAnswer();
                     }).then(function (answer) {
                         sendToGroup("video-answer", answer.sdp);
