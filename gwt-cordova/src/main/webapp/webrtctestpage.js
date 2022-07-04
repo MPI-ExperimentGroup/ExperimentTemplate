@@ -41,13 +41,13 @@ function offerVideo() {
     }).catch(handleDisconnectError);
 }
 
-function acceptVideo() {
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (stream) {
-        localStream = stream;
-        document.getElementById("localVideo").srcObject = localStream;
-        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-    }).catch(handleDisconnectError);
-}
+// function acceptVideo() {
+// navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (stream) {
+//     localStream = stream;
+//     document.getElementById("localVideo").srcObject = localStream;
+//     localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+// }).catch(handleDisconnectError);
+// }
 
 function sendToGroup(status, messageObject) {
     stompClient.send("/app/group", {}, JSON.stringify({
@@ -127,6 +127,8 @@ function initialiseConnection() {
             console.log("onicecandidate");
             if (event.candidate) {
                 sendToGroup("candidate", event.candidate);
+            } else {
+                sendToGroup("candidate", "null");
             }
         };
 
@@ -377,7 +379,7 @@ function connect() {
                 var candidate = JSON.parse(contentData.messageString);
                 if (peerConnection) {
                     if (peerConnection.remoteDescription) {
-                        if (!candidate.candidate) {
+                        if (candidate === "null") {
                             peerConnection.addIceCandidate(null).catch(reportError);
                         } else {
                             peerConnection.addIceCandidate(candidate).catch(reportError);
