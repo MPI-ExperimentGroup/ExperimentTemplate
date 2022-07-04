@@ -24,7 +24,7 @@
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
-        sendToGroup("video-offer", offer.sdp);
+        sendToGroup("video-offer", offer);
         return peerConnection.setLocalDescription(offer);
         // }).then(function () {
         // sendToGroup("video-offer", peerConnection.localDescription);
@@ -355,7 +355,7 @@ function connect() {
                     peerConnection.setRemoteDescription(JSON.parse(contentData.messageString)).then(function () {
                         return peerConnection.createAnswer();
                     }).then(function (answer) {
-                        sendToGroup("video-answer", answer.sdp);
+                        sendToGroup("video-answer", answer);
                         return peerConnection.setLocalDescription(answer);
                         // }).then(function () {
                         // sendToGroup("video-answer", peerConnection.localDescription);
