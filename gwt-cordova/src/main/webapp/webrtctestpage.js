@@ -21,11 +21,23 @@
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 
+function initiateConnection() {
+    initialiseConnection();
+    peerConnection.createOffer().then(function (offer) {
+        sendToGroup("video-offer", offer.sdp);
+        return peerConnection.setLocalDescription(offer);
+        // }).then(function () {
+        // sendToGroup("video-offer", peerConnection.localDescription);
+        // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
+    }).catch(handleDisconnectError);
+}
+
 function offerVideo() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
         document.getElementById("localVideo").srcObject = localStream;
-        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+        // localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
         // peerConnection.addStream(localStream);
+        sendToGroup("ready", "");
     }).catch(handleDisconnectError);
 }
 
@@ -63,6 +75,7 @@ function sendToGroup(status, messageObject) {
 }
 
 function disconnectVideo() {
+    sendToGroup("disconnect", "");
     var remoteVideo = document.getElementById("remoteVideo");
     var localVideo = document.getElementById("localVideo");
     if (peerConnection) {
@@ -142,12 +155,6 @@ function initialiseConnection() {
         };
 
         peerConnection.onnegotiationneeded = function () {
-            peerConnection.createOffer().then(function (offer) {
-                return peerConnection.setLocalDescription(offer);
-            }).then(function () {
-                sendToGroup("video-offer", peerConnection.localDescription);
-                // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
-            }).catch(handleDisconnectError);
         }
 
         peerConnection.ontrack = function (event) {
@@ -338,37 +345,63 @@ function connect() {
             //     String groupUUID
             if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
                 console.log("video-offer: " + contentData.messageString);
-                initialiseConnection();
-                $("#connectionInfo").val(contentData.messageString);
-                $("#acceptButton").prop("disabled", false);
-                var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
-                peerConnection.setRemoteDescription(sessionDesc).then(function () {
-                    return peerConnection.createAnswer();
-                }).then(function (answer) {
-                    return peerConnection.setLocalDescription(answer);
-                }).then(function () {
-                    sendToGroup("video-answer", peerConnection.localDescription);
-                });
+                if (peerConnection) {
+                    console.log('already connected, ignoring');
+                } else {
+                    initialiseConnection();
+                    $("#connectionInfo").val(contentData.messageString);
+                    // $("#acceptButton").prop("disabled", false);
+                    // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
+                    peerConnection.setRemoteDescription(contentData.messageString).then(function () {
+                        return peerConnection.createAnswer();
+                    }).then(function (answer) {
+                        sendToGroup("video-answer", answer.sdp);
+                        return peerConnection.setLocalDescription(answer);
+                        // }).then(function () {
+                        // sendToGroup("video-answer", peerConnection.localDescription);
+                    });
+                }
             }
             if (contentData.userId !== userId && contentData.stimuliList === "video-answer") {
                 console.log("video-answer: " + contentData.messageString);
                 if (peerConnection) {
-                    peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
+                    peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
+                    // peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
                 } else {
                     console.log("No peer connection");
                 }
             }
             if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                 console.log("candidate: " + contentData.messageString);
-                var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
+                // var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
+                var candidate = JSON.parse(contentData.messageString);
                 if (peerConnection) {
                     if (peerConnection.remoteDescription) {
-                        peerConnection.addIceCandidate(candidate).catch(reportError);
+                        if (!candidate.candidate) {
+                            await peerConnection.addIceCandidate(null).catch(reportError);
+                        } else {
+                            peerConnection.addIceCandidate(candidate).catch(reportError);
+                        }
+                        // peerConnection.addIceCandidate(candidate).catch(reportError);
                     } else {
                         console.log("No remote description");
                     }
                 } else {
                     console.log("No peer connection");
+                }
+            }
+            if (contentData.userId !== userId && contentData.stimuliList === "ready") {
+                if (peerConnection) {
+                    console.log('already connected, ignoring');
+                } else {
+                    initiateConnection();
+                }
+            }
+            if (contentData.userId !== userId && contentData.stimuliList === "disconnect") {
+                if (peerConnection) {
+                    disconnectVideo();
+                } else {
+                    console.log('not connected, ignoring');
                 }
             }
         });
