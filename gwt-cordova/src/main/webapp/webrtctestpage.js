@@ -378,7 +378,7 @@ function connect() {
                 if (peerConnection) {
                     if (peerConnection.remoteDescription) {
                         if (!candidate.candidate) {
-                            await peerConnection.addIceCandidate(null).catch(reportError);
+                            peerConnection.addIceCandidate(null).catch(reportError);
                         } else {
                             peerConnection.addIceCandidate(candidate).catch(reportError);
                         }
