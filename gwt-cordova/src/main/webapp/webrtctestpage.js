@@ -25,10 +25,10 @@ var isReady = false;
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
-        sendToGroup("video-offer", { type: 'offer', sdp: offer.sdp });
+        sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
         return peerConnection.setLocalDescription(offer);
         // }).then(function () {
-        // sendToGroup("video-offer", peerConnection.localDescription);
+        // sendToGroup("offer", peerConnection.localDescription);
         // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
     }).catch(handleDisconnectError);
 }
@@ -353,8 +353,8 @@ function connect() {
             //     String responseStimulusId, 
             //     String groupUUID
             if (isReady) {
-                if (contentData.userId !== userId && contentData.stimuliList === "video-offer") {
-                    console.log("video-offer: " + contentData.messageString);
+                if (contentData.userId !== userId && contentData.stimuliList === "offer") {
+                    console.log("offer: " + contentData.messageString);
                     if (peerConnection) {
                         console.log('already connected, ignoring');
                     } else {
@@ -365,15 +365,15 @@ function connect() {
                         peerConnection.setRemoteDescription(JSON.parse(contentData.messageString)).then(function () {
                             return peerConnection.createAnswer();
                         }).then(function (answer) {
-                            sendToGroup("video-answer", { type: 'answer', sdp: answer.sdp });
+                            sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
                             return peerConnection.setLocalDescription(answer);
                             // }).then(function () {
-                            // sendToGroup("video-answer", peerConnection.localDescription);
+                            // sendToGroup("answer", peerConnection.localDescription);
                         });
                     }
                 }
-                if (contentData.userId !== userId && contentData.stimuliList === "video-answer") {
-                    console.log("video-answer: " + contentData.messageString);
+                if (contentData.userId !== userId && contentData.stimuliList === "answer") {
+                    console.log("answer: " + contentData.messageString);
                     if (peerConnection) {
                         peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
                         // peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
