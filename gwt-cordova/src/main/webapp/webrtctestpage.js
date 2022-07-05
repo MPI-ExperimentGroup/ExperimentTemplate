@@ -25,8 +25,8 @@ var isReady = false;
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
+        sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
         peerConnection.setLocalDescription(offer).then(function () {
-            sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
             // sendToGroup("offer", peerConnection.localDescription);
             // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
         });
@@ -50,6 +50,36 @@ function offerVideo() {
 //     localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
 // }).catch(handleDisconnectError);
 // }
+
+function handleAnswer(answer) {
+    console.log("answer: " + contentData.messageString);
+    if (peerConnection) {
+        peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
+        // peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
+    } else {
+        console.log("No peer connection");
+    }
+}
+
+function handleCandidate(candidate) {
+    // var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
+    //var candidate = JSON.parse(contentData.messageString);
+    if (peerConnection) {
+        // if (peerConnection.remoteDescription) {
+        if (candidate === "null") {
+            peerConnection.addIceCandidate(null).catch(reportError);
+        } else {
+            peerConnection.addIceCandidate(candidate).catch(reportError);
+        }
+        // peerConnection.addIceCandidate(candidate).catch(reportError);
+        // } else {
+        // TODO: this seems to be a problem
+        // console.log("No remote description");
+        // }
+    } else {
+        console.log("No peer connection");
+    }
+}
 
 function sendToGroup(status, messageObject) {
     stompClient.send("/app/group", {}, JSON.stringify({
@@ -373,33 +403,11 @@ function connect() {
                     }
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "answer") {
-                    console.log("answer: " + contentData.messageString);
-                    if (peerConnection) {
-                        peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
-                        // peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
-                    } else {
-                        console.log("No peer connection");
-                    }
+                    handleAnswer(JSON.parse(contentData.messageString));
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                     console.log("candidate: " + contentData.messageString);
-                    // var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
-                    var candidate = JSON.parse(contentData.messageString);
-                    if (peerConnection) {
-                        // if (peerConnection.remoteDescription) {
-                            if (candidate === "null") {
-                                peerConnection.addIceCandidate(null).catch(reportError);
-                            } else {
-                                peerConnection.addIceCandidate(candidate).catch(reportError);
-                            }
-                            // peerConnection.addIceCandidate(candidate).catch(reportError);
-                        // } else {
-                            // TODO: this seems to be a problem
-                            // console.log("No remote description");
-                        // }
-                    } else {
-                        console.log("No peer connection");
-                    }
+                    handleCandidate(JSON.parse(contentData.messageString));
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "ready") {
                     if (peerConnection) {
@@ -428,6 +436,7 @@ function disconnect() {
     console.log("Disconnected");
     $("#groupTarget").append("<tr><td>Disconnected</td></tr>");
 }
+
 var stepCounter = 0;
 function startBar() {
     stompClient.send("/app/shared", {}, JSON.stringify({
