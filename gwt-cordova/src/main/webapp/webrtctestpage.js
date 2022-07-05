@@ -386,16 +386,17 @@ function connect() {
                     // var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
                     var candidate = JSON.parse(contentData.messageString);
                     if (peerConnection) {
-                        if (peerConnection.remoteDescription) {
+                        // if (peerConnection.remoteDescription) {
                             if (candidate === "null") {
                                 peerConnection.addIceCandidate(null).catch(reportError);
                             } else {
                                 peerConnection.addIceCandidate(candidate).catch(reportError);
                             }
                             // peerConnection.addIceCandidate(candidate).catch(reportError);
-                        } else {
-                            console.log("No remote description");
-                        }
+                        // } else {
+                            // TODO: this seems to be a problem
+                            // console.log("No remote description");
+                        // }
                     } else {
                         console.log("No peer connection");
                     }
