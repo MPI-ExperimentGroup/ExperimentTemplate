@@ -25,7 +25,7 @@ var isReady = false;
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
-        sendToGroup("video-offer", offer);
+        sendToGroup("video-offer", { type: 'offer', sdp: offer.sdp });
         return peerConnection.setLocalDescription(offer);
         // }).then(function () {
         // sendToGroup("video-offer", peerConnection.localDescription);
@@ -102,9 +102,9 @@ function disconnectVideo() {
     remoteVideo.removeAttribute("srcObject");
     localVideo.removeAttribute("src");
     remoteVideo.removeAttribute("srcObject");
-    $("#initialiseButton").prop("disabled", peerConnection);
+    // $("#initialiseButton").prop("disabled", peerConnection);
     $("#offerButton").prop("disabled", !peerConnection);
-    $("#acceptButton").prop("disabled", !peerConnection);
+    // $("#acceptButton").prop("disabled", !peerConnection);
     $("#disconnectButton").prop("disabled", !peerConnection);
     isReady = false;
 }
@@ -120,16 +120,20 @@ function handleDisconnectError(e) {
 
 function initialiseConnection() {
     if (!peerConnection) {
-        var configuration = {
+        var configuration = null; /*{
             iceServers: [{
                 urls: "stun:stun.stunprotocol.org"
             }]
-        };
+        };*/
         peerConnection = new RTCPeerConnection(configuration);
         peerConnection.onicecandidate = function (event) {
             console.log("onicecandidate");
             if (event.candidate) {
-                sendToGroup("candidate", event.candidate);
+                sendToGroup("candidate", {
+                    type: 'candidate', candidate: event.candidate.candidate,
+                    sdpMid: event.candidate.sdpMid,
+                    sdpMLineIndex: event.candidate.sdpMLineIndex
+                });
             } else {
                 sendToGroup("candidate", "null");
             }
@@ -191,10 +195,10 @@ function initialiseConnection() {
         //     document.getElementById("remoteVideo").srcObject = event.stream;
         // };
 
-        $("#acceptButton").prop("disabled", true);
+        // $("#acceptButton").prop("disabled", true);
     }
-    $("#initialiseButton").prop("disabled", peerConnection);
-    $("#offerButton").prop("disabled", !peerConnection);
+    // $("#initialiseButton").prop("disabled", peerConnection);
+    $("#offerButton").prop("disabled", isReady);
     $("#disconnectButton").prop("disabled", !peerConnection);
 }
 
@@ -361,7 +365,7 @@ function connect() {
                         peerConnection.setRemoteDescription(JSON.parse(contentData.messageString)).then(function () {
                             return peerConnection.createAnswer();
                         }).then(function (answer) {
-                            sendToGroup("video-answer", answer);
+                            sendToGroup("video-answer", { type: 'answer', sdp: answer.sdp });
                             return peerConnection.setLocalDescription(answer);
                             // }).then(function () {
                             // sendToGroup("video-answer", peerConnection.localDescription);
