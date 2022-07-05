@@ -25,11 +25,11 @@ var isReady = false;
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
-        sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
-        return peerConnection.setLocalDescription(offer);
-        // }).then(function () {
-        // sendToGroup("offer", peerConnection.localDescription);
-        // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
+        peerConnection.setLocalDescription(offer).then(function () {
+            sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
+            // sendToGroup("offer", peerConnection.localDescription);
+            // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
+        });
     }).catch(handleDisconnectError);
 }
 
