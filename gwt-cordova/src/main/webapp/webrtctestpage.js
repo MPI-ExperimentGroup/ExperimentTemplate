@@ -75,7 +75,7 @@ function handleAnswer(sendingUserId, answer) {
             peerConnection.setRemoteDescription(answer);
         } else if (!peerConnection.localDescription) {
             // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-            peerConnection.setLocalDescription(offer);
+            peerConnection.setLocalDescription(answer);
         }
         // peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     } else {
