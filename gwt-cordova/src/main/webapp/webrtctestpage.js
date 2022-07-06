@@ -26,10 +26,10 @@ function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
         sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
-        peerConnection.setLocalDescription(offer).then(function () {
-            // sendToGroup("offer", peerConnection.localDescription);
-            // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
-        });
+        // peerConnection.setLocalDescription(offer).then(function () {
+        // sendToGroup("offer", peerConnection.localDescription);
+        // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
+        //});
     }).catch(handleDisconnectError);
 }
 
@@ -54,7 +54,12 @@ function offerVideo() {
 function handleAnswer(answer) {
     console.log("answer: " + contentData.messageString);
     if (peerConnection) {
-        peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
+        if (contentData.userId !== userId) {
+            peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
+        } else if (!peerConnection.localDescription) {
+            // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
+            peerConnection.setLocalDescription(offer);
+        }
         // peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
     } else {
         console.log("No peer connection");
@@ -402,7 +407,7 @@ function connect() {
                         });
                     }
                 }
-                if (contentData.userId !== userId && contentData.stimuliList === "answer") {
+                if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "answer") {
                     handleAnswer(JSON.parse(contentData.messageString));
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
