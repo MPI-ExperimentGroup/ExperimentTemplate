@@ -56,7 +56,6 @@ function handleOffer(offer) {
         console.log('already connected, ignoring');
     } else {
         initialiseConnection();
-        // $("#connectionInfo").val(contentData.messageString);
         // $("#acceptButton").prop("disabled", false);
         // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
         peerConnection.setRemoteDescription(offer).then(function () {
@@ -71,23 +70,21 @@ function handleOffer(offer) {
 }
 
 function handleAnswer(answer) {
-    console.log("answer: " + contentData.messageString);
     if (peerConnection) {
         if (contentData.userId !== userId) {
-            peerConnection.setRemoteDescription(JSON.parse(contentData.messageString));
+            peerConnection.setRemoteDescription(answer);
         } else if (!peerConnection.localDescription) {
             // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
             peerConnection.setLocalDescription(offer);
         }
-        // peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(contentData.messageString)));
+        // peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     } else {
         console.log("No peer connection");
     }
 }
 
 function handleCandidate(candidate) {
-    // var candidate = new RTCIceCandidate(JSON.parse(contentData.messageString));
-    //var candidate = JSON.parse(contentData.messageString);
+    // var candidate = new RTCIceCandidate(candidate);
     if (peerConnection) {
         // if (peerConnection.remoteDescription) {
         if (candidate === "null") {
@@ -412,6 +409,7 @@ function connect() {
                     handleOffer(JSON.parse(contentData.messageString));
                 }
                 if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "answer") {
+                    console.log("answer: " + contentData.messageString);
                     handleAnswer(JSON.parse(contentData.messageString));
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
