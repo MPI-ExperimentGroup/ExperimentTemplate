@@ -21,7 +21,6 @@
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 
-var isReady = false;
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
@@ -34,7 +33,8 @@ function initiateConnection() {
 }
 
 function offerVideo() {
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (localStream) {
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
+        localStream = captureStream;
         document.getElementById("localVideo").srcObject = localStream;
         isReady = true;
         // localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
@@ -158,6 +158,7 @@ function disconnectVideo() {
     $("#offerButton").prop("disabled", !peerConnection);
     // $("#acceptButton").prop("disabled", !peerConnection);
     $("#disconnectButton").prop("disabled", !peerConnection);
+    localStream = null;
     isReady = false;
 }
 
@@ -247,6 +248,8 @@ function initialiseConnection() {
         //     document.getElementById("remoteVideo").srcObject = event.stream;
         // };
 
+        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
         // $("#acceptButton").prop("disabled", true);
     }
     // $("#initialiseButton").prop("disabled", peerConnection);
@@ -254,6 +257,8 @@ function initialiseConnection() {
     $("#disconnectButton").prop("disabled", !peerConnection);
 }
 
+var isReady = false;
+var localStream = null;
 var peerConnection = null;
 var stompClient = null;
 var userId = "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
