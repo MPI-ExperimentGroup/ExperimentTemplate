@@ -82,6 +82,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <button type="button" class="btn btn-default" id="initialiseButton" disabled onclick='initialiseConnection()'>Initialise</button>
                     <button type="button" class="btn btn-default" id="offerButton" onclick='offerVideo()'>Offer Video</button>
                     <button type="button" class="btn btn-default" id="acceptButton" disabled onclick='acceptVideo();'>Accept Video</button>
+                    <button type="button" class="btn btn-default" id="disconnectButton" disabled onclick='changeStream({ audio: true, video: true });'>Video&Audio</button>
+                    <button type="button" class="btn btn-default" id="disconnectButton" disabled onclick='changeStream({ audio: true, video: false });'>Audio</button>
+                    <button type="button" class="btn btn-default" id="disconnectButton" disabled onclick='changeStream({ audio: false, video: true });'>Video</button>
+                    <button type="button" class="btn btn-default" id="disconnectButton" disabled onclick='changeStream(null);'>None</button>
                     <button type="button" class="btn btn-default" id="disconnectButton" disabled onclick='disconnectVideo();'>Disconnect Video</button>
                     <input id="connectionInfo" class="form-control" type="text" placeholder="connection info">
                 </form>

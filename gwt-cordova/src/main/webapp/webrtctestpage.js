@@ -32,6 +32,10 @@ function initiateConnection() {
     }).catch(handleDisconnectError);
 }
 
+function changeStream(streamOption) {
+    peerConnection.getSenders().forEach(track => track.enabled = (streamOption[track.kind]) ? streamOption[track.kind] : track.enabled);
+}
+
 function offerVideo() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
