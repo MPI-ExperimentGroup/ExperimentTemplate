@@ -51,9 +51,14 @@ function offerVideo() {
 // }).catch(handleDisconnectError);
 // }
 
-function handleOffer(offer) {
+function handleOffer(sendingUserId, offer) {
     if (peerConnection) {
-        console.log('already connected, ignoring');
+        if (sendingUserId !== userId) {
+            console.log('already connected, ignoring');
+        } else if (!peerConnection.localDescription) {
+            // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
+            peerConnection.setLocalDescription(answer);
+        }
     } else {
         initialiseConnection();
         // $("#acceptButton").prop("disabled", false);
@@ -69,14 +74,9 @@ function handleOffer(offer) {
     }
 }
 
-function handleAnswer(sendingUserId, answer) {
+function handleAnswer(answer) {
     if (peerConnection) {
-        if (sendingUserId !== userId) {
-            peerConnection.setRemoteDescription(answer);
-        } else if (!peerConnection.localDescription) {
-            // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-            peerConnection.setLocalDescription(answer);
-        }
+        peerConnection.setRemoteDescription(answer);
         // peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     } else {
         console.log("No peer connection");
@@ -404,13 +404,13 @@ function connect() {
             //     String responseStimulusId, 
             //     String groupUUID
             if (isReady) {
-                if (contentData.userId !== userId && contentData.stimuliList === "offer") {
+                if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "offer") {
                     console.log("offer: " + contentData.messageString);
-                    handleOffer(JSON.parse(contentData.messageString));
+                    handleOffer(contentData.userId, JSON.parse(contentData.messageString));
                 }
-                if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "answer") {
+                if (contentData.userId !== userId && contentData.stimuliList === "answer") {
                     console.log("answer: " + contentData.messageString);
-                    handleAnswer(contentData.userId, JSON.parse(contentData.messageString));
+                    handleAnswer(JSON.parse(contentData.messageString));
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                     console.log("candidate: " + contentData.messageString);
