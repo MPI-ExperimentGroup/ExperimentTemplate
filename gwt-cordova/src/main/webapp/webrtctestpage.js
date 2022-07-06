@@ -51,6 +51,25 @@ function offerVideo() {
 // }).catch(handleDisconnectError);
 // }
 
+function handleOffer(offer) {
+    if (peerConnection) {
+        console.log('already connected, ignoring');
+    } else {
+        initialiseConnection();
+        // $("#connectionInfo").val(contentData.messageString);
+        // $("#acceptButton").prop("disabled", false);
+        // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
+        peerConnection.setRemoteDescription(offer).then(function () {
+            return peerConnection.createAnswer();
+        }).then(function (answer) {
+            sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
+            return peerConnection.setLocalDescription(answer);
+            // }).then(function () {
+            // sendToGroup("answer", peerConnection.localDescription);
+        });
+    }
+}
+
 function handleAnswer(answer) {
     console.log("answer: " + contentData.messageString);
     if (peerConnection) {
@@ -390,22 +409,7 @@ function connect() {
             if (isReady) {
                 if (contentData.userId !== userId && contentData.stimuliList === "offer") {
                     console.log("offer: " + contentData.messageString);
-                    if (peerConnection) {
-                        console.log('already connected, ignoring');
-                    } else {
-                        initialiseConnection();
-                        $("#connectionInfo").val(contentData.messageString);
-                        // $("#acceptButton").prop("disabled", false);
-                        // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
-                        peerConnection.setRemoteDescription(JSON.parse(contentData.messageString)).then(function () {
-                            return peerConnection.createAnswer();
-                        }).then(function (answer) {
-                            sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
-                            return peerConnection.setLocalDescription(answer);
-                            // }).then(function () {
-                            // sendToGroup("answer", peerConnection.localDescription);
-                        });
-                    }
+                    handleOffer(JSON.parse(contentData.messageString));
                 }
                 if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "answer") {
                     handleAnswer(JSON.parse(contentData.messageString));
