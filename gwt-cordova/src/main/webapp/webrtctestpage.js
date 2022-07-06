@@ -162,6 +162,10 @@ function disconnectVideo() {
     // $("#initialiseButton").prop("disabled", peerConnection);
     $("#offerButton").prop("disabled", !peerConnection);
     // $("#acceptButton").prop("disabled", !peerConnection);
+    $("#changeVideoAudioButton").prop("disabled", !peerConnection);
+    $("#changeAudioButton").prop("disabled", !peerConnection);
+    $("#changeVideoButton").prop("disabled", !peerConnection);
+    $("#changeNoneButton").prop("disabled", !peerConnection);
     $("#disconnectButton").prop("disabled", !peerConnection);
     localStream = null;
     isReady = false;
@@ -259,6 +263,10 @@ function initialiseConnection() {
     }
     // $("#initialiseButton").prop("disabled", peerConnection);
     $("#offerButton").prop("disabled", isReady);
+    $("#changeVideoAudioButton").prop("disabled", !peerConnection);
+    $("#changeAudioButton").prop("disabled", !peerConnection);
+    $("#changeVideoButton").prop("disabled", !peerConnection);
+    $("#changeNoneButton").prop("disabled", !peerConnection);
     $("#disconnectButton").prop("disabled", !peerConnection);
 }
 
