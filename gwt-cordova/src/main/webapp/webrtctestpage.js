@@ -69,9 +69,9 @@ function handleOffer(offer) {
     }
 }
 
-function handleAnswer(answer) {
+function handleAnswer(sendingUserId, answer) {
     if (peerConnection) {
-        if (contentData.userId !== userId) {
+        if (sendingUserId !== userId) {
             peerConnection.setRemoteDescription(answer);
         } else if (!peerConnection.localDescription) {
             // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
@@ -410,7 +410,7 @@ function connect() {
                 }
                 if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "answer") {
                     console.log("answer: " + contentData.messageString);
-                    handleAnswer(JSON.parse(contentData.messageString));
+                    handleAnswer(contentData.userId, JSON.parse(contentData.messageString));
                 }
                 if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
                     console.log("candidate: " + contentData.messageString);
