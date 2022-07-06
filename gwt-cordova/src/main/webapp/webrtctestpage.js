@@ -34,6 +34,7 @@ function initiateConnection() {
 
 function changeStream(streamOption) {
     peerConnection.getSenders().forEach(track => track.enabled = (streamOption[track.kind]) ? streamOption[track.kind] : track.enabled);
+    sendToGroup("change", streamOption);
 }
 
 function offerVideo() {
