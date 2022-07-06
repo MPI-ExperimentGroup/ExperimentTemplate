@@ -87,12 +87,12 @@ function handleCandidate(candidate) {
     // var candidate = new RTCIceCandidate(candidate);
     if (peerConnection) {
         // if (peerConnection.remoteDescription) {
-        // if (candidate === "null") {
-        //     peerConnection.addIceCandidate(null).catch(reportError);
-        // } else {
+        if (candidate === "null" || !candidate.candidate) {
             // the terminal null is sent inside the candidate object
+            peerConnection.addIceCandidate(null).catch(reportError);
+        } else {
             peerConnection.addIceCandidate(candidate).catch(reportError);
-        // }
+        }
         // peerConnection.addIceCandidate(candidate).catch(reportError);
         // } else {
         // TODO: this seems to be a problem
