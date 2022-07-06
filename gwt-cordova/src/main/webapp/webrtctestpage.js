@@ -57,7 +57,7 @@ function handleOffer(sendingUserId, offer) {
             console.log('already connected, ignoring');
         } else if (!peerConnection.localDescription) {
             // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-            peerConnection.setLocalDescription(answer);
+            peerConnection.setLocalDescription(offer);
         }
     } else {
         initialiseConnection();
