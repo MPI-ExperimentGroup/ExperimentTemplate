@@ -33,7 +33,7 @@ function initiateConnection() {
 }
 
 function changeStream(streamOption) {
-    peerConnection.getSenders().forEach(sender => sender.track.enabled = (streamOption[sender.track.kind]) ? streamOption[track.kind] : sender.track.enabled);
+    peerConnection.getSenders().forEach(sender => sender.track.enabled = (streamOption[sender.track.kind]) ? streamOption[sender.track.kind] : sender.track.enabled);
     sendToGroup("change", streamOption);
 }
 
