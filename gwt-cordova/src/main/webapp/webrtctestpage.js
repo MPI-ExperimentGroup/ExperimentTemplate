@@ -42,7 +42,30 @@ function offerCanvas() {
     localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
+    localCanvas = document.getElementById("localCanvas");
+    localContext = localCanvas.getContext("2d");
+    localContext.font = "20px Arial";
+    localContext.fillText(userId, 10, 50);
+    localCanvas.addEventListener("mousemove", function (event) {
+        if (event.buttons > 0) {
+            // console.log(event);
+            // console.log(event.clientX);
+            // console.log(localCanvas.offsetLeft);
+            // console.log(window.pageXOffset);
+            localContext.beginPath();
+            var bounds = localCanvas.getBoundingClientRect();
+            var positionX = event.clientX - bounds.x;
+            var positionY = event.clientY - bounds.y;
+            localContext.moveTo((positionX - event.movementX) / bounds.width * localCanvas.width, (positionY - event.movementY) / bounds.height * localCanvas.height);
+            localContext.lineTo(positionX / bounds.width * localCanvas.width, positionY / bounds.height * localCanvas.height);
+            localContext.strokeStyle = "blue";
+            localContext.lineWidth = 1;
+            localContext.stroke();
+            localContext.closePath();
+        }
+    }, false);
 }
+
 function offerVideo() {
     $("#streamContainer").append("<video id=\"localVideo\" style=\"width:40vw\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
