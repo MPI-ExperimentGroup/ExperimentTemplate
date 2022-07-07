@@ -38,13 +38,13 @@ function changeStream(streamOption) {
 }
 
 function offerCanvas() {
-    $("#streamContainer").append("<canvas id=\"localCanvas\" width=\"300\" height=\"300\"></canvas>");
+    $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:40vw\" width=\"400\" height=\"300\"></canvas>");
     localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
 }
 function offerVideo() {
-    $("#streamContainer").append("<video id=\"localVideo\" autoplay muted></video>");
+    $("#streamContainer").append("<video id=\"localVideo\" style=\"width:40vw\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
         document.getElementById("localVideo").srcObject = localStream;
