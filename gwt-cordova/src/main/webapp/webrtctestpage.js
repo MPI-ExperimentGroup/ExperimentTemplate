@@ -38,7 +38,9 @@ function changeStream(streamOption) {
 }
 
 function offerCanvas() {
-    $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:40vw\" width=\"400\" height=\"300\"></canvas>");
+    $("#offerVideoButton").prop("disabled", true);
+    $("#offerCanvasButton").prop("disabled", true);
+    $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:80vw\" width=\"400\" height=\"300\"></canvas>");
     localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
@@ -73,7 +75,9 @@ function offerCanvas() {
 }
 
 function offerVideo() {
-    $("#streamContainer").append("<video id=\"localVideo\" style=\"width:40vw\" autoplay muted></video>");
+    $("#offerVideoButton").prop("disabled", true);
+    $("#offerCanvasButton").prop("disabled", true);
+    $("#streamContainer").append("<video id=\"localVideo\" style=\"width:80vw\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
         document.getElementById("localVideo").srcObject = localStream;
@@ -271,7 +275,7 @@ function initialiseConnection() {
 
         peerConnection.ontrack = function (event) {
             console.log("ontrack");
-            $("#streamContainer").append("<video id=\"remoteVideo\" autoplay muted></video>");
+            $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
             document.getElementById("remoteVideo").srcObject = event.streams[0];
             // $("#remoteVideo").attr('src', event.streams[0]);
         };
