@@ -315,6 +315,8 @@ function initialiseConnection() {
 
 var isReady = false;
 var localStream = null;
+var localCanvas = null;
+var localContext = null;
 var peerConnection = null;
 var stompClient = null;
 var userId = "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
