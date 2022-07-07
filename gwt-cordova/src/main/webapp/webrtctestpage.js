@@ -47,7 +47,8 @@ function offerVideo() {
     $("#streamContainer").append("<video id=\"localVideo\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
-        $("#localVideo").srcObject = localStream;
+        // document.getElementById("localVideo").srcObject = localStream;
+        $("#localVideo").attr('src', localStream);
         isReady = true;
         // localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
         // peerConnection.addStream(localStream);
@@ -242,7 +243,8 @@ function initialiseConnection() {
         peerConnection.ontrack = function (event) {
             console.log("ontrack");
             $("#streamContainer").append("<video id=\"remoteVideo\" autoplay muted></video>");
-            $("#remoteVideo").srcObject = event.streams[0];
+            // document.getElementById("remoteVideo").srcObject = event.streams[0];
+            $("#remoteVideo").attr('src', event.streams[0]);
         };
 
         peerConnection.onremovetrack = function () {
