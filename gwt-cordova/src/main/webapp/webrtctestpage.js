@@ -39,7 +39,7 @@ function changeStream(streamOption) {
 
 function offerCanvas() {
     $("#streamContainer").append("<canvas id=\"localCanvas\" width=\"300\" height=\"300\"></canvas>");
-    localStream = $("#localCanvas").captureStream(15); // 15 FPS
+    localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
 }
