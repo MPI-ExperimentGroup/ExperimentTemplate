@@ -37,7 +37,14 @@ function changeStream(streamOption) {
     sendToGroup("change", streamOption);
 }
 
+function offerCanvas() {
+    $("streamContainer").append("<canvas id=\"localCanvas\" width=\"300\" height=\"300\"></canvas>");
+    localStream = canvasElt.captureStream(15); // 15 FPS
+    isReady = true;
+    sendToGroup("ready", "");
+}
 function offerVideo() {
+    $("streamContainer").append("<video id=\"localVideo\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
         document.getElementById("localVideo").srcObject = localStream;
@@ -155,12 +162,16 @@ function disconnectVideo() {
         peerConnection.close();
         peerConnection = null;
     }
-    remoteVideo.removeAttribute("src");
-    remoteVideo.removeAttribute("srcObject");
-    localVideo.removeAttribute("src");
-    remoteVideo.removeAttribute("srcObject");
+
+    $("#streamContainer").empty();
+    // remoteVideo.removeAttribute("src");
+    // remoteVideo.removeAttribute("srcObject");
+    // localVideo.removeAttribute("src");
+    // remoteVideo.removeAttribute("srcObject");
+
     // $("#initialiseButton").prop("disabled", peerConnection);
-    $("#offerButton").prop("disabled", !peerConnection);
+    $("#offerVideoButton").prop("disabled", !peerConnection);
+    $("#offerCanvasButton").prop("disabled", !peerConnection);
     // $("#acceptButton").prop("disabled", !peerConnection);
     $("#changeVideoAudioButton").prop("disabled", !peerConnection);
     $("#changeAudioButton").prop("disabled", !peerConnection);
@@ -230,7 +241,8 @@ function initialiseConnection() {
 
         peerConnection.ontrack = function (event) {
             console.log("ontrack");
-            document.getElementById("remoteVideo").srcObject = event.streams[0];
+            $("streamContainer").append("<video id=\"remoteVideo\" autoplay muted></video>");
+            $("remoteVideo").srcObject = event.streams[0];
         };
 
         peerConnection.onremovetrack = function () {
@@ -262,7 +274,8 @@ function initialiseConnection() {
         // $("#acceptButton").prop("disabled", true);
     }
     // $("#initialiseButton").prop("disabled", peerConnection);
-    $("#offerButton").prop("disabled", isReady);
+    $("#offerVideoButton").prop("disabled", isReady);
+    $("#offerCanvasButton").prop("disabled", isReady);
     $("#changeVideoAudioButton").prop("disabled", !peerConnection);
     $("#changeAudioButton").prop("disabled", !peerConnection);
     $("#changeVideoButton").prop("disabled", !peerConnection);
