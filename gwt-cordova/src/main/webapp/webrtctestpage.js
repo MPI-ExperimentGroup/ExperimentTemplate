@@ -44,6 +44,11 @@ function offerCanvas() {
     sendToGroup("ready", "");
     localCanvas = document.getElementById("localCanvas");
     localContext = localCanvas.getContext("2d");
+
+    // localContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
+    localContext.fillStyle = "lightgrey";
+    localContext.fillRect(0, 0, localCanvas.width, localCanvas.height);
+
     localContext.font = "20px Arial";
     localContext.fillText(userId, 10, 50);
     localCanvas.addEventListener("mousemove", function (event) {
