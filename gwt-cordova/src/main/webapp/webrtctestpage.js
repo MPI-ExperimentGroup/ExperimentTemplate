@@ -39,7 +39,7 @@ function changeStream(streamOption) {
 
 function offerCanvas() {
     $("streamContainer").append("<canvas id=\"localCanvas\" width=\"300\" height=\"300\"></canvas>");
-    localStream = canvasElt.captureStream(15); // 15 FPS
+    localStream = $("localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
 }
@@ -47,7 +47,7 @@ function offerVideo() {
     $("streamContainer").append("<video id=\"localVideo\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
-        document.getElementById("localVideo").srcObject = localStream;
+        $("localVideo").srcObject = localStream;
         isReady = true;
         // localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
         // peerConnection.addStream(localStream);
