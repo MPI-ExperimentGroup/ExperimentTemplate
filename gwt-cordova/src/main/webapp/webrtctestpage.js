@@ -151,7 +151,7 @@ function handleCandidate(candidate) {
 
 function sendToGroup(status, messageObject) {
     stompClient.send("/app/group", {}, JSON.stringify({
-        'groupId': null,
+        'groupId': groupId,
         'screenId': null,
         'groupCommunicationChannels': null,
         'expectedRespondents': null,
@@ -167,7 +167,7 @@ function sendToGroup(status, messageObject) {
         'userId': userId,
         'userLabel': null,
         'allMemberCodes': 'A,B,C,D,E,F,G',
-        'memberCode': null,
+        'memberCode': memberCode,
         'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
         'messageString': JSON.stringify(messageObject),
         'groupReady': null
@@ -328,7 +328,7 @@ var stompClient = null;
 const urlParams = new URLSearchParams(window.location.search);
 const userId = (urlParams.has("mockuser")) ? urlParams.get("mockuser") : "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
 const groupId = (urlParams.has("group")) ? urlParams.get("group") : null;
-const memberId = (urlParams.has("member")) ? urlParams.get("member") : null;
+const memberCode = (urlParams.has("member")) ? urlParams.get("member") : null;
 
 if (urlParams.has("compact")) {
     $("#infoDiv").prop("visible", false);
@@ -486,30 +486,32 @@ function connect() {
             //     String responseStimulusId, 
             //     String groupUUID
             if (isReady) {
-                if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "offer") {
-                    console.log("offer: " + contentData.messageString);
-                    handleOffer(contentData.userId, JSON.parse(contentData.messageString));
-                }
-                if (contentData.userId !== userId && contentData.stimuliList === "answer") {
-                    console.log("answer: " + contentData.messageString);
-                    handleAnswer(JSON.parse(contentData.messageString));
-                }
-                if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
-                    console.log("candidate: " + contentData.messageString);
-                    handleCandidate(JSON.parse(contentData.messageString));
-                }
-                if (contentData.userId !== userId && contentData.stimuliList === "ready") {
-                    if (peerConnection) {
-                        console.log('already connected, ignoring');
-                    } else {
-                        initiateConnection();
+                if (!groupId || groupId == contentData.groupId) {
+                    if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "offer") {
+                        console.log("offer: " + contentData.messageString);
+                        handleOffer(contentData.userId, JSON.parse(contentData.messageString));
                     }
-                }
-                if (contentData.userId !== userId && contentData.stimuliList === "disconnect") {
-                    if (peerConnection) {
-                        disconnectVideo();
-                    } else {
-                        console.log('not connected, ignoring');
+                    if (contentData.userId !== userId && contentData.stimuliList === "answer") {
+                        console.log("answer: " + contentData.messageString);
+                        handleAnswer(JSON.parse(contentData.messageString));
+                    }
+                    if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
+                        console.log("candidate: " + contentData.messageString);
+                        handleCandidate(JSON.parse(contentData.messageString));
+                    }
+                    if (contentData.userId !== userId && contentData.stimuliList === "ready") {
+                        if (peerConnection) {
+                            console.log('already connected, ignoring');
+                        } else {
+                            initiateConnection();
+                        }
+                    }
+                    if (contentData.userId !== userId && contentData.stimuliList === "disconnect") {
+                        if (peerConnection) {
+                            disconnectVideo();
+                        } else {
+                            console.log('not connected, ignoring');
+                        }
                     }
                 }
             }
@@ -553,11 +555,11 @@ function updateGroup() {
         'groupReady': null
     }));
 }
-function messageGroup(currentUserId, requestedPhase, screenId, userLabel, groupId, allMemberCodes, memberCode, stimulusId) {
+function messageGroup(currentUserId, requestedPhase, screenId, userLabel, groupIdL, allMemberCodes, memberCode, stimulusId) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': currentUserId,
         'userLabel': userLabel,
-        'groupId': groupId,
+        'groupId': groupIdL,
         'screenId': screenId,
         'allMemberCodes': allMemberCodes,
         'memberCode': memberCode,
