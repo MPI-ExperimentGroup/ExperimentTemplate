@@ -56,7 +56,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div class="col-md-6">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="connect">WebSocket connection:</label>
+                        <label>WebSocket:</label>
                         <button id="connect" class="btn btn-default" type="submit">Connect</button>
                         <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
                         </button>
@@ -86,9 +86,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div class="row">
             <div class="col-md-6">
                 <form class="form-inline">
+                    <label>WebRTC:</label>
                     <button type="button" class="btn btn-default" id="initialiseButton" disabled onclick='initialiseConnection()'>Initialise</button>
-                    <button type="button" class="btn btn-default" id="offerVideoButton" onclick='offerVideo()'>Offer Video</button>
-                    <button type="button" class="btn btn-default" id="offerCanvasButton" onclick='offerCanvas()'>Offer Canvas</button>
+                    <button type="button" class="btn btn-default" id="offerVideoButton" disabled onclick='offerVideo()'>Offer Video</button>
+                    <button type="button" class="btn btn-default" id="offerCanvasButton" disabled onclick='offerCanvas()'>Offer Canvas</button>
                     <button type="button" class="btn btn-default" id="acceptButton" disabled onclick='acceptVideo();'>Accept Video</button>
                     <button type="button" class="btn btn-default" id="changeVideoAudioButton" disabled onclick='changeStream({ audio: true, video: true });'>Video&Audio</button>
                     <button type="button" class="btn btn-default" id="changeAudioButton" disabled onclick='changeStream({ audio: true, video: false });'>Audio</button>

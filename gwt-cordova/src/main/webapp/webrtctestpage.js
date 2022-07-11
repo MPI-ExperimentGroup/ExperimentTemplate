@@ -321,6 +321,14 @@ function initialiseConnection() {
 }
 
 function setConnected(connected) {
+    $("#offerVideoButton").prop("disabled", isReady);
+    $("#offerCanvasButton").prop("disabled", isReady);
+    $("#changeVideoAudioButton").prop("disabled", !peerConnection);
+    $("#changeAudioButton").prop("disabled", !peerConnection);
+    $("#changeVideoButton").prop("disabled", !peerConnection);
+    $("#changeNoneButton").prop("disabled", !peerConnection);
+    $("#disconnectButton").prop("disabled", !peerConnection);
+
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     $("#greetings").html("");
