@@ -189,10 +189,10 @@ function disconnectVideo() {
         peerConnection.onsignalingstatechange = null;
         peerConnection.onicegatheringstatechange = null;
         peerConnection.onnegotiationneeded = null;
-        if (remoteVideo.srcObject) {
+        if (remoteVideo && remoteVideo.srcObject) {
             remoteVideo.srcObject.getTracks().forEach(track => track.stop());
         }
-        if (localVideo.srcObject) {
+        if (localVideo && localVideo.srcObject) {
             localVideo.srcObject.getTracks().forEach(track => track.stop());
         }
         peerConnection.close();
