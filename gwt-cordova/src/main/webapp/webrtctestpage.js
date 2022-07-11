@@ -333,11 +333,11 @@ const groupId = (urlParams.has("group")) ? urlParams.get("group") : null;
 const memberCode = (urlParams.has("member")) ? urlParams.get("member") : null;
 
 if (urlParams.has("compact")) {
-    $("#infoDiv").prop("visible", false);
-    $("#animateDiv").prop("visible", false);
-    $("#messageDiv").prop("visible", false);
-    $("#groupTarget").prop("visible", false);
-    $("#unittestdata").prop("visible", false);
+    $("#infoDiv").hide();
+    $("#animateDiv").hide();
+    $("#messageDiv").hide();
+    $("#groupTarget").hide();
+    $("#unittestdata").hide();
 }
 
 function setConnected(connected) {
