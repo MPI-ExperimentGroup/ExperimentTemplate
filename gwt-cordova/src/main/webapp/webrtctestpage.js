@@ -330,6 +330,14 @@ const userId = (urlParams.has("mockuser")) ? urlParams.get("mockuser") : "webrtc
 const groupId = (urlParams.has("group")) ? urlParams.get("group") : null;
 const memberId = (urlParams.has("member")) ? urlParams.get("member") : null;
 
+if (groupId && memberId) {
+    $("#infoDiv").prop("visible", false);
+    $("#animateDiv").prop("visible", false);
+    $("#messageDiv").prop("visible", false);
+    $("#groupTarget").prop("visible", false);
+    $("#unittestdata").prop("visible", false);
+}
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
