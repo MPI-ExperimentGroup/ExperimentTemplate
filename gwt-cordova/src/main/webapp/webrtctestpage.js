@@ -54,6 +54,8 @@ function offerCanvas() {
     localContext.fillStyle = "black";
     localContext.font = "20px Arial";
     localContext.fillText(userId, 10, 50);
+    localContext.fillText(groupId, 10, 100);
+    localContext.fillText(memberCode, 10, 150);
     localCanvas.addEventListener("mousemove", function (event) {
         if (event.buttons > 0) {
             // console.log(event);
