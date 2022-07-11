@@ -324,7 +324,12 @@ var localCanvas = null;
 var localContext = null;
 var peerConnection = null;
 var stompClient = null;
-var userId = "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
+
+const urlParams = new URLSearchParams(window.location.search);
+const userId = (urlParams.has("mockuser")) ? urlParams.get("mockuser") : "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
+const groupId = (urlParams.has("group")) ? urlParams.get("group") : null;
+const memberId = (urlParams.has("member")) ? urlParams.get("member") : null;
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
