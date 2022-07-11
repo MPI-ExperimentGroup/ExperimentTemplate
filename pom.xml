@@ -31,7 +31,7 @@
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
         <application.majorVersion>1</application.majorVersion> 
-        <application.minorVersion>4</application.minorVersion> 
+        <application.minorVersion>5</application.minorVersion> 
         <application.branch>pretesting</application.branch> 
         <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
         <versionCheck.buildType>testing</versionCheck.buildType> 
