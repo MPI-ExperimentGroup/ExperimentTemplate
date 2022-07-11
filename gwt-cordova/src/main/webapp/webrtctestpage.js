@@ -320,26 +320,6 @@ function initialiseConnection() {
     $("#disconnectButton").prop("disabled", !peerConnection);
 }
 
-var isReady = false;
-var localStream = null;
-var localCanvas = null;
-var localContext = null;
-var peerConnection = null;
-var stompClient = null;
-
-const urlParams = new URLSearchParams(window.location.search);
-const userId = (urlParams.has("mockuser")) ? urlParams.get("mockuser") : "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
-const groupId = (urlParams.has("group")) ? urlParams.get("group") : null;
-const memberCode = (urlParams.has("member")) ? urlParams.get("member") : null;
-
-if (urlParams.has("compact")) {
-    $("#infoDiv").hide();
-    $("#animateDiv").hide();
-    $("#messageDiv").hide();
-    $("#groupTarget").hide();
-    $("#unittestdata").hide();
-}
-
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -576,7 +556,26 @@ function showData(message) {
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
 
+var isReady = false;
+var localStream = null;
+var localCanvas = null;
+var localContext = null;
+var peerConnection = null;
+var stompClient = null;
+
+const urlParams = new URLSearchParams(window.location.search);
+const userId = (urlParams.has("mockuser")) ? urlParams.get("mockuser") : "webrtctestpage-" + Math.floor((1 + Math.random()) * 0x10000);
+const groupId = (urlParams.has("group")) ? urlParams.get("group") : null;
+const memberCode = (urlParams.has("member")) ? urlParams.get("member") : null;
+
 $(function () {
+    if (urlParams.has("compact")) {
+        $("#infoDiv").hide();
+        $("#animateDiv").hide();
+        $("#messageDiv").hide();
+        $("#groupTarget").hide();
+        $("#unittestdata").hide();
+    }
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
