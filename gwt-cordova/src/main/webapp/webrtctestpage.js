@@ -160,7 +160,7 @@ function sendToGroup(status, messageObject) {
         'expectedRespondents': null,
         'originMemberCode': null,
         'originPhase': null,
-        'requestedPhase': null,
+        'requestedPhase': 1,
         'stimulusIndex': null,
         'stimuliList': status, // status used in this field is only for testing in this page
         'responseStimulusOptions': null,
