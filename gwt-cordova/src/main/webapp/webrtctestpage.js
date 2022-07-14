@@ -666,6 +666,8 @@ $(function () {
         $("#messageDiv").hide();
         $("#groupTarget").hide();
         $("#unittestdata").hide();
+        $("#selfdata").hide();
+        $("#initialiseButton").hide();
     }
     $("form").on('submit', function (e) {
         e.preventDefault();
