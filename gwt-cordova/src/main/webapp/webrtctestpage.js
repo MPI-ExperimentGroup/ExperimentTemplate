@@ -138,6 +138,7 @@ function handleCandidate(candidate) {
         if (candidate === "null" || !candidate.candidate) {
             // the terminal null is sent inside the candidate object
             peerConnection.addIceCandidate(null).catch(reportError);
+            sendToGroup("refresh", "");
         } else {
             peerConnection.addIceCandidate(candidate).catch(reportError);
         }
@@ -280,7 +281,7 @@ function initialiseConnection() {
             $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
             document.getElementById("remoteVideo").srcObject = event.streams[0];
             // $("#remoteVideo").attr('src', event.streams[0]);
-            sendToGroup("track", "");
+            sendToGroup("refresh", "");
         };
 
         peerConnection.onremovetrack = function () {
@@ -499,7 +500,7 @@ function connect() {
                             initiateConnection();
                         }
                     }
-                    if (contentData.userId !== userId && contentData.stimuliList === "track") {
+                    if (contentData.userId !== userId && contentData.stimuliList === "refresh") {
                         if (localContext) {
                             // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
                             localContext.fillText("T", 0, 0);
