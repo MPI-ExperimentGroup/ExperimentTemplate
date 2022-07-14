@@ -153,7 +153,7 @@ function handleCandidate(candidate) {
 }
 
 function sendToGroup(status, messageObject) {
-    stompClient.send("/app/group", {}, JSON.stringify({
+    const contentData = {
         'groupId': groupId,
         'screenId': null,
         'groupCommunicationChannels': 'A,B|B,C|D,E|F,G',
@@ -174,7 +174,32 @@ function sendToGroup(status, messageObject) {
         'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
         'messageString': JSON.stringify(messageObject),
         'groupReady': null
-    }));
+    };
+    stompClient.send("/app/group", {}, JSON.stringify(contentData));
+    $("#selfdata").append(
+        "<tr style=\"background: #0d6efd1a;\">" +
+        "<td>sent: " + contentData.userId +
+        "</td><td>" + contentData.groupId +
+        "</td><td>" + // contentData.groupUUID +
+        "</td><td>" + contentData.screenId +
+        "</td><td>" + contentData.userLabel +
+        "</td><td>" + contentData.allMemberCodes +
+        "</td><td>" + contentData.groupCommunicationChannels +
+        "</td><td>" + contentData.memberCode +
+        "</td><td>" + contentData.originMemberCode +
+        "</td><td>" + contentData.stimulusId +
+        "</td><td>" + contentData.responseStimulusOptions +
+        "</td><td>" + contentData.responseStimulusId +
+        "</td><td>" + contentData.expectedRespondents +
+        "</td><td>" + contentData.actualRespondents +
+        "</td><td>" + contentData.stimulusIndex +
+        "</td><td>" + contentData.stimuliList +
+        "</td><td>" + contentData.originPhase +
+        "</td><td>" + contentData.requestedPhase +
+        "</td><td>" + contentData.messageString +
+        "</td><td>" + contentData.groupReady +
+        "</td><td>" + contentData.eventMs +
+        "</td></tr>");
 }
 
 function disconnectVideo() {
@@ -381,6 +406,26 @@ function setConnected(connected) {
             "<td>expectedRespondents</td>" +
             "<td>actualRespondents</td>" +
             "<td>groupUUID</td></tr>");
+        $("#selfdata").append(
+            "<tr><td>userId</td>" +
+            "<td>screenId</td>" +
+            "<td>userLabel</td>" +
+            "<td>groupId</td>" +
+            "<td>allMemberCodes</td>" +
+            "<td>Channels</td>" +
+            "<td>memberCode</td>" +
+            "<td>originMemberCode</td>" +
+            "<td>stimulusId</td>" +
+            "<td>stimulusIndex</td>" +
+            "<td>stimuliList</td>" +
+            "<td>originPhase</td>" +
+            "<td>requestedPhase</td>" +
+            "<td>messageString</td>" +
+            "<td>groupReady</td>" +
+            "<td>responseStimulusId</td>" +
+            "<td>expectedRespondents</td>" +
+            "<td>actualRespondents</td>" +
+            "<td>groupUUID</td></tr>");
     } else {
         $("#conversation").hide();
     }
@@ -464,6 +509,32 @@ function connect() {
                     contentData.expectedRespondents + "\", </td><td>\"" +
                     contentData.actualRespondents + "\", </td><td>\"" +
                     contentData.groupUUID + "\"</td></tr>");
+                if (contentData.userId === userId) {
+                    $("#selfdata").append(
+                        "<tr style=\"background: #fd690d1a;\">" +
+                        "<td> received: " + contentData.userId +
+                        "</td><td>" + contentData.groupId +
+                        "</td><td>" + contentData.groupUUID +
+                        "</td><td>" + contentData.screenId +
+                        "</td><td>" + contentData.userLabel +
+                        "</td><td>" + contentData.allMemberCodes +
+                        "</td><td>" + contentData.groupCommunicationChannels +
+                        "</td><td>" + contentData.memberCode +
+                        "</td><td>" + contentData.originMemberCode +
+                        "</td><td>" + contentData.stimulusId +
+                        "</td><td>" + contentData.responseStimulusOptions +
+                        "</td><td>" + contentData.responseStimulusId +
+                        "</td><td>" + contentData.expectedRespondents +
+                        "</td><td>" + contentData.actualRespondents +
+                        "</td><td>" + contentData.stimulusIndex +
+                        "</td><td>" + contentData.stimuliList +
+                        "</td><td>" + contentData.originPhase +
+                        "</td><td>" + contentData.requestedPhase +
+                        "</td><td>" + contentData.messageString +
+                        "</td><td>" + contentData.groupReady +
+                        "</td><td>" + contentData.eventMs +
+                        "</td></tr>");
+                }
             }
             //String userId, 
             //String screenId,
