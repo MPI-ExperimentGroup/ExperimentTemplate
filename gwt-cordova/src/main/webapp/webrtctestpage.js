@@ -161,7 +161,7 @@ function sendToGroup(status, messageObject) {
         'originMemberCode': null,
         'originPhase': null,
         'requestedPhase': 1,
-        'stimulusIndex': null,
+        'stimulusIndex': 1,
         'stimuliList': status, // status used in this field is only for testing in this page
         'responseStimulusOptions': null,
         'responseStimulusId': null,
@@ -171,7 +171,7 @@ function sendToGroup(status, messageObject) {
         'userLabel': null,
         'allMemberCodes': 'A,B,C,D,E,F,G',
         'memberCode': memberCode,
-        'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
+        'stimulusId': 1, // Math.floor((1 + Math.random()) * 0x10000),
         'messageString': JSON.stringify(messageObject),
         'groupReady': null
     };
