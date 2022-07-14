@@ -156,7 +156,7 @@ function sendToGroup(status, messageObject) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'groupId': groupId,
         'screenId': null,
-        'groupCommunicationChannels': null,
+        'groupCommunicationChannels': 'A,B|B,C|D,E|F,G',
         'expectedRespondents': null,
         'originMemberCode': null,
         'originPhase': null,
