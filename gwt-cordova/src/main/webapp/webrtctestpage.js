@@ -198,6 +198,9 @@ function sendToGroup(status, messageObject) {
         "</td><td>" + contentData.requestedPhase +
         "</td><td>" + contentData.messageString +
         "</td><td>" + contentData.groupReady +
+        "</td><td>" + // contentData.memberScore +
+        "</td><td>" + // contentData.channelScore +
+        "</td><td>" + // contentData.groupScore +
         "</td><td>" + contentData.eventMs +
         "</td></tr>");
 }
@@ -408,24 +411,30 @@ function setConnected(connected) {
             "<td>groupUUID</td></tr>");
         $("#selfdata").append(
             "<tr><td>userId</td>" +
+            "<td>groupId</td>" +
+            "<td>groupUUID</td>" +
             "<td>screenId</td>" +
             "<td>userLabel</td>" +
-            "<td>groupId</td>" +
             "<td>allMemberCodes</td>" +
             "<td>Channels</td>" +
             "<td>memberCode</td>" +
             "<td>originMemberCode</td>" +
             "<td>stimulusId</td>" +
+            "<td>responseStimulusOptions</td>" +
+            "<td>responseStimulusId</td>" +
+            "<td>expectedRespondents</td>" +
+            "<td>actualRespondents</td>" +
             "<td>stimulusIndex</td>" +
             "<td>stimuliList</td>" +
             "<td>originPhase</td>" +
             "<td>requestedPhase</td>" +
             "<td>messageString</td>" +
             "<td>groupReady</td>" +
-            "<td>responseStimulusId</td>" +
-            "<td>expectedRespondents</td>" +
-            "<td>actualRespondents</td>" +
-            "<td>groupUUID</td></tr>");
+            "<td>memberScore</td>" +
+            "<td>channelScore</td>" +
+            "<td>groupScore</td>" +
+            "<td>eventMs</td>" +
+            "</tr>");
     } else {
         $("#conversation").hide();
     }
@@ -532,6 +541,9 @@ function connect() {
                         "</td><td>" + contentData.requestedPhase +
                         "</td><td>" + contentData.messageString +
                         "</td><td>" + contentData.groupReady +
+                        "</td><td>" + contentData.memberScore +
+                        "</td><td>" + contentData.channelScore +
+                        "</td><td>" + contentData.groupScore +
                         "</td><td>" + contentData.eventMs +
                         "</td></tr>");
                 }
