@@ -401,66 +401,68 @@ function connect() {
         });
         stompClient.subscribe('/shared/group', function (greeting) {
             var contentData = JSON.parse(greeting.body);
-            //            console.log('greeting.body: ' + greeting.body);
-            //            console.log('contentData: ' + contentData);
-            var usersTableRow = $("#userId" + contentData.userId);
-            if (!usersTableRow.length) {
-                $("#groupTarget").append("<tr id=\"userId" + contentData.userId + "\"></tr>");
-                usersTableRow = $("#userId" + contentData.userId);
+            if (!isCompact) {
+                //            console.log('greeting.body: ' + greeting.body);
+                //            console.log('contentData: ' + contentData);
+                var usersTableRow = $("#userId" + contentData.userId);
+                if (!usersTableRow.length) {
+                    $("#groupTarget").append("<tr id=\"userId" + contentData.userId + "\"></tr>");
+                    usersTableRow = $("#userId" + contentData.userId);
+                }
+                var usersTableCells =
+                    "<td>" + contentData.userId +
+                    "</td><td>" + contentData.groupId +
+                    "</td><td>" + contentData.groupUUID +
+                    "</td><td>" + contentData.screenId +
+                    "</td><td>" + contentData.userLabel +
+                    "</td><td>" + contentData.allMemberCodes +
+                    "</td><td>" + contentData.groupCommunicationChannels +
+                    "</td><td>" + contentData.memberCode +
+                    "</td><td>" + contentData.originMemberCode +
+                    "</td><td>" + contentData.stimulusId +
+                    "</td><td>" + contentData.responseStimulusOptions +
+                    "</td><td>" + contentData.responseStimulusId +
+                    "</td><td>" + contentData.expectedRespondents +
+                    "</td><td>" + contentData.actualRespondents +
+                    "</td><td>" + contentData.stimulusIndex +
+                    "</td><td>" + contentData.stimuliList +
+                    "</td><td>" + contentData.originPhase +
+                    "</td><td>" + contentData.requestedPhase +
+                    "</td><td>" + contentData.messageString +
+                    "</td><td>" + contentData.groupReady +
+                    "</td><td>" + contentData.eventMs +
+                    "</td>";
+                var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + /*contentData.originPhase + "','"*/ + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + /*contentData.originMemberCode + "','"*/ + contentData.stimulusId + "')\">message</button></td>";
+                var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + /*contentData.originPhase + "','"*/ + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
+                usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
+                usersTableRow.css("outline-style", "solid");
+                usersTableRow.css("outline-width", "5px");
+                usersTableRow.css("outline-color", "green");
+                usersTableRow.animate({ outlineWidth: 0 }, "slow");
+                //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
+                //            $("#groupTarget").append(groupMemberDiv);
+                $("#unittestdata").append(
+                    "<tr><td>\"" +
+                    contentData.userId + "\", </td><td>\"" +
+                    contentData.screenId + "\", </td><td>\"" +
+                    contentData.userLabel + "\", </td><td>\"" +
+                    contentData.groupId + "\", </td><td>\"" +
+                    contentData.allMemberCodes + "\", </td><td>\"" +
+                    contentData.groupCommunicationChannels + "\", </td><td>\"" +
+                    contentData.memberCode + "\", </td><td>\"" +
+                    contentData.originMemberCode + "\", </td><td>\"" +
+                    contentData.stimulusId + "\", </td><td>\"" +
+                    contentData.stimulusIndex + "\", </td><td>\"" +
+                    contentData.stimuliList + "\", </td><td>\"" +
+                    contentData.originPhase + "\", </td><td>\"" +
+                    contentData.requestedPhase + "\", </td><td>\"" +
+                    contentData.messageString + "\", </td><td>" +
+                    contentData.groupReady + ", </td><td>\"" +
+                    contentData.responseStimulusId + "\", </td><td>\"" +
+                    contentData.expectedRespondents + "\", </td><td>\"" +
+                    contentData.actualRespondents + "\", </td><td>\"" +
+                    contentData.groupUUID + "\"</td></tr>");
             }
-            var usersTableCells =
-                "<td>" + contentData.userId +
-                "</td><td>" + contentData.groupId +
-                "</td><td>" + contentData.groupUUID +
-                "</td><td>" + contentData.screenId +
-                "</td><td>" + contentData.userLabel +
-                "</td><td>" + contentData.allMemberCodes +
-                "</td><td>" + contentData.groupCommunicationChannels +
-                "</td><td>" + contentData.memberCode +
-                "</td><td>" + contentData.originMemberCode +
-                "</td><td>" + contentData.stimulusId +
-                "</td><td>" + contentData.responseStimulusOptions +
-                "</td><td>" + contentData.responseStimulusId +
-                "</td><td>" + contentData.expectedRespondents +
-                "</td><td>" + contentData.actualRespondents +
-                "</td><td>" + contentData.stimulusIndex +
-                "</td><td>" + contentData.stimuliList +
-                "</td><td>" + contentData.originPhase +
-                "</td><td>" + contentData.requestedPhase +
-                "</td><td>" + contentData.messageString +
-                "</td><td>" + contentData.groupReady +
-                "</td><td>" + contentData.eventMs +
-                "</td>";
-            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + /*contentData.originPhase + "','"*/ + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + /*contentData.originMemberCode + "','"*/ + contentData.stimulusId + "')\">message</button></td>";
-            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + /*contentData.originPhase + "','"*/ + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
-            usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
-            usersTableRow.css("outline-style", "solid");
-            usersTableRow.css("outline-width", "5px");
-            usersTableRow.css("outline-color", "green");
-            usersTableRow.animate({ outlineWidth: 0 }, "slow");
-            //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
-            //            $("#groupTarget").append(groupMemberDiv);
-            $("#unittestdata").append(
-                "<tr><td>\"" +
-                contentData.userId + "\", </td><td>\"" +
-                contentData.screenId + "\", </td><td>\"" +
-                contentData.userLabel + "\", </td><td>\"" +
-                contentData.groupId + "\", </td><td>\"" +
-                contentData.allMemberCodes + "\", </td><td>\"" +
-                contentData.groupCommunicationChannels + "\", </td><td>\"" +
-                contentData.memberCode + "\", </td><td>\"" +
-                contentData.originMemberCode + "\", </td><td>\"" +
-                contentData.stimulusId + "\", </td><td>\"" +
-                contentData.stimulusIndex + "\", </td><td>\"" +
-                contentData.stimuliList + "\", </td><td>\"" +
-                contentData.originPhase + "\", </td><td>\"" +
-                contentData.requestedPhase + "\", </td><td>\"" +
-                contentData.messageString + "\", </td><td>" +
-                contentData.groupReady + ", </td><td>\"" +
-                contentData.responseStimulusId + "\", </td><td>\"" +
-                contentData.expectedRespondents + "\", </td><td>\"" +
-                contentData.actualRespondents + "\", </td><td>\"" +
-                contentData.groupUUID + "\"</td></tr>");
             //String userId, 
             //String screenId,
             // String userLabel,
