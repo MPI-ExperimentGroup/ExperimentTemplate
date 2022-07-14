@@ -280,6 +280,7 @@ function initialiseConnection() {
             $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
             document.getElementById("remoteVideo").srcObject = event.streams[0];
             // $("#remoteVideo").attr('src', event.streams[0]);
+            sendToGroup("track", "");
         };
 
         peerConnection.onremovetrack = function () {
@@ -496,6 +497,12 @@ function connect() {
                             console.log('already connected, ignoring');
                         } else {
                             initiateConnection();
+                        }
+                    }
+                    if (contentData.userId !== userId && contentData.stimuliList === "track") {
+                        if (localContext) {
+                            // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
+                            localContext.fillText("T", 0, 0);
                         }
                     }
                     if (contentData.userId !== userId && contentData.stimuliList === "disconnect") {
