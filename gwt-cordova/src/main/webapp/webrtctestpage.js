@@ -40,7 +40,7 @@ function changeStream(streamOption) {
 function offerCanvas() {
     $("#offerVideoButton").prop("disabled", true);
     $("#offerCanvasButton").prop("disabled", true);
-    $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:80vw\" width=\"400\" height=\"300\"></canvas>");
+    $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
     localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
