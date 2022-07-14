@@ -334,7 +334,7 @@ function setConnected(connected) {
     $("#greetings").html("");
     $("#groupTarget").html("");
     $("#animateTarget").html("");
-    if (connected) {
+    if (connected && !isCompact) {
         $("#conversation").show();
         $("#groupTarget").append("<tr>" +
             "<td>userId</td>" +
@@ -565,6 +565,7 @@ function showData(message) {
 }
 
 var isReady = false;
+var isCompact = false;
 var localStream = null;
 var localCanvas = null;
 var localContext = null;
@@ -578,6 +579,7 @@ const memberCode = (urlParams.has("member")) ? urlParams.get("member") : null;
 
 $(function () {
     if (urlParams.has("compact")) {
+        isCompact = true;
         $("#infoDiv").hide();
         $("#animateDiv").hide();
         $("#messageDiv").hide();
