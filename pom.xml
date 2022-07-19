@@ -203,7 +203,7 @@
                 <configuration>
                     <update>true</update>
                     <server>${experiment.destinationServer}</server>
-                    <url>${experiment.destinationServerUrl}/manager/text</url>
+                    <url>${experiment.destinationServer}/manager/text</url>
                 </configuration>
             </plugin>
             <plugin>
