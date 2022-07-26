@@ -100,7 +100,7 @@ public enum FeatureType {
             + "A date input will be used if the regex is [0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]. "
             + "A checkbox will be used if the regex is true|false. "
             + "A text area will be used (multiline) rather than a text box (single line) if the regex contains \\\\s. "
-            + "A select box will be used if the regex is a | separated list."),
+            + "A select box will be used if the regex is a | separated list (except when { is used indicating a regular expression)."),
     // metadataField stimulus fields:
     //    a metadata field is available for each stimulus
     stimulusMetadataField(false, new FeatureAttribute[]{fieldName, dataChannel}, "Adds a metadata field input for the current stimulus. The user entered value will be stored in the stimulus data identifiable via the postName of the field.", Contitionals.none, Contitionals.stimulusAction),

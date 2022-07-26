@@ -57,7 +57,7 @@ public class MetadataField {
         if (controlledRegex == null) {
             return false;
         }
-        return controlledRegex.contains("|");
+        return controlledRegex.contains("|") && !controlledRegex.contains("{");
     }
 
     public String[] getListValues() {
