@@ -88,7 +88,7 @@ public class MetadataField {
             throw new MetadataFieldException(this);
         }
         final String[] listValues = getListValues();
-        if (listValues.length > 1) {
+        if (isListBox()) {
             // if this field is used as a selection list then do not perform a regex but still check that one of the required values is selected
             if (!Arrays.asList(listValues).contains(value)) {
                 throw new MetadataFieldException(this);
