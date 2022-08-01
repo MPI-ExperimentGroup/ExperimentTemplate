@@ -102,7 +102,7 @@ cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
 #cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
-cordova plugin add cordova-plugin-whitelist
+# cordova plugin add cordova-plugin-whitelist # TODO: try building the cordova image without this whitelist plugin from two places
 cordova plugin add cordova-plugin-device
 #cordova plugin add cordova-plugin-splashscreen
 cordova plugin add cordova-plugin-inappbrowser
