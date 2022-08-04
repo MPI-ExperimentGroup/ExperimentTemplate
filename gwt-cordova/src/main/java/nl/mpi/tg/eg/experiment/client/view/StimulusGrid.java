@@ -159,7 +159,7 @@ public class StimulusGrid extends FlexTable {
     public StimulusButton addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName, final int hotKeyIndex) {
         final Image image = new Image(imagePath);
         image.setWidth(widthString);
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             image.addStyleName(styleName);
         }
         final Button imageButton = new Button();

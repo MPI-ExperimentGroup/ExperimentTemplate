@@ -179,7 +179,7 @@ public class TimedStimulusView extends ComplexView {
             timedEventMonitor.registerEvent("addTimedImage");
         }
         final Image image = new Image(imagePath);
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             image.addStyleName(styleName);
         }
         image.setVisible(false);
@@ -554,7 +554,7 @@ public class TimedStimulusView extends ComplexView {
             textBox.setVisibleLines(1);
             textBox.getElement().getStyle().setProperty("minHeight", "26px");
         }
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             textBox.addStyleName(styleName);
         }
         textBox.setStylePrimaryName("metadataOK");
