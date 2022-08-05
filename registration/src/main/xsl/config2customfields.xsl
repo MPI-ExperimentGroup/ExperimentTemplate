@@ -187,7 +187,7 @@
                     </xsl:text>
                 <!--/xsl:if-->
                     <xsl:text>
-                        @Query("count by staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex")
+                        @Query("select count p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex")
                         public int countByStaleCopyAnd</xsl:text>
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
