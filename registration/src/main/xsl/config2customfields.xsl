@@ -222,6 +222,16 @@
                         throw new UnsupportedOperationException("This is a test only class.");
                         }
                     </xsl:text>
+                    <xsl:text>
+                        @Override
+                        public int countByStaleCopyAnd</xsl:text>
+                        <xsl:for-each select="tokenize(@postName,'_')">
+                            <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                        </xsl:for-each>
+                    <xsl:text>Regex(boolean staleCopy, String matchingRegex) {
+                        throw new UnsupportedOperationException("This is a test only class.");
+                        }
+                    </xsl:text>
                 <!--/xsl:if-->
                 </xsl:for-each>
                 <xsl:text>
