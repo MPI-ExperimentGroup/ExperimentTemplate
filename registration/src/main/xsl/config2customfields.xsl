@@ -515,55 +515,57 @@
                 </xsl:text>
             </xsl:result-document>
             <xsl:result-document href="{$targetTemplateDirectory}/{$outputPrefix}charts.html" method="text">
-                <xsl:for-each select="experiment/administration/chart">
-                    <xsl:text>&lt;canvas id="</xsl:text>
-                    <xsl:value-of select="generate-id(.)" />
-                    <xsl:text>"&gt;&lt;/canvas&gt;</xsl:text>
-                    <xsl:text>
-                        &lt;script&gt;</xsl:text>
-                    <xsl:text>
-                        generateChart({canvas:"</xsl:text>
-                    <xsl:value-of select="generate-id(.)" />
-                    <xsl:text>", label: "</xsl:text>
-                    <xsl:value-of select="@label" />
-                    <xsl:text>", type: "</xsl:text>
-                    <xsl:value-of select="@type" />
-                    <xsl:text>", metadata: [</xsl:text>
-                    <xsl:for-each select="metadata">
+                <xsl:text>&lt;div th:fragment="charts"&gt;</xsl:text>
+                    <xsl:for-each select="experiment/administration/chart">
+                        <xsl:text>&lt;canvas id="</xsl:text>
+                        <xsl:value-of select="generate-id(.)" />
+                        <xsl:text>"&gt;&lt;/canvas&gt;</xsl:text>
                         <xsl:text>
-                            {label: "</xsl:text>
-                        <xsl:value-of select="@label" />
-                        <xsl:text>", fieldname: "</xsl:text>
-                        <xsl:value-of select="@fieldName" />
-                        <xsl:text>", matching: "</xsl:text>
-                        <xsl:value-of select="@matching" />
-                        <xsl:text>", colour: "</xsl:text>
-                        <xsl:value-of select="@colour" />
-                        <xsl:text>"}</xsl:text>
-                        <xsl:if test="position() != last()">
-                            <xsl:text>, </xsl:text>
-                        </xsl:if>
-                    </xsl:for-each>
-                    <xsl:text>], stimuli: [</xsl:text>
-                    <xsl:for-each select="stimuli">
+                            &lt;script&gt;</xsl:text>
                         <xsl:text>
-                            {label: "</xsl:text>
+                            generateChart({canvas:"</xsl:text>
+                        <xsl:value-of select="generate-id(.)" />
+                        <xsl:text>", label: "</xsl:text>
                         <xsl:value-of select="@label" />
-                        <xsl:text>", coloumName: "</xsl:text>
-                        <xsl:value-of select="@coloumName" />
-                        <xsl:text>", matching: "</xsl:text>
-                        <xsl:value-of select="@matching" />
-                        <xsl:text>", colour: "</xsl:text>
-                        <xsl:value-of select="@colour" />
-                        <xsl:text>"}</xsl:text>
-                        <xsl:if test="position() != last()">
-                            <xsl:text>, </xsl:text>
-                        </xsl:if>
+                        <xsl:text>", type: "</xsl:text>
+                        <xsl:value-of select="@type" />
+                        <xsl:text>", metadata: [</xsl:text>
+                        <xsl:for-each select="metadata">
+                            <xsl:text>
+                                {label: "</xsl:text>
+                            <xsl:value-of select="@label" />
+                            <xsl:text>", fieldname: "</xsl:text>
+                            <xsl:value-of select="@fieldName" />
+                            <xsl:text>", matching: "</xsl:text>
+                            <xsl:value-of select="@matching" />
+                            <xsl:text>", colour: "</xsl:text>
+                            <xsl:value-of select="@colour" />
+                            <xsl:text>"}</xsl:text>
+                            <xsl:if test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:if>
+                        </xsl:for-each>
+                        <xsl:text>], stimuli: [</xsl:text>
+                        <xsl:for-each select="stimuli">
+                            <xsl:text>
+                                {label: "</xsl:text>
+                            <xsl:value-of select="@label" />
+                            <xsl:text>", coloumName: "</xsl:text>
+                            <xsl:value-of select="@coloumName" />
+                            <xsl:text>", matching: "</xsl:text>
+                            <xsl:value-of select="@matching" />
+                            <xsl:text>", colour: "</xsl:text>
+                            <xsl:value-of select="@colour" />
+                            <xsl:text>"}</xsl:text>
+                            <xsl:if test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:if>
+                        </xsl:for-each>
+                        <xsl:text>]});
+                            &lt;/script&gt;
+                        </xsl:text>
                     </xsl:for-each>
-                    <xsl:text>]});
-                        &lt;/script&gt;
-                    </xsl:text>
-                </xsl:for-each>
+                <xsl:text>&lt;/div&gt;</xsl:text>
             </xsl:result-document>
             <xsl:result-document href="{$targetTemplateDirectory}/{$outputPrefix}participanttable.html" method="text">
                 <xsl:text>
