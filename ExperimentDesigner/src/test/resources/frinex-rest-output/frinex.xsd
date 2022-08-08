@@ -710,6 +710,7 @@
 </xs:attribute>
 </xs:complexType>
 </xs:element>
+<xs:element name="chart" minOccurs="0" maxOccurs="unbounded" type="chartType"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="metadataType">

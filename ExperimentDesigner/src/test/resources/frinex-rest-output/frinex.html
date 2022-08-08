@@ -419,6 +419,13 @@ String</span><br/>
 Boolean</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
+<tr><td>
+<a href="#chartType"><span style="color:purple">&lt;</span><span style="color:blue">chart</span></a></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">type</span><span style="color:grey">=&quot;[bar, line, pie, bubble, radar]&quot;</span><span>
+The type of chart to be displayed.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
 </table>
 </td>
 </tr>
@@ -492,6 +499,102 @@ Boolean</span><br/>
 <tr>
 <td colspan='2' id='dataChannelTarget'>
 <button onclick="getExample('dataChannel', 'dataChannelTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="chartType" style="text-transform: uppercase;">
+chart
+</h3>
+When present defines a chart that will be displayed on the main page of the experiment admin. Multiple charts can be used.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">chart</span></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">type</span><span style="color:grey">=&quot;[bar, line, pie, bubble, radar]&quot;</span><span>
+The type of chart to be displayed.</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#metadataType"><span style="color:purple">&lt;</span><span style="color:blue">metadata</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+RGB Hex Value</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
+<a href="#stimuliType"><span style="color:purple">&lt;</span><span style="color:blue">stimuli</span></a></td><td><span style="color:green">coloumName</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+RGB Hex Value</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">chart</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='chartTarget'>
+<button onclick="getExample('chart', 'chartTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="metadataType" style="text-transform: uppercase;">
+metadata
+</h3>
+Adds matching metadata as a dataset to the graph.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">metadata</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+RGB Hex Value</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='metadataTarget'>
+<button onclick="getExample('metadata', 'metadataTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="stimuliType" style="text-transform: uppercase;">
+stimuli
+</h3>
+Adds matching stimuli responses as a dataset to the graph.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">stimuli</span></td><td><span style="color:green">coloumName</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+RGB Hex Value</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='stimuliTarget'>
+<button onclick="getExample('stimuli', 'stimuliTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="scssType" style="text-transform: uppercase;">

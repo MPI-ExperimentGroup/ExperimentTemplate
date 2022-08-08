@@ -423,15 +423,15 @@ public class AbstractSchemaGenerator {
                                     .integerAttribute("channel", false),
                             new DocumentationElement("chart", "When present defines a chart that will be displayed on the main page of the experiment admin. Multiple charts can be used.", 0, 0,
                                     new DocumentationElement[]{
-                                        new DocumentationElement("metadata", "Adds matching metadata to the graph.", 0, 0, new DocumentationElement[0])
+                                        new DocumentationElement("metadata", "Adds matching metadata as a dataset to the graph.", 0, 0, new DocumentationElement[0])
                                                 .stringAttribute("label", false)
                                                 .stringAttribute("fieldName", false)
-                                                .stringAttribute("matchingRegex", false)
+                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false),
-                                        new DocumentationElement("stimuli", "Adds stimuli responses to the graph.", 0, 0, new DocumentationElement[0])
+                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the graph.", 0, 0, new DocumentationElement[0])
                                                 .stringAttribute("label", false)
                                                 .stringAttribute("coloumName", false)
-                                                .stringAttribute("matchingRegex", false)
+                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false)
                                     })
                                     .stringAttribute("label", false)
