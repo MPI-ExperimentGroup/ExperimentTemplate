@@ -187,12 +187,14 @@
                     </xsl:text>
                 <!--/xsl:if-->
                     <xsl:text>
-                        @Query("select count p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex")
+                        @Query("select count(p.id) from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> like :matchingLike")
+                        <!-- @Query("select count p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex") -->
                         public int countByStaleCopyAnd</xsl:text>
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                         </xsl:for-each>
-                    <xsl:text>Regex(@Param("staleCopy") boolean staleCopy, @Param("matchingRegex") String matchingRegex);
+                    <xsl:text>Like(@Param("staleCopy") boolean staleCopy, @Param("matchingLike") String matchingLike);
+                    <!-- <xsl:text>Regex(@Param("staleCopy") boolean staleCopy, @Param("matchingRegex") String matchingRegex); -->
                     </xsl:text>
                 </xsl:for-each>
                 <xsl:text>
@@ -228,7 +230,8 @@
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                         </xsl:for-each>
-                    <xsl:text>Regex(boolean staleCopy, String matchingRegex) {
+                    <xsl:text>Like(boolean staleCopy, String matchingLike) {
+                    <!-- <xsl:text>Regex(boolean staleCopy, String matchingRegex) { -->
                         throw new UnsupportedOperationException("This is a test only class.");
                         }
                     </xsl:text>
