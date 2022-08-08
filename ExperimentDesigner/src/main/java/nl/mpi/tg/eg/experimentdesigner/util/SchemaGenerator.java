@@ -518,6 +518,8 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addElement(writer, rootElement.childElements[2].childElements[0], true);
 //        writer.append("<!--administrationType-->\n");
         addElement(writer, rootElement.childElements[3], true);
+//        writer.append("<!--chartType-->\n");
+        addElement(writer, rootElement.childElements[3].childElements[3], true);
 //        writer.append("<!--metadataType-->\n");
         addElement(writer, rootElement.childElements[5], true);
         //        writer.append("<!--fieldType-->\n");
