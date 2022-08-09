@@ -516,10 +516,16 @@
             </xsl:result-document>
             <xsl:result-document href="{$targetTemplateDirectory}/{$outputPrefix}charts.html" method="text">
                 <xsl:text>&lt;div th:fragment="charts"&gt;</xsl:text>
+                <xsl:if test="experiment/administration/chart">
+                    <xsl:text>&lt;script src="webjars/chartjs/dist/chart.min.js"&gt;&lt;/script&gt;</xsl:text>
+                    <xsl:text>&lt;script src="js/ExperimentCharts.js"&gt;&lt;/script&gt;</xsl:text>
+                </xsl:if>
                     <xsl:for-each select="experiment/administration/chart">
                         <xsl:text>&lt;canvas id="</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
-                        <xsl:text>"&gt;&lt;/canvas&gt;</xsl:text>
+                        <xsl:text>" class="chart "</xsl:text>
+                        <xsl:value-of select="@type" />
+                        <xsl:text>"&gt;&lt;/canvas&gt;"</xsl:text>
                         <xsl:text>
                             &lt;script&gt;</xsl:text>
                         <xsl:text>

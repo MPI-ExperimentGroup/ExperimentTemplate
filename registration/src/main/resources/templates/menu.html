@@ -29,7 +29,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: logout"></div>
-        <!-- <div th:replace="charts :: charts"></div> -->
+        <div th:replace="charts :: charts"></div>
         <section>
             <h3>View Data</h3>
             <a th:if="${!simpleMode}" th:href="'dataviewer?simple=' + ${simpleMode}">Screen Events Viewer</a><br th:if="${!simpleMode}"/>
