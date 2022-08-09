@@ -33,27 +33,51 @@ function generateChart(chartData) {
     };
     var data = {
         labels: [],
-        datasets: [{
+        datasets: []
+    };
+    if (chartData.type === "bar" || chartData.type === "pie") {
+        data.datasets.push({
             label: chartData.label,
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [],
             borderColor: [],
             borderWidth: 1
-        }]
-    };
-    for (const metadata of chartData.metadata) {
-        console.log(chartData);
-        data.labels.push(metadata.label);
-        //data.datasets[0].data.push(metadata.matching);
-        data.datasets[0].backgroundColor.push(metadata.colour + '20');
-        data.datasets[0].borderColor.push(metadata.colour + 'ff');
-    }
-    for (const stimuli of chartData.stimuli) {
-        console.log(chartData);
-        data.labels.push(stimuli.label);
-        //data.datasets[0].data.push(stimuli.matching);
-        data.datasets[0].backgroundColor.push(stimuli.colour + '20');
-        data.datasets[0].borderColor.push(stimuli.colour + 'ff');
+        });
+        for (const metadata of chartData.metadata) {
+            data.labels.push(metadata.label);
+            //data.datasets[0].data.push(metadata.matching);
+            data.datasets[0].backgroundColor.push(metadata.colour + '20');
+            data.datasets[0].borderColor.push(metadata.colour + 'ff');
+        }
+        for (const stimuli of chartData.stimuli) {
+            data.labels.push(stimuli.label);
+            //data.datasets[0].data.push(stimuli.matching);
+            data.datasets[0].backgroundColor.push(stimuli.colour + '20');
+            data.datasets[0].borderColor.push(stimuli.colour + 'ff');
+        }
+    } else {
+        for (const metadata of chartData.metadata) {
+            dataset = {
+                label: metadata.label,
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: metadata.colour + '20',
+                borderColor: metadata.colour + 'ff',
+                borderWidth: 1
+            };
+            //dataset.data.push(metadata.matching);
+            data.datasets.push(dataset);
+        }
+        for (const stimuli of chartData.stimuli) {
+            dataset = {
+                label: stimuli.label,
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: stimuli.colour + '20',
+                borderColor: stimuli.colour + 'ff',
+                borderWidth: 1
+            };
+            //dataset.data.push(stimuli.matching);
+            data.datasets.push(dataset);
+        }
     }
     const adminChart = new Chart(ctx, {
         type: chartData.type,
