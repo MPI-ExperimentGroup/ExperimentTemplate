@@ -523,7 +523,7 @@
                     <xsl:for-each select="experiment/administration/chart">
                         <xsl:text>&lt;canvas id="</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
-                        <xsl:text>" class="chart "</xsl:text>
+                        <xsl:text>" class="chart </xsl:text>
                         <xsl:value-of select="@type" />
                         <xsl:text>"&gt;&lt;/canvas&gt;"</xsl:text>
                         <xsl:text>
