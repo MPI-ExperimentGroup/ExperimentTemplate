@@ -123,3 +123,21 @@ th .balloontext::after {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.chart-container {
+    border: 1px dotted colour-primary-4;
+}
+
+.chart-line, .chart-bar {
+    position: relative;
+    margin: auto;
+    height: 200px;
+    width: 400px;
+}
+
+.chart-pie {
+    position: relative;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+}
