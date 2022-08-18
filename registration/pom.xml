@@ -189,6 +189,7 @@
                             <filtering>true</filtering>                
                             <includes>
                                 <include>**/context.xml</include>
+                                <include>**/ExperimentCharts.js</include>
                             </includes>
                         </resource>
                         <resource>

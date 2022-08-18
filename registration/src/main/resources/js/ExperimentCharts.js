@@ -39,7 +39,7 @@ function generateChart(chartData) {
                 display: true,
                 text: 'Frinex @project.version@',
                 position: 'bottom',
-                align: 'right',
+                align: 'end',
                 font: {
                     size: 8
                 }
