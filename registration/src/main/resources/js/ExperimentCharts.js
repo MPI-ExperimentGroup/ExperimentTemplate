@@ -83,6 +83,11 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(stimuli.matching);
             data.datasets[0].backgroundColor.push(stimuli.colour + '20');
             data.datasets[0].borderColor.push(stimuli.colour + 'ff');
+            $.getJSON('stimulusresponses/search/countBy' + metadata.coloumName + 'Like?matchingLike=' + metadata.matching, function (responseData) {
+                // console.log(responseData);
+                data.datasets[0].data[metadataIndex] = responseData;
+                adminChart.update();
+            });
         }
     } else {
         for (const metadata of chartData.metadata) {
