@@ -49,9 +49,9 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(metadata.colour + '20');
             data.datasets[0].borderColor.push(metadata.colour + 'ff');
-            $.getJSON('participants/search/countByStaleCopyAnd' + metadata.fieldname + 'Like?staleCopy=false&matchingLike=' + metadata.matching, function (data) {
-                console.log(data);
-                data.datasets[0].data[metadataIndex] = data;
+            $.getJSON('participants/search/countByStaleCopyAnd' + metadata.fieldname + 'Like?staleCopy=false&matchingLike=' + metadata.matching, function (responseData) {
+                // console.log(responseData);
+                data.datasets[0].data[metadataIndex] = responseData;
             });
         }
         for (const stimuli of chartData.stimuli) {
