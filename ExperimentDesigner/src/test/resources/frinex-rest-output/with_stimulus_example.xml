@@ -46,12 +46,12 @@
         <dataChannel channel="3" label="Titles" logToSdCard="false"/>
         <dataChannel channel="4" label="Configuration" logToSdCard="false"/>
         <chart label="Opleidingsniveau" type="pie">
-            <metadata label="universiteit" fieldName="Opleidingsniveau" matching="universiteit" colour="#770000" />
-            <metadata label="basisonderwijs" fieldName="Opleidingsniveau" matching="basisonderwijs" colour="#077000" />
-            <metadata label="anders" fieldName="Opleidingsniveau" matching="	anders" colour="#007700" />
-            <metadata label="MBO" fieldName="Opleidingsniveau" matching="MBO" colour="#000770" />
-            <metadata label="voortgezet onderwijs" fieldName="Opleidingsniveau" matching="voortgezet onderwijs" colour="#000077" />
-            <metadata label="HBO" fieldName="Opleidingsniveau" matching="HBO" colour="#707000" />
+            <metadata label="universiteit" fieldName="educationOther" matching="universiteit" colour="#770000" />
+            <metadata label="basisonderwijs" fieldName="educationOther" matching="basisonderwijs" colour="#077000" />
+            <metadata label="anders" fieldName="educationOther" matching="	anders" colour="#007700" />
+            <metadata label="MBO" fieldName="educationOther" matching="MBO" colour="#000770" />
+            <metadata label="voortgezet onderwijs" fieldName="educationOther" matching="voortgezet onderwijs" colour="#000077" />
+            <metadata label="HBO" fieldName="educationOther" matching="HBO" colour="#707000" />
         </chart>
         <chart label="Geslacht" type="bar">
             <metadata label="anders" fieldName="gender" matching="anders" colour="#220000" />

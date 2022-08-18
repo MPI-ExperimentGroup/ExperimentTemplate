@@ -38,16 +38,21 @@ function generateChart(chartData) {
     if (chartData.type === "bar" || chartData.type === "pie") {
         data.datasets.push({
             label: chartData.label,
-            data: [12, 19, 3, 5, 2, 3],
+            data: [],
             backgroundColor: [],
             borderColor: [],
             borderWidth: 1
         });
         for (const metadata of chartData.metadata) {
             data.labels.push(metadata.label);
+            const metadataIndex = data.labels.length - 1;
             //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(metadata.colour + '20');
             data.datasets[0].borderColor.push(metadata.colour + 'ff');
+            $.getJSON('participants/search/countByStaleCopyAnd' + metadata.fieldname + 'Like?staleCopy=false&matchingLike=' + metadata.matching, function (data) {
+                console.log(data);
+                data.datasets[0].data[metadataIndex] = data;
+            });
         }
         for (const stimuli of chartData.stimuli) {
             data.labels.push(stimuli.label);

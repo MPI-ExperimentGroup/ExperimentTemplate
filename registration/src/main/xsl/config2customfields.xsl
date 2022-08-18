@@ -543,7 +543,7 @@
                                 {label: "</xsl:text>
                             <xsl:value-of select="@label" />
                             <xsl:text>", fieldname: "</xsl:text>
-                            <xsl:value-of select="@fieldName" />
+                            <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
                             <xsl:text>", matching: "</xsl:text>
                             <xsl:value-of select="@matching" />
                             <xsl:text>", colour: "</xsl:text>
@@ -559,7 +559,7 @@
                                 {label: "</xsl:text>
                             <xsl:value-of select="@label" />
                             <xsl:text>", coloumName: "</xsl:text>
-                            <xsl:value-of select="@coloumName" />
+                            <xsl:value-of select="concat(upper-case(substring(@coloumName,1,1)), substring(@coloumName, 2))" />
                             <xsl:text>", matching: "</xsl:text>
                             <xsl:value-of select="@matching" />
                             <xsl:text>", colour: "</xsl:text>
