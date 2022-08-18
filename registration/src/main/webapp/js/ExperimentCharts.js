@@ -71,10 +71,12 @@ function generateChart(chartData) {
             dataset = {
                 label: stimuli.label,
                 data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: stimuli.colour + '20',
+                fill: false,
                 borderColor: stimuli.colour + 'ff',
-                borderWidth: 1
+                borderWidth: 1,
+                tension: 0.1
             };
+            data.labels = [12, 19, 3, 5, 2, 3];
             //dataset.data.push(stimuli.matching);
             data.datasets.push(dataset);
         }
