@@ -35,6 +35,11 @@ function generateChart(chartData) {
         labels: [],
         datasets: []
     };
+    const adminChart = new Chart(ctx, {
+        type: chartData.type,
+        options: options,
+        data: data
+    });
     if (chartData.type === "bar" || chartData.type === "pie") {
         data.datasets.push({
             label: chartData.label,
@@ -52,6 +57,7 @@ function generateChart(chartData) {
             $.getJSON('participants/search/countByStaleCopyAnd' + metadata.fieldname + 'Like?staleCopy=false&matchingLike=' + metadata.matching, function (responseData) {
                 // console.log(responseData);
                 data.datasets[0].data[metadataIndex] = responseData;
+                adminChart.update();
             });
         }
         for (const stimuli of chartData.stimuli) {
@@ -86,12 +92,6 @@ function generateChart(chartData) {
             data.datasets.push(dataset);
         }
     }
-    const adminChart = new Chart(ctx, {
-        type: chartData.type,
-        options: options,
-        data: data,
-        options: options
-    });
 }
 
 //        {canvas:"d1e54", label: "Opleidingsniveau", type: "pie", metadata: [
