@@ -58,9 +58,9 @@
             <metadata label="vrouw" fieldName="gender" matching="vrouw" colour="#002200" />
             <metadata label="man" fieldName="gender" matching="man" colour="#000022" />
         </chart>
-        <chart label="isCorrect" type="bar">
-            <stimuli label="True" coloumName="isCorrect" matching="true" colour="#990000" />
-            <stimuli label="False" coloumName="isCorrect" matching="false" colour="#000990" />
+        <chart label="ScreenName" type="pie">
+            <stimuli label="Aggressive_Short_Recordings" coloumName="ScreenName" matching="Aggressive_Short_Recordings" colour="#990000" />
+            <stimuli label="RecordingQualityTest" coloumName="ScreenName" matching="RecordingQualityTest" colour="#000990" />
         </chart>
         <chart label="isCorrect" type="line">
             <stimuli label="True" coloumName="isCorrect" matching="true" colour="#990000" />
