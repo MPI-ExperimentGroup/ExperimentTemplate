@@ -493,6 +493,16 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
+            public int countByResponseLike(String matchingLike) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public int countByScreenNameLike(String matchingLike) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
             public long countDistinctRecords() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }

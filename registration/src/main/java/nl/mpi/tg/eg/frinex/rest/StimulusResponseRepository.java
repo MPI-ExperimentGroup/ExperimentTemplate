@@ -49,8 +49,11 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
     long countDistinctRecords();
 
-    // @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where Response like :matchingLike")
-    // public int countByResponseLike(@Param("staleCopy") boolean staleCopy, @Param("matchingLike") String matchingLike);                    
+    @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where Response like :matchingLike")
+    public int countByResponseLike(@Param("matchingLike") String matchingLike);    
+
+    @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where ScreenName like :matchingLike")
+    public int countByScreenNameLike(@Param("matchingLike") String matchingLike);                    
 
     @Override
     @RestResource(exported = false)
