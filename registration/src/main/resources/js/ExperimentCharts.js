@@ -31,6 +31,9 @@ function generateChart(chartData) {
             }
         },
         plugins: {
+            legend: {
+                display: (chartData.type === "bar")? false : true
+            },
             title: {
                 display: true,
                 text: chartData.label
