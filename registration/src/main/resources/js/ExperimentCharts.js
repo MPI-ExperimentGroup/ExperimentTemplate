@@ -57,7 +57,7 @@ function generateChart(chartData) {
     });
     if (chartData.type === "bar" || chartData.type === "pie") {
         data.datasets.push({
-            // label: chartData.label,
+            label: chartData.label,
             data: [],
             backgroundColor: [],
             borderColor: [],
