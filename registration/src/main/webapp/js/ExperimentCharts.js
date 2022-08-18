@@ -29,6 +29,21 @@ function generateChart(chartData) {
             y: {
                 beginAtZero: true
             }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: chartData.label
+            },
+            subtitle: {
+                display: true,
+                text: 'Frinex @project.version@',
+                position: 'bottom',
+                align: 'right',
+                font: {
+                    size: 8
+                }
+            }
         }
     };
     var data = {
@@ -42,7 +57,7 @@ function generateChart(chartData) {
     });
     if (chartData.type === "bar" || chartData.type === "pie") {
         data.datasets.push({
-            label: chartData.label,
+            // label: chartData.label,
             data: [],
             backgroundColor: [],
             borderColor: [],
