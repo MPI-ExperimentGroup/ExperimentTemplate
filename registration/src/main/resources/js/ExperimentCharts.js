@@ -44,7 +44,8 @@ function generateChart(chartData) {
                 position: 'bottom',
                 align: 'end',
                 font: {
-                    size: 8
+                    size: 8,
+                    fontColor: '#d3d3d3'
                 }
             }
         }
@@ -80,12 +81,13 @@ function generateChart(chartData) {
         }
         for (const stimuli of chartData.stimuli) {
             data.labels.push(stimuli.label);
+            const responseIndex = data.labels.length - 1;
             //data.datasets[0].data.push(stimuli.matching);
             data.datasets[0].backgroundColor.push(stimuli.colour + '20');
             data.datasets[0].borderColor.push(stimuli.colour + 'ff');
             $.getJSON('stimulusresponses/search/countBy' + stimuli.coloumName + 'Like?matchingLike=' + stimuli.matching, function (responseData) {
                 // console.log(responseData);
-                data.datasets[0].data[metadataIndex] = responseData;
+                data.datasets[0].data[responseIndex] = responseData;
                 adminChart.update();
             });
         }

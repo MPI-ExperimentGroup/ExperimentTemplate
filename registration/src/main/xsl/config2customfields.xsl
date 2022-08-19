@@ -521,13 +521,14 @@
                     <xsl:text>&lt;script src="js/ExperimentCharts.js"&gt;&lt;/script&gt;</xsl:text>
                 </xsl:if>
                     <xsl:for-each select="experiment/administration/chart">
+                        <xsl:text>&lt;span class="chart-outer"&gt;</xsl:text>
                         <xsl:text>&lt;div class="chart-container chart-</xsl:text>
                         <xsl:value-of select="@type" />
                         <xsl:text>"&gt;</xsl:text>
                         <xsl:text>&lt;canvas id="</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
                         <xsl:text>"&gt;&lt;/canvas&gt;</xsl:text>
-                        <xsl:text>&lt;/div&gt;</xsl:text>
+                        <xsl:text>&lt;/div&gt;&lt;/span&gt;</xsl:text>
                         <xsl:text>
                             &lt;script&gt;</xsl:text>
                         <xsl:text>

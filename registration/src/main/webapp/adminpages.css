@@ -124,6 +124,12 @@ th .balloontext::after {
     margin-bottom: 50px;
 }
 
+.chart-outer {
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+}
+
 .chart-container {
     border: 1px dotted colour-primary-4;
 }
@@ -131,20 +137,20 @@ th .balloontext::after {
 .chart-line {
     position: relative;
     margin: auto;
-    height: 400px;
+    /* height: 400px; */
     width: 600px;
 }
 
 .chart-bar {
     position: relative;
     margin: auto;
-    height: 400px;
+    /* height: 400px; */
     width: 400px;
 }
 
 .chart-pie {
     position: relative;
     margin: auto;
-    height: 400px;
+    /* height: 400px; */
     width: 400px;
 }
