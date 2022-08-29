@@ -34,7 +34,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div th:if="${param.logout}">
                 You have been logged out.
             </div>
-            <form th:action="@{/login}" method="post">
+            <form th:action="${contextPath} + '/login'" method="post">
                 <div><label> User Name : <input type="text" name="username"/> </label></div>
                 <div><label> Password: <input type="password" name="password"/> </label></div>
                 <div><input type="submit" value="Sign In"/></div>
