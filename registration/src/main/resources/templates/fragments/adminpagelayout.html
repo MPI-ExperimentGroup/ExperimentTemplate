@@ -72,7 +72,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <!--</div>-->
             <div th:fragment="logout" align="right">
                 <!--<div>-->        
-                <form th:action="${contextPath} + '/logout'" method="post">
+                <form th:action="${#httpServletRequest.contextPath} + '/logout'" method="post">
                     <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <input type="submit" value="Sign Out"/>
                 </form>
