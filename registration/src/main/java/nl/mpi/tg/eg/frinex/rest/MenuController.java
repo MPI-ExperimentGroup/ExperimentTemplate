@@ -33,7 +33,7 @@ public class MenuController {
     @Autowired
     private AudioDataRepository audioDataRepository;
 
-    @RequestMapping("/")
+    @RequestMapping({"/", "/menu"})
     public String menu(Model model,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
