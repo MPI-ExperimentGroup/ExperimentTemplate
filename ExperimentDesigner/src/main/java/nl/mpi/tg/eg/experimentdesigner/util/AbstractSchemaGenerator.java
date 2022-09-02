@@ -467,6 +467,7 @@ public class AbstractSchemaGenerator {
                             new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, image, audio and video.", 0, 0, new DocumentationElement[]{
                         new DocumentationElement("translation", "Translated attributes for the parent stimulus element.", 0, 0, false)
                         .stringAttribute("locale", false)
+                        .stringAttribute("ratingLabels", true)
                         .stringAttribute("label", true)
                     })
                                     .stringAttribute("identifier", false)

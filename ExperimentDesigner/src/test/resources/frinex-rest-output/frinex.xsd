@@ -1081,6 +1081,11 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="ratingLabels" type="xs:string">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="label" type="xs:string">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
