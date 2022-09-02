@@ -137,7 +137,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
     protected void selectLocaleMenu(final AppEventListner appEventListner, final String styleName) {
         for (final String localeName : LocaleInfo.getAvailableLocaleNames()) {
             final String displayName = LocaleInfo.getLocaleNativeDisplayName(localeName);
-            logLocaleInfo(String localeName, String displayName);
+            logLocaleInfo(localeName, displayName);
             if (displayName != null && !displayName.isEmpty()) {
                 ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
