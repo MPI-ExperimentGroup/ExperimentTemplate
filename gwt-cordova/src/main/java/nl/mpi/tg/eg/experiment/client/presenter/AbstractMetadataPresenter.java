@@ -129,9 +129,15 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
+    public static native void logLocaleInfo(String localeName, String displayName)
+    /*-{
+        console.log(localeName + ' : ' + displayName);
+    }-*/;
+
     protected void selectLocaleMenu(final AppEventListner appEventListner, final String styleName) {
         for (final String localeName : LocaleInfo.getAvailableLocaleNames()) {
             final String displayName = LocaleInfo.getLocaleNativeDisplayName(localeName);
+            logLocaleInfo(String localeName, String displayName);
             if (displayName != null && !displayName.isEmpty()) {
                 ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
