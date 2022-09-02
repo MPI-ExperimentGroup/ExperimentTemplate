@@ -51,7 +51,7 @@
                 <xsl:text>ratingLabels_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text>=</xsl:text>
-                <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(@ratingLabels, 
+                <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(@ratingLabels,'''',''''''), 
                 '\|', '&amp;#x7C;'), 
                 '!', '&amp;#x21;'), 
                 '\.', '&amp;#x2E;'), 
@@ -95,7 +95,7 @@
                         <xsl:text>ratingLabels_</xsl:text>
                         <xsl:value-of select="generate-id(..)" />
                         <xsl:text>=</xsl:text>
-                        <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(@ratingLabels, 
+                        <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(@ratingLabels,'''',''''''), 
                         '\|', '&amp;#x7C;'), 
                         '!', '&amp;#x21;'), 
                         '\.', '&amp;#x2E;'), 
@@ -160,7 +160,7 @@
                 <!--<xsl:value-of select="generate-id(.)" />
                 generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
                 -->
-                <xsl:value-of select="if(@identifier and @identifier ne '') then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
+                <xsl:value-of select="if(@identifier) then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
                 <xsl:text>new Tag[]{</xsl:text>
                 <xsl:for-each select="distinct-values(tokenize(@tags, ' '))">
                     <xsl:text>tag_</xsl:text>
@@ -175,23 +175,23 @@
                 <xsl:text>(), s.code_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text>(), </xsl:text>
-                <xsl:value-of select="if(@pauseMs and @pauseMs ne '') then @pauseMs else '0'" />
+                <xsl:value-of select="if(@pauseMs) then @pauseMs else '0'" />
                 <!--<xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">-->
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="if(@audioPath and @audioPath ne '') then concat('&quot;', @audioPath, '&quot;') else 'null'" />
+                <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="if(@videoPath and @videoPath ne '') then concat('&quot;', @videoPath, '&quot;') else 'null'" />
+                <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'null'" />
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="if(@imagePath and @imagePath ne '') then concat('&quot;', @imagePath, '&quot;') else 'null'" />
+                <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
                 <!--</xsl:if>-->
-                <xsl:value-of select="if(@ratingLabels and @ratingLabels ne '') then concat(',s.ratingLabels_', generate-id(.), '()') else ',null'" />
-                <xsl:value-of select="if(@correctResponses and @correctResponses ne '') then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
+                <xsl:value-of select="if(@ratingLabels) then concat(',s.ratingLabels_', generate-id(.), '()') else ',null'" />
+                <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
                 <xsl:variable name="stimuliElement" select="."/>
                 <xsl:for-each select="$parameter">
                     <xsl:variable name="parameterName" select="."/>
                     <xsl:variable name="parameterValue" select="$stimuliElement/@*[name() = $parameterName]"/>
                     <xsl:text>,</xsl:text>
-                    <xsl:value-of select="if($parameterValue and @parameterValue ne '') then concat('&quot;', $parameterValue, '&quot;') else 'null'" />
+                    <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'null'" />
                 </xsl:for-each>
                 <xsl:text>);
                     }
