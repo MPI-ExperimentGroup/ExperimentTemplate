@@ -184,7 +184,7 @@
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
                 <!--</xsl:if>-->
-                <xsl:value-of select="if(@ratingLabels) then concat(',s.ratingLabels_', generate-id(.), '(), ') else ',null'" />
+                <xsl:value-of select="if(@ratingLabels) then concat(',s.ratingLabels_', generate-id(.), '()') else ',null'" />
                 <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
                 <xsl:variable name="stimuliElement" select="."/>
                 <xsl:for-each select="$parameter">
