@@ -266,6 +266,7 @@
         <selectUserMenu fieldName="workerId" styleName="styleName"/>
         <selectLocaleMenu styleName="styleName"/>
         <cancelPauseTimers/>
+        <redirectToUrl src="src"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -3143,6 +3144,7 @@
         <selectUserMenu fieldName="workerId"/>
         <selectLocaleMenu/>
         <cancelPauseTimers/>
+        <redirectToUrl src=""/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
