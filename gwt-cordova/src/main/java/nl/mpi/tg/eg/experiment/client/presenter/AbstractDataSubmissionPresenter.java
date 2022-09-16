@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.List;
@@ -61,24 +60,6 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
         this.nextState = nextState;
-    }
-
-    public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
-        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(targetUrl);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "redirectToUrl", targetUrlFormatted, duration.elapsedMillis());
-        submissionService.submitAllData(userResults, new DataSubmissionListener() {
-            @Override
-            public void scoreSubmissionFailed(DataSubmissionException exception) {
-//                onError.postLoadTimerFired();
-                // we try to send data here but do not act on failure because that should handled outside of this tag
-                Window.Location.replace(targetUrlFormatted);
-            }
-
-            @Override
-            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                Window.Location.replace(targetUrlFormatted);
-            }
-        });
     }
 
     public void displayCompletionCode() {

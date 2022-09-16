@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
@@ -96,6 +97,24 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         } catch (EvaluateTokensException exception) {
             onError.postLoadTimerFired();
         }
+    }
+
+    public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
+        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(targetUrl);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "redirectToUrl", targetUrlFormatted, duration.elapsedMillis());
+        submissionService.submitAllData(userResults, new DataSubmissionListener() {
+            @Override
+            public void scoreSubmissionFailed(DataSubmissionException exception) {
+//                onError.postLoadTimerFired();
+                // we try to send data here but do not act on failure because that should handled outside of this tag
+                Window.Location.replace(targetUrlFormatted);
+            }
+
+            @Override
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                Window.Location.replace(targetUrlFormatted);
+            }
+        });
     }
 
     public void switchUserIdButton(final String textString, final MetadataField metadataField, final String styleName, final String validationRegex, final String buttonGroup, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
