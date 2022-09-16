@@ -259,7 +259,8 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void addButtonToGroup(final String buttonGroup, final List<StimulusButton> stimulusButtonList) {
         for (StimulusButton stimulusButton : stimulusButtonList) {
-            addButtonToGroup(buttonGroup, stimulusButton);
+            // TODO: this <ratingValue> feature needs to be documented for stimus rating buttons, radio etc
+            addButtonToGroup(buttonGroup.replaceAll("<ratingValue>", stimulusButton.getValue()), stimulusButton);
         }
     }
 
