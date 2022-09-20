@@ -15,10 +15,15 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: clean test
+    - name: clean test deploy
       #run: mvn clean test -B -V -Duser.timezone=CET
       run: pwd;
             ls .;
             cd common;
             mvn clean test deploy -DaltDeploymentRepository=snapshot-repo::default::file:../../snapshots;
             ls ../../snapshots;
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./snapshots
