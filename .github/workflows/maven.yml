@@ -23,7 +23,7 @@ jobs:
             ls .;
             cd common;
             mvn clean test deploy -DaltDeploymentRepository=snapshot-repo::default::file:../../snapshots;
-            cd ..
+            cd ..;
             ls ./snapshots;
             ls ./snapshots/*;
     - name: Deploy
