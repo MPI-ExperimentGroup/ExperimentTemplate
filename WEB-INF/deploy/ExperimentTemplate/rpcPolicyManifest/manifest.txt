@@ -1,2 +1,0 @@
-# Module ExperimentTemplate
-# RPC service class, partial path of RPC policy file
