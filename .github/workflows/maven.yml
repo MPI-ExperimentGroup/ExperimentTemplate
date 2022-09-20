@@ -23,7 +23,9 @@ jobs:
             ls .;
             cd common;
             mvn clean test deploy -DaltDeploymentRepository=snapshot-repo::default::file:../../snapshots;
-            ls ../../snapshots;
+            cd ..
+            ls ./snapshots;
+            ls ./snapshots/*;
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
