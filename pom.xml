@@ -9,7 +9,6 @@
     <modules>
         <module>common</module>
         <module>ExperimentDesigner</module>
-        <module>AdaptiveVocabularyAssessmentModule</module>
         <module>gwt-cordova</module>
         <module>registration</module>
     </modules>
@@ -257,6 +256,17 @@
         </pluginRepository>
     </pluginRepositories>
     <repositories>
+        <repository>
+            <id>AdaptiveVocabularyAssessmentModule</id>
+            <name>AdaptiveVocabularyAssessmentModule Repository</name>
+            <url>https://mpi-experimentgroup.github.io/AdaptiveVocabularyAssessmentModule/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>  
         <repository>
             <id>KinOathKinshipArchiver</id>
             <name>KinOathKinshipArchiver Repository</name>
