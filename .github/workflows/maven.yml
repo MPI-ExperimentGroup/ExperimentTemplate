@@ -21,9 +21,7 @@ jobs:
       #run: mvn clean test -B -V -Duser.timezone=CET
       run: pwd;
             ls .;
-            cd common;
-            mvn clean test deploy -DaltDeploymentRepository=snapshot-repo::default::file:../../snapshots;
-            cd ..;
+            mvn clean test deploy -pl common -DaltDeploymentRepository=snapshot-repo::default::file:../snapshots;
             ls ../snapshots;
             ls ../snapshots/*;
     - name: Deploy
