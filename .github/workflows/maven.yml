@@ -26,7 +26,7 @@ jobs:
             sed -i 's|-testing-SNAPSHOT|-stable-SNAPSHOT|g' ./pom.xml ./*/pom.xml;
             mvn clean test deploy -pl "!ExperimentDesigner,!registration,!gwt-cordova" -DaltDeploymentRepository=snapshot-repo::default::file:../snapshots;
             cd ExperimentDesigner;
-            mvn exec:exec -Dexec.executable=java -Dexec.classpathScope=runtime -Dexec.args="-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.DocumentationGenerator ../../snapshots ../../snapshots"
+            mvn exec:exec -Dexec.executable=java -Dexec.classpathScope=runtime -Dexec.args="-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.DocumentationGenerator ../../snapshots ../../snapshots";
             cd ..;
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
