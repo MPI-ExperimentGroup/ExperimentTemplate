@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata modelVersion="1.1.0">
   <groupId>nl.mpi.tg.eg.frinex</groupId>
-  <artifactId>common</artifactId>
+  <artifactId>adaptive-vocabulary-assessment-module</artifactId>
   <versioning>
     <lastUpdated>20220921084823</lastUpdated>
     <snapshot>
