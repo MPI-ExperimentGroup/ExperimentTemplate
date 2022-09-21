@@ -22,7 +22,6 @@ jobs:
       run: pwd;
             ls .;
             mvn clean test deploy -DaltDeploymentRepository=snapshot-repo::default::file:../snapshots;
-            # -pl common 
             ls ../snapshots;
             ls ../snapshots/*;
     - name: Deploy
