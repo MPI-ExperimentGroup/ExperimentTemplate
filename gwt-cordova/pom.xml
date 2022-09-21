@@ -129,6 +129,12 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>adaptive-vocabulary-assessment-module</artifactId>
             <version>1.5.275-stable</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>nl.mpi.tg.eg.frinex</groupId>
+                    <artifactId>common</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
