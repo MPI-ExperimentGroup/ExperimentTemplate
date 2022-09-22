@@ -353,7 +353,8 @@ public abstract class AbstractPresenter implements Presenter {
             if (keyString.matches(machingRegex)) {
                 for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
                     currentButton.setEnabled(true);
-                    currentButton.removeStyleName("optionButtonActivated");
+                    // TODO: 22/09/2022 it is unclear why optionButtonActivated was cleared at this point, but it is causing issues for checkbox enabling with values
+//                    currentButton.removeStyleName("optionButtonActivated");
                 }
             }
         }
