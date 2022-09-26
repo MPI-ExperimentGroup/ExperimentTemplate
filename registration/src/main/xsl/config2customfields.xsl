@@ -161,8 +161,10 @@
                 <xsl:text>package nl.mpi.tg.eg.frinex.rest;
             
                     import java.util.List;
+                    import javax.persistence.QueryHint;
                     import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
                     import org.springframework.data.jpa.repository.Query;
+                    import org.springframework.data.jpa.repository.QueryHints;
                     import org.springframework.data.repository.NoRepositoryBean;
                     import org.springframework.data.repository.query.Param;
 
@@ -187,6 +189,7 @@
                     </xsl:text>
                 <!--/xsl:if-->
                     <xsl:text>
+                        @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
                         @Query("select count(p.id) from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> like :matchingLike")
                         <!-- @Query("select count p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex") -->
                         public int countByStaleCopyAnd</xsl:text>

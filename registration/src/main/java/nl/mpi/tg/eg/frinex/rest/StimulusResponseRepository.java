@@ -18,10 +18,12 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
+import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -46,14 +48,17 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore) from StimulusResponse order by tagDate asc")
     List<StimulusResponse> findAllDistinctRecords();
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
     long countDistinctRecords();
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where response like :matchingLike")
-    public int countByResponseLike(@Param("matchingLike") String matchingLike);    
+    public long countByResponseLike(@Param("matchingLike") String matchingLike);    
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where screenName like :matchingLike")
-    public int countByScreenNameLike(@Param("matchingLike") String matchingLike);
+    public long countByScreenNameLike(@Param("matchingLike") String matchingLike);
 
     @Override
     @RestResource(exported = false)

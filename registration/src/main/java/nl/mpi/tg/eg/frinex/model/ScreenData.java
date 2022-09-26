@@ -20,17 +20,21 @@ package nl.mpi.tg.eg.frinex.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * @since Jul 2, 2015 2:29:24 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
+@Cacheable(true)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ScreenData implements Serializable {
 
     @Id

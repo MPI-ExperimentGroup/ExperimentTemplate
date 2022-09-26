@@ -44,6 +44,11 @@ public class allowValidationOnMissingValidationControllerTest {
 
         return new allowValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
+            public long countAllDistinctRecords() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -378,7 +383,7 @@ public class allowValidationOnMissingValidationControllerTest {
             public long countDistinctDateByEventTag(String eventTag) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-            
+
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -490,15 +495,15 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
-            public int countByResponseLike(String matchingLike) {
+            public long countByResponseLike(String matchingLike) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public int countByScreenNameLike(String matchingLike) {
+            public long countByScreenNameLike(String matchingLike) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-            
+
             @Override
             public long countDistinctRecords() {
                 throw new UnsupportedOperationException("Not required for this test class.");
