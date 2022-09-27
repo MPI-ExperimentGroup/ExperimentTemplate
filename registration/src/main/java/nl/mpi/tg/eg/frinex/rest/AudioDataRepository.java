@@ -72,7 +72,8 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     public void deleteAllById(Iterable<? extends Long> ids);
 
     @Transactional
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+//    string list is not cachable and the query seems to be fairly quick anyway
+//    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from AudioData order by resultString asc")
     public List<String> findSubmitDateDistinctByOrderBySubmitDateAsc();
 
