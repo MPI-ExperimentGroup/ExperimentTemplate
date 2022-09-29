@@ -52,10 +52,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <a href="aggregate">Download Single CSV</a><br/>
             <a href="csv.zip">Download Zipped Data</a><br/>
             <div>
-                Download Zipped Audio [
-                <th:block th:each="dateString,dateIndex : ${audioDates}">
-                    <a th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>&nbsp;
-                </th:block>]
+                Download Zipped Audio [&nbsp;<span id="audioSpan">loading ... &nbsp;</span>
+                <!-- <th:block th:each="dateString,dateIndex : ${audioDates}">
+                        <a th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>&nbsp;
+                    </th:block>-->]
+                <script>
+                    $.getJSON('audiodata/search/findSubmitDateDistinctByOrderBySubmitDateAsc', function (responseData) {
+                        console.log(responseData);
+                        $("#audioSpan").empty();
+                        $.each(responseData, function (key, value) {
+                            console.log(key);
+                            console.log(value);
+                            $("#audioSpan").append("<a href='audio_" + value + ".zip'>" + value + "</a>&nbsp;");
+                        });
+                    });
+                </script>
             </div>
         </section>
         <section>
