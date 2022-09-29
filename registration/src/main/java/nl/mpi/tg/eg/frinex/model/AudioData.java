@@ -53,6 +53,11 @@ public class AudioData {
     public AudioData() {
     }
 
+    public AudioData(Date submitDate) {
+        // This constructor is only needed for caching the list of days with audio recordings
+        this.submitDate = submitDate;
+    }
+
     public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, AudioType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final long downloadPermittedWindowMs) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
