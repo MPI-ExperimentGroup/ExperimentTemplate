@@ -37,7 +37,7 @@ public class MenuController {
     public String menu(Model model,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        model.addAttribute("audioDates", this.audioDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
+        // model.addAttribute("audioDates", this.audioDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
         return "menu";
