@@ -535,7 +535,7 @@
                         <xsl:text>
                             &lt;script&gt;</xsl:text>
                         <xsl:text>
-                            $(document).on('loaded',
+                            <!-- $(document).on('loaded', -->
                             generateChart({canvas:"</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
                         <xsl:text>", label: "</xsl:text>
@@ -574,7 +574,7 @@
                                 <xsl:text>, </xsl:text>
                             </xsl:if>
                         </xsl:for-each>
-                        <xsl:text>]}));
+                        <xsl:text>]});
                             &lt;/script&gt;
                         </xsl:text>
                     </xsl:for-each>
