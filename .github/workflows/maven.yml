@@ -19,10 +19,10 @@ jobs:
         cache: maven
     - name: clean test deploy
       #run: mvn clean test -B -V -Duser.timezone=CET
+      # export MAVEN_OPTS="-Djdk.xml.xpathExprGrpLimit=0 -Djdk.xml.xpathExprOpLimit=0 -Djdk.xml.xpathTotalOpLimit=0";    
       run: pwd;
             ls .;
-            export MAVEN_OPTS="-Djdk.xml.xpathExprGrpLimit=0 -Djdk.xml.xpathExprOpLimit=0 -Djdk.xml.xpathTotalOpLimit=0";
-            mvn clean test deploy -pl "!ExperimentDesigner,!registration,!gwt-cordova" -DaltDeploymentRepository=snapshot-repo::default::file:../snapshots;
+            mvn clean test deploy -DargLine="-Djdk.xml.xpathExprGrpLimit=150 -Djdk.xml.xpathExprOpLimit=150 -Djdk.xml.xpathTotalOpLimit=150" -pl "!ExperimentDesigner,!registration,!gwt-cordova" -DaltDeploymentRepository=snapshot-repo::default::file:../snapshots;
             sed -i 's|<versionCheck.buildType>testing</versionCheck.buildType>|<versionCheck.buildType>stable</versionCheck.buildType>|g' ./pom.xml;
             sed -i 's|-testing-SNAPSHOT|-stable-SNAPSHOT|g' ./pom.xml ./*/pom.xml;
             mvn clean test deploy -pl "!ExperimentDesigner,!registration,!gwt-cordova" -DaltDeploymentRepository=snapshot-repo::default::file:../snapshots;
