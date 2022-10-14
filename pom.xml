@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-parent</artifactId>
     <name>Frinex Parent</name>
-    <version>1.5-testing-SNAPSHOT</version>
+    <version>1.6-testing-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
