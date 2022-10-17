@@ -75,7 +75,7 @@
         <dependency>
             <groupId>nl.mpi.tg.eg.frinex</groupId>
             <artifactId>common</artifactId>
-            <version>1.5-testing-SNAPSHOT</version>
+            <version>1.6-testing-SNAPSHOT</version>
         </dependency>        
         <dependency>
             <groupId>nl.mpi</groupId>
@@ -642,7 +642,7 @@
                     <dependency>
                         <groupId>nl.mpi.tg.eg.frinex</groupId>
                         <artifactId>common</artifactId>
-                        <version>1.5-testing-SNAPSHOT</version>
+                        <version>1.6-testing-SNAPSHOT</version>
                     </dependency>     
                 </dependencies>
             </plugin>
