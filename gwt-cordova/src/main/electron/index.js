@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, systemPreferences} = require('electron')
 const express = require('express');
 const path = require('path');
 
@@ -7,6 +7,10 @@ let mainWindow;
 const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configuration.name@-admin/';
 
 const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl')) && app.commandLine.hasSwitch('debug-mode');
+
+// TODO: based on the experiment XML request microphone and or camera permissions
+// const microphone = systemPreferences.askForMediaAccess('microphone');
+// const camera = systemPreferences.askForMediaAccess('camera');
 
 app.setAboutPanelOptions({
     applicationName: "Frinex",

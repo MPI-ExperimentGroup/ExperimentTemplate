@@ -44,18 +44,26 @@
   "build": {
     "asar": true,
     "files": [
-        "src/**/*",
-        "www/**/*"
-     ]
+      "src/**/*",
+      "www/**/*"
+    ],
+    "mac": {
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "This experiment may need access to your microphone",
+        "NSCameraUsageDescription": "This experiment may need access to your camera",
+        "com.apple.security.device.audio-input": true,
+        "com.apple.security.device.camera": true
+      }
     },
-  "dependencies": {
-    "express": "^4.17.2",
-    "source-map-support": "^0.5.21"
-  },
-  "devDependencies": {
-    "electron": "^16.0.6",
-    "electron-builder": "^22.14.5",
-    "electron-webpack": "^2.8.2",
-    "webpack": "~5.65.0"
+    "dependencies": {
+      "express": "^4.17.2",
+      "source-map-support": "^0.5.21"
+    },
+    "devDependencies": {
+      "electron": "^16.0.6",
+      "electron-builder": "^22.14.5",
+      "electron-webpack": "^2.8.2",
+      "webpack": "~5.65.0"
+    }
   }
-}
+  
