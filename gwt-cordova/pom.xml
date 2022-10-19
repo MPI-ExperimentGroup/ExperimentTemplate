@@ -160,6 +160,11 @@
             <artifactId>jaxb-impl</artifactId>
             <version>2.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>webrtc-adapter</artifactId>
+            <version>8.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
