@@ -25,6 +25,7 @@
         <jqueryVersion>3.6.0</jqueryVersion>
         <sockjsVersion>1.5.1</sockjsVersion>
         <bootstrapVersion>5.1.3</bootstrapVersion>
+        <webrtcVersion>7.4.0</webrtcVersion>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.9.0</gwtVersion>
         <!-- GWT 2.9.0 needs at least java 8 -->
@@ -161,9 +162,9 @@
             <version>2.3.2</version>
         </dependency>
         <dependency>
-            <groupId>org.webjars.npm</groupId>
+            <groupId>org.webjars.bower</groupId>
             <artifactId>webrtc-adapter</artifactId>
-            <version>8.1.0</version>
+            <version>${webrtcVersion}</version>
         </dependency>
     </dependencies>
 
@@ -211,7 +212,7 @@
                         </goals>
                         <configuration>
                             <!-- the recorder jars are now taken directly from the git repository rather than via webjars ,META-INF/resources/**/recorder.min.js -->
-                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js,META-INF/resources/webjars/bootstrap/**/css/bootstrap.min.css</includes>
+                            <includes>META-INF/resources/**/jquery.min.js,META-INF/resources/**/sockjs.min.js,META-INF/resources/**/stomp.min.js,META-INF/resources/**/adapter.js,META-INF/resources/webjars/bootstrap/**/css/bootstrap.min.css</includes>
                             <outputDirectory>${project.build.directory}/webjars</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
@@ -357,6 +358,14 @@
                                     <targetPath>${webappDirectory}/sockjs-client/</targetPath>
                                     <includes>
                                         <include>sockjs.min.js</include>
+                                    </includes>
+                                </resource> 
+                                <resource>
+                                    <!-- move the web jars from target to www for use in cordova, electron and when deployed on jetty -->
+                                    <directory>${project.build.directory}/webjars/META-INF/resources/webjars/webrtc-adapter/$webrtcVersio{webrtcVersion}/release</directory>
+                                    <targetPath>${webappDirectory}/webrtc-adaptor/</targetPath>
+                                    <includes>
+                                        <include>adapter.js</include>
                                     </includes>
                                 </resource> 
                                 <resource>

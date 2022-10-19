@@ -69,6 +69,7 @@
                 <include>/jquery/**</include>
                 <include>/sockjs-client/**</include>
                 <include>/stomp-websocket/**</include>
+                <include>/webrtc-adaptor/**</include>
                 <include>/bootstrap/**</include>
                 <include>/${experiment.configuration.name}.xml</include>
             </includes>  
