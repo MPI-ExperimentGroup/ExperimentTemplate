@@ -43,6 +43,8 @@ public class FrinexCORSFilter implements Filter {
         response.setHeader("Cross-Origin-Opener-Policy", "same-origin");
         response.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
         response.setHeader("Access-Control-Allow-Headers", "Content-type");
+        // X-Frame-Options SAMEORIGIN is required for the webrtctestframes.html and its inner frame webrtctestpage.html
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         chain.doFilter(req, res);
     }
 
