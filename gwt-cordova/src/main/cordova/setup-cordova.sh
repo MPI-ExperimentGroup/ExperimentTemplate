@@ -17,6 +17,9 @@ rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
 
+# modify the index page so that it includes the cordova.js
+sed -i "s|\(<!--\)\{0,1\}cordovaonly\(-->\)\{0,1\}||g" index.html
+
 # this webjars copy is not required anymore since it is done in the pom and the directory has changed
 #mv www/webjars/jquery/*/*.* www/webjars/jquery/
 #mv www/webjars/stomp-websocket/*/*.* www/webjars/stomp-websocket/
