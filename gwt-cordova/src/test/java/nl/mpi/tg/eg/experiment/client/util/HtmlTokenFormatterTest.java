@@ -32,6 +32,8 @@ import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorageInterface;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experimentdesigner.model.TokenMethod;
+import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
 import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
@@ -404,5 +406,35 @@ public class HtmlTokenFormatterTest {
         assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse__CodeResponse>_Postvalue"));
         assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123>_Postvalue"));
         assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:)_Postvalue", instance.formatString("Prevalue_<stimulusResponse>_Postvalue"));
+    }
+
+    /**
+     * Test of documented TokenText entries, of class HtmlTokenFormatter.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException
+     */
+    @Test
+    public void testDocumentedTokenTextValues() throws EvaluateTokensException {
+        System.out.println("documented TokenText entries");
+        HtmlTokenFormatter instance = getInstance();
+        for (TokenText currentToken : TokenText.values()) {
+            System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
+            assertEquals(currentToken.exampleResult, instance.formatString(currentToken.exampleUsage));
+        }
+    }
+
+    /**
+     * Test of documented TokenText entries, of class HtmlTokenFormatter.
+     *
+     * @throws nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException
+     */
+    @Test
+    public void testDocumentedTokenMethodValues() throws EvaluateTokensException {
+        System.out.println("documented TokenMethod entries");
+        HtmlTokenFormatter instance = getInstance();
+        for (TokenMethod currentToken : TokenMethod.values()) {
+            System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
+            assertEquals(currentToken.exampleResult, instance.formatString(currentToken.exampleUsage));
+        }
     }
 }

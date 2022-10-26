@@ -74,6 +74,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>frinex-experiment-designer</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>nl.mpi.tg.eg.frinex</groupId>
             <artifactId>common</artifactId>
             <version>1.6-testing-SNAPSHOT</version>

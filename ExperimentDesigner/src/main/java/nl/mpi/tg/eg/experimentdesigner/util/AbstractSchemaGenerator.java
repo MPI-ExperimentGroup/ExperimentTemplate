@@ -376,6 +376,7 @@ public class AbstractSchemaGenerator {
                         .documentedAttribute("expiryDate", AttributeType.dateValue, "The date after which the experiment can be undeployed.", false)
                         .documentedAttribute("productionServer", AttributeType.xsString, "When provided determines which production server the experiment is deployed to.", true)
                         .documentedAttribute("frinexVersion", AttributeType.xsString, "When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).", true)
+                        .documentedAttribute("stunServer", AttributeType.xsString, "When provided determines which stun server will be used for group experiments which stream the participants camera, microphone or canvas. When not provided no stun server will be used and any group streaming will have to be within the same local area network.", true)
                         .booleanAttribute("isWebApp", true, "If true a web version of this experiment will be generated.")
                         .booleanAttribute("isDesktop", true, "If true a desktop version of this experiment will be generated. "
                                 + "To debug the desktop app you can run pass the --debug-mode switch from the terminal. This is only available in the non production versions. "

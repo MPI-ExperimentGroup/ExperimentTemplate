@@ -25,6 +25,9 @@ import java.io.Writer;
 import java.util.Arrays;
 import java.util.Comparator;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.TokenMethod;
+import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
+
 /* TODO: add information on the presenter types to the HTML documentation
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
@@ -355,6 +358,35 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
     }
 
+    private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage, String exampleResult) throws IOException {
+        // TODO: format this HTML output nicely
+        writer.append("<h3 id=\"Token_" + tokenName + "\" style=\"text-transform: uppercase;\">\n");
+        writer.append(tokenName);
+        writer.append("\n</h3>\n");
+        writer.append(usageDescription);
+        writer.append("\n<br/><br/><table>\n");
+        writer.append("<tr><td>\n");
+        writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+        writer.append(tokenName);
+        writer.append("</span></td><td>");
+        writer.append("</td></tr><tr><td></td><td>\n");
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
+        writer.append("<table style=\"width: 100%;\">\n");
+        writer.append("<tr>\n");
+        writer.append("<td>\n");
+        writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">");
+        writer.append(exampleUsage);
+        writer.append("</span></td><td><span style=\"color:purple\">");
+        writer.append(exampleUsage);
+        writer.append("</span></td>");
+        writer.append("</tr>\n");
+        writer.append("</table>\n");
+        writer.append("</td>");
+        writer.append("</tr>\n");
+        writer.append("</table>\n");
+    }
+
 //    private void addFeature(Writer writer, final FeatureType featureType, FeatureType[] sortedFeatureTypes) throws IOException {
 //        writer.append("<tr><td>\n");
 //        writer.append("<div class=\"complexType\">&lt;").append(featureType.name()).append("&gt;<br/>\n");
@@ -511,6 +543,18 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                     && !featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
                 addElement(writer, new DocumentationElement(featureType));
             }
+        }
+        writer.append("</div><br/><br/>\n");
+        writer.append("<div style=\"background-color:#ade6ad30;border: 1px solid black;\">\n");
+        writer.append("<h2 id=\"...Token Text Features...Type\">Token Text Features</h2><table border=1>\n");
+        for (TokenText currentToken : TokenText.values()) {
+            addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage, currentToken.exampleResult);
+        }
+        writer.append("</div><br/><br/>\n");
+        writer.append("<div style=\"background-color:#ade6ca30;border: 1px solid black;\">\n");
+        writer.append("<h2 id=\"...Token Method Features...Type\">Token Method Features</h2><table border=1>\n");
+        for (TokenMethod currentToken : TokenMethod.values()) {
+            addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage, currentToken.exampleResult);
         }
         writer.append("</div>\n");
 //        for (final FeatureType featureRef : sortedFeatureTypes) {
