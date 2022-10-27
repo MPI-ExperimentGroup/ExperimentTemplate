@@ -359,30 +359,25 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     }
 
     private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage, String exampleResult) throws IOException {
-        // TODO: format this HTML output nicely
         writer.append("<h3 id=\"Token_" + tokenName + "\" style=\"text-transform: uppercase;\">\n");
         writer.append(tokenName);
         writer.append("\n</h3>\n");
-        writer.append(usageDescription);
+        writer.append(usageDescription.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br/>"));
         writer.append("\n<br/><br/><table>\n");
         writer.append("<tr><td>\n");
-        writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+        writer.append("<span style=\"color:blue\">");
         writer.append(tokenName);
-        writer.append("</span></td><td>");
-        writer.append("</td></tr><tr><td></td><td>\n");
-        writer.append("</td>\n");
-        writer.append("</tr>\n");
-        writer.append("<table style=\"width: 100%;\">\n");
-        writer.append("<tr>\n");
-        writer.append("<td>\n");
-        writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">");
-        writer.append(exampleUsage);
-        writer.append("</span></td><td><span style=\"color:purple\">");
-        writer.append(exampleUsage);
+        writer.append("</span></td><td></td><td></td></tr>");
+        writer.append("<tr><td></td><td><span style=\"color:grey\">Example:</span></td><td>\n");
+        writer.append("<span style=\"color:green\">evaluateTokens=\"</span></td><td>");
+        writer.append("<span style=\"color:blue\">");
+        writer.append(exampleUsage.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br/>"));
+        writer.append("<span style=\"color:green\">\"</span>");
+        writer.append("</span></td></tr>");
+        writer.append("<tr><td></td><td><span style=\"color:grey\">Result:</span></td><td colspan=\"2\">\n");
+        writer.append("<span style=\"color:purple\">");
+        writer.append(exampleResult.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br/>"));
         writer.append("</span></td>");
-        writer.append("</tr>\n");
-        writer.append("</table>\n");
-        writer.append("</td>");
         writer.append("</tr>\n");
         writer.append("</table>\n");
     }

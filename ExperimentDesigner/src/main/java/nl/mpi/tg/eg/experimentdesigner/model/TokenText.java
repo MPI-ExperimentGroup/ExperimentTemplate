@@ -23,12 +23,12 @@ package nl.mpi.tg.eg.experimentdesigner.model;
  */
 public enum TokenText {
     // TODO: fill out the all of the tokens with examples and expected result 
-    channelLoop("loops over the channels in a group experiment", "<channelLoop><channelLabel></channelLoop>", "channel1, channel2, channel3"),
-    channelLabel("ouputs the label of the current channel in a group experiment", "<channelLabel>", "channel1"),
-    channelScore("ouputs the current score of the current channel in a group experiment", "<channelScore>", "5"),
-    groupScore("ouputs the current score of the group in a group experiment", "<groupScore>", "25"),
-    groupMemberCode("ouputs the member code of the local member in a group experiment", "<groupMemberCode>", "A"),
-    groupRequestedPhase("ouputs the phase that should currently be displayed in a group experiment", "<groupRequestedPhase>", "1");
+    groupScore("Outputs the current score of the group in a group experiment", "<groupScore>", "25"),
+    channelScore("Outputs the current score of the current channel in a group experiment", "<channelScore>", "5"),
+    channelLabel("Outputs the label of the current channel in a group experiment", "<channelLabel>", "channel1"),
+    channelLoop("Loops over the channels in a group experiment", "<channelLoop>\n   <channelLabel>\n</channelLoop>", "channel1, channel2, channel3"),
+    groupMemberCode("Outputs the member code of the local member in a group experiment", "<groupMemberCode>", "A"),
+    groupRequestedPhase("Outputs the phase that should currently be displayed in a group experiment", "<groupRequestedPhase>", "1");
 
 //<groupAllMemberCodes>
 //
