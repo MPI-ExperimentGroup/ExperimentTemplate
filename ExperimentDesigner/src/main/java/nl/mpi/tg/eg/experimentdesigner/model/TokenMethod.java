@@ -22,13 +22,11 @@ package nl.mpi.tg.eg.experimentdesigner.model;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum TokenMethod {
-    // TODO: fill out the all of the tokens with examples and expected result 
-addTime("","","TODO: fill out the all of the tokens with examples and expected result ");
-daysBetween("","","");
-length("","","");
-random("","","");
-replaceAll("","","");
-// eg <setMetadataEvalTokens evaluateTokens="daysBetween(&quot;&lt;metadataField_dateOfBirth&gt;&quot;,&quot;&lt;currentDateDDMMYYYY&gt;&quot;)" fieldName="session_step">
+    addTime("Adds an amount of hours and minutes to the time provided.", "addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,12:00) addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-01:45)", "TODO: fill out the all of the tokens with examples and expected result "),
+    daysBetween("Calculates the days between the dates provided.", "daysBetween(&quot;&lt;metadataField_dateOfBirth&gt;&quot;,&quot;&lt;currentDateDDMMYYYY&gt;&quot;)", ""),
+    length("Determines the length of the provided text.", "length(&quot;&lt;metadataField_educationOther&gt;&quot;)", ""),
+    random("Generates a random number less than the parameter given.", "random(5)", "0|1|2|3|4"),
+    replaceAll("Replace all characters that match the regular expression with the second parameter given.", "replaceAll(&quot;[Tt][Ff][Jf][Qq][Yy][Pp][Kk]|TFJQYPK&quot;, &quot;[^|]*\\\\|&quot;, &quot;&quot;)", "");
 
     public final String usageDescription;
     public final String exampleUsage;
@@ -40,4 +38,3 @@ replaceAll("","","");
         this.exampleResult = exampleResult;
     }
 
-}

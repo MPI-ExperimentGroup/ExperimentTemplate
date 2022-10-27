@@ -259,6 +259,40 @@
 </xs:simpleType>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="streamStateType">
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="start"/>
+<xs:enumeration value="stop"/>
+<xs:enumeration value="pause"/>
+<xs:enumeration value="hide"/>
+<xs:enumeration value="show"/>
+<xs:enumeration value="mute"/>
+<xs:enumeration value="unmute"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="streamTypeType">
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="microphone"/>
+<xs:enumeration value="camera"/>
+<xs:enumeration value="canvas"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+</xs:restriction>
+</xs:simpleType>
 <xs:element name="experiment">
 <xs:annotation>
 <xs:documentation>Each experiment XML configuration file must have one "experiment" element of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>

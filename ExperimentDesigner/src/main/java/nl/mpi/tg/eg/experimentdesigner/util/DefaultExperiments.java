@@ -343,6 +343,9 @@ public class DefaultExperiments {
                                 presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123,_D,1_E,F,Hat,T,2");
                                 break;
                             case groupCommunicationChannels:
+                            case groupCameraChannels:
+                            case groupCanvasChannels:
+                            case groupAudioChannels:
                                 presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123|_D,1_E|F,Hat,T,2");
                                 break;
                             case phaseMembers:
@@ -382,6 +385,12 @@ public class DefaultExperiments {
                                 presenterFeature.addFeatureAttributes(attribute, "AutoMenu,about");
                             case target:
                                 presenterFeature.addFeatureAttributes(attribute, "target");
+                                break;
+                            case streamType:
+                                presenterFeature.addFeatureAttributes(attribute, "camera");
+                                break;
+                            case streamState:
+                                presenterFeature.addFeatureAttributes(attribute, "unmute");
                                 break;
                             default:
                                 presenterFeature.addFeatureAttributes(attribute, (addOptionalAttributes) ? attribute.name() : "");
@@ -551,7 +560,7 @@ public class DefaultExperiments {
                 }
                 break;
         }
-        if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType) && addOptionalAttributes){
+        if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType) && addOptionalAttributes) {
             presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, false));
         }
         if (featureType.getRequiresChildType() == FeatureType.Contitionals.any

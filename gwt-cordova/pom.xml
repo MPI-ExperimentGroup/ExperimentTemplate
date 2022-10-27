@@ -74,9 +74,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>nl.mpi.tg.eg.frinex</groupId>
+            <!-- the frinex-experiment-designer is used by the unit tests which validate the token text and token function documentation and their examples -->
             <artifactId>frinex-experiment-designer</artifactId>
-            <version>${project.version}</version>
+            <version>1.6-testing-SNAPSHOT</version>
+            <classifier>classes</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -104,7 +106,7 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.springframework.boot</groupId>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>

@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 /**
- * @since 26 Orctober 2022 16:40 PM (creation date)
+ * @since 26 October 2022 16:40 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum TokenText {
