@@ -22,11 +22,11 @@ package nl.mpi.tg.eg.experimentdesigner.model;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum TokenMethod {
-    addTime("Adds an amount of hours and minutes to the time provided.", "&lt;metadataField_notificationWeekendUntilSettings&gt;\naddTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,12:00)\naddTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-01:45)", "TODO: fill out the all of the tokens with examples and expected result "),
-    daysBetween("Calculates the days between the dates provided.", "daysBetween(&quot;&lt;metadataField_dateOfBirth&gt;&quot;,&quot;&lt;currentDateDDMMYYYY&gt;&quot;)", ""),
-    length("Determines the length of the provided text.", "length(&quot;&lt;metadataField_educationOther&gt;&quot;)", ""),
+    addTime("Adds an amount of hours and minutes to the time provided.", "Initial time: <metadataField_notificationWeekendUntilSettings>\nAfter adding 12 hours: addTime(\"<metadataField_notificationWeekendUntilSettings>\",12:00)\nAfter subtracting 1 hour and 45 minutes: addTime(\"<metadataField_notificationWeekendUntilSettings>\",-01:45)", "Initial time: 15:20\nAfter adding 12 hours: 03:20\nAfter subtracting 1 hour and 45 minutes: 13:35"),
+    daysBetween("Calculates the days between the dates provided.", "daysBetween(\"<metadataField_dateOfBirth>\",\"<currentDateDDMMYYYY>\")", ""),
+    length("Determines the length of the provided text.", "length(\"<metadataField_educationOther>\")", ""),
     random("Generates a random number less than the parameter given.", "random(5)", "0|1|2|3|4"),
-    replaceAll("Replace all characters that match the regular expression with the second parameter given.", "replaceAll(&quot;[Tt][Ff][Jf][Qq][Yy][Pp][Kk]|TFJQYPK&quot;, &quot;[^|]*\\\\|&quot;, &quot;&quot;)", "");
+    replaceAll("Replace all characters that match the regular expression with the second parameter given.", "replaceAll(\"[Tt][Ff][Jf][Qq][Yy][Pp][Kk]|TFJQYPK\", \"[^|]*\\\\|\", \"\")", "");
 
     public final String usageDescription;
     public final String exampleUsage;

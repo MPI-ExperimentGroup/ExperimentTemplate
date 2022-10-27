@@ -214,9 +214,11 @@ public class HtmlTokenFormatterTest {
             }
         };
         final MetadataField session_steps = new MetadataField("session_steps", "session_steps", "session_steps", "session_steps", "session_steps");
+        final MetadataField notificationWeekendUntilSettings = new MetadataField("notificationWeekendUntilSettings", "notificationWeekendUntilSettings", "notificationWeekendUntilSettings", "notificationWeekendUntilSettings", "notificationWeekendUntilSettings");
         final MetadataField session_step = new MetadataField("session_step", "session_step", "session_step", "session_step", "session_step");
         userData.setMetadataValue(session_steps, "audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime");
         userData.setMetadataValue(session_step, "a_value_for_session_step");
+        userData.setMetadataValue(notificationWeekendUntilSettings, "15:20");
         HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], localStorage, new GroupScoreService() {
 
             @Override
@@ -290,7 +292,7 @@ public class HtmlTokenFormatterTest {
             }
 
         }, userData, new TimerService(), new MetadataField[]{
-            session_steps, session_step}) {
+            session_steps, session_step, notificationWeekendUntilSettings}) {
             @Override
             public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
                 return Math.abs(addDays) + "/" + Math.abs(addMonths) + "/" + (2000 + addYears);
@@ -420,7 +422,7 @@ public class HtmlTokenFormatterTest {
             System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
             System.out.println("exampleUsage: " + currentToken.exampleUsage);
             System.out.println("exampleResult: " + currentToken.exampleResult);
-            assertEquals(currentToken.exampleResult, instance.formatString(currentToken.exampleUsage));
+            assertEquals(currentToken.exampleResult, instance.evaluateTokensString(currentToken.exampleUsage));
         }
     }
 
@@ -435,7 +437,9 @@ public class HtmlTokenFormatterTest {
         HtmlTokenFormatter instance = getInstance();
         for (TokenMethod currentToken : TokenMethod.values()) {
             System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
-            assertEquals(currentToken.exampleResult, instance.formatString(currentToken.exampleUsage));
+            System.out.println("exampleUsage: " + currentToken.exampleUsage);
+            System.out.println("exampleResult: " + currentToken.exampleResult);
+            assertEquals(currentToken.exampleResult, instance.evaluateTokensString(currentToken.exampleUsage));
         }
     }
 }
