@@ -71,8 +71,7 @@ public class HtmlTokenFormatterTest {
                 + "K<groupRequestedPhase>L"
                 + "M<metadataField_session_step><stimulusId>N"
                 + "O <metadataField_session_step> <stimulusId> P";
-        // todo: implement the channelLoop
-        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJK1LMa_value_for_session_stepd1e286NO a_value_for_session_step d1e286 P";
+        final String expectedString = "Q8W6ERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCB,C,D,X,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJK1LMa_value_for_session_stepd1e286NO a_value_for_session_step d1e286 P";
         HtmlTokenFormatter instance = getInstance();
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
@@ -222,7 +221,7 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String getActiveChannel() {
-                return "ActiveChannel";
+                return "A-B";
             }
 
             @Override
@@ -232,7 +231,7 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String getChannelScore() {
-                return "ChannelScore";
+                return "6";
             }
 
             @Override
@@ -252,12 +251,12 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String getGroupScore() {
-                return "GroupScore";
+                return "8";
             }
 
             @Override
             public String getMemberCode() {
-                return "X";
+                return "A";
             }
 
             @Override
@@ -419,6 +418,8 @@ public class HtmlTokenFormatterTest {
         HtmlTokenFormatter instance = getInstance();
         for (TokenText currentToken : TokenText.values()) {
             System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
+            System.out.println("exampleUsage: " + currentToken.exampleUsage);
+            System.out.println("exampleResult: " + currentToken.exampleResult);
             assertEquals(currentToken.exampleResult, instance.formatString(currentToken.exampleUsage));
         }
     }
