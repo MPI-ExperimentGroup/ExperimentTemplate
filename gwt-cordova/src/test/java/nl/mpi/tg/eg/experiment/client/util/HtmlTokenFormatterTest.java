@@ -150,7 +150,7 @@ public class HtmlTokenFormatterTest {
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer0/0/2000qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
+        final String expectedString = "qwerqwer12/3/2020qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -173,7 +173,7 @@ public class HtmlTokenFormatterTest {
         calendar.add(Calendar.MONTH, -13);
         calendar.add(Calendar.YEAR, 1);
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer45/13/2001qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(calendar.getTime()));
+        final String expectedString = "qwerqwer33/10/2021qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(calendar.getTime()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -215,10 +215,12 @@ public class HtmlTokenFormatterTest {
         };
         final MetadataField session_steps = new MetadataField("session_steps", "session_steps", "session_steps", "session_steps", "session_steps");
         final MetadataField notificationWeekendUntilSettings = new MetadataField("notificationWeekendUntilSettings", "notificationWeekendUntilSettings", "notificationWeekendUntilSettings", "notificationWeekendUntilSettings", "notificationWeekendUntilSettings");
+        final MetadataField dateOfBirth = new MetadataField("dateOfBirth", "dateOfBirth", "dateOfBirth", "dateOfBirth", "dateOfBirth");
         final MetadataField session_step = new MetadataField("session_step", "session_step", "session_step", "session_step", "session_step");
         userData.setMetadataValue(session_steps, "audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime");
         userData.setMetadataValue(session_step, "a_value_for_session_step");
         userData.setMetadataValue(notificationWeekendUntilSettings, "15:20");
+        userData.setMetadataValue(dateOfBirth, "25/01/2020");
         HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], localStorage, new GroupScoreService() {
 
             @Override
@@ -292,10 +294,10 @@ public class HtmlTokenFormatterTest {
             }
 
         }, userData, new TimerService(), new MetadataField[]{
-            session_steps, session_step, notificationWeekendUntilSettings}) {
+            session_steps, session_step, notificationWeekendUntilSettings, dateOfBirth}) {
             @Override
             public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
-                return Math.abs(addDays) + "/" + Math.abs(addMonths) + "/" + (2000 + addYears);
+                return Math.abs(addDays + 12) + "/" + Math.abs(addMonths + 3) + "/" + (2020 + addYears);
             }
 
             @Override
@@ -439,7 +441,11 @@ public class HtmlTokenFormatterTest {
             System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
             System.out.println("exampleUsage: " + currentToken.exampleUsage);
             System.out.println("exampleResult: " + currentToken.exampleResult);
-            assertEquals(currentToken.exampleResult, instance.evaluateTokensString(currentToken.exampleUsage));
+            if (currentToken == TokenMethod.random) {
+                assertTrue(currentToken.exampleResult.contains(instance.evaluateTokensString(currentToken.exampleUsage)));
+            } else {
+                assertEquals(currentToken.exampleResult, instance.evaluateTokensString(currentToken.exampleUsage));
+            }
         }
     }
 }

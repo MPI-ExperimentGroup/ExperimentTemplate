@@ -330,6 +330,11 @@
 <xs:documentation>When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="stunServer" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which stun server will be used for group experiments which stream the participants camera, microphone or canvas. When not provided no stun server will be used and any group streaming will have to be within the same local area network.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="isWebApp" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>If true a web version of this experiment will be generated.</xs:documentation>
@@ -532,6 +537,11 @@
 <xs:attribute name="frinexVersion" type="xs:string">
 <xs:annotation>
 <xs:documentation>When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="stunServer" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which stun server will be used for group experiments which stream the participants camera, microphone or canvas. When not provided no stun server will be used and any group streaming will have to be within the same local area network.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isWebApp" type="xs:boolean">
@@ -1911,6 +1921,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -2150,6 +2161,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -2608,6 +2620,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -2844,6 +2857,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3071,6 +3085,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3317,6 +3332,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3544,6 +3560,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3758,6 +3775,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3995,6 +4013,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4232,6 +4251,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4530,6 +4550,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4762,6 +4783,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4994,6 +5016,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -5327,6 +5350,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -5617,6 +5641,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -6242,6 +6267,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -6828,6 +6854,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7105,6 +7132,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7310,6 +7338,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7558,6 +7587,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7842,6 +7872,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8188,6 +8219,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8400,6 +8432,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8625,6 +8658,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8851,6 +8885,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9068,6 +9103,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9295,6 +9331,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9492,6 +9529,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9689,6 +9727,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9886,6 +9925,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10083,6 +10123,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10290,6 +10331,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10497,6 +10539,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10704,6 +10747,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10901,6 +10945,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11098,6 +11143,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11295,6 +11341,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11492,6 +11539,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11689,6 +11737,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11881,6 +11930,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12081,6 +12131,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12278,6 +12329,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12470,6 +12522,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12667,6 +12720,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12870,6 +12924,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13067,6 +13122,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13264,6 +13320,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13461,6 +13518,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13658,6 +13716,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13858,6 +13917,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14055,6 +14115,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14252,6 +14313,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14449,6 +14511,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14656,6 +14719,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14853,6 +14917,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15058,6 +15123,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15298,6 +15364,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15853,6 +15920,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16102,6 +16170,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16369,6 +16438,21 @@
 <xs:documentation>List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="groupCameraChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of video streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will see the shared cameras from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupAudioChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of audio streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will hear the shared microphones from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupCanvasChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of canvas streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel see shared canvases and these messages will only be from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="phasesPerStimulus" type="xs:integer" use="required">
 <xs:annotation>
 <xs:documentation>The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.</xs:documentation>
@@ -16563,6 +16647,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16763,6 +16848,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16963,6 +17049,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17163,6 +17250,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17366,6 +17454,7 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
+<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17568,6 +17657,26 @@
 <xs:attribute name="groupId" type="xs:string">
 <xs:annotation>
 <xs:documentation>This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="updateGroupStreamType">
+<xs:annotation>
+<xs:documentation>Update the streaming state for the current group phase members.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="eventTag" type="xs:string">
+<xs:annotation>
+<xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="streamState" type="streamStateType" use="required">
+<xs:annotation>
+<xs:documentation>Option List</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="streamType" type="streamTypeType" use="required">
+<xs:annotation>
+<xs:documentation>Option List</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
