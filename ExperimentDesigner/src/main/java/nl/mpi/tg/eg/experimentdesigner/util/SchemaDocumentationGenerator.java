@@ -507,7 +507,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         });
 //        addElement(writer, rootElement.childElements[1]);
         writer.append("<div style=\"background-color:#add8e630;border: 1px solid black;\">\n");
-        writer.append("<h2 id=\"...General Features...Type\">General Features</h2><table border=1>\n");
+        writer.append("<h2 id=\"...General Features...Type\">General Features</h2>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.isChildType(FeatureType.Contitionals.none)) {
                 addElement(writer, new DocumentationElement(featureType));
@@ -515,7 +515,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#adc3e630;border: 1px solid black;\">\n");
-        writer.append("<h2 id=\"...Stimulus Features...Type\">Stimulus Features</h2><table border=1>\n");
+        writer.append("<h2 id=\"...Stimulus Features...Type\">Stimulus Features</h2>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.isChildType(FeatureType.Contitionals.stimulusAction)) {
                 addElement(writer, new DocumentationElement(featureType));
@@ -523,7 +523,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#c3ade630;border: 1px solid black;\">\n");
-        writer.append("<h2 id=\"...Group Features...Type\">Group Features</h2><table border=1>\n");
+        writer.append("<h2 id=\"...Group Features...Type\">Group Features</h2>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
                 addElement(writer, new DocumentationElement(featureType));
@@ -531,7 +531,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#ade6d930;border: 1px solid black;\">\n");
-        writer.append("<h2 id=\"...Other Specialised Features...Type\">Other Specialised Features</h2><table border=1>\n");
+        writer.append("<h2 id=\"...Other Specialised Features...Type\">Other Specialised Features</h2>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
             if (!featureType.isChildType(FeatureType.Contitionals.none)
                     && !featureType.isChildType(FeatureType.Contitionals.stimulusAction)
@@ -541,13 +541,13 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#ade6ad30;border: 1px solid black;\">\n");
-        writer.append("<h2 id=\"...Token Text Features...Type\">Token Text Features</h2><table border=1>\n");
+        writer.append("<h2 id=\"...Token Text Features...Type\">Token Text Features</h2>\n");
         for (TokenText currentToken : TokenText.values()) {
             addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage, currentToken.exampleResult);
         }
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#ade6ca30;border: 1px solid black;\">\n");
-        writer.append("<h2 id=\"...Token Method Features...Type\">Token Method Features</h2><table border=1>\n");
+        writer.append("<h2 id=\"...Token Method Features...Type\">Token Method Features</h2>\n");
         for (TokenMethod currentToken : TokenMethod.values()) {
             addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage, currentToken.exampleResult);
         }
