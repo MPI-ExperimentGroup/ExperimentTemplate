@@ -121,6 +121,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         vertical, horizontal, flow
     }
 
+    public enum StreamState {
+        start, stop, pause, hide, show, mute, unmute
+    }
+
+    public enum StreamTypes {
+        microphone, camera, canvas
+    }
+
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
         timedEventMonitor = new TimedEventMonitor(duration);
@@ -543,7 +551,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener groupFullError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupFullError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
@@ -2256,6 +2264,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     protected void pauseMedia(final String mediaId, final Stimulus currentStimulus) {
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.stopMedia(formattedMediaId);
+    }
+
+    protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamType.name() + "" + streamState.name(), duration.elapsedMillis());
+        // TODO: handle stream actions
     }
 
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
