@@ -963,7 +963,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute"/>
+                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute" dataChannel="2"/>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -999,7 +999,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute"/>
+                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute" dataChannel="2"/>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -1035,7 +1035,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute"/>
+                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute" dataChannel="2"/>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
