@@ -849,7 +849,7 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:value-of select="if(local-name() eq 'hotKeyInput') then if (@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1' else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase, ',expectedRespondents') else ''" />
         <xsl:value-of select="if(@streamState) then concat(', StreamState.', @streamState) else ''" />
-        <xsl:value-of select="if(@streamTypes) then concat(', StreamTypes.', @streamTypes) else ''" />
+        <xsl:value-of select="if(@streamType) then concat(', StreamTypes.', @streamType) else ''" />
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />

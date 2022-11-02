@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd"
+            appNameDisplay="group_streaming_example" 
+            appNameInternal="group_streaming_example" 
+            backgroundColour="#FFFFFF" 
+            complementColour0="#EAC3A3" 
+            complementColour1="#9D7B5E" 
+            complementColour2="#C69E7C" 
+            complementColour3="#FFEDDE" 
+            complementColour4="#FFFDFB" 
+            defaultScale="1.0" 
+            isScalable="true" 
+            preserveLastState="false" 
+            primaryColour0="#628D8D" 
+            primaryColour1="#385E5E" 
+            primaryColour2="#4A7777" 
+            primaryColour3="#96ADAD" 
+            primaryColour4="#D5D8D8" 
+            rotatable="true" 
+            showMenuBar="false"
+            obfuscateBrowserStorage="false" 
+            textFontSize="17">
+        <deployment 
+            publishDate="2020-02-02" 
+            expiryDate="2021-05-22"
+            isWebApp="true"
+            isDesktop="true" 
+            isiOS="true"
+            isAndroid="true"   
+            state="production"  
+            frinexVersion="alpha"                      
+            stunServer="stun.example.com"
+        />
+    <administration />
+    <metadata>
+        <field controlledMessage="stimulusImageRegion" controlledRegex=".'{'3,'}'" postName="stimulusImageRegion" registrationField="stimulusImageRegion" />
+        <field controlledMessage="distractorImageRegion" controlledRegex=".'{'3,'}'" postName="distractorImageRegion" registrationField="distractorImageRegion" />
+    </metadata>
+    <presenter back="Menu" menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
+        <htmlText featureText="This example demonstrates the streaming audio, video and shared canvas in Frinex group experiments. Group experiments are run with multiple participants, each on different computers over the network. As a result to use this example in the normal configuration you will need to run this experiment on multiple computers simultaneously." />
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="GroupFormation" />
+        <addPadding />
+        <htmlText featureText="In order to make testing a group experiment easier there is a group test page which emulates multiple browsers by using iframes and javascript to predefine a random but shared group and assign group member codes via the URL of each of the experiment instances. This allows up to eight experiment instances (group members) to run simultaneously in one browser window. This group emulation page also contains a robot, that when enabled, randomly presses buttons on each instance causing the experiment to proceed without intervention." />
+        <htmlText featureText="You can see an automated group interaction with the &lt;a href=&quot;grouptestframes.html&quot;&gt;robot group test page&lt;/a&gt;.&lt;br/&gt;" />
+        <addPadding />
+        <htmlText featureText="The group experiments function by the use of a group communication server. The messages from each group member are sent to the group server and then broadcast to all group members. Not all group messages are to be used by all group members. For example if two members are not in the same communication channel, they will not respond to each others messages." />
+        <htmlText featureText="You observe the group messaging functionality in your browser with the &lt;a href=&quot;grouptestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
+    </presenter>
+        <presenter back="Menu" menuLabel="SendGroupStoredMessage" type="stimulus" self="SendGroupStoredMessage" title="SendGroupStoredMessage">
+        <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
+        <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
+            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C" groupCameraChannels="A,B|B,C" groupAudioChannels="A,B|B,C" groupCanvasChannels="A,B|B,C">
+                <groupFullError>
+                    <htmlText featureText="groupFullError" />
+                </groupFullError>
+                <groupNetworkConnecting>
+                    <htmlText featureText="GroupFormation groupNetworkConnecting" />
+                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                </groupNetworkConnecting>
+                <groupFindingMembers>
+                    <htmlText featureText="GroupFormation groupFindingMembers" />
+                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                </groupFindingMembers>
+                <groupNetworkSynchronising>
+                    <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;" />
+                    <htmlText featureText="GroupFormation groupNetworkSynchronising" />
+                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                </groupNetworkSynchronising>
+                <groupPhaseListeners>
+                    <groupMemberActivity phaseMembers="B,C:A,C:A,B">
+                        <htmlTokenText featureText="&lt;groupMemberCode&gt; is waiting" />
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="A:-:-">
+                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
+                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
+                        <regionReplace regionId="groupButtonsRegion">
+                            <stimulusLabel />
+                            <stimulusFreeText featureText="Please enter at least three characters." groupId="MessageType1" validationRegex=".{1,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" />
+                            <actionButton featureText="validateStimuliResponses">
+                                <validateStimuliResponses>
+                                    <conditionFalse>
+                                        <regionAppend regionId="validateStimuliResponses">
+                                            <plainText featureText="plainText in conditionFalse" />
+                                        </regionAppend>
+                                    </conditionFalse>
+                                    <conditionTrue>
+                                        <regionAppend regionId="validateStimuliResponses">
+                                            <plainText featureText="plainText in conditionTrue" />
+                                            <regionReplace regionId="groupButtonsRegion">
+                                                <actionButton featureText="sendGroupStoredMessage">
+                                                    <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
+                                                    <updateGroupStream streamState="start" streamType="microphone" />
+                                                    <updateGroupStream streamState="stop" streamType="microphone" />
+                                                    <updateGroupStream streamState="pause" streamType="microphone" />
+                                                    <updateGroupStream streamState="hide" streamType="microphone" />
+                                                    <updateGroupStream streamState="show" streamType="microphone" />
+                                                    <updateGroupStream streamState="mute" streamType="microphone" />
+                                                    <updateGroupStream streamState="unmute" streamType="microphone" />
+                                                    <updateGroupStream streamState="start" streamType="camera" />
+                                                    <updateGroupStream streamState="stop" streamType="camera" />
+                                                    <updateGroupStream streamState="pause" streamType="camera" />
+                                                    <updateGroupStream streamState="hide" streamType="camera" />
+                                                    <updateGroupStream streamState="show" streamType="camera" />
+                                                    <updateGroupStream streamState="mute" streamType="camera" />
+                                                    <updateGroupStream streamState="unmute" streamType="camera" />
+                                                    <updateGroupStream streamState="start" streamType="canvas" />
+                                                    <updateGroupStream streamState="stop" streamType="canvas" />
+                                                    <updateGroupStream streamState="pause" streamType="canvas" />
+                                                    <updateGroupStream streamState="hide" streamType="canvas" />
+                                                    <updateGroupStream streamState="show" streamType="canvas" />
+                                                    <updateGroupStream streamState="mute" streamType="canvas" />
+                                                    <updateGroupStream streamState="unmute" streamType="canvas" />
+                                                </actionButton>
+                                                create a GroupStreamExample.xml
+                                            </regionReplace>
+                                        </regionAppend>
+                                    </conditionTrue>
+                                </validateStimuliResponses>
+                            </actionButton>
+                        </regionReplace>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:B:-">
+                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
+                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
+                        <regionReplace regionId="groupButtonsRegion">
+                            <sendGroupMessageButton repeatIncorrect="false" incrementPhase="1" featureText="forward message" />
+                        </regionReplace>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:-:C">
+                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
+                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
+                        <regionReplace regionId="groupButtonsRegion">
+                            <sendGroupMessageButton repeatIncorrect="false" incrementPhase="1" featureText="forward message" />
+                        </regionReplace>
+                    </groupMemberActivity>
+                </groupPhaseListeners>
+            </groupNetwork>
+            <endOfStimulus>
+                <centrePage />
+                <htmlText featureText="No valid stimuli" />
+            </endOfStimulus>
+            <randomGrouping />
+            <stimuli>
+                <tag>BalloonGroup</tag>
+            </stimuli>
+        </groupStimuli>
+    </presenter>
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <allMenuItems />
+    </presenter>
+    <stimuli>
+        <stimulus code="stimulus1" identifier="stimulus1" label="Stimulus 1" pauseMs="0" tags="BalloonGroup" />
+        <stimulus code="stimulus2" identifier="stimulus2" label="Stimulus 2" pauseMs="0" tags="BalloonGroup" />
+        <stimulus code="stimulus3" identifier="stimulus3" label="Stimulus 3" pauseMs="0" tags="BalloonGroup" />
+        <stimulus code="1" identifier="Image1" imagePath="1_A.png" label="1" tags="GroupOf2Images" />
+        <stimulus code="2" identifier="Image2" imagePath="2_A.png" label="2" tags="GroupOf2Images" />
+        <stimulus code="3" identifier="Image3" imagePath="3_A.png" label="3" tags="GroupOf2Images" />
+        <stimulus code="4" identifier="Image4" imagePath="4_A.png" label="4" tags="GroupOf2Images" />
+        <stimulus code="5" identifier="Image5" imagePath="5_A.png" label="5" tags="GroupOf2Images" />
+        <stimulus code="6" identifier="Image6" imagePath="6_A.png" label="6" tags="GroupOf2Images" />
+    </stimuli> 
+</experiment>
