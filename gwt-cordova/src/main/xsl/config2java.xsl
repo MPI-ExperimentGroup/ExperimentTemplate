@@ -29,6 +29,9 @@
             public static final boolean SHOW_HEADER = </xsl:text>
         <xsl:value-of select="experiment/@showMenuBar" />
         <xsl:text>;
+            public static final String STUN_SERVER = </xsl:text>
+        <xsl:value-of select="if (experiment/deployment/@stunServer) then concat('&quot;', experiment/deployment/@stunServer, '&quot;') else 'null'" />
+        <xsl:text>;
             public static final int[] SDCARD_DATACHANNELS = {</xsl:text>
         <xsl:for-each select="experiment/administration/dataChannel[@logToSdCard eq'true']">
             <xsl:value-of select="@channel" />
