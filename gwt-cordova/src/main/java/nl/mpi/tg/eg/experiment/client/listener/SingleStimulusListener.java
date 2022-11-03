@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @since 2 Oct 2020 11:20:01 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@FunctionalInterface
+// @FunctionalInterface
 public interface SingleStimulusListener {
 
     void postLoadTimerFired(final Stimulus currentStimulus);

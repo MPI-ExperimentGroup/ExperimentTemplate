@@ -21,7 +21,7 @@ package nl.mpi.tg.eg.frinex.common.listener;
  * @since Jun 26, 2015 10:31:20 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@FunctionalInterface
+// @FunctionalInterface
 public interface TimedStimulusListener {
 
     void postLoadTimerFired();

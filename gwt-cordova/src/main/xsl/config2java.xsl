@@ -863,10 +863,14 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:value-of select="if(contains(local-name(), 'sendGroupTokenMessage')
                                 ) then if (@dataLogFormat) then concat(', &quot;',@dataLogFormat, '&quot;') else ', &quot;&quot;' else ''" />
         <xsl:if test="local-name() eq 'touchInputCaptureStart'">
-            <xsl:text>, () -> {
+            <xsl:text>, new TimedStimulusListener() {
+
+                @Override
+                public void postLoadTimerFired() {
             </xsl:text>
             <xsl:apply-templates />
             <xsl:text>
+                }
                 }</xsl:text>
         </xsl:if>        
         <xsl:apply-templates select="mediaLoaded" />
@@ -905,10 +909,14 @@ or local-name() eq 'ratingFooterButton'
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Rating') or contains(local-name(), 'Checkbox')) then ', ' else ''" /> 
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
-        <xsl:text>, () -> {
+        <xsl:text>, new TimedStimulusListener() {
+
+            @Override
+            public void postLoadTimerFired() {
         </xsl:text>
         <xsl:apply-templates/>
         <xsl:text>
+            }
             }</xsl:text>
         <xsl:value-of select="if(@kintypestring) then concat(', &quot;', @kintypestring, '&quot;') else ''" />
         <xsl:if test="local-name() eq 'stimulusRatingRadio'
@@ -1033,10 +1041,13 @@ or local-name() eq 'ratingCheckbox'
         <xsl:value-of select="if (local-name() eq 'svgGroupAction') then ', ' else ''" />
         <xsl:value-of select="if(@visible) then concat(', ', @visible eq 'true') else ''" />
         <xsl:if test="local-name() eq 'svgGroupAction'">
-            <xsl:text>&#xa;() -> {
+            <xsl:text>&#xa;new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
             </xsl:text>
             <xsl:apply-templates/>
             <xsl:text>
+                }
                 }
             </xsl:text>
         </xsl:if>
@@ -1204,10 +1215,13 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                     or local-name() eq 'addRecorderDtmfTrigger'
                     or local-name() eq 'habituationParadigmListener'
                     ">
-            <xsl:text>&#xa;(final Stimulus currentStimulus) -> {
+            <xsl:text>&#xa;new SingleStimulusListener() {
+                @Override
+                public void postLoadTimerFired(final Stimulus currentStimulus) {
             </xsl:text>
             <xsl:apply-templates/>
             <xsl:text>
+                }
                 }
             </xsl:text>
         </xsl:if>
@@ -1225,10 +1239,13 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                         or local-name() eq 'triggerRandom'
                         ">
             <xsl:value-of select="if(local-name() eq 'stimulusImageCapture') then ',' else ''" />
-            <xsl:text>&#xa;() -> {
+            <xsl:text>&#xa;new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
             </xsl:text>
             <xsl:apply-templates/>
             <xsl:text>
+                }
                 }
             </xsl:text>
         </xsl:if>
