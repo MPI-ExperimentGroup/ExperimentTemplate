@@ -112,7 +112,6 @@
                                                     <updateGroupStream streamState="mute" streamType="canvas" />
                                                     <updateGroupStream streamState="unmute" streamType="canvas" />
                                                 </actionButton>
-                                                create a GroupStreamExample.xml
                                             </regionReplace>
                                         </regionAppend>
                                     </conditionTrue>
