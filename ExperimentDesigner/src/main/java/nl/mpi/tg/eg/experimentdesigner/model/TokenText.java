@@ -22,104 +22,114 @@ package nl.mpi.tg.eg.experimentdesigner.model;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum TokenText {
+
+    /* TODO: document the stimulusResponse usage and underscores
+    &lt;stimulusResponse__stimulusFreeText1&gt;
+    <stimulusResponse__GroupID> note that there are two _ because you can use the stimulusID like <stimulusResponse_StimulusID_GroupID>
+    this <stimulusResponse__GroupID> will give you the current stimulus
+    */
+
     // TODO: fill out the all of the tokens with examples and expected result 
-    groupScore("Outputs the current score of the group in a group experiment.", "<groupScore>", "8"),
-    channelScore("Outputs the current score of the current channel in a group experiment.", "<channelLoop><channelScore>, </channelLoop>", "6, 2, "),
-    channelLabel("Outputs the label of the current channel in a group experiment.", "<channelLoop><channelLabel>\n</channelLoop>", "A-B\nC-D\n"),
-    channelLoop("Loops over the channels in a group experiment.", "<channelLoop>channel <channelLabel> has <channelScore> points\n</channelLoop>", "channel A-B has 6 points\nchannel C-D has 2 points\n"),
-    groupMemberCode("Outputs the member code of the local member in a group experiment.", "<groupMemberCode>", "A"),
-    groupRequestedPhase("Outputs the phase that should currently be displayed in a group experiment.", "<groupRequestedPhase>", "1");
+    groupScore("Outputs the current score of the group in a group experiment.", "::groupScore::", "8"),
+    channelScore("Outputs the current score of the current channel in a group experiment.", "::channelLoop::::channelScore::, ::/channelLoop::", "6, 2, "),
+    channelLabel("Outputs the label of the current channel in a group experiment.", "::channelLoop::::channelLabel::\n::/channelLoop::", "A-B\nC-D\n"),
+    channelLoop("Loops over the channels in a group experiment.", "::channelLoop::channel ::channelLabel:: has ::channelScore:: points\n::/channelLoop::", "channel A-B has 6 points\nchannel C-D has 2 points\n"),
+    groupMemberCode("Outputs the member code of the local member in a group experiment.", "::groupMemberCode::", "A"),
+    groupRequestedPhase("Outputs the phase that should currently be displayed in a group experiment.", "::groupRequestedPhase::", "1");
 
-//<groupAllMemberCodes>
+//::groupAllMemberCodes::
 //
-//<groupAsignedMemberCodes>
+//::groupAsignedMemberCodes::
 //
-//<groupOtherMemberCodes>
+//::groupOtherMemberCodes::
 //
-//<channelOtherMemberCodes>
+//::channelOtherMemberCodes::
 //
-//<groupActiveChannel>
+//::groupActiveChannel::
 //
-//<groupCommunicationChannels>
+//::groupCommunicationChannels::
 //
-//<groupMessageString>
+//::groupMessageString::
 //
-//<groupId>
+//::groupId::
 //
-//<groupUUID>
+//::groupUUID::
 //
-//<groupUserLabel>
+//::groupUserLabel::
 //
-//<channelScore>
+//::channelScore::
 //
-//<userId>
+//::userId::
 //
-//<playerScore>
+//::playerScore::
 //
-//<playerErrors>
+//::playerErrors::
 //
-//<playerPotentialScore>
+//::playerPotentialScore::
 //
-//<playerErrorStreak>
+//::playerErrorStreak::
 //
-//<playerCorrectStreak>
+//::playerCorrectStreak::
 //
-//<playerMaxScore>
+//::playerMaxScore::
 //
-//<playerMaxErrors>
+//::playerMaxErrors::
 //
-//<playerMaxPotentialScore>
+//::playerMaxPotentialScore::
 //
-//<playerMaxErrorStreak>
+//::playerMaxErrorStreak::
 //
-//<playerMaxCorrectStreak>
+//::playerMaxCorrectStreak::
 //
-//<playerTotalScore>
+//::playerTotalScore::
 //
-//<playerTotalErrors>
+//::playerTotalErrors::
 //
-//<playerTotalPotentialScore>
+//::playerTotalPotentialScore::
 //
-//<playerGamesPlayed>
+//::playerGamesPlayed::
 //
-//<currentDateDDMMYYYY has options for "D" "M" "Y"
+//::currentDateDDMMYYYY has options for "D" "M" "Y"
 //
-//<formatDateTime_
+//::formatDateTime_
 //
-//<" + timerId + ">
+//::" + timerId + "::
 //
-//<stimulusResponse
+//::stimulusResponse
 //
-//<completionCode>
+//::completionCode::
 //
-//<metadataField
+//::metadataField
 //
-//<stimulusId>
+//::stimulusId::
 //
-//<stimulusLabel>
+//::stimulusLabel::
 //
-//<stimulusCode>
+//::stimulusCode::
 //
-//<stimulusCorrectResponses>
+//::stimulusCorrectResponses::
 //
-//<stimulusRatingLabels>
+//::stimulusRatingLabels::
 //
-//<stimulusRatingLabel_" + index + ">
+//::stimulusRatingLabel_" + index + "::
 //
-//<stimulusAudio>
+//::stimulusAudio::
 //
-//<stimulusVideo>
+//::stimulusVideo::
 //
-//<stimulusImage>
+//::stimulusImage::
 //
-//<stimulusTags>
+//::stimulusTags::
 //
-//<stimulusPauseMs>
-
-
+//::stimulusPauseMs::
+// rating_
+// stimulusRatingLabel_
     public final String usageDescription;
     public final String exampleUsage;
     public final String exampleResult;
+
+    // public static final String tokenStartChar = '<';
+    // public static final String tokenStopChar = '>';
 
     private TokenText(String usageDescription, String exampleUsage, String exampleResult) {
         this.usageDescription = usageDescription;

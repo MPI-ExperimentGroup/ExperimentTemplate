@@ -45718,7 +45718,7 @@ Outputs the current score of the group in a group experiment.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">groupScore</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">&lt;groupScore&gt;<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">::groupScore::<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">8</span></td></tr>
 </table>
 <h3 id="Token_channelScore" style="text-transform: uppercase;">
@@ -45728,7 +45728,7 @@ Outputs the current score of the current channel in a group experiment.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">channelScore</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">&lt;channelLoop&gt;&lt;channelScore&gt;, &lt;/channelLoop&gt;<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">::channelLoop::::channelScore::, ::/channelLoop::<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">6, 2, </span></td></tr>
 </table>
 <h3 id="Token_channelLabel" style="text-transform: uppercase;">
@@ -45738,7 +45738,7 @@ Outputs the label of the current channel in a group experiment.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">channelLabel</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">&lt;channelLoop&gt;&lt;channelLabel&gt;<br/>&lt;/channelLoop&gt;<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">::channelLoop::::channelLabel::<br/>::/channelLoop::<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">A-B<br/>C-D<br/></span></td></tr>
 </table>
 <h3 id="Token_channelLoop" style="text-transform: uppercase;">
@@ -45748,7 +45748,7 @@ Loops over the channels in a group experiment.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">channelLoop</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">&lt;channelLoop&gt;channel &lt;channelLabel&gt; has &lt;channelScore&gt; points<br/>&lt;/channelLoop&gt;<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">::channelLoop::channel ::channelLabel:: has ::channelScore:: points<br/>::/channelLoop::<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">channel A-B has 6 points<br/>channel C-D has 2 points<br/></span></td></tr>
 </table>
 <h3 id="Token_groupMemberCode" style="text-transform: uppercase;">
@@ -45758,7 +45758,7 @@ Outputs the member code of the local member in a group experiment.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">groupMemberCode</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">&lt;groupMemberCode&gt;<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">::groupMemberCode::<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">A</span></td></tr>
 </table>
 <h3 id="Token_groupRequestedPhase" style="text-transform: uppercase;">
@@ -45768,7 +45768,7 @@ Outputs the phase that should currently be displayed in a group experiment.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">groupRequestedPhase</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">&lt;groupRequestedPhase&gt;<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">::groupRequestedPhase::<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">1</span></td></tr>
 </table>
 </div><br/><br/>
@@ -45781,7 +45781,7 @@ Adds an amount of hours and minutes to the time provided.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">addTime</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">Initial time: &lt;metadataField_notificationWeekendUntilSettings&gt;<br/>After adding 12 hours: addTime("&lt;metadataField_notificationWeekendUntilSettings&gt;",12:00)<br/>After subtracting 1 hour and 45 minutes: addTime("&lt;metadataField_notificationWeekendUntilSettings&gt;",-01:45)<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">Initial time: ::metadataField_notificationWeekendUntilSettings::<br/>After adding 12 hours: addTime('::metadataField_notificationWeekendUntilSettings::',12:00)<br/>After subtracting 1 hour and 45 minutes: addTime('::metadataField_notificationWeekendUntilSettings::',-01:45)<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">Initial time: 15:20<br/>After adding 12 hours: 03:20<br/>After subtracting 1 hour and 45 minutes: 13:35</span></td></tr>
 </table>
 <h3 id="Token_daysBetween" style="text-transform: uppercase;">
@@ -45791,7 +45791,7 @@ Calculates the days between the dates provided.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">daysBetween</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">Difference in days: daysBetween("&lt;metadataField_dateOfBirth&gt;","&lt;currentDateDDMMYYYY&gt;")<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">Difference in days: daysBetween('::metadataField_dateOfBirth::','::currentDateDDMMYYYY::')<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
 <span style="color:purple">Difference in days: 47</span></td></tr>
 </table>
 <h3 id="Token_length" style="text-transform: uppercase;">
@@ -45801,8 +45801,8 @@ Determines the length of the provided text.
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">length</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">There are length("Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft") letters in the word "Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft"<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
-<span style="color:purple">There are 89 letters in the word "Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft"</span></td></tr>
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">There are length('Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft') letters in the word 'Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft'<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:purple">There are 89 letters in the word 'Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft'</span></td></tr>
 </table>
 <h3 id="Token_random" style="text-transform: uppercase;">
 random
@@ -45821,8 +45821,8 @@ Replace all characters that match the regular expression with the second paramet
 <br/><br/><table>
 <tr><td>
 <span style="color:blue">replaceAll</span></td><td></td><td></td></tr><tr><td></td><td><span style="color:grey">Example:</span></td><td>
-<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">metadataField_dateOfBirth: replaceAll("&lt;metadataField_dateOfBirth&gt;", "/", ":")<br/>currentDateDDMMYYYY: replaceAll("&lt;currentDateDDMMYYYY&gt;", "/", ":")<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
-<span style="color:purple">metadataField_dateOfBirth: 25:01:2020<br/>currentDateDDMMYYYY: 12:3:2020</span></td></tr>
+<span style="color:green">evaluateTokens="</span></td><td><span style="color:blue">metadataField_dateOfBirth: replaceAll('::metadataField_dateOfBirth::', '/', ':')<br/>currentDateDDMMYYYY: replaceAll('::currentDateDDMMYYYY::', '/', ':')<span style="color:green">"</span></span></td></tr><tr><td></td><td><span style="color:grey">Result:</span></td><td colspan="2">
+<span style="color:purple">metadataField_dateOfBirth: 25:01:2020<br/>currentDateDDMMYYYY: 12:03:2020</span></td></tr>
 </table>
 </div>
 </table>

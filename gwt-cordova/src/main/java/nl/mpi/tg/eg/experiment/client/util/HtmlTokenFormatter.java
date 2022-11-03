@@ -150,11 +150,11 @@ public class HtmlTokenFormatter {
                         resultValue = Integer.toString(parameterMatch.length() - 4);
                         break;
                     case "replaceAll":
-                        String[] replaceAllParts = parameterMatch.split("\",[\\s]?\"");
+                        String[] replaceAllParts = parameterMatch.split("',[\\s]?'");
                         if (replaceAllParts.length == 3) {
-                            final String replaceableString = replaceAllParts[0].replaceAll("^\\([\"]?", "").replaceAll("\"$", "");
-                            final String regexString = replaceAllParts[1].replaceAll("^\"", "").replaceAll("\"$", "");
-                            final String replacementString = replaceAllParts[2].replaceAll("^\"", "").replaceAll("[\"]?\\)$", "");
+                            final String replaceableString = replaceAllParts[0].replaceAll("^\\([']?", "").replaceAll("'$", "");
+                            final String regexString = replaceAllParts[1].replaceAll("^'", "").replaceAll("'$", "");
+                            final String replacementString = replaceAllParts[2].replaceAll("^'", "").replaceAll("[']?\\)$", "");
                             resultValue = replaceableString.replaceAll(regexString, replacementString);
                         } else {
                             throw new EvaluateTokensException("unsupported replaceAll parameters:" + matcherGroupM.getGroup(0));
@@ -163,8 +163,8 @@ public class HtmlTokenFormatter {
                     case "daysBetween":
                         String[] parameterParts = parameterMatch.split(",");
                         if (parameterParts.length == 2) {
-                            final String dateStringA = parameterParts[0].replaceAll("[\"\\(\\)]", "");
-                            final String dateStringB = parameterParts[1].replaceAll("[\"\\(\\)]", "");
+                            final String dateStringA = parameterParts[0].replaceAll("['\\(\\)]", "");
+                            final String dateStringB = parameterParts[1].replaceAll("['\\(\\)]", "");
                             final Date dateA = parseDDMMYYYDate(dateStringA);
                             final Date dateB = parseDDMMYYYDate(dateStringB);
                             long diffMs = dateB.getTime() - dateA.getTime();
@@ -177,8 +177,8 @@ public class HtmlTokenFormatter {
                         String[] parameterTimeParts = parameterMatch.split(",");
                         if (parameterTimeParts.length == 2) {
                             boolean isNegative = (parameterTimeParts[1].startsWith("-"));
-                            final String timeStringA = parameterTimeParts[0].replaceAll("[\"\\(\\)]", "");
-                            final String timeStringB = parameterTimeParts[1].replaceAll("[-+\"\\(\\)]", "");
+                            final String timeStringA = parameterTimeParts[0].replaceAll("['\\(\\)]", "");
+                            final String timeStringB = parameterTimeParts[1].replaceAll("[-+'\\(\\)]", "");
                             final String[] timePartsA = timeStringA.split(":");
                             final String[] timePartsB = timeStringB.split(":");
                             final int hoursA = Integer.parseInt(timePartsA[0]);
@@ -203,7 +203,7 @@ public class HtmlTokenFormatter {
                         }
                         break;
                     case "random":
-                        String[] parameterValues = parameterMatch.replaceAll("[\"\\(\\)]", "").split(",");
+                        String[] parameterValues = parameterMatch.replaceAll("['\\(\\)]", "").split(",");
                         if (parameterValues.length == 1) {
 //                            final int randomNumberOrigin = Integer.parseInt(parameterValues[0]);
                             final int randomNumberBound = Integer.parseInt(parameterValues[0]);
@@ -351,67 +351,67 @@ public class HtmlTokenFormatter {
         String replacedTokensString = inputString;
         // todo: add a stimuli loop tag
         if (groupParticipantService != null) {
-            while (replacedTokensString.contains("</channelLoop>")) {
-                final int channelLoopStart = replacedTokensString.indexOf("<channelLoop>");
-                final int channelLoopEnd = replacedTokensString.indexOf("</channelLoop>");
-                String channelLoopString = replacedTokensString.substring(channelLoopStart, channelLoopEnd + "</channelLoop>".length());
+            while (replacedTokensString.contains("::/channelLoop::")) {
+                final int channelLoopStart = replacedTokensString.indexOf("::channelLoop::");
+                final int channelLoopEnd = replacedTokensString.indexOf("::/channelLoop::");
+                String channelLoopString = replacedTokensString.substring(channelLoopStart, channelLoopEnd + "::/channelLoop::".length());
                 System.out.println("channelLoopString:" + channelLoopString);
                 String channelLoopStringOutput = "";
                 for (String channel : groupParticipantService.getChannelScoreKeys()) {
-                    channelLoopStringOutput += channelLoopString.replaceAll("<channelLabel>", channel).replaceAll("<channelScore>", groupParticipantService.getChannelScore(channel)).replaceAll("<channelLoop>", "").replaceAll("</channelLoop>", "");
+                    channelLoopStringOutput += channelLoopString.replaceAll("::channelLabel::", channel).replaceAll("::channelScore::", groupParticipantService.getChannelScore(channel)).replaceAll("::channelLoop::", "").replaceAll("::/channelLoop::", "");
                 }
                 replacedTokensString = replacedTokensString.replace(channelLoopString, channelLoopStringOutput);
             }
             final String groupScore = groupParticipantService.getGroupScore();
-            replacedTokensString = replacedTokensString.replace("<groupScore>", (groupScore != null) ? groupScore : "---");
+            replacedTokensString = replacedTokensString.replace("::groupScore::", (groupScore != null) ? groupScore : "---");
             final String memberCode = groupParticipantService.getMemberCode();
-            replacedTokensString = replacedTokensString.replace("<groupMemberCode>", (memberCode != null) ? memberCode : "---");
+            replacedTokensString = replacedTokensString.replace("::groupMemberCode::", (memberCode != null) ? memberCode : "---");
             final String allMemberCodes = groupParticipantService.getAllMemberCodes();
             final String asignedMemberCodes = groupParticipantService.getAsignedMemberCodes();
-            replacedTokensString = replacedTokensString.replace("<groupRequestedPhase>", groupParticipantService.getRequestedPhase().toString());
+            replacedTokensString = replacedTokensString.replace("::groupRequestedPhase::", groupParticipantService.getRequestedPhase().toString());
             final String activeChannel = groupParticipantService.getActiveChannel();
-            replacedTokensString = replacedTokensString.replace("<groupAllMemberCodes>", (allMemberCodes != null) ? allMemberCodes : "---");
-            replacedTokensString = replacedTokensString.replace("<groupAsignedMemberCodes>", (asignedMemberCodes != null) ? asignedMemberCodes : "---");
-            replacedTokensString = replacedTokensString.replace("<groupOtherMemberCodes>", (allMemberCodes != null && memberCode != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
-            replacedTokensString = replacedTokensString.replace("<channelOtherMemberCodes>", (activeChannel != null) ? activeChannel.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
-            replacedTokensString = replacedTokensString.replace("<groupActiveChannel>", (activeChannel != null) ? activeChannel : "---");
+            replacedTokensString = replacedTokensString.replace("::groupAllMemberCodes::", (allMemberCodes != null) ? allMemberCodes : "---");
+            replacedTokensString = replacedTokensString.replace("::groupAsignedMemberCodes::", (asignedMemberCodes != null) ? asignedMemberCodes : "---");
+            replacedTokensString = replacedTokensString.replace("::groupOtherMemberCodes::", (allMemberCodes != null && memberCode != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
+            replacedTokensString = replacedTokensString.replace("::channelOtherMemberCodes::", (activeChannel != null) ? activeChannel.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
+            replacedTokensString = replacedTokensString.replace("::groupActiveChannel::", (activeChannel != null) ? activeChannel : "---");
             final String groupCommunicationChannels = groupParticipantService.getGroupCommunicationChannels();
-            replacedTokensString = replacedTokensString.replace("<groupCommunicationChannels>", (groupCommunicationChannels != null) ? groupCommunicationChannels : "---");
+            replacedTokensString = replacedTokensString.replace("::groupCommunicationChannels::", (groupCommunicationChannels != null) ? groupCommunicationChannels : "---");
             final String messageString = groupParticipantService.getMessageString();
-            replacedTokensString = replacedTokensString.replace("<groupMessageString>", (messageString != null) ? messageString : "---");
+            replacedTokensString = replacedTokensString.replace("::groupMessageString::", (messageString != null) ? messageString : "---");
             final String groupId = groupParticipantService.getGroupId();
-            replacedTokensString = replacedTokensString.replace("<groupId>", (groupId != null) ? groupId : "---");
+            replacedTokensString = replacedTokensString.replace("::groupId::", (groupId != null) ? groupId : "---");
             final String groupUUID = groupParticipantService.getGroupUUID();
-            replacedTokensString = replacedTokensString.replace("<groupUUID>", (groupUUID != null) ? groupUUID : "---");
+            replacedTokensString = replacedTokensString.replace("::groupUUID::", (groupUUID != null) ? groupUUID : "---");
             final String userLabel = groupParticipantService.getUserLabel();
-            replacedTokensString = replacedTokensString.replace("<groupUserLabel>", (userLabel != null) ? userLabel : "---");
+            replacedTokensString = replacedTokensString.replace("::groupUserLabel::", (userLabel != null) ? userLabel : "---");
             final String channelScore = groupParticipantService.getChannelScore();
-            replacedTokensString = replacedTokensString.replaceAll("<channelScore>", (channelScore != null) ? channelScore : "---");
+            replacedTokensString = replacedTokensString.replaceAll("::channelScore::", (channelScore != null) ? channelScore : "---");
         }
-        replacedTokensString = replacedTokensString.replaceAll("<userId>", userData.getUserId().toString());
-        replacedTokensString = replacedTokensString.replaceAll("<playerScore>", Integer.toString(userData.getCurrentScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerErrors>", Integer.toString(userData.getPotentialScore() - userData.getCurrentScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerPotentialScore>", Integer.toString(userData.getPotentialScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerErrorStreak>", Integer.toString(userData.getErrorStreak()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerCorrectStreak>", Integer.toString(userData.getCorrectStreak()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerMaxScore>", Double.toString(userData.getMaxScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerMaxErrors>", Integer.toString(userData.getMaxErrors()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerMaxPotentialScore>", Integer.toString(userData.getMaxPotentialScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerMaxErrorStreak>", Integer.toString(userData.getMaxErrorStreak()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerMaxCorrectStreak>", Integer.toString(userData.getMaxCorrectStreak()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerTotalScore>", Integer.toString(userData.getTotalScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerTotalErrors>", Integer.toString(userData.getTotalPotentialScore() - userData.getTotalScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerTotalPotentialScore>", Integer.toString(userData.getTotalPotentialScore()));
-        replacedTokensString = replacedTokensString.replaceAll("<playerGamesPlayed>", Integer.toString(userData.getGamesPlayed()));
-//        replacedTokensString = replacedTokensString.replaceAll("<currentDateDDMMYYYY>", formatDDMMYYYCurrentDate());
-        final String[] splitOnDateTokens = replacedTokensString.split("<currentDateDDMMYYYY");
+        replacedTokensString = replacedTokensString.replaceAll("::userId::", userData.getUserId().toString());
+        replacedTokensString = replacedTokensString.replaceAll("::playerScore::", Integer.toString(userData.getCurrentScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerErrors::", Integer.toString(userData.getPotentialScore() - userData.getCurrentScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerPotentialScore::", Integer.toString(userData.getPotentialScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerErrorStreak::", Integer.toString(userData.getErrorStreak()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerCorrectStreak::", Integer.toString(userData.getCorrectStreak()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerMaxScore::", Double.toString(userData.getMaxScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerMaxErrors::", Integer.toString(userData.getMaxErrors()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerMaxPotentialScore::", Integer.toString(userData.getMaxPotentialScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerMaxErrorStreak::", Integer.toString(userData.getMaxErrorStreak()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerMaxCorrectStreak::", Integer.toString(userData.getMaxCorrectStreak()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerTotalScore::", Integer.toString(userData.getTotalScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerTotalErrors::", Integer.toString(userData.getTotalPotentialScore() - userData.getTotalScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerTotalPotentialScore::", Integer.toString(userData.getTotalPotentialScore()));
+        replacedTokensString = replacedTokensString.replaceAll("::playerGamesPlayed::", Integer.toString(userData.getGamesPlayed()));
+//        replacedTokensString = replacedTokensString.replaceAll("::currentDateDDMMYYYY::", formatDDMMYYYCurrentDate());
+        final String[] splitOnDateTokens = replacedTokensString.split("::currentDateDDMMYYYY");
         if (splitOnDateTokens.length > 1) {
             String resultString = null;
             for (String splitPart : splitOnDateTokens) {
                 if (resultString == null) {
                     resultString = splitPart;
                 } else {
-                    final String[] subPart = splitPart.split(">", 2);
+                    final String[] subPart = splitPart.split("::", 2);
                     if (subPart[0].length() == 0) {
                         resultString += formatDDMMYYYCurrentDate(0, 0, 0);
                     } else {
@@ -442,14 +442,14 @@ public class HtmlTokenFormatter {
             }
             replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
         }
-        final String[] splitOnTimeTokens = replacedTokensString.split("<formatDateTime_");
+        final String[] splitOnTimeTokens = replacedTokensString.split("::formatDateTime_");
         if (splitOnTimeTokens.length > 1) {
             String resultString = null;
             for (String splitPart : splitOnTimeTokens) {
                 if (resultString == null) {
                     resultString = splitPart;
                 } else {
-                    final String[] subPart = splitPart.split(">", 2);
+                    final String[] subPart = splitPart.split("::", 2);
                     if (subPart[0].length() > 0) {
                         resultString += formatCurrentDateTime(subPart[0]);
                     }
@@ -459,17 +459,17 @@ public class HtmlTokenFormatter {
             replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
         }
         for (String timerId : timerService.getTimerIds()) {
-            replacedTokensString = replacedTokensString.replaceAll("<" + timerId + ">", Integer.toString(timerService.getTimerValue(timerId)));
+            replacedTokensString = replacedTokensString.replaceAll("::" + timerId + "::", Integer.toString(timerService.getTimerValue(timerId)));
         }
         if (localStorage != null) {
-            final String[] splitOnTokens = replacedTokensString.split("<stimulusResponse");
+            final String[] splitOnTokens = replacedTokensString.split("::stimulusResponse");
             if (splitOnTokens.length > 1) {
                 String resultString = null;
                 for (String splitPart : splitOnTokens) {
                     if (resultString == null) {
                         resultString = splitPart;
                     } else {
-                        final String[] subPart = splitPart.split(">", 2);
+                        final String[] subPart = splitPart.split("::", 2);
                         final String uniqueId;
                         final String responseKey;
                         if (subPart[0].length() == 0) {
@@ -480,12 +480,12 @@ public class HtmlTokenFormatter {
                             if (keysPart[0].length() == 0) {
                                 uniqueId = currentStimulus.getUniqueId(); // show the current stimulus response
                             } else {
-                                uniqueId = keysPart[0]; // extracted XXX from "<stimulusResponse_XXX"
+                                uniqueId = keysPart[0]; // extracted XXX from "::stimulusResponse_XXX"
                             }
                             if (keysPart.length < 2 || keysPart[1].length() == 0) {
                                 responseKey = ""; // show all response values
                             } else {
-                                responseKey = keysPart[1]; // extracted ZZZ from "<stimulusResponse_XXX_ZZZ"
+                                responseKey = keysPart[1]; // extracted ZZZ from "::stimulusResponse_XXX_ZZZ"
                             }
                         }
                         resultString += localStorage.getStoredStimulusValue(userData.getUserId(), uniqueId, responseKey);
@@ -495,20 +495,20 @@ public class HtmlTokenFormatter {
                 replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
             }
             final String completionCode = localStorage.getCompletionCode(userData.getUserId());
-            replacedTokensString = replacedTokensString.replaceAll("<completionCode>", (completionCode != null) ? completionCode : "");
+            replacedTokensString = replacedTokensString.replaceAll("::completionCode::", (completionCode != null) ? completionCode : "");
         }
         // insert MetadataField tags
         if (metadataFieldArray != null) {
-            final String[] splitOnTokens = replacedTokensString.split("<metadataField");
+            final String[] splitOnTokens = replacedTokensString.split("::metadataField");
             if (splitOnTokens.length > 1) {
                 String resultString = null;
                 for (String splitPart : splitOnTokens) {
                     if (resultString == null) {
                         resultString = splitPart;
                     } else {
-                        final String[] subPart = splitPart.split(">", 2);
+                        final String[] subPart = splitPart.split("::", 2);
                         if (subPart[0].length() != 0) {
-                            final String postName = subPart[0].substring(1); // extracted XXX from "<metadataField_XXX"
+                            final String postName = subPart[0].substring(1); // extracted XXX from "::metadataField_XXX"
                             for (MetadataField metadataField : metadataFieldArray) {
                                 if (metadataField.getPostName().equals(postName)) {
                                     resultString += userData.getMetadataValue(metadataField);
@@ -522,15 +522,15 @@ public class HtmlTokenFormatter {
             }
         }
         if (currentStimulus != null) {
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusId>", currentStimulus.getUniqueId());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusLabel>", currentStimulus.getLabel());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusCode>", currentStimulus.getCode());
-            replacedTokensString = replacedTokensString.replaceAll("<code>", currentStimulus.getCode()); // migrated <code> from StimuliCodeFormatter and <code> should be deprecated
+            replacedTokensString = replacedTokensString.replaceAll("::stimulusId::", currentStimulus.getUniqueId());
+            replacedTokensString = replacedTokensString.replaceAll("::stimulusLabel::", currentStimulus.getLabel());
+            replacedTokensString = replacedTokensString.replaceAll("::stimulusCode::", currentStimulus.getCode());
+            replacedTokensString = replacedTokensString.replaceAll("::code::", currentStimulus.getCode()); // migrated <code> from StimuliCodeFormatter and <code> should be deprecated
             if (currentStimulus.hasCorrectResponses()) {
-                replacedTokensString = replacedTokensString.replaceAll("<stimulusCorrectResponses>", currentStimulus.getCorrectResponses());
+                replacedTokensString = replacedTokensString.replaceAll("::stimulusCorrectResponses::", currentStimulus.getCorrectResponses());
             }
             if (currentStimulus.hasRatingLabels()) {
-                replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
+                replacedTokensString = replacedTokensString.replaceAll("::stimulusRatingLabels::", currentStimulus.getRatingLabels());
                 int index = 0;
                 for (String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
                     // note that these chars are escaped in the config2stimuli.xsl which is why we do not do a general url decode which would overly affect the users input
@@ -550,22 +550,22 @@ public class HtmlTokenFormatter {
                     ratingLabel = ratingLabel.replaceAll("&#x5B;", "[");
                     ratingLabel = ratingLabel.replaceAll("&#x2C;", ",");
                     ratingLabel = ratingLabel.replaceAll("&#x5C;", "\\\\");
-                    replacedTokensString = replacedTokensString.replace("<rating_" + index + ">", ratingLabel); // migrated <rating_XXX> from StimuliCodeFormatter <rating_XXX> and should be deprecated
-                    replacedTokensString = replacedTokensString.replace("<stimulusRatingLabel_" + index + ">", ratingLabel);
+                    replacedTokensString = replacedTokensString.replace("::rating_" + index + "::", ratingLabel); // migrated <rating_XXX> from StimuliCodeFormatter <rating_XXX> and should be deprecated
+                    replacedTokensString = replacedTokensString.replace("::stimulusRatingLabel_" + index + "::", ratingLabel);
                     index++;
                 }
             }
             if (currentStimulus.hasAudio()) {
-                replacedTokensString = replacedTokensString.replaceAll("<stimulusAudio>", currentStimulus.getAudio());
+                replacedTokensString = replacedTokensString.replaceAll("::stimulusAudio::", currentStimulus.getAudio());
             }
             if (currentStimulus.hasVideo()) {
-                replacedTokensString = replacedTokensString.replaceAll("<stimulusVideo>", currentStimulus.getVideo());
+                replacedTokensString = replacedTokensString.replaceAll("::stimulusVideo::", currentStimulus.getVideo());
             }
             if (currentStimulus.hasImage()) {
-                replacedTokensString = replacedTokensString.replaceAll("<stimulusImage>", currentStimulus.getImage());
+                replacedTokensString = replacedTokensString.replaceAll("::stimulusImage::", currentStimulus.getImage());
             }
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusTags>", serialiseTags(currentStimulus.getTags()));
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusPauseMs>", Integer.toString(currentStimulus.getPauseMs()));
+            replacedTokensString = replacedTokensString.replaceAll("::stimulusTags::", serialiseTags(currentStimulus.getTags()));
+            replacedTokensString = replacedTokensString.replaceAll("::stimulusPauseMs::", Integer.toString(currentStimulus.getPauseMs()));
         }
         return replacedTokensString;
     }

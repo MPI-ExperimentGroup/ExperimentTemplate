@@ -22,11 +22,11 @@ package nl.mpi.tg.eg.experimentdesigner.model;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum TokenMethod {
-    addTime("Adds an amount of hours and minutes to the time provided.", "Initial time: <metadataField_notificationWeekendUntilSettings>\nAfter adding 12 hours: addTime(\"<metadataField_notificationWeekendUntilSettings>\",12:00)\nAfter subtracting 1 hour and 45 minutes: addTime(\"<metadataField_notificationWeekendUntilSettings>\",-01:45)", "Initial time: 15:20\nAfter adding 12 hours: 03:20\nAfter subtracting 1 hour and 45 minutes: 13:35"),
-    daysBetween("Calculates the days between the dates provided.", "Difference in days: daysBetween(\"<metadataField_dateOfBirth>\",\"<currentDateDDMMYYYY>\")", "Difference in days: " + (6 + 29 + 12)),
-    length("Determines the length of the provided text.", "There are length(\"Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft\") letters in the word \"Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft\"", "There are 89 letters in the word \"Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft\""),
+    addTime("Adds an amount of hours and minutes to the time provided.", "Initial time: ::metadataField_notificationWeekendUntilSettings::\nAfter adding 12 hours: addTime('::metadataField_notificationWeekendUntilSettings::',12:00)\nAfter subtracting 1 hour and 45 minutes: addTime('::metadataField_notificationWeekendUntilSettings::',-01:45)", "Initial time: 15:20\nAfter adding 12 hours: 03:20\nAfter subtracting 1 hour and 45 minutes: 13:35"),
+    daysBetween("Calculates the days between the dates provided.", "Difference in days: daysBetween('::metadataField_dateOfBirth::','::currentDateDDMMYYYY::')", "Difference in days: " + (6 + 29 + 12)),
+    length("Determines the length of the provided text.", "There are length('Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft') letters in the word 'Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft'", "There are 89 letters in the word 'Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft'"),
     random("Generates a random number less than the parameter given.", "random(5)", "Will produce one of 0, 1, 2, 3, 4"),
-    replaceAll("Replace all characters that match the regular expression with the second parameter given.", "metadataField_dateOfBirth: replaceAll(\"<metadataField_dateOfBirth>\", \"/\", \":\")\ncurrentDateDDMMYYYY: replaceAll(\"<currentDateDDMMYYYY>\", \"/\", \":\")", "metadataField_dateOfBirth: 25:01:2020\ncurrentDateDDMMYYYY: 12:3:2020");
+    replaceAll("Replace all characters that match the regular expression with the second parameter given.", "metadataField_dateOfBirth: replaceAll('::metadataField_dateOfBirth::', '/', ':')\ncurrentDateDDMMYYYY: replaceAll('::currentDateDDMMYYYY::', '/', ':')", "metadataField_dateOfBirth: 25:01:2020\ncurrentDateDDMMYYYY: 12:03:2020");
 
     public final String usageDescription;
     public final String exampleUsage;

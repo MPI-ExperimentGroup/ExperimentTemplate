@@ -55,22 +55,22 @@ public class HtmlTokenFormatterTest {
     public void testFormatString() {
         System.out.println("formatString");
 
-        String inputString = "Q<groupScore>W<channelScore>E"
-                + "R<channelLoop>Duo <channelLabel> heeft <channelScore> punten.<br/><br/></channelLoop>Y"
-                + "C<groupOtherMemberCodes>D"
-                + "E<stimulusId>F"
-                + "G<stimulusCode>H"
-                + "I<stimulusLabel>J"
-                + "I<stimulusRatingLabels>J"
-                + "I<stimulusPauseMs>J"
-                + "I<stimulusAudio>J"
-                + "I<stimulusVideo>J"
-                + "I<stimulusImage>J"
-                + "I<stimulusTags>J"
-                + "I<stimulusCorrectResponses>J"
-                + "K<groupRequestedPhase>L"
-                + "M<metadataField_session_step><stimulusId>N"
-                + "O <metadataField_session_step> <stimulusId> P";
+        String inputString = "Q::groupScore::W::channelScore::E"
+                + "R::channelLoop::Duo ::channelLabel:: heeft ::channelScore:: punten.<br/><br/>::/channelLoop::Y"
+                + "C::groupOtherMemberCodes::D"
+                + "E::stimulusId::F"
+                + "G::stimulusCode::H"
+                + "I::stimulusLabel::J"
+                + "I::stimulusRatingLabels::J"
+                + "I::stimulusPauseMs::J"
+                + "I::stimulusAudio::J"
+                + "I::stimulusVideo::J"
+                + "I::stimulusImage::J"
+                + "I::stimulusTags::J"
+                + "I::stimulusCorrectResponses::J"
+                + "K::groupRequestedPhase::L"
+                + "M::metadataField_session_step::::stimulusId::N"
+                + "O ::metadataField_session_step:: ::stimulusId:: P";
         final String expectedString = "Q8W6ERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCB,C,D,X,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJK1LMa_value_for_session_stepd1e286NO a_value_for_session_step d1e286 P";
         HtmlTokenFormatter instance = getInstance();
         final String formattedString = instance.formatString(inputString);
@@ -86,7 +86,7 @@ public class HtmlTokenFormatterTest {
     public void testFormatEncodedString() {
         System.out.println("formatEncodedString");
 
-        String inputString = "K<stimulusRatingLabel_0>M<stimulusRatingLabel_1>N<stimulusRatingLabel_2>O<stimulusRatingLabel_3>P<stimulusRatingLabel_4>Q<stimulusRatingLabel_5>U<stimulusRatingLabel_6>R<stimulusRatingLabel_7>S<stimulusRatingLabel_8>T<stimulusRatingLabel_9>U<stimulusRatingLabel_10>V<stimulusRatingLabel_11>W<stimulusRatingLabel_12>X<stimulusRatingLabel_13>L";
+        String inputString = "K::stimulusRatingLabel_0::M::stimulusRatingLabel_1::N::stimulusRatingLabel_2::O::stimulusRatingLabel_3::P::stimulusRatingLabel_4::Q::stimulusRatingLabel_5::U::stimulusRatingLabel_6::R::stimulusRatingLabel_7::S::stimulusRatingLabel_8::T::stimulusRatingLabel_9::U::stimulusRatingLabel_10::V::stimulusRatingLabel_11::W::stimulusRatingLabel_12::X::stimulusRatingLabel_13::L";
         final String expectedString = "Kgood[brackets]Mgood,commaNgood{braces}Ogood(parentheses)PmeowQback\\slashUtwo^caretRdollar$signSfour*asteriskTfive+plusUquestion?markVfull.stopWeight|pipeXexclamation!markL";
         final String ratingString = "good&#x5B;brackets&#x5D;,good&#x2C;comma,good&#x7B;braces&#x7D;,good&#x28;parentheses&#x29;,meow,back&#x5C;slash,two&#x5E;caret,dollar&#x24;sign,four&#x2A;asterisk,five&#x2B;plus,question&#x3F;mark,full&#x2E;stop,eight&#x7C;pipe,exclamation&#x21;mark";
         HtmlTokenFormatter instance = new HtmlTokenFormatter(new AbstractStimulus("a", new Stimulus.Tag[]{}, null, null, 0, null, null, null, ratingString, null) {
@@ -108,7 +108,7 @@ public class HtmlTokenFormatterTest {
     @Test
     public void testFormatDateTime() {
         System.out.println("testFormatDateTime");
-        String inputString = "qwerqwer<formatDateTime_HH:mm>qwrwerqwer";
+        String inputString = "qwerqwer::formatDateTime_HH:mm::qwrwerqwer";
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         final String formattedString = instance.formatString(inputString);
@@ -146,11 +146,11 @@ public class HtmlTokenFormatterTest {
     @Test
     public void testFormatStringCurrentDate() {
         System.out.println("testFormatStringCurrentDate");
-        String inputString = "qwerqwer<currentDateDDMMYYYY>qwrwerqwer";
+        String inputString = "qwerqwer::currentDateDDMMYYYY::qwrwerqwer";
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer12/3/2020qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
+        final String expectedString = "qwerqwer12/03/2020qwrwerqwer";//.replaceAll("##/##/####", dateFormat.format(new Date()));
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -163,7 +163,7 @@ public class HtmlTokenFormatterTest {
     @Test
     public void testFormatStringCurrentDatePlus() {
         System.out.println("testFormatStringCurrentDate");
-        String inputString = "qwerqwer<currentDateDDMMYYYY-45D+1Y-13M>qwrwerqwer";
+        String inputString = "qwerqwer::currentDateDDMMYYYY-45D+1Y-13M::qwrwerqwer";
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = Calendar.getInstance();
@@ -187,7 +187,7 @@ public class HtmlTokenFormatterTest {
     public void testExtractNextFromList() {
         System.out.println("testExtractNextFromList");
         final String testRegex = "lilbq4_([^_]*)[_$]";
-        String inputString = "<metadataField_session_steps>";
+        String inputString = "::metadataField_session_steps::";
         final String expectedString = "audioas2";
         HtmlTokenFormatter instance = getInstance();
         final String formattedString = instance.formatReplaceString(inputString, testRegex);
@@ -297,7 +297,7 @@ public class HtmlTokenFormatterTest {
             session_steps, session_step, notificationWeekendUntilSettings, dateOfBirth}) {
             @Override
             public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
-                return Math.abs(addDays + 12) + "/" + Math.abs(addMonths + 3) + "/" + (2020 + addYears);
+                return Math.abs(addDays + 12) + "/" + String.format("%02d", Math.abs(addMonths + 3)) + "/" + (2020 + addYears);
             }
 
             @Override
@@ -380,15 +380,15 @@ public class HtmlTokenFormatterTest {
     public void testEvaluateTokensMethods() throws EvaluateTokensException {
         System.out.println("evaluateTokensMethods");
         HtmlTokenFormatter instance = getInstance();
-        assertEquals(6.0, instance.evaluateTokensNumber("length(\"123456\")"));
-        assertEquals(9.0, instance.evaluateTokensNumber("length(\"123456789\")"));
-        assertEquals(12.0, instance.evaluateTokensNumber("length(\"123456123456\")"));
-        assertEquals("testEvaluateReplacementMethod", instance.evaluateTokensString("replaceAll(\"replaceAll(\"testEvaluateTokensMethods\", \"Tokens\", \"Replacement\")\", \"ds\", \"d\")"));
-        assertEquals("The result is: TFJQYPK", instance.evaluateTokensString("The result is: replaceAll(\"[Tt][Ff][Jf][Qq][Yy][Pp][Kk]|TFJQYPK\", \"[^|]*\\|\", \"\")"));
-        assertEquals("Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als je besluit niet deel te nemen aan het experiment, kunt je de pagina sluiten of naar een andere website gaan.", instance.evaluateTokensString("replaceAll(\"Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan.\", \" u \", \" je \")"));
+        assertEquals(6.0, instance.evaluateTokensNumber("length('123456')"));
+        assertEquals(9.0, instance.evaluateTokensNumber("length('123456789')"));
+        assertEquals(12.0, instance.evaluateTokensNumber("length('123456123456')"));
+        assertEquals("testEvaluateReplacementMethod", instance.evaluateTokensString("replaceAll('replaceAll('testEvaluateTokensMethods', 'Tokens', 'Replacement')', 'ds', 'd')"));
+        assertEquals("The result is: TFJQYPK", instance.evaluateTokensString("The result is: replaceAll('[Tt][Ff][Jf][Qq][Yy][Pp][Kk]|TFJQYPK', '[^|]*\\|', '')"));
+        assertEquals("Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als je besluit niet deel te nemen aan het experiment, kunt je de pagina sluiten of naar een andere website gaan.", instance.evaluateTokensString("replaceAll('Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan. Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan.', ' u ', ' je ')"));
         assertTrue(instance.evaluateTokensString("random(10)random(10)random(10)random(10)random(10)random(10)random(10)").matches("[0-9]{7,7}"));
         assertTrue(instance.evaluateTokensString("Arandom(10)Brandom(10)Crandom(10)Drandom(10)Erandom(10)Frandom(10)Grandom(10)H").matches("A[0-9]B[0-9]C[0-9]D[0-9]E[0-9]F[0-9]G[0-9]H"));
-        assertEquals(12.0, instance.evaluateTokensNumber("daysBetween(\"01/12/2019\", \"13/12/2019\")"));
+        assertEquals(12.0, instance.evaluateTokensNumber("daysBetween('01/12/2019', '13/12/2019')"));
         final Number evaluateTokensRandom = instance.evaluateTokensNumber("random(21)");
         assertTrue("random(21) < 21", evaluateTokensRandom.intValue() < 21);
         assertTrue("random(21) >= 0", evaluateTokensRandom.intValue() >= 0);
@@ -403,12 +403,12 @@ public class HtmlTokenFormatterTest {
     public void testStimulusSubResponse() throws EvaluateTokensException {
         System.out.println("StimulusSubResponse");
         HtmlTokenFormatter instance = getInstance();
-        assertEquals("StoredStimulusValue(stimulusId:321,key:AnotherResponse)", instance.formatString("<stimulusResponse_321_AnotherResponse>"));
-        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123_CodeResponse>_Postvalue"));
-        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:CodeResponse)_Midvalue_StoredStimulusValue(stimulusId:321,key:AnotherResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123_CodeResponse>_Midvalue_<stimulusResponse_321_AnotherResponse>_Postvalue"));
-        assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_<stimulusResponse__CodeResponse>_Postvalue"));
-        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:)_Postvalue", instance.formatString("Prevalue_<stimulusResponse_123>_Postvalue"));
-        assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:)_Postvalue", instance.formatString("Prevalue_<stimulusResponse>_Postvalue"));
+        assertEquals("StoredStimulusValue(stimulusId:321,key:AnotherResponse)", instance.formatString("::stimulusResponse_321_AnotherResponse::"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_::stimulusResponse_123_CodeResponse::_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:CodeResponse)_Midvalue_StoredStimulusValue(stimulusId:321,key:AnotherResponse)_Postvalue", instance.formatString("Prevalue_::stimulusResponse_123_CodeResponse::_Midvalue_::stimulusResponse_321_AnotherResponse::_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:CodeResponse)_Postvalue", instance.formatString("Prevalue_::stimulusResponse__CodeResponse::_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:123,key:)_Postvalue", instance.formatString("Prevalue_::stimulusResponse_123::_Postvalue"));
+        assertEquals("Prevalue_StoredStimulusValue(stimulusId:d1e286,key:)_Postvalue", instance.formatString("Prevalue_::stimulusResponse::_Postvalue"));
     }
 
     /**
