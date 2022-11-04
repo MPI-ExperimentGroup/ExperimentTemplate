@@ -259,7 +259,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "chosenLocale", providedLocale);
             } else {
                 String storedLocale = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "chosenLocale");
-                if (!storedLocale.isBlank()) {
+                if (!storedLocale.isEmpty()) {
                     final String queryString = Window.Location.getQueryString();
                     final String updatedPathValue;
                     // if there are no values already there then use ? otherwise append with &
