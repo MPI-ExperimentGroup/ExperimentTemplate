@@ -252,6 +252,24 @@ public abstract class AppController implements AppEventListner/*, AudioException
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceUUID", getDeviceUUID(), 0);
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceVersion", getDeviceVersion(), 0);
             }
+            // force the previously chosen locale if it has been seen before and allow it to be updated if a new locale is on the URL
+            final String providedLocale = Window.Location.getParameter("locale");
+            if (providedLocale != null) {
+                // store the localeName in the local storage for use when reloading without the locale get parameter
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "chosenLocale", providedLocale);
+            } else {
+                String storedLocale = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "chosenLocale");
+                if (!storedLocale.isBlank()) {
+                    final String queryString = Window.Location.getQueryString();
+                    final String updatedPathValue;
+                    // if there are no values already there then use ? otherwise append with &
+                    String separator = (queryString.isEmpty()) ? "?" : "&";
+                    updatedPathValue = queryString + separator + "locale=" + storedLocale;
+                    Window.Location.replace(Window.Location.getPath() + updatedPathValue);
+                    // as we are replacing the location in the browser we do not want to proceed from here
+                    return;
+                }
+            }
             ApplicationState lastAppState = ApplicationState.start;
             try {
                 final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
