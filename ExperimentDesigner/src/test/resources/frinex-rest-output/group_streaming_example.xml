@@ -46,7 +46,7 @@
         <htmlText featureText="The group experiments function by the use of a group communication server. The messages from each group member are sent to the group server and then broadcast to all group members. Not all group messages are to be used by all group members. For example if two members are not in the same communication channel, they will not respond to each others messages." />
         <htmlText featureText="You observe the group messaging functionality in your browser with the &lt;a href=&quot;grouptestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
     </presenter>
-    <presenter back="Instruction" menuLabel="GroupFormation" next="Accord" type="stimulus" self="GroupFormation" title="GroupFormation">
+    <presenter back="Instruction" menuLabel="GroupFormation" next="GroupStreamingExample" type="stimulus" self="GroupFormation" title="GroupFormation">
         <!--regionReplace regionId="groupButtonsRegion"/-->
         <htmlText featureText="This group formation presenter is not strictly needed. However it does allow the group to be set up and its structure checked before proceeding." />
         <addPadding />
