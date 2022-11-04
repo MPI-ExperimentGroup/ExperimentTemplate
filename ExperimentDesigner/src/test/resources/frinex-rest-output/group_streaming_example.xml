@@ -46,7 +46,7 @@
         <htmlText featureText="The group experiments function by the use of a group communication server. The messages from each group member are sent to the group server and then broadcast to all group members. Not all group messages are to be used by all group members. For example if two members are not in the same communication channel, they will not respond to each others messages." />
         <htmlText featureText="You observe the group messaging functionality in your browser with the &lt;a href=&quot;grouptestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
     </presenter>
-    <presenter back="GroupOf6" menuLabel="GroupFormation" next="Accord" type="stimulus" self="GroupFormation" title="GroupFormation">
+    <presenter back="Instruction" menuLabel="GroupFormation" next="Accord" type="stimulus" self="GroupFormation" title="GroupFormation">
         <!--regionReplace regionId="groupButtonsRegion"/-->
         <htmlText featureText="This group formation presenter is not strictly needed. However it does allow the group to be set up and its structure checked before proceeding." />
         <addPadding />
@@ -119,7 +119,7 @@
                         <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
                         <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
                         <addPadding />
-                        <targetButton featureText="Volgende" target="Accord" groupId="activityButtonGroup" />
+                        <targetButton featureText="Volgende" target="GroupStreamingExample" groupId="activityButtonGroup" />
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
@@ -133,24 +133,24 @@
             </stimuli>
         </groupStimuli>
     </presenter>
-    <presenter back="Menu" menuLabel="SendGroupStoredMessage" type="stimulus" self="SendGroupStoredMessage" title="SendGroupStoredMessage">
+    <presenter back="Menu" menuLabel="GroupStreamingExample" type="stimulus" self="GroupStreamingExample" title="GroupStreamingExample">
         <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
-        <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
+        <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C" groupCameraChannels="A,B|B,C" groupAudioChannels="A,B|B,C" groupCanvasChannels="A,B|B,C">
                 <groupFullError>
                     <htmlText featureText="groupFullError" />
                 </groupFullError>
                 <groupNetworkConnecting>
-                    <htmlText featureText="GroupFormation groupNetworkConnecting" />
+                    <htmlText featureText="GroupStreamingExample groupNetworkConnecting" />
                     <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
                 </groupNetworkConnecting>
                 <groupFindingMembers>
-                    <htmlText featureText="GroupFormation groupFindingMembers" />
+                    <htmlText featureText="GroupStreamingExample groupFindingMembers" />
                     <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
                 </groupFindingMembers>
                 <groupNetworkSynchronising>
                     <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;" />
-                    <htmlText featureText="GroupFormation groupNetworkSynchronising" />
+                    <htmlText featureText="GroupStreamingExample groupNetworkSynchronising" />
                     <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
