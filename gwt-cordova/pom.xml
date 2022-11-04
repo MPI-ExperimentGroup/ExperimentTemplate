@@ -75,7 +75,7 @@
         </dependency>
         <dependency>
             <groupId>nl.mpi.tg.eg.frinex</groupId>
-            <!-- the frinex-experiment-designer is used by the unit tests which validate the token text and token function documentation and their examples -->
+            <!-- the frinex experiment designer is used by the unit tests which validate the token text and token function documentation and their examples -->
             <artifactId>frinex-experiment-designer</artifactId>
             <version>1.6-testing-SNAPSHOT</version>
             <classifier>classes</classifier>
