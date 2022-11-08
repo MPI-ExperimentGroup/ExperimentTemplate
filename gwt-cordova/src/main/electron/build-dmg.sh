@@ -26,11 +26,11 @@
 #        yarn
 #        OSX
 
-~/.yarn/bin/yarn
+yarn
 touch src/renderer/index.js
 cp src/renderer/static/splash.png ./background.png
 convert -resize 512x512^ -gravity center -extent 512x512 -quality 100 src/renderer/static/icon.png ./icon.png
 mkdir dist
 cp background.png dist/
-~/.yarn/bin/yarn dist --mac dmg
+yarn dist --mac dmg
 ls dist/*.dmg
