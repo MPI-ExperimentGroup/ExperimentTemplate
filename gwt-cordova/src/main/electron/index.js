@@ -1,3 +1,10 @@
+// import { makeUniversalApp } from '@electron/universal';
+// await makeUniversalApp({
+//     x64AppPath: 'path/to/App_x64.app',
+//     arm64AppPath: 'path/to/App_arm64.app',
+//     outAppPath: 'path/to/App_universal.app',
+//   });
+  
 const {app, BrowserWindow, Menu, systemPreferences} = require('electron')
 const express = require('express');
 const path = require('path');
