@@ -40,6 +40,9 @@ public class StreamMessage {
     private String messageString;
     private String messageStatus;
 
+    public StreamMessage() {
+    }
+
     public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamState streamState, String messageString, String messageStatus) {
         this.userId = userId;
         this.groupId = groupId;
