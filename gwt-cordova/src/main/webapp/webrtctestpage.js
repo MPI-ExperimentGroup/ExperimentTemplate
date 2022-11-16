@@ -156,52 +156,27 @@ function sendToGroup(status, messageObject) {
     const contentData = {
         'groupId': groupId,
         'screenId': null,
-        'groupCommunicationChannels': 'A,B|B,C|D,E|F,G',
-        'expectedRespondents': null,
         'originMemberCode': null,
         'originPhase': null,
-        'requestedPhase': 1,
-        'stimulusIndex': 1,
-        'stimuliList': status, // status used in this field is only for testing in this page
-        'responseStimulusOptions': null,
-        'responseStimulusId': null,
-        'memberScore': null,
-        'groupReady': null,
+        'messageStatus': status, // status used in this field is only for testing in this page
         'userId': userId,
-        'userLabel': null,
-        'allMemberCodes': 'A,B,C,D,E,F,G',
         'memberCode': memberCode,
-        'stimulusId': 1, // Math.floor((1 + Math.random()) * 0x10000),
         'messageString': JSON.stringify(messageObject),
-        'groupReady': null
     };
-    stompClient.send("/app/group", {}, JSON.stringify(contentData));
+    stompClient.send("/app/stream", {}, JSON.stringify(contentData));
     $("#selfdata").append(
         "<tr style=\"background: #0d6efd1a;\">" +
         "<td>sent: " + contentData.userId +
         "</td><td>" + contentData.groupId +
         "</td><td>" + // contentData.groupUUID +
         "</td><td>" + contentData.screenId +
-        "</td><td>" + contentData.userLabel +
-        "</td><td>" + contentData.allMemberCodes +
-        "</td><td>" + contentData.groupCommunicationChannels +
         "</td><td>" + contentData.memberCode +
         "</td><td>" + contentData.originMemberCode +
         "</td><td>" + contentData.stimulusId +
-        "</td><td>" + contentData.responseStimulusOptions +
-        "</td><td>" + contentData.responseStimulusId +
-        "</td><td>" + contentData.expectedRespondents +
-        "</td><td>" + contentData.actualRespondents +
-        "</td><td>" + contentData.stimulusIndex +
-        "</td><td>" + contentData.stimuliList +
+        "</td><td>" + contentData.streamState +
         "</td><td>" + contentData.originPhase +
-        "</td><td>" + contentData.requestedPhase +
         "</td><td>" + contentData.messageString +
-        "</td><td>" + contentData.groupReady +
-        "</td><td>" + // contentData.memberScore +
-        "</td><td>" + // contentData.channelScore +
-        "</td><td>" + // contentData.groupScore +
-        "</td><td>" + contentData.eventMs +
+        "</td><td>" + contentData.messageStatus +
         "</td></tr>");
 }
 
@@ -379,61 +354,37 @@ function setConnected(connected) {
             "<td>Stimulus</td>" +
             "<td>Options</td>" +
             "<td>Response</td>" +
-            "<td>ExpectedRespondents</td>" +
-            "<td>ActualRespondents</td>" +
-            "<td>stimulusIndex</td>" +
-            "<td>stimuliList</td>" +
+            "<td>streamState</td>" +
             "<td>originPhase</td>" +
-            "<td>requestedPhase</td>" +
             "<td>message</td>" +
             "<td>Ready</td>" +
-            "<td>eventMs</td>" +
             "</tr>");
         $("#unittestdata").append(
             "<tr><td>userId</td>" +
             "<td>screenId</td>" +
-            "<td>userLabel</td>" +
             "<td>groupId</td>" +
-            "<td>allMemberCodes</td>" +
             "<td>Channels</td>" +
             "<td>memberCode</td>" +
             "<td>originMemberCode</td>" +
             "<td>stimulusId</td>" +
-            "<td>stimulusIndex</td>" +
-            "<td>stimuliList</td>" +
+            "<td>streamState</td>" +
             "<td>originPhase</td>" +
-            "<td>requestedPhase</td>" +
             "<td>messageString</td>" +
-            "<td>groupReady</td>" +
-            "<td>responseStimulusId</td>" +
-            "<td>expectedRespondents</td>" +
-            "<td>actualRespondents</td>" +
+            "<td>messageStatus</td>" +
             "<td>groupUUID</td></tr>");
         $("#selfdata").append(
             "<tr><td>userId</td>" +
             "<td>groupId</td>" +
             "<td>groupUUID</td>" +
             "<td>screenId</td>" +
-            "<td>userLabel</td>" +
-            "<td>allMemberCodes</td>" +
             "<td>Channels</td>" +
             "<td>memberCode</td>" +
             "<td>originMemberCode</td>" +
             "<td>stimulusId</td>" +
-            "<td>responseStimulusOptions</td>" +
-            "<td>responseStimulusId</td>" +
-            "<td>expectedRespondents</td>" +
-            "<td>actualRespondents</td>" +
-            "<td>stimulusIndex</td>" +
-            "<td>stimuliList</td>" +
+            "<td>streamState</td>" +
             "<td>originPhase</td>" +
-            "<td>requestedPhase</td>" +
             "<td>messageString</td>" +
-            "<td>groupReady</td>" +
-            "<td>memberScore</td>" +
-            "<td>channelScore</td>" +
-            "<td>groupScore</td>" +
-            "<td>eventMs</td>" +
+            "<td>messageStatus</td>" +
             "</tr>");
     } else {
         $("#conversation").hide();
@@ -470,26 +421,15 @@ function connect() {
                     "</td><td>" + contentData.groupId +
                     "</td><td>" + contentData.groupUUID +
                     "</td><td>" + contentData.screenId +
-                    "</td><td>" + contentData.userLabel +
-                    "</td><td>" + contentData.allMemberCodes +
-                    "</td><td>" + contentData.groupCommunicationChannels +
                     "</td><td>" + contentData.memberCode +
                     "</td><td>" + contentData.originMemberCode +
-                    "</td><td>" + contentData.stimulusId +
-                    "</td><td>" + contentData.responseStimulusOptions +
-                    "</td><td>" + contentData.responseStimulusId +
-                    "</td><td>" + contentData.expectedRespondents +
-                    "</td><td>" + contentData.actualRespondents +
-                    "</td><td>" + contentData.stimulusIndex +
-                    "</td><td>" + contentData.stimuliList +
+                    "</td><td>" + contentData.streamState +
                     "</td><td>" + contentData.originPhase +
-                    "</td><td>" + contentData.requestedPhase +
                     "</td><td>" + contentData.messageString +
-                    "</td><td>" + contentData.groupReady +
-                    "</td><td>" + contentData.eventMs +
+                    "</td><td>" + contentData.messageStatus +
                     "</td>";
-                var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + /*contentData.originPhase + "','"*/ + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + /*contentData.originMemberCode + "','"*/ + contentData.stimulusId + "')\">message</button></td>";
-                var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + /*contentData.originPhase + "','"*/ + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
+                var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.screenId + "','" + contentData.memberCode + "')\">message</button></td>";
+                var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.screenId + "',null,'" + contentData.groupId + "',null,null)\">add member</button></td>";
                 usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
                 usersTableRow.css("outline-style", "solid");
                 usersTableRow.css("outline-width", "5px");
@@ -501,22 +441,12 @@ function connect() {
                     "<tr><td>\"" +
                     contentData.userId + "\", </td><td>\"" +
                     contentData.screenId + "\", </td><td>\"" +
-                    contentData.userLabel + "\", </td><td>\"" +
                     contentData.groupId + "\", </td><td>\"" +
-                    contentData.allMemberCodes + "\", </td><td>\"" +
-                    contentData.groupCommunicationChannels + "\", </td><td>\"" +
                     contentData.memberCode + "\", </td><td>\"" +
                     contentData.originMemberCode + "\", </td><td>\"" +
-                    contentData.stimulusId + "\", </td><td>\"" +
-                    contentData.stimulusIndex + "\", </td><td>\"" +
-                    contentData.stimuliList + "\", </td><td>\"" +
                     contentData.originPhase + "\", </td><td>\"" +
-                    contentData.requestedPhase + "\", </td><td>\"" +
                     contentData.messageString + "\", </td><td>" +
-                    contentData.groupReady + ", </td><td>\"" +
-                    contentData.responseStimulusId + "\", </td><td>\"" +
-                    contentData.expectedRespondents + "\", </td><td>\"" +
-                    contentData.actualRespondents + "\", </td><td>\"" +
+                    contentData.messageStatus + ", </td><td>\"" +
                     contentData.groupUUID + "\"</td></tr>");
                 if (contentData.userId === userId) {
                     $("#selfdata").append(
@@ -525,71 +455,43 @@ function connect() {
                         "</td><td>" + contentData.groupId +
                         "</td><td>" + contentData.groupUUID +
                         "</td><td>" + contentData.screenId +
-                        "</td><td>" + contentData.userLabel +
-                        "</td><td>" + contentData.allMemberCodes +
-                        "</td><td>" + contentData.groupCommunicationChannels +
                         "</td><td>" + contentData.memberCode +
                         "</td><td>" + contentData.originMemberCode +
-                        "</td><td>" + contentData.stimulusId +
-                        "</td><td>" + contentData.responseStimulusOptions +
-                        "</td><td>" + contentData.responseStimulusId +
-                        "</td><td>" + contentData.expectedRespondents +
-                        "</td><td>" + contentData.actualRespondents +
-                        "</td><td>" + contentData.stimulusIndex +
-                        "</td><td>" + contentData.stimuliList +
+                        "</td><td>" + contentData.streamState +
                         "</td><td>" + contentData.originPhase +
-                        "</td><td>" + contentData.requestedPhase +
                         "</td><td>" + contentData.messageString +
-                        "</td><td>" + contentData.groupReady +
-                        "</td><td>" + contentData.memberScore +
-                        "</td><td>" + contentData.channelScore +
-                        "</td><td>" + contentData.groupScore +
-                        "</td><td>" + contentData.eventMs +
+                        "</td><td>" + contentData.messageStatus +
                         "</td></tr>");
                 }
             }
-            //String userId, 
-            //String screenId,
-            // String userLabel,
-            //  String groupId, 
-            //  String allMemberCodes,
-            //   String memberCode, 
-            //   String stimulusId, 
-            //   String stimulusIndex, 
-            //   String stimuliList, 
-            //   String requestedPhase,
-            //    String messageString,
-            //     Boolean groupReady, 
-            //     String responseStimulusId, 
-            //     String groupUUID
             if (isReady) {
                 if (!groupId || groupId == contentData.groupId) {
-                    if (/*contentData.userId !== userId &&*/ contentData.stimuliList === "offer") {
+                    if (/*contentData.userId !== userId &&*/ contentData.streamState === "offer") {
                         console.log("offer: " + contentData.messageString);
                         handleOffer(contentData.userId, JSON.parse(contentData.messageString));
                     }
-                    if (contentData.userId !== userId && contentData.stimuliList === "answer") {
+                    if (contentData.userId !== userId && contentData.streamState === "answer") {
                         console.log("answer: " + contentData.messageString);
                         handleAnswer(JSON.parse(contentData.messageString));
                     }
-                    if (contentData.userId !== userId && contentData.stimuliList === "candidate") {
+                    if (contentData.userId !== userId && contentData.streamState === "candidate") {
                         console.log("candidate: " + contentData.messageString);
                         handleCandidate(JSON.parse(contentData.messageString));
                     }
-                    if (contentData.userId !== userId && contentData.stimuliList === "ready") {
+                    if (contentData.userId !== userId && contentData.streamState === "ready") {
                         if (peerConnection) {
                             console.log('already connected, ignoring');
                         } else {
                             initiateConnection();
                         }
                     }
-                    if (contentData.userId !== userId && contentData.stimuliList === "refresh") {
+                    if (contentData.userId !== userId && contentData.streamState === "refresh") {
                         if (localContext) {
                             // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
                             localContext.fillText("T", 0, 0);
                         }
                     }
-                    if (contentData.userId !== userId && contentData.stimuliList === "disconnect") {
+                    if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                         if (peerConnection) {
                             disconnectVideo();
                         } else {
@@ -630,26 +532,19 @@ function startBar() {
 function updateGroup() {
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
-        'userLabel': null,
-        'allMemberCodes': 'A,B,C,D,E,F,G',
         'memberCode': null,
-        'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
         'messageString': $("#messageString").val(),
-        'groupReady': null
+        'messageStatus': null
     }));
 }
-function messageGroup(currentUserId, requestedPhase, screenId, userLabel, groupIdL, allMemberCodes, memberCode, stimulusId) {
+function messageGroup(currentUserId, screenId, groupIdL, memberCode) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': currentUserId,
-        'userLabel': userLabel,
         'groupId': groupIdL,
         'screenId': screenId,
-        'allMemberCodes': allMemberCodes,
         'memberCode': memberCode,
-        'stimulusId': stimulusId,
         'messageString': $("#messageString").val(),
-        'groupReady': null,
-        'requestedPhase': requestedPhase
+        'messageStatus': null
     }));
 }
 

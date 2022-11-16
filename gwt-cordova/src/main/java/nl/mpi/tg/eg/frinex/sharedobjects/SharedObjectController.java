@@ -37,6 +37,12 @@ public class SharedObjectController {
         return sharedData;
     }
 
+    @MessageMapping("/shared")
+    @SendTo("/shared/stream")
+    public StreamMessage getStreamData(StreamMessage streamMessage) throws Exception {
+        return streamMessage;
+    }
+
     @MessageMapping("/group")
     @SendTo("/shared/group")
     public GroupMessage getGroupData(GroupMessage groupMessage) throws Exception {
