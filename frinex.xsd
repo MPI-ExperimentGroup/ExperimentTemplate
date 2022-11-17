@@ -1145,6 +1145,11 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="code" type="xs:string">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 </xs:element>
 </xs:sequence>
