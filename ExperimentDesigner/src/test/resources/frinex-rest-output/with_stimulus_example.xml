@@ -30,6 +30,7 @@
         isDesktop="true"
         isiOS="true"
         isAndroid="true"
+        stagingServer="staging"
         productionServer="production"
         frinexVersion="latest"
         state="staging"

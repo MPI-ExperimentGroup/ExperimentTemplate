@@ -60,6 +60,7 @@ public class PublishEvents implements Serializable {
     private boolean isAndroid;
     private boolean isUnity;
     private String productionServer;
+    private String stagingServer;
     private String frinexVersion;
     @ManyToOne
     private Experiment experiment;
@@ -68,7 +69,7 @@ public class PublishEvents implements Serializable {
     public PublishEvents() {
     }
 
-    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isUnity, boolean isDesktop, String productionServer, String frinexVersion) {
+    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isUnity, boolean isDesktop, String stagingServer, String productionServer, String frinexVersion) {
         this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
@@ -133,6 +134,11 @@ public class PublishEvents implements Serializable {
     }
 
     @XmlAttribute
+    public String getStagingServer() {
+        return stagingServer;
+    }
+
+    @XmlAttribute
     public String getProductionServer() {
         return productionServer;
     }
@@ -180,6 +186,10 @@ public class PublishEvents implements Serializable {
 
     public void setIsUnity(boolean isUnity) {
         this.isUnity = isUnity;
+    }
+    
+    public void setStagingServer(String stagingServer) {
+        this.stagingServer = stagingServer;
     }
     
     public void setProductionServer(String productionServer) {
