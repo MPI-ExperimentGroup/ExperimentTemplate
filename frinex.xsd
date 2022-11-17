@@ -320,6 +320,11 @@
 <xs:documentation>The date after which the experiment can be undeployed.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="stagingServer" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which staging server the experiment is deployed to.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="productionServer" type="xs:string">
 <xs:annotation>
 <xs:documentation>When provided determines which production server the experiment is deployed to.</xs:documentation>
@@ -527,6 +532,11 @@
 <xs:attribute name="expiryDate" type="dateValue" use="required">
 <xs:annotation>
 <xs:documentation>The date after which the experiment can be undeployed.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="stagingServer" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided determines which staging server the experiment is deployed to.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="productionServer" type="xs:string">
