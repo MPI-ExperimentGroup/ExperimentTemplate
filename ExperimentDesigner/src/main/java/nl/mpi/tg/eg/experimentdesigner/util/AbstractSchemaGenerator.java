@@ -471,6 +471,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("locale", false)
                         .stringAttribute("ratingLabels", true)
                         .stringAttribute("label", true)
+                        .stringAttribute("code", true)
                     })
                                     .stringAttribute("identifier", false)
                                     .stringAttribute("videoPath", true)
