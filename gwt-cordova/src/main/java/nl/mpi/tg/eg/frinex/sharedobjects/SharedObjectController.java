@@ -37,7 +37,7 @@ public class SharedObjectController {
         return sharedData;
     }
 
-    @MessageMapping("/shared")
+    @MessageMapping("/stream")
     @SendTo("/shared/stream")
     public StreamMessage getStreamData(StreamMessage streamMessage) throws Exception {
         return streamMessage;
