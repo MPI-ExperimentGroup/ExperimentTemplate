@@ -54,7 +54,9 @@ fi
 
 cordova platform add ios
 #cordova platform add windows
-cordova platform add android@11.0.0
+#cordova platform add android@11.0.0
+cordova platform add android
+
 #cordova plugin add https://github.com/danwilson/google-analytics-plugin.git
 #cordova plugin add org.apache.cordova.device
 #cordova plugin add org.apache.cordova.statusbar
