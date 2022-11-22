@@ -401,141 +401,6 @@ table.stimulusContainerTab {
     background: #effcef;
 }
 
-.gwt-Button.optionButton.rightOverlayButton, .borderedVideoRight,
-.right3TouchButton, .right3OverlayButton {
-    right: 1vw;
-}
-
-.centre3TouchButton, .centre3OverlayButton {
-    left: 50%; 
-    transform: translate(-50%,0);
-}
-
-.gwt-Button.optionButton.leftOverlayButton, .borderedVideoLeft,
-.left3TouchButton, .left3OverlayButton {
-    left: 1vw;
-}
-.gwt-Image.centeredOverlayCurtain, .gwt-Button.centeredOverlayCurtain, .gwt-Button.optionButton.centeredOverlayCurtain {
-    top: 0px;
-    position: fixed;
-    height: 100%;    
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain,
-.gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain,
-.gwt-Button.optionButton.leftOverlayCurtain, .gwt-Button.optionButton.rightOverlayCurtain {
-    -webkit-transition: width 1s;
-    transition: width 1s;
-    top: 0px;
-    position: fixed;
-    height: 100%;    
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.gwt-Image.topLeftTouchButton,
-.gwt-Image.topRightTouchButton,
-.gwt-Image.bottomLeftTouchButton,
-.gwt-Image.bottomRightTouchButton,
-.gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight, .borderedVideoFull {
-    object-fit: contain;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.borderedVideoFull {
-    width: 98vw;
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%,-50%);
-    padding: 1vw;
-}
-.gwt-Image.centeredOverlayCurtain {
-    width: 100%;
-}
-.gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain {
-    width: 50%;
-}
-.gwt-Button.centeredOverlayCurtain:hover, .gwt-Button.centeredOverlayCurtain[disabled]:hover, .gwt-Button.centeredOverlayCurtain,
-.gwt-Button.leftOverlayCurtain:hover, .gwt-Button.rightOverlayCurtain:hover,
-.gwt-Button.leftOverlayCurtain[disabled]:hover, .gwt-Button.rightOverlayCurtain[disabled]:hover,
-.gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain {
-    width: 100%;    
-    background: none;
-    border: none;
-}
-.gwt-Image.centeredOverlayCurtainIntersection {
-    display: none;
-}
-.gwt-Image.leftOverlayCurtainIntersection, .gwt-Image.rightOverlayCurtainIntersection {
-    width: 1vw;
-}
-.gwt-Image.rightOverlayCurtain,
-.gwt-Button.optionButton.rightOverlayCurtain {
-    right: 0vw;
-}
-.gwt-Image.centeredOverlayCurtain, 
-.gwt-Button.optionButton.centeredOverlayCurtain,
-.gwt-Image.leftOverlayCurtain,
-.gwt-Button.optionButton.leftOverlayCurtain {
-    left: 0vw;
-}
-.gwt-Button.optionButton.topLeftOverlayButton, .gwt-Button.optionButton.topRightOverlayButton,
-.gwt-Button.optionButton.bottomLeftOverlayButton, .gwt-Button.optionButton.bottomRightOverlayButton,
-.gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton,
-.gwt-Button.optionButton.left3OverlayButton,
-.gwt-Button.optionButton.centre3OverlayButton,
-.gwt-Button.optionButton.right3OverlayButton {
-    position: fixed;
-    opacity: 0.0;
-    background: grey;
-    color: grey;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.gwt-Button.optionButton.left3OverlayButton,
-.gwt-Button.optionButton.centre3OverlayButton,
-.gwt-Button.optionButton.right3OverlayButton {
-    top: 80px;
-    width: 32vw;
-    height: 25vw;
-}
-.gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton {
-    top: 80px;
-    width: 47vw;
-    height: 36vw;
-}
-.gwt-Button.optionButton.topLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.topRightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.bottomLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.bottomRightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.topLeftOverlayButtonIntersection, .gwt-Button.optionButton.topRightOverlayButtonIntersection,
-.gwt-Button.optionButton.bottomLeftOverlayButtonIntersection, .gwt-Button.optionButton.bottomRightOverlayButtonIntersection,
-.gwt-Button.optionButton.leftOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.rightOverlayButton.optionButtonActivated,
-/*.gwt-Button.optionButton.rightOverlayButton:hover, .gwt-Button.optionButton.leftOverlayButton:hover,*/
-/*.gwt-Button.optionButton.rightOverlayButton:active, .gwt-Button.optionButton.leftOverlayButton:active,*/
-.gwt-Button.optionButton.rightOverlayButtonIntersection, .gwt-Button.optionButton.leftOverlayButtonIntersection,
-
-.gwt-Button.optionButton.left3OverlayButton.optionButtonActivated, .gwt-Button.optionButton.left3OverlayButtonIntersection,
-.gwt-Button.optionButton.centre3OverlayButton.optionButtonActivated, .gwt-Button.optionButton.centre3OverlayButtonIntersection,
-.gwt-Button.optionButton.right3OverlayButton.optionButtonActivated, .gwt-Button.optionButton.right3OverlayButtonIntersection,
-{
-    opacity: 0.5;
-}
 
 .gwt-Button {
     -webkit-touch-callout: none;
@@ -545,78 +410,6 @@ table.stimulusContainerTab {
     -ms-user-select: none;
     user-select: none;
 }
-.left3TouchButton, .centre3TouchButton, .right3TouchButton {
-    width: 30vw;
-    height: 23vw;
-    top: 80px;
-    padding: 1vw;
-}
-
-.gwt-Button.optionButton.topLeftOverlayButton,
-.gwt-Button.optionButton.topLeftOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.topLeftOverlayButtonIntersection,
-.gwt-Image.topLeftTouchButton {
-    transform: translate(-105%,-105%);
-}
-.gwt-Button.optionButton.topRightOverlayButton,
-.gwt-Button.optionButton.topRightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.topRightOverlayButtonIntersection,
-.gwt-Image.topRightTouchButton {
-    transform: translate(5%,-105%);
-}
-.gwt-Button.optionButton.bottomLeftOverlayButton,
-.gwt-Button.optionButton.bottomLeftOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.bottomLeftOverlayButtonIntersection,
-.gwt-Image.bottomLeftTouchButton {
-    transform: translate(-105%,5%);
-}
-.gwt-Button.optionButton.bottomRightOverlayButton,
-.gwt-Button.optionButton.bottomRightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.bottomRightOverlayButtonIntersection,
-.gwt-Image.bottomRightTouchButton {
-    transform: translate(5%,5%);
-}
-.gwt-Button.optionButton.topLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.topRightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.bottomLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.bottomRightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.topLeftOverlayButtonIntersection, .gwt-Button.optionButton.topRightOverlayButtonIntersection,
-.gwt-Button.optionButton.bottomLeftOverlayButtonIntersection, .gwt-Button.optionButton.bottomRightOverlayButtonIntersection,
-.gwt-Button.optionButton.topLeftOverlayButton, .gwt-Button.optionButton.topRightOverlayButton,
-.gwt-Button.optionButton.bottomLeftOverlayButton, .gwt-Button.optionButton.bottomRightOverlayButton {
-    width: 47vmin;
-    height: 36vmin;
-    left: 50vw;
-    top: 50vh;
-}
-.gwt-Image.topLeftTouchButton,
-.gwt-Image.topRightTouchButton,
-.gwt-Image.bottomLeftTouchButton,
-.gwt-Image.bottomRightTouchButton {
-    width: 45vmin;
-    height: 34vmin;
-    left: 50vw;
-    top: 50vh;
-    padding: 1vmin;
-}
-.borderedVideoLeft, .borderedVideoRight {
-    width: 45vw;
-    height: 34vw;
-    top: 80px;
-    padding: 1vw;
-}
-.topLeftTouchButton,
-.topRightTouchButton,
-.bottomLeftTouchButton,
-.bottomRightTouchButton,
-.left3TouchButton, .centre3TouchButton, .right3TouchButton,
-.borderedVideoLeft, .borderedVideoRight, .borderedVideoFull {
-    position: fixed;
-    border-color: $primaryColour2;
-    border-radius: 15px;
-    outline: none;
-    border-width: 1px;
-    border-style: solid;
-}
-
 .svgPopupPanel .gwt-Button, 
 .stimulusHelpPanel .gwt-Button,
 .choosePlayerList,
@@ -668,11 +461,11 @@ table.stimulusContainerTab {
     outline: none;
     height: 40px;
     width: 100%;
-    white-space: nowrap;
+    white-space: nowrap; /* TODO: this could be changed to "initial" because it causes longer text to break the layout by extending the page */
 }
 
 .gwt-RadioButton.optionButton {
-    white-space: nowrap;
+    white-space: nowrap; /* TODO: this could be changed to "initial" because it causes longer text to break the layout by extending the page */
 }
 
 /*.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
