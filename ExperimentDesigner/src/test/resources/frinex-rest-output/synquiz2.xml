@@ -613,7 +613,7 @@
         <stimulus identifier="October" label="October" pauseMs="0" tags="Months"/>
         <stimulus identifier="November" label="November" pauseMs="0" tags="Months"/>
         <stimulus identifier="December" label="December" pauseMs="0" tags="Months"/>
-        <stimulus identifier="December" label="December" pauseMs="0" tags="Months"/>
+        <!--<stimulus identifier="December" label="December" pauseMs="0" tags="Months"/>-->
         <stimulus identifier="Декабрь" label="Декабрь" pauseMs="0" tags="Месяцы"/>
     </stimuli>
 </experiment>
