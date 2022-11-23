@@ -94,4 +94,9 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
             }
         }
     }
+
+    @Override
+    public void savePresenterState() {
+        super.cleanUpPresenterState();
+    }
 }

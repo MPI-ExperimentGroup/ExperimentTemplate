@@ -57,4 +57,9 @@ public class MapPresenter extends AbstractPresenter implements Presenter {
         ((MapView) simpleView).addMap();
         ((MapView) simpleView).addZoom();
     }
+
+    @Override
+    public void savePresenterState() {
+        super.cleanUpPresenterState();
+    }
 }

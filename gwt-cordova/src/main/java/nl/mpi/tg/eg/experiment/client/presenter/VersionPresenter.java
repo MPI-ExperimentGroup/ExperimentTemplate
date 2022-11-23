@@ -63,4 +63,9 @@ public class VersionPresenter extends AbstractPresenter {
         // TODO: add all the jar version numbers
         // TODO: add the webjars version numbers
     }
+
+    @Override
+    public void savePresenterState() {
+        super.cleanUpPresenterState();
+    }
 }
