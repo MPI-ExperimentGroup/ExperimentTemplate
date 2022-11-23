@@ -2,6 +2,69 @@
 <experiment appNameDisplay="Playhouse Study" appNameInternal="playhouse_study" availableLocales="en" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultLocale="en" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <administration/>
     <scss>
+        .gwt-Button.optionButton.rightOverlayButton, .borderedVideoRight,
+        .right3TouchButton, .right3OverlayButton {
+            right: 1vw;
+        }
+
+        .centre3TouchButton, .centre3OverlayButton {
+            left: 50%; 
+            transform: translate(-50%,0);
+        }
+
+        .gwt-Button.optionButton.leftOverlayButton, .borderedVideoLeft,
+        .left3TouchButton, .left3OverlayButton {
+            left: 1vw;
+        }
+        .gwt-Image.topLeftTouchButton,
+        .gwt-Image.topRightTouchButton,
+        .gwt-Image.bottomLeftTouchButton,
+        .gwt-Image.bottomRightTouchButton,
+        .gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight, .borderedVideoFull {
+            object-fit: contain;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .borderedVideoFull {
+            width: 98vw;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%,-50%);
+            padding: 1vw;
+        }
+        .gwt-Button.optionButton.topLeftOverlayButton, .gwt-Button.optionButton.topRightOverlayButton,
+        .gwt-Button.optionButton.bottomLeftOverlayButton, .gwt-Button.optionButton.bottomRightOverlayButton,
+        .gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton,
+        .gwt-Button.optionButton.left3OverlayButton,
+        .gwt-Button.optionButton.centre3OverlayButton,
+        .gwt-Button.optionButton.right3OverlayButton {
+            position: fixed;
+            opacity: 0.0;
+            background: grey;
+            color: grey;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .gwt-Button.optionButton.left3OverlayButton,
+        .gwt-Button.optionButton.centre3OverlayButton,
+        .gwt-Button.optionButton.right3OverlayButton {
+            top: 80px;
+            width: 32vw;
+            height: 25vw;
+        }
+        .gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton {
+            top: 80px;
+            width: 47vw;
+            height: 36vw;
+        }
         .gwt-Button.optionButton.topLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.topRightOverlayButton.optionButtonActivated,
         .gwt-Button.optionButton.bottomLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.bottomRightOverlayButton.optionButtonActivated,
         .gwt-Button.optionButton.topLeftOverlayButtonIntersection, .gwt-Button.optionButton.topRightOverlayButtonIntersection,
@@ -17,18 +80,6 @@
         .gwt-Button.optionButton.right3OverlayButton.optionButtonActivated, .gwt-Button.optionButton.right3OverlayButtonIntersection,
         {
             opacity: 0.5;
-        }
-        .gwt-Button.optionButton.left3OverlayButton,
-        .gwt-Button.optionButton.centre3OverlayButton,
-        .gwt-Button.optionButton.right3OverlayButton {
-            top: 80px;
-            width: 32vw;
-            height: 25vw;
-        }
-        .gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton {
-            top: 80px;
-            width: 47vw;
-            height: 36vw;
         }
         .left3TouchButton, .centre3TouchButton, .right3TouchButton {
             width: 30vw;
@@ -100,54 +151,6 @@
             outline: none;
             border-width: 1px;
             border-style: solid;
-        }
-        .gwt-Button.optionButton.rightOverlayButton, .borderedVideoRight,
-        .right3TouchButton, .right3OverlayButton {
-            right: 1vw;
-        }
-
-        .centre3TouchButton, .centre3OverlayButton {
-            left: 50%; 
-            transform: translate(-50%,0);
-        }
-
-        .gwt-Button.optionButton.leftOverlayButton, .borderedVideoLeft,
-        .left3TouchButton, .left3OverlayButton {
-            left: 1vw;
-        }
-        .gwt-Image.topLeftTouchButton,
-        .gwt-Image.topRightTouchButton,
-        .gwt-Image.bottomLeftTouchButton,
-        .gwt-Image.bottomRightTouchButton,
-        .gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight, .borderedVideoFull {
-            object-fit: contain;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        .borderedVideoFull {
-            width: 98vw;
-            top: 50vh;
-            left: 50vw;
-            transform: translate(-50%,-50%);
-            padding: 1vw;
-        }
-        .gwt-Button.optionButton.left3OverlayButton,
-        .gwt-Button.optionButton.centre3OverlayButton,
-        .gwt-Button.optionButton.right3OverlayButton {
-            position: fixed;
-            opacity: 0.0;
-            background: grey;
-            color: grey;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
     </scss>
     <metadata>
