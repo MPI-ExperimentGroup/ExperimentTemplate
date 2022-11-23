@@ -69,7 +69,7 @@ public class XpathExperimentValidator {
             result += validatePresenterNames(xmlDocument);
             result += validatePresenterLinks(xmlDocument);
             result += validateStimuliTags(xmlDocument);
-//            result += validateStimuliIds(xmlDocument); // duplicate stimulus identifiers are not an issue, there might be use cases where this could be done intentionally, so we allow it here
+            result += validateStimuliIds(xmlDocument); // it has been observed that duplicate stimulus identifiers do cause issues, so while there might be use cases where this could be done intentionally, so we no longer allow it here
             result += validateMetadataFieldPostNames(xmlDocument);
             result += validateMetadataFields(xmlDocument);
             result += validateRegexStrings(xmlDocument);
