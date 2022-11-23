@@ -2244,6 +2244,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         clearButtonList();
         backEventListners.clear();
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
+        super.cleanUpPresenterState();
     }
 
     protected void logMediaTimeStamp(final Stimulus currentStimulus, final String mediaId, final String eventTag) {
@@ -2573,6 +2574,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (groupParticipantService != null) {
             groupParticipantService.stopListeners();
         }
+        super.cleanUpPresenterState();
         super.savePresenterState();
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter

@@ -740,8 +740,7 @@ public abstract class AbstractPresenter implements Presenter {
             }
     }-*/;
 
-    @Override
-    public void savePresenterState() {
+    protected void cleanUpPresenterState() {
         if (simpleView instanceof ComplexView) {
             ((ComplexView) simpleView).clearDomHandlers();
         }

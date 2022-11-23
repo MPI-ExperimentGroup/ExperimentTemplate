@@ -507,6 +507,6 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
                 }
             });
         }
-        super.savePresenterState();
+        super.cleanUpPresenterState();
     }
 }

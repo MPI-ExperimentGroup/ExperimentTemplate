@@ -113,6 +113,7 @@ public abstract class AbstractTimelinePresenter extends AbstractTimedPresenter i
     @Override
     public void savePresenterState() {
         saveAnnotations();
+        super.cleanUpPresenterState();
         super.savePresenterState();
     }
 }
