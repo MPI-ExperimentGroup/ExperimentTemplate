@@ -991,21 +991,21 @@
     </presenter>
     <stimuli>
         <!-- these stimuli for "cow" is for the random grouping simlar to ld_screensize and there is a new list of stimuli from Hannah for this -->
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW1"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW1" imagePath="COW" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis1" imagePath="COWmis" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW2" imagePath="COW" pauseMs="0" tags="COW1"/>
         
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW3" imagePath="COW" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW4" imagePath="COW" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis2" imagePath="COWmis" pauseMs="0" tags="COW2"/>
         
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW3"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW5" imagePath="COW" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis3" imagePath="COWmis" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW6" imagePath="COW" pauseMs="0" tags="COW3"/>
         
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW7" imagePath="COW" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW8" imagePath="COW" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis4" imagePath="COWmis" pauseMs="0" tags="COW4"/>
         <!-- end of: these stimuli for "cow" is for the random grouping simlar to ld_screensize and there is a new list of stimuli from Hannah for this -->
         
         <!--<stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0" tags="COW3"/>-->
