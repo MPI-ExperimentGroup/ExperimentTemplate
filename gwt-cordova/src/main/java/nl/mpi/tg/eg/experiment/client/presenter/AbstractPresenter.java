@@ -463,24 +463,33 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected abstract void setContent(final AppEventListner appEventListner);
 
+    // it is possible for the XML trigger requestApplicationState multiple times concurrently so we use this timer to reduce the risk of duplicate audio and other negative effects
+    private Timer nextStateTimer = null;
+
     protected void gotoNextPresenter(final AppEventListner appEventListner) {
+        if (nextStateTimer != null) {
+            nextStateTimer.cancel();
+        }
         savePresenterState();
-        Timer timer = new Timer() {
+        nextStateTimer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(nextState);
             }
         };
-        timer.schedule(100);
+        nextStateTimer.schedule(100);
     }
 
     protected void gotoPresenter(final AppEventListner appEventListner, final ApplicationState targetState) {
+        if (nextStateTimer != null) {
+            nextStateTimer.cancel();
+        }
         savePresenterState();
-        Timer timer = new Timer() {
+        nextStateTimer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(targetState);
             }
         };
-        timer.schedule(100);
+        nextStateTimer.schedule(100);
     }
 
     public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
