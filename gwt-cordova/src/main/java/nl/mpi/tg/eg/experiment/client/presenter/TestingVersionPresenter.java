@@ -82,7 +82,7 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
 
             @Override
             public String getLabel() {
-                return "Begin Software Testing";
+                return "Begin Experiment Evaluation";
             }
 
             @Override
