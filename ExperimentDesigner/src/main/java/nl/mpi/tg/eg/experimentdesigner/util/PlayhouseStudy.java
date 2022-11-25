@@ -248,7 +248,7 @@ public class PlayhouseStudy {
 //        introductionAudio2.setStyleName("titleBarButton");
 //        introductionAudio3.setStyleName("titleBarButton");
         String[][][][] testList = new String[][][][]{
-                // TODO: insert the zoomToGarden etc into the CSS section of the XML and remove it from the SCSS of Frinex
+            // TODO: insert the zoomToGarden etc into the CSS section of the XML and remove it from the SCSS of Frinex
             {{{"Practice1", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
             {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}}},
             {{{"Practice2", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
