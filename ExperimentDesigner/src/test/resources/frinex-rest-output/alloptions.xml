@@ -671,13 +671,17 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit dataChannel="2"/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit dataChannel="2"/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -1106,13 +1110,17 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit dataChannel="2"/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit dataChannel="2"/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -1390,13 +1398,17 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit dataChannel="2"/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit dataChannel="2"/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -1674,13 +1686,17 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit dataChannel="2"/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit dataChannel="2"/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -3552,13 +3568,17 @@
                 <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="" src="">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="" src="">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -3975,13 +3995,17 @@
                 <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="" src="">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="" src="">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -4253,13 +4277,17 @@
                 <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="" src="">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="" src="">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
@@ -4531,13 +4559,17 @@
                 <stimulusSlider initial="35" maximum="60" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputStimulusButton featureText="" src="">
-                    <plainText featureText="plainText in touchInputStimulusButton"/>
-                </touchInputStimulusButton>
-                <touchInputCaptureStart msToNext="60" showControls="true">
-                    <plainText featureText="plainText in touchInputCaptureStart"/>
-                </touchInputCaptureStart>
-                <touchInputReportSubmit/>
+                <touchInputCapture showControls="true">
+                    <captureStart>
+                        <touchInputStimulusButton featureText="" src="">
+                            <plainText featureText="plainText in touchInputStimulusButton"/>
+                        </touchInputStimulusButton>
+                        <touchInputReportSubmit/>
+                    </captureStart>
+                    <captureEnd msToNext="60">
+                        <plainText featureText="plainText in captureEnd"/>
+                    </captureEnd>
+                </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>

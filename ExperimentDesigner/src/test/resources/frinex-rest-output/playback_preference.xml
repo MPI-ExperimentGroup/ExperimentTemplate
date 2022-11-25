@@ -138,26 +138,30 @@
                 <habituationParadigmListener threshold="2000" maximum="10" listenerId="habituationAction">
                     <nextStimulus repeatIncorrect="false"/>
                 </habituationParadigmListener>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
-                    <resetTrigger listenerId="habituationAction"/>
-                    <pauseMedia mediaId="media"/>
-                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
-                </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <triggerMatching listenerId="habituationAction"/>
-                    <disableStimulusButtons/>
-                    <rewindMedia mediaId="media"/>
-                    <pause msToNext="100">
-                        <playMedia mediaId="media"/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
-                        <mediaLoaded/>
-                        <mediaLoadFailed/>
-                        <mediaPlaybackComplete>
-                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
-                        </mediaPlaybackComplete>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
+                <touchInputCapture msToNext="3000" showControls="false">
+                    <captureEnd>
+                        <resetTrigger listenerId="habituationAction"/>
+                        <pauseMedia mediaId="media"/>
+                        <enableButtonGroup matchingRegex="allCurtainGroup"/>
+                        </captureEnd>
+                    <captureStart>
+                        <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                            <triggerMatching listenerId="habituationAction"/>
+                            <disableStimulusButtons/>
+                            <rewindMedia mediaId="media"/>
+                            <pause msToNext="100">
+                                <playMedia mediaId="media"/>
+                            </pause>
+                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete>
+                                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
+                                </mediaPlaybackComplete>
+                            </stimulusCodeAudio>
+                        </touchInputStimulusButton>
+                    </captureStart>
+                </touchInputCapture>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">

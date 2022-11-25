@@ -150,6 +150,10 @@ public class Experiment implements Serializable {
         return scss;
     }
 
+    public void setScss(String scss) {
+        this.scss = scss;
+    }
+
     @XmlElement(name = "validationService")
     public ValidationService getValidationService() {
         return validationService;

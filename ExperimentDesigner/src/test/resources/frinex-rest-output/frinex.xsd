@@ -1789,9 +1789,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2029,9 +2027,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2488,9 +2484,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2725,9 +2719,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2953,9 +2945,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3149,6 +3139,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="touchInputStimulusButtonType">
+<xs:annotation>
+<xs:documentation>Creates touch input button for use on tablets/mobile devices which responds to touch input from the participant.</xs:documentation>
+</xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
@@ -3200,9 +3193,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3390,7 +3381,33 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="touchInputCaptureStartType">
+<xs:complexType name="touchInputCaptureType">
+<xs:annotation>
+<xs:documentation>Starts logging touch input of the participant.</xs:documentation>
+</xs:annotation>
+<xs:all>
+<xs:element name="captureStart" type="captureStartType"/>
+<xs:element name="captureEnd" type="captureEndType"/>
+</xs:all>
+<xs:attribute name="showControls" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="captureStartType">
+<xs:annotation>
+<xs:documentation></xs:documentation>
+</xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+</xs:choice>
+</xs:complexType>
+<xs:complexType name="captureEndType">
+<xs:annotation>
+<xs:documentation></xs:documentation>
+</xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
@@ -3428,9 +3445,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3587,11 +3602,6 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="showControls" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="msToNext" type="xs:integer" use="required">
 <xs:annotation>
 <xs:documentation>The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</xs:documentation>
@@ -3599,6 +3609,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="touchInputReportSubmitType">
+<xs:annotation>
+<xs:documentation>Submits the logged touch input of the participant since touch input capture was started and then stops the input capture.</xs:documentation>
+</xs:annotation>
 <xs:attribute name="dataChannel" type="xs:string">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -3643,9 +3656,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3881,9 +3892,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4119,9 +4128,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4418,9 +4425,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4651,9 +4656,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4884,9 +4887,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -5218,9 +5219,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -5509,9 +5508,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -6135,9 +6132,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -6722,9 +6717,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7000,9 +6993,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7206,9 +7197,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7455,9 +7444,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7740,9 +7727,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8087,9 +8072,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8300,9 +8283,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8526,9 +8507,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8753,9 +8732,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8971,9 +8948,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9199,9 +9174,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9397,9 +9370,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9595,9 +9566,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9793,9 +9762,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9991,9 +9958,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10199,9 +10164,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10407,9 +10370,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10615,9 +10576,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10813,9 +10772,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11011,9 +10968,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11209,9 +11164,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11407,9 +11360,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11605,9 +11556,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11798,9 +11747,7 @@
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11999,9 +11946,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12197,9 +12142,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12390,9 +12333,7 @@
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12588,9 +12529,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12792,9 +12731,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12990,9 +12927,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13188,9 +13123,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13386,9 +13319,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13584,9 +13515,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13785,9 +13714,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13983,9 +13910,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14181,9 +14106,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14379,9 +14302,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14587,9 +14508,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14785,9 +14704,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14991,9 +14908,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -15232,9 +15147,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -15788,9 +15701,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16038,9 +15949,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16515,9 +16424,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16716,9 +16623,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16917,9 +16822,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -17118,9 +17021,7 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -17322,9 +17223,7 @@
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
-<xs:element name="touchInputCaptureStart" type="touchInputCaptureStartType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>

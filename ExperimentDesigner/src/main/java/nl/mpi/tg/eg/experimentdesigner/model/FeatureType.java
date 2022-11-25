@@ -67,10 +67,12 @@ public enum FeatureType {
     svgGroupMatching(false, new FeatureAttribute[]{groupId, visible, evaluateTokens}, "Sets the visibility of the matching child elements of the group which must have already been added to the presenter.", Contitionals.none, Contitionals.svgGroupsLoaded),
     stimulusButton(true, new FeatureAttribute[]{eventTag, hotKey, dataChannel, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
     stimulusSlider(false, new FeatureAttribute[]{dataChannel, styleName, groupId, initial, minimum, maximum, orientation}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
-    touchInputStimulusButton(true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, groupId}, false, false, false, Contitionals.any, Contitionals.stimulusAction),
+    touchInputStimulusButton(true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, groupId}, "Creates touch input button for use on tablets/mobile devices which responds to touch input from the participant.", Contitionals.any, Contitionals.touchInputStartType), // this must be a child of touchInputCaptureStart but also allow nesting in that parent
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
-    touchInputCaptureStart(false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.any, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
-    touchInputReportSubmit(false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    touchInputCapture(false, new FeatureAttribute[]{showControls}, "Starts logging touch input of the participant.", Contitionals.touchInputCaptureType, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
+    captureStart(false, new FeatureAttribute[]{}, "When the touch input capture has started the contents of this element will be evaluated.", Contitionals.touchInputStartType, Contitionals.touchInputCaptureType),
+    captureEnd(false, new FeatureAttribute[]{msToNext}, "When the touch input capture has ended the contents of this element will be evaluated.", Contitionals.any, Contitionals.touchInputCaptureType),
+    touchInputReportSubmit(false, new FeatureAttribute[]{dataChannel}, "Submits the logged touch input of the participant since touch input capture was started and then stops the input capture which then triggers captureEnd.", Contitionals.none, Contitionals.touchInputStartType),
     ratingButton(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, /* document the automaticly generated hot key listners for numbers and some letters z . */ /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.any, Contitionals.stimulusAction),
     ratingRadioButton(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId}, false, false, false /* TODO: "Shows rating buttons" the value is stored by stimulus and groupId so if you use a different groupId in each presenter the initial value for each presenter will be blank *//* why ratingRadioButtons are already filled in when they are first loaded on the page? And they copy the last filled in ratingRadioButton of the previous presenter.*/,/*"If groupId contains tokens they will be replaced with the respective values.", */ Contitionals.any, Contitionals.stimulusAction),
     ratingCheckbox(false, new FeatureAttribute[]{eventTag, dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, orientation, styleName, groupId},/* TODO: the difference between ratingCheckbox and stimulusRatingCheckbox is where the ratings come from because they share the same code */ /* both stimulusRatingCheckbox and stimulusRatingRadio share the same code so the documentation is much the same */ /*"If groupId contains tokens they will be replaced with the respective values.", */ false, false, false, Contitionals.any, Contitionals.stimulusAction),
@@ -343,6 +345,8 @@ public enum FeatureType {
         hasFrameRateTriggers(true),
         isTimeCritical(true),
         isRecursiveType(true),
+        touchInputCaptureType(false),
+        touchInputStartType(true),
         none(true),
         any(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element

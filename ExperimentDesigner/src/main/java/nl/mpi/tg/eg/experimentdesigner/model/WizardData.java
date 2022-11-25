@@ -48,6 +48,7 @@ public class WizardData {
     private String appName = "";
     private boolean showMenuBar = true;
     private boolean obfuscateScreenNames = false;
+    private String scss= null;
 
     private int textFontSize = 17;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -104,6 +105,14 @@ public class WizardData {
 
     public void setObfuscateScreenNames(boolean obfuscateScreenNames) {
         this.obfuscateScreenNames = obfuscateScreenNames;
+    }
+
+    public String getScss() {
+        return scss;
+    }
+
+    public void setScss(String scss) {
+        this.scss = scss;
     }
 
     public void addScreen(final WizardScreen wizardScreen) {
