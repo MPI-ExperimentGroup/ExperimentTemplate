@@ -677,6 +677,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit dataChannel="2"/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -1116,6 +1117,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit dataChannel="2"/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -1404,6 +1406,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit dataChannel="2"/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -1692,6 +1695,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit dataChannel="2"/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -3574,6 +3578,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -4001,6 +4006,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -4283,6 +4289,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>
@@ -4565,6 +4572,7 @@
                             <plainText featureText="plainText in touchInputStimulusButton"/>
                         </touchInputStimulusButton>
                         <touchInputReportSubmit/>
+                        <plainText featureText="plainText in captureStart"/>
                     </captureStart>
                     <captureEnd msToNext="60">
                         <plainText featureText="plainText in captureEnd"/>

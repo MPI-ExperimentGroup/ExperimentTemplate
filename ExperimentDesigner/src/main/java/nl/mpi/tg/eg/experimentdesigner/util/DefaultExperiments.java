@@ -565,6 +565,7 @@ public class DefaultExperiments {
         }
         if (featureType.getRequiresChildType() == FeatureType.Contitionals.any
                 || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction
+                || featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType
                 || featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction) {
             if (presenterType != PresenterType.colourPicker) {
                 presenterFeature.addFeature(FeatureType.plainText, "plainText in " + featureType.name());
