@@ -28326,7 +28326,7 @@ beforeStimulus
 <h3 id="captureEndType" style="text-transform: uppercase;">
 captureEnd
 </h3>
-
+When the touch input capture has ended the contents of this element will be evaluated.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">captureEnd</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;Integer&quot;</span><span>
@@ -28928,7 +28928,7 @@ The milliseconds to delay after completion. The resulting delay is approximate a
 <h3 id="captureStartType" style="text-transform: uppercase;">
 captureStart
 </h3>
-
+When the touch input capture has started the contents of this element will be evaluated.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">captureStart</span></td><td><span style="color:purple">&gt;</span></td><td>
@@ -44152,7 +44152,7 @@ This value is used in multiple ways depending on the context, to set the button 
 <h3 id="touchInputReportSubmitType" style="text-transform: uppercase;">
 touchInputReportSubmit
 </h3>
-Submits the logged touch input of the participant since touch input capture was started and then stops the input capture.
+Submits the logged touch input of the participant since touch input capture was started and then stops the input capture which then triggers captureEnd.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">touchInputReportSubmit</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>

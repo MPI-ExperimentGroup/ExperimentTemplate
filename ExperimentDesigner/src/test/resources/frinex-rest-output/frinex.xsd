@@ -3397,7 +3397,7 @@
 </xs:complexType>
 <xs:complexType name="captureStartType">
 <xs:annotation>
-<xs:documentation></xs:documentation>
+<xs:documentation>When the touch input capture has started the contents of this element will be evaluated.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
@@ -3406,7 +3406,7 @@
 </xs:complexType>
 <xs:complexType name="captureEndType">
 <xs:annotation>
-<xs:documentation></xs:documentation>
+<xs:documentation>When the touch input capture has ended the contents of this element will be evaluated.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
@@ -3610,7 +3610,7 @@
 </xs:complexType>
 <xs:complexType name="touchInputReportSubmitType">
 <xs:annotation>
-<xs:documentation>Submits the logged touch input of the participant since touch input capture was started and then stops the input capture.</xs:documentation>
+<xs:documentation>Submits the logged touch input of the participant since touch input capture was started and then stops the input capture which then triggers captureEnd.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="dataChannel" type="xs:string">
 <xs:annotation>
