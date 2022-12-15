@@ -1427,7 +1427,7 @@
 </xs:attribute>
 <xs:attribute name="adjacencyThreshold" type="xs:integer">
 <xs:annotation>
-<xs:documentation>When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. </xs:documentation>
+<xs:documentation>Sets a window of allowed proximity between stimuli that can be condisered the same. When greater than 0 the list of stimuli will be checked after randomisation for adjacency within the specified window and modified accordingly. If matching items are within the adjacency window, one of the items will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. For example adjacencyThreshold 3 would disallow abcad and an attempt to rerandomise would follow. Defaults to 3 when not provided. </xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -1465,7 +1465,7 @@
 </xs:attribute>
 <xs:attribute name="adjacencyThreshold" type="xs:integer">
 <xs:annotation>
-<xs:documentation>When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. </xs:documentation>
+<xs:documentation>Sets a window of allowed proximity between stimuli that can be condisered the same. When greater than 0 the list of stimuli will be checked after randomisation for adjacency within the specified window and modified accordingly. If matching items are within the adjacency window, one of the items will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. For example adjacencyThreshold 3 would disallow abcad and an attempt to rerandomise would follow. Defaults to 3 when not provided. </xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -1503,7 +1503,7 @@
 </xs:attribute>
 <xs:attribute name="adjacencyThreshold" type="xs:integer">
 <xs:annotation>
-<xs:documentation>When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. </xs:documentation>
+<xs:documentation>Sets a window of allowed proximity between stimuli that can be condisered the same. When greater than 0 the list of stimuli will be checked after randomisation for adjacency within the specified window and modified accordingly. If matching items are within the adjacency window, one of the items will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. For example adjacencyThreshold 3 would disallow abcad and an attempt to rerandomise would follow. Defaults to 3 when not provided. </xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -1600,7 +1600,7 @@
 </xs:attribute>
 <xs:attribute name="adjacencyThreshold" type="xs:integer">
 <xs:annotation>
-<xs:documentation>When greater than 0 the list of stimuli will be checked after randomisation for adjacency and modified accordingly. If matching items are adjacent one of them will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. Defaults to 3 when not provided. </xs:documentation>
+<xs:documentation>Sets a window of allowed proximity between stimuli that can be condisered the same. When greater than 0 the list of stimuli will be checked after randomisation for adjacency within the specified window and modified accordingly. If matching items are within the adjacency window, one of the items will be moved to a new position, in some cases a new position without an adjacent match will not be possible. The first attribute that has a value out of image, audio, video or label is used in the comparison. For example adjacencyThreshold 3 would disallow abcad and an attempt to rerandomise would follow. Defaults to 3 when not provided. </xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
