@@ -53,7 +53,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n"
-        + "DOI 10.5281/zenodo.3522911" + "\n"
+        + "DOI 10.5281/zenodo.3522910" + "\n"
         + "FRINEX Version: " + version.majorVersion() + "."
                 + version.minorVersion() + "."
                 + version.buildVersion() + "\n"

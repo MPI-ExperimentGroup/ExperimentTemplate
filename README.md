@@ -5,8 +5,7 @@ Scientific experiment software under development,
 Peter Withers, peter.withers@mpi.nl, 
 Experiment Group, MPI Nijmegen. 
 
-[![DOI](https://zenodo.org/badge/37583935.svg)](https://zenodo.org/badge/latestdoi/37583935)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3522910.svg)](https://doi.org/10.5281/zenodo.3522910)
 # Frinex Goals
 * Provide software for interactive scientific experiments
 * Separate the experiment design from the software implementation.
