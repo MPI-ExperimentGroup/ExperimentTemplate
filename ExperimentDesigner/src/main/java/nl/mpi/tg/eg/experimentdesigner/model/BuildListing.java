@@ -104,8 +104,8 @@ public class BuildListing {
         return experiment.getDefaultScale();
     }
 
-    public boolean getIsScalable() {
-        return (experiment.isIsScalable());
+    public String getIsScalable() {
+        return (experiment.isIsScalable())? "yes" : "no";
     }
 
     public boolean getIsRotatable() {
