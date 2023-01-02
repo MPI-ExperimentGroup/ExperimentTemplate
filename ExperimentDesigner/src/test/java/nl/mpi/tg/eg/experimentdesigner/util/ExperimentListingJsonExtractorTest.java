@@ -68,7 +68,7 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"productionServer\" : \"production\",\n"
                 + "  \"frinexVersion\" : \"latest\",\n"
                 + "  \"defaultScale\" : 1.0,\n"
-                + "  \"isScalable\" : yes,\n"
+                + "  \"isScalable\" : \"yes\",\n"
                 + "  \"isRotatable\" : true,\n"
                 + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
                 + "  \"experimentDisplayName\" : \"With Stimulus Example\",\n"
