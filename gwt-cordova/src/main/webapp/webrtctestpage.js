@@ -341,6 +341,18 @@ function setConnected(connected) {
     $("#animateTarget").html("");
     if (connected && !isCompact) {
         $("#conversation").show();
+        $("#streamTarget").append("<tr>" +
+            "<td>userId</td>" +
+            "<td>Group</td>" +
+            "<td>groupUUID</td>" +
+            "<td>screenId</td>" +
+            "<td>MemberCode</td>" +
+            "<td>OriginCode</td>" +
+            "<td>streamState</td>" +
+            "<td>originPhase</td>" +
+            "<td>message</td>" +
+            "<td>Ready</td>" +
+            "</tr>");
         $("#groupTarget").append("<tr>" +
             "<td>userId</td>" +
             "<td>Group</td>" +
@@ -406,6 +418,67 @@ function connect() {
             progressDivBar.css("width", contentData.width + "px");
             //            $("#send").hide();
         });
+        stompClient.subscribe('/shared/stream', function (greeting) {
+            var contentData = JSON.parse(greeting.body);
+            if (!isCompact) {
+                var streamTableRow = $("#streamUserId" + contentData.userId);
+                if (!streamTableRow.length) {
+                    $("#streamTarget").append("<tr id=\"streamUserId" + contentData.userId + "\"></tr>");
+                    streamTableRow = $("#streamUserId" + contentData.userId);
+                }
+                streamTableRow.html("<td>" + contentData.userId +
+                    "</td><td>" + contentData.groupId +
+                    "</td><td>" + contentData.groupUUID +
+                    "</td><td>" + contentData.screenId +
+                    "</td><td>" + contentData.memberCode +
+                    "</td><td>" + contentData.originMemberCode +
+                    "</td><td>" + contentData.streamState +
+                    "</td><td>" + contentData.originPhase +
+                    "</td><td>" + contentData.messageString +
+                    "</td><td>" + contentData.messageStatus +
+                    "</td>");
+                    streamTableRow.css("outline-style", "solid");
+                    streamTableRow.css("outline-width", "5px");
+                    streamTableRow.css("outline-color", "green");
+                    streamTableRow.animate({ outlineWidth: 0 }, "slow");
+            }
+            if (isReady) {
+                if (!groupId || groupId === contentData.groupId) {
+                    if (/*contentData.userId !== userId &&*/ contentData.streamState === "offer") {
+                        console.log("offer: " + contentData.messageString);
+                        handleOffer(contentData.userId, JSON.parse(contentData.messageString));
+                    }
+                    if (contentData.userId !== userId && contentData.streamState === "answer") {
+                        console.log("answer: " + contentData.messageString);
+                        handleAnswer(JSON.parse(contentData.messageString));
+                    }
+                    if (contentData.userId !== userId && contentData.streamState === "candidate") {
+                        console.log("candidate: " + contentData.messageString);
+                        handleCandidate(JSON.parse(contentData.messageString));
+                    }
+                    if (contentData.userId !== userId && contentData.streamState === "ready") {
+                        if (peerConnection) {
+                            console.log('already connected, ignoring');
+                        } else {
+                            initiateConnection();
+                        }
+                    }
+                    if (contentData.userId !== userId && contentData.streamState === "refresh") {
+                        if (localContext) {
+                            // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
+                            localContext.fillText("T", 0, 0);
+                        }
+                    }
+                    if (contentData.userId !== userId && contentData.streamState === "disconnect") {
+                        if (peerConnection) {
+                            disconnectVideo();
+                        } else {
+                            console.log('not connected, ignoring');
+                        }
+                    }
+                }
+            }
+        });
         stompClient.subscribe('/shared/group', function (greeting) {
             var contentData = JSON.parse(greeting.body);
             if (!isCompact) {
@@ -462,42 +535,6 @@ function connect() {
                         "</td><td>" + contentData.messageString +
                         "</td><td>" + contentData.messageStatus +
                         "</td></tr>");
-                }
-            }
-            if (isReady) {
-                if (!groupId || groupId == contentData.groupId) {
-                    if (/*contentData.userId !== userId &&*/ contentData.streamState === "offer") {
-                        console.log("offer: " + contentData.messageString);
-                        handleOffer(contentData.userId, JSON.parse(contentData.messageString));
-                    }
-                    if (contentData.userId !== userId && contentData.streamState === "answer") {
-                        console.log("answer: " + contentData.messageString);
-                        handleAnswer(JSON.parse(contentData.messageString));
-                    }
-                    if (contentData.userId !== userId && contentData.streamState === "candidate") {
-                        console.log("candidate: " + contentData.messageString);
-                        handleCandidate(JSON.parse(contentData.messageString));
-                    }
-                    if (contentData.userId !== userId && contentData.streamState === "ready") {
-                        if (peerConnection) {
-                            console.log('already connected, ignoring');
-                        } else {
-                            initiateConnection();
-                        }
-                    }
-                    if (contentData.userId !== userId && contentData.streamState === "refresh") {
-                        if (localContext) {
-                            // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
-                            localContext.fillText("T", 0, 0);
-                        }
-                    }
-                    if (contentData.userId !== userId && contentData.streamState === "disconnect") {
-                        if (peerConnection) {
-                            disconnectVideo();
-                        } else {
-                            console.log('not connected, ignoring');
-                        }
-                    }
                 }
             }
         });
@@ -572,6 +609,7 @@ $(function () {
         $("#animateDiv").hide();
         $("#messageDiv").hide();
         $("#groupTarget").hide();
+        $("#streamTarget").hide();
         $("#unittestdata").hide();
         $("#selfdata").hide();
         $("#initialiseButton").hide();
