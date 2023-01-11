@@ -25,7 +25,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserId;
  */
 public class StreamMessage {
 
-    public enum StreamState {
+    public enum StreamMessageState {
         offer, answer, candidate, ready, refresh, disconnect
     };
 
@@ -36,14 +36,14 @@ public class StreamMessage {
     private MemberCode memberCode;
     private MemberCode originMemberCode;
     private Integer originPhase;
-    private StreamState streamState;
+    private StreamMessageState streamState;
     private String messageString;
     private String messageStatus;
 
     public StreamMessage() {
     }
 
-    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamState streamState, String messageString, String messageStatus) {
+    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamMessageState streamState, String messageString, String messageStatus) {
         this.userId = userId;
         this.groupId = groupId;
         this.groupUUID = groupUUID;
@@ -112,11 +112,11 @@ public class StreamMessage {
         this.originPhase = originPhase;
     }
 
-    public StreamState getStreamState() {
+    public StreamMessageState getStreamState() {
         return streamState;
     }
 
-    public void setStreamState(StreamState streamState) {
+    public void setStreamState(StreamMessageState streamState) {
         this.streamState = streamState;
     }
 

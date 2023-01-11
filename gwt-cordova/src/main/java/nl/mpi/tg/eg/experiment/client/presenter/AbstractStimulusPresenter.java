@@ -74,6 +74,9 @@ import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
+import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler;
+import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamState;
+import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamTypes;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
@@ -119,14 +122,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     public enum OrientationType {
         vertical, horizontal, flow
-    }
-
-    public enum StreamState {
-        start, stop, pause, hide, show, mute, unmute
-    }
-
-    public enum StreamTypes {
-        microphone, camera, canvas
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
@@ -2269,7 +2264,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamType.name() + "" + streamState.name(), duration.elapsedMillis());
-        // TODO: handle stream actions
+        // handle stream actions
+        if (groupStreamHandler == null) {
+            groupStreamHandler = new GroupStreamHandler();
+            groupStreamHandler.initialiseConnection(ApplicationController.STUN_SERVER);
+            // TODO: remove this debug output when the GroupStreamHandler is ready
+            timedStimulusView.addText("GroupStream STUN_SERVER " + ApplicationController.STUN_SERVER);
+        }
+        // TODO: remove this debug output when the GroupStreamHandler is ready
+        timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
+        groupStreamHandler.updateStream(streamState, streamType);
     }
 
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {

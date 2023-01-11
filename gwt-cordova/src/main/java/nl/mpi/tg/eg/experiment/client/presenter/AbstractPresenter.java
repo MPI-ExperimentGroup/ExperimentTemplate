@@ -55,6 +55,7 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.XmlId;
+import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp.DTMF;
@@ -91,6 +92,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected final LocalStorage localStorage;
     protected final TimerService timerService; // todo: this maybe needs to be avaiable in all presenter types
     protected GroupParticipantService groupParticipantService = null;
+    protected GroupStreamHandler groupStreamHandler = null;
     private final ArrayList<ValueChangeListener<Double>> audioLevelIndicators = new ArrayList<>();
     private final RecorderDtmfListener recorderDtmfListener = new RecorderDtmfListener();
     private final MediaTriggerListener recorderMediaTriggerListener = new MediaTriggerListener();
