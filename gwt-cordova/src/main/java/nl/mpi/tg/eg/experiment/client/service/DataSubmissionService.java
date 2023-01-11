@@ -66,7 +66,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
     @Override
     public boolean isProductionVersion() {
         boolean dataSubmitUrlOk = serviceLocations.dataSubmitUrl().contains(serviceLocations.productionCheckString());
-        boolean groupServerUrlOk = serviceLocations.groupServerUrl().contains(serviceLocations.productionCheckString());        
+        boolean groupServerUrlOk = serviceLocations.groupServerUrl().contains(serviceLocations.productionCheckString());
 //        boolean registrationUrlOk = serviceLocations.registrationUrl().contains("www.mpi.nl");
 //        boolean staticFilesUrlOk = serviceLocations.staticFilesUrl().contains("ems12");
         return dataSubmitUrlOk && groupServerUrlOk; // && staticFilesUrlOk;
@@ -135,8 +135,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
             tagValue = "undefined";
         }
         while (tagValue.length() > 0) {
-            String tagValuePart = tagValue.substring(0, 255);
-            tagValue = tagValue.substring(255);
+            String tagValuePart = tagValue.substring(0, Math.min(tagValue.length(), 255));
+            tagValue = tagValue.substring(Math.min(tagValue.length(), 255));
             submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                     + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                     + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
