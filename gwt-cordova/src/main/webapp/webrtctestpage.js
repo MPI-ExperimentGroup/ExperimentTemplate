@@ -158,7 +158,7 @@ function sendToGroup(status, messageObject) {
         'screenId': null,
         'originMemberCode': null,
         'originPhase': null,
-        'messageStatus': status, // status used in this field is only for testing in this page
+        'streamState': status,
         'userId': userId,
         'memberCode': memberCode,
         'messageString': JSON.stringify(messageObject),
