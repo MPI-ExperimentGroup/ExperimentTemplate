@@ -292,6 +292,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
                 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
                 import nl.mpi.tg.eg.experiment.client.model.XmlId;
+                import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamState;
+                import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamTypes;
             </xsl:text> 
             <!--            <xsl:if test="@type = 'svg'">
                 <xsl:text>
