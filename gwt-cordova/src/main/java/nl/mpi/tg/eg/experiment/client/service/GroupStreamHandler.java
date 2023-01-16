@@ -117,7 +117,7 @@ public class GroupStreamHandler {
                 console.log("onicegatheringstatechange");
             };
 
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+            // TODO: localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
         }
     }-*/;
         
