@@ -39,7 +39,7 @@ public enum TokenText {
 
 //::groupAllMemberCodes::
 //
-//::groupAsignedMemberCodes::
+//::groupAssignedMemberCodes::
 //
 //::groupOtherMemberCodes::
 //
