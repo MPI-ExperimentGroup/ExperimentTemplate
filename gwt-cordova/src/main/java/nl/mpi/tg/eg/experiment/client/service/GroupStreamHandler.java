@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+
 /**
  * @since 11 Jan 2023 11:12 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -31,10 +33,94 @@ public class GroupStreamHandler {
         microphone, camera, canvas
     }
 
-    public void initialiseConnection(String stunServer) {
+    public native void initialiseConnection(String stunServer /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
         // TODO: initialise the stream
-    }
+        // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
+        // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
 
+        if (!peerConnection) {
+            var configuration = null; 
+            if (stunServer) {
+                    configuration = {
+                    iceServers: [{
+                        urls: "stun:" + stunServer
+                    }]
+                };
+                console.log("configuration: " + configuration);
+            }
+            
+            peerConnection = new RTCPeerConnection(configuration);
+            peerConnection.onicecandidate = function (event) {
+                console.log("onicecandidate");
+                if (event.candidate) {
+                    // TODO: sendToGroup("candidate", {
+                    //    type: "candidate", candidate: event.candidate.candidate,
+                    //    sdpMid: event.candidate.sdpMid,
+                    //    sdpMLineIndex: event.candidate.sdpMLineIndex
+                    //});
+                } else {
+                    // TODO: sendToGroup("candidate", { type: "candidate", candidate: null });
+                }
+            };
+
+            dataChannel = peerConnection.createDataChannel("dataChannel", {
+                reliable: true
+            });
+
+            dataChannel.onerror = function (error) {
+                console.log("onerror: " + error);
+            };
+
+            dataChannel.onmessage = function (event) {
+                console.log("onmessage: " + event.data);
+            };
+
+            dataChannel.onconnectionstatechange = function (event) {
+                console.log("onconnectionstatechange");
+            };
+
+            dataChannel.onclose = function () {
+                console.log("onclose");
+            };
+
+            peerConnection.ondatachannel = function (event) {
+                dataChannel = event.channel;
+            };
+
+            peerConnection.onnegotiationneeded = function () {
+            }
+
+            peerConnection.ontrack = function (event) {
+                console.log("ontrack");
+                // TODO: pass in the target element for $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
+                // TODO: pass in the target element for document.getElementById("remoteVideo").srcObject = event.streams[0];
+                // $("#remoteVideo").attr('src', event.streams[0]);
+                // TODO: sendToGroup("refresh", "");
+            };
+
+            peerConnection.onremovetrack = function () {
+                console.log("onremovetrack");
+            };
+            peerConnection.onremovestream = function () {
+                console.log("onremovestream");
+            };
+
+            peerConnection.oniceconnectionstatechange = function () {
+                console.log("oniceconnectionstatechange");
+            };
+
+            peerConnection.onsignalingstatechange = function () {
+                console.log("onsignalingstatechange");
+            };
+
+            peerConnection.onicegatheringstatechange = function () {
+                console.log("onicegatheringstatechange");
+            };
+
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+        }
+    }-*/;
+        
     public void updateStream(final StreamState streamState, final StreamTypes streamType) {
         // TODO: update the stream
         messageGroup(streamState.name(), streamType.name(), 0, "userId", "windowGroupId", "windowMemberCode", "screenId");
