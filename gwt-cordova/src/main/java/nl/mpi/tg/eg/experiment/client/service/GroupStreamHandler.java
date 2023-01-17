@@ -38,7 +38,7 @@ public class GroupStreamHandler {
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
 
-        if (!peerConnection) {
+        if (!$wnd.peerConnection) {
             var configuration = null; 
             if (stunServer) {
                     configuration = {
@@ -49,8 +49,8 @@ public class GroupStreamHandler {
                 console.log("configuration: " + configuration);
             }
             
-            peerConnection = new RTCPeerConnection(configuration);
-            peerConnection.onicecandidate = function (event) {
+            $wnd.peerConnection = new RTCPeerConnection(configuration);
+            $wnd.peerConnection.onicecandidate = function (event) {
                 console.log("onicecandidate");
                 if (event.candidate) {
                     // TODO: sendToGroup("candidate", {
@@ -63,7 +63,7 @@ public class GroupStreamHandler {
                 }
             };
 
-            dataChannel = peerConnection.createDataChannel("dataChannel", {
+            dataChannel = $wnd.peerConnection.createDataChannel("dataChannel", {
                 reliable: true
             });
 
@@ -83,14 +83,14 @@ public class GroupStreamHandler {
                 console.log("onclose");
             };
 
-            peerConnection.ondatachannel = function (event) {
+            $wnd.peerConnection.ondatachannel = function (event) {
                 dataChannel = event.channel;
             };
 
-            peerConnection.onnegotiationneeded = function () {
+            $wnd.peerConnection.onnegotiationneeded = function () {
             }
 
-            peerConnection.ontrack = function (event) {
+            $wnd.peerConnection.ontrack = function (event) {
                 console.log("ontrack");
                 // TODO: pass in the target element for $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
                 // TODO: pass in the target element for document.getElementById("remoteVideo").srcObject = event.streams[0];
@@ -98,26 +98,26 @@ public class GroupStreamHandler {
                 // TODO: sendToGroup("refresh", "");
             };
 
-            peerConnection.onremovetrack = function () {
+            $wnd.peerConnection.onremovetrack = function () {
                 console.log("onremovetrack");
             };
-            peerConnection.onremovestream = function () {
+            $wnd.peerConnection.onremovestream = function () {
                 console.log("onremovestream");
             };
 
-            peerConnection.oniceconnectionstatechange = function () {
+            $wnd.peerConnection.oniceconnectionstatechange = function () {
                 console.log("oniceconnectionstatechange");
             };
 
-            peerConnection.onsignalingstatechange = function () {
+            $wnd.peerConnection.onsignalingstatechange = function () {
                 console.log("onsignalingstatechange");
             };
 
-            peerConnection.onicegatheringstatechange = function () {
+            $wnd.peerConnection.onicegatheringstatechange = function () {
                 console.log("onicegatheringstatechange");
             };
 
-            // TODO: localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+            // TODO: localStream.getTracks().forEach(track => $wnd.peerConnection.addTrack(track, localStream));
         }
     }-*/;
         
