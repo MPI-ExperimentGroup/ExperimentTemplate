@@ -354,22 +354,20 @@ function setConnected(connected) {
             "<td>Ready</td>" +
             "</tr>");
         $("#groupTarget").append("<tr>" +
-            "<td>userId</td>" +
+            "<td>UserId</td>" +
             "<td>Group</td>" +
-            "<td>groupUUID</td>" +
-            "<td>screenId</td>" +
-            "<td>Label</td>" +
-            "<td>Members</td>" +
+            "<td>GroupUUID</td>" +
+            "<td>ScreenId</td>" +
+            "<td>Member Code</td>" +
+            "<td>Origin Code</td>" +
             "<td>Channels</td>" +
-            "<td>MemberCode</td>" +
-            "<td>OriginCode</td>" +
-            "<td>Stimulus</td>" +
-            "<td>Options</td>" +
-            "<td>Response</td>" +
-            "<td>streamState</td>" +
-            "<td>originPhase</td>" +
-            "<td>message</td>" +
-            "<td>Ready</td>" +
+            "<td>Expected Respondents</td>" +
+            "<td>Actual Respondents</td>" +
+            "<td>All Members</td>" +
+            "<td>Origin Phase</td>" +
+            "<td>Requested Phase</td>" +
+            "<td>Message</td>" +
+            "<td>Group Ready</td>" +
             "</tr>");
         $("#unittestdata").append(
             "<tr><td>userId</td>" +
@@ -496,14 +494,18 @@ function connect() {
                     "</td><td>" + contentData.screenId +
                     "</td><td>" + contentData.memberCode +
                     "</td><td>" + contentData.originMemberCode +
-                    "</td><td>" + contentData.streamState +
+                    "</td><td>" + contentData.groupCommunicationChannels +
+                    "</td><td>" + contentData.expectedRespondents +
+                    "</td><td>" + contentData.actualRespondents +
+                    "</td><td>" + contentData.allMemberCodes +
                     "</td><td>" + contentData.originPhase +
+                    "</td><td>" + contentData.requestedPhase +
                     "</td><td>" + contentData.messageString +
                     "</td><td>" + contentData.messageStatus +
                     "</td>";
-                var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.screenId + "','" + contentData.memberCode + "')\">message</button></td>";
-                var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.screenId + "',null,'" + contentData.groupId + "',null,null)\">add member</button></td>";
-                usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
+                // var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.screenId + "','" + contentData.memberCode + "')\">message</button></td>";
+                // var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.screenId + "',null,'" + contentData.groupId + "',null,null)\">add member</button></td>";
+                usersTableRow.html(usersTableCells /* + messageButtonCell + addButtonCell*/);
                 usersTableRow.css("outline-style", "solid");
                 usersTableRow.css("outline-width", "5px");
                 usersTableRow.css("outline-color", "green");
