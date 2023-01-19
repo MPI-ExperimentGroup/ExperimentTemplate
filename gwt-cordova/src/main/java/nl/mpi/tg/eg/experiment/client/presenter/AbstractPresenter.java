@@ -495,17 +495,18 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
-        Timer timer = new Timer() {
-            public void run() {
+        // there appears to be no current reason for this to be in a timer, the timer causes the resulting content to fall out of the current region so it is being removed
+        // Timer timer = new Timer() {
+            // public void run() {
                 String paramValue = Window.Location.getParameter(getParamName);
                 if (paramValue != null) {
                     conditionTrue.postLoadTimerFired();
                 } else {
                     conditionFalse.postLoadTimerFired();
                 }
-            }
-        };
-        timer.schedule(100);
+            // }
+        // };
+        // timer.schedule(100);
     }
 
     public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final DataSubmissionService dataSubmissionService, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
