@@ -37,7 +37,7 @@ public class GroupStreamHandler {
         // TODO: initialise the stream
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
-
+        console.log("initialiseConnection: " + stunServer);
         if (!$wnd.peerConnection) {
             var configuration = null; 
             if (stunServer) {
