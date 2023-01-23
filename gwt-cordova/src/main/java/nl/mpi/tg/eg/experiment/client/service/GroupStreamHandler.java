@@ -33,10 +33,25 @@ public class GroupStreamHandler {
         microphone, camera, canvas
     }
 
-    public native void initialiseConnection(String stunServer /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
-        // TODO: initialise the stream
+    public native void connect(String stunServer /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
+        stompClient.subscribe('/shared/stream', function (streamMessage) {
+            var contentData = JSON.parse(streamMessage.body);
+            console.log("contentData.userId");
+            console.log("contentData.groupId");
+            console.log("contentData.groupUUID");
+            console.log("contentData.screenId");
+            console.log("contentData.memberCode");
+            console.log("contentData.originMemberCode");
+            console.log("contentData.streamState");
+            console.log("contentData.originPhase");
+            console.log("contentData.messageData");
+        });
+    }-*/;
+    
+    private native void initialiseConnection(String stunServer) /*-{
+        // TODO: initialise the stream     
         console.log("initialiseConnection: " + stunServer);
         if (!$wnd.peerConnection) {
             var configuration = null; 

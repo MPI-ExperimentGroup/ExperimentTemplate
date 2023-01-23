@@ -2267,9 +2267,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         // handle stream actions
         if (groupStreamHandler == null) {
             groupStreamHandler = new GroupStreamHandler();
-            groupStreamHandler.initialiseConnection(ApplicationController.STUN_SERVER);
+            groupStreamHandler.connect(ApplicationController.STUN_SERVER);
             // TODO: remove this debug output when the GroupStreamHandler is ready
-            timedStimulusView.addText("GroupStream STUN_SERVER " + ApplicationController.STUN_SERVER);
+            timedStimulusView.addText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER);
         }
         // TODO: remove this debug output when the GroupStreamHandler is ready
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());

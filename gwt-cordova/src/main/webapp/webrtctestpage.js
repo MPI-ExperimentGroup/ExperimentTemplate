@@ -411,8 +411,8 @@ function connect() {
             progressDivBar.css("width", contentData.width + "px");
             //            $("#send").hide();
         });
-        stompClient.subscribe('/shared/stream', function (greeting) {
-            var contentData = JSON.parse(greeting.body);
+        stompClient.subscribe('/shared/stream', function (streamMessage) {
+            var contentData = JSON.parse(streamMessage.body);
             if (!isCompact) {
                 var streamTableRow = $("#streamUserId" + contentData.userId);
                 if (!streamTableRow.length) {
