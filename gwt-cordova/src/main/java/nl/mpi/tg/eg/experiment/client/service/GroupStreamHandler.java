@@ -88,7 +88,7 @@ public class GroupStreamHandler {
             }
             if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                 if ($wnd.peerConnection) {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams()();
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::terminateConnection()();
                 } else {
                     console.log('not connected, ignoring');
                 }
@@ -97,11 +97,11 @@ public class GroupStreamHandler {
         });
     }-*/;
     
-    private native void disconnectStreams() /*-{
-        // TODO: disconnectStreams
+    private native void terminateConnection() /*-{
+        // TODO: terminateConnection
     }-*/;
     
-    private native void initialiseConnection(String stunServer) /*-{
+    private native void initiateConnection(String stunServer) /*-{
         // TODO: initialise the stream     
         console.log("initialiseConnection: " + stunServer);
         if (!$wnd.peerConnection) {
