@@ -88,9 +88,9 @@
                         <addPadding />
                     </regionReplace>
                 </groupFindingMembers>
-                <groupFullError>
-                    <htmlText featureText="groupFullError" />
-                </groupFullError>
+                <groupInitialisationError>
+                    <htmlText featureText="groupInitialisationError" />
+                </groupInitialisationError>
                 <groupNetworkSynchronising>
                     <htmlText featureText="GroupFormation groupNetworkSynchronising" />
                     <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
@@ -137,9 +137,9 @@
         <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C" groupCameraChannels="A,B|B,C" groupAudioChannels="A,B|B,C" groupCanvasChannels="A,B|B,C">
-                <groupFullError>
-                    <htmlText featureText="groupFullError" />
-                </groupFullError>
+                <groupInitialisationError>
+                    <htmlText featureText="groupInitialisationError" />
+                </groupInitialisationError>
                 <groupNetworkConnecting>
                     <htmlText featureText="GroupStreamingExample groupNetworkConnecting" />
                     <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />

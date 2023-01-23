@@ -62,9 +62,9 @@
         </hasGetParameter>
         <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                <groupFullError>
-                    <htmlText featureText="groupFullError" />
-                </groupFullError>
+                <groupInitialisationError>
+                    <htmlText featureText="groupInitialisationError" />
+                </groupInitialisationError>
                 <groupNetworkConnecting>
                     <htmlText featureText="groupNetworkConnecting" />
                     <addPadding />
@@ -178,9 +178,9 @@
                         <htmlTokenText featureText="groupFindingMembers" />
                     </regionReplace>
                 </groupFindingMembers>
-                <groupFullError>
-                    <htmlText featureText="groupFullError" />
-                </groupFullError>
+                <groupInitialisationError>
+                    <htmlText featureText="groupInitialisationError" />
+                </groupInitialisationError>
                 <groupNetworkConnecting>
                     <triggerMatching listenerId="groupDebugTrigger" />
                     <regionReplace regionId="groupStatusRegion">
@@ -259,9 +259,9 @@
                             <groupFindingMembers>
                                 <htmlText featureText="endOfStimulus groupFindingMembers"/>
                             </groupFindingMembers>
-                            <groupFullError>
-                                <htmlText featureText="groupFullError" />
-                            </groupFullError>
+                            <groupInitialisationError>
+                                <htmlText featureText="groupInitialisationError" />
+                            </groupInitialisationError>
                             <groupNetworkConnecting>
                                 <htmlText featureText="endOfStimulus groupNetworkConnecting"/>
                             </groupNetworkConnecting>
@@ -301,9 +301,9 @@
                                 <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
                             </regionReplace>
                         </groupFindingMembers>
-                        <groupFullError>
-                            <htmlText featureText="groupFullError" />
-                        </groupFullError>
+                        <groupInitialisationError>
+                            <htmlText featureText="groupInitialisationError" />
+                        </groupInitialisationError>
                         <groupNetworkConnecting>
                             <regionReplace regionId="groupNetworkConnecting">
                                 <htmlText featureText="GroupOf6 groupNetworkConnecting" />
@@ -380,9 +380,9 @@
                             <groupFindingMembers>
                                 <htmlText featureText="endOfStimulus groupFindingMembers"/>
                             </groupFindingMembers>
-                            <groupFullError>
-                                <htmlText featureText="groupFullError" />
-                            </groupFullError>
+                            <groupInitialisationError>
+                                <htmlText featureText="groupInitialisationError" />
+                            </groupInitialisationError>
                             <groupNetworkConnecting>
                                 <htmlText featureText="endOfStimulus groupNetworkConnecting"/>
                             </groupNetworkConnecting>
@@ -407,9 +407,9 @@
         <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
         <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C">
-                <groupFullError>
-                    <htmlText featureText="groupFullError" />
-                </groupFullError>
+                <groupInitialisationError>
+                    <htmlText featureText="groupInitialisationError" />
+                </groupInitialisationError>
                 <groupNetworkConnecting>
                     <htmlText featureText="GroupFormation groupNetworkConnecting" />
                     <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
@@ -517,9 +517,9 @@
                         <regionReplace regionId="textStatusRegion" />
                         <groupStimuli eventTag="GroupOf2" randomise="true" repeatRandomWindow="3" maxStimuli="6" repeatCount="1">
                             <groupNetwork groupMembers="A,B" phasesPerStimulus="3" groupCommunicationChannels="A,B">
-                                <groupFullError>
-                                    <htmlText featureText="groupFullError" />
-                                </groupFullError>
+                                <groupInitialisationError>
+                                    <htmlText featureText="groupInitialisationError" />
+                                </groupInitialisationError>
                                 <groupNetworkConnecting>
                                     <regionReplace regionId="groupStatusRegion">
                                         <htmlText featureText="groupNetworkConnecting" />

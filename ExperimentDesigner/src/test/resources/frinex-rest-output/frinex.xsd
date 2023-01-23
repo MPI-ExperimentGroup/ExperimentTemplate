@@ -16634,7 +16634,7 @@
 <xs:documentation>Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.</xs:documentation>
 </xs:annotation>
 <xs:all>
-<xs:element name="groupFullError" type="groupFullErrorType"/>
+<xs:element name="groupInitialisationError" type="groupInitialisationErrorType"/>
 <xs:element name="groupFindingMembers" type="groupFindingMembersType"/>
 <xs:element name="groupNetworkConnecting" type="groupNetworkConnectingType"/>
 <xs:element name="groupNetworkSynchronising" type="groupNetworkSynchronisingType"/>
@@ -16671,7 +16671,7 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="groupFullErrorType">
+<xs:complexType name="groupInitialisationErrorType">
 <xs:annotation>
 <xs:documentation>When the specified group already has enough members new members cannot assign to it and the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.</xs:documentation>
 </xs:annotation>

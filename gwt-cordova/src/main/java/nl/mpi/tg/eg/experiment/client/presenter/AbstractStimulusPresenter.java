@@ -546,7 +546,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupFullError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
@@ -558,10 +558,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 TimedStimulusListener lastTriggeredListener = null;
 
                 @Override
-                public void groupFullError() {
-                    if (!groupFullError.equals(lastTriggeredListener)) {
-                        groupFullError.postLoadTimerFired();
-                        lastTriggeredListener = groupFullError;
+                public void groupInitialisationError() {
+                    if (!groupInitialisationError.equals(lastTriggeredListener)) {
+                        groupInitialisationError.postLoadTimerFired();
+                        lastTriggeredListener = groupInitialisationError;
                     }
                 }
 

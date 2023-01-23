@@ -964,7 +964,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupFullError">
+    <xsl:template match="onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
         <xsl:value-of select="if(@msToNext) then ', ' else ''" />
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers' or parent::element()/local-name() eq 'startFrameRateTimer') then '' else ', '" />
@@ -1260,7 +1260,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:apply-templates select="onSuccess" />
         <xsl:apply-templates select="onTimer" />
         <xsl:apply-templates select="onTime" />
-        <xsl:apply-templates select="groupFullError" />
+        <xsl:apply-templates select="groupInitialisationError" />
         <xsl:apply-templates select="groupFindingMembers" />
         <xsl:apply-templates select="groupNetworkConnecting" />
         <xsl:apply-templates select="groupNetworkSynchronising" />

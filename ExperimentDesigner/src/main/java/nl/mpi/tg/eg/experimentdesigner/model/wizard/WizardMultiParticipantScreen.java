@@ -356,7 +356,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
         final PresenterFeature groupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
-        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupFullError, FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[4];
+        final PresenterFeature groupNetworkListeners = groupNetwork.addFeatures(FeatureType.groupInitialisationError, FeatureType.groupNetworkConnecting, FeatureType.groupFindingMembers, FeatureType.groupNetworkSynchronising, FeatureType.groupPhaseListeners)[4];
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
         groupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(getPhasesPerStimulus(storedWizardScreenData)));
         //@todo: add groupRoleSequence

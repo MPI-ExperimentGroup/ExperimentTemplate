@@ -31,7 +31,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="Set1" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>

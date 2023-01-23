@@ -147,7 +147,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
                 if (originMemberCode != null) {
                     groupFindingMembers();
                 } else {
-                    groupFullError();
+                    groupInitialisationError();
                 }
             }
             if (this.stimuliListGroup != null && !this.stimuliListLoaded.equals(this.stimuliListGroup)) {
@@ -481,5 +481,5 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
     public abstract void groupFindingMembers();
 
-    public abstract void groupFullError();
+    public abstract void groupInitialisationError();
 }

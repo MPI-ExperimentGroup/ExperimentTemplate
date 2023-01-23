@@ -57,7 +57,7 @@ public class GroupParticipantServiceTest {
         System.out.println("addGroupActivity");
         GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2, "stimuliList") {
             @Override
-            public void groupFullError() {
+            public void groupInitialisationError() {
             }
 
             @Override
@@ -196,8 +196,8 @@ public class GroupParticipantServiceTest {
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_0", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H", 2,
                     "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small") {
                 @Override
-                public void groupFullError() {
-                    stringBuilder.append("groupFullError\n");
+                public void groupInitialisationError() {
+                    stringBuilder.append("groupInitialisationError\n");
                 }
 
                 @Override
@@ -262,8 +262,8 @@ public class GroupParticipantServiceTest {
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_1", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", 2,
                     "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium") {
                 @Override
-                public void groupFullError() {
-                    stringBuilder.append("groupFullError\n");
+                public void groupInitialisationError() {
+                    stringBuilder.append("groupInitialisationError\n");
                 }
 
                 @Override

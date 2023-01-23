@@ -19,7 +19,7 @@
                             <conditionTrue>
                                 <groupStimuli adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
                                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D">
-                                        <groupFullError/>
+                                        <groupInitialisationError/>
                                         <groupNetworkConnecting/>
                                         <groupFindingMembers/>
                                         <groupNetworkSynchronising/>
@@ -68,7 +68,7 @@
                                     <conditionTrue>
                                         <groupStimuli adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
                                             <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                                                <groupFullError/>
+                                                <groupInitialisationError/>
                                                 <groupNetworkConnecting/>
                                                 <groupFindingMembers/>
                                                 <groupNetworkSynchronising/>
@@ -150,7 +150,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R0-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -228,7 +228,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R0.1-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -306,7 +306,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R0.2-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -384,7 +384,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R1-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -525,7 +525,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R2-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -666,7 +666,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R3-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -807,7 +807,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R4-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -948,7 +948,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R5-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1089,7 +1089,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R6-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1230,7 +1230,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R7-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1371,7 +1371,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R8-4" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1419,7 +1419,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R0-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1497,7 +1497,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R0.1-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1575,7 +1575,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R0.2-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1653,7 +1653,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R1-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1794,7 +1794,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R2-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -1935,7 +1935,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R3-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2076,7 +2076,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R4-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2217,7 +2217,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R5-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2358,7 +2358,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R6-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2499,7 +2499,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R7-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2640,7 +2640,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R8-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2688,7 +2688,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R9-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2829,7 +2829,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R10-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -2970,7 +2970,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R11-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -3111,7 +3111,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R12-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -3252,7 +3252,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R13-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -3393,7 +3393,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R14-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -3534,7 +3534,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R15-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>
@@ -3675,7 +3675,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <groupStimuli adjacencyThreshold="3" eventTag="R16-8" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="3">
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                    <groupFullError/>
+                    <groupInitialisationError/>
                     <groupNetworkConnecting/>
                     <groupFindingMembers/>
                     <groupNetworkSynchronising/>

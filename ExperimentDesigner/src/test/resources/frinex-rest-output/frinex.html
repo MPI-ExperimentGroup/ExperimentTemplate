@@ -32708,17 +32708,17 @@ When the the connection to the group server is established the second stage is w
 <button onclick="getExample('groupFindingMembers', 'groupFindingMembersTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="groupFullErrorType" style="text-transform: uppercase;">
-groupFullError
+<h3 id="groupInitialisationErrorType" style="text-transform: uppercase;">
+groupInitialisationError
 </h3>
-When the specified group already has enough members new members cannot assign to it and the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.
+When the specified group already has enough members new members cannot be assigned to it or the member code has not been provided the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL along with the member code. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">groupFullError</span></td><td><span style="color:purple">&gt;</span></td><td>
+<span style="color:purple">&lt;</span><span style="color:blue">groupInitialisationError</span></td><td><span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
-<button id="groupFullErrorChildShow" style="display: block;" onclick="$('#groupFullErrorChildDocumentation').show();$('#groupFullErrorChildHide').show();$('#groupFullErrorChildShow').hide();">show 194 truncated items</button>
-<button id="groupFullErrorChildHide" style="display: none;" onclick="$('#groupFullErrorChildDocumentation').hide();$('#groupFullErrorChildHide').hide();$('#groupFullErrorChildShow').show();">hide 194 items</button>
-<table id="groupFullErrorChildDocumentation" style="display: none;">
+<button id="groupInitialisationErrorChildShow" style="display: block;" onclick="$('#groupInitialisationErrorChildDocumentation').show();$('#groupInitialisationErrorChildHide').show();$('#groupInitialisationErrorChildShow').hide();">show 194 truncated items</button>
+<button id="groupInitialisationErrorChildHide" style="display: none;" onclick="$('#groupInitialisationErrorChildDocumentation').hide();$('#groupInitialisationErrorChildHide').hide();$('#groupInitialisationErrorChildShow').show();">hide 194 items</button>
+<table id="groupInitialisationErrorChildDocumentation" style="display: none;">
 <tr><td>
 <a href="#htmlTextType"><span style="color:purple">&lt;</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span>
 </a></td></tr>
@@ -33306,12 +33306,12 @@ When the specified group already has enough members new members cannot assign to
 </tr>
 <tr>
 <td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupFullError</span><span style="color:purple">&gt;</span></td></tr>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupInitialisationError</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
-<td colspan='2' id='groupFullErrorTarget'>
-<button onclick="getExample('groupFullError', 'groupFullErrorTarget');">search for examples</button>
+<td colspan='2' id='groupInitialisationErrorTarget'>
+<button onclick="getExample('groupInitialisationError', 'groupInitialisationErrorTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="groupMemberActivityType" style="text-transform: uppercase;">
@@ -33923,7 +33923,7 @@ The number of phases per round in the group. When current phase reaches this val
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#groupFullErrorType"><span style="color:purple">&lt;</span><span style="color:blue">groupFullError</span><span style="color:purple">&gt;</span>
+<a href="#groupInitialisationErrorType"><span style="color:purple">&lt;</span><span style="color:blue">groupInitialisationError</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 <tr><td>
 <a href="#groupFindingMembersType"><span style="color:purple">&lt;</span><span style="color:blue">groupFindingMembers</span><span style="color:purple">&gt;</span>
