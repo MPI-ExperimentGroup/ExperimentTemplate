@@ -362,8 +362,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
 //        console.log("joinGroupNetwork: " + groupServerUrl + " : " + groupName);
         groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::groupNetworkConnecting()();
         var socket = new $wnd.SockJS(groupServerUrl + 'gs-guide-websocket');
-        stompClient = $wnd.Stomp.over(socket);
-        stompClient.connect(
+        $wnd.stompClient = $wnd.Stomp.over(socket);
+        $wnd.stompClient.connect(
             {
 //            withCredentials: false,
 //            noCredentials : true
@@ -372,7 +372,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
             function (frame) {
             groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::setConnected(Ljava/lang/Boolean;)(@java.lang.Boolean::TRUE);
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/shared/group', function (groupMessage) {
+            $wnd.stompClient.subscribe('/shared/group', function (groupMessage) {
                 var contentData = JSON.parse(groupMessage.body);
                 //console.log('contentData: ' + contentData);
                 groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(
@@ -448,7 +448,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
     private native void messageGroup(int originPhase, int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{
     var groupParticipantService = this;
-    stompClient.send("/app/group", {}, JSON.stringify({
+    $wnd.stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
         'groupId': windowGroupId,
         'screenId': screenId,

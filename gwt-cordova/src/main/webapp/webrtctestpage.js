@@ -179,7 +179,7 @@ function sendToGroup(status, messageObject) {
         "</td></tr>");
 }
 
-function disconnectVideo() {
+function disconnectStreams() {
     sendToGroup("disconnect", "");
     var remoteVideo = document.getElementById("remoteVideo");
     var localVideo = document.getElementById("localVideo");
@@ -227,7 +227,7 @@ function reportError(e) {
 
 function handleDisconnectError(e) {
     console.log(e.name, e.message);
-    disconnectVideo();
+    disconnectStreams();
 }
 
 function initialiseConnection() {
@@ -463,7 +463,7 @@ function connect() {
                     }
                     if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                         if (peerConnection) {
-                            disconnectVideo();
+                            disconnectStreams();
                         } else {
                             console.log('not connected, ignoring');
                         }
