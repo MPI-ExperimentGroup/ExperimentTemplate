@@ -16673,7 +16673,7 @@
 </xs:complexType>
 <xs:complexType name="groupInitialisationErrorType">
 <xs:annotation>
-<xs:documentation>When the specified group already has enough members new members cannot assign to it and the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.</xs:documentation>
+<xs:documentation>When the specified group already has enough members new members cannot be assigned to it or the member code has not been provided the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL along with the member code. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
