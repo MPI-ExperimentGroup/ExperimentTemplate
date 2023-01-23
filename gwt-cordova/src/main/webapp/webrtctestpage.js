@@ -24,7 +24,7 @@
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
-        sendToGroup("offer", { sdp: offer.sdp });
+        sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
         // peerConnection.setLocalDescription(offer).then(function () {
         // sendToGroup("offer", peerConnection.localDescription);
         // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
@@ -114,7 +114,7 @@ function handleOffer(sendingUserId, offer) {
         peerConnection.setRemoteDescription(offer).then(function () {
             return peerConnection.createAnswer();
         }).then(function (answer) {
-            sendToGroup("answer", {sdp: answer.sdp });
+            sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
             return peerConnection.setLocalDescription(answer);
             // }).then(function () {
             // sendToGroup("answer", peerConnection.localDescription);
@@ -242,12 +242,12 @@ function initialiseConnection() {
             console.log("onicecandidate");
             if (event.candidate) {
                 sendToGroup("candidate", {
-                    candidate: event.candidate.candidate,
+                    type: "candidate", candidate: event.candidate.candidate,
                     sdpMid: event.candidate.sdpMid,
                     sdpMLineIndex: event.candidate.sdpMLineIndex
                 });
             } else {
-                sendToGroup("candidate", { candidate: null });
+                sendToGroup("candidate", { type: "candidate", candidate: null });
             }
         };
 
