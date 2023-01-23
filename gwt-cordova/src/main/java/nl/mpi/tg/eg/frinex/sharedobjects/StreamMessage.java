@@ -37,13 +37,12 @@ public class StreamMessage {
     private MemberCode originMemberCode;
     private Integer originPhase;
     private StreamMessageState streamState;
-    private String messageString;
-    private String messageStatus;
+    private String messageData;
 
     public StreamMessage() {
     }
 
-    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamMessageState streamState, String messageString, String messageStatus) {
+    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamMessageState streamState, String messageData) {
         this.userId = userId;
         this.groupId = groupId;
         this.groupUUID = groupUUID;
@@ -52,8 +51,7 @@ public class StreamMessage {
         this.originMemberCode = originMemberCode;
         this.originPhase = originPhase;
         this.streamState = streamState;
-        this.messageString = messageString;
-        this.messageStatus = messageStatus;
+        this.messageData = messageData;
     }
 
     public UserId getUserId() {
@@ -120,19 +118,12 @@ public class StreamMessage {
         this.streamState = streamState;
     }
 
-    public String getMessageString() {
-        return messageString;
+    public String getMessageData() {
+        return messageData;
     }
 
-    public void setMessageString(String messageString) {
-        this.messageString = messageString;
+    public void setMessageData(String messageData) {
+        this.messageData = messageData;
     }
 
-    public String getMessageStatus() {
-        return messageStatus;
-    }
-
-    public void setMessageStatus(String messageStatus) {
-        this.messageStatus = messageStatus;
-    }
 }

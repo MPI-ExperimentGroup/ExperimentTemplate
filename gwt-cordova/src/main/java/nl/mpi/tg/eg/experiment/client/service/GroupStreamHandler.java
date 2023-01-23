@@ -126,7 +126,7 @@ public class GroupStreamHandler {
         messageGroup(streamState.name(), streamType.name(), 0, "userId", "windowGroupId", "windowMemberCode", "screenId");
     }
 
-    private native void messageGroup(String streamState, String messageString, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
+    private native void messageGroup(String streamState, String messageData, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
     var groupParticipantService = this;
     stompClient.send("/app/stream", {}, JSON.stringify({
         'userId': userId,
@@ -137,7 +137,7 @@ public class GroupStreamHandler {
 //        'originMemberCode': null,
         'originPhase': originPhase,
         'streamState': streamState,
-        'messageString': messageString
+        'messageData': messageData
     }));
     }-*/;
 

@@ -24,7 +24,7 @@
 function initiateConnection() {
     initialiseConnection();
     peerConnection.createOffer().then(function (offer) {
-        sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
+        sendToGroup("offer", { sdp: offer.sdp });
         // peerConnection.setLocalDescription(offer).then(function () {
         // sendToGroup("offer", peerConnection.localDescription);
         // $("#connectionInfo").val(JSON.stringify(peerConnection.localDescription));
@@ -114,7 +114,7 @@ function handleOffer(sendingUserId, offer) {
         peerConnection.setRemoteDescription(offer).then(function () {
             return peerConnection.createAnswer();
         }).then(function (answer) {
-            sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
+            sendToGroup("answer", {sdp: answer.sdp });
             return peerConnection.setLocalDescription(answer);
             // }).then(function () {
             // sendToGroup("answer", peerConnection.localDescription);
@@ -161,7 +161,7 @@ function sendToGroup(status, messageObject) {
         'streamState': status,
         'userId': userId,
         'memberCode': memberCode,
-        'messageString': JSON.stringify(messageObject),
+        'messageData': JSON.stringify(messageObject),
     };
     stompClient.send("/app/stream", {}, JSON.stringify(contentData));
     $("#selfdata").append(
@@ -175,8 +175,7 @@ function sendToGroup(status, messageObject) {
         "</td><td>" + contentData.stimulusId +
         "</td><td>" + contentData.streamState +
         "</td><td>" + contentData.originPhase +
-        "</td><td>" + contentData.messageString +
-        "</td><td>" + contentData.messageStatus +
+        "</td><td>" + contentData.messageData +
         "</td></tr>");
 }
 
@@ -243,12 +242,12 @@ function initialiseConnection() {
             console.log("onicecandidate");
             if (event.candidate) {
                 sendToGroup("candidate", {
-                    type: "candidate", candidate: event.candidate.candidate,
+                    candidate: event.candidate.candidate,
                     sdpMid: event.candidate.sdpMid,
                     sdpMLineIndex: event.candidate.sdpMLineIndex
                 });
             } else {
-                sendToGroup("candidate", { type: "candidate", candidate: null });
+                sendToGroup("candidate", { candidate: null });
             }
         };
 
@@ -351,7 +350,6 @@ function setConnected(connected) {
             "<td>streamState</td>" +
             "<td>originPhase</td>" +
             "<td>message</td>" +
-            "<td>Ready</td>" +
             "</tr>");
         $("#groupTarget").append("<tr>" +
             "<td>UserId</td>" +
@@ -373,14 +371,11 @@ function setConnected(connected) {
             "<tr><td>userId</td>" +
             "<td>screenId</td>" +
             "<td>groupId</td>" +
-            "<td>Channels</td>" +
             "<td>memberCode</td>" +
             "<td>originMemberCode</td>" +
-            "<td>stimulusId</td>" +
-            "<td>streamState</td>" +
             "<td>originPhase</td>" +
             "<td>messageString</td>" +
-            "<td>messageStatus</td>" +
+            "<td>groupReady</td>" +
             "<td>groupUUID</td></tr>");
         $("#selfdata").append(
             "<tr><td>userId</td>" +
@@ -394,7 +389,7 @@ function setConnected(connected) {
             "<td>streamState</td>" +
             "<td>originPhase</td>" +
             "<td>messageString</td>" +
-            "<td>messageStatus</td>" +
+            "<td>groupReady</td>" +
             "</tr>");
     } else {
         $("#conversation").hide();
@@ -432,8 +427,7 @@ function connect() {
                     "</td><td>" + contentData.originMemberCode +
                     "</td><td>" + contentData.streamState +
                     "</td><td>" + contentData.originPhase +
-                    "</td><td>" + contentData.messageString +
-                    "</td><td>" + contentData.messageStatus +
+                    "</td><td>" + contentData.messageData +
                     "</td>");
                     streamTableRow.css("outline-style", "solid");
                     streamTableRow.css("outline-width", "5px");
@@ -443,16 +437,16 @@ function connect() {
             if (isReady) {
                 if (!groupId || groupId === contentData.groupId) {
                     if (/*contentData.userId !== userId &&*/ contentData.streamState === "offer") {
-                        console.log("offer: " + contentData.messageString);
-                        handleOffer(contentData.userId, JSON.parse(contentData.messageString));
+                        console.log("offer: " + contentData.messageData);
+                        handleOffer(contentData.userId, JSON.parse(contentData.messageData));
                     }
                     if (contentData.userId !== userId && contentData.streamState === "answer") {
-                        console.log("answer: " + contentData.messageString);
-                        handleAnswer(JSON.parse(contentData.messageString));
+                        console.log("answer: " + contentData.messageData);
+                        handleAnswer(JSON.parse(contentData.messageData));
                     }
                     if (contentData.userId !== userId && contentData.streamState === "candidate") {
-                        console.log("candidate: " + contentData.messageString);
-                        handleCandidate(JSON.parse(contentData.messageString));
+                        console.log("candidate: " + contentData.messageData);
+                        handleCandidate(JSON.parse(contentData.messageData));
                     }
                     if (contentData.userId !== userId && contentData.streamState === "ready") {
                         if (peerConnection) {
@@ -501,7 +495,7 @@ function connect() {
                     "</td><td>" + contentData.originPhase +
                     "</td><td>" + contentData.requestedPhase +
                     "</td><td>" + contentData.messageString +
-                    "</td><td>" + contentData.messageStatus +
+                    "</td><td>" + contentData.groupReady +
                     "</td>";
                 // var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.screenId + "','" + contentData.memberCode + "')\">message</button></td>";
                 // var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.screenId + "',null,'" + contentData.groupId + "',null,null)\">add member</button></td>";
@@ -512,17 +506,19 @@ function connect() {
                 usersTableRow.animate({ outlineWidth: 0 }, "slow");
                 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
                 //            $("#groupTarget").append(groupMemberDiv);
-                $("#unittestdata").append(
-                    "<tr><td>\"" +
-                    contentData.userId + "\", </td><td>\"" +
-                    contentData.screenId + "\", </td><td>\"" +
-                    contentData.groupId + "\", </td><td>\"" +
-                    contentData.memberCode + "\", </td><td>\"" +
-                    contentData.originMemberCode + "\", </td><td>\"" +
-                    contentData.originPhase + "\", </td><td>\"" +
-                    contentData.messageString + "\", </td><td>" +
-                    contentData.messageStatus + ", </td><td>\"" +
-                    contentData.groupUUID + "\"</td></tr>");
+                if (document.getElementById("logTestData").checked) {
+                    $("#unittestdata").append(
+                        "<tr><td>\"" +
+                        contentData.userId + "\", </td><td>\"" +
+                        contentData.screenId + "\", </td><td>\"" +
+                        contentData.groupId + "\", </td><td>\"" +
+                        contentData.memberCode + "\", </td><td>\"" +
+                        contentData.originMemberCode + "\", </td><td>\"" +
+                        contentData.originPhase + "\", </td><td>\"" +
+                        contentData.messageString + "\", </td><td>" +
+                        contentData.groupReady + ", </td><td>\"" +
+                        contentData.groupUUID + "\"</td></tr>");
+                    }
                 if (contentData.userId === userId) {
                     $("#selfdata").append(
                         "<tr style=\"background: #fd690d1a;\">" +
@@ -535,7 +531,7 @@ function connect() {
                         "</td><td>" + contentData.streamState +
                         "</td><td>" + contentData.originPhase +
                         "</td><td>" + contentData.messageString +
-                        "</td><td>" + contentData.messageStatus +
+                        "</td><td>" + contentData.groupReady +
                         "</td></tr>");
                 }
             }
@@ -572,8 +568,7 @@ function updateGroup() {
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
         'memberCode': null,
-        'messageString': $("#messageString").val(),
-        'messageStatus': null
+        'messageString': $("#messageString").val()
     }));
 }
 function messageGroup(currentUserId, screenId, groupIdL, memberCode) {
@@ -582,8 +577,7 @@ function messageGroup(currentUserId, screenId, groupIdL, memberCode) {
         'groupId': groupIdL,
         'screenId': screenId,
         'memberCode': memberCode,
-        'messageString': $("#messageString").val(),
-        'messageStatus': null
+        'messageString': $("#messageString").val()
     }));
 }
 
