@@ -200,10 +200,10 @@ public class GroupStreamHandler {
 //        'groupUUID': groupUUID,
         'screenId': screenId,
         'memberCode': windowMemberCode,
-//        'originMemberCode': null,
+        'originMemberCode': null,
         'originPhase': originPhase,
-        'streamState': streamState,
-        'messageData': messageData
+        'streamState': 'ready',
+        'messageData': messageData + ' : ' + streamState
     }));
     }-*/;
 
