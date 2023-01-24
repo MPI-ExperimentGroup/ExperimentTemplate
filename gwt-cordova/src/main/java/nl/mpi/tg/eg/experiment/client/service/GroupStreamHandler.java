@@ -51,7 +51,7 @@ public class GroupStreamHandler {
         // TODO: handle candidate with JSON.parse(contentData.messageData));
     }-*/;
 
-    public native void connect(final String stunServer, final String userId, final String groupId /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
+    public native void connect(final String stunServer, final String streamContainer, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
             var groupStreamHandler = this;
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
@@ -91,17 +91,13 @@ public class GroupStreamHandler {
                 }
                 if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                     if ($wnd.peerConnection) {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::terminateConnection()();
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(streamContainer, originPhase, userId, windowGroupId, windowMemberCode, screenId);
                     } else {
                         console.log('not connected, ignoring');
                     }
                 }
             }
         });
-    }-*/;
-
-    private native void terminateConnection() /*-{
-        // TODO: terminateConnection
     }-*/;
 
     private native void initiateConnection(String stunServer) /*-{
