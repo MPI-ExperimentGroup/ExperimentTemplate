@@ -186,16 +186,108 @@ public class GroupStreamHandler {
                 console.log("onicegatheringstatechange");
             };
 
-            // TODO: localStream.getTracks().forEach(track => $wnd.peerConnection.addTrack(track, localStream));
+            // localStream.getTracks().forEach(track => $wnd.peerConnection.addTrack(track, localStream));
+            for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
+                $wnd.peerConnection.addTrack(localVideo.srcObject.getTracks()[trackCount], $wnd.localStream);
+            }
         }
     }-*/;
 
+    private native void offerVideo(final String streamContainer, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
+        var groupStreamHandler = this;
+        $("#" + streamContainer).append("<video id=\"localVideo\" style=\"width:80vw\" autoplay muted></video>");
+        $wnd.requestPermissions(true, true,
+            function(captureStream) {
+                $wnd.localStream = captureStream;
+                document.getElementById("localVideo").srcObject = $wnd.localStream;
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", originPhase, userId, windowGroupId, windowMemberCode, screenId);
+            }, function(error) {
+                console.log(error.message);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(streamContainer, originPhase, userId, windowGroupId, windowMemberCode, screenId);
+            }
+        );
+    }-*/;
+   
+    private native void offerCanvas(final String streamContainer, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
+        var groupStreamHandler = this;
+        $("#" + streamContainer).append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
+        $wnd.localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", originPhase, userId, windowGroupId, windowMemberCode, screenId);
+        localCanvas = document.getElementById("localCanvas");
+        localContext = localCanvas.getContext("2d");
+
+        // localContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
+        localContext.fillStyle = "lightgrey";
+        localContext.fillRect(0, 0, localCanvas.width, localCanvas.height);
+
+        localContext.fillStyle = "black";
+        localContext.font = "20px Arial";
+        localContext.fillText(userId, 10, 50);
+        localContext.fillText(groupId, 10, 100);
+        localContext.fillText(memberCode, 10, 150);
+        localCanvas.addEventListener("mousemove", function (event) {
+            if (event.buttons > 0) {
+                // console.log(event);
+                // console.log(event.clientX);
+                // console.log(localCanvas.offsetLeft);
+                // console.log(window.pageXOffset);
+                localContext.beginPath();
+                var bounds = localCanvas.getBoundingClientRect();
+                var positionX = event.clientX - bounds.x;
+                var positionY = event.clientY - bounds.y;
+                localContext.moveTo((positionX - event.movementX) / bounds.width * localCanvas.width, (positionY - event.movementY) / bounds.height * localCanvas.height);
+                localContext.lineTo(positionX / bounds.width * localCanvas.width, positionY / bounds.height * localCanvas.height);
+                localContext.strokeStyle = "blue";
+                localContext.lineWidth = 1;
+                localContext.stroke();
+                localContext.closePath();
+            }
+        }, false);
+    }-*/;
+
+    private native void disconnectStreams(final String streamContainer, Integer originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
+        var groupStreamHandler = this;
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, windowGroupId, windowMemberCode, screenId);
+        var remoteVideo = document.getElementById("remoteVideo");
+        var localVideo = document.getElementById("localVideo");
+        if ($wnd.peerConnection) {
+            $wnd.peerConnection.ontrack = null;
+            $wnd.peerConnection.onremovetrack = null;
+            $wnd.peerConnection.onremovestream = null;
+            $wnd.peerConnection.onicecandidate = null;
+            $wnd.peerConnection.oniceconnectionstatechange = null;
+            $wnd.peerConnection.onsignalingstatechange = null;
+            $wnd.peerConnection.onicegatheringstatechange = null;
+            $wnd.peerConnection.onnegotiationneeded = null;
+            if (remoteVideo && remoteVideo.srcObject) {
+                // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
+                for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
+                    remoteVideo.srcObject.getTracks()[trackCount].stop();
+                }
+            }
+            if (localVideo && localVideo.srcObject) {
+                // localVideo.srcObject.getTracks().forEach(track => track.stop());
+                for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
+                    localVideo.srcObject.getTracks()[trackCount].stop();
+                }
+            }
+            $wnd.peerConnection.close();
+            $wnd.peerConnection = null;
+        }
+
+        $("#" + streamContainer).empty();
+        $wnd.localStream = null;
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
+    }-*/;
+    
     public void updateStream(final StreamState streamState, final StreamTypes streamType, final UserId userId, final String groupId, final String memberCode, final String screenId) {
         // TODO: update the stream
         messageGroup(streamState.name(), streamType.name(), 0, userId.toString(), groupId, memberCode, screenId);
     }
 
-    private native void messageGroup(String streamState, String messageData, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
+    private native void messageGroup(String streamState, String messageData, Integer originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{
     var groupParticipantService = this;
     $wnd.stompClient.send("/app/stream", {}, JSON.stringify({
         'userId': userId,
