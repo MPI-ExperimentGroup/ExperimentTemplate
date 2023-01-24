@@ -2271,11 +2271,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             // TODO: remove this debug output when the GroupStreamHandler is ready
             timedStimulusView.addText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER);
             timedStimulusView.endRegion(isWidget);
-            groupStreamHandler.connect(ApplicationController.STUN_SERVER, "streamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+            groupStreamHandler.connect(ApplicationController.STUN_SERVER, "streamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
         }
         // TODO: remove this debug output when the GroupStreamHandler is ready
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
-        groupStreamHandler.updateStream(streamState, streamType, userResults.getUserData().getUserId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        groupStreamHandler.updateStream(streamState, streamType, "streamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
     }
 
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
