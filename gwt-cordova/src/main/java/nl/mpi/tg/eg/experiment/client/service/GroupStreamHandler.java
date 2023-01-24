@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
@@ -32,22 +33,24 @@ public class GroupStreamHandler {
     public enum StreamTypes {
         microphone, camera, canvas
     }
+    
+    private boolean isReady = false;
 
     private native void handleOffer(final String messageData) /*-{
         console.log("offer: " + contentData.messageData);
         // TODO: handle offer with JSON.parse(contentData.messageData));
     }-*/;
-    
+
     private native void handleAnswer(final String messageData) /*-{
         console.log("answer: " + contentData.messageData);
         // TODO: handle answer with JSON.parse(contentData.messageData));
     }-*/;
-    
+
     private native void handleCandidate(final String messageData) /*-{
         console.log("candidate: " + contentData.messageData);
         // TODO: handle candidate with JSON.parse(contentData.messageData));
     }-*/;
-    
+
     public native void connect(final String stunServer, final String userId, final String groupId /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
             var groupStreamHandler = this;
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
@@ -63,44 +66,44 @@ public class GroupStreamHandler {
             console.log("contentData.streamState");
             console.log("contentData.originPhase");
             console.log("contentData.messageData");
-            // TODO: check if isReady is needed - if (isReady) {
-            if (groupId !== contentData.groupId) {
-                console.log("ignoring other group: " + contentData.groupId);
-            } else if (contentData.userId === userId){
-                console.log("ignoring self message: " + contentData.userId);
-            } else if (contentData.streamState === "offer") {
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;)(contentData.messageData);
-            } else if (contentData.streamState === "answer") {
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;)(contentData.messageData);
-            } if (contentData.streamState === "candidate") {
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;)(contentData.messageData);
-            } else if (contentData.streamState === "ready") {
-                if ($wnd.peerConnection) {
-                    console.log('already connected, ignoring');
-                } else {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;)(stunServer);
+            if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
+                if (groupId !== contentData.groupId) {
+                    console.log("ignoring other group: " + contentData.groupId);
+                } else if (contentData.userId === userId){
+                    console.log("ignoring self message: " + contentData.userId);
+                } else if (contentData.streamState === "offer") {
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;)(contentData.messageData);
+                } else if (contentData.streamState === "answer") {
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;)(contentData.messageData);
+                } if (contentData.streamState === "candidate") {
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;)(contentData.messageData);
+                } else if (contentData.streamState === "ready") {
+                    if ($wnd.peerConnection) {
+                        console.log('already connected, ignoring');
+                    } else {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;)(stunServer);
+                    }
+                } else if (contentData.streamState === "refresh") {
+                    if (localContext) {
+                        // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
+                        localContext.fillText("T", 0, 0);
+                    }
                 }
-            } else if (contentData.streamState === "refresh") {
-                if (localContext) {
-                    // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
-                    localContext.fillText("T", 0, 0);
+                if (contentData.userId !== userId && contentData.streamState === "disconnect") {
+                    if ($wnd.peerConnection) {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::terminateConnection()();
+                    } else {
+                        console.log('not connected, ignoring');
+                    }
                 }
             }
-            if (contentData.userId !== userId && contentData.streamState === "disconnect") {
-                if ($wnd.peerConnection) {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::terminateConnection()();
-                } else {
-                    console.log('not connected, ignoring');
-                }
-            }
-//            }
         });
     }-*/;
-    
+
     private native void terminateConnection() /*-{
         // TODO: terminateConnection
     }-*/;
-    
+
     private native void initiateConnection(String stunServer) /*-{
         // TODO: initialise the stream     
         console.log("initialiseConnection: " + stunServer);
@@ -186,10 +189,10 @@ public class GroupStreamHandler {
             // TODO: localStream.getTracks().forEach(track => $wnd.peerConnection.addTrack(track, localStream));
         }
     }-*/;
-        
-    public void updateStream(final StreamState streamState, final StreamTypes streamType) {
+
+    public void updateStream(final StreamState streamState, final StreamTypes streamType, final UserId userId, final String groupId, final String memberCode, final String screenId) {
         // TODO: update the stream
-        messageGroup(streamState.name(), streamType.name(), 0, "userId", "windowGroupId", "windowMemberCode", "screenId");
+        messageGroup(streamState.name(), streamType.name(), 0, userId.toString(), groupId, memberCode, screenId);
     }
 
     private native void messageGroup(String streamState, String messageData, int originPhase, String userId, String windowGroupId, String windowMemberCode, String screenId) /*-{

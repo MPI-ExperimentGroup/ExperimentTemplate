@@ -50,34 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script src="sockjs-client/sockjs.min.js"></script>
         <script src="stomp-websocket/stomp.min.js"></script>
         <script src="opus-recorder/recorder.min.js"></script>
-        <script>
-            function startRecorder(successHandler, errorHandler) {
-                recorder.onstart = successHandler;
-
-                recorder.start().catch(function (e) {
-                    console.log("startRecorder: " + e.message);
-                    errorHandler(e.message);
-                });
-            }
-            function playMedia(mediaElement, successHandler, errorHandler) {
-                var promise = mediaElement.play();
-                if (promise !== undefined) {
-                    promise.then(_ => {
-                        successHandler();
-                    }).catch(e => {
-                        errorHandler();
-                    });
-                }
-            }
-            function requestPermissions(wantsVideo, wantsAudio, successHandler, errorHandler) {
-                navigator.mediaDevices.getUserMedia({video: wantsVideo, audio: wantsAudio}).then(function (stream) {
-                    successHandler(stream);
-                }).catch(function (e) {
-                    console.log("requestPermissions " + e.message);
-                    errorHandler(e);
-                });
-            }
-        </script>
+        <script src="mediautilities.js"></script>
     </head>
     <body style="background-image: url('static/splash.png'); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100vh;">        
         <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
