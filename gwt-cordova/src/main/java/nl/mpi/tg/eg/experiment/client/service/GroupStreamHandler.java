@@ -157,9 +157,9 @@ public class GroupStreamHandler {
 
             $wnd.peerConnection.ontrack = function (event) {
                 console.log("ontrack");
-                // TODO: pass in the target element for $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
+                // TODO: pass in the target element for $wnd.$("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
                 // TODO: pass in the target element for document.getElementById("remoteVideo").srcObject = event.streams[0];
-                // $("#remoteVideo").attr('src', event.streams[0]);
+                // $wnd.$("#remoteVideo").attr('src', event.streams[0]);
                 // TODO: sendToGroup("refresh", "");
             };
 
@@ -191,7 +191,7 @@ public class GroupStreamHandler {
 
     private native void offerVideo(final String streamContainer, int originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        $("#" + streamContainer).append("<video id=\"localVideo\" style=\"width:80vw\" autoplay muted></video>");
+        $wnd.$("#" + streamContainer).append("<video id=\"localVideo\" style=\"width:80vw\" autoplay muted></video>");
         $wnd.requestPermissions(true, true,
             function(captureStream) {
                 $wnd.localStream = captureStream;
@@ -207,7 +207,7 @@ public class GroupStreamHandler {
 
     private native void offerCanvas(final String streamContainer, int originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        $("#" + streamContainer).append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
+        $wnd.$("#" + streamContainer).append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
         $wnd.localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
@@ -273,7 +273,7 @@ public class GroupStreamHandler {
             $wnd.peerConnection = null;
         }
 
-        $("#" + streamContainer).empty();
+        $wnd.$("#" + streamContainer).empty();
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
