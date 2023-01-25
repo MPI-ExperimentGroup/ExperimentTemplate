@@ -246,8 +246,8 @@ public class GroupStreamHandler {
     private native void disconnectStreams(Integer originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
-        var remoteVideo = document.getElementById("groupRemoteVideo");
-        var localVideo = document.getElementById("groupLocalVideo");
+        var remoteVideo = $("#groupRemoteVideo");
+        var localVideo = $("#groupLocalVideo");
         if ($wnd.peerConnection) {
             $wnd.peerConnection.ontrack = null;
             $wnd.peerConnection.onremovetrack = null;
