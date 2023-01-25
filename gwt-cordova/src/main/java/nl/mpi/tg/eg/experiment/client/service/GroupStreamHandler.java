@@ -91,7 +91,7 @@ public class GroupStreamHandler {
                 }
                 if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                     if ($wnd.peerConnection) {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(streamContainer, originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
                     } else {
                         console.log('not connected, ignoring');
                     }
@@ -157,9 +157,9 @@ public class GroupStreamHandler {
 
             $wnd.peerConnection.ontrack = function (event) {
                 console.log("ontrack");
-                // TODO: pass in the target element for $wnd.$("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
-                // TODO: pass in the target element for $wnd.$("#remoteVideo").srcObject = event.streams[0];
-                // $wnd.$("#remoteVideo").attr('src', event.streams[0]);
+                // TODO: pass in the target element for $wnd.$("#streamContainer").append("<video id=\"groupRemoteVideo\" style=\"width:40vw\" autoplay muted></video>");
+                // TODO: pass in the target element for $wnd.$("#groupRemoteVideo").srcObject = event.streams[0];
+                // $wnd.$("#groupRemoteVideo").attr('src', event.streams[0]);
                 // TODO: sendToGroup("refresh", "");
             };
 
@@ -191,27 +191,27 @@ public class GroupStreamHandler {
 
     private native void offerVideo(final String streamContainer, int originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        $wnd.$("#" + streamContainer).append("<video id=\"localVideo\" style=\"width:80vw\" autoplay muted></video>");
+        $wnd.$("#" + streamContainer).append("<video id=\"groupLocalVideo\" style=\"width:80vw\" autoplay muted></video>");
         $wnd.requestPermissions(true, true,
             function(captureStream) {
                 $wnd.localStream = captureStream;
-                $wnd.$("#localVideo").srcObject = $wnd.localStream;
+                $wnd.$("#groupLocalVideo").srcObject = $wnd.localStream;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
             }, function(error) {
                 console.log(error.message);
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(streamContainer, originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
             }
         );
     }-*/;
 
     private native void offerCanvas(final String streamContainer, int originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        $wnd.$("#" + streamContainer).append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
-        $wnd.localStream = $wnd.$("#localCanvas")[0].captureStream(15); // 15 FPS
+        $wnd.$("#" + streamContainer).append("<canvas id=\"groupLocalCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
+        $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
-        localCanvas = $wnd.$("#localCanvas");
+        localCanvas = $wnd.$("#groupLocalCanvas");
         localContext = localCanvas.getContext("2d");
 
         // localContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
@@ -243,11 +243,11 @@ public class GroupStreamHandler {
         }, false);
     }-*/;
 
-    private native void disconnectStreams(final String streamContainer, Integer originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
+    private native void disconnectStreams(Integer originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
-        var remoteVideo = document.getElementById("remoteVideo");
-        var localVideo = document.getElementById("localVideo");
+        var remoteVideo = document.getElementById("groupRemoteVideo");
+        var localVideo = document.getElementById("groupLocalVideo");
         if ($wnd.peerConnection) {
             $wnd.peerConnection.ontrack = null;
             $wnd.peerConnection.onremovetrack = null;
@@ -273,7 +273,9 @@ public class GroupStreamHandler {
             $wnd.peerConnection = null;
         }
 
-        $wnd.$("#" + streamContainer).empty();
+        $wnd.$("groupRemoteVideo").remove();
+        $wnd.$("groupLocalVideo").remove();
+        $wnd.$("groupLocalCanvas").remove();
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
@@ -294,7 +296,7 @@ public class GroupStreamHandler {
                 }
                 break;
             case stop:
-                disconnectStreams(streamContainer, originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+                disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
                 break;
             case pause:
                 break;
