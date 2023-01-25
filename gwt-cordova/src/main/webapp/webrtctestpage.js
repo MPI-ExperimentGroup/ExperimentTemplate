@@ -41,10 +41,10 @@ function offerCanvas() {
     $("#offerVideoButton").prop("disabled", true);
     $("#offerCanvasButton").prop("disabled", true);
     $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
-    localStream = document.getElementById("localCanvas").captureStream(15); // 15 FPS
+    localStream = $("#localCanvas").captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
-    localCanvas = document.getElementById("localCanvas");
+    localCanvas = $("#localCanvas");
     localContext = localCanvas.getContext("2d");
 
     // localContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
@@ -82,7 +82,7 @@ function offerVideo() {
     $("#streamContainer").append("<video id=\"localVideo\" style=\"width:80vw\" autoplay muted></video>");
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (captureStream) {
         localStream = captureStream;
-        document.getElementById("localVideo").srcObject = localStream;
+        $("#localVideo").srcObject = localStream;
         // $("#localVideo").attr('src', localStream);
         isReady = true;
         // localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
@@ -94,7 +94,7 @@ function offerVideo() {
 // function acceptVideo() {
 // navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function (stream) {
 //     localStream = stream;
-//     document.getElementById("localVideo").srcObject = localStream;
+//     $("#localVideo").srcObject = localStream;
 //     localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
 // }).catch(handleDisconnectError);
 // }
@@ -181,8 +181,8 @@ function sendToGroup(status, messageObject) {
 
 function disconnectStreams() {
     sendToGroup("disconnect", "");
-    var remoteVideo = document.getElementById("remoteVideo");
-    var localVideo = document.getElementById("localVideo");
+    var remoteVideo = $("#remoteVideo");
+    var localVideo = $("#localVideo");
     if (peerConnection) {
         peerConnection.ontrack = null;
         peerConnection.onremovetrack = null;
@@ -281,7 +281,7 @@ function initialiseConnection() {
         peerConnection.ontrack = function (event) {
             console.log("ontrack");
             $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
-            document.getElementById("remoteVideo").srcObject = event.streams[0];
+            $("#remoteVideo").srcObject = event.streams[0];
             // $("#remoteVideo").attr('src', event.streams[0]);
             sendToGroup("refresh", "");
         };
@@ -307,7 +307,7 @@ function initialiseConnection() {
 
         // peerConnection.onaddstream = function (event) {
         //     console.log("onaddstream");
-        //     document.getElementById("remoteVideo").srcObject = event.stream;
+        //     $("#remoteVideo").srcObject = event.stream;
         // };
 
         localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
@@ -506,7 +506,7 @@ function connect() {
                 usersTableRow.animate({ outlineWidth: 0 }, "slow");
                 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
                 //            $("#groupTarget").append(groupMemberDiv);
-                if (document.getElementById("logTestData").checked) {
+                if ($("#logTestData").checked) {
                     $("#unittestdata").append(
                         "<tr><td>\"" +
                         contentData.userId + "\", </td><td>\"" +
