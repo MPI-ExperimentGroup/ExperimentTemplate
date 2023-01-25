@@ -123,6 +123,7 @@ public class ComplexView extends SimpleView {
         if (regionTemp == null) {
             regionTemp = new VerticalPanel();
             regionPanels.put(regionId, regionTemp);
+            regionTemp.getElement().setId(regionId);
         }
         if (regionTemp.getParent() == null) {
             getActivePanel().add(regionTemp);
