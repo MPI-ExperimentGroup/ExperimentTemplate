@@ -72,6 +72,7 @@ import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler;
@@ -2267,11 +2268,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         // handle stream actions
         if (groupStreamHandler == null) {
             groupStreamHandler = new GroupStreamHandler();
-            final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion("streamContainer", null);
-            // TODO: remove this debug output when the GroupStreamHandler is ready
-            timedStimulusView.addText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER);
-            timedStimulusView.endRegion(isWidget);
-            groupStreamHandler.connect(ApplicationController.STUN_SERVER, "streamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+            // TODO: remove the debug output when the GroupStreamHandler is ready
+            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer", new XmlId("groupStreamContainer"));
+            groupStreamHandler.connect(ApplicationController.STUN_SERVER, "groupStreamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
         }
         // TODO: remove this debug output when the GroupStreamHandler is ready
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
