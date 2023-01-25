@@ -208,7 +208,7 @@ public class GroupStreamHandler {
     private native void offerCanvas(final String streamContainer, int originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         $wnd.$("#" + streamContainer).append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
-        $wnd.localStream = $wnd.$("#localCanvas").captureStream(15); // 15 FPS
+        $wnd.localStream = $wnd.$("#localCanvas")[0].captureStream(15); // 15 FPS
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", originPhase, userId, windowGroupId, groupUUID, windowMemberCode, screenId);
         localCanvas = $wnd.$("#localCanvas");
