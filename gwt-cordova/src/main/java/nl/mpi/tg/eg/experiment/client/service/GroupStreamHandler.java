@@ -320,8 +320,8 @@ public class GroupStreamHandler {
         'memberCode': windowMemberCode,
         'originMemberCode': null,
         'originPhase': originPhase,
-        'streamState': 'ready',
-        'messageData': messageData + ' : ' + streamState
+        'streamState': streamState,
+        'messageData': messageData
     }));
     }-*/;
 }
