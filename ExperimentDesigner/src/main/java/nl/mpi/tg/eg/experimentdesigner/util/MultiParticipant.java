@@ -34,7 +34,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantScreen
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class MultiParticipant {
-
+    
     private final WizardController wizardController = new WizardController();
     // @todo: scoring for each participant 
     // @todo: the allocated member id must maintained thoughout the experiment
@@ -128,7 +128,7 @@ public class MultiParticipant {
     final private String ronde1tm7GUESSERSCREEN = "Kies de scène die bij de beschrijving hoort: <br/><br/>";
     final private String waitingScreenForProducer = "Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
     final private String namingAndExposure = "Kijk naar de beschrijving van de scène in fantasietaal:<br/><br/>";
-
+    
     final private String ronde1tm7FEEDBACKSCREEN = null;
     final private String ronde1tm7FeedbackCorrect = "<br/>Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
     final private String ronde1tm7FeedbackIncorrect = "<br/>Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!";
@@ -143,13 +143,13 @@ public class MultiParticipant {
     final private String ronde8test1 = "Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes "
             + "uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. "
             + "Dit doe je zonder te overleggen.";
-
+    
     final private String finalSCREEN = "Geweldig! Jullie groep heeft een totaal van <groupScore> punten verdiend in dit spel!<br/><br/>"
             + "Hartelijk dank voor het meespelen!";
     final int numberOfStimuli = 23;
     final int repeatCountStimuli = 3;
     final int randomWindowStimuli = 6;
-
+    
     private final String[] stimuliArray = new String[]{
         "2.png:shape1:version1:quadrant3:moveRotated270",
         "6.png:shape1:version1:quadrant4:moveRotated300",
@@ -209,7 +209,7 @@ public class MultiParticipant {
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
         wizardData.setTextFontSize(24);
-
+        
         final WizardMultiParticipantGroupFormationScreen wizardAgreementScreen = new WizardMultiParticipantGroupFormationScreen("Introductie", welcomeScreen,
                 "Volgende");
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
@@ -234,10 +234,10 @@ public class MultiParticipant {
         wizardEditUserScreen.getWizardScreenData().getMetadataFields().add(new Metadata("firstName", "First name", ".'{'1,'}'", "Please enter at least three letters or numbers.", false, null));
         wizardEditUserScreen.setMandatoryGenderField();
         wizardEditUserScreen.setWorkerIdField();
-
+        
         final String groupMembers4 = "A,B,C,D";
         final String groupMembers8 = "A,B,C,D,E,F,G,H";
-
+        
         WizardMenuScreen menuScreen4or8Members = new WizardMenuScreen("GroupSizeMenu", "GroupSizeMenu", "GroupSizeMenu");
         menuScreen4or8Members.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
         WizardCompletionScreen completionScreen = new WizardCompletionScreen("Einde van het experiment", false, false,
@@ -247,11 +247,11 @@ public class MultiParticipant {
                 "Einde van het experiment2",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
-
+        
         wizardData.addScreen(wizardAgreementScreen);
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(menuScreen4or8Members);
-
+        
         String[][] groupOfFourCommunicationChannels = new String[][]{
             {"0", "A,B,C,D", "naming", "version1zero", ronde0NAMING, null, RANDOMISE},
             {"0.1", "A,B,C,D", "naming", "version1zero", ronde0REPETITION1, null, RANDOMISE},
@@ -354,22 +354,22 @@ public class MultiParticipant {
         if (roundOfEightScreenOuter != null) {
             roundOfEightScreenOuter.setNextWizardScreen(completionScreen);
         }
-
+        
         wizardData.addScreen(wizardAboutScreen);
         wizardData.addScreen(completionScreen);
-
+        
         wizardAgreementScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardEditUserScreen.setBackWizardScreen(wizardAgreementScreen);
         wizardEditUserScreen.setNextWizardScreen(menuScreen4or8Members);
 
 //        endTextScreen.setNextWizardScreen(wizardAboutScreen);
         wizardAboutScreen.setBackWizardScreen(wizardAgreementScreen);
-
+        
         return wizardData;
     }
     private static final String SEQUENTIAL = "sequential";
     private static final String RANDOMISE = "randomise";
-
+    
     protected WizardMultiParticipantScreen getTestRound(final String screenName, final String groupMembers4, final String communicationChannels,
             final String textEntryPhaseRoles, final String groupRecordSubmitionPhaseRoles, final String preStimuliText, final String postStimuliText) {
         // done: test round needs to submit dat to the group table even though its not a group interaction
@@ -399,7 +399,7 @@ public class MultiParticipant {
                 0, 0, null
         );
     }
-
+    
     protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers, final String communicationChannels,
             final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles,
             final String groupRecordSubmitionPhaseRoles, final String preStimuliText, final String postStimuliText) {
@@ -427,7 +427,7 @@ public class MultiParticipant {
         wizardMultiParticipantScreen.setUseDictionary(true);
         return wizardMultiParticipantScreen;
     }
-
+    
     protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels,
             final String preStimuliText, final String postStimuliText) {
         final String textEntryPhaseText = "&nbsp;";
@@ -438,7 +438,7 @@ public class MultiParticipant {
         final int timerCountDownProducerMs = 30 * 1000;
         final int timerCountDownGuesserMs = 20 * 1000;
         final String timerCountDownLabel = "Time is up! Play now!";
-
+        
         String phaseRoleA = "";
         String phaseRoleB = "";
         for (final String channel : communicationChannels.split("\\|")) {
@@ -460,7 +460,7 @@ public class MultiParticipant {
         final String textWaitPhaseRoles = phaseRoleB + ":-:-:" + phaseRoleA + ":-:-";
         final String textEntryPhaseRoles = phaseRoleA + ":-:-:" + phaseRoleB + ":-:-";
         final String gridWaitPhaseRoles = "-:" + phaseRoleA + ":-:-:" + phaseRoleB + ":-";
-
+        
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers, 3,
                 communicationChannels,
@@ -486,10 +486,39 @@ public class MultiParticipant {
                 0, 0,
                 timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
     }
-
+    
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
         experiment.getDataChannels().add(new DataChannel(3, "groupMemberActivity", false));
+        experiment.setScss("\n        $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 255 270 285 300 315 330 345 350 360;\n"
+                + "        @each $currentAngle in $angleArray {\n"
+                + "            .gwt-Image.moveRotated#{$currentAngle}Animation,\n"
+                + "            .gwt-Button.stimulusButton.moveRotated#{$currentAngle}Animation {\n"
+                + "                animation: moveRotated#{$currentAngle}KeyFrames 1.7s infinite;\n"
+                + "                /*-webkit-animation: moveRotated10KeyFrames 2s infinite;*/\n"
+                + "                margin: 100px;\n"
+                + "                background: none;\n"
+                + "                position: relative;\n"
+                + "                animation-timing-function: linear;\n"
+                + "                /*-webkit-animation-timing-function: ease;*/\n"
+                + "                width: 100px;\n"
+                + "            }\n"
+                + "        }\n"
+                + "        @each $currentAngle in $angleArray {\n"
+                + "            @keyframes moveRotated#{$currentAngle}KeyFrames {\n"
+                + "                from {\n"
+                + "                    transform: rotate(#{$currentAngle}deg)\n"
+                + "                    translate(0px)\n"
+                + "                    rotate(-#{$currentAngle}deg);\n"
+                + "                }\n"
+                + "                to {\n"
+                + "                    transform: rotate(#{$currentAngle}deg)\n"
+                + "                    translate(100px)\n"
+                + "                    rotate(-#{$currentAngle}deg);\n"
+                + "                }\n"
+                + "            }\n"
+                + "        }\n"
+                + "    ");
         experiment.setIsScalable(false);
         experiment.setDefaultScale(1.1f);
         return experiment;

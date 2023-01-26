@@ -97,6 +97,36 @@ public class ShortMultiparticipant01 {
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        experiment.setScss("\n        $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 255 270 285 300 315 330 345 350 360;\n"
+                + "        @each $currentAngle in $angleArray {\n"
+                + "            .gwt-Image.moveRotated#{$currentAngle}Animation,\n"
+                + "            .gwt-Button.stimulusButton.moveRotated#{$currentAngle}Animation {\n"
+                + "                animation: moveRotated#{$currentAngle}KeyFrames 1.7s infinite;\n"
+                + "                /*-webkit-animation: moveRotated10KeyFrames 2s infinite;*/\n"
+                + "                margin: 100px;\n"
+                + "                background: none;\n"
+                + "                position: relative;\n"
+                + "                animation-timing-function: linear;\n"
+                + "                /*-webkit-animation-timing-function: ease;*/\n"
+                + "                width: 100px;\n"
+                + "            }\n"
+                + "        }\n"
+                + "        @each $currentAngle in $angleArray {\n"
+                + "            @keyframes moveRotated#{$currentAngle}KeyFrames {\n"
+                + "                from {\n"
+                + "                    transform: rotate(#{$currentAngle}deg)\n"
+                + "                    translate(0px)\n"
+                + "                    rotate(-#{$currentAngle}deg);\n"
+                + "                }\n"
+                + "                to {\n"
+                + "                    transform: rotate(#{$currentAngle}deg)\n"
+                + "                    translate(100px)\n"
+                + "                    rotate(-#{$currentAngle}deg);\n"
+                + "                }\n"
+                + "            }\n"
+                + "        }\n"
+                + "    ");
+        return experiment;
     }
 }
