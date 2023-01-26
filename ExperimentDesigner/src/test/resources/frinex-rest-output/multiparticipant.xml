@@ -3,6 +3,36 @@
     <administration>
         <dataChannel channel="3" label="groupMemberActivity" logToSdCard="false"/>
     </administration>
+    <scss>
+        $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 255 270 285 300 315 330 345 350 360;
+        @each $currentAngle in $angleArray {
+            .gwt-Image.moveRotated#{$currentAngle}Animation,
+            .gwt-Button.stimulusButton.moveRotated#{$currentAngle}Animation {
+                animation: moveRotated#{$currentAngle}KeyFrames 1.7s infinite;
+                /*-webkit-animation: moveRotated10KeyFrames 2s infinite;*/
+                margin: 100px;
+                background: none;
+                position: relative;
+                animation-timing-function: linear;
+                /*-webkit-animation-timing-function: ease;*/
+                width: 100px;
+            }
+        }
+        @each $currentAngle in $angleArray {
+            @keyframes moveRotated#{$currentAngle}KeyFrames {
+                from {
+                    transform: rotate(#{$currentAngle}deg)
+                    translate(0px)
+                    rotate(-#{$currentAngle}deg);
+                }
+                to {
+                    transform: rotate(#{$currentAngle}deg)
+                    translate(100px)
+                    rotate(-#{$currentAngle}deg);
+                }
+            }
+        }
+    </scss>
     <metadata>
         <field controlledMessage="Please enter a valid age." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Age"/>
         <field controlledMessage="Please enter at least three letters or numbers." controlledRegex=".'{'1,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>

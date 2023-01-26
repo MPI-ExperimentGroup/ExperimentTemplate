@@ -152,6 +152,181 @@
             border-width: 1px;
             border-style: solid;
         }
+
+        .zoomToGarden {
+            background-size: contain;
+            animation-name: zoomToGardenKeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        .zoomToPlayroom {
+            background-size: contain;
+            animation-name: zoomToGardenKeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: reverse;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        .zoomToBlock1 {
+            background-size: contain;
+            animation-name: zoomToBlock1KeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        .zoomToBlock2 {
+            background-size: contain;
+            animation-name: zoomToBlock2KeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        .zoomToBlock3 {
+            background-size: contain;
+            animation-name: zoomToBlock3KeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        .zoomToBlock4 {
+            background-size: contain;
+            animation-name: zoomToBlock4KeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        .zoomToAttic {
+            background-size: contain;
+            animation-name: zoomToAtticKeyFrames;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform;
+        }
+
+        @keyframes zoomToGardenKeyFrames {
+            from {
+                /*        background-size: 100%;
+                        background-position: 0% 0%;*/
+                transform: scale(1,1) translate(0%,0%);
+            } to {
+                /*        background-size: 150%;
+                        background-position: 5% -15%;*/
+                transform: scale(1.5,1.5) translate(5%,-15%);
+            }
+        }
+
+        @keyframes zoomToBlock1KeyFrames {
+            from {
+                /*        background-size: 100%;
+                        background-position: 0% 0%;*/
+                transform: scale(1,1) translate(0%,0%);
+            } to {
+                /*        background-size: 400%;
+                        background-position: 10% -30%;*/
+                transform: scale(4,4) translate(10%,-30%);
+            }
+        }
+
+        @keyframes zoomToBlock2KeyFrames {
+            from {
+                /*        background-size: 100%;
+                        background-position: 0% 0%;*/
+                transform: scale(1,1) translate(0%,0%);
+            } to {
+                /*        background-size: 400%;
+                        background-position: -10% -30%;*/
+                transform: scale(4,4) translate(-10%,-30%);
+            }
+        }
+
+        @keyframes zoomToBlock3KeyFrames {
+            from {
+                /*        background-size: 100%;
+                        background-position: 0% 0%;*/
+                transform: scale(1,1) translate(0%,0%);
+            } to {
+                /*        background-size: 400%;
+                        background-position: -10% -10%;*/
+                transform: scale(4,4) translate(-10%,-10%);
+            }
+        }
+
+        @keyframes zoomToBlock4KeyFrames {
+            from {
+                /*        background-size: 100%;
+                        background-position: 0% 0%;*/
+                transform: scale(1,1) translate(0%,0%);
+            } to {
+                /*        background-size: 400%;
+                        background-position: 10% -10%;*/
+                transform: scale(4,4) translate(10%,-10%);
+            }
+        }
+
+        @keyframes zoomToAtticKeyFrames {
+            from {
+                /*        background-size: 100%;
+                        background-position: 0% 0%;*/
+                transform: scale(1,1) translate(0%,0%);
+            } to {
+                /*        background-size: 400%;
+                        background-position: 0% 10%;*/
+                transform: scale(4,4) translate(0%,10%);
+            }
+        }
+
+        /*.zoomToBlock3 {
+            background-size: contain;
+            transition: transform 5s;
+            transform: scale(4,4) translate(-10%,-10%);
+        }*/
+
+        /*.zoomToBlock4 {
+            background-size: contain;
+            transition: transform 5s;
+            transform: scale(4,4) translate(10%,-10%);
+        }*/
+
+        /*.zoomToAttic {
+            background-size: contain;
+            transition: transform 5s;
+            transform: scale(4,4) translate(0%,10%);
+        }*/
+
 </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>

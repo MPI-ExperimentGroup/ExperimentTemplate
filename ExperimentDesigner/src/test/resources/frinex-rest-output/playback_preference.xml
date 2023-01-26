@@ -60,6 +60,28 @@
         .gwt-Button.optionButton.leftOverlayCurtain {
             left: 0vw;
         } 
+
+        .verticalPanAnimation {
+            background-size: contain;
+            animation-name: verticalPanKeyFrames;
+            animation-duration: 30s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            will-change: transform top;
+        }
+
+        @keyframes verticalPanKeyFrames {
+            from {
+                top: 100vh;
+                transform: translate(0%,100%);
+            } to {
+                top: 0vh;
+                transform: translate(0%,-100%);
+            }
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
