@@ -96,7 +96,11 @@ public class GroupStreamHandler {
                         console.log('not connected, ignoring');
                     }
                 }
-            }
+            }, function(error) {
+                // display the error's message header:
+                console.log('contentData: ' + contentData);
+                console.log('error.headers.message: ' + error.headers.message);
+            });
         });
     }-*/;
 
