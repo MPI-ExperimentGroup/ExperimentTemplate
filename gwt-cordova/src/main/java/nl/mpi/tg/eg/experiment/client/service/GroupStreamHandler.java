@@ -100,7 +100,7 @@ public class GroupStreamHandler {
         });
     }-*/;
 
-    private native void initiateConnection(String stunServer, int originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
+    private native void initiateConnection(String stunServer, Integer originPhase, String userId, String windowGroupId, String groupUUID, String windowMemberCode, String screenId) /*-{
         // TODO: initialise the stream     
         console.log("initialiseConnection: " + stunServer);
         if (!$wnd.peerConnection) {
