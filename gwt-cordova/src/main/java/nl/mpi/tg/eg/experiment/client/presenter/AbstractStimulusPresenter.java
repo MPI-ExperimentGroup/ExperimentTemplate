@@ -17,15 +17,18 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.MediaElement;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.typedarrays.shared.Uint8Array;
@@ -2268,13 +2271,56 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         // handle stream actions
         if (groupStreamHandler == null) {
             groupStreamHandler = new GroupStreamHandler();
+            simpleView.clearRegion("groupLocalCanvasRegion");
+            final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion("groupLocalCanvasRegion", null);
+            final Canvas groupLocalCanvas = Canvas.createIfSupported();
+            if (groupLocalCanvas != null) {
+                groupLocalCanvas.getCanvasElement().setId("groupLocalCanvas");
+                groupLocalCanvas.setSize("30vw", "30vw");
+                simpleView.addWidget(groupLocalCanvas);
+            } else {
+                // TODO: add error handling and remove this html text 
+                timedStimulusView.addText("Canvas is not supported");
+            }
+            simpleView.endRegion(groupLocalCanvasRegion);
+
+            simpleView.clearRegion("groupLocalVideoRegion");
+            final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion("groupLocalVideoRegion", null);
+            final Video groupLocalVideo = Video.createIfSupported();
+            if (groupLocalVideo != null) {
+                groupLocalVideo.getVideoElement().setId("groupLocalVideo");
+                groupLocalVideo.setSize("30vw", "30vw");
+                groupLocalVideo.setAutoplay(true);
+                groupLocalVideo.setMuted(true);
+                simpleView.addWidget(groupLocalVideo);
+            } else {
+                // TODO: add error handling and remove this html text 
+                timedStimulusView.addText("Video is not supported");
+            }
+            simpleView.endRegion(groupLocalVideoRegion);
+  
+            simpleView.clearRegion("groupRemoteStreamRegion");
+            final InsertPanel.ForIsWidget groupRemoteStreamRegion = simpleView.startRegion("groupRemoteStreamRegion", null);
+            final Video groupRemoteStream = Video.createIfSupported();
+            if (groupRemoteStream != null) {
+                groupRemoteStream.getVideoElement().setId("groupRemoteStream");
+                groupRemoteStream.setSize("30vw", "30vw");
+                groupRemoteStream.setAutoplay(true);
+                groupRemoteStream.setMuted(true);
+                simpleView.addWidget(groupRemoteStream);
+            } else {
+                // TODO: add error handling and remove this html text 
+                timedStimulusView.addText("Video is not supported");
+            }
+            simpleView.endRegion(groupRemoteStreamRegion);
+  
             // TODO: remove the debug output when the GroupStreamHandler is ready
-            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer", new XmlId("groupStreamContainer"));
-            groupStreamHandler.connect(ApplicationController.STUN_SERVER, "groupStreamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
+            groupStreamHandler.connect(ApplicationController.STUN_SERVER, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
         }
         // TODO: remove this debug output when the GroupStreamHandler is ready
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
-        groupStreamHandler.updateStream(streamState, streamType, "groupStreamContainer", groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        groupStreamHandler.updateStream(streamState, streamType, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
     }
 
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
