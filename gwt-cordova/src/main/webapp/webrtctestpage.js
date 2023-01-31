@@ -41,7 +41,7 @@ function offerCanvas() {
     $("#offerVideoButton").prop("disabled", true);
     $("#offerCanvasButton").prop("disabled", true);
     $("#streamContainer").append("<canvas id=\"localCanvas\" style=\"width:80vw max-width:400px\" width=\"400\" height=\"300\"></canvas>");
-    localStream = $("#localCanvas").captureStream(15); // 15 FPS
+    localStream = $("#localCanvas")[0].captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
     localCanvas = $("#localCanvas");
