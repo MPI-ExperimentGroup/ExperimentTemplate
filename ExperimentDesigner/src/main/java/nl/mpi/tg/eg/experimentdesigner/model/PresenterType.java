@@ -304,6 +304,7 @@ public enum PresenterType {
         disableButtonGroup,
         showStimulusProgress, stimulusFreeText, backgroundImage, stimulusImageCapture,
         hideButtonGroup,
+        styleButtonGroup,
         showButtonGroup, requestFocus,
         ratingFooterButton, ratingButton, ratingRadioButton, ratingCheckbox, stimulusRatingButton, stimulusRatingRadio, stimulusRatingCheckbox,
         validateMetadata, transmitResults, generateCompletionCode,

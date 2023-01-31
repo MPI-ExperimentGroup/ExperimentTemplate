@@ -321,6 +321,23 @@ public abstract class AbstractPresenter implements Presenter {
         }
 //        simpleView.addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
+    protected void styleButtonGroup(final String machingRegex, String styleName) {
+        for (String keyString : buttonGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
+                    currentButton.addStyleName(styleName);
+                }
+            }
+        }
+//        for (String keyString : inputGroupsList.keySet()) {
+//            if (keyString.matches(machingRegex)) {
+//                for (StimulusFreeText stimulusFreeText : inputGroupsList.get(keyString)) {
+// At this point StimulusFreeText does not have a way to set its style, so we don't handle StimulusFreeText here
+//                    stimulusFreeText.setStyleName(styleName);
+//                }
+//            }
+//        }
+    }
 
     protected void requestFocus(final String machingRegex) {
         for (String keyString : inputGroupsList.keySet()) {
