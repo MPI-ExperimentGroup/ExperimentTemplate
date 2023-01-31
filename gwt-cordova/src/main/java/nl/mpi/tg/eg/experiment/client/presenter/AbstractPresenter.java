@@ -327,10 +327,10 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     protected void styleButtonGroup(final String machingRegex) {
-        styleButtonGroup(machingRegex, "");
+        styleButtonGroup("", machingRegex);
     }
 
-    protected void styleButtonGroup(final String machingRegex, final String styleName) {
+    protected void styleButtonGroup(final String styleName, final String machingRegex) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
                 for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
