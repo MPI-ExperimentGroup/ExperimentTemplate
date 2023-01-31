@@ -42,17 +42,17 @@ public class StreamMessage {
     public StreamMessage() {
     }
 
-    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamMessageState streamState, String messageData) {
-        this.userId = userId;
-        this.groupId = groupId;
-        this.groupUUID = groupUUID;
-        this.screenId = screenId;
-        this.memberCode = memberCode;
-        this.originMemberCode = originMemberCode;
-        this.originPhase = originPhase;
-        this.streamState = streamState;
-        this.messageData = messageData;
-    }
+//    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamMessageState streamState, String messageData) {
+//        this.userId = userId;
+//        this.groupId = groupId;
+//        this.groupUUID = groupUUID;
+//        this.screenId = screenId;
+//        this.memberCode = memberCode;
+//        this.originMemberCode = originMemberCode;
+//        this.originPhase = originPhase;
+//        this.streamState = streamState;
+//        this.messageData = messageData;
+//    }
 
     public UserId getUserId() {
         return userId;

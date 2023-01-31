@@ -319,7 +319,6 @@ public class GroupStreamHandler {
     $wnd.stompClient.send("/app/stream", {}, JSON.stringify({
         'userId': userId,
         'groupId': groupId,
-        'groupUUID': groupUUID,
         'screenId': screenId,
         'memberCode': memberCode,
         'originMemberCode': null,
