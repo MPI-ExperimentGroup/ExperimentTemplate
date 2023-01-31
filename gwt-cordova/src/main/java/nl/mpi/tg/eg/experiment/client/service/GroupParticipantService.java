@@ -376,48 +376,48 @@ public abstract class GroupParticipantService implements GroupScoreService {
                 var contentData = JSON.parse(groupMessage.body);
                 //console.log('contentData: ' + contentData);
                 groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/Boolean;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            Ljava/lang/String;
-            )(
-            contentData.userId, 
-            contentData.screenId,
-            contentData.userLabel,
-            contentData.groupId,
-            contentData.allMemberCodes, 
-            contentData.memberCode, 
-            contentData.originMemberCode, 
-            contentData.expectedRespondents,
-            contentData.actualRespondents,
-            contentData.stimulusId,
-            Number(contentData.stimulusIndex),
-            contentData.stimuliList, 
-            Number(contentData.originPhase), 
-            Number(contentData.requestedPhase), 
-            contentData.messageString,
-            (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE, 
-            contentData.responseStimulusId,
-            String(contentData.groupScore),
-            String(contentData.channelScore),
-            contentData.groupUUID
-            );
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/Boolean;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    Ljava/lang/String;
+                    )(
+                    contentData.userId, 
+                    contentData.screenId,
+                    contentData.userLabel,
+                    contentData.groupId,
+                    contentData.allMemberCodes, 
+                    contentData.memberCode, 
+                    contentData.originMemberCode, 
+                    contentData.expectedRespondents,
+                    contentData.actualRespondents,
+                    contentData.stimulusId,
+                    Number(contentData.stimulusIndex),
+                    contentData.stimuliList, 
+                    Number(contentData.originPhase), 
+                    Number(contentData.requestedPhase), 
+                    contentData.messageString,
+                    (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE, 
+                    contentData.responseStimulusId,
+                    String(contentData.groupScore),
+                    String(contentData.channelScore),
+                    contentData.groupUUID
+                    );
             }, function(error) {
                 // display the error's message header:
                 console.log('contentData: ' + contentData);
