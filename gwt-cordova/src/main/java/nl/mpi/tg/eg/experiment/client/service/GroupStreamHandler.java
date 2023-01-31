@@ -188,7 +188,7 @@ public class GroupStreamHandler {
 
             // localStream.getTracks().forEach(track => $wnd.peerConnection.addTrack(track, localStream));
             for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
-                $wnd.peerConnection.addTrack(localVideo.srcObject.getTracks()[trackCount], $wnd.localStream);
+                $wnd.peerConnection.addTrack($("#groupLocalVideo")[0].srcObject.getTracks()[trackCount], $wnd.localStream);
             }
         }
     }-*/;
@@ -249,7 +249,7 @@ public class GroupStreamHandler {
         var groupStreamHandler = this;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
         var remoteVideo = $("#groupRemoteStream");
-        var localVideo = $("#groupLocalVideo");
+        var localVideo = $("#groupLocalVideo")[0];
         if ($wnd.peerConnection) {
             $wnd.peerConnection.ontrack = null;
             $wnd.peerConnection.onremovetrack = null;
