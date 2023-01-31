@@ -188,7 +188,7 @@ public class GroupStreamHandler {
 
             // localStream.getTracks().forEach(track => $wnd.peerConnection.addTrack(track, localStream));
             for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
-                $wnd.peerConnection.addTrack($("#groupLocalVideo")[0].srcObject.getTracks()[trackCount], $wnd.localStream);
+                $wnd.peerConnection.addTrack($wnd.$("#groupLocalVideo")[0].srcObject.getTracks()[trackCount], $wnd.localStream);
             }
         }
     }-*/;
