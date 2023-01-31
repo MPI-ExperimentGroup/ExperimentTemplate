@@ -671,7 +671,7 @@ or local-name() eq 'submitGroupEvent'
         <!--<xsl:value-of select="if(contains(local-name(), 'Button')) then if (@groupId) then concat(', ' ,@groupId) else ', null' else ''" />-->
         <xsl:value-of select="if(@oneToMany) then concat(', ', @oneToMany eq 'true') else ''" />    
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
-        <xsl:value-of select="if(@matchingRegex and (@linkedFieldName or @fieldName)) then ', ' else ''" />
+        <xsl:value-of select="if(@matchingRegex and (@linkedFieldName or @fieldName or @styleName)) then ', ' else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@visibleRegex) then concat(',&quot;', @visibleRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@enabledRegex) then concat(',&quot;', @enabledRegex, '&quot;') else ''" />

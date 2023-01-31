@@ -326,7 +326,11 @@ public abstract class AbstractPresenter implements Presenter {
 //        simpleView.addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void styleButtonGroup(final String machingRegex, String styleName) {
+    protected void styleButtonGroup(final String machingRegex) {
+        styleButtonGroup(machingRegex, "");
+    }
+
+    protected void styleButtonGroup(final String machingRegex, final String styleName) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
                 for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
