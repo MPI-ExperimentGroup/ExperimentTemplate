@@ -115,6 +115,11 @@ public class StimulusGrid extends FlexTable {
             }
 
             @Override
+            public void setStyleName(String styleName) {
+                pushButton.setStyleName(styleName);
+            }
+
+            @Override
             public void removeStyleName(String styleName) {
                 pushButton.removeStyleName(styleName);
             }

@@ -599,6 +599,13 @@ public class ComplexView extends SimpleView {
             }
 
             @Override
+            public void setStyleName(String styleName) {
+                if (styleName != null) {
+                    nextButton.setStyleName(styleName);
+                }
+            }
+
+            @Override
             public void removeStyleName(String styleName) {
                 nextButton.removeStyleName(styleName);
             }
@@ -691,6 +698,14 @@ public class ComplexView extends SimpleView {
                 if (styleName != null && !styleName.isEmpty()) {
                     imageButton.addStyleName(styleName);
                     image.addStyleName(styleName);
+                }
+            }
+
+            @Override
+            public void setStyleName(String styleName) {
+                if (styleName != null) {
+                    imageButton.setStyleName(styleName);
+                    image.setStyleName(styleName);
                 }
             }
 

@@ -238,6 +238,10 @@ public abstract class AbstractPresenter implements Presenter {
             }
 
             @Override
+            public void setStyleName(String styleName) {
+            }
+
+            @Override
             public void removeStyleName(String styleName) {
             }
 
@@ -321,11 +325,12 @@ public abstract class AbstractPresenter implements Presenter {
         }
 //        simpleView.addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
+
     protected void styleButtonGroup(final String machingRegex, String styleName) {
         for (String keyString : buttonGroupsList.keySet()) {
             if (keyString.matches(machingRegex)) {
                 for (ButtonGroupMember currentButton : buttonGroupsList.get(keyString)) {
-                    currentButton.addStyleName(styleName);
+                    currentButton.setStyleName(styleName);
                 }
             }
         }
@@ -514,14 +519,14 @@ public abstract class AbstractPresenter implements Presenter {
     public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
         // there appears to be no current reason for this to be in a timer, the timer causes the resulting content to fall out of the current region so it is being removed
         // Timer timer = new Timer() {
-            // public void run() {
-                String paramValue = Window.Location.getParameter(getParamName);
-                if (paramValue != null) {
-                    conditionTrue.postLoadTimerFired();
-                } else {
-                    conditionFalse.postLoadTimerFired();
-                }
-            // }
+        // public void run() {
+        String paramValue = Window.Location.getParameter(getParamName);
+        if (paramValue != null) {
+            conditionTrue.postLoadTimerFired();
+        } else {
+            conditionFalse.postLoadTimerFired();
+        }
+        // }
         // };
         // timer.schedule(100);
     }

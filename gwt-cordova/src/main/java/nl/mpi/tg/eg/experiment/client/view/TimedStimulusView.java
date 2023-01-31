@@ -255,6 +255,11 @@ public class TimedStimulusView extends ComplexView {
             }
 
             @Override
+            public void setStyleName(String styleName) {
+                image.setStyleName(styleName);
+            }
+
+            @Override
             public void removeStyleName(String styleName) {
                 image.removeStyleName(styleName);
             }

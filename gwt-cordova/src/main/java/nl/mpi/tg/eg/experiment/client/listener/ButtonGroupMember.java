@@ -24,6 +24,8 @@ package nl.mpi.tg.eg.experiment.client.listener;
 public interface ButtonGroupMember {
 
     void addStyleName(String styleName);
+    
+    void setStyleName(String styleName);
 
     void removeStyleName(String styleName);
 
