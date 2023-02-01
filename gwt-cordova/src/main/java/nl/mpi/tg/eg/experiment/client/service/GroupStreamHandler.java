@@ -36,7 +36,7 @@ public class GroupStreamHandler {
 
     private boolean isReady = false;
 
-    private native void handleOffer(final String messageData, final String stunServer, int originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+    private native void handleOffer(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
         offer = JSON.parse(messageData);
         if ($wnd.peerConnection) {
             if (!$wnd.peerConnection.localDescription) {
