@@ -42,6 +42,15 @@ function playMedia(mediaElement, successHandler, errorHandler) {
     }
 }
 
+function createOffer(connection, successHandler, errorHandler) {
+    connection.createOffer().then(function (offer) {
+        successHandler(offer);
+    }).catch(function (e) {
+        console.log("createOffer " + e.message);
+        errorHandler(e);
+    });
+}
+
 function requestPermissions(wantsVideo, wantsAudio, successHandler, errorHandler) {
     navigator.mediaDevices.getUserMedia({video: wantsVideo, audio: wantsAudio}).then(function (stream) {
         successHandler(stream);

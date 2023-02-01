@@ -82,9 +82,14 @@ public class GroupStreamHandler {
                         console.log('already connected, ignoring');
                     } else {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
-                        $wnd.peerConnection.createOffer().then(function (offer) {
-                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", "{ type: 'offer', sdp: offer.sdp }", originPhase, userId, groupId, groupUUID, memberCode, screenId);
-                        }).catch(handleDisconnectError);
+                        $wnd.createOffer($wnd.peerConnection,
+                            function(offer) {
+                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", "{ type: 'offer', sdp: offer.sdp }", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                            }, function(error) {
+                                console.log(error.message);
+                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                            }
+                        );
                     }
                 } else if (contentData.streamState === "refresh") {
                     if (localContext) {
