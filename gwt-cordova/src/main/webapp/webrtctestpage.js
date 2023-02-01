@@ -281,7 +281,7 @@ function initialiseConnection() {
         peerConnection.ontrack = function (event) {
             console.log("ontrack");
             $("#streamContainer").append("<video id=\"remoteVideo\" style=\"width:40vw\" autoplay muted></video>");
-            $("#remoteVideo").srcObject = event.streams[0];
+            $("#remoteVideo")[0].srcObject = event.streams[0];
             // $("#remoteVideo").attr('src', event.streams[0]);
             sendToGroup("refresh", "");
         };
