@@ -57,7 +57,7 @@ public class GroupStreamHandler {
 
     private native void handleAnswer(final String messageData) /*-{
         console.log("answer: " + contentData.messageData);
-        answer = JSON.parse(messageData));
+        answer = JSON.parse(messageData);
         if ($wnd.peerConnection) {
             $wnd.peerConnection.setRemoteDescription(answer);
         } else {
@@ -67,7 +67,7 @@ public class GroupStreamHandler {
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
         console.log("candidate: " + contentData.messageData);
-        candidate = JSON.parse(messageData));
+        candidate = JSON.parse(messageData);
         if ($wnd.peerConnection) {
             if (candidate === "null" || !candidate.candidate) {
                 // the terminal null is sent inside the candidate object
