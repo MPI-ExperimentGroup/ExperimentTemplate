@@ -44,7 +44,7 @@ function offerCanvas() {
     localStream = $("#localCanvas")[0].captureStream(15); // 15 FPS
     isReady = true;
     sendToGroup("ready", "");
-    localCanvas = $("#localCanvas");
+    localCanvas = $("#localCanvas")[0];
     localContext = localCanvas.getContext("2d");
 
     // localContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
