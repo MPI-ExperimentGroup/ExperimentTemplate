@@ -82,6 +82,9 @@ public class GroupStreamHandler {
                         console.log('already connected, ignoring');
                     } else {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                        $wnd.peerConnection.createOffer().then(function (offer) {
+                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", "{ type: 'offer', sdp: offer.sdp }", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                        }).catch(handleDisconnectError);
                     }
                 } else if (contentData.streamState === "refresh") {
                     if (localContext) {
