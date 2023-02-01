@@ -115,7 +115,7 @@ function handleOffer(sendingUserId, offer) {
             return peerConnection.createAnswer();
         }).then(function (answer) {
             sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
-            return peerConnection.setLocalDescription(answer);
+            peerConnection.setLocalDescription(answer);
             // }).then(function () {
             // sendToGroup("answer", peerConnection.localDescription);
         });

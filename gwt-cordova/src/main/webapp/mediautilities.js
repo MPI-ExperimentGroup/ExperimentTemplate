@@ -51,6 +51,16 @@ function createOffer(connection, successHandler, errorHandler) {
     });
 }
 
+function handleOffer(connection, successHandler, errorHandler) {
+    connection.createAnswer().then(function (answer) {
+            successHandler(answer);
+            connection.setLocalDescription(answer);
+        }).catch(function (e) {
+        console.log("handleOffer " + e.message);
+        errorHandler(e);
+    });
+}
+
 function requestPermissions(wantsVideo, wantsAudio, successHandler, errorHandler) {
     navigator.mediaDevices.getUserMedia({video: wantsVideo, audio: wantsAudio}).then(function (stream) {
         successHandler(stream);
