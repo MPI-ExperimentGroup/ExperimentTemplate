@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -48,7 +48,7 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
-    protected void setContent(final AppEventListner appEventListner) {
+    protected void setContent(final AppEventListener appEventListener) {
         simpleView.setDisplayText(messages.errorScreenText(errorMessage));
     }
 

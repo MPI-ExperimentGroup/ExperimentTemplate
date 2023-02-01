@@ -32,8 +32,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 
 /**
@@ -49,11 +49,11 @@ public class StimulusGrid extends FlexTable {
         this.domHandlerArrayParent = domHandlerArrayParent;
     }
 
-    private StimulusButton addButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
+    private StimulusButton addButton(final PresenterEventListener menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
         this.setStylePrimaryName("gridTable");
         pushButton.addStyleName("stimulusButton");
         pushButton.setEnabled(true);
-        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+        final SingleShotEventListener singleShotEventListener = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -65,10 +65,10 @@ public class StimulusGrid extends FlexTable {
                 }
             }
         };
-        pushButton.addClickHandler(singleShotEventListner);
-        pushButton.addTouchStartHandler(singleShotEventListner);
-        pushButton.addTouchMoveHandler(singleShotEventListner);
-        pushButton.addTouchEndHandler(singleShotEventListner);
+        pushButton.addClickHandler(singleShotEventListener);
+        pushButton.addTouchStartHandler(singleShotEventListener);
+        pushButton.addTouchMoveHandler(singleShotEventListener);
+        pushButton.addTouchEndHandler(singleShotEventListener);
         final VerticalPanel verticalPanelOuter = new VerticalPanel();
         if (hotKeyIndex > 9) {
             throw new UnsupportedOperationException("Only 0-9 are valid hot keys for the stimuli grid");
@@ -84,7 +84,7 @@ public class StimulusGrid extends FlexTable {
                         final int hotKeyNum = KeyCodes.KEY_NUM_ZERO + hotKeyIndex;
                         if (nativeKeyCode == hotKey || nativeKeyCode == hotKeyNum) {
                             event.getNativeEvent().preventDefault();
-                            singleShotEventListner.eventFired();
+                            singleShotEventListener.eventFired();
                         }
                     }
                 }
@@ -150,18 +150,18 @@ public class StimulusGrid extends FlexTable {
             }
 
             @Override
-            public void triggerSingleShotEventListner() {
-                singleShotEventListner.eventFired();
+            public void triggerSingleShotEventListener() {
+                singleShotEventListener.eventFired();
             }
         };
     }
 
-    public StimulusButton addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
+    public StimulusButton addStringItem(final PresenterEventListener menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
         final Button pushButton = new Button(labelString);
         return addButton(menuItemListerner, pushButton, rowIndex, columnIndex, hotKeyIndex);
     }
 
-    public StimulusButton addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName, final int hotKeyIndex) {
+    public StimulusButton addImageItem(final PresenterEventListener menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName, final int hotKeyIndex) {
         final Image image = new Image(imagePath);
         image.setWidth(widthString);
         if (styleName != null && !styleName.isEmpty()) {

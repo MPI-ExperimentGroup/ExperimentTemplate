@@ -94,7 +94,7 @@ public class AU_VI_ReactionTimeTest {
 //        }
 //
 //        @Override
-//        protected void setContent(AppEventListner appEventListner) {
+//        protected void setContent(AppEventListener appEventListener) {
 //            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //        }
 //    }

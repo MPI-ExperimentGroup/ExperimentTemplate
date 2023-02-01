@@ -21,7 +21,7 @@ package nl.mpi.tg.eg.experiment.client.listener;
  * @since Jan 16, 2015 4:47:57 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface AudioEventListner {
+public interface AudioEventListener {
 
     public void audioLoaded();
 

@@ -31,13 +31,13 @@ import com.google.gwt.user.client.Command;
  * @since Feb 11, 2015 4:34:40 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public abstract class SingleShotEventListner extends HandlesAllTouchEvents implements ClickHandler {
+public abstract class SingleShotEventListener extends HandlesAllTouchEvents implements ClickHandler {
 
     private boolean singleShotConsumed = false;
     private boolean singleShotEnabled = true;
 //    private final Button button;
     boolean sawTouchStart = false;
-//    public SingleShotEventListner(Button button) {
+//    public SingleShotEventListener(Button button) {
 //        this.button = button;
 //    }
 

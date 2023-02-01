@@ -262,10 +262,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.Version;
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
                 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
-                import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+                import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
                 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
-                import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-                import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+                import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+                import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
                 import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
@@ -274,7 +274,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
                 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
-                import nl.mpi.tg.eg.experiment.client.listener.TimerListner;
+                import nl.mpi.tg.eg.experiment.client.listener.TimerListener;
                 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -399,7 +399,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 }
 
                 @Override
-                protected void setContent(final AppEventListner appEventListner) {
+                protected void setContent(final AppEventListener appEventListener) {
             </xsl:text>
             <xsl:value-of select="if(descendant::startAudioRecorderApp) then 'requestRecorderPermissions();' else 'requestFilePermissions();'" />
             <xsl:apply-templates/> <!--select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData|stimuliValidation|addKeyboardDebug|stimulusImage|stimulusAudio"-->
@@ -447,7 +447,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
     <xsl:template match="menuItem">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
-        <xsl:text>(appEventListner, </xsl:text>      
+        <xsl:text>(appEventListener, </xsl:text>      
         <xsl:text>ApplicationState.</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>, messages.</xsl:text>
@@ -504,7 +504,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                 or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, ' else ''" />
         </xsl:if>
-        <xsl:text>new PresenterEventListner() {
+        <xsl:text>new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -528,11 +528,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             }
             
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
         </xsl:text>
         <xsl:choose>
             <xsl:when test="@target">
-                <xsl:text>appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+                <xsl:text>appEventListener.requestApplicationState(ApplicationState.</xsl:text>
                 <xsl:value-of select="@target" />
                 <xsl:text>);</xsl:text>
             </xsl:when>
@@ -572,7 +572,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
         <xsl:value-of select="if(@groupId) then concat(', &quot;', @groupId, '&quot;') else ', null'" />
-        <xsl:text>    new PresenterEventListner() {
+        <xsl:text>    new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -587,8 +587,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:text>;
             }
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-            appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+            appEventListener.requestApplicationState(ApplicationState.</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>);
             }
@@ -602,7 +602,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:if test="local-name() eq 'eraseUsersDataButton'">
-            <xsl:text>appEventListner, </xsl:text>
+            <xsl:text>appEventListener, </xsl:text>
         </xsl:if>
         <xsl:if test="local-name() eq 'showStimulus' 
         or local-name() eq 'showStimuliReport' 
@@ -734,7 +734,7 @@ or local-name() eq 'submitGroupEvent'
     <xsl:template match="activateRandomItem|createUserButton|selectUserMenu|selectLocaleMenu|allMenuItems|addKinTypeGui|gotoPresenter|gotoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
-        <xsl:text>(appEventListner</xsl:text>
+        <xsl:text>(appEventListener</xsl:text>
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
@@ -887,7 +887,7 @@ or local-name() eq 'sendGroupMessageButton'
     <xsl:template match="kinTypeStringDiagram|loadKinTypeStringDiagram|editableKinEntitesDiagram|ratingFooterButton|ratingButton|stimulusRatingButton|stimulusRatingRadio|stimulusRatingCheckbox|ratingRadioButton|ratingCheckbox">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
-        <xsl:text>(appEventListner</xsl:text>
+        <xsl:text>(appEventListener</xsl:text>
 <!--        <xsl:if test="local-name() eq 'stimulusRatingButton'
 or local-name() eq 'stimulusRatingRadio'
 or local-name() eq 'stimulusRatingCheckbox'
@@ -988,7 +988,7 @@ or local-name() eq 'ratingCheckbox'
     <xsl:template match="hasGetParameter|showStimulusGrid|matchingStimulusGrid|groupResponseFeedback|stimulusHasRatingOptions|stimulusHasResponse">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
-        <xsl:text>(appEventListner</xsl:text>
+        <xsl:text>(appEventListener</xsl:text>
         <xsl:if test="local-name() eq 'showStimulusGrid'
                     or local-name() eq 'matchingStimulusGrid'
                     ">
@@ -1068,7 +1068,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
-        <xsl:value-of select="if(local-name() eq 'groupNetwork') then 'appEventListner, selfApplicationState, ' else ''" />   
+        <xsl:value-of select="if(local-name() eq 'groupNetwork') then 'appEventListener, selfApplicationState, ' else ''" />   
         <xsl:if test="local-name() eq 'groupResponseStimulusImage' 
 or local-name() eq 'stimulusImageCapture'
         or local-name() eq 'groupNetwork'

@@ -24,7 +24,7 @@ import java.util.Date;
  * @since Jul 10, 2018 12:10:57 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class TimerListner {
+public abstract class TimerListener {
 
     private Timer timer = null;
 

@@ -60,15 +60,15 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
     private final List<TouchInputZone> touchZones = new ArrayList<>();
     private final List<TouchRecord> touchRecordList = new LinkedList<>();
     private final Set<String> currentTriggeredZoneGroups = new HashSet<>();
-    private final TimedStimulusListener endOfTouchEventListner;
+    private final TimedStimulusListener endOfTouchEventListener;
     private final int msAfterEndOfTouchToNext;
     private final Timer endOfTouchTimer;
     private final Timer touchRecordTimer;
     private final Duration duration = new Duration();
     boolean disableMouseEvents = false;
 
-    public TouchInputCapture(final TimedStimulusListener endOfTouchEventListner, final int msAfterEndOfTouchToNext) {
-        this.endOfTouchEventListner = endOfTouchEventListner;
+    public TouchInputCapture(final TimedStimulusListener endOfTouchEventListener, final int msAfterEndOfTouchToNext) {
+        this.endOfTouchEventListener = endOfTouchEventListener;
         this.msAfterEndOfTouchToNext = msAfterEndOfTouchToNext;
         endOfTouchTimer = new Timer() {
             @Override
@@ -135,7 +135,7 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
                 zone.clearEvent();
             }
             endOfTouchTimer.cancel();
-            endOfTouchEventListner.postLoadTimerFired();
+            endOfTouchEventListener.postLoadTimerFired();
         } else {
             for (TouchInputZone zone : touchZones) {
                 if (triggeredZoneGroups.contains(zone.getGroupName())) {

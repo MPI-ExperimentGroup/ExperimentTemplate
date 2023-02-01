@@ -40,9 +40,9 @@ import nl.mpi.kinnate.svg.SvgUpdateHandler;
 import nl.mpi.kinnate.ui.KinTypeStringProvider;
 import nl.mpi.kinnate.uniqueidentifiers.UniqueIdentifier;
 import nl.mpi.kinoath.graph.DefaultSorter;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -70,7 +70,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
         this.submissionService = submissionService;
     }
 
-    public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String kinTypeString) {
+    public void kinTypeStringDiagram(final AppEventListener appEventListener, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String kinTypeString) {
         final DiagramSettings diagramSettings = new DiagramSettingsGwt();
         final SvgDiagram svgDiagram = new SvgDiagram(diagramSettings, new EntitySvg());
         final SvgUpdateHandler svgUpdateHandler = new SvgUpdateHandler(svgDiagram);
@@ -135,18 +135,18 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
         }
     }
 
-    public void loadKinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
-        kinTypeStringDiagram(appEventListner, postLoadMs, timedStimulusListener, loadKinTypeString(diagramName));
+    public void loadKinTypeStringDiagram(final AppEventListener appEventListener, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
+        kinTypeStringDiagram(appEventListener, postLoadMs, timedStimulusListener, loadKinTypeString(diagramName));
     }
 
-    public void editableKinEntitesDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
-        kinTypeStringDiagram(appEventListner, postLoadMs, timedStimulusListener, null);
+    public void editableKinEntitesDiagram(final AppEventListener appEventListener, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
+        kinTypeStringDiagram(appEventListener, postLoadMs, timedStimulusListener, null);
     }
 
-    public void addKinTypeGui(final AppEventListner appEventListner, final String diagramName) {
+    public void addKinTypeGui(final AppEventListener appEventListener, final String diagramName) {
         ((KinTypeView) simpleView).addHtmlText(loadKinTypeString(diagramName), null);
         ((KinTypeView) simpleView).addKinTypeGui();
-        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -164,14 +164,14 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
                 ((TimedStimulusView) simpleView).clearPageAndTimers(null);
-                setContent(appEventListner);
+                setContent(appEventListener);
                 //submissionService.submitTimestamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
         });
-        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -189,11 +189,11 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
             }
         });
-        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -211,10 +211,10 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 clearKinTypeString(diagramName);
                 ((TimedStimulusView) simpleView).clearPageAndTimers(null);
-                setContent(appEventListner);
+                setContent(appEventListener);
                 //submissionService.submitTimestamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }
         });

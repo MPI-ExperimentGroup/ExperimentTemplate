@@ -22,9 +22,9 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.Version;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
@@ -52,7 +52,7 @@ public class TemplateVersionPresenter extends LocalStoragePresenter implements P
     }
 
     @Override
-    protected void setContent(final AppEventListner appEventListner) {
+    protected void setContent(final AppEventListener appEventListener) {
         ((ComplexView) simpleView).addText("This version is a template that you can edit, data will not be collected in this version. This screen will not be shown in the production version.");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Once you have edited this template to suits your needs you can trigger the deployment of the staging or production version of your experiment.");
@@ -66,12 +66,12 @@ public class TemplateVersionPresenter extends LocalStoragePresenter implements P
                 //                + version.buildVersion() + "-"
                 + version.projectVersion() + "\n");
         ((ComplexView) simpleView).addPadding();
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                if (allowBackAction(appEventListner)) {
-                    appEventListner.requestApplicationState(startTesingState);
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                if (allowBackAction(appEventListener)) {
+                    appEventListener.requestApplicationState(startTesingState);
                 }
             }
 

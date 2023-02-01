@@ -21,9 +21,9 @@ import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -50,7 +50,7 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
-    protected void setContent(final AppEventListner appEventListner) {
+    protected void setContent(final AppEventListener appEventListener) {
         setUpLocaleOptions();
     }
 
@@ -58,10 +58,10 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
         for (final String localeName : LocaleInfo.getAvailableLocaleNames()) {
             final String displayName = LocaleInfo.getLocaleNativeDisplayName(localeName);
             if (displayName != null && !displayName.isEmpty()) {
-                ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
+                ((MenuView) simpleView).addMenuItem(new PresenterEventListener() {
 
                     @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                    public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                         final String queryString = Window.Location.getQueryString();
                         final String localeGet = "locale=";
                         final String updatedPathValue;

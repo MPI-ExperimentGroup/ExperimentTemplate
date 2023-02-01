@@ -31,5 +31,5 @@ public abstract class StimulusButton implements ButtonGroupMember {
 
     abstract public String getValue();
 
-    abstract public void triggerSingleShotEventListner();
+    abstract public void triggerSingleShotEventListener();
 }

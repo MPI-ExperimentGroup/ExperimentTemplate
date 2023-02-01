@@ -29,8 +29,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -79,7 +79,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
             }
         });
         verticalPanel.add(textBox);
-        editingPanel.add(getOptionButton(new PresenterEventListner() {
+        editingPanel.add(getOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -97,12 +97,12 @@ public class AnnotationTimelineView extends TimedStimulusView {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 annotationData.setInTime(videoPanel.getCurrentTime());
                 annotationTimelinePanel.updateAnnotation(annotationData);
             }
         }).getWidget());
-        editingPanel.add(getOptionButton(new PresenterEventListner() {
+        editingPanel.add(getOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -120,12 +120,12 @@ public class AnnotationTimelineView extends TimedStimulusView {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 annotationTimelinePanel.deleteAnnotation(annotationData);
                 flexTable.remove(verticalPanel);
             }
         }).getWidget());
-        editingPanel.add(getOptionButton(new PresenterEventListner() {
+        editingPanel.add(getOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -143,7 +143,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 annotationData.setOutTime(videoPanel.getCurrentTime());
                 annotationTimelinePanel.updateAnnotation(annotationData);
             }

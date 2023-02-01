@@ -26,10 +26,10 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.Window.ClosingEvent;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.logging.Logger;
-import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
+import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListener;
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.ErrorPresenter;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -55,7 +55,7 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
  * @since Oct 7, 2014 11:07:35 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public abstract class AppController implements AppEventListner/*, AudioExceptionListner*/ {
+public abstract class AppController implements AppEventListener/*, AudioExceptionListener*/ {
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
     private final Version version = GWT.create(Version.class);
@@ -147,7 +147,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
     }
 
     private native void addWindowOnBlurEvents() /*-{
-        //console.log('adding focus listners');
+        //console.log('adding focus listeners');
         var appController = this;
         $wnd.addEventListener('blur', function() {
             //console.log('blur');

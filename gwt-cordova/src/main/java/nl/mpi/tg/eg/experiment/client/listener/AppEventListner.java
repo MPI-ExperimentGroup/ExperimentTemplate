@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
  * @since Oct 8, 2014 11:01:07 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface AppEventListner {
+public interface AppEventListener {
 
     public void requestApplicationState(ApplicationState applicationState);
 }

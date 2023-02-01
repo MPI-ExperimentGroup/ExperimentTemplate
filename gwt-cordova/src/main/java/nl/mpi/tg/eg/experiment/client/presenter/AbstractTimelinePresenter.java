@@ -73,7 +73,7 @@ public abstract class AbstractTimelinePresenter extends AbstractTimedPresenter i
         ((AnnotationTimelineView) simpleView).setAnnotationTimelinePanel(annotationTimelinePanel);
         int maxStimuli = 10; // todo: this has to be updated so that the enclosing loadStimulus does the stimuli selection       
         ((AnnotationTimelineView) simpleView).setStimuli(dataFactory, savedAnnotations, stimulusProvider, columnCount, "30px", maxStimuli);
-//        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+//        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
 //
 //            @Override
 //            public String getLabel() {
@@ -81,9 +81,9 @@ public abstract class AbstractTimelinePresenter extends AbstractTimedPresenter i
 //            }
 //
 //            @Override
-//            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+//            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
 //                saveAnnotations();
-//                shotEventListner.resetSingleShot();
+//                shotEventListener.resetSingleShot();
 //            }
 //        });
         annotationTimelinePanel.startUpdating(videoPanel, ((AnnotationTimelineView) simpleView), dataFactory);

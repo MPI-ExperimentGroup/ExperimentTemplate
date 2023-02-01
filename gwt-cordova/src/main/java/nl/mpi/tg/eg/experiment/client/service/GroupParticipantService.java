@@ -40,7 +40,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
     private final String groupCommunicationChannels;
 //    private final CancelableStimulusListener endOfStimulusListener;
     private boolean isConnected = false;
-    private List<GroupActivityListener> lastFiredListnerList = null;
+    private List<GroupActivityListener> lastFiredListenerList = null;
 
     private final String userId;
     private final String screenId;
@@ -118,8 +118,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
         activityListeners.put(activityListener.getGroupRole(), activityListener);
     }
 
-    protected void clearLastFiredListner() {
-        this.lastFiredListnerList = null;
+    protected void clearLastFiredListener() {
+        this.lastFiredListenerList = null;
     }
 
     protected synchronized void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes,
@@ -189,15 +189,15 @@ public abstract class GroupParticipantService implements GroupScoreService {
                     this.messageSenderMemberCode = originMemberCode;
                     // make sure that all relevent members have responded before moving to the next phase
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
-                    final List<GroupActivityListener> currentFiredListnerList = new ArrayList();
+                    final List<GroupActivityListener> currentFiredListenerList = new ArrayList();
                     for (String phaseMembers : activityListeners.keySet()) {
                         final String[] splitRole = phaseMembers.split(":");
                         int roleIndex = currentRequestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
-                            final GroupActivityListener currentListner = activityListeners.get(phaseMembers);
+                            final GroupActivityListener currentListener = activityListeners.get(phaseMembers);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(phaseMembers).get(this.requestedPhase).postLoadTimerFired();
                             if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
-                                    || (lastFiredListnerList == null || !lastFiredListnerList.contains(currentListner))) {
+                                    || (lastFiredListenerList == null || !lastFiredListenerList.contains(currentListener))) {
                                 this.stimulusId = stimulusId;
 //                                this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
                                 int stimulusPhaseIndex = currentRequestedPhase / phasesPerStimulus;
@@ -208,9 +208,9 @@ public abstract class GroupParticipantService implements GroupScoreService {
                                 if (!endOfStimuli) {
                                     // if we are already at the end of the stimuli list then do not sync again
                                     final Stimulus currentStimulus = synchroniseCurrentStimulus(stimulusPhaseIndex);
-                                    // if the stimulusSyncListner has put us at the end of the stimuli list then trigger any phases
-                                    currentListner.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex], currentStimulus);
-                                    currentFiredListnerList.add(currentListner);
+                                    // if the stimulusSyncListener has put us at the end of the stimuli list then trigger any phases
+                                    currentListener.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex], currentStimulus);
+                                    currentFiredListenerList.add(currentListener);
 //                                    if (endOfStimuli) {
 //                                        // if endOfStimuli has changed state here then we must trigger the endOfStimulusListener
 //                                        endOfStimulusListener.postLoadTimerFired();
@@ -219,8 +219,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
                             }
                         }
                     }
-                    if (!currentFiredListnerList.isEmpty()) {
-                        lastFiredListnerList = currentFiredListnerList;
+                    if (!currentFiredListenerList.isEmpty()) {
+                        lastFiredListenerList = currentFiredListenerList;
                     }
                 }
             }

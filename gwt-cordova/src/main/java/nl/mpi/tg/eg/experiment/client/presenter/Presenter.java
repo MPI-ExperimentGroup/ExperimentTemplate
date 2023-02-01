@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 
 /**
  * @since Oct 10, 2014 10:05:41 AM (creation date)
@@ -26,7 +26,7 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
  */
 public interface Presenter {
 
-    void setState(AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState);
+    void setState(AppEventListener appEventListener, final ApplicationState prevState, final ApplicationState nextState);
 
     void fireBackEvent();
 

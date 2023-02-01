@@ -19,8 +19,8 @@ package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 
 /**
  * @since Feb 24, 2015 2:30:02 PM (creation date)
@@ -28,7 +28,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
  */
 public class MenuButton extends HorizontalPanel {
 
-    public MenuButton(final PresenterEventListner presenterListerner) {
+    public MenuButton(final PresenterEventListener presenterListerner) {
         final Label headerIcon = new Label();
         headerIcon.addStyleName("headerIcon");
         if (presenterListerner != null) {
@@ -39,26 +39,26 @@ public class MenuButton extends HorizontalPanel {
             final Label headerButton = new Label(presenterListerner.getLabel());
             headerButton.addStyleName("headerButton");
             this.add(headerButton);
-            SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+            SingleShotEventListener singleShotEventListener = new SingleShotEventListener() {
 
                 @Override
                 protected void singleShotFired() {
                     presenterListerner.eventFired(null, this);
                 }
             };
-            headerArrow.addClickHandler(singleShotEventListner);
-            headerButton.addClickHandler(singleShotEventListner);
-            headerIcon.addClickHandler(singleShotEventListner);
+            headerArrow.addClickHandler(singleShotEventListener);
+            headerButton.addClickHandler(singleShotEventListener);
+            headerIcon.addClickHandler(singleShotEventListener);
 
-            headerArrow.addTouchStartHandler(singleShotEventListner);
-            headerButton.addTouchStartHandler(singleShotEventListner);
-            headerIcon.addTouchStartHandler(singleShotEventListner);
-            headerArrow.addTouchMoveHandler(singleShotEventListner);
-            headerButton.addTouchMoveHandler(singleShotEventListner);
-            headerIcon.addTouchMoveHandler(singleShotEventListner);
-            headerArrow.addTouchEndHandler(singleShotEventListner);
-            headerButton.addTouchEndHandler(singleShotEventListner);
-            headerIcon.addTouchEndHandler(singleShotEventListner);
+            headerArrow.addTouchStartHandler(singleShotEventListener);
+            headerButton.addTouchStartHandler(singleShotEventListener);
+            headerIcon.addTouchStartHandler(singleShotEventListener);
+            headerArrow.addTouchMoveHandler(singleShotEventListener);
+            headerButton.addTouchMoveHandler(singleShotEventListener);
+            headerIcon.addTouchMoveHandler(singleShotEventListener);
+            headerArrow.addTouchEndHandler(singleShotEventListener);
+            headerButton.addTouchEndHandler(singleShotEventListener);
+            headerIcon.addTouchEndHandler(singleShotEventListener);
         }
         this.add(headerIcon);
     }

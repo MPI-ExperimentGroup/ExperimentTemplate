@@ -62,7 +62,7 @@ public class GroupParticipantServiceTest {
 
             @Override
             public String synchroniseStimulusList(final String stimuliListGroup) {
-                // stimulusSyncListner
+                // stimulusSyncListener
                 return stimuliListGroup;
             }
 
@@ -91,7 +91,7 @@ public class GroupParticipantServiceTest {
         groupMemberActivity(stringBuilder, "e", instance, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, null);
         for (int phaseCounter = 0; phaseCounter < 10; phaseCounter++) {
             for (int memberIndex = 0; memberIndex < 8; memberIndex++) {
-                instance.clearLastFiredListner();
+                instance.clearLastFiredListener();
                 instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "A,B,C,D,E,F,G,H".split(",")[memberIndex],
                         "expectedRespondents",
                         "actualRespondents  ",
@@ -202,22 +202,22 @@ public class GroupParticipantServiceTest {
 
                 @Override
                 public String synchroniseStimulusList(final String stimuliListGroup) {
-                    // screenResetRequestListner
-                    stringBuilder.append("screenResetRequestListner\n");
+                    // screenResetRequestListener
+                    stringBuilder.append("screenResetRequestListener\n");
                     return stimuliListGroup;
                 }
 
                 @Override
                 public Stimulus synchroniseCurrentStimulus(final int currentIndex) {
-                    // stimulusSyncListner
-                    stringBuilder.append("stimulusSyncListner\n");
+                    // stimulusSyncListener
+                    stringBuilder.append("stimulusSyncListener\n");
                     return null;
                 }
 
                 @Override
                 public void groupInfoChanged() {
-                    // groupInfoChangeListner
-                    stringBuilder.append("groupInfoChangeListner\n");
+                    // groupInfoChangeListener
+                    stringBuilder.append("groupInfoChangeListener\n");
                 }
 
                 @Override
@@ -268,22 +268,22 @@ public class GroupParticipantServiceTest {
 
                 @Override
                 public String synchroniseStimulusList(final String stimuliListGroup) {
-                    // screenResetRequestListner
-                    stringBuilder.append("screenResetRequestListner\n");
+                    // screenResetRequestListener
+                    stringBuilder.append("screenResetRequestListener\n");
                     return stimuliListGroup;
                 }
 
                 @Override
                 public Stimulus synchroniseCurrentStimulus(final int currentIndex) {
-                    // stimulusSyncListner
-                    stringBuilder.append("stimulusSyncListner\n");
+                    // stimulusSyncListener
+                    stringBuilder.append("stimulusSyncListener\n");
                     return null;
                 }
 
                 @Override
                 public void groupInfoChanged() {
-                    // groupInfoChangeListner
-                    stringBuilder.append("groupInfoChangeListner\n");
+                    // groupInfoChangeListener
+                    stringBuilder.append("groupInfoChangeListener\n");
                 }
 
                 @Override

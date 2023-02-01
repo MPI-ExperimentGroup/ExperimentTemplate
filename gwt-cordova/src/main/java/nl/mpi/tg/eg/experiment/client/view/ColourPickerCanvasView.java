@@ -48,8 +48,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 
@@ -316,7 +316,7 @@ public class ColourPickerCanvasView extends AbstractView {
         setHue(red, green, blue);
     }
 
-    public void setQuitButton(final PresenterEventListner quitListerner) {
+    public void setQuitButton(final PresenterEventListener quitListerner) {
         progressPanel.setWidget(0, 0, new MenuButton(quitListerner));
     }
 
@@ -335,7 +335,7 @@ public class ColourPickerCanvasView extends AbstractView {
         verticalPanel.add(closeButton);
         popupPanel.setWidget(verticalPanel);
         infoButton.setText(infoButtonChar);
-        final SingleShotEventListner infoSingleShotEventListner = new SingleShotEventListner() {
+        final SingleShotEventListener infoSingleShotEventListener = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -347,11 +347,11 @@ public class ColourPickerCanvasView extends AbstractView {
                 }
             }
         };
-        infoButton.addClickHandler(infoSingleShotEventListner);
-        infoButton.addTouchStartHandler(infoSingleShotEventListner);
-        infoButton.addTouchMoveHandler(infoSingleShotEventListner);
-        infoButton.addTouchEndHandler(infoSingleShotEventListner);
-        final SingleShotEventListner instructionsSingleShotEventListner1 = new SingleShotEventListner() {
+        infoButton.addClickHandler(infoSingleShotEventListener);
+        infoButton.addTouchStartHandler(infoSingleShotEventListener);
+        infoButton.addTouchMoveHandler(infoSingleShotEventListener);
+        infoButton.addTouchEndHandler(infoSingleShotEventListener);
+        final SingleShotEventListener instructionsSingleShotEventListener1 = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -361,16 +361,16 @@ public class ColourPickerCanvasView extends AbstractView {
                 resetSingleShot();
             }
         };
-        closeButton.addClickHandler(instructionsSingleShotEventListner1);
-        closeButton.addTouchStartHandler(instructionsSingleShotEventListner1);
-        closeButton.addTouchMoveHandler(instructionsSingleShotEventListner1);
-        closeButton.addTouchEndHandler(instructionsSingleShotEventListner1);
+        closeButton.addClickHandler(instructionsSingleShotEventListener1);
+        closeButton.addTouchStartHandler(instructionsSingleShotEventListener1);
+        closeButton.addTouchMoveHandler(instructionsSingleShotEventListener1);
+        closeButton.addTouchEndHandler(instructionsSingleShotEventListener1);
         popupPanel.addCloseHandler(new CloseHandler<PopupPanel>() {
 
             @Override
             public void onClose(CloseEvent<PopupPanel> event) {
                 instructionsScrollPanel = null;
-//                instructionsSingleShotEventListner1.eventFired();
+//                instructionsSingleShotEventListener1.eventFired();
 //                infoButton.setEnabled(true);
 //                resizeView();
             }
@@ -390,22 +390,22 @@ public class ColourPickerCanvasView extends AbstractView {
         stimulusPanel.add(label);
     }
 
-    public void setAcceptButton(final PresenterEventListner presenterListerner) {
+    public void setAcceptButton(final PresenterEventListener presenterListerner) {
         acceptButton = getButton(presenterListerner);
     }
 
-    public void setRejectButton(final PresenterEventListner presenterListerner) {
+    public void setRejectButton(final PresenterEventListener presenterListerner) {
         rejectButton = getButton(presenterListerner);
     }
 
-    private Button getButton(final PresenterEventListner presenterListerner) {
+    private Button getButton(final PresenterEventListener presenterListerner) {
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.setHeight(buttonHeight + "px");
         nextButton.setWidth(buttonWidth + "px");
         nextButton.addStyleName("stimulusButton");
 //        nextButton.getElement().getStyle().setFontSize(buttonTextHeight, Unit.PX);
         nextButton.setEnabled(true);
-        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+        final SingleShotEventListener singleShotEventListener = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -413,10 +413,10 @@ public class ColourPickerCanvasView extends AbstractView {
                 resetSingleShot();
             }
         };
-        nextButton.addClickHandler(singleShotEventListner);
-        nextButton.addTouchStartHandler(singleShotEventListner);
-        nextButton.addTouchMoveHandler(singleShotEventListner);
-        nextButton.addTouchEndHandler(singleShotEventListner);
+        nextButton.addClickHandler(singleShotEventListener);
+        nextButton.addTouchStartHandler(singleShotEventListener);
+        nextButton.addTouchMoveHandler(singleShotEventListener);
+        nextButton.addTouchEndHandler(singleShotEventListener);
         return nextButton;
     }
 

@@ -30,8 +30,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 //import nl.ru.languageininteraction.language.client.AutotypRegions;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView.ButtonType;
 import nl.mpi.tg.eg.experiment.client.util.SvgTemplate;
@@ -52,7 +52,7 @@ public class MapView extends ComplexView {
     private static final SvgTemplate SVG_TEMPLATE = GWT.create(SvgTemplate.class);
 
     public void addZoom() {
-        setButton(ButtonType.menu, new PresenterEventListner() {
+        setButton(ButtonType.menu, new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -60,7 +60,7 @@ public class MapView extends ComplexView {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
 //                final Element svgElement = Document.get().getElementById("zoomableGroup");
                 zoomFactor *= 0.5;
 //                svgElement.setAttribute("transform", "scale(" + zoomFactor + ")");
@@ -82,7 +82,7 @@ public class MapView extends ComplexView {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        setButton(ButtonType.menu, new PresenterEventListner() {
+        setButton(ButtonType.menu, new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -90,7 +90,7 @@ public class MapView extends ComplexView {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
 //                final Element svgElement = Document.get().getElementById("zoomableGroup");
                 zoomFactor *= 1.5;
 //                svgElement.setAttribute("transform", "scale(" + zoomFactor + ")");

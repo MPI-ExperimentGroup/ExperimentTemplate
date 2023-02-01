@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import nl.mpi.tg.eg.experiment.client.listener.TimerListner;
+import nl.mpi.tg.eg.experiment.client.listener.TimerListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
@@ -30,12 +30,12 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  */
 public class TimerService {
 
-    final HashMap<String, List<TimerListner>> timerListeners = new HashMap<>();
+    final HashMap<String, List<TimerListener>> timerListeners = new HashMap<>();
 
     public void clearAllTimers() {
-        for (List<TimerListner> listnerList : timerListeners.values()) {
-            while (!listnerList.isEmpty()) {
-                final TimerListner timerEntry = listnerList.remove(0);
+        for (List<TimerListener> listenerList : timerListeners.values()) {
+            while (!listenerList.isEmpty()) {
+                final TimerListener timerEntry = listenerList.remove(0);
                 if (timerEntry != null) {
                     timerEntry.clearTimer();
                 }
@@ -45,7 +45,7 @@ public class TimerService {
 
     public void startTimer(final long initialTimerStartMs, final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
         // this must first check for a saved timer start value and reload it, for cases where a user has refreshed the browser
-        final TimerListner timerListner = new TimerListner() {
+        final TimerListener timerListener = new TimerListener() {
             @Override
             public void timerTriggered() {
                 timeoutListener.postLoadTimerFired();
@@ -57,20 +57,20 @@ public class TimerService {
             }
 
         };
-        final List<TimerListner> listnerList;
+        final List<TimerListener> listenerList;
         if (timerListeners.containsKey(listenerId)) {
-            listnerList = timerListeners.get(listenerId);
+            listenerList = timerListeners.get(listenerId);
         } else {
-            listnerList = new ArrayList<>();
-            timerListeners.put(listenerId, listnerList);
+            listenerList = new ArrayList<>();
+            timerListeners.put(listenerId, listenerList);
         }
-        listnerList.add(timerListner);
-        timerListner.startTimer(msToNext);
+        listenerList.add(timerListener);
+        timerListener.startTimer(msToNext);
     }
 
     public int getTimerValue(final String listenerId) {
-        final List<TimerListner> listnerList = timerListeners.get(listenerId);
-        final TimerListner timerEntry = (listnerList == null || listnerList.isEmpty()) ? null : listnerList.get(0);
+        final List<TimerListener> listenerList = timerListeners.get(listenerId);
+        final TimerListener timerEntry = (listenerList == null || listenerList.isEmpty()) ? null : listenerList.get(0);
         if (timerEntry == null) {
             return -1;
         } else {
@@ -79,10 +79,10 @@ public class TimerService {
     }
 
     public void clearTimer(final String listenerId) {
-        final List<TimerListner> listnerList = timerListeners.get(listenerId);
-        if (listnerList != null) {
-            while (!listnerList.isEmpty()) {
-                final TimerListner timerEntry = listnerList.remove(0);
+        final List<TimerListener> listenerList = timerListeners.get(listenerId);
+        if (listenerList != null) {
+            while (!listenerList.isEmpty()) {
+                final TimerListener timerEntry = listenerList.remove(0);
                 if (timerEntry != null) {
                     timerEntry.clearTimer();
                 }

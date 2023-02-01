@@ -50,7 +50,7 @@ import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -59,8 +59,8 @@ import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.HabituationParadigmListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
@@ -112,7 +112,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
     private CurrentStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
-    final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
+    final private ArrayList<PresenterEventListener> nextButtonEventListenerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     private final HashMap<String, TriggerListener> triggerListeners = new HashMap<>();
     MatchingStimuliGroup matchingStimuliGroup = null;
@@ -137,7 +137,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        new Timer() {
 //            public void run() {
 //                todo: verify that these are cleared correctly: domHandlerArray scaledImagesList
-//                final String debugString = "BEL:" + backEventListners.size() + "PT:" + pauseTimers.size() + "NB:" + nextButtonEventListnerList.size() + "FT:" + stimulusFreeTextList.size() + "TL:" + triggerListeners.size() + "BL:" + stimulusButtonList.size();
+//                final String debugString = "BEL:" + backEventListeners.size() + "PT:" + pauseTimers.size() + "NB:" + nextButtonEventListenerList.size() + "FT:" + stimulusFreeTextList.size() + "TL:" + triggerListeners.size() + "BL:" + stimulusButtonList.size();
 //                debugLabel.setText(debugString);
 //                timedStimulusView.addWidget(debugLabel);
 //                schedule(1000);
@@ -152,8 +152,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     @Override
-    public void setState(AppEventListner appEventListner, ApplicationController.ApplicationState prevState, ApplicationController.ApplicationState nextState) {
-        super.setState(appEventListner, prevState, null);
+    public void setState(AppEventListener appEventListener, ApplicationController.ApplicationState prevState, ApplicationController.ApplicationState nextState) {
+        super.setState(appEventListener, prevState, null);
         this.nextState = nextState;
     }
 
@@ -213,7 +213,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
                         final boolean directoryCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag()));
-                        timedStimulusView.addOptionButton(new PresenterEventListner() {
+                        timedStimulusView.addOptionButton(new PresenterEventListener() {
                             @Override
                             public String getLabel() {
                                 return directory[1] + ((directoryCompleted) ? " (complete)" : "");
@@ -225,7 +225,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             }
 
                             @Override
-                            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
                                 loadSdCardStimulus(directory[1], selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, new TimedStimulusListener() {
@@ -258,12 +258,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     @Override
-    protected boolean allowBackAction(final AppEventListner appEventListner) {
+    protected boolean allowBackAction(final AppEventListener appEventListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         if (subDirectory != null) {
             if (!subDirectory.isEmpty()) {
                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                setContent(appEventListner);
+                setContent(appEventListener);
                 return false;
             } else {
                 return true;
@@ -550,7 +550,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+    protected void groupNetwork(final AppEventListener appEventListener, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
@@ -624,7 +624,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             // submissionService.writeJsonData would be called on next stimulus anyway: submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), storedStimulusJSONObject.toString());
                         }
                     } else {
-                        // if the group message puts the stimuli list at the end then fire the end of stimulus listner
+                        // if the group message puts the stimuli list at the end then fire the end of stimulus listener
                         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "group message puts the stimuli list at the end", stimulusProvider.getCurrentStimulusUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
                         groupParticipantService.setEndOfStimuli(true); // block further messages
                     }
@@ -634,7 +634,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public void groupInfoChanged() {
-                    ((ComplexView) simpleView).addInfoButton(new PresenterEventListner() {
+                    ((ComplexView) simpleView).addInfoButton(new PresenterEventListener() {
                         @Override
                         public String getLabel() {
 //                            final Integer stimulusIndex = groupParticipantService.getStimulusIndex();
@@ -648,7 +648,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         }
 
                         @Override
-                        public void eventFired(ButtonBase button, final SingleShotEventListner shotEventListner) {
+                        public void eventFired(ButtonBase button, final SingleShotEventListener shotEventListener) {
                             groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulusUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getCurrentScore(), groupMembers);
 //                            ((ComplexView) simpleView).addHtmlText(
 //                                    "Group Members\n" + groupParticipantService.getAllMemberCodes()
@@ -669,7 +669,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady(),
 //                                    null
 //                            );
-                            shotEventListner.resetSingleShot();
+                            shotEventListener.resetSingleShot();
                         }
 
                         @Override
@@ -902,12 +902,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.addHtmlText(groupParticipantService.getMemberCode(), styleName);
     }
 
-    protected void groupResponseFeedback(final AppEventListner appEventListner, int postLoadMs1, final TimedStimulusListener correctListener, int postLoadMs2, final TimedStimulusListener incorrectListener) {
+    protected void groupResponseFeedback(final AppEventListener appEventListener, int postLoadMs1, final TimedStimulusListener correctListener, int postLoadMs2, final TimedStimulusListener incorrectListener) {
         // todo: make use of the postLoadMs 
-        groupResponseFeedback(appEventListner, correctListener, incorrectListener);
+        groupResponseFeedback(appEventListener, correctListener, incorrectListener);
     }
 
-    protected void groupResponseFeedback(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
+    protected void groupResponseFeedback(final AppEventListener appEventListener, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
         if (groupParticipantService.getStimulusId().equals(groupParticipantService.getResponseStimulusId())) {
             correctListener.postLoadTimerFired();
         } else {
@@ -916,7 +916,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     }
 
-    public void stimulusHasResponse(final AppEventListner appEventListner, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String groupId, final String matchingRegex) {
+    public void stimulusHasResponse(final AppEventListener appEventListener, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String groupId, final String matchingRegex) {
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         if (storedStimulusJSONObject != null) {
             if (groupId == null || groupId.isEmpty()) {
@@ -958,13 +958,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final String postName = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : "freeText";
         final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
-        StimulusFreeText stimulusFreeText = timedStimulusView.addStimulusFreeText(currentStimulus, postName, validationRegexFormatted, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
+        StimulusFreeText stimulusFreeText = timedStimulusView.addStimulusFreeText(currentStimulus, postName, validationRegexFormatted, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListener() {
             @Override
             protected void singleShotFired() {
-                for (PresenterEventListner nextButtonEventListner : nextButtonEventListnerList) {
+                for (PresenterEventListener nextButtonEventListener : nextButtonEventListenerList) {
                     // this process is to make sure that group events are submitted and not just call nextStimulus
-                    if (nextButtonEventListner.getHotKey() == hotKey) {
-                        nextButtonEventListner.eventFired(null, this);
+                    if (nextButtonEventListener.getHotKey() == hotKey) {
+                        nextButtonEventListener.eventFired(null, this);
                     } else {
 //                    nextStimulus("stimulusFreeTextEnter", false);
                     }
@@ -994,7 +994,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             };
             timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, shownStimulusListener, null, null);
         }
-        timedStimulusView.addOptionButton(new PresenterEventListner() {
+        timedStimulusView.addOptionButton(new PresenterEventListener() {
             @Override
             public String getLabel() {
                 return captureLabel;
@@ -1006,7 +1006,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 sdCardImageCapture.captureImage();
             }
 
@@ -1235,7 +1235,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
-    public void stimulusHasRatingOptions(final AppEventListner appEventListner, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
+    public void stimulusHasRatingOptions(final AppEventListener appEventListener, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
         if (currentStimulus.hasRatingLabels()) {
             correctListener.postLoadTimerFired();
         } else {
@@ -1243,7 +1243,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    public void touchInputStimulusButton(final PresenterEventListner presenterListener, final String eventTag, final String imagePath, final String buttonGroup) {
+    public void touchInputStimulusButton(final PresenterEventListener presenterListener, final String eventTag, final String imagePath, final String buttonGroup) {
         final StimulusButton buttonItem;
         if (imagePath == null || imagePath.isEmpty()) {
             buttonItem = optionButton(presenterListener, buttonGroup);
@@ -1278,7 +1278,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 if (!isTriggered) {
                     isTriggered = true;
                     buttonItem.addStyleName(presenterListener.getStyleName() + "Intersection");
-                    buttonItem.triggerSingleShotEventListner();
+                    buttonItem.triggerSingleShotEventListener();
                 }
             }
 
@@ -1290,7 +1290,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         });
     }
 
-    public void stimulusSlider(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner presenterListener, final int dataChannel, final OrientationType orientationType, final int initial, final int minimum, final int maximum, final String buttonGroup) {
+    public void stimulusSlider(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListener presenterListener, final int dataChannel, final OrientationType orientationType, final int initial, final int minimum, final int maximum, final String buttonGroup) {
         final String postName = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : "stimulusSlider";
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final String initialValue;
@@ -1303,8 +1303,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusFreeTextList.add(addButtonToGroup(buttonGroup, slider));
     }
 
-    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner presenterListener, final String eventTag, final int dataChannel, final String buttonGroup) {
-        final StimulusButton buttonItem = optionButton(new PresenterEventListner() {
+    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListener presenterListener, final String eventTag, final int dataChannel, final String buttonGroup) {
+        final StimulusButton buttonItem = optionButton(new PresenterEventListener() {
             @Override
             public String getLabel() {
                 // this stimulusButton label comes from featureText
@@ -1312,7 +1312,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "stimulusButton" : eventTag);
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListener.getLabel(), duration.elapsedMillis());
                 Boolean isCorrect = null;
@@ -1334,7 +1334,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 // @todo: probably good to check if the data has changed before writing to disk
                 submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
                 submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, duration.elapsedMillis());
-                presenterListener.eventFired(button, shotEventListner);
+                presenterListener.eventFired(button, shotEventListener);
             }
 
             @Override
@@ -1350,34 +1350,34 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusButtonList.add(buttonItem);
     }
 
-    public void stimulusRatingButton(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
+    public void stimulusRatingButton(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
         final String formattedGroupId;
         if (buttonGroup == null || buttonGroup.isEmpty()) {
             formattedGroupId = "stimulusRatingButton";
         } else {
             formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
         }
-        ratingButtons(getRatingEventListners(appEventListner, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
+        ratingButtons(getRatingEventListeners(appEventListener, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
     }
 
-    public void stimulusRatingRadio(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, false);
+    public void stimulusRatingRadio(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListener, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, false);
     }
 
-    public void stimulusRatingCheckbox(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, true);
+    public void stimulusRatingCheckbox(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListener, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, currentStimulus.getRatingLabels(), ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, true);
     }
 
-    public void ratingCheckbox(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, true);
+    public void ratingCheckbox(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListener, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, true);
     }
 
-    public void ratingRadioButton(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
-        ratingRadioButton(appEventListner, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, false);
+    public void ratingRadioButton(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
+        ratingRadioButton(appEventListener, /*stimulusProvider,*/ currentStimulus, buttonGroup, timedStimulusListener, orientationType, ratingLabels, ratingLabelLeft, ratingLabelRight, eventTag, styleName, dataChannel, radioGroupName, false);
     }
 
-    private void ratingRadioButton(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
-        final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
+    private void ratingRadioButton(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName, final boolean allowMultiple) {
+        final List<PresenterEventListener> ratingEventListeners = new ArrayList<>();//getRatingEventListeners(appEventListener, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
         final String stimulusRatingType;
         if (buttonGroup == null || buttonGroup.isEmpty()) {
             stimulusRatingType = (buttonGroup != null && !buttonGroup.isEmpty()) ? buttonGroup : (allowMultiple) ? "stimulusRatingCheckbox" : "stimulusRatingRadio";
@@ -1388,14 +1388,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (ratingLabels != null) {
             final String[] splitRatingLabels = ratingLabels.split(",");
             for (final String ratingItem : splitRatingLabels) {
-                ratingEventListners.add(new PresenterEventListner() {
+                ratingEventListeners.add(new PresenterEventListener() {
                     @Override
                     public String getLabel() {
                         return ratingItem;
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                         timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "ratingRadioButton" : eventTag);
                         JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
                         storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
@@ -1531,32 +1531,32 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void setFocus(boolean wantsFocus) {
             }
         };
-        ratingButtons.addAll(ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, radioGroupName, allowMultiple, stimulusFreeText.getValue(), stimulusRatingType, ratingStylePanel, orientationType));
+        ratingButtons.addAll(ratingButtons(ratingEventListeners, ratingLabelLeft, ratingLabelRight, false, styleName, radioGroupName, allowMultiple, stimulusFreeText.getValue(), stimulusRatingType, ratingStylePanel, orientationType));
         stimulusFreeTextList.add(addButtonToGroup(stimulusRatingType, stimulusFreeText));
     }
 
-    public void ratingButton(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
+    public void ratingButton(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
         final String formattedGroupId;
         if (buttonGroup == null || buttonGroup.isEmpty()) {
             formattedGroupId = "ratingButton";
         } else {
             formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
         }
-        ratingButtons(getRatingEventListners(appEventListner, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
+        ratingButtons(getRatingEventListeners(appEventListener, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
     }
 
-    public void ratingFooterButton(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
+    public void ratingFooterButton(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel) {
         final String formattedGroupId;
         if (buttonGroup == null || buttonGroup.isEmpty()) {
             formattedGroupId = "ratingFooterButton";
         } else {
             formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
         }
-        ratingButtons(getRatingEventListners(appEventListner, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, false, null, formattedGroupId, null, OrientationType.horizontal);
+        ratingButtons(getRatingEventListeners(appEventListener, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, false, null, formattedGroupId, null, OrientationType.horizontal);
     }
 
-    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String eventTag, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final String formattedGroupId, final int dataChannel) {
-        ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
+    public List<PresenterEventListener> getRatingEventListeners(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String eventTag, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final String formattedGroupId, final int dataChannel) {
+        ArrayList<PresenterEventListener> eventListeners = new ArrayList<>();
         if (ratingLabels != null) {
             final String[] splitRatingLabels = ratingLabels.split(",");
             for (final String ratingItem : splitRatingLabels) {
@@ -1591,14 +1591,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 final int hotKey = derivedHotKey;
-                eventListners.add(new PresenterEventListner() {
+                eventListeners.add(new PresenterEventListener() {
                     @Override
                     public String getLabel() {
                         return ratingItem;
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                         timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? ratingItem : eventTag + "_" + ratingItem);
                         //timedEventMonitor.registerEvent(formattedGroupId); // should this be eventTag
                         endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
@@ -1637,7 +1637,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 });
             }
         }
-        return eventListners;
+        return eventListeners;
     }
 
     protected void showCurrentMs() {
@@ -1846,13 +1846,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         super.startAudioRecorderApp(subdirectoryName, directoryName, filePerStimulus, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), onError, onSuccess);
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
+    protected void showStimulusGrid(final AppEventListener appEventListener, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
         final int maxStimuli = -1;
         final AnimateTypes animateType = AnimateTypes.none;
-        showStimulusGrid(appEventListner, stimulusProvider, currentStimulus, correctListener, incorrectListener, maxStimuli, columnCount, imageWidth, animateType, eventTag, dataChannel);
+        showStimulusGrid(appEventListener, stimulusProvider, currentStimulus, correctListener, incorrectListener, maxStimuli, columnCount, imageWidth, animateType, eventTag, dataChannel);
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
+    protected void showStimulusGrid(final AppEventListener appEventListener, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
         timedStimulusView.stopAudio();
         TimedStimulusListener correctTimedListener = new TimedStimulusListener() {
 
@@ -1904,13 +1904,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         //timedStimulusView.addAudioPlayerGui();
     }
 
-    protected void matchingStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final boolean randomise, final int columnCount, int maxWidth, final int dataChannel) {
+    protected void matchingStimulusGrid(final AppEventListener appEventListener, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final boolean randomise, final int columnCount, int maxWidth, final int dataChannel) {
         final int maxStimulusCount = -1;
         final AnimateTypes animateType = AnimateTypes.none;
-        matchingStimulusGrid(appEventListner, stimulusProvider, currentStimulus, correctListener, incorrectListener, matchingRegex, maxStimulusCount, randomise, columnCount, maxWidth, animateType, dataChannel);
+        matchingStimulusGrid(appEventListener, stimulusProvider, currentStimulus, correctListener, incorrectListener, matchingRegex, maxStimulusCount, randomise, columnCount, maxWidth, animateType, dataChannel);
     }
 
-    protected void matchingStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, final int dataChannel) {
+    protected void matchingStimulusGrid(final AppEventListener appEventListener, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, final int dataChannel) {
         matchingStimuliGroup = new MatchingStimuliGroup(currentStimulus, stimulusProvider.getMatchingStimuli(matchingRegex), true, hasMoreStimulusListener, endOfStimulusListener);
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startHorizontalPanel();
         int ySpacing = (int) (100.0 / (matchingStimuliGroup.getStimulusCount() + 1));
@@ -1986,10 +1986,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.endHorizontalPanel(isWidget);
     }
 
-    private PresenterEventListner getEventListener(final Stimulus currentStimulus, final ArrayList<StimulusButton> buttonList, final String eventTag, final int dataChannel, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
+    private PresenterEventListener getEventListener(final Stimulus currentStimulus, final ArrayList<StimulusButton> buttonList, final String eventTag, final int dataChannel, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
         final String tagValue1 = correctStimulusItem.getImage();
         final String tagValue2 = currentStimulusItem.getImage();
-        return new PresenterEventListner() {
+        return new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -2007,7 +2007,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "stimulusGridButton" : eventTag);
                 for (StimulusButton currentButton : buttonList) {
                     currentButton.setEnabled(false);
@@ -2061,16 +2061,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public void triggerRandom(final Stimulus currentStimulus, final String matchingRegex, final TimedStimulusListener endOfTriggersListener) {
-        ArrayList<TriggerListener> matchingListners = new ArrayList<>();
+        ArrayList<TriggerListener> matchingListeners = new ArrayList<>();
         for (TriggerListener triggerListener : triggerListeners.values()) {
             if (triggerListener.canTrigger()) {
                 if (triggerListener.getListenerId().matches(matchingRegex)) {
-                    matchingListners.add(triggerListener);
+                    matchingListeners.add(triggerListener);
                 }
             }
         }
-        if (!matchingListners.isEmpty()) {
-            matchingListners.get(new Random().nextInt(matchingListners.size())).trigger(currentStimulus);
+        if (!matchingListeners.isEmpty()) {
+            matchingListeners.get(new Random().nextInt(matchingListeners.size())).trigger(currentStimulus);
         } else {
             endOfTriggersListener.postLoadTimerFired();
         }
@@ -2109,7 +2109,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
-//    public void popupMessage(final PresenterEventListner presenterListener, String message) {
+//    public void popupMessage(final PresenterEventListener presenterListener, String message) {
 //        timedStimulusView.showHtmlPopup(presenterListener, message);
 //    }
 
@@ -2237,11 +2237,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.stopAllMedia();
 //        timedStimulusView.clearDomHandlers();
         timedStimulusView.clearPageAndTimers(styleName);
-        nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
+        nextButtonEventListenerList.clear(); // clear this now to prevent refires of the event
         stimulusFreeTextList.clear();
         stimulusButtonList.clear();
         clearButtonList();
-        backEventListners.clear();
+        backEventListeners.clear();
         submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
         super.cleanUpPresenterState();
     }
@@ -2361,7 +2361,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     // @todo: tag pair data and tag data tables could show the number of stimuli show events and the unique stimuli (grouped by tag strings) show events per screen
     protected void sendGroupMessageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String buttonLabel, final String styleName, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents, final String buttonGroup) {
-        PresenterEventListner eventListner = new PresenterEventListner() {
+        PresenterEventListener eventListener = new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -2379,7 +2379,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "sendGroupMessageButton" : eventTag);
                 for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
                     if (stimulusFreeText.isEnabled() && !stimulusFreeText.isValid()) {
@@ -2397,8 +2397,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                clearPage();
             }
         };
-        nextButtonEventListnerList.add(eventListner);
-        optionButton(eventListner, buttonGroup);
+        nextButtonEventListenerList.add(eventListener);
+        optionButton(eventListener, buttonGroup);
     }
 
     protected void addStimulusCodeResponseValidation(final Stimulus currentStimulus, final String validationRegex, final String validationChallenge, final String groupId, final int dataChannel) {
@@ -2463,7 +2463,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         touchInputCapture = null;
     }
 
-    protected void touchInputCaptureStart(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListner) {
+    protected void touchInputCaptureStart(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListener) {
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
@@ -2471,7 +2471,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             } else {
                 debugHtmlLabel = null;
             }
-            touchInputCapture = new TouchInputCapture(endOfTouchEventListner, msAfterEndOfTouchToNext) {
+            touchInputCapture = new TouchInputCapture(endOfTouchEventListener, msAfterEndOfTouchToNext) {
                 @Override
                 public void setDebugLabel(String debugLabel) {
                     if (debugHtmlLabel != null) {
@@ -2496,7 +2496,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final String styleName, final boolean repeatIncorrect, final int hotKey, final String buttonGroup) {
-        PresenterEventListner eventListner = new PresenterEventListner() {
+        PresenterEventListener eventListener = new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -2514,13 +2514,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "prevStimulusButton" : eventTag);
                 nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, -1);
             }
         };
-        nextButtonEventListnerList.add(eventListner);
-        final StimulusButton prevButton = optionButton(eventListner, buttonGroup);
+        nextButtonEventListenerList.add(eventListener);
+        final StimulusButton prevButton = optionButton(eventListener, buttonGroup);
         prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
@@ -2531,7 +2531,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final String styleName, final boolean repeatIncorrect, final int hotKey, final String buttonGroup) {
 //        if (stimulusProvider.hasNextStimulus()) {
-        PresenterEventListner eventListner = new PresenterEventListner() {
+        PresenterEventListener eventListener = new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -2549,20 +2549,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "nextStimulusButton" : eventTag);
                 nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, 1);
             }
         };
-        nextButtonEventListnerList.add(eventListner);
-        optionButton(eventListner, buttonGroup);
+        nextButtonEventListenerList.add(eventListener);
+        optionButton(eventListener, buttonGroup);
     }
 
     protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String styleName, final String imagePath, final boolean autoPlay, final int hotKey, final String buttonGroup, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String mp3Path = srcString + ".mp3";
         final String oggPath = srcString + ".ogg";
         final String wavPath = srcString + ".wav";
-        final PresenterEventListner presenterEventListner = new PresenterEventListner() {
+        final PresenterEventListener presenterEventListener = new PresenterEventListener() {
             private boolean hasPlayed = false;
 
             @Override
@@ -2581,7 +2581,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "audioButton" : eventTag);
                 final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                     @Override
@@ -2608,9 +2608,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }, true, "audioButton");
             }
         };
-        imageButton(presenterEventListner, UriUtils.fromString((imagePath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + imagePath), false, buttonGroup);
+        imageButton(presenterEventListener, UriUtils.fromString((imagePath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + imagePath), false, buttonGroup);
         if (autoPlay) {
-            presenterEventListner.eventFired(null, null);
+            presenterEventListener.eventFired(null, null);
         }
     }
 

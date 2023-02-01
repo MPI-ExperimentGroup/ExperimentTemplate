@@ -20,7 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.Version;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -49,7 +49,7 @@ public class VersionPresenter extends AbstractPresenter {
     }
 
     @Override
-    protected void setContent(AppEventListner appEventListner) {
+    protected void setContent(AppEventListener appEventListener) {
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n"
                 + "DOI 10.5281/zenodo.3522910" + "\n"
                 + "FRINEX Version: " + version.majorVersion() + "."

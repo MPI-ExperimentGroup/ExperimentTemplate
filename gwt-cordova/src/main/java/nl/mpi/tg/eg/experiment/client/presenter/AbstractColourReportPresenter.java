@@ -24,9 +24,9 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Date;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -59,8 +59,8 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
-        super.setState(appEventListner, prevState, null);
+    public void setState(final AppEventListener appEventListener, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
+        super.setState(appEventListener, prevState, null);
         this.nextState = nextState;
     }
 
@@ -105,14 +105,14 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
             public void registrationFailed(RegistrationException exception) {
                 onError.postLoadTimerFired();
                 ((ReportView) simpleView).addText("Could not connect to the server.");
-                ((ReportView) simpleView).addOptionButton(new PresenterEventListner() {
+                ((ReportView) simpleView).addOptionButton(new PresenterEventListener() {
                     @Override
                     public String getLabel() {
                         return "Retry";
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                         Timer timer = new Timer() {
                             @Override
                             public void run() {

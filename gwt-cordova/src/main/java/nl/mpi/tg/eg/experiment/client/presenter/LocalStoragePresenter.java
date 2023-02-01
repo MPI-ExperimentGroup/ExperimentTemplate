@@ -38,9 +38,9 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.service.SimuliValidationRunner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -62,9 +62,9 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
     }
 
     @Override
-    protected void setContent(final AppEventListner appEventListner) {
+    protected void setContent(final AppEventListener appEventListener) {
 
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -82,11 +82,11 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                appEventListner.requestApplicationState(ApplicationState.metadata);
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                appEventListener.requestApplicationState(ApplicationState.metadata);
             }
         });
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -104,14 +104,14 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                appEventListner.requestApplicationState(ApplicationState.scores);
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                appEventListener.requestApplicationState(ApplicationState.scores);
             }
         });
     }
 
     protected void eraseLocalStorageButton(final String styleName, final String buttonGroup) {
-        optionButton(new PresenterEventListner() {
+        optionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -129,7 +129,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 final Storage localStorage = Storage.getLocalStorageIfSupported();
                 localStorage.clear();
                 Window.Location.replace(Window.Location.getPath());
@@ -189,7 +189,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
         ((ComplexView) simpleView).endRow(startRow);
         ((ComplexView) simpleView).endTable();
 //        ((ComplexView) simpleView).endHorizontalPanel(horizontalPanel);
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
             @Override
             public String getLabel() {
                 return "Calculate Transition Table";
@@ -201,7 +201,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("stimuliValidation: " + tagsListBox.getSelectedItemText(), null);
                 final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount", null);
                 final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount", null);

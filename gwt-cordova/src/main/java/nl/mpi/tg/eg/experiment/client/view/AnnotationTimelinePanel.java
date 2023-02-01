@@ -40,8 +40,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
@@ -182,7 +182,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
 //        final Label tierLabel = new Label(stimulus.getLabel());
 //        tierLabel.setHeight(tierHeight + "px");
 //        absolutePanel.add(tierLabel, 0, topPosition);
-        stimulusButtons.put(stimulus, stimulusGrid.addImageItem(new PresenterEventListner() {
+        stimulusButtons.put(stimulus, stimulusGrid.addImageItem(new PresenterEventListener() {
             @Override
             public String getLabel() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -199,9 +199,9 @@ public class AnnotationTimelinePanel extends FocusPanel {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
-                singleShotEventListner.resetSingleShot();
+                singleShotEventListener.resetSingleShot();
             }
         }, UriUtils.fromString(stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter % columnCount, imageWidth, null, -1));
     }
@@ -266,7 +266,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
     private void insertTierAnnotation(final AnnotationData annotationData, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView) {
         final Label label1 = new Label(annotationData.getAnnotationHtml());
         label1.setStylePrimaryName("annotationTimelineTierSegment");
-        final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
+        final SingleShotEventListener tierSegmentListener = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -281,10 +281,10 @@ public class AnnotationTimelinePanel extends FocusPanel {
                 resetSingleShot();
             }
         };
-        label1.addClickHandler(tierSegmentListner);
-        label1.addTouchStartHandler(tierSegmentListner);
-        label1.addTouchMoveHandler(tierSegmentListner);
-        label1.addTouchEndHandler(tierSegmentListner);
+        label1.addClickHandler(tierSegmentListener);
+        label1.addTouchStartHandler(tierSegmentListener);
+        label1.addTouchMoveHandler(tierSegmentListener);
+        label1.addTouchEndHandler(tierSegmentListener);
         label1.setWidth(getWidth(annotationData, videoPanel.getDurationTime()) + "px");
         final int topPosition = getTierTopPosition(annotationData.getStimulus());
         absolutePanel.add(label1, getLeftPosition(annotationData, videoPanel.getDurationTime()), topPosition);

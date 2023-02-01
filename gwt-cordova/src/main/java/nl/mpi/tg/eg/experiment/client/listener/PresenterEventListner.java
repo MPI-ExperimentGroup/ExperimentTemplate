@@ -23,13 +23,13 @@ import com.google.gwt.user.client.ui.ButtonBase;
  * @since Oct 28, 2014 12:16:19 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface PresenterEventListner {
+public interface PresenterEventListener {
 
     public String getLabel();
 
     public String getStyleName();
 
-    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner);
+    public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener);
 
     public int getHotKey();
 }

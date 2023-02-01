@@ -26,9 +26,9 @@ import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.Messages;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -69,7 +69,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     private CurrentStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     private final LocalStorage localStorage;
-    private AppEventListner appEventListner;
+    private AppEventListener appEventListener;
     private ApplicationController.ApplicationState nextState;
     private StimulusResponseGroup stimulusResponseGroup = null;
     private String progressLabelFormatString = null;
@@ -124,7 +124,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //            }
 //            submitFrinexResults();
             stimulusResponseGroup.setIsComplete(true);
-            appEventListner.requestApplicationState(nextState);
+            appEventListener.requestApplicationState(nextState);
             endOfStimulusListener.postLoadTimerFired();
         } else {
             colourPickerCanvasView.setRandomColour();
@@ -149,14 +149,14 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
     protected abstract String getSelfTag();
 
-    abstract void setContent(final AppEventListner appEventListner);
+    abstract void setContent(final AppEventListener appEventListener);
 
     @Override
-    public void setState(final AppEventListner appEventListner, final ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
-        this.appEventListner = appEventListner;
+    public void setState(final AppEventListener appEventListener, final ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
+        this.appEventListener = appEventListener;
         this.nextState = nextState;
         widgetTag.clear();
-        colourPickerCanvasView.setQuitButton(new PresenterEventListner() {
+        colourPickerCanvasView.setQuitButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -174,16 +174,16 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 // delete the incomplete test results
 //                userResults.deleteStimuliGroupResults(stimuliGroup);
-                appEventListner.requestApplicationState(prevState);
+                appEventListener.requestApplicationState(prevState);
             }
         });
         colourPickerCanvasView.resizeView();
         widgetTag.add(colourPickerCanvasView);
 
-        setContent(appEventListner);
+        setContent(appEventListener);
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, String textString, String styleName, XmlId xmlId) {
@@ -196,13 +196,13 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         // formatting options are <colourPicker_total> <colourPicker_index> <colourPicker_percent>
     }
 
-    public void actionButton(final PresenterEventListner eventListner, final String group) {
+    public void actionButton(final PresenterEventListener eventListener, final String group) {
         switch (group) {
             case "RejectButton":
-                setRejectButton(eventListner.getLabel());
+                setRejectButton(eventListener.getLabel());
                 break;
             case "AcceptButton":
-                setAcceptButton(eventListner.getLabel());
+                setAcceptButton(eventListener.getLabel());
                 break;
             default:
                 break;
@@ -211,10 +211,10 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     }
 
     private void setRejectButton(final String buttonLabel) {
-        colourPickerCanvasView.setRejectButton(new PresenterEventListner() {
+        colourPickerCanvasView.setRejectButton(new PresenterEventListener() {
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 final long durationMs = System.currentTimeMillis() - startMs;
                 stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
@@ -240,10 +240,10 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     }
 
     private void setAcceptButton(final String buttonLabel) {
-        colourPickerCanvasView.setAcceptButton(new PresenterEventListner() {
+        colourPickerCanvasView.setAcceptButton(new PresenterEventListener() {
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                 final long durationMs = System.currentTimeMillis() - startMs;
                 stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));

@@ -27,15 +27,15 @@ import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.view.MetadataView;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
@@ -56,17 +56,17 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, ApplicationState prevState, final ApplicationState nextState) {
-        super.setState(appEventListner, prevState, null);
+    public void setState(final AppEventListener appEventListener, ApplicationState prevState, final ApplicationState nextState) {
+        super.setState(appEventListener, prevState, null);
         this.nextState = nextState;
     }
 
-    protected void saveMetadataButton(final String buttonLabel, final String styleName, final boolean sendData, final String buttonGroup, final String networkErrorMessage, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    protected void saveMetadataButton(final String buttonLabel, final String styleName, final boolean sendData, final String buttonGroup, final String networkErrorMessage, final TimedStimulusListener errorEventListener, final TimedStimulusListener successEventListener) {
         final HTML errorHtmlText = ((MetadataView) simpleView).addHtmlText("", null);
-        PresenterEventListner saveEventListner = new PresenterEventListner() {
+        PresenterEventListener saveEventListener = new PresenterEventListener() {
 
             @Override
-            public void eventFired(final ButtonBase button, final SingleShotEventListner singleShotEventListner) {
+            public void eventFired(final ButtonBase button, final SingleShotEventListener singleShotEventListener) {
                 ((MetadataView) simpleView).setButtonError(false, button, errorHtmlText, null);
                 ((MetadataView) simpleView).clearErrors();
                 if (((MetadataView) simpleView).validateFields()) {
@@ -81,18 +81,18 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                                     ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
                                 } else {
                                     ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, networkErrorMessage);
-                                    errorEventListner.postLoadTimerFired();
+                                    errorEventListener.postLoadTimerFired();
                                 }
                                 submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
                             }
 
                             @Override
                             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                                successEventListner.postLoadTimerFired();
+                                successEventListener.postLoadTimerFired();
                             }
                         });
                     } else {
-                        successEventListner.postLoadTimerFired();
+                        successEventListener.postLoadTimerFired();
                     }
                 }
             }
@@ -112,7 +112,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                 return buttonLabel;
             }
         };
-        optionButton(saveEventListner, buttonGroup);
+        optionButton(saveEventListener, buttonGroup);
     }
 
     protected void saveFields() {
@@ -134,15 +134,15 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         console.log(localeName + ' : ' + displayName);
     }-*/;
 
-    protected void selectLocaleMenu(final AppEventListner appEventListner, final String styleName) {
+    protected void selectLocaleMenu(final AppEventListener appEventListener, final String styleName) {
         for (final String localeName : LocaleInfo.getAvailableLocaleNames()) {
             final String displayName = LocaleInfo.getLocaleNativeDisplayName(localeName);
             logLocaleInfo(localeName, displayName);
             if (displayName != null && !displayName.isEmpty()) {
-                ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+                ((MetadataView) simpleView).addOptionButton(new PresenterEventListener() {
 
                     @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                    public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                         final String queryString = Window.Location.getQueryString();
                         final String localeGet = "locale=";
                         final String updatedPathValue;
@@ -154,6 +154,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                             String separator = (queryString.isEmpty()) ? "?" : "&";
                             updatedPathValue = queryString + separator + localeGet + localeName;
                         }
+                        // TODO: also store the localeName in the local storage for use when reloadingwithout the get parameter
                         Window.Location.replace(Window.Location.getPath() + updatedPathValue);
                     }
 
@@ -176,9 +177,9 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void selectUserMenu(final AppEventListner appEventListner, final String styleName, MetadataField labelMetadataField) {
+    protected void selectUserMenu(final AppEventListener appEventListener, final String styleName, MetadataField labelMetadataField) {
         for (final UserLabelData labelData : localStorage.getUserIdList(labelMetadataField)) {
-            final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+            final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListener() {
 
                 @Override
                 public String getLabel() {
@@ -196,12 +197,12 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                     try {
                         // todo: there probably needs to be a tag: set userId from MetadataFieldValue, to that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request 
                         userResults.setUser(localStorage.getStoredData(labelData.getUserId(), metadataFieldProvider));
                         localStorage.storeData(userResults, metadataFieldProvider);
-                        appEventListner.requestApplicationState(nextState);
+                        appEventListener.requestApplicationState(nextState);
                     } catch (UserIdException exception) {
                         // this should not occur since the field value should have originated from a UserId instance
                     }
@@ -213,8 +214,8 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         }
     }
 
-    protected void createUserButton(final AppEventListner appEventListner, final String label, final String styleName, final ApplicationState targetApplicationState, final String buttonGroup) {
-        optionButton(new PresenterEventListner() {
+    protected void createUserButton(final AppEventListener appEventListener, final String label, final String styleName, final ApplicationState targetApplicationState, final String buttonGroup) {
+        optionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -232,10 +233,10 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 userResults.setUser(new UserData());
                 localStorage.storeData(userResults, metadataFieldProvider);
-                appEventListner.requestApplicationState(targetApplicationState);
+                appEventListener.requestApplicationState(targetApplicationState);
             }
         }, buttonGroup);
     }

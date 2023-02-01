@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.experiment.client.exception.AudioException;
  * @since Jan 23, 2015 2:58:03 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface AudioExceptionListner {
+public interface AudioExceptionListener {
 
     public void audioExceptionFired(AudioException audioException);
 }

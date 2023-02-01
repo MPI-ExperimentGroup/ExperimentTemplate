@@ -22,8 +22,8 @@ import com.google.gwt.dom.client.SourceElement;
 import com.google.gwt.media.client.Audio;
 import com.google.gwt.safehtml.shared.SafeUri;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
-import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
+import nl.mpi.tg.eg.experiment.client.listener.AudioEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListener;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 
 /**
@@ -33,17 +33,17 @@ import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 public class AudioPlayer {
 
     private Audio audioPlayer;
-    private AudioEventListner audioEventListner;
-    final private AudioExceptionListner audioExceptionListner;
+    private AudioEventListener audioEventListener;
+    final private AudioExceptionListener audioExceptionListener;
     final private boolean autoPlay;
     private boolean hasTriggeredOnLoaded = false;
     private int sourceLoadingCounter = 0;
     final TimedEventMonitor timedEventMonitor;
     final String mediaId;
 
-    public AudioPlayer(final TimedEventMonitor timedEventMonitor, final AudioExceptionListner audioExceptionListner, final SafeUri ogg, final SafeUri mp3, final SafeUri wav, final boolean autoPlay, final String mediaId) throws AudioException {
+    public AudioPlayer(final TimedEventMonitor timedEventMonitor, final AudioExceptionListener audioExceptionListener, final SafeUri ogg, final SafeUri mp3, final SafeUri wav, final boolean autoPlay, final String mediaId) throws AudioException {
         this.timedEventMonitor = timedEventMonitor;
-        this.audioExceptionListner = audioExceptionListner;
+        this.audioExceptionListener = audioExceptionListener;
         this.autoPlay = autoPlay;
         this.mediaId = mediaId;
         try {
@@ -69,7 +69,7 @@ public class AudioPlayer {
             if (timedEventMonitor != null) {
                 timedEventMonitor.registerEvent("audioExceptionFired");
             }
-            audioExceptionListner.audioExceptionFired(audioException);
+            audioExceptionListener.audioExceptionFired(audioException);
         }
     }
 
@@ -133,8 +133,8 @@ public class AudioPlayer {
         if (timedEventMonitor != null) {
             timedEventMonitor.registerEvent("audioStarted");
         }
-        if (audioEventListner != null) {
-            audioEventListner.audioStarted();
+        if (audioEventListener != null) {
+            audioEventListener.audioStarted();
         }
     }
 
@@ -143,8 +143,8 @@ public class AudioPlayer {
             timedEventMonitor.registerEvent("audioEnded");
             timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
         }
-        if (audioEventListner != null) {
-            audioEventListner.audioEnded();
+        if (audioEventListener != null) {
+            audioEventListener.audioEnded();
         }
     }
 
@@ -153,8 +153,8 @@ public class AudioPlayer {
             timedEventMonitor.registerEvent("audioFailed");
             timedEventMonitor.registerEvent(reason);
         }
-        if (audioEventListner != null) {
-            audioEventListner.audioFailed();
+        if (audioEventListener != null) {
+            audioEventListener.audioFailed();
         }
     }
 
@@ -162,9 +162,9 @@ public class AudioPlayer {
         if (timedEventMonitor != null) {
             timedEventMonitor.registerEvent("audioLoaded");
         }
-        if (audioEventListner != null && !hasTriggeredOnLoaded) {
+        if (audioEventListener != null && !hasTriggeredOnLoaded) {
             hasTriggeredOnLoaded = true;
-            audioEventListner.audioLoaded();
+            audioEventListener.audioLoaded();
             if (autoPlay) {
                 play(audioPlayer.getAudioElement());
             } else {
@@ -173,8 +173,8 @@ public class AudioPlayer {
         }
     }
 
-    public void setEventListner(AudioEventListner audioEventListner) {
-        this.audioEventListner = audioEventListner;
+    public void setEventListener(AudioEventListener audioEventListener) {
+        this.audioEventListener = audioEventListener;
     }
 
 //    public void playSampleAudio(RoundSample roundSample) {
@@ -187,7 +187,7 @@ public class AudioPlayer {
 //            try {
 //                createPlayer();
 //            } catch (AudioException audioException) {
-//                audioExceptionListner.audioExceptionFired(audioException);
+//                audioExceptionListener.audioExceptionFired(audioException);
 //                return;
 //            }
 //        }
@@ -222,7 +222,7 @@ public class AudioPlayer {
             audioPlayer = null;
         }
         //onEndedAction();
-        audioEventListner = null;
+        audioEventListener = null;
     }
 
     public void stop() {

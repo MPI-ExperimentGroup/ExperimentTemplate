@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -47,25 +47,25 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
         super(widgetTag, simpleView, submissionService, userResults, localStorage, timerService);
     }
 
-    public void allMenuItems(final AppEventListner appEventListner, final String styleName, final ApplicationController.ApplicationState selfApplicationState) {
+    public void allMenuItems(final AppEventListener appEventListener, final String styleName, final ApplicationController.ApplicationState selfApplicationState) {
         ((MenuView) simpleView).addSeparateMenuPanel(styleName);
         for (final ApplicationController.ApplicationState currentAppState : ApplicationController.ApplicationState.values()) {
             if (currentAppState.label != null && selfApplicationState != currentAppState) {
-                menuItem(appEventListner, currentAppState, currentAppState.label, -1, styleName);
+                menuItem(appEventListener, currentAppState, currentAppState.label, -1, styleName);
             }
         }
     }
 
-    public void menuItem(final AppEventListner appEventListner, final ApplicationController.ApplicationState target, final String menuLabel, final int hotkey, final String styleName) {
+    public void menuItem(final AppEventListener appEventListener, final ApplicationController.ApplicationState target, final String menuLabel, final int hotkey, final String styleName) {
         final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + target.name()));
         if (!screenCompleted) {
             nonCompletedScreens.add(target);
         }
-        ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
+        ((MenuView) simpleView).addMenuItem(new PresenterEventListener() {
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                appEventListner.requestApplicationState(target);
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                appEventListener.requestApplicationState(target);
             }
 
             @Override
@@ -85,7 +85,7 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
         }, true);
     }
 
-    public void activateRandomItem(final AppEventListner appEventListner) {
+    public void activateRandomItem(final AppEventListener appEventListener) {
         final ApplicationController.ApplicationState target;
         if (nonCompletedScreens.isEmpty()) {
             target = nextState;
@@ -94,7 +94,7 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
         }
         Timer timer = new Timer() {
             public void run() {
-                appEventListner.requestApplicationState(target);
+                appEventListener.requestApplicationState(target);
             }
         };
         timer.schedule(100);

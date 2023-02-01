@@ -25,10 +25,10 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -57,8 +57,8 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
-        super.setState(appEventListner, prevState, null);
+    public void setState(final AppEventListener appEventListener, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
+        super.setState(appEventListener, prevState, null);
         this.nextState = nextState;
     }
 
@@ -142,8 +142,8 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
         });
     }
 
-    protected void createUserButton(final AppEventListner appEventListner, final String label, final String styleName, final ApplicationController.ApplicationState targetApplicationState, final String buttonGroup) {
-        optionButton(new PresenterEventListner() {
+    protected void createUserButton(final AppEventListener appEventListener, final String label, final String styleName, final ApplicationController.ApplicationState targetApplicationState, final String buttonGroup) {
+        optionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -161,16 +161,16 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 userResults.setUser(new UserData());
                 localStorage.storeData(userResults, metadataFieldProvider);
-                appEventListner.requestApplicationState(targetApplicationState);
+                appEventListener.requestApplicationState(targetApplicationState);
             }
         }, buttonGroup);
     }
 
-    protected void eraseUsersDataButton(final AppEventListner appEventListner, final String buttonLabel, final String styleName, final ApplicationController.ApplicationState nextState, final String buttonGroup) {
-        optionButton(new PresenterEventListner() {
+    protected void eraseUsersDataButton(final AppEventListener appEventListener, final String buttonLabel, final String styleName, final ApplicationController.ApplicationState nextState, final String buttonGroup) {
+        optionButton(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -188,7 +188,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 final UserId previousUserId = userResults.getUserData().getUserId();
                 submissionService.eraseUsersStoredData(previousUserId);
                 List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]);
@@ -200,7 +200,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
                     userResults.setUser(new UserData(nextUserId));
                 }
                 submissionService.eraseUsersStoredData(previousUserId);
-                appEventListner.requestApplicationState(nextState);
+                appEventListener.requestApplicationState(nextState);
             }
         }, buttonGroup);
     }
@@ -216,7 +216,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     }
 
     protected void eraseLocalStorageOnWindowClosing() {
-        setWindowClosingListener(new PresenterEventListner() {
+        setWindowClosingListener(new PresenterEventListener() {
 
             @Override
             public String getLabel() {
@@ -234,7 +234,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             }
 
             @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 submissionService.eraseUsersStoredData(userResults.getUserData().getUserId());
             }
         });

@@ -33,8 +33,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
@@ -78,26 +78,26 @@ public class SimpleView extends AbstractView {
         scrollPanel.setWidget(html);
     }
 
-    public void addInfoButton(final PresenterEventListner presenterListerner) {
+    public void addInfoButton(final PresenterEventListener presenterListerner) {
         if (headerPanel != null) {
             final Label headerButton = new Label(presenterListerner.getLabel());
             headerButton.addStyleName("headerButton");
-            SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+            SingleShotEventListener singleShotEventListener = new SingleShotEventListener() {
 
                 @Override
                 protected void singleShotFired() {
                     presenterListerner.eventFired(null, this);
                 }
             };
-            headerButton.addClickHandler(singleShotEventListner);
-            headerButton.addTouchStartHandler(singleShotEventListner);
-            headerButton.addTouchMoveHandler(singleShotEventListner);
-            headerButton.addTouchEndHandler(singleShotEventListner);
+            headerButton.addClickHandler(singleShotEventListener);
+            headerButton.addTouchStartHandler(singleShotEventListener);
+            headerButton.addTouchMoveHandler(singleShotEventListener);
+            headerButton.addTouchEndHandler(singleShotEventListener);
             headerPanel.setWidget(0, 2, headerButton);
         }
     }
 
-    public void addTitle(String label, final PresenterEventListner presenterListerner) {
+    public void addTitle(String label, final PresenterEventListener presenterListerner) {
         if (ApplicationController.SHOW_HEADER || presenterListerner != null) {
             HEADER_SIZE = 50;
             headerPanel = new Grid(1, 3);
@@ -123,13 +123,13 @@ public class SimpleView extends AbstractView {
         resizeView();
     }
 
-    public Button setButton(ButtonType buttonType, final PresenterEventListner presenterListerner) {
+    public Button setButton(ButtonType buttonType, final PresenterEventListener presenterListerner) {
         footerPanel.setVisible(true);
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.addStyleName(buttonType.name() + "Button");
         nextButton.setEnabled(true);
         footerPanel.add(nextButton);
-        SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+        SingleShotEventListener singleShotEventListener = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -140,10 +140,10 @@ public class SimpleView extends AbstractView {
                 }
             }
         };
-        nextButton.addTouchStartHandler(singleShotEventListner);
-        nextButton.addTouchMoveHandler(singleShotEventListner);
-        nextButton.addTouchEndHandler(singleShotEventListner);
-        nextButton.addClickHandler(singleShotEventListner);
+        nextButton.addTouchStartHandler(singleShotEventListener);
+        nextButton.addTouchMoveHandler(singleShotEventListener);
+        nextButton.addTouchEndHandler(singleShotEventListener);
+        nextButton.addClickHandler(singleShotEventListener);
         return nextButton;
     }
 

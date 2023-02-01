@@ -35,14 +35,14 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.ButtonGroupMember;
 import nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener;
 import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.RecorderDtmfListener;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener;
@@ -80,12 +80,12 @@ public abstract class AbstractPresenter implements Presenter {
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     protected final RootLayoutPanel widgetTag;
     final protected ComplexView simpleView;
-    private PresenterEventListner backEventListner = null;
-    protected final List<TimedStimulusListener> backEventListners = new ArrayList<>();
+    private PresenterEventListener backEventListener = null;
+    protected final List<TimedStimulusListener> backEventListeners = new ArrayList<>();
     private final HashMap<String, ArrayList<ButtonGroupMember>> buttonGroupsList = new HashMap<>();
     private final HashMap<String, ArrayList<StimulusFreeText>> inputGroupsList = new HashMap<>();
-    private PresenterEventListner nextEventListner = null;
-    private PresenterEventListner windowClosingEventListner = null;
+    private PresenterEventListener nextEventListener = null;
+    private PresenterEventListener windowClosingEventListener = null;
     private final Timer audioTickerTimer;
     protected ApplicationState nextState;
     protected final UserResults userResults;
@@ -114,17 +114,17 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
+    public void setState(final AppEventListener appEventListener, final ApplicationState prevState, final ApplicationState nextState) {
         this.nextState = nextState;
         widgetTag.clear();
         if (prevState != null) {
-            backEventListner = new PresenterEventListner() {
+            backEventListener = new PresenterEventListener() {
 
                 @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    if (allowBackAction(appEventListner)) {
+                public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                    if (allowBackAction(appEventListener)) {
                         savePresenterState();
-                        appEventListner.requestApplicationState(prevState);
+                        appEventListener.requestApplicationState(prevState);
                     }
                 }
 
@@ -145,11 +145,11 @@ public abstract class AbstractPresenter implements Presenter {
             };
         } else {
             // todo: on android there needs to be a back action available
-//            backEventListner = new PresenterEventListner() {
+//            backEventListener = new PresenterEventListener() {
 //
 //                @Override
 //                public void eventFired(ButtonBase button) {
-//                    appEventListner.requestApplicationState(ApplicationState.end);
+//                    appEventListener.requestApplicationState(ApplicationState.end);
 //                }
 //
 //                @Override
@@ -158,15 +158,15 @@ public abstract class AbstractPresenter implements Presenter {
 //                }
 //            };
         }
-        simpleView.addTitle(getTitle(), backEventListner);
+        simpleView.addTitle(getTitle(), backEventListener);
 
         if (nextState != null) {
-            nextEventListner = new PresenterEventListner() {
+            nextEventListener = new PresenterEventListener() {
 
                 @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                     savePresenterState();
-                    appEventListner.requestApplicationState(nextState);
+                    appEventListener.requestApplicationState(nextState);
                 }
 
                 @Override
@@ -184,9 +184,9 @@ public abstract class AbstractPresenter implements Presenter {
                     return nextState.label;
                 }
             };
-            simpleView.setButton(SimpleView.ButtonType.next, nextEventListner);
+            simpleView.setButton(SimpleView.ButtonType.next, nextEventListener);
         }
-        setContent(appEventListner);
+        setContent(appEventListener);
         simpleView.resizeView();
         widgetTag.add(simpleView);
     }
@@ -207,7 +207,7 @@ public abstract class AbstractPresenter implements Presenter {
         simpleView.addHtmlText(textString, styleName, xmlId);
     }
 
-    protected void showHtmlPopup(String textString, final PresenterEventListner... buttonListeners) {
+    protected void showHtmlPopup(String textString, final PresenterEventListener... buttonListeners) {
         simpleView.showHtmlPopup(textString, buttonListeners);
     }
 
@@ -215,7 +215,7 @@ public abstract class AbstractPresenter implements Presenter {
         simpleView.addWidget(svgHTML);
     }
 
-    public void targetButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
+    public void targetButton(final PresenterEventListener presenterListerner, final String buttonGroup) {
         addButtonToGroup(buttonGroup, simpleView.addOptionButton(presenterListerner));
     }
 
@@ -260,7 +260,7 @@ public abstract class AbstractPresenter implements Presenter {
             }
         };
         buttonList.add(buttonGroupMember);
-        simpleView.addHotKeyListner(hotKey, buttonGroupMember, onKeyDownListener, onKeyUpListener);
+        simpleView.addHotKeyListener(hotKey, buttonGroupMember, onKeyDownListener, onKeyUpListener);
     }
 
     protected void addButtonToGroup(final String buttonGroup, final List<StimulusButton> stimulusButtonList) {
@@ -450,11 +450,11 @@ public abstract class AbstractPresenter implements Presenter {
 
     @Override
     public void fireBackEvent() {
-        if (backEventListner != null) {
-            backEventListner.eventFired(null, null);
+        if (backEventListener != null) {
+            backEventListener.eventFired(null, null);
         } else {
-            for (TimedStimulusListener listner : backEventListners) {
-                listner.postLoadTimerFired();
+            for (TimedStimulusListener listener : backEventListeners) {
+                listener.postLoadTimerFired();
             }
         }
     }
@@ -466,22 +466,22 @@ public abstract class AbstractPresenter implements Presenter {
 
     @Override
     public void fireWindowClosing() {
-        if (windowClosingEventListner != null) {
-            windowClosingEventListner.eventFired(null, null);
+        if (windowClosingEventListener != null) {
+            windowClosingEventListener.eventFired(null, null);
         }
     }
 
-    public void setWindowClosingListener(PresenterEventListner windowClosingEventListner) {
-        this.windowClosingEventListner = windowClosingEventListner;
+    public void setWindowClosingListener(PresenterEventListener windowClosingEventListener) {
+        this.windowClosingEventListener = windowClosingEventListener;
     }
 
     /**
      * called before the back event listener is triggered
      *
-     * @param appEventListner
+     * @param appEventListener
      * @return {@code true} if the back event is to continue
      */
-    protected boolean allowBackAction(final AppEventListner appEventListner) {
+    protected boolean allowBackAction(final AppEventListener appEventListener) {
         return true;
     }
 
@@ -489,38 +489,38 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected abstract String getSelfTag();
 
-    protected abstract void setContent(final AppEventListner appEventListner);
+    protected abstract void setContent(final AppEventListener appEventListener);
 
     // it is possible for the XML trigger requestApplicationState multiple times concurrently so we use this timer to reduce the risk of duplicate audio and other negative effects
     private Timer nextStateTimer = null;
 
-    protected void gotoNextPresenter(final AppEventListner appEventListner) {
+    protected void gotoNextPresenter(final AppEventListener appEventListener) {
         if (nextStateTimer != null) {
             nextStateTimer.cancel();
         }
         savePresenterState();
         nextStateTimer = new Timer() {
             public void run() {
-                appEventListner.requestApplicationState(nextState);
+                appEventListener.requestApplicationState(nextState);
             }
         };
         nextStateTimer.schedule(100);
     }
 
-    protected void gotoPresenter(final AppEventListner appEventListner, final ApplicationState targetState) {
+    protected void gotoPresenter(final AppEventListener appEventListener, final ApplicationState targetState) {
         if (nextStateTimer != null) {
             nextStateTimer.cancel();
         }
         savePresenterState();
         nextStateTimer = new Timer() {
             public void run() {
-                appEventListner.requestApplicationState(targetState);
+                appEventListener.requestApplicationState(targetState);
             }
         };
         nextStateTimer.schedule(100);
     }
 
-    public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
+    public void hasGetParameter(final AppEventListener appEventListener, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
         // there appears to be no current reason for this to be in a timer, the timer causes the resulting content to fall out of the current region so it is being removed
         // Timer timer = new Timer() {
         // public void run() {
@@ -535,7 +535,7 @@ public abstract class AbstractPresenter implements Presenter {
         // timer.schedule(100);
     }
 
-    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final DataSubmissionService dataSubmissionService, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final DataSubmissionService dataSubmissionService, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListener, final TimedStimulusListener successEventListener) {
         StringBuilder targetStateJsonBuilder = new StringBuilder();
         targetStateJsonBuilder.append("[");
         for (ApplicationState targetState : targetOptionStates) {
@@ -553,12 +553,12 @@ public abstract class AbstractPresenter implements Presenter {
         new LocalNotifications() {
             @Override
             protected void setNotificationSucceded() {
-                successEventListner.postLoadTimerFired();
+                successEventListener.postLoadTimerFired();
             }
 
             @Override
             protected void setNotificationFailed() {
-                errorEventListner.postLoadTimerFired();
+                errorEventListener.postLoadTimerFired();
             }
 
             @Override
@@ -596,7 +596,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
 //    protected void startAudioRecorderFailed(String message) {
-//        backEventListner.eventFired(null, null);
+//        backEventListener.eventFired(null, null);
 //        ((ComplexView) simpleView).clearPage();
 //        ((ComplexView) simpleView).addText("Could not start the audio recorder");
 //        ((ComplexView) simpleView).addText(message);

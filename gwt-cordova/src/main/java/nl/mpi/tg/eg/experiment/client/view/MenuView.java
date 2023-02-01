@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 
 /**
  * @since Oct 31, 2014 11:36:28 AM (creation date)
@@ -54,7 +54,7 @@ public class MenuView extends TimedStimulusView {
         }
     }
 
-    public void addMenuItem(final PresenterEventListner menuItemListerner, final boolean menuEnabled) {
+    public void addMenuItem(final PresenterEventListener menuItemListerner, final boolean menuEnabled) {
         checkFlexTableExists(null);
         final Button menuButton = new Button(new SafeHtmlBuilder().appendEscapedLines(menuItemListerner.getLabel()).toSafeHtml());
 //        tableMap.get(flexTable).add(menuButton);
@@ -63,7 +63,7 @@ public class MenuView extends TimedStimulusView {
             menuButton.addStyleName(menuItemListerner.getStyleName());
         }
         menuButton.setEnabled(menuEnabled);
-        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+        final SingleShotEventListener singleShotEventListener = new SingleShotEventListener() {
 
             @Override
             protected void singleShotFired() {
@@ -72,10 +72,10 @@ public class MenuView extends TimedStimulusView {
                 }
             }
         };
-        menuButton.addClickHandler(singleShotEventListner);
-        menuButton.addTouchStartHandler(singleShotEventListner);
-        menuButton.addTouchMoveHandler(singleShotEventListner);
-        menuButton.addTouchEndHandler(singleShotEventListner);
+        menuButton.addClickHandler(singleShotEventListener);
+        menuButton.addTouchStartHandler(singleShotEventListener);
+        menuButton.addTouchMoveHandler(singleShotEventListener);
+        menuButton.addTouchEndHandler(singleShotEventListener);
         final int rowCount = flexTable.getRowCount();
         flexTable.setWidget(rowCount, 0, menuButton);
     }

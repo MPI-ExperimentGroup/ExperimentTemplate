@@ -20,11 +20,11 @@ package nl.ru.languageininteraction.language.client.presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
-//import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+//import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.ru.languageininteraction.language.client.view.MapView;
 
 /**
@@ -48,12 +48,12 @@ public class MapPresenter extends AbstractPresenter implements Presenter {
     }
 
 //    @Override
-//    public void setTitle(PresenterEventListner titleBarListner) {
+//    public void setTitle(PresenterEventListener titleBarListener) {
 //        throw new UnsupportedOperationException();
-////        simpleView.addTitle(messages.mapScreenTitle(), titleBarListner);
+////        simpleView.addTitle(messages.mapScreenTitle(), titleBarListener);
 //    }
     @Override
-    public void setContent(AppEventListner appEventListner) {
+    public void setContent(AppEventListener appEventListener) {
         ((MapView) simpleView).addMap();
         ((MapView) simpleView).addZoom();
     }
