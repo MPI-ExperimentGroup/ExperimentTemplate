@@ -960,9 +960,9 @@ or local-name() eq 'ratingCheckbox'
             <xsl:text>}</xsl:text>
         </xsl:if>
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
-        <xsl:value-of select="if(count(stimuli) = 0) then ',&#xa;new StimulusSelector[]{}' else ''" />
+        <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(stimuli) = 0) then ',&#xa;new StimulusSelector[]{}' else ''" />
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
-        <xsl:value-of select="if(count(randomGrouping) = 0) then ',&#xa;new StimulusSelector[]{},&#xa;new StimulusSelector[]{},null,null' else ''" />
+        <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(randomGrouping) = 0) then ',&#xa;new StimulusSelector[]{},&#xa;new StimulusSelector[]{},null,null' else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -1408,7 +1408,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
-        <xsl:value-of select="if(count(stimuli) = 0) then ',&#xa;new StimulusSelector[]{}' else ''" />
+        <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(stimuli) = 0) then ',&#xa;new StimulusSelector[]{}' else ''" />
         <!-- // todo: currentStimulusHasTag has changed from stimuli/tag... to @tags so this needs to be updated -->
         <xsl:if test="@tags">
             <!--preloadAllStimuli uses this tags attribute-->
@@ -1425,7 +1425,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         </xsl:if>
         
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
-        <xsl:value-of select="if(count(randomGrouping) = 0) then ',&#xa;new StimulusSelector[]{},&#xa;new StimulusSelector[]{},null,null' else ''" />
+        <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(randomGrouping) = 0) then ',&#xa;new StimulusSelector[]{},&#xa;new StimulusSelector[]{},null,null' else ''" />
         <xsl:value-of select="if(local-name() ne 'loadSdCardStimulus' and @matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() ne 'loadSdCardStimulus' and @replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
         <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
