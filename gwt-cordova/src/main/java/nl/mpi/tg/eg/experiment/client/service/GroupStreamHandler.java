@@ -37,6 +37,7 @@ public class GroupStreamHandler {
     private boolean isReady = false;
 
     private native void handleOffer(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+        var groupStreamHandler = this;
         offer = JSON.parse(messageData);
         if ($wnd.peerConnection) {
             if (!$wnd.peerConnection.localDescription) {
@@ -66,6 +67,7 @@ public class GroupStreamHandler {
     }-*/;
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+        var groupStreamHandler = this;
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
         if ($wnd.peerConnection) {
@@ -143,7 +145,7 @@ public class GroupStreamHandler {
     }-*/;
 
     private native void initiateConnection(String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
-        // TODO: initialise the stream     
+        var groupStreamHandler = this;    
         console.log("initialiseConnection: " + stunServer);
         if (!$wnd.peerConnection) {
             var configuration = null; 
