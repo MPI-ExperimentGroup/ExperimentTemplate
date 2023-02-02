@@ -45,7 +45,7 @@
             start(null),
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
-            <xsl:text>        </xsl:text>
+            <xsl:text>        xml_</xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>(messages.menuLabel</xsl:text>
             <xsl:value-of select="@self" />
@@ -100,7 +100,7 @@
             @Override
             ApplicationState splashPresenter() {
             return </xsl:text>
-        <xsl:value-of select="if(experiment/@splashPresenter) then concat('ApplicationState.', experiment/@splashPresenter) else 'null'" />
+        <xsl:value-of select="if(experiment/@splashPresenter) then concat('ApplicationState.xml_', experiment/@splashPresenter) else 'null'" />
         <xsl:text>;
             }
             public ApplicationController(RootLayoutPanel widgetTag) throws UserIdException {
@@ -152,7 +152,7 @@
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>
-                case </xsl:text>
+                case xml_</xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>:
                 this.presenter = new </xsl:text>
@@ -167,7 +167,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
                 <xsl:when test="@back">
-                    <xsl:text>ApplicationState.</xsl:text>
+                    <xsl:text>ApplicationState.xml_</xsl:text>
                     <xsl:value-of select="@back" />
                 </xsl:when>
                 <xsl:otherwise>
@@ -177,7 +177,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>, </xsl:text>
             <xsl:choose>
                 <xsl:when test="@next">
-                    <xsl:text>ApplicationState.</xsl:text>
+                    <xsl:text>ApplicationState.xml_</xsl:text>
                     <xsl:value-of select="@next" />
                 </xsl:when>
                 <xsl:otherwise>
@@ -310,7 +310,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>Presenter extends </xsl:text>
             <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else if(@type = 'svg') then 'AbstractSvg' else 'AbstractTimed'" />
             <xsl:text>Presenter implements Presenter {
-                private final ApplicationState selfApplicationState = ApplicationState.</xsl:text>
+                private final ApplicationState selfApplicationState = ApplicationState.xml_</xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>;</xsl:text> 
             <xsl:if test="versionData">
@@ -393,7 +393,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 
                 @Override
                 protected String getSelfTag() {
-                return ApplicationState.</xsl:text>
+                return ApplicationState.xml_</xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>.name();
                 }
@@ -448,7 +448,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListener, </xsl:text>      
-        <xsl:text>ApplicationState.</xsl:text>
+        <xsl:text>ApplicationState.xml_</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>, messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
@@ -532,7 +532,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         </xsl:text>
         <xsl:choose>
             <xsl:when test="@target">
-                <xsl:text>appEventListener.requestApplicationState(ApplicationState.</xsl:text>
+                <xsl:text>appEventListener.requestApplicationState(ApplicationState.xml_</xsl:text>
                 <xsl:value-of select="@target" />
                 <xsl:text>);</xsl:text>
             </xsl:when>
@@ -588,7 +588,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             }
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-            appEventListener.requestApplicationState(ApplicationState.</xsl:text>
+            appEventListener.requestApplicationState(ApplicationState.xml_</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>);
             }
@@ -655,7 +655,7 @@ or local-name() eq 'submitGroupEvent'
             <xsl:text>, submissionService</xsl:text>
             <xsl:text>, new ApplicationState[]{</xsl:text>
             <xsl:for-each select="tokenize(@targetOptions,',')">
-                <xsl:text>ApplicationState.</xsl:text>
+                <xsl:text>ApplicationState.xml_</xsl:text>
                 <xsl:value-of select="." />
                 <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>
@@ -689,7 +689,7 @@ or local-name() eq 'submitGroupEvent'
             </xsl:for-each>
             <xsl:text>}</xsl:text>
         </xsl:if>
-        <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
+        <xsl:value-of select="if(@target) then concat(', ApplicationState.xml_', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
         <xsl:if test="local-name() eq 'htmlTokenText' or local-name() eq 'evaluateTokenText'">
             <!-- TODO: should htmlTokenText be editable in the templates due to the requirement to update the tokens -->
@@ -739,7 +739,7 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Menu') or contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@styleName) then concat(',&quot;',@styleName, '&quot;') else ',null' else ''" />
-        <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
+        <xsl:value-of select="if(@target) then concat(', ApplicationState.xml_', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'allMenuItems') then ', selfApplicationState' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" /> 
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else '&quot;defaultGroup&quot;' else ''" />
@@ -1374,7 +1374,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(local-name() eq 'logMediaTimeStamp') then ', ' else ''" />
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'logMediaTimeStamp') then ', ' else ''" />
-        <xsl:value-of select="if(@target) then concat('ApplicationState.', @target, '.name()') else ''" />
+        <xsl:value-of select="if(@target) then concat('ApplicationState.xml_', @target, '.name()') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'audioInputSelectWeb') then if(@deviceRegex) then concat('&quot;', @deviceRegex, '&quot;') else 'null' else ''" />
         <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@deviceRegex) then concat(',&quot;', @deviceRegex, '&quot;') else ',null' else ''" />
