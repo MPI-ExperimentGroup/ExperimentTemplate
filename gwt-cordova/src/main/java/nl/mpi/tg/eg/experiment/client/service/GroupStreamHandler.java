@@ -56,7 +56,7 @@ public class GroupStreamHandler {
     }-*/;
 
     private native void handleAnswer(final String messageData) /*-{
-        console.log("answer: " + contentData.messageData);
+        // console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
         if ($wnd.peerConnection) {
             $wnd.peerConnection.setRemoteDescription(answer);
@@ -66,7 +66,7 @@ public class GroupStreamHandler {
     }-*/;
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
-        console.log("candidate: " + contentData.messageData);
+        // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
         if ($wnd.peerConnection) {
             if (candidate === "null" || !candidate.candidate) {
@@ -87,15 +87,15 @@ public class GroupStreamHandler {
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         $wnd.stompClient.subscribe('/shared/stream', function (streamMessage) {
             var contentData = JSON.parse(streamMessage.body);
-            console.log("contentData.userId");
-            console.log("contentData.groupId");
-            console.log("contentData.groupUUID");
-            console.log("contentData.screenId");
-            console.log("contentData.memberCode");
-            console.log("contentData.originMemberCode");
-            console.log("contentData.streamState");
-            console.log("contentData.originPhase");
-            console.log("contentData.messageData");
+            // console.log(contentData.userId);
+            // console.log(contentData.groupId);
+            // console.log(contentData.groupUUID);
+            // console.log(contentData.screenId);
+            // console.log(contentData.memberCode);
+            // console.log(contentData.originMemberCode);
+            // console.log(contentData.streamState);
+            // console.log(contentData.originPhase);
+            // console.log(contentData.messageData);
             if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
                 if (groupId !== contentData.groupId) {
                     console.log("ignoring other group: " + contentData.groupId);
