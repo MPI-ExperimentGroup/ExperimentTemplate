@@ -165,13 +165,9 @@ public class GroupStreamHandler {
             $wnd.peerConnection.onicecandidate = function (event) {
                 console.log("onicecandidate");
                 if (event.candidate) {
-                    // TODO: sendToGroup("candidate", {
-                    //    type: "candidate", candidate: event.candidate.candidate,
-                    //    sdpMid: event.candidate.sdpMid,
-                    //    sdpMLineIndex: event.candidate.sdpMLineIndex
-                    //});
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, memberCode, screenId);
                 } else {
-                    // TODO: sendToGroup("candidate", { type: "candidate", candidate: null });
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: null }), originPhase, userId, groupId, groupUUID, memberCode, screenId);
                 }
             };
 
