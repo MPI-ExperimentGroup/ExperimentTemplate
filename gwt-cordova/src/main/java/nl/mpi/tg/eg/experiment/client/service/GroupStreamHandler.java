@@ -42,7 +42,7 @@ public class GroupStreamHandler {
         if ($wnd.peerConnection) {
             if (sendingUserId !== userId) {
                 console.log('already connected, ignoring')
-            else if (!$wnd.peerConnection.localDescription) {
+            } else if (!$wnd.peerConnection.localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
                 $wnd.peerConnection.setLocalDescription(offer);
             }
