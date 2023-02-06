@@ -36,11 +36,13 @@ public class GroupStreamHandler {
 
     private boolean isReady = false;
 
-    private native void handleOffer(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+    private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
         var groupStreamHandler = this;
         offer = JSON.parse(messageData);
         if ($wnd.peerConnection) {
-            if (!$wnd.peerConnection.localDescription) {
+            if (sendingUserId !== userId) {
+                console.log('already connected, ignoring')
+            else if (!$wnd.peerConnection.localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
                 $wnd.peerConnection.setLocalDescription(offer);
             }
@@ -104,7 +106,7 @@ public class GroupStreamHandler {
                 } else if (contentData.userId === userId){
                     console.log("ignoring self message: " + contentData.userId);
                 } else if (contentData.streamState === "offer") {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
                 } else if (contentData.streamState === "answer") {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;)(contentData.messageData);
                 } if (contentData.streamState === "candidate") {
