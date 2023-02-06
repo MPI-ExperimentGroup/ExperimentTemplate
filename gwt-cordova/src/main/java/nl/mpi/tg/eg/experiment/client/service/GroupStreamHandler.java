@@ -103,11 +103,11 @@ public class GroupStreamHandler {
             if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
                 if (groupId !== contentData.groupId) {
                     console.log("ignoring other group: " + contentData.groupId);
-//                } else if (contentData.userId === userId){
-                        // the self message is needed to set up the stream so we do not ignore these
-//                    console.log("ignoring self message: " + contentData.userId);
                 } else if (contentData.streamState === "offer") {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                } else if (contentData.userId === userId){
+                    // the self message is needed in the offer stage to set up the stream but after that point we ignore these
+                    console.log("ignoring self message: " + contentData.userId);
                 } else if (contentData.streamState === "answer") {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;)(contentData.messageData);
                 } if (contentData.streamState === "candidate") {
