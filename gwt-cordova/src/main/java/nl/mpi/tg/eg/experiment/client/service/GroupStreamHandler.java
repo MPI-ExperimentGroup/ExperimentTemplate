@@ -24,7 +24,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  * @since 11 Jan 2023 11:12 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class GroupStreamHandler {
+public abstract class GroupStreamHandler {
 
     public enum StreamState {
         start, stop, pause, hide, show, mute, unmute
@@ -33,6 +33,10 @@ public class GroupStreamHandler {
     public enum StreamTypes {
         microphone, camera, canvas
     }
+
+    String groupCameraChannels;
+    String groupAudioChannels;
+    String groupCanvasChannels;
 
     private boolean isReady = false;
 
@@ -319,6 +323,23 @@ public class GroupStreamHandler {
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
+
+    public void setChannels(final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels) {
+        this.groupCameraChannels = groupCameraChannels;
+        this.groupAudioChannels = groupAudioChannels;
+        this.groupCanvasChannels = groupCanvasChannels;
+        addCanvasElement("groupLocalCanvas");
+        addVideoElement("groupLocalVideo");
+        addVideoElement("groupRemoteStream");
+    }
+
+    public void synchronisePhase(int currentPhase) {
+
+    }
+
+    public abstract void addCanvasElement(final String canvasName);
+
+    public abstract void addVideoElement(final String canvasName);
 
     public void updateStream(final StreamState streamState, final StreamTypes streamType, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
         // TODO: update the stream

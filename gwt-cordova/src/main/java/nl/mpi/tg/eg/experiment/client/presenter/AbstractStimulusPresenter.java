@@ -551,6 +551,47 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void groupNetwork(final AppEventListener appEventListener, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+        if (groupStreamHandler == null && (groupCameraChannels == null || groupAudioChannels == null || groupCanvasChannels == null)) {
+            groupStreamHandler = new GroupStreamHandler() {
+                @Override
+                public void addCanvasElement(String canvasName) {
+                    simpleView.clearRegion(canvasName + "Region");
+                    final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(canvasName + "Region", null);
+                    final Canvas groupLocalCanvas = Canvas.createIfSupported();
+                    if (groupLocalCanvas != null) {
+                        groupLocalCanvas.getCanvasElement().setId(canvasName);
+                        groupLocalCanvas.setSize("30vw", "30vw");
+                        simpleView.addWidget(groupLocalCanvas);
+                    } else {
+                        // TODO: add error handling and remove this html text 
+                        timedStimulusView.addText("Canvas is not supported");
+                    }
+                    simpleView.endRegion(groupLocalCanvasRegion);
+                }
+
+                @Override
+                public void addVideoElement(String canvasName) {
+                    simpleView.clearRegion(canvasName + "Region");
+                    final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(canvasName + "Region", null);
+                    final Video groupLocalVideo = Video.createIfSupported();
+                    if (groupLocalVideo != null) {
+                        groupLocalVideo.getVideoElement().setId(canvasName);
+                        groupLocalVideo.setSize("30vw", "30vw");
+                        groupLocalVideo.setAutoplay(true);
+                        groupLocalVideo.setMuted(true);
+                        simpleView.addWidget(groupLocalVideo);
+                    } else {
+                        // TODO: add error handling and remove this html text 
+                        timedStimulusView.addText("Video is not supported");
+                    }
+                    simpleView.endRegion(groupLocalVideoRegion);
+                }
+            };
+            groupStreamHandler.setChannels(groupCameraChannels, groupAudioChannels, groupCanvasChannels);
+            // TODO: remove the debug output when the GroupStreamHandler is ready
+            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
+            groupStreamHandler.connect(ApplicationController.STUN_SERVER, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        }
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
@@ -682,6 +723,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             return -1;
                         }
                     });
+                }
+
+                @Override
+                public void synchroniseStreamingPhase(int currentPhase) {
+                    if (groupStreamHandler != null) {
+                        groupStreamHandler.synchronisePhase(currentPhase);
+                    }
                 }
             };
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
@@ -2268,56 +2316,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamType.name() + "" + streamState.name(), duration.elapsedMillis());
-        // handle stream actions
-        if (groupStreamHandler == null) {
-            groupStreamHandler = new GroupStreamHandler();
-            simpleView.clearRegion("groupLocalCanvasRegion");
-            final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion("groupLocalCanvasRegion", null);
-            final Canvas groupLocalCanvas = Canvas.createIfSupported();
-            if (groupLocalCanvas != null) {
-                groupLocalCanvas.getCanvasElement().setId("groupLocalCanvas");
-                groupLocalCanvas.setSize("30vw", "30vw");
-                simpleView.addWidget(groupLocalCanvas);
-            } else {
-                // TODO: add error handling and remove this html text 
-                timedStimulusView.addText("Canvas is not supported");
-            }
-            simpleView.endRegion(groupLocalCanvasRegion);
 
-            simpleView.clearRegion("groupLocalVideoRegion");
-            final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion("groupLocalVideoRegion", null);
-            final Video groupLocalVideo = Video.createIfSupported();
-            if (groupLocalVideo != null) {
-                groupLocalVideo.getVideoElement().setId("groupLocalVideo");
-                groupLocalVideo.setSize("30vw", "30vw");
-                groupLocalVideo.setAutoplay(true);
-                groupLocalVideo.setMuted(true);
-                simpleView.addWidget(groupLocalVideo);
-            } else {
-                // TODO: add error handling and remove this html text 
-                timedStimulusView.addText("Video is not supported");
-            }
-            simpleView.endRegion(groupLocalVideoRegion);
-  
-            simpleView.clearRegion("groupRemoteStreamRegion");
-            final InsertPanel.ForIsWidget groupRemoteStreamRegion = simpleView.startRegion("groupRemoteStreamRegion", null);
-            final Video groupRemoteStream = Video.createIfSupported();
-            if (groupRemoteStream != null) {
-                groupRemoteStream.getVideoElement().setId("groupRemoteStream");
-                groupRemoteStream.setSize("30vw", "30vw");
-                groupRemoteStream.setAutoplay(true);
-                groupRemoteStream.setMuted(true);
-                simpleView.addWidget(groupRemoteStream);
-            } else {
-                // TODO: add error handling and remove this html text 
-                timedStimulusView.addText("Video is not supported");
-            }
-            simpleView.endRegion(groupRemoteStreamRegion);
-  
-            // TODO: remove the debug output when the GroupStreamHandler is ready
-            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
-            groupStreamHandler.connect(ApplicationController.STUN_SERVER, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
-        }
         // TODO: remove this debug output when the GroupStreamHandler is ready
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
         groupStreamHandler.updateStream(streamState, streamType, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());

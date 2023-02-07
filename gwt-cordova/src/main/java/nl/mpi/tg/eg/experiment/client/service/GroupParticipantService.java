@@ -221,6 +221,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
                     }
                     if (!currentFiredListenerList.isEmpty()) {
                         lastFiredListenerList = currentFiredListenerList;
+                        synchroniseStreamingPhase(this.requestedPhase);
                     }
                 }
             }
@@ -474,6 +475,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
     public abstract String synchroniseStimulusList(final String stimuliListGroup);
 
     public abstract Stimulus synchroniseCurrentStimulus(final int currentIndex);
+    
+    public abstract void synchroniseStreamingPhase(final int currentPhase);
 
     public abstract void groupInfoChanged();
 
