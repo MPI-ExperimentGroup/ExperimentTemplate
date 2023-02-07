@@ -82,6 +82,11 @@ public class GroupParticipantServiceTest {
             @Override
             public void groupFindingMembers() {
             }
+
+            @Override
+            public void synchroniseStreamingPhase(int currentPhase) {
+            }
+            
         };
         final StringBuilder stringBuilder = new StringBuilder();
         groupMemberActivity(stringBuilder, "a", instance, "A,C,E,G:-:-:B,D,F,H:-:-", 1, null);
@@ -231,6 +236,12 @@ public class GroupParticipantServiceTest {
                     // connectedListener
                     stringBuilder.append("findingMembersListener\n");
                 }
+
+                @Override
+                public void synchroniseStreamingPhase(int currentPhase) {
+                    stringBuilder.append("synchroniseStreamingPhase\n");
+                }
+                
             };
 
             groupMemberActivity(stringBuilder, "1", groupParticipantService, "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", 1, "producer");
@@ -297,6 +308,12 @@ public class GroupParticipantServiceTest {
                     // connectedListener
                     stringBuilder.append("findingMembersListener\n");
                 }
+
+                @Override
+                public void synchroniseStreamingPhase(int currentPhase) {
+                    stringBuilder.append("synchroniseStreamingPhase\n");
+                }
+                
             };
 
             groupMemberActivity(stringBuilder, "q", groupParticipantService, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, "feedback");
