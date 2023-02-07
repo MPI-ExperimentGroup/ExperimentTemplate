@@ -110,7 +110,7 @@ public class GroupStreamHandler {
                     console.log("ignoring self message: " + contentData.userId);
                 } else if (contentData.streamState === "answer") {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;)(contentData.messageData);
-                } if (contentData.streamState === "candidate") {
+                } else if (contentData.streamState === "candidate") {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
                 } else if (contentData.streamState === "ready") {
                     if ($wnd.peerConnection) {
@@ -131,8 +131,7 @@ public class GroupStreamHandler {
                         // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
                         localContext.fillText("T", 0, 0);
                     }
-                }
-                if (contentData.userId !== userId && contentData.streamState === "disconnect") {
+                } else if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                     if ($wnd.peerConnection) {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, screenId);
                     } else {
