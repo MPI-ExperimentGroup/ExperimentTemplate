@@ -551,7 +551,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void groupNetwork(final AppEventListener appEventListener, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
-        if (groupStreamHandler == null && (groupCameraChannels == null || groupAudioChannels == null || groupCanvasChannels == null)) {
+        if (groupStreamHandler == null && (groupCameraChannels != null || groupAudioChannels != null || groupCanvasChannels != null)) {
             groupStreamHandler = new GroupStreamHandler() {
                 @Override
                 public void addCanvasElement(String canvasName) {
