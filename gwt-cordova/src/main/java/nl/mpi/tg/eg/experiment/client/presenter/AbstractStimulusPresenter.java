@@ -79,8 +79,6 @@ import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler;
-import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamState;
-import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamTypes;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.HardwareTimeStamp;
@@ -550,8 +548,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListener appEventListener, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
-        if (groupStreamHandler == null && (groupCameraChannels != null || groupAudioChannels != null || groupCanvasChannels != null)) {
+    protected void groupNetwork(final AppEventListener appEventListener, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final String groupMembers, final String groupCommunicationChannels, final boolean containsStreamingMedia, final int phasesPerStimulus, final TimedStimulusListener groupInitialisationError, final TimedStimulusListener groupFindingMembers, final TimedStimulusListener groupNetworkConnecting, final TimedStimulusListener groupNetworkSynchronising, final TimedStimulusListener endOfStimulusGroupMessage) {
+        if (groupStreamHandler == null && containsStreamingMedia) {
             groupStreamHandler = new GroupStreamHandler() {
                 @Override
                 public void addCanvasElement(String canvasName) {
@@ -587,7 +585,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     simpleView.endRegion(groupLocalVideoRegion);
                 }
             };
-            groupStreamHandler.setChannels(groupCameraChannels, groupAudioChannels, groupCanvasChannels);
         }
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
@@ -2315,14 +2312,25 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.stopMedia(formattedMediaId);
     }
-
-    protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
+    
+    protected void streamGroupCanvas(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
+        // TODO: Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
+        groupStreamHandler.negotiateCanvas(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+    }
+    protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
+        // TODO: Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
+        groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+    }
+    
+    /* protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamType.name() + "" + streamState.name(), duration.elapsedMillis());
 
         // TODO: remove this debug output when the GroupStreamHandler is ready
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
         groupStreamHandler.updateStream(streamState, streamType, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
-    }
+    } */
 
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final AnimateTypes animateType = AnimateTypes.none;

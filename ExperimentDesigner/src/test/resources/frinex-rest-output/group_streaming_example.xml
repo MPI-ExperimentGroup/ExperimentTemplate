@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd"
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
             appNameDisplay="group_streaming_example" 
             appNameInternal="group_streaming_example" 
             backgroundColour="#FFFFFF" 
@@ -18,19 +18,19 @@
             primaryColour4="#D5D8D8" 
             rotatable="true" 
             showMenuBar="false"
-            obfuscateBrowserStorage="false" 
+            obfuscateBrowserStorage="false"
             textFontSize="17">
         <deployment 
             publishDate="2020-02-02" 
             expiryDate="2021-05-22"
             isWebApp="true"
-            isDesktop="true" 
-            isiOS="true"
-            isAndroid="true"   
-            state="production"  
-            frinexVersion="alpha"                      
+            isDesktop="false" 
+            isiOS="false"
+            isAndroid="false"
+            state="draft"
+            frinexVersion="alpha"
             stunServer="stun.example.com"
-        />
+        /> 
     <administration />
     <metadata>
         <field controlledMessage="stimulusImageRegion" controlledRegex=".'{'3,'}'" postName="stimulusImageRegion" registrationField="stimulusImageRegion" />
@@ -41,190 +41,261 @@
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="GroupFormation" />
         <addPadding />
         <htmlText featureText="In order to make testing a group experiment easier there is a group test page which emulates multiple browsers by using iframes and javascript to predefine a random but shared group and assign group member codes via the URL of each of the experiment instances. This allows up to eight experiment instances (group members) to run simultaneously in one browser window. This group emulation page also contains a robot, that when enabled, randomly presses buttons on each instance causing the experiment to proceed without intervention." />
+        <htmlText featureText="You can see some basic streaming interaction with the &lt;a href=&quot;webrtctestframes.html&quot;&gt;robot group streaming test page&lt;/a&gt;.&lt;br/&gt;" />
         <htmlText featureText="You can see an automated group interaction with the &lt;a href=&quot;grouptestframes.html&quot;&gt;robot group test page&lt;/a&gt;.&lt;br/&gt;" />
         <addPadding />
         <htmlText featureText="The group experiments function by the use of a group communication server. The messages from each group member are sent to the group server and then broadcast to all group members. Not all group messages are to be used by all group members. For example if two members are not in the same communication channel, they will not respond to each others messages." />
-        <htmlText featureText="You observe the group messaging functionality in your browser with the &lt;a href=&quot;grouptestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
+        <htmlText featureText="You can observe the underlying group messaging functionality in your browser with the &lt;a href=&quot;webrtctestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
     </presenter>
-    <presenter back="Instruction" menuLabel="GroupFormation" next="GroupStreamingExample" type="stimulus" self="GroupFormation" title="GroupFormation">
+    <presenter back="Instruction" menuLabel="GroupFormation" next="GroupStreamingExample" type="stimulus" self="GroupFormation" title="Formation">
         <!--regionReplace regionId="groupButtonsRegion"/-->
-        <htmlText featureText="This group formation presenter is not strictly needed. However it does allow the group to be set up and its structure checked before proceeding." />
         <addPadding />
-        <hasGetParameter parameterName="group">
-            <conditionTrue>
-                <htmlText featureText="The group name has been allocated in the URL. This member will be placed in the group associated with this name. If however the provided member code is already taken then this participant cannot be a member of this group." />
-                <addPadding />
-            </conditionTrue>
-            <conditionFalse>
-                <htmlText featureText="The group name has not been provided in the URL and a group will be randomly assigned. A specific group can be assigned by appending &amp;group=X to the URL." />
-                <addPadding />
-            </conditionFalse>
-        </hasGetParameter>
-        <hasGetParameter parameterName="member">
-            <conditionTrue>
-                <htmlText featureText="The group member code has been provided in the URL. This participant will be added to a group where the supplied member code is not already taken." />
-                <addPadding />
-            </conditionTrue>
-            <conditionFalse>
-                <htmlText featureText="The group member code has not been provided. This member will not be assigned a group without a member code being provided in the URL." />
-                <htmlText featureText="You can specify the member code by adding &amp;member=X to the URL." />
-                <addPadding />
-            </conditionFalse>
-        </hasGetParameter>
+        <regionAppend regionId="groupStatus" />
+        <addPadding />
+        <regionAppend regionId="groupOutput" />
+        <addPadding />
+        <regionAppend regionId="groupIntroduction"> 
+            <htmlText featureText="This group formation presenter is not strictly needed. However it does allow the group to be set up and its structure checked before proceeding." />
+            <hasGetParameter parameterName="group">
+                <conditionTrue>
+                    <htmlText featureText="The group name has been allocated in the URL. This member will be placed in the group associated with this name. If however the provided member code is already taken then this participant cannot be a member of this group." />
+                    <addPadding />
+                </conditionTrue>
+                <conditionFalse>
+                    <htmlText featureText="The group name has not been provided in the URL and a group will be randomly assigned. A specific group can be assigned by appending &amp;group=X to the URL." />
+                    <addPadding />
+                </conditionFalse>
+            </hasGetParameter>
+            <hasGetParameter parameterName="member">
+                <conditionTrue>
+                    <htmlText featureText="The group member code has been provided in the URL. This participant will be added to a group where the supplied member code is not already taken." />
+                    <addPadding />
+                </conditionTrue>
+                <conditionFalse>
+                    <htmlText featureText="The group member code has not been provided. This member will not be assigned a group without a member code being provided in the URL." />
+                    <htmlText featureText="You can specify the member code by adding &amp;member=X to the URL." />
+                    <addPadding />
+                </conditionFalse>
+            </hasGetParameter>    
+        </regionAppend>
         <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                 <groupNetworkConnecting>
-                    <htmlText featureText="groupNetworkConnecting" />
-                    <addPadding />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupNetworkConnecting" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput"></regionReplace>
                 </groupNetworkConnecting>
                 <groupFindingMembers>
-                    <regionReplace regionId="groupFindingMembers">
-                        <htmlText featureText="groupFindingMembers" />
-                        <htmlTokenText featureText="This is member: &lt;groupMemberCode&gt;" />
-                        <htmlTokenText featureText="Required members: &lt;groupAllMemberCodes&gt;" />
-                        <htmlTokenText featureText="Assigned members: &lt;groupAssignedMemberCodes&gt;" />
-                        <htmlTokenText featureText="Group: &lt;groupId&gt;" />
-                        <htmlTokenText featureText="Group UUID: &lt;groupUUID&gt;" />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupFindingMembers: waiting for the required members for this channel" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="This is member: ::groupMemberCode::" />
+                        <htmlTokenText featureText="Required members: ::groupAllMemberCodes::" />
+                        <htmlTokenText featureText="Assigned members: ::groupAssignedMemberCodes::" />
+                        <htmlTokenText featureText="Group: ::groupId::" />
+                        <htmlTokenText featureText="Group UUID: ::groupUUID::" />
                         <addPadding />
                     </regionReplace>
                 </groupFindingMembers>
                 <groupInitialisationError>
-                    <htmlText featureText="groupInitialisationError" />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput"></regionReplace>
                 </groupInitialisationError>
                 <groupNetworkSynchronising>
-                    <htmlText featureText="GroupFormation groupNetworkSynchronising" />
-                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                    <addPadding />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="GroupFormation groupNetworkSynchronising" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />                    
+                    </regionReplace>
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
                     <groupMemberActivity phaseMembers="A,B,C,D,E,F,G,H:-">
                         <disableButtonGroup matchingRegex="activityButtonGroup" />
-                        <htmlText featureText="First groupMemberActivity of GroupFormation Presenter" />
-                        <htmlText featureText="The phaseMembers of this groupMemberActivity determines which members see this activity and in which phases." />
-                        <htmlText featureText="&lt;groupMemberActivity phaseMembers=&quot;A,B,C,D,E,F,G,H:-&quot;&gt;" />
-                        <htmlText featureText="Each phase is separated by a : so &quot;A,B,C,D,E,F,G,H:-&quot; describes two phases. The all participants will see activity in the first phase and no participants will see it in the second phase as indicated by the &quot;-&quot; in the second position." />
-                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                        <addPadding />
-                        <!--sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false" groupId="activityButtonGroup"/-->
-                        <actionButton featureText="joinGroupMessageButton" groupId="activityButtonGroup">
-                            <sendGroupMessage eventTag="joinGroupMessageButton" incrementPhase="1" />
-                            <disableButtonGroup matchingRegex="activityButtonGroup" />
-                            <htmlText featureText="waiting group response" />
-                        </actionButton>
+                        <regionReplace regionId="groupIntroduction"></regionReplace>
+                        <regionReplace regionId="groupStatus">
+                            <htmlText featureText="A,B,C,D,E,F,G,H:-" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                            <htmlText featureText="First groupMemberActivity of GroupFormation Presenter" />
+                            <htmlText featureText="The phaseMembers of this groupMemberActivity determines which members see this activity and in which phases." />
+                            <htmlText featureText="::groupMemberActivity phaseMembers=&quot;A,B,C,D,E,F,G,H:-&quot;::" />
+                            <htmlText featureText="Each phase is separated by a : so &quot;A,B,C,D,E,F,G,H:-&quot; describes two phases. The all participants will see activity in the first phase and no participants will see it in the second phase as indicated by the &quot;-&quot; in the second position." />
+                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                            <addPadding />
+                            <!--sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false" groupId="activityButtonGroup"/-->
+                            <actionButton featureText="joinGroupMessageButton" groupId="activityButtonGroup">
+                                <sendGroupMessage eventTag="joinGroupMessageButton" incrementPhase="1" />
+                                <disableButtonGroup matchingRegex="activityButtonGroup" />
+                                <htmlText featureText="waiting group response" />
+                            </actionButton>
+                        </regionReplace>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:A,B,C,D,E,F,G,H">
                         <disableButtonGroup matchingRegex="activityButtonGroup" />
-                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                        <htmlText featureText="Second groupMemberActivity of GroupFormation Presenter" />
-                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
-                        <addPadding />
-                        <targetButton featureText="Volgende" target="GroupStreamingExample" groupId="activityButtonGroup" />
+                        <regionReplace regionId="groupStatus">
+                            <htmlText featureText="-:A,B,C,D,E,F,G,H" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                            <htmlText featureText="Second groupMemberActivity of GroupFormation Presenter" />
+                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
+                            <addPadding />
+                            <targetButton featureText="Volgende" target="GroupStreamingExample" groupId="activityButtonGroup" />
+                        </regionReplace>
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
             <endOfStimulus>
-                <centrePage />
-                <htmlText featureText="No valid stimuli" />
+                <regionReplace regionId="groupStatus">
+                    <htmlText featureText="No valid stimuli" />
+                </regionReplace>
             </endOfStimulus>
             <randomGrouping />
             <stimuli>
                 <tag>BalloonGroup</tag>
-            </stimuli>
+            </stimuli> 
         </groupStimuli>
     </presenter>
-    <presenter back="Menu" menuLabel="GroupStreamingExample" type="stimulus" self="GroupStreamingExample" title="GroupStreamingExample">
-        <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
+    <presenter back="Menu" menuLabel="GroupStreamingExample" type="stimulus" self="GroupStreamingExample" title="Streaming">
+        <regionAppend regionId="groupIntroduction">
+            <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
+        </regionAppend>
+        <addPadding />
+        <regionAppend regionId="groupStatus" />
+        <addPadding /> 
+        <regionAppend regionId="groupOutput" /> 
+        <addPadding />
+        <regionAppend regionId="groupButtons" />
+        <addPadding /> 
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
-            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C" groupCameraChannels="A,B|B,C" groupAudioChannels="A,B|B,C" groupCanvasChannels="A,B|B,C">
+            <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C" groupCameraChannels="A,B|B,C" groupAudioChannels="A,B|B,C" groupCanvasChannels="A,B|B,C">
                 <groupInitialisationError>
-                    <htmlText featureText="groupInitialisationError" />
+                    <regionReplace regionId="groupIntroduction" />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput"></regionReplace>
                 </groupInitialisationError>
                 <groupNetworkConnecting>
-                    <htmlText featureText="GroupStreamingExample groupNetworkConnecting" />
-                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="GroupStreamingExample groupNetworkConnecting" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                    </regionReplace>
                 </groupNetworkConnecting>
                 <groupFindingMembers>
-                    <htmlText featureText="GroupStreamingExample groupFindingMembers" />
-                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupFindingMembers: waiting for the required members for this channel" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="This is member: ::groupMemberCode::" />
+                        <htmlTokenText featureText="Required members: ::groupAllMemberCodes::" />
+                        <htmlTokenText featureText="Assigned members: ::groupAssignedMemberCodes::" />
+                        <htmlTokenText featureText="Group: ::groupId::" />
+                        <htmlTokenText featureText="Group UUID: ::groupUUID::" />
+                        <addPadding />
+                    </regionReplace>
                 </groupFindingMembers>
                 <groupNetworkSynchronising>
-                    <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;" />
-                    <htmlText featureText="GroupStreamingExample groupNetworkSynchronising" />
-                    <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupNetworkSynchronising" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />                    
+                        <htmlTokenText featureText="Connected to: ::groupId::&lt;br/&gt;&lt;br/&gt;Group members: ::groupAllMemberCodes::&lt;br/&gt;&lt;br/&gt;As member: ::groupMemberCode::&lt;br/&gt;&lt;br/&gt;" />
+                    </regionReplace>
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
-                    <groupMemberActivity phaseMembers="B,C:A,C:A,B">
-                        <htmlTokenText featureText="&lt;groupMemberCode&gt; is waiting" />
-                    </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="A:-:-">
-                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
+                    <!-- <groupMemberActivity phaseMembers="B,C:A,C:A,B">
+                        <regionReplace regionId="groupIntroduction" />
+                        <regionReplace regionId="groupStatus">
+                            <htmlTokenText featureText="B,C:A,C:A,B" />
+                            <htmlTokenText featureText="::groupMemberCode:: is waiting" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput"></regionReplace>
+                        <regionReplace regionId="groupButtonsRegion"></regionReplace>
+                    </groupMemberActivity> -->
+                    <groupMemberActivity phaseMembers="ABC:-:-">
+                        <regionReplace regionId="groupIntroduction" />
+                        <regionReplace regionId="groupStatus">
+                            <htmlTokenText featureText="ABC:-:-" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
+                        </regionReplace>
                         <regionReplace regionId="groupButtonsRegion">
                             <stimulusLabel />
-                            <stimulusFreeText featureText="Please enter at least three characters." groupId="MessageType1" validationRegex=".{1,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" />
-                            <actionButton featureText="validateStimuliResponses">
-                                <validateStimuliResponses>
-                                    <conditionFalse>
-                                        <regionAppend regionId="validateStimuliResponses">
-                                            <plainText featureText="plainText in conditionFalse" />
-                                        </regionAppend>
-                                    </conditionFalse>
-                                    <conditionTrue>
-                                        <regionAppend regionId="validateStimuliResponses">
-                                            <plainText featureText="plainText in conditionTrue" />
-                                            <regionReplace regionId="groupButtonsRegion">
-                                                <actionButton featureText="sendGroupStoredMessage">
-                                                    <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
-                                                    <updateGroupStream streamState="start" streamType="microphone" />
-                                                    <updateGroupStream streamState="stop" streamType="microphone" />
-                                                    <updateGroupStream streamState="pause" streamType="microphone" />
-                                                    <updateGroupStream streamState="hide" streamType="microphone" />
-                                                    <updateGroupStream streamState="show" streamType="microphone" />
-                                                    <updateGroupStream streamState="mute" streamType="microphone" />
-                                                    <updateGroupStream streamState="unmute" streamType="microphone" />
-                                                    <updateGroupStream streamState="start" streamType="camera" />
-                                                    <updateGroupStream streamState="stop" streamType="camera" />
-                                                    <updateGroupStream streamState="pause" streamType="camera" />
-                                                    <updateGroupStream streamState="hide" streamType="camera" />
-                                                    <updateGroupStream streamState="show" streamType="camera" />
-                                                    <updateGroupStream streamState="mute" streamType="camera" />
-                                                    <updateGroupStream streamState="unmute" streamType="camera" />
-                                                    <updateGroupStream streamState="start" streamType="canvas" />
-                                                    <updateGroupStream streamState="stop" streamType="canvas" />
-                                                    <updateGroupStream streamState="pause" streamType="canvas" />
-                                                    <updateGroupStream streamState="hide" streamType="canvas" />
-                                                    <updateGroupStream streamState="show" streamType="canvas" />
-                                                    <updateGroupStream streamState="mute" streamType="canvas" />
-                                                    <updateGroupStream streamState="unmute" streamType="canvas" />
-                                                </actionButton>
-                                            </regionReplace>
-                                        </regionAppend>
-                                    </conditionTrue>
-                                </validateStimuliResponses>
+                            <actionButton featureText="sendGroupStoredMessage">
+                                <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
+                            </actionButton>
+                            <actionButton featureText="start streamGroupCanvas">
+                                <streamGroupCanvas streamChannels="A,B|B,C" />
+                            </actionButton>
+                            <actionButton featureText="start streamGroupCamera">
+                                <streamGroupCamera streamChannels="A,B|B,C" />
+                            </actionButton>
+                            <actionButton featureText="clear local canvas stream region">
+                                <regionReplace regionId="groupLocalCanvasRegion" />
+                            </actionButton>
+                            <actionButton featureText="clear local video stream region">
+                                <regionReplace regionId="groupLocalVideoRegion" />
+                            </actionButton>
+                            <actionButton featureText="clear remote receive stream region">
+                                <regionReplace regionId="groupRemoteStreamRegion" />
                             </actionButton>
                         </regionReplace>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:B:-">
-                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
+                        <regionReplace regionId="groupIntroduction" />
+                        <regionReplace regionId="groupStatus">
+                            <htmlTokenText featureText="-:B:-" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
+                        </regionReplace>
                         <regionReplace regionId="groupButtonsRegion">
                             <sendGroupMessageButton repeatIncorrect="false" incrementPhase="1" featureText="forward message" />
                         </regionReplace>
                     </groupMemberActivity>
                     <groupMemberActivity phaseMembers="-:-:C">
-                        <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupActiveChannel: &lt;groupActiveChannel&gt;" />
-                        <htmlTokenText featureText="groupMemberCode: &lt;groupMemberCode&gt;" />
+                        <regionReplace regionId="groupIntroduction" />
+                        <regionReplace regionId="groupStatus">
+                            <htmlTokenText featureText="-:-:C" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
+                        </regionReplace>
                         <regionReplace regionId="groupButtonsRegion">
                             <sendGroupMessageButton repeatIncorrect="false" incrementPhase="1" featureText="forward message" />
+                        </regionReplace>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="D,E,F,G,H:D,E,F,G,H:D,E,F,G,H">
+                        <regionReplace regionId="groupIntroduction" />
+                        <regionReplace regionId="groupStatus">
+                            <htmlTokenText featureText="This member is not active in this activity" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                        </regionReplace>
+                        <regionReplace regionId="groupButtonsRegion">
                         </regionReplace>
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
             <endOfStimulus>
+                <clearPage />
                 <centrePage />
                 <htmlText featureText="No valid stimuli" />
             </endOfStimulus>

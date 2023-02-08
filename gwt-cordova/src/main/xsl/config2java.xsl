@@ -292,8 +292,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
                 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
                 import nl.mpi.tg.eg.experiment.client.model.XmlId;
-                import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamState;
-                import nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler.StreamTypes;
             </xsl:text> 
             <!--            <xsl:if test="@type = 'svg'">
                 <xsl:text>
@@ -765,7 +763,7 @@ or local-name() eq 'submitGroupEvent'
         </xsl:for-each>
         <xsl:text>");</xsl:text>
     </xsl:template>
-    <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|updateGroupStream|sendGroupTokenMessage">
+    <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -799,8 +797,9 @@ or local-name() eq 'sendGroupEndOfStimuli'
                        or local-name() eq 'sendGroupMessageButton'
                        or local-name() eq 'sendGroupMessage'
                        or local-name() eq 'sendGroupStoredMessage'
-                       or local-name() eq 'updateGroupStream'
                        or local-name() eq 'sendGroupTokenMessage'
+                       or local-name() eq 'streamGroupCanvas'
+                       or local-name() eq 'streamGroupCamera'
                        or local-name() eq 'sendGroupEndOfStimuli'
                        or local-name() eq 'nextStimulusButton'">
             <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ', null'" />
@@ -850,8 +849,9 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:value-of select="if(local-name() ne 'hotKeyInput') then if (@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else '' else ''" />
         <xsl:value-of select="if(local-name() eq 'hotKeyInput') then if (@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1' else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase, ',expectedRespondents') else ''" />
-        <xsl:value-of select="if(@streamState) then concat(', StreamState.', @streamState) else ''" />
-        <xsl:value-of select="if(@streamType) then concat(', StreamTypes.', @streamType) else ''" />
+        <!-- <xsl:value-of select="if(@streamState) then concat(', StreamState.', @streamState) else ''" /> -->
+        <!-- <xsl:value-of select="if(@streamType) then concat(', StreamTypes.', @streamType) else ''" /> -->
+        <xsl:value-of select="if(@streamChannels) then concat(', &quot;', @streamChannels, '&quot;') else ''" />
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
@@ -1181,9 +1181,10 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:if test="@groupMembers">
             <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot; /* groupCommunicationChannels */, ') else 'null /* groupCommunicationChannels */, '" />
-            <xsl:value-of select="if(@groupCameraChannels) then concat('&quot;', @groupCameraChannels, '&quot; /* groupCameraChannels */, ') else 'null /* groupCameraChannels */, '" />
-            <xsl:value-of select="if(@groupAudioChannels) then concat('&quot;', @groupAudioChannels, '&quot; /* groupAudioChannels */, ') else 'null /* groupAudioChannels */, '" />
-            <xsl:value-of select="if(@groupCanvasChannels) then concat('&quot;', @groupCanvasChannels, '&quot; /*  */, ') else 'null /* groupCanvasChannels */, '" />
+            <!-- <xsl:value-of select="if(@groupCameraChannels) then concat('&quot;', @groupCameraChannels, '&quot; /* groupCameraChannels */, ') else 'null /* groupCameraChannels */, '" /> -->
+            <!-- <xsl:value-of select="if(@groupAudioChannels) then concat('&quot;', @groupAudioChannels, '&quot; /* groupAudioChannels */, ') else 'null /* groupAudioChannels */, '" /> -->
+            <!-- <xsl:value-of select="if(@groupCanvasChannels) then concat('&quot;', @groupCanvasChannels, '&quot; /*  */, ') else 'null /* groupCanvasChannels */, '" /> -->
+            <xsl:value-of select="if(ancestor::*[local-name() = 'streamGroupCanvas'] or ancestor::*[local-name() = 'streamGroupCamera'] or ancestor::*[local-name() = 'streamGroupMicrophone']) then 'true,' else 'false,'" />
         </xsl:if>
         <xsl:value-of select="if(@phasesPerStimulus) then concat(@phasesPerStimulus, ' ') else ''" />
         <xsl:if test="local-name() eq 'logTimerValue'">

@@ -26,18 +26,16 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  */
 public abstract class GroupStreamHandler {
 
-    public enum StreamState {
-        start, stop, pause, hide, show, mute, unmute
-    }
-
-    public enum StreamTypes {
-        microphone, camera, canvas
-    }
-
-    String groupCameraChannels;
-    String groupAudioChannels;
-    String groupCanvasChannels;
-
+//    public enum StreamState {
+//        start, stop, pause, hide, show, mute, unmute
+//    }
+//
+//    public enum StreamTypes {
+//        microphone, camera, canvas
+//    }
+//    String groupCameraChannels;
+//    String groupAudioChannels;
+//    String groupCanvasChannels;
     private boolean isConnected = false;
     private boolean isReady = false;
 
@@ -330,15 +328,6 @@ public abstract class GroupStreamHandler {
         return isConnected;
     }
 
-    public void setChannels(final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels) {
-        this.groupCameraChannels = groupCameraChannels;
-        this.groupAudioChannels = groupAudioChannels;
-        this.groupCanvasChannels = groupCanvasChannels;
-        addCanvasElement("groupLocalCanvas");
-        addVideoElement("groupLocalVideo");
-        addVideoElement("groupRemoteStream");
-    }
-
     public void synchronisePhase(int currentPhase) {
 
     }
@@ -347,36 +336,22 @@ public abstract class GroupStreamHandler {
 
     public abstract void addVideoElement(final String canvasName);
 
-    public void updateStream(final StreamState streamState, final StreamTypes streamType, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
-        // TODO: update the stream
-        switch (streamState) {
-            case start:
-                switch (streamType) {
-                    case microphone:
-                        break;
-                    case camera:
-                        offerVideo(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
-                        break;
-                    case canvas:
-                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
-                        break;
-                }
-                break;
-            case stop:
-                disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
-                break;
-            case pause:
-                break;
-            case hide:
-                break;
-            case show:
-                break;
-            case mute:
-                break;
-            case unmute:
-                break;
-        }
-        //messageGroup(streamState.name(), streamType.name(), 0, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+    public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
+        // TODO: set up the communication channels
+        addCanvasElement("groupLocalCanvas");
+        addVideoElement("groupRemoteStream");
+        offerCanvas(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+        // TODO: on canvas and video removed from parent disconnectStreams
+        // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+    }
+
+    public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
+        // TODO: set up the communication channels        
+        addVideoElement("groupLocalVideo");
+        addVideoElement("groupRemoteStream");
+        offerVideo(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+        // TODO: on canvas and video removed from parent disconnectStreams
+        // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
     private native void messageGroup(String streamState, String messageData, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{

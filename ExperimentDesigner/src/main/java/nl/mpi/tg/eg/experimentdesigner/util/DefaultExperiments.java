@@ -386,12 +386,15 @@ public class DefaultExperiments {
                             case target:
                                 presenterFeature.addFeatureAttributes(attribute, "target");
                                 break;
-                            case streamType:
-                                presenterFeature.addFeatureAttributes(attribute, "camera");
+                            case streamChannels:
+                                presenterFeature.addFeatureAttributes(attribute, "A,B|B,C");
                                 break;
-                            case streamState:
-                                presenterFeature.addFeatureAttributes(attribute, "unmute");
-                                break;
+//                            case streamType:
+//                                presenterFeature.addFeatureAttributes(attribute, "camera");
+//                                break;
+//                            case streamState:
+//                                presenterFeature.addFeatureAttributes(attribute, "unmute");
+//                                break;
                             default:
                                 presenterFeature.addFeatureAttributes(attribute, (addOptionalAttributes) ? attribute.name() : "");
                         }
