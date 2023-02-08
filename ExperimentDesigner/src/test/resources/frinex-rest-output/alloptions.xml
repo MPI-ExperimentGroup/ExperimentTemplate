@@ -972,7 +972,8 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute" dataChannel="2"/>
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -1008,7 +1009,8 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute" dataChannel="2"/>
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -1044,7 +1046,8 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <updateGroupStream eventTag="eventTag" streamType="camera" streamState="unmute" dataChannel="2"/>
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -3883,7 +3886,8 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
-                        <updateGroupStream streamType="camera" streamState="unmute"/>
+                        <streamGroupCanvas streamChannels="A,B|B,C"/>
+                        <streamGroupCamera streamChannels="A,B|B,C"/>
                         <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -3919,7 +3923,8 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
-                        <updateGroupStream streamType="camera" streamState="unmute"/>
+                        <streamGroupCanvas streamChannels="A,B|B,C"/>
+                        <streamGroupCamera streamChannels="A,B|B,C"/>
                         <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -3955,7 +3960,8 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
-                        <updateGroupStream streamType="camera" streamState="unmute"/>
+                        <streamGroupCanvas streamChannels="A,B|B,C"/>
+                        <streamGroupCamera streamChannels="A,B|B,C"/>
                         <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
