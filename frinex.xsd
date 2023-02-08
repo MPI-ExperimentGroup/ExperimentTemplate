@@ -259,40 +259,6 @@
 </xs:simpleType>
 </xs:restriction>
 </xs:simpleType>
-<xs:simpleType name="streamStateType">
-<xs:restriction>
-<xs:simpleType>
-<xs:list>
-<xs:simpleType>
-<xs:restriction base="xs:token">
-<xs:enumeration value="start"/>
-<xs:enumeration value="stop"/>
-<xs:enumeration value="pause"/>
-<xs:enumeration value="hide"/>
-<xs:enumeration value="show"/>
-<xs:enumeration value="mute"/>
-<xs:enumeration value="unmute"/>
-</xs:restriction>
-</xs:simpleType>
-</xs:list>
-</xs:simpleType>
-</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="streamTypeType">
-<xs:restriction>
-<xs:simpleType>
-<xs:list>
-<xs:simpleType>
-<xs:restriction base="xs:token">
-<xs:enumeration value="microphone"/>
-<xs:enumeration value="camera"/>
-<xs:enumeration value="canvas"/>
-</xs:restriction>
-</xs:simpleType>
-</xs:list>
-</xs:simpleType>
-</xs:restriction>
-</xs:simpleType>
 <xs:element name="experiment">
 <xs:annotation>
 <xs:documentation>Each experiment XML configuration file must have one "experiment" element of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>
@@ -1938,7 +1904,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -2179,7 +2146,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -2655,7 +2623,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -2893,7 +2862,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3122,7 +3092,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3373,7 +3344,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -3803,7 +3775,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4017,7 +3990,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4256,7 +4230,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4495,7 +4470,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -4795,7 +4771,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -5029,7 +5006,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -5263,7 +5241,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -5598,7 +5577,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -5890,7 +5870,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -6517,7 +6498,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7105,7 +7087,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7384,7 +7367,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7591,7 +7575,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -7841,7 +7826,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8127,7 +8113,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8476,7 +8463,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8690,7 +8678,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -8917,7 +8906,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9145,7 +9135,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9364,7 +9355,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9594,7 +9586,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9793,7 +9786,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -9992,7 +9986,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10191,7 +10186,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10390,7 +10386,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10599,7 +10596,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -10808,7 +10806,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11017,7 +11016,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11216,7 +11216,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11415,7 +11416,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11614,7 +11616,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -11813,7 +11816,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12012,7 +12016,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12204,7 +12209,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12406,7 +12412,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12605,7 +12612,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12797,7 +12805,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -12996,7 +13005,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13201,7 +13211,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13400,7 +13411,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13599,7 +13611,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13798,7 +13811,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -13997,7 +14011,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14199,7 +14214,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14398,7 +14414,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14597,7 +14614,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -14796,7 +14814,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15005,7 +15024,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15204,7 +15224,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15411,7 +15432,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -15653,7 +15675,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16210,7 +16233,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16461,7 +16485,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -16939,7 +16964,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17141,7 +17167,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17343,7 +17370,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17545,7 +17573,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17748,7 +17777,8 @@
 <xs:element name="sendGroupMessageButton" type="sendGroupMessageButtonType"/>
 <xs:element name="sendGroupMessage" type="sendGroupMessageType"/>
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
-<xs:element name="updateGroupStream" type="updateGroupStreamType"/>
+<xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
+<xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -17954,9 +17984,9 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="updateGroupStreamType">
+<xs:complexType name="streamGroupCanvasType">
 <xs:annotation>
-<xs:documentation>Update the streaming state for the current group phase members.</xs:documentation>
+<xs:documentation>Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.</xs:documentation>
 </xs:annotation>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
@@ -17968,14 +17998,29 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="streamState" type="streamStateType" use="required">
+<xs:attribute name="streamChannels" type="groupChannels" use="required">
 <xs:annotation>
-<xs:documentation>Option List</xs:documentation>
+<xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="streamType" type="streamTypeType" use="required">
+</xs:complexType>
+<xs:complexType name="streamGroupCameraType">
 <xs:annotation>
-<xs:documentation>Option List</xs:documentation>
+<xs:documentation>Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.</xs:documentation>
+</xs:annotation>
+<xs:attribute name="eventTag" type="xs:string">
+<xs:annotation>
+<xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="dataChannel" type="xs:string">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="streamChannels" type="groupChannels" use="required">
+<xs:annotation>
+<xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
