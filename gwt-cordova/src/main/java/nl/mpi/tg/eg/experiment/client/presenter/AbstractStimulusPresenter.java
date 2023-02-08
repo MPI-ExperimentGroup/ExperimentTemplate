@@ -588,9 +588,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             };
             groupStreamHandler.setChannels(groupCameraChannels, groupAudioChannels, groupCanvasChannels);
-            // TODO: remove the debug output when the GroupStreamHandler is ready
-            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
-            groupStreamHandler.connect(ApplicationController.STUN_SERVER, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
         }
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
@@ -723,6 +720,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             return -1;
                         }
                     });
+                }
+
+                @Override
+                public void initialiseStreamingConnection() {
+                    if (groupStreamHandler != null) {
+                        // TODO: remove the debug output when the GroupStreamHandler is ready
+                        timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
+                        groupStreamHandler.connect(ApplicationController.STUN_SERVER, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+                    }
                 }
 
                 @Override

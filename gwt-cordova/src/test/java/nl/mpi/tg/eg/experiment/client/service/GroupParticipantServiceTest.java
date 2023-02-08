@@ -86,6 +86,10 @@ public class GroupParticipantServiceTest {
             @Override
             public void synchroniseStreamingPhase(int currentPhase) {
             }
+
+            @Override
+            public void initialiseStreamingConnection() {
+            }
             
         };
         final StringBuilder stringBuilder = new StringBuilder();
@@ -241,6 +245,11 @@ public class GroupParticipantServiceTest {
                 public void synchroniseStreamingPhase(int currentPhase) {
                     stringBuilder.append("synchroniseStreamingPhase\n");
                 }
+
+                @Override
+                public void initialiseStreamingConnection() {
+                    stringBuilder.append("initialiseStreamingConnection\n");
+                }
                 
             };
 
@@ -313,6 +322,12 @@ public class GroupParticipantServiceTest {
                 public void synchroniseStreamingPhase(int currentPhase) {
                     stringBuilder.append("synchroniseStreamingPhase\n");
                 }
+
+                @Override
+                public void initialiseStreamingConnection() {
+                    stringBuilder.append("initialiseStreamingConnection\n");
+                }
+                
                 
             };
 

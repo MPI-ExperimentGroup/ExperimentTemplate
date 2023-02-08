@@ -231,13 +231,10 @@ public abstract class GroupParticipantService implements GroupScoreService {
         }
     }
 
-    protected void setConnected(Boolean isConnected) {
-        this.isConnected = isConnected;
-        if (isConnected) {
-            groupFindingMembers();
-        } else {
-            groupNetworkConnecting();
-        }
+    protected void setConnected() {
+        this.isConnected = true;
+        initialiseStreamingConnection();
+        groupFindingMembers();
     }
 
     public boolean isConnected() {
@@ -371,7 +368,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
 //            }, "","",
             },
             function (frame) {
-            groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::setConnected(Ljava/lang/Boolean;)(@java.lang.Boolean::TRUE);
+            groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::setConnected()();
             console.log('Connected: ' + frame);
             $wnd.stompClient.subscribe('/shared/group', function (groupMessage) {
                 var contentData = JSON.parse(groupMessage.body);
@@ -475,8 +472,10 @@ public abstract class GroupParticipantService implements GroupScoreService {
     public abstract String synchroniseStimulusList(final String stimuliListGroup);
 
     public abstract Stimulus synchroniseCurrentStimulus(final int currentIndex);
-    
+
     public abstract void synchroniseStreamingPhase(final int currentPhase);
+
+    public abstract void initialiseStreamingConnection();
 
     public abstract void groupInfoChanged();
 
