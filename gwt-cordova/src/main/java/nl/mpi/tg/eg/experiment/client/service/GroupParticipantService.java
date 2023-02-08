@@ -221,7 +221,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
                     }
                     if (!currentFiredListenerList.isEmpty()) {
                         lastFiredListenerList = currentFiredListenerList;
-                        synchroniseStreamingPhase(this.requestedPhase);
+                        synchroniseStreamingPhase(this.requestedPhase, this.groupId, this.groupUUID, this.memberCode);
                     }
                 }
             }
@@ -233,7 +233,6 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
     protected void setConnected() {
         this.isConnected = true;
-        initialiseStreamingConnection();
         groupFindingMembers();
     }
 
@@ -473,9 +472,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
     public abstract Stimulus synchroniseCurrentStimulus(final int currentIndex);
 
-    public abstract void synchroniseStreamingPhase(final int currentPhase);
-
-    public abstract void initialiseStreamingConnection();
+    public abstract void synchroniseStreamingPhase(final int currentPhase, final String groupId, final String groupUUID, final String memberCode);
 
     public abstract void groupInfoChanged();
 

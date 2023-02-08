@@ -38,6 +38,7 @@ public abstract class GroupStreamHandler {
     String groupAudioChannels;
     String groupCanvasChannels;
 
+    private boolean isConnected = false;
     private boolean isReady = false;
 
     private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
@@ -143,6 +144,7 @@ public abstract class GroupStreamHandler {
                     }
                 }
             }
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isConnected = true;
         }, function(error) {
             // display the error's message header:
             console.log('contentData: ' + contentData);
@@ -323,6 +325,10 @@ public abstract class GroupStreamHandler {
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
+
+    public boolean isConnected() {
+        return isConnected;
+    }
 
     public void setChannels(final String groupCameraChannels, final String groupAudioChannels, final String groupCanvasChannels) {
         this.groupCameraChannels = groupCameraChannels;

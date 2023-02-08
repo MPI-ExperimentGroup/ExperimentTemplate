@@ -84,11 +84,7 @@ public class GroupParticipantServiceTest {
             }
 
             @Override
-            public void synchroniseStreamingPhase(int currentPhase) {
-            }
-
-            @Override
-            public void initialiseStreamingConnection() {
+            public void synchroniseStreamingPhase(int currentPhase, String groupId, String groupUUID, String memberCode) {
             }
             
         };
@@ -242,13 +238,8 @@ public class GroupParticipantServiceTest {
                 }
 
                 @Override
-                public void synchroniseStreamingPhase(int currentPhase) {
+                public void synchroniseStreamingPhase(int currentPhase, String groupId, String groupUUID, String memberCode) {
                     stringBuilder.append("synchroniseStreamingPhase\n");
-                }
-
-                @Override
-                public void initialiseStreamingConnection() {
-                    stringBuilder.append("initialiseStreamingConnection\n");
                 }
                 
             };
@@ -319,16 +310,10 @@ public class GroupParticipantServiceTest {
                 }
 
                 @Override
-                public void synchroniseStreamingPhase(int currentPhase) {
+                public void synchroniseStreamingPhase(int currentPhase, String groupId, String groupUUID, String memberCode) {
                     stringBuilder.append("synchroniseStreamingPhase\n");
                 }
 
-                @Override
-                public void initialiseStreamingConnection() {
-                    stringBuilder.append("initialiseStreamingConnection\n");
-                }
-                
-                
             };
 
             groupMemberActivity(stringBuilder, "q", groupParticipantService, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, "feedback");

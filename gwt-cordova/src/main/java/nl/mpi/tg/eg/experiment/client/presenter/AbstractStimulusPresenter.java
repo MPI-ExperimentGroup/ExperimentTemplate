@@ -723,17 +723,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void initialiseStreamingConnection() {
+                public void synchroniseStreamingPhase(int currentPhase, String groupId, String groupUUID, String memberCode) {
                     if (groupStreamHandler != null) {
-                        // TODO: remove the debug output when the GroupStreamHandler is ready
-                        timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
-                        groupStreamHandler.connect(ApplicationController.STUN_SERVER, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId().toString(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
-                    }
-                }
-
-                @Override
-                public void synchroniseStreamingPhase(int currentPhase) {
-                    if (groupStreamHandler != null) {
+                        if (!groupStreamHandler.isConnected()) {
+                            // TODO: remove the debug output when the GroupStreamHandler is ready
+                            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
+                            groupStreamHandler.connect(ApplicationController.STUN_SERVER, currentPhase, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
+                        }
                         groupStreamHandler.synchronisePhase(currentPhase);
                     }
                 }
