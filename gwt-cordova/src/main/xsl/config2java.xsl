@@ -1184,7 +1184,7 @@ or local-name() eq 'backgroundImage'">
             <!-- <xsl:value-of select="if(@groupCameraChannels) then concat('&quot;', @groupCameraChannels, '&quot; /* groupCameraChannels */, ') else 'null /* groupCameraChannels */, '" /> -->
             <!-- <xsl:value-of select="if(@groupAudioChannels) then concat('&quot;', @groupAudioChannels, '&quot; /* groupAudioChannels */, ') else 'null /* groupAudioChannels */, '" /> -->
             <!-- <xsl:value-of select="if(@groupCanvasChannels) then concat('&quot;', @groupCanvasChannels, '&quot; /*  */, ') else 'null /* groupCanvasChannels */, '" /> -->
-            <xsl:value-of select="if(ancestor::*[local-name() = 'streamGroupCanvas'] or ancestor::*[local-name() = 'streamGroupCamera'] or ancestor::*[local-name() = 'streamGroupMicrophone']) then 'true,' else 'false,'" />
+            <xsl:value-of select="if(descendant::streamGroupCanvas or descendant::streamGroupCamera or descendant::streamGroupMicrophone) then 'true,' else 'false,'" />
         </xsl:if>
         <xsl:value-of select="if(@phasesPerStimulus) then concat(@phasesPerStimulus, ' ') else ''" />
         <xsl:if test="local-name() eq 'logTimerValue'">
