@@ -338,7 +338,9 @@ public abstract class GroupStreamHandler {
 
     public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) {
         // TODO: handle disconnect here
-        messageGroup("notifyDetatchedElement", elementId, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+//        messageGroup("disconnect", elementId, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+        // TODO: narrow down the disconnects to the specified channels and medium
+        disconnectStreams(originPhase, userId, groupId, groupUUID, memberCode, screenId);
     }
 
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
