@@ -24,6 +24,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.MediaElement;
 import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
@@ -552,12 +553,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (groupStreamHandler == null && containsStreamingMedia) {
             groupStreamHandler = new GroupStreamHandler() {
                 @Override
-                public void addCanvasElement(String canvasName) {
-                    simpleView.clearRegion(canvasName + "Region");
-                    final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(canvasName + "Region", null);
+                public void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode) {
+                    simpleView.clearRegion(elementId + "Region");
+                    final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "Region", null);
                     final Canvas groupLocalCanvas = Canvas.createIfSupported();
                     if (groupLocalCanvas != null) {
-                        groupLocalCanvas.getCanvasElement().setId(canvasName);
+                        groupLocalCanvas.addAttachHandler(new AttachEvent.Handler() {
+                            @Override
+                            public void onAttachOrDetach(AttachEvent event) {
+                                if (!event.isAttached()) {
+                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
+                                }
+                            }
+                        });
+                        groupLocalCanvas.getCanvasElement().setId(elementId);
                         groupLocalCanvas.setSize("30vw", "30vw");
                         simpleView.addWidget(groupLocalCanvas);
                     } else {
@@ -568,12 +577,20 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void addVideoElement(String canvasName) {
-                    simpleView.clearRegion(canvasName + "Region");
-                    final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(canvasName + "Region", null);
+                public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode) {
+                    simpleView.clearRegion(elementId + "Region");
+                    final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "Region", null);
                     final Video groupLocalVideo = Video.createIfSupported();
                     if (groupLocalVideo != null) {
-                        groupLocalVideo.getVideoElement().setId(canvasName);
+                        groupLocalVideo.addAttachHandler(new AttachEvent.Handler() {
+                            @Override
+                            public void onAttachOrDetach(AttachEvent event) {
+                                if (!event.isAttached()) {
+                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
+                                }
+                            }
+                        });
+                        groupLocalVideo.getVideoElement().setId(elementId);
                         groupLocalVideo.setSize("30vw", "30vw");
                         groupLocalVideo.setAutoplay(true);
                         groupLocalVideo.setMuted(true);
@@ -2312,18 +2329,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
         timedStimulusView.stopMedia(formattedMediaId);
     }
-    
+
     protected void streamGroupCanvas(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
         // TODO: Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
         groupStreamHandler.negotiateCanvas(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
     }
+
     protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
         // TODO: Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
         groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
     }
-    
+
     /* protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamType.name() + "" + streamState.name(), duration.elapsedMillis());
 
@@ -2331,7 +2349,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.addText("GroupStream " + streamState.name() + " " + streamType.name());
         groupStreamHandler.updateStream(streamState, streamType, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
     } */
-
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final AnimateTypes animateType = AnimateTypes.none;
         groupResponseStimulusImage(stimulusProvider, percentOfPage, maxHeight, maxWidth, animateType, dataChannel, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener);

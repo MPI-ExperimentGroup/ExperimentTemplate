@@ -332,23 +332,28 @@ public abstract class GroupStreamHandler {
 
     }
 
-    public abstract void addCanvasElement(final String canvasName);
+    public abstract void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode);
 
-    public abstract void addVideoElement(final String canvasName);
+    public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode);
+
+    public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) {
+        // TODO: handle disconnect here
+        messageGroup("notifyDetatchedElement", elementId, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+    }
 
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
         // TODO: set up the communication channels
-        addCanvasElement("groupLocalCanvas");
-        addVideoElement("groupRemoteStream");
+        addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
+        addVideoElement("groupRemoteStream", groupId, groupUUID, memberCode);
         offerCanvas(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
     public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
-        // TODO: set up the communication channels        
-        addVideoElement("groupLocalVideo");
-        addVideoElement("groupRemoteStream");
+        // TODO: set up the communication channels
+        addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
+        addVideoElement("groupRemoteStream", groupId, groupUUID, memberCode);
         offerVideo(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
