@@ -344,10 +344,22 @@ public abstract class GroupStreamHandler {
     }
 
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
-        // TODO: set up the communication channels
-        addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
-        addVideoElement("groupRemoteStream", groupId, groupUUID, memberCode);
-        offerCanvas(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+        for (String channel : streamChannels.split("\\|")) {
+            boolean isRelevant = channel.matches("[^,]" + memberCode + "[$,]");
+            if (isRelevant) {
+                boolean isFirst = true;
+                for (String member : channel.split(",")) {
+                    // set up the elements and connection based on communication channels
+                    if (isFirst) {
+                        addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
+                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
+                    } else {
+                        addVideoElement("groupRemoteStream", groupId, groupUUID, memberCode);
+                    }
+                    isFirst = false;
+                }
+            }
+        }
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
