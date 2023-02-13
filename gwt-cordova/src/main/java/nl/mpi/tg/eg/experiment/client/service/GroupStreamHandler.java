@@ -352,7 +352,7 @@ public abstract class GroupStreamHandler {
 
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
         for (String channel : streamChannels.split("\\|")) {
-            boolean isRelevant = channel.matches("[^,]" + memberCode + "[,$]");
+            boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
             if (isRelevant) {
                 boolean isFirst = true;
                 for (String member : channel.split(",")) {
