@@ -290,8 +290,6 @@ public abstract class GroupStreamHandler {
     private native void disconnectStreams(Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
         var groupStreamHandler = this;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
-        var remoteVideo = $wnd.$("#groupRemoteStream")[0];
-        var localVideo = $wnd.$("#groupLocalVideo")[0];
         if ($wnd.peerConnection) {
             $wnd.peerConnection.ontrack = null;
             $wnd.peerConnection.onremovetrack = null;
@@ -301,18 +299,27 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection.onsignalingstatechange = null;
             $wnd.peerConnection.onicegatheringstatechange = null;
             $wnd.peerConnection.onnegotiationneeded = null;
-            if (remoteVideo && remoteVideo.srcObject) {
-                // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
-                for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
-                    remoteVideo.srcObject.getTracks()[trackCount].stop();
+            var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream")[0];
+            for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
+                var remoteVideo = remoteVideoArray[remoteVideoIndex];
+                if (remoteVideo && remoteVideo.srcObject) {
+                    // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
+                    for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
+                        remoteVideo.srcObject.getTracks()[trackCount].stop();
+                    }
                 }
             }
-            if (localVideo && localVideo.srcObject) {
-                // localVideo.srcObject.getTracks().forEach(track => track.stop());
-                for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
-                    localVideo.srcObject.getTracks()[trackCount].stop();
+            var localVideoArray = $wnd.$("video[id^=groupLocalVideo")[0];
+            for (localVideoIndex = 0; localVideoIndex < localVideoArray.length; localVideoIndex++) {
+                var localVideo = localVideoArray[0];
+                if (localVideo && localVideo.srcObject) {
+                    // localVideo.srcObject.getTracks().forEach(track => track.stop());
+                    for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
+                        localVideo.srcObject.getTracks()[trackCount].stop();
+                    }
                 }
             }
+            // TODO: should we be cleaning up the the local canvas srcObject.getTracks here also?
             $wnd.peerConnection.close();
             $wnd.peerConnection = null;
         }
@@ -345,7 +352,7 @@ public abstract class GroupStreamHandler {
 
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
         for (String channel : streamChannels.split("\\|")) {
-            boolean isRelevant = channel.matches("[^,]" + memberCode + "[$,]");
+            boolean isRelevant = channel.matches("[^,]" + memberCode + "[,$]");
             if (isRelevant) {
                 boolean isFirst = true;
                 for (String member : channel.split(",")) {
