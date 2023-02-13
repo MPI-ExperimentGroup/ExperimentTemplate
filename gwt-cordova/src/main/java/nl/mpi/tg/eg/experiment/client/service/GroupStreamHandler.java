@@ -299,6 +299,7 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection.onsignalingstatechange = null;
             $wnd.peerConnection.onicegatheringstatechange = null;
             $wnd.peerConnection.onnegotiationneeded = null;
+            
             var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream");
             if (remoteVideoArray) {
                 for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
@@ -311,8 +312,9 @@ public abstract class GroupStreamHandler {
                     }
                 }
             }
+            
+            var localVideoArray = $wnd.$("video[id^=groupLocalVideo");
             if (localVideoArray) {
-                var localVideoArray = $wnd.$("video[id^=groupLocalVideo");
                 for (localVideoIndex = 0; localVideoIndex < localVideoArray.length; localVideoIndex++) {
                     var localVideo = localVideoArray[localVideoIndex];
                     if (localVideo && localVideo.srcObject) {
