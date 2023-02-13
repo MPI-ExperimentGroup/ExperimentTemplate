@@ -299,23 +299,27 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection.onsignalingstatechange = null;
             $wnd.peerConnection.onicegatheringstatechange = null;
             $wnd.peerConnection.onnegotiationneeded = null;
-            var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream")[0];
-            for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
-                var remoteVideo = remoteVideoArray[remoteVideoIndex];
-                if (remoteVideo && remoteVideo.srcObject) {
-                    // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
-                    for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
-                        remoteVideo.srcObject.getTracks()[trackCount].stop();
+            var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream");
+            if (remoteVideoArray) {
+                for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
+                    var remoteVideo = remoteVideoArray[remoteVideoIndex];
+                    if (remoteVideo && remoteVideo.srcObject) {
+                        // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
+                        for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
+                            remoteVideo.srcObject.getTracks()[trackCount].stop();
+                        }
                     }
                 }
             }
-            var localVideoArray = $wnd.$("video[id^=groupLocalVideo")[0];
-            for (localVideoIndex = 0; localVideoIndex < localVideoArray.length; localVideoIndex++) {
-                var localVideo = localVideoArray[0];
-                if (localVideo && localVideo.srcObject) {
-                    // localVideo.srcObject.getTracks().forEach(track => track.stop());
-                    for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
-                        localVideo.srcObject.getTracks()[trackCount].stop();
+            if (localVideoArray) {
+                var localVideoArray = $wnd.$("video[id^=groupLocalVideo");
+                for (localVideoIndex = 0; localVideoIndex < localVideoArray.length; localVideoIndex++) {
+                    var localVideo = localVideoArray[localVideoIndex];
+                    if (localVideo && localVideo.srcObject) {
+                        // localVideo.srcObject.getTracks().forEach(track => track.stop());
+                        for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
+                            localVideo.srcObject.getTracks()[trackCount].stop();
+                        }
                     }
                 }
             }
