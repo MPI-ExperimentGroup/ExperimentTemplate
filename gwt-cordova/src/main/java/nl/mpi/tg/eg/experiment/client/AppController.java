@@ -236,6 +236,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "projectVersion", version.projectVersion(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "compileDate", version.compileDate(), 0);
+            // TODO: platform, userAgent and appVersion are being replaced by userAgentData - https://developer.chrome.com/articles/user-agent-client-hints/
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.platform", Window.Navigator.getPlatform(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.userAgentData", getUserAgentData(), 0);
