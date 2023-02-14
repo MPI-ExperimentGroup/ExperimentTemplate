@@ -59,8 +59,7 @@ public class PresenterFeature extends CanHaveFeatures {
     private boolean usedAsPlugin = false;
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
-    @ElementCollection
-    private List<String> stimulusTags = new ArrayList<>();
+    private StimulusTags stimulusTags = new StimulusTags();
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private RandomGrouping randomGrouping = new RandomGrouping();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -175,19 +174,22 @@ public class PresenterFeature extends CanHaveFeatures {
         return translatable.getTranslations();
     }
 
-    @XmlElementWrapper(name = "stimuli") // tags can be an attribute or in a stimuli element depending on the context
-    @XmlElement(name = "tag")
-    public List<String> getStimulusTags() {
+    @XmlElement(name = "stimuli") // tags can be an attribute or in a stimuli element depending on the context
+    public StimulusTags getStimulusTags() {
         return (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) ? stimulusTags : null;
     }
 
     @XmlAttribute(name = "tags") // tags can be an attribute or in a stimuli element depending on the context
     public List<String> getStimulusTagsAttribute() {
-        return (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) ? stimulusTags : null;
+        return (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) ? stimulusTags.getStimulusTags() : null;
     }
 
     public void setStimulusTags(List<String> stimulusTags) {
-        this.stimulusTags = stimulusTags;
+        this.stimulusTags.setStimulusTags(stimulusTags);
+    }
+
+    public void setStimulusIdListField(String idListField) {
+        this.stimulusTags.setIdListField(idListField);
     }
 //    @XmlAttribute
 //    public String getStimulusTags() {
@@ -213,7 +215,7 @@ public class PresenterFeature extends CanHaveFeatures {
 
     public void addStimulusTag(String tag) {
         if (featureType.canHaveStimulusTags()) {
-            stimulusTags.add(Stimulus.cleanTagString(tag));
+            stimulusTags.getStimulusTags().add(Stimulus.cleanTagString(tag));
         } else {
             throw new UnsupportedOperationException(featureType.name() + " StimulusTags are not supported in this type");
         }

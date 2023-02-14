@@ -234,7 +234,8 @@ public class DesignController {
         presenterFeature.setDisplayOrder(changedFeature.getDisplayOrder());
         presenterFeature.setFeatureAttributes(changedFeature.getFeatureAttributesMap());
         presenterFeature.setFeatureText(changedFeature.getFeatureText());
-        presenterFeature.setStimulusTags(changedFeature.getStimulusTags());
+        presenterFeature.setStimulusTags(changedFeature.getStimulusTags().getStimulusTags());
+        presenterFeature.setStimulusIdListField(changedFeature.getStimulusTags().getIdListField());
         final HashMap<FeatureAttribute, String> featureAttributesMap = presenterFeature.getFeatureAttributesMap();
         for (FeatureAttribute featureAttribute : presenterFeature.getFeatureType().getFeatureAttributes()) {
             final String attributeValue = req.getParameter(featureAttribute.name());

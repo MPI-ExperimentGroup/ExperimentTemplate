@@ -18271,5 +18271,10 @@
 <xs:sequence>
 <xs:element name="tag" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
 </xs:sequence>
+<xs:attribute name="idListField" type="xs:string">
+<xs:annotation>
+<xs:documentation>When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 </xs:schema>

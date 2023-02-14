@@ -1329,6 +1329,9 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@storageField) then concat(', metadataFieldProvider.', @storageField, 'MetadataField') else ',null'" />
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
+        <xsl:if test="local-name() eq 'stimuli'">
+            <xsl:value-of select="if(@idListField) then concat(', metadataFieldProvider.', @idListField, 'MetadataField /* idListField */') else ',null /* idListField */'" />
+        </xsl:if>
     </xsl:template>
     <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|groupStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists|audioInputSelectWeb|loadStimulusPlugin"> <!-- this loadStimulusPlugin might be changed to *[@class] when more plugins are used -->
         <xsl:if test="local-name() eq 'preloadAllStimuli' 

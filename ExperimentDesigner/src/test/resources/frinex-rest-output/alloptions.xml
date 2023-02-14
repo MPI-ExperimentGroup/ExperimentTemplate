@@ -913,7 +913,7 @@
                 <list alias="L0">Thai</list>
                 <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_withStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -1067,7 +1067,7 @@
                 <list alias="L0">Thai</list>
                 <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_groupStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -1356,7 +1356,7 @@
                 <list alias="L0">Thai</list>
                 <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_loadStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -1645,7 +1645,7 @@
                 <list alias="L0">Thai</list>
                 <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_loadStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -1934,7 +1934,7 @@
                 <list alias="L0">Thai</list>
                 <list alias="L0">ບຸນບັ້ງໄຟ</list>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_loadSdCardStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -3827,7 +3827,7 @@
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_withStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -3975,7 +3975,7 @@
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_groupStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -4258,7 +4258,7 @@
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_loadStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -4541,7 +4541,7 @@
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_loadStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>
@@ -4824,7 +4824,7 @@
                 <tag>Thai</tag>
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </randomGrouping>
-            <stimuli>
+            <stimuli idListField="groupAllocation_loadSdCardStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
                 <tag>Festival</tag>

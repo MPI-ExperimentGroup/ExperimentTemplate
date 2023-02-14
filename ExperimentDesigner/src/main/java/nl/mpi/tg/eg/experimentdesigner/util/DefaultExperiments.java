@@ -421,6 +421,7 @@ public class DefaultExperiments {
             final String metadataFieldname = "groupAllocation_" + featureType.name();
             randomGrouping.setStorageField(metadataFieldname);
             presenterFeature.setRandomGrouping(randomGrouping);
+            presenterFeature.setStimulusIdListField("groupAllocation_" + featureType.name());
             experiment.addMetadataOnce(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
         switch (featureType.getRequiresChildType()) {

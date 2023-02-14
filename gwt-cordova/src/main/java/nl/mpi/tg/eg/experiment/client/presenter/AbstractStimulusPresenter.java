@@ -158,6 +158,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void loadSdCardStimulus(final String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
             final StimulusSelector[] randomTags,
             final StimulusSelector[] stimuliLists,
             final MetadataField stimulusAllocationField,
@@ -184,7 +185,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     endOfStimulusListener.postLoadTimerFired();
                 } else {
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
+                    loadSdCardStimulus(eventTag, selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
                 }
             }
         };
@@ -227,13 +228,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
-                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, new TimedStimulusListener() {
+                                loadSdCardStimulus(directory[1], selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
+                                        loadSdCardStimulus(eventTag, selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -294,6 +295,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void withStimuli(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
             final StimulusSelector[] randomTags,
             final StimulusSelector[] stimuliLists,
             final MetadataField stimulusAllocationField,
@@ -303,7 +305,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final CurrentStimulusListener eachStimulusListener,
             final TimedStimulusListener afterStimuliListener
     ) {
-        loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName);
+        loadStimulus(stimulusProvider, eventTag, selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName);
         this.hasMoreStimulusListener = null;
         this.endOfStimulusListener = null;
         beforeStimuliListener.postLoadTimerFired();
@@ -317,6 +319,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void groupStimuli(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
             final StimulusSelector[] randomTags,
             final StimulusSelector[] stimuliLists,
             final MetadataField stimulusAllocationField,
@@ -325,11 +328,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
     ) {
-        loadStimulus(eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
+        loadStimulus(eventTag, selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
     }
 
     protected void loadStimulusPlugin(String eventTag,
             final StimulusSelector[] selectionTags,
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
             final StimulusSelector[] randomTags,
             final StimulusSelector[] stimuliLists,
             final MetadataField stimulusAllocationField,
@@ -338,11 +342,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
     ) {
-        loadStimulus(eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
+        loadStimulus(eventTag, selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
     }
 
     protected void loadStimulus(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
             final StimulusSelector[] randomTags,
             final StimulusSelector[] stimuliLists,
             final MetadataField stimulusAllocationField,
@@ -351,7 +356,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
     ) {
-        loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName);
+        loadStimulus(stimulusProvider, eventTag, selectionTags, idListField, randomTags, stimuliLists, stimulusAllocationField, consumedTagsGroupName);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "loadStimulus" : eventTag);
@@ -362,6 +367,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final StimuliProvider stimulusProvider,
             final String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
             final StimulusSelector[] randomTags,
             final StimulusSelector[] stimuliLists,
             final MetadataField stimulusAllocationField,
@@ -378,6 +384,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     }
                 }
             }
+        } else if (idListField != null) {
+            predefinedStimulusList = userResults.getUserData().getMetadataValue(idListField);
         }
         final String storedStimulusList = (predefinedStimulusList != null) ? predefinedStimulusList : localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
