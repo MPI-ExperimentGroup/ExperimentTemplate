@@ -77,7 +77,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
                 }
                 videoPath = (isVideo) ? mediaPath : null;
                 audioPath = (isVideo) ? null : mediaPath;
-                stimulus = new Stimulus(stimulusLine, audioPath, videoPath, null, null, codeVideoPath, 0, tagSet, responseOptions, stimuliCorrectResponses);
+                stimulus = new Stimulus(stimulusLine.replaceAll("-", ""), audioPath, videoPath, null, null, codeVideoPath, 0, tagSet, responseOptions, stimuliCorrectResponses);
                 stimuliList.add(stimulus);
             }
             wizardScreenData.setStimuli(stimuliList);

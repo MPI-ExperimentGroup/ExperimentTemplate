@@ -1134,8 +1134,8 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">correctResponses</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">identifier</span><span style="color:grey">=&quot;Stimulus Identifier&quot;</span><span>
+An identifier for the stimulus consisting of three or more [a-Z0-9_] characters, which must be unique per configuration file.</span><br/>
 <span style="color:green">imagePath</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -1175,8 +1175,8 @@ String</span><br/>
 String</span><br/>
 <span style="color:green">correctResponses</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">identifier</span><span style="color:grey">=&quot;Stimulus Identifier&quot;</span><span>
+An identifier for the stimulus consisting of three or more [a-Z0-9_] characters, which must be unique per configuration file.</span><br/>
 <span style="color:green">imagePath</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -3372,8 +3372,8 @@ audioButton
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">audioButton</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;autoPlayType [true, false]&quot;</span><span>
 When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -4158,8 +4158,8 @@ clearCurrentScore
 Clears the current score and sets the current score group string based on the evaluateTokens. The score group is a marker shown in the admin system to keep track of the records and does not affect the score collection process.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">clearCurrentScore</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">clearCurrentScore</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">evaluateTokens</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -9813,8 +9813,8 @@ logTimerValue
 Added a record in the admin system of the current milliseconds for a persistent timer which is identified by its listenerId.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -9835,8 +9835,8 @@ logTokenText
 Logs data to the tag pair data table. The value of dataLogFormat will have any string tokens replaced and stored in the TagValue2 column. When provided the value of type and headerKey will be stored in the EventTag	and TagValue1 columns respectively.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">logTokenText</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">logTokenText</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -13498,8 +13498,8 @@ scoreIncrement
 Applies the provided score. When the value is positive, both the score and potential are incremented by the value and any correct streak is maintained. When the score is negative only the potential is incremented by the value and any incorrect streak is maintained. When the score is zero no change is made to either the score or potential, however both the correct and incorrect streaks are cleared.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">scoreIncrement</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">scoreIncrement</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">scoreValue</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 A positive number for achievements or a negative number for failures or zero for neither.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -17877,8 +17877,8 @@ addStimulusCodeResponseValidation
 Adds a stimulus validation listener for StimulusCodeResponses, so that they can be validated like other stimulus response types. The response is validated based on the matching of the validationRegex. If the validation fails the featureText will be shown to hint the user what is required. The groupId determines the stimulus response group so that multiple responses can exist for each stimulus. If groupId contain tokens they will be replaced with the respective values.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">addStimulusCodeResponseValidation</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">addStimulusCodeResponseValidation</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 Text that will be visible to the user.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -17914,8 +17914,8 @@ clearCurrentScore
 Clears the current score and sets the current score group string based on the evaluateTokens. The score group is a marker shown in the admin system to keep track of the records and does not affect the score collection process.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">clearCurrentScore</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">clearCurrentScore</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">evaluateTokens</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -18022,8 +18022,8 @@ matchingStimulusGrid
 String</span><br/>
 <span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 Regular expression that will be used to determin a match.</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -18194,8 +18194,8 @@ ratingButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">ratingButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">ratingButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -18822,8 +18822,8 @@ ratingCheckbox
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">ratingCheckbox</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">ratingCheckbox</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -19450,8 +19450,8 @@ ratingFooterButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">ratingFooterButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">ratingFooterButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -20076,8 +20076,8 @@ ratingRadioButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">ratingRadioButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">ratingRadioButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -20742,8 +20742,8 @@ scoreIncrement
 Applies the provided score. When the value is positive, both the score and potential are incremented by the value and any correct streak is maintained. When the score is negative only the potential is incremented by the value and any incorrect streak is maintained. When the score is zero no change is made to either the score or potential, however both the correct and incorrect streaks are cleared.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">scoreIncrement</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">scoreIncrement</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">scoreValue</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 A positive number for achievements or a negative number for failures or zero for neither.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -20762,8 +20762,8 @@ sendStimuliReport
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">sendStimuliReport</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">sendStimuliReport</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:green">separator</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -20790,8 +20790,8 @@ Sets a response to the current stimulus with the value of codeFormat. The groupI
 If set to true then the stimulus response is compared to the stimulus correctResponses and a score is given accordingly.</span><br/>
 <span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -21442,8 +21442,8 @@ showStimulusGrid
 String</span><br/>
 <span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">imageWidth</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -21615,8 +21615,8 @@ stimulusAudio
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusAudio</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;autoPlayType [true, false]&quot;</span><span>
 When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">showPlaybackIndicator</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -21655,8 +21655,8 @@ stimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -22290,8 +22290,8 @@ stimulusCodeAudio
 When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</span><br/>
 <span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">showPlaybackIndicator</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -22332,8 +22332,8 @@ stimulusCodeImage
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeImage</span></td><td><span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -22368,8 +22368,8 @@ stimulusCodeImageButton
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusCodeImageButton</span></td><td><span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -22409,8 +22409,8 @@ stimulusCodeVideo
 When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</span><br/>
 <span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">loop</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -22491,8 +22491,8 @@ Adds a free text input for stimulus responses to be entered. If allowedCharCodes
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusFreeText</span></td><td><span style="color:green">allowedCharCodes</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 Text that will be visible to the user.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -22594,8 +22594,8 @@ stimulusImage
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusImage</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusImage</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -23275,8 +23275,8 @@ stimulusMetadataField
 Adds a metadata field input for the current stimulus. The user entered value will be stored in the stimulus data identifiable via the postName of the field.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -23909,8 +23909,8 @@ stimulusPresent
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusPresent</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -23957,8 +23957,8 @@ stimulusRatingButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -24583,8 +24583,8 @@ stimulusRatingCheckbox
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingCheckbox</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingCheckbox</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -25209,8 +25209,8 @@ stimulusRatingRadio
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingRadio</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusRatingRadio</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -25835,8 +25835,8 @@ stimulusSlider
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusSlider</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusSlider</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 <span style="color:green">initial</span><span style="color:grey">=&quot;Integer&quot;</span><span>
@@ -26463,8 +26463,8 @@ stimulusVideo
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusVideo</span></td><td><span style="color:green">autoPlay</span><span style="color:grey">=&quot;autoPlayType [true, false]&quot;</span><span>
 When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">loop</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -26726,8 +26726,8 @@ Displays the stimulus image that the last group message had responded with.
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupResponseStimulusImage</span></td><td><span style="color:green">animate</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -26806,8 +26806,8 @@ sendGroupMessageButton
 Adds a button that will send a message to the group members that are in the current member's communication channel. The message content is the concatenated values of all freetext inputs currently in the presenter. If any freetext input is not valid then the relevant freetext input will show an error and the message will not be sent.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -26895,8 +26895,8 @@ streamGroupCamera
 Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">streamGroupCamera</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">streamGroupCamera</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">streamChannels</span><span style="color:grey">=&quot;Group Channels&quot;</span><span>
@@ -26917,8 +26917,8 @@ streamGroupCanvas
 Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">streamGroupCanvas</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">streamGroupCanvas</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">streamChannels</span><span style="color:grey">=&quot;Group Channels&quot;</span><span>
@@ -45476,8 +45476,8 @@ touchInputReportSubmit
 Submits the logged touch input of the participant since touch input capture was started and then stops the input capture which then triggers captureEnd.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">touchInputReportSubmit</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">touchInputReportSubmit</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -45494,8 +45494,8 @@ touchInputStimulusButton
 Creates touch input button for use on tablets/mobile devices which responds to touch input from the participant.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">touchInputStimulusButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">touchInputStimulusButton</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
+</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>

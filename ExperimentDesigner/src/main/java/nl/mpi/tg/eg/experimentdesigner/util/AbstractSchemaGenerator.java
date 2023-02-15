@@ -44,6 +44,7 @@ public class AbstractSchemaGenerator {
         xsBooleanToggle("booleanToggle", "false, true, invert"),
         rgbHexValue("rgbHexValue", "RGB Hex Value"),
         dateValue("dateValue", "Date Value YYYY-MM-DD"),
+        stimulusIdentifier("stimulusIdentifier", "Stimulus Identifier"),
         stimulusTags("stimulusTags", "Stimulus Tags"),
         stimulusTag("stimulusTag", "Stimulus Tag"),
         integerList("integerList", "Integer List"),
@@ -478,7 +479,8 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("label", true)
                         .stringAttribute("code", true)
                     })
-                                    .stringAttribute("identifier", false)
+                                    // notes on stimulusId: the methods around loadStoredStimulusList use "-" as the list separator and might have unintended effects if "-" is used in the stimulusID
+                                    .documentedAttribute("identifier", AttributeType.stimulusIdentifier, "An identifier for the stimulus consisting of three or more [a-Z0-9_] characters, which must be unique per configuration file.", false)
                                     .stringAttribute("videoPath", true)
                                     .stringAttribute("imagePath", true)
                                     .stringAttribute("code", true)

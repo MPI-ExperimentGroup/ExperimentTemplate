@@ -254,6 +254,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceVersion", getDeviceVersion(), 0);
             }
             // force the previously chosen locale if it has been seen before and allow it to be updated if a new locale is on the URL
+            // TODO: test this locale preservation on start up, testing should include when a ? get parameter does and does not exist and when a # target does and does not exist in the URL
             final String providedLocale = Window.Location.getParameter("locale");
             if (providedLocale != null) {
                 // store the localeName in the local storage for use when reloading without the locale get parameter
@@ -346,11 +347,11 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
     protected native void exitApplication() /*-{
      $doc.navigator.app.exitApp();
      }-*/;
-    
+
     public native String getUserAgentData() /*-{
       return $wnd.navigator.userAgentData;
     }-*/;
-    
+
     protected native boolean hasCordova() /*-{
      if ($wnd.device) return true; else return false;
      }-*/;

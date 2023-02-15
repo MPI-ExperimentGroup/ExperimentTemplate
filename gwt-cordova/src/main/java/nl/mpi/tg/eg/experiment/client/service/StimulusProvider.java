@@ -237,6 +237,9 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     protected void loadStoredStimulusList(String storedStimulusList, final List<Stimulus> stimulusArrayTemp) {
+        // TODO: it would be nice to change this "-" out for "," by restricting "," from the identifier in the XSD and investigating all the implications of this change
+        // TODO: this might fail in the case of stimlus IDs of "a" and "a-b" in the list "-a-b-a-" which might then get two copies of "a" and none of "b" in the resulting selection
+        // NOTE: for now this has been restricted in the XSD so that stimulusId can only be a-Z0-9_
         stimulusSubsetArray.clear();
         while (!storedStimulusList.isEmpty()) {
             // stimuli ids can contain - so we cant split the string on -
@@ -374,6 +377,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
         }
         if (repeatCount > 1 && repeatRandomWindow > 0 && stimulusSubsetArray.size() > repeatRandomWindow) {
             // todo: perhaps also do this when the repeatRandomWindow is bigger than the stimulusSubsetArray but just reduce the repeatRandomWindow accordingly
+            // NOTE: that this random window is being applied to an already randomised list so it is not an issue that the first stimulus would be less likely to be randomised than those beyond the first window because it has already been randomised, the goal is to not repeat the randomisation of the first group
             for (int shuffleIndex = repeatRandomWindow; shuffleIndex < stimulusSubsetArray.size(); shuffleIndex++) {
                 // shuffle all stimuli in a moving window of 'repeatRandomWindow' so that the repeats are still sparated
                 final int randomInt = new Random().nextInt(repeatRandomWindow);

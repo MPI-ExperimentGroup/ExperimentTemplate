@@ -89,6 +89,11 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:pattern value=\"[a-zA-Z_0-9]{3,}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"stimulusIdentifier\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:pattern value=\"[^-]{3,}\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"stimulusTag\">\n");
         writer.append("<xs:restriction base=\"xs:string\">\n");
         writer.append("<xs:pattern value=\"([^\\p{P}\\W]*[_]*){1,}\"/>\n");
