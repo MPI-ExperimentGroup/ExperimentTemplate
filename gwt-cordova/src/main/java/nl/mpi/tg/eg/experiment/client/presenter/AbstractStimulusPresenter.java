@@ -386,6 +386,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         } else if (idListField != null) {
             predefinedStimulusList = userResults.getUserData().getMetadataValue(idListField);
+            // if predefinedStimulusList is empty then the stimuli loader will ignore it and load all stimuli
+            // replace the ","s with - and make sure the "-" is not repeated and is found on each end of the string
+            predefinedStimulusList = predefinedStimulusList.replaceAll("[\\,]+", "-");
+            predefinedStimulusList = (predefinedStimulusList.isEmpty()) ? "-" : predefinedStimulusList;
+            predefinedStimulusList = ((predefinedStimulusList.startsWith("-")) ? "" : "-") + predefinedStimulusList + ((predefinedStimulusList.endsWith("-")) ? "" : "-");
         }
         final String storedStimulusList = (predefinedStimulusList != null) ? predefinedStimulusList : localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
