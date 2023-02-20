@@ -33,6 +33,8 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.TokenMethod;
+import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -45,6 +47,10 @@ import org.xml.sax.SAXException;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class XpathExperimentValidator {
+
+    enum EvaluateTokensType {
+        unknown, gtlt, coloncolon
+    }
 
     public String extractFrinexVersion(Reader xmlFileSource, String defaultSchemaName) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
         XPath validationXPath = XPathFactory.newInstance().newXPath();
@@ -74,6 +80,7 @@ public class XpathExperimentValidator {
             result += validateMetadataFields(xmlDocument);
             result += validateRegexStrings(xmlDocument);
             result += validatePresenterTypes(xmlDocument);
+            result += validateEvaluateTokens(xmlDocument);
             if (!result.isEmpty()) {
                 throw new XpathExperimentException(result);
             }
@@ -250,6 +257,58 @@ public class XpathExperimentValidator {
                 final String attributeName = nodeList.item(index).getNodeName();
                 returnMessage += "Invalid REGEX \"" + attributeValue + "\" found in attribute " + elementName + " " + attributeName + "\n";
                 //System.out.println(returnMessage);
+            }
+        }
+        return returnMessage;
+    }
+
+    protected String validateEvaluateTokens(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        String firstRecordMessage = "";
+        EvaluateTokensType tokensType = EvaluateTokensType.unknown;
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//@*[contains(name(), \"Regex\") or contains(name(), \"Token\")]").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList.getLength(); index++) {
+            final String attributeValue = nodeList.item(index).getTextContent();
+            EvaluateTokensType currentType = EvaluateTokensType.unknown;
+            if (attributeValue.contains("<" + "metadataField_")) {
+                currentType = EvaluateTokensType.gtlt;
+            } else if (attributeValue.contains("::" + "metadataField_")) {
+                currentType = EvaluateTokensType.coloncolon;
+            }
+            if (currentType == EvaluateTokensType.unknown) {
+                for (TokenText currentToken : TokenText.values()) {
+                    if (attributeValue.contains("<" + currentToken.name())) {
+                        currentType = EvaluateTokensType.gtlt;
+                        break;
+                    } else if (attributeValue.contains("::" + currentToken.name())) {
+                        currentType = EvaluateTokensType.coloncolon;
+                        break;
+                    }
+                }
+            }
+            if (currentType == EvaluateTokensType.unknown) {
+                for (TokenMethod currentToken : TokenMethod.values()) {
+                    if (attributeValue.matches(currentToken.name() + "[\\s]*\\([\\s]*&quot;")) {
+                        currentType = EvaluateTokensType.gtlt;
+                        break;
+                    }
+                    if (attributeValue.matches(currentToken.name() + "[\\s]*\\([\\s]*'")) {
+                        currentType = EvaluateTokensType.coloncolon;
+                        break;
+                    }
+                }
+            }
+            if (currentType != EvaluateTokensType.unknown) {
+                if (tokensType == EvaluateTokensType.unknown && currentType != EvaluateTokensType.unknown) {
+                    tokensType = currentType;
+                    firstRecordMessage = "Issues with token text found.\nThe first token usage is:\n" + attributeValue + "\n";
+                } else if (tokensType != currentType) {
+                    if (returnMessage.isEmpty()) {
+                        returnMessage += firstRecordMessage;
+                    }
+                    returnMessage += "The following token usage is inconsistent with the first:\n" + attributeValue + "\n";
+                }
             }
         }
         return returnMessage;
