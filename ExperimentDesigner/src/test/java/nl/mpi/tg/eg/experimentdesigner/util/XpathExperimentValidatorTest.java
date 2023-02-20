@@ -541,4 +541,37 @@ public class XpathExperimentValidatorTest {
             assertEquals(currentFault[1], instance.validatePresenterTypes(loadStimulusMenuFalutDocument));
         }
     }
+
+    /**
+     * Test of validateEvaluateTokens method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testValidateEvaluateTokens() throws Exception {
+        System.out.println("validateEvaluateTokens");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        String commonFaultTests[][] = {
+            {"<experiment><setMetadataEvalTokens evaluateTokens=\"replaceAll(&quot;&lt;metadataField_storedDate&gt;&quot;, &quot; u &quot;, &quot; je &quot;)\"/><setMetadataEvalTokens evaluateTokens=\"replaceAll('&lt;metadataField_storedDate&gt;', ' u ', ' je ')\"/><setMetadataEvalTokens evaluateTokens=\"replaceAll(&quot;::metadataField_storedDate::&quot;, &quot; u &quot;, &quot; je &quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "replaceAll(\"<metadataField_storedDate>\", \" u \", \" je \")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "replaceAll('<metadataField_storedDate>', ' u ', ' je ')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "replaceAll(\"::metadataField_storedDate::\", \" u \", \" je \")\n"
+            },
+            {"<experiment><htmlTokenText featureText=\"length(&quot;&lt;metadataField_educationOther&gt;&quot;)\"/><htmlTokenText featureText=\"length('&lt;metadataField_educationOther&gt;')\"/><htmlTokenText featureText=\"length(&quot;::metadataField_educationOther::&quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "length(\"<metadataField_educationOther>\")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length('<metadataField_educationOther>')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length(\"::metadataField_educationOther::\")\n"
+            }
+        };
+        for (String currentFault[] : commonFaultTests) {
+            Document loadStimulusMenuFalutDocument = getDocument(currentFault[0]);
+            assertEquals(currentFault[1], instance.validateEvaluateTokens(loadStimulusMenuFalutDocument));
+        }
+    }
 }

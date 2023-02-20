@@ -289,11 +289,11 @@ public class XpathExperimentValidator {
             }
             if (currentType == EvaluateTokensType.unknown || currentType == tokensType) { // keep looking if no errors are detected yet
                 for (TokenMethod currentToken : TokenMethod.values()) {
-                    if (attributeValue.matches(currentToken.name() + "[\\s]*\\([\\s]*&quot;")) {
+                    if (attributeValue.matches(".*" + currentToken.name() + "[\\s]*\\([\\s]*\".*")) {
                         currentType = EvaluateTokensType.gtlt;
                         break;
                     }
-                    if (attributeValue.matches(currentToken.name() + "[\\s]*\\([\\s]*'")) {
+                    if (attributeValue.matches(".*" + currentToken.name() + "[\\s]*\\([\\s]*'.*")) {
                         currentType = EvaluateTokensType.coloncolon;
                         break;
                     }
