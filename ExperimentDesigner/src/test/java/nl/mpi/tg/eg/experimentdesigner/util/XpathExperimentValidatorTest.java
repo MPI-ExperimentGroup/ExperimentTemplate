@@ -567,6 +567,51 @@ public class XpathExperimentValidatorTest {
                 + "length('<metadataField_educationOther>')\n"
                 + "The following token usage is inconsistent with the first:\n"
                 + "length(\"::metadataField_educationOther::\")\n"
+            },
+            {"<experiment><triggerMatching listenerId=\"length(&quot;&lt;metadataField_educationOther&gt;&quot;)\"/><triggerMatching listenerId=\"length('&lt;metadataField_educationOther&gt;')\"/><triggerMatching listenerId=\"length(&quot;::metadataField_educationOther::&quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "length(\"<metadataField_educationOther>\")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length('<metadataField_educationOther>')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length(\"::metadataField_educationOther::\")\n"
+            },
+            {"<experiment><regionCodeStyle regionId=\"length(&quot;&lt;metadataField_educationOther&gt;&quot;)\"/><regionCodeStyle regionId=\"length('&lt;metadataField_educationOther&gt;')\"/><regionCodeStyle regionId=\"length(&quot;::metadataField_educationOther::&quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "length(\"<metadataField_educationOther>\")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length('<metadataField_educationOther>')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length(\"::metadataField_educationOther::\")\n"
+            },
+            {"<experiment><setStimulusCodeResponse codeFormat=\"length(&quot;&lt;metadataField_educationOther&gt;&quot;)\"/><setStimulusCodeResponse codeFormat=\"length('&lt;metadataField_educationOther&gt;')\"/><setStimulusCodeResponse codeFormat=\"length(&quot;::metadataField_educationOther::&quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "length(\"<metadataField_educationOther>\")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length('<metadataField_educationOther>')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length(\"::metadataField_educationOther::\")\n"
+            },
+            {"<experiment><setStimulusCodeResponse groupId=\"length(&quot;&lt;metadataField_educationOther&gt;&quot;)\"/><setStimulusCodeResponse groupId=\"length('&lt;metadataField_educationOther&gt;')\"/><setStimulusCodeResponse groupId=\"length(&quot;::metadataField_educationOther::&quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "length(\"<metadataField_educationOther>\")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length('<metadataField_educationOther>')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length(\"::metadataField_educationOther::\")\n"
+            },
+            {"<experiment><sendGroupTokenMessage dataLogFormat=\"length(&quot;&lt;metadataField_educationOther&gt;&quot;)\"/><sendGroupTokenMessage dataLogFormat=\"length('&lt;metadataField_educationOther&gt;')\"/><sendGroupTokenMessage dataLogFormat=\"length(&quot;::metadataField_educationOther::&quot;)\"/></experiment>",
+                "Issues with token text found.\n"
+                + "The first token usage is:\n"
+                + "length(\"<metadataField_educationOther>\")\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length('<metadataField_educationOther>')\n"
+                + "The following token usage is inconsistent with the first:\n"
+                + "length(\"::metadataField_educationOther::\")\n"
             }
         };
         for (String currentFault[] : commonFaultTests) {
