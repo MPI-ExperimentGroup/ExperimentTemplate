@@ -267,7 +267,7 @@ public class XpathExperimentValidator {
         String firstRecordMessage = "";
         EvaluateTokensType tokensType = EvaluateTokensType.unknown;
         XPath validationXPath = XPathFactory.newInstance().newXPath();
-        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//@*[contains(name(), \"Regex\") or contains(name(), \"Token\") or (contains(name(parent::*), \"htmlTokenText\") and contains(name(), \"featureText\"))]").evaluate(xmlDocument, XPathConstants.NODESET);
+        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//@*[contains(name(), \"Regex\") or contains(name(), \"Format\") or contains(name(), \"listenerId\") or contains(name(), \"groupId\") or contains(name(), \"Token\") or (contains(name(parent::*), \"htmlTokenText\")" + /* and contains(name(), \"featureText\")*//* checking all attributes if the element name includes token */ ")]").evaluate(xmlDocument, XPathConstants.NODESET);
         for (int index = 0; index < nodeList.getLength(); index++) {
             final String attributeValue = nodeList.item(index).getTextContent();
             EvaluateTokensType currentType = EvaluateTokensType.unknown;
