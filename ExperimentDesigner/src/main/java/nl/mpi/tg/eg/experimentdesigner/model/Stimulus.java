@@ -208,7 +208,7 @@ public class Stimulus implements Serializable {
     }
 
     public static final String cleanIdString(String stimulusTag) {
-        return stimulusTag.replaceAll(";", "_");
+        return stimulusTag.replaceAll(";", "_").replaceAll("-", "_");
     }
 
     @Override
