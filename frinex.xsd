@@ -52,6 +52,11 @@
 <xs:pattern value="[a-zA-Z_0-9]{3,}"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="stimulusIdentifier">
+<xs:restriction base="xs:string">
+<xs:pattern value="[^-]{1,}"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="stimulusTag">
 <xs:restriction base="xs:string">
 <xs:pattern value="([^\p{P}\W]*[_]*){1,}"/>
@@ -1120,9 +1125,9 @@
 </xs:complexType>
 </xs:element>
 </xs:sequence>
-<xs:attribute name="identifier" type="xs:string" use="required">
+<xs:attribute name="identifier" type="stimulusIdentifier" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>An identifier for the stimulus consisting of three or more [a-Z0-9_] characters, which must be unique per configuration file.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="videoPath" type="xs:string">
@@ -1256,9 +1261,9 @@
 <xs:annotation>
 <xs:documentation>Logs data to the tag pair data table. The value of dataLogFormat will have any string tokens replaced and stored in the TagValue2 column. When provided the value of type and headerKey will be stored in the EventTag	and TagValue1 columns respectively.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="type" type="xs:string" use="required">
@@ -1620,9 +1625,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="headerKey" type="xs:string">
@@ -2890,9 +2895,9 @@
 <xs:documentation>Option List</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="styleName" type="xs:string">
@@ -3105,9 +3110,9 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="styleName" type="xs:string">
@@ -3367,9 +3372,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="src" type="xs:string" use="required">
@@ -3798,9 +3803,9 @@
 <xs:annotation>
 <xs:documentation>Submits the logged touch input of the participant since touch input capture was started and then stops the input capture which then triggers captureEnd.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -4008,9 +4013,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabels" type="xs:string" use="required">
@@ -4248,9 +4253,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabels" type="xs:string" use="required">
@@ -4488,9 +4493,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabels" type="xs:string" use="required">
@@ -4554,9 +4559,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="allowedCharCodes" type="xs:string">
@@ -4789,9 +4794,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabelLeft" type="xs:string">
@@ -5024,9 +5029,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabelLeft" type="xs:string">
@@ -5259,9 +5264,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabelLeft" type="xs:string">
@@ -5334,9 +5339,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="applyScore" type="xs:boolean" use="required">
@@ -5380,9 +5385,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="groupId" type="xs:string">
@@ -5595,9 +5600,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="ratingLabels" type="xs:string" use="required">
@@ -5950,9 +5955,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -6851,9 +6856,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="poster" type="xs:string" use="required">
@@ -7111,9 +7116,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="columnCount" type="xs:string" use="required">
@@ -7147,9 +7152,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="maxWidth" type="xs:string" use="required">
@@ -7893,9 +7898,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -15721,9 +15726,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="maxHeight" type="xs:string" use="required">
@@ -15772,9 +15777,9 @@
 <xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -15788,9 +15793,9 @@
 <xs:documentation>The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
@@ -15810,9 +15815,9 @@
 <xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
 <xs:element name="onActivate" type="onActivateType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
@@ -15838,9 +15843,9 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="maxHeight" type="xs:string" use="required">
@@ -15896,9 +15901,9 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="loop" type="xs:string" use="required">
@@ -15934,9 +15939,9 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
@@ -15967,9 +15972,9 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="showPlaybackIndicator" type="xs:string" use="required">
@@ -17832,9 +17837,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="maxHeight" type="xs:string" use="required">
@@ -17918,9 +17923,9 @@
 <xs:documentation>Option List</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="eventTag" type="xs:string">
@@ -17993,9 +17998,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="streamChannels" type="groupChannels" use="required">
@@ -18013,9 +18018,9 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="streamChannels" type="groupChannels" use="required">
@@ -18048,9 +18053,9 @@
 <xs:annotation>
 <xs:documentation>Clears the current score and sets the current score group string based on the evaluateTokens. The score group is a marker shown in the admin system to keep track of the records and does not affect the score collection process.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="evaluateTokens" type="xs:string" use="required">
@@ -18063,9 +18068,9 @@
 <xs:annotation>
 <xs:documentation>Applies the provided score. When the value is positive, both the score and potential are incremented by the value and any correct streak is maintained. When the score is negative only the potential is incremented by the value and any incorrect streak is maintained. When the score is zero no change is made to either the score or potential, however both the correct and incorrect streaks are cleared.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:integer">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="scoreValue" type="xs:integer" use="required">
