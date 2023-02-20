@@ -267,7 +267,7 @@ public class XpathExperimentValidator {
         String firstRecordMessage = "";
         EvaluateTokensType tokensType = EvaluateTokensType.unknown;
         XPath validationXPath = XPathFactory.newInstance().newXPath();
-        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//@*[contains(name(), \"Regex\") or contains(name(), \"Token\")]").evaluate(xmlDocument, XPathConstants.NODESET);
+        NodeList nodeList = (NodeList) validationXPath.compile("/experiment//@*[contains(name(), \"Regex\") or contains(name(), \"Token\") or (contains(name(parent::*), \"htmlTokenText\") and contains(name(), \"featureText\"))]").evaluate(xmlDocument, XPathConstants.NODESET);
         for (int index = 0; index < nodeList.getLength(); index++) {
             final String attributeValue = nodeList.item(index).getTextContent();
             EvaluateTokensType currentType = EvaluateTokensType.unknown;
@@ -276,7 +276,7 @@ public class XpathExperimentValidator {
             } else if (attributeValue.contains("::" + "metadataField_")) {
                 currentType = EvaluateTokensType.coloncolon;
             }
-            if (currentType == EvaluateTokensType.unknown) {
+            if (currentType == EvaluateTokensType.unknown || currentType == tokensType) { // keep looking if no errors are detected yet
                 for (TokenText currentToken : TokenText.values()) {
                     if (attributeValue.contains("<" + currentToken.name())) {
                         currentType = EvaluateTokensType.gtlt;
@@ -287,7 +287,7 @@ public class XpathExperimentValidator {
                     }
                 }
             }
-            if (currentType == EvaluateTokensType.unknown) {
+            if (currentType == EvaluateTokensType.unknown || currentType == tokensType) { // keep looking if no errors are detected yet
                 for (TokenMethod currentToken : TokenMethod.values()) {
                     if (attributeValue.matches(currentToken.name() + "[\\s]*\\([\\s]*&quot;")) {
                         currentType = EvaluateTokensType.gtlt;
@@ -299,7 +299,7 @@ public class XpathExperimentValidator {
                     }
                 }
             }
-            if (currentType != EvaluateTokensType.unknown) {
+            if (currentType != EvaluateTokensType.unknown || currentType == tokensType) { // keep looking if no errors are detected yet
                 if (tokensType == EvaluateTokensType.unknown && currentType != EvaluateTokensType.unknown) {
                     tokensType = currentType;
                     firstRecordMessage = "Issues with token text found.\nThe first token usage is:\n" + attributeValue + "\n";
