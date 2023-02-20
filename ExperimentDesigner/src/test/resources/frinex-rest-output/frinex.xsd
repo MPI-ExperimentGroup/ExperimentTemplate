@@ -54,7 +54,7 @@
 </xs:simpleType>
 <xs:simpleType name="stimulusIdentifier">
 <xs:restriction base="xs:string">
-<xs:pattern value="[^-]{2,}"/>
+<xs:pattern value="[^-]{1,}"/>
 </xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="stimulusTag">
