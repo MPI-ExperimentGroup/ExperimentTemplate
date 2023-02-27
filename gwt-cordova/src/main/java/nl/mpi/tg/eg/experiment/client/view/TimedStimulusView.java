@@ -911,12 +911,15 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void startMedia(final String mediaId) {
+    public void startMedia(final String mediaId, final Boolean loop) {
         for (String key : videoList.keySet()) {
             if (key.matches(mediaId)) {
                 Video video = videoList.get(key);
                 if (video != null) {
                     video.play();
+                    if (loop != null) {
+                        video.setLoop(loop);
+                    }
                 }
             }
         }

@@ -1151,7 +1151,8 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@showOnBackButton) then concat(@showOnBackButton eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(@autoPlay, ', ') else ''" />
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@loop) then concat(@loop, ', ') else ''" />
+        <xsl:value-of select="if((local-name() eq 'stimulusVideo' or local-name() eq 'stimulusCodeVideo') and @loop) then concat(@loop, ' /* loop */, ') else ''" />
+        <xsl:value-of select="if((local-name() eq 'stimulusVideo' or local-name() eq 'stimulusCodeVideo') and not(@loop)) then 'false /* loop */, ' else ''" />
         <xsl:value-of select="if(@showControls) then concat(@showControls, ', ') else ''" />
         <xsl:value-of select="if (local-name() eq 'addRecorderDtmfTrigger'
                                 or local-name() eq 'dtmfTone'
@@ -1379,6 +1380,8 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@downloadPermittedWindowMs) then concat(@downloadPermittedWindowMs, ', ') else ''" />
         <xsl:value-of select="if(local-name() eq 'logMediaTimeStamp') then ', ' else ''" />
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'playMedia' and @loop) then concat(', ', @loop, ' /* loop */') else ''" />
+        <xsl:value-of select="if(local-name() eq 'playMedia' and not(@loop)) then ', null /* loop */' else ''" />
         <xsl:value-of select="if(local-name() eq 'logMediaTimeStamp') then ', ' else ''" />
         <xsl:value-of select="if(@target) then concat('ApplicationState.xml_', @target, '.name()') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />

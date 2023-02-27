@@ -2328,9 +2328,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.logMediaTimeStamp(formattedMediaId, eventTag, timedEventMonitor);
     }
 
-    protected void playMedia(final String mediaId, final Stimulus currentStimulus) {
+    protected void playMedia(final String mediaId, Boolean loop, final Stimulus currentStimulus) {
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(mediaId);
-        timedStimulusView.startMedia(formattedMediaId);
+        timedStimulusView.startMedia(formattedMediaId, loop);
     }
 
     protected void rewindMedia(final String mediaId, final Stimulus currentStimulus) {
