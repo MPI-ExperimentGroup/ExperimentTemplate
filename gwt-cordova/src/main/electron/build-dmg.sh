@@ -31,6 +31,33 @@ touch src/renderer/index.js
 cp src/renderer/static/splash.png ./background.png
 convert -resize 512x512^ -gravity center -extent 512x512 -quality 100 src/renderer/static/icon.png ./icon.png
 mkdir dist
+mkdir online_version
+mkdir offline_version
 cp background.png dist/
 yarn dist --mac dmg
 ls dist/*.dmg
+cp dist/*.dmg offline_version/
+
+# generate online only versions which do not use the express local server 
+# remove previous build output
+rm -rf ./dist/*
+cp background.png dist/
+# remove offline Frinex parts
+rm -rf ./src/renderer/ExperimentTemplate
+rm -rf ./src/renderer/css
+rm -rf ./src/renderer/scss
+rm -rf ./src/renderer/static
+rm -rf ./src/renderer/webrtc-adaptor
+rm -rf ./src/renderer/stomp-websocket
+rm -rf ./src/renderer/sockjs-client
+rm -rf ./src/renderer/bootstrap
+rm -rf ./src/renderer/opus-recorder
+rm -rf ./src/renderer/jquery
+# replace the express server for online only access via the relevant server
+sed -i "s|//ONLINE_OPTION||g" ./src/main/index.js
+
+# build a second set of binaries for online only use
+cp background.png dist/
+yarn dist --mac dmg
+ls dist/*.dmg
+cp dist/*.dmg online_version/
