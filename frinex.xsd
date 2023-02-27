@@ -15863,9 +15863,9 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="loop" type="xs:string" use="required">
+<xs:attribute name="loop" type="xs:boolean">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>When true the media playback will be set to play in a loop. When false the media will be set to play once then stop.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="styleName" type="xs:string">
@@ -15906,9 +15906,9 @@
 <xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="loop" type="xs:string" use="required">
+<xs:attribute name="loop" type="xs:boolean">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>When true the media playback will be set to play in a loop. When false the media will be set to play once then stop.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="styleName" type="xs:string">
@@ -16000,6 +16000,11 @@
 <xs:attribute name="mediaId" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="loop" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>When true the media playback will be set to play in a loop. When false the media will be set to play once then stop.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
