@@ -6,8 +6,11 @@
 //   });
   
 const {app, BrowserWindow, Menu, systemPreferences} = require('electron')
+
+//ONLINE_OPTION /*
 const express = require('express');
 const path = require('path');
+//ONLINE_OPTION */
 
 let mainWindow;
 
@@ -48,17 +51,23 @@ if (!isDebugMode) {
 }
 
 const createWindow = () => {
+//ONLINE_OPTION /*
     const app = express();
+//ONLINE_OPTION */
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         fullscreen: !isDebugMode
     });
 
+//ONLINE_OPTION /*
     app.use('/', express.static(path.join(__dirname, 'src', 'renderer')));
     //app.use('/webjars', express.static(path.join(__dirname, 'www', 'webjars')));
     app.listen(5000);
     mainWindow.loadURL(`http://localhost:5000/index.html`);
+//ONLINE_OPTION */
+
+//ONLINE_OPTION mainWindow.loadURL('@experiment.destinationServerUrl@/@experiment.configuration.name@/index.html');
 
     if (isDebugMode) {
         mainWindow.webContents.openDevTools()

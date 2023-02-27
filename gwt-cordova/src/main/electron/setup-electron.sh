@@ -73,6 +73,36 @@ cd ..
 #electron-forge make --platform=win32 --arch=x64
 #electron-forge make --platform=win32 --arch=ia32
 
+# generate online only versions which do not use the express local server 
+# remove previous build output
+rm -rf ./dist/*
+# remove offline Frinex parts
+rm -rf ./src/renderer/ExperimentTemplate
+rm -rf ./src/renderer/css
+rm -rf ./src/renderer/scss
+rm -rf ./src/renderer/static
+rm -rf ./src/renderer/webrtc-adaptor
+rm -rf ./src/renderer/stomp-websocket
+rm -rf ./src/renderer/sockjs-client
+rm -rf ./src/renderer/bootstrap
+rm -rf ./src/renderer/opus-recorder
+rm -rf ./src/renderer/jquery
+# replace the express server for online only access via the relevant server
+sed -i "s|//ONLINE_OPTION||g" ./src/main/index.js
+
+# build a second set of binaries for online only use
+yarn
+yarn dist --win portable
+yarn dist --mac zip --dir -c.compression=store -c.mac.identity=null
+yarn dist --mac dmg --dir -c.compression=store -c.mac.identity=null
+yarn dist --linux snap
+
+cd dist
+zip -r ../../@experiment.configuration.name@-win32-x64-lt.zip ./@experiment.configuration.name@*.exe
+cp @experiment.configuration.name@*.dmg ../../@experiment.configuration.name@-mac.dmg
+cp @experiment.configuration.name@*-mac.zip ../../@experiment.configuration.name@-darwin-x64-lt.zip
+cd ..
+
 find . -iname '*.zip'
 
 #mkdir /srv/target/electron
