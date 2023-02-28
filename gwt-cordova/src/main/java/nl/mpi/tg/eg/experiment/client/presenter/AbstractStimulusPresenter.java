@@ -1320,13 +1320,50 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    public void touchInputStimulusButton(final PresenterEventListener presenterListener, final String eventTag, final String imagePath, final String buttonGroup) {
-        final StimulusButton buttonItem;
-        if (imagePath == null || imagePath.isEmpty()) {
-            buttonItem = optionButton(presenterListener, buttonGroup);
-        } else {
-            buttonItem = imageButton(presenterListener, UriUtils.fromString((imagePath.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + imagePath), true, buttonGroup);
-        }
+    public void touchInputLabelButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListener presenterListener, final String eventTag, final String codeFormat, final String styleName, final int dataChannel, final String buttonGroup) {
+        // TODO: utilise the media listeners
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(codeFormat);
+        final StimulusButton buttonItem = optionButton(new PresenterEventListener() {
+
+            @Override
+            public String getLabel() {
+                return formattedCode;
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                presenterListener.eventFired(button, singleShotEventListener);
+            }
+        }, buttonGroup);
+        touchInputStimulusButton(buttonItem, presenterListener, eventTag, buttonGroup);
+    }
+
+    public void touchInputImageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListener mediaLoadedListener, final PresenterEventListener mediaLoadFailedListener, final PresenterEventListener onActivateListener, final String eventTag, final String codeFormat, final String styleName, final int dataChannel, final String buttonGroup) {
+        // TODO: utilise the media listeners
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(codeFormat);
+        final StimulusButton buttonItem = imageButton(onActivateListener, UriUtils.fromString((formattedCode.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + formattedCode), true, buttonGroup);
+        touchInputStimulusButton(buttonItem, onActivateListener, eventTag, buttonGroup);
+    }
+
+    public void touchInputVideoButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListener mediaLoadedListener, final PresenterEventListener mediaLoadFailedListener, final PresenterEventListener onActivateListener, final String eventTag, final String codeFormat, final String styleName, final int dataChannel, final String buttonGroup) {
+        // TODO: utilise the media listeners
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(codeFormat);
+        // TODO: make the video button a thing
+        final StimulusButton buttonItem = imageButton(onActivateListener, UriUtils.fromString((formattedCode.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + formattedCode), true, buttonGroup);
+        touchInputStimulusButton(buttonItem, onActivateListener, eventTag, buttonGroup);
+    }
+
+    private void touchInputStimulusButton(final StimulusButton buttonItem, final PresenterEventListener presenterListener, final String eventTag, final String buttonGroup) {
         stimulusButtonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
             boolean isTriggered = false;
@@ -2503,6 +2540,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void touchInputCapture(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final TimedStimulusListener startOfTouchEventListener, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListener) {
+        // TODO: maybe send report here and start a new capture
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {

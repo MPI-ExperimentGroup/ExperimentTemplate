@@ -485,12 +485,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         </xsl:text>
     </xsl:template>
     <!--it should be possible to merge the two following templates into one-->
-    <xsl:template match="touchInputStimulusButton|stimulusButton|stimulusSlider|targetButton|actionButton|actionTokenButton|targetFooterButton|actionFooterButton"> 
+    <xsl:template match="touchInputLabelButton|touchInputImageButton|touchInputVideoButton|stimulusButton|stimulusSlider|targetButton|actionButton|actionTokenButton|targetFooterButton|actionFooterButton"> 
         <xsl:if test="parent::element()/local-name() eq 'showHtmlPopup'">, </xsl:if>
         <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
             <xsl:value-of select="local-name()"/>
             <xsl:text>(</xsl:text>
-            <xsl:if test="local-name() eq 'stimulusButton' or local-name() eq 'stimulusSlider'">
+            <xsl:if test="local-name() eq 'stimulusButton' or local-name() eq 'stimulusSlider' or local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton'">
                 <xsl:text>stimulusProvider, </xsl:text>
                 <xsl:text>currentStimulus,</xsl:text>
             </xsl:if>
@@ -502,50 +502,53 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                 or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, ' else ''" />
         </xsl:if>
-        <xsl:text>new PresenterEventListener() {
+        <xsl:if test="local-name() ne 'touchInputImageButton' and local-name() ne 'touchInputVideoButton'">
+            <xsl:text>new PresenterEventListener() {
 
-            @Override
-            public String getLabel() {
-            return </xsl:text>
-            <xsl:value-of select="if(local-name() ne 'stimulusSlider') then concat('messages.', generate-id(.), '()') else 'null'" />
-        <xsl:text>;
-            }
-            
-            @Override
-            public String getStyleName() {
-            return </xsl:text>
-        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
-        <xsl:text>;
-            }
-            
-            @Override
-            public int getHotKey() {
-            return </xsl:text>
-        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ' -1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
-        <xsl:text>;
-            }
-            
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-        </xsl:text>
-        <xsl:choose>
-            <xsl:when test="@target">
-                <xsl:text>appEventListener.requestApplicationState(ApplicationState.xml_</xsl:text>
-                <xsl:value-of select="@target" />
-                <xsl:text>);</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-                <!--// todo: should this @eventTag exist in this button type given that tags can only happen in a stimulus presenter?-->
-                <!--<xsl:value-of select="if(@eventTag) then concat('logTimeStamp(stimulusProvider, currentStimulus, &quot;', local-name(), '&quot;, &quot;', @eventTag, '&quot;, 0);') else ''" />-->
-                <xsl:apply-templates/>
-            </xsl:otherwise>
-        </xsl:choose>
-        <xsl:text>
-            }
-            }</xsl:text>
-        <xsl:if test="local-name() eq 'touchInputStimulusButton'
+                @Override
+                public String getLabel() {
+                return </xsl:text>
+                <xsl:value-of select="if(local-name() ne 'stimulusSlider') then concat('messages.', generate-id(.), '()') else 'null'" />
+            <xsl:text>;
+                }
+
+                @Override
+                public String getStyleName() {
+                return </xsl:text>
+            <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
+            <xsl:text>;
+                }
+
+                @Override
+                public int getHotKey() {
+                return </xsl:text>
+            <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ' -1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
+            <xsl:text>;
+                }
+
+                @Override
+                public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+            </xsl:text>
+            <xsl:choose>
+                <xsl:when test="@target">
+                    <xsl:text>appEventListener.requestApplicationState(ApplicationState.xml_</xsl:text>
+                    <xsl:value-of select="@target" />
+                    <xsl:text>);</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!--// todo: should this @eventTag exist in this button type given that tags can only happen in a stimulus presenter?-->
+                    <!--<xsl:value-of select="if(@eventTag) then concat('logTimeStamp(stimulusProvider, currentStimulus, &quot;', local-name(), '&quot;, &quot;', @eventTag, '&quot;, 0);') else ''" />-->
+                    <xsl:apply-templates/>
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>
+                }
+                }</xsl:text>
+        </xsl:if>    
+        <xsl:value-of select="if(local-name() eq 'touchInputLabelButton' or local-name() eq 'stimulusButton') then ', ' else ''" />
+        <xsl:if test="local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton'
                        or local-name() eq 'stimulusButton'">
-            <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ', null'" />
+            <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else 'null'" />
         </xsl:if>
         <xsl:if test="local-name() eq 'stimulusButton' or local-name() eq 'stimulusSlider'">
             <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel, ' /* dataChannel */') else ', 0'" />
@@ -556,7 +559,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             <xsl:value-of select="if(@minimum) then concat(', ', @minimum, ' /* minimum */') else ', 0'" />
             <xsl:value-of select="if(@maximum) then concat(', ', @maximum, ' /* maximum */, ') else ', 100, '" />
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then if(@src) then concat(', &quot;', @src, '&quot;') else ', null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton') then if(@codeFormat) then concat(', &quot;', @codeFormat, '&quot; /* codeFormat */') else ', null /* codeFormat */' else ''" />
+        <xsl:apply-templates select="mediaLoaded" />
+        <xsl:apply-templates select="mediaLoadFailed" />
+        <xsl:apply-templates select="mediaPlaybackStarted" />
+        <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
             <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
             <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
