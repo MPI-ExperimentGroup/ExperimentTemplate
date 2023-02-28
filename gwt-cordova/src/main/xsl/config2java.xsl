@@ -763,12 +763,12 @@ or local-name() eq 'submitGroupEvent'
         </xsl:for-each>
         <xsl:text>");</xsl:text>
     </xsl:template>
-    <xsl:template match="hotKeyInput|touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
+    <xsl:template match="hotKeyInput|touchInputCapture|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:if test="local-name() eq 'nextStimulus' 
-or local-name() eq 'touchInputCaptureStart'
+or local-name() eq 'touchInputCapture'
 or local-name() eq 'prevStimulus'
 or local-name() eq 'stimulusButton'
 or local-name() eq 'prevStimulusButton'
@@ -822,7 +822,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'hardwareTimeStamp' 
             and local-name() ne 'recorderToneInjection' 
             and local-name() ne 'sendGroupEndOfStimuli'">
-            <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
+            <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel, '/* dataChannel */') else ', 0 /* dataChannel */'" />
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
@@ -830,7 +830,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then if(@opto2) then concat(', BooleanToggle.OPTO_', upper-case(@opto2)) else ', null' else ''" />
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp') then ', ' else ''" />
         <xsl:value-of select="if (local-name() eq 'hardwareTimeStamp' or local-name() eq 'recorderToneInjection') then if(@dtmf) then concat('DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash')) else 'null' else ''" />
-        <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true' else ', false' else ''" />  
+        <xsl:value-of select="if(@showControls) then if (@showControls eq 'true') then ', true /* showControls */' else ', false /* showControls */' else ''" />  
         <xsl:if test="local-name() eq 'audioButton'
 or local-name() eq 'prevStimulusButton'
 or local-name() eq 'nextStimulusButton'
@@ -864,23 +864,14 @@ or local-name() eq 'sendGroupMessageButton'
                                 ) then if (@groupId) then concat(', &quot;',@groupId, '&quot;') else ', &quot;&quot;' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'sendGroupTokenMessage')
                                 ) then if (@dataLogFormat) then concat(', &quot;',@dataLogFormat, '&quot;') else ', &quot;&quot;' else ''" />
-        <xsl:if test="local-name() eq 'touchInputCaptureStart'">
-            <xsl:text>, new TimedStimulusListener() {
-
-                @Override
-                public void postLoadTimerFired() {
-            </xsl:text>
-            <xsl:apply-templates />
-            <xsl:text>
-                }
-                }</xsl:text>
-        </xsl:if>        
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
         <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:apply-templates select="onKeyDown" />
         <xsl:apply-templates select="onKeyUp" />
+        <xsl:apply-templates select="captureStart" />
+        <xsl:apply-templates select="captureEnd" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -966,9 +957,8 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
-        <xsl:value-of select="if(@msToNext) then ', ' else ''" />
-        <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
+    <xsl:template match="captureStart|captureEnd|onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
+        <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext, '/* msToNext */') else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers' or parent::element()/local-name() eq 'startFrameRateTimer') then '' else ', '" />
         <xsl:text>&#xa;new </xsl:text>
         <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'CurrentStimulusListener' else if (local-name() eq 'onTime') then 'SingleStimulusListener' else if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'onActivate' or local-name() eq 'mediaPlaybackStarted' or local-name() eq 'mediaPlaybackComplete') then 'CancelableStimulusListener' else 'TimedStimulusListener'" />

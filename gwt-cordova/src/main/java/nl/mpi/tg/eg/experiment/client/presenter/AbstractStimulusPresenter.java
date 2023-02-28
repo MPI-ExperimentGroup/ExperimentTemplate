@@ -2502,7 +2502,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         touchInputCapture = null;
     }
 
-    protected void touchInputCaptureStart(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListener) {
+    protected void touchInputCapture(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final TimedStimulusListener startOfTouchEventListener, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListener) {
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
@@ -2526,6 +2526,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             };
             timedStimulusView.addTouchInputCapture(touchInputCapture);
+            startOfTouchEventListener.postLoadTimerFired();
         }
     }
 
