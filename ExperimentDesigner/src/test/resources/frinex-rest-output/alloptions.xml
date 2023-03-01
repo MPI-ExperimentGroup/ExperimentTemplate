@@ -677,9 +677,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit dataChannel="2"/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -926,7 +948,7 @@
             <endOfStimulus>
                 <plainText featureText="plainText in endOfStimulus"/>
             </endOfStimulus>
-            <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" groupCameraChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupCanvasChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupAudioChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
+            <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                 <groupInitialisationError>
                     <plainText featureText="plainText in groupInitialisationError"/>
                 </groupInitialisationError>
@@ -1120,9 +1142,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit dataChannel="2"/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -1409,9 +1453,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit dataChannel="2"/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -1698,9 +1764,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit dataChannel="2"/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -3597,9 +3685,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="" src="">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton codeFormat="">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton codeFormat="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton codeFormat="" autoPlay="true" mediaId="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -4028,9 +4138,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="" src="">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton codeFormat="">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton codeFormat="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton codeFormat="" autoPlay="true" mediaId="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -4311,9 +4443,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="" src="">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton codeFormat="">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton codeFormat="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton codeFormat="" autoPlay="true" mediaId="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
@@ -4594,9 +4748,31 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputStimulusButton featureText="" src="">
-                            <plainText featureText="plainText in touchInputStimulusButton"/>
-                        </touchInputStimulusButton>
+                        <touchInputLabelButton codeFormat="">
+                            <plainText featureText="plainText in touchInputLabelButton"/>
+                        </touchInputLabelButton>
+                        <touchInputImageButton codeFormat="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputImageButton>
+                        <touchInputVideoButton codeFormat="" autoPlay="true" mediaId="">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <onActivate>
+                                <plainText featureText="plainText in onActivate"/>
+                            </onActivate>
+                        </touchInputVideoButton>
                         <touchInputReportSubmit/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>

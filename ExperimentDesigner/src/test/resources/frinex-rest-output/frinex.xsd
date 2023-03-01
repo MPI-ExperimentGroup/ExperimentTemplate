@@ -1762,7 +1762,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -2004,7 +2006,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -2481,7 +2485,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -2720,7 +2726,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -2950,7 +2958,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -3146,25 +3156,11 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="touchInputStimulusButtonType">
+<xs:complexType name="touchInputLabelButtonType">
 <xs:annotation>
-<xs:documentation>Creates touch input button for use on tablets/mobile devices which responds to touch input from the participant.</xs:documentation>
+<xs:documentation>Creates touch input label button for use on tablets/mobile devices which responds to touch input from the participant.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="featureText" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
 <xs:element name="htmlText" type="htmlTextType"/>
 <xs:element name="htmlTokenText" type="htmlTokenTextType"/>
 <xs:element name="evaluateTokenText" type="evaluateTokenTextType"/>
@@ -3202,7 +3198,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -3362,11 +3360,6 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
-<xs:attribute name="featureText" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
@@ -3377,7 +3370,7 @@
 <xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="src" type="xs:string" use="required">
+<xs:attribute name="codeFormat" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
@@ -3390,6 +3383,91 @@
 <xs:attribute name="groupId" type="xs:string">
 <xs:annotation>
 <xs:documentation>This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="touchInputImageButtonType">
+<xs:annotation>
+<xs:documentation>Creates touch input image button for use on tablets/mobile devices which responds to touch input from the participant.</xs:documentation>
+</xs:annotation>
+<xs:all>
+<xs:element name="mediaLoaded" type="mediaLoadedType"/>
+<xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
+<xs:element name="onActivate" type="onActivateType"/>
+</xs:all>
+<xs:attribute name="eventTag" type="xs:string">
+<xs:annotation>
+<xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="dataChannel" type="xs:integer">
+<xs:annotation>
+<xs:documentation></xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="codeFormat" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="styleName" type="xs:string">
+<xs:annotation>
+<xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupId" type="xs:string">
+<xs:annotation>
+<xs:documentation>This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="touchInputVideoButtonType">
+<xs:annotation>
+<xs:documentation>Creates touch input video button for use on tablets/mobile devices which responds to touch input from the participant.</xs:documentation>
+</xs:annotation>
+<xs:all>
+<xs:element name="mediaLoaded" type="mediaLoadedType"/>
+<xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
+<xs:element name="onActivate" type="onActivateType"/>
+</xs:all>
+<xs:attribute name="eventTag" type="xs:string">
+<xs:annotation>
+<xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="dataChannel" type="xs:integer">
+<xs:annotation>
+<xs:documentation></xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="codeFormat" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="loop" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>When true the media playback will be set to play in a loop. When false the media will be set to play once then stop.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="styleName" type="xs:string">
+<xs:annotation>
+<xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:annotation>
+<xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupId" type="xs:string">
+<xs:annotation>
+<xs:documentation>This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="mediaId" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -3444,7 +3522,9 @@
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -3633,7 +3713,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -3848,7 +3930,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -4088,7 +4172,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -4328,7 +4414,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -4629,7 +4717,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -4864,7 +4954,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -5099,7 +5191,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -5435,7 +5529,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -5728,7 +5824,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -6356,7 +6454,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -6945,7 +7045,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -7225,7 +7327,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -7433,7 +7537,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -7684,7 +7790,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -7971,7 +8079,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -8321,7 +8431,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -8536,7 +8648,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -8764,7 +8878,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -8993,7 +9109,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -9213,7 +9331,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -9444,7 +9564,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -9644,7 +9766,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -9844,7 +9968,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -10044,7 +10170,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -10244,7 +10372,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -10454,7 +10584,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -10664,7 +10796,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -10874,7 +11008,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -11074,7 +11210,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -11274,7 +11412,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -11474,7 +11614,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -11674,7 +11816,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -11874,7 +12018,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -12270,7 +12416,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -12470,7 +12618,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -12863,7 +13013,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -13069,7 +13221,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -13269,7 +13423,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -13469,7 +13625,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -13669,7 +13827,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -13869,7 +14029,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -14072,7 +14234,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -14272,7 +14436,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -14472,7 +14638,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -14672,7 +14840,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -14882,7 +15052,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -15082,7 +15254,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -15290,7 +15464,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -15533,7 +15709,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -16096,7 +16274,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -16348,7 +16528,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -16764,21 +16946,6 @@
 <xs:documentation>List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="groupCameraChannels" type="groupChannels">
-<xs:annotation>
-<xs:documentation>List of video streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will see the shared cameras from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="groupAudioChannels" type="groupChannels">
-<xs:annotation>
-<xs:documentation>List of audio streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will hear the shared microphones from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="groupCanvasChannels" type="groupChannels">
-<xs:annotation>
-<xs:documentation>List of canvas streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel see shared canvases and these messages will only be from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="phasesPerStimulus" type="xs:integer" use="required">
 <xs:annotation>
 <xs:documentation>The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.</xs:documentation>
@@ -16827,7 +16994,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -17030,7 +17199,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -17233,7 +17404,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
@@ -17436,7 +17609,9 @@
 <xs:element name="svgGroupMatching" type="svgGroupMatchingType"/>
 <xs:element name="stimulusButton" type="stimulusButtonType"/>
 <xs:element name="stimulusSlider" type="stimulusSliderType"/>
-<xs:element name="touchInputStimulusButton" type="touchInputStimulusButtonType"/>
+<xs:element name="touchInputLabelButton" type="touchInputLabelButtonType"/>
+<xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
+<xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
 <xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
