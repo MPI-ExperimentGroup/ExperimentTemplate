@@ -16946,6 +16946,21 @@
 <xs:documentation>List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="groupCameraChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of video streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will see the shared cameras from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupAudioChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of audio streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will hear the shared microphones from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupCanvasChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of canvas streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel see shared canvases and these messages will only be from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="phasesPerStimulus" type="xs:integer" use="required">
 <xs:annotation>
 <xs:documentation>The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.</xs:documentation>

@@ -948,7 +948,7 @@
             <endOfStimulus>
                 <plainText featureText="plainText in endOfStimulus"/>
             </endOfStimulus>
-            <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
+            <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" groupCameraChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupCanvasChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupAudioChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                 <groupInitialisationError>
                     <plainText featureText="plainText in groupInitialisationError"/>
                 </groupInitialisationError>
