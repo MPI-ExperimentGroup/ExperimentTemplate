@@ -571,6 +571,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             </xsl:text>
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton') then if(@codeFormat) then concat(', &quot;', @codeFormat, '&quot; /* codeFormat */') else ', null /* codeFormat */' else ''" />
+        <xsl:value-of select="if(local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton') then if(@styleName) then concat(', &quot;', @styleName, '&quot; /* styleName */') else ', null /* styleName */' else ''" />
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
         <xsl:apply-templates select="mediaPlaybackStarted" />
@@ -725,7 +726,7 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(local-name() eq 'validateMetadata') then 'null' else ''" />
         <xsl:value-of select="if(local-name() eq 'validateMetadata') then concat(', &quot;', string-join(distinct-values(/experiment/validationService/validation/*/@postField), '|'), '&quot;, &quot;', string-join(distinct-values((/experiment/validationService/validation/*/@responseField, /experiment/validationService/validation/@errorField, /experiment/validationService/validation/*/@errorField)), '|'),'&quot;') else ''" />
         <xsl:value-of select="if(@dataLogFormat) then concat(', &quot;', @dataLogFormat, '&quot;') else ''" />
-        <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot; /* replacementRegex */') else ''" />
         <xsl:value-of select="if(not(@replacementRegex) and local-name() eq 'setMetadataValue') then ', null' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
@@ -1152,17 +1153,18 @@ or local-name() eq 'regionStyle'
 or local-name() eq 'regionCodeStyle'
 or local-name() eq 'regionReplace'
 or local-name() eq 'backgroundImage'">
-            <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />    
+            <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot; /* styleName */') else 'null /* styleName */'" />    
             <xsl:value-of select="if(local-name() ne 'regionStyle' 
                                     and local-name() ne 'regionCodeStyle' 
                                 ) then ', ' else ''" />
         </xsl:if>
         <xsl:value-of select="if(@showOnBackButton) then concat(@showOnBackButton eq 'true', ', ') else ''" />
-        <xsl:value-of select="if(@autoPlay) then concat(@autoPlay, ', ') else ''" />
-        <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@autoPlay) then concat(@autoPlay, ' /* autoPlay */, ') else ''" />
+        <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot; /* mediaId */, ') else ''" />
         <xsl:value-of select="if((local-name() eq 'stimulusVideo' or local-name() eq 'stimulusCodeVideo') and @loop) then concat(@loop, ' /* loop */, ') else ''" />
         <xsl:value-of select="if((local-name() eq 'stimulusVideo' or local-name() eq 'stimulusCodeVideo') and not(@loop)) then 'false /* loop */, ' else ''" />
-        <xsl:value-of select="if(@showControls) then concat(@showControls, ', ') else ''" />
+        <xsl:value-of select="if(@showControls) then concat(@showControls, ' /* showControls */') else ''" />
+        <xsl:value-of select="if(@showControls and (@replacementRegex or @codeFormat)) then ', ' else ''" />
         <xsl:value-of select="if (local-name() eq 'addRecorderDtmfTrigger'
                                 or local-name() eq 'dtmfTone'
                                 ) then if(@dtmf) then concat('DTMF.code', replace(replace(@dtmf,'\*','Asterisk'),'#','Hash'), ', ') else 'null, ' else ''" />
@@ -1182,12 +1184,12 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot; ') else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@replacementRegex) then concat('&quot;', @replacementRegex, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@replacement) then concat('&quot;', @replacement, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@replacementRegex) then concat('&quot;', @replacementRegex, '&quot; /* replacementRegex */, ') else ''" />
+        <xsl:value-of select="if(@replacement) then concat('&quot;', @replacement, '&quot; /* replacement */, ') else ''" />
         <xsl:value-of select="if(@msLabelFormat) then concat('&quot;', @msLabelFormat, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'countdownLabel') then ', ' else ''" />
-        <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;,') else ''" />
-        <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ' ') else ''" />
+        <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot; /* codeFormat */,') else ''" />
+        <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ' /* showPlaybackIndicator */') else ''" />
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:if test="@groupMembers">
             <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot; /* groupCommunicationChannels */, ') else 'null /* groupCommunicationChannels */, '" />
@@ -1208,7 +1210,8 @@ or local-name() eq 'backgroundImage'">
         local-name() eq 'setStimulusCodeResponse' or
 local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusCodeImage' or local-name() eq 'stimulusCodeImageButton'">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
-            <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,'') else '0'" />
+            <xsl:value-of select="if(not(@replacement or @codeFormat) and (@showControls or @showPlaybackIndicator)) then ', ' else ''" />
+            <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,' /* dataChannel */') else '0 /* dataChannel */'" />
         </xsl:if>
         <!--<xsl:value-of select="if(local-name() eq 'stimulusAudio') then ',' else ''" />-->
         <xsl:if test="local-name() eq 'groupMemberActivity'">
@@ -1443,7 +1446,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
         <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(randomGrouping) = 0) then ',&#xa;new StimulusSelector[]{},&#xa;new StimulusSelector[]{},null,null' else ''" />
         <xsl:value-of select="if(local-name() ne 'loadSdCardStimulus' and @matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() ne 'loadSdCardStimulus' and @replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() ne 'loadSdCardStimulus' and @replacementRegex) then concat(', &quot;', @replacementRegex, '&quot; /* replacementRegex */') else ''" />
         <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
         <!--<xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />-->
         <!--<xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />-->

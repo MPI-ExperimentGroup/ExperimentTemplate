@@ -1320,7 +1320,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    public void touchInputLabelButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener onActivateListener, final String eventTag, final String codeFormat, final String styleName, final String buttonGroup) {
+    public void touchInputLabelButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final TimedStimulusListener onActivateListener, final String codeFormat, final String styleName, final String buttonGroup) {
         // TODO: utilise the media listeners
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(codeFormat);
         PresenterEventListener eventListener = new PresenterEventListener() {
