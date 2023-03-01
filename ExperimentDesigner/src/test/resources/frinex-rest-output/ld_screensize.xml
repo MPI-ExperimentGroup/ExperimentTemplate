@@ -453,12 +453,12 @@
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputLabelButton codeFormat="Left Overlay Button" eventTag="Left" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
+                                                        <touchInputLabelButton eventTag="Left" codeFormat="Left Overlay Button" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                             <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" applyScore="true" dataChannel="3"/>
                                                             <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                         </touchInputLabelButton>
-                                                        <touchInputLabelButton codeFormat="Right Overlay Button" eventTag="Right" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
+                                                        <touchInputLabelButton eventTag="Right" codeFormat="Right Overlay Button" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
                                                             <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" applyScore="true" dataChannel="3"/>
                                                             <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
@@ -567,7 +567,7 @@
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
-                                                                    <touchInputLabelButton codeFormat="Left Overlay Button" eventTag="Left" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Left" codeFormat="Left Overlay Button" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -581,7 +581,7 @@
                                                                             </mediaPlaybackComplete>
                                                                         </stimulusCodeAudio>
                                                                     </touchInputLabelButton>
-                                                                    <touchInputLabelButton codeFormat="Right Overlay Button" eventTag="Right" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Right" codeFormat="Right Overlay Button" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -701,7 +701,7 @@
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
-                                                                    <touchInputLabelButton codeFormat="Left Overlay Button" eventTag="Left" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Left" codeFormat="Left Overlay Button" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -715,7 +715,7 @@
                                                                             </mediaPlaybackComplete>
                                                                         </stimulusCodeAudio>
                                                                     </touchInputLabelButton>
-                                                                    <touchInputLabelButton codeFormat="Right Overlay Button" eventTag="Right" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Right" codeFormat="Right Overlay Button" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -835,7 +835,7 @@
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
-                                                                    <touchInputLabelButton codeFormat="Left Overlay Button" eventTag="Left" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Left" codeFormat="Left Overlay Button" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -849,7 +849,7 @@
                                                                             </mediaPlaybackComplete>
                                                                         </stimulusCodeAudio>
                                                                     </touchInputLabelButton>
-                                                                    <touchInputLabelButton codeFormat="Right Overlay Button" eventTag="Right" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Right" codeFormat="Right Overlay Button" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -969,7 +969,7 @@
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
-                                                                    <touchInputLabelButton codeFormat="Left Overlay Button" eventTag="Left" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Left" codeFormat="Left Overlay Button" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -983,7 +983,7 @@
                                                                             </mediaPlaybackComplete>
                                                                         </stimulusCodeAudio>
                                                                     </touchInputLabelButton>
-                                                                    <touchInputLabelButton codeFormat="Right Overlay Button" eventTag="Right" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
+                                                                    <touchInputLabelButton eventTag="Right" codeFormat="Right Overlay Button" groupId="rightButtonGroup" styleName="rightOverlayButton" dataChannel="2">
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                         <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" applyScore="true" dataChannel="3"/>
                                                                         <stimulusCodeAudio codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
