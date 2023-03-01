@@ -813,11 +813,11 @@
                     <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer0&gt;ms"/>
                 </actionButton>
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
-                <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
                         <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
-                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                            <stimulusVideo loop="false" styleName="smallVideo" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
                                 <mediaLoaded>
                                     <plainText featureText="stimulusVideoLoaded"/>
                                     <clearTimer listenerId="sequentialDisplayTimer0"/>
@@ -1105,7 +1105,7 @@
                                     <plainText featureText="stimulusVideo stimulusVideoExample"/>
                                 </regionAppend>
                                 <regionReplace regionId="stimuliVideoRegion">
-                                    <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                                    <stimulusVideo loop="false" styleName="smallVideo" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
                                         <mediaLoaded>
                                             <hardwareTimeStamp dtmf="2"/>
                                             <regionAppend regionId="stimuliLabelRegion">
@@ -1379,12 +1379,12 @@
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
                         <hardwareTimeStamp opto2="true"/>
                         <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
-                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                            <stimulusVideo loop="false" styleName="smallVideo" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
                                 <mediaLoaded> 
                                     <plainText featureText="stimulusVideoLoaded"/>
                                     <clearTimer listenerId="sequentialDisplayTimer"/>
@@ -1579,12 +1579,12 @@
                 <showStimulusProgress/>
                 <!-- load the media in a hidden state -->
                 <!--todo: load either audio or video based on a get parameter-->
-                <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
                         <hardwareTimeStamp opto2="true"/>
                         <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
-                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                            <stimulusVideo loop="false" styleName="smallVideo" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
                                 <mediaLoaded> 
                                     <plainText featureText="stimulusVideoLoaded"/>
                                     <plainText featureText="The ms values shown here are taken from a timer and not the FrameRateTimer, so this example needs to be evaluated with hardware rather than just the displayed values."/>
@@ -6803,7 +6803,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true">
+                            <stimulusVideo loop="false" styleName="smallVideo" autoPlay="false" mediaId="mediaId1" showControls="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion1">
                                         <plainText featureText="mediaId1 stimulusVideoLoaded"/>
@@ -6847,7 +6847,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusCodeVideo maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId2" showControls="true" maxWidth="60">
+                            <stimulusCodeVideo maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="false" styleName="smallVideo" autoPlay="false" mediaId="mediaId2" showControls="true" maxWidth="60">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion2">
                                         <plainText featureText="mediaId2 stimulusCodeVideoLoaded"/>
@@ -6891,7 +6891,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusCodeAudio codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="true">
+                            <stimulusCodeAudio codeFormat="&lt;code&gt;" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion3">
                                         <plainText featureText="mediaId3 stimulusCodeAudioLoaded"/>
@@ -6935,7 +6935,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusAudio dataChannel="2" autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
+                            <stimulusAudio autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion4">
                                         <plainText featureText="mediaId4 stimulusAudioLoaded"/>

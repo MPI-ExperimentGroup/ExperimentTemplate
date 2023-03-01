@@ -677,10 +677,10 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
                         </touchInputLabelButton>
-                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -691,7 +691,7 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputImageButton>
-                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" autoPlay="true" mediaId="mediaId">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -824,7 +824,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -838,7 +838,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -852,7 +852,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -866,7 +866,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1142,10 +1142,10 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
                         </touchInputLabelButton>
-                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1156,7 +1156,7 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputImageButton>
-                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" autoPlay="true" mediaId="mediaId">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1289,7 +1289,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1303,7 +1303,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1317,7 +1317,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1331,7 +1331,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1453,10 +1453,10 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
                         </touchInputLabelButton>
-                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1467,7 +1467,7 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputImageButton>
-                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" autoPlay="true" mediaId="mediaId">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1600,7 +1600,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1614,7 +1614,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1628,7 +1628,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1642,7 +1642,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1764,10 +1764,10 @@
                 </stimulusSlider>
                 <touchInputCapture showControls="true">
                     <captureStart>
-                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
                         </touchInputLabelButton>
-                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                        <touchInputImageButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1778,7 +1778,7 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputImageButton>
-                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId">
+                        <touchInputVideoButton eventTag="eventTag" codeFormat="codeFormat" loop="true" groupId="groupId" styleName="styleName" autoPlay="true" mediaId="mediaId">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1911,7 +1911,7 @@
                         <plainText featureText="plainText in onActivate"/>
                     </onActivate>
                 </stimulusCodeImageButton>
-                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1925,7 +1925,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1939,7 +1939,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1953,7 +1953,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>

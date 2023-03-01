@@ -3365,11 +3365,6 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -3400,11 +3395,6 @@
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -3433,11 +3423,6 @@
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
@@ -16021,11 +16006,6 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="maxHeight" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -16079,11 +16059,6 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="loop" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>When true the media playback will be set to play in a loop. When false the media will be set to play once then stop.</xs:documentation>
@@ -16117,11 +16092,6 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="codeFormat" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -16150,11 +16120,6 @@
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
 <xs:element name="mediaPlaybackComplete" type="mediaPlaybackCompleteType"/>
 </xs:all>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="showPlaybackIndicator" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>

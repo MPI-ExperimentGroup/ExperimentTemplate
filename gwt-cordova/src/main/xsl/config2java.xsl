@@ -502,7 +502,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                 or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, ' else ''" />
         </xsl:if>
-        <xsl:if test="local-name() ne 'touchInputImageButton' and local-name() ne 'touchInputVideoButton'">
+        <xsl:if test="local-name() ne 'touchInputLabelButton' and local-name() ne 'touchInputImageButton' and local-name() ne 'touchInputVideoButton'">
             <xsl:text>new PresenterEventListener() {
 
                 @Override
@@ -545,10 +545,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 }
                 }</xsl:text>
         </xsl:if>    
-        <xsl:value-of select="if(local-name() eq 'touchInputLabelButton' or local-name() eq 'stimulusButton') then ', ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'stimulusButton') then ', ' else ''" />
         <xsl:if test="local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton'
                        or local-name() eq 'stimulusButton'">
-            <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else 'null'" />
+            <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot; /* eventTag */') else ' null /* eventTag */'" />
         </xsl:if>
         <xsl:if test="local-name() eq 'stimulusButton' or local-name() eq 'stimulusSlider'">
             <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel, ' /* dataChannel */') else ', 0'" />
@@ -559,11 +559,23 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             <xsl:value-of select="if(@minimum) then concat(', ', @minimum, ' /* minimum */') else ', 0'" />
             <xsl:value-of select="if(@maximum) then concat(', ', @maximum, ' /* maximum */, ') else ', 100, '" />
         </xsl:if>
+        <xsl:if test="local-name() eq 'touchInputLabelButton'">
+            <xsl:text>,&#xa;new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+            </xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>
+                }
+                }
+            </xsl:text>
+        </xsl:if>
         <xsl:value-of select="if(local-name() eq 'touchInputLabelButton' or local-name() eq 'touchInputImageButton' or local-name() eq 'touchInputVideoButton') then if(@codeFormat) then concat(', &quot;', @codeFormat, '&quot; /* codeFormat */') else ', null /* codeFormat */' else ''" />
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
         <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
+        <xsl:apply-templates select="onActivate" />
         <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
             <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
             <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
@@ -1175,7 +1187,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@msLabelFormat) then concat('&quot;', @msLabelFormat, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'countdownLabel') then ', ' else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;,') else ''" />
-        <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ', ') else ''" />
+        <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ' ') else ''" />
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:if test="@groupMembers">
             <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot; /* groupCommunicationChannels */, ') else 'null /* groupCommunicationChannels */, '" />
@@ -1194,7 +1206,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if (local-name() eq 'clearStimulusResponse') then if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null' else ''" />
         <xsl:if test="
         local-name() eq 'setStimulusCodeResponse' or
-local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeAudio' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusAudio' or local-name() eq 'stimulusCodeImage' or local-name() eq 'stimulusCodeImageButton'">
+local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusCodeImage' or local-name() eq 'stimulusCodeImageButton'">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,'') else '0'" />
         </xsl:if>
