@@ -1208,7 +1208,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if (local-name() eq 'clearStimulusResponse') then if(@groupId) then concat('&quot;', @groupId, '&quot;') else 'null' else ''" />
         <xsl:if test="
         local-name() eq 'setStimulusCodeResponse' or
-local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusCodeImage' or local-name() eq 'stimulusCodeImageButton'">
+local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusImage'">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:value-of select="if(not(@replacement or @codeFormat) and (@showControls or @showPlaybackIndicator)) then ', ' else ''" />
             <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,' /* dataChannel */') else '0 /* dataChannel */'" />
