@@ -38,9 +38,9 @@
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
     <administration>
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
-        <adminUser name="example1" password="example1" />
-        <adminUser name="example2" password="example2" />
-        <adminUser name="example3" password="example3" />
+        <adminUser name="example1" />
+        <adminUser name="example2" />
+        <adminUser name="example3" />
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
         <dataChannel channel="2" label="Channel" logToSdCard="false"/>

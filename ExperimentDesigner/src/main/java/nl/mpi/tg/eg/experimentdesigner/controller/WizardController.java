@@ -98,7 +98,7 @@ public class WizardController {
     public Experiment getExperiment(WizardData wizardData) {
         final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName(), wizardData.isShowMenuBar());
         experiment.setTextFontSize(wizardData.getTextFontSize());
-        experiment.setDataChannels(wizardData.getDataChannels());
+        experiment.getAdministration().setDataChannels(wizardData.getDataChannels());
         experiment.setScss(wizardData.getScss());
         int currentDisplaySequence = 1;
         for (WizardScreenData wizardScreen : wizardData.getWizardScreens()) {

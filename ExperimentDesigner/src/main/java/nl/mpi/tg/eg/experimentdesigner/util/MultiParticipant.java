@@ -489,7 +489,7 @@ public class MultiParticipant {
     
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
-        experiment.getDataChannels().add(new DataChannel(3, "groupMemberActivity", false));
+        experiment.getAdministration().getDataChannels().add(new DataChannel(3, "groupMemberActivity", false));
         experiment.setScss("\n        $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 255 270 285 300 315 330 345 350 360;\n"
                 + "        @each $currentAngle in $angleArray {\n"
                 + "            .gwt-Image.moveRotated#{$currentAngle}Animation,\n"

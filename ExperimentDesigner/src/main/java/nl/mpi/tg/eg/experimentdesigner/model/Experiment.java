@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @Entity
 @XmlRootElement
-@XmlType(propOrder = {"publishEvents", "validationService", "dataChannels", "scss", "metadata", "presenterScreen", "stimuli"})
+@XmlType(propOrder = {"publishEvents", "validationService", "administration", "scss", "metadata", "presenterScreen", "stimuli"})
 public class Experiment implements Serializable {
 
     private long id;
@@ -73,6 +73,7 @@ public class Experiment implements Serializable {
     private float defaultScale = 1;
     private String scss;
     private ValidationService validationService;
+    private Administration administration = new Administration();
 
     private List<PublishEvents> publishEvents = new ArrayList<>();
 
@@ -82,8 +83,6 @@ public class Experiment implements Serializable {
     private List<Metadata> metadata = new ArrayList<>();
 
     private List<Stimulus> stimuli = new ArrayList<>();
-
-    private List<DataChannel> dataChannels = new ArrayList<>();
 
     public Experiment() {
     }
@@ -138,11 +137,13 @@ public class Experiment implements Serializable {
         return publishEvents;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @XmlElementWrapper(name = "administration")
-    @XmlElement(name = "dataChannel")
-    public List<DataChannel> getDataChannels() {
-        return dataChannels;
+    @XmlElement(name = "administration")
+    public Administration getAdministration() {
+        return administration;
+    }
+
+    public void setAdministration(Administration administration) {
+        this.administration = administration;
     }
 
     @XmlElement(name = "scss")
@@ -161,10 +162,6 @@ public class Experiment implements Serializable {
 
     public void setValidationService(ValidationService validationService) {
         this.validationService = validationService;
-    }
-
-    public void setDataChannels(List<DataChannel> dataChannels) {
-        this.dataChannels = dataChannels;
     }
 
     @XmlAttribute

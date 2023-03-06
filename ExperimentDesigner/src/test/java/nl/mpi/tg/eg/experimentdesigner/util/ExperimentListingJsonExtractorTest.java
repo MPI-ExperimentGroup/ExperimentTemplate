@@ -70,6 +70,7 @@ public class ExperimentListingJsonExtractorTest {
                 + "  \"defaultScale\" : 1.0,\n"
                 + "  \"isScalable\" : \"yes\",\n"
                 + "  \"isRotatable\" : true,\n"
+                + "  \"allowDelete\" : false,\n"
                 + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
                 + "  \"experimentDisplayName\" : \"With Stimulus Example\",\n"
                 + "  \"defaultLocale\" : \"nl\",\n"

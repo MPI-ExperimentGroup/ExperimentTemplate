@@ -252,9 +252,9 @@ public class AbstractSchemaGenerator {
                 // TODO: (3 of 3) allocateMetadata participant allocation service with attribute allocationServiceName, to preserve the allocation across browsers and devices
                 //.documentedAttribute("allocationServiceName", AttributeType.xsString, "When provided the named service will be created on the sever and used to allocate the least used tag for use in stimuli allocation. If multiple tags are equally the least used, one of them will randomly be allocated. Any number of allocation service names can be used and they can be shared across different stimuli lists. Please note that the use of this feature prevents the experiment being used offline. The allocation of a tag does not mean that it will be used by the participant, for example if after allocation the browser is closed and the participant does not complete the experiment then the distribution will necessarily be affected.", true));
                 );
-                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1
-                    , new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
-                    .documentedAttribute("idListField", AttributeType.xsString, "When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.", true));
+                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1,
+                         new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
+                        .documentedAttribute("idListField", AttributeType.xsString, "When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.", true));
             }
             if (!translatableAttribites.isEmpty()) {
                 Collections.sort(translatableAttribites);
@@ -419,9 +419,11 @@ public class AbstractSchemaGenerator {
                         .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.", true),
                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
+                            new DocumentationElement("dataManagement", "Settings for managing collected data in the administration system.", 0, 0, new DocumentationElement[0])
+                                    .documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
                             new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
-                                    .documentedAttribute("name", AttributeType.xsString, "User name for access to the administration system and JSON REST interface for this experiment.", false)
-                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
+                                    .documentedAttribute("name", AttributeType.xsString, "For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.", false),
+//                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
                                     .stringAttribute("fieldName", false)
                                     .stringAttribute("matchingRegex", false),
