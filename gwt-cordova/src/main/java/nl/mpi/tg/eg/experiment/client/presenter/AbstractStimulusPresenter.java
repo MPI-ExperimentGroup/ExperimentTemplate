@@ -1348,8 +1348,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final StimulusButton buttonItem = optionButton(eventListener, buttonGroup);
         touchInputStimulusButton(buttonItem, eventListener, eventTag, buttonGroup);
     }
-
-    public void touchInputImageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final TimedStimulusListener mediaLoadedListener, final TimedStimulusListener mediaLoadFailedListener, final TimedStimulusListener onActivateListener, final String codeFormat, final String styleName, final String buttonGroup) {
+    
+    public void touchInputImageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String codeFormat, final String styleName, final TimedStimulusListener mediaLoadedListener, final TimedStimulusListener mediaLoadFailedListener, final TimedStimulusListener onActivateListener, final String buttonGroup) {
         // TODO: utilise the media listeners
         PresenterEventListener eventListener = new PresenterEventListener() {
 
@@ -1378,7 +1378,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         touchInputStimulusButton(buttonItem, eventListener, eventTag, buttonGroup);
     }
 
-    public void touchInputVideoButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final TimedStimulusListener mediaLoadedListener, final TimedStimulusListener mediaLoadFailedListener, final TimedStimulusListener onActivateListener, final String codeFormat, final String styleName, final String buttonGroup) {
+    public void touchInputVideoButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String codeFormat, final String styleName, final TimedStimulusListener mediaLoadedListener, final TimedStimulusListener mediaLoadFailedListener, final TimedStimulusListener onActivateListener, final String buttonGroup) {
         // TODO: utilise the media listeners
         PresenterEventListener eventListener = new PresenterEventListener() {
 
