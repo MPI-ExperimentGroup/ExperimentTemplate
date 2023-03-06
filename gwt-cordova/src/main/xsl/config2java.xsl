@@ -1164,7 +1164,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot; /* mediaId */') else ''" />
         <xsl:value-of select="if((local-name() eq 'stimulusVideo' or local-name() eq 'stimulusCodeVideo') and @loop) then concat(', ', @loop, ' /* loop */') else ''" />
         <xsl:value-of select="if((local-name() eq 'stimulusVideo' or local-name() eq 'stimulusCodeVideo') and not(@loop)) then ', false /* loop */' else ''" />
-        <xsl:value-of select="if(@showControls and (@autoPlay or @mediaId or @loop)) then ', ' else ''" />
+        <xsl:value-of select="if(@showControls and (@animate or @autoPlay or @mediaId or @loop)) then ', ' else ''" />
         <xsl:value-of select="if(@showControls) then concat(@showControls, ' /* showControls */') else ''" />
         <xsl:value-of select="if (local-name() eq 'addRecorderDtmfTrigger'
                                 or local-name() eq 'dtmfTone'
@@ -1215,8 +1215,8 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if (local-name() eq 'clearStimulusResponse') then if(@groupId) then concat('&quot;', @groupId, '&quot; /* groupId */') else 'null /* groupId */' else ''" />
         <xsl:if test="
         local-name() eq 'setStimulusCodeResponse' or
-local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusImage'">
-            <xsl:value-of select="if(@showControls or @replacement or @codeFormat or local-name() eq 'logTimerValue') then ', ' else ''" />
+local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusImage'">
+            <xsl:value-of select="if(@showControls or @replacement or @codeFormat or local-name() eq 'logTimerValue' or @animate) then ', ' else ''" />
             <!--<xsl:value-of select="if(not(@replacement or @codeFormat) and (@showControls or @showPlaybackIndicator)) then ', ' else ''" />-->
             <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,' /* dataChannel */') else '0 /* dataChannel */'" />
         </xsl:if>
