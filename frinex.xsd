@@ -688,16 +688,20 @@
 <xs:documentation>Administration</xs:documentation>
 </xs:annotation>
 <xs:sequence>
+<xs:element name="dataManagement" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="allowDataDeletion" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
 <xs:element name="adminUser" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="name" type="xs:string" use="required">
 <xs:annotation>
-<xs:documentation>User name for access to the administration system and JSON REST interface for this experiment.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="password" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>User password for access to the administration system and JSON REST interface for this experiment.</xs:documentation>
+<xs:documentation>For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
