@@ -1376,7 +1376,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
         final String imageString = (formattedCode.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + formattedCode;
         final StimulusButton buttonItem = timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(imageString), styleName, 0, mediaLoadedListener, mediaLoadFailedListener, null);
-        addButtonToGroup(buttonGroup, buttonItem);
         // TODO: the previous usage was imageButton which included the parameter isTouchZone, it needs to be tested if this is still needed on tablets etc. given the change here uses an image not a button
         // final StimulusButton buttonItem = imageButton(eventListener, UriUtils.fromString((formattedCode.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + formattedCode), true, buttonGroup);
         touchInputStimulusButton(buttonItem, eventListener, eventTag, buttonGroup);
@@ -1413,6 +1412,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     private void touchInputStimulusButton(final StimulusButton buttonItem, final PresenterEventListener presenterListener, final String eventTag, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, buttonItem);
         stimulusButtonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
             boolean isTriggered = false;
