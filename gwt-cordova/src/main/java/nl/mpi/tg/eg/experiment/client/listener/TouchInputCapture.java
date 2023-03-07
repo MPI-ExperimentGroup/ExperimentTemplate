@@ -186,6 +186,7 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
 
     private void processTouchRecords() {
         final List<TouchInputZone> triggeredZones = new ArrayList<>();
+        StringBuilder stringBuilder = new StringBuilder();
         while (!touchRecordList.isEmpty()) {
             final TouchRecord currentRecord = touchRecordList.remove(0);
             if (currentRecord.activeEvent) {
@@ -193,8 +194,9 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
             } else {
                 triggeredZones.clear();
             }
-            setDebugLabel(touchRecordList.size() + " " + currentRecord.xPos + "," + currentRecord.yPos + " " + currentRecord.activeEvent);
+            stringBuilder.append(touchRecordList.size() + " " + currentRecord.xPos + "," + currentRecord.yPos + " " + currentRecord.activeEvent);
         }
+        setDebugLabel(stringBuilder.toString());
         triggerZones(triggeredZones);
     }
     private boolean isMouseDown = false;
