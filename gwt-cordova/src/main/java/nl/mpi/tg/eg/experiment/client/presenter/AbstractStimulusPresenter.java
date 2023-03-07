@@ -1327,7 +1327,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public String getLabel() {
-                return formattedCode;
+                return formattedCode;   
             }
 
             @Override
@@ -1345,7 +1345,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 onActivateListener.postLoadTimerFired();
             }
         };
-        final StimulusButton buttonItem = optionButton(eventListener, buttonGroup);
+        final StimulusButton buttonItem = timedStimulusView.addOptionButton(eventListener);
         touchInputStimulusButton(buttonItem, eventListener, eventTag, buttonGroup);
     }
 
