@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletRequest;
 import javax.validation.constraints.NotNull;
+import nl.mpi.tg.eg.frinex.model.DataDeletionLog;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
@@ -126,7 +127,7 @@ public class ParticipantDetailController {
     @RequestMapping("participantdelete")
     /*
         This method will have no effect if the application.properties does not specify allowDelete true.
-    */
+     */
     public String participantDataDelete(ServletRequest request, @RequestParam(value = "id", required = true) String id, @RequestParam(value = "providedChecksum", required = false) String providedChecksum, @RequestParam(value = "deleteOption", defaultValue = "false", required = false) String deleteOption, Model model,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
@@ -147,11 +148,30 @@ public class ParticipantDetailController {
                 final Date tagDate = new java.util.Date();
                 final String remoteAddr = request.getRemoteAddr();
                 final int lastIndexOf = remoteAddr.lastIndexOf(".");
-                final String tagValue = (lastIndexOf > 0) ? remoteAddr.substring(0, lastIndexOf) + ".0" : "";
+                final String deletionAddr = (lastIndexOf > 0) ? remoteAddr.substring(0, lastIndexOf) + ".0" : "";
                 // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
                 // log the ip address that requested this action
-                final TagData deletionLogEntry = new TagData("participantdelete", screenName, eventTag, tagValue, eventMs, tagDate);
+                final TagData deletionLogEntry = new TagData("participantdelete", screenName, eventTag, deletionAddr, eventMs, tagDate);
                 this.tagRepository.save(deletionLogEntry);
+                final DataDeletionLog dataDeletionLog = new DataDeletionLog();
+                dataDeletionLog.setDeletionDate(tagDate);
+                dataDeletionLog.setDeletionAddr(deletionAddr);
+//                final PublicStatistics usageStats = new PublicStatistics();
+//                final ScreenData screenData = screenDataRepository.findTop1ByOrderBySubmitDateAsc();
+//                usageStats.firstDeploymentAccessed = (screenData != null) ? screenData.getSubmitDate() : null;
+//                usageStats.totalParticipantsSeen = participantRepository.countDistinctUserId();
+//                usageStats.totalDeploymentsAccessed = tagRepository.countDistinctTagValueByEventTag("compileDate");
+//                usageStats.totalPageLoads = tagRepository.countDistinctDateByEventTag("compileDate");
+//                usageStats.totalStimulusResponses = stimulusResponseRepository.countDistinctRecords();
+//                final Participant participantFirst = participantRepository.findTop1ByOrderBySubmitDateAsc();
+//                usageStats.firstParticipantSeen = (participantFirst != null) ? participantFirst.getSubmitDate() : null;
+//                final Participant participantLast = participantRepository.findTop1ByOrderBySubmitDateDesc();
+//                usageStats.lastParticipantSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
+//                usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();
+//                usageStats.sessionFirstAndLastSeen = tagRepository.findFirstAndLastSessionAccess();
+//                usageStats.totalMediaResponses = audioDataRepository.count();
+                // TODO: save the deletion log and public usage stats
+                 
                 // delete the audio
                 this.audioDataRepository.deleteByUserId(id);
                 if (deleteAudio) {
