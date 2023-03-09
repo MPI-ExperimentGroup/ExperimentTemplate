@@ -51,6 +51,10 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
     long countDistinctRecords();
+    
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where userId = :userId")
+    long countDistinctUserIdRecords(@Param("userId") String userId);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where response like :matchingLike")

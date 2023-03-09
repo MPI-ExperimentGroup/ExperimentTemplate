@@ -148,6 +148,12 @@ public class allowValidationOnMissingValidationControllerTest {
             public long count() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
+
+            @Override
+            public ScreenData findTop1ByUserIdOrderBySubmitDateAsc(String userId) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
         }, new TimeStampRepository() {
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
@@ -249,6 +255,16 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new MockParticipantColumnsRepository() {
+            @Override
+            public Participant findTop1ByUserIdOrderBySubmitDateAsc() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Participant findTop1ByUserIdOrderBySubmitDateDesc() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -385,6 +401,26 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
+            public long countDistinctUserIdAndTagValueByEventTag(String userId, String eventTag) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public long countDistinctUserIdAndDateByEventTag(String userId, String eventTag) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Date findFirstSessionAccess(String userId) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Date findLastSessionAccess(String userId) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -496,6 +532,11 @@ public class allowValidationOnMissingValidationControllerTest {
         }, new StimulusResponseRepository() {
             @Override
             public long countByResponseLike(String matchingLike) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public long countDistinctUserIdRecords(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 

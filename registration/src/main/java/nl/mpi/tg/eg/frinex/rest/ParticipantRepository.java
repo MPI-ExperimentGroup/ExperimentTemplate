@@ -57,14 +57,19 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
     @Query("select distinct userId from Participant")
     List<String> findDistinctUserIdByOrderBySubmitDateDesc();
 
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct userId) from Participant")
     long countDistinctUserId();
 //    int countByWorkerId(@Param("workerId") String workerId);
 
     Participant findTop1ByOrderBySubmitDateAsc();
 
+    Participant findTop1ByUserIdOrderBySubmitDateAsc();
+
     Participant findTop1ByOrderBySubmitDateDesc();
+
+    Participant findTop1ByUserIdOrderBySubmitDateDesc();
 
     @Transactional
     @Modifying

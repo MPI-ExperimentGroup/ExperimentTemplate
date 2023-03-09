@@ -38,13 +38,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <p th:text="'Tags: ' + ${countOfTags}" />
         <p th:text="'Timestamps: ' + ${countOfTimestamps}" />
         <p th:text="'StimulusResponses ' + ${countOfStimulusResponse}" />
+        <h3>Participants Stats</h3>
+        <p th:text="'firstDeploymentAccessed ' + ${pendingDeleteInfo.firstDeploymentAccessed}" />
+        <p th:text="'totalDeploymentsAccessed ' + ${pendingDeleteInfo.totalDeploymentsAccessed}" />
+        <p th:text="'totalPageLoads ' + ${pendingDeleteInfo.totalPageLoads}" />
+        <p th:text="'totalStimulusResponses ' + ${pendingDeleteInfo.totalStimulusResponses}" />
+        <p th:text="'participantsFirstSeen ' + ${pendingDeleteInfo.participantsFirstSeen}" />
+        <p th:text="'participantsLastSeen ' + ${pendingDeleteInfo.participantsLastSeen}" />
+        <p th:text="'sessionFirstSeen ' + ${pendingDeleteInfo.sessionFirstSeen}" />
+        <p th:text="'sessionLastSeen ' + ${pendingDeleteInfo.sessionLastSeen}" />
+        <p th:text="'totalMediaResponses ' + ${pendingDeleteInfo.totalMediaResponses}" />
         <div th:if="${allowDelete ne true}">
             <h3>Deletion of data is disabled for this experiment.</h3>
         </div>
         <div th:if="${allowDelete eq true and deletionSuccess eq true}">
             <h3>The requested data has been deleted for the participant.</h3>
             <br/>
-            <br/>
+            <h3>Deleted Record Stats</h3>
+            <p th:text="'firstDeploymentAccessed ' + ${dataDeletionLog.firstDeploymentAccessed}" />
+            <p th:text="'totalDeploymentsAccessed ' + ${dataDeletionLog.totalDeploymentsAccessed}" />
+            <p th:text="'totalPageLoads ' + ${dataDeletionLog.totalPageLoads}" />
+            <p th:text="'totalStimulusResponses ' + ${dataDeletionLog.totalStimulusResponses}" />
+            <p th:text="'participantsFirstSeen ' + ${dataDeletionLog.participantsFirstSeen}" />
+            <p th:text="'participantsLastSeen ' + ${dataDeletionLog.participantsLastSeen}" />
+            <p th:text="'sessionFirstSeen ' + ${dataDeletionLog.sessionFirstSeen}" />
+            <p th:text="'sessionLastSeen ' + ${dataDeletionLog.sessionLastSeen}" />
+            <p th:text="'totalMediaResponses ' + ${dataDeletionLog.totalMediaResponses}" />
             <br/>
         </div>
         <div th:if="${allowDelete eq true}">        

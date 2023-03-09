@@ -47,6 +47,8 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
     @Query("select distinct new ScreenData(userId, screenName, viewDate) from ScreenData where userId = :userId and screenName = :screenName order by viewDate asc")
     List<ScreenData> findByUserIdAndScreenName(@Param("userId") String userId, @Param("screenName") String screenName);
 
+    ScreenData findTop1ByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
+    
     ScreenData findTop1ByOrderBySubmitDateAsc();
 
     ScreenData findTop1ByOrderBySubmitDateDesc();

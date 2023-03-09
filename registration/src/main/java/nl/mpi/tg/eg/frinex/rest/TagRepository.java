@@ -38,9 +38,15 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 
     @Query("select count(distinct tagValue) from TagData where eventTag = :eventTag")
     long countDistinctTagValueByEventTag(String eventTag);
+    
+    @Query("select count(distinct tagValue) from TagData where userId = :userId and eventTag = :eventTag")
+    long countDistinctUserIdAndTagValueByEventTag(@Param("userId") String userId, String eventTag);
 
     @Query("select count(distinct tagDate) from TagData where eventTag = :eventTag")
     long countDistinctDateByEventTag(String eventTag);
+
+    @Query("select count(distinct tagDate) from TagData where userId = :userId and eventTag = :eventTag")
+    long countDistinctUserIdAndDateByEventTag(@Param("userId") String userId, String eventTag);
 
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
     List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
@@ -50,6 +56,12 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from TagData group by userId order by firstAccess asc")
     Date[][] findFirstAndLastSessionAccess();
+    
+    @Query(value = "select min(submitDate) from TagData where userId = :userId")
+    Date findFirstSessionAccess(@Param("userId") String userId);
+    
+    @Query(value = "select max(submitDate) from TagData where userId = :userId")
+    Date findLastSessionAccess(@Param("userId") String userId);
 
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 

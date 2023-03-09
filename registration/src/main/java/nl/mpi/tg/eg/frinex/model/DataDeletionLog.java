@@ -42,7 +42,6 @@ public class DataDeletionLog implements Serializable {
     public Date firstDeploymentAccessed;
     public long totalDeploymentsAccessed;
     public long totalPageLoads;
-    public long totalParticipantsSeen;
     public long totalStimulusResponses;
     public long totalMediaResponses;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -92,14 +91,6 @@ public class DataDeletionLog implements Serializable {
 
     public void setTotalPageLoads(long totalPageLoads) {
         this.totalPageLoads = totalPageLoads;
-    }
-
-    public long getTotalParticipantsSeen() {
-        return totalParticipantsSeen;
-    }
-
-    public void setTotalParticipantsSeen(long totalParticipantsSeen) {
-        this.totalParticipantsSeen = totalParticipantsSeen;
     }
 
     public long getTotalStimulusResponses() {

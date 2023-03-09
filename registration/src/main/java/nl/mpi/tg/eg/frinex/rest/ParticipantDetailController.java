@@ -28,7 +28,7 @@ import javax.servlet.ServletRequest;
 import javax.validation.constraints.NotNull;
 import nl.mpi.tg.eg.frinex.model.DataDeletionLog;
 import nl.mpi.tg.eg.frinex.model.Participant;
-import nl.mpi.tg.eg.frinex.model.TagData;
+import nl.mpi.tg.eg.frinex.model.ScreenData;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,6 +59,8 @@ public class ParticipantDetailController {
     private StimulusResponseRepository stimulusResponseRepository;
     @Autowired
     private AudioDataRepository audioDataRepository;
+    @Autowired
+    private DataDeletionLogRepository dataDeletionLogRepository;
 
     @NotNull
     @Value("${nl.mpi.tg.eg.frinex.admin.allowDelete}")
@@ -140,42 +142,45 @@ public class ParticipantDetailController {
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
         model.addAttribute("allowDelete", allowDelete);
+
+        final DataDeletionLog pendingDeleteInfo = new DataDeletionLog();
+        final ScreenData screenData = screenDataRepository.findTop1ByUserIdOrderBySubmitDateAsc(id);
+        pendingDeleteInfo.firstDeploymentAccessed = (screenData != null) ? screenData.getSubmitDate() : null;
+        pendingDeleteInfo.totalDeploymentsAccessed = tagRepository.countDistinctUserIdAndTagValueByEventTag(id, "compileDate");
+        pendingDeleteInfo.totalPageLoads = tagRepository.countDistinctUserIdAndDateByEventTag(id, "compileDate");
+        pendingDeleteInfo.totalStimulusResponses = stimulusResponseRepository.countDistinctUserIdRecords(id);
+        final Participant participantFirst = participantRepository.findTop1ByUserIdOrderBySubmitDateAsc();
+        pendingDeleteInfo.participantsFirstSeen = (participantFirst != null) ? participantFirst.getSubmitDate() : null;
+        final Participant participantLast = participantRepository.findTop1ByUserIdOrderBySubmitDateDesc();
+        pendingDeleteInfo.participantsLastSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
+        pendingDeleteInfo.sessionFirstSeen = tagRepository.findFirstSessionAccess(id);
+        pendingDeleteInfo.sessionLastSeen = tagRepository.findLastSessionAccess(id);
+        pendingDeleteInfo.totalMediaResponses = audioDataRepository.countByUserId(id);
+        model.addAttribute("pendingDeleteInfo", pendingDeleteInfo);
+
         if (allowDelete) {
             if (requiredChecksum.equals(providedChecksum)) {
                 final String screenName = "administration system";
                 final String eventTag = (deleteAudio) ? "delete participant audio" : "delete participant data";
                 final int eventMs = 0;
-                final Date tagDate = new java.util.Date();
+                final Date deletionDate = new java.util.Date();
                 final String remoteAddr = request.getRemoteAddr();
                 final int lastIndexOf = remoteAddr.lastIndexOf(".");
                 final String deletionAddr = (lastIndexOf > 0) ? remoteAddr.substring(0, lastIndexOf) + ".0" : "";
                 // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
                 // log the ip address that requested this action
-                final TagData deletionLogEntry = new TagData("participantdelete", screenName, eventTag, deletionAddr, eventMs, tagDate);
-                this.tagRepository.save(deletionLogEntry);
+//                final TagData deletionLogEntry = new TagData("participantdelete", screenName, eventTag, deletionAddr, eventMs, tagDate);
+//                this.tagRepository.save(deletionLogEntry);
                 final DataDeletionLog dataDeletionLog = new DataDeletionLog();
-                dataDeletionLog.setDeletionDate(tagDate);
+                dataDeletionLog.setDeletionDate(deletionDate);
                 dataDeletionLog.setDeletionAddr(deletionAddr);
-//                final PublicStatistics usageStats = new PublicStatistics();
-//                final ScreenData screenData = screenDataRepository.findTop1ByOrderBySubmitDateAsc();
-//                usageStats.firstDeploymentAccessed = (screenData != null) ? screenData.getSubmitDate() : null;
-//                usageStats.totalParticipantsSeen = participantRepository.countDistinctUserId();
-//                usageStats.totalDeploymentsAccessed = tagRepository.countDistinctTagValueByEventTag("compileDate");
-//                usageStats.totalPageLoads = tagRepository.countDistinctDateByEventTag("compileDate");
-//                usageStats.totalStimulusResponses = stimulusResponseRepository.countDistinctRecords();
-//                final Participant participantFirst = participantRepository.findTop1ByOrderBySubmitDateAsc();
-//                usageStats.firstParticipantSeen = (participantFirst != null) ? participantFirst.getSubmitDate() : null;
-//                final Participant participantLast = participantRepository.findTop1ByOrderBySubmitDateDesc();
-//                usageStats.lastParticipantSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
-//                usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();
-//                usageStats.sessionFirstAndLastSeen = tagRepository.findFirstAndLastSessionAccess();
-//                usageStats.totalMediaResponses = audioDataRepository.count();
-                // TODO: save the deletion log and public usage stats
-                 
+
                 // delete the audio
                 this.audioDataRepository.deleteByUserId(id);
+                dataDeletionLog.totalMediaResponses = pendingDeleteInfo.totalMediaResponses;
                 if (deleteAudio) {
                     model.addAttribute("deletionSuccess", true);
+                    model.addAttribute("dataDeletionLog", dataDeletionLog);
                 } else if (deleteAll) {
                     participantRepository.deleteByUserId(id);
                     screenDataRepository.deleteByUserId(id);
@@ -183,10 +188,20 @@ public class ParticipantDetailController {
                     tagRepository.deleteByUserId(id);
                     timeStampRepository.deleteByUserId(id);
                     stimulusResponseRepository.deleteByUserId(id);
+                    dataDeletionLog.firstDeploymentAccessed = pendingDeleteInfo.firstDeploymentAccessed;
+                    dataDeletionLog.totalDeploymentsAccessed = pendingDeleteInfo.totalDeploymentsAccessed;
+                    dataDeletionLog.totalPageLoads = pendingDeleteInfo.totalPageLoads;
+                    dataDeletionLog.totalStimulusResponses = pendingDeleteInfo.totalStimulusResponses;
+                    dataDeletionLog.participantsFirstSeen = pendingDeleteInfo.participantsFirstSeen;
+                    dataDeletionLog.participantsLastSeen = pendingDeleteInfo.participantsLastSeen;
+                    dataDeletionLog.sessionFirstSeen = pendingDeleteInfo.sessionFirstSeen;
+                    dataDeletionLog.sessionLastSeen = pendingDeleteInfo.sessionLastSeen;
+                    model.addAttribute("dataDeletionLog", dataDeletionLog);
                     model.addAttribute("deletionSuccess", true);
                 } else {
                     model.addAttribute("deletionSuccess", false);
                 }
+                dataDeletionLogRepository.save(dataDeletionLog);
             } else {
                 model.addAttribute("deletionSuccess", false);
             }
