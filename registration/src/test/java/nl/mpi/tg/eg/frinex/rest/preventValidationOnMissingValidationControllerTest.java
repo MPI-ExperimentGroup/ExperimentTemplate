@@ -263,12 +263,12 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Participant findTop1ByUserIdOrderBySubmitDateAsc() {
+            public Participant findTop1ByUserIdOrderBySubmitDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public Participant findTop1ByUserIdOrderBySubmitDateDesc() {
+            public Participant findTop1ByUserIdOrderBySubmitDateDesc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
