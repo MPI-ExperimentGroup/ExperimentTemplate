@@ -65,11 +65,11 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
 
     Participant findTop1ByOrderBySubmitDateAsc();
 
-    Participant findTop1ByUserIdOrderBySubmitDateAsc();
+    Participant findTop1ByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
     Participant findTop1ByOrderBySubmitDateDesc();
 
-    Participant findTop1ByUserIdOrderBySubmitDateDesc();
+    Participant findTop1ByUserIdOrderBySubmitDateDesc(@Param("userId") String userId);
 
     @Transactional
     @Modifying
