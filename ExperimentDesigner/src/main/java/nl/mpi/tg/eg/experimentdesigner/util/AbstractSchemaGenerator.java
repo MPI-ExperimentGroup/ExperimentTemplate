@@ -419,8 +419,6 @@ public class AbstractSchemaGenerator {
                         .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.", true),
                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("dataManagement", "Settings for managing collected data in the administration system.", 0, 0, new DocumentationElement[0])
-                                    .documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
                             new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
                                     .documentedAttribute("name", AttributeType.xsString, "For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.", false),
 //                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
@@ -446,7 +444,7 @@ public class AbstractSchemaGenerator {
                                     })
                                     .stringAttribute("label", false)
                                     .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", "line", "pie", "bubble", "radar")
-                        }),
+                        }).documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data. The value of each field will be stored in the admin metadata table (participant listing). It is advisable to explicitly sendMetadata at relevant points in the experiment. "
                         + "If the URL used to access the experiment contains a GET parameter matching the postName of a metadata field, the value of the field will be set to the value of the provided GET parameter. This for example allows links to be distributed each of which determines the initial parameters as required for a given experiment.", 1, 1,

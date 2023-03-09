@@ -149,7 +149,9 @@ The URL to an external staging registration service. When not specified the Frin
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#administrationType"><span style="color:purple">&lt;</span><span style="color:blue">administration</span></a></td><td></td><td><span style="color:purple">&gt;</span>
+<a href="#administrationType"><span style="color:purple">&lt;</span><span style="color:blue">administration</span></a></td><td><span style="color:green">allowDataDeletion</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
 <a href="#scssType"><span style="color:purple">&lt;</span><span style="color:blue">scss</span></a></td><td></td><td><span style="color:purple">&gt;</span>
@@ -401,14 +403,11 @@ administration
 Administration
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">administration</span></td><td><span style="color:purple">&gt;</span></td><td>
+<span style="color:purple">&lt;</span><span style="color:blue">administration</span></td><td><span style="color:green">allowDataDeletion</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
+Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</span><br/>
+<span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
-<tr><td>
-<a href="#dataManagementType"><span style="color:purple">&lt;</span><span style="color:blue">dataManagement</span></a></td><td><span style="color:green">allowDataDeletion</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</span><br/>
-</td><td><span style="color:purple">&gt;</span>
-</td></tr>
 <tr><td>
 <a href="#adminUserType"><span style="color:purple">&lt;</span><span style="color:blue">adminUser</span></a></td><td><span style="color:green">name</span><span style="color:grey">=&quot;String&quot;</span><span>
 For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.</span><br/>
@@ -448,24 +447,6 @@ The type of chart to be displayed.</span><br/>
 <tr>
 <td colspan='2' id='administrationTarget'>
 <button onclick="getExample('administration', 'administrationTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="dataManagementType" style="text-transform: uppercase;">
-dataManagement
-</h3>
-Settings for managing collected data in the administration system.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">dataManagement</span></td><td><span style="color:green">allowDataDeletion</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
-Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='dataManagementTarget'>
-<button onclick="getExample('dataManagement', 'dataManagementTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="adminUserType" style="text-transform: uppercase;">

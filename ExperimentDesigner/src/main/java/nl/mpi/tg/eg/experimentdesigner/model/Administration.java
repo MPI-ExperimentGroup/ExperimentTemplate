@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlElement;
  */
 public class Administration {
 
-    private boolean allowDataDeletion = false;
+    private Boolean allowDataDeletion = false;
     private List<DataChannel> dataChannels = new ArrayList<>();
 
     public Administration() {
@@ -44,14 +44,14 @@ public class Administration {
     @XmlAttribute(name = "allowDataDeletion")
     public Boolean getAllowDataDeletion() {
         // returning null to prevent the attibutes being added unless it is true
-        return (allowDataDeletion) ? allowDataDeletion : null;
+        return (this.allowDataDeletion) ? this.allowDataDeletion : null;
     }
 
     public void setDataChannels(List<DataChannel> dataChannels) {
         this.dataChannels = dataChannels;
     }
 
-    public void setAllowDataDeletion(boolean allowDataDeletion) {
-        this.allowDataDeletion = allowDataDeletion;
+    public void setAllowDataDeletion(Boolean allowDataDeletionL) {
+        this.allowDataDeletion = allowDataDeletionL;
     }
 }
