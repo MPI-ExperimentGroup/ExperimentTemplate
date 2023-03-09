@@ -149,9 +149,9 @@ public class ParticipantDetailController {
         pendingDeleteInfo.totalDeploymentsAccessed = tagRepository.countDistinctUserIdAndTagValueByEventTag(id, "compileDate");
         pendingDeleteInfo.totalPageLoads = tagRepository.countDistinctUserIdAndDateByEventTag(id, "compileDate");
         pendingDeleteInfo.totalStimulusResponses = stimulusResponseRepository.countDistinctUserIdRecords(id);
-        final Participant participantFirst = participantRepository.findTop1ByUserIdOrderBySubmitDateAsc();
+        final Participant participantFirst = participantRepository.findTop1ByUserIdOrderBySubmitDateAsc(id);
         pendingDeleteInfo.participantsFirstSeen = (participantFirst != null) ? participantFirst.getSubmitDate() : null;
-        final Participant participantLast = participantRepository.findTop1ByUserIdOrderBySubmitDateDesc();
+        final Participant participantLast = participantRepository.findTop1ByUserIdOrderBySubmitDateDesc(id);
         pendingDeleteInfo.participantsLastSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
         pendingDeleteInfo.sessionFirstSeen = tagRepository.findFirstSessionAccess(id);
         pendingDeleteInfo.sessionLastSeen = tagRepository.findLastSessionAccess(id);
