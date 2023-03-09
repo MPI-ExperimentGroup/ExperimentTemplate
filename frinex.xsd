@@ -688,15 +688,6 @@
 <xs:documentation>Administration</xs:documentation>
 </xs:annotation>
 <xs:sequence>
-<xs:element name="dataManagement" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="allowDataDeletion" type="xs:boolean">
-<xs:annotation>
-<xs:documentation>Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
 <xs:element name="adminUser" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="name" type="xs:string" use="required">
@@ -741,6 +732,11 @@
 </xs:element>
 <xs:element name="chart" minOccurs="0" maxOccurs="unbounded" type="chartType"/>
 </xs:sequence>
+<xs:attribute name="allowDataDeletion" type="xs:boolean">
+<xs:annotation>
+<xs:documentation>Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 <xs:complexType name="chartType">
 <xs:annotation>
