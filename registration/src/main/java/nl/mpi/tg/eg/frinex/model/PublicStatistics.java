@@ -33,6 +33,7 @@ public class PublicStatistics {
     public long totalParticipantsSeen;
     public long totalStimulusResponses;
     public long totalMediaResponses;
+    public long totalDeletionEvents;
     public Date firstParticipantSeen;
     public Date lastParticipantSeen;
     public Date[][] participantsFirstAndLastSeen;
