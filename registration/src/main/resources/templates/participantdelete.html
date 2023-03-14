@@ -69,10 +69,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:if="${allowDelete eq true}">        
             <h3>Please confirm the following before deleting this data:</h3>
             <form action="participantdelete">
-                <input type="checkbox" th:value="${requiredCheckbox1}" name="providedCheckbox1" id="providedCheckbox1" onclick="$('#deleteSubmit').attr('hidden', !$('#providedCheckbox1').is(':checked') || !$('#providedCheckbox2').is(':checked'));"/><label for="providedCheckbox1" th:text="${requiredCheckbox1}" >providedCheckbox1</label><br/>
+                <input type="checkbox" th:value="${requiredCheckbox1}" name="providedCheckbox1" id="providedCheckbox1" onclick="$('#deleteSubmit').attr('hidden', !$('#providedCheckbox1').is(':checked') || !$('#providedCheckbox2').is(':checked') || (!$('#deleteAudio').is(':checked') && !$('#deleteAll').is(':checked')));"/><label for="providedCheckbox1" th:text="${requiredCheckbox1}" >providedCheckbox1</label><br/>
                 <input type="checkbox" th:value="${requiredCheckbox2}" name="providedCheckbox2" id="providedCheckbox2" onclick="$('#deleteSubmit').attr('hidden', !$('#providedCheckbox1').is(':checked') || !$('#providedCheckbox2').is(':checked') || (!$('#deleteAudio').is(':checked') && !$('#deleteAll').is(':checked')));"/><label for="providedCheckbox2" th:text="${requiredCheckbox2}" >providedCheckbox2</label><br/>
-                <input type="radio" value="deleteAudio" name="deleteOption" id="deleteAudio" th:checked="${deleteAudio}" /><label for="deleteAudio">Delete Audio</label><br/>
-                <input type="radio" value="deleteAll" name="deleteOption" id="deleteAll" th:checked="${deleteAll}" /><label for="deleteAll">Delete All</label><br/>
+                <input type="radio" value="deleteAudio" name="deleteOption" id="deleteAudio" th:checked="${deleteAudio}" onclick="$('#deleteSubmit').attr('hidden', !$('#providedCheckbox1').is(':checked') || !$('#providedCheckbox2').is(':checked') || (!$('#deleteAudio').is(':checked') && !$('#deleteAll').is(':checked')));"/><label for="deleteAudio">Delete Audio</label><br/>
+                <input type="radio" value="deleteAll" name="deleteOption" id="deleteAll" th:checked="${deleteAll}" onclick="$('#deleteSubmit').attr('hidden', !$('#providedCheckbox1').is(':checked') || !$('#providedCheckbox2').is(':checked') || (!$('#deleteAudio').is(':checked') && !$('#deleteAll').is(':checked')));"/><label for="deleteAll">Delete All</label><br/>
                 <input type="hidden" th:value="${paramId}" name="id"/><br/>
                 <input type="hidden" th:value="${simpleMode}" name="simple"/><br/>
                 <input type="submit" value="Delete" id ="deleteSubmit" hidden="hidden" />
