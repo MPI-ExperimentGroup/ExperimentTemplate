@@ -107,7 +107,7 @@ public class ParticipantDetailController {
             @RequestParam(value = "id", required = false) String paramId) {
         final boolean deleteAudio = "deleteAudio".equals(deleteOption);
         final boolean deleteAll = "deleteAll".equals(deleteOption);
-        final String requiredCheckbox1 = "Please delete " + ((deleteAudio) ? "audio" : "all") + " data for the participant " + id;
+        final String requiredCheckbox1 = "Delete data for the participant " + id;
         final String requiredCheckbox2 = "I understand that this is permanent and cannot be reverted.";
         model.addAttribute("requiredCheckbox1", requiredCheckbox1);
         model.addAttribute("requiredCheckbox2", requiredCheckbox2);
