@@ -66,6 +66,7 @@
                 <include>/scss/**</include>
                 <include>/static/**</include>
                 <include>/opus-recorder/**</include>
+                <include>/utils/**</include>
                 <include>/jquery/**</include>
                 <include>/sockjs-client/**</include>
                 <include>/stomp-websocket/**</include>
