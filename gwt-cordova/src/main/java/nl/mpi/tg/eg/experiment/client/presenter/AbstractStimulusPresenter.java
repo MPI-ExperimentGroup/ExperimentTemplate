@@ -1520,7 +1520,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             formattedGroupId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(buttonGroup);
         }
-        ratingButtons(getRatingEventListeners(appEventListener, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, false, null, formattedGroupId, null, orientationType);
+        ratingButtons(getRatingEventListeners(appEventListener, /*stimulusProvider,*/ currentStimulus, eventTag, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), formattedGroupId, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, currentStimulus.getUniqueId(), false, null, formattedGroupId, null, orientationType);
     }
 
     public void stimulusRatingRadio(final AppEventListener appEventListener, /*final StimuliProvider stimulusProvider,*/ final Stimulus currentStimulus, final String buttonGroup, final TimedStimulusListener timedStimulusListener, final OrientationType orientationType, final String ratingLabelLeft, final String ratingLabelRight, final String eventTag, final String styleName, final int dataChannel, final String radioGroupName) {
