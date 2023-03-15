@@ -958,7 +958,7 @@ or local-name() eq 'ratingCheckbox'
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckbox' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox') then concat(', &quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckbox' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox') then if(@dataChannel) then concat(', ', @dataChannel) else ', 0' else ''" />
-        <xsl:value-of select="if(local-name() eq 'stimulusRatingRadio' or local-name() eq 'stimulusRatingCheckbox' or local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckbox') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingRadioButton' or local-name() eq 'ratingCheckbox') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
         <xsl:if test="@tags">
             <xsl:text>, new Tag[]{</xsl:text>
             <xsl:for-each select="tokenize(@tags,' ')">
