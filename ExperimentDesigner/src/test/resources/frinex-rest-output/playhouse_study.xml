@@ -421,7 +421,7 @@
                                                                             <clearPage styleName=""/>
                                                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                                             <pause msToNext="1000">
-                                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                                <touchInputStop/>
                                                                                 <nextStimulus repeatIncorrect="false"/>
                                                                             </pause>
                                                                         </pause>
@@ -452,7 +452,7 @@
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <pause msToNext="500">
-                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <touchInputStop/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </mediaPlaybackComplete>
@@ -478,7 +478,7 @@
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <pause msToNext="500">
-                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <touchInputStop/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </mediaPlaybackComplete>
@@ -504,7 +504,7 @@
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <pause msToNext="500">
-                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <touchInputStop/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </mediaPlaybackComplete>
@@ -521,31 +521,31 @@
                             <row>
                                 <column styleName="">
                                     <actionButton featureText="TestMenu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <gotoPresenter target="TestMenu"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <prevStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <showStimulus/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Pause" hotKey="" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <cancelPauseAll/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
@@ -605,7 +605,7 @@
                                                                             <clearPage styleName=""/>
                                                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                                             <pause msToNext="1000">
-                                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                                <touchInputStop/>
                                                                                 <nextStimulus repeatIncorrect="false"/>
                                                                             </pause>
                                                                         </pause>
@@ -636,7 +636,7 @@
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <pause msToNext="500">
-                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <touchInputStop/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </mediaPlaybackComplete>
@@ -662,7 +662,7 @@
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <pause msToNext="500">
-                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <touchInputStop/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </mediaPlaybackComplete>
@@ -688,7 +688,7 @@
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <pause msToNext="500">
-                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <touchInputStop/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </mediaPlaybackComplete>
@@ -705,31 +705,31 @@
                             <row>
                                 <column styleName="">
                                     <actionButton featureText="TestMenu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <gotoPresenter target="TestMenu"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <prevStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <showStimulus/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Pause" hotKey="" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <cancelPauseAll/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <touchInputStop/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
@@ -794,7 +794,7 @@
                                                                                     <clearPage styleName=""/>
                                                                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                                                     <pause msToNext="1000">
-                                                                                        <touchInputReportSubmit dataChannel="3"/>
+                                                                                        <touchInputStop/>
                                                                                         <nextStimulus repeatIncorrect="false"/>
                                                                                     </pause>
                                                                                 </pause>
@@ -825,7 +825,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -851,7 +851,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -877,7 +877,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -894,31 +894,31 @@
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="TestMenu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="TestMenu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
@@ -985,7 +985,7 @@
                                                                                     <clearPage styleName=""/>
                                                                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                                                     <pause msToNext="1000">
-                                                                                        <touchInputReportSubmit dataChannel="3"/>
+                                                                                        <touchInputStop/>
                                                                                         <nextStimulus repeatIncorrect="false"/>
                                                                                     </pause>
                                                                                 </pause>
@@ -1016,7 +1016,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1042,7 +1042,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1068,7 +1068,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1085,31 +1085,31 @@
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="TestMenu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="TestMenu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
@@ -1164,7 +1164,7 @@
                                                             <clearPage styleName=""/>
                                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                             <pause msToNext="1000">
-                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                <touchInputStop/>
                                                                 <nextStimulus repeatIncorrect="false"/>
                                                             </pause>
                                                         </pause>
@@ -1189,7 +1189,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1215,7 +1215,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1241,7 +1241,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1258,31 +1258,31 @@
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="TestMenu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="TestMenu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
@@ -1337,7 +1337,7 @@
                                                             <clearPage styleName=""/>
                                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                             <pause msToNext="1000">
-                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                <touchInputStop/>
                                                                 <nextStimulus repeatIncorrect="false"/>
                                                             </pause>
                                                         </pause>
@@ -1362,7 +1362,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1388,7 +1388,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1414,7 +1414,7 @@
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <pause msToNext="500">
-                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <touchInputStop/>
                                                             <nextStimulus repeatIncorrect="false"/>
                                                         </pause>
                                                     </mediaPlaybackComplete>
@@ -1431,31 +1431,31 @@
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="TestMenu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="TestMenu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>

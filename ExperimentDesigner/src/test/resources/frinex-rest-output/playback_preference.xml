@@ -160,12 +160,12 @@
                 <habituationParadigmListener threshold="2000" maximum="10" listenerId="habituationAction">
                     <nextStimulus repeatIncorrect="false"/>
                 </habituationParadigmListener>
-                <touchInputCapture msToNext="3000" showControls="false">
-                    <captureEnd>
+                <touchInputCapture msToNext="3000" showControls="false" dataChannel="3">
+                    <touchEnd>
                         <resetTrigger listenerId="habituationAction"/>
                         <pauseMedia mediaId="media"/>
                         <enableButtonGroup matchingRegex="allCurtainGroup"/>
-                        </captureEnd>
+                        </touchEnd>
                     <captureStart>
                         <touchInputImageButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                             <triggerMatching listenerId="habituationAction"/>
@@ -188,25 +188,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -258,25 +258,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -324,25 +324,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -390,25 +390,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -457,25 +457,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -523,25 +523,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -589,25 +589,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -655,25 +655,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -721,25 +721,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -787,25 +787,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -853,25 +853,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -919,25 +919,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>

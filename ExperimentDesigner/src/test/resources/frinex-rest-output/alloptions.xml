@@ -675,7 +675,7 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputCapture showControls="true">
+                <touchInputCapture dataChannel="2" showControls="true">
                     <captureStart>
                         <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
@@ -702,12 +702,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit dataChannel="2"/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
@@ -1140,7 +1140,7 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputCapture showControls="true">
+                <touchInputCapture dataChannel="2" showControls="true">
                     <captureStart>
                         <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
@@ -1167,12 +1167,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit dataChannel="2"/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
@@ -1451,7 +1451,7 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputCapture showControls="true">
+                <touchInputCapture dataChannel="2" showControls="true">
                     <captureStart>
                         <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
@@ -1478,12 +1478,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit dataChannel="2"/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
@@ -1762,7 +1762,7 @@
                 <stimulusSlider orientation="flow" initial="35" groupId="groupId" maximum="60" styleName="styleName" dataChannel="2" minimum="3">
                     <plainText featureText="plainText in stimulusSlider"/>
                 </stimulusSlider>
-                <touchInputCapture showControls="true">
+                <touchInputCapture dataChannel="2" showControls="true">
                     <captureStart>
                         <touchInputLabelButton eventTag="eventTag" codeFormat="codeFormat" groupId="groupId" styleName="styleName">
                             <plainText featureText="plainText in touchInputLabelButton"/>
@@ -1789,12 +1789,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit dataChannel="2"/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton orientation="flow" eventTag="eventTag" ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
@@ -3710,12 +3710,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
@@ -4163,12 +4163,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
@@ -4468,12 +4468,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>
@@ -4773,12 +4773,12 @@
                                 <plainText featureText="plainText in onActivate"/>
                             </onActivate>
                         </touchInputVideoButton>
-                        <touchInputReportSubmit/>
+                        <touchInputStop/>
                         <plainText featureText="plainText in captureStart"/>
                     </captureStart>
-                    <captureEnd msToNext="60">
-                        <plainText featureText="plainText in captureEnd"/>
-                    </captureEnd>
+                    <touchEnd msToNext="60">
+                        <plainText featureText="plainText in touchEnd"/>
+                    </touchEnd>
                 </touchInputCapture>
                 <ratingButton ratingLabels="">
                     <plainText featureText="plainText in ratingButton"/>

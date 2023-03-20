@@ -423,7 +423,7 @@
                     <clearPage/>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <touchInputCapture showControls="false">
+                    <touchInputCapture dataChannel="3" showControls="false">
                         <captureStart>
                             <stimulusCodeAudio codeFormat="&lt;code&gt;_1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
@@ -471,37 +471,37 @@
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
                         </captureStart>
-                        <captureEnd msToNext="-1"/>
+                        <touchEnd msToNext="-1"/>
                     </touchInputCapture>
                     <table showOnBackButton="true" styleName="titleBarButton">
                         <row>
                             <column styleName="">
                                 <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                    <touchInputReportSubmit dataChannel="3"/>
+                                    <touchInputStop/>
                                     <gotoPresenter target="Menu"/>
                                 </actionButton>
                             </column>
                             <column styleName="">
                                 <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                    <touchInputReportSubmit dataChannel="3"/>
+                                    <touchInputStop/>
                                     <prevStimulus repeatIncorrect="false"/>
                                 </actionButton>
                             </column>
                             <column styleName="">
                                 <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                    <touchInputReportSubmit dataChannel="3"/>
+                                    <touchInputStop/>
                                     <showStimulus/>
                                 </actionButton>
                             </column>
                             <column styleName="">
                                 <actionButton featureText="Pause" hotKey="" styleName="">
-                                    <touchInputReportSubmit dataChannel="3"/>
+                                    <touchInputStop/>
                                     <cancelPauseAll/>
                                 </actionButton>
                             </column>
                             <column styleName="">
                                 <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                    <touchInputReportSubmit dataChannel="3"/>
+                                    <touchInputStop/>
                                     <nextStimulus repeatIncorrect="false"/>
                                 </actionButton>
                             </column>
@@ -537,7 +537,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <touchInputCapture showControls="false">
+                                <touchInputCapture dataChannel="3" showControls="false">
                                     <captureStart>
                                         <stimulusCodeAudio codeFormat="&lt;code&gt;_1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
@@ -603,37 +603,37 @@
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </captureStart>
-                                    <captureEnd msToNext="-1"/>
+                                    <touchEnd msToNext="-1"/>
                                 </touchInputCapture>
                                 <table showOnBackButton="true" styleName="titleBarButton">
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="Menu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
@@ -671,7 +671,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <touchInputCapture showControls="false">
+                                <touchInputCapture dataChannel="3" showControls="false">
                                     <captureStart>
                                         <stimulusCodeAudio codeFormat="&lt;code&gt;_1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
@@ -737,37 +737,37 @@
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </captureStart>
-                                    <captureEnd msToNext="-1"/>
+                                    <touchEnd msToNext="-1"/>
                                 </touchInputCapture>
                                 <table showOnBackButton="true" styleName="titleBarButton">
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="Menu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
@@ -805,7 +805,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <touchInputCapture showControls="false">
+                                <touchInputCapture dataChannel="3" showControls="false">
                                     <captureStart>
                                         <stimulusCodeAudio codeFormat="&lt;code&gt;_1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
@@ -871,37 +871,37 @@
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </captureStart>
-                                    <captureEnd msToNext="-1"/>
+                                    <touchEnd msToNext="-1"/>
                                 </touchInputCapture>
                                 <table showOnBackButton="true" styleName="titleBarButton">
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="Menu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
@@ -939,7 +939,7 @@
                                 <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
-                                <touchInputCapture showControls="false">
+                                <touchInputCapture dataChannel="3" showControls="false">
                                     <captureStart>
                                         <stimulusCodeAudio codeFormat="&lt;code&gt;_1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
@@ -1005,37 +1005,37 @@
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </captureStart>
-                                    <captureEnd msToNext="-1"/>
+                                    <touchEnd msToNext="-1"/>
                                 </touchInputCapture>
                                 <table showOnBackButton="true" styleName="titleBarButton">
                                     <row>
                                         <column styleName="">
                                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <gotoPresenter target="Menu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <prevStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Pause" hotKey="" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
-                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <touchInputStop/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
                                         </column>

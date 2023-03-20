@@ -1327,7 +1327,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public String getLabel() {
-                return formattedCode;   
+                return formattedCode;
             }
 
             @Override
@@ -2371,6 +2371,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     private void nextStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final boolean repeatIncorrect, final int increment) {
+        touchInputStop();
         if (!stimulusProvider.getCurrentStimulus().equals(currentStimulus)) {
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "stale nextStimulus blocked", stimulusProvider.getCurrentStimulus().getUniqueId(), currentStimulus.getUniqueId(), duration.elapsedMillis());
         } else {
@@ -2395,6 +2396,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void clearPage(String styleName) {
+        touchInputStop();
         cancelPauseTimers();
         timedStimulusView.stopListeners();
         timedStimulusView.stopTimers();
@@ -2577,21 +2579,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
     }
 
-    protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
+    protected void touchInputStop() {
         if (touchInputCapture != null) {
-            final String touchReport = touchInputCapture.getTouchReport(Window.getClientWidth(), Window.getClientHeight());
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "touchInputReport", currentStimulus.getUniqueId(), touchReport, duration.elapsedMillis());
-//            // todo: perhaps this is a bit heavy on local storage but at least only one touch event would be stored
-//            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
-//            storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
-//            storedStimulusJSONObject.put("touchInputReport", new JSONString(touchReport));
-//            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+            touchInputCapture.touchInputStop(submissionService, Window.getClientWidth(), Window.getClientHeight(), userResults.getUserData().getUserId(), getSelfTag());
         }
         touchInputCapture = null;
     }
 
     protected void touchInputCapture(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final TimedStimulusListener startOfTouchEventListener, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListener) {
-        // TODO: maybe send report here and start a new capture
+        // send report if already capturing and start a new capture
+        touchInputStop();
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
@@ -2599,7 +2596,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             } else {
                 debugHtmlLabel = null;
             }
-            touchInputCapture = new TouchInputCapture(endOfTouchEventListener, msAfterEndOfTouchToNext) {
+            touchInputCapture = new TouchInputCapture(endOfTouchEventListener, msAfterEndOfTouchToNext, currentStimulus, dataChannel) {
                 @Override
                 public void setDebugLabel(String debugLabel) {
                     if (debugHtmlLabel != null) {
@@ -2746,6 +2743,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     @Override
     public void savePresenterState() {
         cancelPauseTimers();
+        touchInputStop();
         timedStimulusView.stopListeners();
         timedStimulusView.stopTimers();
         timedStimulusView.stopAudio();

@@ -7078,25 +7078,25 @@
                     <row>
                         <column styleName="">
                             <actionButton featureText="TestMenu (m)" hotKey="M" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (p)" hotKey="P" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (r)" hotKey="R" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (n)" hotKey="N" styleName="">
-                                <touchInputReportSubmit dataChannel="3"/>
+                                <touchInputStop/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>

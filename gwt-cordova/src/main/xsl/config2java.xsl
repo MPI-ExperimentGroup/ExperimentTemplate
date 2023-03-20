@@ -783,7 +783,7 @@ or local-name() eq 'submitGroupEvent'
         </xsl:for-each>
         <xsl:text>");</xsl:text>
     </xsl:template>
-    <xsl:template match="hotKeyInput|touchInputCapture|touchInputReportSubmit|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
+    <xsl:template match="hotKeyInput|touchInputCapture|touchInputStop|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -808,6 +808,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp'
             and local-name() ne 'hotKeyInput'
+            and local-name() ne 'touchInputStop'
             and local-name() ne 'hardwareTimeStamp'
             and local-name() ne 'recorderToneInjection'
            ">
@@ -840,6 +841,7 @@ or local-name() eq 'sendGroupEndOfStimuli'
             and local-name() ne 'logTimeStamp' 
             and local-name() ne 'hotKeyInput' 
             and local-name() ne 'hardwareTimeStamp' 
+            and local-name() ne 'touchInputStop' 
             and local-name() ne 'recorderToneInjection' 
             and local-name() ne 'sendGroupEndOfStimuli'">
             <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel, '/* dataChannel */') else ', 0 /* dataChannel */'" />
@@ -891,7 +893,7 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:apply-templates select="onKeyDown" />
         <xsl:apply-templates select="onKeyUp" />
         <xsl:apply-templates select="captureStart" />
-        <xsl:apply-templates select="captureEnd" />
+        <xsl:apply-templates select="touchEnd" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -977,7 +979,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="captureStart|captureEnd|onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
+    <xsl:template match="captureStart|touchEnd|onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext, '/* msToNext */') else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers' or parent::element()/local-name() eq 'startFrameRateTimer') then '' else ', '" />
         <xsl:text>&#xa;new </xsl:text>

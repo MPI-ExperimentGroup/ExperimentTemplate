@@ -1766,7 +1766,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2010,7 +2010,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2489,7 +2489,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2730,7 +2730,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -2962,7 +2962,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3202,7 +3202,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3462,11 +3462,16 @@
 </xs:annotation>
 <xs:all>
 <xs:element name="captureStart" type="captureStartType"/>
-<xs:element name="captureEnd" type="captureEndType"/>
+<xs:element name="touchEnd" type="touchEndType"/>
 </xs:all>
 <xs:attribute name="showControls" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="dataChannel" type="xs:integer">
+<xs:annotation>
+<xs:documentation></xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -3511,7 +3516,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3656,9 +3661,9 @@
 <xs:element name="transmitResults" type="transmitResultsType"/>
 </xs:choice>
 </xs:complexType>
-<xs:complexType name="captureEndType">
+<xs:complexType name="touchEndType">
 <xs:annotation>
-<xs:documentation>When the touch input capture has ended the contents of this element will be evaluated. If msToNext to next is provided then a gap of that ms time is permitted between touches without triggering the captureEnd.</xs:documentation>
+<xs:documentation>When the touch input capture anywhere on the screen has ended the contents of this element will be evaluated. If msToNext to next is provided then a gap of that ms time is permitted between touches without triggering the touchEnd.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="htmlText" type="htmlTextType"/>
@@ -3702,7 +3707,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -3866,15 +3871,10 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="touchInputReportSubmitType">
+<xs:complexType name="touchInputStopType">
 <xs:annotation>
-<xs:documentation>Submits the logged touch input of the participant since touch input capture was started and then stops the input capture which then triggers captureEnd.</xs:documentation>
+<xs:documentation>Stops the touch input capture and submits the logged touch input of the participant since touch input capture was started and then stops the input capture. This action is implicit but this feature allows the capture to be terminated early.</xs:documentation>
 </xs:annotation>
-<xs:attribute name="dataChannel" type="xs:integer">
-<xs:annotation>
-<xs:documentation></xs:documentation>
-</xs:annotation>
-</xs:attribute>
 </xs:complexType>
 <xs:complexType name="ratingButtonType">
 <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -3919,7 +3919,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4161,7 +4161,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4403,7 +4403,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4706,7 +4706,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -4943,7 +4943,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -5180,7 +5180,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -5518,7 +5518,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -5813,7 +5813,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -6443,7 +6443,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7034,7 +7034,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7316,7 +7316,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7526,7 +7526,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -7779,7 +7779,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8068,7 +8068,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8420,7 +8420,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8637,7 +8637,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -8867,7 +8867,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9098,7 +9098,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9320,7 +9320,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9553,7 +9553,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9755,7 +9755,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -9957,7 +9957,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10159,7 +10159,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10361,7 +10361,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10573,7 +10573,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10785,7 +10785,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -10997,7 +10997,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11199,7 +11199,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11401,7 +11401,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11603,7 +11603,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -11805,7 +11805,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12007,7 +12007,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12405,7 +12405,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -12607,7 +12607,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13002,7 +13002,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13210,7 +13210,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13412,7 +13412,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13614,7 +13614,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -13816,7 +13816,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14018,7 +14018,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14223,7 +14223,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14425,7 +14425,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14627,7 +14627,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -14829,7 +14829,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -15041,7 +15041,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -15243,7 +15243,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -15453,7 +15453,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -15698,7 +15698,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16243,7 +16243,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16497,7 +16497,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -16978,7 +16978,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -17183,7 +17183,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -17388,7 +17388,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>
@@ -17593,7 +17593,7 @@
 <xs:element name="touchInputImageButton" type="touchInputImageButtonType"/>
 <xs:element name="touchInputVideoButton" type="touchInputVideoButtonType"/>
 <xs:element name="touchInputCapture" type="touchInputCaptureType"/>
-<xs:element name="touchInputReportSubmit" type="touchInputReportSubmitType"/>
+<xs:element name="touchInputStop" type="touchInputStopType"/>
 <xs:element name="ratingButton" type="ratingButtonType"/>
 <xs:element name="ratingRadioButton" type="ratingRadioButtonType"/>
 <xs:element name="ratingCheckbox" type="ratingCheckboxType"/>

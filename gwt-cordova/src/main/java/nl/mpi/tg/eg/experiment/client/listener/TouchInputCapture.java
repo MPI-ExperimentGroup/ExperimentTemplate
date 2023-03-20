@@ -48,7 +48,10 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 23, 2017 2:10:09 PM (creation date)
@@ -66,10 +69,14 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
     private final Timer touchRecordTimer;
     private final Duration duration = new Duration();
     boolean disableMouseEvents = false;
+    private final Stimulus initialStimulus;
+    private final int dataChannel;
 
-    public TouchInputCapture(final TimedStimulusListener endOfTouchEventListener, final int msAfterEndOfTouchToNext) {
+    public TouchInputCapture(final TimedStimulusListener endOfTouchEventListener, final int msAfterEndOfTouchToNext, final Stimulus initialStimulus, final int dataChannel) {
         this.endOfTouchEventListener = endOfTouchEventListener;
         this.msAfterEndOfTouchToNext = msAfterEndOfTouchToNext;
+        this.initialStimulus = initialStimulus;
+        this.dataChannel = dataChannel;
         endOfTouchTimer = new Timer() {
             @Override
             public void run() {
@@ -83,6 +90,16 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
                 processTouchRecords();
             }
         };
+    }
+
+    public void touchInputStop(final DataSubmissionService submissionService, int screenWidth, int screenHeight, final UserId userId, final String screenName) {
+        final String touchReport = getTouchReport(screenWidth, screenHeight);
+        submissionService.submitTagPairValue(userId, screenName, dataChannel, "touchInputReport", initialStimulus.getUniqueId(), touchReport, duration.elapsedMillis());
+//            // todo: perhaps this is a bit heavy on local storage but at least only one touch event would be stored
+//            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), initialStimulus);
+//            storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+//            storedStimulusJSONObject.put("touchInputReport", new JSONString(touchReport));
+//            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), initialStimulus, storedStimulusJSONObject);
     }
 
     class TouchRecord {
