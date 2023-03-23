@@ -34,6 +34,9 @@
         <application.branch>pretesting</application.branch> 
         <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
         <versionCheck.buildType>testing</versionCheck.buildType> 
+        <jdk.xml.xpathExprGrpLimit>140</jdk.xml.xpathExprGrpLimit>
+        <jdk.xml.xpathExprOpLimit>650</jdk.xml.xpathExprOpLimit>
+        <jdk.xml.xpathTotalOpLimit>150</jdk.xml.xpathTotalOpLimit>
         
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
