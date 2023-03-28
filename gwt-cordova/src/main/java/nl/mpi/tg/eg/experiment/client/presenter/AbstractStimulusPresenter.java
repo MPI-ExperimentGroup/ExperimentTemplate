@@ -1205,7 +1205,16 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
             nextStimulusButton(stimulusProvider, currentStimulus, incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), null, true, -1, "incorrectStimulusFormat");
-        }
+        }   
+    }
+
+    protected void regionDragDrop(final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String codeFormat, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
+            final InsertPanel.ForIsWidget dragDropRegion = simpleView.startRegion(regionId, null);
+            // TODO: impliment the drag drop
+            dragDropRegion.addDragHandler
+            // ondrop="drop(event)" ondragover="allowDrop(event)"
+            // draggable="true" ondragstart="drag(event)"
+            simpleView.endRegion(dragDropRegion);
     }
 
     protected void regionCodeStyle(final Stimulus currentStimulus, final String regionId, final String codeStyleName) {

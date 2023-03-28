@@ -40,6 +40,8 @@ public enum FeatureAttribute {
     code,
     //    tags,  // todo: consider updating some elements to take a tags attribute rather than a stimuli element
     codeFormat,
+    draggable("When true the item will be set as draggable. Will have no effect when false or not present.", true, AttributeType.xsBoolean), 
+    droptarget("When true the item will be set as a drop target for drag actions. Will have no effect when false or not present.", true, AttributeType.xsBoolean),
     validationRegex,
     allowedCharCodes(true),
     matchingRegex("Regular expression that will be used to determin a match.", false, AttributeType.xsString),

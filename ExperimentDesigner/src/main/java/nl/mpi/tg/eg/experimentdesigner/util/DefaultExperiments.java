@@ -354,6 +354,8 @@ public class DefaultExperiments {
                             case randomise:
                             case autoPlay:
                             case loop:
+                            case draggable:
+                            case droptarget:
                             case showControls:
                             case oneToMany:
                             case applyScore:

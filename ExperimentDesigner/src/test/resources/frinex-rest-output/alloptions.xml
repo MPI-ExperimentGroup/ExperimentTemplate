@@ -783,6 +783,17 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
+                <regionDragDrop draggable="true" droptarget="true" regionId="regionId" codeFormat="codeFormat" dataChannel="2">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1248,6 +1259,17 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
+                <regionDragDrop draggable="true" droptarget="true" regionId="regionId" codeFormat="codeFormat" dataChannel="2">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1559,6 +1581,17 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
+                <regionDragDrop draggable="true" droptarget="true" regionId="regionId" codeFormat="codeFormat" dataChannel="2">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1870,6 +1903,17 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
+                <regionDragDrop draggable="true" droptarget="true" regionId="regionId" codeFormat="codeFormat" dataChannel="2">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -3791,6 +3835,17 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId=""/>
+                <regionDragDrop regionId="" codeFormat="">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -4244,6 +4299,17 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId=""/>
+                <regionDragDrop regionId="" codeFormat="">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -4549,6 +4615,17 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId=""/>
+                <regionDragDrop regionId="" codeFormat="">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -4854,6 +4931,17 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId=""/>
+                <regionDragDrop regionId="" codeFormat="">
+                    <ondragstart>
+                        <plainText featureText="plainText in ondragstart"/>
+                    </ondragstart>
+                    <ondragover>
+                        <plainText featureText="plainText in ondragover"/>
+                    </ondragover>
+                    <ondrop>
+                        <plainText featureText="plainText in ondrop"/>
+                    </ondrop>
+                </regionDragDrop>
                 <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>

@@ -242,10 +242,14 @@ public enum FeatureType {
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
     regionAppend(true, false, new FeatureAttribute[]{regionId, styleName}, "Starts or resumes a region, allowing contents to be added to a given location in the presenter. If no region matching the regionId exists then a new region is created in the current location and then appended to. If a region of the same regionId already exists then it will be appended to."),
-    regionStyle(false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then it will have the style applied. If no region matching exists then nothing will be done.", Contitionals.none, Contitionals.none, Contitionals.isTimeCritical),
-    regionCodeStyle(false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no region matching exists then nothing will be done.", Contitionals.none, Contitionals.stimulusAction),
+    regionStyle(false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then it will have the style applied. If no matching region exists then nothing will be done.", Contitionals.none, Contitionals.none, Contitionals.isTimeCritical),
+    regionCodeStyle(false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no matching region exists then nothing will be done.", Contitionals.none, Contitionals.stimulusAction),
     regionReplace(true, false, new FeatureAttribute[]{regionId, styleName}, "If a region matching the regionId exists then it will cleared. If no region matching the regionId exists then a new region is created in the current location. The resulting region is then appended to."),
     regionClear(false, false, new FeatureAttribute[]{regionId}, "If a region matching the regionId exists then it will cleared. Unlike clearPage clearing a region only removes the visual components, so any media that has been placed in the region should be stopped first."),
+    regionDragDrop(false, new FeatureAttribute[]{regionId, draggable, droptarget, codeFormat, dataChannel}, "If a region matching the regionId exists then the options of draggable and droppable will be applied making the region draggable or a drag target or both. The codeFormat of both the dragged item and the drop target will be set as the stimulus response for the drag action. If no matching region exists then nothing will be done.", Contitionals.dragDropType, Contitionals.stimulusAction),
+    ondragstart(false, new FeatureAttribute[]{}, "", Contitionals.any, Contitionals.dragDropType),
+    ondragover(false, new FeatureAttribute[]{}, "", Contitionals.any, Contitionals.dragDropType),
+    ondrop(false, new FeatureAttribute[]{}, "", Contitionals.any, Contitionals.dragDropType),
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusPresent(false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, animate, replacementRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusImage(false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
@@ -353,6 +357,7 @@ public enum FeatureType {
         isRecursiveType(true),
         touchInputCaptureType(false),
         touchInputStartType(true),
+        dragDropType(true),
         none(true),
         any(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element
