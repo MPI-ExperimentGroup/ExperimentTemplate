@@ -15937,7 +15937,7 @@
 </xs:complexType>
 <xs:complexType name="regionDragDropType">
 <xs:annotation>
-<xs:documentation>For any regions matching the regionId the options of draggable and droppable will be applied. The codeFormat of both the dragged item and the drop target will be set as the stimulus response for the drag action. If no matching region exists then nothing will be done.</xs:documentation>
+<xs:documentation>If a region matching the regionId exists then the options of draggable and droppable will be applied making the region draggable or a drop target or both. The codeFormat of both the dragged item and the drop target will be set as the stimulus response for the drag action. If no matching region exists then nothing will be done.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="ondragstart" type="ondragstartType"/>
