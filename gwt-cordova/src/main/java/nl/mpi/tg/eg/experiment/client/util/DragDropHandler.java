@@ -49,15 +49,15 @@ public class DragDropHandler {
     }
 
     public native void initDropMethods() /*-{
-        var that = this;
+        var dragDropHandler = this;
         $wnd.frinexDragStart = $entry(function(regionId) {
-          that.@nl.mpi.tg.eg.experiment.client.util.DragDropHandler::onDragStart(S)(regionId);
+          dragDropHandler.@nl.mpi.tg.eg.experiment.client.util.DragDropHandler::onDragStart(Ljava/lang/String;)(regionId);
         });
         $wnd.frinexDragOver = $entry(function(regionId) {
-          that.@nl.mpi.tg.eg.experiment.client.util.DragDropHandler::onDragOver(S)(regionId);
+          dragDropHandler.@nl.mpi.tg.eg.experiment.client.util.DragDropHandler::onDragOver(Ljava/lang/String;)(regionId);
         });
         $wnd.frinexDrop = $entry(function(regionId) {
-          that.@nl.mpi.tg.eg.experiment.client.util.DragDropHandler::onDrop(S)(regionId);
+          dragDropHandler.@nl.mpi.tg.eg.experiment.client.util.DragDropHandler::onDrop(Ljava/lang/String;)(regionId);
         });
     }-*/;
 
