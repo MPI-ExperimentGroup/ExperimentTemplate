@@ -27,18 +27,20 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @since 29 March 2023 10:37 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class DragDropHandler {
+public abstract class DragDropHandler {
 
     boolean initComplete = false;
     private Map<String, Panel> regionPanels = new HashMap<>();
+    private Map<String, String> regionCodeResponses = new HashMap<>();
     private String currentDraggedRegion = null;
 
-    public void addDragDrop(final Panel dragDropRegion, final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String codeFormat, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
+    public void addDragDrop(final Panel dragDropRegion, final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String formattedCode, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
         if (!initComplete) {
             initDropMethods();
             initComplete = true;
         }
         regionPanels.put(regionId, dragDropRegion);
+        regionCodeResponses.put(regionId, formattedCode);
         if (dragDropRegion != null) {
             if (draggable) {
                 dragDropRegion.getElement().setAttribute("draggable", Boolean.toString(draggable));
@@ -66,15 +68,15 @@ public class DragDropHandler {
 
     public void onDragStart(final String regionId) {
         currentDraggedRegion = regionId;
-        // TODO: set some stimulus responses 
+        setResponse("onDragStart", regionCodeResponses.get(currentDraggedRegion), null);
     }
 
     public void onDragOver(final String regionId) {
-        // TODO: set some stimulus responses 
+        setResponse("onDragOver", regionCodeResponses.get(currentDraggedRegion), regionCodeResponses.get(regionId));
     }
 
     public void onDrop(final String regionId) {
-        // TODO: set some stimulus responses 
+        setResponse("onDrop", regionCodeResponses.get(currentDraggedRegion), regionCodeResponses.get(regionId));
         final Panel draggedPanel = regionPanels.get(currentDraggedRegion);
         final Panel droppedPanel = regionPanels.get(regionId);
         if (draggedPanel != null && droppedPanel != null) {
@@ -86,4 +88,6 @@ public class DragDropHandler {
         regionPanels.clear();
         currentDraggedRegion = null;
     }
+
+    public abstract void setResponse(final String dragDropStatus, final String draggedCodeResponse, final String targetCodeResponse);
 }

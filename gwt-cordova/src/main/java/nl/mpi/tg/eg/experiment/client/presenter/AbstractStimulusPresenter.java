@@ -119,7 +119,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
     private final HardwareTimeStamp hardwareTimeStamp; // note that this hardwareTimeStamp instance of HardwareTimeStamp is different from the toneGenerator used in AbstractPresenter although the tone generator objects are shared
-    private final DragDropHandler dragDropHandler = new DragDropHandler();
+    private DragDropHandler dragDropHandler = null;
 
     protected enum AnimateTypes {
         bounce, none, stimuliCode
@@ -1212,7 +1212,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void regionDragDrop(final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionIdToken, final String codeFormat, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
         final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
-        dragDropHandler.addDragDrop(simpleView.getRegion(regionId), currentStimulus, draggable, droptarget, regionId, codeFormat, ondragstart, ondragover, ondrop);
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(codeFormat);
+        if (dragDropHandler == null) {
+            dragDropHandler = new DragDropHandler() {
+
+                @Override
+                public void setResponse(final String dragDropStatus, final String draggedCodeResponse, final String targetCodeResponse) {
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, dragDropStatus, draggedCodeResponse, targetCodeResponse, duration.elapsedMillis());
+                }
+            };
+        }
+        dragDropHandler.addDragDrop(simpleView.getRegion(regionId), currentStimulus, draggable, droptarget, regionId, formattedCode, ondragstart, ondragover, ondrop);
     }
 
     protected void regionCodeStyle(final Stimulus currentStimulus, final String regionIdToken, final String codeStyleName) {
@@ -2406,6 +2416,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     protected void clearPage(String styleName) {
         touchInputStop();
         dragDropHandler.clearAll();
+        dragDropHandler = null;
         cancelPauseTimers();
         timedStimulusView.stopListeners();
         timedStimulusView.stopTimers();
@@ -2754,6 +2765,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         cancelPauseTimers();
         touchInputStop();
         dragDropHandler.clearAll();
+        dragDropHandler = null;
         timedStimulusView.stopListeners();
         timedStimulusView.stopTimers();
         timedStimulusView.stopAudio();
