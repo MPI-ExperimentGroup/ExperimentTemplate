@@ -17,8 +17,9 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
+import java.util.HashMap;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -29,21 +30,23 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class DragDropHandler {
 
     boolean initComplete = false;
+    private Map<String, Panel> regionPanels = new HashMap<>();
+    private String currentDraggedRegion = null;
 
     public void addDragDrop(final Panel dragDropRegion, final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String codeFormat, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
         if (!initComplete) {
             initDropMethods();
             initComplete = true;
-            GWT.log("DragDropHandler.initComplete");
         }
+        regionPanels.put(regionId, dragDropRegion);
         if (dragDropRegion != null) {
             if (draggable) {
                 dragDropRegion.getElement().setAttribute("draggable", Boolean.toString(draggable));
                 dragDropRegion.getElement().setAttribute("ondragstart", "frinexDragStart(event.target.id)");
             }
             if (droptarget) {
-                dragDropRegion.getElement().setAttribute("ondragover", "frinexDragOver(event.target.id)");
-                dragDropRegion.getElement().setAttribute("ondrop", "frinexDrop(event.target.id)");
+                dragDropRegion.getElement().setAttribute("ondragover", "event.preventDefault();frinexDragOver(event.target.id)");
+                dragDropRegion.getElement().setAttribute("ondrop", "event.preventDefault();frinexDrop(event.target.id)");
             }
         }
     }
@@ -62,18 +65,25 @@ public class DragDropHandler {
     }-*/;
 
     public void onDragStart(final String regionId) {
-        GWT.log("onDragStart: " + regionId);
+        currentDraggedRegion = regionId;
+        // TODO: set some stimulus responses 
     }
 
     public void onDragOver(final String regionId) {
-        GWT.log("onDragStart: " + regionId);
+        // TODO: set some stimulus responses 
     }
 
     public void onDrop(final String regionId) {
-        GWT.log("onDragStart: " + regionId);
+        // TODO: set some stimulus responses 
+        final Panel draggedPanel = regionPanels.get(currentDraggedRegion);
+        final Panel droppedPanel = regionPanels.get(regionId);
+        if (draggedPanel != null && droppedPanel != null) {
+            draggedPanel.add(droppedPanel);
+        }
     }
 
     public void clearAll() {
-        GWT.log("DragDropHandler.clearAll");
+        regionPanels.clear();
+        currentDraggedRegion = null;
     }
 }
