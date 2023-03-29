@@ -89,6 +89,7 @@ import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.AbstractRecorder;
 import nl.mpi.tg.eg.experiment.client.util.AudioRecorder;
+import nl.mpi.tg.eg.experiment.client.util.DragDropHandler;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
@@ -118,6 +119,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
     private final HardwareTimeStamp hardwareTimeStamp; // note that this hardwareTimeStamp instance of HardwareTimeStamp is different from the toneGenerator used in AbstractPresenter although the tone generator objects are shared
+    private final DragDropHandler dragDropHandler = new DragDropHandler();
 
     protected enum AnimateTypes {
         bounce, none, stimuliCode
@@ -1209,12 +1211,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void regionDragDrop(final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String codeFormat, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
-            final InsertPanel.ForIsWidget dragDropRegion = simpleView.startRegion(regionId, null);
-            // TODO: impliment the drag drop
-            dragDropRegion.addDragHandler
-            // ondrop="drop(event)" ondragover="allowDrop(event)"
-            // draggable="true" ondragstart="drag(event)"
-            simpleView.endRegion(dragDropRegion);
+            dragDropHandler.initDragDrop(simpleView.getRegion(regionId), currentStimulus, draggable, droptarget, regionId, codeFormat, ondragstart, ondragover, ondrop);
     }
 
     protected void regionCodeStyle(final Stimulus currentStimulus, final String regionId, final String codeStyleName) {
@@ -2406,6 +2403,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void clearPage(String styleName) {
         touchInputStop();
+        dragDropHandler.clearAll();
         cancelPauseTimers();
         timedStimulusView.stopListeners();
         timedStimulusView.stopTimers();
@@ -2753,6 +2751,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void savePresenterState() {
         cancelPauseTimers();
         touchInputStop();
+        dragDropHandler.clearAll();
         timedStimulusView.stopListeners();
         timedStimulusView.stopTimers();
         timedStimulusView.stopAudio();

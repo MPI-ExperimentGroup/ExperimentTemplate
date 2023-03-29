@@ -118,6 +118,10 @@ public class ComplexView extends SimpleView {
         regionPanels.clear();
     }
 
+    public Panel getRegion(final String regionId) {
+        return regionPanels.get(regionId);
+    }
+
     public InsertPanel.ForIsWidget startRegion(final String regionId, final String styleName) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
         if (regionTemp == null) {
