@@ -1211,7 +1211,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void regionDragDrop(final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String codeFormat, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
-            dragDropHandler.initDragDrop(simpleView.getRegion(regionId), currentStimulus, draggable, droptarget, regionId, codeFormat, ondragstart, ondragover, ondrop);
+            dragDropHandler.addDragDrop(simpleView.getRegion(regionId), currentStimulus, draggable, droptarget, regionId, codeFormat, ondragstart, ondragover, ondrop);
     }
 
     protected void regionCodeStyle(final Stimulus currentStimulus, final String regionId, final String codeStyleName) {
