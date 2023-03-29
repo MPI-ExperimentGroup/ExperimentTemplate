@@ -30,8 +30,11 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public abstract class DragDropHandler {
 
     boolean initComplete = false;
-    private Map<String, Panel> regionPanels = new HashMap<>();
-    private Map<String, String> regionCodeResponses = new HashMap<>();
+    private final Map<String, Panel> regionPanels = new HashMap<>();
+    private final Map<String, String> regionCodeResponses = new HashMap<>();
+    private final Map<String, TimedStimulusListener> regionOnSragStart = new HashMap<>();
+    private final Map<String, TimedStimulusListener> regionOnDragOver = new HashMap<>();
+    private final Map<String, TimedStimulusListener> regionOnDrop = new HashMap<>();
     private String currentDraggedRegion = null;
 
     public void addDragDrop(final Panel dragDropRegion, final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String formattedCode, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
@@ -41,6 +44,9 @@ public abstract class DragDropHandler {
         }
         regionPanels.put(regionId, dragDropRegion);
         regionCodeResponses.put(regionId, formattedCode);
+        regionOnSragStart.put(regionId, ondragstart);
+        regionOnDragOver.put(regionId, ondragover);
+        regionOnDrop.put(regionId, ondrop);
         if (dragDropRegion != null) {
             if (draggable) {
                 dragDropRegion.getElement().setAttribute("draggable", Boolean.toString(draggable));
@@ -69,10 +75,12 @@ public abstract class DragDropHandler {
     public void onDragStart(final String regionId) {
         currentDraggedRegion = regionId;
         setResponse("onDragStart", regionCodeResponses.get(currentDraggedRegion), null);
+        regionOnSragStart.get(regionId).postLoadTimerFired();
     }
 
     public void onDragOver(final String regionId) {
         setResponse("onDragOver", regionCodeResponses.get(currentDraggedRegion), regionCodeResponses.get(regionId));
+        regionOnDragOver.get(regionId).postLoadTimerFired();;
     }
 
     public void onDrop(final String regionId) {
@@ -82,10 +90,15 @@ public abstract class DragDropHandler {
         if (draggedPanel != null && droppedPanel != null) {
             draggedPanel.add(droppedPanel);
         }
+        regionOnDrop.get(regionId).postLoadTimerFired();
     }
 
     public void clearAll() {
         regionPanels.clear();
+        regionCodeResponses.clear();
+        regionOnSragStart.clear();
+        regionOnDragOver.clear();
+        regionOnDrop.clear();
         currentDraggedRegion = null;
     }
 
