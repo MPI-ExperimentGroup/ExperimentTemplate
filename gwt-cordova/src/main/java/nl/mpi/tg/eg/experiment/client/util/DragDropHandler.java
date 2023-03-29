@@ -75,12 +75,18 @@ public abstract class DragDropHandler {
     public void onDragStart(final String regionId) {
         currentDraggedRegion = regionId;
         setResponse("onDragStart", regionCodeResponses.get(currentDraggedRegion), null);
-        regionOnSragStart.get(regionId).postLoadTimerFired();
+        final TimedStimulusListener listener = regionOnSragStart.get(regionId);
+        if (listener != null) {
+            listener.postLoadTimerFired();
+        }
     }
 
     public void onDragOver(final String regionId) {
         setResponse("onDragOver", regionCodeResponses.get(currentDraggedRegion), regionCodeResponses.get(regionId));
-        regionOnDragOver.get(regionId).postLoadTimerFired();;
+        final TimedStimulusListener listener = regionOnDragOver.get(regionId);
+        if (listener != null) {
+            listener.postLoadTimerFired();
+        }
     }
 
     public void onDrop(final String regionId) {
@@ -90,7 +96,10 @@ public abstract class DragDropHandler {
         if (draggedPanel != null && droppedPanel != null) {
             draggedPanel.add(droppedPanel);
         }
-        regionOnDrop.get(regionId).postLoadTimerFired();
+        final TimedStimulusListener listener = regionOnDrop.get(regionId);
+        if (listener != null) {
+            listener.postLoadTimerFired();
+        }
     }
 
     public void clearAll() {
