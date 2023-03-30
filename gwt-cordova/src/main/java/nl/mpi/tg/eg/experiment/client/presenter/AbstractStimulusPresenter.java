@@ -1220,6 +1220,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 public void setResponse(final String dragDropStatus, final String draggedCodeResponse, final String targetCodeResponse) {
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, dragDropStatus, draggedCodeResponse, targetCodeResponse, duration.elapsedMillis());
                 }
+
+                @Override
+                public void setResponse(Stimulus stimulus, String codeResponse) {
+                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", currentStimulus, codeResponse, null, duration.elapsedMillis());
+                }
             };
         }
         dragDropHandler.addDragDrop(simpleView.getRegion(regionId), currentStimulus, draggable, droptarget, regionId, formattedCode, ondragstart, ondragover, ondrop);

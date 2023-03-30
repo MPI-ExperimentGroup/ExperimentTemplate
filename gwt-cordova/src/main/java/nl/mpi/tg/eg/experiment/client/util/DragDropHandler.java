@@ -35,6 +35,7 @@ public abstract class DragDropHandler {
     private final Map<String, TimedStimulusListener> regionOnSragStart = new HashMap<>();
     private final Map<String, TimedStimulusListener> regionOnDragOver = new HashMap<>();
     private final Map<String, TimedStimulusListener> regionOnDrop = new HashMap<>();
+    private final Map<String, Stimulus> regionStimulus = new HashMap<>();
     private String currentDraggedRegion = null;
 
     public void addDragDrop(final Panel dragDropRegion, final Stimulus currentStimulus, final boolean draggable, final boolean droptarget, final String regionId, final String formattedCode, final TimedStimulusListener ondragstart, final TimedStimulusListener ondragover, final TimedStimulusListener ondrop) {
@@ -47,6 +48,7 @@ public abstract class DragDropHandler {
         regionOnSragStart.put(regionId, ondragstart);
         regionOnDragOver.put(regionId, ondragover);
         regionOnDrop.put(regionId, ondrop);
+        regionStimulus.put(regionId, currentStimulus);
         if (dragDropRegion != null) {
             if (draggable) {
                 dragDropRegion.getElement().setAttribute("draggable", Boolean.toString(draggable));
@@ -87,6 +89,10 @@ public abstract class DragDropHandler {
         if (listener != null) {
             listener.postLoadTimerFired();
         }
+        final TimedStimulusListener draggedListener = regionOnDragOver.get(currentDraggedRegion);
+        if (draggedListener != null) {
+            draggedListener.postLoadTimerFired();
+        }
     }
 
     public void onDrop(final String regionId) {
@@ -100,6 +106,18 @@ public abstract class DragDropHandler {
         if (listener != null) {
             listener.postLoadTimerFired();
         }
+        final TimedStimulusListener draggedListener = regionOnDrop.get(currentDraggedRegion);
+        if (draggedListener != null) {
+            draggedListener.postLoadTimerFired();
+        }
+        final Stimulus stimulus = regionStimulus.get(regionId);
+        if (stimulus != null) {
+            setResponse(stimulus, regionCodeResponses.get(currentDraggedRegion));
+        }
+        final Stimulus draggedStimulus = regionStimulus.get(currentDraggedRegion);
+        if (draggedStimulus != null) {
+            setResponse(draggedStimulus, regionCodeResponses.get(regionId));
+        }
     }
 
     public void clearAll() {
@@ -112,4 +130,6 @@ public abstract class DragDropHandler {
     }
 
     public abstract void setResponse(final String dragDropStatus, final String draggedCodeResponse, final String targetCodeResponse);
+
+    public abstract void setResponse(final Stimulus stimulus, final String codeResponse);
 }
