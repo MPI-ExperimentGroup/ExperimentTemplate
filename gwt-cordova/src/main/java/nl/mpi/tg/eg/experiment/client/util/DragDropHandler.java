@@ -50,11 +50,11 @@ public abstract class DragDropHandler {
         if (dragDropRegion != null) {
             if (draggable) {
                 dragDropRegion.getElement().setAttribute("draggable", Boolean.toString(draggable));
-                dragDropRegion.getElement().setAttribute("ondragstart", "frinexDragStart(event.target.id)");
+                dragDropRegion.getElement().setAttribute("ondragstart", "frinexDragStart(event.target.id);");
             }
             if (droptarget) {
-                dragDropRegion.getElement().setAttribute("ondragover", "event.preventDefault();frinexDragOver(event.target.id)");
-                dragDropRegion.getElement().setAttribute("ondrop", "event.preventDefault();frinexDrop(event.target.id)");
+                dragDropRegion.getElement().setAttribute("ondragover", "event.preventDefault();frinexDragOver($(event.target).closest('[id]').attr('id'));");
+                dragDropRegion.getElement().setAttribute("ondrop", "event.preventDefault();frinexDrop($(event.target).closest('[id]').attr('id'));");
             }
         }
     }
