@@ -55,8 +55,8 @@ public abstract class DragDropHandler {
                 dragDropRegion.getElement().setAttribute("ondragstart", "frinexDragStart(event.target.id);");
             }
             if (droptarget) {
-                dragDropRegion.getElement().setAttribute("ondragover", "event.preventDefault();frinexDragOver($(event.target).closest('[id]').attr('id'));");
-                dragDropRegion.getElement().setAttribute("ondrop", "event.preventDefault();frinexDrop($(event.target).closest('[id]').attr('id'));");
+                dragDropRegion.getElement().setAttribute("ondragover", "event.preventDefault();frinexDragOver("/*$(event.target).closest('[ondragover]').attr('id')*/ + "'" + regionId + "');");
+                dragDropRegion.getElement().setAttribute("ondrop", "event.preventDefault();frinexDrop("/*$(event.target).closest('[ondragover]').attr('id')*/ + "'" + regionId + "');");
             }
         }
     }
