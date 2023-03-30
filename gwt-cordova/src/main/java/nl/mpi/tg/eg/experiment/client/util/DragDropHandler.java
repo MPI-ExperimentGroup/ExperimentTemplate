@@ -92,9 +92,9 @@ public abstract class DragDropHandler {
     public void onDrop(final String regionId) {
         setResponse("onDrop", regionCodeResponses.get(currentDraggedRegion), regionCodeResponses.get(regionId));
         final Panel draggedPanel = regionPanels.get(currentDraggedRegion);
-        final Panel droppedPanel = regionPanels.get(regionId);
-        if (draggedPanel != null && droppedPanel != null) {
-            ((Panel) draggedPanel.getParent()).add(droppedPanel);
+        final Panel targetPanel = regionPanels.get(regionId);
+        if (draggedPanel != null && targetPanel != null) {
+            ((Panel) targetPanel.getParent()).add(draggedPanel);
         }
         final TimedStimulusListener listener = regionOnDrop.get(regionId);
         if (listener != null) {
