@@ -1222,17 +1222,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void setResponse(Stimulus stimulus, String codeResponse) {
+                public void setResponse(Stimulus dragDropStimulus, String codeResponse) {
                     HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
-                    if (!jsonStimulusMap.containsKey(currentStimulus)) {
-                        JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                    if (!jsonStimulusMap.containsKey(dragDropStimulus)) {
+                        JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), dragDropStimulus);
                         storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
-                        jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
+                        jsonStimulusMap.put(dragDropStimulus, storedStimulusJSONObject);
                     }
-                    jsonStimulusMap.get(currentStimulus).put("regionDragDrop", new JSONString(codeResponse));
-                    localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
-                    submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", currentStimulus, codeResponse, null, duration.elapsedMillis());
+                    jsonStimulusMap.get(dragDropStimulus).put("regionDragDrop", new JSONString(codeResponse));
+                    localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), dragDropStimulus, jsonStimulusMap.get(dragDropStimulus));
+                    submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), dragDropStimulus.getUniqueId(), jsonStimulusMap.get(dragDropStimulus).toString());
+                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", dragDropStimulus, codeResponse, null, duration.elapsedMillis());
                 }
             };
         }
