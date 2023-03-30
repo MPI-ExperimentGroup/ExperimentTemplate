@@ -2415,7 +2415,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void clearPage(String styleName) {
         touchInputStop();
-        if (dragDropHandler == null) {
+        if (dragDropHandler != null) {
             dragDropHandler.clearAll();
             dragDropHandler = null;
         }
@@ -2766,7 +2766,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void savePresenterState() {
         cancelPauseTimers();
         touchInputStop();
-        if (dragDropHandler == null) {
+        if (dragDropHandler != null) {
             dragDropHandler.clearAll();
             dragDropHandler = null;
         }
