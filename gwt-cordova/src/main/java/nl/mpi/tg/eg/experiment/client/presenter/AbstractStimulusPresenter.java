@@ -1223,6 +1223,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public void setResponse(Stimulus stimulus, String codeResponse) {
+                    HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
+                    if (!jsonStimulusMap.containsKey(currentStimulus)) {
+                        JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                        storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                        jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
+                    }
+                    jsonStimulusMap.get(currentStimulus).put("regionDragDrop", new JSONString(codeResponse));
+                    localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
+                    submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
                     submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", currentStimulus, codeResponse, null, duration.elapsedMillis());
                 }
             };
