@@ -66,6 +66,7 @@ import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.util.VideoRecorder;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -397,7 +398,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     public void hasMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
-        final String matchingRegex = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(inputRegex);
+        final String matchingRegex = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(inputRegex);
         final String valueString = userResults.getUserData().getMetadataValue(metadataField);
         if (valueString.matches(matchingRegex)) {
             conditionTrue.postLoadTimerFired();
@@ -407,9 +408,9 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     public void matchOnEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final TimedStimulusListener onError) {
-        final String matchingRegex = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(inputRegex);
+        final String matchingRegex = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(inputRegex);
         try {
-            final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens);
+            final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensString(evaluateTokens);
             if (resultValue.matches(matchingRegex)) {
                 conditionTrue.postLoadTimerFired();
             } else {
@@ -573,7 +574,10 @@ public abstract class AbstractPresenter implements Presenter {
         audioTickerTimer.schedule(100);
     }
 
-    protected void audioOk(Boolean isRecording, String message) {
+    protected void audioOk(Boolean isRecording, String message, final Double mediaSeconds) {
+        if (simpleView instanceof TimedStimulusView && mediaSeconds != null) {
+            ((TimedStimulusView) simpleView).setRecordingLength(mediaSeconds);
+        }
         if (simpleView instanceof ComplexView) {
             if ("hidden".equals(message)) {
                 ((ComplexView) simpleView).clearRecorderIndicator();
@@ -607,7 +611,7 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
                 console.log("startAudioRecorderOk: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue, null);
                 onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
             }, function (tagvalue) {
                 console.log("startAudioRecorderError: " + tagvalue);

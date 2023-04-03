@@ -1053,7 +1053,7 @@ or local-name() eq 'ratingCheckbox'
                                                                                                 or ancestor::*[local-name() = 'addMediaTrigger'] 
                                                                                                 or ancestor::*[local-name() = 'addFrameTimeTrigger'] 
                                                                                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
-                                                                                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, '), ' localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;)') else ''" />
+                                                                                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, '), ' localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;)') else ''" />
         <xsl:value-of select="if (local-name() eq 'svgGroupAction') then ', ' else ''" />
         <xsl:value-of select="if(@visible) then concat(', ', @visible eq 'true') else ''" />
         <xsl:if test="local-name() eq 'svgGroupAction'">

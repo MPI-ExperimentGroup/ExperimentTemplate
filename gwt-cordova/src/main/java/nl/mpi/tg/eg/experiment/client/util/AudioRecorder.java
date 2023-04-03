@@ -221,7 +221,7 @@ public class AudioRecorder extends AbstractRecorder {
                     // console.log("startAudioRecorderWeb: onstop");
                     // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::removeRecorderLevelIndicatorWeb()();
                     // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::clearRecorderTriggersWeb()();
-                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, null, null);
                     // recorderTemp.close();
                     // posting done has not been shown to terminate the worker: recorderTemp.encoder.postMessage("done");
                     // calling terminate has not been shown to terminate the worker: recorderTemp.encoder.terminate();
@@ -256,7 +256,7 @@ public class AudioRecorder extends AbstractRecorder {
                                 targetDeviceLabel = deviceInfo.label;
                             }
                         }
-                        //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+                        //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, "isRecordingSupported", null);
                         if(targetDeviceId === -1) {
                             console.log("Device not found, defaulting to first device seen.");
                             targetDeviceId = firstDeviceId;
@@ -283,7 +283,7 @@ public class AudioRecorder extends AbstractRecorder {
                         };
                         try {
                             $wnd.startRecorder(function(){$wnd.recorderStartOffset = $wnd.recorder.audioContext.currentTime; mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
-                            // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
+                            // abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, $wnd.recorder.state, null);
                             //$wnd.recorder.start();
                         } catch(e) {
                             console.log(e.message);
@@ -304,7 +304,7 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
                 console.log("requestRecorderPermissionsOk");
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, null, null);
             }, function (tagvalue) {
                 console.log("requestRecorderPermissionsError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
@@ -319,7 +319,7 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
                 console.log("requestFilePermissionsOk");
-//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, null, null);
             }, function (tagvalue) {
                 console.log("requestFilePermissionsError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
@@ -333,10 +333,10 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.isRecording(function () {
 //                console.log("isAudioRecording");
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, null, null);
             }, function (tagvalue) {
 //                console.log("isAudioRecording: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, null, null);
             });
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
@@ -347,10 +347,10 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
 //                console.log("isAudioRecording: " + " : " + currentTime);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, currentTime);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, currentTime, null);
             }, function (tagvalue) {
 //                console.log("isAudioRecording: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, null, null);
             });
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             if ($wnd.recorder.state === 'recording') {
@@ -358,15 +358,15 @@ public class AudioRecorder extends AbstractRecorder {
                     // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
                     var recordingMilliSeconds = Math.floor(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
                     var recordingMsString = (recordingMilliSeconds) + 'ms';
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingMsString);
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, recordingMsString, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset));
                 } else if ($wnd.recordingLabelString == '00:00:00') {
                     // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
                     var recordingMilliSeconds = Math.floor(($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000);
                     var recordingTimeDate = new Date(recordingMilliSeconds);
                     var recordingTimeString = recordingTimeDate.toISOString().substr(11, 8);
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, recordingTimeString);
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, recordingTimeString, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset));
                 } else {
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recordingLabelString);
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, $wnd.recordingLabelString, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset));
                 }
             } else {
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
@@ -382,7 +382,7 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
                 console.log("stopAudioRecorderOk: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, tagvalue, null);
             }, function (tagvalue) {
                 console.log("stopAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
@@ -392,7 +392,7 @@ public class AudioRecorder extends AbstractRecorder {
                 recorderTemp = $wnd.recorder;
                 $wnd.recorder.onstop = function(){
                     console.log("stopAudioRecorder: onstop");
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, null, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset));
                     // closing the recorder is known to leave the worker running and the documented methods to terminate the worker have not helped, so we keep the recorder open for new recordings.
                     // recorderTemp.close();
                     // recorderTemp.encoder.postMessage("done");
@@ -451,7 +451,7 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
                 console.log("startAudioRecorderTagOk: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, tagvalue, null);
             }, function (tagvalue) {
                 console.log("startAudioRecorderTagError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
@@ -470,7 +470,7 @@ public class AudioRecorder extends AbstractRecorder {
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
                 console.log("endAudioRecorderTagOk: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, tagvalue, null);
             }, function (tagvalue) {
                 console.log("endAudioRecorderTagError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);

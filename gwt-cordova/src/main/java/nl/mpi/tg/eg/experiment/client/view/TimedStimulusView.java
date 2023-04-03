@@ -1021,6 +1021,10 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
+    public void setRecordingLength(final Double mediaSeconds) {
+        setMediaLength(webRecorderMediaId, mediaSeconds);
+    }
+
     public boolean isWebRecorderMediaId(String webRecorderMediaId) {
         if (this.webRecorderMediaId == null || webRecorderMediaId == null) {
             return false;

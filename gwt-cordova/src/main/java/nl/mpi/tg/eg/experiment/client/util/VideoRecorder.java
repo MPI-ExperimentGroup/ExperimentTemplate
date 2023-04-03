@@ -96,7 +96,7 @@ public class VideoRecorder extends AbstractRecorder {
                         $wnd.mediaRecorder.onstop = function(e) {
                             console.log("stopVideoRecorderOk: " + e);
                             var videoRecorderBlob = new Blob($wnd.videoRecorderChunks, { 'type' : 'video/ogg; codecs=opus' });
-                            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, e.typeArg);
+                            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, e.typeArg, null);
                             dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, videoRecorderBlob, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
                             $wnd.videoRecorderChunks = [];
                             if (videoElement) {

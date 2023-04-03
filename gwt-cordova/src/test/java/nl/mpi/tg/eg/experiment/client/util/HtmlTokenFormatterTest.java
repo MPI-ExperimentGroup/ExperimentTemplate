@@ -94,7 +94,7 @@ public class HtmlTokenFormatterTest {
             public boolean isCorrect(String value) {
                 return false;
             }
-        }, null, null, new UserData(new UserId()), new TimerService(), null);
+        }, null, null, new UserData(new UserId()), new TimerService(), null, null);
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
@@ -112,7 +112,7 @@ public class HtmlTokenFormatterTest {
         HtmlTokenFormatter instance = getInstance();
         final DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         final String formattedString = instance.formatString(inputString);
-        final String expectedString = "qwerqwer12:23qwrwerqwer";
+        final String expectedString = "qwerqwer08:30qwrwerqwer";
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
@@ -294,7 +294,7 @@ public class HtmlTokenFormatterTest {
             }
 
         }, userData, new TimerService(), new MetadataField[]{
-            session_steps, session_step, notificationWeekendUntilSettings, dateOfBirth}) {
+            session_steps, session_step, notificationWeekendUntilSettings, dateOfBirth}, null) {
             @Override
             public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
                 return Math.abs(addDays + 12) + "/" + String.format("%02d", Math.abs(addMonths + 3)) + "/" + (2020 + addYears);
@@ -311,7 +311,7 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String formatCurrentDateTime(String formatString) {
-                return "12:23";
+                return new SimpleDateFormat(formatString).format(new Date(2023 - 1900, 12 - 1, 25, 8, 30));
             }
 
         };

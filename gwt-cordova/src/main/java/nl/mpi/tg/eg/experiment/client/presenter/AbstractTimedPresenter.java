@@ -82,7 +82,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void setMetadataValue(final Stimulus currentStimulus, final MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray());
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths());
         final String dataLogString = (replacementRegex == null || replacementRegex.isEmpty()) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
         userResults.getUserData().setMetadataValue(metadataField, dataLogString);
         localStorage.storeData(userResults, metadataFieldProvider);
@@ -90,7 +90,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void setMetadataEvalTokens(final Stimulus currentStimulus, final String evaluateTokens, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens);
+            final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensString(evaluateTokens);
             userResults.getUserData().setMetadataValue(metadataField, resultValue);
             localStorage.storeData(userResults, metadataFieldProvider);
             onSuccess.postLoadTimerFired();
@@ -100,7 +100,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
-        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(targetUrl);
+        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(targetUrl);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "redirectToUrl", targetUrlFormatted, duration.elapsedMillis());
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
             @Override
@@ -157,7 +157,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void progressIndicator(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
+            final Number resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensNumber(evaluateTokens);
             if (resultValue.intValue() >= 0 && resultValue.intValue() <= 100) {
                 timedStimulusView.addBarGraphElement(resultValue.intValue(), 100, styleName);
                 onSuccess.postLoadTimerFired();
@@ -176,7 +176,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     public void evaluateTokenText(final Stimulus currentStimulus, final String evaluateTokens, final String styleName, XmlId xmlId, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         // Adding evaluateTokenText since htmlTokenText does not use evaluateTokensString but just uses formatString, because of the additional syntax required to mark the evaluatable sections from plain text
         try {
-            timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensString(evaluateTokens), styleName, xmlId);
+            timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensString(evaluateTokens), styleName, xmlId);
             onSuccess.postLoadTimerFired();
         } catch (EvaluateTokensException exception) {
             onError.postLoadTimerFired();
@@ -185,7 +185,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName, XmlId xmlId) {
         // htmlTokenText does not use evaluateTokensString rather it just uses formatString
-        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(textString), styleName, xmlId);
+        timedStimulusView.addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(textString), styleName, xmlId);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
@@ -234,7 +234,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListener presenterListener, final String buttonGroup) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray());
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths());
         addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
             @Override
             public String getLabel() {
@@ -308,7 +308,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void addTimerTrigger(final Stimulus currentStimulus, final String listenerId, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onTimer) {
         try {
-            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
+            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensNumber(evaluateTokens);
             int pauseMs = (evaluateResult.intValue() <= maximumMs) ? evaluateResult.intValue() : maximumMs;
             pauseMs = (pauseMs >= minimumMs) ? pauseMs : minimumMs;
             startTimer(pauseMs, listenerId, onTimer);
@@ -344,7 +344,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void evaluatePause(final Stimulus currentStimulus, int minimumMs, int maximumMs, final String evaluateTokens, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         try {
-            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateTokens);
+            final Number evaluateResult = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensNumber(evaluateTokens);
             final Timer timer = new Timer() {
                 @Override
                 public void run() {
@@ -424,7 +424,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected FrameTimeTrigger addFrameTimeTrigger(final Stimulus currentStimulus, final String evaluateMs, final int threshold, final TimedStimulusListener onLateListener, SingleStimulusListener onTimeListener) {
         try {
-            final int msToNext = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).evaluateTokensNumber(evaluateMs).intValue();
+            final int msToNext = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensNumber(evaluateMs).intValue();
             return new FrameTimeTrigger(currentStimulus, onLateListener, onTimeListener, msToNext, threshold);
         } catch (EvaluateTokensException exception) {
             onLateListener.postLoadTimerFired();
@@ -465,19 +465,19 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void regionAppend(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(regionIdToken);
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
         timedStimulusView.endRegion(isWidget);
     }
 
     protected void regionStyle(final Stimulus currentStimulus, final String regionIdToken, final String styleName) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(regionIdToken);
         timedStimulusView.setRegionStyle(regionId, styleName);
     }
 
     protected void regionReplace(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
@@ -485,12 +485,12 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     }
 
     protected void regionClear(final Stimulus currentStimulus, final String regionIdToken) {
-        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(regionIdToken);
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
     }
 
     public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray()).formatString(dataLogFormat), duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
     @Override

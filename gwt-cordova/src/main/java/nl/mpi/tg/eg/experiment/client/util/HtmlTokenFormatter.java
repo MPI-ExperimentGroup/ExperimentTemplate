@@ -23,6 +23,7 @@ import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.user.datepicker.client.CalendarUtil;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -42,17 +43,19 @@ public class HtmlTokenFormatter {
     final LocalStorageInterface localStorage;
     final UserData userData;
     final MetadataField[] metadataFieldArray;
+    final Map<String, Double> mediaLengths;
     final TimerService timerService;
     final Stimulus currentStimulus;
     final Random random = new Random();
 
-    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorageInterface localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataField[] metadataFieldArray) {
+    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorageInterface localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataField[] metadataFieldArray, final Map<String, Double> mediaLengths) {
         this.localStorage = localStorage;
         this.groupParticipantService = groupParticipantService;
         this.userData = userData;
         this.timerService = timerService;
         this.currentStimulus = currentStimulus;
         this.metadataFieldArray = metadataFieldArray;
+        this.mediaLengths = mediaLengths;
     }
 
     public String formatReplaceString(final String dataLogFormat, final String replacementRegex) {
@@ -190,14 +193,14 @@ public class HtmlTokenFormatter {
                             final int minutesResult;
                             if (isNegative) {
                                 minutesValue = minutesA - minutesB;
-                                minutesResult = (minutesValue % 60) + ((minutesValue < 0)? 60 : 0);
+                                minutesResult = (minutesValue % 60) + ((minutesValue < 0) ? 60 : 0);
                                 hoursResult = (((hoursA - hoursB) + ((minutesValue - minutesResult) / 60))) % 24;
                             } else {
                                 minutesValue = minutesA + minutesB;
-                                minutesResult= minutesValue % 60;
+                                minutesResult = minutesValue % 60;
                                 hoursResult = ((hoursA + hoursB) + (minutesValue / 60)) % 24;
                             }
-                            resultValue = ((hoursResult<10)? "0" : "") + hoursResult + ":" + ((minutesResult<10)? "0" : "") + minutesResult;
+                            resultValue = ((hoursResult < 10) ? "0" : "") + hoursResult + ":" + ((minutesResult < 10) ? "0" : "") + minutesResult;
                         } else {
                             throw new EvaluateTokensException("unsupported match parameters:" + matcherGroupM.getGroup(0));
                         }
@@ -452,6 +455,22 @@ public class HtmlTokenFormatter {
                     final String[] subPart = splitPart.split("::", 2);
                     if (subPart[0].length() > 0) {
                         resultString += formatCurrentDateTime(subPart[0]);
+                    }
+                    resultString += subPart[1];
+                }
+            }
+            replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
+        }
+        final String[] splitOnMediaLengthTokens = replacedTokensString.split("::mediaLength_");
+        if (splitOnMediaLengthTokens.length > 1) {
+            String resultString = null;
+            for (String splitPart : splitOnMediaLengthTokens) {
+                if (resultString == null) {
+                    resultString = splitPart;
+                } else {
+                    final String[] subPart = splitPart.split("::", 2);
+                    if (subPart[0].length() > 0) {
+                        resultString += mediaLengths.get(subPart[0]);
                     }
                     resultString += subPart[1];
                 }

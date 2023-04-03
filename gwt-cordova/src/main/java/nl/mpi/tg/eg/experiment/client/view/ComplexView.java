@@ -59,6 +59,7 @@ import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.ButtonGroupMember;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
@@ -77,6 +78,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 public class ComplexView extends SimpleView {
 
     private Label recordingLabel = null;
+    private final Map<String, Double> mediaLengths = new HashMap<>();
     private HorizontalPanel horizontalPanel = null;
     private final List<InsertPanel.ForIsWidget> activePanels = new ArrayList<>();
     private final HashMap<String, VerticalPanel> regionPanels = new HashMap<>();
@@ -878,5 +880,13 @@ public class ComplexView extends SimpleView {
         imageElement.getStyle().clearWidth();
         imageElement.getStyle().setProperty("maxHeight", (height - HEADER_SIZE - HEADER_SIZE - 50 - 50 /* the  "- 50 - 50" comes from contentBody in the CSS */) * (percentOfPage / 100.0) + "px");
         imageElement.getStyle().setProperty("maxWidth", (width * (percentOfPage / 100.0)) + "px");
+    }
+
+    public Map<String, Double> getMediaLengths() {
+        return mediaLengths;
+    }
+
+    public void setMediaLength(final String mediaId, final double mediaSeconds) {
+        mediaLengths.put(mediaId, mediaSeconds);
     }
 }
