@@ -390,9 +390,9 @@ public class AudioRecorder extends AbstractRecorder {
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 recorderTemp = $wnd.recorder;
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, null, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset));
                 $wnd.recorder.onstop = function(){
                     console.log("stopAudioRecorder: onstop");
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, null, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset));
                     // closing the recorder is known to leave the worker running and the documented methods to terminate the worker have not helped, so we keep the recorder open for new recordings.
                     // recorderTemp.close();
                     // recorderTemp.encoder.postMessage("done");
