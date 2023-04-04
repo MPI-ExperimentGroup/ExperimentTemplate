@@ -1929,6 +1929,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final ValueChangeListener<Double> changeListener, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
+        ((ComplexView) simpleView).storeMediaLength(mediaId, -1);
         // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(mediaId);

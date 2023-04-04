@@ -134,7 +134,7 @@ public class AudioPlayer {
             timedEventMonitor.registerEvent("audioStarted");
         }
         if (audioEventListener != null) {
-            audioEventListener.audioStarted();
+            audioEventListener.audioStarted(audioPlayer.getDuration());
         }
     }
 
@@ -164,7 +164,7 @@ public class AudioPlayer {
         }
         if (audioEventListener != null && !hasTriggeredOnLoaded) {
             hasTriggeredOnLoaded = true;
-            audioEventListener.audioLoaded();
+            audioEventListener.audioLoaded(audioPlayer.getDuration());
             if (autoPlay) {
                 play(audioPlayer.getAudioElement());
             } else {

@@ -693,6 +693,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, final SafeUri wavPath, final boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+        storeMediaLength(mediaId, -1);
         cancelableListenerList.add(loadedStimulusListener);
         cancelableListenerList.add(failedStimulusListener);
         cancelableListenerList.add(playbackStartedStimulusListener);
@@ -730,12 +731,16 @@ public class TimedStimulusView extends ComplexView {
             }
             audioPlayer.setEventListener(new AudioEventListener() {
                 @Override
-                public void audioLoaded() {
+                public void audioLoaded(Double duration) {
+                    // this duration can be less accurate but is better than nothing at this point
+                    storeMediaLength(mediaId, duration);
                     loadedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
-                public void audioStarted() {
+                public void audioStarted(Double duration) {
+                    // this duration can be less accurate but is better than nothing at this point
+                    storeMediaLength(mediaId, duration);
                     playbackStartedStimulusListener.postLoadTimerFired();
                 }
 
@@ -749,7 +754,7 @@ public class TimedStimulusView extends ComplexView {
                     //                    playbackIndicatorTimer.cancel();
                     //                    playbackIndicator.removeFromParent();
                     //                    audioPlayer.setEventListener(null); // prevent multiple triggering
-
+                    // this duration is probably as accurate as we are going to get
                     storeMediaLength(mediaId, duration);
                     playedStimulusListener.postLoadTimerFired();
                 }
@@ -760,6 +765,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public Element addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+        storeMediaLength(mediaId, -1);
         cancelableListenerList.add(loadedStimulusListener);
         cancelableListenerList.add(failedStimulusListener);
         cancelableListenerList.add(playbackStartedStimulusListener);
@@ -794,6 +800,7 @@ public class TimedStimulusView extends ComplexView {
 
                 @Override
                 public void onCanPlayThrough(CanPlayThroughEvent event) {
+                    storeMediaLength(mediaId, video.getDuration());
                     if (!hasTriggeredOnLoaded) {
                         if (timedEventMonitor != null) {
                             timedEventMonitor.registerEvent("videoCanPlayThrough");

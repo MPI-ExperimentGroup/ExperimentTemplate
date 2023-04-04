@@ -37,7 +37,7 @@ public enum TokenText {
     groupMemberCode("Outputs the member code of the local member in a group experiment.", "::groupMemberCode::", "A"),
     groupRequestedPhase("Outputs the phase that should currently be displayed in a group experiment.", "::groupRequestedPhase::", "1"),
     formatDateTime("Formats the date and time according to the string provided.", "::formatDateTime_yyyy MM dd, HH:mm::", "2023 12 25, 08:30"),
-    mediaLength("Outputs the last known media length associated with the mediaId.", "::mediaLength_recording01::", "12.5");
+    mediaLength("Outputs the last known length in seconds of the media associated with the mediaId. This value may be less accurate until the media has finished playing or recording.", "::mediaLength_recording01::", "12.5");
 
 //::groupAllMemberCodes::
 //
