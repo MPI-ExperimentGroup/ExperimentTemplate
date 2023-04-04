@@ -745,10 +745,12 @@ public class TimedStimulusView extends ComplexView {
                 }
 
                 @Override
-                public void audioEnded() {
+                public void audioEnded(Double duration) {
                     //                    playbackIndicatorTimer.cancel();
                     //                    playbackIndicator.removeFromParent();
                     //                    audioPlayer.setEventListener(null); // prevent multiple triggering
+
+                    storeMediaLength(mediaId, duration);
                     playedStimulusListener.postLoadTimerFired();
                 }
             });
@@ -819,6 +821,7 @@ public class TimedStimulusView extends ComplexView {
                         timedEventMonitor.registerEvent("videoEnded");
                         timedEventMonitor.registerMediaLength(mediaId, (long) (video.getCurrentTime() * 1000));
                     }
+                    storeMediaLength(mediaId, video.getDuration());
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
@@ -1022,7 +1025,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void setRecordingLength(final Double mediaSeconds) {
-        setMediaLength(webRecorderMediaId, mediaSeconds);
+        storeMediaLength(webRecorderMediaId, mediaSeconds);
     }
 
     public boolean isWebRecorderMediaId(String webRecorderMediaId) {

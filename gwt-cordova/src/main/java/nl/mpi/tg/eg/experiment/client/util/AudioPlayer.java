@@ -144,7 +144,7 @@ public class AudioPlayer {
             timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
         }
         if (audioEventListener != null) {
-            audioEventListener.audioEnded();
+            audioEventListener.audioEnded(audioPlayer.getDuration());
         }
     }
 

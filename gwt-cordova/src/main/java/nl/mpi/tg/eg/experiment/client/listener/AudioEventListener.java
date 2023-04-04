@@ -27,7 +27,7 @@ public interface AudioEventListener {
 
     public void audioStarted();
 
-    public void audioEnded();
+    public void audioEnded(Double duration);
 
     public void audioFailed();
 }

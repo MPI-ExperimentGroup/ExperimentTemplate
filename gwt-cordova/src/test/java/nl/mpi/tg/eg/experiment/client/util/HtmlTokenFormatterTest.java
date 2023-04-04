@@ -221,6 +221,8 @@ public class HtmlTokenFormatterTest {
         userData.setMetadataValue(session_step, "a_value_for_session_step");
         userData.setMetadataValue(notificationWeekendUntilSettings, "15:20");
         userData.setMetadataValue(dateOfBirth, "25/01/2020");
+        final HashMap<String, Double> mediaLengths = new HashMap<>();
+        mediaLengths.put("recording01", 12.5);
         HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], localStorage, new GroupScoreService() {
 
             @Override
@@ -294,7 +296,7 @@ public class HtmlTokenFormatterTest {
             }
 
         }, userData, new TimerService(), new MetadataField[]{
-            session_steps, session_step, notificationWeekendUntilSettings, dateOfBirth}, null) {
+            session_steps, session_step, notificationWeekendUntilSettings, dateOfBirth}, mediaLengths) {
             @Override
             public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
                 return Math.abs(addDays + 12) + "/" + String.format("%02d", Math.abs(addMonths + 3)) + "/" + (2020 + addYears);
