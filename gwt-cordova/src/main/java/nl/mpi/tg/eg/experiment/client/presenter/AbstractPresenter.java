@@ -576,7 +576,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void audioOk(Boolean isRecording, String message, final Double mediaSeconds) {
         if (simpleView instanceof TimedStimulusView && mediaSeconds != null) {
-            ((ComplexView) simpleView).addText("mediaSeconds: " + mediaSeconds);
+            // ((ComplexView) simpleView).addText("mediaSeconds: " + mediaSeconds);
             ((TimedStimulusView) simpleView).setRecordingLength(mediaSeconds);
         }
         if (simpleView instanceof ComplexView) {
