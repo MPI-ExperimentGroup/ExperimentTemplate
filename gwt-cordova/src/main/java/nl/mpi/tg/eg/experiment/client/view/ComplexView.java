@@ -254,6 +254,7 @@ public class ComplexView extends SimpleView {
         clearDomHandlers();
         scaledImagesList.clear();
         clearAllRegions();
+        mediaLengths.clear();
     }
 
     public void addText(String textString) {
