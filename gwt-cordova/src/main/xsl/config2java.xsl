@@ -1113,6 +1113,7 @@ or local-name() eq 'clearStimulusResponse'
                             or local-name() eq 'habituationParadigmListener'
                             or local-name() eq 'triggerRandom'
                             or local-name() eq 'addTimerTrigger'
+                            or local-name() eq 'countdownLabel'
                             or local-name() eq 'evaluatePause') then if(ancestor::*[local-name() = 'eachStimulus']
                             or ancestor::*[local-name() = 'hasMoreStimulus']
                             or ancestor::*[local-name() = 'triggerDefinition']

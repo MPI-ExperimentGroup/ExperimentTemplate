@@ -463,11 +463,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
-    protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
-        countdownLabel(timesUpLabel, null, postLoadMs, msLabelFormat, timedStimulusListener);
+    protected void countdownLabel(final Stimulus currentStimulus, final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        countdownLabel(currentStimulus, timesUpLabel, null, postLoadMs, msLabelFormat, timedStimulusListener);
     }
 
-    protected void countdownLabel(final String timesUpLabel, final String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+    protected void countdownLabel(final Stimulus currentStimulus, final String timesUpLabel, final String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        // final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths());
         final Duration labelDuration = new Duration();
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
         final HTML html = timedStimulusView.addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
