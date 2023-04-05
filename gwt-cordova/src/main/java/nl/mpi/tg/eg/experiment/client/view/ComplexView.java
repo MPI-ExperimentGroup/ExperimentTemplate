@@ -886,7 +886,7 @@ public class ComplexView extends SimpleView {
         return mediaLengths;
     }
 
-    public void storeMediaLength(final String mediaId, final double mediaSeconds) {
+    public void storeMediaLength(final String mediaId, final Double mediaSeconds) {
         mediaLengths.put(mediaId, mediaSeconds);
     }
 }

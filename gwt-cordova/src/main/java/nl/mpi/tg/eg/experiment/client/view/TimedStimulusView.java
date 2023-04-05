@@ -733,7 +733,9 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void audioLoaded(Double duration) {
                     // this duration can be less accurate but is better than nothing at this point
-                    storeMediaLength(mediaId, duration);
+                    if (duration != null) {
+                        storeMediaLength(mediaId, duration);
+                    }
                     loadedStimulusListener.postLoadTimerFired();
                 }
 
