@@ -734,7 +734,9 @@ public class TimedStimulusView extends ComplexView {
                 public void audioLoaded(Double duration) {
                     // this duration can be less accurate but is better than nothing at this point
                     if (duration != null) {
-                        storeMediaLength(mediaId, duration);
+                        if (!duration.isInfinite() && !duration.isNaN()) {
+                            storeMediaLength(mediaId, duration);
+                        }
                     }
                     loadedStimulusListener.postLoadTimerFired();
                 }
