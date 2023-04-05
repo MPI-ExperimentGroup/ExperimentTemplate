@@ -20,7 +20,9 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
@@ -30,6 +32,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class AbstractSchemaGenerator {
+
+    Map<String, List<String>> childTypeLists = new HashMap<>();
 
     enum ChildType {
         allOnceUnordered, choiceAnyCount, sequenceOnceOrdered
@@ -99,7 +103,7 @@ public class AbstractSchemaGenerator {
         final int minBounds;
         final int maxBounds;
         final List<DocumentationAttribute> attributeTypes = new ArrayList<>();
-        final String[] childTypeNames;
+        final String typeExtends;
         final DocumentationElement[] childElements;
         final ChildType childOption;
         final boolean hasStringContents;
@@ -111,7 +115,7 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.childTypeNames = new String[0];
+            this.typeExtends = null;
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = hasStringContents;
             this.childOption = ChildType.sequenceOnceOrdered;
@@ -124,7 +128,7 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.childTypeNames = new String[0];
+            this.typeExtends = null;
             this.childElements = childElements;
             this.hasStringContents = false;
             this.childOption = ChildType.sequenceOnceOrdered;
@@ -137,7 +141,7 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.childTypeNames = new String[0];
+            this.typeExtends = null;
             this.childElements = childElements;
             this.hasStringContents = false;
             this.childOption = ChildType.sequenceOnceOrdered;
@@ -170,73 +174,79 @@ public class AbstractSchemaGenerator {
                 }
             }
             this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
-                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;
-            List<String> childTypeList = new ArrayList<>();
-            if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType)) {
-                childTypeList.add(featureType.name());
-            }
-            switch (featureType.getRequiresChildType()) {
-                // these items link to separate lists of element groups: general, stimuli, group...
-                case stimulusAction:
+                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;                    
+            // calculate a name for the extendsType
+            // add all the child types to the extendsType once
+            this.typeExtends = featureType.getRequiresChildType().name();
+            if (!childTypeLists.containsKey(this.typeExtends)) {
+                List<String> childTypeList = new ArrayList<>();
+                childTypeLists.put(this.typeExtends, childTypeList);
+                if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType)) {
+                    childTypeList.add(featureType.name());
+                }
+                switch (featureType.getRequiresChildType()) {
+                    // these items link to separate lists of element groups: general, stimuli, group...
+                    case stimulusAction:
 //                    childTypeList.add("...Stimulus Features...");
 //                    childTypeList.add("...General Features...");
-                    break;
-                case groupNetworkAction:
+                        break;
+                    case groupNetworkAction:
 //                    childTypeList.add("...Group Features...");
 //                    childTypeList.add("...General Features...");
-                    break;
-                case none:
-                    break;
+                        break;
+                    case none:
+                        break;
 //                case hasMediaLoading:
 //                    childTypeList.add("mediaLoaded");
 //                    childTypeList.add("mediaLoadFailed");
 //                    break;
-                case hasMediaPlayback:
-                case hasMediaLoadingButton:
-                    childTypeList.add("mediaLoaded");
-                    childTypeList.add("mediaLoadFailed");
+                    case hasMediaPlayback:
+                    case hasMediaLoadingButton:
+                        childTypeList.add("mediaLoaded");
+                        childTypeList.add("mediaLoadFailed");
 //                    childTypeList.add("mediaPlaybackStarted");
 //                    childTypeList.add("mediaPlaybackComplete");
-                    break;
-                case hasMediaRecorderPlayback:
-                    childTypeList.add("onError");
-                    childTypeList.add("onSuccess");
-                    break;
+                        break;
+                    case hasMediaRecorderPlayback:
+                        childTypeList.add("onError");
+                        childTypeList.add("onSuccess");
+                        break;
 //                case hasMoreStimulus:
 //                    childTypeList.add("onError");
 //                    childTypeList.add("onSuccess");
 //                    break;
-            }
-            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
-                for (final FeatureType featureRef : FeatureType.values()) {
-                    if (featureRef.isChildType(featureType.getRequiresChildType())
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.none))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.svgGroupsLoaded))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.touchInputStartType))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.svgGroupsLoaded && featureRef.isChildType(FeatureType.Contitionals.none))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.none))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.none))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.none))
-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))) {
-                        // note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example
-                        // note: we are falsely allowing all group types here because the XSD does not consider the parent element
-                        // currently allowing all groupNetworkAction in any element
-                        // currently allowing all stimulusAction in any element
-                        childTypeList.add(featureRef.name());
-                        if (featureRef.allowsCustomImplementation()) {
-                            childTypeList.add(featureRef.name() + "Plugin");
+                }
+                if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+                    for (final FeatureType featureRef : FeatureType.values()) {
+                        if (featureRef.isChildType(featureType.getRequiresChildType())
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.none))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.svgGroupsLoaded))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.touchInputStartType))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.svgGroupsLoaded && featureRef.isChildType(FeatureType.Contitionals.none))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.none))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.none))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.none))
+                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))) {
+                            // note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example
+                            // note: we are falsely allowing all group types here because the XSD does not consider the parent element
+                            // currently allowing all groupNetworkAction in any element
+                            // currently allowing all stimulusAction in any element
+                            childTypeList.add(featureRef.name());
+                            if (featureRef.allowsCustomImplementation()) {
+                                childTypeList.add(featureRef.name() + "Plugin");
+                            }
                         }
                     }
-                }
-            } else {
-                for (final FeatureType featureRef : FeatureType.values()) {
-                    if (featureType.getRequiresChildType() != FeatureType.Contitionals.none
-                            && featureRef.isChildType(featureType.getRequiresChildType())) {
-                        childTypeList.add(featureRef.name());
+                } else {
+                    for (final FeatureType featureRef : FeatureType.values()) {
+                        if (featureType.getRequiresChildType() != FeatureType.Contitionals.none
+                                && featureRef.isChildType(featureType.getRequiresChildType())) {
+                            childTypeList.add(featureRef.name());
+                        }
                     }
                 }
             }
@@ -253,7 +263,7 @@ public class AbstractSchemaGenerator {
                 //.documentedAttribute("allocationServiceName", AttributeType.xsString, "When provided the named service will be created on the sever and used to allocate the least used tag for use in stimuli allocation. If multiple tags are equally the least used, one of them will randomly be allocated. Any number of allocation service names can be used and they can be shared across different stimuli lists. Please note that the use of this feature prevents the experiment being used offline. The allocation of a tag does not mean that it will be used by the participant, for example if after allocation the browser is closed and the participant does not complete the experiment then the distribution will necessarily be affected.", true));
                 );
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1,
-                         new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
+                        new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
                         .documentedAttribute("idListField", AttributeType.xsString, "When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.", true));
             }
             if (!translatableAttribites.isEmpty()) {
@@ -269,7 +279,6 @@ public class AbstractSchemaGenerator {
             if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
                 tagsAttribute("tags", false);
             }
-            this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
             this.hasStringContents = false;
             this.allowsCustomImplementation = featureType.allowsCustomImplementation();

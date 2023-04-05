@@ -486,6 +486,15 @@ public enum FeatureType {
         return isChildType;
     }
 
+    public String getChildTypeString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Contitionals contitional : isChildType) {
+            stringBuilder.append("_");
+            stringBuilder.append(contitional.name());
+        }
+        return stringBuilder.toString();
+    }
+
     public boolean isChildType(Contitionals value) {
         for (Contitionals contitional : isChildType) {
             if (contitional == value) {

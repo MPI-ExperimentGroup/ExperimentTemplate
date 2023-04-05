@@ -299,7 +299,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             if (currentElement.childOption == ChildType.choiceAnyCount) {
 //                writer.append("<xs:choice2 minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
             }
-            for (String childTypeName : currentElement.childTypeNames) {
+            for (String childTypeName : childTypeLists.get(currentElement.typeExtends)) {
                 writer.append("<xs:element name=\"");
                 writer.append(childTypeName);
                 writer.append("\" type=\"");
@@ -318,7 +318,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             if (currentElement.elementName.equals("experiment")) {
                 writer.append("</xs:sequence>\n");
             }
-        } else if (!isPresenterType && (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0)) {
+        } else if (!isPresenterType && (currentElement.childElements.length > 0 || childTypeLists.containsKey(currentElement.typeExtends))) {
 //            writer.append("</xs:").append((currentElement.areChildenOptional) ? "choice" : "all").append(">\n");
             writer.append("</xs:").append((currentElement.childOption == ChildType.choiceAnyCount) ? "choice" : (currentElement.childOption == ChildType.sequenceOnceOrdered) ? "sequence" : "all").append(">\n");
 //            writer.append("</xs:sequence>");
