@@ -693,7 +693,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, final SafeUri wavPath, final boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
-        storeMediaLength(mediaId, -1);
+        storeMediaLength(mediaId, -1d);
         cancelableListenerList.add(loadedStimulusListener);
         cancelableListenerList.add(failedStimulusListener);
         cancelableListenerList.add(playbackStartedStimulusListener);
@@ -767,7 +767,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public Element addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
-        storeMediaLength(mediaId, -1);
+        storeMediaLength(mediaId, -1d);
         cancelableListenerList.add(loadedStimulusListener);
         cancelableListenerList.add(failedStimulusListener);
         cancelableListenerList.add(playbackStartedStimulusListener);
