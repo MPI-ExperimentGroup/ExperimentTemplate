@@ -693,7 +693,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, final SafeUri wavPath, final boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
-        storeMediaLength(mediaId, -1d);
+//        storeMediaLength(mediaId, -1d);
         cancelableListenerList.add(loadedStimulusListener);
         cancelableListenerList.add(failedStimulusListener);
         cancelableListenerList.add(playbackStartedStimulusListener);
