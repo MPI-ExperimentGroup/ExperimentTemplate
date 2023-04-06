@@ -298,6 +298,13 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
         }
         addChildElements(writer, currentElement, true, false);
+        if (currentElement.isRecursive) {
+            writer.append("<xs:element name=\"");
+            writer.append(currentElement.elementName);
+            writer.append("\" type=\"");
+            writer.append(currentElement.elementName);
+            writer.append("Type\"/>\n");
+        }
         if (!childTypeList.isEmpty()) {
             if (currentElement.childOption == ChildType.choiceAnyCount) {
 //                writer.append("<xs:choice2 minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
