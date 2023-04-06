@@ -29,10 +29,10 @@
     <presenter back="Welkam" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="Welkam" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
@@ -47,8 +47,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="Metadata" filePerStimulus="false">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
@@ -73,8 +73,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="Lukluk ol foto" filePerStimulus="true">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
