@@ -24,10 +24,10 @@
         <metadataField fieldName="educationOther"/>
         <metadataField fieldName="gender"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
