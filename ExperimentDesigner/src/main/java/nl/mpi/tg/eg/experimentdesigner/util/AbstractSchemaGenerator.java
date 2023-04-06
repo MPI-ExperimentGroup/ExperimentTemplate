@@ -174,7 +174,7 @@ public class AbstractSchemaGenerator {
                 }
             }
             this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
-                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;                    
+                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;
             // calculate a name for the extendsType
             // add all the child types to the extendsType once
             this.typeExtends = featureType.getRequiresChildType().name();
@@ -284,7 +284,7 @@ public class AbstractSchemaGenerator {
             this.allowsCustomImplementation = featureType.allowsCustomImplementation();
         }
 
-        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final FeatureType[] featureTypes, final PresenterType[] presenterTypes) {
+        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds) {
             this.elementName = elementName;
             this.typeName = elementName + "Type";
             String documentationTemp = documentationText;
@@ -294,22 +294,28 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationTemp;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            List<String> childTypeList = new ArrayList<>();
-            for (final FeatureType featureRef : FeatureType.values()) {
-                if (featureRef.isChildType(FeatureType.Contitionals.none)) {
-                    childTypeList.add(featureRef.name());
-                    if (featureRef.allowsCustomImplementation()) {
-                        childTypeList.add(featureRef.name() + "Plugin");
+            // calculate a name for the extendsType
+            // add all the child types to the extendsType once
+            this.typeExtends = elementName + "BaseType";
+            if (!childTypeLists.containsKey(this.typeExtends)) {
+                List<String> childTypeList = new ArrayList<>();
+                childTypeLists.put(this.typeExtends, childTypeList);
+                for (final FeatureType featureRef : FeatureType.values()) {
+                    if (featureRef.isChildType(FeatureType.Contitionals.none)) {
+                        childTypeList.add(featureRef.name());
+                        if (featureRef.allowsCustomImplementation()) {
+                            childTypeList.add(featureRef.name() + "Plugin");
+                        }
                     }
                 }
+                childTypeList.sort(new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return o1.compareTo(o2);
+                    }
+                });
             }
-            childTypeList.sort(new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    return o1.compareTo(o2);
-                }
-            });
-            this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
+//            this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[]{
                 new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false)
                 .stringAttribute("locale", false)
@@ -471,7 +477,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("duplicatesControlledMessage", true)
                                     .booleanAttribute("preventServerDuplicates", true, "Boolean")
                         }),
-                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
+                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0)
                         .documentedAttribute("self", AttributeType.presenterName, "The name of the presenter, which must be unique per configuration file.", false)
                         .stringAttribute("title", true)
                         .stringAttribute("menuLabel", true)

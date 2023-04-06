@@ -23,7 +23,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.TokenMethod;
 import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
@@ -238,11 +240,12 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</span></td><td>");
         addAttributes(writer, currentElement);
 //        writer.append("</td><td>");
-        if (currentElement.childElements.length == 0 && currentElement.childTypeNames.length == 0 && !currentElement.hasStringContents) {
+        List<String> childTypeList = childTypeLists.containsKey(currentElement.typeExtends) ? childTypeLists.get(currentElement.typeExtends) : Collections.EMPTY_LIST;
+        if (currentElement.childElements.length == 0 && childTypeList.isEmpty() && !currentElement.hasStringContents) {
             writer.append("</td><td><span style=\"color:red\">/</span>");
         }
         writer.append("<span style=\"color:purple\">&gt;</span></td><td>\n");
-        if (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0) {
+        if (currentElement.childElements.length > 0 || !childTypeList.isEmpty()) {
             writer.append("</td></tr><tr><td></td><td>\n");
         }
 //        List<String> childTypeNames = new ArrayList<>(Arrays.asList(currentElement.childTypeNames));
@@ -252,8 +255,8 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //                return o1.compareTo(o2);
 //            }
 //        });
-        if (currentElement.childTypeNames.length + currentElement.childElements.length > 0) {
-            if (currentElement.childTypeNames.length + currentElement.childElements.length > 10) {
+        if (!childTypeList.isEmpty() || currentElement.childElements.length > 0) {
+            if (childTypeList.size() + currentElement.childElements.length > 10) {
                 writer.append("<button");
                 writer.append(" id=\"");
                 writer.append(currentElement.elementName);
@@ -264,7 +267,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 writer.append("ChildHide').show();$('#");
                 writer.append(currentElement.elementName);
                 writer.append("ChildShow').hide();\">show ");
-                writer.append(Integer.toString(currentElement.childTypeNames.length + currentElement.childElements.length));
+                writer.append(Integer.toString(childTypeList.size() + currentElement.childElements.length));
                 writer.append(" truncated items</button>\n");
                 writer.append("<button");
                 writer.append(" id=\"");
@@ -276,17 +279,17 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 writer.append("ChildHide').hide();$('#");
                 writer.append(currentElement.elementName);
                 writer.append("ChildShow').show();\">hide ");
-                writer.append(Integer.toString(currentElement.childTypeNames.length + currentElement.childElements.length));
+                writer.append(Integer.toString(childTypeList.size() + currentElement.childElements.length));
                 writer.append(" items</button>\n");
             }
             writer.append("<table");
-            if (currentElement.childTypeNames.length > 10) {
+            if (childTypeList.size() > 10) {
                 writer.append(" id=\"");
                 writer.append(currentElement.elementName);
                 writer.append("ChildDocumentation\" style=\"display: none;\"");
             }
             writer.append(">\n");
-            for (String childElement : currentElement.childTypeNames) {
+            for (String childElement : childTypeList) {
                 writer.append("<tr><td>\n");
 
                 writer.append("<a href=\"#" + childElement + "Type\">");
@@ -318,7 +321,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("<span style=\"color:grey\">String</span></td>");
             writer.append("</tr>\n");
         }
-        if (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0 || currentElement.hasStringContents) {
+        if (currentElement.childElements.length > 0 || !childTypeList.isEmpty() || currentElement.hasStringContents) {
             writer.append("<tr>\n");
             writer.append("<td>\n");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">");
