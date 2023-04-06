@@ -164,11 +164,11 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenBoolean(1)) {
             onErrorFeature.addFeature(FeatureType.gotoPresenter, null, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         }
-        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.gotoNextPresenter, null);
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
+        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
         if (storedWizardScreenData.getScreenText(1) != null && storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));

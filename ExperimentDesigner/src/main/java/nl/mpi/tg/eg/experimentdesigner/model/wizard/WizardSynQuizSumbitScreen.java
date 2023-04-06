@@ -74,7 +74,6 @@ public class WizardSynQuizSumbitScreen extends AbstractWizardScreen {
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(0)));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        showColourReport.getPresenterFeatureList().add(aboveThreshold);
         final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.onSuccess, null);
 //        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "data sumbitted"));
 //        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
@@ -82,6 +81,7 @@ public class WizardSynQuizSumbitScreen extends AbstractWizardScreen {
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.gotoNextPresenter, null));
         showColourReport.getPresenterFeatureList().add(belowThreshold);
+        showColourReport.getPresenterFeatureList().add(aboveThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};

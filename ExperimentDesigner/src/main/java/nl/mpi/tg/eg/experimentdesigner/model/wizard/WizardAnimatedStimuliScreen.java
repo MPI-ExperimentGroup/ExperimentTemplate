@@ -148,8 +148,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
 //        startRecorderFeature.addFeatureAttributes(FeatureAttribute.mediaId, "mediaId");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.fieldName, "workerId");
-        startRecorderFeature.addFeature(FeatureType.onError, null);
         startRecorderFeature.addFeature(FeatureType.onSuccess, null);
+        startRecorderFeature.addFeature(FeatureType.onError, null);
 //        startRecorderFeature.addFeature(FeatureType.mediaLoaded, null);
 //        startRecorderFeature.addFeature(FeatureType.mediaLoadFailed, null);
 //        startRecorderFeature.addFeature(FeatureType.mediaPlaybackStarted, null);
