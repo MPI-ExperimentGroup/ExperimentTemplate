@@ -241,11 +241,11 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         addAttributes(writer, currentElement);
 //        writer.append("</td><td>");
         List<String> childTypeList = childTypeLists.containsKey(currentElement.typeExtends) ? childTypeLists.get(currentElement.typeExtends) : Collections.EMPTY_LIST;
-        if (currentElement.childElements.length == 0 && childTypeList.isEmpty() && !currentElement.hasStringContents) {
+        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) == 0 && childTypeList.isEmpty() && !currentElement.hasStringContents) {
             writer.append("</td><td><span style=\"color:red\">/</span>");
         }
         writer.append("<span style=\"color:purple\">&gt;</span></td><td>\n");
-        if (currentElement.childElements.length > 0 || !childTypeList.isEmpty()) {
+        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0 || !childTypeList.isEmpty()) {
             writer.append("</td></tr><tr><td></td><td>\n");
         }
 //        List<String> childTypeNames = new ArrayList<>(Arrays.asList(currentElement.childTypeNames));
@@ -255,8 +255,8 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //                return o1.compareTo(o2);
 //            }
 //        });
-        if (!childTypeList.isEmpty() || currentElement.childElements.length > 0) {
-            if (childTypeList.size() + currentElement.childElements.length > 10) {
+        if (!childTypeList.isEmpty() || currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0) {
+            if (childTypeList.size() + currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 10) {
                 writer.append("<button");
                 writer.append(" id=\"");
                 writer.append(currentElement.elementName);
@@ -267,7 +267,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 writer.append("ChildHide').show();$('#");
                 writer.append(currentElement.elementName);
                 writer.append("ChildShow').hide();\">show ");
-                writer.append(Integer.toString(childTypeList.size() + currentElement.childElements.length));
+                writer.append(Integer.toString(childTypeList.size() + currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0)));
                 writer.append(" truncated items</button>\n");
                 writer.append("<button");
                 writer.append(" id=\"");
@@ -279,7 +279,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 writer.append("ChildHide').hide();$('#");
                 writer.append(currentElement.elementName);
                 writer.append("ChildShow').show();\">hide ");
-                writer.append(Integer.toString(childTypeList.size() + currentElement.childElements.length));
+                writer.append(Integer.toString(childTypeList.size() + currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0)));
                 writer.append(" items</button>\n");
             }
             writer.append("<table");
@@ -289,6 +289,16 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 writer.append("ChildDocumentation\" style=\"display: none;\"");
             }
             writer.append(">\n");
+            if (currentElement.isRecursive) {
+                writer.append("<tr><td>\n");
+
+                writer.append("<a href=\"#" + currentElement.elementName + "Type\">");
+                writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+                writer.append(currentElement.elementName);
+                writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
+                writer.append("</a>");
+                writer.append("</td></tr>\n");
+            }
             for (String childElement : childTypeList) {
                 writer.append("<tr><td>\n");
 

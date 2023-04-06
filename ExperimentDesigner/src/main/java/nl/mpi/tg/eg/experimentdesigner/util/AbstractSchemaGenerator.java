@@ -108,6 +108,7 @@ public class AbstractSchemaGenerator {
         final ChildType childOption;
         final boolean hasStringContents;
         final boolean allowsCustomImplementation;
+        final boolean isRecursive;
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final boolean hasStringContents) {
             this.elementName = elementName;
@@ -120,6 +121,7 @@ public class AbstractSchemaGenerator {
             this.hasStringContents = hasStringContents;
             this.childOption = ChildType.sequenceOnceOrdered;
             this.allowsCustomImplementation = false;
+            this.isRecursive = false;
         }
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
@@ -133,6 +135,7 @@ public class AbstractSchemaGenerator {
             this.hasStringContents = false;
             this.childOption = ChildType.sequenceOnceOrdered;
             this.allowsCustomImplementation = false;
+            this.isRecursive = false;
         }
 
         public DocumentationElement(final String elementName, final String typeName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
@@ -146,6 +149,7 @@ public class AbstractSchemaGenerator {
             this.hasStringContents = false;
             this.childOption = ChildType.sequenceOnceOrdered;
             this.allowsCustomImplementation = false;
+            this.isRecursive = false;
         }
 
         public DocumentationElement(final FeatureType featureType) {
@@ -154,6 +158,7 @@ public class AbstractSchemaGenerator {
             this.documentationText = featureType.getDocumentationText();
             this.minBounds = 0;
             this.maxBounds = 0;
+            this.isRecursive = featureType.isChildType(FeatureType.Contitionals.isRecursiveType);
             final List<String> translatableAttribites = new ArrayList<>();
             if (featureType.canHaveText()) {
                 documentedAttribute("featureText", AttributeType.xsString, "Text that will be visible to the user.", false);
@@ -181,9 +186,6 @@ public class AbstractSchemaGenerator {
             if (!childTypeLists.containsKey(this.typeExtends)) {
                 List<String> childTypeList = new ArrayList<>();
                 childTypeLists.put(this.typeExtends, childTypeList);
-                if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType)) {
-                    childTypeList.add(featureType.name());
-                }
                 switch (featureType.getRequiresChildType()) {
                     // these items link to separate lists of element groups: general, stimuli, group...
                     case stimulusAction:
@@ -286,6 +288,7 @@ public class AbstractSchemaGenerator {
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds) {
             this.elementName = elementName;
+            this.isRecursive = false;
             this.typeName = elementName + "Type";
             String documentationTemp = documentationText;
 //            for (final PresenterType presenterType : presenterTypes) {
