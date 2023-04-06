@@ -135,6 +135,24 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             }
         }
     }
+
+    private void addBaseTypes(Writer writer) throws IOException {
+        for (String baseType : childTypeLists.keySet()) {
+//            if ("allOnceUnordered_hasTrueFalseCondition".equals(baseType)) {
+            writer.append("<xs:complexType name=\"" + baseType + "Type\">\n");
+            writer.append("<xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
+            for (String childTypeName : childTypeLists.get(baseType)) {
+                writer.append("<xs:element name=\"");
+                writer.append(childTypeName);
+                writer.append("\" type=\"");
+                writer.append(childTypeName);
+                writer.append("Type\"/>\n");
+            }
+            writer.append("</xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
+            writer.append("</xs:complexType>\n");
+        }
+//        }
+    }
 // todo: constrain back to always refer to an presenter that exists
 ////        writer.append("<xs:assert test=\"count(*/metadataField) le 0\"/>"); // todo: apply this test to enforce presenter type constraints if possible
 
@@ -272,7 +290,13 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             writer.append("</xs:documentation>\n");
             writer.append("</xs:annotation>\n");
         }
-        List<String> childTypeList = childTypeLists.containsKey(currentElement.typeExtends) ? childTypeLists.get(currentElement.typeExtends) : Collections.EMPTY_LIST;
+        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
+            writer.append("<xs:complexContent>\n");
+            writer.append("<xs:extension base=\"");
+            writer.append(currentElement.typeExtends);
+            writer.append("Type\">\n");
+        }
+        List<String> childTypeList = false /*!"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends)*/ && childTypeLists.containsKey(currentElement.typeExtends) ? childTypeLists.get(currentElement.typeExtends) : Collections.EMPTY_LIST;
         if (!insertType) {
             writer.append("<xs:complexType>\n");
             if (currentElement.elementName.equals("experiment")) {
@@ -288,7 +312,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 }
                 writer.append(">\n");
             }
-        } else if (!isPresenterType && (currentElement.childElements.length > 0 || !childTypeList.isEmpty())) {
+        } else if (!isPresenterType && (currentElement.childElements.length > 0 || !childTypeList.isEmpty() || currentElement.isRecursive)) {
 //            writer.append("<xs:").append((currentElement.areChildenOptional) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : "all").append(">\n");
 
             writer.append("<xs:").append((currentElement.childOption == ChildType.choiceAnyCount) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : (currentElement.childOption == ChildType.sequenceOnceOrdered) ? "sequence" : "all").append(">\n");
@@ -328,7 +352,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             if (currentElement.elementName.equals("experiment")) {
                 writer.append("</xs:sequence>\n");
             }
-        } else if (!isPresenterType && (currentElement.childElements.length > 0 || !childTypeList.isEmpty())) {
+        } else if (!isPresenterType && (currentElement.childElements.length > 0 || !childTypeList.isEmpty() || currentElement.isRecursive)) {
 //            writer.append("</xs:").append((currentElement.areChildenOptional) ? "choice" : "all").append(">\n");
             writer.append("</xs:").append((currentElement.childOption == ChildType.choiceAnyCount) ? "choice" : (currentElement.childOption == ChildType.sequenceOnceOrdered) ? "sequence" : "all").append(">\n");
 //            writer.append("</xs:sequence>");
@@ -339,6 +363,10 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //            writer.append("</xs:element>\n");
         } else {
 //            writer.append("\"/>\n");
+        }
+        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
+            writer.append("</xs:extension>\n");
+            writer.append("</xs:complexContent>\n");
         }
         writer.append("</xs:complexType>\n");
         if (!insertType) {
@@ -549,6 +577,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         }
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0], true);
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], true);
+        addBaseTypes(writer);
         getEnd(writer);
         //System.out.println(writer);
     }

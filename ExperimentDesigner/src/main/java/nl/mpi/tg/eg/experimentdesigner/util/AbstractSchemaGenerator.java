@@ -179,10 +179,10 @@ public class AbstractSchemaGenerator {
                 }
             }
             this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
-                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;
+                    : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.sequenceOnceOrdered;
             // calculate a name for the extendsType
             // add all the child types to the extendsType once
-            this.typeExtends = featureType.getRequiresChildType().name();
+            this.typeExtends = this.childOption.name() + "_" + featureType.getRequiresChildType().name();
             if (!childTypeLists.containsKey(this.typeExtends)) {
                 List<String> childTypeList = new ArrayList<>();
                 childTypeLists.put(this.typeExtends, childTypeList);
