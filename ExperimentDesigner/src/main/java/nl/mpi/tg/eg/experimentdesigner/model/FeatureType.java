@@ -220,11 +220,13 @@ public enum FeatureType {
     onKeyDown(false, null, false, false, false, Contitionals.any, Contitionals.hasKeyInputsCondition),
     responseCorrect(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.hasCorrectIncorrect),
     responseIncorrect(false, new FeatureAttribute[]{}, false, false, false, Contitionals.any, Contitionals.hasCorrectIncorrect),
+    // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
+    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels /* TODO: can we remove groupCommunicationChannels by replacing it with an equivalent of streamChannels eg messageChannels*/ , groupCameraChannels, groupAudioChannels, groupCanvasChannels, phasesPerStimulus}, "Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.", Contitionals.groupNetwork, Contitionals.groupStimulus),
     hasMoreStimulus(false, null, false, false, false, Contitionals.stimulusAction, Contitionals.hasMoreStimulus),
-    endOfStimulus(false, null, "Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.", Contitionals.any, Contitionals.hasMoreStimulus, Contitionals.groupStimulus),
     beforeStimulus(false, null, false, false, false, Contitionals.any, Contitionals.eachStimulus),
     eachStimulus(false, null, false, false, false, Contitionals.stimulusAction, Contitionals.eachStimulus),
     afterStimulus(false, null, false, false, false, Contitionals.any, Contitionals.eachStimulus),
+    endOfStimulus(false, null, "Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.", Contitionals.any, Contitionals.hasMoreStimulus, Contitionals.groupStimulus),
     existingUserCheck(false, null, false, false, false, Contitionals.hasUserCount, Contitionals.none),
     multipleUsers(false, null, false, false, false, Contitionals.any, Contitionals.hasUserCount),
     // todo: this should be suppressed from normal use like the other conditional child elements
@@ -279,11 +281,9 @@ public enum FeatureType {
     versionData(false, false, null),
     //preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
-    // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
-    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels /* TODO: can we remove groupCommunicationChannels by replacing it with an equivalent of streamChannels eg messageChannels*/ , groupCameraChannels, groupAudioChannels, groupCanvasChannels, phasesPerStimulus}, "Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.", Contitionals.groupNetwork, Contitionals.groupStimulus),
     groupInitialisationError(false, new FeatureAttribute[]{}, "When the specified group already has enough members new members cannot be assigned to it or the member code has not been provided the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL along with the member code. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.", Contitionals.any, Contitionals.groupNetwork),
-    groupFindingMembers(false, new FeatureAttribute[]{}, "When the the connection to the group server is established the second stage is waiting for the other group members.", Contitionals.any, Contitionals.groupNetwork),
     groupNetworkConnecting(false, new FeatureAttribute[]{}, "The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.", Contitionals.any, Contitionals.groupNetwork),
+    groupFindingMembers(false, new FeatureAttribute[]{}, "When the the connection to the group server is established the second stage is waiting for the other group members.", Contitionals.any, Contitionals.groupNetwork),
     groupNetworkSynchronising(false, new FeatureAttribute[]{}, "For each stimulus change and phase change the group network needs to be synchronised. The contents of this element will be triggered while this synchronisation is being done.", Contitionals.any, Contitionals.groupNetwork),
     groupPhaseListeners(false, new FeatureAttribute[]{}, "The activities in the phase/participant matrix is defined here. Not all participants will see the same activity at the same time. It is possible for one, many or none to be triggered for any given phase member code combination.", Contitionals.groupMemberActivity, Contitionals.groupNetwork),
     groupMemberActivity(false, new FeatureAttribute[]{phaseMembers}, "Member activities will be triggered when the member code and the current phase coincide. This is determined by the phase matrix defined in each phaseMembers attribute.", Contitionals.groupNetworkAction, Contitionals.groupMemberActivity),

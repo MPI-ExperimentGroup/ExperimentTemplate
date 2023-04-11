@@ -367,10 +367,10 @@
         <htmlText featureText="When Opleidingsniveau is equal to anders the extra field educationOther will be shown."/>
         <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="Gegevens" menuLabel="Metadata Jump Test" type="stimulus" self="Metadata_Jump_Test" title="Metadata Jump Test">
@@ -688,13 +688,13 @@
     <presenter back="Menu" menuLabel="Snooze Notification Screen" type="metadata" self="Snooze" title="Snooze Notification Screen">
         <setMetadataValue fieldName="notificationRangeSnoozed" replacementRegex="" dataLogFormat="in_minutes:1 in_minutes:5 &lt;metadataField_notificationRangeSettings&gt;"/>
         <requestNotification targetOptions="Request_Notification_Screen,Menu,Snooze" featureText="Range Notification" fieldName="notificationRangeSnoozed" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
-            <onError> 
-                <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
-            </onError>
             <onSuccess>
                 <plainText featureText="Request Notification Done"/>
                 <htmlTokenText featureText="Your notification has been snoozed and another will show again in 1 and 5 minutes."/>
             </onSuccess>
+            <onError> 
+                <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
+            </onError>
         </requestNotification>
     </presenter>
     <presenter back="Menu" menuLabel="Request Notification Screen" type="metadata" self="Request_Notification_Screen" title="Request Notification Screen">
@@ -702,21 +702,21 @@
         <metadataField fieldName="notificationMinutes"/>
         <addPadding/>
         <saveMetadataButton featureText="Request Minutes Notification" sendData="false" networkErrorMessage=".">
-            <onError>
-                <plainText featureText="Save metadata failed"/>
-            </onError>
             <onSuccess>
                 <setMetadataValue fieldName="notificationMinutesSettings" replacementRegex="" dataLogFormat="in_minutes:&lt;metadataField_notificationMinutes&gt;"/>
                 <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationMinutesSettings&gt;&lt;br/&gt;"/>
                 <requestNotification targetOptions="Request_Notification_Screen,Menu,Timer_Label_Screen" featureText="Minutes Notification" fieldName="notificationMinutesSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
-                    <onError>
-                        <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
-                    </onError>
                     <onSuccess>
                         <plainText featureText="Request Notification Done"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
+                    </onError>
                 </requestNotification>
             </onSuccess>
+            <onError>
+                <plainText featureText="Save metadata failed"/>
+            </onError>
         </saveMetadataButton>
         <addPadding/>
         <metadataField fieldName="notificationWeekdaySettings"/>
@@ -736,21 +736,21 @@
                 </regionAppend>
         </actionButton>-->
         <saveMetadataButton featureText="Request Range Notifications" sendData="false" networkErrorMessage=".">
-            <onError>
-                <plainText featureText="Save metadata failed"/>
-            </onError>
             <onSuccess>
                 <setMetadataValue fieldName="notificationRangeSettings" replacementRegex="" dataLogFormat="weekdays:&lt;metadataField_notificationWeekdaySettings&gt; weekends:&lt;metadataField_notificationWeekendSettings&gt; weekdays_between:&lt;metadataField_notificationWeekdayFromSettings&gt;:&lt;metadataField_notificationWeekdayUntilSettings&gt;:&lt;metadataField_notificationCountWeekdaySettings&gt; weekends_between:&lt;metadataField_notificationWeekendFromSettings&gt;:&lt;metadataField_notificationWeekendUntilSettings&gt;:&lt;metadataField_notificationCountWeekendSettings&gt;"/>
                 <htmlTokenText featureText="notificationSettings: &lt;metadataField_notificationRangeSettings&gt;&lt;br/&gt;"/>
                 <requestNotification targetOptions="Request_Notification_Screen,Menu,Snooze" featureText="Range Notification" fieldName="notificationRangeSettings" dataLogFormat="dataLogFormat for notificationA. PlayerMaxScore: &lt;playerMaxScore&gt;&lt;br/&gt; notificationSettings: &lt;notificationSettings&gt;">
-                    <onError>
-                        <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
-                    </onError>
                     <onSuccess>
                         <plainText featureText="Request Notification Done"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="Request Notification Failed. Notifications are only available on Android and iOS devices."/>
+                    </onError>
                 </requestNotification>
             </onSuccess>
+            <onError>
+                <plainText featureText="Save metadata failed"/>
+            </onError>
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
@@ -1170,18 +1170,18 @@
                             <actionTokenButton featureText="Record">
                                 <cancelPauseAll/>
                                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" mediaId="recordedMediaD">
-                                    <onError>
-                                        <hardwareTimeStamp dtmf="7" opto1="false" opto2="true" />
-                                        <regionAppend regionId="stimuliLabelRegion">
-                                            <plainText featureText="onError recordedMediaD"/>
-                                        </regionAppend>
-                                    </onError>
                                     <onSuccess>
                                         <hardwareTimeStamp dtmf="8" />
                                         <regionAppend regionId="stimuliLabelRegion">
                                             <plainText featureText="onSuccess recordedMediaD"/>
                                         </regionAppend>
                                     </onSuccess>
+                                    <onError>
+                                        <hardwareTimeStamp dtmf="7" opto1="false" opto2="true" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="onError recordedMediaD"/>
+                                        </regionAppend>
+                                    </onError>
                                     <mediaLoaded>
                                         <hardwareTimeStamp dtmf="9" />
                                         <regionAppend regionId="stimuliLabelRegion">
@@ -1242,18 +1242,18 @@
                             <actionTokenButton featureText="Record">
                                 <cancelPauseAll/>
                                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaE">
-                                    <onError>
-                                        <hardwareTimeStamp dtmf="7" opto1="false" opto2="true" />
-                                        <regionAppend regionId="stimuliLabelRegion">
-                                            <plainText featureText="onError recordedMediaE"/>
-                                        </regionAppend>
-                                    </onError>
                                     <onSuccess>
                                         <hardwareTimeStamp dtmf="8" />
                                         <regionAppend regionId="stimuliLabelRegion">
                                             <plainText featureText="onSuccess recordedMediaE"/>
                                         </regionAppend>
                                     </onSuccess>
+                                    <onError>
+                                        <hardwareTimeStamp dtmf="7" opto1="false" opto2="true" />
+                                        <regionAppend regionId="stimuliLabelRegion">
+                                            <plainText featureText="onError recordedMediaE"/>
+                                        </regionAppend>
+                                    </onError>
                                     <mediaLoaded>
                                         <hardwareTimeStamp dtmf="9" />
                                         <regionAppend regionId="stimuliLabelRegion">
@@ -1340,8 +1340,8 @@
                             <htmlText featureText="HardwareTimeStamps are enabled."/>
                         </regionAppend>
                         <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaSTE">
-                            <onError/>
                             <onSuccess/>
+                            <onError/>
                             <mediaLoaded/>
                             <mediaLoadFailed/>
                             <mediaPlaybackStarted/>
@@ -1545,8 +1545,8 @@
                             <htmlText featureText="HardwareTimeStamps are enabled."/>
                         </regionAppend>
                         <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" mediaId="recordedMediaSTE">
-                            <onError/>
                             <onSuccess/>
+                            <onError/>
                             <mediaLoaded/>
                             <mediaLoadFailed/>
                             <mediaPlaybackStarted/>
@@ -1836,14 +1836,6 @@
                 </regionAppend>
                 <regionAppend regionId="stimulusRegion" styleName="hiddenRegion">
                     <stimulusImage msToNext="0">
-                        <mediaLoadFailed>
-                            <logTimeStamp eventTag="image_load_failed"/>
-                            <htmlText featureText="Hetplaatje kon niet worden geladen. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
-                            <actionButton featureText="Probeer opnieuw">
-                                <clearPage/>   
-                                <showStimulus/>
-                            </actionButton>
-                        </mediaLoadFailed>
                         <mediaLoaded>
                             <!-- start the display sequence after the jitter has passed, msToNext="500" should be enough time here to be outside the known jitter -->
                             <clearTimer listenerId="singleTimebaseTimer"/>
@@ -1855,9 +1847,6 @@
                             <!-- the use of stimulusPause will like all pauses introduce jitter at the start of period -->
                             <!-- we need to determine an alternative to this <stimulusPause > but from memory I think startTimer will process tokens ie <code>+500 -->
                             <addTimerTrigger evaluateTokens="&lt;stimulusPauseMs&gt; + 500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
-                                <onError>
-                                    <plainText featureText="addTimerTrigger P+500 onError"/>
-                                </onError>
                                 <onTimer>
                                     <logTimeStamp eventTag="pause_ended"/>
                                     <!-- to hide the cross we only change the CSS and avoid modifying the HTML because that could cause delays -->
@@ -1866,31 +1855,42 @@
                                     <hardwareTimeStamp dtmf="1"/>
                                     <logTimeStamp eventTag="image_revealed"/>
                                 </onTimer>
+                                <onError>
+                                    <plainText featureText="addTimerTrigger P+500 onError"/>
+                                </onError>
                             </addTimerTrigger>
                             <!-- 500 is added here to accommodate the initial 500 anti jitter delay -->
                             <addTimerTrigger evaluateTokens="1000+&lt;stimulusPauseMs&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
-                                <onError>
-                                    <plainText featureText="addTimerTrigger 1000+P+500 onError"/>
-                                </onError>
                                 <onTimer>                            
                                     <hardwareTimeStamp dtmf="off"/>
                                     <clearPage/>
                                     <!-- a clearTimer here would terminate the single timer and therefore block the next event -->
                                     <!-- <clearTimer listenerId="singleTimebaseTimer"/> -->
                                 </onTimer>
+                                <onError>
+                                    <plainText featureText="addTimerTrigger 1000+P+500 onError"/>
+                                </onError>
                             </addTimerTrigger>
                             <!-- the previous 1000 and 500 is added here to accommodate the initial 500 anti jitter delay -->
                             <addTimerTrigger evaluateTokens="1000+1000+&lt;stimulusPauseMs&gt;+500" listenerId="singleTimebaseTimer" maximum="60000" minimum="0">
-                                <onError>
-                                    <plainText featureText="addTimerTrigger 1000+1000+P+500 onError"/>
-                                </onError>
                                 <onTimer>
                                     <logTimeStamp eventTag="to_next_stimulus"/>
                                     <clearTimer listenerId="singleTimebaseTimer"/>
                                     <nextStimulus repeatIncorrect="false"/>
                                 </onTimer>
+                                <onError>
+                                    <plainText featureText="addTimerTrigger 1000+1000+P+500 onError"/>
+                                </onError>
                             </addTimerTrigger>
                         </mediaLoaded>
+                        <mediaLoadFailed>
+                            <logTimeStamp eventTag="image_load_failed"/>
+                            <htmlText featureText="Hetplaatje kon niet worden geladen. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
+                            <actionButton featureText="Probeer opnieuw">
+                                <clearPage/>   
+                                <showStimulus/>
+                            </actionButton>
+                        </mediaLoadFailed>
                     </stimulusImage>
                 </regionAppend>
             </hasMoreStimulus>
@@ -1919,10 +1919,6 @@
             </onSuccess>
         </audioInputSelectWeb>-->
         <audioInputSelectWeb>
-            <onError>
-                <plainText featureText="audioInputSelectWeb_onError"/>
-                <plainText featureText="Please check the audio recording permissions in the browser."/>
-            </onError> 
             <onSuccess>
                 <plainText featureText="Select the audio input before starting to record."/>
                 <loadStimulus eventTag="Audio_Input_Select" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -1930,11 +1926,6 @@
                         <regionReplace regionId="recordedMediaControls">
                             <actionButton featureText="startAudioRecorder">
                                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                                    <onError>
-                                        <regionReplace regionId="recordedMediaControls">
-                                            <htmlText featureText="startAudioRecorder onError"/>
-                                        </regionReplace>
-                                    </onError>
                                     <onSuccess>
                                         <regionReplace regionId="recordedMediaControls">
                                             <htmlText featureText="startAudioRecorder onSuccess"/>
@@ -1943,6 +1934,11 @@
                                             </actionButton>
                                         </regionReplace>
                                     </onSuccess>
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaControls">
+                                            <htmlText featureText="startAudioRecorder onError"/>
+                                        </regionReplace>
+                                    </onError>
                                     <mediaLoaded>
                                         <regionReplace regionId="recordedMediaControls">
                                             <plainText featureText="AudioRecordingLoaded"/>
@@ -1980,6 +1976,10 @@
                     </stimuli>
                 </loadStimulus>
             </onSuccess>
+            <onError>
+                <plainText featureText="audioInputSelectWeb_onError"/>
+                <plainText featureText="Please check the audio recording permissions in the browser."/>
+            </onError> 
         </audioInputSelectWeb>
         <!-- if a region with the ID of AudioRecorderWebLevelIndicator exists and the levelIndicatorStyle is set, then the region allocates the location of the recording level indicator -->
         <regionReplace regionId="AudioRecorderWebLevelIndicator" />
@@ -1991,14 +1991,6 @@
         <triggerDefinition listenerId="startAnotherRecording" threshold="0" maximum="0">
             <regionReplace regionId="recordedMediaMessages"/>
             <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                <onError>
-                    <dtmfTone dtmf="off" msToNext="0"/>
-                    <regionAppend regionId="recordedMediaMessages">
-                        <htmlText featureText="startAudioRecorder onError"/>
-                    </regionAppend>
-                    <enableButtonGroup matchingRegex="recordButtonGroup"/>
-                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
-                </onError>
                 <onSuccess>
                     <!-- adding the addMediaTriggers and addRecorderDtmfTriggers first before we do any slow actions like htmlTokenText -->
                     <addMediaTrigger evaluateMs="100" threshold="50" mediaId="recordedMedia">
@@ -2087,6 +2079,14 @@
                     <disableButtonGroup matchingRegex="recordButtonGroup"/>
                     <enableButtonGroup matchingRegex="abortButtonGroup"/>
                 </onSuccess>
+                <onError>
+                    <dtmfTone dtmf="off" msToNext="0"/>
+                    <regionAppend regionId="recordedMediaMessages">
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </regionAppend>
+                    <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                </onError>
                 <mediaLoaded>
                     <regionReplace regionId="loadedMediaMessages">
                         <plainText featureText="AudioRecordingLoaded"/>
@@ -2207,14 +2207,6 @@
                         <clearCurrentScore evaluateTokens=""/>
                         <regionReplace regionId="recordedMediaMessages"/>
                         <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                            <onError>
-                                <dtmfTone dtmf="off" msToNext="0"/>
-                                <regionAppend regionId="recordedMediaMessages">
-                                    <htmlText featureText="startAudioRecorder onError"/>
-                                </regionAppend>
-                                <enableButtonGroup matchingRegex="recordButtonGroup"/>
-                                <disableButtonGroup matchingRegex="abortButtonGroup"/>
-                            </onError>
                             <onSuccess>
                                 <addRecorderDtmfTrigger dtmf="#">
                                     <dtmfTone dtmf="off" msToNext="0"/>
@@ -2224,6 +2216,14 @@
                                 </addRecorderDtmfTrigger>
                                 <triggerMatching listenerId="startAnotherSequence"/>
                             </onSuccess>
+                            <onError>
+                                <dtmfTone dtmf="off" msToNext="0"/>
+                                <regionAppend regionId="recordedMediaMessages">
+                                    <htmlText featureText="startAudioRecorder onError"/>
+                                </regionAppend>
+                                <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                                <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                            </onError>
                             <mediaLoaded>
                                 <regionReplace regionId="loadedMediaMessages">
                                     <plainText featureText="AudioRecordingLoaded"/>
@@ -2282,14 +2282,6 @@
         <triggerDefinition listenerId="startAnotherRecording" threshold="0" maximum="0">
             <regionReplace regionId="recordedMediaMessages"/>
             <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="3000000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                <onError>
-                    <dtmfTone dtmf="off" msToNext="0"/>
-                    <regionAppend regionId="recordedMediaMessages">
-                        <htmlText featureText="startAudioRecorder onError"/>
-                    </regionAppend>
-                    <enableButtonGroup matchingRegex="recordButtonGroup"/>
-                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
-                </onError>
                 <onSuccess>
                     <!-- adding the addMediaTriggers and addRecorderDtmfTriggers first before we do any slow actions like htmlTokenText -->
                     <addMediaTrigger evaluateMs="100" threshold="50" mediaId="recordedMedia">
@@ -2359,6 +2351,14 @@
                     <disableButtonGroup matchingRegex="recordButtonGroup"/>
                     <enableButtonGroup matchingRegex="abortButtonGroup"/>
                 </onSuccess>
+                <onError>
+                    <dtmfTone dtmf="off" msToNext="0"/>
+                    <regionAppend regionId="recordedMediaMessages">
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </regionAppend>
+                    <enableButtonGroup matchingRegex="recordButtonGroup"/>
+                    <disableButtonGroup matchingRegex="abortButtonGroup"/>
+                </onError>
                 <mediaLoaded>
                     <regionReplace regionId="loadedMediaMessages">
                         <plainText featureText="AudioRecordingLoaded"/>
@@ -2666,7 +2666,6 @@
                         </column>
                         <!-- a metadata field can be combined with the rating buttons -->
                         <hasMetadataValue fieldName="educationOther" matchingRegex=".+">
-                            <conditionFalse />
                             <conditionTrue>
                                 <column>
                                     <actionTokenButton featureText="&lt;metadataField_educationOther&gt;">
@@ -2675,6 +2674,7 @@
                                     </actionTokenButton>
                                 </column>
                             </conditionTrue>
+                            <conditionFalse />
                         </hasMetadataValue>
                     </row>
                 </table>
@@ -2716,10 +2716,10 @@
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000" visibleRegex=".*" enabledRegex="nevermatches"/>
         <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/> 
             <onSuccess>
                 <gotoPresenter target="Metadata_Enable_Visible"/>
             </onSuccess>
+            <onError/> 
         </saveMetadataButton>
     </presenter> 
     <presenter back="Menu" menuLabel="Metadata Current Date" type="stimulus" self="Metadata_Current_Date" title="Metadata Current Date">
@@ -2729,12 +2729,12 @@
             <regionReplace regionId="currentValueRegion">
                 <htmlTokenText featureText="Stored Date: &lt;metadataField_storedDate&gt;"/>
                 <hasMetadataValue fieldName="storedDate" matchingRegex=".*&lt;currentDateDDMMYYYY&gt;$">
-                    <conditionFalse>
-                        <htmlText featureText="It's another date"/>
-                    </conditionFalse>
                     <conditionTrue>
                         <htmlText featureText="It's today"/>
                     </conditionTrue>
+                    <conditionFalse>
+                        <htmlText featureText="It's another date"/>
+                    </conditionFalse>
                 </hasMetadataValue>
             </regionReplace>
         </triggerDefinition>
@@ -2813,23 +2813,23 @@
         <addPadding/>
         <actionTokenButton featureText="Change To Je">
             <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_storedDate&gt;&quot;, &quot; u &quot;, &quot; je &quot;)" fieldName="storedDate">	
-                <onError>
-                    <htmlTokenText featureText="Failed Replacing All."/>
-                </onError>
                 <onSuccess> 
                     <triggerMatching listenerId="showCurrentValue"/>
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionTokenButton>
         <addPadding/>
         <actionTokenButton featureText="Do It Wrong">
             <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_storedDate&gt;&quot;, &quot;u&quot;, &quot;&lt;b&gt;je&lt;/b&gt;&quot;)" fieldName="storedDate">	
-                <onError>
-                    <htmlTokenText featureText="Failed Replacing All."/>
-                </onError>
                 <onSuccess> 
                     <triggerMatching listenerId="showCurrentValue"/>
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
             </setMetadataEvalTokens>
             <triggerMatching listenerId="showCurrentValue"/>
         </actionTokenButton>
@@ -2852,15 +2852,15 @@
             <!-- todo: finish testing this does what it says -->
             <beforeStimulus>
                 <hasMetadataValue fieldName="displayedTopic234" matchingRegex=".*&lt;currentDateDDMMYYYY&gt;.*">
+                    <conditionTrue>
+                        <htmlText featureText="The metadata field displayedTopic234 already contains todays date."/>
+                        <addPadding/>
+                    </conditionTrue>
                     <conditionFalse> 
                         <htmlText featureText="Appending todays date to the metadata field displayedTopic234."/>
                         <setMetadataValue fieldName="displayedTopic234" dataLogFormat="&lt;metadataField_displayedTopic234&gt;&lt;currentDateDDMMYYYY&gt;"/>
                         <addPadding/>
                     </conditionFalse>
-                    <conditionTrue>
-                        <htmlText featureText="The metadata field displayedTopic234 already contains todays date."/>
-                        <addPadding/>
-                    </conditionTrue>
                 </hasMetadataValue>
                 <htmlTokenText featureText="Seen displayedTopic1: &lt;metadataField_displayedTopic1&gt;"/>
                 <htmlTokenText featureText="Seen displayedTopic234: &lt;metadataField_displayedTopic234&gt;"/>
@@ -2874,12 +2874,12 @@
                 <currentStimulusHasTag tags="Topic_1">	
                     <conditionTrue>
                         <hasMetadataValue fieldName="displayedTopic1" matchingRegex=".*&lt;stimulusId&gt;.*">
-                            <conditionFalse>
-                                <triggerMatching listenerId="showTopic1"/>
-                            </conditionFalse>
                             <conditionTrue>
                                 <htmlTokenText featureText="Topic 1 stimulus &lt;stimulusId&gt; has already been seen."/>
                             </conditionTrue>
+                            <conditionFalse>
+                                <triggerMatching listenerId="showTopic1"/>
+                            </conditionFalse>
                         </hasMetadataValue>
                     </conditionTrue>
                     <conditionFalse>
@@ -2888,12 +2888,12 @@
                 <currentStimulusHasTag tags="Topic_234">
                     <conditionTrue>
                         <hasMetadataValue fieldName="displayedTopic234" matchingRegex=".*&lt;stimulusId&gt;.*">
-                            <conditionFalse>
-                                <triggerMatching listenerId="showTopic234"/>
-                            </conditionFalse>
                             <conditionTrue>
                                 <htmlTokenText featureText="This stimulus &lt;stimulusId&gt; has already been seen in the last seven days."/>
                             </conditionTrue>
+                            <conditionFalse>
+                                <triggerMatching listenerId="showTopic234"/>
+                            </conditionFalse>
                         </hasMetadataValue>
                     </conditionTrue>
                     <conditionFalse>
@@ -3037,12 +3037,12 @@
         </actionButton>
         <actionButton featureText="Append Current Date (once)">
             <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_session_next_step&gt;&quot;, &quot;[_]?&lt;formatDateTime_ddMMyyyy&gt;&quot;, &quot;&quot;)_&lt;formatDateTime_ddMMyyyy&gt;" fieldName="session_next_step">	
-                <onError>
-                    <htmlTokenText featureText="Failed Replacing All."/>
-                </onError>
                 <onSuccess> 
                     <triggerMatching listenerId="showCurrentValue"/>
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <actionButton featureText="Append Some Dates">
@@ -3053,12 +3053,12 @@
             <!--setMetadataValue fieldName="session_next_step" replacementRegex="([0-9]{8,8}_?)*&lt;formatDateTime_ddMMyyyy&gt;(_?[0-9]{8,8})*" dataLogFormat="&lt;metadataField_session_next_step&gt;"/-->
             <!--setMetadataValue fieldName="session_next_step" replacementRegex="([^&lt;currentDateDDMMYYYY&gt;]*)" dataLogFormat="&lt;metadataField_session_next_step&gt;"/-->
             <setMetadataEvalTokens evaluateTokens="replaceAll(&quot;&lt;metadataField_session_next_step&gt;&quot;, &quot;[_]?&lt;formatDateTime_ddMMyyyy&gt;&quot;, &quot;&quot;)" fieldName="session_next_step">	
-                <onError>
-                    <htmlTokenText featureText="Failed Replacing All."/>
-                </onError>
                 <onSuccess> 
                     <triggerMatching listenerId="showCurrentValue"/>
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed Replacing All."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
     </presenter>
@@ -3143,29 +3143,29 @@
         <htmlTokenText featureText="The current date is: &lt;currentDateDDMMYYYY&gt;"/>
         <addPadding/>
         <saveMetadataButton featureText="update" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
             <onSuccess>
                 <!--<clearPage/>-->
                 <addPadding/>
                 <setMetadataEvalTokens evaluateTokens="length(&quot;&lt;metadataField_educationOther&gt;&quot;)" fieldName="step_done">	
-                    <onError>
-                        <htmlTokenText featureText="Failed to setMetadataEvalTokens."/>
-                    </onError>
                     <onSuccess>
                         <htmlTokenText featureText="The value of the educationOther field is: &quot;&lt;metadataField_educationOther&gt;&quot;."/>
                         <htmlTokenText featureText="The length of the educationOther field is: &lt;metadataField_step_done&gt;."/>
                     </onSuccess>
-                </setMetadataEvalTokens>
-                <setMetadataEvalTokens evaluateTokens="daysBetween(&quot;&lt;metadataField_dateOfBirth&gt;&quot;,&quot;&lt;currentDateDDMMYYYY&gt;&quot;)" fieldName="session_step">	
                     <onError>
                         <htmlTokenText featureText="Failed to setMetadataEvalTokens."/>
                     </onError>
+                </setMetadataEvalTokens>
+                <setMetadataEvalTokens evaluateTokens="daysBetween(&quot;&lt;metadataField_dateOfBirth&gt;&quot;,&quot;&lt;currentDateDDMMYYYY&gt;&quot;)" fieldName="session_step">	
                     <onSuccess> 
                         <htmlTokenText featureText="The number of days between dateOfBirth:&lt;metadataField_dateOfBirth&gt; and today:&lt;currentDateDDMMYYYY&gt; is &lt;metadataField_session_step&gt;."/>
                     </onSuccess>
+                    <onError>
+                        <htmlTokenText featureText="Failed to setMetadataEvalTokens."/>
+                    </onError>
                 </setMetadataEvalTokens>
                 <!--<targetButton featureText="edit values" target="currentDate_daysBetween_and_length"/>-->
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="Add Times Example" type="metadata" self="add_times_example" title="Add Times Example">
@@ -3175,12 +3175,12 @@
         <metadataField fieldName="storedTime"/>
         <addPadding/>
         <saveMetadataButton featureText="update" styleName="minimalWidth" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError>
-                <htmlTokenText featureText="Failed to update."/>
-            </onError>
             <onSuccess>
                 <gotoPresenter target="add_times_example" />
             </onSuccess>
+            <onError>
+                <htmlTokenText featureText="Failed to update."/>
+            </onError>
         </saveMetadataButton>
         <addPadding/>
         <htmlTokenText featureText="The from time is: &lt;metadataField_notificationWeekendFromSettings&gt;"/>
@@ -3197,133 +3197,133 @@
         <addPadding/-->
         <actionButton featureText="addTime until time + storedTime" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,&lt;metadataField_storedTime&gt;)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time - storedTime" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-&lt;metadataField_storedTime&gt;)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time + 01:45" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,01:45)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time - 01:45" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-01:45)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time + 00:36" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,00:36)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time + 00:56" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,00:56)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time + 00:30" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,00:30)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time - 00:30" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-00:30)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time - 23:30" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-23:30)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time + 23:30" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,23:30)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time - 12:00" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,-12:00)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
         <actionButton featureText="addTime until time + 12:00" styleName="minimalWidth">
             <setMetadataEvalTokens evaluateTokens="addTime(&quot;&lt;metadataField_notificationWeekendUntilSettings&gt;&quot;,12:00)" fieldName="resultTime">
-                <onError>
-                    <htmlTokenText featureText="Failed to addTime."/>
-                </onError>
                 <onSuccess> 
                     <gotoPresenter target="add_times_example" />
                 </onSuccess>
+                <onError>
+                    <htmlTokenText featureText="Failed to addTime."/>
+                </onError>
             </setMetadataEvalTokens>
         </actionButton>
         <addPadding/>
@@ -3376,38 +3376,38 @@
         <plainText featureText="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" />
         <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100">
+            <onSuccess />
             <onError>
                 <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess />
         </progressIndicator>
         <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorVertical">
+            <onSuccess />
             <onError>
                 <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess />
         </progressIndicator>
         <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorHorizontal">
+            <onSuccess />
             <onError>
                 <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess />
         </progressIndicator>
         <addPadding />
         <progressIndicator evaluateTokens="&lt;metadataField_progressIndicator_step&gt; / &lt;metadataField_progressIndicator_steps&gt; * 100" styleName="progressIndicatorRight">
+            <onSuccess />
             <onError>
                 <htmlText featureText="The progressIndicator evaluateTokens failed, please check the metadata field values." styleName="metadataError" />
             </onError>
-            <onSuccess />
         </progressIndicator>
         <addPadding />
         <saveMetadataButton featureText="Update" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError />
             <onSuccess>
                 <gotoPresenter target="progressIndicator_example" />
             </onSuccess>
+            <onError />
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
@@ -3436,16 +3436,16 @@
                 <regionAppend regionId="validateStimuliResponses"/>
                 <actionButton featureText="validateStimuliResponses">
                     <validateStimuliResponses>
-                        <conditionFalse>
-                            <regionAppend regionId="validateStimuliResponses">
-                                <plainText featureText="plainText in conditionFalse"/>
-                            </regionAppend>
-                        </conditionFalse>
                         <conditionTrue>
                             <regionAppend regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionTrue"/>
                             </regionAppend>
                         </conditionTrue>
+                        <conditionFalse>
+                            <regionAppend regionId="validateStimuliResponses">
+                                <plainText featureText="plainText in conditionFalse"/>
+                            </regionAppend>
+                        </conditionFalse>
                     </validateStimuliResponses>
                 </actionButton>
                 <plainText featureText="plainText in afterStimulus"/>
@@ -3538,16 +3538,16 @@
                 <regionAppend regionId="validateStimuliResponses"/>
                 <actionButton featureText="validateStimuliResponses">
                     <validateStimuliResponses>
-                        <conditionFalse>
-                            <regionAppend regionId="validateStimuliResponses">
-                                <plainText featureText="plainText in conditionFalse"/>
-                            </regionAppend>
-                        </conditionFalse>
                         <conditionTrue>
                             <regionAppend regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionTrue"/>
                             </regionAppend>
                         </conditionTrue>
+                        <conditionFalse>
+                            <regionAppend regionId="validateStimuliResponses">
+                                <plainText featureText="plainText in conditionFalse"/>
+                            </regionAppend>
+                        </conditionFalse>
                     </validateStimuliResponses>
                 </actionButton>
                 <plainText featureText="plainText in afterStimulus"/>
@@ -3587,9 +3587,6 @@
                 <addPadding/>
                 <actionButton featureText="validateStimuliResponses">
                     <validateStimuliResponses>
-                        <conditionFalse>
-                            <plainText featureText="validateStimuliResponses conditionFalse"/>
-                        </conditionFalse>
                         <conditionTrue>
                             <plainText featureText="validateStimuliResponses conditionTrue"/>
                             <actionButton featureText="resetStimulus">
@@ -3597,6 +3594,9 @@
                                 <gotoPresenter target="Has_Stimulus_Response"/>
                             </actionButton>
                         </conditionTrue>
+                        <conditionFalse>
+                            <plainText featureText="validateStimuliResponses conditionFalse"/>
+                        </conditionFalse>
                     </validateStimuliResponses>
                 </actionButton>
             </afterStimulus>
@@ -4575,16 +4575,16 @@
                 <addPadding/>
                 <actionButton featureText="Validate">
                     <validateStimuliResponses>
-                        <conditionFalse>
-                            <regionReplace regionId="validateStimuliRegion">         
-                                <plainText featureText="Validate conditionFalse"/>
-                            </regionReplace>
-                        </conditionFalse>
                         <conditionTrue>
                             <regionReplace regionId="validateStimuliRegion">
                                 <plainText featureText="Validate conditionTrue"/>
                             </regionReplace>
                         </conditionTrue>
+                        <conditionFalse>
+                            <regionReplace regionId="validateStimuliRegion">         
+                                <plainText featureText="Validate conditionFalse"/>
+                            </regionReplace>
+                        </conditionFalse>
                     </validateStimuliResponses>
                 </actionButton>
             </hasMoreStimulus>
@@ -4785,12 +4785,12 @@
                 <addPadding/>
                 <actionButton featureText="Validate">
                     <validateStimuliResponses>
-                        <conditionFalse>
-                            <plainText featureText="Validate conditionFalse"/>
-                        </conditionFalse>
                         <conditionTrue>
                             <plainText featureText="Validate conditionTrue"/>
                         </conditionTrue>
+                        <conditionFalse>
+                            <plainText featureText="Validate conditionFalse"/>
+                        </conditionFalse>
                     </validateStimuliResponses>
                 </actionButton>
                 <addPadding/>
@@ -4798,12 +4798,12 @@
                     <addPadding/>
                     <actionButton featureText="Validate [ENTER]" hotKey="ENTER">
                         <validateStimuliResponses>
-                            <conditionFalse>
-                                <plainText featureText="Validate [ENTER] conditionFalse"/>
-                            </conditionFalse>
                             <conditionTrue>
                                 <plainText featureText="Validate [ENTER] conditionTrue"/>
                             </conditionTrue>
+                            <conditionFalse>
+                                <plainText featureText="Validate [ENTER] conditionFalse"/>
+                            </conditionFalse>
                         </validateStimuliResponses>
                     </actionButton>
                 </actionButton>
@@ -4905,12 +4905,6 @@
                 <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder">
                     <disableButtonGroup matchingRegex="startAudioButtonGroup"/>
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
-                        <onError>
-                            <regionAppend regionId="regionTimer">
-                                <htmlText featureText="startAudioRecorder onError"/>
-                                <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
-                            </regionAppend>
-                        </onError>
                         <onSuccess>
                             <regionAppend regionId="regionTimer">
                                 <htmlText featureText="startAudioRecorder onSuccess"/>
@@ -4918,6 +4912,12 @@
                                 <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
                             </regionAppend>
                         </onSuccess>
+                        <onError>
+                            <regionAppend regionId="regionTimer">
+                                <htmlText featureText="startAudioRecorder onError"/>
+                                <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                            </regionAppend>
+                        </onError>
                         <mediaLoaded>
                             <regionAppend regionId="regionTimer">
                                 <plainText featureText="AudioRecordingLoaded"/>
@@ -4941,12 +4941,6 @@
                 <actionButton groupId="startAudioButtonGroup" featureText="startAudioRecorder(046d:0a45)">
                     <disableButtonGroup matchingRegex="startAudioButtonGroup"/>
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
-                        <onError>
-                            <regionAppend regionId="regionTimer">
-                                <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
-                            </regionAppend>
-                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
-                        </onError>
                         <onSuccess>
                             <regionAppend regionId="regionTimer">
                                 <htmlText featureText="startAudioRecorder onSuccess"/>
@@ -4954,6 +4948,12 @@
                                 <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
                             </regionAppend>
                         </onSuccess>
+                        <onError>
+                            <regionAppend regionId="regionTimer">
+                                <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                            </regionAppend>
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
+                        </onError>
                         <mediaLoaded>
                             <regionAppend regionId="regionTimer">
                                 <plainText featureText="AudioRecordingLoaded"/>
@@ -5004,10 +5004,6 @@
                     <disableButtonGroup matchingRegex="startAudioButtonGroup" />
                     <disableButtonGroup matchingRegex="playAudioButtonGroup" />
                     <startAudioRecorderWeb featureText="ms" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
-                        <onError>
-                                <htmlText featureText="startAudioRecorder onError" />
-                            <enableButtonGroup matchingRegex="startAudioButtonGroup" />
-                        </onError>
                         <onSuccess>
                             <!-- it is reasobable to assume that triggers during the first 100ms or so might be less reliable due to the process of setting up the recording -->
                             <addMediaTrigger evaluateMs="50" threshold="100" mediaId="recordedMedia">
@@ -5102,6 +5098,10 @@
                             <startTimer msToNext="0" listenerId="timerA" />
                             <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel" />
                         </onSuccess>
+                        <onError>
+                                <htmlText featureText="startAudioRecorder onError" />
+                            <enableButtonGroup matchingRegex="startAudioButtonGroup" />
+                        </onError>
                         <mediaLoaded>
                                 <plainText featureText="AudioRecordingLoaded"/>
                         </mediaLoaded>
@@ -5213,16 +5213,16 @@
                     </actionButton> 
                     <addPadding/>
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia">
-                        <onError>
-                            <logTimeStamp eventTag="recording failed"/>
-                            <hardwareTimeStamp dtmf="off" />
-                            <htmlText featureText="startAudioRecorder onError"/>
-                        </onError>
                         <onSuccess>
                             <logTimeStamp eventTag="recording begun"/>
                             <hardwareTimeStamp dtmf="off" opto2="false" />
                             <htmlText featureText="startAudioRecorder onSuccess"/>
                         </onSuccess>
+                        <onError>
+                            <logTimeStamp eventTag="recording failed"/>
+                            <hardwareTimeStamp dtmf="off" />
+                            <htmlText featureText="startAudioRecorder onError"/>
+                        </onError>
                         <mediaLoaded>
                             <hardwareTimeStamp dtmf="4" />
                             <plainText featureText="AudioRecordingLoaded"/>
@@ -5272,12 +5272,12 @@
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <startAudioRecorderWeb featureText="recording" downloadPermittedWindowMs="0" deviceRegex="" mediaId="recordedMedia">
-                    <onError>
-                        <htmlText featureText="startAudioRecorder onError"/>
-                    </onError>
                     <onSuccess>
                         <htmlText featureText="startAudioRecorder onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="AudioRecordingLoaded"/>
                     </mediaLoaded>
@@ -5318,12 +5318,12 @@
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia">
-                    <onError>
-                        <htmlText featureText="startAudioRecorder onError"/>
-                    </onError>
                     <onSuccess>
                         <htmlText featureText="startAudioRecorder onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="AudioRecordingLoaded"/>
                         <actionButton featureText="nextStimulus">
@@ -5373,9 +5373,6 @@
                 </triggerDefinition> -->
                 <addPadding/>
                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                    <onError>
-                        <htmlText featureText="startAudioRecorder onError"/>
-                    </onError>
                     <onSuccess>
                         <htmlText featureText="startAudioRecorder onSuccess *"/>
                         <recorderToneInjection dtmf="*" />
@@ -5388,6 +5385,9 @@
                             </onError>
                         </addMediaTrigger>
                     </onSuccess>
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="AudioRecordingLoaded"/>
                         <actionButton featureText="nextStimulus">
@@ -5434,9 +5434,6 @@
                 <addPadding/>
                 <actionButton groupId="recordButtonGroup" featureText="Test Recording Setup">
                     <startAudioRecorderWeb featureText="00:00:00" levelIndicatorStyle="progressIndicatorVertical" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <disableButtonGroup matchingRegex="recordButtonGroup" />
                             <addRecorderDtmfTrigger dtmf="#">
@@ -5466,6 +5463,9 @@
                                 </onError>
                             </addMediaTrigger>
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded />
                         <mediaLoadFailed />
                         <mediaPlaybackStarted />
@@ -5504,9 +5504,6 @@
                 <addPadding/>
                 <actionButton groupId="recordButtonGroup" featureText="Test Recording Setup">
                     <startAudioRecorderWeb featureText="00:00:00" levelIndicatorStyle="progressIndicatorVertical" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <disableButtonGroup matchingRegex="recordButtonGroup" />
                             <addRecorderDtmfTrigger dtmf="#">
@@ -5543,6 +5540,9 @@
                                 </onError>
                             </addMediaTrigger>
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded />
                         <mediaLoadFailed />
                         <mediaPlaybackStarted />
@@ -6193,16 +6193,16 @@
                 <addPadding/>                
                 <actionButton featureText="Record With NoiseSuppression">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="true" echoCancellation="false" autoGainControl="false">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError"/>
-                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
-                        </onError>
                         <onSuccess>
                             <triggerMatching listenerId="addAllListeners"/>
                             <regionAppend regionId="recordingTonesRegion">
                                 <htmlText featureText="Record With NoiseSuppression"/>
                             </regionAppend>
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
+                        </onError>
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackStarted/>
@@ -6213,16 +6213,16 @@
                 </actionButton>
                 <actionButton featureText="Record With EchoCancellation">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="true" autoGainControl="false">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError"/>
-                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
-                        </onError>
                         <onSuccess>
                             <triggerMatching listenerId="addAllListeners"/>
                             <regionAppend regionId="recordingTonesRegion">
                                 <htmlText featureText="Record With EchoCancellation"/>
                             </regionAppend>
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
+                        </onError>
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackStarted/>
@@ -6233,16 +6233,16 @@
                 </actionButton>
                 <actionButton featureText="Record With AutoGainControl">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError"/>
-                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
-                        </onError>
                         <onSuccess>
                             <triggerMatching listenerId="addAllListeners"/>
                             <regionAppend regionId="recordingTonesRegion">
                                 <htmlText featureText="Record With AutoGainControl"/>
                             </regionAppend>
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
+                        </onError>
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackStarted/>
@@ -6253,16 +6253,16 @@
                 </actionButton>
                 <actionButton featureText="Record Without NoiseSuppression EchoCancellation AutoGainControl">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="0" mediaId="recordedMedia" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError"/>
-                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
-                        </onError>
                         <onSuccess>
                             <triggerMatching listenerId="addAllListeners"/>
                             <regionAppend regionId="recordingTonesRegion">
                                 <htmlText featureText="Record Without NoiseSuppression EchoCancellation AutoGainControl"/>
                             </regionAppend>
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError"/>
+                            <regionStyle regionId="dtmfButtonsRegion" styleName="hiddenRegion"/>
+                        </onError>
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackStarted/>
@@ -6304,12 +6304,12 @@
                 <addPadding />
                 <actionButton featureText="record with noiseSuppression on">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaNoiseSuppressionOn" noiseSuppression="true" echoCancellation="false" autoGainControl="false">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6327,12 +6327,12 @@
                 <addPadding />
                 <actionButton featureText="record with echoCancellation on">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaEchoCancellationOn" noiseSuppression="false" echoCancellation="true" autoGainControl="false">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6350,12 +6350,12 @@
                 <addPadding />
                 <actionButton featureText="record with autoGainControl on">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaAutoGainControlOn" noiseSuppression="false" echoCancellation="false" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6373,12 +6373,12 @@
                 <addPadding />
                 <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl on">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOn" noiseSuppression="true" echoCancellation="true" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6396,12 +6396,12 @@
                 <addPadding />
                 <actionButton featureText="record with noiseSuppression and echoCancellation and autoGainControl off">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaNoiseSuppressionEchoCancellationAutoGainControlOff" noiseSuppression="false" echoCancellation="false" autoGainControl="false">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6419,12 +6419,12 @@
                 <addPadding />
                 <actionButton featureText="record WAV with noiseSuppression and echoCancellation and autoGainControl on">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" deviceRegex="" mediaId="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOn" noiseSuppression="true" echoCancellation="true" autoGainControl="true">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6442,12 +6442,12 @@
                 <addPadding />
                 <actionButton featureText="record WAV with noiseSuppression and echoCancellation and autoGainControl off">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" recordingFormat="wav" deviceRegex="" mediaId="recordedWavMediaNoiseSuppressionEchoCancellationAutoGainControlOff" noiseSuppression="false" echoCancellation="false" autoGainControl="false">
-                        <onError>
-                            <htmlText featureText="startAudioRecorder onError" />
-                        </onError>
                         <onSuccess>
                             <hardwareTimeStamp dtmf="1" />
                         </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
                         <mediaLoaded>
                             <addPadding />
                             <addPadding />
@@ -6494,18 +6494,6 @@
             <hasMoreStimulus>
                 <regionReplace regionId="recordedMediaResult">
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_&lt;stimulusId&gt;">
-                        <onError>
-                            <regionReplace regionId="stimulusLabel"></regionReplace>
-                            <regionReplace regionId="stimulusButtons"></regionReplace>
-                            <regionReplace regionId="recordedMediaResult">
-                                <plainText featureText="Recording Error"/>
-                                <plainText featureText="Please make sure you are using the HTTPS version of this page."/>
-                                <plainText featureText="Please check that your USB headset is pluged in and that you have allowed this web page to access the microphone."/>
-                                <actionButton featureText="Retry">
-                                    <showStimulus/>
-                                </actionButton>
-                            </regionReplace>
-                        </onError>
                         <onSuccess>
                             <regionReplace regionId="stimulusLabel">
                                 <stimulusLabel/>
@@ -6519,6 +6507,18 @@
                                 </actionButton>
                             </regionReplace>
                         </onSuccess>
+                        <onError>
+                            <regionReplace regionId="stimulusLabel"></regionReplace>
+                            <regionReplace regionId="stimulusButtons"></regionReplace>
+                            <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="Recording Error"/>
+                                <plainText featureText="Please make sure you are using the HTTPS version of this page."/>
+                                <plainText featureText="Please check that your USB headset is pluged in and that you have allowed this web page to access the microphone."/>
+                                <actionButton featureText="Retry">
+                                    <showStimulus/>
+                                </actionButton>
+                            </regionReplace>
+                        </onError>
                         <mediaLoaded>
                             <!-- <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="AudioRecordingLoaded"/>
@@ -6625,16 +6625,16 @@
                         <column>
                             <actionButton featureText="StartRecorderA(USB)">
                                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMediaA">
-                                    <onError>
-                                        <regionReplace regionId="recordedMediaResultA">
-                                            <plainText featureText="Error"/>
-                                        </regionReplace>
-                                    </onError>
                                     <onSuccess>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaResultA">
+                                            <plainText featureText="Error"/>
+                                        </regionReplace>
+                                    </onError>
                                     <mediaLoaded>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="AudioRecordingLoaded"/>
@@ -6681,16 +6681,16 @@
                         <column>
                             <actionButton featureText="StartRecorderB(any)">
                                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaB">
-                                    <onError>
-                                        <regionReplace regionId="recordedMediaResultB">
-                                            <plainText featureText="Error"/>
-                                        </regionReplace>
-                                    </onError>
                                     <onSuccess>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaResultB">
+                                            <plainText featureText="Error"/>
+                                        </regionReplace>
+                                    </onError>
                                     <mediaLoaded>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="AudioRecordingLoaded"/>
@@ -6737,16 +6737,16 @@
                         <column>
                             <actionButton featureText="StartRecorderC(any)">
                                 <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMediaC">
-                                    <onError>
-                                        <regionReplace regionId="recordedMediaResultC">
-                                            <plainText featureText="Error"/>
-                                        </regionReplace>
-                                    </onError>
                                     <onSuccess>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaResultC">
+                                            <plainText featureText="Error"/>
+                                        </regionReplace>
+                                    </onError>
                                     <mediaLoaded>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="AudioRecordingLoaded"/>
@@ -7634,9 +7634,6 @@
                                                                 <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
                                                                 <!--// if the response uuid does not exist then transmit-->
                                                                 <transmitResults sendingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" receivingRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
-                                                                    <onError>
-                                                                        <htmlText featureText="Transmitting the data for this session step failed."/>
-                                                                    </onError>
                                                                     <onSuccess>
                                                                         <htmlText featureText="Transmitting the data for this session step ok"/>
                                                                         <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
@@ -7658,6 +7655,9 @@
                                                                             </conditionFalse>
                                                                         </hasMetadataValue>
                                                                     </onSuccess>
+                                                                    <onError>
+                                                                        <htmlText featureText="Transmitting the data for this session step failed."/>
+                                                                    </onError>
                                                                 </transmitResults>
                                                             </conditionTrue>
                                                             <conditionFalse>
@@ -7798,9 +7798,6 @@
                 <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
                 <transmitResults sendingRegex="uuid|session_id|step_done|session_steps|session_step" receivingRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
                 &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
-                    <onError>
-                        <htmlText featureText="Results transmition failed."/>
-                    </onError>
                     <onSuccess>
                         <htmlText featureText="Results transmitted ok."/>
                         <!--generateCompletionCode should have already send all metadata and data so we can skip these steps here-->
@@ -7822,6 +7819,9 @@
                             </onError>
                         </sendMetadata>-->
                     </onSuccess>
+                    <onError>
+                        <htmlText featureText="Results transmition failed."/>
+                    </onError>
                 </transmitResults>
                 <!-- <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
                 <addPadding/>
@@ -8011,10 +8011,10 @@
         <metadataField fieldName="workerId"/>
         <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
         <addPadding/>
     </presenter>
@@ -8227,20 +8227,20 @@
     </presenter>
     <presenter back="Menu" menuLabel="Custom Completion Number" type="transmission" self="custom_completion_number" title="Custom Completion Number">
         <setMetadataEvalTokens evaluateTokens="random(10)random(10)random(10)random(10)random(10)random(10)random(10)" fieldName="customCompletionNumber">	
-            <onError>
-                <htmlTokenText featureText="Failed generating customCompletionNumber."/>
-            </onError>
             <onSuccess> 
                 <htmlTokenText featureText="Generated a customCompletionNumber do not present this value until it has been transmitted to the server."/> 
                 <sendMetadata>
-                    <onError>
-                        <htmlTokenText featureText="Failed storing customCompletionNumber."/>
-                    </onError>
                     <onSuccess>
                         <htmlTokenText featureText="Your custom completion code is: &lt;metadataField_customCompletionNumber&gt;" />
                     </onSuccess>
+                    <onError>
+                        <htmlTokenText featureText="Failed storing customCompletionNumber."/>
+                    </onError>
                 </sendMetadata>
             </onSuccess>
+            <onError>
+                <htmlTokenText featureText="Failed generating customCompletionNumber."/>
+            </onError>
         </setMetadataEvalTokens>
     </presenter>
     <presenter back="Menu" menuLabel="Random Image Positions Remembered" type="stimulus" self="random_image_positions_remembered" title="Random Image Positions Remembered">
