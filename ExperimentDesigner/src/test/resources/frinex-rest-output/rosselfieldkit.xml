@@ -41,10 +41,10 @@
         <metadataField fieldName="workerId"/>
         <metadataFieldConnection fieldName="connectionString" linkedFieldName="workerId" oneToMany="true"/>
         <saveMetadataButton featureText="Save and continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="Welcome" menuLabel="Select Participant" next="Menu" type="metadata" self="SelectUser" title="Select Participant">
@@ -55,8 +55,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="FieldKit Sequential" filePerStimulus="false">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -91,8 +91,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="FieldKit Random" filePerStimulus="false">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -128,8 +128,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="Task 1" filePerStimulus="false">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <withMatchingStimulus eventTag="" randomise="true" repeatRandomWindow="0" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
@@ -199,8 +199,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="Task 2" filePerStimulus="false">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <clearPage/>
                 <matchingStimulusGrid randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">

@@ -366,12 +366,12 @@
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="gender"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError>
-                <gotoPresenter target="Introduction_1"/>
-            </onError>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError>
+                <gotoPresenter target="Introduction_1"/>
+            </onError>
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
