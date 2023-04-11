@@ -85,9 +85,6 @@
         <metadataField fieldName="invitation_id"/>
         <addPadding/>
         <saveMetadataButton featureText="Save Invitation ID" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError>
-                <htmlText featureText="Save metadata failed"/>
-            </onError>
             <onSuccess>
                 <hasMetadataValue fieldName="invitation_id" matchingRegex="...*">
                     <conditionTrue>
@@ -100,17 +97,17 @@
                 "/>
                         <addPadding/>
                         <switchUserIdButton featureText="Switch current user ID to the invitation ID" fieldName="invitation_id" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" styleName="styleName">
+                            <onSuccess>
+                                <htmlText featureText="onSuccess"/>
+                                <addPadding/>
+                                <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+                            </onSuccess>
                             <onError>
                                 <htmlText featureText="onError"/>
                                 <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                                 <addPadding/>
                                 <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
                             </onError>
-                            <onSuccess>
-                                <htmlText featureText="onSuccess"/>
-                                <addPadding/>
-                                <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
-                            </onSuccess>
                         </switchUserIdButton>
                     </conditionTrue>
                     <conditionFalse>
@@ -120,6 +117,9 @@
                     </conditionFalse>
                 </hasMetadataValue>
             </onSuccess>
+            <onError>
+                <htmlText featureText="Save metadata failed"/>
+            </onError>
         </saveMetadataButton>
         <addPadding/>
         <addPadding/>
@@ -270,21 +270,21 @@
         <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
         <!--// if the response invitation_id does not exist then transmit-->
         <saveMetadataButton featureText="Save Metadata and transmitResults" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError>
-                <htmlText featureText="Save metadata failed"/>
-            </onError>
             <onSuccess>
                 <gotoPresenter target="InvitationValidationExample"/>
             </onSuccess>
-        </saveMetadataButton>
-        <addPadding/>
-        <saveMetadataButton featureText="Save Metadata and validateMetadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError>
                 <htmlText featureText="Save metadata failed"/>
             </onError>
+        </saveMetadataButton>
+        <addPadding/>
+        <saveMetadataButton featureText="Save Metadata and validateMetadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onSuccess>
                 <gotoPresenter target="InvitationValidateMetadataExample"/>
             </onSuccess>
+            <onError>
+                <htmlText featureText="Save metadata failed"/>
+            </onError>
         </saveMetadataButton>
         <addPadding/>
         <addPadding/>
@@ -302,26 +302,22 @@
         <htmlTokenText featureText="&quot;session_next_copepod&quot;: &lt;metadataField_session_next_copepod&gt;"/>
         <addPadding/>
         <switchUserIdButton featureText="Switch current user ID to the invitation ID" fieldName="invitation_id" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" styleName="styleName">
+            <onSuccess>
+                <setMetadataValue fieldName="invitation_id" dataLogFormat="&lt;userId&gt;"/>
+                <gotoPresenter target="InvitationValidationExample"/>
+            </onSuccess>
             <onError>
                 <htmlText featureText="onError"/>
                 <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                 <addPadding/>
                 <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
             </onError>
-            <onSuccess>
-                <setMetadataValue fieldName="invitation_id" dataLogFormat="&lt;userId&gt;"/>
-                <gotoPresenter target="InvitationValidationExample"/>
-            </onSuccess>
         </switchUserIdButton>
         <addPadding/>
         <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
         <addPadding/>
         <actionButton featureText="Validate Invitation">
             <transmitResults sendingRegex="invitation_id|token" receivingRegex="validated_invitation_id|session_id|copepod_done|validation_error|session_validation_error|session_copepods|session_copepod|session_next_copepod" dataLogFormat="Is this Invitation ID for this session copepod valid? Please respond with a 200 if it is and provide either validated_invitation_id or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
-                <onError>
-                    <addPadding/>
-                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
-                </onError>
                 <onSuccess>
                     <addPadding/>
                     <htmlText featureText="Transmitting the data for this session copepod ok"/>
@@ -371,6 +367,10 @@
                         </conditionFalse>
                     </hasMetadataValue>
                 </onSuccess>
+                <onError>
+                    <addPadding/>
+                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
+                </onError>
             </transmitResults>
         </actionButton>
     </presenter>
@@ -384,26 +384,22 @@
         <htmlTokenText featureText="&quot;session_next_copepod&quot;: &lt;metadataField_session_next_copepod&gt;"/>
         <addPadding/>
         <switchUserIdButton featureText="Switch current user ID to the invitation ID" fieldName="invitation_id" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" styleName="styleName">
+            <onSuccess>
+                <setMetadataValue fieldName="invitation_id" dataLogFormat="&lt;userId&gt;"/>
+                <gotoPresenter target="InvitationValidateMetadataExample"/>
+            </onSuccess>
             <onError>
                 <htmlText featureText="onError"/>
                 <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                 <addPadding/>
                 <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
             </onError>
-            <onSuccess>
-                <setMetadataValue fieldName="invitation_id" dataLogFormat="&lt;userId&gt;"/>
-                <gotoPresenter target="InvitationValidateMetadataExample"/>
-            </onSuccess>
         </switchUserIdButton>
         <addPadding/>
         <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
         <addPadding/>
         <actionButton featureText="Validate Invitation">
             <validateMetadata>
-                <onError>
-                    <addPadding/>
-                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
-                </onError>
                 <onSuccess>
                     <addPadding/>
                     <htmlText featureText="Transmitting the data for this session copepod ok"/>
@@ -453,6 +449,10 @@
                         </conditionFalse>
                     </hasMetadataValue>
                 </onSuccess>
+                <onError>
+                    <addPadding/>
+                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
+                </onError>
             </validateMetadata>
         </actionButton>
     </presenter>

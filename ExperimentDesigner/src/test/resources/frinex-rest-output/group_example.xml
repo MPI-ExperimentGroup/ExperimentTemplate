@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd"
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd"
             appNameDisplay="group_example" 
             appNameInternal="group_example" 
             backgroundColour="#FFFFFF" 
@@ -172,12 +172,6 @@
         <!--actionButton featureText="Volgende [enter]" hotKey="ENTER"-->
         <groupStimuli eventTag="Group of Four" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A|B|C|D">
-                <groupFindingMembers>
-                    <triggerMatching listenerId="groupDebugTrigger" />
-                    <regionReplace regionId="groupStatusRegion">
-                        <htmlTokenText featureText="groupFindingMembers" />
-                    </regionReplace>
-                </groupFindingMembers>
                 <groupInitialisationError>
                     <htmlText featureText="groupInitialisationError" />
                 </groupInitialisationError>
@@ -187,6 +181,12 @@
                         <htmlTokenText featureText="groupNetworkConnecting" />
                     </regionReplace>
                 </groupNetworkConnecting>
+                <groupFindingMembers>
+                    <triggerMatching listenerId="groupDebugTrigger" />
+                    <regionReplace regionId="groupStatusRegion">
+                        <htmlTokenText featureText="groupFindingMembers" />
+                    </regionReplace>
+                </groupFindingMembers>
                 <groupNetworkSynchronising>
                     <triggerMatching listenerId="groupDebugTrigger" />
                     <regionReplace regionId="groupStatusRegion">
@@ -295,12 +295,6 @@
                 <htmlText featureText="Participants G and H are not members of this group and will be shown any activities here." />
                 <groupStimuli eventTag="GroupOf6" randomise="true" repeatRandomWindow="6" maxStimuli="23" repeatCount="1">
                     <groupNetwork groupMembers="A,B,C,D,E,F" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F">
-                        <groupFindingMembers>
-                            <regionReplace regionId="groupFindingMembers">
-                                <htmlText featureText="GroupOf6 groupFindingMembers" />
-                                <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
-                            </regionReplace>
-                        </groupFindingMembers>
                         <groupInitialisationError>
                             <htmlText featureText="groupInitialisationError" />
                         </groupInitialisationError>
@@ -310,6 +304,12 @@
                                 <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
                             </regionReplace>
                         </groupNetworkConnecting>
+                        <groupFindingMembers>
+                            <regionReplace regionId="groupFindingMembers">
+                                <htmlText featureText="GroupOf6 groupFindingMembers" />
+                                <htmlTokenText featureText="Stimulus: &lt;stimulusId&gt; Phase: &lt;groupRequestedPhase&gt; Channel: &lt;groupActiveChannel&gt;" />
+                            </regionReplace>
+                        </groupFindingMembers>
                         <groupNetworkSynchronising>
                             <regionReplace regionId="groupNetworkSynchronising">
                                 <htmlText featureText="GroupOf6 groupNetworkSynchronising" />
@@ -436,11 +436,6 @@
                             <stimulusFreeText featureText="Please enter at least three characters." groupId="MessageType1" validationRegex=".{1,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" />
                             <actionButton featureText="validateStimuliResponses">
                                 <validateStimuliResponses>
-                                    <conditionFalse>
-                                        <regionAppend regionId="validateStimuliResponses">
-                                            <plainText featureText="plainText in conditionFalse" />
-                                        </regionAppend>
-                                    </conditionFalse>
                                     <conditionTrue>
                                         <regionAppend regionId="validateStimuliResponses">
                                             <plainText featureText="plainText in conditionTrue" />
@@ -451,6 +446,11 @@
                                             </regionReplace>
                                         </regionAppend>
                                     </conditionTrue>
+                                    <conditionFalse>
+                                        <regionAppend regionId="validateStimuliResponses">
+                                            <plainText featureText="plainText in conditionFalse" />
+                                        </regionAppend>
+                                    </conditionFalse>
                                 </validateStimuliResponses>
                             </actionButton>
                         </regionReplace>
@@ -600,12 +600,12 @@
                                             <stimulusFreeText featureText="Please enter at least three characters." groupId="descriptionInput" validationRegex=".{1,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth" />
                                             <actionButton featureText="validateStimuliResponse">
                                                 <validateStimuliResponses>
-                                                    <conditionFalse />
                                                     <conditionTrue>
                                                         <!-- The description is then sent to the other person. -->
                                                         <sendGroupStoredMessage incrementPhase="1" groupId="descriptionInput" />
                                                         <regionReplace regionId="textInputRegion"/>
                                                     </conditionTrue>
+                                                    <conditionFalse />
                                                 </validateStimuliResponses>
                                             </actionButton>
                                         </regionReplace>

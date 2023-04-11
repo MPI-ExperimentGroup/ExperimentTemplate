@@ -139,8 +139,8 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
     private void addBaseTypes(Writer writer) throws IOException {
         for (String baseType : childTypeLists.keySet()) {
 //            if ("allOnceUnordered_hasTrueFalseCondition".equals(baseType)) {
-            writer.append("<xs:complexType name=\"" + baseType + "Type\">\n");
-            writer.append("<xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice minOccurs=\"0\" maxOccurs=\"unbounded\"" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
+            writer.append("<xs:group name=\"" + baseType + "Type\">\n");
+            writer.append("<xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
             for (String childTypeName : childTypeLists.get(baseType)) {
                 writer.append("<xs:element name=\"");
                 writer.append(childTypeName);
@@ -149,7 +149,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 writer.append("Type\"/>\n");
             }
             writer.append("</xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
-            writer.append("</xs:complexType>\n");
+            writer.append("</xs:group>\n");
         }
 //        }
     }
@@ -290,12 +290,12 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             writer.append("</xs:documentation>\n");
             writer.append("</xs:annotation>\n");
         }
-        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
-            writer.append("<xs:complexContent>\n");
-            writer.append("<xs:extension base=\"");
-            writer.append(currentElement.typeExtends);
-            writer.append("Type\">\n");
-        }
+//        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
+//            writer.append("<xs:complexContent>\n");
+//            writer.append("<xs:extension base=\"");
+//            writer.append(currentElement.typeExtends);
+//            writer.append("Type\">\n");
+//        }
         List<String> childTypeList = false /*!"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends)*/ && childTypeLists.containsKey(currentElement.typeExtends) ? childTypeLists.get(currentElement.typeExtends) : Collections.EMPTY_LIST;
         if (!insertType) {
             writer.append("<xs:complexType>\n");
@@ -344,6 +344,15 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //                writer.append("</xs:choice3>\n");
             }
         }
+        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
+            writer.append("<xs:group ref=\"");
+            writer.append(currentElement.typeExtends);
+            writer.append("Type\" ");
+            if ((currentElement.childOption == ChildType.choiceAnyCount)) {
+                writer.append("minOccurs=\"0\" maxOccurs=\"unbounded\"");
+            }
+            writer.append("/>\n");
+        }
         addChildElements(writer, currentElement, false, true);
         if (isPresenterType) {
             writer.append("</xs:choice>\n");
@@ -364,10 +373,10 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         } else {
 //            writer.append("\"/>\n");
         }
-        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
-            writer.append("</xs:extension>\n");
-            writer.append("</xs:complexContent>\n");
-        }
+//        if (/*"allOnceUnordered_hasTrueFalseCondition".equals(currentElement.typeExtends) &&*/currentElement.typeExtends != null) {
+//            writer.append("</xs:extension>\n");
+//            writer.append("</xs:complexContent>\n");
+//        }
         writer.append("</xs:complexType>\n");
         if (!insertType) {
             writer.append("</xs:element>\n");

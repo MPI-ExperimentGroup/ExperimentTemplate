@@ -137,11 +137,6 @@ public class Sentveri_exp3 {
         // todo: vertical centre all screens
         final PresenterFeature checkTagFeature = new PresenterFeature(FeatureType.currentStimulusHasTag, null);
         checkTagFeature.addStimulusTag("question");
-        final PresenterFeature withoutTagFeature = checkTagFeature.addFeature(FeatureType.conditionFalse, null).addFeature(FeatureType.pause, null, "3000");
-        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-//        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
         final PresenterFeature hasTagFeature = checkTagFeature.addFeature(FeatureType.conditionTrue, null).addFeature(FeatureType.pause, null, "3000");
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
         // todo: this should have a red border, but should it be a tag or on the image and if a tag should it take style?
@@ -154,6 +149,11 @@ public class Sentveri_exp3 {
 //        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
         responseZFeature.getPresenterFeatureList().add(nextStimulusFeature1);
         hasTagFeature.getPresenterFeatureList().add(responseZFeature);
+        final PresenterFeature withoutTagFeature = checkTagFeature.addFeature(FeatureType.conditionFalse, null).addFeature(FeatureType.pause, null, "3000");
+        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+//        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
+        autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
         questionFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed)[0].getPresenterFeatureList().add(checkTagFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionFooterButton, ".");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");

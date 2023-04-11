@@ -180,10 +180,10 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
                 <saveMetadataButton featureText="Continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
                     <translation featureText="Verder" locale="nl"/>
                     <translation featureText="Weiter" locale="de"/>
-                    <onError/>
                     <onSuccess>
                         <gotoPresenter target="quizmenu"/>
                     </onSuccess>
+                    <onError/>
                 </saveMetadataButton>
                 <htmlText featureText="&amp;nbsp;" styleName="keyboardPadding"/>
             </conditionFalse>
@@ -357,10 +357,10 @@ socialMediaPostSubject=Onderwerp bericht sociale media
         <saveMetadataButton featureText="Continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
             <translation featureText="Verder" locale="nl"/>
             <translation featureText="Weiter" locale="de"/>
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
         <htmlText featureText="&amp;nbsp;" styleName="keyboardPadding"/>
     </presenter>
@@ -740,6 +740,9 @@ registrationFailedText=
     </presenter>
     <presenter back="Menu" menuLabel="Submit my results" next="Completion" type="colourReport" self="Register" title="Register">
         <submitTestResults>
+            <onSuccess>
+                <gotoNextPresenter/>
+            </onSuccess>
             <onError>
                 <plainText featureText="Registration failed on the server. You can try again later or if you continue having trouble submitting your registration please go to www.mpi.nl/synaesthesia to register and participate in the study!">
                     <translation featureText="Het registreren op de server is mislukt. Probeer het later nog eens. Indien u problemen blijft houden met het verzenden van uw registratie, ga dan s.v.p. naar www.mpi.nl/synaesthesia om u voor het onderzoek aan te melden en deel te nemen!
@@ -751,9 +754,6 @@ registrationFailedText=
                 <translation featureText="Ошибка отправки данных." locale="ru"/>-->
                 <!--                </plainText>-->
             </onError>
-            <onSuccess>
-                <gotoNextPresenter/>
-            </onSuccess>
         </submitTestResults>
     </presenter>
     <presenter back="Menu" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Quiz reports">

@@ -80,6 +80,12 @@
         </regionAppend>
         <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                <groupInitialisationError>
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput"></regionReplace>
+                </groupInitialisationError>
                 <groupNetworkConnecting>
                     <regionReplace regionId="groupStatus">
                         <htmlText featureText="groupNetworkConnecting" />
@@ -99,12 +105,6 @@
                         <addPadding />
                     </regionReplace>
                 </groupFindingMembers>
-                <groupInitialisationError>
-                    <regionReplace regionId="groupStatus">
-                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
-                    </regionReplace>
-                    <regionReplace regionId="groupOutput"></regionReplace>
-                </groupInitialisationError>
                 <groupNetworkSynchronising>
                     <regionReplace regionId="groupStatus">
                         <htmlText featureText="GroupFormation groupNetworkSynchronising" />

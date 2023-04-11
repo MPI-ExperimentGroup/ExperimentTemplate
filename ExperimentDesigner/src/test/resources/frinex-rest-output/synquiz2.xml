@@ -169,10 +169,10 @@
             <!--<networkErrorMessage>Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->
             <!--<networkErrorMessage locale="nl">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->
             <!--<networkErrorMessage locale="ru">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->    
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--<translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -190,10 +190,10 @@
         <metadataField fieldName="BrainSurgery"/>
         <metadataField fieldName="AnyOtherConditions"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -206,10 +206,10 @@
             <!--<translation featureText="Наше исследование в Институте Макса Планка фокусируется на синестезии, при которой цифры, буквы, дни недели, месяцы связаны у людей с ощущением цвета. Например, у кого-то буква &quot;А&quot; может &quot;означать&quot; красный или число &quot;5&quot; может восприниматься окрашенной в зеленый цвет. Пожалуйста, сообщите нам, есть ли у вас ещё какие-либо другие типы синестезии, отметив поля на последующих страницах. Мы свяжемся с Вами в будущем по вопросам исследований, связанных с этими типами. " locale="ru"/>-->
         </htmlText>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -240,10 +240,10 @@
         <metadataField fieldName="American_Sign____Colour"/>
         <metadataField fieldName="British_Sign____Colour"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--            <translation featureText="" locale="de"/>-->
             <!--            <translation featureText="Продолжать" locale="ru"/>-->
@@ -274,10 +274,10 @@
         <metadataField fieldName="American_Sign__Smell"/>
         <metadataField fieldName="British_Sign__Smell"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -308,10 +308,10 @@
         <metadataField fieldName="American_Sign__Sound"/>
         <metadataField fieldName="British_Sign__Sound"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -342,10 +342,10 @@
         <metadataField fieldName="American_Sign__Spatial"/>
         <metadataField fieldName="British_Sign__Spatial"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -372,10 +372,10 @@
         <metadataField fieldName="American_Sign__Taste"/>
         <metadataField fieldName="British_Sign__Taste"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -406,10 +406,10 @@
         <metadataField fieldName="American_Sign__Touch"/>
         <metadataField fieldName="British_Sign__Touch"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -418,10 +418,10 @@
     <presenter back="Touch" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
         <metadataField fieldName="AnyOtherTypes"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -530,6 +530,9 @@
     </presenter>
     <presenter back="Menu" menuLabel="Submit my results" next="Completion" type="colourReport" self="Register" title="Register">
         <submitTestResults>
+            <onSuccess>
+                <gotoNextPresenter/>
+            </onSuccess>
             <onError>
                 <plainText featureText="Error submitting data."/>
                 <!--                    <translation featureText="Error met invoeren van data." locale="nl"/>
@@ -537,9 +540,6 @@
                 <translation featureText="Ошибка отправки данных." locale="ru"/>-->
                 <!--                </plainText>-->
             </onError>
-            <onSuccess>
-                <gotoNextPresenter/>
-            </onSuccess>
         </submitTestResults>
     </presenter>
     <presenter back="Menu" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">

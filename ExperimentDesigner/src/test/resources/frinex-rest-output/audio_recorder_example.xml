@@ -15,12 +15,6 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder" downloadPermittedWindowMs="10000" deviceRegex="(046d:0a45)" featureText="00:00:00">
-                    <onError>
-                        <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
-                        <targetButton featureText="Retry USB Device (046d:0a45)" target="Recorder_046d_0a45"/>
-                        <addPadding/>
-                        <targetButton featureText="Retry Any Device" target="Recorder_Any_Device"/>
-                    </onError>
                     <onSuccess>
                         <stimulusLabel styleName="stimuliLabel"/>
                         <addPadding/>
@@ -35,6 +29,12 @@
                             </validateStimuliResponses>
                         </actionButton>
                     </onSuccess>
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                        <targetButton featureText="Retry USB Device (046d:0a45)" target="Recorder_046d_0a45"/>
+                        <addPadding/>
+                        <targetButton featureText="Retry Any Device" target="Recorder_Any_Device"/>
+                    </onError>
                     <mediaLoaded>
                         <addPadding/>
                         <htmlText featureText="In this example the recorded media can be replayed, if started within 10 seconds of the data submission"/>
@@ -80,12 +80,6 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder" downloadPermittedWindowMs="10000" deviceRegex="" featureText="00:00:00">
-                    <onError>
-                        <htmlText featureText="startAudioRecorder onError, please enable microphone access"/>
-                        <targetButton featureText="Retry USB Device (046d:0a45)" target="Recorder_046d_0a45"/>
-                        <addPadding/>
-                        <targetButton featureText="Retry Any Device" target="Recorder_Any_Device"/>
-                    </onError>
                     <onSuccess>
                         <stimulusLabel styleName="stimuliLabel"/>
                         <addPadding/>
@@ -100,6 +94,12 @@
                             </validateStimuliResponses>
                         </actionButton>
                     </onSuccess>
+                    <onError>
+                        <htmlText featureText="startAudioRecorder onError, please enable microphone access"/>
+                        <targetButton featureText="Retry USB Device (046d:0a45)" target="Recorder_046d_0a45"/>
+                        <addPadding/>
+                        <targetButton featureText="Retry Any Device" target="Recorder_Any_Device"/>
+                    </onError>
                     <mediaLoaded>
                         <addPadding/>
                         <htmlText featureText="In this example the recorded media can be replayed, if started within 10 seconds of the data submission"/>
