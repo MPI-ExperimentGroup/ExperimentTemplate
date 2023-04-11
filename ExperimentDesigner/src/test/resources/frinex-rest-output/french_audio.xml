@@ -10,10 +10,10 @@
         <htmlText featureText="Entrez votre code identifiant ici:"/>
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Accord" next="AudioTest" type="metadata" self="Accord" title="Accord">
@@ -203,10 +203,10 @@
         <htmlText featureText="D'après vous, quel est le thème/but de cette expérience?"/>
         <metadataField fieldName="feedBack"/>
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Fini" type="transmission" self="Fini" title="Fini">

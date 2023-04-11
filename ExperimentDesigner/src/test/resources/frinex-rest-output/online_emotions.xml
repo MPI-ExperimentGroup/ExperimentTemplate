@@ -24,10 +24,10 @@
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
         <saveMetadataButton featureText="Save Details" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="VideoAudioOption" next="Finished" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
