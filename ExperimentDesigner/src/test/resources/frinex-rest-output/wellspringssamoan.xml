@@ -33,10 +33,10 @@
         <metadataFieldConnection fieldName="connectionString" linkedFieldName="workerId" oneToMany="true"/>
         <metadataFieldConnection fieldName="connectionType" linkedFieldName="workerId" oneToMany="true"/>
         <saveMetadataButton featureText="Save information" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="Afio_mai__welcome_" menuLabel="Select User" next="Fa_atagaga__consent_" type="metadata" self="SelectUser" title="Select User">
@@ -51,8 +51,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="Metadata" filePerStimulus="false">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
@@ -77,8 +77,8 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <startAudioRecorderApp fieldName="workerId" eventTag="Va’ai i le ata (look at the picture)" filePerStimulus="true">
-                    <onError/>
                     <onSuccess/>
+                    <onError/>
                 </startAudioRecorderApp>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>

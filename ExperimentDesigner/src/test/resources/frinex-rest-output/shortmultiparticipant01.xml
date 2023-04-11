@@ -45,10 +45,10 @@
     <presenter back="Accord" menuLabel="screenTitle" next="Set1" type="metadata" self="screenTag" title="screenTitle">
         <htmlText featureText="dispalyText"/>
         <saveMetadataButton featureText="saveButtonLabel" sendData="true" networkErrorMessage="on_Error_Text">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
         <addPadding/>
         <htmlText featureText="postText"/>

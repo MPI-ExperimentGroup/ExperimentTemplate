@@ -4273,6 +4273,18 @@
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
+<xs:complexType name="conditionTrueType">
+<xs:complexContent>
+<xs:extension base="choiceAnyCount_anyType">
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="conditionFalseType">
+<xs:complexContent>
+<xs:extension base="choiceAnyCount_anyType">
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
 <xs:complexType name="onSuccessType">
 <xs:complexContent>
 <xs:extension base="choiceAnyCount_anyType">
@@ -4336,18 +4348,6 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-</xs:extension>
-</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="conditionTrueType">
-<xs:complexContent>
-<xs:extension base="choiceAnyCount_anyType">
-</xs:extension>
-</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="conditionFalseType">
-<xs:complexContent>
-<xs:extension base="choiceAnyCount_anyType">
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
@@ -6893,9 +6893,9 @@
 </xs:complexType>
 <xs:complexType name="sequenceOnceOrdered_hasTrueFalseErrorConditionType">
 <xs:sequence>
-<xs:element name="onError" type="onErrorType"/>
 <xs:element name="conditionTrue" type="conditionTrueType"/>
 <xs:element name="conditionFalse" type="conditionFalseType"/>
+<xs:element name="onError" type="onErrorType"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="choiceAnyCount_hasFrameRateTriggersType">

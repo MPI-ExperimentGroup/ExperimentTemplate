@@ -36,10 +36,10 @@
         <metadataField fieldName="languageOthers"/>
         <metadataField fieldName="nationality"/>
         <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Back" type="text" self="Instruction4" title="Instruction4">
