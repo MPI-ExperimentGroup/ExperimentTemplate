@@ -4291,12 +4291,6 @@
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
-<xs:complexType name="onErrorType">
-<xs:complexContent>
-<xs:extension base="choiceAnyCount_anyType">
-</xs:extension>
-</xs:complexContent>
-</xs:complexType>
 <xs:complexType name="onActivateType">
 <xs:complexContent>
 <xs:extension base="choiceAnyCount_anyType">
@@ -4375,18 +4369,48 @@
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
-<xs:complexType name="hasMoreStimulusType">
+<xs:complexType name="groupNetworkType">
+<xs:annotation>
+<xs:documentation>Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.</xs:documentation>
+</xs:annotation>
 <xs:complexContent>
-<xs:extension base="choiceAnyCount_stimulusActionType">
+<xs:extension base="sequenceOnceOrdered_groupNetworkType">
+<xs:attribute name="groupMembers" type="groupMembers" use="required">
+<xs:annotation>
+<xs:documentation>List of members separated by , with preferably only a-Z being used for the member names.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupCommunicationChannels" type="groupChannels" use="required">
+<xs:annotation>
+<xs:documentation>List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupCameraChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of video streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will see the shared cameras from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupAudioChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of audio streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will hear the shared microphones from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="groupCanvasChannels" type="groupChannels">
+<xs:annotation>
+<xs:documentation>List of canvas streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel see shared canvases and these messages will only be from other members of the same channel.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="phasesPerStimulus" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
-<xs:complexType name="endOfStimulusType">
-<xs:annotation>
-<xs:documentation>Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.</xs:documentation>
-</xs:annotation>
+<xs:complexType name="hasMoreStimulusType">
 <xs:complexContent>
-<xs:extension base="choiceAnyCount_anyType">
+<xs:extension base="choiceAnyCount_stimulusActionType">
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
@@ -4403,6 +4427,15 @@
 </xs:complexContent>
 </xs:complexType>
 <xs:complexType name="afterStimulusType">
+<xs:complexContent>
+<xs:extension base="choiceAnyCount_anyType">
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="endOfStimulusType">
+<xs:annotation>
+<xs:documentation>Will be triggered if there are zero stimuli loaded or when a nextStimulus/Button event occurs on the last stimulus.</xs:documentation>
+</xs:annotation>
 <xs:complexContent>
 <xs:extension base="choiceAnyCount_anyType">
 </xs:extension>
@@ -5305,45 +5338,6 @@
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
-<xs:complexType name="groupNetworkType">
-<xs:annotation>
-<xs:documentation>Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.</xs:documentation>
-</xs:annotation>
-<xs:complexContent>
-<xs:extension base="sequenceOnceOrdered_groupNetworkType">
-<xs:attribute name="groupMembers" type="groupMembers" use="required">
-<xs:annotation>
-<xs:documentation>List of members separated by , with preferably only a-Z being used for the member names.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="groupCommunicationChannels" type="groupChannels" use="required">
-<xs:annotation>
-<xs:documentation>List of communication channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will receive messages and these messages will only be from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="groupCameraChannels" type="groupChannels">
-<xs:annotation>
-<xs:documentation>List of video streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will see the shared cameras from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="groupAudioChannels" type="groupChannels">
-<xs:annotation>
-<xs:documentation>List of audio streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel will hear the shared microphones from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="groupCanvasChannels" type="groupChannels">
-<xs:annotation>
-<xs:documentation>List of canvas streaming channels separated by | for the group. The members are separated by , in each channel. Only members in the same channel see shared canvases and these messages will only be from other members of the same channel.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="phasesPerStimulus" type="xs:integer" use="required">
-<xs:annotation>
-<xs:documentation>The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:extension>
-</xs:complexContent>
-</xs:complexType>
 <xs:complexType name="groupInitialisationErrorType">
 <xs:annotation>
 <xs:documentation>When the specified group already has enough members new members cannot be assigned to it or the member code has not been provided the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL along with the member code. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.</xs:documentation>
@@ -5353,18 +5347,18 @@
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
-<xs:complexType name="groupFindingMembersType">
+<xs:complexType name="groupNetworkConnectingType">
 <xs:annotation>
-<xs:documentation>When the the connection to the group server is established the second stage is waiting for the other group members.</xs:documentation>
+<xs:documentation>The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.</xs:documentation>
 </xs:annotation>
 <xs:complexContent>
 <xs:extension base="choiceAnyCount_anyType">
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
-<xs:complexType name="groupNetworkConnectingType">
+<xs:complexType name="groupFindingMembersType">
 <xs:annotation>
-<xs:documentation>The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.</xs:documentation>
+<xs:documentation>When the the connection to the group server is established the second stage is waiting for the other group members.</xs:documentation>
 </xs:annotation>
 <xs:complexContent>
 <xs:extension base="choiceAnyCount_anyType">
@@ -5890,6 +5884,12 @@
 </xs:extension>
 </xs:complexContent>
 </xs:complexType>
+<xs:complexType name="onErrorType">
+<xs:complexContent>
+<xs:extension base="choiceAnyCount_anyType">
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
 <xs:complexType name="randomGroupingType">
 <xs:annotation>
 <xs:documentation>List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.</xs:documentation>
@@ -6173,8 +6173,8 @@
 </xs:complexType>
 <xs:complexType name="sequenceOnceOrdered_groupStimulusType">
 <xs:sequence>
-<xs:element name="endOfStimulus" type="endOfStimulusType"/>
 <xs:element name="groupNetwork" type="groupNetworkType"/>
+<xs:element name="endOfStimulus" type="endOfStimulusType"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="choiceAnyCount_noneType">
@@ -6315,8 +6315,8 @@
 </xs:complexType>
 <xs:complexType name="sequenceOnceOrdered_hasMediaRecorderPlaybackType">
 <xs:sequence>
-<xs:element name="onError" type="onErrorType"/>
 <xs:element name="onSuccess" type="onSuccessType"/>
+<xs:element name="onError" type="onErrorType"/>
 <xs:element name="mediaLoaded" type="mediaLoadedType"/>
 <xs:element name="mediaLoadFailed" type="mediaLoadFailedType"/>
 <xs:element name="mediaPlaybackStarted" type="mediaPlaybackStartedType"/>
@@ -6326,8 +6326,8 @@
 <xs:complexType name="sequenceOnceOrdered_groupNetworkType">
 <xs:sequence>
 <xs:element name="groupInitialisationError" type="groupInitialisationErrorType"/>
-<xs:element name="groupFindingMembers" type="groupFindingMembersType"/>
 <xs:element name="groupNetworkConnecting" type="groupNetworkConnectingType"/>
+<xs:element name="groupFindingMembers" type="groupFindingMembersType"/>
 <xs:element name="groupNetworkSynchronising" type="groupNetworkSynchronisingType"/>
 <xs:element name="groupPhaseListeners" type="groupPhaseListenersType"/>
 </xs:sequence>

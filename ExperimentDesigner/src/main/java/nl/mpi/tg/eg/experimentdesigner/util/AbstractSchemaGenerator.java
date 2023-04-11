@@ -210,8 +210,8 @@ public class AbstractSchemaGenerator {
 //                    childTypeList.add("mediaPlaybackComplete");
                         break;
                     case hasMediaRecorderPlayback:
-                        childTypeList.add("onError");
                         childTypeList.add("onSuccess");
+                        childTypeList.add("onError");
                         break;
 //                case hasMoreStimulus:
 //                    childTypeList.add("onError");

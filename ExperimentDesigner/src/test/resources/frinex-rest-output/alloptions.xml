@@ -898,6 +898,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -910,9 +913,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
                     <onSuccess>
@@ -956,19 +956,16 @@
             </stimuli>
         </withStimuli>
         <groupStimuli adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" maxStimuli="3" repeatCount="3">
-            <endOfStimulus>
-                <plainText featureText="plainText in endOfStimulus"/>
-            </endOfStimulus>
             <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" groupCameraChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupCanvasChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupAudioChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                 <groupInitialisationError>
                     <plainText featureText="plainText in groupInitialisationError"/>
                 </groupInitialisationError>
-                <groupFindingMembers>
-                    <plainText featureText="plainText in groupFindingMembers"/>
-                </groupFindingMembers>
                 <groupNetworkConnecting>
                     <plainText featureText="plainText in groupNetworkConnecting"/>
                 </groupNetworkConnecting>
+                <groupFindingMembers>
+                    <plainText featureText="plainText in groupFindingMembers"/>
+                </groupFindingMembers>
                 <groupNetworkSynchronising>
                     <plainText featureText="plainText in groupNetworkSynchronising"/>
                 </groupNetworkSynchronising>
@@ -1086,6 +1083,9 @@
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
+            <endOfStimulus>
+                <plainText featureText="plainText in endOfStimulus"/>
+            </endOfStimulus>
             <randomGrouping storageField="groupAllocation_groupStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
@@ -1374,6 +1374,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1386,9 +1389,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
                     <onSuccess>
@@ -1696,6 +1696,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1708,9 +1711,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
                     <onSuccess>
@@ -2018,6 +2018,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2030,9 +2033,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" eventTag="eventTag" filePerStimulus="filePerStimulus">
                     <onSuccess>
@@ -3950,6 +3950,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3962,9 +3965,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onSuccess>
@@ -4002,19 +4002,16 @@
             </stimuli>
         </withStimuli>
         <groupStimuli>
-            <endOfStimulus>
-                <plainText featureText="plainText in endOfStimulus"/>
-            </endOfStimulus>
             <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                 <groupInitialisationError>
                     <plainText featureText="plainText in groupInitialisationError"/>
                 </groupInitialisationError>
-                <groupFindingMembers>
-                    <plainText featureText="plainText in groupFindingMembers"/>
-                </groupFindingMembers>
                 <groupNetworkConnecting>
                     <plainText featureText="plainText in groupNetworkConnecting"/>
                 </groupNetworkConnecting>
+                <groupFindingMembers>
+                    <plainText featureText="plainText in groupFindingMembers"/>
+                </groupFindingMembers>
                 <groupNetworkSynchronising>
                     <plainText featureText="plainText in groupNetworkSynchronising"/>
                 </groupNetworkSynchronising>
@@ -4132,6 +4129,9 @@
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
+            <endOfStimulus>
+                <plainText featureText="plainText in endOfStimulus"/>
+            </endOfStimulus>
             <randomGrouping storageField="groupAllocation_groupStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
@@ -4414,6 +4414,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -4426,9 +4429,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onSuccess>
@@ -4730,6 +4730,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -4742,9 +4745,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onSuccess>
@@ -5046,6 +5046,9 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -5058,9 +5061,6 @@
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
                 </startAudioRecorderWeb>
                 <startAudioRecorderApp fieldName="workerId" filePerStimulus="">
                     <onSuccess>

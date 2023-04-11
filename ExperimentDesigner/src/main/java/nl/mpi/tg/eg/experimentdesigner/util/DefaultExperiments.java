@@ -529,11 +529,11 @@ public class DefaultExperiments {
                 break;
             case hasMediaRecorderPlayback:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onSuccess, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackStarted, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository, addOptionalAttributes));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }

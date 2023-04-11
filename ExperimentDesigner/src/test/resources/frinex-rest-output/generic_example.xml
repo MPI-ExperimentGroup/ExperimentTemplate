@@ -28,10 +28,10 @@
         <metadataField fieldName="education"/>
         <metadataField fieldName="educationOther"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
-            <onError/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Terug" type="text" self="First_Stimuli_Screen_Informatie" title="First Stimuli Screen Informatie">
