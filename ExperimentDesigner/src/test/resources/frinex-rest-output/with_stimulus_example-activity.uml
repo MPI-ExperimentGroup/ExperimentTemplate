@@ -176,8 +176,6 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
-:Menu;
-endif
 :StoredStimulusReport;
 if (navigation) then (back)
 :Menu;
@@ -561,7 +559,8 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
-:preload_audio_example];
+:preload_audio_example;
+if (navigation) then (back)
 :Menu;
 endif
 :preload_images_example;

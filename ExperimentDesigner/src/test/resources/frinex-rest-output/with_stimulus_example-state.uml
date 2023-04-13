@@ -45,6 +45,8 @@ Menu --> Metadata_Current_Date
 Menu --> last_seven_days
 Menu --> replace_all_example
 Menu --> four_different_topics
+Menu --> StoredStimulusReport
+Menu --> StoredStimulusLists
 Menu --> request_focus_example
 Menu --> input_slider_example
 Menu --> append_unique_date
