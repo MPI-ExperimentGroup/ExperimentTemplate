@@ -54,6 +54,7 @@ Menu --> add_times_example
 Menu --> progressIndicator_example
 Menu --> With_Stimuli_Screen
 Menu --> Stimulus_Subquestions
+Menu --> With_Stimulus_Rating_Toggle_Example
 Menu --> Has_Stimulus_Response
 Menu --> First_Stimuli_Screen
 Menu --> stimulusResponse_logTokenText
@@ -67,6 +68,7 @@ Menu --> rating_buttons_example
 Menu --> clear_stimulus_responses_example
 Menu --> clear_stimulus_response_example
 Menu --> visible_enable_stimulus_free_text_example
+Menu --> stimulus_free_text_validation_example
 Menu --> rating_button_orientationType_example
 Menu --> holding_button_down_example
 Menu --> hotkey_enable_example
@@ -90,9 +92,17 @@ Menu --> Media_Playback_Demo
 Menu --> USB_LP310
 Menu --> Bluetooth_R1
 Menu --> showOnBackButton
+Menu --> dragDropRegion
+Menu --> recordedAndPlaybackMediaLength
+Menu --> recordedLengthPause
+Menu --> touchInputLabelButton
+Menu --> touchInputImageButton
+Menu --> touchInputVideoButton
 Menu --> AppendStimulusResponse
 Menu --> enter_in_the_text_box
+Menu --> evaluate_tokens_example
 Menu --> stimulusCodeImageButton
+Menu --> styleButtonGroup
 Menu --> stimulus_has_response
 Menu --> stimulusRatingImageButton
 Menu --> if_stimulus_exists
@@ -121,6 +131,7 @@ Menu --> table_tags_inside_a_region_tag
 Menu --> predefined_stimuli_example
 Menu --> custom_completion_number
 Menu --> random_image_positions_remembered
+Menu --> preload_audio_example
 Menu --> preload_images_example
 Menu --> about
 state LocaleMenu
@@ -221,6 +232,8 @@ sticky_menu_example --> Metadata_Current_Date
 sticky_menu_example --> last_seven_days
 sticky_menu_example --> replace_all_example
 sticky_menu_example --> four_different_topics
+sticky_menu_example --> StoredStimulusReport
+sticky_menu_example --> StoredStimulusLists
 sticky_menu_example --> request_focus_example
 sticky_menu_example --> input_slider_example
 sticky_menu_example --> append_unique_date
@@ -230,6 +243,7 @@ sticky_menu_example --> add_times_example
 sticky_menu_example --> progressIndicator_example
 sticky_menu_example --> With_Stimuli_Screen
 sticky_menu_example --> Stimulus_Subquestions
+sticky_menu_example --> With_Stimulus_Rating_Toggle_Example
 sticky_menu_example --> Has_Stimulus_Response
 sticky_menu_example --> First_Stimuli_Screen
 sticky_menu_example --> stimulusResponse_logTokenText
@@ -243,6 +257,7 @@ sticky_menu_example --> rating_buttons_example
 sticky_menu_example --> clear_stimulus_responses_example
 sticky_menu_example --> clear_stimulus_response_example
 sticky_menu_example --> visible_enable_stimulus_free_text_example
+sticky_menu_example --> stimulus_free_text_validation_example
 sticky_menu_example --> rating_button_orientationType_example
 sticky_menu_example --> holding_button_down_example
 sticky_menu_example --> hotkey_enable_example
@@ -266,9 +281,17 @@ sticky_menu_example --> Media_Playback_Demo
 sticky_menu_example --> USB_LP310
 sticky_menu_example --> Bluetooth_R1
 sticky_menu_example --> showOnBackButton
+sticky_menu_example --> dragDropRegion
+sticky_menu_example --> recordedAndPlaybackMediaLength
+sticky_menu_example --> recordedLengthPause
+sticky_menu_example --> touchInputLabelButton
+sticky_menu_example --> touchInputImageButton
+sticky_menu_example --> touchInputVideoButton
 sticky_menu_example --> AppendStimulusResponse
 sticky_menu_example --> enter_in_the_text_box
+sticky_menu_example --> evaluate_tokens_example
 sticky_menu_example --> stimulusCodeImageButton
+sticky_menu_example --> styleButtonGroup
 sticky_menu_example --> stimulus_has_response
 sticky_menu_example --> stimulusRatingImageButton
 sticky_menu_example --> if_stimulus_exists
@@ -297,6 +320,7 @@ sticky_menu_example --> table_tags_inside_a_region_tag
 sticky_menu_example --> predefined_stimuli_example
 sticky_menu_example --> custom_completion_number
 sticky_menu_example --> random_image_positions_remembered
+sticky_menu_example --> preload_audio_example
 sticky_menu_example --> preload_images_example
 sticky_menu_example --> about
 state sticky_region_example
@@ -399,6 +423,12 @@ four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
 four_different_topics --> four_different_topics
+state StoredStimulusReport
+StoredStimulusReport --> Menu : back
+StoredStimulusReport --> StoredStimulusLists
+state StoredStimulusLists
+StoredStimulusLists --> Menu : back
+StoredStimulusLists --> StoredStimulusReport
 state request_focus_example
 request_focus_example --> Menu : back
 request_focus_example --> request_focus_example
@@ -443,6 +473,7 @@ With_Stimuli_Screen --> First_Stimuli_Screen_Informatie : Next Screen
 state Stimulus_Subquestions
 Stimulus_Subquestions --> Menu : back
 Stimulus_Subquestions --> First_Stimuli_Screen_Informatie : Next Screen
+state With_Stimulus_Rating_Toggle_Example
 state Has_Stimulus_Response
 Has_Stimulus_Response --> Menu : back
 Has_Stimulus_Response --> Has_Stimulus_Response
@@ -496,6 +527,10 @@ state visible_enable_stimulus_free_text_example
 visible_enable_stimulus_free_text_example --> Menu : back
 visible_enable_stimulus_free_text_example --> visible_enable_stimulus_free_text_example
 visible_enable_stimulus_free_text_example --> visible_enable_stimulus_free_text_example
+state stimulus_free_text_validation_example
+stimulus_free_text_validation_example --> Menu : back
+stimulus_free_text_validation_example --> stimulus_free_text_validation_example
+stimulus_free_text_validation_example --> stimulus_free_text_validation_example
 state rating_button_orientationType_example
 rating_button_orientationType_example --> Menu : back
 rating_button_orientationType_example --> rating_button_orientationType_example
@@ -589,6 +624,38 @@ showOnBackButton --> Menu : Menu
 showOnBackButton --> showOnBackButton
 showOnBackButton --> showOnBackButton
 showOnBackButton --> Menu : Menu
+state dragDropRegion
+dragDropRegion --> Menu : back
+dragDropRegion --> dragDropRegion : Reload
+state recordedAndPlaybackMediaLength
+recordedAndPlaybackMediaLength --> Menu : back
+recordedAndPlaybackMediaLength --> recordedAndPlaybackMediaLength
+recordedAndPlaybackMediaLength --> recordedAndPlaybackMediaLength
+state recordedLengthPause
+recordedLengthPause --> Menu : back
+recordedLengthPause --> recordedLengthPause
+recordedLengthPause --> recordedLengthPause
+state touchInputLabelButton
+touchInputLabelButton --> Menu : back
+touchInputLabelButton --> touchInputLabelButton
+touchInputLabelButton --> touchInputLabelButton
+touchInputLabelButton --> touchInputLabelButton : touchInputLabelButton
+touchInputLabelButton --> touchInputImageButton : touchInputImageButton
+touchInputLabelButton --> touchInputVideoButton : touchInputVideoButton
+state touchInputImageButton
+touchInputImageButton --> Menu : back
+touchInputImageButton --> touchInputImageButton
+touchInputImageButton --> touchInputImageButton
+touchInputImageButton --> touchInputLabelButton : touchInputLabelButton
+touchInputImageButton --> touchInputImageButton : touchInputImageButton
+touchInputImageButton --> touchInputVideoButton : touchInputVideoButton
+state touchInputVideoButton
+touchInputVideoButton --> Menu : back
+touchInputVideoButton --> touchInputVideoButton
+touchInputVideoButton --> touchInputVideoButton
+touchInputVideoButton --> touchInputLabelButton : touchInputLabelButton
+touchInputVideoButton --> touchInputImageButton : touchInputImageButton
+touchInputVideoButton --> touchInputVideoButton : touchInputVideoButton
 state AppendStimulusResponse
 AppendStimulusResponse --> Menu : back
 AppendStimulusResponse --> AppendStimulusResponse
@@ -598,10 +665,18 @@ state enter_in_the_text_box
 enter_in_the_text_box --> Menu : back
 enter_in_the_text_box --> showOnBackButton
 enter_in_the_text_box --> showOnBackButton
+state evaluate_tokens_example
+evaluate_tokens_example --> Menu : back
 state stimulusCodeImageButton
 stimulusCodeImageButton --> Menu : back
 stimulusCodeImageButton --> stimulusCodeImageButton
 stimulusCodeImageButton --> stimulusCodeImageButton
+state styleButtonGroup
+styleButtonGroup --> Menu : back
+styleButtonGroup --> styleButtonGroup : targetButton
+styleButtonGroup --> styleButtonGroup : targetFooterButton
+styleButtonGroup --> styleButtonGroup
+styleButtonGroup --> styleButtonGroup
 state stimulus_has_response
 stimulus_has_response --> Menu : back
 stimulus_has_response --> stimulus_has_response
@@ -703,6 +778,8 @@ allMenuItemsStyle --> Metadata_Current_Date
 allMenuItemsStyle --> last_seven_days
 allMenuItemsStyle --> replace_all_example
 allMenuItemsStyle --> four_different_topics
+allMenuItemsStyle --> StoredStimulusReport
+allMenuItemsStyle --> StoredStimulusLists
 allMenuItemsStyle --> request_focus_example
 allMenuItemsStyle --> input_slider_example
 allMenuItemsStyle --> append_unique_date
@@ -712,6 +789,7 @@ allMenuItemsStyle --> add_times_example
 allMenuItemsStyle --> progressIndicator_example
 allMenuItemsStyle --> With_Stimuli_Screen
 allMenuItemsStyle --> Stimulus_Subquestions
+allMenuItemsStyle --> With_Stimulus_Rating_Toggle_Example
 allMenuItemsStyle --> Has_Stimulus_Response
 allMenuItemsStyle --> First_Stimuli_Screen
 allMenuItemsStyle --> stimulusResponse_logTokenText
@@ -725,6 +803,7 @@ allMenuItemsStyle --> rating_buttons_example
 allMenuItemsStyle --> clear_stimulus_responses_example
 allMenuItemsStyle --> clear_stimulus_response_example
 allMenuItemsStyle --> visible_enable_stimulus_free_text_example
+allMenuItemsStyle --> stimulus_free_text_validation_example
 allMenuItemsStyle --> rating_button_orientationType_example
 allMenuItemsStyle --> holding_button_down_example
 allMenuItemsStyle --> hotkey_enable_example
@@ -748,9 +827,17 @@ allMenuItemsStyle --> Media_Playback_Demo
 allMenuItemsStyle --> USB_LP310
 allMenuItemsStyle --> Bluetooth_R1
 allMenuItemsStyle --> showOnBackButton
+allMenuItemsStyle --> dragDropRegion
+allMenuItemsStyle --> recordedAndPlaybackMediaLength
+allMenuItemsStyle --> recordedLengthPause
+allMenuItemsStyle --> touchInputLabelButton
+allMenuItemsStyle --> touchInputImageButton
+allMenuItemsStyle --> touchInputVideoButton
 allMenuItemsStyle --> AppendStimulusResponse
 allMenuItemsStyle --> enter_in_the_text_box
+allMenuItemsStyle --> evaluate_tokens_example
 allMenuItemsStyle --> stimulusCodeImageButton
+allMenuItemsStyle --> styleButtonGroup
 allMenuItemsStyle --> stimulus_has_response
 allMenuItemsStyle --> stimulusRatingImageButton
 allMenuItemsStyle --> if_stimulus_exists
@@ -779,6 +866,7 @@ allMenuItemsStyle --> table_tags_inside_a_region_tag
 allMenuItemsStyle --> predefined_stimuli_example
 allMenuItemsStyle --> custom_completion_number
 allMenuItemsStyle --> random_image_positions_remembered
+allMenuItemsStyle --> preload_audio_example
 allMenuItemsStyle --> preload_images_example
 allMenuItemsStyle --> about
 state activateRandomItem
@@ -839,6 +927,11 @@ random_image_positions_remembered --> random_image_positions_remembered
 random_image_positions_remembered --> random_image_positions_remembered
 random_image_positions_remembered --> random_image_positions_remembered
 random_image_positions_remembered --> random_image_positions_remembered
+state preload_audio_example
+preload_audio_example --> Menu : back
+preload_audio_example --> preload_audio_example
+preload_audio_example --> preload_audio_example
+preload_audio_example --> preload_audio_example
 state preload_images_example
 preload_images_example --> Menu : back
 preload_images_example --> preload_images_example
