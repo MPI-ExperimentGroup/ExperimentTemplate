@@ -37,6 +37,7 @@ import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.view.ColourPickerCanvasView;
 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.XmlId;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
@@ -272,8 +273,16 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
-    protected void loadStimulus(final String eventTag, final StimulusSelector[] stimulusSelectors, final StimuliProvider stimulusProvider,
-            final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener
+    protected void loadStimulus(String eventTag,
+            final StimulusSelector[] stimulusSelectors, // only stimuli with tags in this list can be included
+            final MetadataField idListField, // when not null any stimulus with an ID found in this metadata field will be included
+            final StimulusSelector[] randomTags,
+            final StimulusSelector[] stimuliLists,
+            final MetadataField stimulusAllocationField,
+            final String consumedTagsGroupName,
+            final StimuliProvider stimulusProvider,
+            final CurrentStimulusListener hasMoreStimulusListener,
+            final TimedStimulusListener endOfStimulusListener
     ) {
         this.stimulusProviderInternal = stimulusProvider;
         final List<Stimulus.Tag> selectionTags = new ArrayList<>();
