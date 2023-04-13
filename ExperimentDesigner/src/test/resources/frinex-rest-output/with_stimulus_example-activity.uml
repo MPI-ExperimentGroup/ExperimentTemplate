@@ -176,6 +176,16 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:Menu;
+endif
+:StoredStimulusReport;
+if (navigation) then (back)
+:Menu;
+endif
+:StoredStimulusLists;
+if (navigation) then (back)
+:Menu;
+endif
 :request_focus_example;
 if (navigation) then (back)
 :Menu;
@@ -214,6 +224,7 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:With_Stimulus_Rating_Toggle_Example;
 :Has_Stimulus_Response;
 if (navigation) then (back)
 :Menu;
@@ -267,6 +278,10 @@ if (navigation) then (back)
 :Menu;
 endif
 :visible_enable_stimulus_free_text_example;
+if (navigation) then (back)
+:Menu;
+endif
+:stimulus_free_text_validation_example;
 if (navigation) then (back)
 :Menu;
 endif
@@ -383,6 +398,30 @@ if (navigation) then (back)
 :Menu;
 endif
 :showOnBackButton;
+:dragDropRegion;
+if (navigation) then (back)
+:Menu;
+endif
+:recordedAndPlaybackMediaLength;
+if (navigation) then (back)
+:Menu;
+endif
+:recordedLengthPause;
+if (navigation) then (back)
+:Menu;
+endif
+:touchInputLabelButton;
+if (navigation) then (back)
+:Menu;
+endif
+:touchInputImageButton;
+if (navigation) then (back)
+:Menu;
+endif
+:touchInputVideoButton;
+if (navigation) then (back)
+:Menu;
+endif
 :AppendStimulusResponse;
 if (navigation) then (back)
 :Menu;
@@ -391,7 +430,15 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:evaluate_tokens_example;
+if (navigation) then (back)
+:Menu;
+endif
 :stimulusCodeImageButton;
+if (navigation) then (back)
+:Menu;
+endif
+:styleButtonGroup;
 if (navigation) then (back)
 :Menu;
 endif
@@ -512,6 +559,9 @@ if (navigation) then (back)
 endif
 :random_image_positions_remembered;
 if (navigation) then (back)
+:Menu;
+endif
+:preload_audio_example];
 :Menu;
 endif
 :preload_images_example;
