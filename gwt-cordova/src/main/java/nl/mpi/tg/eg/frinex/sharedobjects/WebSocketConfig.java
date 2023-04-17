@@ -41,7 +41,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer /* impl
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // .setAllowedOrigins("*") added to test the issues connecting through NGINX
-        registry.addEndpoint("/gs-guide-websocket").setAllowedOrigins("*").withSockJS();
+        registry.addEndpoint("/gs-guide-websocket").setAllowedOriginPatterns("*").withSockJS();
     }
 
 //    @Override
