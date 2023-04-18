@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
         <script src="webjars/jquery/jquery.min.js"></script>
         <script th:replace="participanttable :: addparticipantscript"/>
+        <script src="js/ExperimentCharts.js"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
@@ -155,7 +156,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </tr>
         </thead>
         <tbody>
-            <tr id="clickablerow" th:each="tagPairData : ${participantTagPairData}">
+            <tr id="clickablerow" th:each="tagPairData,prodIndex : ${participantTagPairData}">
                 <!--<td th:text="${tagPairData.id}">id</td>-->
                 <!--<td th:text="${tagPairData.userId}">userId</td>-->
                 <td th:text="${tagPairData.screenName}">screenName</td>
@@ -164,6 +165,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <!--<td th:text="${tagPairData.experimentName}">experimentName</td>-->
                 <td th:text="${tagPairData.eventTag}">eventTag</td>
                 <td th:text="${tagPairData.tagValue1}">tagValue1</td>
+                <td th:if="${tagPairData.eventTag ne 'touchInputReport'}" th:text="${tagPairData.tagValue2}">tagValue2</td>
+                <td th:if="${tagPairData.eventTag eq 'touchInputReport'}">
+                    <!--<span th:text="${tagPairData.tagValue2.length()}"></span>-->
+                    <!-- TODO: add a balloon popup showing a table of MS, X, Y for all the collected data points that are hidden by the pretty SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" th:id="${'svg_'+prodIndex.index}" version="1.1" width="100" height="100"></svg>
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        var touchData = /*[[${tagPairData.tagValue2}]]*/ '';
+                        var svgTagId = /*[[${'#svg_'+prodIndex.index}]]*/ '';
+                        touchInputSVG(touchData, svgTagId);
+                        /*]]>*/
+                    </script>
+                </td>
                 <td th:text="${tagPairData.tagValue2}">tagValue2</td>
                 <td th:text="${tagPairData.eventMs}">eventMs</td>
             </tr>

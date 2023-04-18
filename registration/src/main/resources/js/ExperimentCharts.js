@@ -32,7 +32,7 @@ function generateChart(chartData) {
         },
         plugins: {
             legend: {
-                display: (chartData.type === "bar")? false : true
+                display: (chartData.type === "bar") ? false : true
             },
             title: {
                 display: true,
@@ -126,3 +126,40 @@ function generateChart(chartData) {
 //                                {label: "MBO", fieldname: "Opleidingsniveau", matching: "MBO", colour: "#000770"}, 
 //                                {label: "voortgezet onderwijs", fieldname: "Opleidingsniveau", matching: "voortgezet onderwijs", colour: "#000077"}, 
 //                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimuli: []});
+
+function touchInputSVG(touchData, svgTagId) {
+    //                            $(svgTagId).mouseover(function () {
+    var scaleFactor = -1;
+    var maxMs = -1;
+    $.each(touchData.split(";"), function (lineIndex, lineString) {
+        var lineParts = lineString.split(",");
+        if (scaleFactor === -1) {
+            var maxWidth = parseFloat(lineParts[1]);
+            var maxHeight = parseFloat(lineParts[2]);
+            maxMs = lineParts[0];
+            scaleFactor = (maxWidth > maxHeight) ? maxWidth : maxHeight;
+            $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
+                .attr({
+                    width: (maxWidth / scaleFactor * 100),
+                    height: (maxHeight / scaleFactor * 100),
+                    r: 1,
+                    fill: 'lightgrey'
+                }));
+        } else if (lineParts.length > 2) {
+            var dotColour = 'green';
+            var partIndex;
+            for (partIndex = 3; partIndex < lineParts.length; partIndex++) {
+                if (lineParts[partIndex].length > 0) {
+                    dotColour = 'blue';
+                }
+            }
+            $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
+                .attr({
+                    cx: (lineParts[1] / scaleFactor * 100),
+                    cy: (lineParts[2] / scaleFactor * 100),
+                    r: 1,
+                    fill: dotColour
+                }));
+        }
+    });
+}

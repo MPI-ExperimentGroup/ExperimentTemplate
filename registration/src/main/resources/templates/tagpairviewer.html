@@ -29,6 +29,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
         <script src="webjars/jquery/jquery.min.js"></script>
         <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
+        <script src="js/ExperimentCharts.js"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
@@ -71,46 +72,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:if="${prod.eventTag ne 'touchInputReport'}" th:text="${prod.tagValue2}">tagValue2</td>
                     <td th:if="${prod.eventTag eq 'touchInputReport'}">
                         <!--<span th:text="${prod.tagValue2.length()}"></span>-->
+                        <!-- TODO: add a balloon popup showing a table of MS, X, Y for all the collected data points that are hidden by the pretty SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" th:id="${'svg_'+prodIndex.index}" version="1.1" width="100" height="100"></svg>
                         <script th:inline="javascript">
                             /*<![CDATA[*/
                             var touchData = /*[[${prod.tagValue2}]]*/ '';
                             var svgTagId = /*[[${'#svg_'+prodIndex.index}]]*/ '';
-//                            $(svgTagId).mouseover(function () {
-                            var scaleFactor = -1;
-                            var maxMs = -1;
-                            $.each(touchData.split(";"), function (lineIndex, lineString) {
-                                var lineParts = lineString.split(",");
-                                if (scaleFactor === -1) {
-                                    var maxWidth = parseFloat(lineParts[1]);
-                                    var maxHeight = parseFloat(lineParts[2]);
-                                    maxMs = lineParts[0];
-                                    scaleFactor = (maxWidth > maxHeight) ? maxWidth : maxHeight;
-                                    $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
-                                            .attr({
-                                                width: (maxWidth / scaleFactor * 100),
-                                                height: (maxHeight / scaleFactor * 100),
-                                                r: 1,
-                                                fill: 'lightgrey'
-                                            }));
-                                } else if (lineParts.length > 2) {
-                                    var dotColour = 'green';
-                                    var partIndex;
-                                    for (partIndex = 3; partIndex < lineParts.length; partIndex++) {
-                                        if (lineParts[partIndex].length > 0) {
-                                            dotColour = 'blue';
-                                        }
-                                    }
-                                    $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
-                                            .attr({
-                                                cx: (lineParts[1] / scaleFactor * 100),
-                                                cy: (lineParts[2] / scaleFactor * 100),
-                                                r: 1,
-                                                fill: dotColour
-                                            }));
-                                }
-                            });
-//                            });
+                            touchInputSVG(touchData, svgTagId);
                             /*]]>*/
                         </script>
                     </td>
