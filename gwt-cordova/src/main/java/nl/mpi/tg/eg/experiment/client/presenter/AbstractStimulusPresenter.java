@@ -1382,7 +1382,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         touchInputStimulusButton(buttonItem, eventListener, eventTag, buttonGroup);
     }
 
-    public void touchInputImageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String codeFormat, final String styleName, final CancelableStimulusListener mediaLoadedListener, final CancelableStimulusListener mediaLoadFailedListener, final TimedStimulusListener onActivateListener, final String buttonGroup) {
+    public void touchInputImageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String codeFormat, final String styleName, final CancelableStimulusListener mediaLoadedListener, final CancelableStimulusListener mediaLoadFailedListener, final CancelableStimulusListener onActivateListener, final String buttonGroup) {
         PresenterEventListener eventListener = new PresenterEventListener() {
 
             @Override
@@ -1408,7 +1408,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(codeFormat);
 
         final String imageString = (formattedCode.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + formattedCode;
-        final StimulusButton buttonItem = timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(imageString), styleName, 0, mediaLoadedListener, mediaLoadFailedListener, null);
+        final StimulusButton buttonItem = timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(imageString), styleName, 0, mediaLoadedListener, mediaLoadFailedListener, onActivateListener);
         // TODO: the previous usage was imageButton which included the parameter isTouchZone, it needs to be tested if this is still needed on tablets etc. given the change here uses an image not a button
         // final StimulusButton buttonItem = imageButton(eventListener, UriUtils.fromString((formattedCode.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + formattedCode), true, buttonGroup);
         touchInputStimulusButton(buttonItem, eventListener, eventTag, buttonGroup);
