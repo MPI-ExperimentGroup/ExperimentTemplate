@@ -162,7 +162,7 @@ function touchInputSVG(touchData, svgId, tableId) {
                 }));
         }
         if (lineParts.length > 2) {
-            $('#' + tableId + ' tr:last').after('<tr><td>' + lineParts[0] + '</td><td>' + lineParts[1] + '</td><td>' + lineParts[2] + '</td></tr>');
+            $(tableId + ' tr:last').after('<tr><td>' + lineParts[0] + '</td><td>' + lineParts[1] + '</td><td>' + lineParts[2] + '</td></tr>');
         }
     });
 }
