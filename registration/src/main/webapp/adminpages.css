@@ -164,3 +164,8 @@ th .balloontext::after {
   position: absolute;
   background: white;
 }
+
+.popupTable {
+    /* adding some padding to avoid scrolling past the table causing it to disapear */
+    padding-bottom: 200px
+}
