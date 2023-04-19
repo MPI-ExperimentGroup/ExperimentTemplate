@@ -74,7 +74,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <!--<span th:text="${prod.tagValue2.length()}"></span>-->
                         <!-- TODO: add a balloon popup showing a table of MS, X, Y for all the collected data points that are hidden by the pretty SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" th:id="${'svg_'+prodIndex.index}" version="1.1" width="100" height="100"></svg>
-                        <table th:id="${'table_'+prodIndex.index}" class="popupTable"><tr><td>ms</td><td>X</td><td>Y</td></tr></table>
+                        <table th:id="${'table_'+prodIndex.index}" class="popupTable"><tr><td>ms</td><td>X</td><td>Y</td><td>Stimulus</td></tr></table>
                         <script th:inline="javascript">
                             /*<![CDATA[*/
                             var touchData = /*[[${prod.tagValue2}]]*/ '';

@@ -162,7 +162,15 @@ function touchInputSVG(touchData, svgId, tableId) {
                 }));
         }
         if (lineParts.length > 2) {
-            $(tableId + ' tr:last').after('<tr><td>' + lineParts[0] + '</td><td>' + lineParts[1] + '</td><td>' + lineParts[2] + '</td></tr>');
+            var partIndex;
+            var stimulusIntersections = "";
+            for (partIndex = 3; partIndex < lineParts.length; partIndex++) {
+                if (lineParts[partIndex].length > 0) {
+                    if (stimulusIntersections.length > 0) stimulusIntersections += ',';
+                    stimulusIntersections += lineParts[partIndex];
+                }
+            }
+            $(tableId + ' tr:last').after('<tr><td>' + lineParts[0] + '</td><td>' + lineParts[1] + '</td><td>' + lineParts[2] + '</td><td>' + stimulusIntersections + '</td></tr>');
         }
     });
 }
