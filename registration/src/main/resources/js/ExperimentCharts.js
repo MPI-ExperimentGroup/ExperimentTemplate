@@ -127,8 +127,8 @@ function generateChart(chartData) {
 //                                {label: "voortgezet onderwijs", fieldname: "Opleidingsniveau", matching: "voortgezet onderwijs", colour: "#000077"}, 
 //                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimuli: []});
 
-function touchInputSVG(touchData, svgTagId) {
-    //                            $(svgTagId).mouseover(function () {
+function touchInputSVG(touchData, svgId, tableId) {
+    //                            $(svgId).mouseover(function () {
     var scaleFactor = -1;
     var maxMs = -1;
     $.each(touchData.split(";"), function (lineIndex, lineString) {
@@ -138,7 +138,7 @@ function touchInputSVG(touchData, svgTagId) {
             var maxHeight = parseFloat(lineParts[2]);
             maxMs = lineParts[0];
             scaleFactor = (maxWidth > maxHeight) ? maxWidth : maxHeight;
-            $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
+            $(svgId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
                 .attr({
                     width: (maxWidth / scaleFactor * 100),
                     height: (maxHeight / scaleFactor * 100),
@@ -153,13 +153,16 @@ function touchInputSVG(touchData, svgTagId) {
                     dotColour = 'blue';
                 }
             }
-            $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
+            $(svgId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
                 .attr({
                     cx: (lineParts[1] / scaleFactor * 100),
                     cy: (lineParts[2] / scaleFactor * 100),
                     r: 1,
                     fill: dotColour
                 }));
+        }
+        if (lineParts.length > 2) {
+            $('#' + tableId + ' tr:last').after('<tr><td>' + lineParts[0] + '</td><td>' + lineParts[1] + '</td><td>' + lineParts[2] + '</td></tr>');
         }
     });
 }

@@ -154,3 +154,12 @@ th .balloontext::after {
     /* height: 400px; */
     width: 400px;
 }
+
+.popupOuter:hover .popupTable {
+  visibility: visible;
+}
+
+.popupOuter .popupTable {
+  visibility: hidden;
+  position: absolute;
+}
