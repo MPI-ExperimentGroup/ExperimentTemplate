@@ -439,7 +439,7 @@ public class AbstractSchemaGenerator {
                         new DocumentationElement[]{
                             new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
                                     .documentedAttribute("name", AttributeType.xsString, "For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.", false),
-//                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
+                            // .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
                                     .stringAttribute("fieldName", false)
                                     .stringAttribute("matchingRegex", false),
@@ -447,7 +447,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("label", false)
                                     .booleanAttribute("logToSdCard", false, "Boolean")
                                     .integerAttribute("channel", false),
-                            new DocumentationElement("chart", "When present defines a chart that will be displayed on the main page of the experiment admin. Multiple charts can be used.", 0, 0,
+                            new DocumentationElement("chart", "adminChart", "When present defines a chart that will be displayed on the main page of the experiment admin. Multiple charts can be used.", 0, 0,
                                     new DocumentationElement[]{
                                         new DocumentationElement("metadata", "Adds matching metadata as a dataset to the graph.", 0, 0, new DocumentationElement[0])
                                                 .stringAttribute("label", false)
@@ -461,8 +461,27 @@ public class AbstractSchemaGenerator {
                                                 .colourRGBAttribute("colour", false)
                                     })
                                     .stringAttribute("label", false)
-                                    .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", "line", "pie", "bubble", "radar")
-                        }).documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
+                                    .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", "line", "pie", "bubble", "radar"),//, "boxplot", "scatter"
+                            new DocumentationElement("table", "adminTable", "When present defines a table that will be displayed on the main page of the experiment admin. Multiple table can be used.", 0, 0,
+                                    new DocumentationElement[]{
+                                        //                                        new DocumentationElement("metadata", "Adds matching metadata as a dataset to the table.", 0, 0, new DocumentationElement[0])
+                                        //                                                .stringAttribute("label", false)
+                                        //                                                .stringAttribute("fieldName", false)
+                                        //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
+                                        //                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the table.", 0, 0, new DocumentationElement[0])
+                                        //                                                .stringAttribute("label", false)
+                                        //                                                .stringAttribute("coloumName", false)
+                                        //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
+                                        new DocumentationElement("tagpair", "Adds matching tag pair records as a dataset to the table.", 0, 0, new DocumentationElement[0])
+                                                .stringAttribute("coloumNames", false)
+                                                .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                                .documentedAttribute("eventTag", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                                .documentedAttribute("tagValue1", AttributeType.xsString, "Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                                .documentedAttribute("tagValue2", AttributeType.xsString, "Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                    }).stringAttribute("label", false)
+                        })
+                        //                              new DocumentationElement("dataManagement", "Settings for managing collected data in the administration system.", 0, 0, new DocumentationElement[0])
+                        .documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data. The value of each field will be stored in the admin metadata table (participant listing). It is advisable to explicitly sendMetadata at relevant points in the experiment. "
                         + "If the URL used to access the experiment contains a GET parameter matching the postName of a metadata field, the value of the field will be set to the value of the provided GET parameter. This for example allows links to be distributed each of which determines the initial parameters as required for a given experiment.", 1, 1,
