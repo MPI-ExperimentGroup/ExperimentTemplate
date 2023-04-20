@@ -335,26 +335,27 @@ public class XpathExperimentValidator {
         String returnMessage = "";
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         for (PresenterType presenterType : PresenterType.values()) {
-            StringBuilder stringBuilder = new StringBuilder();
+//            StringBuilder stringBuilder = new StringBuilder();
             for (FeatureType featureType : presenterType.getExcludedFeatureTypes()) {
-                stringBuilder.append("local-name() = '").append(featureType.name()).append("' or ");
-            }
-            stringBuilder.append("false");
-            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + presenterType.name() + "']/descendant::*[" + stringBuilder.toString() + "]").evaluate(xmlDocument, XPathConstants.NODESET);
-            for (int index = 0; index < faultList.getLength(); index++) {
-                String presenterName = "unkown";
-                Node parentNode = faultList.item(index).getParentNode();
-                while (parentNode != null && !parentNode.getNodeName().equals("presenter")) {
-                    parentNode = parentNode.getParentNode();
-                }
-                if (parentNode != null && parentNode.getNodeName().equals("presenter")) {
-                    final NamedNodeMap attributes = parentNode.getAttributes();
-                    if (attributes != null) {
-                        presenterName = attributes.getNamedItem("self").getTextContent();
+//                stringBuilder.append("local-name() = '").append(featureType.name()).append("' or ");
+//            stringBuilder.append("false");
+//            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + presenterType.name() + "']/descendant::*[" + stringBuilder.toString() + "]").evaluate(xmlDocument, XPathConstants.NODESET);
+                NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + presenterType.name() + "']/descendant::" + featureType.name()).evaluate(xmlDocument, XPathConstants.NODESET);
+                for (int index = 0; index < faultList.getLength(); index++) {
+                    String presenterName = "unkown";
+                    Node parentNode = faultList.item(index).getParentNode();
+                    while (parentNode != null && !parentNode.getNodeName().equals("presenter")) {
+                        parentNode = parentNode.getParentNode();
                     }
+                    if (parentNode != null && parentNode.getNodeName().equals("presenter")) {
+                        final NamedNodeMap attributes = parentNode.getAttributes();
+                        if (attributes != null) {
+                            presenterName = attributes.getNamedItem("self").getTextContent();
+                        }
+                    }
+                    final String featureName = faultList.item(index).getNodeName();
+                    returnMessage += "The Presenter " + presenterName + " is of the type " + presenterType.name() + " and cannot be used with " + featureName + ". ";
                 }
-                final String featureName = faultList.item(index).getNodeName();
-                returnMessage += "The Presenter " + presenterName + " is of the type " + presenterType.name() + " and cannot be used with " + featureName + ". ";
             }
         }
 //        String commonFaults[][] = {{"menu", "loadStimulus"}};
