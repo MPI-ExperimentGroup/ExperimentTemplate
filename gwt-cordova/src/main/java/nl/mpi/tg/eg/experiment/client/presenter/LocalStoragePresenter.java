@@ -61,54 +61,54 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
         return "Storage Viewer";
     }
 
-    @Override
-    protected void setContent(final AppEventListener appEventListener) {
-
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
-
-            @Override
-            public String getLabel() {
-                return "Edit Current User Data";
-            }
-
-            @Override
-            public String getStyleName() {
-                return null;
-            }
-
-            @Override
-            public int getHotKey() {
-                return -1;
-            }
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-                appEventListener.requestApplicationState(ApplicationState.metadata);
-            }
-        });
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
-
-            @Override
-            public String getLabel() {
-                return ApplicationState.scores.label;
-            }
-
-            @Override
-            public String getStyleName() {
-                return null;
-            }
-
-            @Override
-            public int getHotKey() {
-                return -1;
-            }
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-                appEventListener.requestApplicationState(ApplicationState.scores);
-            }
-        });
-    }
+//    @Override
+//    protected void setContent(final AppEventListener appEventListener) {
+//
+//        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
+//
+//            @Override
+//            public String getLabel() {
+//                return "Edit Current User Data";
+//            }
+//
+//            @Override
+//            public String getStyleName() {
+//                return null;
+//            }
+//
+//            @Override
+//            public int getHotKey() {
+//                return -1;
+//            }
+//
+//            @Override
+//            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+//                appEventListener.requestApplicationState(ApplicationState.metadata);
+//            }
+//        });
+//        ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
+//
+//            @Override
+//            public String getLabel() {
+//                return ApplicationState.scores.label;
+//            }
+//
+//            @Override
+//            public String getStyleName() {
+//                return null;
+//            }
+//
+//            @Override
+//            public int getHotKey() {
+//                return -1;
+//            }
+//
+//            @Override
+//            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+//                appEventListener.requestApplicationState(ApplicationState.scores);
+//            }
+//        });
+//    }
 
     protected void eraseLocalStorageButton(final String styleName, final String buttonGroup) {
         optionButton(new PresenterEventListener() {

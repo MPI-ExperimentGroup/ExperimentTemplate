@@ -42,22 +42,24 @@
         <xsl:text>};
             public enum ApplicationState {
         
-            start(null),
+            start(null, null),
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>        xml_</xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>(messages.menuLabel</xsl:text>
             <xsl:value-of select="@self" />
-            <xsl:text>()),
+            <xsl:text>(),&quot;</xsl:text>
+            <xsl:value-of select="@self" />
+            <xsl:text>&quot;),
             </xsl:text>
         </xsl:for-each>
-        <xsl:text>        highscoresubmitted(null),
+        <xsl:text>        /* highscoresubmitted(null),
             highscoresfailednon202(null),
             highscoresfailedbuildererror(null),
-            highscoresfailedconnectionerror(null),
-            end(null),
-            menu(null),
+            highscoresfailedconnectionerror(null),*/
+            end(null, null),
+            /* menu(null),
             playerdetails(null),
             locale(null),
             tutorial(null),
@@ -76,13 +78,15 @@
             setuser(null),
             matchlanguage(null),
             autotyp_regions(null),
-            startscreen(null),
-            version("Version");
+            startscreen(null),*/
+            version("Version", "Version");
         
             final public String label;
+            final public String selfName;
 
-            ApplicationState(String label) {
+            ApplicationState(String label, String selfName) {
             this.label = label;
+            this.selfName = selfName;
             }
             } 
             @Override
@@ -113,7 +117,7 @@
         <!--todo: does this even work?-->
         <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(messages.', generate-id(experiment/preventWindowClose), '());') else ''" />
         <xsl:for-each select="distinct-values(tokenize(string-join(experiment//@targetOptions,','),','))">
-            <xsl:text>addNotificationCallback(&quot;</xsl:text>
+            <xsl:text>addNotificationCallback(&quot;xml_</xsl:text>
             <xsl:value-of select="." />
             <xsl:text>&quot;);</xsl:text>
         </xsl:for-each>
@@ -139,9 +143,9 @@
             <xsl:text>try {</xsl:text>
         </xsl:if>
         <xsl:text>
-            submissionService.submitScreenChange(userResults.getUserData().getUserId(), applicationState.name());
+            submissionService.submitScreenChange(userResults.getUserData().getUserId(), applicationState.selfName);
             <!--submissionService.submitScreenChange(userResults.getUserData().getUserId(), Window.getClientWidth() + "x" + Window.getClientHeight());-->
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), applicationState.name(), "BrowserClientArea", Window.getClientWidth() + "x" + Window.getClientHeight(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), applicationState.selfName, "BrowserClientArea", Window.getClientWidth() + "x" + Window.getClientHeight(), 0);
             History.newItem(applicationState.name(), false);
             // todo:
             // on each state change check if there is an completed game data, if the share is true then upload or store if offline
@@ -198,11 +202,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             case end:
             exitApplication();
             break;
-            case highscoresubmitted:
-            case highscoresfailedbuildererror:
-            case highscoresfailedconnectionerror:
-            case highscoresfailednon202:
-            break;
+            // case highscoresubmitted:
+            // case highscoresfailedbuildererror:
+            // case highscoresfailedconnectionerror:
+            // case highscoresfailednon202:
+            // break;
             default:
             this.presenter = new ErrorPresenter(widgetTag, "No state for: " + applicationState, userResults, localStorage, timerService);
             presenter.setState(this, ApplicationState.start, applicationState);
@@ -393,7 +397,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 protected String getSelfTag() {
                 return ApplicationState.xml_</xsl:text>
             <xsl:value-of select="@self" />
-            <xsl:text>.name();
+            <xsl:text>.selfName;
                 }
 
                 @Override

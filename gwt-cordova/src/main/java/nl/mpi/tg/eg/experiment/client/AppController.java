@@ -111,7 +111,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
         }
         if (isDebugMode) {
             try {
-                localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.valueOf("about"));
+                localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.valueOf("xml_about"));
             } catch (IllegalArgumentException iae) {
                 // there is not "about" presenter so we have nothing to do here but show the version
                 localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.version);
