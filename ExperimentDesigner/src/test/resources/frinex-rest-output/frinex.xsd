@@ -730,7 +730,7 @@
 </xs:attribute>
 </xs:complexType>
 </xs:element>
-<xs:element name="chart" minOccurs="0" maxOccurs="unbounded" type="chartType"/>
+<xs:element name="chart" minOccurs="0" maxOccurs="unbounded" type="adminChartType"/>
 </xs:sequence>
 <xs:attribute name="allowDataDeletion" type="xs:boolean">
 <xs:annotation>
@@ -738,7 +738,7 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="chartType">
+<xs:complexType name="adminChartType">
 <xs:annotation>
 <xs:documentation>When present defines a chart that will be displayed on the main page of the experiment admin. Multiple charts can be used.</xs:documentation>
 </xs:annotation>
