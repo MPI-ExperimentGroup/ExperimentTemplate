@@ -71,9 +71,9 @@
             <stimuli label="True" coloumName="isCorrect" matching="true" colour="#990000" />
             <stimuli label="False" coloumName="isCorrect" matching="false" colour="#000990" />
         </table> -->
-        <table label="TouchInputReport">
+        <!-- <table label="TouchInputReport">
             <tagpair coloumNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="" tagValue2="" />
-        </table>
+        </table> -->
     </administration>
     <scss>
         .gwt-Button.optionButton.toggleBox {
