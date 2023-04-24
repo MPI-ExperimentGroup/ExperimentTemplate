@@ -365,7 +365,7 @@ public class LocalStorage implements LocalStorageInterface {
             // only store the last user id if the id is not a URL defined mock user
             dataStore.setItem(dataStore.getLAST_USER_ID(), userId.toString());
         }
-        dataStore.setItem(dataStore.getAPP_STATE(userId), appState.name());
+        dataStore.setItem(dataStore.getAPP_STATE(userId), appState.selfName);
     }
 
     public String getAppState(UserId userId) {

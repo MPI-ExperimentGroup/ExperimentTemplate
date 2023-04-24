@@ -146,7 +146,7 @@
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), applicationState.selfName);
             <!--submissionService.submitScreenChange(userResults.getUserData().getUserId(), Window.getClientWidth() + "x" + Window.getClientHeight());-->
             submissionService.submitTagValue(userResults.getUserData().getUserId(), applicationState.selfName, "BrowserClientArea", Window.getClientWidth() + "x" + Window.getClientHeight(), 0);
-            History.newItem(applicationState.name(), false);
+            History.newItem(applicationState.selfName, false);
             // todo:
             // on each state change check if there is an completed game data, if the share is true then upload or store if offline
             // when any stored data is uploaded then delete the store 
