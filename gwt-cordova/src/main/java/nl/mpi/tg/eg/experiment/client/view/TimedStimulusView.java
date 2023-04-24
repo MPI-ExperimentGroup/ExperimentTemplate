@@ -629,7 +629,7 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public String getResponseTimes() {
-                if (responseTimes.isEmpty()) {
+                if (responseTimes.length() < 1) {
                     return null;
                 } else {
                     return responseTimes.substring(0, responseTimes.length() - 1);
