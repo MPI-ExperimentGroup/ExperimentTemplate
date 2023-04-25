@@ -207,15 +207,25 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
                     presenter.savePresenterState();
                     try {
                         // this allows the browser navigation buttons to control the screen shown
+                        ApplicationState lastAppState = null;
                         try {
-                            ApplicationState lastAppState = ApplicationState.valueOf("xml_" + event.getValue());
-                            requestApplicationState(lastAppState);
+                            lastAppState = ApplicationState.valueOf("xml_" + event.getValue());
                         } catch (IllegalArgumentException iae) {
-                            // if the application state does not exist from the XML then fall back to the built in state if it exists
-                            ApplicationState lastAppState = ApplicationState.valueOf(event.getValue());
+                            lastAppState = null;
+                        }
+                        if (lastAppState == null) {
+                            try {
+                                // if the application state does not exist from the XML then fall back to the built in state if it exists
+                                lastAppState = ApplicationState.valueOf(event.getValue());
+                            } catch (IllegalArgumentException iae) {
+                                lastAppState = null;
+                            }
+                        }
+                        if (lastAppState == null) {
                             requestApplicationState(lastAppState);
                         }
                     } catch (IllegalArgumentException argumentException) {
+                        // the application state from the URL cannot be found so there is nothing else to do
                     }
                 }
             }
