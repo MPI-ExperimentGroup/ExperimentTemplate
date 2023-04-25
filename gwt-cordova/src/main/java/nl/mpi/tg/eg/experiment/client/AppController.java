@@ -292,7 +292,16 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             try {
                 final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
                 // if the app state is preserved, then only the last saved state is used
-                lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : lastAppState;
+                if ((appState != null)) {
+                    try {
+                        lastAppState = ApplicationState.valueOf("xml_" + appState);
+                    } catch (IllegalArgumentException iae) {
+                        try {
+                            lastAppState = ApplicationState.valueOf(appState);
+                        } catch (IllegalArgumentException iae2) {
+                        }
+                    }
+                }
             } catch (IllegalArgumentException argumentException) {
             }
             if (!preserveLastState() || isDebugMode /* checking for debug mode here and allowing presenter navigation here if true */) {
