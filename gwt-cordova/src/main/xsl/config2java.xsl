@@ -42,7 +42,7 @@
         <xsl:text>};
             public enum ApplicationState {
         
-            start(null, null),
+            start("start", "start"),
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>        xml_</xsl:text>
@@ -58,7 +58,7 @@
             highscoresfailednon202(null),
             highscoresfailedbuildererror(null),
             highscoresfailedconnectionerror(null),*/
-            end(null, null),
+            end("end", "end"),
             /* menu(null),
             playerdetails(null),
             locale(null),
