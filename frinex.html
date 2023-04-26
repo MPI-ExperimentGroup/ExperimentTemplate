@@ -436,6 +436,11 @@ String</span><br/>
 The type of chart to be displayed.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
+<tr><td>
+<a href="#dataTableType"><span style="color:purple">&lt;</span><span style="color:blue">dataTable</span></a></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
 </table>
 </td>
 </tr>
@@ -534,7 +539,7 @@ Only records matching this string will be counted for this dataset. The percent 
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
-<a href="#stimuliType"><span style="color:purple">&lt;</span><span style="color:blue">stimuli</span></a></td><td><span style="color:green">coloumName</span><span style="color:grey">=&quot;String&quot;</span><span>
+<a href="#stimulusResponseType"><span style="color:purple">&lt;</span><span style="color:blue">stimulusResponse</span></a></td><td><span style="color:green">coloumName</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
@@ -581,13 +586,13 @@ Only records matching this string will be counted for this dataset. The percent 
 <button onclick="getExample('metadata', 'metadataTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="stimuliType" style="text-transform: uppercase;">
-stimuli
+<h3 id="stimulusResponseType" style="text-transform: uppercase;">
+stimulusResponse
 </h3>
 Adds matching stimuli responses as a dataset to the graph.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimuli</span></td><td><span style="color:green">coloumName</span><span style="color:grey">=&quot;String&quot;</span><span>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusResponse</span></td><td><span style="color:green">coloumName</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
@@ -601,8 +606,71 @@ Only records matching this string will be counted for this dataset. The percent 
 </table>
 <table style="width: 100%;">
 <tr>
-<td colspan='2' id='stimuliTarget'>
-<button onclick="getExample('stimuli', 'stimuliTarget');">search for examples</button>
+<td colspan='2' id='stimulusResponseTarget'>
+<button onclick="getExample('stimulusResponse', 'stimulusResponseTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="dataTableType" style="text-transform: uppercase;">
+dataTable
+</h3>
+When present defines a table that will be displayed on the main page of the experiment admin. Multiple table can be used.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">dataTable</span></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#tagpairType"><span style="color:purple">&lt;</span><span style="color:blue">tagpair</span></a></td><td><span style="color:green">coloumNames</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">screenName</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">tagValue1</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">tagValue2</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">dataTable</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='dataTableTarget'>
+<button onclick="getExample('dataTable', 'dataTableTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="tagpairType" style="text-transform: uppercase;">
+tagpair
+</h3>
+Adds matching tag pair records as a dataset to the table.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">tagpair</span></td><td><span style="color:green">coloumNames</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">screenName</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">tagValue1</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">tagValue2</span><span style="color:grey">=&quot;String&quot;</span><span>
+Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='tagpairTarget'>
+<button onclick="getExample('tagpair', 'tagpairTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="scssType" style="text-transform: uppercase;">
