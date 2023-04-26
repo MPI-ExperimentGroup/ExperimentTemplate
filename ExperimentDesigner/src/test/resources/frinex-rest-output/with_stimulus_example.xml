@@ -60,20 +60,20 @@
             <metadata label="man" fieldName="gender" matching="man" colour="#000022" />
         </chart>
         <chart label="ScreenName" type="pie">
-            <stimuli label="Aggressive_Short_Recordings" coloumName="ScreenName" matching="Aggressive_Short_Recordings" colour="#990000" />
-            <stimuli label="RecordingQualityTest" coloumName="ScreenName" matching="RecordingQualityTest" colour="#000990" />
+            <stimulusResponse label="Aggressive_Short_Recordings" coloumName="ScreenName" matching="Aggressive_Short_Recordings" colour="#990000" />
+            <stimulusResponse label="RecordingQualityTest" coloumName="ScreenName" matching="RecordingQualityTest" colour="#000990" />
         </chart>
         <chart label="isCorrect" type="line">
-            <stimuli label="True" coloumName="isCorrect" matching="true" colour="#990000" />
-            <stimuli label="False" coloumName="isCorrect" matching="false" colour="#000990" />
+            <stimulusResponse label="True" coloumName="isCorrect" matching="true" colour="#990000" />
+            <stimulusResponse label="False" coloumName="isCorrect" matching="false" colour="#000990" />
         </chart>
         <!-- <table label="isCorrect">
-            <stimuli label="True" coloumName="isCorrect" matching="true" colour="#990000" />
-            <stimuli label="False" coloumName="isCorrect" matching="false" colour="#000990" />
+            <stimulusResponse label="True" coloumName="isCorrect" matching="true" colour="#990000" />
+            <stimulusResponse label="False" coloumName="isCorrect" matching="false" colour="#000990" />
         </table> -->
-<!--         <table label="TouchInputReport">
+        <dataTable label="TouchInputReport">
             <tagpair coloumNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="" tagValue2="" />
-        </table> -->
+        </dataTable> 
     </administration>
     <scss>
         .gwt-Button.optionButton.toggleBox {

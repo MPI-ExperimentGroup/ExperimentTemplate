@@ -558,8 +558,8 @@
                                 <xsl:text>, </xsl:text>
                             </xsl:if>
                         </xsl:for-each>
-                        <xsl:text>], stimuli: [</xsl:text>
-                        <xsl:for-each select="stimuli">
+                        <xsl:text>], stimulusResponse: [</xsl:text>
+                        <xsl:for-each select="stimulusResponse">
                             <xsl:text>
                                 {label: "</xsl:text>
                             <xsl:value-of select="@label" />
@@ -569,6 +569,45 @@
                             <xsl:value-of select="@matching" />
                             <xsl:text>", colour: "</xsl:text>
                             <xsl:value-of select="@colour" />
+                            <xsl:text>"}</xsl:text>
+                            <xsl:if test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:if>
+                        </xsl:for-each>
+                        <xsl:text>]});
+                            &lt;/script&gt;
+                        </xsl:text>
+                    </xsl:for-each>
+                <xsl:text>&lt;/div&gt;</xsl:text>
+            </xsl:result-document>
+            <xsl:result-document href="{$targetTemplateDirectory}/{$outputPrefix}tables.html" method="text">
+                <xsl:text>&lt;div th:fragment="tables"&gt;</xsl:text>
+                    <xsl:for-each select="experiment/administration/dataTable">
+                        <xsl:text>&lt;span class="table-outer"&gt;</xsl:text>
+                        <xsl:text>&lt;div class="table-container id="</xsl:text>
+                        <xsl:value-of select="generate-id(.)" />
+                        <xsl:text>"&gt;&lt;/div&gt;&lt;/span&gt;</xsl:text>
+                        <xsl:text>
+                            &lt;script&gt;</xsl:text>
+                        <xsl:text>
+                            <!-- $(document).on('loaded', -->
+                            generateTable({divId:"</xsl:text>
+                        <xsl:value-of select="generate-id(.)" />
+                        <xsl:text>", label: "</xsl:text>
+                        <xsl:value-of select="@label" />
+                        <xsl:text>", tagpair: [</xsl:text>
+                        <xsl:for-each select="tagpair">
+                            <xsl:text>
+                                {coloumNames: "</xsl:text>
+                            <xsl:value-of select="@coloumNames" />
+                            <xsl:text>", screenName: "</xsl:text>
+                            <xsl:value-of select="@screenName" />
+                            <xsl:text>", eventTag: "</xsl:text>
+                            <xsl:value-of select="@eventTag" />
+                            <xsl:text>", tagValue1: "</xsl:text>
+                            <xsl:value-of select="@tagValue1" />
+                            <xsl:text>", tagValue2: "</xsl:text>
+                            <xsl:value-of select="@tagValue2" />
                             <xsl:text>"}</xsl:text>
                             <xsl:if test="position() != last()">
                                 <xsl:text>, </xsl:text>

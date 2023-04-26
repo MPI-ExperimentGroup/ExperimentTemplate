@@ -454,31 +454,31 @@ public class AbstractSchemaGenerator {
                                                 .stringAttribute("fieldName", false)
                                                 .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false),
-                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the graph.", 0, 0, new DocumentationElement[0])
+                                        new DocumentationElement("stimulusResponse", "Adds matching stimuli responses as a dataset to the graph.", 0, 0, new DocumentationElement[0])
                                                 .stringAttribute("label", false)
                                                 .stringAttribute("coloumName", false)
                                                 .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false)
                                     })
                                     .stringAttribute("label", false)
-                                    .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", "line", "pie", "bubble", "radar")//, "boxplot", "scatter"
-//                           , new DocumentationElement("table", "adminTable", "When present defines a table that will be displayed on the main page of the experiment admin. Multiple table can be used.", 0, 0,
-//                                    new DocumentationElement[]{
-//                                        //                                        new DocumentationElement("metadata", "Adds matching metadata as a dataset to the table.", 0, 0, new DocumentationElement[0])
-//                                        //                                                .stringAttribute("label", false)
-//                                        //                                                .stringAttribute("fieldName", false)
-//                                        //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
-//                                        //                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the table.", 0, 0, new DocumentationElement[0])
-//                                        //                                                .stringAttribute("label", false)
-//                                        //                                                .stringAttribute("coloumName", false)
-//                                        //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
-//                                        new DocumentationElement("tagpair", "Adds matching tag pair records as a dataset to the table.", 0, 0, new DocumentationElement[0])
-//                                                .stringAttribute("coloumNames", false)
-//                                                .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
-//                                                .documentedAttribute("eventTag", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
-//                                                .documentedAttribute("tagValue1", AttributeType.xsString, "Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
-//                                                .documentedAttribute("tagValue2", AttributeType.xsString, "Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
-//                                    }).stringAttribute("label", false)
+                                    .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", "line", "pie", "bubble", "radar"), //, "boxplot", "scatter"
+                            new DocumentationElement("dataTable", "dataTable", "When present defines a table that will be displayed on the main page of the experiment admin. Multiple table can be used.", 0, 0,
+                                    new DocumentationElement[]{
+                                        //                                        new DocumentationElement("metadata", "Adds matching metadata as a dataset to the table.", 0, 0, new DocumentationElement[0])
+                                        //                                                .stringAttribute("label", false)
+                                        //                                                .stringAttribute("fieldName", false)
+                                        //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
+                                        //                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the table.", 0, 0, new DocumentationElement[0])
+                                        //                                                .stringAttribute("label", false)
+                                        //                                                .stringAttribute("coloumName", false)
+                                        //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
+                                        new DocumentationElement("tagpair", "Adds matching tag pair records as a dataset to the table.", 0, 0, new DocumentationElement[0])
+                                                .stringAttribute("coloumNames", false)
+                                                .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                                .documentedAttribute("eventTag", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                                .documentedAttribute("tagValue1", AttributeType.xsString, "Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                                .documentedAttribute("tagValue2", AttributeType.xsString, "Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
+                                    }).stringAttribute("label", false)
                         })
                         //                              new DocumentationElement("dataManagement", "Settings for managing collected data in the administration system.", 0, 0, new DocumentationElement[0])
                         .documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
