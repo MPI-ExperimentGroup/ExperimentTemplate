@@ -32,8 +32,11 @@
             public static final String STUN_SERVER = </xsl:text>
         <xsl:value-of select="if (experiment/deployment/@stunServer) then concat('&quot;', experiment/deployment/@stunServer, '&quot;') else 'null'" />
         <xsl:text>;
+            public static final boolean CAN_WRITE_SDCARD = </xsl:text>
+        <xsl:value-of select="if(experiment/administration/dataChannel[@logToSdCard eq 'true']) then 'true' else 'false'" />
+        <xsl:text>;
             public static final int[] SDCARD_DATACHANNELS = {</xsl:text>
-        <xsl:for-each select="experiment/administration/dataChannel[@logToSdCard eq'true']">
+        <xsl:for-each select="experiment/administration/dataChannel[@logToSdCard eq 'true']">
             <xsl:value-of select="@channel" />
             <xsl:if test="position() != last()">
                 <xsl:text>, </xsl:text>
@@ -264,6 +267,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import com.google.gwt.user.client.ui.RootLayoutPanel;
                 import java.util.Arrays;
                 import nl.mpi.tg.eg.experiment.client.Version;
+                import nl.mpi.tg.eg.experiment.client.ApplicationController;
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
                 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
@@ -403,7 +407,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 @Override
                 protected void setContent(final AppEventListener appEventListener) {
             </xsl:text>
-            <xsl:value-of select="if(descendant::startAudioRecorderApp) then 'requestRecorderPermissions();' else 'requestFilePermissions();'" />
+            <xsl:text>requestFieldKitPermissions(ApplicationController.CAN_WRITE_SDCARD, </xsl:text>        
+            <xsl:value-of select="if(descendant::startAudioRecorderApp) then 'true /* microphone */,' else 'false /* microphone */,'" />
+            <xsl:value-of select="if(descendant::streamGroupCamera) then 'true /* camera */,' else 'false /* camera */,'" />
+            <xsl:value-of select="if(descendant::requestNotification) then 'true /* notification */' else 'false /* notification */'" />
+            <xsl:text>);
+                </xsl:text>
+            <xsl:if test="descendant::requestNotification">
+                <xsl:text>requestNotificationsPermission(submissionService);
+                </xsl:text>
+            </xsl:if>
             <xsl:apply-templates/> <!--select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData|stimuliValidation|addKeyboardDebug|stimulusImage|stimulusAudio"-->
             <xsl:text>    }
                 }</xsl:text>

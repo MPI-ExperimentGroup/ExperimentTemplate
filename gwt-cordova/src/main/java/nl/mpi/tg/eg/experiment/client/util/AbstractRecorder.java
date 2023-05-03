@@ -38,15 +38,11 @@ public abstract class AbstractRecorder {
 
     public abstract void stopRecorder(final AbstractPresenter abstractPresenter);
 
-    public abstract void requestRecorderPermissions(final AbstractPresenter abstractPresenter);
-
     public abstract void startRecorderTag(final AbstractPresenter abstractPresenter, int tier, final TimedEventMonitor timedEventMonitor);
 
     public abstract void startRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL);
 
     public abstract void endRecorderTag(final AbstractPresenter abstractPresenter, int tier, String stimulusId, String stimulusCode, String eventTag, final TimedEventMonitor timedEventMonitor);
-
-    public abstract void requestFilePermissions(final AbstractPresenter abstractPresenter);
 
     public abstract void injectTone(final HardwareTimeStamp.DTMF dtmf, final TimedEventMonitor timedEventMonitor);
 }

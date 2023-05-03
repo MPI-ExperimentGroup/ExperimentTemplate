@@ -2031,9 +2031,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         mediaRecorder.stopRecorder(this);
     }
 
-    protected void requestRecorderPermissions() {
-        mediaRecorder.requestRecorderPermissions(this);
-    }
+//    requestFieldKitPermissions
+//    protected void requestRecorderPermissions() {
+//        mediaRecorder.requestRecorderPermissions(this);
+//    }
 
     protected void startAudioRecorderTag(int tier, final TimedEventMonitor timedEventMonitor) {
         mediaRecorder.startRecorderTag(this, 8, null);

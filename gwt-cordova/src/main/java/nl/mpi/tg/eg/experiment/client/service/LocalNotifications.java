@@ -28,8 +28,6 @@ import java.util.Random;
  */
 public abstract class LocalNotifications {
 
-    DataSubmissionService dataSubmissionService;
-
     protected void setNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) {
         logNotificationRequest(notificationCommand);
         clearNotifications();
@@ -168,24 +166,50 @@ public abstract class LocalNotifications {
         });
      }-*/;
 
-    public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) /*-{
+    public native void requestPermissions() /*-{
         var localNotifications = this;
         if($wnd.cordova){
         //console.log("$wnd: " + $wnd);
         //console.log("$wnd.plugins: " + $wnd.plugins);
         //console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
             $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
-            if (granted) {
-                localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
-            } else {
-                $wnd.cordova.plugins.notification.local.requestPermission(function (grantedInner) {
-                    if (grantedInner) {
-                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
-                    } else {
-                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
-                    }
-                });
-            }
+                if (!granted) {
+                    $wnd.cordova.plugins.notification.local.requestPermission(function (grantedInner) {
+                        console.log("requestPermission: " + grantedInner);
+                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestPermission failed");
+                    });
+                }
+            });
+            $wnd.cordova.plugins.notification.local.hasDoNotDisturbPermissions(function (granted) {
+                if (!granted) {
+                    $wnd.cordova.plugins.notification.local.requestDoNotDisturbPermissions(function (grantedInner) {
+                        console.log("requestDoNotDisturbPermissions: " + grantedInner);
+                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestDoNotDisturb failed");
+                    });
+                }
+            });
+            $wnd.cordova.plugins.notification.local.isIgnoringBatteryOptimizations(function (granted) {
+                if (!granted) {
+                    $wnd.cordova.plugins.notification.local.requestIgnoreBatteryOptimizations(function (grantedInner) {
+                        console.log("requestIgnoreBatteryOptimizations: " + grantedInner);
+                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestIgnoreBattery failed");
+                    });
+                }
+            });
+    }-*/;
+
+    public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) /*-{
+        var localNotifications = this;
+        if($wnd.cordova){
+            //console.log("$wnd: " + $wnd);
+            //console.log("$wnd.plugins: " + $wnd.plugins);
+            //console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
+            $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
+                if (granted) {
+                    localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
+                } else {
+                    localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
+                }
             });
         } else {
             localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
@@ -195,6 +219,8 @@ public abstract class LocalNotifications {
     protected abstract void setNotificationSucceded();
 
     protected abstract void setNotificationFailed();
+
+    // protected abstract void permissionFailed(String message);
 
 //    public native void notificationLog(final String logString) /*-{
 //            console.log(logString);

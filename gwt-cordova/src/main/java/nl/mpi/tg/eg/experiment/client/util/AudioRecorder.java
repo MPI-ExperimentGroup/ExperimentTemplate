@@ -299,36 +299,6 @@ public class AudioRecorder extends AbstractRecorder {
         }
      }-*/;
 
-    public native void requestRecorderPermissions(final AbstractPresenter abstractPresenter) /*-{
-        console.log("requestRecorderPermissions");
-        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
-            $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
-                console.log("requestRecorderPermissionsOk");
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, null, null);
-            }, function (tagvalue) {
-                console.log("requestRecorderPermissionsError: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            });
-        } else {
-            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
-        }
-     }-*/;
-
-    public native void requestFilePermissions(final AbstractPresenter abstractPresenter) /*-{
-        console.log("requestFilePermissions");
-        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
-            $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
-                console.log("requestFilePermissionsOk");
-//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::TRUE, null, null);
-            }, function (tagvalue) {
-                console.log("requestFilePermissionsError: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            });
-        } else {
-            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
-        }
-     }-*/;
-
     protected native void isRecording(final AbstractPresenter abstractPresenter) /*-{
         if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
             $wnd.plugins.fieldKitRecorder.isRecording(function () {

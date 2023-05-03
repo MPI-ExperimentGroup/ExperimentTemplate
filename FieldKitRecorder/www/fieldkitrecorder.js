@@ -41,11 +41,8 @@ FieldKitRecorder.prototype.stop = function (successCallback, errorCallback) {
 FieldKitRecorder.prototype.record = function (successCallback, errorCallback, userId, stimulusSet, stimulusId) {
     cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "record", [userId, stimulusSet, stimulusId]);
 };
-FieldKitRecorder.prototype.requestFilePermissions = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "requestFilePermissions", []);
-};
-FieldKitRecorder.prototype.requestRecorderPermissions = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "requestRecorderPermissions", []);
+FieldKitRecorder.prototype.requestFieldKitPermissions = function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "requestFieldKitPermissions", [filePermission, microphonePermission, cameraPermission, notificationPermission]);
 };
 FieldKitRecorder.prototype.writeStimuliData = function (successCallback, errorCallback, userId, stimulusId, stimuliData) {
     cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "writeStimuliData", [userId, stimulusId, stimuliData]);

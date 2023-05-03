@@ -536,6 +536,23 @@ public abstract class AbstractPresenter implements Presenter {
         // timer.schedule(100);
     }
 
+    public void requestNotificationsPermission(final DataSubmissionService dataSubmissionService) {
+        new LocalNotifications() {
+            @Override
+            protected void setNotificationSucceded() {
+            }
+
+            @Override
+            protected void setNotificationFailed() {
+            }
+
+            @Override
+            protected void logNotificationRequest(String debugValue) {
+                dataSubmissionService.submitImmediateTimestamp(userResults.getUserData().getUserId(), debugValue, 0);
+            }
+        }.requestPermissions();
+    }
+
     public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final DataSubmissionService dataSubmissionService, final ApplicationState[] targetOptionStates, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListener, final TimedStimulusListener successEventListener) {
         StringBuilder targetStateJsonBuilder = new StringBuilder();
         targetStateJsonBuilder.append("[");
@@ -767,9 +784,19 @@ public abstract class AbstractPresenter implements Presenter {
         }
     }
 
-    protected void requestFilePermissions() {
-        mediaRecorder.requestFilePermissions(this);
-    }
+    public native void requestFieldKitPermissions(final boolean filePermission, final boolean microphonePermission, final boolean cameraPermission, final boolean notificationPermission) /*-{
+        var abstractPresenter = this;
+        console.log("requestFieldKitPermissions");
+        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+            $wnd.plugins.fieldKitRecorder.requestFieldKitPermissions(function () {
+                console.log("requestFieldKitPermissions Ok");
+            }, function (tagvalue) {
+                console.log("requestFieldKitPermissions: " + tagvalue);
+            }, filePermission, microphonePermission, cameraPermission, notificationPermission);
+        } else {
+            console.log("requestFieldKitPermissions: plugin not present");
+        }
+     }-*/;
 
     protected native void templateFeature(String presenterName, String domId, String featureAttribute, String jsonPath, String instructionalText)/*-{
         console.log("domId: " + domId);

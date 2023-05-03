@@ -477,33 +477,37 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     protected native void writeCsvLine(final String userIdString, final String screenName, final int dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs) /*-{
         var dataSubmissionService = this;
-        console.log("writeCsvLine: " + userIdString + " : " + tagValue1 + " : " + tagValue2);
-        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
-            $wnd.plugins.fieldKitRecorder.writeCsvLine(function (tagvalue) {
-                console.log("writeCsvLine: " + tagvalue);
-//                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
-            }, function (tagvalue) {
-                console.log("writeCsvLine: " + tagvalue);
-                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(tagvalue);
-            },  userIdString, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs);
-        } else {
-            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(null);
+        if (@nl.mpi.tg.eg.experiment.client.ApplicationController::CAN_WRITE_SDCARD) {
+            console.log("writeCsvLine: " + userIdString + " : " + tagValue1 + " : " + tagValue2);
+            if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+                $wnd.plugins.fieldKitRecorder.writeCsvLine(function (tagvalue) {
+                    console.log("writeCsvLine: " + tagvalue);
+    //                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
+                }, function (tagvalue) {
+                    console.log("writeCsvLine: " + tagvalue);
+                    dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(tagvalue);
+                },  userIdString, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs);
+            } else {
+                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(null);
+            }
         }
      }-*/;
 
     public native void writeJsonData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
         var dataSubmissionService = this;
-        console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
-        if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
-            $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
-                console.log("writeJsonData: " + tagvalue);
-//                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
-            }, function (tagvalue) {
-                console.log("writeJsonData: " + tagvalue);
-                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(tagvalue);
-            },  userIdString, stimulusIdString,  stimulusJsonData);
-        } else {
-            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(null);
+        if (@nl.mpi.tg.eg.experiment.client.ApplicationController::CAN_WRITE_SDCARD) {
+            console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
+            if($wnd.plugins && $wnd.plugins.fieldKitRecorder){
+                $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
+                    console.log("writeJsonData: " + tagvalue);
+    //                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
+                }, function (tagvalue) {
+                    console.log("writeJsonData: " + tagvalue);
+                    dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(tagvalue);
+                },  userIdString, stimulusIdString,  stimulusJsonData);
+            } else {
+                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(null);
+            }
         }
      }-*/;
 }
