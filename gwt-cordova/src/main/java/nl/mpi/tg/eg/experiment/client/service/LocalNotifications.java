@@ -178,21 +178,23 @@ public abstract class LocalNotifications {
                         console.log("requestPermission: " + grantedInner);
                         localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestPermission failed");
                     });
-                }
-            });
-            $wnd.cordova.plugins.notification.local.hasDoNotDisturbPermissions(function (granted) {
-                if (!granted) {
-                    $wnd.cordova.plugins.notification.local.requestDoNotDisturbPermissions(function (grantedInner) {
-                        console.log("requestDoNotDisturbPermissions: " + grantedInner);
-                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestDoNotDisturb failed");
-                    });
-                }
-            });
-            $wnd.cordova.plugins.notification.local.isIgnoringBatteryOptimizations(function (granted) {
-                if (!granted) {
-                    $wnd.cordova.plugins.notification.local.requestIgnoreBatteryOptimizations(function (grantedInner) {
-                        console.log("requestIgnoreBatteryOptimizations: " + grantedInner);
-                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestIgnoreBattery failed");
+                } else {
+                    $wnd.cordova.plugins.notification.local.hasDoNotDisturbPermissions(function (grantedDoNotDi) {
+                        if (!grantedDoNotDi) {
+                            $wnd.cordova.plugins.notification.local.requestDoNotDisturbPermissions(function (grantedDoNotDiInner) {
+                                console.log("requestDoNotDisturbPermissions: " + grantedDoNotDiInner);
+                                localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestDoNotDisturb failed");
+                            });
+                        } else {
+                            $wnd.cordova.plugins.notification.local.isIgnoringBatteryOptimizations(function (grantedBattery) {
+                                if (!grantedBattery) {
+                                    $wnd.cordova.plugins.notification.local.requestIgnoreBatteryOptimizations(function (grantedBatteryInner) {
+                                        console.log("requestIgnoreBatteryOptimizations: " + grantedBatteryInner);
+                                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::logNotificationRequest(Ljava/lang/String;)("requestIgnoreBattery failed");
+                                    });
+                                }
+                            });
+                        }
                     });
                 }
             });
