@@ -43,7 +43,7 @@ public class FieldKitRecorder extends CordovaPlugin {
     private String currentRecoringDirectory = null;
     final static int PAUSE_TIER = 0;
     private String startPauseSystemTime = null;
-    private CallbackContext callbackContextTemp;
+    // private CallbackContext callbackContextTemp;
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -84,8 +84,11 @@ public class FieldKitRecorder extends CordovaPlugin {
             }
             if (!permissionsList.isEmpty()) {
                 String[] permissions = permissionsList.toArray(new String[permissionsList.size()]);
-                callbackContextTemp = callbackContext;
+                // callbackContextTemp = callbackContext;
                 cordova.requestPermissions(this, 0, permissions);
+                // it is not yet known if the permissions will be granted or not
+                // callbackContextTemp.error("permissions requested");
+                callbackContext.success();
                 return true;
             } else {
                 callbackContext.success();
@@ -347,17 +350,17 @@ public class FieldKitRecorder extends CordovaPlugin {
         startPauseSystemTime = null;
     }
 
-    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
-        if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
-                || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            callbackContextTemp.error("permissions not granted");
-        } else {
-            audioRecorder.terminateRecorder();
-            audioRecorder = new WavRecorder();
-            callbackContextTemp.success();
-        }
-    }
+    // public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
+    //     if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
+    //             || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    //             || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+    //         callbackContextTemp.error("permissions not granted");
+    //     } else {
+    //         audioRecorder.terminateRecorder();
+    //         audioRecorder = new WavRecorder();
+    //         callbackContextTemp.success();
+    //     }
+    // }
 
 //    @Override
 //    public void onWindowFocusChanged(boolean hasFocus) {
