@@ -50,10 +50,10 @@ public class FieldKitRecorder extends CordovaPlugin {
         if (action.equals("requestFieldKitPermissions")) {
             System.out.println("action: requestFieldKitPermissions");
             ArrayList<String> permissionsList = new ArrayList<>();
-            boolean filePermission = args.getBool(0);
-            boolean microphonePermission = args.getBool(1);
-            boolean cameraPermission = args.getBool(2);
-            boolean notificationPermission = args.getBool(3);
+            boolean filePermission = args.getBoolean(0);
+            boolean microphonePermission = args.getBoolean(1);
+            boolean cameraPermission = args.getBoolean(2);
+            boolean notificationPermission = args.getBoolean(3);
             if (filePermission){
                 if (!cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                 || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
