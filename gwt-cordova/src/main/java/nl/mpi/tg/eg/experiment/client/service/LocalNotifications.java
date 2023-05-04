@@ -196,6 +196,7 @@ public abstract class LocalNotifications {
                     });
                 }
             });
+        }
     }-*/;
 
     public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) /*-{
