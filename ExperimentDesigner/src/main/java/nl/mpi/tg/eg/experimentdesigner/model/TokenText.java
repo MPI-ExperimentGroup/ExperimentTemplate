@@ -37,8 +37,19 @@ public enum TokenText {
     groupMemberCode("Outputs the member code of the local member in a group experiment.", "::groupMemberCode::", "A"),
     groupRequestedPhase("Outputs the phase that should currently be displayed in a group experiment.", "::groupRequestedPhase::", "1"),
     formatDateTime("Formats the date and time according to the string provided.", "::formatDateTime_yyyy MM dd, HH:mm::", "2023 12 25, 08:30"),
-    mediaLength("Outputs the last known length in seconds of the media associated with the mediaId. This value may be less accurate until the media has finished playing or recording.", "::mediaLength_recording01::", "12.5");
-
+    mediaLength("Outputs the last known length in seconds of the media associated with the mediaId. This value may be less accurate until the media has finished playing or recording.", "::mediaLength_recording01::", "12.5"),
+    stimulusId("Outputs the current stimulus Id.", "::stimulusId::", "d1e286"),
+    stimulusLabel("Outputs the current stimulus label.", "::stimulusLabel::", "One"),
+    stimulusCode("Outputs the current stimulus code.", "::stimulusCode::", "code"),
+    stimulusCorrectResponses("Outputs the current stimulus correct responses.", "::stimulusCorrectResponses::", "Correct|Responses"),
+    stimulusRatingLabels("Outputs the current stimulus rating labels.", "::stimulusRatingLabels::", "Rating,Labels"),
+    stimulusRatingLabel_("Outputs the current stimulus rating label N.", "::stimulusRatingLabel_1::", "Labels"),
+    stimulusAudio("Outputs the current stimulus audio.", "::stimulusAudio::", "Audio"),
+    stimulusVideo("Outputs the current stimulus video.", "::stimulusVideo::", "Video"),
+    stimulusImage("Outputs the current stimulus image.", "::stimulusImage::", "Image"),
+    stimulusTags("Outputs the current stimulus tags.", "::stimulusTags::", "tag_number,tag_interesting"),
+    stimulusPauseMs("Outputs the current stimulus pause ms.", "::stimulusPauseMs::", "0");
+    
 //::groupAllMemberCodes::
 //
 //::groupAssignedMemberCodes::
@@ -103,27 +114,7 @@ public enum TokenText {
 //
 //::metadataField
 //
-//::stimulusId::
-//
-//::stimulusLabel::
-//
-//::stimulusCode::
-//
-//::stimulusCorrectResponses::
-//
-//::stimulusRatingLabels::
-//
-//::stimulusRatingLabel_" + index + "::
-//
-//::stimulusAudio::
-//
-//::stimulusVideo::
-//
-//::stimulusImage::
-//
-//::stimulusTags::
-//
-//::stimulusPauseMs::
+
 // rating_
 // stimulusRatingLabel_
     public final String usageDescription;
