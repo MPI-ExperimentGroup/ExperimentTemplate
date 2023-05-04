@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex;
 
 import android.Manifest;
 import android.os.Environment;
+import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
