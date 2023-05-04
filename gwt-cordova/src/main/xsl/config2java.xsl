@@ -407,12 +407,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 @Override
                 protected void setContent(final AppEventListener appEventListener) {
             </xsl:text>
-            <xsl:text>requestFieldKitPermissions(ApplicationController.CAN_WRITE_SDCARD, </xsl:text>        
-            <xsl:value-of select="if(descendant::startAudioRecorderApp) then 'true /* microphone */,' else 'false /* microphone */,'" />
-            <xsl:value-of select="if(descendant::streamGroupCamera) then 'true /* camera */,' else 'false /* camera */,'" />
-            <xsl:value-of select="if(descendant::requestNotification) then 'true /* notification */' else 'false /* notification */'" />
-            <xsl:text>);
+            <xsl:if test="descendant::startAudioRecorderApp or descendant::streamGroupCamera or descendant::requestNotification">
+                <xsl:text>requestFieldKitPermissions(ApplicationController.CAN_WRITE_SDCARD, </xsl:text>
+                <xsl:value-of select="if(descendant::startAudioRecorderApp) then 'true /* microphone */,' else 'false /* microphone */,'" />
+                <xsl:value-of select="if(descendant::streamGroupCamera) then 'true /* camera */,' else 'false /* camera */,'" />
+                <xsl:value-of select="if(descendant::requestNotification) then 'true /* notification */' else 'false /* notification */'" />
+                <xsl:text>);
                 </xsl:text>
+            </xsl:if>
             <xsl:if test="descendant::requestNotification">
                 <xsl:text>requestNotificationsPermission(submissionService);
                 </xsl:text>
