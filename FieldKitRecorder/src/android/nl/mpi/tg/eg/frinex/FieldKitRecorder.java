@@ -82,7 +82,7 @@ public class FieldKitRecorder extends CordovaPlugin {
                     permissionsList.add(Manifest.permission.POST_NOTIFICATIONS);                
                 }
             }
-            if (!permissionsList.siEmpty()) {
+            if (!permissionsList.isEmpty()) {
                 String[] permissions = permissionsList.toArray(new String[permissionsList.size()]);
                 callbackContextTemp = callbackContext;
                 cordova.requestPermissions(this, 0, permissions);
