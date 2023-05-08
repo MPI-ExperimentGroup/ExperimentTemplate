@@ -95,6 +95,8 @@ fi
 if egrep -q "requestNotification" www/@experiment.configuration.name@.xml; then
     echo true > requestNotification-true.txt
     echo "requestNotification true"
+    # field kit is included here because it is requesting notification permissions correctly
+    cordova plugin add /ExperimentTemplate/FieldKitRecorder/
     #cordova plugin add cordova-plugin-local-notification
     # cordova plugin add https://github.com/katzer/cordova-plugin-local-notifications.git
     # updating the notifications plugin because Android now requires FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
