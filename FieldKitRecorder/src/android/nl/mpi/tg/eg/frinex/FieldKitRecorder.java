@@ -35,7 +35,7 @@ import org.json.JSONException;
  */
 public class FieldKitRecorder extends CordovaPlugin {
 
-    private AudioRecorder audioRecorder = new WavRecorder();
+    private AudioRecorder audioRecorder = null;
     String externalStoragePath = Environment.getExternalStorageDirectory().getPath();
     private static final String AUDIO_RECORDER_FOLDER = "MPI_Recorder";
 //  private   String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -120,6 +120,9 @@ public class FieldKitRecorder extends CordovaPlugin {
                 callbackContext.error("Permissions not available");
                 return true;
             }
+            if (audioRecorder == null) {
+                audioRecorder = new WavRecorder();
+            }
             final String userId = args.getString(0);
             final String stimulusSet = args.getString(1);
             final String stimulusId = args.getString(2);
@@ -169,7 +172,9 @@ public class FieldKitRecorder extends CordovaPlugin {
                             csvWriter.writeCsvFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
                             csvWriter = null;
                         }
-                        audioRecorder.stopRecording();
+                        if (audioRecorder != null) {
+                            audioRecorder.stopRecording();
+                        }
                         callbackContext.success();
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
@@ -185,7 +190,7 @@ public class FieldKitRecorder extends CordovaPlugin {
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
-                    if (csvWriter != null) {
+                    if (csvWriter != null && audioRecorder != null) {
                         csvWriter.startTag(Integer.parseInt(tier), audioRecorder.getTime());
                     } else {
                         callbackContext.error("not recording");
@@ -207,7 +212,7 @@ public class FieldKitRecorder extends CordovaPlugin {
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
-                    if (csvWriter != null) {
+                    if (csvWriter != null && audioRecorder != null) {
                         csvWriter.endTag(Integer.parseInt(tier), audioRecorder.getTime(), stimulusId, stimulusCode, tagString);
                     } else {
                         callbackContext.error("not recording");
@@ -317,7 +322,9 @@ public class FieldKitRecorder extends CordovaPlugin {
                 System.out.println("IOException closing csvWriter: " + e.getMessage());
             }
         }
-        audioRecorder.terminateRecorder();
+        if (audioRecorder != null) {
+            audioRecorder.terminateRecorder();
+        }
     }
 
     private String getFormattedSystemTime() {
@@ -328,26 +335,30 @@ public class FieldKitRecorder extends CordovaPlugin {
 
     @Override
     public void onPause(boolean multitasking) {
-        if (csvWriter != null) {
-            try {
-                // the recording is paused when focus is lost so we dont explicitly pause here
-                csvWriter.startTag(PAUSE_TIER, audioRecorder.getTime());
-                startPauseSystemTime = getFormattedSystemTime();
-                csvWriter.writeCsvFile(this.cordova.getActivity().getApplicationContext());
-            } catch (final IOException e) {
-                System.out.println("IOException from csvWriter: " + e.getMessage());
+        if (audioRecorder != null) {
+            if (csvWriter != null)
+                try {
+                    // the recording is paused when focus is lost so we dont explicitly pause here
+                    csvWriter.startTag(PAUSE_TIER, audioRecorder.getTime());
+                    startPauseSystemTime = getFormattedSystemTime();
+                    csvWriter.writeCsvFile(this.cordova.getActivity().getApplicationContext());
+                } catch (final IOException e) {
+                    System.out.println("IOException from csvWriter: " + e.getMessage());
+                }
             }
+            audioRecorder.pauseRecorder();
         }
-        audioRecorder.pauseRecorder();
     }
 
     @Override
     public void onResume(boolean multitasking) {
-        audioRecorder.resumeRecorder();
-        if (csvWriter != null) {
-            csvWriter.endTag(PAUSE_TIER, audioRecorder.getTime(), "ResumedAfterPause", startPauseSystemTime, getFormattedSystemTime());
+        if (audioRecorder != null) {
+            audioRecorder.resumeRecorder();
+            if (csvWriter != null) {
+                csvWriter.endTag(PAUSE_TIER, audioRecorder.getTime(), "ResumedAfterPause", startPauseSystemTime, getFormattedSystemTime());
+            }
+            startPauseSystemTime = null;
         }
-        startPauseSystemTime = null;
     }
 
     // public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
