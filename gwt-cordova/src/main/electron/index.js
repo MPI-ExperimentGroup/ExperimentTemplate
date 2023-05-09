@@ -18,9 +18,11 @@ const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configurati
 
 const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl')) && app.commandLine.hasSwitch('debug-mode');
 
-// TODO: based on the experiment XML request microphone and or camera permissions
-const microphone = systemPreferences.askForMediaAccess('microphone');
-// const camera = systemPreferences.askForMediaAccess('camera');
+if (systemPreferences.askForMediaAccess) {
+    // TODO: based on the experiment XML request microphone and or camera permissions
+    const microphone = systemPreferences.askForMediaAccess('microphone');
+    // const camera = systemPreferences.askForMediaAccess('camera');
+}
 
 app.setAboutPanelOptions({
     applicationName: "Frinex",
