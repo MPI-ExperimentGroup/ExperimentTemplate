@@ -336,7 +336,7 @@ public class FieldKitRecorder extends CordovaPlugin {
     @Override
     public void onPause(boolean multitasking) {
         if (audioRecorder != null) {
-            if (csvWriter != null)
+            if (csvWriter != null) {
                 try {
                     // the recording is paused when focus is lost so we dont explicitly pause here
                     csvWriter.startTag(PAUSE_TIER, audioRecorder.getTime());
