@@ -584,7 +584,7 @@
                 <xsl:text>&lt;div th:fragment="tables"&gt;</xsl:text>
                     <xsl:for-each select="experiment/administration/dataTable">
                         <xsl:text>&lt;span class="table-outer"&gt;</xsl:text>
-                        <xsl:text>&lt;div class="table-container id="</xsl:text>
+                        <xsl:text>&lt;div class="table-container" id="</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
                         <xsl:text>"&gt;&lt;/div&gt;&lt;/span&gt;</xsl:text>
                         <xsl:text>

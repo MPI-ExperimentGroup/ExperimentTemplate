@@ -79,13 +79,13 @@ function generateChart(chartData) {
                 adminChart.update();
             });
         }
-        for (const stimuli of chartData.stimuli) {
-            data.labels.push(stimuli.label);
+        for (const stimulusResponse of chartData.stimulusResponse) {
+            data.labels.push(stimulusResponse.label);
             const responseIndex = data.labels.length - 1;
-            //data.datasets[0].data.push(stimuli.matching);
-            data.datasets[0].backgroundColor.push(stimuli.colour + '20');
-            data.datasets[0].borderColor.push(stimuli.colour + 'ff');
-            $.getJSON('stimulusresponses/search/countBy' + stimuli.coloumName + 'Like?matchingLike=' + stimuli.matching, function (responseData) {
+            //data.datasets[0].data.push(stimulusResponse.matching);
+            data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
+            data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
+            $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.coloumName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {
                 // console.log(responseData);
                 data.datasets[0].data[responseIndex] = responseData;
                 adminChart.update();
@@ -103,17 +103,17 @@ function generateChart(chartData) {
             //dataset.data.push(metadata.matching);
             data.datasets.push(dataset);
         }
-        for (const stimuli of chartData.stimuli) {
+        for (const stimulusResponse of chartData.stimulusResponse) {
             dataset = {
-                label: stimuli.label,
+                label: stimulusResponse.label,
                 data: [12, 19, 3, 5, 2, 3],
                 fill: false,
-                borderColor: stimuli.colour + 'ff',
+                borderColor: stimulusResponse.colour + 'ff',
                 borderWidth: 1,
                 tension: 0.1
             };
             data.labels = [12, 19, 3, 5, 2, 3];
-            //dataset.data.push(stimuli.matching);
+            //dataset.data.push(stimulusResponse.matching);
             data.datasets.push(dataset);
         }
     }
@@ -125,7 +125,18 @@ function generateChart(chartData) {
 //                                {label: "anders", fieldname: "Opleidingsniveau", matching: " anders", colour: "#007700"}, 
 //                                {label: "MBO", fieldname: "Opleidingsniveau", matching: "MBO", colour: "#000770"}, 
 //                                {label: "voortgezet onderwijs", fieldname: "Opleidingsniveau", matching: "voortgezet onderwijs", colour: "#000077"}, 
-//                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimuli: []});
+//                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimulusResponse: []});
+
+function generateTable(tableData) {
+    $("#" + tableData.divId).append("label: " + tableData.label);
+    for (const tagpair of tableData.tagpair) {
+    $("#" + tableData.divId).append("coloumNames: " + tableData.coloumNames);
+    $("#" + tableData.divId).append("screenName: " + tableData.screenName);
+    $("#" + tableData.divId).append("eventTag: " + tableData.eventTag);
+    $("#" + tableData.divId).append("tagValue1: " + tableData.tagValue1);
+    $("#" + tableData.divId).append("tagValue2: " + tableData.tagValue2);
+    }
+}
 
 function touchInputSVG(touchData, svgId, tableId) {
     //                            $(svgId).mouseover(function () {
