@@ -135,7 +135,7 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("eventTag: " + tableData.eventTag);
         $("#" + tableData.divId).append("tagValue1: " + tableData.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tableData.tagValue2);
-        $.getJSON('tagpairevents/search/findByScreenNameLikeEventTagLikeTagValue1LikeTagValue2Like'
+        $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
                 + '?screenNameLike=' + tableData.screenName
                 + '&eventTagLike=' + tableData.eventTag
                 + '&tagValue1Like=' + tableData.tagValue1
