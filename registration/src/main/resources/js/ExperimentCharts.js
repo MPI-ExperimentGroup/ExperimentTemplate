@@ -136,10 +136,10 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
         $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-                + '?screenNameLike=' + (tagpair.screenName === undefined)? "*" : tagpair.screenName
-                + '&eventTagLike=' + (tagpair.eventTag === undefined)? "*" : tagpair.eventTag
-                + '&tagValue1Like=' + (tagpair.tagValue1 === undefined)? "*" : tagpair.tagValue1
-                + '&tagValue2Like=' + (tagpair.tagValue2 === undefined)? "*" : tagpair.tagValue2
+                + '?screenNameLike=' + (tagpair.screenName === undefined)? "" : tagpair.screenName
+                + '&eventTagLike=' + (tagpair.eventTag === undefined)? "" : tagpair.eventTag
+                + '&tagValue1Like=' + (tagpair.tagValue1 === undefined)? "" : tagpair.tagValue1
+                + '&tagValue2Like=' + (tagpair.tagValue2 === undefined)? "" : tagpair.tagValue2
                 , function (responseData) {
                     console.log(responseData);
                 });
