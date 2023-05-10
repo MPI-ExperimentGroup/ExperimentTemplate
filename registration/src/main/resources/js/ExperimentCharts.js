@@ -130,16 +130,16 @@ function generateChart(chartData) {
 function generateTable(tableData) {
     $("#" + tableData.divId).append("label: " + tableData.label);
     for (const tagpair of tableData.tagpair) {
-        $("#" + tableData.divId).append("coloumNames: " + tableData.coloumNames);
-        $("#" + tableData.divId).append("screenName: " + tableData.screenName);
-        $("#" + tableData.divId).append("eventTag: " + tableData.eventTag);
-        $("#" + tableData.divId).append("tagValue1: " + tableData.tagValue1);
-        $("#" + tableData.divId).append("tagValue2: " + tableData.tagValue2);
+        $("#" + tableData.divId).append("coloumNames: " + tagpair.coloumNames);
+        $("#" + tableData.divId).append("screenName: " + tagpair.screenName);
+        $("#" + tableData.divId).append("eventTag: " + tagpair.eventTag);
+        $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
+        $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
         $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-                + '?screenNameLike=' + tableData.screenName
-                + '&eventTagLike=' + tableData.eventTag
-                + '&tagValue1Like=' + tableData.tagValue1
-                + '&tagValue2Like=' + tableData.tagValue2
+                + '?screenNameLike=' + (tagpair.screenName === undefined)? "*" : tagpair.screenName
+                + '&eventTagLike=' + (tagpair.eventTag === undefined)? "*" : tagpair.eventTag
+                + '&tagValue1Like=' + (tagpair.tagValue1 === undefined)? "*" : tagpair.tagValue1
+                + '&tagValue2Like=' + (tagpair.tagValue2 === undefined)? "*" : tagpair.tagValue2
                 , function (responseData) {
                     console.log(responseData);
                 });
