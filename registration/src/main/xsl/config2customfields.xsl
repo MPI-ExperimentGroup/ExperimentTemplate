@@ -597,8 +597,9 @@
                         <xsl:value-of select="@label" />
                         <xsl:text>", tagpair: [</xsl:text>
                         <xsl:for-each select="tagpair">
-                            <xsl:text>
-                                {coloumNames: "</xsl:text>
+                            <xsl:text>{tableId:"</xsl:text>
+                            <xsl:value-of select="generate-id(.)" />
+                            <xsl:text>, coloumNames: "</xsl:text>
                             <xsl:value-of select="@coloumNames" />
                             <xsl:text>", screenName: "</xsl:text>
                             <xsl:value-of select="@screenName" />
