@@ -129,20 +129,36 @@ function generateChart(chartData) {
 
 function generateTable(tableData) {
     $("#" + tableData.divId).append("label: " + tableData.label);
+    var tableIndex = 0;
     for (const tagpair of tableData.tagpair) {
         $("#" + tableData.divId).append("coloumNames: " + tagpair.coloumNames);
         $("#" + tableData.divId).append("screenName: " + tagpair.screenName);
         $("#" + tableData.divId).append("eventTag: " + tagpair.eventTag);
         $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
+        $("#" + tableData.divId).append("<table id=\"" + tableData.divId + "_" + tableIndex + "\"></table>");
+        var headerRow = "<tr>";
+        for (const coloumName of tagpair.coloumNames.split(",")) {
+            headerRow += "<td>" + coloumName + "</td>";
+        }
+        headerRow += "</td>";
+        $("#" + tableData.divId + "_" + tableIndex).append(headerRow);
+
         $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-                + '?screenNameLike=' + (tagpair.screenName === undefined)? "" : tagpair.screenName
-                + '&eventTagLike=' + (tagpair.eventTag === undefined)? "" : tagpair.eventTag
-                + '&tagValue1Like=' + (tagpair.tagValue1 === undefined)? "" : tagpair.tagValue1
-                + '&tagValue2Like=' + (tagpair.tagValue2 === undefined)? "" : tagpair.tagValue2
-                , function (responseData) {
-                    console.log(responseData);
-                });
+            + '?screenNameLike=' + (tagpair.screenName === undefined) ? "" : tagpair.screenName
+                + '&eventTagLike=' + (tagpair.eventTag === undefined) ? "" : tagpair.eventTag
+                    + '&tagValue1Like=' + (tagpair.tagValue1 === undefined) ? "" : tagpair.tagValue1
+                        + '&tagValue2Like=' + (tagpair.tagValue2 === undefined) ? "" : tagpair.tagValue2
+            , function (responseData) {
+                console.log(responseData);
+                var dataRow = "<tr>";
+                for (const coloumName of tagpair.coloumNames.split(",")) {
+                    dataRow += "<td>" + tagpair[coloumName] + "</td>";
+                }
+                dataRow += "</td>";
+                $("#" + tableData.divId + "_" + tableIndex).append(dataRow);
+            });
+        tableIndex++;
     }
 }
 
