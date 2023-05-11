@@ -134,8 +134,8 @@ public class LocalNotificationsTest {
             }
 
             @Override
-            protected void setNotificationLater(String notificationTitle, String notificationText, JavaScriptObject notificationActions, String notificationCommand) {
-                super.setNotificationRun(notificationTitle, notificationText, notificationActions, notificationCommand);
+            protected void setNotificationLater(String notificationTitle, String notificationText, final String actionId, String notificationCommand) {
+                super.setNotificationRun(notificationTitle, notificationText, actionId, notificationCommand);
             }
 
             @Override
