@@ -28,24 +28,24 @@ import java.util.Random;
  */
 public abstract class LocalNotifications {
 
-    protected void setNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) {
+    protected void setNotification(final String notificationTitle, final String notificationText, final String actionId, final String notificationCommand) {
         logNotificationRequest(notificationCommand);
         clearNotifications();
-        setNotificationLater(notificationTitle, notificationText, notificationActions, notificationCommand);
+        setNotificationLater(notificationTitle, notificationText, actionId, notificationCommand);
     }
 
-    protected void setNotificationLater(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) {
+    protected void setNotificationLater(final String notificationTitle, final String notificationText, final String actionId, final String notificationCommand) {
         logNotificationRequest(notificationCommand);
         Timer timer = new Timer() {
             @Override
             public void run() {
-                setNotificationRun(notificationTitle, notificationText, notificationActions, notificationCommand);
+                setNotificationRun(notificationTitle, notificationText, actionId, notificationCommand);
             }
         };
         timer.schedule(100);
     }
 
-    protected void setNotificationRun(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) {
+    protected void setNotificationRun(final String notificationTitle, final String notificationText, final String actionId, final String notificationCommand) {
         int notificationCount = 0;
         for (final String currentEntry : notificationCommand.split(" ")) {
             boolean onWeekends = false;
@@ -54,7 +54,7 @@ public abstract class LocalNotifications {
             if (currentParts.length > 1) {
                 switch (currentParts[0]) {
                     case "in_minutes":
-                        setNotificationInMinutes(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, notificationActions, Integer.parseInt(currentParts[1]));
+                        setNotificationInMinutes(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, actionId, Integer.parseInt(currentParts[1]));
                         notificationCount++;
                         break;
                     case "weekends_between":
@@ -63,7 +63,7 @@ public abstract class LocalNotifications {
                         if (currentParts.length > 5) {
                             if (!currentParts[1].isEmpty() && !currentParts[2].isEmpty() && !currentParts[3].isEmpty() && !currentParts[4].isEmpty() && !currentParts[5].isEmpty()) {
                                 for (int[] repetitionTimes : findNotificationRepetitions(Integer.parseInt(currentParts[1]), Integer.parseInt(currentParts[2]), Integer.parseInt(currentParts[3]), Integer.parseInt(currentParts[4]), Integer.parseInt(currentParts[5]))) {
-                                    notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, notificationActions, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
+                                    notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, actionId, 7, onWeekends, repetitionTimes[0], repetitionTimes[1]);
                                 }
                             }
                         }
@@ -71,7 +71,7 @@ public abstract class LocalNotifications {
                     case "weekends":
                         onWeekends = true;
                     case "weekdays":
-                        notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, notificationActions, 7, onWeekends, Integer.parseInt(currentParts[1]), (currentParts.length > 2) ? Integer.parseInt(currentParts[2]) : 0);
+                        notificationCount += findNotificationDays(notificationCount, notificationTitle, notificationText /*+ "\n" + currentEntry*/, actionId, 7, onWeekends, Integer.parseInt(currentParts[1]), (currentParts.length > 2) ? Integer.parseInt(currentParts[2]) : 0);
                         break;
                 }
             }
@@ -109,7 +109,7 @@ public abstract class LocalNotifications {
     }
 
     @SuppressWarnings("deprecation")
-    protected int findNotificationDays(final int notificationCount, final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int maxDaysInAdvance, final boolean onWeekends, final int hourInt, final int minuteInt) {
+    protected int findNotificationDays(final int notificationCount, final String notificationTitle, final String notificationText, final String actionId, final int maxDaysInAdvance, final boolean onWeekends, final int hourInt, final int minuteInt) {
         // we cannot use java.text.DateFormat, java.text.SimpleDateFormat, java.util.Calendar in GWT hence the deprecated usages here
         int numberAdded = 0;
         Date startDate = new Date();
@@ -130,7 +130,7 @@ public abstract class LocalNotifications {
                     logNotificationRequest("adding date time notification: " + currentDate);
                     setDayNotification(notificationCount + numberAdded, notificationTitle,
                             notificationText /*+ " : " + maxDaysInAdvance + "_" + onWeekends + "_" + hourInt + "_" + minuteInt*/,
-                            notificationActions, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
+                            actionId, currentDate.getYear() + 1900, currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
                     numberAdded++;
                 } else {
                     logNotificationRequest("not setting because time too close to now: " + currentDate);
@@ -143,18 +143,18 @@ public abstract class LocalNotifications {
     protected native void clearNotifications() /*-{
         if($wnd.cordova) $wnd.cordova.plugins.notification.local.clearAll();
      }-*/;
-
-    protected native void setNotificationInMinutes(final int notificationId, final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int minutes) /*-{
+    
+    protected native void setNotificationInMinutes(final int notificationId, final String notificationTitle, final String notificationText, final String actionId, final int minutes) /*-{
         if($wnd.cordova) $wnd.cordova.plugins.notification.local.schedule({
             id: notificationId,
             title: notificationTitle,
             text: notificationText,
             trigger: { 'in': minutes, unit: 'minute' },
-            actions: notificationActions
+            actions: actionId
         });
      }-*/;
 
-    protected native void setDayNotification(final int notificationId, final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final int yearInt, final int monthInt, final int dayInt, final int hourInt, final int minuteInt) /*-{
+    protected native void setDayNotification(final int notificationId, final String notificationTitle, final String notificationText, final String actionId, final int yearInt, final int monthInt, final int dayInt, final int hourInt, final int minuteInt) /*-{
         var localNotifications = this;
         console.log("setDayNotification", yearInt, monthInt, dayInt, hourInt, minuteInt);
         if($wnd.cordova) $wnd.cordova.plugins.notification.local.schedule({
@@ -162,7 +162,7 @@ public abstract class LocalNotifications {
             title: notificationTitle,
             text: notificationText,
             trigger: { at: new Date(yearInt, monthInt, dayInt, hourInt, minuteInt) },
-            actions: notificationActions
+            actions: actionId
         });
      }-*/;
 
@@ -201,7 +201,7 @@ public abstract class LocalNotifications {
         }
     }-*/;
 
-    public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String notificationCommand) /*-{
+    public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String actionId, final String notificationCommand) /*-{
         var localNotifications = this;
         if($wnd.cordova){
             //console.log("$wnd: " + $wnd);
@@ -209,7 +209,8 @@ public abstract class LocalNotifications {
             //console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
             // $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
                 // if (granted) {
-                    localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, notificationActions, notificationCommand);
+                    $wnd.cordova.plugins.notification.local.addActions(actionId, notificationActions);
+                    localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, actionId, notificationCommand);
                 // } else {
                 //     localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
                 // }
