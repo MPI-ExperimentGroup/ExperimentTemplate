@@ -210,7 +210,7 @@ public abstract class LocalNotifications {
             // $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
                 // if (granted) {
                     $wnd.cordova.plugins.notification.local.addActions(actionId, notificationActions);
-                    localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/String;)(notificationTitle, notificationText, actionId, notificationCommand);
+                    localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(notificationTitle, notificationText, actionId, notificationCommand);
                 // } else {
                 //     localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
                 // }
