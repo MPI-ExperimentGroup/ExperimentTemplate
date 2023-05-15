@@ -98,11 +98,11 @@ if egrep -q "requestNotification" www/@experiment.configuration.name@.xml; then
     # field kit is included here because it is requesting notification permissions correctly
     cordova plugin add /ExperimentTemplate/FieldKitRecorder/
     #cordova plugin add cordova-plugin-local-notification
-    cordova plugin add https://github.com/katzer/cordova-plugin-local-notifications.git
+    # cordova plugin add https://github.com/katzer/cordova-plugin-local-notifications.git
     # updating the notifications plugin because Android now requires FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
     # cordova plugin add https://github.com/Roma-F/cordova-plugin-local-notifications-PF.git
     # cordova plugin add https://github.com/amataslovers/cordova-plugin-local-notifications.git
-    # cordova plugin add https://github.com/fquirin/cordova-plugin-local-notifications.git
+    cordova plugin add https://github.com/fquirin/cordova-plugin-local-notifications.git
 else
     echo false > requestNotification-false.txt
     echo "requestNotification false"
