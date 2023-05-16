@@ -108,7 +108,7 @@ if egrep -q "requestNotification" www/@experiment.configuration.name@.xml; then
     # https://github.com/katzer/cordova-plugin-local-notifications/issues/1990
     # cordova plugin add https://github.com/fquirin/cordova-plugin-local-notifications.git#pr-katzer
     # the local directory cordova-plugin-local-notifications contains a checkout of the pr-katzer branch
-    cordova plugin add cordova-plugin-local-notifications
+    cordova plugin add /corova-plugins/cordova-plugin-local-notifications
 else
     echo false > requestNotification-false.txt
     echo "requestNotification false"
