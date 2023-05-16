@@ -141,11 +141,11 @@ public abstract class LocalNotifications {
     }
 
     protected native void clearNotifications() /*-{
-        if($wnd.cordova) $wnd.cordova.plugins.notification.local.clearAll();
+        if($wnd.cordova) if ($wnd.cordova.plugins.notification) $wnd.cordova.plugins.notification.local.clearAll();
      }-*/;
     
     protected native void setNotificationInMinutes(final int notificationId, final String notificationTitle, final String notificationText, final String actionId, final int minutes) /*-{
-        if($wnd.cordova) $wnd.cordova.plugins.notification.local.schedule({
+        if($wnd.cordova) if ($wnd.cordova.plugins.notification) $wnd.cordova.plugins.notification.local.schedule({
             id: notificationId,
             title: notificationTitle,
             text: notificationText,
@@ -157,7 +157,7 @@ public abstract class LocalNotifications {
     protected native void setDayNotification(final int notificationId, final String notificationTitle, final String notificationText, final String actionId, final int yearInt, final int monthInt, final int dayInt, final int hourInt, final int minuteInt) /*-{
         var localNotifications = this;
         console.log("setDayNotification", yearInt, monthInt, dayInt, hourInt, minuteInt);
-        if($wnd.cordova) $wnd.cordova.plugins.notification.local.schedule({
+        if($wnd.cordova) if ($wnd.cordova.plugins.notification) $wnd.cordova.plugins.notification.local.schedule({
             id: notificationId,
             title: notificationTitle,
             text: notificationText,
@@ -168,7 +168,7 @@ public abstract class LocalNotifications {
 
     public native void requestPermissions() /*-{
         var localNotifications = this;
-        if($wnd.cordova){
+        if($wnd.cordova) if ($wnd.cordova.plugins.notification){
         //console.log("$wnd: " + $wnd);
         //console.log("$wnd.plugins: " + $wnd.plugins);
         //console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
@@ -203,7 +203,7 @@ public abstract class LocalNotifications {
 
     public native void requestNotification(final String notificationTitle, final String notificationText, final JavaScriptObject notificationActions, final String actionId, final String notificationCommand) /*-{
         var localNotifications = this;
-        if($wnd.cordova){
+        if($wnd.cordova) if ($wnd.cordova.plugins.notification){
             //console.log("$wnd: " + $wnd);
             //console.log("$wnd.plugins: " + $wnd.plugins);
             //console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);

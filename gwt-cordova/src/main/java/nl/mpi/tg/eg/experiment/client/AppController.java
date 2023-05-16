@@ -396,7 +396,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
     }
 
     final protected native boolean triggerNotificationCallbacks() /*-{
-        if ($wnd.cordova) if ($wnd.cordova.plugins) $wnd.cordova.plugins.notification.local.fireQueuedEvents();
+        if ($wnd.cordova) if ($wnd.cordova.plugins) if ($wnd.cordova.plugins.notification) $wnd.cordova.plugins.notification.local.fireQueuedEvents();
     }-*/;
 
     final protected native boolean checkNotificationCallbacks() /*-{
