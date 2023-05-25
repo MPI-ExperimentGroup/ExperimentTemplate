@@ -912,20 +912,22 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void clearCurrentScore(final Stimulus currentStimulus, final String scoreGroupTokens, final int dataChannel) {
+        final int elapsedMillis = duration.elapsedMillis();
         if (userResults.getUserData().getPotentialScore() > 0) {
             userResults.getUserData().addGamePlayed();
         }
         final String formattedScoreGroup = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(scoreGroupTokens);
         userResults.getUserData().clearCurrentScore(formattedScoreGroup);
         localStorage.storeUserScore(userResults);
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, elapsedMillis);
     }
 
     protected void scoreIncrement(final Stimulus currentStimulus, final int dataChannel, final int scoreValue) {
+        final int elapsedMillis = duration.elapsedMillis();
         userResults.getUserData().addPotentialScore(scoreValue);
         localStorage.storeUserScore(userResults);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "scoreIncrement", currentStimulus, null, null, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "scoreIncrement", currentStimulus, null, null, elapsedMillis);
     }
 
     protected void scoreLabel() {
@@ -1224,6 +1226,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public void setResponse(Stimulus dragDropStimulus, String codeResponse) {
+                    final int elapsedMillis = duration.elapsedMillis();
                     HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
                     if (!jsonStimulusMap.containsKey(dragDropStimulus)) {
                         JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), dragDropStimulus);
@@ -1233,7 +1236,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     jsonStimulusMap.get(dragDropStimulus).put("regionDragDrop", new JSONString(codeResponse));
                     localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), dragDropStimulus, jsonStimulusMap.get(dragDropStimulus));
                     submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), dragDropStimulus.getUniqueId(), jsonStimulusMap.get(dragDropStimulus).toString());
-                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", dragDropStimulus, codeResponse, null, duration.elapsedMillis());
+                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", dragDropStimulus, codeResponse, null, elapsedMillis);
                 }
             };
         }
@@ -1509,6 +1512,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
+                final int elapsedMillis = duration.elapsedMillis();
                 timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? "stimulusButton" : eventTag);
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListener.getLabel(), duration.elapsedMillis());
                 Boolean isCorrect = null;
@@ -1529,7 +1533,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
                 // @todo: probably good to check if the data has changed before writing to disk
                 submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, duration.elapsedMillis());
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, elapsedMillis);
                 presenterListener.eventFired(button, shotEventListener);
             }
 
@@ -1797,6 +1801,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                     @Override
                     public void eventFired(ButtonBase button, SingleShotEventListener shotEventListener) {
+                        final int elapsedMillis = duration.elapsedMillis();
                         timedEventMonitor.registerEvent((eventTag == null || eventTag.isEmpty()) ? ratingItem : eventTag + "_" + ratingItem);
                         //timedEventMonitor.registerEvent(formattedGroupId); // should this be eventTag
                         endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
@@ -1819,7 +1824,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
                         // @todo: probably good to check if the data has changed before writing to disk
                         submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
+                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, ratingItem, isCorrect, elapsedMillis);
                         timedStimulusListener.postLoadTimerFired();
                     }
 
@@ -2344,6 +2349,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     private boolean validateStimuliResponses(/* this must use the stimuli for each StimulusFreeText and not from the stimulusProvider */) {
+        final int elapsedMillis = duration.elapsedMillis();
         HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!jsonStimulusMap.containsKey(stimulusFreeText.getStimulus())) {
@@ -2392,7 +2398,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 userResults.getUserData().addPotentialScore(correctness);
                 isCorrect = correctness;
             }
-            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, duration.elapsedMillis());
+            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, elapsedMillis);
         }
         return true;
     }
@@ -2586,6 +2592,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final String groupId,
             final int dataChannel
     ) {
+        final int elapsedMillis = duration.elapsedMillis();
         final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths());
         final String formattedGroupId;
         if (groupId == null || groupId.isEmpty()) {
@@ -2615,7 +2622,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 isCorrect = correctness;
             }
         }
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, formattedCode, isCorrect, elapsedMillis);
     }
 
     protected void touchInputStop() {
