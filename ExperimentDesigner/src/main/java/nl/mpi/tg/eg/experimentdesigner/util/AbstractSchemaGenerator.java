@@ -456,7 +456,7 @@ public class AbstractSchemaGenerator {
                                                 .colourRGBAttribute("colour", false),
                                         new DocumentationElement("stimulusResponse", "Adds matching stimuli responses as a dataset to the graph.", 0, 0, new DocumentationElement[0])
                                                 .stringAttribute("label", false)
-                                                .stringAttribute("coloumName", false)
+                                                .stringAttribute("columnName", false)
                                                 .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false)
                                     })
@@ -470,10 +470,10 @@ public class AbstractSchemaGenerator {
                                         //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
                                         //                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the table.", 0, 0, new DocumentationElement[0])
                                         //                                                .stringAttribute("label", false)
-                                        //                                                .stringAttribute("coloumName", false)
+                                        //                                                .stringAttribute("columnName", false)
                                         //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
                                         new DocumentationElement("tagpair", "Adds matching tag pair records as a dataset to the table.", 0, 0, new DocumentationElement[0])
-                                                .stringAttribute("coloumNames", false)
+                                                .stringAttribute("columnNames", false)
                                                 .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .documentedAttribute("eventTag", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .documentedAttribute("tagValue1", AttributeType.xsString, "Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)

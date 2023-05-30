@@ -60,19 +60,19 @@
             <metadata label="man" fieldName="gender" matching="man" colour="#000022" />
         </chart>
         <chart label="ScreenName" type="pie">
-            <stimulusResponse label="Aggressive_Short_Recordings" coloumName="ScreenName" matching="Aggressive_Short_Recordings" colour="#990000" />
-            <stimulusResponse label="RecordingQualityTest" coloumName="ScreenName" matching="RecordingQualityTest" colour="#000990" />
+            <stimulusResponse label="Aggressive_Short_Recordings" columnName="ScreenName" matching="Aggressive_Short_Recordings" colour="#990000" />
+            <stimulusResponse label="RecordingQualityTest" columnName="ScreenName" matching="RecordingQualityTest" colour="#000990" />
         </chart>
         <chart label="isCorrect" type="line">
-            <stimulusResponse label="True" coloumName="isCorrect" matching="true" colour="#990000" />
-            <stimulusResponse label="False" coloumName="isCorrect" matching="false" colour="#000990" />
+            <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
+            <stimulusResponse label="False" columnName="isCorrect" matching="false" colour="#000990" />
         </chart>
         <!-- <table label="isCorrect">
-            <stimulusResponse label="True" coloumName="isCorrect" matching="true" colour="#990000" />
-            <stimulusResponse label="False" coloumName="isCorrect" matching="false" colour="#000990" />
+            <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
+            <stimulusResponse label="False" columnName="isCorrect" matching="false" colour="#000990" />
         </table> -->
         <dataTable label="TouchInputReport">
-            <tagpair coloumNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="" tagValue2="" />
+            <tagpair columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="" tagValue2="" />
         </dataTable> 
     </administration>
     <scss>

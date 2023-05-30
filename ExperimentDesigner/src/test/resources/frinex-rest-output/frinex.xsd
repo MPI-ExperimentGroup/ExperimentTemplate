@@ -775,7 +775,7 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="coloumName" type="xs:string" use="required">
+<xs:attribute name="columnName" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
@@ -829,7 +829,7 @@
 <xs:sequence>
 <xs:element name="tagpair" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
-<xs:attribute name="coloumNames" type="xs:string" use="required">
+<xs:attribute name="columnNames" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
 </xs:annotation>

@@ -563,8 +563,8 @@
                             <xsl:text>
                                 {label: "</xsl:text>
                             <xsl:value-of select="@label" />
-                            <xsl:text>", coloumName: "</xsl:text>
-                            <xsl:value-of select="concat(upper-case(substring(@coloumName,1,1)), substring(@coloumName, 2))" />
+                            <xsl:text>", columnName: "</xsl:text>
+                            <xsl:value-of select="concat(upper-case(substring(@columnName,1,1)), substring(@columnName, 2))" />
                             <xsl:text>", matching: "</xsl:text>
                             <xsl:value-of select="@matching" />
                             <xsl:text>", colour: "</xsl:text>
@@ -599,8 +599,8 @@
                         <xsl:for-each select="tagpair">
                             <xsl:text>{tableId:"</xsl:text>
                             <xsl:value-of select="generate-id(.)" />
-                            <xsl:text>", coloumNames: "</xsl:text>
-                            <xsl:value-of select="@coloumNames" />
+                            <xsl:text>", columnNames: "</xsl:text>
+                            <xsl:value-of select="@columnNames" />
                             <xsl:text>", screenName: "</xsl:text>
                             <xsl:value-of select="@screenName" />
                             <xsl:text>", eventTag: "</xsl:text>
