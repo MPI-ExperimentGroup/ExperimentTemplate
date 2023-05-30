@@ -149,10 +149,10 @@ function generateTable(tableData) {
             , function (responseData) {
                 // console.log(responseData);
                 // todo: impliment or remove simple mode parameter
-                var dataRow = "<tr id='clickablerow' userid='" + responseData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
                 for (const recordData of responseData._embedded.tagpairevents) {
+                    var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
                     for (const coloumName of tagpair.coloumNames.split(",")) {
-                        dataRow += "<td>" + recordData[coloumName] + "</td>";
+                        dataRow += "<td>" + recordData[coloumName.charAt(0).toLowerCase() + coloumName.slice(1)] + "</td>";
                     }
                     dataRow += "</td>";
                     $("#" + tagpair.tableId + " tbody").append(dataRow);
