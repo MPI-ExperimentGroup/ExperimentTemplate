@@ -147,14 +147,16 @@ function generateTable(tableData) {
             + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
             + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2)
             , function (responseData) {
-                console.log(responseData);
+                // console.log(responseData);
                 // todo: impliment or remove simple mode parameter
                 var dataRow = "<tr id='clickablerow' userid='" + responseData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
-                for (const coloumName of tagpair.coloumNames.split(",")) {
-                    dataRow += "<td>" + tagpair[coloumName] + "</td>";
+                for (const recordData of responseData._embedded.tagpairevents) {
+                    for (const coloumName of tagpair.coloumNames.split(",")) {
+                        dataRow += "<td>" + recordData[coloumName] + "</td>";
+                    }
+                    dataRow += "</td>";
+                    $("#" + tagpair.tableId + " tbody").append(dataRow);
                 }
-                dataRow += "</td>";
-                $("#" + tagpair.tableId + " tbody").append(dataRow);
             });
     }
 }
