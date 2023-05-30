@@ -155,7 +155,7 @@ function generateTable(tableData) {
                     var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
                     for (const columnLabel of tagpair.columnNames.split(",")) {
                         const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
-                        if (columnName === "eventTag" && recordData[columnName] === "touchInputReport") {
+                        if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
                             touchInputReport = true;
                             touchInputReportCounter++;
                             dataRow += "<td class='popupOuter'>" + recordData[columnName] + "</td>";
