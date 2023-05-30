@@ -85,7 +85,7 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(stimulusResponse.matching);
             data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
             data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
-            $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.coloumName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {
+            $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.columnName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {
                 // console.log(responseData);
                 data.datasets[0].data[responseIndex] = responseData;
                 adminChart.update();
@@ -131,15 +131,15 @@ function generateTable(tableData) {
     $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
     for (const tagpair of tableData.tagpair) {
         $("#" + tableData.divId).append("tagpair: " + tagpair.tagpair);
-        $("#" + tableData.divId).append("coloumNames: " + tagpair.coloumNames);
+        $("#" + tableData.divId).append("columnNames: " + tagpair.columnNames);
         $("#" + tableData.divId).append("screenName: " + tagpair.screenName);
         $("#" + tableData.divId).append("eventTag: " + tagpair.eventTag);
         $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
         $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody></tbody></table>");
-        for (const coloumName of tagpair.coloumNames.split(",")) {
-            // todo: impliment or remove sorting
-            $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(coloumName) + "&amp;simple=true'>" + coloumName + "</a></th>");
+        for (const columnName of tagpair.columnNames.split(",")) {
+            // todo: impliment sorting in JS
+            $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(columnName) + "&amp;simple=true'>" + columnName + "</a></th>");
         }
         $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
             + '?screenName=' + encodeURIComponent(tagpair.screenName)
@@ -149,13 +149,30 @@ function generateTable(tableData) {
             , function (responseData) {
                 // console.log(responseData);
                 // todo: impliment or remove simple mode parameter
+                var touchInputReportCounter = -1;
                 for (const recordData of responseData._embedded.tagpairevents) {
+                    var touchInputReport = false;
                     var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
-                    for (const coloumName of tagpair.coloumNames.split(",")) {
-                        dataRow += "<td>" + recordData[coloumName.charAt(0).toLowerCase() + coloumName.slice(1)] + "</td>";
+                    for (const columnLabel of tagpair.columnNames.split(",")) {
+                        const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
+                        if (columnName === "eventTag" && recordData[columnName] === "touchInputReport") {
+                            touchInputReport = true;
+                            touchInputReportCounter++;
+                            dataRow += "<td class='popupOuter'>" + recordData[columnName] + "</td>";
+                            dataRow += "<svg xmlns='http://www.w3.org/2000/svg' id='svg_" + touchInputReportCounter + "' version='1.1' width='100' height='100'></svg>";
+                            dataRow += "<table id='table_'" + touchInputReportCounter + "' class='popupTable'><tr><td>ms</td><td>X</td><td>Y</td><td>Interaction</td></tr></table>";
+                        } else {
+                            dataRow += "<td>" + recordData[columnName] + "</td>";
+                        }
                     }
                     dataRow += "</td>";
                     $("#" + tagpair.tableId + " tbody").append(dataRow);
+                    if (touchInputReport) {
+                        var touchData = recordData.tagValue2;
+                        var svgId = 'svg_' + touchInputReportCounter;
+                        var tableId = 'table_' + touchInputReportCounter;
+                        touchInputSVG(touchData, svgId, tableId);
+                    }
                 }
             });
     }
