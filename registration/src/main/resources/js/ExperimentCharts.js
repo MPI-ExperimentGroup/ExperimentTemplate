@@ -128,7 +128,7 @@ function generateChart(chartData) {
 //                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimulusResponse: []});
 
 function generateTable(tableData) {
-    $("#" + tableData.divId).append("label: " + tableData.label);
+    $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
     for (const tagpair of tableData.tagpair) {
         $("#" + tableData.divId).append("tagpair: " + tagpair.tagpair);
         $("#" + tableData.divId).append("coloumNames: " + tagpair.coloumNames);
@@ -136,27 +136,25 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("eventTag: " + tagpair.eventTag);
         $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
-        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\"></table>");
-        var headerRow = "<tr>";
+        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody></tbody></table>");
         for (const coloumName of tagpair.coloumNames.split(",")) {
-            headerRow += "<td>" + coloumName + "</td>";
+            // todo: impliment or remove sorting
+            $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(coloumName) + "&amp;simple=true'>" + coloumName + "</a></th>");
         }
-        headerRow += "</td>";
-        $("#" + tagpair.tableId).append(headerRow);
-
         $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-            + '?screenName=' + tagpair.screenName
-                + '&eventTag=' + tagpair.eventTag
-                    + '&tagValue1=' + tagpair.tagValue1
-                        + '&tagValue2=' + tagpair.tagValue2
+            + '?screenName=' + encodeURIComponent(tagpair.screenName)
+            + '&eventTag=' + encodeURIComponent(tagpair.eventTag)
+            + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
+            + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2)
             , function (responseData) {
                 console.log(responseData);
-                var dataRow = "<tr>";
+                // todo: impliment or remove simple mode parameter
+                var dataRow = "<tr id='clickablerow' userid='" + responseData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
                 for (const coloumName of tagpair.coloumNames.split(",")) {
                     dataRow += "<td>" + tagpair[coloumName] + "</td>";
                 }
                 dataRow += "</td>";
-                $("#" + tagpair.tableId).append(dataRow);
+                $("#" + tagpair.tableId + " tbody").append(dataRow);
             });
     }
 }
