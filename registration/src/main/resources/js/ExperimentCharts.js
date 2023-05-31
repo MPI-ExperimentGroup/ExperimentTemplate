@@ -170,8 +170,8 @@ function generateTable(tableData) {
                     $("#" + tagpair.tableId + " > tbody").append(dataRow);
                     if (touchInputReport) {
                         var touchData = recordData.tagValue2;
-                        var svgId = 'svg_' + touchInputReportCounter;
-                        var tableId = 'table_' + touchInputReportCounter;
+                        var svgId = '#svg_' + touchInputReportCounter;
+                        var tableId = '#table_' + touchInputReportCounter;
                         touchInputSVG(touchData, svgId, tableId);
                     }
                 }
