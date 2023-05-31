@@ -171,8 +171,8 @@ function generateTable(tableData) {
                             dataRow += "<td>" + recordData[columnName] + "</td>";
                         }
                     }
-                    dataRow += "</td>";
-                    $("#" + tagpair.tableId + "LoadMoreRow").insertBefore(dataRow);
+                    dataRow += "</tr>";
+                    $(dataRow).insertBefore("#" + tagpair.tableId + "LoadMoreRow");
                     if (touchInputReport) {
                         var touchData = recordData.tagValue2;
                         var svgId = '#svg_' + touchInputReportCounter;
