@@ -178,7 +178,7 @@ function generateTable(tableData) {
             + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
             + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2);
 
-        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\"><td colspan='" + columnCount + "'><button dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='TagDate'  onclick='loadMore('" + tagpair.tableId + "', this.getAttribute('dataUrl'), this.getAttribute('pageNumber'), this.getAttribute('sortColumn'));'>Load More</button></td></tr></tbody></table>");
+        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\"><td colspan='" + columnCount + "'><button dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='TagDate'  onclick=\"loadMore('" + tagpair.tableId + "', this.getAttribute('dataUrl'), this.getAttribute('pageNumber'), this.getAttribute('sortColumn'));\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tagpair.columnNames.split(",")) {
             // todo: impliment sorting in JS
             $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(columnName) + "&amp;simple=true'>" + columnName + "</a></th>");
