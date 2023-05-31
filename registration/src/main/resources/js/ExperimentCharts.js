@@ -190,6 +190,10 @@ function touchInputSVG(touchData, svgId, tableId) {
             var maxHeight = parseFloat(lineParts[2]);
             maxMs = lineParts[0];
             scaleFactor = (maxWidth > maxHeight) ? maxWidth : maxHeight;
+            $(svgId).attr({
+                width: (maxWidth / scaleFactor * 100),
+                height: (maxHeight / scaleFactor * 100)
+            });
             $(svgId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
                 .attr({
                     width: (maxWidth / scaleFactor * 100),
