@@ -136,7 +136,7 @@ function loadMore(tableId, dataUrl, pageNumber, sortColumn) {
             var touchInputReport = false;
             var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
             for (const columnHeader of $("#d1e69 thead tr th")) {
-                const columnLabel = columnHeader.text();
+                const columnLabel = columnHeader.innerText;
                 const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
                 if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
                     touchInputReport = true;
