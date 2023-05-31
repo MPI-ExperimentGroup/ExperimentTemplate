@@ -154,8 +154,8 @@ function loadMore(tableId, dataUrl, pageNumber, sortColumn) {
             if (touchInputReport) {
                 var touchData = recordData.tagValue2;
                 var svgId = '#svg_' + touchInputReportCounter;
-                var tableId = '#table_' + touchInputReportCounter;
-                touchInputSVG(touchData, svgId, tableId);
+                var reportTableId = '#table_' + touchInputReportCounter;
+                touchInputSVG(touchData, svgId, reportTableId);
             }
         }
         $("#" + tableId + "LoadMoreRow").attr('pageNumber', responseData.page.number);
