@@ -167,7 +167,7 @@ function generateTable(tableData) {
                         }
                     }
                     dataRow += "</td>";
-                    $("#" + tagpair.tableId + " tbody").append(dataRow);
+                    $("#" + tagpair.tableId + " > tbody").append(dataRow);
                     if (touchInputReport) {
                         var touchData = recordData.tagValue2;
                         var svgId = 'svg_' + touchInputReportCounter;
