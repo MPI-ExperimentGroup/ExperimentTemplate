@@ -127,8 +127,37 @@ function generateChart(chartData) {
 //                                {label: "voortgezet onderwijs", fieldname: "Opleidingsniveau", matching: "voortgezet onderwijs", colour: "#000077"}, 
 //                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimulusResponse: []});
 
-function loadMore(tagpair) {
-    console.log(tagpair);
+function loadMore(tableId, dataUrl, pageNumber, sortColumn) {
+    $.getJSON(dataUrl, function (responseData) {
+        // console.log(responseData);
+        // todo: impliment or remove simple mode parameter
+        var touchInputReportCounter = -1;
+        for (const recordData of responseData._embedded.tagpairevents) {
+            var touchInputReport = false;
+            var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
+            for (const columnLabel of tagpair.columnNames.split(",")) {
+                const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
+                if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
+                    touchInputReport = true;
+                    touchInputReportCounter++;
+                    dataRow += "<td class='popupOuter'>";
+                    dataRow += "<svg xmlns='http://www.w3.org/2000/svg' id='svg_" + touchInputReportCounter + "' version='1.1' width='100' height='100'></svg>";
+                    dataRow += "<table id='table_" + touchInputReportCounter + "' class='popupTable'><tr><td>ms</td><td>X</td><td>Y</td><td>Interaction</td></tr></table>";
+                    dataRow += "</td>";
+                } else {
+                    dataRow += "<td>" + recordData[columnName] + "</td>";
+                }
+            }
+            dataRow += "</tr>";
+            $(dataRow).insertBefore("#" + tableId + "LoadMoreRow");
+            if (touchInputReport) {
+                var touchData = recordData.tagValue2;
+                var svgId = '#svg_' + touchInputReportCounter;
+                var tableId = '#table_' + touchInputReportCounter;
+                touchInputSVG(touchData, svgId, tableId);
+            }
+        }
+    });
 }
 
 function generateTable(tableData) {
@@ -141,46 +170,18 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
         const columnCount = tagpair.columnNames.split(",").length;
-        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\"><td colspan='" + columnCount + "'><button onclick='loadMore(tagpair);'>Load More</button></td></tr></tbody></table>");
+        const dataUrl = 'tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
+            + '?screenName=' + encodeURIComponent(tagpair.screenName)
+            + '&eventTag=' + encodeURIComponent(tagpair.eventTag)
+            + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
+            + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2);
+
+        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\"><td colspan='" + columnCount + "'><button onclick='loadMore('" + tagpair.tableId + "', '" + dataUrl + ", 0, 'TagDate');'>Load More</button></td></tr></tbody></table>");
         for (const columnName of tagpair.columnNames.split(",")) {
             // todo: impliment sorting in JS
             $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(columnName) + "&amp;simple=true'>" + columnName + "</a></th>");
         }
-        $.getJSON('tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-            + '?screenName=' + encodeURIComponent(tagpair.screenName)
-            + '&eventTag=' + encodeURIComponent(tagpair.eventTag)
-            + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
-            + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2)
-            , function (responseData) {
-                // console.log(responseData);
-                // todo: impliment or remove simple mode parameter
-                var touchInputReportCounter = -1;
-                for (const recordData of responseData._embedded.tagpairevents) {
-                    var touchInputReport = false;
-                    var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
-                    for (const columnLabel of tagpair.columnNames.split(",")) {
-                        const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
-                        if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
-                            touchInputReport = true;
-                            touchInputReportCounter++;
-                            dataRow += "<td class='popupOuter'>";
-                            dataRow += "<svg xmlns='http://www.w3.org/2000/svg' id='svg_" + touchInputReportCounter + "' version='1.1' width='100' height='100'></svg>";
-                            dataRow += "<table id='table_" + touchInputReportCounter + "' class='popupTable'><tr><td>ms</td><td>X</td><td>Y</td><td>Interaction</td></tr></table>";
-                            dataRow += "</td>";
-                        } else {
-                            dataRow += "<td>" + recordData[columnName] + "</td>";
-                        }
-                    }
-                    dataRow += "</tr>";
-                    $(dataRow).insertBefore("#" + tagpair.tableId + "LoadMoreRow");
-                    if (touchInputReport) {
-                        var touchData = recordData.tagValue2;
-                        var svgId = '#svg_' + touchInputReportCounter;
-                        var tableId = '#table_' + touchInputReportCounter;
-                        touchInputSVG(touchData, svgId, tableId);
-                    }
-                }
-            });
+        loadMore(tagpair.tableId, dataUrl, 0, 'TagDate');
     }
 }
 
