@@ -131,11 +131,11 @@ function loadMore(tableId, dataUrl, pageNumber, sortColumn) {
     $.getJSON(dataUrl + '&page=' + pageNumber, function (responseData) {
         // console.log(responseData);
         // todo: impliment or remove simple mode parameter
-        var touchInputReportCounter = -1;
+        var touchInputReportCounter = $("#" + tableId + " tbody tr:last").index();
         for (const recordData of responseData._embedded.tagpairevents) {
             var touchInputReport = false;
             var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
-            for (const columnHeader of $("#d1e69 thead tr th")) {
+            for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
                 const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
                 if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
