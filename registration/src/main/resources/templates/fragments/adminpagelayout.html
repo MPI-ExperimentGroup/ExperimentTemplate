@@ -86,6 +86,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <div th:inline="text">Logged in as: [[${#httpServletRequest.remoteUser}]]</div>
                 <div th:if="!${!simpleMode}"><a th:href="'?simple=false' + ${(paramId != null)? '&amp;id='+paramId : ''} + ${(sortColumn != null)? '&amp;sort='+sortColumn : ''} + ${(sortDirection != null)? '&amp;dir='+sortDirection : ''} + ${(dataChannel != null)? '&amp;dataChannel='+dataChannel : ''}">This view is simplified. Click to show all available information.</a></div>
                 <div th:if="${!simpleMode}"><a th:href="'?simple=true' + ${(paramId != null)? '&amp;id='+paramId : ''} + ${(sortColumn != null)? '&amp;sort='+sortColumn : ''} + ${(sortDirection != null)? '&amp;dir='+sortDirection : ''} + ${(dataChannel != null)? '&amp;dataChannel='+dataChannel : ''}">Click to simplify the information shown in this table.</a></div>
+                <span>Most tables of collected data have an EventMs column and it must be noted that the display units do not define the accuracy of the value displayed. In general the timestamps table has the most accurate time values however it also is limited by the experiment design. You must measure the accuracy of each experiment with the time accuracy testing hardware provided or a high speed camera or any other means you find to be suitable. Without this calibration step for each experiment and intended platform the timing accuracy is undefined.</span>
                 <!--</div>-->
             </div>
         </div>
