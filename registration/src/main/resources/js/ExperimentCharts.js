@@ -127,6 +127,10 @@ function generateChart(chartData) {
 //                                {label: "voortgezet onderwijs", fieldname: "Opleidingsniveau", matching: "voortgezet onderwijs", colour: "#000077"}, 
 //                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimulusResponse: []});
 
+function loadMore(tagpair) {
+    console.log(tagpair);
+}
+
 function generateTable(tableData) {
     $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
     for (const tagpair of tableData.tagpair) {
@@ -136,7 +140,8 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("eventTag: " + tagpair.eventTag);
         $("#" + tableData.divId).append("tagValue1: " + tagpair.tagValue1);
         $("#" + tableData.divId).append("tagValue2: " + tagpair.tagValue2);
-        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody></tbody></table>");
+        const columnCount = tagpair.columnNames.split(",").length;
+        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\"><td colspan='" + columnCount + "'><button onclick='loadMore(tagpair);'>Load More</button></td></tr></tbody></table>");
         for (const columnName of tagpair.columnNames.split(",")) {
             // todo: impliment sorting in JS
             $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(columnName) + "&amp;simple=true'>" + columnName + "</a></th>");
@@ -167,7 +172,7 @@ function generateTable(tableData) {
                         }
                     }
                     dataRow += "</td>";
-                    $("#" + tagpair.tableId + " > tbody").append(dataRow);
+                    $("#" + tagpair.tableId + "LoadMoreRow").insertBefore(dataRow);
                     if (touchInputReport) {
                         var touchData = recordData.tagValue2;
                         var svgId = '#svg_' + touchInputReportCounter;
