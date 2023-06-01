@@ -168,7 +168,7 @@ function loadMore(tableId) {
                 touchInputSVG(touchData, svgId, reportTableId);
             }
         }
-        $("#" + tableId + "LoadMoreRow > span").innerText = (responseData.page.size * responseData.page.number) + ' of ' + responseData.page.totalElements;
+        $("#" + tableId + "LoadMoreRow > td > span").innerText = (responseData.page.size * responseData.page.number) + ' of ' + responseData.page.totalElements;
         $("#" + tableId + "LoadMoreRow").attr('pageNumber', responseData.page.number + 1);
     });
 }
