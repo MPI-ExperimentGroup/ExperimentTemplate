@@ -127,6 +127,13 @@ function generateChart(chartData) {
 //                                {label: "voortgezet onderwijs", fieldname: "Opleidingsniveau", matching: "voortgezet onderwijs", colour: "#000077"}, 
 //                                {label: "HBO", fieldname: "Opleidingsniveau", matching: "HBO", colour: "#707000"}], stimulusResponse: []});
 
+function sortBy(tableId, sortColumn) {
+    $("#" + tableId + "LoadMoreRow").siblings().remove();
+    $("#" + tableId + "LoadMoreRow").attr('pageNumber', 0)
+    $("#" + tableId + "LoadMoreRow").attr('sortColumn', sortColumn);
+    loadMore(tableId, $("#" + tableId + "LoadMoreRow").attr('dataUrl'), $("#" + tableId + "LoadMoreRow").attr('pageNumber'), $("#" + tableId + "LoadMoreRow").attr('sortColumn'));
+}
+
 function loadMore(tableId, dataUrl, pageNumber, sortColumn) {
     $.getJSON(dataUrl + '&page=' + pageNumber, function (responseData) {
         // console.log(responseData);
@@ -158,7 +165,7 @@ function loadMore(tableId, dataUrl, pageNumber, sortColumn) {
                 touchInputSVG(touchData, svgId, reportTableId);
             }
         }
-        $("#" + tableId + "LoadMoreRow").attr('pageNumber', responseData.page.number);
+        $("#" + tableId + "LoadMoreRow").attr('pageNumber', responseData.page.number + 1);
     });
 }
 
@@ -181,7 +188,7 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\"><td colspan='" + columnCount + "'><button dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='TagDate'  onclick=\"loadMore('" + tagpair.tableId + "', this.getAttribute('dataUrl'), this.getAttribute('pageNumber'), this.getAttribute('sortColumn'));\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tagpair.columnNames.split(",")) {
             // todo: impliment sorting in JS
-            $("#" + tagpair.tableId + " thead tr").append("<th><a href='?sort=" + encodeURIComponent(columnName) + "&amp;simple=true'>" + columnName + "</a></th>");
+            $("#" + tagpair.tableId + " thead tr").append("<th><a href='#' onclick('sortBy(\"" + tagpair.tableId + "\", \"" + encodeURIComponent(columnName) + "\");'>" + columnName + "</a></th>");
         }
         loadMore(tagpair.tableId, dataUrl, 0, 'TagDate');
     }
