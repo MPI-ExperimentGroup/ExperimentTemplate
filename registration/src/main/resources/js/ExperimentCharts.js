@@ -191,7 +191,7 @@ function generateTable(tableData) {
         $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='TagDate'><td colspan='" + columnCount + "'><button onclick=\"loadMore('" + tagpair.tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tagpair.columnNames.split(",")) {
             // todo: impliment sorting in JS
-            $("#" + tagpair.tableId + " thead tr").append("<th><a href='#' onclick('sortBy(\"" + tagpair.tableId + "\", \"" + encodeURIComponent(columnName) + "\");return false;'>" + columnName + "</a></th>");
+            $("#" + tagpair.tableId + " thead tr").append("<th><a href='#' onclick=\"sortBy('" + tagpair.tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
         }
         loadMore(tagpair.tableId, dataUrl, 0, 'TagDate');
     }
