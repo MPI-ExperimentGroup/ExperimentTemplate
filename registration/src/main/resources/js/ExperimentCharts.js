@@ -152,8 +152,8 @@ function loadMore(tableId) {
                     touchInputReport = true;
                     touchInputReportCounter++;
                     dataRow += "<td class='popupOuter'>";
-                    dataRow += "<svg xmlns='http://www.w3.org/2000/svg' id='svg_" + touchInputReportCounter + "' version='1.1' width='100' height='100'></svg>";
-                    dataRow += "<table id='table_" + touchInputReportCounter + "' class='popupTable'><tr><td>ms</td><td>X</td><td>Y</td><td>Interaction</td></tr></table>";
+                    dataRow += "<svg xmlns='http://www.w3.org/2000/svg' id='svg_" + tableId + '_' + touchInputReportCounter + "' version='1.1' width='100' height='100'></svg>";
+                    dataRow += "<table id='table_" + tableId + '_' + touchInputReportCounter + "' class='popupTable'><tr><td>ms</td><td>X</td><td>Y</td><td>Interaction</td></tr></table>";
                     dataRow += "</td>";
                 } else {
                     dataRow += "<td>" + recordData[columnName] + "</td>";
