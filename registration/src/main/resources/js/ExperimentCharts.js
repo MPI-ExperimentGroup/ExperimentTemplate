@@ -163,8 +163,8 @@ function loadMore(tableId) {
             $(dataRow).insertBefore("#" + tableId + "LoadMoreRow");
             if (touchInputReport) {
                 var touchData = recordData.tagValue2;
-                var svgId = '#svg_' + touchInputReportCounter;
-                var reportTableId = '#table_' + touchInputReportCounter;
+                var svgId = '#svg_' + tableId + '_' + touchInputReportCounter;
+                var reportTableId = '#table_' + tableId + '_' + touchInputReportCounter;
                 touchInputSVG(touchData, svgId, reportTableId);
             }
         }
