@@ -130,7 +130,7 @@ function generateChart(chartData) {
 function sortBy(tableId, sortColumn) {
     $("#" + tableId + "LoadMoreRow").siblings().remove();
     $("#" + tableId + "LoadMoreRow").attr('pageNumber', 0)
-    $("#" + tableId + "LoadMoreRow").attr('sortColumn', sortColumn);
+    $("#" + tableId + "LoadMoreRow").attr('sortColumn', sortColumn.charAt(0).toLowerCase() + sortColumn.slice(1));
     loadMore(tableId);
 }
 
@@ -138,7 +138,7 @@ function loadMore(tableId) {
     const dataUrl = $("#" + tableId + "LoadMoreRow").attr('dataUrl');
     const pageNumber = $("#" + tableId + "LoadMoreRow").attr('pageNumber');
     const sortColumn = $("#" + tableId + "LoadMoreRow").attr('sortColumn');
-    $.getJSON(dataUrl + '&page=' + pageNumber, function (responseData) {
+    $.getJSON(dataUrl + '&page=' + pageNumber + '&sort=' + sortColumn, function (responseData) {
         // console.log(responseData);
         // todo: impliment or remove simple mode parameter
         var touchInputReportCounter = $("#" + tableId + " tbody tr:last").index();
@@ -168,6 +168,7 @@ function loadMore(tableId) {
                 touchInputSVG(touchData, svgId, reportTableId);
             }
         }
+        $("#" + tableId + "LoadMoreRow > span").innerText = (responseData.page.size * responseData.page.number) + ' of ' + responseData.page.totalElements;
         $("#" + tableId + "LoadMoreRow").attr('pageNumber', responseData.page.number + 1);
     });
 }
@@ -188,7 +189,7 @@ function generateTable(tableData) {
             + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
             + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2);
 
-        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='TagDate'><td colspan='" + columnCount + "'><button onclick=\"loadMore('" + tagpair.tableId + "');\">Load More</button></td></tr></tbody></table>");
+        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span><button onclick=\"loadMore('" + tagpair.tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tagpair.columnNames.split(",")) {
             // todo: impliment sorting in JS
             $("#" + tagpair.tableId + " thead tr").append("<th><a href='#' onclick=\"sortBy('" + tagpair.tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
