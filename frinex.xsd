@@ -839,9 +839,9 @@
 <xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string">
+<xs:attribute name="dataChannel" type="xs:decimal">
 <xs:annotation>
-<xs:documentation>Only records matching this dataChannel will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+<xs:documentation>Only records matching this dataChannel will be included for this dataset.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="responseGroup" type="xs:string">
