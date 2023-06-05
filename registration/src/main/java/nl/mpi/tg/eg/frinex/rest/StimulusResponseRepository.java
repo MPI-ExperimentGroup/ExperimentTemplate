@@ -48,6 +48,15 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore) from StimulusResponse order by tagDate asc")
     List<StimulusResponse> findAllDistinctRecords();
 
+    Page<StimulusResponse> findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndResponseLikeAndStimulusIdLike(Pageable pageable, 
+        @Param("screenName") String screenName,
+//            @Param("dataChannel") Integer dataChannel,
+//            @Param("isCorrect") Boolean isCorrect,
+        @Param("scoreGroup") String scoreGroup,
+        @Param("responseGroup") String responseGroup,
+        @Param("stimulusId") String stimulusId,
+        @Param("response") String response);
+
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
     long countDistinctRecords();
