@@ -614,7 +614,7 @@
                                 <xsl:text>, </xsl:text>
                             </xsl:if>
                         </xsl:for-each>
-                        <xsl:text>", stimulusResponse: [</xsl:text>
+                        <xsl:text>], stimulusResponse: [</xsl:text>
                         <xsl:for-each select="stimulusResponse">
                             <xsl:text>{tableId:"</xsl:text>
                             <xsl:value-of select="generate-id(.)" />
