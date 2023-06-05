@@ -614,6 +614,29 @@
                                 <xsl:text>, </xsl:text>
                             </xsl:if>
                         </xsl:for-each>
+                        <xsl:text>", stimulusResponse: [</xsl:text>
+                        <xsl:for-each select="stimulusResponse">
+                            <xsl:text>{tableId:"</xsl:text>
+                            <xsl:value-of select="generate-id(.)" />
+                            <xsl:text>", columnNames: "</xsl:text>
+                            <xsl:value-of select="@columnNames" />
+                            <xsl:text>", screenName: "</xsl:text>
+                            <xsl:value-of select="@screenName" />
+                            <xsl:text>", dataChannel: "</xsl:text>
+                            <xsl:value-of select="@dataChannel" />
+                            <xsl:text>", responseGroup: "</xsl:text>
+                            <xsl:value-of select="@responseGroup" />
+                            <xsl:text>", scoreGroup: "</xsl:text>
+                            <xsl:value-of select="@scoreGroup" />
+                            <xsl:text>", stimulusID: "</xsl:text>
+                            <xsl:value-of select="@stimulusID" />
+                            <xsl:text>", isCorrect: "</xsl:text>
+                            <xsl:value-of select="@isCorrect" />
+                            <xsl:text>"}</xsl:text>
+                            <xsl:if test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:if>
+                        </xsl:for-each>
                         <xsl:text>]});
                             &lt;/script&gt;
                         </xsl:text>
