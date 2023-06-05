@@ -827,6 +827,45 @@
 <xs:documentation>When present defines a table that will be displayed on the main page of the experiment admin. Multiple table can be used.</xs:documentation>
 </xs:annotation>
 <xs:sequence>
+<xs:element name="stimulusResponse" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="columnNames" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="screenName" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="dataChannel" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Only records matching this dataChannel will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="responseGroup" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="scoreGroup" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="stimulusID" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Only records matching this stimulusID will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="isCorrect" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
 <xs:element name="tagpair" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="columnNames" type="xs:string" use="required">
