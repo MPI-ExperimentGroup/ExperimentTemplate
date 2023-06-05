@@ -834,32 +834,32 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="screenName" type="xs:string" use="required">
+<xs:attribute name="screenName" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="dataChannel" type="xs:string" use="required">
+<xs:attribute name="dataChannel" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this dataChannel will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="responseGroup" type="xs:string" use="required">
+<xs:attribute name="responseGroup" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="scoreGroup" type="xs:string" use="required">
+<xs:attribute name="scoreGroup" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="stimulusID" type="xs:string" use="required">
+<xs:attribute name="stimulusID" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this stimulusID will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="isCorrect" type="xs:string" use="required">
+<xs:attribute name="isCorrect" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
@@ -873,22 +873,22 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="screenName" type="xs:string" use="required">
+<xs:attribute name="screenName" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="eventTag" type="xs:string" use="required">
+<xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="tagValue1" type="xs:string" use="required">
+<xs:attribute name="tagValue1" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="tagValue2" type="xs:string" use="required">
+<xs:attribute name="tagValue2" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
