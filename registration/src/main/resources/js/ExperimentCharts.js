@@ -175,29 +175,30 @@ function loadMore(tableId) {
 
 function generateTable(tableData) {
     $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
-    const columnCount = tagpair.columnNames.split(",").length;
+    const tableId = tableData.divId + "Table";
+    const columnCount = tableData.columnNames.split(",").length;
     const dataUrl = (tableData.source === "tagpair") ? (
         'tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-        + '?screenName=' + encodeURIComponent(tagpair.screenName)
-        + '&eventTag=' + encodeURIComponent(tagpair.eventTag)
-        + '&tagValue1=' + encodeURIComponent(tagpair.tagValue1)
-        + '&tagValue2=' + encodeURIComponent(tagpair.tagValue2)
+        + '?screenName=' + encodeURIComponent(tableData.screenName)
+        + '&eventTag=' + encodeURIComponent(tableData.eventTag)
+        + '&tagValue1=' + encodeURIComponent(tableData.tagValue1)
+        + '&tagValue2=' + encodeURIComponent(tableData.tagValue2)
     ) : (tableData.source === "stimulusResponse") ? (
         'findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-        + '?screenName=' + encodeURIComponent(tagpair.screenName)
-        + '&scoreGroup=' + encodeURIComponent(tagpair.scoreGroup)
-        + '&responseGroup=' + encodeURIComponent(tagpair.responseGroup)
-        + '&stimulusId=' + encodeURIComponent(tagpair.stimulusId)
-        + '&response=' + encodeURIComponent(tagpair.response)
+        + '?screenName=' + encodeURIComponent(tableData.screenName)
+        + '&scoreGroup=' + encodeURIComponent(tableData.scoreGroup)
+        + '&responseGroup=' + encodeURIComponent(tableData.responseGroup)
+        + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
+        + '&response=' + encodeURIComponent(tableData.response)
     ) : "";
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
-        $("#" + tableData.divId).append("<table id=\"" + tagpair.tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tagpair.tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tagpair.tableId + "');\">Load More</button></td></tr></tbody></table>");
-        for (const columnName of tagpair.columnNames.split(",")) {
-            $("#" + tagpair.tableId + " thead tr").append("<th><a href='#' onclick=\"sortBy('" + tagpair.tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
+        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
+        for (const columnName of tableData.columnNames.split(",")) {
+            $("#" + tableId + " thead tr").append("<th><a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
         }
-        loadMore(tagpair.tableId);
+        loadMore(tableId);
     }
 }
 
