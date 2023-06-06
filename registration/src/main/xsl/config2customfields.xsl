@@ -594,50 +594,32 @@
                             generateTable({divId:"</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
                         <xsl:text>", label: "</xsl:text>
-                        <xsl:value-of select="@label" />
-                        <xsl:text>", tagpair: [</xsl:text>
-                        <xsl:for-each select="tagpair">
-                            <xsl:text>{tableId:"</xsl:text>
-                            <xsl:value-of select="generate-id(.)" />
-                            <xsl:text>", columnNames: "</xsl:text>
-                            <xsl:value-of select="@columnNames" />
-                            <xsl:text>", screenName: "</xsl:text>
-                            <xsl:value-of select="@screenName" />
-                            <xsl:text>", eventTag: "</xsl:text>
-                            <xsl:value-of select="@eventTag" />
-                            <xsl:text>", tagValue1: "</xsl:text>
-                            <xsl:value-of select="@tagValue1" />
-                            <xsl:text>", tagValue2: "</xsl:text>
-                            <xsl:value-of select="@tagValue2" />
-                            <xsl:text>"}</xsl:text>
-                            <xsl:if test="position() != last()">
-                                <xsl:text>, </xsl:text>
-                            </xsl:if>
-                        </xsl:for-each>
-                        <xsl:text>], stimulusResponse: [</xsl:text>
-                        <xsl:for-each select="stimulusResponse">
-                            <xsl:text>{tableId:"</xsl:text>
-                            <xsl:value-of select="generate-id(.)" />
-                            <xsl:text>", columnNames: "</xsl:text>
-                            <xsl:value-of select="@columnNames" />
-                            <xsl:text>", screenName: "</xsl:text>
-                            <xsl:value-of select="@screenName" />
-                            <xsl:text>", dataChannel: "</xsl:text>
-                            <xsl:value-of select="@dataChannel" />
-                            <xsl:text>", responseGroup: "</xsl:text>
-                            <xsl:value-of select="@responseGroup" />
-                            <xsl:text>", scoreGroup: "</xsl:text>
-                            <xsl:value-of select="@scoreGroup" />
-                            <xsl:text>", stimulusID: "</xsl:text>
-                            <xsl:value-of select="@stimulusID" />
-                            <xsl:text>", isCorrect: "</xsl:text>
-                            <xsl:value-of select="@isCorrect" />
-                            <xsl:text>"}</xsl:text>
-                            <xsl:if test="position() != last()">
-                                <xsl:text>, </xsl:text>
-                            </xsl:if>
-                        </xsl:for-each>
-                        <xsl:text>]});
+                        <xsl:value-of select="if (@label) then @label else '%'" />
+                        <xsl:text>", source: "</xsl:text>
+                        <xsl:value-of select="if (@source) then @source else '%'" />
+                        <xsl:text>", columnNames: "</xsl:text>
+                        <xsl:value-of select="if (@columnNames) then @columnNames else '%'" />
+                        <xsl:text>", screenName: "</xsl:text>
+                        <xsl:value-of select="if (@screenName) then @screenName else '%'" />
+                        <xsl:text>", eventTag: "</xsl:text>
+                        <xsl:value-of select="if (@eventTag) then @eventTag else '%'" />
+                        <xsl:text>", tagValue1: "</xsl:text>
+                        <xsl:value-of select="if (@tagValue1) then @tagValue1 else '%'" />
+                        <xsl:text>", tagValue2: "</xsl:text>
+                        <xsl:value-of select="if (@tagValue2) then @tagValue2 else '%'" />
+                        <xsl:text>", screenName: "</xsl:text>
+                        <xsl:value-of select="if (@screenName) then @screenName else '%'" />
+                        <xsl:text>", dataChannel: "</xsl:text>
+                        <xsl:value-of select="if (@dataChannel) then @dataChannel else '%'" />
+                        <xsl:text>", responseGroup: "</xsl:text>
+                        <xsl:value-of select="if (@responseGroup) then @responseGroup else '%'" />
+                        <xsl:text>", scoreGroup: "</xsl:text>
+                        <xsl:value-of select="if (@scoreGroup) then @scoreGroup else '%'" />
+                        <xsl:text>", stimulusID: "</xsl:text>
+                        <xsl:value-of select="if (@stimulusID) then @stimulusID else '%'" />
+                        <xsl:text>", isCorrect: "</xsl:text>
+                        <xsl:value-of select="if (@isCorrect) then @isCorrect else '%'" />
+                        <xsl:text>"});
                             &lt;/script&gt;
                         </xsl:text>
                     </xsl:for-each>
