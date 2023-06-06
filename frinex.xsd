@@ -781,9 +781,9 @@
 <xs:documentation>Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="stimulusID" type="xs:string">
+<xs:attribute name="stimulusId" type="xs:string">
 <xs:annotation>
-<xs:documentation>Only records matching this stimulusID will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+<xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isCorrect" type="xs:string">
@@ -950,9 +950,9 @@
 <xs:documentation>Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="stimulusID" type="xs:string">
+<xs:attribute name="stimulusId" type="xs:string">
 <xs:annotation>
-<xs:documentation>Only records matching this stimulusID will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+<xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isCorrect" type="xs:string">
