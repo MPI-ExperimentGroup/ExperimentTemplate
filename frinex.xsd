@@ -731,7 +731,83 @@
 </xs:complexType>
 </xs:element>
 <xs:element name="chart" minOccurs="0" maxOccurs="unbounded" type="adminChartType"/>
-<xs:element name="dataTable" minOccurs="0" maxOccurs="unbounded" type="dataTableType"/>
+<xs:element name="dataTable" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="label" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="source" use="required">
+<xs:annotation>
+<xs:documentation>The source data for chart to be displayed in the table.</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="stimulusResponse"/>
+<xs:enumeration value="tagpair"/>
+<xs:enumeration value="tag"/>
+<xs:enumeration value="metadata"/>
+<xs:enumeration value="timestamp"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="columnNames" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="screenName" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="responseGroup" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="scoreGroup" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="stimulusID" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this stimulusID will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="isCorrect" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="eventTag" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="tagValue1" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="tagValue2" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
 </xs:sequence>
 <xs:attribute name="allowDataDeletion" type="xs:boolean">
 <xs:annotation>
@@ -824,11 +900,36 @@
 </xs:complexType>
 <xs:complexType name="dataTableType">
 <xs:annotation>
-<xs:documentation>When present defines a table that will be displayed on the main page of the experiment admin. Multiple table can be used.</xs:documentation>
+<xs:documentation>When present defines a table that will be displayed on the main page of the experiment admin.</xs:documentation>
 </xs:annotation>
-<xs:sequence>
-<xs:element name="stimulusResponse" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
+<xs:attribute name="label" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="source" use="required">
+<xs:annotation>
+<xs:documentation>The source data for chart to be displayed in the table.</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="stimulusResponse"/>
+<xs:enumeration value="tagpair"/>
+<xs:enumeration value="tag"/>
+<xs:enumeration value="metadata"/>
+<xs:enumeration value="timestamp"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
 <xs:attribute name="columnNames" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -837,11 +938,6 @@
 <xs:attribute name="screenName" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="dataChannel" type="xs:decimal">
-<xs:annotation>
-<xs:documentation>Only records matching this dataChannel will be included for this dataset.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="responseGroup" type="xs:string">
@@ -864,20 +960,6 @@
 <xs:documentation>Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-</xs:complexType>
-</xs:element>
-<xs:element name="tagpair" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="columnNames" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="screenName" type="xs:string">
-<xs:annotation>
-<xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
@@ -891,14 +973,6 @@
 <xs:attribute name="tagValue2" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
-</xs:sequence>
-<xs:attribute name="label" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
