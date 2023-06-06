@@ -44,7 +44,7 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
     List<TagPairData> countDistinctRecords();
     
     // TODO: This is for testing how many copies might exist and this method can be removed later
-    @Query("select count *")
+    @Query("select count id")
     List<TagPairData> countAllRecords();
     
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId order by tagDate asc, eventTag desc")
