@@ -475,7 +475,7 @@ public class AbstractSchemaGenerator {
 //                                    .documentedAttribute("dataChannel", AttributeType.xsDecimal, "Only records matching this dataChannel will be included for this dataset.", true)
                                     .documentedAttribute("responseGroup", AttributeType.xsString, "Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                     .documentedAttribute("scoreGroup", AttributeType.xsString, "Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
-                                    .documentedAttribute("stimulusID", AttributeType.xsString, "Only records matching this stimulusID will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
+                                    .documentedAttribute("stimulusId", AttributeType.xsString, "Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                     .documentedAttribute("isCorrect", AttributeType.xsString, "Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                     .documentedAttribute("eventTag", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                     .documentedAttribute("tagValue1", AttributeType.xsString, "Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
@@ -517,7 +517,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("label", true)
                         .stringAttribute("code", true)
                     })
-                                    // notes on stimulusId: the methods around loadStoredStimulusList use "-" as the list separator and might have unintended effects if "-" is used in the stimulusID
+                                    // notes on stimulusId: the methods around loadStoredStimulusList use "-" as the list separator and might have unintended effects if "-" is used in the stimulusId
                                     .documentedAttribute("identifier", AttributeType.stimulusIdentifier, "An identifier for the stimulus consisting of three or more [a-Z0-9_] characters, which must be unique per configuration file.", false)
                                     .stringAttribute("videoPath", true)
                                     .stringAttribute("imagePath", true)
