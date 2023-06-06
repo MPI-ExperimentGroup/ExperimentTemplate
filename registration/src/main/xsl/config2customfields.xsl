@@ -617,6 +617,8 @@
                         <xsl:value-of select="if (@scoreGroup) then @scoreGroup else '%'" />
                         <xsl:text>", stimulusID: "</xsl:text>
                         <xsl:value-of select="if (@stimulusID) then @stimulusID else '%'" />
+                        <xsl:text>", response: "</xsl:text>
+                        <xsl:value-of select="if (@response) then @response else '%'" />
                         <xsl:text>", isCorrect: "</xsl:text>
                         <xsl:value-of select="if (@isCorrect) then @isCorrect else '%'" />
                         <xsl:text>"});

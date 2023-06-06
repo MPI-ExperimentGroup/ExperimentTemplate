@@ -184,7 +184,7 @@ function generateTable(tableData) {
         + '&tagValue1=' + encodeURIComponent(tableData.tagValue1)
         + '&tagValue2=' + encodeURIComponent(tableData.tagValue2)
     ) : (tableData.source === "stimulusResponse") ? (
-        'findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
+        'stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
         + '?screenName=' + encodeURIComponent(tableData.screenName)
         + '&scoreGroup=' + encodeURIComponent(tableData.scoreGroup)
         + '&responseGroup=' + encodeURIComponent(tableData.responseGroup)
