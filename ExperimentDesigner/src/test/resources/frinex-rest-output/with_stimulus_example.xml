@@ -67,13 +67,12 @@
             <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
             <stimulusResponse label="False" columnName="isCorrect" matching="false" colour="#000990" />
         </chart>
-        <!-- <table label="isCorrect">
-            <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
-            <stimulusResponse label="False" columnName="isCorrect" matching="false" colour="#000990" />
-        </table> -->
-        <dataTable label="TouchInputReport">
-            <tagpair columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="" tagValue2="" />
-        </dataTable> 
+        <dataTable label="StimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusID,Response,IsCorrect,TagDate" />
+        <dataTable label="AppendStimulusResponse" source="stimulusResponse" screenName="AppendStimulusResponse" columnNames="UserId,ScreenName,StimulusID,Response,IsCorrect,TagDate" />
+        <dataTable label="TouchInputReport for stimlus d1e269" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="%" eventTag="touchInputReport" tagValue1="d1e269" tagValue2="%" />
+        <dataTable label="TouchInputReport for presenter touchInputLabelButton" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="%" tagValue2="%" />
+        <dataTable label="visible_enable_stimulus_free_text_example" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="visible_enable_stimulus_free_text_example" eventTag="stimulusRatingCheckboxInput" tagValue1="%" tagValue2="" />
+        <dataTable label="correct-incorrect" source="tagpair" columnNames="UserId,ScreenName,EventTag,TagValue1,TagValue2,TagDate" screenName="%" eventTag="%" tagValue1="%" tagValue2="%correct" />
     </administration>
     <scss>
         .gwt-Button.optionButton.toggleBox {
