@@ -39,13 +39,13 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
     List<TagPairData> findAllDistinctRecords();
 
-    // TODO: This is for testing how many copies might exist and this method can be removed later
-    @Query("select count(distinct(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate)) from TagPairData")
-    List<TagPairData> countDistinctRecords();
-    
-    // TODO: This is for testing how many copies might exist and this method can be removed later
-    @Query("select count(id) from TagPairData")
-    List<TagPairData> countAllRecords();
+//    // TODO: This is for testing how many copies might exist and this method can be removed later
+//    @Query("select count(distinct(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate)) from TagPairData")
+//    List<TagPairData> countDistinctRecords();
+//    
+//    // TODO: This is for testing how many copies might exist and this method can be removed later
+//    @Query("select count(id) from TagPairData")
+//    List<TagPairData> countAllRecords();
     
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId order by tagDate asc, eventTag desc")
     List<TagPairData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
