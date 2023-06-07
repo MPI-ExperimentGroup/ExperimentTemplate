@@ -343,9 +343,9 @@ public class DefaultExperiments {
                                 presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123,_D,1_E,F,Hat,T,2");
                                 break;
                             case groupCommunicationChannels:
-                            case groupCameraChannels:
-                            case groupCanvasChannels:
-                            case groupAudioChannels:
+                            // case groupCameraChannels:
+                            // case groupCanvasChannels:
+                            // case groupAudioChannels:
                                 presenterFeature.addFeatureAttributes(attribute, "Ant,Bat,C123|_D,1_E|F,Hat,T,2");
                                 break;
                             case phaseMembers:
