@@ -174,7 +174,7 @@
         <regionAppend regionId="groupButtons" />
         <addPadding /> 
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
-            <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C" groupCameraChannels="A,B|B,C" groupAudioChannels="A,B|B,C" groupCanvasChannels="A,B|B,C">
+            <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C">
                 <groupInitialisationError>
                     <regionReplace regionId="groupIntroduction" />
                     <regionReplace regionId="groupStatus">
