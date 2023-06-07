@@ -956,7 +956,7 @@
             </stimuli>
         </withStimuli>
         <groupStimuli adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" maxStimuli="3" repeatCount="3">
-            <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" groupCameraChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupCanvasChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2" groupAudioChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
+            <groupNetwork groupMembers="Ant,Bat,C123,_D,1_E,F,Hat,T,2" phasesPerStimulus="8" groupCommunicationChannels="Ant,Bat,C123|_D,1_E|F,Hat,T,2">
                 <groupInitialisationError>
                     <plainText featureText="plainText in groupInitialisationError"/>
                 </groupInitialisationError>
