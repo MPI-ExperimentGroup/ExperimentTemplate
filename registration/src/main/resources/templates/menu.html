@@ -96,6 +96,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script th:inline="javascript">
             /*<![CDATA[*/
             var detailedView = /*[[${!simpleMode}]]*/ 'false';
+            // TODO: the artifacts.json file was excluded from this WAR file because the related downloads were too large, if this list of downloads should be wanted again then the artifacts.json can be added again but the URLs to each download shold point to the frinexbuild page not and not to this WAR files contents
             $.getJSON("artifacts.json", function (data) {
                 var items = [];
                 $.each(data.artifacts, function (key, val) {
