@@ -250,7 +250,9 @@
                                 <regionReplace regionId="groupLocalVideoRegion" />
                             </actionButton>
                             <actionButton featureText="clear remote receive stream region">
-                                <regionReplace regionId="groupRemoteStreamRegion" />
+                                <regionReplace regionId="groupRemoteStream_A_Region" />
+                                <regionReplace regionId="groupRemoteStream_B_Region" />
+                                <regionReplace regionId="groupRemoteStream_C_Region" />
                             </actionButton>
                         </regionReplace>
                     </groupMemberActivity>

@@ -204,7 +204,7 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection.ontrack = function (event) {
                 console.log("ontrack");
                 // TODO: are there cases with multiple tracks to be expected?
-                $wnd.$("#groupRemoteStream")[0].srcObject = event.streams[0];
+                $wnd.$("#groupRemoteStream_" + memberCode)[0].srcObject = event.streams[0];
                 // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
             };
@@ -300,7 +300,8 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection.onicegatheringstatechange = null;
             $wnd.peerConnection.onnegotiationneeded = null;
             
-            var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream");
+            // iterate all member specific remote video elements
+            var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream]");
             if (remoteVideoArray) {
                 for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
                     var remoteVideo = remoteVideoArray[remoteVideoIndex];
@@ -330,9 +331,11 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection = null;
         }
 
-        $wnd.$("groupRemoteStream").remove();
-        $wnd.$("groupLocalVideo").remove();
-        $wnd.$("groupLocalCanvas").remove();
+        // remove all member remote video elements for each member
+        $wnd.$("video[id^=groupRemoteStream]").remove();
+        // remove local elements
+        $wnd.$("#groupLocalVideo").remove();
+        $wnd.$("#groupLocalCanvas").remove();
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
@@ -367,7 +370,7 @@ public abstract class GroupStreamHandler {
                         addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
                         offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
                     } else {
-                        addVideoElement("groupRemoteStream", groupId, groupUUID, memberCode);
+                        addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
                     }
                     isFirst = false;
                 }
@@ -380,7 +383,8 @@ public abstract class GroupStreamHandler {
     public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
         // TODO: set up the communication channels
         addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
-        addVideoElement("groupRemoteStream", groupId, groupUUID, memberCode);
+        // todo: we need to originating member code to create the elemet id correctly and this should be based on streamChannels eg negotiateCanvas
+        addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
         offerVideo(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
