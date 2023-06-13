@@ -204,6 +204,7 @@ public abstract class GroupStreamHandler {
             $wnd.peerConnection.ontrack = function (event) {
                 console.log("ontrack");
                 // TODO: are there cases with multiple tracks to be expected?
+                // it would be better to have separate groupRemoteCanvas_ and groupRemoteVideo_ instead of groupRemoteStream_
                 $wnd.$("#groupRemoteStream_" + memberCode)[0].srcObject = event.streams[0];
                 // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
@@ -381,11 +382,27 @@ public abstract class GroupStreamHandler {
     }
 
     public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
+        for (String channel : streamChannels.split("\\|")) {
+            boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
+            if (isRelevant) {
+                boolean isFirst = true;
+                for (String member : channel.split(",")) {
+                    // set up the elements and connection based on communication channels
+                    if (isFirst) {
+                        addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
+                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
+                    } else {
+                        addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
+                    }
+                    isFirst = false;
+                }
+            }
+        }
         // TODO: set up the communication channels
-        addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
+        // addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
         // todo: we need to originating member code to create the elemet id correctly and this should be based on streamChannels eg negotiateCanvas
-        addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
-        offerVideo(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
+        // addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
+        // offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }

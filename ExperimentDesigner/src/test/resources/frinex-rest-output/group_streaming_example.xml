@@ -253,6 +253,12 @@
                                 <regionReplace regionId="groupRemoteStream_A_Region" />
                                 <regionReplace regionId="groupRemoteStream_B_Region" />
                                 <regionReplace regionId="groupRemoteStream_C_Region" />
+                                <!-- <regionReplace regionId="groupRemoteCanvas_A_Region" />
+                                <regionReplace regionId="groupRemoteCanvas_B_Region" />
+                                <regionReplace regionId="groupRemoteCanvas_C_Region" />
+                                <regionReplace regionId="groupRemoteVideo_A_Region" />
+                                <regionReplace regionId="groupRemoteVideo_B_Region" />
+                                <regionReplace regionId="groupRemoteVideo_C_Region" /> -->
                             </actionButton>
                         </regionReplace>
                     </groupMemberActivity>
