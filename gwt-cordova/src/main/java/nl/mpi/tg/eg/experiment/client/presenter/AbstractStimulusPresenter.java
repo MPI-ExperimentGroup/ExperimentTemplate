@@ -570,7 +570,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             groupStreamHandler = new GroupStreamHandler() {
                 @Override
                 public void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode) {
-                    simpleView.clearRegion(elementId + "Region");
+//                    simpleView.clearRegion(elementId + "Region");
                     final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "Region", null);
                     final Canvas groupLocalCanvas = Canvas.createIfSupported();
                     if (groupLocalCanvas != null) {
@@ -594,7 +594,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode) {
-                    simpleView.clearRegion(elementId + "Region");
+//                    simpleView.clearRegion(elementId + "Region");
                     final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "Region", null);
                     final Video groupLocalVideo = Video.createIfSupported();
                     if (groupLocalVideo != null) {
