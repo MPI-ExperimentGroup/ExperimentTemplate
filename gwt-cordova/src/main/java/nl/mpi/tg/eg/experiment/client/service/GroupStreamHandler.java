@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import java.util.HashMap;
+import java.util.Map;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
@@ -36,8 +38,8 @@ public abstract class GroupStreamHandler {
 //    String groupCameraChannels;
 //    String groupAudioChannels;
 //    String groupCanvasChannels;
-    private boolean isConnected = false;
     private boolean isReady = false;
+    private Map<String, Boolean> expectedConnections = new HashMap<String, Boolean>();
 
     private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
         var groupStreamHandler = this;
@@ -344,7 +346,12 @@ public abstract class GroupStreamHandler {
     }-*/;
 
     public boolean isConnected() {
-        return isConnected;
+        for (Boolean isConnected : expectedConnections.values()) {
+            if (!isConnected) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void synchronisePhase(int currentPhase) {
@@ -373,7 +380,11 @@ public abstract class GroupStreamHandler {
                         addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
                         offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
                     } else {
-                        addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
+                        final String connectionName = "groupRemoteCanvas_" + member;
+                        if (!expectedConnections.containsKey(connectionName)) {
+                            expectedConnections.put(connectionName, false);
+                            addVideoElement(connectionName, groupId, groupUUID, memberCode);
+                        }
                     }
                     isFirst = false;
                 }
@@ -394,7 +405,11 @@ public abstract class GroupStreamHandler {
                         addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
                         offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
                     } else {
-                        addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
+                        final String connectionName = "groupRemoteCamera_" + member;
+                        if (!expectedConnections.containsKey(connectionName)) {
+                            expectedConnections.put(connectionName, false);
+                            addVideoElement(connectionName, groupId, groupUUID, memberCode);
+                        }
                     }
                     isFirst = false;
                 }
