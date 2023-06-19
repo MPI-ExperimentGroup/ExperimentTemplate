@@ -167,7 +167,12 @@ public abstract class GroupStreamHandler {
                 };
                 console.log("configuration: " + configuration);
             }
-            
+            // TODO: 
+            // if (!$wnd.groupConnections){
+            //     $wnd.groupConnections = [];
+            // }
+            // $wnd.groupConnections 
+            // TODO: replace $wnd.peerConnection with $wnd.groupConnections = [];
             $wnd.peerConnection = new RTCPeerConnection(configuration);
             $wnd.peerConnection.onicecandidate = function (event) {
                 console.log("onicecandidate");
@@ -349,7 +354,16 @@ public abstract class GroupStreamHandler {
         expectedConnections.put(connectionString, true);
     }
 
-    public boolean isConnected() {
+// TODO: this connect was in synchroniseStreamingPhase but needs to be handled for each communication channel
+//                          if (!groupStreamHandler.isConnected()) {
+//                            // TODO: remove the debug output when the GroupStreamHandler is ready
+//                            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
+//                            groupStreamHandler.connect(ApplicationController.STUN_SERVER, currentPhase, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
+//                        }
+    // TODO: the connect is happening before the target member code is known, so the moment that this is called should probaly move to streamGroupCanvas and streamGroupCamera for example
+    // TODO: eg iterate over Map<String, Boolean> expectedConnections and connect where needed
+
+public boolean isConnected() {
         for (Boolean isConnected : expectedConnections.values()) {
             if (!isConnected) {
                 return false;
@@ -362,6 +376,8 @@ public abstract class GroupStreamHandler {
 
     }
 
+    public abstract void updateDebugRegion(String message);
+    
     public abstract void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode);
 
     public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode);
