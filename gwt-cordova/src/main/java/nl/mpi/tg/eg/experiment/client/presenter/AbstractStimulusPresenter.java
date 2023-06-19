@@ -767,6 +767,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 public void synchroniseStreamingPhase(int currentPhase, String groupId, String groupUUID, String memberCode) {
                     if (groupStreamHandler != null) {
+                        // TODO: remove the debug output when the GroupStreamHandler is ready
+                        timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
+                        groupStreamHandler.connectStomp(ApplicationController.STUN_SERVER, currentPhase, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
                         groupStreamHandler.synchronisePhase(currentPhase);
                         groupStreamHandler.updateDebugRegion("synchroniseStreamingPhase");
                     }
