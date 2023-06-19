@@ -366,9 +366,9 @@ public boolean isConnected() {
 
     public abstract void updateDebugRegion(String message);
     
-    public abstract void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode);
+    public abstract void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode);
 
-    public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode);
+    public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode);
 
     public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) {
         // TODO: handle disconnect here

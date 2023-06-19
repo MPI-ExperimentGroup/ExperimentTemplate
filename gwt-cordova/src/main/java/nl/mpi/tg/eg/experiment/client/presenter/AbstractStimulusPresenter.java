@@ -569,7 +569,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (groupStreamHandler == null && containsStreamingMedia) {
             groupStreamHandler = new GroupStreamHandler() {
                 @Override
-                public void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode) {
+                public void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
 //                    simpleView.clearRegion(elementId + "Region");
                     final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "Region", null);
                     final Canvas groupLocalCanvas = Canvas.createIfSupported();
@@ -578,7 +578,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             @Override
                             public void onAttachOrDetach(AttachEvent event) {
                                 if (!event.isAttached()) {
-                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
+                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, getSelfTag());
                                 }
                             }
                         });
@@ -593,7 +593,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
-                public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode) {
+                public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
 //                    simpleView.clearRegion(elementId + "Region");
                     final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "Region", null);
                     final Video groupLocalVideo = Video.createIfSupported();
@@ -602,7 +602,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             @Override
                             public void onAttachOrDetach(AttachEvent event) {
                                 if (!event.isAttached()) {
-                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
+                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, getSelfTag());
                                 }
                             }
                         });
