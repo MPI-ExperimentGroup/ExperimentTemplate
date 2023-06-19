@@ -761,6 +761,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             groupStreamHandler.connect(ApplicationController.STUN_SERVER, currentPhase, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
                         }
                         groupStreamHandler.synchronisePhase(currentPhase);
+                        // TODO: this debug label can be removed
+                        timedStimulusView.clearRegion("streamDebug");
+                        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion("streamDebug", null);
+                        simpleView.addHtmlText(groupStreamHandler.getDebugText(), null);
+                        timedStimulusView.endRegion(isWidget);
+                        // end: this debug label can be removed
                     }
                 }
             };

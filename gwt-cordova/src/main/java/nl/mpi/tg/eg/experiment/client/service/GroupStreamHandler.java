@@ -369,6 +369,17 @@ public abstract class GroupStreamHandler {
         disconnectStreams(originPhase, userId, groupId, groupUUID, memberCode, screenId);
     }
 
+    public String getDebugText() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String expectedConnection : expectedConnections.keySet()) {
+            stringBuilder.append(expectedConnection);
+            stringBuilder.append(": ");
+            stringBuilder.append(expectedConnections.get(expectedConnection));
+            stringBuilder.append("<br>");
+        }
+        return stringBuilder.toString();
+    }
+
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
         for (String channel : streamChannels.split("\\|")) {
             boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
