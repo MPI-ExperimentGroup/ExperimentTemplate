@@ -242,7 +242,7 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
-    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String originMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         $wnd.requestPermissions(true, true,
             function(captureStream) {
@@ -257,7 +257,7 @@ public abstract class GroupStreamHandler {
         );
     }-*/;
 
-    private native void offerCanvas(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+    private native void offerCanvas(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String originMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
@@ -398,7 +398,7 @@ public boolean isConnected() {
                     // set up the elements and connection based on communication channels
                     if (isFirst) {
                         addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
-                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
+                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, null, memberCode, screenId);
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
@@ -423,7 +423,7 @@ public boolean isConnected() {
                     // set up the elements and connection based on communication channels
                     if (isFirst) {
                         addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
-                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
+                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, null, memberCode, screenId);
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
