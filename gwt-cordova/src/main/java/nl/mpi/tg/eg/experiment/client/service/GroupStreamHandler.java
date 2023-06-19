@@ -54,8 +54,8 @@ public abstract class GroupStreamHandler {
         } else {
             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, screenId);
             $wnd.handleOffer($wnd.groupConnections[originCode], offer, function (answer) {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("answer", 
-                    JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': memberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("answer", 
+                    JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': memberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
                 }, function(error) {
                     console.log(error.message);
                     //groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, screenId);
@@ -82,7 +82,7 @@ public abstract class GroupStreamHandler {
             if (candidate === "null" || !candidate.candidate) {
                 // the terminal null is sent inside the candidate object
                 $wnd.groupConnections[originCode].addIceCandidate(null);; //.catch(reportError);
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
             } else {
                 $wnd.groupConnections[originCode].addIceCandidate(candidate); //.catch(reportError);
             }
@@ -126,7 +126,7 @@ public abstract class GroupStreamHandler {
                         $wnd.createOffer($wnd.groupConnections[contentData.originCode],
                             function(offer) {
                                 // at this point memberCode is the origin of the offer and contentData.memberCode is the origin of the request
-                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", JSON.stringify({ type: 'offer', sdp: offer.sdp, 'memberCode': memberCode, 'mediaType': contentData.messageData }), originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", JSON.stringify({ type: 'offer', sdp: offer.sdp, 'memberCode': memberCode, 'mediaType': contentData.messageData }), originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
                             }, function(error) {
                                 console.log(error.message);
                                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, screenId);
@@ -174,9 +174,9 @@ public abstract class GroupStreamHandler {
             $wnd.$wnd.groupConnections[originCode].onicecandidate = function (event) {
                 console.log("onicecandidate");
                 if (event.candidate) {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
                 } else {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: null }), originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: null }), originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
                 }
             };
 
@@ -213,7 +213,7 @@ public abstract class GroupStreamHandler {
                 // it would be better to have separate groupRemoteCanvas_ and groupRemoteVideo_ instead of groupRemoteStream_
                 $wnd.$("#groupRemoteStream_" + memberCode)[0].srcObject = event.streams[0];
                 // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
             };
 
             $wnd.groupConnections[originCode].onremovetrack = function () {
@@ -249,7 +249,7 @@ public abstract class GroupStreamHandler {
                 $wnd.localStream = captureStream;
                 $wnd.$("#groupLocalVideo")[0].srcObject = $wnd.localStream;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "video", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "video", originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
             }, function(error) {
                 console.log(error.message);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, screenId);
@@ -261,7 +261,7 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
-        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "canvas", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "canvas", originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
         localCanvas = $wnd.$("#groupLocalCanvas")[0];
         localContext = localCanvas.getContext("2d");
 
@@ -296,7 +296,7 @@ public abstract class GroupStreamHandler {
 
     private native void disconnectStreams(Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, groupId, groupUUID, memberCode, screenId);
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
         // TODO: for $wnd.groupConnections[memberCode] ...
         if ($wnd.groupConnections[contentData.originCode]) {
             $wnd.groupConnections[contentData.originCode].ontrack = null;
@@ -352,15 +352,6 @@ public abstract class GroupStreamHandler {
         expectedConnections.put(connectionString, true);
     }
 
-// TODO: this connect was in synchroniseStreamingPhase but needs to be handled for each communication channel
-//                          if (!groupStreamHandler.isConnected()) {
-//                            // TODO: remove the debug output when the GroupStreamHandler is ready
-//                            timedStimulusView.addHtmlText("Connect STUN_SERVER " + ApplicationController.STUN_SERVER, "groupStreamContainer");
-//                            groupStreamHandler.connect(ApplicationController.STUN_SERVER, currentPhase, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, getSelfTag());
-//                        }
-    // TODO: the connect is happening before the target member code is known, so the moment that this is called should probaly move to streamGroupCanvas and streamGroupCamera for example
-    // TODO: eg iterate over Map<String, Boolean> expectedConnections and connect where needed
-
 public boolean isConnected() {
         for (Boolean isConnected : expectedConnections.values()) {
             if (!isConnected) {
@@ -382,7 +373,7 @@ public boolean isConnected() {
 
     public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) {
         // TODO: handle disconnect here
-//        messageGroup("disconnect", elementId, originPhase, userId, groupId, groupUUID, memberCode, screenId);
+//        messageGroup("disconnect", elementId, originPhase, userId, groupId, groupUUID, memberCode, originMemberCode, screenId);
         // TODO: narrow down the disconnects to the specified channels and medium
         disconnectStreams(originPhase, userId, groupId, groupUUID, memberCode, screenId);
     }
@@ -453,14 +444,14 @@ public boolean isConnected() {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    private native void messageGroup(String streamState, String messageData, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId) /*-{
+    private native void messageGroup(String streamState, String messageData, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String originMemberCode, String screenId) /*-{
     var groupParticipantService = this;
     $wnd.stompClient.send("/app/stream", {}, JSON.stringify({
         'userId': userId,
         'groupId': groupId,
         'screenId': screenId,
         'memberCode': memberCode,
-        'originMemberCode': null,
+        'originMemberCode': originMemberCode,
         'originPhase': originPhase,
         'streamState': streamState,
         'messageData': messageData
