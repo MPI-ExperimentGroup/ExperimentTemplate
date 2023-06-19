@@ -393,10 +393,9 @@ public boolean isConnected() {
         for (String channel : streamChannels.split("\\|")) {
             boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
             if (isRelevant) {
-                boolean isFirst = true;
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
-                    if (isFirst) {
+                    if (member.equals(memberCode)) {
                         addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode);
                         offerCanvas(originPhase, userId.toString(), groupId, groupUUID, null, memberCode, screenId);
                     } else {
@@ -406,7 +405,6 @@ public boolean isConnected() {
                             addCanvasElement(connectionName, groupId, groupUUID, memberCode);
                         }
                     }
-                    isFirst = false;
                 }
             }
         }
@@ -418,10 +416,9 @@ public boolean isConnected() {
         for (String channel : streamChannels.split("\\|")) {
             boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
             if (isRelevant) {
-                boolean isFirst = true;
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
-                    if (isFirst) {
+                    if (member.equals(memberCode)) {
                         addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
                         offerVideo(originPhase, userId.toString(), groupId, groupUUID, null, memberCode, screenId);
                     } else {
@@ -431,7 +428,6 @@ public boolean isConnected() {
                             addVideoElement(connectionName, groupId, groupUUID, memberCode);
                         }
                     }
-                    isFirst = false;
                 }
             }
         }
