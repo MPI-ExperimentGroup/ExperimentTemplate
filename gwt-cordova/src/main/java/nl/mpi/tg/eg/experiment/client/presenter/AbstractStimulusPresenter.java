@@ -764,6 +764,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         // TODO: this debug label can be removed
                         timedStimulusView.clearRegion("streamDebug");
                         final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion("streamDebug", null);
+                        simpleView.addHtmlText("synchroniseStreamingPhase", null);
                         simpleView.addHtmlText(groupStreamHandler.getDebugText(), null);
                         timedStimulusView.endRegion(isWidget);
                         // end: this debug label can be removed
@@ -2488,12 +2489,26 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         // TODO: Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
         groupStreamHandler.negotiateCanvas(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        // TODO: this debug label can be removed
+        timedStimulusView.clearRegion("streamDebug");
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion("streamDebug", null);
+        simpleView.addHtmlText("streamGroupCanvas", null);
+        simpleView.addHtmlText(groupStreamHandler.getDebugText(), null);
+        timedStimulusView.endRegion(isWidget);
+        // end: this debug label can be removed
     }
 
     protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
         // TODO: Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
         groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        // TODO: this debug label can be removed
+        timedStimulusView.clearRegion("streamDebug");
+        final InsertPanel.ForIsWidget isWidget = timedStimulusView.startRegion("streamDebug", null);
+        simpleView.addHtmlText("streamGroupCamera", null);
+        simpleView.addHtmlText(groupStreamHandler.getDebugText(), null);
+        timedStimulusView.endRegion(isWidget);
+        // end: this debug label can be removed        
     }
 
     /* protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
