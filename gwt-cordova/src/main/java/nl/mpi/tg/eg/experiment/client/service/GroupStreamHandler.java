@@ -146,7 +146,7 @@ public abstract class GroupStreamHandler {
                     }
                 }
             }
-            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isConnected = true;
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::setIsConnected(Ljava/lang/String;Ljava/lang/String;)("todo: connectionString");
         }, function(error) {
             // display the error's message header:
             console.log('contentData: ' + contentData);
@@ -344,6 +344,10 @@ public abstract class GroupStreamHandler {
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
+    
+    public void setIsConnected(final String connectionString) {
+        expectedConnections.put(connectionString, true);
+    }
 
     public boolean isConnected() {
         for (Boolean isConnected : expectedConnections.values()) {
