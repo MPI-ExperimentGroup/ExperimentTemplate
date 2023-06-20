@@ -109,47 +109,49 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.streamState);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
-            if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
-                if (groupId !== contentData.groupId) {
-                    console.log("ignoring other group: " + contentData.groupId);
-                } else if (contentData.streamState === "offer") {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                } else if (contentData.userId === userId){
-                    // the self message is needed in the offer stage to set up the stream but after that point we ignore these
-                    console.log("ignoring self message: " + contentData.userId);
-                } else if (contentData.streamState === "answer") {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode);
-                } else if (contentData.streamState === "candidate") {
-                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                } else if (contentData.streamState === "ready") {
-                    if ($wnd.groupConnections[contentData.originMemberCode]) {
-                        console.log('already connected, ignoring');
-                    } else {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                        $wnd.createOffer($wnd.groupConnections[contentData.originMemberCode],
-                            function(offer) {
-                                // at this point memberCode is the origin of the offer and contentData.memberCode is the origin of the request
-                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", JSON.stringify({ type: 'offer', sdp: offer.sdp, 'memberCode': memberCode, 'mediaType': contentData.messageData }), originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                            }, function(error) {
-                                console.log(error.message);
-                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                            }
-                        );
-                    }
-                } else if (contentData.streamState === "refresh") {
-                    if (localContext) {
-                        // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
-                        localContext.fillText("T", 0, 0);
-                    }
-                } else if (contentData.userId !== userId && contentData.streamState === "disconnect") {
-                    if ($wnd.groupConnections[contentData.originMemberCode]) {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                    } else {
-                        console.log('not connected, ignoring');
+            if (memberCode !== contentData.originMemberCode) { // ignoring self messages
+                if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
+                    if (groupId !== contentData.groupId) {
+                        console.log("ignoring other group: " + contentData.groupId);
+                    } else if (contentData.streamState === "offer") {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                    } else if (contentData.userId === userId){
+                        // the self message is needed in the offer stage to set up the stream but after that point we ignore these
+                        console.log("ignoring self message: " + contentData.userId);
+                    } else if (contentData.streamState === "answer") {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode);
+                    } else if (contentData.streamState === "candidate") {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                    } else if (contentData.streamState === "ready") {
+                        if ($wnd.groupConnections[contentData.originMemberCode]) {
+                            console.log('already connected, ignoring');
+                        } else {
+                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                            $wnd.createOffer($wnd.groupConnections[contentData.originMemberCode],
+                                function(offer) {
+                                    // at this point memberCode is the origin of the offer and contentData.memberCode is the origin of the request
+                                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", JSON.stringify({ type: 'offer', sdp: offer.sdp, 'memberCode': memberCode, 'mediaType': contentData.messageData }), originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                                }, function(error) {
+                                    console.log(error.message);
+                                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                                }
+                            );
+                        }
+                    } else if (contentData.streamState === "refresh") {
+                        if (localContext) {
+                            // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
+                            localContext.fillText("T", 0, 0);
+                        }
+                    } else if (contentData.userId !== userId && contentData.streamState === "disconnect") {
+                        if ($wnd.groupConnections[contentData.originMemberCode]) {
+                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                        } else {
+                            console.log('not connected, ignoring');
+                        }
                     }
                 }
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::setConnected(Ljava/lang/String;)("todo: connectionString");
             }
-            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::setConnected(Ljava/lang/String;)("todo: connectionString");
         }, function(error) {
             // display the error's message header:
             console.log('contentData: ' + contentData);
