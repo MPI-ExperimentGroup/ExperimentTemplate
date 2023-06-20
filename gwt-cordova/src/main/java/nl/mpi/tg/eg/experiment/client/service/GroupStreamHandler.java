@@ -211,7 +211,7 @@ public abstract class GroupStreamHandler {
                 console.log("ontrack");
                 // TODO: are there cases with multiple tracks to be expected?
                 // it would be better to have separate groupRemoteCanvas_ and groupRemoteVideo_ instead of groupRemoteStream_
-                $wnd.$("#groupRemoteStream_" + memberCode)[0].srcObject = event.streams[0];
+                $wnd.$("#groupRemoteStream_" + remoteMemberCode)[0].srcObject = event.streams[0];
                 // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             };
