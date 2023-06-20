@@ -92,7 +92,10 @@ public abstract class GroupStreamHandler {
     }-*/;
 
     public native void connectStomp(final String stunServer, int originPhase, String userId, String groupId, String groupUUID, String memberCode, String screenId /*, final TimedStimulusListener onError, final TimedStimulusListener onSuccess */) /*-{
-            var groupStreamHandler = this;
+        var groupStreamHandler = this;
+        if (!$wnd.groupConnections){
+            $wnd.groupConnections = [];
+        }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         $wnd.stompClient.subscribe('/shared/stream', function (streamMessage) {
@@ -157,9 +160,6 @@ public abstract class GroupStreamHandler {
     private native void initiateConnection(String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;    
         console.log("initialiseConnection: " + stunServer);
-        if (!$wnd.groupConnections){
-            $wnd.groupConnections = [];
-        }
         if (!$wnd.groupConnections[remoteMemberCode]) {
             var configuration = null; 
             if (stunServer) {
@@ -347,11 +347,11 @@ public abstract class GroupStreamHandler {
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
     
-    public void setConnected(final String connectionString) {
+    private void setConnected(final String connectionString) {
         expectedConnections.put(connectionString, true);
     }
 
-public boolean isConnected() {
+    public boolean isConnected() {
         for (Boolean isConnected : expectedConnections.values()) {
             if (!isConnected) {
                 return false;
