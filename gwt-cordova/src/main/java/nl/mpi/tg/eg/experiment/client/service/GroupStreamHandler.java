@@ -44,16 +44,16 @@ public abstract class GroupStreamHandler {
     private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         offer = JSON.parse(messageData);
-        if ($wnd.groupConnections[originCode]) {
+        if ($wnd.groupConnections[remoteMemberCode]) {
             if (sendingUserId !== userId) {
                 console.log('already connected, ignoring')
-            } else if (!$wnd.groupConnections[originCode].localDescription) {
+            } else if (!$wnd.groupConnections[remoteMemberCode].localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-                $wnd.groupConnections[originCode].setLocalDescription(offer);
+                $wnd.groupConnections[remoteMemberCode].setLocalDescription(offer);
             }
         } else {
             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
-            $wnd.handleOffer($wnd.groupConnections[originCode], offer, function (answer) {
+            $wnd.handleOffer($wnd.groupConnections[remoteMemberCode], offer, function (answer) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("answer", 
                     JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': memberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
                 }, function(error) {
@@ -67,8 +67,8 @@ public abstract class GroupStreamHandler {
     private native void handleAnswer(final String messageData, String remoteMemberCode) /*-{
         // console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
-        if ($wnd.groupConnections[originCode]) {
-            $wnd.groupConnections[originCode].setRemoteDescription(answer);
+        if ($wnd.groupConnections[remoteMemberCode]) {
+            $wnd.groupConnections[remoteMemberCode].setRemoteDescription(answer);
         } else {
             console.log("No peer connection");
         }
@@ -78,13 +78,13 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
-        if ($wnd.groupConnections[originCode]) {
+        if ($wnd.groupConnections[remoteMemberCode]) {
             if (candidate === "null" || !candidate.candidate) {
                 // the terminal null is sent inside the candidate object
-                $wnd.groupConnections[originCode].addIceCandidate(null);; //.catch(reportError);
+                $wnd.groupConnections[remoteMemberCode].addIceCandidate(null);; //.catch(reportError);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             } else {
-                $wnd.groupConnections[originCode].addIceCandidate(candidate); //.catch(reportError);
+                $wnd.groupConnections[remoteMemberCode].addIceCandidate(candidate); //.catch(reportError);
             }
         } else {
             console.log("No peer connection");
@@ -204,10 +204,10 @@ public abstract class GroupStreamHandler {
                 dataChannel = event.channel;
             };
 
-            $wnd.groupConnections[originCode].onnegotiationneeded = function () {
+            $wnd.groupConnections[remoteMemberCode].onnegotiationneeded = function () {
             }
 
-            $wnd.groupConnections[originCode].ontrack = function (event) {
+            $wnd.groupConnections[remoteMemberCode].ontrack = function (event) {
                 console.log("ontrack");
                 // TODO: are there cases with multiple tracks to be expected?
                 // it would be better to have separate groupRemoteCanvas_ and groupRemoteVideo_ instead of groupRemoteStream_
@@ -216,28 +216,28 @@ public abstract class GroupStreamHandler {
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             };
 
-            $wnd.groupConnections[originCode].onremovetrack = function () {
+            $wnd.groupConnections[remoteMemberCode].onremovetrack = function () {
                 console.log("onremovetrack");
             };
-            $wnd.groupConnections[originCode].onremovestream = function () {
+            $wnd.groupConnections[remoteMemberCode].onremovestream = function () {
                 console.log("onremovestream");
             };
 
-            $wnd.groupConnections[originCode].oniceconnectionstatechange = function () {
+            $wnd.groupConnections[remoteMemberCode].oniceconnectionstatechange = function () {
                 console.log("oniceconnectionstatechange");
             };
 
-            $wnd.groupConnections[originCode].onsignalingstatechange = function () {
+            $wnd.groupConnections[remoteMemberCode].onsignalingstatechange = function () {
                 console.log("onsignalingstatechange");
             };
 
-            $wnd.groupConnections[originCode].onicegatheringstatechange = function () {
+            $wnd.groupConnections[remoteMemberCode].onicegatheringstatechange = function () {
                 console.log("onicegatheringstatechange");
             };
 
-            // localStream.getTracks().forEach(track => $wnd.groupConnections[originCode].addTrack(track, localStream));
+            // localStream.getTracks().forEach(track => $wnd.groupConnections[remoteMemberCode].addTrack(track, localStream));
             for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
-                $wnd.groupConnections[originCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
+                $wnd.groupConnections[remoteMemberCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
             }
         }
     }-*/;
