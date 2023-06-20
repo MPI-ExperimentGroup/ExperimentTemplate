@@ -171,7 +171,7 @@ public abstract class GroupStreamHandler {
                 console.log("configuration: " + configuration);
             }
             $wnd.groupConnections[remoteMemberCode] = new RTCPeerConnection(configuration);
-            $wnd.$wnd.groupConnections[remoteMemberCode].onicecandidate = function (event) {
+            $wnd.groupConnections[remoteMemberCode].onicecandidate = function (event) {
                 console.log("onicecandidate");
                 if (event.candidate) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
