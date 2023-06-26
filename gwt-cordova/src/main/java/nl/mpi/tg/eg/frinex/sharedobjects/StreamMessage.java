@@ -33,7 +33,7 @@ public class StreamMessage {
     private GroupId groupId;
     private GroupUUID groupUUID;
     private String screenId;
-    private MemberCode memberCode;
+    private MemberCode targetMemberCode;
     private MemberCode originMemberCode;
     private Integer originPhase;
     private StreamMessageState streamState;
@@ -86,12 +86,12 @@ public class StreamMessage {
         this.screenId = screenId;
     }
 
-    public MemberCode getMemberCode() {
-        return memberCode;
+    public MemberCode getTargetMemberCode() {
+        return targetMemberCode;
     }
 
-    public void setMemberCode(MemberCode memberCode) {
-        this.memberCode = memberCode;
+    public void setTargetMemberCode(MemberCode targetMemberCode) {
+        this.targetMemberCode = targetMemberCode;
     }
 
     public MemberCode getOriginMemberCode() {

@@ -345,7 +345,7 @@ function setConnected(connected) {
             "<td>Group</td>" +
             "<td>groupUUID</td>" +
             "<td>screenId</td>" +
-            "<td>MemberCode</td>" +
+            "<td>TargetCode</td>" +
             "<td>OriginCode</td>" +
             "<td>streamState</td>" +
             "<td>originPhase</td>" +
@@ -423,7 +423,7 @@ function connect() {
                     "</td><td>" + contentData.groupId +
                     "</td><td>" + contentData.groupUUID +
                     "</td><td>" + contentData.screenId +
-                    "</td><td>" + contentData.memberCode +
+                    "</td><td>" + contentData.targetMemberCode +
                     "</td><td>" + contentData.originMemberCode +
                     "</td><td>" + contentData.streamState +
                     "</td><td>" + contentData.originPhase +
