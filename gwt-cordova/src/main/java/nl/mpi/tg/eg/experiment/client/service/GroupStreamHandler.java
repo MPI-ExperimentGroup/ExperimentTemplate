@@ -45,12 +45,12 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         offer = JSON.parse(messageData);
         if ($wnd.groupConnections[remoteMemberCode]) {
-            if (sendingUserId !== userId) {
-                console.log('already connected, ignoring')
-            } else if (!$wnd.groupConnections[remoteMemberCode].localDescription) {
+            // if (memberCode === remoteMemberCode) { // what is this comparison doing and why
+            //     console.log('already connected, ignoring')
+            // } else if (!$wnd.groupConnections[remoteMemberCode].localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
                 $wnd.groupConnections[remoteMemberCode].setLocalDescription(offer);
-            }
+            // }
         } else {
             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             $wnd.handleOffer($wnd.groupConnections[remoteMemberCode], offer, function (answer) {
@@ -109,7 +109,7 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.streamState);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
-            if (memberCode !== contentData.originMemberCode) { // ignoring self messages
+            if (contentData.targetMemberCode === "" || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
                 if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
                     if (groupId !== contentData.groupId) {
                         console.log("ignoring other group: " + contentData.groupId);
