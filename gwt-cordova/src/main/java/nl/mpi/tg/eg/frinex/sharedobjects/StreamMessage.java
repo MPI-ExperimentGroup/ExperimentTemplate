@@ -28,6 +28,10 @@ public class StreamMessage {
     public enum StreamMessageState {
         offer, answer, candidate, ready, refresh, disconnect
     };
+    
+    public enum StreamMessageType {
+        Canvas, Camera
+    };
 
     private UserId userId;
     private GroupId groupId;
@@ -37,6 +41,7 @@ public class StreamMessage {
     private MemberCode originMemberCode;
     private Integer originPhase;
     private StreamMessageState streamState;
+    private StreamMessageType streamType;
     private String messageData;
 
     public StreamMessage() {
@@ -51,6 +56,7 @@ public class StreamMessage {
 //        this.originMemberCode = originMemberCode;
 //        this.originPhase = originPhase;
 //        this.streamState = streamState;
+//        this.StreamMessageType = StreamMessageType;
 //        this.messageData = messageData;
 //    }
 
@@ -110,12 +116,20 @@ public class StreamMessage {
         this.originPhase = originPhase;
     }
 
+    public StreamMessageType getStreamType() {
+        return streamType;
+    }
+
     public StreamMessageState getStreamState() {
         return streamState;
     }
 
     public void setStreamState(StreamMessageState streamState) {
         this.streamState = streamState;
+    }
+
+    public void setStreamType(StreamMessageType streamType) {
+        this.streamType = streamType;
     }
 
     public String getMessageData() {
