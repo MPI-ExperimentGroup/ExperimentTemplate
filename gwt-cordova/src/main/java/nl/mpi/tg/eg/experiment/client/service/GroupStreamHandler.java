@@ -210,9 +210,7 @@ public abstract class GroupStreamHandler {
 
             $wnd.groupConnections[remoteMemberCode + "_" + streamType].ontrack = function (event) {
                 console.log("ontrack");
-                // TODO: are there cases with multiple tracks to be expected?
-                // it would be better to have separate groupRemoteCanvas_ and groupRemoteVideo_ instead of groupRemoteStream_
-                $wnd.$("#groupRemoteStream_" + remoteMemberCode)[0].srcObject = event.streams[0];
+                $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = event.streams[0];
                 // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             };
@@ -250,10 +248,10 @@ public abstract class GroupStreamHandler {
                 $wnd.localStream = captureStream;
                 $wnd.$("#groupLocalVideo")[0].srcObject = $wnd.localStream;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "video", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Camera", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             }, function(error) {
                 console.log(error.message);
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, "video", screenId);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, "Camera", screenId);
             }
         );
     }-*/;
@@ -262,7 +260,7 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
-        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "canvas", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Canvas", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
         localCanvas = $wnd.$("#groupLocalCanvas")[0];
         localContext = localCanvas.getContext("2d");
 
@@ -309,7 +307,7 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[remoteMemberCode + "_" + streamType].onnegotiationneeded = null;
             
             // iterate all member specific remote video elements
-            var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream]");
+            var remoteVideoArray = $wnd.$("video[id^=groupRemote" + streamType + "]");
             if (remoteVideoArray) {
                 for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
                     var remoteVideo = remoteVideoArray[remoteVideoIndex];
@@ -340,7 +338,7 @@ public abstract class GroupStreamHandler {
         }
 
         // remove all member remote video elements for each member
-        $wnd.$("video[id^=groupRemoteStream]").remove();
+        $wnd.$("video[id^=groupRemote" + streamType + "]").remove();
         // remove local elements
         $wnd.$("#groupLocalVideo").remove();
         $wnd.$("#groupLocalCanvas").remove();
@@ -419,7 +417,7 @@ public abstract class GroupStreamHandler {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
-                        addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode, member);
+                        addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
                         offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
