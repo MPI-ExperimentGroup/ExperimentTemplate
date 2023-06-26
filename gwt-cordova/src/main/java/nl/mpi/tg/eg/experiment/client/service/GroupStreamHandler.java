@@ -398,7 +398,7 @@ public abstract class GroupStreamHandler {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
                         addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
-                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, null, memberCode, screenId);
+                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
@@ -421,7 +421,7 @@ public abstract class GroupStreamHandler {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
                         addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode, member);
-                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, null, memberCode, screenId);
+                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
