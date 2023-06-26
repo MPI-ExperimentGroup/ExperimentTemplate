@@ -441,13 +441,13 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    private native void messageGroup(String streamState, String messageData, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String originMemberCode, String screenId) /*-{
+    private native void messageGroup(String streamState, String messageData, Integer originPhase, String userId, String groupId, String groupUUID, String originMemberCode, String targetMemberCode, String screenId) /*-{
     var groupParticipantService = this;
     $wnd.stompClient.send("/app/stream", {}, JSON.stringify({
         'userId': userId,
         'groupId': groupId,
         'screenId': screenId,
-        'memberCode': memberCode,
+        'targetMemberCode': targetMemberCode,
         'originMemberCode': originMemberCode,
         'originPhase': originPhase,
         'streamState': streamState,
