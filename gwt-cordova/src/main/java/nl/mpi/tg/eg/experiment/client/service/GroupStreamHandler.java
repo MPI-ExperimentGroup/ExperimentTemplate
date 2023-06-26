@@ -119,7 +119,7 @@ public abstract class GroupStreamHandler {
                         // the self message is needed in the offer stage to set up the stream but after that point we ignore these
                         console.log("ignoring self message: " + contentData.userId);
                     } else if (contentData.streamState === "answer") {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode, contentData.messageData);
                     } else if (contentData.streamState === "candidate") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                     } else if (contentData.streamState === "ready") {
