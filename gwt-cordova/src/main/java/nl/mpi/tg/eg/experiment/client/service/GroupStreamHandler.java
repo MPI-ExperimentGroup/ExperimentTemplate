@@ -121,7 +121,7 @@ public abstract class GroupStreamHandler {
                     } else if (contentData.streamState === "answer") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode, contentData.messageData);
                     } else if (contentData.streamState === "candidate") {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.messageData, screenId);
                     } else if (contentData.streamState === "ready") {
                         if ($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.messageData]) {
                             console.log('already connected, ignoring');
