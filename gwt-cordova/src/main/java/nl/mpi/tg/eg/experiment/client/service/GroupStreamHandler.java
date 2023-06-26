@@ -109,7 +109,7 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.streamState);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
-            if (contentData.targetMemberCode === "" || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
+            if (contentData.targetMemberCode === null || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
                 if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
                     if (groupId !== contentData.groupId) {
                         console.log("ignoring other group: " + contentData.groupId);
