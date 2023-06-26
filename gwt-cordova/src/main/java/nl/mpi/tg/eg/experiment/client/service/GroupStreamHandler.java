@@ -41,19 +41,19 @@ public abstract class GroupStreamHandler {
     private boolean isReady = false;
     private Map<String, Boolean> expectedConnections = new HashMap<String, Boolean>();
 
-    private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
         offer = JSON.parse(messageData);
-        if ($wnd.groupConnections[remoteMemberCode]) {
+        if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
             // if (memberCode === remoteMemberCode) { // what is this comparison doing and why
             //     console.log('already connected, ignoring')
-            // } else if (!$wnd.groupConnections[remoteMemberCode].localDescription) {
+            // } else if (!$wnd.groupConnections[remoteMemberCode + "_" + streamType].localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-                $wnd.groupConnections[remoteMemberCode].setLocalDescription(offer);
+                $wnd.groupConnections[remoteMemberCode + "_" + streamType].setLocalDescription(offer);
             // }
         } else {
-            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
-            $wnd.handleOffer($wnd.groupConnections[remoteMemberCode], offer, function (answer) {
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, streamType, screenId);
+            $wnd.handleOffer($wnd.groupConnections[remoteMemberCode + "_" + streamType], offer, function (answer) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("answer", 
                     JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': memberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
                 }, function(error) {
@@ -64,27 +64,27 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
-    private native void handleAnswer(final String messageData, String remoteMemberCode) /*-{
+    private native void handleAnswer(final String messageData, String remoteMemberCode, String streamType) /*-{
         // console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
-        if ($wnd.groupConnections[remoteMemberCode]) {
-            $wnd.groupConnections[remoteMemberCode].setRemoteDescription(answer);
+        if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].setRemoteDescription(answer);
         } else {
             console.log("No peer connection");
         }
     }-*/;
 
-    private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
-        if ($wnd.groupConnections[remoteMemberCode]) {
+        if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
             if (candidate === "null" || !candidate.candidate) {
                 // the terminal null is sent inside the candidate object
-                $wnd.groupConnections[remoteMemberCode].addIceCandidate(null);; //.catch(reportError);
+                $wnd.groupConnections[remoteMemberCode + "_" + streamType].addIceCandidate(null);; //.catch(reportError);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             } else {
-                $wnd.groupConnections[remoteMemberCode].addIceCandidate(candidate); //.catch(reportError);
+                $wnd.groupConnections[remoteMemberCode + "_" + streamType].addIceCandidate(candidate); //.catch(reportError);
             }
         } else {
             console.log("No peer connection");
@@ -123,11 +123,11 @@ public abstract class GroupStreamHandler {
                     } else if (contentData.streamState === "candidate") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                     } else if (contentData.streamState === "ready") {
-                        if ($wnd.groupConnections[contentData.originMemberCode]) {
+                        if ($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.messageData]) {
                             console.log('already connected, ignoring');
                         } else {
-                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
-                            $wnd.createOffer($wnd.groupConnections[contentData.originMemberCode],
+                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.messageData, screenId);
+                            $wnd.createOffer($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.messageData],
                                 function(offer) {
                                     // at this point memberCode is the origin of the offer and contentData.memberCode is the origin of the request
                                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", JSON.stringify({ type: 'offer', sdp: offer.sdp, 'memberCode': memberCode, 'mediaType': contentData.messageData }), originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
@@ -143,7 +143,7 @@ public abstract class GroupStreamHandler {
                             localContext.fillText("T", 0, 0);
                         }
                     } else if (contentData.userId !== userId && contentData.streamState === "disconnect") {
-                        if ($wnd.groupConnections[contentData.originMemberCode]) {
+                        if ($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.messageData]) {
                             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                         } else {
                             console.log('not connected, ignoring');
@@ -159,10 +159,10 @@ public abstract class GroupStreamHandler {
             });
     }-*/;
 
-    private native void initiateConnection(String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void initiateConnection(String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;    
         console.log("initialiseConnection: " + stunServer);
-        if (!$wnd.groupConnections[remoteMemberCode]) {
+        if (!$wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
             var configuration = null; 
             if (stunServer) {
                     configuration = {
@@ -172,8 +172,8 @@ public abstract class GroupStreamHandler {
                 };
                 console.log("configuration: " + configuration);
             }
-            $wnd.groupConnections[remoteMemberCode] = new RTCPeerConnection(configuration);
-            $wnd.groupConnections[remoteMemberCode].onicecandidate = function (event) {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType] = new RTCPeerConnection(configuration);
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onicecandidate = function (event) {
                 console.log("onicecandidate");
                 if (event.candidate) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
@@ -182,7 +182,7 @@ public abstract class GroupStreamHandler {
                 }
             };
 
-            dataChannel = $wnd.groupConnections[remoteMemberCode].createDataChannel("dataChannel", {
+            dataChannel = $wnd.groupConnections[remoteMemberCode + "_" + streamType].createDataChannel("dataChannel", {
                 reliable: true
             });
 
@@ -202,14 +202,14 @@ public abstract class GroupStreamHandler {
                 console.log("onclose");
             };
 
-            $wnd.groupConnections[remoteMemberCode].ondatachannel = function (event) {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].ondatachannel = function (event) {
                 dataChannel = event.channel;
             };
 
-            $wnd.groupConnections[remoteMemberCode].onnegotiationneeded = function () {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onnegotiationneeded = function () {
             }
 
-            $wnd.groupConnections[remoteMemberCode].ontrack = function (event) {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].ontrack = function (event) {
                 console.log("ontrack");
                 // TODO: are there cases with multiple tracks to be expected?
                 // it would be better to have separate groupRemoteCanvas_ and groupRemoteVideo_ instead of groupRemoteStream_
@@ -218,28 +218,28 @@ public abstract class GroupStreamHandler {
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             };
 
-            $wnd.groupConnections[remoteMemberCode].onremovetrack = function () {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onremovetrack = function () {
                 console.log("onremovetrack");
             };
-            $wnd.groupConnections[remoteMemberCode].onremovestream = function () {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onremovestream = function () {
                 console.log("onremovestream");
             };
 
-            $wnd.groupConnections[remoteMemberCode].oniceconnectionstatechange = function () {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].oniceconnectionstatechange = function () {
                 console.log("oniceconnectionstatechange");
             };
 
-            $wnd.groupConnections[remoteMemberCode].onsignalingstatechange = function () {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onsignalingstatechange = function () {
                 console.log("onsignalingstatechange");
             };
 
-            $wnd.groupConnections[remoteMemberCode].onicegatheringstatechange = function () {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onicegatheringstatechange = function () {
                 console.log("onicegatheringstatechange");
             };
 
-            // localStream.getTracks().forEach(track => $wnd.groupConnections[remoteMemberCode].addTrack(track, localStream));
+            // localStream.getTracks().forEach(track => $wnd.groupConnections[remoteMemberCode + "_" + streamType].addTrack(track, localStream));
             for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
-                $wnd.groupConnections[remoteMemberCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
+                $wnd.groupConnections[remoteMemberCode + "_" + streamType].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
             }
         }
     }-*/;
@@ -296,18 +296,18 @@ public abstract class GroupStreamHandler {
         }, false);
     }-*/;
 
-    private native void disconnectStreams(Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void disconnectStreams(Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
-        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
-        if ($wnd.groupConnections[remoteMemberCode]) {
-            $wnd.groupConnections[remoteMemberCode].ontrack = null;
-            $wnd.groupConnections[remoteMemberCode].onremovetrack = null;
-            $wnd.groupConnections[remoteMemberCode].onremovestream = null;
-            $wnd.groupConnections[remoteMemberCode].onicecandidate = null;
-            $wnd.groupConnections[remoteMemberCode].oniceconnectionstatechange = null;
-            $wnd.groupConnections[remoteMemberCode].onsignalingstatechange = null;
-            $wnd.groupConnections[remoteMemberCode].onicegatheringstatechange = null;
-            $wnd.groupConnections[remoteMemberCode].onnegotiationneeded = null;
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", streamType, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+        if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].ontrack = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onremovetrack = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onremovestream = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onicecandidate = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].oniceconnectionstatechange = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onsignalingstatechange = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onicegatheringstatechange = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].onnegotiationneeded = null;
             
             // iterate all member specific remote video elements
             var remoteVideoArray = $wnd.$("video[id^=groupRemoteStream]");
@@ -336,8 +336,8 @@ public abstract class GroupStreamHandler {
                 }
             }
             // TODO: should we be cleaning up the the local canvas srcObject.getTracks here also?
-            $wnd.groupConnections[remoteMemberCode].close();
-            $wnd.groupConnections[remoteMemberCode] = null;
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType].close();
+            $wnd.groupConnections[remoteMemberCode + "_" + streamType] = null;
         }
 
         // remove all member remote video elements for each member
@@ -372,11 +372,11 @@ public abstract class GroupStreamHandler {
 
     public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode);
 
-    public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) {
+    public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) {
         // TODO: handle disconnect here
 //        messageGroup("disconnect", elementId, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
         // TODO: narrow down the disconnects to the specified channels and medium
-        disconnectStreams(originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+        disconnectStreams(originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, streamType, screenId);
     }
 
     public String getDebugText() {

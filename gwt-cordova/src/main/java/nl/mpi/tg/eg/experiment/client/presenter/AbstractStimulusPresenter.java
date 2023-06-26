@@ -578,7 +578,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             @Override
                             public void onAttachOrDetach(AttachEvent event) {
                                 if (!event.isAttached()) {
-                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, getSelfTag());
+                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "canvas", getSelfTag());
                                 }
                             }
                         });
@@ -602,7 +602,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             @Override
                             public void onAttachOrDetach(AttachEvent event) {
                                 if (!event.isAttached()) {
-                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, getSelfTag());
+                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "video",  getSelfTag());
                                 }
                             }
                         });
