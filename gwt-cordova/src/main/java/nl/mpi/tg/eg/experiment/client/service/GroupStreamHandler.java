@@ -124,7 +124,7 @@ public abstract class GroupStreamHandler {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                     } else if (contentData.streamState === "ready") {
                         // if the canvas exists in the page then the request is expected and we reply
-                        if ($wnd.$("#groupRemote" + contentData.streamType + "_" + contentData.originMemberCode)) {
+                        if ($wnd.$("#groupRemote" + contentData.streamType + "_" + contentData.originMemberCode).length > 0) {
                             if ($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.streamType]) {
                                 console.log('already connected, ignoring');
                             } else {
