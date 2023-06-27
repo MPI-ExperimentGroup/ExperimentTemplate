@@ -106,7 +106,7 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.groupId);
             // console.log(contentData.groupUUID);
             // console.log(contentData.screenId);
-            console.log(memberCode + ": " + contentData.targetMemberCode + " ==" + contentData.streamState + "==> " + contentData.originMemberCode);
+            console.log(memberCode + ": " + contentData.originMemberCode + " ==" + contentData.streamState + "==> " + contentData.targetMemberCode);
             // console.log(contentData.streamType);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
