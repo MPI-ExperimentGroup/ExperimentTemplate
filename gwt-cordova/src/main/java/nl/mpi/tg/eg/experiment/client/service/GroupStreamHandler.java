@@ -64,12 +64,13 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
-    private native void handleAnswer(final String messageData, String remoteMemberCode, String streamType) /*-{
+    private native void handleAnswer(final String messageData, String originMemberCode, String targetMemberCode, String streamType) /*-{
         // console.log("handleAnswer");
-        console.log("answer: " + messageData);
+        console.log(originMemberCode + " ==handleAnswer==> " + targetMemberCode);
+        // console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
-        if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
-            $wnd.groupConnections[remoteMemberCode + "_" + streamType].setRemoteDescription(answer);
+        if ($wnd.groupConnections[originMemberCode + "_" + streamType]) {
+            $wnd.groupConnections[originMemberCode + "_" + streamType].setRemoteDescription(answer);
         } else {
             console.log("No peer connection");
         }
@@ -77,7 +78,7 @@ public abstract class GroupStreamHandler {
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
-        console.log(memberCode + "==handleCandidate==>" + remoteMemberCode);
+        console.log(remoteMemberCode + " ==handleCandidate==> " + memberCode);
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
         if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
@@ -120,7 +121,7 @@ public abstract class GroupStreamHandler {
                         // the self message is needed in the offer stage to set up the stream but after that point we ignore these
                         console.log("ignoring self message: " + contentData.userId);
                     } else if (contentData.streamState === "answer") {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode, contentData.streamType);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, contentData.originMemberCode, contentData.targetMemberCode, contentData.streamType);
                     } else if (contentData.streamState === "candidate") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                     } else if (contentData.streamState === "ready") {
