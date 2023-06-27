@@ -571,7 +571,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 public void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
 //                    simpleView.clearRegion(elementId + "Region");
-                    final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "Region", null);
+                    final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "_Region", null);
                     final Canvas groupLocalCanvas = Canvas.createIfSupported();
                     if (groupLocalCanvas != null) {
                         groupLocalCanvas.addAttachHandler(new AttachEvent.Handler() {
@@ -595,7 +595,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
 //                    simpleView.clearRegion(elementId + "Region");
-                    final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "Region", null);
+                    final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "_Region", null);
                     final Video groupLocalVideo = Video.createIfSupported();
                     if (groupLocalVideo != null) {
                         groupLocalVideo.addAttachHandler(new AttachEvent.Handler() {
