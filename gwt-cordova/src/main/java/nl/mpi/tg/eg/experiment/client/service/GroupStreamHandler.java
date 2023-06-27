@@ -65,7 +65,8 @@ public abstract class GroupStreamHandler {
     }-*/;
 
     private native void handleAnswer(final String messageData, String remoteMemberCode, String streamType) /*-{
-        // console.log("answer: " + messageData);
+        // console.log("handleAnswer");
+        console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
         if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
             $wnd.groupConnections[remoteMemberCode + "_" + streamType].setRemoteDescription(answer);
@@ -76,6 +77,7 @@ public abstract class GroupStreamHandler {
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
+        console.log("handleCandidate");
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
         if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
@@ -104,9 +106,8 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.groupId);
             // console.log(contentData.groupUUID);
             // console.log(contentData.screenId);
-            // console.log(contentData.targetMemberCode);
-            // console.log(contentData.originMemberCode);
-            // console.log(contentData.streamState);
+            console.log(memberCode + ": " + contentData.targetMemberCode + " ==" + contentData.streamState + "==> " + contentData.originMemberCode);
+            // console.log(contentData.streamType);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
             if (contentData.targetMemberCode === null || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
