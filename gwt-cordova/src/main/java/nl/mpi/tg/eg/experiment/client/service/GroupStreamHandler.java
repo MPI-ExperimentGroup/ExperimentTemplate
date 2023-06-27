@@ -78,15 +78,16 @@ public abstract class GroupStreamHandler {
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
-        console.log(remoteMemberCode + " ==handleCandidate==> " + memberCode);
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
         if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
             if (candidate === "null" || !candidate.candidate) {
+            console.log(remoteMemberCode + " ==doneCandidate==> " + memberCode);
                 // the terminal null is sent inside the candidate object
                 $wnd.groupConnections[remoteMemberCode + "_" + streamType].addIceCandidate(null);; //.catch(reportError);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             } else {
+                console.log(remoteMemberCode + " ==handleCandidate==> " + memberCode);
                 $wnd.groupConnections[remoteMemberCode + "_" + streamType].addIceCandidate(candidate); //.catch(reportError);
             }
         } else {
