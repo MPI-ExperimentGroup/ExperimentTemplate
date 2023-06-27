@@ -77,7 +77,7 @@ public abstract class GroupStreamHandler {
 
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
-        console.log("handleCandidate");
+        console.log(memberCode + "==handleCandidate==>" + remoteMemberCode);
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
         if ($wnd.groupConnections[remoteMemberCode + "_" + streamType]) {
@@ -106,11 +106,11 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.groupId);
             // console.log(contentData.groupUUID);
             // console.log(contentData.screenId);
-            console.log(memberCode + ": " + contentData.originMemberCode + " ==" + contentData.streamState + "==> " + contentData.targetMemberCode);
             // console.log(contentData.streamType);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
             if (contentData.targetMemberCode === null || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
+                console.log(memberCode + ": " + contentData.originMemberCode + " ==" + contentData.streamState + "==> " + contentData.targetMemberCode);
                 if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
                     if (groupId !== contentData.groupId) {
                         console.log("ignoring other group: " + contentData.groupId);
