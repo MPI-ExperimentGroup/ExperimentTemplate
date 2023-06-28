@@ -128,11 +128,11 @@ public abstract class GroupStreamHandler {
                     } else if (contentData.streamState === "ready") {
                         // if the canvas exists in the page then the request is expected and we reply
                         if ($wnd.$("#groupRemote" + contentData.streamType + "_" + contentData.originMemberCode).length > 0) {
-                            if ($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.streamType]) {
+                            if ($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode]) {
                                 console.log('already connected, ignoring');
                             } else {
                                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
-                                $wnd.createOffer($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.streamType],
+                                $wnd.createOffer($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode],
                                     function(offer) {
                                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("offer", contentData.streamType, JSON.stringify({ type: 'offer', sdp: offer.sdp, 'memberCode': memberCode, 'mediaType': contentData.messageData }), originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                                     }, function(error) {
@@ -148,7 +148,7 @@ public abstract class GroupStreamHandler {
                             localContext.fillText("T", 0, 0);
                         }
                     } else if (contentData.userId !== userId && contentData.streamState === "disconnect") {
-                        if ($wnd.groupConnections[contentData.originMemberCode + "_" + contentData.streamType]) {
+                        if ($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode]) {
                             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                         } else {
                             console.log('not connected, ignoring');
