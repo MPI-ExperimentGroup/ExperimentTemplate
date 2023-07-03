@@ -65,16 +65,16 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
-    private native void handleAnswer(final String messageData, String originMemberCode, String targetMemberCode, String streamType) /*-{
+    private native void handleAnswer(final String messageData, String originMemberCode, String selfMemberCode, String streamType) /*-{
         // console.log("handleAnswer");
-        console.log(originMemberCode + " ==handleAnswer==> " + targetMemberCode);
+        console.log(originMemberCode + " ==handleAnswer==> " + selfMemberCode);
         // console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
-        if ($wnd.groupConnections[originMemberCode + "-" + streamType + '>' + targetMemberCode]) {
-            $wnd.groupConnections[originMemberCode + "-" + streamType + '>' + targetMemberCode].setRemoteDescription(answer);
-            console.log(originMemberCode + " ==setRemoteDescription==> " + targetMemberCode);
+        if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode]) {
+            $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode].setRemoteDescription(answer);
+            console.log(selfMemberCode + " ==setRemoteDescription==> " + originMemberCode);
         } else {
-            console.log(originMemberCode + " ==no peer connection==> " + targetMemberCode);
+            console.log(selfMemberCode + " ==no peer connection==> " + originMemberCode);
         }
     }-*/;
 
