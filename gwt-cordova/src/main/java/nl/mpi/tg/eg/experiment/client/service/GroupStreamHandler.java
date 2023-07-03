@@ -72,28 +72,28 @@ public abstract class GroupStreamHandler {
         answer = JSON.parse(messageData);
         if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode]) {
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode].setRemoteDescription(answer);
-            console.log(selfMemberCode + " ==setRemoteDescription==> " + originMemberCode);
+            console.log(originMemberCode + " <==setRemoteDescription== " + selfMemberCode);
         } else {
-            console.log(selfMemberCode + " ==no peer connection==> " + originMemberCode);
+            console.log(originMemberCode + " <==no peer connection== " + selfMemberCode);
         }
     }-*/;
 
-    private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
+    private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String selfMemberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
         // console.log("candidate: " + messageData);
         candidate = JSON.parse(messageData);
-        if ($wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode]) {
+        if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode]) {
             if (candidate === "null" || !candidate.candidate) {
-                console.log(remoteMemberCode + " ==doneCandidate==> " + memberCode);
+                console.log(remoteMemberCode + " <==doneCandidate== " + selfMemberCode);
                 // the terminal null is sent inside the candidate object
-                $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].addIceCandidate(null);; //.catch(reportError);
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(null);; //.catch(reportError);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
             } else {
-                console.log(remoteMemberCode + " ==handleCandidate==> " + memberCode);
-                $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].addIceCandidate(candidate); //.catch(reportError);
+                console.log(remoteMemberCode + " <==handleCandidate== " + selfMemberCode);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(candidate); //.catch(reportError);
             }
         } else {
-            console.log("No peer connection");
+            console.log(remoteMemberCode + " <==no peer connection== " + selfMemberCode);
         }
     }-*/;
 
