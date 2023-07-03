@@ -41,25 +41,25 @@ public abstract class GroupStreamHandler {
     private boolean isReady = false;
     private Map<String, Boolean> expectedConnections = new HashMap<String, Boolean>();
 
-    private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String targetMemberCode, String remoteMemberCode, String streamType, String screenId) /*-{
+    private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String targetMemberCode, String originMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
         offer = JSON.parse(messageData);
         console.log(originMemberCode + " ==handleOffer==> " + targetMemberCode);
-        if ($wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + targetMemberCode]) {
-            // if (memberCode === remoteMemberCode) { // what is this comparison doing and why
+        if ($wnd.groupConnections[originMemberCode + "-" + streamType + '>' + targetMemberCode]) {
+            // if (memberCode === originMemberCode) { // what is this comparison doing and why
             //     console.log('already connected, ignoring')
-            // } else if (!$wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].localDescription) {
+            // } else if (!$wnd.groupConnections[originMemberCode + "-" + streamType + '>' + memberCode].localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-                $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + targetMemberCode].setLocalDescription(offer);
+                $wnd.groupConnections[originMemberCode + "-" + streamType + '>' + targetMemberCode].setLocalDescription(offer);
             // }
         } else {
-            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, targetMemberCode, remoteMemberCode, streamType, screenId);
-            $wnd.handleOffer($wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + targetMemberCode], offer, function (answer) {
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, targetMemberCode, originMemberCode, streamType, screenId);
+            $wnd.handleOffer($wnd.groupConnections[originMemberCode + "-" + streamType + '>' + targetMemberCode], offer, function (answer) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("answer", streamType,
-                    JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': targetMemberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, targetMemberCode, remoteMemberCode, screenId);
+                    JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': targetMemberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, targetMemberCode, originMemberCode, screenId);
                 }, function(error) {
                     console.log(error.message);
-                    //groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, targetMemberCode, remoteMemberCode, streamType, screenId);
+                    //groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, targetMemberCode, originMemberCode, streamType, screenId);
                 }
             );
         }
