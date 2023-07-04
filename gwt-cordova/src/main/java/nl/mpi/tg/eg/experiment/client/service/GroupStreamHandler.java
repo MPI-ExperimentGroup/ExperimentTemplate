@@ -48,11 +48,12 @@ public abstract class GroupStreamHandler {
         if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode]) {
             // if (memberCode === originMemberCode) { // what is this comparison doing and why
             //     console.log('already connected, ignoring')
-            // } else if (!$wnd.groupConnections[originMemberCode + "-" + streamType + '>' + memberCode].localDescription) {
-                console.log(selfMemberCode + " <==setLocalDescription1== " + remoteMemberCode);
+            // } else 
+            if (!$wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
+                console.log(selfMemberCode + " <==setLocalDescription1== " + remoteMemberCode);
                 $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].setLocalDescription(offer);
-            // }
+            }
         } else {
             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, streamType, screenId);
             console.log(selfMemberCode + " <==setLocalDescription2== " + remoteMemberCode);
