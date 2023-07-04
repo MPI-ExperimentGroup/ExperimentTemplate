@@ -74,8 +74,8 @@ public abstract class GroupStreamHandler {
         // console.log("answer: " + messageData);
         answer = JSON.parse(messageData);
         if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode]) {
-            $wnd.handleAnswer($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode], answer)
-            // $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode].setRemoteDescription(answer);
+            // $wnd.handleAnswer($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode], answer)
+            $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + originMemberCode].setRemoteDescription(answer);
             console.log(originMemberCode + " <==setRemoteDescription== " + selfMemberCode);
         } else {
             console.log(originMemberCode + " <==no peer connection== " + selfMemberCode);
