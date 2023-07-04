@@ -185,7 +185,7 @@ public abstract class GroupStreamHandler {
             }
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = new RTCPeerConnection(configuration);
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = function (event) {
-                console.log("onicecandidate");
+                console.log(remoteMemberCode + " ==onicecandidate==> " + selfMemberCode);
                 if (event.candidate) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", streamType, JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
                 } else {
@@ -198,56 +198,59 @@ public abstract class GroupStreamHandler {
             });
 
             dataChannel.onerror = function (error) {
-                console.log("onerror: " + error);
+                console.log(remoteMemberCode + " ==onerror==> " + selfMemberCode + ": " + error);
             };
 
             dataChannel.onmessage = function (event) {
-                console.log("onmessage: " + event.data);
+                console.log(remoteMemberCode + " ==onmessage==> " + selfMemberCode + ": " + event.data);
             };
 
             dataChannel.onconnectionstatechange = function (event) {
-                console.log("onconnectionstatechange");
+                console.log(remoteMemberCode + " ==onconnectionstatechange==> " + selfMemberCode);
             };
 
             dataChannel.onclose = function () {
-                console.log("onclose");
+                console.log(remoteMemberCode + " ==onclose==> " + selfMemberCode);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].ondatachannel = function (event) {
+                console.log(remoteMemberCode + " ==ondatachannel==> " + selfMemberCode);
                 dataChannel = event.channel;
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onnegotiationneeded = function () {
+                console.log(remoteMemberCode + " ==onnegotiationneeded==> " + selfMemberCode);
             }
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].ontrack = function (event) {
-                console.log("ontrack");
+                console.log(remoteMemberCode + " ==ontrack==> " + selfMemberCode);
                 $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = event.streams[0];
                 // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovetrack = function () {
-                console.log("onremovetrack");
+                console.log(remoteMemberCode + " ==onremovetrack==> " + selfMemberCode);
             };
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovestream = function () {
-                console.log("onremovestream");
+                console.log(remoteMemberCode + " ==onremovestream==> " + selfMemberCode);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = function () {
-                console.log("oniceconnectionstatechange");
+                console.log(remoteMemberCode + " ==oniceconnectionstatechange==> " + selfMemberCode);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onsignalingstatechange = function () {
-                console.log("onsignalingstatechange");
+                console.log(remoteMemberCode + " ==onsignalingstatechange==> " + selfMemberCode);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicegatheringstatechange = function () {
-                console.log("onicegatheringstatechange");
+                console.log(remoteMemberCode + " ==onicegatheringstatechange==> " + selfMemberCode);
             };
 
             // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
             for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
+                console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
                 $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
             }
         }
