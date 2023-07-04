@@ -63,6 +63,10 @@ function handleOffer(connection, offer, successHandler, errorHandler) {
         );
 }
 
+function handleAnswer(connection, answer) {
+    await connection.setRemoteDescription(answer);
+}
+
 function requestPermissions(wantsVideo, wantsAudio, successHandler, errorHandler) {
     navigator.mediaDevices.getUserMedia({video: wantsVideo, audio: wantsAudio}).then(function (stream) {
         successHandler(stream);
