@@ -119,6 +119,10 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.messageData);
             if (contentData.targetMemberCode === null || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
                 console.log(memberCode + ": " + contentData.originMemberCode + " ==" + contentData.streamState + "==> " + contentData.targetMemberCode);
+                if ($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode]) {
+                    console.log(memberCode + ": " + $wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode].connectionState);
+                }
+                console.log(memberCode + " isReady: " + groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady);
                 if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady) {
                     if (groupId !== contentData.groupId) {
                         console.log("ignoring other group: " + contentData.groupId);
