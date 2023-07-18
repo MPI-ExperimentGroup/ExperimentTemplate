@@ -851,14 +851,29 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="columnName" type="xs:string" use="required">
+<xs:attribute name="screenName" type="xs:string">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="matching" type="xs:string" use="required">
+<xs:attribute name="responseGroup" type="xs:string">
 <xs:annotation>
-<xs:documentation>Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+<xs:documentation>Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="scoreGroup" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="stimulusId" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="response" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="colour" type="rgbHexValue" use="required">
