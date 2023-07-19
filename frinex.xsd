@@ -786,10 +786,25 @@
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="isCorrect" type="xs:string">
+<xs:attribute name="isCorrect">
 <xs:annotation>
-<xs:documentation>Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+<xs:documentation>Only records matching this isCorrect value will be included for this dataset.</xs:documentation>
 </xs:annotation>
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="True"/>
+<xs:enumeration value="NotTrue"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
 </xs:attribute>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
@@ -870,6 +885,26 @@
 <xs:annotation>
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
+</xs:attribute>
+<xs:attribute name="isCorrect">
+<xs:annotation>
+<xs:documentation>Only records matching this isCorrect value will be included for this dataset.</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="True"/>
+<xs:enumeration value="NotTrue"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
 </xs:attribute>
 <xs:attribute name="response" type="xs:string">
 <xs:annotation>
@@ -970,10 +1005,25 @@
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="isCorrect" type="xs:string">
+<xs:attribute name="isCorrect">
 <xs:annotation>
-<xs:documentation>Only records matching this isCorrect will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+<xs:documentation>Only records matching this isCorrect value will be included for this dataset.</xs:documentation>
 </xs:annotation>
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="True"/>
+<xs:enumeration value="NotTrue"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
 </xs:attribute>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
