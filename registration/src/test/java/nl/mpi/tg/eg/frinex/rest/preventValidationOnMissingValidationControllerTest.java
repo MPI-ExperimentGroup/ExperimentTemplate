@@ -533,14 +533,14 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
-            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectTrue(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
+            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(String screenName, Boolean isCorrect,String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
-            @Override
-            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
+            // @Override
+            // public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
+            //     throw new UnsupportedOperationException("Not required for this test class.");
+            // }
 
             // @Override
             // public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {

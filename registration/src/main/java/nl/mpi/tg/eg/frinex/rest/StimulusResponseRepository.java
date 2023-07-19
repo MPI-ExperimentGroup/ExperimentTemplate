@@ -69,24 +69,24 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
         @Param("response") String response);
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
-    long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectTrue(
+    long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(
         @Param("screenName") String screenName,
 //            @Param("dataChannel") Integer dataChannel,
-//            @Param("isCorrect") Boolean isCorrect,
+        @Param("isCorrect") Boolean isCorrect,
         @Param("scoreGroup") String scoreGroup,
         @Param("responseGroup") String responseGroup,
         @Param("stimulusId") String stimulusId,
         @Param("response") String response);
 
-    // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
-    long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(
-        @Param("screenName") String screenName,
-//            @Param("dataChannel") Integer dataChannel,
-//            @Param("isCorrect") Boolean isCorrect,
-        @Param("scoreGroup") String scoreGroup,
-        @Param("responseGroup") String responseGroup,
-        @Param("stimulusId") String stimulusId,
-        @Param("response") String response);
+//     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
+//     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(
+//         @Param("screenName") String screenName,
+// //            @Param("dataChannel") Integer dataChannel,
+// //            @Param("isCorrect") Boolean isCorrect,
+//         @Param("scoreGroup") String scoreGroup,
+//         @Param("responseGroup") String responseGroup,
+//         @Param("stimulusId") String stimulusId,
+//         @Param("response") String response);
 
 //     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
 //     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(
