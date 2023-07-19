@@ -88,15 +88,15 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
         @Param("stimulusId") String stimulusId,
         @Param("response") String response);
 
-    // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
-    long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(
-        @Param("screenName") String screenName,
-//            @Param("dataChannel") Integer dataChannel,
-//            @Param("isCorrect") Boolean isCorrect,
-        @Param("scoreGroup") String scoreGroup,
-        @Param("responseGroup") String responseGroup,
-        @Param("stimulusId") String stimulusId,
-        @Param("response") String response);
+//     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
+//     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(
+//         @Param("screenName") String screenName,
+// //            @Param("dataChannel") Integer dataChannel,
+// //            @Param("isCorrect") Boolean isCorrect,
+//         @Param("scoreGroup") String scoreGroup,
+//         @Param("responseGroup") String responseGroup,
+//         @Param("stimulusId") String stimulusId,
+//         @Param("response") String response);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
