@@ -538,7 +538,12 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectNotTrue(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
+            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
