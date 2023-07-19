@@ -531,6 +531,16 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
+            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectTrue(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectNotTrue(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public Page<StimulusResponse> findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
