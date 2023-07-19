@@ -64,9 +64,11 @@
             <stimulusResponse label="RecordingQualityTest" screenName="RecordingQualityTest" colour="#000990" />
         </chart> 
         <chart label="isCorrect" type="pie">
-            <!-- <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
-            <stimulusResponse label="False" columnName="isCorrect" matching="false" colour="#000990" />
-            <stimulusResponse label="null" columnName="isCorrect" matching="" colour="#000990" /> -->
+            <stimulusResponse label="Correct" isCorrect="True" colour="#990000" />
+            <stimulusResponse label="Other" isCorrect="NotTrue" colour="#000990" />
+            <!-- <stimulusResponse label="null" columnName="isCorrect" matching="" colour="#000990" /> -->
+        </chart>   
+        <chart label="ABC" type="pie">
             <stimulusResponse label="A" response="a" colour="#099000" />
             <stimulusResponse label="B" response="b" colour="#009900" />
             <stimulusResponse label="C" response="c" colour="#000990" />

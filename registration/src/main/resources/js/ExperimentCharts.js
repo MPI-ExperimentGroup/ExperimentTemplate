@@ -85,7 +85,8 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(stimulusResponse.matching);
             data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
             data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
-            $.getJSON('stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
+            $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
+                + (stimulusResponse.isCorrect)? 'AndIsCorrect' + encodeURIComponent(stimulusResponse.isCorrect) : ""
                 + '?screenName=' + encodeURIComponent(stimulusResponse.screenName)
                 + '&scoreGroup=' + encodeURIComponent(stimulusResponse.scoreGroup)
                 + '&responseGroup=' + encodeURIComponent(stimulusResponse.responseGroup)
@@ -196,6 +197,7 @@ function generateTable(tableData) {
         + '&tagValue2=' + encodeURIComponent(tableData.tagValue2)
     ) : (tableData.source === "stimulusResponse") ? (
         'stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
+        + (stimulusResponse.isCorrect)? 'AndIsCorrect' + encodeURIComponent(stimulusResponse.isCorrect) : ""
         + '?screenName=' + encodeURIComponent(tableData.screenName)
         + '&scoreGroup=' + encodeURIComponent(tableData.scoreGroup)
         + '&responseGroup=' + encodeURIComponent(tableData.responseGroup)
