@@ -17,10 +17,16 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.event.EventListener;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
@@ -29,6 +35,9 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
+
+    @Value("${nl.mpi.tg.eg.frinex.informReadyUrl}")
+    protected String informReadyUrl;
 
     public static void main(String[] args) {
         SpringApplication.run(applicationClass, args);
@@ -44,5 +53,21 @@ public class Application extends SpringBootServletInitializer {
     @Override
     protected WebApplicationContext run(SpringApplication application) {
         return super.run(application);
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void informNginxProxy() {
+        if (informReadyUrl != null) {
+            try ( BufferedInputStream inStream = new BufferedInputStream(new URL(informReadyUrl).openStream())) {
+                byte dataBuffer[] = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
+                    System.out.write(dataBuffer, 0, bytesRead);
+                }
+            } catch (IOException e) {
+                System.err.append("informNginxProxy failed: ");
+                System.err.append(e.getMessage());
+            }
+        }
     }
 }
