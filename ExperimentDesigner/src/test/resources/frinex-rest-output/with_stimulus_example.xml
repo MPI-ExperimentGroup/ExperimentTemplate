@@ -65,13 +65,13 @@
         </chart> 
         <chart label="isCorrect" type="pie">
             <stimulusResponse label="Correct" isCorrect="True" colour="#990000" />
-            <stimulusResponse label="Incorrect" isCorrect="False" colour="#000990" />
-            <stimulusResponse label="NoResponse" isCorrect="Null" colour="#000990" />
+            <stimulusResponse label="Incorrect" isCorrect="False" colour="#009900" />
+            <stimulusResponse label="NoResponse" isCorrect="Null" colour="#000099" />
         </chart>   
         <chart label="ABC" type="pie">
-            <stimulusResponse label="A" response="a" colour="#099000" />
+            <stimulusResponse label="A" response="a" colour="#990000" />
             <stimulusResponse label="B" response="b" colour="#009900" />
-            <stimulusResponse label="C" response="c" colour="#000990" />
+            <stimulusResponse label="C" response="c" colour="#000099" />
         </chart>   
         <dataTable label="StimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
         <dataTable label="AppendStimulusResponse" source="stimulusResponse" screenName="AppendStimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
