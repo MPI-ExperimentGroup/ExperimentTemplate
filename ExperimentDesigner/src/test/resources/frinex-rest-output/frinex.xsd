@@ -898,7 +898,7 @@
 <xs:restriction base="xs:token">
 <xs:enumeration value="True"/>
 <xs:enumeration value="False"/>
-<xs:enumeration value="IsNull"/>
+<xs:enumeration value="Null"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>

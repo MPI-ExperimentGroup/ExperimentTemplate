@@ -463,7 +463,7 @@ public class AbstractSchemaGenerator {
                                                 .documentedAttribute("responseGroup", AttributeType.xsString, "Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                                 .documentedAttribute("scoreGroup", AttributeType.xsString, "Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                                 .documentedAttribute("stimulusId", AttributeType.xsString, "Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
-                                                .restrictedAttribute("isCorrect", null, "Only records matching this isCorrect value will be included for this dataset.", true, "True", "False", "IsNull")
+                                                .restrictedAttribute("isCorrect", null, "Only records matching this isCorrect value will be included for this dataset.", true, "True", "False", "Null")
                                                 .documentedAttribute("response", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                                 .colourRGBAttribute("colour", false)
                                     })
