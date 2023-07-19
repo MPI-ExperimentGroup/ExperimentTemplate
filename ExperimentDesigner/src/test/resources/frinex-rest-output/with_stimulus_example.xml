@@ -60,15 +60,19 @@
             <metadata label="man" fieldName="gender" matching="man" colour="#000022" />
         </chart>
         <chart label="ScreenName" type="pie">
-            <stimulusResponse label="Aggressive_Short_Recordings" columnName="ScreenName" matching="Aggressive_Short_Recordings" colour="#990000" />
-            <stimulusResponse label="RecordingQualityTest" columnName="ScreenName" matching="RecordingQualityTest" colour="#000990" />
-        </chart>
-        <chart label="isCorrect" type="line">
-            <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
+            <stimulusResponse label="Aggressive_Short_Recordings" screenName="Aggressive_Short_Recordings" colour="#990000" />
+            <stimulusResponse label="RecordingQualityTest" screenName="RecordingQualityTest" colour="#000990" />
+        </chart> 
+        <chart label="isCorrect" type="pie">
+            <!-- <stimulusResponse label="True" columnName="isCorrect" matching="true" colour="#990000" />
             <stimulusResponse label="False" columnName="isCorrect" matching="false" colour="#000990" />
-        </chart>
-        <dataTable label="StimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusID,Response,IsCorrect,TagDate" />
-        <dataTable label="AppendStimulusResponse" source="stimulusResponse" screenName="AppendStimulusResponse" columnNames="UserId,ScreenName,StimulusID,Response,IsCorrect,TagDate" />
+            <stimulusResponse label="null" columnName="isCorrect" matching="" colour="#000990" /> -->
+            <stimulusResponse label="A" response="a" colour="#099000" />
+            <stimulusResponse label="B" response="b" colour="#009900" />
+            <stimulusResponse label="C" response="c" colour="#000990" />
+        </chart>   
+        <dataTable label="StimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
+        <dataTable label="AppendStimulusResponse" source="stimulusResponse" screenName="AppendStimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
         <dataTable label="TouchInputReport for stimlus d1e269" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="%" eventTag="touchInputReport" tagValue1="d1e269" tagValue2="%" />
         <dataTable label="TouchInputReport for presenter touchInputLabelButton" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="%" tagValue2="%" />
         <dataTable label="visible_enable_stimulus_free_text_example" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="visible_enable_stimulus_free_text_example" eventTag="stimulusRatingCheckboxInput" tagValue1="%" tagValue2="" />
