@@ -64,10 +64,13 @@ public class Application extends SpringBootServletInitializer {
                 while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
                     System.out.write(dataBuffer, 0, bytesRead);
                 }
+                System.out.println("informNginxProxy done");
             } catch (IOException e) {
-                System.err.append("informNginxProxy failed: ");
-                System.err.append(e.getMessage());
+                System.err.println("informNginxProxy failed: ");
+                System.err.println(e.getMessage());
             }
+        } else {
+            System.out.println("informNginxProxy skipped");
         }
     }
 }

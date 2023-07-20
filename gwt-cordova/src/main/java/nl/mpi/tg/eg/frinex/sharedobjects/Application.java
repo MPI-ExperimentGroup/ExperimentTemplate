@@ -35,9 +35,9 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
+
     @Value("${nl.mpi.tg.eg.frinex.informReadyUrl}")
     protected String informReadyUrl;
-
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -62,10 +62,13 @@ public class Application extends SpringBootServletInitializer {
                 while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
                     System.out.write(dataBuffer, 0, bytesRead);
                 }
+                System.out.println("informNginxProxy done");
             } catch (IOException e) {
-                System.err.append("informNginxProxy failed: ");
-                System.err.append(e.getMessage());
+                System.err.println("informNginxProxy failed: ");
+                System.err.println(e.getMessage());
             }
+        } else {
+            System.out.println("informNginxProxy skipped");
         }
     }
 }
