@@ -587,7 +587,7 @@
                             <xsl:value-of select="if (@stimulusId) then @stimulusId else '%'" />
                             <xsl:text>", response: "</xsl:text>
                             <xsl:value-of select="if (@response) then @response else '%'" />
-                            <xsl:value-of select="if (@isCorrect) then concat(', isCorrect: &quot;', @isCorrect, '&quot;') else ''" />
+                            <xsl:value-of select="if (@isCorrect) then concat(', isCorrect: &quot;', @isCorrect) else ''" />
                             <xsl:text>", colour: "</xsl:text>
                             <xsl:value-of select="@colour" />
                             <xsl:text>"}</xsl:text>
@@ -640,7 +640,7 @@
                         <xsl:value-of select="if (@stimulusId) then @stimulusId else '%'" />
                         <xsl:text>", response: "</xsl:text>
                         <xsl:value-of select="if (@response) then @response else '%'" />
-                        <xsl:value-of select="if (@isCorrect) then concat(', isCorrect: &quot;', @isCorrect, '&quot;') else ''" />
+                        <xsl:value-of select="if (@isCorrect) then concat(', isCorrect: &quot;', @isCorrect) else ''" />
                         <xsl:text>"});
                             &lt;/script&gt;
                         </xsl:text>
