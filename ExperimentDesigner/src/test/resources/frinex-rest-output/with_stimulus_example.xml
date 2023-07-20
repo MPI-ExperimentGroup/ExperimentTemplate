@@ -61,7 +61,10 @@
         </chart>
         <chart label="ScreenName" type="pie">
             <stimulusResponse label="Aggressive_Short_Recordings" screenName="Aggressive_Short_Recordings" colour="#990000" />
-            <stimulusResponse label="RecordingQualityTest" screenName="RecordingQualityTest" colour="#000990" />
+            <stimulusResponse label="RecordingQualityTest" screenName="input_slider_example" colour="#00990" />
+            <stimulusResponse label="RecordingQualityTest" screenName="RecordingQualityTest" colour="#000099" />
+            <stimulusResponse label="RecordingQualityTest" screenName="random_image_positions_remembered" colour="#090009" />
+            <stimulusResponse label="RecordingQualityTest" screenName="request_focus_example" colour="#000909" />
         </chart> 
         <chart label="isCorrect" type="pie">
             <stimulusResponse label="Correct" isCorrect="True" colour="#990000" />
