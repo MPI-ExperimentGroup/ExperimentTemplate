@@ -86,7 +86,7 @@ function generateChart(chartData) {
             data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
             data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
             $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-                + ((stimulusResponse.isCorrect)? 'AndIsCorrect?isCorrect=' + encodeURIComponent(stimulusResponse.isCorrect) + '&screenName=' : '?screenName=')
+                + ((stimulusResponse.isCorrect)? 'AndIsCorrect?isCorrect=' + ((stimulusResponse.isCorrect !== 'Null')? encodeURIComponent(stimulusResponse.isCorrect) : '') + '&screenName=' : '?screenName=')
                  + encodeURIComponent(stimulusResponse.screenName)
                 + '&scoreGroup=' + encodeURIComponent(stimulusResponse.scoreGroup)
                 + '&responseGroup=' + encodeURIComponent(stimulusResponse.responseGroup)
@@ -197,7 +197,7 @@ function generateTable(tableData) {
         + '&tagValue2=' + encodeURIComponent(tableData.tagValue2)
     ) : (tableData.source === "stimulusResponse") ? (
         'stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-        + ((tableData.isCorrect)? 'AndIsCorrect?isCorrect=' + encodeURIComponent(tableData.isCorrect) + '&screenName=' : '?screenName=')
+        + ((tableData.isCorrect)? 'AndIsCorrect?isCorrect=' + ((tableData.isCorrect !== 'Null')? encodeURIComponent(tableData.isCorrect) : '') + '&screenName=' : '?screenName=')
         + encodeURIComponent(tableData.screenName)
         + '&scoreGroup=' + encodeURIComponent(tableData.scoreGroup)
         + '&responseGroup=' + encodeURIComponent(tableData.responseGroup)
