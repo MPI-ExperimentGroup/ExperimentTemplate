@@ -74,6 +74,7 @@
             <stimulusResponse label="C" response="c" colour="#000099" />
         </chart>   
         <dataTable label="StimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
+        <dataTable label="CorrectStimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" isCorrect="True" />
         <dataTable label="AppendStimulusResponse" source="stimulusResponse" screenName="AppendStimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
         <dataTable label="TouchInputReport for stimlus d1e269" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="%" eventTag="touchInputReport" tagValue1="d1e269" tagValue2="%" />
         <dataTable label="TouchInputReport for presenter touchInputLabelButton" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="touchInputLabelButton" eventTag="touchInputReport" tagValue1="%" tagValue2="%" />
