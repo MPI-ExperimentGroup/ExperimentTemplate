@@ -533,7 +533,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
-            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(String screenName, Boolean isCorrect,String scoreGroup, String responseGroup, String stimulusId, String response) {
+            public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response, Boolean isCorrect) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
