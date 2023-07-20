@@ -3,7 +3,6 @@ package nl.mpi.tg.eg.frinex.sharedobjects;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -58,14 +57,18 @@ public class Application extends SpringBootServletInitializer {
     public void informNginxProxy() {
         if (informReadyUrl != null) {
             try ( BufferedInputStream inStream = new BufferedInputStream(new URL(informReadyUrl).openStream())) {
-                logger.info(new String(inStream.readAllBytes(), StandardCharsets.UTF_8));
-                logger.info("informNginxProxy done");
+                byte dataBuffer[] = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
+                    System.out.write(dataBuffer, 0, bytesRead);
+                }
+                System.out.println("informNginxProxy done");
             } catch (IOException e) {
-                logger.error("informNginxProxy failed: ");
-                logger.error(e.getMessage());
+                System.err.println("informNginxProxy failed: ");
+                System.err.println(e.getMessage());
             }
         } else {
-            logger.info("informNginxProxy skipped");
+            System.out.println("informNginxProxy skipped");
         }
     }
 }
