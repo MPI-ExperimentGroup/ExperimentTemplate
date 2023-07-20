@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -59,18 +60,14 @@ public class Application extends SpringBootServletInitializer {
     public void informNginxProxy() {
         if (informReadyUrl != null) {
             try ( BufferedInputStream inStream = new BufferedInputStream(new URL(informReadyUrl).openStream())) {
-                byte dataBuffer[] = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
-                    System.out.write(dataBuffer, 0, bytesRead);
-                }
-                System.out.println("informNginxProxy done");
+                logger.info(new String(inStream.readAllBytes(), StandardCharsets.UTF_8));
+                logger.info("informNginxProxy done");
             } catch (IOException e) {
-                System.err.println("informNginxProxy failed: ");
-                System.err.println(e.getMessage());
+                logger.error("informNginxProxy failed: ");
+                logger.error(e.getMessage());
             }
         } else {
-            System.out.println("informNginxProxy skipped");
+            logger.info("informNginxProxy skipped");
         }
     }
 }
