@@ -72,11 +72,11 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(
         @Param("screenName") String screenName,
 //            @Param("dataChannel") Integer dataChannel,
-        @Param("isCorrect") Boolean isCorrect,
         @Param("scoreGroup") String scoreGroup,
         @Param("responseGroup") String responseGroup,
         @Param("stimulusId") String stimulusId,
-        @Param("response") String response);
+        @Param("response") String response,
+        @Param("isCorrect") Boolean isCorrect);
 
 //     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
 //     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(
