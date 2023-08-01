@@ -428,7 +428,7 @@ public abstract class GroupStreamHandler {
                         final String connectionName = "groupRemoteCanvas_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
                             expectedConnections.put(connectionName, false);
-                            addCanvasElement(connectionName, groupId, groupUUID, memberCode, member);
+                            addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
                         }
                     }
                 }
