@@ -259,9 +259,9 @@ public abstract class GroupStreamHandler {
 
             // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
             localTracks = $wnd.localStream.getTracks();
-            for (trackCount = 0; trackCount < localTracks.getTracks().length; trackCount++) {
+            for (trackCount = 0; trackCount < localTracks.length; trackCount++) {
                 console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks.getTracks()[trackCount], $wnd.localStream);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream);
             }
         }
     }-*/;
