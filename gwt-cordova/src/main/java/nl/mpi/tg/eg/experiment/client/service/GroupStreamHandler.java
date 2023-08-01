@@ -118,7 +118,10 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.streamType);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
-            if (contentData.targetMemberCode === null || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
+            if (contentData.targetMemberCode !== null && memberCode === contentData.originMemberCode && contentData.streamState === "offer") {
+                // this self message is needed in the offer stage to set up the stream in the correct timing by setting the local description
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.targetMemberCode, contentData.streamType, screenId);
+            } else if (contentData.targetMemberCode === null || memberCode === contentData.targetMemberCode) { // only responding to targeted messages or broadcast (blank targetMemberCode) messages
                 console.log(memberCode + ": " + contentData.originMemberCode + " ==" + contentData.streamState + "==> " + contentData.targetMemberCode);
                 if ($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode]) {
                     console.log(memberCode + ": connectionState==" + $wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode].connectionState);
