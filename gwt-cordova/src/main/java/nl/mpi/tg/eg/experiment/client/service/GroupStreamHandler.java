@@ -258,9 +258,10 @@ public abstract class GroupStreamHandler {
             };
 
             // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
-            for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
+            localTracks = $wnd.localStream.getTracks();
+            for (trackCount = 0; trackCount < localTracks.getTracks().length; trackCount++) {
                 console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks.getTracks()[trackCount], $wnd.localStream);
             }
         }
     }-*/;
@@ -282,7 +283,10 @@ public abstract class GroupStreamHandler {
 
     private native void offerCanvas(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
+        if (!$wnd.localStream) {
+            // TODO: handle both video and canvas streams
+            $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
+        }
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Canvas", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
         localCanvas = $wnd.$("#groupLocalCanvas")[0];
