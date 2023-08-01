@@ -105,7 +105,7 @@ function handleOffer(sendingUserId, offer) {
         if (sendingUserId !== userId) {
             console.log('already connected, ignoring');
         } else if (!peerConnection.localDescription) {
-            console.log(userId + ": " + userId + " ==setLocalDescription==> " + sendingUserId);
+            console.log(userId + ": " + userId + " ==setLocalDescription offer==> " + sendingUserId);
             // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
             peerConnection.setLocalDescription(offer);
         }
@@ -113,13 +113,13 @@ function handleOffer(sendingUserId, offer) {
         initialiseConnection();
         // $("#acceptButton").prop("disabled", false);
         // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
-        console.log(userId + ": " + userId + " ==setRemoteDescription==> " + sendingUserId);
+        console.log(userId + ": " + userId + " ==setRemoteDescription offer==> " + sendingUserId);
         peerConnection.setRemoteDescription(offer).then(function () {
             console.log(userId + ": " + userId + " ==createAnswer==> " + sendingUserId);
             return peerConnection.createAnswer();
         }).then(function (answer) {
             sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
-            console.log(userId + ": " + userId + " ==setLocalDescription==> " + sendingUserId);
+            console.log(userId + ": " + userId + " ==setLocalDescription answer==> " + sendingUserId);
             peerConnection.setLocalDescription(answer);
             // }).then(function () {
             // sendToGroup("answer", peerConnection.localDescription);
@@ -129,7 +129,7 @@ function handleOffer(sendingUserId, offer) {
 
 function handleAnswer(answer) {
     if (peerConnection) {
-        console.log(userId + ": " + userId + " ==setRemoteDescription==> ");
+        console.log(userId + ": " + userId + " ==setRemoteDescription answer==> ");
         peerConnection.setRemoteDescription(answer);
         // peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     } else {

@@ -51,12 +51,13 @@ public abstract class GroupStreamHandler {
             // } else 
             if (!$wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].localDescription) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
-                console.log(selfMemberCode + ": " + selfMemberCode + " <==setLocalDescription1== " + remoteMemberCode);
+                console.log(selfMemberCode + ": " + selfMemberCode + " <==setLocalDescription offer== " + remoteMemberCode);
                 $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].setLocalDescription(offer);
             }
         } else {
             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, streamType, screenId);
-            console.log(selfMemberCode + ": " + selfMemberCode + " <==setLocalDescription2== " + remoteMemberCode);
+            console.log(selfMemberCode + ": " + selfMemberCode + " <==setRemoteDescription offer== " + remoteMemberCode);
+            console.log(selfMemberCode + ": " + selfMemberCode + " <==setLocalDescription answer== " + remoteMemberCode);
             $wnd.handleOffer($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode], offer, function (answer) {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("answer", streamType,
                     JSON.stringify({ type: 'answer', sdp: answer.sdp, 'memberCode': selfMemberCode, 'mediaType': offer.mediaType }), originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
@@ -75,7 +76,7 @@ public abstract class GroupStreamHandler {
         answer = JSON.parse(messageData);
         if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode]) {
             // $wnd.handleAnswer($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode], answer)
-            console.log(selfMemberCode + ": " + remoteMemberCode + " <==setRemoteDescription== " + selfMemberCode);
+            console.log(selfMemberCode + ": " + remoteMemberCode + " <==setRemoteDescription answer== " + selfMemberCode);
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].setRemoteDescription(answer);
         } else {
             console.log(remoteMemberCode + " <==no peer connection== " + selfMemberCode);
