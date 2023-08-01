@@ -258,10 +258,10 @@ public abstract class GroupStreamHandler {
             };
 
             // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
-            // for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
-            //     console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
-            //     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
-            // }
+            for (trackCount = 0; trackCount < $wnd.localStream.getTracks().length; trackCount++) {
+                console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack($wnd.localStream.getTracks()[trackCount], $wnd.localStream);
+            }
         }
     }-*/;
 
