@@ -101,6 +101,7 @@ function offerVideo() {
 // }
 
 function handleOffer(sendingUserId, offer) {
+    console.log(userId + ": " + sendingUserId + " ==handleOffer==> " + userId);
     if (peerConnection) {
         if (sendingUserId !== userId) {
             console.log('already connected, ignoring');
