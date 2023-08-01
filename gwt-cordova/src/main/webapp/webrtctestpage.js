@@ -23,6 +23,7 @@
 
 function initiateConnection() {
     initialiseConnection();
+    console.log(userId + ": " + userId + " ==createOffer==> ");
     peerConnection.createOffer().then(function (offer) {
         sendToGroup("offer", { type: 'offer', sdp: offer.sdp });
         // peerConnection.setLocalDescription(offer).then(function () {
@@ -104,6 +105,7 @@ function handleOffer(sendingUserId, offer) {
         if (sendingUserId !== userId) {
             console.log('already connected, ignoring');
         } else if (!peerConnection.localDescription) {
+            console.log(userId + ": " + userId + " ==setLocalDescription==> " + sendingUserId);
             // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
             peerConnection.setLocalDescription(offer);
         }
@@ -111,10 +113,13 @@ function handleOffer(sendingUserId, offer) {
         initialiseConnection();
         // $("#acceptButton").prop("disabled", false);
         // var sessionDesc = new RTCSessionDescription(JSON.parse($("#connectionInfo").val()));
+        console.log(userId + ": " + userId + " ==setRemoteDescription==> " + sendingUserId);
         peerConnection.setRemoteDescription(offer).then(function () {
+            console.log(userId + ": " + userId + " ==createAnswer==> " + sendingUserId);
             return peerConnection.createAnswer();
         }).then(function (answer) {
             sendToGroup("answer", { type: 'answer', sdp: answer.sdp });
+            console.log(userId + ": " + userId + " ==setLocalDescription==> " + sendingUserId);
             peerConnection.setLocalDescription(answer);
             // }).then(function () {
             // sendToGroup("answer", peerConnection.localDescription);
@@ -124,6 +129,7 @@ function handleOffer(sendingUserId, offer) {
 
 function handleAnswer(answer) {
     if (peerConnection) {
+        console.log(userId + ": " + userId + " ==setRemoteDescription==> ");
         peerConnection.setRemoteDescription(answer);
         // peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     } else {
@@ -137,9 +143,11 @@ function handleCandidate(candidate) {
         // if (peerConnection.remoteDescription) {
         if (candidate === "null" || !candidate.candidate) {
             // the terminal null is sent inside the candidate object
+            console.log(userId + ": " + userId + " ==addIceCandidate==> ");
             peerConnection.addIceCandidate(null).catch(reportError);
             sendToGroup("refresh", "");
         } else {
+            console.log(userId + ": " + userId + " ==addIceCandidate==> ");
             peerConnection.addIceCandidate(candidate).catch(reportError);
         }
         // peerConnection.addIceCandidate(candidate).catch(reportError);
@@ -240,6 +248,7 @@ function initialiseConnection() {
         peerConnection = new RTCPeerConnection(configuration);
         peerConnection.onicecandidate = function (event) {
             console.log("onicecandidate");
+            console.log(userId + ": " + userId + " ==onicecandidate==> ");
             if (event.candidate) {
                 sendToGroup("candidate", {
                     type: "candidate", candidate: event.candidate.candidate,
