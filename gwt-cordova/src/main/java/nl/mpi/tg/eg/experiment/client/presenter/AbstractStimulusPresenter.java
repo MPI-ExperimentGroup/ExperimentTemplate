@@ -21,6 +21,7 @@ import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.MediaElement;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -570,52 +571,56 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             groupStreamHandler = new GroupStreamHandler() {
                 @Override
                 public void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
+                    if (Document.get().getElementById(elementId) == null) {
 //                    simpleView.clearRegion(elementId + "Region");
-                    final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "_Region", null);
-                    final Canvas groupLocalCanvas = Canvas.createIfSupported();
-                    if (groupLocalCanvas != null) {
-                        groupLocalCanvas.addAttachHandler(new AttachEvent.Handler() {
-                            @Override
-                            public void onAttachOrDetach(AttachEvent event) {
-                                if (!event.isAttached()) {
-                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "Canvas", getSelfTag());
+                        final InsertPanel.ForIsWidget groupLocalCanvasRegion = simpleView.startRegion(elementId + "_Region", null);
+                        final Canvas groupLocalCanvas = Canvas.createIfSupported();
+                        if (groupLocalCanvas != null) {
+                            groupLocalCanvas.addAttachHandler(new AttachEvent.Handler() {
+                                @Override
+                                public void onAttachOrDetach(AttachEvent event) {
+                                    if (!event.isAttached()) {
+                                        notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "Canvas", getSelfTag());
+                                    }
                                 }
-                            }
-                        });
-                        groupLocalCanvas.getCanvasElement().setId(elementId);
-                        groupLocalCanvas.setSize("30vw", "30vw");
-                        simpleView.addWidget(groupLocalCanvas);
-                    } else {
-                        // TODO: add error handling and remove this html text 
-                        timedStimulusView.addText("Canvas is not supported");
+                            });
+                            groupLocalCanvas.getCanvasElement().setId(elementId);
+                            groupLocalCanvas.setSize("30vw", "30vw");
+                            simpleView.addWidget(groupLocalCanvas);
+                        } else {
+                            // TODO: add error handling and remove this html text 
+                            timedStimulusView.addText("Canvas is not supported");
+                        }
+                        simpleView.endRegion(groupLocalCanvasRegion);
                     }
-                    simpleView.endRegion(groupLocalCanvasRegion);
                 }
 
                 @Override
                 public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
-//                    simpleView.clearRegion(elementId + "Region");
-                    final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "_Region", null);
-                    final Video groupLocalVideo = Video.createIfSupported();
-                    if (groupLocalVideo != null) {
-                        groupLocalVideo.addAttachHandler(new AttachEvent.Handler() {
-                            @Override
-                            public void onAttachOrDetach(AttachEvent event) {
-                                if (!event.isAttached()) {
-                                    notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "Camera",  getSelfTag());
+                    if (Document.get().getElementById(elementId) == null) {
+    //                    simpleView.clearRegion(elementId + "Region");
+                        final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "_Region", null);
+                        final Video groupLocalVideo = Video.createIfSupported();
+                        if (groupLocalVideo != null) {
+                            groupLocalVideo.addAttachHandler(new AttachEvent.Handler() {
+                                @Override
+                                public void onAttachOrDetach(AttachEvent event) {
+                                    if (!event.isAttached()) {
+                                        notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "Camera",  getSelfTag());
+                                    }
                                 }
-                            }
-                        });
-                        groupLocalVideo.getVideoElement().setId(elementId);
-                        groupLocalVideo.setSize("30vw", "30vw");
-                        groupLocalVideo.setAutoplay(true);
-                        groupLocalVideo.setMuted(true);
-                        simpleView.addWidget(groupLocalVideo);
-                    } else {
-                        // TODO: add error handling and remove this html text 
-                        timedStimulusView.addText("Video is not supported");
+                            });
+                            groupLocalVideo.getVideoElement().setId(elementId);
+                            groupLocalVideo.setSize("30vw", "30vw");
+                            groupLocalVideo.setAutoplay(true);
+                            groupLocalVideo.setMuted(true);
+                            simpleView.addWidget(groupLocalVideo);
+                        } else {
+                            // TODO: add error handling and remove this html text 
+                            timedStimulusView.addText("Video is not supported");
+                        }
+                        simpleView.endRegion(groupLocalVideoRegion);
                     }
-                    simpleView.endRegion(groupLocalVideoRegion);
                 }
 
                 @Override
