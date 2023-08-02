@@ -2494,17 +2494,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.stopMedia(formattedMediaId);
     }
 
-    protected void streamGroupCanvas(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
-        // TODO: Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
+    protected void streamGroupCanvas(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+        // Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
-        groupStreamHandler.negotiateCanvas(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        groupStreamHandler.negotiateCanvas(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), onError, onSuccess);
         groupStreamHandler.updateDebugRegion("streamGroupCanvas");
     }
 
-    protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels) {
-        // TODO: Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
+    protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+        // Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
-        groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag());
+        groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), onError, onSuccess);
         groupStreamHandler.updateDebugRegion("streamGroupCamera");
     }
 

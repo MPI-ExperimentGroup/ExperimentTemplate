@@ -1002,8 +1002,22 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
-                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCamera>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -1039,8 +1053,22 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
-                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCamera>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -1076,8 +1104,22 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
-                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C"/>
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCamera>
                         <sendGroupTokenMessage eventTag="eventTag" incrementPhase="3" dataLogFormat="dataLogFormat"/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -4048,8 +4090,22 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
-                        <streamGroupCanvas streamChannels="A,B|B,C"/>
-                        <streamGroupCamera streamChannels="A,B|B,C"/>
+                        <streamGroupCanvas streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <streamGroupCamera streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCamera>
                         <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -4085,8 +4141,22 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
-                        <streamGroupCanvas streamChannels="A,B|B,C"/>
-                        <streamGroupCamera streamChannels="A,B|B,C"/>
+                        <streamGroupCanvas streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <streamGroupCamera streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCamera>
                         <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>
@@ -4122,8 +4192,22 @@
                         <sendGroupMessageButton featureText="" incrementPhase="3" repeatIncorrect=""/>
                         <sendGroupMessage incrementPhase="3"/>
                         <sendGroupStoredMessage incrementPhase="3"/>
-                        <streamGroupCanvas streamChannels="A,B|B,C"/>
-                        <streamGroupCamera streamChannels="A,B|B,C"/>
+                        <streamGroupCanvas streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <streamGroupCamera streamChannels="A,B|B,C">
+                            <onSuccess>
+                                <plainText featureText="plainText in onSuccess"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="plainText in onError"/>
+                            </onError>
+                        </streamGroupCamera>
                         <sendGroupTokenMessage incrementPhase="3" dataLogFormat=""/>
                         <plainText featureText="plainText in groupMemberActivity"/>
                     </groupMemberActivity>

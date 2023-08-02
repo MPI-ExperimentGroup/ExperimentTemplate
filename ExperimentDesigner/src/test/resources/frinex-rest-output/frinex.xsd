@@ -5166,7 +5166,7 @@
 <xs:annotation>
 <xs:documentation>Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.</xs:documentation>
 </xs:annotation>
-<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
@@ -5187,7 +5187,7 @@
 <xs:annotation>
 <xs:documentation>Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.</xs:documentation>
 </xs:annotation>
-<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
 <xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>

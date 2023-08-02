@@ -238,10 +238,24 @@
                                 <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
                             </actionButton>
                             <actionButton featureText="start streamGroupCanvas">
-                                <streamGroupCanvas streamChannels="A,B|B,C" />
+                                <streamGroupCanvas streamChannels="A,B|B,C">
+                                    <onSuccess>
+                                        <plainText featureText="plainText in onSuccess"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="plainText in onError"/>
+                                    </onError>
+                                </streamGroupCanvas>
                             </actionButton>
                             <actionButton featureText="start streamGroupCamera">
-                                <streamGroupCamera streamChannels="A,B|B,C" />
+                                <streamGroupCamera streamChannels="A,B|B,C">
+                                    <onSuccess>
+                                        <plainText featureText="plainText in onSuccess"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="plainText in onError"/>
+                                    </onError>
+                                </streamGroupCamera>
                             </actionButton>
                             <actionButton featureText="clear local canvas stream region">
                                 <regionReplace regionId="groupLocalCanvasRegion" />

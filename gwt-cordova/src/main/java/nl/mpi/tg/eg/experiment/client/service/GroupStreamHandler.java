@@ -415,7 +415,8 @@ public abstract class GroupStreamHandler {
         return stringBuilder.toString();
     }
 
-    public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
+    public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+        // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
             boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
             if (isRelevant) {
@@ -438,7 +439,8 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId) {
+    public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+        // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
             boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
             if (isRelevant) {

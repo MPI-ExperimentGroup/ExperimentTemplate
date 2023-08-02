@@ -913,6 +913,8 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:apply-templates select="onKeyUp" />
         <xsl:apply-templates select="captureStart" />
         <xsl:apply-templates select="touchEnd" />
+        <xsl:apply-templates select="onError" />        
+        <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
