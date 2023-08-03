@@ -443,7 +443,7 @@ public class HtmlTokenFormatterTest {
             System.out.println(currentToken.name() + ": " + currentToken.usageDescription);
             System.out.println("exampleUsage: " + currentToken.exampleUsage);
             System.out.println("exampleResult: " + currentToken.exampleResult);
-            if (currentToken == TokenMethod.random) {
+            if (currentToken == TokenMethod.random || currentToken == TokenMethod.removeRandomItem) {
                 assertTrue(currentToken.exampleResult.contains(instance.evaluateTokensString(currentToken.exampleUsage)));
             } else {
                 assertEquals(currentToken.exampleResult, instance.evaluateTokensString(currentToken.exampleUsage));

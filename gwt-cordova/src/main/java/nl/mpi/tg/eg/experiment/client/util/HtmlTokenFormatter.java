@@ -141,7 +141,7 @@ public class HtmlTokenFormatter {
 
     private String evaluateResolve(String inputString) throws EvaluateTokensException {
         System.out.println(inputString);
-        RegExp regExpGroupM = RegExp.compile("(addTime|daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
+        RegExp regExpGroupM = RegExp.compile("(addTime|removeRandomItem|daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
         MatchResult matcherGroupM = regExpGroupM.exec(inputString);
         while (matcherGroupM != null) {
             if (matcherGroupM.getGroupCount() == 3) {
@@ -151,6 +151,11 @@ public class HtmlTokenFormatter {
                 switch (methodMatch) {
                     case "length":
                         resultValue = Integer.toString(parameterMatch.length() - 4);
+                        break;
+                    case "removeRandomItem":
+                        final String optionList = parameterMatch.replaceAll("['\\(\\)]", "");
+                        final String[] optionArray = optionList.split(",");
+                        resultValue = optionArray[random.nextInt(optionArray.length)];
                         break;
                     case "replaceAll":
                         String[] replaceAllParts = parameterMatch.split("',[\\s]?'");

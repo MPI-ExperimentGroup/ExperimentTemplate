@@ -26,6 +26,7 @@ public enum TokenMethod {
     daysBetween("Calculates the days between the dates provided.", "Difference in days: daysBetween('::metadataField_dateOfBirth::','::currentDateDDMMYYYY::')", "Difference in days: " + (6 + 29 + 12)),
     length("Determines the length of the provided text.", "There are length('Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft') letters in the word 'Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft'", "There are 89 letters in the word 'Donau­dampf­schiffahrts­elektrizitäten­haupt­betriebs­werk­bau­unter­beamten­gesellschaft'"),
     random("Generates a random number less than the parameter given.", "random(5)", "Will produce one of 0, 1, 2, 3, 4"),
+    removeRandomItem("Returns one item from a comma separated list and removes it from the list. For a list of 'A,B,C' if B is returned then the list will be 'A,C'", "removeRandomItem('a,b,c,d,e,f')", "Will produce one of a, b, c, d, e, f"),
     replaceAll("Replace all characters that match the regular expression with the second parameter given.", "metadataField_dateOfBirth: replaceAll('::metadataField_dateOfBirth::', '/', ':')\ncurrentDateDDMMYYYY: replaceAll('::currentDateDDMMYYYY::', '/', ':')", "metadataField_dateOfBirth: 25:01:2020\ncurrentDateDDMMYYYY: 12:03:2020");
 
     public final String usageDescription;
