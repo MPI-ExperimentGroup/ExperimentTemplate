@@ -174,7 +174,7 @@
         <regionAppend regionId="groupButtons" />
         <addPadding /> 
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
-            <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C">
+            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C">
                 <groupInitialisationError>
                     <regionReplace regionId="groupIntroduction" />
                     <regionReplace regionId="groupStatus">
@@ -240,20 +240,20 @@
                             <actionButton featureText="start streamGroupCanvas">
                                 <streamGroupCanvas streamChannels="A,B|B,C">
                                     <onSuccess>
-                                        <plainText featureText="plainText in onSuccess"/>
+                                        <plainText featureText="streamGroupCanvas onSuccess A,B|B,C"/>
                                     </onSuccess>
                                     <onError>
-                                        <plainText featureText="plainText in onError"/>
+                                        <plainText featureText="streamGroupCanvas onError A,B|B,C"/>
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
                             <actionButton featureText="start streamGroupCamera">
                                 <streamGroupCamera streamChannels="A,B|B,C">
                                     <onSuccess>
-                                        <plainText featureText="plainText in onSuccess"/>
+                                        <plainText featureText="streamGroupCamera onSuccess A,B|B,C"/>
                                     </onSuccess>
                                     <onError>
-                                        <plainText featureText="plainText in onError"/>
+                                        <plainText featureText="streamGroupCamera onErrorA,B|B,C"/>
                                     </onError>
                                 </streamGroupCamera>
                             </actionButton>
