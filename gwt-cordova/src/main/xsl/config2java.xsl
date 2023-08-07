@@ -1465,7 +1465,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
-        <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(stimuli) = 0) then ',&#xa;new StimulusSelector[]{}' else ''" />
+        <xsl:value-of select="if((local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadStimulusPlugin' or local-name() eq 'loadSdCardStimulus' or local-name() eq 'groupStimuli') and count(stimuli) = 0) then ',&#xa;new StimulusSelector[]{}, null' else ''" />
         <!-- // todo: currentStimulusHasTag has changed from stimuli/tag... to @tags so this needs to be updated -->
         <xsl:if test="@tags">
             <!--preloadAllStimuli uses this tags attribute-->
