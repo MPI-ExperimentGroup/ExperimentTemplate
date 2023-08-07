@@ -167,7 +167,7 @@ public abstract class GroupStreamHandler {
                         // if the canvas exists in the page then the request is expected and we reply
                         if ($wnd.$("#groupRemote" + contentData.streamType + "_" + contentData.originMemberCode).length > 0) {
                             if ($wnd.groupConnections[memberCode + "-" + contentData.streamType + '>' + contentData.originMemberCode]) {
-                                console.log('already connected, ignoring');
+                                console.log('memberCode + ": already connected, ignoring ==');
                             } else {
                                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::initiateConnection(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                                 $wnd.createOffer($wnd.groupConnections[memberCode + "-" + contentData.streamType + '>' + contentData.originMemberCode],
@@ -189,7 +189,7 @@ public abstract class GroupStreamHandler {
                         if ($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode]) {
                             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                         } else {
-                            console.log('not connected, ignoring');
+                            console.log('memberCode + ": not connected, ignoring ==');
                         }
                     }
                 }
@@ -235,6 +235,19 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onerror== " + selfMemberCode + ": " + error);
                 // TODO: are there other places that a connection error is detectable
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                // TODO: perhaps this is premature but we destroy the local end of the connection so that a new one can resume
+                if ($wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode]) {
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].ontrack = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].onremovetrack = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].onremovestream = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].onicecandidate = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].oniceconnectionstatechange = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].onsignalingstatechange = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].onicegatheringstatechange = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].onnegotiationneeded = null;
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode].close();
+                    $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + selfMemberCode] = null;
+                }
             };
 
             dataChannel.onmessage = function (event) {
