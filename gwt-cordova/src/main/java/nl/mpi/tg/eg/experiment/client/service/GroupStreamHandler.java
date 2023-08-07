@@ -193,7 +193,6 @@ public abstract class GroupStreamHandler {
                         }
                     }
                 }
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::setConnected(Ljava/lang/String;)("todo: connectionString");
             }
         }, function(error) {
             // display the error's message header:
@@ -223,6 +222,8 @@ public abstract class GroupStreamHandler {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", streamType, JSON.stringify({ type: "candidate", candidate: event.candidate.candidate, sdpMid: event.candidate.sdpMid, sdpMLineIndex: event.candidate.sdpMLineIndex }), originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
                 } else {
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("candidate", streamType, JSON.stringify({ type: "candidate", candidate: null }), originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+                    // TODO: is this a good place to call the connection ready? 
+                    groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
                 }
             };
 
@@ -232,6 +233,8 @@ public abstract class GroupStreamHandler {
 
             dataChannel.onerror = function (error) {
                 console.log(remoteMemberCode + " <==onerror== " + selfMemberCode + ": " + error);
+                // TODO: are there other places that a connection error is detectable
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
             };
 
             dataChannel.onmessage = function (event) {
@@ -447,21 +450,16 @@ public abstract class GroupStreamHandler {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
-                        final String connectionName = "groupLocalCanvas_" + member;
-                        if (!expectedConnections.containsKey(connectionName)) {
-                            addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
-                            offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                            expectedConnections.put(connectionName, false);
-                            connectionListeners.put(connectionName, onSuccess);
-                            errorListeners.put(connectionName, onError);
-                        }
+                        addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
+                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
-                        if (!expectedConnections.containsKey(connectionName)) {
-                            expectedConnections.put(connectionName, false);
+                        final String connectionKey = memberCode + "-Canvas>" + memberCode;
+                        if (!expectedConnections.containsKey(connectionKey)) {
+                            expectedConnections.put(connectionKey, false);
                             addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
-                            connectionListeners.put(connectionName, onSuccess);
-                            errorListeners.put(connectionName, onError);
+                            connectionListeners.put(connectionKey, onSuccess);
+                            errorListeners.put(connectionKey, onError);
                         }
                     }
                 }
@@ -479,21 +477,16 @@ public abstract class GroupStreamHandler {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
-                        final String connectionName = "groupLocalCamera_" + member;
-                        if (!expectedConnections.containsKey(connectionName)) {
-                            addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                            expectedConnections.put(connectionName, false);
-                            connectionListeners.put(connectionName, onSuccess);
-                            errorListeners.put(connectionName, onError);
-                        }
+                        addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
+                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
-                        if (!expectedConnections.containsKey(connectionName)) {
-                            expectedConnections.put(connectionName, false);
+                        final String connectionKey = memberCode + "-Camera>" + memberCode;
+                        if (!expectedConnections.containsKey(connectionKey)) {
+                            expectedConnections.put(connectionKey, false);
                             addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
-                            connectionListeners.put(connectionName, onSuccess);
-                            errorListeners.put(connectionName, onError);
+                            connectionListeners.put(connectionKey, onSuccess);
+                            errorListeners.put(connectionKey, onError);
                         }
                     }
                 }
