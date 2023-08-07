@@ -454,7 +454,7 @@ public abstract class GroupStreamHandler {
                         offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
-                        final String connectionKey = memberCode + "-Canvas>" + memberCode;
+                        final String connectionKey = memberCode + "-Canvas>" + member;
                         if (!expectedConnections.containsKey(connectionKey)) {
                             expectedConnections.put(connectionKey, false);
                             addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
@@ -481,7 +481,7 @@ public abstract class GroupStreamHandler {
                         offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
-                        final String connectionKey = memberCode + "-Camera>" + memberCode;
+                        final String connectionKey = memberCode + "-Camera>" + member;
                         if (!expectedConnections.containsKey(connectionKey)) {
                             expectedConnections.put(connectionKey, false);
                             addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
