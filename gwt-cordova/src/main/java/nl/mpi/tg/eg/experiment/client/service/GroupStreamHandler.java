@@ -39,7 +39,31 @@ public abstract class GroupStreamHandler {
 //    String groupAudioChannels;
 //    String groupCanvasChannels;
     private boolean isReady = false;
-    private Map<String, Boolean> expectedConnections = new HashMap<String, Boolean>();
+    private Map<String, Boolean> expectedConnections = new HashMap<>();
+    private Map<String, TimedStimulusListener> connectionListeners = new HashMap<>();
+    private Map<String, TimedStimulusListener> errorListeners = new HashMap<>();
+
+    private void triggerErrorHanlder(final String connectionName) {
+        expectedConnections.put(connectionName, false);
+        if (errorListeners.containsKey(connectionName)) {
+            errorListeners.get(connectionName).postLoadTimerFired();
+        }
+    }
+
+    private void triggerSuccessHandler(final String connectionName) {
+        expectedConnections.put(connectionName, true);
+        boolean connectionResult = true;
+        for (final Boolean currentConnection : expectedConnections.values()) {
+            if (!currentConnection) {
+                connectionResult = false;
+            }
+        }
+        if (connectionResult) {
+            for (TimedStimulusListener currentListener : connectionListeners.values()) {
+                currentListener.postLoadTimerFired();
+            }
+        }
+    }
 
     private native void handleOffer(final String sendingUserId, final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String selfMemberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
@@ -373,26 +397,26 @@ public abstract class GroupStreamHandler {
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
-    
-    private void setConnected(final String connectionString) {
-        expectedConnections.put(connectionString, true);
-    }
 
-    public boolean isConnected() {
-        for (Boolean isConnected : expectedConnections.values()) {
-            if (!isConnected) {
-                return false;
-            }
-        }
-        return true;
-    }
+//    private void setConnected(final String connectionString) {
+//        expectedConnections.put(connectionString, true);
+//    }
+//
+//    public boolean isConnected() {
+//        for (Boolean isConnected : expectedConnections.values()) {
+//            if (!isConnected) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
 
     public void synchronisePhase(int currentPhase) {
 
     }
 
     public abstract void updateDebugRegion(String message);
-    
+
     public abstract void addCanvasElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode);
 
     public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode);
@@ -423,13 +447,21 @@ public abstract class GroupStreamHandler {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
-                        addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
-                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        final String connectionName = "groupLocalCanvas_" + member;
+                        if (!expectedConnections.containsKey(connectionName)) {
+                            addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
+                            offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                            expectedConnections.put(connectionName, false);
+                            connectionListeners.put(connectionName, onSuccess);
+                            errorListeners.put(connectionName, onError);
+                        }
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
                             expectedConnections.put(connectionName, false);
                             addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
+                            connectionListeners.put(connectionName, onSuccess);
+                            errorListeners.put(connectionName, onError);
                         }
                     }
                 }
@@ -447,13 +479,21 @@ public abstract class GroupStreamHandler {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
-                        addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        final String connectionName = "groupLocalCamera_" + member;
+                        if (!expectedConnections.containsKey(connectionName)) {
+                            addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
+                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                            expectedConnections.put(connectionName, false);
+                            connectionListeners.put(connectionName, onSuccess);
+                            errorListeners.put(connectionName, onError);
+                        }
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
                         if (!expectedConnections.containsKey(connectionName)) {
                             expectedConnections.put(connectionName, false);
                             addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
+                            connectionListeners.put(connectionName, onSuccess);
+                            errorListeners.put(connectionName, onError);
                         }
                     }
                 }
