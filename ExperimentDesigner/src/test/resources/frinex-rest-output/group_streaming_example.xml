@@ -38,7 +38,7 @@
     </metadata>
     <presenter back="Menu" menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
         <htmlText featureText="This example demonstrates the streaming audio, video and shared canvas in Frinex group experiments. Group experiments are run with multiple participants, each on different computers over the network. As a result to use this example in the normal configuration you will need to run this experiment on multiple computers simultaneously." />
-        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="GroupFormation" />
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="GroupStreamingExample" />
         <addPadding />
         <htmlText featureText="In order to make testing a group experiment easier there is a group test page which emulates multiple browsers by using iframes and javascript to predefine a random but shared group and assign group member codes via the URL of each of the experiment instances. This allows up to eight experiment instances (group members) to run simultaneously in one browser window. This group emulation page also contains a robot, that when enabled, randomly presses buttons on each instance causing the experiment to proceed without intervention." />
         <htmlText featureText="You can see some basic streaming interaction with the &lt;a href=&quot;webrtctestframes.html&quot;&gt;robot group streaming test page&lt;/a&gt;.&lt;br/&gt;" />
@@ -47,7 +47,7 @@
         <htmlText featureText="The group experiments function by the use of a group communication server. The messages from each group member are sent to the group server and then broadcast to all group members. Not all group messages are to be used by all group members. For example if two members are not in the same communication channel, they will not respond to each others messages." />
         <htmlText featureText="You can observe the underlying group messaging functionality in your browser with the &lt;a href=&quot;webrtctestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
     </presenter>
-    <presenter back="Instruction" menuLabel="GroupFormation" next="GroupStreamingExample" type="stimulus" self="GroupFormation" title="Formation">
+    <presenter back="Instruction" menuLabel="GroupStreamingExample" next="Menu" type="stimulus" self="GroupStreamingExample" title="Formation">
         <!--regionReplace regionId="groupButtonsRegion"/-->
         <addPadding />
         <regionAppend regionId="groupStatus" />
@@ -55,10 +55,9 @@
         <regionAppend regionId="groupOutput" />
         <addPadding />
         <regionAppend regionId="groupIntroduction"> 
-            <htmlText featureText="This group formation presenter is not strictly needed. However it does allow the group to be set up and its structure checked before proceeding." />
             <hasGetParameter parameterName="group">
                 <conditionTrue>
-                    <htmlText featureText="The group name has been allocated in the URL. This member will be placed in the group associated with this name. If however the provided member code is already taken then this participant cannot be a member of this group." />
+                    <htmlText featureText="The group name has been allocated in the URL. This member will be placed in the group associated with this name provided the member code is not already taken." />
                     <addPadding />
                 </conditionTrue>
                 <conditionFalse>
@@ -128,7 +127,7 @@
             <groupNetwork groupMembers="A,B,C" phasesPerStimulus="8" groupCommunicationChannels="A,B,C">
                 <groupInitialisationError>
                     <regionReplace regionId="groupStatus">
-                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
+                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput"></regionReplace>
                 </groupInitialisationError>
@@ -153,54 +152,65 @@
                 </groupFindingMembers>
                 <groupNetworkSynchronising>
                     <regionReplace regionId="groupStatus">
-                        <htmlText featureText="GroupFormation groupNetworkSynchronising" />
+                        <htmlText featureText="GroupStreamingExample groupNetworkSynchronising" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput">
                         <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />                    
                     </regionReplace>
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
-                    <groupMemberActivity phaseMembers="A,B,C,D,E,F,G,H:-">
-                        <disableButtonGroup matchingRegex="activityButtonGroup" />
-                        <regionReplace regionId="groupIntroduction"></regionReplace>
-                        <regionReplace regionId="groupStatus">
-                            <htmlText featureText="A,B,C,D,E,F,G,H:-" />
-                        </regionReplace>
+                    <!-- ab video|bc video| ca video|ab canvas|bc canvas|ca canvas|abc video|abc canvas -->
+                    <groupMemberActivity phaseMembers="C:A:B:C:A:B:C:A">
+                        <hideButtonGroup matchingRegex="responseButtonGroup" />
+                        <triggerMatching listenerId="terminateStreams"/>
                         <regionReplace regionId="groupOutput">
-                            <htmlText featureText="First groupMemberActivity of GroupFormation Presenter" />
-                            <htmlText featureText="The phaseMembers of this groupMemberActivity determines which members see this activity and in which phases." />
-                            <htmlText featureText="::groupMemberActivity phaseMembers=&quot;A,B,C,D,E,F,G,H:-&quot;::" />
-                            <htmlText featureText="Each phase is separated by a : so &quot;A,B,C,D,E,F,G,H:-&quot; describes two phases. The all participants will see activity in the first phase and no participants will see it in the second phase as indicated by the &quot;-&quot; in the second position." />
-                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
-                            <addPadding />
-                            <!--sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false" groupId="activityButtonGroup"/-->
-                            <actionButton featureText="joinGroupMessageButton" groupId="activityButtonGroup">
-                                <sendGroupMessage eventTag="joinGroupMessageButton" incrementPhase="1" />
-                                <disableButtonGroup matchingRegex="activityButtonGroup" />
-                                <htmlText featureText="waiting group response" />
-                            </actionButton>
+                            <htmlText featureText="Please wait for the other members of the group to perform their tasks." />
                         </regionReplace>
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="-:A,B,C,D,E,F,G,H">
-                        <disableButtonGroup matchingRegex="activityButtonGroup" />
-                        <regionReplace regionId="groupStatus">
-                            <htmlText featureText="-:A,B,C,D,E,F,G,H" />
-                        </regionReplace>
-                        <regionReplace regionId="groupOutput">
-                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
-                            <htmlText featureText="Second groupMemberActivity of GroupFormation Presenter" />
-                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
-                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
-                            <addPadding />
-                            <targetButton featureText="Volgende" target="GroupStreamingExample" groupId="activityButtonGroup" />
-                        </regionReplace>
+                    <groupMemberActivity phaseMembers="A,B:-:-:-:-:-:-:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <streamGroupCanvas streamChannels="A,B">
+                            <onSuccess>
+                                <plainText featureText="streamGroupCanvas onSuccess A,B"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="streamGroupCanvas onError A,B"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <showButtonGroup matchingRegex="responseButtonGroup" />
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:B,C:-:-:-:-:-:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <streamGroupCanvas streamChannels="B,C">
+                            <onSuccess>
+                                <plainText featureText="streamGroupCanvas onSuccess B,C"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="streamGroupCanvas onError B,C"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <showButtonGroup matchingRegex="responseButtonGroup" />
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:-:C,A:-:-:-:-:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <streamGroupCanvas streamChannels="C,A">
+                            <onSuccess>
+                                <plainText featureText="streamGroupCanvas onSuccess C,A"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="streamGroupCanvas onError C,A"/>
+                            </onError>
+                        </streamGroupCanvas>
+                        <showButtonGroup matchingRegex="responseButtonGroup" />
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
             <endOfStimulus>
-                <regionReplace regionId="groupStatus">
-                    <htmlText featureText="No valid stimuli" />
-                </regionReplace>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="GroupStreamingExample"/>
+                    <gotoPresenter target="GroupStreamingExample"/>
+                </actionButton>
             </endOfStimulus>
             <randomGrouping />
             <stimuli>
@@ -208,29 +218,29 @@
             </stimuli> 
         </groupStimuli>
     </presenter>
-    <presenter back="Menu" menuLabel="GroupStreamingExample" type="stimulus" self="GroupStreamingExample" title="Streaming">
+    <presenter back="Menu" menuLabel="GroupStreamingTester" type="stimulus" self="GroupStreamingTester" title="Streaming">
         <regionAppend regionId="groupIntroduction">
             <htmlText featureText="This example has a group of three with two communication channels. A and B share a communication channel and B and C also share a communication channel. This means that B communicates with both A and C. But A and C never communicate directly." />
         </regionAppend>
         <addPadding />
         <regionAppend regionId="groupStatus" />
-        <addPadding /> 
-        <regionAppend regionId="groupOutput" /> 
+        <addPadding />
+        <regionAppend regionId="groupOutput" />
         <addPadding />
         <regionAppend regionId="groupButtons" />
-        <addPadding /> 
-        <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
+        <addPadding />
+        <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingTester" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C">
                 <groupInitialisationError>
                     <regionReplace regionId="groupIntroduction" />
                     <regionReplace regionId="groupStatus">
-                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
+                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput"></regionReplace>
                 </groupInitialisationError>
                 <groupNetworkConnecting>
                     <regionReplace regionId="groupStatus">
-                        <htmlText featureText="GroupStreamingExample groupNetworkConnecting" />
+                        <htmlText featureText="GroupStreamingTester groupNetworkConnecting" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput">
                         <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
@@ -377,14 +387,14 @@
         <allMenuItems />
     </presenter>
     <stimuli>
-        <stimulus code="stimulus1" identifier="stimulus1" label="Stimulus 1" pauseMs="0" tags="BalloonGroup" />
-        <stimulus code="stimulus2" identifier="stimulus2" label="Stimulus 2" pauseMs="0" tags="BalloonGroup" />
-        <stimulus code="stimulus3" identifier="stimulus3" label="Stimulus 3" pauseMs="0" tags="BalloonGroup" />
-        <stimulus code="1" identifier="Image1" imagePath="1_A.png" label="1" tags="GroupOf2Images" />
-        <stimulus code="2" identifier="Image2" imagePath="2_A.png" label="2" tags="GroupOf2Images" />
-        <stimulus code="3" identifier="Image3" imagePath="3_A.png" label="3" tags="GroupOf2Images" />
-        <stimulus code="4" identifier="Image4" imagePath="4_A.png" label="4" tags="GroupOf2Images" />
-        <stimulus code="5" identifier="Image5" imagePath="5_A.png" label="5" tags="GroupOf2Images" />
-        <stimulus code="6" identifier="Image6" imagePath="6_A.png" label="6" tags="GroupOf2Images" />
+        <stimulus correctResponses="OK" code="stimulus1" identifier="stimulus1" label="Stimulus 1" pauseMs="0" tags="BalloonGroup" />
+        <stimulus correctResponses="OK" code="stimulus2" identifier="stimulus2" label="Stimulus 2" pauseMs="0" tags="BalloonGroup" />
+        <stimulus correctResponses="OK" code="stimulus3" identifier="stimulus3" label="Stimulus 3" pauseMs="0" tags="BalloonGroup" />
+        <stimulus correctResponses="OK" code="1" identifier="Image1" imagePath="1_A.png" label="1" tags="GroupOf2Images" />
+        <stimulus correctResponses="OK" code="2" identifier="Image2" imagePath="2_A.png" label="2" tags="GroupOf2Images" />
+        <stimulus correctResponses="OK" code="3" identifier="Image3" imagePath="3_A.png" label="3" tags="GroupOf2Images" />
+        <stimulus correctResponses="OK" code="4" identifier="Image4" imagePath="4_A.png" label="4" tags="GroupOf2Images" />
+        <stimulus correctResponses="OK" code="5" identifier="Image5" imagePath="5_A.png" label="5" tags="GroupOf2Images" />
+        <stimulus correctResponses="OK" code="6" identifier="Image6" imagePath="6_A.png" label="6" tags="GroupOf2Images" />
     </stimuli> 
 </experiment>
