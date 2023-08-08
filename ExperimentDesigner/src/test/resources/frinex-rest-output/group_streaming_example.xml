@@ -78,8 +78,54 @@
                 </conditionFalse>
             </hasGetParameter>    
         </regionAppend>
-        <groupStimuli adjacencyThreshold="0" eventTag="GroupFormation" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
-            <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+        <addPadding />
+        <table>
+            <row>
+                <column>
+                    <regionReplace regionId="groupRemoteCanvas_A_Region" />
+                </column>
+                <column>
+                    <regionReplace regionId="groupRemoteCanvas_B_Region" />
+                </column>
+                <column>
+                    <regionReplace regionId="groupRemoteCanvas_C_Region" />
+                </column>
+            </row><row>
+                <column>
+                    <regionReplace regionId="groupRemoteCamera_A_Region" />
+                </column>
+                <column>
+                    <regionReplace regionId="groupRemoteCamera_B_Region" />
+                </column>
+                <column>
+                    <regionReplace regionId="groupRemoteCamera_C_Region" />
+                </column>
+            </row>
+        </table>
+        <actionButton featureText="Stream is OK" groupId="responseButtonGroup">
+            <setStimulusCodeResponse codeFormat="Stream is OK ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
+            <sendGroupMessage eventTag="Stream is OK" incrementPhase="1" />
+        </actionButton>
+        <actionButton featureText="Stream is broken" groupId="responseButtonGroup">
+            <setStimulusCodeResponse codeFormat="Stream is broken ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
+            <sendGroupMessage eventTag="Stream is broken" incrementPhase="1" />
+        </actionButton>
+        <hideButtonGroup matchingRegex="responseButtonGroup" />
+        <triggerDefinition listenerId="terminateStreams" threshold="0" maximum="0">
+            <!-- stop existing streams by clearing their regions -->
+            <regionReplace regionId="groupRemoteCanvas_A_Region" />
+            <regionReplace regionId="groupRemoteCanvas_B_Region" />
+            <regionReplace regionId="groupRemoteCanvas_C_Region" />
+            <regionReplace regionId="groupRemoteCamera_A_Region" />
+            <regionReplace regionId="groupRemoteCamera_B_Region" />
+            <regionReplace regionId="groupRemoteCamera_C_Region" />
+            <!-- clear the text -->
+            <regionReplace regionId="groupIntroduction" />
+            <regionReplace regionId="groupStatus" />
+            <regionReplace regionId="groupOutput" />
+        </triggerDefinition>
+        <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
+            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="8" groupCommunicationChannels="A,B,C">
                 <groupInitialisationError>
                     <regionReplace regionId="groupStatus">
                         <htmlText featureText="groupInitialisationError please make sure the group and member code are provided" />
