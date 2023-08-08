@@ -81,6 +81,7 @@ public class XpathExperimentValidator {
             result += validateRegexStrings(xmlDocument);
             result += validatePresenterTypes(xmlDocument);
             result += validateEvaluateTokens(xmlDocument);
+            result += validateProductionVersion(xmlDocument);
             if (!result.isEmpty()) {
                 throw new XpathExperimentException(result);
             }
@@ -366,6 +367,23 @@ public class XpathExperimentValidator {
 //                returnMessage += "The Presenter " + presenterName + " is of the type " + currentFault[0] + " and cannot be used with " + currentFault[1] + ". ";
 //            }
 //        }
+        return returnMessage;
+    }
+
+    protected String validateProductionVersion(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        String frinexVersion = (String) validationXPath.compile("/experiment/deployment/@frinexVersion").evaluate(xmlDocument, XPathConstants.STRING);
+        String state = (String) validationXPath.compile("/experiment/deployment/@state").evaluate(xmlDocument, XPathConstants.STRING);
+        if ("production".equals(state) && frinexVersion != null) {
+            if (frinexVersion.contains("snapshot")) {
+                returnMessage = "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n";
+            } else if (frinexVersion.contains("alpha")) {
+                returnMessage = "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n";
+            } else if (frinexVersion.contains("beta")) {
+                returnMessage = "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n";
+            }
+        }
         return returnMessage;
     }
 
