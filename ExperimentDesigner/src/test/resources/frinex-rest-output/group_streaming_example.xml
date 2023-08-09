@@ -47,7 +47,7 @@
         <htmlText featureText="The group experiments function by the use of a group communication server. The messages from each group member are sent to the group server and then broadcast to all group members. Not all group messages are to be used by all group members. For example if two members are not in the same communication channel, they will not respond to each others messages." />
         <htmlText featureText="You can observe the underlying group messaging functionality in your browser with the &lt;a href=&quot;webrtctestpage.html&quot;&gt;group diagnostics page&lt;/a&gt;.&lt;br/&gt;" />
     </presenter>
-    <presenter back="Instruction" menuLabel="GroupStreamingExample" next="Menu" type="stimulus" self="GroupStreamingExample" title="Formation">
+    <presenter back="Instruction" menuLabel="GroupStreamingExample" next="Menu" type="stimulus" self="GroupStreamingExample" title="GroupStreamingExample">
         <!--regionReplace regionId="groupButtonsRegion"/-->
         <addPadding />
         <regionAppend regionId="groupStatus" />
@@ -101,15 +101,6 @@
                 </column>
             </row>
         </table>
-        <actionButton featureText="Stream is OK" groupId="responseButtonGroup">
-            <setStimulusCodeResponse codeFormat="Stream is OK ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
-            <sendGroupMessage eventTag="Stream is OK" incrementPhase="1" />
-        </actionButton>
-        <actionButton featureText="Stream is broken" groupId="responseButtonGroup">
-            <setStimulusCodeResponse codeFormat="Stream is broken ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
-            <sendGroupMessage eventTag="Stream is broken" incrementPhase="1" />
-        </actionButton>
-        <hideButtonGroup matchingRegex="responseButtonGroup" />
         <triggerDefinition listenerId="terminateStreams" threshold="0" maximum="0">
             <!-- stop existing streams by clearing their regions -->
             <regionReplace regionId="groupRemoteCanvas_A_Region" />
@@ -124,7 +115,7 @@
             <regionReplace regionId="groupOutput" />
         </triggerDefinition>
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
-            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="8" groupCommunicationChannels="A,B,C">
+            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="24" groupCommunicationChannels="A,B,C">
                 <groupInitialisationError>
                     <regionReplace regionId="groupStatus">
                         <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
@@ -159,15 +150,29 @@
                     </regionReplace>
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
-                    <!-- ab video|bc video| ca video|ab canvas|bc canvas|ca canvas|abc video|abc canvas -->
-                    <groupMemberActivity phaseMembers="C:A:B:C:A:B:C:A">
-                        <hideButtonGroup matchingRegex="responseButtonGroup" />
-                        <triggerMatching listenerId="terminateStreams"/>
+                    <groupMemberActivity phaseMembers="A:B:C:A:B:C:A:B:C:A:B:C:A:B:C:A:B:C:A:B:C:A:B:C">
+                        <regionReplace regionId="groupOutput">
+                            <actionButton featureText="Stream is OK" groupId="responseButtonGroup">
+                                <setStimulusCodeResponse codeFormat="Stream is OK ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
+                                <sendGroupMessage eventTag="Stream is OK" incrementPhase="1" />
+                            </actionButton>
+                            <addPadding />
+                            <actionButton featureText="Stream is broken" groupId="responseButtonGroup">
+                                <setStimulusCodeResponse codeFormat="Stream is broken ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
+                                <sendGroupMessage eventTag="Stream is broken" incrementPhase="1" />
+                            </actionButton>
+                        </regionReplace>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB">
                         <regionReplace regionId="groupOutput">
                             <htmlText featureText="Please wait for the other members of the group to perform their tasks." />
                         </regionReplace>
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="A,B:-:-:-:-:-:-:-">
+                    <!-- ab video|bc video| ca video|ab canvas|bc canvas|ca canvas|abc video|abc canvas -->
+                    <groupMemberActivity phaseMembers="C:-:A:-:B:-:C:-:A:-:B:-:-:-:-:-:-:-:-:-:-:-:-:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="A,B:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
                         <triggerMatching listenerId="terminateStreams"/>
                         <streamGroupCanvas streamChannels="A,B">
                             <onSuccess>
@@ -177,9 +182,8 @@
                                 <plainText featureText="streamGroupCanvas onError A,B"/>
                             </onError>
                         </streamGroupCanvas>
-                        <showButtonGroup matchingRegex="responseButtonGroup" />
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="-:B,C:-:-:-:-:-:-">
+                    <groupMemberActivity phaseMembers="-:-:B,C:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
                         <triggerMatching listenerId="terminateStreams"/>
                         <streamGroupCanvas streamChannels="B,C">
                             <onSuccess>
@@ -189,9 +193,8 @@
                                 <plainText featureText="streamGroupCanvas onError B,C"/>
                             </onError>
                         </streamGroupCanvas>
-                        <showButtonGroup matchingRegex="responseButtonGroup" />
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="-:-:C,A:-:-:-:-:-">
+                    <groupMemberActivity phaseMembers="-:-:-:-:C,A:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
                         <triggerMatching listenerId="terminateStreams"/>
                         <streamGroupCanvas streamChannels="C,A">
                             <onSuccess>
@@ -201,7 +204,6 @@
                                 <plainText featureText="streamGroupCanvas onError C,A"/>
                             </onError>
                         </streamGroupCanvas>
-                        <showButtonGroup matchingRegex="responseButtonGroup" />
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
