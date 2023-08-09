@@ -237,6 +237,7 @@ public abstract class GroupStreamHandler {
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
                 // TODO: perhaps this is premature but we destroy the local end of the connection so that a new one can resume
                 if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode]) {
+                    console.log(selfMemberCode + ": " + remoteMemberCode + " ==disconnecting==> " + selfMemberCode);
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].ontrack = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovetrack = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovestream = null;
@@ -363,6 +364,7 @@ public abstract class GroupStreamHandler {
 
     private native void disconnectStreams(Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
+        console.log(memberCode + ": " + remoteMemberCode + " ==disconnectStreams==> " + memberCode);
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", streamType, "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
         if ($wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode]) {
             $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].ontrack = null;
