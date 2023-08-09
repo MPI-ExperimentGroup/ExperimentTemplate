@@ -366,15 +366,15 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         console.log(memberCode + ": " + remoteMemberCode + " ==disconnectStreams==> " + memberCode);
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("disconnect", streamType, "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
-        if ($wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode]) {
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].ontrack = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].onremovetrack = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].onremovestream = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].onicecandidate = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].oniceconnectionstatechange = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].onsignalingstatechange = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].onicegatheringstatechange = null;
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].onnegotiationneeded = null;
+        if ($wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode]) {
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].ontrack = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onremovetrack = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onremovestream = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onsignalingstatechange = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onicegatheringstatechange = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onnegotiationneeded = null;
             
             // iterate all member specific remote video elements
             var remoteVideoArray = $wnd.$("video[id^=groupRemote" + streamType + "]");
@@ -403,8 +403,8 @@ public abstract class GroupStreamHandler {
                 }
             }
             // TODO: should we be cleaning up the the local canvas srcObject.getTracks here also?
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode].close();
-            $wnd.groupConnections[remoteMemberCode + "-" + streamType + '>' + memberCode] = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].close();
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode] = null;
         }
 
         // remove all member remote video elements for each member
