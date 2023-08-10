@@ -376,32 +376,33 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onicegatheringstatechange = null;
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onnegotiationneeded = null;
             
+            // In order to permit reconnects we don't modify the video elements in the DOM, they can be removed via the XML
             // iterate all member specific remote video elements
-            var remoteVideoArray = $wnd.$("video[id^=groupRemote" + streamType + "]");
-            if (remoteVideoArray) {
-                for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
-                    var remoteVideo = remoteVideoArray[remoteVideoIndex];
-                    if (remoteVideo && remoteVideo.srcObject) {
-                        // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
-                        for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
-                            remoteVideo.srcObject.getTracks()[trackCount].stop();
-                        }
-                    }
-                }
-            }
-            
-            var localVideoArray = $wnd.$("video[id^=groupLocalVideo");
-            if (localVideoArray) {
-                for (localVideoIndex = 0; localVideoIndex < localVideoArray.length; localVideoIndex++) {
-                    var localVideo = localVideoArray[localVideoIndex];
-                    if (localVideo && localVideo.srcObject) {
-                        // localVideo.srcObject.getTracks().forEach(track => track.stop());
-                        for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
-                            localVideo.srcObject.getTracks()[trackCount].stop();
-                        }
-                    }
-                }
-            }
+            // var remoteVideoArray = $wnd.$("video[id^=groupRemote" + streamType + "]");
+            // if (remoteVideoArray) {
+            //     for (remoteVideoIndex = 0; remoteVideoIndex < remoteVideoArray.length; remoteVideoIndex++) {
+            //         var remoteVideo = remoteVideoArray[remoteVideoIndex];
+            //         if (remoteVideo && remoteVideo.srcObject) {
+            //             // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
+            //             for (trackCount = 0; trackCount < remoteVideo.srcObject.getTracks().length; trackCount++) {
+            //                 remoteVideo.srcObject.getTracks()[trackCount].stop();
+            //             }
+            //         }
+            //     }
+            // }
+            // In order to permit reconnects we don't modify the video elements in the DOM, they can be removed via the XML
+            // var localVideoArray = $wnd.$("video[id^=groupLocalVideo");
+            // if (localVideoArray) {
+            //     for (localVideoIndex = 0; localVideoIndex < localVideoArray.length; localVideoIndex++) {
+            //         var localVideo = localVideoArray[localVideoIndex];
+            //         if (localVideo && localVideo.srcObject) {
+            //             // localVideo.srcObject.getTracks().forEach(track => track.stop());
+            //             for (trackCount = 0; trackCount < localVideo.srcObject.getTracks().length; trackCount++) {
+            //                 localVideo.srcObject.getTracks()[trackCount].stop();
+            //             }
+            //         }
+            //     }
+            // }
             // TODO: should we be cleaning up the the local canvas srcObject.getTracks here also?
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].close();
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode] = null;
