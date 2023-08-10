@@ -50,11 +50,7 @@
     <presenter back="Instruction" menuLabel="GroupStreamingExample" next="Menu" type="stimulus" self="GroupStreamingExample" title="GroupStreamingExample">
         <!--regionReplace regionId="groupButtonsRegion"/-->
         <addPadding />
-        <regionAppend regionId="groupStatus" />
-        <addPadding />
-        <regionAppend regionId="groupOutput" />
-        <addPadding />
-        <regionAppend regionId="groupIntroduction"> 
+        <regionAppend regionId="groupOutput">
             <hasGetParameter parameterName="group">
                 <conditionTrue>
                     <htmlText featureText="The group name has been allocated in the URL. This member will be placed in the group associated with this name provided the member code is not already taken." />
@@ -99,6 +95,13 @@
                 <column>
                     <regionReplace regionId="groupRemoteCamera_C_Region" />
                 </column>
+            </row><row>
+                <column>
+                    <regionReplace regionId="groupLocalCanvas" />
+                </column>
+                <column>
+                    <regionReplace regionId="groupLocalCamera" />
+                </column>
             </row>
         </table>
         <triggerDefinition listenerId="terminateStreams" threshold="0" maximum="0">
@@ -110,29 +113,24 @@
             <regionReplace regionId="groupRemoteCamera_B_Region" />
             <regionReplace regionId="groupRemoteCamera_C_Region" />
             <!-- clear the text -->
-            <regionReplace regionId="groupIntroduction" />
-            <regionReplace regionId="groupStatus" />
-            <regionReplace regionId="groupOutput" />
+            <!-- <regionReplace regionId="groupOutput" /> -->
         </triggerDefinition>
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingExample" randomise="false" repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
             <groupNetwork groupMembers="A,B,C" phasesPerStimulus="24" groupCommunicationChannels="A,B,C">
                 <groupInitialisationError>
-                    <regionReplace regionId="groupStatus">
+                    <regionReplace regionId="groupOutput">
                         <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
                     </regionReplace>
-                    <regionReplace regionId="groupOutput"></regionReplace>
                 </groupInitialisationError>
                 <groupNetworkConnecting>
-                    <regionReplace regionId="groupStatus">
+                    <regionReplace regionId="groupOutput">
                         <htmlText featureText="groupNetworkConnecting" />
                     </regionReplace>
-                    <regionReplace regionId="groupOutput"></regionReplace>
                 </groupNetworkConnecting>
                 <groupFindingMembers>
-                    <regionReplace regionId="groupStatus">
-                        <htmlText featureText="groupFindingMembers: waiting for the required members for this channel" />
-                    </regionReplace>
                     <regionReplace regionId="groupOutput">
+                        <htmlText featureText="groupFindingMembers: waiting for the required members for this channel" />
+                        <addPadding />
                         <htmlTokenText featureText="This is member: ::groupMemberCode::" />
                         <htmlTokenText featureText="Required members: ::groupAllMemberCodes::" />
                         <htmlTokenText featureText="Assigned members: ::groupAssignedMemberCodes::" />
@@ -142,15 +140,21 @@
                     </regionReplace>
                 </groupFindingMembers>
                 <groupNetworkSynchronising>
-                    <regionReplace regionId="groupStatus">
-                        <htmlText featureText="GroupStreamingExample groupNetworkSynchronising" />
-                    </regionReplace>
                     <regionReplace regionId="groupOutput">
+                        <htmlText featureText="GroupStreamingExample groupNetworkSynchronising" />
+                        <addPadding />
                         <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />                    
                     </regionReplace>
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
-                    <groupMemberActivity phaseMembers="A:B:C:A:B:C:A:B:C:A:B:C:A:B:C:A:B:C:A:B:C:A:B:C">
+                    <!-- ab video|bc video| ca video|ab canvas|bc canvas|ca canvas|abc video|abc canvas -->
+                    <groupMemberActivity phaseMembers="-:-:A,B,C:-:-:A,B,C:-:-:A,B,C:-:-:A,B,C:-:-:A,B,C:-:-:A,B,C:-:-:-:A,B,C:-:-:-:A,B,C">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <regionReplace regionId="groupOutput">
+                            <sendGroupMessageButton featureText="Continue" repeatIncorrect="false" incrementPhase="1" />
+                        </regionReplace>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="A:B:-:B:C:-:C:A:-:A:B:-:B:C:-:C:A:-:A:B:C:-:A:B:C:-">
                         <regionReplace regionId="groupOutput">
                             <actionButton featureText="Stream is OK" groupId="responseButtonGroup">
                                 <setStimulusCodeResponse codeFormat="Stream is OK ::groupMemberCode:: ::groupRequestedPhase::" dataChannel="8" applyScore="true"/>
@@ -163,47 +167,67 @@
                             </actionButton>
                         </regionReplace>
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB:BC:CA:AB">
+                    <groupMemberActivity phaseMembers="B,C:C,A:-:A,C:A,B:-:A,B:B,C:-:B,C:C,A:-:A,C:A,B:-:A,B:B,C:-:B,C:A,C:A,B:-:B,C:A,C:A,B:-">
                         <regionReplace regionId="groupOutput">
                             <htmlText featureText="Please wait for the other members of the group to perform their tasks." />
                         </regionReplace>
                     </groupMemberActivity>
-                    <!-- ab video|bc video| ca video|ab canvas|bc canvas|ca canvas|abc video|abc canvas -->
-                    <groupMemberActivity phaseMembers="C:-:A:-:B:-:C:-:A:-:B:-:-:-:-:-:-:-:-:-:-:-:-:-">
-                        <triggerMatching listenerId="terminateStreams"/>
-                    </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="A,B:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
-                        <triggerMatching listenerId="terminateStreams"/>
+                    <groupMemberActivity phaseMembers="A,B:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
+                        <!-- <regionReplace regionId="groupRemoteCanvas_C_Region" />
+                        <regionReplace regionId="groupRemoteCamera_C_Region" /> -->
                         <streamGroupCanvas streamChannels="A,B">
-                            <onSuccess>
-                                <plainText featureText="streamGroupCanvas onSuccess A,B"/>
-                            </onSuccess>
+                            <onSuccess />
                             <onError>
                                 <plainText featureText="streamGroupCanvas onError A,B"/>
                             </onError>
                         </streamGroupCanvas>
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="-:-:B,C:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
-                        <triggerMatching listenerId="terminateStreams"/>
+                    <groupMemberActivity phaseMembers="-:-:-:B,C:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
+                        <!-- <regionReplace regionId="groupRemoteCanvas_A_Region" />
+                        <regionReplace regionId="groupRemoteCamera_A_Region" /> -->
                         <streamGroupCanvas streamChannels="B,C">
-                            <onSuccess>
-                                <plainText featureText="streamGroupCanvas onSuccess B,C"/>
-                            </onSuccess>
+                            <onSuccess />
                             <onError>
                                 <plainText featureText="streamGroupCanvas onError B,C"/>
                             </onError>
                         </streamGroupCanvas>
                     </groupMemberActivity>
-                    <groupMemberActivity phaseMembers="-:-:-:-:C,A:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
-                        <triggerMatching listenerId="terminateStreams"/>
+                    <groupMemberActivity phaseMembers="-:-:-:-:-:-:C,A:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
+                        <!-- <regionReplace regionId="groupRemoteCanvas_B_Region" />
+                        <regionReplace regionId="groupRemoteCamera_B_Region" /> -->
                         <streamGroupCanvas streamChannels="C,A">
-                            <onSuccess>
-                                <plainText featureText="streamGroupCanvas onSuccess C,A"/>
-                            </onSuccess>
+                            <onSuccess />
                             <onError>
                                 <plainText featureText="streamGroupCanvas onError C,A"/>
                             </onError>
                         </streamGroupCanvas>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:-:-:-:-:-:A,B:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <streamGroupCamera streamChannels="A,B">
+                            <onSuccess />
+                            <onError>
+                                <plainText featureText="streamGroupCamera onError A,B"/>
+                            </onError>
+                        </streamGroupCamera>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:-:-:-:-:-:-:-:-:-:-:-:-:-:B,C:-:-:-:-:-:-:-:-:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <streamGroupCamera streamChannels="B,C">
+                            <onSuccess />
+                            <onError>
+                                <plainText featureText="streamGroupCamera onError B,C"/>
+                            </onError>
+                        </streamGroupCamera>
+                    </groupMemberActivity>
+                    <groupMemberActivity phaseMembers="-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:C,A:-">
+                        <triggerMatching listenerId="terminateStreams"/>
+                        <streamGroupCamera streamChannels="C,A">
+                            <onSuccess />
+                            <onError>
+                                <plainText featureText="streamGroupCamera onError C,A"/>
+                            </onError>
+                        </streamGroupCamera>
                     </groupMemberActivity>
                 </groupPhaseListeners>
             </groupNetwork>
