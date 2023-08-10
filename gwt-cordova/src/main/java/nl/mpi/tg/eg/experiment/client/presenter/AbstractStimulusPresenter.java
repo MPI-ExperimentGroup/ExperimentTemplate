@@ -598,7 +598,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 @Override
                 public void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode) {
                     if (Document.get().getElementById(elementId) == null) {
-    //                    simpleView.clearRegion(elementId + "Region");
+                        // simpleView.clearRegion(elementId + "Region");
                         final InsertPanel.ForIsWidget groupLocalVideoRegion = simpleView.startRegion(elementId + "_Region", null);
                         final Video groupLocalVideo = Video.createIfSupported();
                         if (groupLocalVideo != null) {
@@ -606,7 +606,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                                 @Override
                                 public void onAttachOrDetach(AttachEvent event) {
                                     if (!event.isAttached()) {
-                                        notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "Camera",  getSelfTag());
+                                        notifyDetatchedElement(elementId, null, userResults.getUserData().getUserId().toString(), groupId, groupUUID, memberCode, remoteMemberCode, "Camera", getSelfTag());
                                     }
                                 }
                             });
@@ -1929,6 +1929,40 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     hasDeviceNames = true;
                 }
                 itemAddedListener.onValueChange(targetDeviceId);
+            }
+        });
+    }
+
+    protected void addRecorderLevelTrigger(final Stimulus definitionScopeStimulus, final Integer levelThreshold, SingleStimulusListener triggerListener, final String levelIndicatorStyle) {
+        final ValueChangeListener<Double> levelIndicatorListener;
+        final ValueChangeListener<Double> thresholdIndicatorListener;
+        if (levelIndicatorStyle != null) {
+            simpleView.clearRegion("AudioThresholdIndicator");
+            final InsertPanel.ForIsWidget levelIndicatorRegion = simpleView.startRegion("AudioThresholdIndicator", null);
+            levelIndicatorListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
+            thresholdIndicatorListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
+            simpleView.endRegion(levelIndicatorRegion);
+        } else {
+            levelIndicatorListener = null;
+            thresholdIndicatorListener = null;
+        }
+        addRecorderLevelIndicatorWeb(new ValueChangeListener<Double>() {
+            Double accumulatorValue = 0.0;
+            final Double alpha = 0.1;
+
+            @Override
+            public void onValueChange(final Double value) {
+                // determine the required threshold for the current sample
+                final Double requiredThreshold = accumulatorValue + (accumulatorValue / 100 * levelThreshold);
+                // calculate the exponential moving average
+                accumulatorValue = (alpha * value) + (1.0 - alpha) * accumulatorValue;
+                if (value > requiredThreshold) {
+                    triggerListener.postLoadTimerFired(definitionScopeStimulus);
+                }
+                if (levelIndicatorListener != null) {
+                    levelIndicatorListener.onValueChange(value);
+                    thresholdIndicatorListener.onValueChange(requiredThreshold);
+                }
             }
         });
     }

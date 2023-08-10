@@ -29,7 +29,7 @@ public enum PresenterType {
 
     transmission(new FeatureType[]{
         versionData, stopAudioRecorder, startAudioRecorderTag,
-        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching, countdownLabel, stimulusPresent,
+        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching, countdownLabel, stimulusPresent,
         prevStimulusButton,
         prevStimulus, timerLabel, startTimer, habituationParadigmListener, triggerRandom, resetTrigger, clearTimer,
         logTimerValue,
@@ -106,7 +106,7 @@ public enum PresenterType {
     metadata(new FeatureType[]{
         stimulusPresent, stopAudioRecorder, startAudioRecorderTag,
         clearPage, activateRandomItem,
-        randomMsPause, evaluatePause, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching,
+        randomMsPause, evaluatePause, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching,
         countdownLabel, playMedia,
         rewindMedia,
         pauseMedia, logMediaTimeStamp, versionData,
@@ -180,7 +180,7 @@ public enum PresenterType {
     }),
     preload(new FeatureType[]{
         logTimeStamp, hardwareTimeStamp, dtmfTone, recorderToneInjection, logTokenText, actionTokenButton, habituationParadigmListener, triggerRandom, resetTrigger, addMediaTrigger,
-        versionData, stopAudioRecorder, startAudioRecorderTag, addRecorderDtmfTrigger, endAudioRecorderTag,
+        versionData, stopAudioRecorder, startAudioRecorderTag, addRecorderDtmfTrigger, addRecorderLevelTrigger,endAudioRecorderTag,
         withStimuli, eachStimulus, groupStimuli,
         activateRandomItem,
         displayCompletionCode, sendMetadata,
@@ -262,7 +262,7 @@ public enum PresenterType {
         gotoNextPresenter,
         timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, actionTokenButton, compareTimer, habituationParadigmListener, triggerRandom, resetTrigger,
         row, plainText, stimulusPresent,
-        countdownLabel, triggerMatching, table, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, touchInputCapture, captureStart, touchEnd, column,
+        countdownLabel, triggerMatching, table, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,touchInputCapture, captureStart, touchEnd, column,
         stimulusMetadataField,
         requestNotification, hasMetadataValue, setMetadataValue, setMetadataEvalTokens, matchOnEvalTokens, progressIndicator,
         //        htmlTokenText,
@@ -348,7 +348,7 @@ public enum PresenterType {
         timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, actionTokenButton, compareTimer, habituationParadigmListener, triggerRandom, resetTrigger,
         activateRandomItem, stopAudioRecorder, startAudioRecorderTag,
         //        versionData,
-        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching,
+        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching,
         countdownLabel,
         stimulusPresent, clearCurrentScore,
         prevStimulusButton,
@@ -431,7 +431,7 @@ public enum PresenterType {
     kindiagram(new FeatureType[]{
         activateRandomItem, stopAudioRecorder, startAudioRecorderTag,
         versionData,
-        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching, countdownLabel, stimulusPresent, clearCurrentScore,
+        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching, countdownLabel, stimulusPresent, clearCurrentScore,
         prevStimulusButton,
         prevStimulus, timerLabel, startTimer, compareTimer, habituationParadigmListener, triggerRandom, resetTrigger, clearTimer, logTimerValue, logTokenText, actionTokenButton,
         clearPage,
@@ -502,7 +502,7 @@ public enum PresenterType {
     }),
     menu(new FeatureType[]{
         versionData, stopAudioRecorder, startAudioRecorderTag,
-        randomMsPause, evaluatePause, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching, countdownLabel, stimulusPresent, clearCurrentScore,
+        randomMsPause, evaluatePause, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching, countdownLabel, stimulusPresent, clearCurrentScore,
         prevStimulusButton,
         prevStimulus, habituationParadigmListener, triggerRandom, resetTrigger, logTokenText, actionTokenButton,
         clearPage,
@@ -570,7 +570,7 @@ public enum PresenterType {
         stimulusAudio}),
     debug(new FeatureType[]{
         activateRandomItem, stopAudioRecorder, startAudioRecorderTag,
-        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching, countdownLabel, stimulusPresent, clearCurrentScore,
+        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching, countdownLabel, stimulusPresent, clearCurrentScore,
         prevStimulusButton,
         prevStimulus, timerLabel, startTimer, compareTimer, habituationParadigmListener, triggerRandom, resetTrigger, clearTimer, logTimerValue, logTokenText, actionTokenButton,
         clearPage,
@@ -646,7 +646,7 @@ public enum PresenterType {
         progressIndicator,
         //        htmlTokenText,
         versionData,
-        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, triggerMatching, stimulusButton, logTimeStamp, hardwareTimeStamp, dtmfTone, recorderToneInjection, touchInputLabelButton, touchInputImageButton, touchInputVideoButton, activateRandomItem, countdownLabel, stimulusPresent, playMedia,
+        randomMsPause, evaluatePause, addTimerTrigger, triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,triggerMatching, stimulusButton, logTimeStamp, hardwareTimeStamp, dtmfTone, recorderToneInjection, touchInputLabelButton, touchInputImageButton, touchInputVideoButton, activateRandomItem, countdownLabel, stimulusPresent, playMedia,
         rewindMedia,
         pauseMedia, logMediaTimeStamp,
         clearCurrentScore,
@@ -715,7 +715,7 @@ public enum PresenterType {
     timeline(new FeatureType[]{
         sendStimuliReport, stopAudioRecorder, startAudioRecorderTag,
         activateRandomItem,
-        triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, randomMsPause, evaluatePause, addTimerTrigger, triggerMatching,
+        triggerDefinition, addMediaTrigger, addRecorderDtmfTrigger, addRecorderLevelTrigger,randomMsPause, evaluatePause, addTimerTrigger, triggerMatching,
         countdownLabel, stimulusPresent, playMedia,
         rewindMedia,
         pauseMedia, logMediaTimeStamp, versionData,

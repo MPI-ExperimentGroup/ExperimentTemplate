@@ -2382,6 +2382,54 @@
                 <endAudioRecorderTag eventTier="8"/>
             </addRecorderDtmfTrigger>
         </addRecorderDtmfTrigger>
+        <addRecorderLevelTrigger levelIndicatorStyle="levelIndicatorStyle" threshold="8">
+            <disableButtonGroup matchingRegex="matchingRegex"/>
+            <enableButtonGroup matchingRegex="matchingRegex"/>
+            <hideButtonGroup matchingRegex="matchingRegex"/>
+            <styleButtonGroup matchingRegex="matchingRegex" styleName="styleName"/>
+            <showButtonGroup matchingRegex="matchingRegex"/>
+            <requestFocus matchingRegex="matchingRegex"/>
+            <logTimeStamp eventTag="eventTag"/>
+            <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
+            <recorderToneInjection dtmf="#"/>
+            <dtmfTone msToNext="60" dtmf="#"/>
+            <doLater msToNext="60">
+                <plainText featureText="plainText in doLater"/>
+            </doLater>
+            <clearTimer listenerId="listenerId"/>
+            <regionStyle regionId="regionId" styleName="styleName"/>
+            <playMedia loop="true" mediaId="mediaId"/>
+            <rewindMedia mediaId="mediaId"/>
+            <pauseMedia mediaId="mediaId"/>
+            <logMediaTimeStamp eventTag="eventTag" mediaId="mediaId"/>
+            <stopAudioRecorder/>
+            <startAudioRecorderTag eventTier="8"/>
+            <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+            <addRecorderLevelTrigger threshold="8">
+                <disableButtonGroup matchingRegex=""/>
+                <enableButtonGroup matchingRegex=""/>
+                <hideButtonGroup matchingRegex=""/>
+                <styleButtonGroup matchingRegex=""/>
+                <showButtonGroup matchingRegex=""/>
+                <requestFocus matchingRegex=""/>
+                <logTimeStamp/>
+                <hardwareTimeStamp/>
+                <recorderToneInjection/>
+                <dtmfTone msToNext="60"/>
+                <doLater msToNext="60">
+                    <plainText featureText="plainText in doLater"/>
+                </doLater>
+                <clearTimer listenerId=""/>
+                <regionStyle regionId=""/>
+                <playMedia mediaId=""/>
+                <rewindMedia mediaId=""/>
+                <pauseMedia mediaId=""/>
+                <logMediaTimeStamp mediaId=""/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8"/>
+            </addRecorderLevelTrigger>
+        </addRecorderLevelTrigger>
         <triggerDefinition listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>
@@ -5422,6 +5470,30 @@
             <startAudioRecorderTag eventTier="8"/>
             <endAudioRecorderTag eventTier="8"/>
         </addRecorderDtmfTrigger>
+        <addRecorderLevelTrigger threshold="8">
+            <disableButtonGroup matchingRegex=""/>
+            <enableButtonGroup matchingRegex=""/>
+            <hideButtonGroup matchingRegex=""/>
+            <styleButtonGroup matchingRegex=""/>
+            <showButtonGroup matchingRegex=""/>
+            <requestFocus matchingRegex=""/>
+            <logTimeStamp/>
+            <hardwareTimeStamp/>
+            <recorderToneInjection/>
+            <dtmfTone msToNext="60"/>
+            <doLater msToNext="60">
+                <plainText featureText="plainText in doLater"/>
+            </doLater>
+            <clearTimer listenerId=""/>
+            <regionStyle regionId=""/>
+            <playMedia mediaId=""/>
+            <rewindMedia mediaId=""/>
+            <pauseMedia mediaId=""/>
+            <logMediaTimeStamp mediaId=""/>
+            <stopAudioRecorder/>
+            <startAudioRecorderTag eventTier="8"/>
+            <endAudioRecorderTag eventTier="8"/>
+        </addRecorderLevelTrigger>
         <triggerDefinition listenerId="" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerDefinition"/>
         </triggerDefinition>

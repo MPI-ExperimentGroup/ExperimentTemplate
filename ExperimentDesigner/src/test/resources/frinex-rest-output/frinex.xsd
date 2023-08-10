@@ -3933,7 +3933,7 @@
 </xs:complexType>
 <xs:complexType name="addRecorderDtmfTriggerType">
 <xs:annotation>
-<xs:documentation>Adds a web recorder event that will trigger when the the provided DTMF tone is detected in the recorded audio stream. Only one trigger can be assigned per DTMF code.</xs:documentation>
+<xs:documentation>Adds a web recorder event that will trigger when the provided DTMF tone is detected in the recorded audio stream. Only one trigger can be assigned per DTMF code.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
@@ -3942,6 +3942,25 @@
 <xs:attribute name="dtmf" type="dtmfType">
 <xs:annotation>
 <xs:documentation>Starts or stops the production of DTMF tones (dual-tone multi-frequency signaling) which can be used to encode some timing information in an audio output. The DTMF tone values can be decoded directly from the audio output or from subsequent audio recordings.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="addRecorderLevelTriggerType">
+<xs:annotation>
+<xs:documentation>Adds a web recorder event that will trigger when the a sound in the recorded audio stream exceeds the provided threshold above the ambient noise floor. If the levelIndicatorStyle is set then a recording threshold indicator will be shown. If levelIndicatorStyle is set and a region with the ID of AudioThresholdIndicator exists then that region will be used to position the recording threshold indicator.</xs:documentation>
+</xs:annotation>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
+<xs:group ref="choiceAnyCount_isTimeCriticalType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:choice>
+<xs:attribute name="threshold" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>Threshold value.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="levelIndicatorStyle" type="xs:string">
+<xs:annotation>
+<xs:documentation>The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -5579,6 +5598,7 @@
 <xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -5698,6 +5718,7 @@
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addPadding" type="addPaddingType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
 <xs:element name="addTimerTrigger" type="addTimerTriggerType"/>
 <xs:element name="allMenuItems" type="allMenuItemsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
@@ -5930,6 +5951,7 @@
 <xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6096,6 +6118,7 @@
 <xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6318,6 +6341,7 @@
 <xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
@@ -6554,6 +6578,7 @@
 <xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
 <xs:element name="addRecorderDtmfTrigger" type="addRecorderDtmfTriggerType"/>
+<xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="habituationParadigmListener" type="habituationParadigmListenerType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
