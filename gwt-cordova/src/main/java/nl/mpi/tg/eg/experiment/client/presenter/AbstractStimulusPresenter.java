@@ -1946,6 +1946,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         addRecorderLevelIndicatorWeb(new ValueChangeListener<Double>() {
             Double accumulatorValue = 0.0;
             final Double alpha = 0.1;
+            int ignoreSamples = 10;
 
             @Override
             public void onValueChange(final Double value) {
@@ -1953,7 +1954,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 final Double requiredThreshold = accumulatorValue + (accumulatorValue / 100 * levelThreshold);
                 // calculate the exponential moving average
                 accumulatorValue = (alpha * value) + (1.0 - alpha) * accumulatorValue;
-                if (value > requiredThreshold) {
+                if (ignoreSamples > 0) {
+                    // do not trigger until after enough samples that we can consider the accumulator ready
+                    ignoreSamples--;
+                } else if (value > requiredThreshold) {
                     triggerListener.postLoadTimerFired(definitionScopeStimulus);
                 }
                 if (thresholdIndicatorListener != null) {
