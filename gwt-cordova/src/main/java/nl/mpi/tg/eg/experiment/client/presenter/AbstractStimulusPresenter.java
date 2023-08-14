@@ -1934,16 +1934,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void addRecorderLevelTrigger(final Stimulus definitionScopeStimulus, final String levelIndicatorStyle, final Integer levelThreshold, SingleStimulusListener triggerListener) {
-        final ValueChangeListener<Double> levelIndicatorListener;
         final ValueChangeListener<Double> thresholdIndicatorListener;
         if (levelIndicatorStyle != null) {
             simpleView.clearRegion("AudioThresholdIndicator");
             final InsertPanel.ForIsWidget levelIndicatorRegion = simpleView.startRegion("AudioThresholdIndicator", null);
-            levelIndicatorListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
             thresholdIndicatorListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
             simpleView.endRegion(levelIndicatorRegion);
         } else {
-            levelIndicatorListener = null;
             thresholdIndicatorListener = null;
         }
         addRecorderLevelIndicatorWeb(new ValueChangeListener<Double>() {
@@ -1959,8 +1956,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 if (value > requiredThreshold) {
                     triggerListener.postLoadTimerFired(definitionScopeStimulus);
                 }
-                if (levelIndicatorListener != null) {
-                    levelIndicatorListener.onValueChange(value);
+                if (thresholdIndicatorListener != null) {
                     thresholdIndicatorListener.onValueChange(requiredThreshold);
                 }
             }
