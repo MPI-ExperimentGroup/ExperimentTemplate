@@ -1946,7 +1946,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         addRecorderLevelIndicatorWeb(new ValueChangeListener<Double>() {
             Double accumulatorValue = 0.0;
             final Double alpha = 0.1;
-            int ignoreSamples = 10;
+            int ignoreSamples = 50;
 
             @Override
             public void onValueChange(final Double value) {
