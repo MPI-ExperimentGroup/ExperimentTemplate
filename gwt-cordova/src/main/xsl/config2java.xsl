@@ -1216,7 +1216,9 @@ or local-name() eq 'backgroundImage'">
         <!--// TODO: it is better to change the order of output to be comma then attribute because of the apply-templates later in this template which is used in a lot of templates -->
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot; ') else ''" />
         <xsl:value-of select="if(@listenerId and local-name() ne 'clearTimer') then ',' else ''" />
-        <xsl:value-of select="if(@levelIndicatorStyle) then concat('&quot;', @levelIndicatorStyle, '&quot; /* levelIndicatorStyle */,') else ''" />
+        <xsl:if test="local-name() eq 'addRecorderLevelTrigger'">
+            <xsl:value-of select="if(@levelIndicatorStyle) then concat('&quot;', @levelIndicatorStyle, '&quot; /* levelIndicatorStyle */,') else 'null /* levelIndicatorStyle */,'" />
+        </xsl:if>
         <xsl:value-of select="if(@threshold) then concat(@threshold, '/* threshold */') else ''" />
         <xsl:value-of select="if(@threshold and local-name() ne 'addFrameTimeTrigger' and local-name() ne 'addMediaTrigger') then ', ' else ''" />
         <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
