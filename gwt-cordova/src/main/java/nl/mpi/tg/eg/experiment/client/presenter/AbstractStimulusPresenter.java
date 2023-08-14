@@ -1933,7 +1933,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         });
     }
 
-    protected void addRecorderLevelTrigger(final Stimulus definitionScopeStimulus, final Integer levelThreshold, SingleStimulusListener triggerListener, final String levelIndicatorStyle) {
+    protected void addRecorderLevelTrigger(final Stimulus definitionScopeStimulus, final String levelIndicatorStyle, final Integer levelThreshold, SingleStimulusListener triggerListener) {
         final ValueChangeListener<Double> levelIndicatorListener;
         final ValueChangeListener<Double> thresholdIndicatorListener;
         if (levelIndicatorStyle != null) {

@@ -520,7 +520,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                                 or ancestor::*[local-name() = 'addFrameTimeTrigger'] 
                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                 or ancestor::*[local-name() = 'addRecorderLevelTrigger'] 
-                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, ' else ''" />
+                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null /* currentStimulus */, ' else ''" />
         </xsl:if>
         <xsl:if test="local-name() ne 'touchInputLabelButton' and local-name() ne 'touchInputImageButton' and local-name() ne 'touchInputVideoButton'">
             <xsl:text>new PresenterEventListener() {
@@ -680,7 +680,7 @@ or local-name() eq 'submitGroupEvent'
                                             or ancestor::*[local-name() = 'addFrameTimeTrigger'] 
                                             or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                             or ancestor::*[local-name() = 'addRecorderLevelTrigger'] 
-                                            or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, ' else ''" />
+                                            or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null /* currentStimulus */, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;, ') else ''" />
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
@@ -1077,7 +1077,7 @@ or local-name() eq 'ratingCheckbox'
                                                                                                 or ancestor::*[local-name() = 'addFrameTimeTrigger'] 
                                                                                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                                                                                 or ancestor::*[local-name() = 'addRecorderLevelTrigger'] 
-                                                                                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, '), ' localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;)') else ''" />
+                                                                                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null /* currentStimulus */, '), ' localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;)') else ''" />
         <xsl:value-of select="if (local-name() eq 'svgGroupAction') then ', ' else ''" />
         <xsl:value-of select="if(@visible) then concat(', ', @visible eq 'true') else ''" />
         <xsl:if test="local-name() eq 'svgGroupAction'">
@@ -1147,7 +1147,7 @@ or local-name() eq 'clearStimulusResponse'
                             or ancestor::*[local-name() = 'addRecorderDtmfTrigger']
                             or ancestor::*[local-name() = 'addRecorderLevelTrigger']
                             or ancestor::*[local-name() = 'groupNetwork']
-                            ) then 'currentStimulus, ' else 'null, ' else ''" />
+                            ) then 'currentStimulus, ' else 'null /* currentStimulus */, ' else ''" />
 
         <!--        <xsl:if test="local-name() eq 'groupNetwork'">
             some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed
@@ -1160,7 +1160,7 @@ or local-name() eq 'clearStimulusResponse'
                                 or ancestor::*[local-name() = 'addFrameTimeTrigger'] 
                                 or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                 or ancestor::*[local-name() = 'addRecorderLevelTrigger'] 
-                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null, ' else ''" />
+                                or ancestor::*[local-name() = 'groupNetwork']) then 'currentStimulus, ' else 'null /* currentStimulus */, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
@@ -1216,7 +1216,8 @@ or local-name() eq 'backgroundImage'">
         <!--// TODO: it is better to change the order of output to be comma then attribute because of the apply-templates later in this template which is used in a lot of templates -->
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot; ') else ''" />
         <xsl:value-of select="if(@listenerId and local-name() ne 'clearTimer') then ',' else ''" />
-        <xsl:value-of select="if(@threshold) then @threshold else ''" />
+        <xsl:value-of select="if(@levelIndicatorStyle) then concat('&quot;', @levelIndicatorStyle, '&quot; /* levelIndicatorStyle */,') else ''" />
+        <xsl:value-of select="if(@threshold) then concat(@threshold, '/* threshold */') else ''" />
         <xsl:value-of select="if(@threshold and local-name() ne 'addFrameTimeTrigger' and local-name() ne 'addMediaTrigger') then ', ' else ''" />
         <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />
@@ -1275,7 +1276,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                     or local-name() eq 'addRecorderLevelTrigger'
                     or local-name() eq 'habituationParadigmListener'
                     ">
-            <xsl:text>&#xa;new SingleStimulusListener() {
+            <xsl:text>&#xa;new SingleStimulusListener() /* </xsl:text><xsl:value-of select="local-name()" /><xsl:text> */ {
                 @Override
                 public void postLoadTimerFired(final Stimulus currentStimulus) {
             </xsl:text>
@@ -1432,7 +1433,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                                                                                                                or ancestor::*[local-name() = 'addRecorderDtmfTrigger']
                                                                                                                or ancestor::*[local-name() = 'addRecorderLevelTrigger']
                                                                                                                or ancestor::*[local-name() = 'groupNetwork']
-                                                                                                               ) then 'currentStimulus' else 'null' else ''" />
+                                                                                                               ) then 'currentStimulus' else 'null /* currentStimulus */' else ''" />
         <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ')  else 'null, 'else ''" />
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField, ') else ''" />
         <xsl:value-of select="if(@downloadPermittedWindowMs) then concat(@downloadPermittedWindowMs, ', ') else ''" />
@@ -1517,7 +1518,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                                                                                                                or ancestor::*[local-name() = 'addRecorderDtmfTrigger']
                                                                                                                or ancestor::*[local-name() = 'addRecorderLevelTrigger']
                                                                                                                or ancestor::*[local-name() = 'groupNetwork']
-                                                                                                               ) then 'currentStimulus, ' else 'null, ' else ''" />
+                                                                                                               ) then 'currentStimulus, ' else 'null /* currentStimulus */, ' else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot;, ') else ''" />
         <xsl:value-of select="if(local-name() eq 'clearCurrentScore' or local-name() eq 'scoreIncrement') then if(@dataChannel) then @dataChannel else '0' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat(', ', @scoreValue, '') else ''" />
@@ -1564,7 +1565,7 @@ or local-name() eq 'stimulusExists'
                                                                             or ancestor::*[local-name() = 'addFrameTimeTrigger'] 
                                                                             or ancestor::*[local-name() = 'addRecorderDtmfTrigger'] 
                                                                             or ancestor::*[local-name() = 'addRecorderLevelTrigger'] 
-                                                                            or ancestor::*[local-name() = 'groupNetwork']) then ', currentStimulus' else ', null' else ''" />
+                                                                            or ancestor::*[local-name() = 'groupNetwork']) then ', currentStimulus' else ', null /* currentStimulus */' else ''" />
         <xsl:if test="local-name() eq 'groupStimuli'">
             <xsl:text>, &#xa;new CurrentStimulusListener() {
                 @Override
