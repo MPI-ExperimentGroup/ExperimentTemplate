@@ -50,6 +50,14 @@
                 </xsl:text>-->
                 <!--</xsl:if>-->
             </xsl:for-each>
+            <!-- <xsl:for-each select="distinct-values(//@storageField[not(.=experiment/metadata/field/@postName)])">
+                take the list of nodes from the storageField attribute that do not exist in the experiment/metadata/field list and add the result as metadata fields
+                <xsl:text>postName_</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>=</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>&#xa;</xsl:text>
+            </xsl:for-each> -->
         </xsl:result-document>
         <!--make separate properties files for each locale-->
         <xsl:variable name="translationNodes" select="experiment/metadata/field/translation" />
@@ -100,6 +108,18 @@
                 <xsl:value-of select="@postName" />
                 <xsl:text>());</xsl:text>
             </xsl:for-each>
+            <!-- <xsl:for-each select="distinct-values(//@storageField[not(.=experiment/metadata/field/@postName)])">
+                take the list of nodes from the storageField attribute that do not exist in the experiment/metadata/field list and add the result as metadata fields
+                but we don't do this because it is problematic in the admin pages
+                <xsl:text>
+                    public final MetadataField </xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>MetadataField = new MetadataField(mateadataFields.postName_</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>(), mateadataFields.postName_</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>(), "", "", "");</xsl:text>
+            </xsl:for-each> -->
             <xsl:text>
                 public final MetadataField[] getMetadataFieldArray(){
                 return new MetadataField[]{

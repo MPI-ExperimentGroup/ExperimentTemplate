@@ -427,7 +427,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 if (consumedTagsGroupName != null) {
                     localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName, "-" + stimulusAllocation.getAlias() + "-");
                 }
-                userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.getAlias());
+                if (stimulusAllocationField != null) {
+                    userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.getAlias());
+                }
                 localStorage.storeData(userResults, metadataFieldProvider);
                 allocatedTags.add(stimulusAllocation.getTag());
                 // submit the user metadata so that the selected stimuli group is stored
