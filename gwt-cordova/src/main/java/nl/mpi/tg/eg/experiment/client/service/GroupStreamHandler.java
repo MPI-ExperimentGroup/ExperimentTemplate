@@ -73,8 +73,10 @@ public abstract class GroupStreamHandler {
             // if (memberCode === originMemberCode) { // what is this comparison doing and why
             //     console.log('already connected, ignoring')
             // } else 
-            if (!$wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].localDescription) {
+            // if (!$wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].localDescription) {
+            if (!$wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode]) {
                 // delaying setting the local description so that candidates do not get sent until both sides have seen the offer
+                $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = true;
                 console.log(selfMemberCode + ": " + selfMemberCode + " <==setLocalDescription offer== " + remoteMemberCode);
                 $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].setLocalDescription(offer);
             }
@@ -130,6 +132,7 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         if (!$wnd.groupConnections){
             $wnd.groupConnections = [];
+            $wnd.readyConnections = [];
         }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
