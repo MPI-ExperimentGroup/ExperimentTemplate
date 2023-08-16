@@ -35,7 +35,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
 
 //    private final HashMap<String, ArrayList<CancelableStimulusListener>> selfActivityListeners = new HashMap<>();
 //    private final HashMap<String, ArrayList<CancelableStimulusListener>> othersActivityListeners = new HashMap<>();
-    private final HashMap<String, GroupActivityListener> activityListeners = new HashMap<>();
+    private final ArrayList<GroupActivityListener> activityListeners = new ArrayList<>();
     private final String allMemberCodes;
     private final String groupCommunicationChannels;
 //    private final CancelableStimulusListener endOfStimulusListener;
@@ -115,7 +115,7 @@ public abstract class GroupParticipantService implements GroupScoreService {
 //        int phaseCount = activityListener.getGroupRole().split(":").length;
         // todo: phasesPerStimulus being based on the maximum phaseCount is a bit abitary and could perhaps be an explicit parameter in the experiment configuration
 //        phasesPerStimulus = (phasesPerStimulus >= phaseCount) ? phasesPerStimulus : phaseCount;
-        activityListeners.put(activityListener.getGroupRole(), activityListener);
+        activityListeners.add( activityListener);
     }
 
     protected void clearLastFiredListener() {
@@ -189,12 +189,12 @@ public abstract class GroupParticipantService implements GroupScoreService {
                     this.messageSenderMemberCode = originMemberCode;
                     // make sure that all relevent members have responded before moving to the next phase
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
-                    final List<GroupActivityListener> currentFiredListenerList = new ArrayList();
-                    for (String phaseMembers : activityListeners.keySet()) {
+                    final List<GroupActivityListener> currentFiredListenerList = new ArrayList<>();
+                    for (final GroupActivityListener currentListener : activityListeners) {
+                        final String phaseMembers = currentListener.getGroupRole();
                         final String[] splitRole = phaseMembers.split(":");
                         int roleIndex = currentRequestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
-                            final GroupActivityListener currentListener = activityListeners.get(phaseMembers);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(phaseMembers).get(this.requestedPhase).postLoadTimerFired();
                             if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
                                     || (lastFiredListenerList == null || !lastFiredListenerList.contains(currentListener))) {
