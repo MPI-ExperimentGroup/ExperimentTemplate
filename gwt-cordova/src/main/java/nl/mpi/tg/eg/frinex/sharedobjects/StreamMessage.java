@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
+import java.util.Date;
+import java.util.Objects;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
@@ -28,7 +30,7 @@ public class StreamMessage {
     public enum StreamMessageState {
         offer, answer, candidate, ready, refresh, disconnect
     };
-    
+
     public enum StreamMessageType {
         Canvas, Camera
     };
@@ -43,8 +45,10 @@ public class StreamMessage {
     private StreamMessageState streamState;
     private StreamMessageType streamType;
     private String messageData;
+    private Date arrivalDate;
 
     public StreamMessage() {
+        arrivalDate = new Date();
     }
 
 //    public StreamMessage(UserId userId, GroupId groupId, GroupUUID groupUUID, String screenId, MemberCode memberCode, MemberCode originMemberCode, Integer originPhase, StreamMessageState streamState, String messageData) {
@@ -59,7 +63,7 @@ public class StreamMessage {
 //        this.StreamMessageType = StreamMessageType;
 //        this.messageData = messageData;
 //    }
-
+    
     public UserId getUserId() {
         return userId;
     }
@@ -140,4 +144,65 @@ public class StreamMessage {
         this.messageData = messageData;
     }
 
+    public Date getArrivalDate() {
+        return arrivalDate;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.userId);
+        hash = 19 * hash + Objects.hashCode(this.groupId);
+        hash = 19 * hash + Objects.hashCode(this.groupUUID);
+        hash = 19 * hash + Objects.hashCode(this.screenId);
+        hash = 19 * hash + Objects.hashCode(this.targetMemberCode);
+        hash = 19 * hash + Objects.hashCode(this.originMemberCode);
+        hash = 19 * hash + Objects.hashCode(this.originPhase);
+        hash = 19 * hash + Objects.hashCode(this.streamState);
+        hash = 19 * hash + Objects.hashCode(this.streamType);
+        hash = 19 * hash + Objects.hashCode(this.messageData);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StreamMessage other = (StreamMessage) obj;
+        if (!Objects.equals(this.screenId, other.screenId)) {
+            return false;
+        }
+        if (!Objects.equals(this.messageData, other.messageData)) {
+            return false;
+        }
+        if (!Objects.equals(this.userId, other.userId)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupId, other.groupId)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupUUID, other.groupUUID)) {
+            return false;
+        }
+        if (!Objects.equals(this.targetMemberCode, other.targetMemberCode)) {
+            return false;
+        }
+        if (!Objects.equals(this.originMemberCode, other.originMemberCode)) {
+            return false;
+        }
+        if (!Objects.equals(this.originPhase, other.originPhase)) {
+            return false;
+        }
+        if (this.streamState != other.streamState) {
+            return false;
+        }
+        return this.streamType == other.streamType;
+    }
 }

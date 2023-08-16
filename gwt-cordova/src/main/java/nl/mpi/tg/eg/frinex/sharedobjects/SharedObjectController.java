@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.ListIterator;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -30,6 +34,7 @@ public class SharedObjectController {
 
     private final static GroupManager GROUP_MANAGER = new GroupManager();
 //    private String currentGroupId = null;
+    private final static List<StreamMessage> recentOffers = new ArrayList<>();
 
     @MessageMapping("/shared")
     @SendTo("/shared/animation")
@@ -40,6 +45,29 @@ public class SharedObjectController {
     @MessageMapping("/stream")
     @SendTo("/shared/stream")
     public StreamMessage getStreamData(StreamMessage streamMessage) throws Exception {
+        if (streamMessage.getStreamState() == StreamMessage.StreamMessageState.offer) {
+            final ListIterator<StreamMessage> listIterator = recentOffers.listIterator();
+            while (listIterator.hasNext()) {
+                final StreamMessage previousOffer = listIterator.next();
+                if (new Date().getTime() - previousOffer.getArrivalDate().getTime() > 1000) {
+                    recentOffers.remove(previousOffer);
+                } else if (previousOffer.getStreamState() == streamMessage.getStreamState()
+                        && previousOffer.getStreamType() == streamMessage.getStreamType()
+                        && previousOffer.getGroupId() == streamMessage.getGroupId()
+                        && previousOffer.getOriginPhase().equals(streamMessage.getOriginPhase())
+                        && previousOffer.getScreenId().equals(streamMessage.getScreenId())
+                        && previousOffer.getOriginPhase().equals(streamMessage.getOriginPhase())) {
+                    if ((previousOffer.getTargetMemberCode() == streamMessage.getTargetMemberCode()
+                            && previousOffer.getOriginMemberCode() == streamMessage.getOriginMemberCode())
+                            || (previousOffer.getOriginMemberCode() == streamMessage.getTargetMemberCode()
+                            && previousOffer.getTargetMemberCode() == streamMessage.getOriginMemberCode())) {
+                        return previousOffer;
+                    }
+                }
+            }
+            // if we got here then the offer is fresh and can be stored
+            recentOffers.add(streamMessage);
+        }
         return streamMessage;
     }
 
