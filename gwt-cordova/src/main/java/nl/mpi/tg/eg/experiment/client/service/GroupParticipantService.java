@@ -115,7 +115,9 @@ public abstract class GroupParticipantService implements GroupScoreService {
 //        int phaseCount = activityListener.getGroupRole().split(":").length;
         // todo: phasesPerStimulus being based on the maximum phaseCount is a bit abitary and could perhaps be an explicit parameter in the experiment configuration
 //        phasesPerStimulus = (phasesPerStimulus >= phaseCount) ? phasesPerStimulus : phaseCount;
-        activityListeners.add( activityListener);
+        if (!activityListeners.contains(activityListener)) {
+            activityListeners.add(activityListener);
+        }
     }
 
     protected void clearLastFiredListener() {
