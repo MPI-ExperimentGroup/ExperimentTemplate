@@ -251,6 +251,7 @@ public abstract class GroupStreamHandler {
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onnegotiationneeded = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].close();
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = null;
+                    $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
                 }
             };
 
@@ -409,6 +410,7 @@ public abstract class GroupStreamHandler {
             // TODO: should we be cleaning up the the local canvas srcObject.getTracks here also?
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].close();
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode] = null;
+            $wnd.readyConnections[memberCode + "-" + streamType + '>' + remoteMemberCode] = false;
         }
 
         // remove all member remote video elements for each member
