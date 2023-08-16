@@ -219,6 +219,7 @@ public abstract class GroupStreamHandler {
                 console.log("configuration: " + configuration);
             }
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = new RTCPeerConnection(configuration);
+            $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = function (event) {
                 console.log(selfMemberCode + ": " + remoteMemberCode + " <==onicecandidate== " + selfMemberCode);
                 if (event.candidate) {
