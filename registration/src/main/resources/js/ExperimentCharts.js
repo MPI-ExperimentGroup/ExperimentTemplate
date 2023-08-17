@@ -186,7 +186,6 @@ function loadMore(tableId) {
 }
 
 function generateTable(tableData) {
-    $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
     const tableId = tableData.divId + "Table";
     const columnCount = tableData.columnNames.split(",").length;
     const dataUrl = (tableData.source === "tagpair") ? (
@@ -204,6 +203,7 @@ function generateTable(tableData) {
         + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
         + '&response=' + encodeURIComponent(tableData.response)
     ) : "";
+    $("#" + tableData.divId).append("<h3><a href=\"" + dataUrl + "\">" + tableData.label + "</a></h3>");
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
