@@ -1220,6 +1220,7 @@ or local-name() eq 'backgroundImage'">
             <xsl:value-of select="if(@levelIndicatorStyle) then concat('&quot;', @levelIndicatorStyle, '&quot; /* levelIndicatorStyle */,') else 'null /* levelIndicatorStyle */,'" />
         </xsl:if>
         <xsl:value-of select="if(@threshold) then concat(@threshold, '/* threshold */') else ''" />
+        <xsl:value-of select="if(@threshold) then concat(', ', @thresholdMs, '/* thresholdMs */') else ''" />
         <xsl:value-of select="if(@threshold and local-name() ne 'addFrameTimeTrigger' and local-name() ne 'addMediaTrigger') then ', ' else ''" />
         <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />

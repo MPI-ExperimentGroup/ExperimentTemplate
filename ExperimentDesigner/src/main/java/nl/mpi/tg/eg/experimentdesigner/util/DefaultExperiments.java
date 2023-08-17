@@ -322,6 +322,7 @@ public class DefaultExperiments {
                                 break;
                             case eventTier:
                             case threshold:
+                            case thresholdMs:
                             case phasesPerStimulus:
                             case scoreValue:
                                 presenterFeature.addFeatureAttributes(attribute, "8");

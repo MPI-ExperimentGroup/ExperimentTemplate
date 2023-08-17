@@ -3947,7 +3947,7 @@
 </xs:complexType>
 <xs:complexType name="addRecorderLevelTriggerType">
 <xs:annotation>
-<xs:documentation>Adds a web recorder event that will trigger when the a sound in the recorded audio stream exceeds the provided threshold above the ambient noise floor. If the levelIndicatorStyle is set then a recording threshold indicator will be shown. If levelIndicatorStyle is set and a region with the ID of AudioThresholdIndicator exists then that region will be used to position the recording threshold indicator.</xs:documentation>
+<xs:documentation>Adds a web recorder event that will trigger when the a sound in the recorded audio stream exceeds the provided threshold above the ambient noise floor for greater than the provided milliseconds. If the levelIndicatorStyle is set then a recording threshold indicator will be shown. If levelIndicatorStyle is set and a region with the ID of AudioThresholdIndicator exists then that region will be used to position the recording threshold indicator.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="addRecorderLevelTrigger" type="addRecorderLevelTriggerType"/>
@@ -3956,6 +3956,11 @@
 <xs:attribute name="threshold" type="xs:integer" use="required">
 <xs:annotation>
 <xs:documentation>Threshold value.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="thresholdMs" type="xs:integer" use="required">
+<xs:annotation>
+<xs:documentation>The milliseconds required to reach the threshold.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="levelIndicatorStyle" type="xs:string">

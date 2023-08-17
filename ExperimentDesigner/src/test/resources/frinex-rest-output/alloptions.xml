@@ -2382,7 +2382,7 @@
                 <endAudioRecorderTag eventTier="8"/>
             </addRecorderDtmfTrigger>
         </addRecorderDtmfTrigger>
-        <addRecorderLevelTrigger levelIndicatorStyle="levelIndicatorStyle" threshold="8">
+        <addRecorderLevelTrigger levelIndicatorStyle="levelIndicatorStyle" threshold="8" thresholdMs="8">
             <disableButtonGroup matchingRegex="matchingRegex"/>
             <enableButtonGroup matchingRegex="matchingRegex"/>
             <hideButtonGroup matchingRegex="matchingRegex"/>
@@ -2405,7 +2405,7 @@
             <stopAudioRecorder/>
             <startAudioRecorderTag eventTier="8"/>
             <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-            <addRecorderLevelTrigger threshold="8">
+            <addRecorderLevelTrigger threshold="8" thresholdMs="8">
                 <disableButtonGroup matchingRegex=""/>
                 <enableButtonGroup matchingRegex=""/>
                 <hideButtonGroup matchingRegex=""/>
@@ -5470,7 +5470,7 @@
             <startAudioRecorderTag eventTier="8"/>
             <endAudioRecorderTag eventTier="8"/>
         </addRecorderDtmfTrigger>
-        <addRecorderLevelTrigger threshold="8">
+        <addRecorderLevelTrigger threshold="8" thresholdMs="8">
             <disableButtonGroup matchingRegex=""/>
             <enableButtonGroup matchingRegex=""/>
             <hideButtonGroup matchingRegex=""/>

@@ -255,6 +255,7 @@ public enum FeatureAttribute {
     opto1("Sets the state of the on screen indicator for optical sensor one.", true, AttributeType.xsBooleanToggle),
     opto2("Sets the state of the on screen indicator for optical sensor two.", true, AttributeType.xsBooleanToggle),
     msToNext("The milliseconds to delay after completion. The resulting delay is approximate and variability should be tested in the intended environment.", false, AttributeType.xsInteger),
+    thresholdMs("The milliseconds required to reach the threshold.", false, AttributeType.xsInteger),
     groupId("This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.", true, AttributeType.xsString),
     mediaId(/*true*/), listenerId, threshold("Threshold value.", false, AttributeType.xsInteger), maximum("Maximum value.", false, AttributeType.xsInteger), minimum("Minimum value.", false, AttributeType.xsInteger), initial("Initial value.", false, AttributeType.xsInteger), average,
     msLabelFormat,

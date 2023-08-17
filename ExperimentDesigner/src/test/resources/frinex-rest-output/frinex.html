@@ -3415,13 +3415,15 @@ Starts or stops the production of DTMF tones (dual-tone multi-frequency signalin
 <h3 id="addRecorderLevelTriggerType" style="text-transform: uppercase;">
 addRecorderLevelTrigger
 </h3>
-Adds a web recorder event that will trigger when the a sound in the recorded audio stream exceeds the provided threshold above the ambient noise floor. If the levelIndicatorStyle is set then a recording threshold indicator will be shown. If levelIndicatorStyle is set and a region with the ID of AudioThresholdIndicator exists then that region will be used to position the recording threshold indicator.
+Adds a web recorder event that will trigger when the a sound in the recorded audio stream exceeds the provided threshold above the ambient noise floor for greater than the provided milliseconds. If the levelIndicatorStyle is set then a recording threshold indicator will be shown. If levelIndicatorStyle is set and a region with the ID of AudioThresholdIndicator exists then that region will be used to position the recording threshold indicator.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">addRecorderLevelTrigger</span></td><td><span style="color:green">levelIndicatorStyle</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.</span><br/>
 <span style="color:green">threshold</span><span style="color:grey">=&quot;Integer&quot;</span><span>
 Threshold value.</span><br/>
+<span style="color:green">thresholdMs</span><span style="color:grey">=&quot;Integer&quot;</span><span>
+The milliseconds required to reach the threshold.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <button id="addRecorderLevelTriggerChildShow" style="display: block;" onclick="$('#addRecorderLevelTriggerChildDocumentation').show();$('#addRecorderLevelTriggerChildHide').show();$('#addRecorderLevelTriggerChildShow').hide();">show 21 truncated items</button>
