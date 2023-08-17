@@ -203,7 +203,8 @@ function generateTable(tableData) {
         + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
         + '&response=' + encodeURIComponent(tableData.response)
     ) : "";
-    $("#" + tableData.divId).append("<h3><a href=\"" + dataUrl + "\">" + tableData.label + "</a></h3>");
+    $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
+    $("#" + tableData.divId).append("<a href=\"" + dataUrl + "\">raw data</a>");
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
