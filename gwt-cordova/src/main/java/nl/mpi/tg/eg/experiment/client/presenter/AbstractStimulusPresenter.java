@@ -1946,7 +1946,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             thresholdIndicatorListener = null;
         }
         addRecorderLevelIndicatorWeb(new ValueChangeListener<Double>() {
-            Double accumulatorValue = 0.0;
+            Double accumulatorValue = 1024.0;
             final Double alpha = 0.1;
             Duration levelDuration = null;
             Double requiredThreshold = 1024.0;
