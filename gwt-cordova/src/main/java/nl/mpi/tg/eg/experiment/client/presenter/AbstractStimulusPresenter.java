@@ -1949,11 +1949,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             Double accumulatorValue = 0.0;
             final Double alpha = 0.1;
             Duration levelDuration = null;
+            Double requiredThreshold = 1024.0;
 
             @Override
             public void onValueChange(final Double value) {
-                // determine the required threshold for the current sample
-                final Double requiredThreshold = accumulatorValue + (accumulatorValue / 100 * levelThreshold);
+                if (levelDuration == null) {
+                    // determine the required threshold for the current sample
+                    // but do not change the required threshold when currently triggering (the duration is not null) to make the effect more obvious to the user
+                    requiredThreshold = accumulatorValue + (accumulatorValue / 100 * levelThreshold);
+                }
                 // calculate the exponential moving average
                 accumulatorValue = (alpha * value) + (1.0 - alpha) * accumulatorValue;
                 if (value > requiredThreshold) {
