@@ -1445,7 +1445,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(local-name() eq 'playMedia' and @loop) then concat(', ', @loop, ' /* loop */') else ''" />
         <xsl:value-of select="if(local-name() eq 'playMedia' and not(@loop)) then ', null /* loop */' else ''" />
         <xsl:value-of select="if(local-name() eq 'logMediaTimeStamp') then ', ' else ''" />
-        <xsl:value-of select="if(@target) then concat('ApplicationState.xml_', @target, '.name()') else ''" />
+        <xsl:value-of select="if(@target) then concat('ApplicationState.xml_', @target, '.selfName') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'audioInputSelectWeb') then if(@deviceRegex) then concat('&quot;', @deviceRegex, '&quot;') else 'null' else ''" />
         <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@deviceRegex) then concat(',&quot;', @deviceRegex, '&quot;') else ',null' else ''" />
