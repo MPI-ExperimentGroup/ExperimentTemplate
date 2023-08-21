@@ -1957,6 +1957,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     // determine the required threshold for the current sample
                     // but do not change the required threshold when currently triggering (the duration is not null) to make the effect more obvious to the user
                     requiredThreshold = accumulatorValue + (accumulatorValue / 100 * levelThreshold);
+                    requiredThreshold = (requiredThreshold > 100)? 100 : requiredThreshold;
                 }
                 // calculate the exponential moving average
                 accumulatorValue = (alpha * value) + (1.0 - alpha) * accumulatorValue;
