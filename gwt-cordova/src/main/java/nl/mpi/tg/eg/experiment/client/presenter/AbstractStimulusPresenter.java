@@ -1950,6 +1950,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final Double alpha = 0.1;
             Duration levelDuration = null;
             Double requiredThreshold = 0.0;
+            boolean isTriggered = false;
 
             @Override
             public void onValueChange(final Double value) {
@@ -1965,10 +1966,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     if (levelDuration == null) {
                         levelDuration = new Duration();
                     }
-                    if (levelDuration.elapsedMillis() >= levelThresholdMs) {
+                    if (!isTriggered && levelDuration.elapsedMillis() >= levelThresholdMs) {
+                        isTriggered = true;
                         triggerListener.postLoadTimerFired(definitionScopeStimulus);
                     }
                 } else {
+                    isTriggered = false;
                     levelDuration = null;
                 }
                 if (thresholdIndicatorListener != null) {
