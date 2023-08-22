@@ -1,4 +1,6 @@
 <!doctype html>
+<html>
+    <head>
 <!--
 Copyright (C) 2015 
 
@@ -29,8 +31,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     @experiment.staticFilesUrl@<br/>
     Version: @project.version@<br/>
 -->
-<html>
-    <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta content='width=device-width, initial-scale=@experiment.defaultScale@, maximum-scale=@experiment.defaultScale@, user-scalable=@experiment.isScalable@' name='viewport' />
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' @experiment.destinationServerUrl@ @experiment.groupsSocketUrl@ @experiment.registrationUrl@ gap://ready; style-src 'self' @experiment.scriptSrcUrl@ 'unsafe-inline'; script-src @experiment.scriptSrcUrl@ 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' @experiment.destinationServerUrl@ @experiment.groupsSocketUrl@ @experiment.registrationUrl@; media-src 'self' @experiment.destinationServerUrl@ http://corpus1.mpi.nl/media-archive/ @experiment.staticFilesUrl@ blob:;">
