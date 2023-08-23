@@ -250,6 +250,47 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
         });
     }
 
+    final Label animationCounterLabel = new Label();
+    private void updateRateCounter(Double updatedValue){
+        animationCounterLabel.setText(Double.toString(updatedValue));
+    }
+
+    protected native void startRateIndicator()/*-{
+        displayValue = 0;
+        function updateRateIndicator() {
+            var hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.LocalStoragePresenter::updateRateCounter(Ljava/lang/Double;)(displayValue);
+            displayValue =  + 1;;
+            requestAnimationFrame(updateRateIndicator);
+        }
+        requestAnimationFrame(updateRateIndicator);
+   }-*/;
+
+    protected void addDebugWidgets() {
+        optionButton(new PresenterEventListener() {
+
+            @Override
+            public String getLabel() {
+                return "Start Native Animation Frame Rate Indicator";
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                ((ComplexView) simpleView).addWidget(animationCounterLabel);
+                startRateIndicator();
+            }
+        }, null);
+    }
+    
     protected void addKeyboardDebug() {
         final Label clickLabel = new Label();
         final Label mouseLabel = new Label();

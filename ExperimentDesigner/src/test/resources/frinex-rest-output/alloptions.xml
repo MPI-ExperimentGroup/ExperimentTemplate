@@ -2927,6 +2927,7 @@
         <localStorageData/>
         <stimuliValidation/>
         <addKeyboardDebug/>
+        <addDebugWidgets/>
         <eraseLocalStorageButton groupId="groupId" styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -5991,6 +5992,7 @@
         <localStorageData/>
         <stimuliValidation/>
         <addKeyboardDebug/>
+        <addDebugWidgets/>
         <eraseLocalStorageButton/>
         <centrePage/>
         <hasGetParameter parameterName="">
