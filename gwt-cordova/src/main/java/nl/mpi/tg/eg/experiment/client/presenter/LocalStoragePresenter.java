@@ -259,8 +259,8 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
         var localStoragePresenter = this;
         $wnd.displayRateIndicatorValue = 0;
         function updateRateIndicator() {
-            var hasListeners = localStoragePresenter.@nl.mpi.tg.eg.experiment.client.presenter.LocalStoragePresenter::updateRateCounter(Ljava/lang/Double;)(displayRateIndicatorValue);
-            displayRateIndicatorValue =  + 1;;
+            var hasListeners = localStoragePresenter.@nl.mpi.tg.eg.experiment.client.presenter.LocalStoragePresenter::updateRateCounter(Ljava/lang/Double;)($wnd.displayRateIndicatorValue);
+            $wnd.displayRateIndicatorValue =  + 1;
             requestAnimationFrame(updateRateIndicator);
         }
         requestAnimationFrame(updateRateIndicator);
