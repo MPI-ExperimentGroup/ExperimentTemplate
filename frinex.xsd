@@ -2801,19 +2801,25 @@
 </xs:complexType>
 <xs:complexType name="localStorageDataType">
 <xs:annotation>
-<xs:documentation>For use in the debug type presenter to show the data stored in the local storage. Use with caution because there can be a lot of data.</xs:documentation>
+<xs:documentation>For use in the debug type presenters to show the data stored in the local storage. Use with caution because there can be a lot of data.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
 <xs:complexType name="stimuliValidationType">
 <xs:annotation>
-<xs:documentation>For use in the debug type presenter to show the results of stimuli randomisation for each selection in the configuration file.</xs:documentation>
+<xs:documentation>For use in the debug type presenters to show the results of stimuli randomisation for each selection in the configuration file.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
 <xs:complexType name="addKeyboardDebugType">
 <xs:annotation>
-<xs:documentation>For use in the debug type presenter to show the keycodes entered by devices attached to the device. Such as bluetooth remotes or pointers.</xs:documentation>
+<xs:documentation>For use in the debug type presenters to show the keycodes entered by devices attached to the device. Such as bluetooth remotes or pointers.</xs:documentation>
+</xs:annotation>
+<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:complexType>
+<xs:complexType name="addDebugWidgetsType">
+<xs:annotation>
+<xs:documentation>For use in the debug type presenters to enable debugging tools.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
@@ -3087,7 +3093,7 @@
 </xs:complexType>
 <xs:complexType name="eraseLocalStorageButtonType">
 <xs:annotation>
-<xs:documentation>For use in the debug type presenter to erase the local storage data. This action cannot be undone and if the local storage data has not be sent to the server or stored in the device storage, the data will be lost permanently.</xs:documentation>
+<xs:documentation>For use in the debug type presenters to erase the local storage data. This action cannot be undone and if the local storage data has not be sent to the server or stored in the device storage, the data will be lost permanently.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="styleName" type="xs:string">
@@ -5536,6 +5542,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -5718,6 +5725,7 @@
 <xs:element name="actionFooterButton" type="actionFooterButtonType"/>
 <xs:element name="actionTokenButton" type="actionTokenButtonType"/>
 <xs:element name="activateRandomItem" type="activateRandomItemType"/>
+<xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
 <xs:element name="addKinTypeGui" type="addKinTypeGuiType"/>
 <xs:element name="addMediaTrigger" type="addMediaTriggerType"/>
@@ -5901,6 +5909,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="metadataFieldConnection" type="metadataFieldConnectionType"/>
@@ -6056,6 +6065,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6279,6 +6289,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
@@ -6516,6 +6527,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
 <xs:element name="stimulusMetadataField" type="stimulusMetadataFieldType"/>
