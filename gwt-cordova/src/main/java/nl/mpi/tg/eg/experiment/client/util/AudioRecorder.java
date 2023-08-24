@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
+import com.google.gwt.animation.client.AnimationScheduler;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
@@ -33,29 +34,39 @@ public class AudioRecorder extends AbstractRecorder {
     public AudioRecorder() {
     }
 
-    public native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
-        // console.log("startRecorderTriggersWeb");
-        console.log("start updateRecorderTriggers");
-        function updateRecorderTriggers() {
-            if ($wnd.recorder) {
-                // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
-                var currentMediaTime = ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000;
-                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime);
-                if(hasMoreListeners === true) {
-                    requestAnimationFrame(updateRecorderTriggers);
-                } else {
-                    console.log("recorderStartOffset: "+ ($wnd.recorderStartOffset * 1000));
-                    console.log("currentMediaTime: "+ currentMediaTime);
-                    console.log("end updateRecorderTriggers no more listeners");
-                    // if there are no more listeners then the animation requests will stop here.
+    public void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL) {
+        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+            @Override
+            public void execute(double timestamp) {
+                boolean shouldContinue = runRecorderTriggersWeb(recorderMediaTriggerListenerL);
+                if (shouldContinue) {
+                    AnimationScheduler.get().requestAnimationFrame(this);
                 }
-            } else {
-                // if the recorder is not yet running then we let the animation requests continue
-                // requestAnimationFrame(updateRecorderTriggers);
-                console.log("end updateRecorderTriggers");
             }
-        }
-        requestAnimationFrame(updateRecorderTriggers);
+        });
+    }
+    
+    public native boolean runRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // because firefox requestAnimationFrame can be slow, this has been migrated from native requestAnimationFrame to GWT AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback(){});
+        if ($wnd.recorder) {
+            // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
+            var currentMediaTime = ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000;
+            var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime);
+            if(hasMoreListeners === true) {
+                return true;
+            } else {
+                console.log("recorderStartOffset: "+ ($wnd.recorderStartOffset * 1000));
+                console.log("currentMediaTime: "+ currentMediaTime);
+                console.log("end updateRecorderTriggers no more listeners");
+                // if there are no more listeners then the animation requests will stop here.
+                return false;
+            }
+        } else {
+            // if the recorder is not yet running then we let the animation requests continue
+            // requestAnimationFrame(updateRecorderTriggers);
+            console.log("end updateRecorderTriggers");
+            return false;
+            }
     }-*/;
 
     public native void startRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
