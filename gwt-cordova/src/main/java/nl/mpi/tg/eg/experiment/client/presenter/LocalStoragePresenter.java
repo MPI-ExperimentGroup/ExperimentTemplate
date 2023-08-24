@@ -313,6 +313,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 final Label animationGwtCounterLabel = new Label();
+                ((ComplexView) simpleView).addWidget(animationGwtCounterLabel);
                 AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
                     @Override
                     public void execute(double arg0) {
