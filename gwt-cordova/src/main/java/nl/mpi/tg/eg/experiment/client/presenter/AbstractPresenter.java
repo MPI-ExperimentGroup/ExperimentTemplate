@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -685,57 +686,55 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void addRecorderLevelIndicatorWeb(final ValueChangeListener<Double> changeListener) {
         audioLevelIndicators.add(changeListener);
-        addRecorderLevelCallbackWeb();
+        initRecorderLevelCallbackWeb();
+        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+            @Override
+            public void execute(double timestamp) {
+                Double percentValue = runRecorderLevelCallbackWeb();
+                boolean hasListeners = updateLevelMeter(percentValue);
+                if (hasListeners) {
+                    AnimationScheduler.get().requestAnimationFrame(this);
+                }
+            }
+        });
     }
 
     protected void removeRecorderLevelIndicatorWeb() {
         audioLevelIndicators.clear();
     }
 
-    protected native void addRecorderLevelCallbackWeb()/*-{
-         var abstractPresenter = this;
-        //$wnd.attachLevelMeter(function(){changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(updatedValue)});
+    protected native void initRecorderLevelCallbackWeb()/*-{
         if ($wnd.recorder || $wnd.audioAnalyser) {
             if (!$wnd.audioAnalyser) {
                 $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
                 $wnd.audioAnalyser.fftSize = 2048;
                 $wnd.recorder.sourceNode.connect($wnd.audioAnalyser);
             }
-            bufferLength = $wnd.audioAnalyser.frequencyBinCount;
-            dataArray = new Uint8Array(bufferLength);
-            lastValue = 0;
-            console.log("start updateLevelIndicator");
-            function updateLevelIndicator() {
-                if ($wnd.recorder && $wnd.audioAnalyser) {
-                    $wnd.audioAnalyser.getByteTimeDomainData(dataArray);
-                    sumSqrValues = 0;
-                    for (var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
-                        var currentValue = dataArray[bufferIndex] - 128;
-                        sumSqrValues += currentValue * currentValue;
-                    }
-                    rmsValue = Math.sqrt(sumSqrValues / bufferLength);
-                    smoothedValue = rmsValue;
-                    if (rmsValue < lastValue) {
-                        smoothedValue += (lastValue - rmsValue) * 0.9;
-                    }
-                    lastValue = smoothedValue;
-                    //console.log(dataArray);
-                    percentValue = smoothedValue * (100 / 127);
-                    //console.log(percentValue);
-                    //abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Lnl/mpi/tg/eg/experiment/client/listener/ValueChangeListener;Ljava/lang/Double;)(changeListener);//, rmsValue
-                    //changeListener.@nl.mpi.tg.eg.experiment.client.listener.ValueChangeListener::onValueChange(Ljava/lang/Object;)(rmsValue);
-                    var hasListeners = abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateLevelMeter(Ljava/lang/Double;)(percentValue);
-                    //console.log(hasListeners);
-                    if(hasListeners === true) {
-                        requestAnimationFrame(updateLevelIndicator);
-                    } else {
-                        console.log("end updateLevelIndicator no more listeners");
-                    }
-                } else {
-                    console.log("end updateLevelIndicator");
-                }
+            $wnd.rlcBufferLength = $wnd.audioAnalyser.frequencyBinCount;
+            $wnd.rlcDataArray = new Uint8Array($wnd.rlcBufferLength);
+            $wnd.rlcLastValue = 0;
+        }
+    }-*/;
+
+    protected native Double runRecorderLevelCallbackWeb()/*-{
+        // because firefox requestAnimationFrame can be slow, this has been migrated from native requestAnimationFrame to GWT AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback(){});
+        if ($wnd.recorder && $wnd.audioAnalyser) {
+            $wnd.audioAnalyser.getByteTimeDomainData($wnd.rlcDataArray);
+            sumSqrValues = 0;
+            for (var bufferIndex = 0; bufferIndex < $wnd.rlcBufferLength; bufferIndex++) {
+                var currentValue = $wnd.rlcDataArray[bufferIndex] - 128;
+                sumSqrValues += currentValue * currentValue;
             }
-            requestAnimationFrame(updateLevelIndicator);
+            rmsValue = Math.sqrt(sumSqrValues / $wnd.rlcBufferLength);
+            smoothedValue = rmsValue;
+            if (rmsValue < $wnd.rlcLastValue) {
+                smoothedValue += ($wnd.rlcLastValue - rmsValue) * 0.9;
+            }
+            $wnd.rlcLastValue = smoothedValue;
+            percentValue = smoothedValue * (100 / 127);
+            return percentValue;
+        } else {
+            return 0.0;
         }
     }-*/;
 
