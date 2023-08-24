@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
+import com.google.gwt.animation.client.AnimationScheduler;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
