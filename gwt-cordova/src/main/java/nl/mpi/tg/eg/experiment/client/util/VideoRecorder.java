@@ -33,29 +33,39 @@ public class VideoRecorder extends AbstractRecorder {
     public VideoRecorder() {
     }
 
-    public native void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
-        // TODO: merge this video startRecorderTriggersWeb with the audio startRecorderTriggersWeb in an abstract class
-        // console.log("startRecorderTriggersWeb");
-        console.log("start updateRecorderTriggers");
-        function updateRecorderTriggers() {
-            if ($wnd.mediaRecorder) {
-                var currentMediaTime = performance.now() - $wnd.videoStartOffset;
-                var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime);
-                if(hasMoreListeners === true) {
-                    requestAnimationFrame(updateRecorderTriggers);
-                } else {
-                    console.log("videoStartOffset: "+ $wnd.videoStartOffset);
-                    console.log("currentMediaTime: "+ currentMediaTime);
-                    console.log("end updateRecorderTriggers no more listeners");
-                    // if there are no more listeners then the animation requests will stop here.
+    public void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL) {
+        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+            @Override
+            public void execute(double timestamp) {
+                boolean shouldContinue = runRecorderTriggersWeb(recorderMediaTriggerListenerL);
+                if (shouldContinue) {
+                    AnimationScheduler.get().requestAnimationFrame(this);
                 }
-            } else {
-                // if the recorder is not yet running then we let the animation requests continue
-                // requestAnimationFrame(updateRecorderTriggers);
-                console.log("end updateRecorderTriggers");
             }
+        });
+    }
+
+    private native boolean runRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // because firefox requestAnimationFrame can be slow, this has been migrated from native requestAnimationFrame to GWT AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback(){});
+        // TODO: merge this video startRecorderTriggersWeb with the audio startRecorderTriggersWeb in an abstract class
+        if ($wnd.mediaRecorder) {
+            var currentMediaTime = performance.now() - $wnd.videoStartOffset;
+            var hasMoreListeners = recorderMediaTriggerListenerL.@nl.mpi.tg.eg.experiment.client.listener.MediaTriggerListener::triggerWhenReady(Ljava/lang/Double;)(currentMediaTime);
+            if(hasMoreListeners === true) {
+                return true;
+            } else {
+                console.log("videoStartOffset: "+ $wnd.videoStartOffset);
+                console.log("currentMediaTime: "+ currentMediaTime);
+                console.log("end updateRecorderTriggers no more listeners");
+                // if there are no more listeners then the animation requests will stop here.
+                return false;
+            }
+        } else {
+            // if the recorder is not yet running then we let the animation requests continue
+            // requestAnimationFrame(updateRecorderTriggers);
+            console.log("end updateRecorderTriggers");
+            return false;
         }
-        requestAnimationFrame(updateRecorderTriggers);
     }-*/;
 
     public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{

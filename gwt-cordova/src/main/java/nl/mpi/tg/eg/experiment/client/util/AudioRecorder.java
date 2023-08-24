@@ -95,26 +95,26 @@ public class AudioRecorder extends AbstractRecorder {
         //    852 Hz	7	8	9	C
         //    941 Hz	*	0	#	D
         var sampleRate = $wnd.recorder.audioContext.sampleRate;
-        var $wnd.index697 = Math.round(697 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index770 = Math.round(770 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index852 = Math.round(852 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index941 = Math.round(941 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index1209 = Math.round(1209 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index1336 = Math.round(1336 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index1477 = Math.round(1477 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var $wnd.index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index697 = Math.round(697 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index770 = Math.round(770 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index852 = Math.round(852 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index941 = Math.round(941 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index1209 = Math.round(1209 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index1336 = Math.round(1336 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index1477 = Math.round(1477 / sampleRate * $wnd.audioAnalyser.fftSize);
+        $wnd.index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
 
-        var $wnd.frequencyCanvas = $doc.querySelector('#frequencyCanvas');
+        $wnd.frequencyCanvas = $doc.querySelector('#frequencyCanvas');
         if ($wnd.frequencyCanvas) {
-            var $wnd.frequencyCanvasContext = $wnd.frequencyCanvas.getContext('2d');
-            var $wnd.frequencyCanvasHeight = 256;
+            $wnd.frequencyCanvasContext = $wnd.frequencyCanvas.getContext('2d');
+            $wnd.frequencyCanvasHeight = 256;
             // we are only visualising the lower half of the spectrum
-            var $wnd.frequencyCanvasWidth = 1024;
+            $wnd.frequencyCanvasWidth = 1024;
             $wnd.frequencyCanvasContext.clearRect(0, 0, $wnd.frequencyCanvasWidth, $wnd.frequencyCanvasHeight);
         }
-        var $wnd.dtmfBufferLength = $wnd.audioAnalyser.frequencyBinCount;
-        var $wnd.dtmfDataArray = new Uint8Array($wnd.dtmfBufferLength);
-        var $wnd.dtmfInitialMs = performance.now();
+        $wnd.dtmfBufferLength = $wnd.audioAnalyser.frequencyBinCount;
+        $wnd.dtmfDataArray = new Uint8Array($wnd.dtmfBufferLength);
+        $wnd.dtmfInitialMs = performance.now();
         console.log("start updateRecorderDtmfTriggers");
     }-*/;
 
