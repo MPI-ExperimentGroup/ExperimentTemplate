@@ -290,6 +290,37 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
                 startRateIndicator();
             }
         }, null);
+        optionButton(new PresenterEventListener() {
+
+            @Override
+            public String getLabel() {
+                return "Start GWT Animation Frame Rate Indicator";
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                final Label animationGwtCounterLabel = new Label();
+                Double updatedGwtValue = 0
+                AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+                    @Override
+                    public void execute(double arg0) {
+                        animationGwtCounterLabel.setText(Double.toString(updatedGwtValue));
+                        updatedGwtValue++;
+                        AnimationScheduler.get().requestAnimationFrame(this);
+                    }
+                });
+            }
+        }, null);
     }
     
     protected void addKeyboardDebug() {
