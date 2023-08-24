@@ -45,8 +45,8 @@ public class AudioRecorder extends AbstractRecorder {
             }
         });
     }
-    
-    public native boolean runRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+
+    private native boolean runRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
         // because firefox requestAnimationFrame can be slow, this has been migrated from native requestAnimationFrame to GWT AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback(){});
         if ($wnd.recorder) {
             // using $wnd.recorder.audioContext.currentTime * 1000 instead of $wnd.recorder.encodedSamplePosition / 48 partly because encodedSamplePosition is not useful when recording WAV.
@@ -69,8 +69,20 @@ public class AudioRecorder extends AbstractRecorder {
             }
     }-*/;
 
-    public native void startRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
-        // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
+    public void startRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL) {
+        initRecorderDtmfTriggersWeb();
+        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
+            @Override
+            public void execute(double timestamp) {
+                boolean shouldContinue = runRecorderDtmfTriggersWeb(abstractPresenter, recorderMediaTriggerListenerL);
+                if (shouldContinue) {
+                    AnimationScheduler.get().requestAnimationFrame(this);
+                }
+            }
+        });
+    }
+
+    private native void initRecorderDtmfTriggersWeb()/*-{
         if (!$wnd.audioAnalyser && $wnd.recorder.sourceNode) {
             $wnd.audioAnalyser = $wnd.recorder.audioContext.createAnalyser();
             $wnd.audioAnalyser.fftSize = 2048;
@@ -83,137 +95,141 @@ public class AudioRecorder extends AbstractRecorder {
         //    852 Hz	7	8	9	C
         //    941 Hz	*	0	#	D
         var sampleRate = $wnd.recorder.audioContext.sampleRate;
-        var index697 = Math.round(697 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index770 = Math.round(770 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index852 = Math.round(852 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index941 = Math.round(941 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index1209 = Math.round(1209 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index1336 = Math.round(1336 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index1477 = Math.round(1477 / sampleRate * $wnd.audioAnalyser.fftSize);
-        var index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index697 = Math.round(697 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index770 = Math.round(770 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index852 = Math.round(852 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index941 = Math.round(941 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index1209 = Math.round(1209 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index1336 = Math.round(1336 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index1477 = Math.round(1477 / sampleRate * $wnd.audioAnalyser.fftSize);
+        var $wnd.index1633 = Math.round(1633 / sampleRate * $wnd.audioAnalyser.fftSize);
 
-        var frequencyCanvas = $doc.querySelector('#frequencyCanvas');
-        if (frequencyCanvas) {
-            var frequencyCanvasContext = frequencyCanvas.getContext('2d');
-            var frequencyCanvasHeight = 256;
+        var $wnd.frequencyCanvas = $doc.querySelector('#frequencyCanvas');
+        if ($wnd.frequencyCanvas) {
+            var $wnd.frequencyCanvasContext = $wnd.frequencyCanvas.getContext('2d');
+            var $wnd.frequencyCanvasHeight = 256;
             // we are only visualising the lower half of the spectrum
-            var frequencyCanvasWidth = 1024;
-            frequencyCanvasContext.clearRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
+            var $wnd.frequencyCanvasWidth = 1024;
+            $wnd.frequencyCanvasContext.clearRect(0, 0, $wnd.frequencyCanvasWidth, $wnd.frequencyCanvasHeight);
         }
-        var bufferLength = $wnd.audioAnalyser.frequencyBinCount;
-        var dataArray = new Uint8Array(bufferLength);
-        var initialMs = performance.now();
+        var $wnd.dtmfBufferLength = $wnd.audioAnalyser.frequencyBinCount;
+        var $wnd.dtmfDataArray = new Uint8Array($wnd.dtmfBufferLength);
+        var $wnd.dtmfInitialMs = performance.now();
         console.log("start updateRecorderDtmfTriggers");
-        function updateRecorderDtmfTriggers() {
-            var frameMs = performance.now() - initialMs;
-            initialMs = performance.now();
-            if ($wnd.audioAnalyser && $wnd.recorder) {
-                var nextAnimationRequest = requestAnimationFrame(updateRecorderDtmfTriggers);
-                //console.log(bufferLength);
-                $wnd.audioAnalyser.getByteFrequencyData(dataArray);
-                var index697Level = dataArray[index697];
-                var index770Level = dataArray[index770];
-                var index852Level = dataArray[index852];
-                var index941Level = dataArray[index941];
-                var index1209Level = dataArray[index1209];
-                var index1336Level = dataArray[index1336];
-                var index1477Level = dataArray[index1477];
-                var index1633Level = dataArray[index1633];
-                var peekLevel = 0;
-                for(var bufferIndex = 0; bufferIndex < bufferLength; bufferIndex++) {
-                    var currentLevel = dataArray[bufferIndex];
-                    peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
-                }
-                var dtmfAverage = (index697Level + index770Level + index852Level + index941Level + index1209Level + index1336Level + index1477Level + index1633Level) / 8;
-                var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 3);
-                var isAmplitudeOk = (peekLevel - dtmfAverage) > 100;
-                var isFrameRateOk = frameMs < 100;
-                //console.log(peekLevel - dtmfAverage);
-                if (frequencyCanvas) {
-                    // draw graph
-                    frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
-                    frequencyCanvasContext.fillRect(0, 0, frequencyCanvasWidth, frequencyCanvasHeight);
-                    var barWidth = 1;//(frequencyCanvasWidth / bufferLength) / 4;
-                    var barHeight;
-                    var positionX = 0;
-                    // we are only visualising the lower half of the spectrum
-                    for(var bufferIndex = 0; bufferIndex < bufferLength && bufferIndex < frequencyCanvasWidth; bufferIndex++) {
-                        barHeight = dataArray[bufferIndex] / 4;
-                        if (bufferIndex === index697 || bufferIndex === index770 || bufferIndex === index852 || bufferIndex === index941 || bufferIndex === index1209 || bufferIndex === index1336 || bufferIndex === index1477 || bufferIndex === index1633) {
-                            frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
-                        } else {
-                            frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
-                        }
-                        frequencyCanvasContext.fillRect(positionX, frequencyCanvasHeight - barHeight, barWidth, frequencyCanvasHeight);
-                        positionX += barWidth + 1;
-                    }
-                    var triggerThresholdHeight = triggerThreshold / 4;
-                    var peekLevelHeight = peekLevel / 4;
-                    var dtmfAverageHeight = dtmfAverage / 4;
-                    if (isAmplitudeOk) {
-                        frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
-                    } else {
-                        frequencyCanvasContext.fillStyle = 'rgb(0, 255, 255)';
-                    }
-                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - triggerThresholdHeight, frequencyCanvasWidth, 1);
-                    frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
-                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - peekLevelHeight, frequencyCanvasWidth, 1);
-                    frequencyCanvasContext.fillRect(0, frequencyCanvasHeight - dtmfAverageHeight, frequencyCanvasWidth, 1);
-                    if (isFrameRateOk) {
-                        frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
-                    } else {
-                        frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
-                    }
-                    frequencyCanvasContext.fillText(Math.floor(frameMs), 10, 10);
-                }
-                var row = -1;
-                var column = -1;
-                if (isAmplitudeOk && isFrameRateOk) {
-                    if (index697Level > triggerThreshold && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level < dtmfAverage) {
-                        // 697 Hz	1	2	3	A
-                        var row = 0;
-                    } else if (index697Level < dtmfAverage && index770Level > triggerThreshold && index852Level < dtmfAverage && index941Level < dtmfAverage) {
-                        // 770 Hz	4	5	6	B
-                        var row = 1;
-                    } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level > triggerThreshold && index941Level < dtmfAverage) {
-                        // 852 Hz	7	8	9	C    
-                        var row = 2
-                    } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level > triggerThreshold) {
-                        // 941 Hz	*	0	#	D
-                        var row = 3;
-                    }
-                    if (index1209Level > triggerThreshold && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
-                        // 1209 Hz
-                        column = 0;
-                    } else if (index1209Level < dtmfAverage && index1336Level > triggerThreshold && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
-                        // 1336 Hz
-                        column = 1;
-                    } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level > triggerThreshold && index1633Level < dtmfAverage) {
-                        // 1477 Hz
-                        column = 2;
-                    } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level > triggerThreshold) {
-                        // 1633 Hz
-                        column = 3;
-                    }
-                }
-                //console.log(row + ", " + column + " - " + dtmfAverage + ", " + peekLevel);
-                var hasDtmfListeners = (dtmfAverage === peekLevel)? true : abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Double;Ljava/lang/Double;)(row, column);
-                //console.log(hasDtmfListeners);
-                if(hasDtmfListeners !== true) {
-                    // if there are no more listeners then the animation requests will stop here.
-                    $win.cancelAnimationFrame(nextAnimationRequest);
-                    console.log("end updateRecorderDtmfTriggers no more listeners");
-                }
-            } else {
-                // if the recorder is not yet running then we let the animation requests continue
-                // requestAnimationFrame(updateRecorderDtmfTriggers);
-                // if the audioAnalyser is null then end the animation requests
-                console.log("end updateRecorderDtmfTriggers");
+    }-*/;
+
+    private native boolean runRecorderDtmfTriggersWeb(final AbstractPresenter abstractPresenter, final MediaTriggerListener recorderMediaTriggerListenerL)/*-{
+        // because firefox requestAnimationFrame can be slow, this has been migrated from native requestAnimationFrame to GWT AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback(){});
+        // we don't use a Goertzel algorithm in this case since we already have the ByteFrequencyData from the audioContext
+        var frameMs = performance.now() - $wnd.dtmfInitialMs;
+        $wnd.dtmfInitialMs = performance.now();
+        if ($wnd.audioAnalyser && $wnd.recorder) {
+//            var nextAnimationRequest = requestAnimationFrame(updateRecorderDtmfTriggers);
+            //console.log($wnd.dtmfBufferLength);
+            $wnd.audioAnalyser.getByteFrequencyData($wnd.dtmfDataArray);
+            var index697Level = $wnd.dtmfDataArray[$wnd.index697];
+            var index770Level = $wnd.dtmfDataArray[$wnd.index770];
+            var index852Level = $wnd.dtmfDataArray[$wnd.index852];
+            var index941Level = $wnd.dtmfDataArray[$wnd.index941];
+            var index1209Level = $wnd.dtmfDataArray[$wnd.index1209];
+            var index1336Level = $wnd.dtmfDataArray[$wnd.index1336];
+            var index1477Level = $wnd.dtmfDataArray[$wnd.index1477];
+            var index1633Level = $wnd.dtmfDataArray[$wnd.index1633];
+            var peekLevel = 0;
+            for(var bufferIndex = 0; bufferIndex < $wnd.dtmfBufferLength; bufferIndex++) {
+                var currentLevel = $wnd.dtmfDataArray[bufferIndex];
+                peekLevel = (peekLevel < currentLevel)? currentLevel : peekLevel;
             }
-            //var finalMs = performance.now() - initialMs;
-            //console.log(frameMs + "ms" + "," + finalMs + "ms");
+            var dtmfAverage = (index697Level + index770Level + index852Level + index941Level + index1209Level + index1336Level + index1477Level + index1633Level) / 8;
+            var triggerThreshold = dtmfAverage + ((peekLevel - dtmfAverage) / 3);
+            var isAmplitudeOk = (peekLevel - dtmfAverage) > 100;
+            var isFrameRateOk = frameMs < 100;
+            //console.log(peekLevel - dtmfAverage);
+            if ($wnd.frequencyCanvas) {
+                // draw graph
+                $wnd.frequencyCanvasContext.fillStyle = 'rgb(255, 255, 255)';
+                $wnd.frequencyCanvasContext.fillRect(0, 0, $wnd.frequencyCanvasWidth, $wnd.frequencyCanvasHeight);
+                var barWidth = 1;//($wnd.frequencyCanvasWidth / $wnd.dtmfBufferLength) / 4;
+                var barHeight;
+                var positionX = 0;
+                // we are only visualising the lower half of the spectrum
+                for(var bufferIndex = 0; bufferIndex < $wnd.dtmfBufferLength && bufferIndex < $wnd.frequencyCanvasWidth; bufferIndex++) {
+                    barHeight = $wnd.dtmfDataArray[bufferIndex] / 4;
+                    if (bufferIndex === $wnd.index697 || bufferIndex === $wnd.index770 || bufferIndex === $wnd.index852 || bufferIndex === $wnd.index941 || bufferIndex === $wnd.index1209 || bufferIndex === $wnd.index1336 || bufferIndex === $wnd.index1477 || bufferIndex === $wnd.index1633) {
+                        $wnd.frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                    } else {
+                        $wnd.frequencyCanvasContext.fillStyle = 'rgb(50, 50, 50)';
+                    }
+                    $wnd.frequencyCanvasContext.fillRect(positionX, $wnd.frequencyCanvasHeight - barHeight, barWidth, $wnd.frequencyCanvasHeight);
+                    positionX += barWidth + 1;
+                }
+                var triggerThresholdHeight = triggerThreshold / 4;
+                var peekLevelHeight = peekLevel / 4;
+                var dtmfAverageHeight = dtmfAverage / 4;
+                if (isAmplitudeOk) {
+                    $wnd.frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                } else {
+                    $wnd.frequencyCanvasContext.fillStyle = 'rgb(0, 255, 255)';
+                }
+                $wnd.frequencyCanvasContext.fillRect(0, $wnd.frequencyCanvasHeight - triggerThresholdHeight, $wnd.frequencyCanvasWidth, 1);
+                $wnd.frequencyCanvasContext.fillStyle = 'rgb(0, 255, 0)';
+                $wnd.frequencyCanvasContext.fillRect(0, $wnd.frequencyCanvasHeight - peekLevelHeight, $wnd.frequencyCanvasWidth, 1);
+                $wnd.frequencyCanvasContext.fillRect(0, $wnd.frequencyCanvasHeight - dtmfAverageHeight, $wnd.frequencyCanvasWidth, 1);
+                if (isFrameRateOk) {
+                    $wnd.frequencyCanvasContext.fillStyle = 'rgb(0, 0, 255)';
+                } else {
+                    $wnd.frequencyCanvasContext.fillStyle = 'rgb(255, 0, 0)';
+                }
+                $wnd.frequencyCanvasContext.fillText(Math.floor(frameMs), 10, 10);
+            }
+            var row = -1;
+            var column = -1;
+            if (isAmplitudeOk && isFrameRateOk) {
+                if (index697Level > triggerThreshold && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level < dtmfAverage) {
+                    // 697 Hz	1	2	3	A
+                    var row = 0;
+                } else if (index697Level < dtmfAverage && index770Level > triggerThreshold && index852Level < dtmfAverage && index941Level < dtmfAverage) {
+                    // 770 Hz	4	5	6	B
+                    var row = 1;
+                } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level > triggerThreshold && index941Level < dtmfAverage) {
+                    // 852 Hz	7	8	9	C    
+                    var row = 2
+                } else if (index697Level < dtmfAverage && index770Level < dtmfAverage && index852Level < dtmfAverage && index941Level > triggerThreshold) {
+                    // 941 Hz	*	0	#	D
+                    var row = 3;
+                }
+                if (index1209Level > triggerThreshold && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
+                    // 1209 Hz
+                    column = 0;
+                } else if (index1209Level < dtmfAverage && index1336Level > triggerThreshold && index1477Level < dtmfAverage && index1633Level < dtmfAverage) {
+                    // 1336 Hz
+                    column = 1;
+                } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level > triggerThreshold && index1633Level < dtmfAverage) {
+                    // 1477 Hz
+                    column = 2;
+                } else if (index1209Level < dtmfAverage && index1336Level < dtmfAverage && index1477Level < dtmfAverage && index1633Level > triggerThreshold) {
+                    // 1633 Hz
+                    column = 3;
+                }
+            }
+            //console.log(row + ", " + column + " - " + dtmfAverage + ", " + peekLevel);
+            var hasDtmfListeners = (dtmfAverage === peekLevel)? true : abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::updateDtmfListener(Ljava/lang/Double;Ljava/lang/Double;)(row, column);
+            //console.log(hasDtmfListeners);
+            if(hasDtmfListeners !== true) {
+                // if there are no more listeners then the animation requests will stop here.
+                $win.cancelAnimationFrame(nextAnimationRequest);
+                console.log("end updateRecorderDtmfTriggers no more listeners");
+            }
+            return true;
+        } else {
+            // if the recorder is not yet running then we let the animation requests continue
+            // requestAnimationFrame(updateRecorderDtmfTriggers);
+            // if the audioAnalyser is null then end the animation requests
+            console.log("end updateRecorderDtmfTriggers");
+            return false;
         }
-        requestAnimationFrame(updateRecorderDtmfTriggers);
+        //var finalMs = performance.now() - $wnd.dtmfInitialMs;
+        //console.log(frameMs + "ms" + "," + finalMs + "ms");
     }-*/;
 
     public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
