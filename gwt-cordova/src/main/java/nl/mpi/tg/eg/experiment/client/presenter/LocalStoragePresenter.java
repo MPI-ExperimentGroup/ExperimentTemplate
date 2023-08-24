@@ -252,7 +252,8 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
     }
 
     final Label animationCounterLabel = new Label();
-    private void updateRateCounter(Double updatedValue){
+
+    private void updateRateCounter(Double updatedValue) {
         animationCounterLabel.setText(Double.toString(updatedValue));
     }
 
@@ -292,6 +293,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
         }, null);
         optionButton(new PresenterEventListener() {
+            Double updatedGwtValue = 0.0;
 
             @Override
             public String getLabel() {
@@ -311,7 +313,6 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                 final Label animationGwtCounterLabel = new Label();
-                Double updatedGwtValue = 0;
                 AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback() {
                     @Override
                     public void execute(double arg0) {
@@ -323,7 +324,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
         }, null);
     }
-    
+
     protected void addKeyboardDebug() {
         final Label clickLabel = new Label();
         final Label mouseLabel = new Label();
