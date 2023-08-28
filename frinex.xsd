@@ -379,57 +379,57 @@
 <xs:documentation>String Lowercase</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="backgroundColour" type="rgbHexValue" use="required">
+<xs:attribute name="backgroundColour" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="complementColour0" type="rgbHexValue" use="required">
+<xs:attribute name="complementColour0" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="complementColour1" type="rgbHexValue" use="required">
+<xs:attribute name="complementColour1" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="complementColour2" type="rgbHexValue" use="required">
+<xs:attribute name="complementColour2" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="complementColour3" type="rgbHexValue" use="required">
+<xs:attribute name="complementColour3" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="complementColour4" type="rgbHexValue" use="required">
+<xs:attribute name="complementColour4" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="primaryColour0" type="rgbHexValue" use="required">
+<xs:attribute name="primaryColour0" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="primaryColour1" type="rgbHexValue" use="required">
+<xs:attribute name="primaryColour1" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="primaryColour2" type="rgbHexValue" use="required">
+<xs:attribute name="primaryColour2" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="primaryColour3" type="rgbHexValue" use="required">
+<xs:attribute name="primaryColour3" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="primaryColour4" type="rgbHexValue" use="required">
+<xs:attribute name="primaryColour4" type="rgbHexValue">
 <xs:annotation>
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
@@ -474,12 +474,12 @@
 <xs:documentation>Boolean</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="defaultScale" type="xs:decimal" use="required">
+<xs:attribute name="defaultScale" type="xs:decimal">
 <xs:annotation>
 <xs:documentation>Decimal Number</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="textFontSize" type="xs:integer" use="required">
+<xs:attribute name="textFontSize" type="xs:integer">
 <xs:annotation>
 <xs:documentation>Integral Number</xs:documentation>
 </xs:annotation>
