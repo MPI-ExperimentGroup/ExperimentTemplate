@@ -6,9 +6,7 @@
         preserveLastState="true"
         rotatable="true" 
         showMenuBar="true">
-    <metadata>
-        <field controlledMessage="" controlledRegex="" postName="abc" registrationField=""></field>
-    </metadata>
+    <metadata/>
     <presenter self="example" type="text"></presenter>
     <stimuli/>
 </experiment>
