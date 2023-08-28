@@ -15,43 +15,43 @@
         <xsl:result-document href="{$outputDirectory}/_customisationsFirst.scss" method="text">
             <xsl:text>
                 $primaryColour0: </xsl:text>
-            <xsl:value-of select="experiment/@primaryColour0" />
+            <xsl:value-of select="if(experiment/@primaryColour0) then experiment/@primaryColour0 else '#628D8D'" />
             <xsl:text>;
                 $primaryColour1: </xsl:text>
-            <xsl:value-of select="experiment/@primaryColour1" />
+            <xsl:value-of select="if(experiment/@primaryColour1) then experiment/@primaryColour1 else '#385E5E'" />
             <xsl:text>;
                 $primaryColour2: </xsl:text>
-            <xsl:value-of select="experiment/@primaryColour2" />
+            <xsl:value-of select="if(experiment/@primaryColour2) then experiment/@primaryColour2 else '#4A7777'" />
             <xsl:text>;
                 $primaryColour3: </xsl:text>
-            <xsl:value-of select="experiment/@primaryColour3" />
+            <xsl:value-of select="if(experiment/@primaryColour3) then experiment/@primaryColour3 else '#96ADAD'" />
             <xsl:text>;
                 $primaryColour4: </xsl:text>
-            <xsl:value-of select="experiment/@primaryColour4" />
+            <xsl:value-of select="if(experiment/@primaryColour4) then experiment/@primaryColour4 else '#D5D8D8'" />
             <xsl:text>;
                 $complementColour0: </xsl:text>
-            <xsl:value-of select="experiment/@complementColour0" />
+            <xsl:value-of select="if(experiment/@complementColour0) then experiment/@complementColour0 else '#EAC3A3'" />
             <xsl:text>;
                 $complementColour1: </xsl:text>
-            <xsl:value-of select="experiment/@complementColour1" />
+            <xsl:value-of select="if(experiment/@complementColour1) then experiment/@complementColour1 else '#9D7B5E'" />
             <xsl:text>;
                 $complementColour2: </xsl:text>
-            <xsl:value-of select="experiment/@complementColour2" />
+            <xsl:value-of select="if(experiment/@complementColour2) then experiment/@complementColour2 else '#C69E7C'" />
             <xsl:text>;
                 $complementColour3: </xsl:text>
-            <xsl:value-of select="experiment/@complementColour3" />
+            <xsl:value-of select="if(experiment/@complementColour3) then experiment/@complementColour3 else '#FFEDDE'" />
             <xsl:text>;
                 $complementColour4: </xsl:text>
-            <xsl:value-of select="experiment/@complementColour4" />
+            <xsl:value-of select="if(experiment/@complementColour4) then experiment/@complementColour4 else '#FFFDFB'" />
             <xsl:text>;
                 $backgroundColour: </xsl:text>
-            <xsl:value-of select="experiment/@backgroundColour" />
+            <xsl:value-of select="if(experiment/@backgroundColour) then experiment/@backgroundColour else '#FFFFFF'" />
             <xsl:text>;
                 $textFontSize: </xsl:text>
-            <xsl:value-of select="experiment/@textFontSize" />
+            <xsl:value-of select="if(experiment/@textFontSize) then experiment/@textFontSize else '17'" />
             <xsl:text>pt;
                 $gridCellZoom: </xsl:text>
-            <xsl:value-of select="experiment/@defaultScale" />
+            <xsl:value-of select="if(experiment/@defaultScale) then experiment/@defaultScale else '1.0'" />
             <xsl:text>;
             </xsl:text>
         </xsl:result-document>
