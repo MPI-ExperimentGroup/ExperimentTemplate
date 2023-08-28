@@ -491,7 +491,10 @@
                 <!--</xsl:if>-->
                 <xsl:text>
                     public void appendCsvHeader(CSVPrinter printer) throws IOException {
-                    printer.printRecord("UserId",</xsl:text>
+                    printer.printRecord("UserId"</xsl:text>
+                    <xsl:if test="experiment/metadata/field">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>"</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
@@ -503,7 +506,10 @@
                 <xsl:text>);
                     }
                     public void appendCsvRow(CSVPrinter printer, <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant participant) throws IOException {
-                    printer.printRecord(participant.getUserId(),</xsl:text>
+                    printer.printRecord(participant.getUserId()</xsl:text>
+                    <xsl:if test="experiment/metadata/field">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>participant.get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
