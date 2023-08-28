@@ -126,7 +126,10 @@
                 return new MetadataField[]{
             </xsl:text>
             <xsl:value-of select="experiment/metadata/field/@postName" separator="MetadataField, " />
-            <xsl:text>MetadataField
+            <xsl:if test="experiment/metadata/field">
+                <xsl:text>MetadataField</xsl:text>
+            </xsl:if>
+            <xsl:text>
                 };
                 }
                 
