@@ -560,7 +560,7 @@ public class AbstractSchemaGenerator {
             .stringAttribute("userIdGetParam", true)
             .booleanAttribute("rotatable", false, "Boolean")
             .booleanAttribute("showMenuBar", false, "Boolean")
-            .decimalAttribute("defaultScale", false)
+            .decimalAttribute("defaultScale", true)
             .integerAttribute("textFontSize", true)
             .booleanAttribute("obfuscateBrowserStorage", true, "Boolean: By default the browser local storage is obfuscated to make it difficult to cheat the system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
 }

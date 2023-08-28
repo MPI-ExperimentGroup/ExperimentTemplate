@@ -474,7 +474,7 @@
 <xs:documentation>Boolean</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="defaultScale" type="xs:decimal" use="required">
+<xs:attribute name="defaultScale" type="xs:decimal">
 <xs:annotation>
 <xs:documentation>Decimal Number</xs:documentation>
 </xs:annotation>
