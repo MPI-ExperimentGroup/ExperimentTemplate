@@ -13,6 +13,7 @@
     <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
         <xsl:result-document href="{$targetClientDirectory}/MetadataFields.properties" method="text">
+            <xsl:text>placeholder_to_make_sure_that_this_file_gets_created=true&#xa;</xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>postName_</xsl:text>
                 <xsl:value-of select="@postName" />
