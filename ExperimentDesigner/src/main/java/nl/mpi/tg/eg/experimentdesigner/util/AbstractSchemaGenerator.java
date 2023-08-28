@@ -494,7 +494,7 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data. The value of each field will be stored in the admin metadata table (participant listing). It is advisable to explicitly sendMetadata at relevant points in the experiment. "
                         + "If the URL used to access the experiment contains a GET parameter matching the postName of a metadata field, the value of the field will be set to the value of the provided GET parameter. This for example allows links to be distributed each of which determines the initial parameters as required for a given experiment.", 1, 1,
                         new DocumentationElement[]{
-                            new DocumentationElement("field", "", 1, 0, new DocumentationElement[]{
+                            new DocumentationElement("field", "", 0, 0, new DocumentationElement[]{
                         new DocumentationElement("translation", "Translated attributes for the parent element.", 0, 0, false)
                         .stringAttribute("locale", false)
                         .stringAttribute("controlledMessage", true)
