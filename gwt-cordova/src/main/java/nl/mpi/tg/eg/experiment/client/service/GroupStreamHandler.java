@@ -159,8 +159,14 @@ public abstract class GroupStreamHandler {
                         console.log("ignoring other group: " + contentData.groupId);
                     } else if (contentData.streamState === "offer") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
-                    } else if (contentData.streamState === "ready" && contentData.userId === userId) {
-                        // only initiate the connection if the ready message is from itself
+                    } else if (contentData.userId === userId){
+                        // the self message is needed in the offer stage to set up the stream but after that point we ignore these
+                        console.log("ignoring self message: " + contentData.userId);
+                    } else if (contentData.streamState === "answer") {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, memberCode, contentData.originMemberCode, contentData.streamType);
+                    } else if (contentData.streamState === "candidate") {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
+                    } else if (contentData.streamState === "ready") {
                         // if the canvas exists in the page then the request is expected and we reply
                         if ($wnd.$("#groupRemote" + contentData.streamType + "_" + contentData.originMemberCode).length > 0) {
                             if ($wnd.groupConnections[memberCode + "-" + contentData.streamType + '>' + contentData.originMemberCode]) {
@@ -177,13 +183,6 @@ public abstract class GroupStreamHandler {
                                 );
                             }
                         }
-                    } else if (contentData.userId === userId){
-                        // the self message is needed in the offer stage to set up the stream but after that point we ignore these
-                        console.log("ignoring self message: " + contentData.userId);
-                    } else if (contentData.streamState === "answer") {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleAnswer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, memberCode, contentData.originMemberCode, contentData.streamType);
-                    } else if (contentData.streamState === "candidate") {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                     } else if (contentData.streamState === "refresh") {
                         if (localContext) {
                             // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
