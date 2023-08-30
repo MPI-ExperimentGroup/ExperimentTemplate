@@ -27,9 +27,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class BuildListing {
 
     final private Experiment experiment;
+    final String frinexVersion;
 
-    public BuildListing(Experiment experiment) {
+    public BuildListing(Experiment experiment, final String frinexVersion) {
         this.experiment = experiment;
+        this.frinexVersion = frinexVersion;
     }
 
     public String getExperimentInternalName() {
@@ -61,7 +63,7 @@ public class BuildListing {
     }
 
     public String getFrinexVersion() {
-        return (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getFrinexVersion();
+        return (experiment.getPublishEvents().isEmpty()) ? frinexVersion : experiment.getPublishEvents().get(0).getFrinexVersion();
     }
 
     public String getPublishDate() {

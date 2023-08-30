@@ -38,7 +38,7 @@ import org.xml.sax.SAXException;
  */
 public class ExperimentListingJsonExtractor {
 
-    public void extractListingJson(File xmlFile, File listingDirectory) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
+    public void extractListingJson(File xmlFile, File listingDirectory, final String frinexVersion) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
         String result = "";
         final File outputFile = new File(listingDirectory, xmlFile.getName().replaceAll(".xml$", ".json"));
         Writer fileWriter = getWriter(outputFile);
@@ -47,7 +47,7 @@ public class ExperimentListingJsonExtractor {
             Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
             final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-            mapper.writeValue(fileWriter, new BuildListing(experiment));
+            mapper.writeValue(fileWriter, new BuildListing(experiment, frinexVersion));
 
             System.out.println(outputFile);
             try {
