@@ -52,7 +52,7 @@ public class ExperimentListingJsonExtractorTest {
                 return stringWriter;
             }
         };
-        instance.extractListingJson(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), listingDirectory);
+        instance.extractListingJson(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), listingDirectory, null);
         final String expResult = "{\n"
                 + "  \"publishDate\" : \"2020-02-02\",\n"
                 + "  \"expiryDate\" : \"2025-02-22\",\n"
