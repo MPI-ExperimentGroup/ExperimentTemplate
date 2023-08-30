@@ -303,7 +303,7 @@
 </xs:attribute>
 <xs:attribute name="frinexVersion" type="xs:string">
 <xs:annotation>
-<xs:documentation>When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).</xs:documentation>
+<xs:documentation>By default the version of Frinex used to compile the experiment is determined by the noNamespaceSchemaLocation attribute in the experiment element which is also used by XML editors to validate the XML. However when frinexVersion is provided it will override the noNamespaceSchemaLocation attribute. (Regardless of which method is used to determine the version of Frinex being compiled the specified version must be available on the build server at the time of compilation).</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="stunServer" type="xs:string">
@@ -517,7 +517,7 @@
 </xs:attribute>
 <xs:attribute name="frinexVersion" type="xs:string">
 <xs:annotation>
-<xs:documentation>When provided determines which version of Frinex is used to compile the experiment (the specified version must be available on the build server at the time of compilation).</xs:documentation>
+<xs:documentation>By default the version of Frinex used to compile the experiment is determined by the noNamespaceSchemaLocation attribute in the experiment element which is also used by XML editors to validate the XML. However when frinexVersion is provided it will override the noNamespaceSchemaLocation attribute. (Regardless of which method is used to determine the version of Frinex being compiled the specified version must be available on the build server at the time of compilation).</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="stunServer" type="xs:string">

@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import javax.xml.parsers.DocumentBuilder;
@@ -53,8 +54,19 @@ public class XpathExperimentValidator {
     }
 
     public String extractFrinexVersion(Reader xmlFileSource, String defaultSchemaName) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
-        XPath validationXPath = XPathFactory.newInstance().newXPath();
-        String frinexVersion = (String) validationXPath.compile("/experiment/deployment/@frinexVersion").evaluate(new InputSource(xmlFileSource), XPathConstants.STRING);
+        final Scanner fileScanner = new Scanner(xmlFileSource);
+        String frinexVersion = null;
+        boolean foundMetadata = false;
+        while (!foundMetadata) {
+            String foundItem = fileScanner.findWithinHorizon("noNamespaceSchemaLocation\\s*=\\s*\"[^\"]*\"|frinexVersion\\s*=\\s*\"[^\"]*\"|<metadata", 3000);
+            if (foundItem == null || "<metadata".equals(foundItem)) {
+                foundMetadata = true;
+            } else {
+                frinexVersion = foundItem.replaceAll("(frinexVersion|noNamespaceSchemaLocation)\\s*=\\s*\"", "").replaceAll("\"", "").replaceAll("^([^/]*/)*", "").replaceAll("\\.[xX][sD][dD]$", "");
+            }
+        }
+//        XPath validationXPath = XPathFactory.newInstance().newXPath();
+//        String frinexVersion = (String) validationXPath.compile("/experiment/deployment/@frinexVersion").evaluate(new InputSource(xmlFileSource), XPathConstants.STRING);
         if (frinexVersion != null && !frinexVersion.isEmpty()) {
             return frinexVersion;
         } else {
