@@ -1,0 +1,1 @@
+# Examples in this directory will be automatically build by the Frinex build system when the alpha build image is generated 
