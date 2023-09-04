@@ -63,7 +63,7 @@ public class BuildListing {
     }
 
     public String getFrinexVersion() {
-        return (experiment.getPublishEvents().isEmpty()) ? frinexVersion : experiment.getPublishEvents().get(0).getFrinexVersion();
+        return (frinexVersion != null) ? frinexVersion : (experiment.getPublishEvents().isEmpty()) ? null : experiment.getPublishEvents().get(0).getFrinexVersion();
     }
 
     public String getPublishDate() {
