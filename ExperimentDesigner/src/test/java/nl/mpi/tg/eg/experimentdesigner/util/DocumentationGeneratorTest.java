@@ -69,12 +69,14 @@ public class DocumentationGeneratorTest {
         String actualHtmlResult = new String(Files.readAllBytes(Paths.get(htmlOutputFile.toURI())), StandardCharsets.UTF_8);
         assertEquals("frinex.html", expectedHtmlResult, actualHtmlResult);
 
-        System.out.println("createDocumentationGeneratorXmlFile");
-        final File schemaFile = new File(new File(outputDirectoryUri), "frinex.xsd");
-        Source xmlFile = new StreamSource(new File(new File(outputDirectoryUri), "minimal_example.xml"));
-        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
-        Schema schema = schemaFactory.newSchema(schemaFile);
-        Validator validator = schema.newValidator();
-        validator.validate(xmlFile);
+        for (String exampleName : new String[]{"minimal_example","hello_world_example"}){
+            System.out.println("createDocumentationGeneratorXmlFile");
+            final File schemaFile = new File(new File(outputDirectoryUri), "frinex.xsd");
+            Source xmlFile = new StreamSource(new File(new File(outputDirectoryUri), exampleName + ".xml"));
+            SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+            Schema schema = schemaFactory.newSchema(schemaFile);
+            Validator validator = schema.newValidator();
+            validator.validate(xmlFile);
+        }
     }
 }

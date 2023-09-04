@@ -2,5 +2,8 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
         appNameDisplay="minimal_example">
     <metadata/>
+    <presenter self="example" type="text">
+        <htmlText featureText="Hello World"></htmlText>
+    </presenter>
     <stimuli/>
 </experiment>
