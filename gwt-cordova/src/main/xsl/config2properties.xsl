@@ -47,7 +47,7 @@
                     </xsl:if>
                     <xsl:if test="@menuLabel">
                         <xsl:text>menuLabel</xsl:text>
-                        <xsl:value-of select="../@self" />
+                        <xsl:value-of select="if (../@self) then ../@self else ../generate-id(.)" />
                         <xsl:text>=</xsl:text>
                         <xsl:value-of select="replace(replace(replace(@menuLabel,'''',''''''),
                                                 '\}', '&amp;#x7D;'), 
@@ -56,7 +56,7 @@
                     </xsl:if>
                     <xsl:if test="@title">
                         <xsl:text>title</xsl:text>
-                        <xsl:value-of select="../@self" />
+                        <xsl:value-of select="if (../@self) then ../@self else ../generate-id(.)" />
                         <xsl:text>Presenter=</xsl:text>
                         <xsl:value-of select="replace(replace(replace(@title,'''',''''''),
                                                 '\}', '&amp;#x7D;'), 
@@ -65,7 +65,7 @@
                     </xsl:if>    
                     <xsl:if test="@menuLabel">
                         <xsl:text>menuLabel</xsl:text>
-                        <xsl:value-of select="../@self" />
+                        <xsl:value-of select="if (../@self) then ../@self else ../generate-id(.)" />
                         <xsl:text>Presenter=</xsl:text>
                         <xsl:value-of select="replace(replace(replace(@menuLabel,'''',''''''),
                                                 '\}', '&amp;#x7D;'), 
@@ -88,12 +88,12 @@
     <xsl:template match="text()" /><!--prevent text nodes slipping into the output-->
     <xsl:template match="experiment/presenter">
         <xsl:text>menuLabel</xsl:text>
-        <xsl:value-of select="@self" />
+        <xsl:value-of select="if (@self) then @self else generate-id(.)" />
         <xsl:text>=</xsl:text>
         <xsl:value-of select="@menuLabel" />
         <xsl:text>&#xa;</xsl:text>      
         <xsl:text>title</xsl:text>
-        <xsl:value-of select="@self" />
+        <xsl:value-of select="if (@self) then @self else generate-id(.)" />
         <xsl:text>Presenter=</xsl:text>
         <xsl:value-of select="@title" />
         <xsl:text>&#xa;</xsl:text>      

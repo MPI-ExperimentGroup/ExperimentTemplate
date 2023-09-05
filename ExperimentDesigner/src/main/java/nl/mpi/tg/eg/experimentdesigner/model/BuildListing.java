@@ -28,14 +28,16 @@ public class BuildListing {
 
     final private Experiment experiment;
     final String frinexVersion;
+    final String internalName;
 
-    public BuildListing(Experiment experiment, final String frinexVersion) {
+    public BuildListing(Experiment experiment, final String frinexVersion, String internalName) {
         this.experiment = experiment;
         this.frinexVersion = frinexVersion;
+        this.internalName = internalName;
     }
 
     public String getExperimentInternalName() {
-        return experiment.getAppNameInternal();
+        return (internalName != null) ? internalName : experiment.getAppNameInternal();
     }
 
     public String getExperimentDisplayName() {

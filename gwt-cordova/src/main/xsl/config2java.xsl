@@ -27,7 +27,7 @@
             public class ApplicationController extends AppController {
 
             public static final boolean SHOW_HEADER = </xsl:text>
-        <xsl:value-of select="experiment/@showMenuBar" />
+        <xsl:value-of select="if (experiment/@showMenuBar) then experiment/@showMenuBar else  'true'" />
         <xsl:text>;
             public static final String STUN_SERVER = </xsl:text>
         <xsl:value-of select="if (experiment/deployment/@stunServer) then concat('&quot;', experiment/deployment/@stunServer, '&quot;') else 'null'" />
@@ -49,11 +49,11 @@
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>        xml_</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>(messages.menuLabel</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>(),&quot;</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>&quot;),
             </xsl:text>
         </xsl:for-each>
@@ -160,10 +160,10 @@
         <xsl:for-each select="experiment/presenter">
             <xsl:text>
                 case xml_</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>:
                 this.presenter = new </xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', submissionService' else
@@ -236,7 +236,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 $wnd.applicationStates = {
             </xsl:text>
             <xsl:for-each select="experiment/presenter">
-                <xsl:value-of select="concat('&quot;', @self, '&quot;:&quot;', @title, '&quot;')" />
+                <!-- the @self attribute is optional and therefore might be empty here, as is the @title -->
+                <xsl:variable name="selfValue" select="if (@self) then @self else generate-id(.)" />
+                <xsl:value-of select="concat('&quot;', $selfValue, '&quot;:&quot;', @title, '&quot;')" />
                 <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>
                 </xsl:if>
@@ -255,8 +257,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:apply-templates select="experiment"/>
     </xsl:template>
     <xsl:template match="presenter">        
-        <!--<xsl:value-of select="concat(@self, 'Presenter.java')" />-->                                                                                                                                  
-        <xsl:result-document href="{$targetClientDirectory}/presenter/{@self}Presenter.java" method="text">
+        <!--<xsl:value-of select="concat(@self, 'Presenter.java')" />-->
+        <xsl:variable name="selfValue" select="if (@self) then @self else generate-id(.)" />
+        <xsl:result-document href="{$targetClientDirectory}/presenter/{$selfValue}Presenter.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
     
                 import com.google.gwt.core.client.GWT;     
@@ -304,7 +307,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <!--            <xsl:if test="@type = 'svg'">
                 <xsl:text>
                     import nl.mpi.tg.eg.experiment.client.svg.graphics.</xsl:text>
-                <xsl:value-of select="@self" />
+                <xsl:value-of select="if (@self) then @self else generate-id(.)" />
                 <xsl:text>Builder;
                 </xsl:text> 
             </xsl:if>-->
@@ -312,12 +315,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                         
                 // generated with config2java.xsl
                 public class </xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>Presenter extends </xsl:text>
             <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else if(@type = 'svg') then 'AbstractSvg' else 'AbstractTimed'" />
             <xsl:text>Presenter implements Presenter {
                 private final ApplicationState selfApplicationState = ApplicationState.xml_</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>;</xsl:text> 
             <xsl:if test="versionData">
                 <xsl:text>
@@ -326,7 +329,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             </xsl:if>
             <xsl:text>    
                 public </xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
@@ -346,7 +349,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                     </xsl:text>
                     <xsl:text>
                         super(widgetTag, new </xsl:text>
-                    <xsl:value-of select="@self" />
+                    <xsl:value-of select="if (@self) then @self else generate-id(.)" />
                     <xsl:text>Builder(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>-->
@@ -393,14 +396,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 @Override
                 protected String getTitle() {
                 return messages.title</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>Presenter();
                 }
                 
                 @Override
                 protected String getSelfTag() {
                 return ApplicationState.xml_</xsl:text>
-            <xsl:value-of select="@self" />
+            <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>.selfName;
                 }
 
@@ -794,7 +797,8 @@ or local-name() eq 'submitGroupEvent'
         <xsl:text>, "</xsl:text>
         <!-- TODO: utilise this generated JSON path in the editing and JSON compilation processes -->
         <xsl:for-each select="ancestor-or-self::*">
-            <xsl:if test="local-name() eq 'presenter'"><xsl:value-of select="concat('/', @self)"/></xsl:if>
+            <xsl:variable name="selfValue" select="if (@self) then @self else generate-id(.)" />
+            <xsl:if test="local-name() eq 'presenter'"><xsl:value-of select="concat('/', $selfValue)"/></xsl:if>
             <xsl:if test="local-name(current()) ne 'experiment' and local-name() ne 'presenter' and local-name() ne 'templateFeature'">
             <xsl:value-of select="concat('/', local-name())"/>
             <!-- <xsl:if test="(preceding-sibling::*|following-sibling::*)[local-name() eq local-name(current())]"> -->

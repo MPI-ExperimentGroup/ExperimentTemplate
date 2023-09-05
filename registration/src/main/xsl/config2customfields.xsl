@@ -305,7 +305,7 @@
                     enum ScreenReports {
                 </xsl:text>
                 <xsl:for-each select="experiment/presenter">
-                    <xsl:value-of select="@self" />
+                    <xsl:value-of select="if (@self) then @self else generate-id(.)" />
                     <xsl:text>,
                     </xsl:text>
                 </xsl:for-each>
@@ -314,7 +314,7 @@
                     enum LoadStimulusReports {
                 </xsl:text>
                 <xsl:for-each select="experiment/presenter[loadStimulus]">
-                    <xsl:value-of select="@self" />
+                    <xsl:value-of select="if (@self) then @self else generate-id(.)" />
                     <xsl:text>,
                     </xsl:text>
                 </xsl:for-each>

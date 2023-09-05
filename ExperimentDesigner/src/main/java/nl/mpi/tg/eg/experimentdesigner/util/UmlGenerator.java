@@ -58,10 +58,10 @@ public class UmlGenerator {
         Document xmlDocument = builder.parse(fileInputStream);
         switch (diagramType) {
             case state:
-                populateExperimentStateUml(xmlDocument, stringBuilder);
+                populateExperimentStateUml(xmlFile.getName().replaceAll("\\.xml$", ""), xmlDocument, stringBuilder);
                 break;
             case activity:
-                populateExperimentActivityUml(xmlDocument, stringBuilder);
+                populateExperimentActivityUml(xmlFile.getName().replaceAll("\\.xml$", ""), xmlDocument, stringBuilder);
                 break;
         }
 //        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
@@ -88,11 +88,11 @@ public class UmlGenerator {
         svgBufferedWriter.close();
     }
 
-    private void populateExperimentStateUml(final Document xmlDocument, final StringBuilder stringBuilder) {
+    private void populateExperimentStateUml(String appNameInternal, final Document xmlDocument, final StringBuilder stringBuilder) {
         stringBuilder.append("@startuml\n");
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         try {
-            String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
+            // String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
             stringBuilder.append("title ").append(appNameInternal).append("\n");
             NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList1.getLength(); index++) {
@@ -133,11 +133,11 @@ public class UmlGenerator {
         stringBuilder.append("@enduml\n");
     }
 
-    private void populateExperimentActivityUml(final Document xmlDocument, final StringBuilder stringBuilder) {
+    private void populateExperimentActivityUml(String appNameInternal, final Document xmlDocument, final StringBuilder stringBuilder) {
         stringBuilder.append("@startuml\n");
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         try {
-            String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
+            // String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
             stringBuilder.append("title ").append(appNameInternal).append("\n");
             stringBuilder.append("start\n");
 

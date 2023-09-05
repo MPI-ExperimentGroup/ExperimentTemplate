@@ -86,10 +86,12 @@ public class XpathExperimentValidatorTest {
         String fileFailName2 = "geNeric_example.xml";
         String fileOkName2 = "generic_example";
         Document xmlOkDocument = getDocument("<experiment appNameDisplay=\"generic_example\" appNameInternal=\"generic_example\"/>\n");
+        Document xmlOkDocument2 = getDocument("<experiment appNameDisplay=\"generic_example\"/>\n");
         Document xmlFailDocument = getDocument("<experiment appNameDisplay=\"generic_example\" appNameInternal=\"generic_exaMple\"/>\n");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateInternalName(fileOkName1, xmlOkDocument));
         assertEquals("", instance.validateInternalName(fileOkName2, xmlOkDocument));
+        assertEquals("", instance.validateInternalName(fileOkName2, xmlOkDocument2));
         assertNotEquals("", instance.validateInternalName(fileFailName1, xmlOkDocument));
         assertNotEquals("", instance.validateInternalName(fileFailName2, xmlOkDocument));
         assertNotEquals("", instance.validateInternalName(fileOkName1, xmlFailDocument));

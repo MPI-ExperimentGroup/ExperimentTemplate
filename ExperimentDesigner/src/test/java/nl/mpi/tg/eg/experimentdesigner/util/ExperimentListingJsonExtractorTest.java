@@ -41,52 +41,80 @@ public class ExperimentListingJsonExtractorTest {
     @Test
     public void testExtractListingJson() throws Exception {
         System.out.println("extractListingJson");
-        final String inputDirectory = "/frinex-rest-output/";
-        final StringWriter stringWriter = new StringWriter();
 
-        URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
+        URI outputDirectoryUri = this.getClass().getResource("/frinex-rest-output/").toURI();
+        URI examplesDirectoryUri = this.getClass().getResource("/examples/").toURI();
         File listingDirectory = new File(new File(outputDirectoryUri), "listings");
-        ExperimentListingJsonExtractor instance = new ExperimentListingJsonExtractor() {
-            @Override
-            protected Writer getWriter(File outputFile) throws IOException {
-                return stringWriter;
+        final File[] fileUnderTest = {new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), new File(new File(examplesDirectoryUri), "minimal_example.xml")};
+        final String[] internalName = {null, "minimal_example"};
+        final String[] expResult = {"{\n"
+            + "  \"publishDate\" : \"2020-02-02\",\n"
+            + "  \"expiryDate\" : \"2025-02-22\",\n"
+            + "  \"isWebApp\" : true,\n"
+            + "  \"isDesktop\" : true,\n"
+            + "  \"isiOS\" : true,\n"
+            + "  \"isAndroid\" : true,\n"
+            + "  \"isUnity\" : false,\n"
+            + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\",\n"
+            + "  \"registrationUrlProduction\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
+            + "  \"state\" : \"staging\",\n"
+            + "  \"stagingServer\" : \"staging\",\n"
+            + "  \"productionServer\" : \"production\",\n"
+            + "  \"frinexVersion\" : \"latest\",\n"
+            + "  \"defaultScale\" : 1.0,\n"
+            + "  \"isScalable\" : \"yes\",\n"
+            + "  \"isRotatable\" : true,\n"
+            + "  \"allowDelete\" : true,\n"
+            + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
+            + "  \"experimentDisplayName\" : \"With Stimulus Example\",\n"
+            + "  \"defaultLocale\" : \"nl\",\n"
+            + "  \"availableLocales\" : \"en,es,de,fr,nl\"\n"
+            + "}",
+            "{\n"
+            + "  \"publishDate\" : null,\n"
+            + "  \"expiryDate\" : null,\n"
+            + "  \"isWebApp\" : false,\n"
+            + "  \"isDesktop\" : false,\n"
+            + "  \"isiOS\" : false,\n"
+            + "  \"isAndroid\" : false,\n"
+            + "  \"isUnity\" : false,\n"
+            + "  \"registrationUrlStaging\" : null,\n"
+            + "  \"registrationUrlProduction\" : null,\n"
+            + "  \"state\" : null,\n"
+            + "  \"stagingServer\" : null,\n"
+            + "  \"productionServer\" : null,\n"
+            + "  \"frinexVersion\" : \"latest\",\n"
+            + "  \"defaultScale\" : 1.0,\n"
+            + "  \"isScalable\" : \"yes\",\n"
+            + "  \"isRotatable\" : true,\n"
+            + "  \"allowDelete\" : false,\n"
+            + "  \"experimentInternalName\" : \"minimal_example\",\n"
+            + "  \"experimentDisplayName\" : \"Minimal Example\",\n"
+            + "  \"defaultLocale\" : \"en\",\n"
+            + "  \"availableLocales\" : \"en\"\n"
+            + "}"};
+        for (int testFileIndex = 0; testFileIndex < 2; testFileIndex++) {
+            final StringWriter stringWriter = new StringWriter();
+            ExperimentListingJsonExtractor instance = new ExperimentListingJsonExtractor() {
+                @Override
+                protected Writer getWriter(File outputFile) throws IOException {
+                    return stringWriter;
+                }
+            };
+            instance.extractListingJson(fileUnderTest[testFileIndex], internalName[testFileIndex], listingDirectory, "latest");
+            final String[] splitExpectedString = expResult[testFileIndex].split("\n");
+            final String[] splitResultString = stringWriter.toString().split("\n");
+            for (int index = 0; index < splitExpectedString.length || index < splitResultString.length; index++) {
+                // we deliberately loop on the larger array so that we throw an error if the lengths are different
+                assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
+                assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
+                assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
+//                System.out.println(splitExpectedString[index]);
+//                System.out.println(splitResultString[index]);
             }
-        };
-        instance.extractListingJson(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), listingDirectory, null);
-        final String expResult = "{\n"
-                + "  \"publishDate\" : \"2020-02-02\",\n"
-                + "  \"expiryDate\" : \"2025-02-22\",\n"
-                + "  \"isWebApp\" : true,\n"
-                + "  \"isDesktop\" : true,\n"
-                + "  \"isiOS\" : true,\n"
-                + "  \"isAndroid\" : true,\n"
-                + "  \"isUnity\" : false,\n"
-                + "  \"registrationUrlStaging\" : \"/with_stimulus_example-admin/validate\",\n"
-                + "  \"registrationUrlProduction\" : \"/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl\",\n"
-                + "  \"state\" : \"staging\",\n"
-                + "  \"stagingServer\" : \"staging\",\n"
-                + "  \"productionServer\" : \"production\",\n"
-                + "  \"frinexVersion\" : \"latest\",\n"
-                + "  \"defaultScale\" : 1.0,\n"
-                + "  \"isScalable\" : \"yes\",\n"
-                + "  \"isRotatable\" : true,\n"
-                + "  \"allowDelete\" : true,\n"
-                + "  \"experimentInternalName\" : \"with_stimulus_example\",\n"
-                + "  \"experimentDisplayName\" : \"With Stimulus Example\",\n"
-                + "  \"defaultLocale\" : \"nl\",\n"
-                + "  \"availableLocales\" : \"en,es,de,fr,nl\"\n"
-                + "}";
-        final String[] splitExpectedString = expResult.split("\n");
-        final String[] splitResultString = stringWriter.toString().split("\n");
-        for (int index = 0; index < splitExpectedString.length || index < splitResultString.length; index++) {
-            // we deliberately loop on the larger array so that we throw an error if the lengths are different
-            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
-            assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
-           assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
-            //System.out.println(splitExpectedString[index]);
-        }
 //        instance.extractListingJson(new File(new File(outputDirectoryUri), "invitation_validation_example"), listingDirectory);
 //        assertEquals("listing_json_example.xml", stringWriter.toString());
-        assertEquals(expResult, stringWriter.toString());
+            assertEquals(expResult[testFileIndex], stringWriter.toString());
+        }
     }
 }

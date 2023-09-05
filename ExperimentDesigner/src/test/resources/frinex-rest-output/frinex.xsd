@@ -374,7 +374,7 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="appNameInternal" type="lowercaseValue" use="required">
+<xs:attribute name="appNameInternal" type="lowercaseValue">
 <xs:annotation>
 <xs:documentation>String Lowercase</xs:documentation>
 </xs:annotation>
@@ -444,12 +444,12 @@
 <xs:documentation>List of all locales provided in this experiment. The list of locales must be comma separated without whitespace characters. For example &quot;en,de,nl,es&quot; or &quot;en_GB,en_US,en_SG&quot;.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="isScalable" type="xs:boolean" use="required">
+<xs:attribute name="isScalable" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>Boolean</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="preserveLastState" type="xs:boolean" use="required">
+<xs:attribute name="preserveLastState" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>When true the use of browser navigation buttons will be restricted.</xs:documentation>
 </xs:annotation>
@@ -464,12 +464,12 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="rotatable" type="xs:boolean" use="required">
+<xs:attribute name="rotatable" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>Boolean</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="showMenuBar" type="xs:boolean" use="required">
+<xs:attribute name="showMenuBar" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>Boolean</xs:documentation>
 </xs:annotation>
@@ -1134,7 +1134,7 @@
 </xs:element>
 <xs:group ref="presenterBaseTypeType" />
 </xs:choice>
-<xs:attribute name="self" type="presenterName" use="required">
+<xs:attribute name="self" type="presenterName">
 <xs:annotation>
 <xs:documentation>The name of the presenter, which must be unique per configuration file.</xs:documentation>
 </xs:annotation>
@@ -1159,7 +1159,7 @@
 <xs:documentation>The value of this attribute must exist in one presenter self attributes. The value of this attribute is used as the target for gotoNextPresenter etc..</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="type" use="required">
+<xs:attribute name="type">
 <xs:annotation>
 <xs:documentation>The type of presenter which also determines the features that can be used in the presenter.</xs:documentation>
 </xs:annotation>

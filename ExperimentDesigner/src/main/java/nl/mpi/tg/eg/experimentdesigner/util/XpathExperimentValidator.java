@@ -116,11 +116,14 @@ public class XpathExperimentValidator {
         if (!fileName.equals(fileName.toLowerCase())) {
             return "The experiment file name must be lowercase: '" + fileName + "'.\n";
         }
-        if (!appNameInternal.equals(appNameInternal.toLowerCase())) {
-            return "The experiment appNameInternal must be lowercase: '" + appNameInternal + "'.\n";
-        }
-        if (!appNameInternal.equals(fileName.replaceFirst("\\.xml$", ""))) {
-            return "The experiment appNameInternal must match the XML file name: '" + appNameInternal + "'.\n";
+        // if the appNameInternal attribute does not exist then the appNameInternal String will be zero length
+        if (appNameInternal.length() > 0) {
+            if (!appNameInternal.equals(appNameInternal.toLowerCase())) {
+                return "The experiment appNameInternal must be lowercase: '" + appNameInternal + "'.\n";
+            }
+            if (!appNameInternal.equals(fileName.replaceFirst("\\.xml$", ""))) {
+                return "The experiment appNameInternal must match the XML file name: '" + appNameInternal + "'.\n";
+            }
         }
         return "";
     }
