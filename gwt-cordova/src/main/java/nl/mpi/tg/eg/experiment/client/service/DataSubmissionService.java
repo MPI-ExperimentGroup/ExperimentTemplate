@@ -60,7 +60,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     public DataSubmissionService(LocalStorage localStorage) {
         this.localStorage = localStorage;
-        this.experimentName = messages.appNameInternal();
+        this.experimentName = version.appNameInternal();
     }
 
     @Override

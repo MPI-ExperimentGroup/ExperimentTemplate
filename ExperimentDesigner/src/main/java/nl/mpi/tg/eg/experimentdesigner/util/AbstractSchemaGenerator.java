@@ -539,7 +539,7 @@ public class AbstractSchemaGenerator {
                 )
             })
             .stringAttribute("appNameDisplay", false)
-            .stringLowercaseAttribute("appNameInternal", false)
+            .stringLowercaseAttribute("appNameInternal", true)
             .colourRGBAttribute("backgroundColour", true)
             .colourRGBAttribute("complementColour0", true)
             .colourRGBAttribute("complementColour1", true)

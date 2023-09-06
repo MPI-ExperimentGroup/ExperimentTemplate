@@ -60,7 +60,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
     private final Version version = GWT.create(Version.class);
     protected static final Messages messages = GWT.create(Messages.class);
-    final LocalStorage localStorage = new LocalStorage(messages.appNameInternal());
+    final LocalStorage localStorage = new LocalStorage(version.appNameInternal());
     final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
     final TimerService timerService = new TimerService();
     protected final RootLayoutPanel widgetTag;

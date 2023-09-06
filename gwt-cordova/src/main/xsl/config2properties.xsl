@@ -15,9 +15,6 @@
         <xsl:text>
             reportDateFormat=yyyy-MM-dd HH:mm:ss vvvv
             helpButtonChar=?
-            appNameInternal=</xsl:text>
-        <xsl:value-of select="experiment/@appNameInternal" />
-        <xsl:text>
             appNameDisplay=</xsl:text>
         <xsl:value-of select="experiment/@appNameDisplay" />
         <xsl:text>
