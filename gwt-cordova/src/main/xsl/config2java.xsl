@@ -166,7 +166,7 @@
             <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', submissionService' else
+if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or not(@type) or @type = 'colourReport') then ', submissionService' else
 if(@type = 'preload') then ', submissionService' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker' or @type = 'svg') then ', submissionService' else ''" />
             <!--<xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />-->
@@ -332,7 +332,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="if (@self) then @self else generate-id(.)" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
+if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or not(@type) or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
 if(@type = 'preload') then ', DataSubmissionService submissionService' else 
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService' else ''" />
             <xsl:text>, UserResults userResults, LocalStorage localStorage, final TimerService timerService</xsl:text>
@@ -353,7 +353,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                     <xsl:text>Builder(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>-->
-                <xsl:when test="@type = 'text'">
+                <xsl:when test="@type = 'text' or not(@type)">
                     <xsl:text>
                         super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>

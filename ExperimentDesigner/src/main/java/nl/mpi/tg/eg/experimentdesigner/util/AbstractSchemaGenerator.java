@@ -513,7 +513,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("menuLabel", true)
                         .presenterNameAttribute("back", "If the back attribute is provided the back button will be shown and it will cause the menu/title bar to be shown in the presenter even if it is otherwise hidden.", true)
                         .presenterNameAttribute("next", "The value of this attribute is used as the target for gotoNextPresenter etc..", true)
-                        .restrictedAttribute("type", null, "The type of presenter which also determines the features that can be used in the presenter.", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
+                        .restrictedAttribute("type", null, "The type of presenter which also determines the features that can be used in the presenter.", true, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{

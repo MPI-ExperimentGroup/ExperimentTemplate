@@ -346,17 +346,18 @@ public class XpathExperimentValidator {
         }
         return returnMessage;
     } */
-
+    
     protected String validatePresenterTypes(Document xmlDocument) throws XPathExpressionException {
         String returnMessage = "";
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         for (PresenterType presenterType : PresenterType.values()) {
+            final String typeQueryPart = (presenterType != PresenterType.text) ? "@type='" + presenterType.name() + "'" : "@type='" + presenterType.name() + "' or not(@type)"; // Defaulting to text type when @type is not provided
 //            StringBuilder stringBuilder = new StringBuilder();
             for (FeatureType featureType : presenterType.getExcludedFeatureTypes()) {
 //                stringBuilder.append("local-name() = '").append(featureType.name()).append("' or ");
 //            stringBuilder.append("false");
 //            NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + presenterType.name() + "']/descendant::*[" + stringBuilder.toString() + "]").evaluate(xmlDocument, XPathConstants.NODESET);
-                NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[@type='" + presenterType.name() + "']/descendant::" + featureType.name()).evaluate(xmlDocument, XPathConstants.NODESET);
+                NodeList faultList = (NodeList) validationXPath.compile("/experiment/presenter[" + typeQueryPart + "]/descendant::" + featureType.name()).evaluate(xmlDocument, XPathConstants.NODESET);
                 for (int index = 0; index < faultList.getLength(); index++) {
                     String presenterName = "unkown";
                     Node parentNode = faultList.item(index).getParentNode();
@@ -370,7 +371,7 @@ public class XpathExperimentValidator {
                         }
                     }
                     final String featureName = faultList.item(index).getNodeName();
-                    returnMessage += "The Presenter " + presenterName + " is of the type " + presenterType.name() + " and cannot be used with " + featureName + ". ";
+                    returnMessage += "The Presenter " + presenterName + " is of the type " + presenterType.name() + " and cannot be used with " + featureName + ". Please specify a suitable type attribute in the presenter element. ";
                 }
             }
         }
