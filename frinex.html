@@ -60,7 +60,7 @@ Each experiment XML configuration file must have one "experiment" element of whi
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">experiment</span></td><td><span style="color:green">appNameDisplay</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">appNameInternal</span><span style="color:grey">=&quot;Lowercase Value&quot;</span><span>
+<span style="color:green">appNameInternal</span><span style="color:grey">=&quot;Lowercase Value (optional)&quot;</span><span>
 String Lowercase</span><br/>
 <span style="color:green">availableLocales</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 List of all locales provided in this experiment. The list of locales must be comma separated without whitespace characters. For example &quot;en,de,nl,es&quot; or &quot;en_GB,en_US,en_SG&quot;.</span><br/>
@@ -80,11 +80,11 @@ RGB Hex Value</span><br/>
 The default locale to be shown when the user preferred locale is not specified. For example &quot;en&quot; or &quot;en_GB&quot;.</span><br/>
 <span style="color:green">defaultScale</span><span style="color:grey">=&quot;Decimal (optional)&quot;</span><span>
 Decimal Number</span><br/>
-<span style="color:green">isScalable</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
+<span style="color:green">isScalable</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 Boolean</span><br/>
 <span style="color:green">obfuscateBrowserStorage</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 Boolean: By default the browser local storage is obfuscated to make it difficult to cheat the system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.</span><br/>
-<span style="color:green">preserveLastState</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
+<span style="color:green">preserveLastState</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 When true the use of browser navigation buttons will be restricted.</span><br/>
 <span style="color:green">primaryColour0</span><span style="color:grey">=&quot;RGB Hex Value (optional)&quot;</span><span>
 RGB Hex Value</span><br/>
@@ -96,9 +96,9 @@ RGB Hex Value</span><br/>
 RGB Hex Value</span><br/>
 <span style="color:green">primaryColour4</span><span style="color:grey">=&quot;RGB Hex Value (optional)&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">rotatable</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
+<span style="color:green">rotatable</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 Boolean</span><br/>
-<span style="color:green">showMenuBar</span><span style="color:grey">=&quot;Boolean&quot;</span><span>
+<span style="color:green">showMenuBar</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><span>
 Boolean</span><br/>
 <span style="color:green">splashPresenter</span><span style="color:grey">=&quot;PresenterName (optional)&quot;</span><span>
 When provided the named presenter will be used as the initial presenter on page reloads.</span><br/>
@@ -166,11 +166,11 @@ The value of this attribute must exist in one presenter self attributes. If the 
 String</span><br/>
 <span style="color:green">next</span><span style="color:grey">=&quot;PresenterName (optional)&quot;</span><span>
 The value of this attribute must exist in one presenter self attributes. The value of this attribute is used as the target for gotoNextPresenter etc..</span><br/>
-<span style="color:green">self</span><span style="color:grey">=&quot;PresenterName&quot;</span><span>
+<span style="color:green">self</span><span style="color:grey">=&quot;PresenterName (optional)&quot;</span><span>
 The name of the presenter, which must be unique per configuration file.</span><br/>
 <span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">type</span><span style="color:grey">=&quot;[transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><span>
+<span style="color:green">type</span><span style="color:grey">=&quot;[transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline] (optional)&quot;</span><span>
 The type of presenter which also determines the features that can be used in the presenter.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
@@ -798,11 +798,11 @@ The value of this attribute must exist in one presenter self attributes. If the 
 String</span><br/>
 <span style="color:green">next</span><span style="color:grey">=&quot;PresenterName (optional)&quot;</span><span>
 The value of this attribute must exist in one presenter self attributes. The value of this attribute is used as the target for gotoNextPresenter etc..</span><br/>
-<span style="color:green">self</span><span style="color:grey">=&quot;PresenterName&quot;</span><span>
+<span style="color:green">self</span><span style="color:grey">=&quot;PresenterName (optional)&quot;</span><span>
 The name of the presenter, which must be unique per configuration file.</span><br/>
 <span style="color:green">title</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
-<span style="color:green">type</span><span style="color:grey">=&quot;[transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline]&quot;</span><span>
+<span style="color:green">type</span><span style="color:grey">=&quot;[transmission, metadata, preload, stimulus, colourPicker, colourReport, kindiagram, menu, debug, text, timeline] (optional)&quot;</span><span>
 The type of presenter which also determines the features that can be used in the presenter.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd"
-        appNameDisplay="minimal_example"
-        appNameInternal="minimal_example"
-        isScalable="true" 
-        preserveLastState="true"
-        rotatable="true" 
-        showMenuBar="true">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+        appNameDisplay="Minimal Example">
     <metadata/>
-    <presenter self="example" type="text"></presenter>
+    <presenter/>
     <stimuli/>
 </experiment>
