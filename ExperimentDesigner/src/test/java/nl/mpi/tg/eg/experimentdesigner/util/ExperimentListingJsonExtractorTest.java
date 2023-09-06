@@ -46,7 +46,6 @@ public class ExperimentListingJsonExtractorTest {
         URI examplesDirectoryUri = this.getClass().getResource("/examples/").toURI();
         File listingDirectory = new File(new File(outputDirectoryUri), "listings");
         final File[] fileUnderTest = {new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), new File(new File(examplesDirectoryUri), "minimal_example.xml")};
-        final String[] internalName = {null, "minimal_example"};
         final String[] expResult = {"{\n"
             + "  \"publishDate\" : \"2020-02-02\",\n"
             + "  \"expiryDate\" : \"2025-02-22\",\n"
@@ -101,7 +100,7 @@ public class ExperimentListingJsonExtractorTest {
                     return stringWriter;
                 }
             };
-            instance.extractListingJson(fileUnderTest[testFileIndex], internalName[testFileIndex], listingDirectory, "latest");
+            instance.extractListingJson(fileUnderTest[testFileIndex], listingDirectory, "latest");
             final String[] splitExpectedString = expResult[testFileIndex].split("\n");
             final String[] splitResultString = stringWriter.toString().split("\n");
             for (int index = 0; index < splitExpectedString.length || index < splitResultString.length; index++) {

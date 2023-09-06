@@ -38,7 +38,7 @@ import org.xml.sax.SAXException;
  */
 public class ExperimentListingJsonExtractor {
 
-    public void extractListingJson(File xmlFile, String xmlFileName, File listingDirectory, final String frinexVersion) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
+    public void extractListingJson(File xmlFile, File listingDirectory, final String frinexVersion) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
         String result = "";
         final File outputFile = new File(listingDirectory, xmlFile.getName().replaceAll(".xml$", ".json"));
         Writer fileWriter = getWriter(outputFile);
