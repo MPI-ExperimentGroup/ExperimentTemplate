@@ -396,8 +396,9 @@ public class AbstractSchemaGenerator {
                         new DocumentationElement[0]).documentedAttribute("featureText", AttributeType.xsString, "Text that will be visible to the user.", false),
                 new DocumentationElement("deployment", "", 0, 1,
                         new DocumentationElement[0])
-                        .documentedAttribute("publishDate", AttributeType.dateValue, "The date from which the experiment will be deployed.", false)
-                        .documentedAttribute("expiryDate", AttributeType.dateValue, "The date after which the experiment can be undeployed.", false)
+                        // based on grep -h -o "expiryDate[^\"]*\"[^\"]*\"" git-checkedout/*/*.xml almost all experiments are compiled with many years before the expiry date, so there is not much point making this mandatory
+                        .documentedAttribute("publishDate", AttributeType.dateValue, "The date from which the experiment will be deployed.", true)
+                        .documentedAttribute("expiryDate", AttributeType.dateValue, "The date after which the experiment can be undeployed.", true)
                         .documentedAttribute("stagingServer", AttributeType.xsString, "When provided determines which staging server the experiment is deployed to.", true)
                         .documentedAttribute("productionServer", AttributeType.xsString, "When provided determines which production server the experiment is deployed to.", true)
                         .documentedAttribute("frinexVersion", AttributeType.xsString, "By default the version of Frinex used to compile the experiment is determined by the noNamespaceSchemaLocation attribute in the experiment element which is also used by XML editors to validate the XML. However when frinexVersion is provided it will override the noNamespaceSchemaLocation attribute. (Regardless of which method is used to determine the version of Frinex being compiled the specified version must be available on the build server at the time of compilation).", true)

@@ -281,12 +281,12 @@
 </xs:element>
 <xs:element name="deployment" minOccurs="0">
 <xs:complexType>
-<xs:attribute name="publishDate" type="dateValue" use="required">
+<xs:attribute name="publishDate" type="dateValue">
 <xs:annotation>
 <xs:documentation>The date from which the experiment will be deployed.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="expiryDate" type="dateValue" use="required">
+<xs:attribute name="expiryDate" type="dateValue">
 <xs:annotation>
 <xs:documentation>The date after which the experiment can be undeployed.</xs:documentation>
 </xs:annotation>
@@ -495,12 +495,12 @@
 <xs:annotation>
 <xs:documentation></xs:documentation>
 </xs:annotation>
-<xs:attribute name="publishDate" type="dateValue" use="required">
+<xs:attribute name="publishDate" type="dateValue">
 <xs:annotation>
 <xs:documentation>The date from which the experiment will be deployed.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="expiryDate" type="dateValue" use="required">
+<xs:attribute name="expiryDate" type="dateValue">
 <xs:annotation>
 <xs:documentation>The date after which the experiment can be undeployed.</xs:documentation>
 </xs:annotation>
