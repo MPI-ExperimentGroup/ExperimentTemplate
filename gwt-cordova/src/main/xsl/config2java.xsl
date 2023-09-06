@@ -95,7 +95,7 @@
             @Override
             boolean preserveLastState() {
             return </xsl:text>
-        <xsl:value-of select="experiment/@preserveLastState" />
+        <xsl:value-of select="if (experiment/@preserveLastState) then experiment/@preserveLastState else  'true'" />
         <xsl:text>;
             }
             @Override
