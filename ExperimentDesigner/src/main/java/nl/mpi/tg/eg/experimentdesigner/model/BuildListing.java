@@ -77,7 +77,7 @@ public class BuildListing {
     }
 
     public boolean isIsWebApp() {
-        return (experiment.getPublishEvents().isEmpty()) ? false : experiment.getPublishEvents().get(0).isIsWebApp();
+        return (experiment.getPublishEvents().isEmpty()) ? true : experiment.getPublishEvents().get(0).isIsWebApp();
     }
 
     public boolean isIsiOS() {

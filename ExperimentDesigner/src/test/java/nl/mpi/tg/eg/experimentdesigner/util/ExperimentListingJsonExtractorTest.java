@@ -72,7 +72,7 @@ public class ExperimentListingJsonExtractorTest {
             "{\n"
             + "  \"publishDate\" : null,\n"
             + "  \"expiryDate\" : null,\n"
-            + "  \"isWebApp\" : false,\n"
+            + "  \"isWebApp\" : true,\n"
             + "  \"isDesktop\" : false,\n"
             + "  \"isiOS\" : false,\n"
             + "  \"isAndroid\" : false,\n"
