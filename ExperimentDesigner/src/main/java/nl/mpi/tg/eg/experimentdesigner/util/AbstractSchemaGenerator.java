@@ -558,8 +558,8 @@ public class AbstractSchemaGenerator {
             .booleanAttribute("preserveLastState", false, "When true the use of browser navigation buttons will be restricted.")
             .documentedAttribute("splashPresenter", AttributeType.presenterName, "When provided the named presenter will be used as the initial presenter on page reloads.", true)
             .stringAttribute("userIdGetParam", true)
-            .booleanAttribute("rotatable", false, "Boolean")
-            .booleanAttribute("showMenuBar", false, "Boolean")
+            .booleanAttribute("rotatable", true, "Boolean")
+            .booleanAttribute("showMenuBar", true, "Boolean")
             .decimalAttribute("defaultScale", true)
             .integerAttribute("textFontSize", true)
             .booleanAttribute("obfuscateBrowserStorage", true, "Boolean: By default the browser local storage is obfuscated to make it difficult to cheat the system, by setting this to false the obfuscation can be disabled making it easier to debug the application. This can also be achieved by adding the get parameter '?debug=true' to the URL.");
