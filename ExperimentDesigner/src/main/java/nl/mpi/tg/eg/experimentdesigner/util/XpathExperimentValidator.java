@@ -367,7 +367,9 @@ public class XpathExperimentValidator {
                     if (parentNode != null && parentNode.getNodeName().equals("presenter")) {
                         final NamedNodeMap attributes = parentNode.getAttributes();
                         if (attributes != null) {
-                            presenterName = attributes.getNamedItem("self").getTextContent();
+                            if (attributes.getNamedItem("self") != null) {
+                                presenterName = attributes.getNamedItem("self").getTextContent();
+                            }
                         }
                     }
                     final String featureName = faultList.item(index).getNodeName();

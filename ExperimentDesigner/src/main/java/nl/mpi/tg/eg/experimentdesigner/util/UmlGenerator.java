@@ -97,21 +97,22 @@ public class UmlGenerator {
             NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList1.getLength(); index++) {
                 final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
+                final String selfName = (attributes.getNamedItem("self") != null) ? attributes.getNamedItem("self").getNodeValue() : "";
                 if (index == 0) {
-                    stringBuilder.append("[*] --> ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
+                    stringBuilder.append("[*] --> ").append(selfName).append("\n");
                 }
-                stringBuilder.append("state ").append(attributes.getNamedItem("self").getNodeValue()).append("\n");
+                stringBuilder.append("state ").append(selfName).append("\n");
                 if (attributes.getNamedItem("back") != null) {
-                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append(" : back\n");
+                    stringBuilder.append(selfName).append(" --> ").append(attributes.getNamedItem("back").getNodeValue()).append(" : back\n");
                 }
                 if (attributes.getNamedItem("next") != null) {
-                    stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(attributes.getNamedItem("next").getNodeValue()).append(" : next\n");
+                    stringBuilder.append(selfName).append(" --> ").append(attributes.getNamedItem("next").getNodeValue()).append(" : next\n");
                 }
                 NodeList targetNodes = (NodeList) validationXPath.compile("descendant::*[@target]").evaluate(nodeList1.item(index), XPathConstants.NODESET);
                 for (int targetNodeIndex = 0; targetNodeIndex < targetNodes.getLength(); targetNodeIndex++) {
                     final NamedNodeMap targetAttributes = targetNodes.item(targetNodeIndex).getAttributes();
                     if (targetAttributes.getNamedItem("target") != null) {
-                        stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(targetAttributes.getNamedItem("target").getNodeValue());
+                        stringBuilder.append(selfName).append(" --> ").append(targetAttributes.getNamedItem("target").getNodeValue());
                         if (targetAttributes.getNamedItem("featureText") != null) {
                             stringBuilder.append(" : ").append(targetAttributes.getNamedItem("featureText").getNodeValue());
                         }
@@ -122,7 +123,9 @@ public class UmlGenerator {
                 if (allMenuItemsNodes.getLength() > 0) {
                     // add presenters for allMenuItems
                     for (int allMenuItemsIndex = 0; allMenuItemsIndex < nodeList1.getLength(); allMenuItemsIndex++) {
-                        stringBuilder.append(attributes.getNamedItem("self").getNodeValue()).append(" --> ").append(nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self").getNodeValue()).append("\n");
+                        if (nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self") != null) {
+                            stringBuilder.append(selfName).append(" --> ").append(nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self").getNodeValue()).append("\n");
+                        }
                     }
                 }
             }
