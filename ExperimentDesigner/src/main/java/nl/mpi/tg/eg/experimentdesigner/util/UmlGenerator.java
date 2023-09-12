@@ -147,7 +147,8 @@ public class UmlGenerator {
             NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList1.getLength(); index++) {
                 final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
-                stringBuilder.append(":").append(attributes.getNamedItem("self").getNodeValue()).append(";\n");
+                final String selfName = (attributes.getNamedItem("self") != null) ? attributes.getNamedItem("self").getNodeValue() : "";
+                stringBuilder.append(":").append(selfName).append(";\n");
                 if (attributes.getNamedItem("back") != null) {
                     stringBuilder.append("if (navigation) then (back)\n");
                     stringBuilder.append(":").append(attributes.getNamedItem("back").getNodeValue()).append(";\n");
