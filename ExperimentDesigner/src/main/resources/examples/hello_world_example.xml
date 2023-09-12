@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
-        appNameDisplay="minimal_example">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd">
+    <deployment state="staging" />
     <metadata/>
-    <presenter self="example" type="text">
-        <htmlText featureText="Hello World"></htmlText>
+    <presenter>
+        <htmlText featureText="Hello World"/>
     </presenter>
     <stimuli/>
 </experiment>
