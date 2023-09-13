@@ -97,7 +97,7 @@ public class UmlGenerator {
             NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList1.getLength(); index++) {
                 final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
-                final String selfName = (attributes.getNamedItem("self") != null) ? attributes.getNamedItem("self").getNodeValue() : "";
+                final String selfName = (attributes.getNamedItem("self") != null) ? attributes.getNamedItem("self").getNodeValue() : "P_" + index;
                 if (index == 0) {
                     stringBuilder.append("[*] --> ").append(selfName).append("\n");
                 }
@@ -123,9 +123,8 @@ public class UmlGenerator {
                 if (allMenuItemsNodes.getLength() > 0) {
                     // add presenters for allMenuItems
                     for (int allMenuItemsIndex = 0; allMenuItemsIndex < nodeList1.getLength(); allMenuItemsIndex++) {
-                        if (nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self") != null) {
-                            stringBuilder.append(selfName).append(" --> ").append(nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self").getNodeValue()).append("\n");
-                        }
+                        final String itemName =  (nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self") != null) ? nodeList1.item(allMenuItemsIndex).getAttributes().getNamedItem("self").getNodeValue() : "P_" + allMenuItemsIndex;
+                        stringBuilder.append(selfName).append(" --> ").append(itemName).append("\n");
                     }
                 }
             }
@@ -147,7 +146,7 @@ public class UmlGenerator {
             NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter").evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList1.getLength(); index++) {
                 final NamedNodeMap attributes = nodeList1.item(index).getAttributes();
-                final String selfName = (attributes.getNamedItem("self") != null) ? attributes.getNamedItem("self").getNodeValue() : "";
+                final String selfName = (attributes.getNamedItem("self") != null) ? attributes.getNamedItem("self").getNodeValue() : "P_" + index;
                 stringBuilder.append(":").append(selfName).append(";\n");
                 if (attributes.getNamedItem("back") != null) {
                     stringBuilder.append("if (navigation) then (back)\n");
