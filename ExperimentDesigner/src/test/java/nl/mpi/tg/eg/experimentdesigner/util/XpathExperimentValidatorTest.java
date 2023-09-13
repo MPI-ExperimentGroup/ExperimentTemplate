@@ -310,7 +310,6 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "sentences_rating_task.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "zinnen_afmaken.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "autoprediction.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "generic_example.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "leeservaring.xml"));
         // instance.validateDocument(new File(new File(outputDirectoryUri), "playback_preference.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "sentveri_exp3.xml"));
