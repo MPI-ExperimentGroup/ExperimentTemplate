@@ -76,6 +76,7 @@ public class UmlGeneratorTest {
         System.out.println("generateActivityUml");
         UmlGenerator instance = new UmlGenerator();
         final String outputDirectory = "/frinex-rest-output/";
+        final String examplesDirectory = "/examples/";
         URI outputDirectoryUri = this.getClass().getResource(outputDirectory).toURI();
         System.out.println(outputDirectory);
         final File umlActualFile = new File(new File(outputDirectoryUri), "with_stimulus_example-activity-output.uml");
@@ -83,7 +84,7 @@ public class UmlGeneratorTest {
         final File svgActualFile = new File(new File(outputDirectoryUri), "with_stimulus_example-activity-output.svg");
         final File svgExpectedFile = new File(new File(outputDirectoryUri), "with_stimulus_example-activity.svg");
 
-        instance.generateUml(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), umlActualFile, svgActualFile, UmlGenerator.DiagramType.activity);
+        instance.generateUml(new File(new File(examplesDirectory), "with_stimulus_example.xml"), umlActualFile, svgActualFile, UmlGenerator.DiagramType.activity);
         String expectedUmlResult = new String(Files.readAllBytes(Paths.get(umlExpectedFile.toURI())), StandardCharsets.UTF_8);
         String actualUmlResult = new String(Files.readAllBytes(Paths.get(umlActualFile.toURI())), StandardCharsets.UTF_8);
         String expectedSvgResult = new String(Files.readAllBytes(Paths.get(svgExpectedFile.toURI())), StandardCharsets.UTF_8);
