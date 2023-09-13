@@ -45,7 +45,7 @@ public class ExperimentListingJsonExtractorTest {
         URI outputDirectoryUri = this.getClass().getResource("/frinex-rest-output/").toURI();
         URI examplesDirectoryUri = this.getClass().getResource("/examples/").toURI();
         File listingDirectory = new File(new File(outputDirectoryUri), "listings");
-        final File[] fileUnderTest = {new File(new File(outputDirectoryUri), "with_stimulus_example.xml"), new File(new File(examplesDirectoryUri), "minimal_example.xml")};
+        final File[] fileUnderTest = {new File(new File(examplesDirectoryUri), "with_stimulus_example.xml"), new File(new File(examplesDirectoryUri), "minimal_example.xml")};
         final String[] expResult = {"{\n"
             + "  \"publishDate\" : \"2020-02-02\",\n"
             + "  \"expiryDate\" : \"2025-02-22\",\n"
