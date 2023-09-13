@@ -322,7 +322,7 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "shawifieldkit.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "sentenceplausibility.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "minimal_example.xml"));
-        instance.validateDocument(new File(new File(exampleDirectoryUri), "hellow_world_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "hello_world_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "generic_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "with_stimulus_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "group_example.xml"));

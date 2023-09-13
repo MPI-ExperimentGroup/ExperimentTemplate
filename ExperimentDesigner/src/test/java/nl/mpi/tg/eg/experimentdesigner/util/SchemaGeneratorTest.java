@@ -115,7 +115,7 @@ public class SchemaGeneratorTest {
         instance.createSchemaFile(schemaFile);
         String[] fileNameArray = new String[]{
             "minimal_example.xml",
-            "hellow_world_example.xml",
+            "hello_world_example.xml",
             "generic_example.xml",
             "with_stimulus_example.xml",
             "group_example.xml",
