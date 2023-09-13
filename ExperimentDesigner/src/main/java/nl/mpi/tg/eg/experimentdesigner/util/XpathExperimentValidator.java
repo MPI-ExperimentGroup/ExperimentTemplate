@@ -369,6 +369,8 @@ public class XpathExperimentValidator {
                         if (attributes != null) {
                             if (attributes.getNamedItem("self") != null) {
                                 presenterName = attributes.getNamedItem("self").getTextContent();
+                            } else {
+                                presenterName = "unnamed";
                             }
                         }
                     }
