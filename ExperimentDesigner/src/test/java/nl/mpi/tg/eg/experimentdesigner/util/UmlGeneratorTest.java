@@ -41,7 +41,7 @@ public class UmlGeneratorTest {
         final String outputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(outputDirectory).toURI();
         final String examplesDirectory = "/examples/";
-        URI examplesDirectoryUri = this.getClass().getResource(outputDirectory).toURI();
+        URI examplesDirectoryUri = this.getClass().getResource(examplesDirectory).toURI();
         System.out.println(outputDirectory);
         final File umlActualFile = new File(new File(outputDirectoryUri), "with_stimulus_example-state-output.uml");
         final File umlExpectedFile = new File(new File(outputDirectoryUri), "with_stimulus_example-state.uml");
