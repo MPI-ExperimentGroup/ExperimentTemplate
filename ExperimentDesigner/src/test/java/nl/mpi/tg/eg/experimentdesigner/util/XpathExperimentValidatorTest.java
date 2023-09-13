@@ -269,6 +269,7 @@ public class XpathExperimentValidatorTest {
         System.out.println("validateDocument");
         final String inputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
+        URI exampleDirectoryUri = this.getClass().getResource("/examples/").toURI();
         System.out.println(inputDirectory);
         XpathExperimentValidator instance = new XpathExperimentValidator();
         instance.validateDocument(new File(new File(outputDirectoryUri), "advocas1.xml"));
@@ -303,7 +304,6 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "french_audio.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "kinship_example.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "rosselfieldkit.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "audiononwordmonitoring_old.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "french_conversation.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "ld_screensize.xml"));
@@ -321,6 +321,14 @@ public class XpathExperimentValidatorTest {
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "playhouse_study.xml")); // TODO: update this test and add back in
         instance.validateDocument(new File(new File(outputDirectoryUri), "shawifieldkit.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "sentenceplausibility.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "minimal_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "hellow_world_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "generic_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "with_stimulus_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "group_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "group_streaming_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "audio_recorder_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "invitation_validation_example.xml"));
     }
 
     /**

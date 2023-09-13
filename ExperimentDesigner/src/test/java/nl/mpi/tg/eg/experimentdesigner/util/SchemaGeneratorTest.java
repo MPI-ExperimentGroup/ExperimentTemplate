@@ -65,7 +65,7 @@ public class SchemaGeneratorTest {
 //            "playback_preference.xml",
             "sentveri_exp3.xml",
             "wellspringssamoan.xml",
-            "antwoordraden.xml", "generic_example.xml",
+            "antwoordraden.xml",
 //            "joseco01.xml",
             "nonwacq.xml", "shawifieldkit.xml", "zinnen_afmaken.xml",
 //            "audioas2.xml",
@@ -80,15 +80,48 @@ public class SchemaGeneratorTest {
 //            "lilbq4.xml",
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
+//            "sentenceplausibility.xml",
+            "synquiz2.xml",
+            "synquiz.xml"
+            // "minimal_example.xml" // this example is in the main resources not test resources and is validated in the DocumentationGenerator test
+        };
+        for (String fileName : fileNameArray) {
+            System.out.println(fileName);
+            Source xmlFile = new StreamSource(new File(new File(outputDirectoryUri), fileName));
+            SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+            try {
+                Schema schema = schemaFactory.newSchema(schemaFile);
+                Validator validator = schema.newValidator();
+                validator.validate(xmlFile);
+            } catch (SAXException saxe) {
+                System.out.println(saxe.getMessage());
+                fail(fileName + " :" + saxe.getMessage());
+            }
+        }
+    }
+    /**
+     * Test validate examples, of class SchemaGenerator.
+     *
+     * @throws java.io.IOException
+     * @throws java.net.URISyntaxException
+     */
+    @Test
+    public void testValidateExamples() throws IOException, URISyntaxException {
+        System.out.println("validateExamples");
+        final String inputDirectory = "/examples/";
+        URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
+        SchemaGenerator instance = new SchemaGenerator();
+        final File schemaFile = new File(new File(outputDirectoryUri), "frinex.xsd");
+        instance.createSchemaFile(schemaFile);
+        String[] fileNameArray = new String[]{
+            "minimal_example.xml",
+            "hellow_world_example.xml",
+            "generic_example.xml",
             "with_stimulus_example.xml",
             "group_example.xml",
             "group_streaming_example.xml",
             "audio_recorder_example.xml",
             "invitation_validation_example.xml",
-//            "sentenceplausibility.xml",
-            "synquiz2.xml",
-            "synquiz.xml"
-            // "minimal_example.xml" // this example is in the main resources not test resources and is validated in the DocumentationGenerator test
         };
         for (String fileName : fileNameArray) {
             System.out.println(fileName);
