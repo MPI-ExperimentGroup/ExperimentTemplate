@@ -8,7 +8,7 @@
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
 > 
     <deployment
-        isWebApp="true" 
+        publishDate="2020-02-02"
         isDesktop="true"      
         isAndroid="true"                                   
         state="staging"                                                                       
@@ -5750,91 +5750,6 @@
             <randomGrouping/>
             <stimuli>
                 <tag>RecorderPauseTest</tag>
-            </stimuli>
-        </loadStimulus>
-    </presenter>
-    <presenter back="Menu" menuLabel="RecorderLevelTrigger" next="Menu" type="stimulus" self="RecorderLevelTrigger" title="RecorderLevelTrigger">
-        <loadStimulus eventTag="RecorderLevelTrigger" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <hasMoreStimulus>
-                <clearPage/>
-                <htmlText featureText="This example shows how add a sound level trigger while recording."/>
-                <htmlText featureText="&amp;lt;addRecorderLevelTrigger threshold=&quot;200&quot; thresholdMs=&quot;100&quot;/&amp;gt;"/>
-                <!-- <stimulusLabel styleName="stimuliLabel"/> -->
-                <addPadding/>
-                <regionReplace regionId="AudioRecorderWebLevelIndicator" /> 
-                <regionReplace regionId="AudioThresholdIndicator" />
-                <regionReplace regionId="TriggerRegion" styleName="hiddenRegion">
-                    <htmlText featureText="No sound detected"/>
-                </regionReplace>
-                <regionReplace regionId="TimeRegion" />
-                <regionReplace regionId="FeedbackRegion" styleName="hiddenRegion">
-                    <htmlText featureText="Too slow, within three seconds is required"/>
-                </regionReplace>
-                <regionReplace regionId="ButtonsRegion" />
-                <addPadding/> 
-                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                    <onSuccess>
-                        <regionReplace regionId="TimeRegion">
-                            <clearTimer listenerId="recordingTimer"/>
-                            <startTimer msToNext="0" listenerId="recordingTimer"/> 
-                            <timerLabel listenerId="recordingTimer" msLabelFormat="mm:ss" msToNext="0"/>
-                        </regionReplace>
-                        <addRecorderLevelTrigger threshold="200" thresholdMs="100" levelIndicatorStyle="recordingLevelIndicator">
-                            <recorderToneInjection dtmf="#" /> 
-                            <doLater msToNext="100"> 
-                                <recorderToneInjection dtmf="off" />
-                                <regionStyle regionId="TriggerRegion" styleName="indicatorOff"/>
-                            </doLater>
-                            <doLater msToNext="0"> 
-                                <regionReplace regionId="TriggerRegion" styleName="indicatorActive" />
-                                <compareTimer msToNext="3000" listenerId="recordingTimer">
-                                    <aboveThreshold>
-                                        <regionStyle regionId="FeedbackRegion" styleName=""/>
-                                    </aboveThreshold>
-                                    <withinThreshold>
-                                        <regionReplace regionId="FeedbackRegion" styleName="">
-                                            <htmlText featureText="Ok, within three seconds"/>
-                                        </regionReplace>
-                                    </withinThreshold>
-                                </compareTimer>
-                            </doLater>
-                        </addRecorderLevelTrigger>  
-                    </onSuccess>   
-                    <onError> 
-                        <htmlText featureText="startAudioRecorder onError"/>
-                    </onError>
-                    <mediaLoaded/>
-                    <mediaLoadFailed/>
-                    <mediaPlaybackStarted/>
-                    <mediaPlaybackComplete/>
-                </startAudioRecorderWeb>
-                <addPadding/>
-                <regionAppend regionId="ButtonsRegion">
-                    <actionButton featureText="stopAudioRecorder">
-                        <stopAudioRecorder/>
-                        <regionStyle regionId="TriggerRegion" styleName=""/>
-                        <regionReplace regionId="ButtonsRegion" />
-                        <regionReplace regionId="AudioRecorderWebLevelIndicator" />
-                        <regionReplace regionId="AudioThresholdIndicator" />
-                        <regionReplace regionId="TimeRegion" />
-                        <regionReplace regionId="ButtonsRegion" />
-                        <actionButton featureText="nextStimulus">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </actionButton>
-                    </actionButton>
-                </regionAppend>
-            </hasMoreStimulus>
-            <endOfStimulus>
-                <clearPage/>
-                <stopAudioRecorder/>
-                <actionButton featureText="resetStimulus">
-                    <resetStimulus target="RecorderLevelTrigger"/>
-                    <gotoPresenter target="RecorderLevelTrigger"/>
-                </actionButton> 
-            </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>Topics</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
