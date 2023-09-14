@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/stable.xsd"
-    appNameDisplay="audio_recorder_example" appNameInternal="audio_recorder_example"
-    availableLocales="en" backgroundColour="#FFFFFF" complementColour0="#EAC3A3"
-    complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE"
-    complementColour4="#FFFDFB" defaultLocale="en" defaultScale="1.0" isScalable="true"
-    preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E"
-    primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true"
-    showMenuBar="true" textFontSize="17">
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="audio_recorder_example">
+    <deployment state="staging" />
     <administration />
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'"
