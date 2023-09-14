@@ -9,6 +9,7 @@
 > 
     <deployment
         publishDate="2020-02-02"
+        expiryDate="2025-02-22"
         isDesktop="true"      
         isAndroid="true"                                   
         state="staging"                                                                       
