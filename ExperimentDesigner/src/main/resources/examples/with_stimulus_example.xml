@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- NOTE: to manually cache the latest XSD you can curl http://localhost:8070/frinex.xsd > ~/.lemminx/cache/http/frinexbuild.mpi.nl/frinex.xsd or curl http://frinexbuild.mpi.nl/alpha.xsd > ~/.lemminx/cache/http/frinexbuild.mpi.nl/alpha.xsd -->
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd" 
             userIdGetParam="uuid" 
             appNameDisplay="With Stimulus Example" 
+            preserveLastState="false"   
             obfuscateBrowserStorage="false"       
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
 > 
     <deployment
-        publishDate="2020-02-02"
-        expiryDate="2025-02-22"
-        isWebApp="true"
-        isDesktop="true"
-        isiOS="true"
-        isAndroid="true"
-        stagingServer="staging"
-        productionServer="production"
-        frinexVersion="latest"
-        state="staging"
-    />
+        isWebApp="true" 
+        isDesktop="true"      
+        isAndroid="true"                                   
+        state="staging"                                                                       
+    />    
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
     <administration allowDataDeletion="true">
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
@@ -53,12 +49,18 @@
             <stimulusResponse label="Incorrect" isCorrect="False" colour="#009900" />
             <stimulusResponse label="NoResponse" isCorrect="Null" colour="#000099" />
         </chart>   
+        <!-- <chart label="DataChannelThree" type="pie">
+            <stimulusResponse label="Correct" dataChannel="3" isCorrect="True" colour="#990000" />
+            <stimulusResponse label="Incorrect" dataChannel="3" isCorrect="False" colour="#009900" />
+            <stimulusResponse label="NoResponse" dataChannel="3" isCorrect="Null" colour="#000099" />
+        </chart>    -->
         <chart label="ABC" type="pie">
             <stimulusResponse label="A" response="a" colour="#990000" />
             <stimulusResponse label="B" response="b" colour="#009900" />
             <stimulusResponse label="C" response="c" colour="#000099" />
         </chart>   
         <dataTable label="StimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
+        <!-- <dataTable label="StimulusResponseGroup" source="stimulusResponse" columnNames="UserId,ScreenName,ResponseGroup,Response,IsCorrect,TagDate" dataChannel="3" /> -->
         <dataTable label="CorrectStimulusResponses" source="stimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" isCorrect="True" />
         <dataTable label="AppendStimulusResponse" source="stimulusResponse" screenName="AppendStimulusResponse" columnNames="UserId,ScreenName,StimulusId,Response,IsCorrect,TagDate" />
         <dataTable label="TouchInputReport for stimlus d1e269" source="tagpair" columnNames="UserId,ScreenName,TagValue1,TagValue2,EventMs,TagDate" screenName="%" eventTag="touchInputReport" tagValue1="d1e269" tagValue2="%" />
@@ -296,6 +298,38 @@
             border: 1px solid blue;
             padding: 3px;
         }
+        .indicatorActive {
+            background: darkgray;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        .indicatorOff {
+            background: none;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        .hiddenRegionAbsolute, .shownRegionAbsolute {
+            position: absolute;
+            width: 80vw;
+            left: 10vw;
+            top: 40vh;
+            transform: translate(0, -50%);
+        }
+        .hiddenRegionAbsolute {
+            display: none;
+        }
+        .shownRegionAbsolute {
+            display: block;
+        }
+        .innerRegionAbsolute {
+            width: 80vw;
+        }
+        .crossAbsolute {
+            font-size: 20vw;
+            font-weight: normal;
+            width: 80vw;
+            text-align: center;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -321,7 +355,6 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_step" preventServerDuplicates="false" registrationField="session step"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_step" preventServerDuplicates="false" registrationField="session_next_step"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_invitation_code" preventServerDuplicates="false" registrationField="validated invitation code"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentScore" preventServerDuplicates="false" registrationField="Current Score"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/>
@@ -629,6 +662,11 @@
             <plainText featureText="region 8"/>
         </regionAppend>
     </presenter>
+    <!--    <presenter back="Menu" menuLabel="Help Dialogue Example" type="stimulus" self="help_dialogue_example" title="Help Dialogue Example">
+        <helpDialogue closeButtonLabel="close">
+            <plainText featureText="This is some text in the help dialogue."/>
+        </helpDialogue>
+    </presenter>  -->
     <presenter back="Menu" menuLabel="Popup Dialogue Example" type="stimulus" self="popup_dialogue_example" title="Popup Dialogue Example">
         <clearPage/>
         <plainText featureText="This presenter shows a few demonstration popups. Popups direct the user to the information and the actions of the popup. However the user can always close the browser or application if they don't like the options you give them."/>
@@ -829,6 +867,8 @@
                     <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer0&gt;ms"/>
                 </actionButton>
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                <!-- load the media in a hidden state -->
+                <!--todo: load either audio or video based on a get parameter-->
                 <stimulusAudio autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
@@ -1395,6 +1435,8 @@
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
+                <!-- load the media in a hidden state -->
+                <!--todo: load either audio or video based on a get parameter-->
                 <stimulusAudio autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
@@ -2850,7 +2892,6 @@
             <triggerMatching listenerId="showCurrentValue"/>
         </actionTokenButton>
     </presenter>
-    <!-- todo: It would be nice to add a version of four_different_topics that compliments the metadata field method by using stimuli responses instead -->
     <presenter back="Menu" menuLabel="Four Different Topics" type="stimulus" self="four_different_topics" title="Four Different Topics">
         <triggerDefinition listenerId="showTopic234" threshold="0" maximum="3">
             <stimulusLabel styleName="stimuliLabel"/>
@@ -2865,7 +2906,6 @@
         <htmlTokenText featureText="This example shows stimuli from 4 different topics. For these 4 different topics, the questions for one topic will only be shown once, while the questions for the other topics can be shown multiple times but not more than once in 7 days. The questions of these 4 topics should be mixed (so not in block order) when presented." />
         <addPadding/>
         <withStimuli eventTag="four_different_topics" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <!-- todo: finish testing this does what it says -->
             <beforeStimulus>
                 <hasMetadataValue fieldName="displayedTopic234" matchingRegex=".*::currentDateDDMMYYYY::.*">
                     <conditionTrue>
@@ -3789,6 +3829,7 @@
             <eachStimulus>
                 <stimulusLabel/>
                 <addStimulusCodeResponseValidation featureText="Please respond to this item." validationRegex=".{1,}" dataChannel="8"/>
+                <!-- todo: this example works correctly but seems broken because the labels dont show when the button is first clicked -->
                 <htmlTokenText featureText="The current response: ::stimulusResponse::"/>
                 <table>
                     <row>
@@ -4988,6 +5029,8 @@
             <cancelPauseAll/>
             <htmlText featureText="Button blocked."/>
             <pause msToNext="1000">
+                <!--todo: these button hotkeys dont work after disable/enable-->
+                <!--todo: add an example that removes and readds the buttons-->
                 <disableButtonGroup matchingRegex="blockButtonGroup"/>
                 <enableButtonGroup matchingRegex="exampleButtonGroup"/>
                 <htmlText featureText="Button enabled."/>
@@ -5165,14 +5208,7 @@
     <presenter back="Menu" menuLabel="Recorder" next="Menu" type="stimulus" self="Recorder" title="Recorder">
         <actionButton featureText="stopAudioRecorder">
             <stopAudioRecorder/>
-            <!--<htmlText featureText="stopAudioRecorder"/>-->
-            <!--</stopAudioRecorder>-->
         </actionButton>
-        <!-- <actionButton featureText="startAudioRecorderTag (not supported in the HTML5 version)">
-        <startAudioRecorderTag eventTier="3"/>
-        <htmlText featureText="startAudioRecorderTag"/>
-        </startAudioRecorderTag>
-        </actionButton>-->
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <regionAppend regionId="regionTimer"/>
@@ -5391,6 +5427,7 @@
                             <enableButtonGroup matchingRegex="startAudioButtonGroup"/>
                         </mediaLoadFailed>
                         <mediaPlaybackStarted>
+                            <!-- TODO: these addMediaTriggers are not being triggered and should be investigated -->
                             <addMediaTrigger evaluateMs="70" threshold="20" mediaId="recordedMedia">
                                 <onTime>
                                 <doLater msToNext="0">
@@ -5713,6 +5750,91 @@
             <randomGrouping/>
             <stimuli>
                 <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecorderLevelTrigger" next="Menu" type="stimulus" self="RecorderLevelTrigger" title="RecorderLevelTrigger">
+        <loadStimulus eventTag="RecorderLevelTrigger" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText="This example shows how add a sound level trigger while recording."/>
+                <htmlText featureText="&amp;lt;addRecorderLevelTrigger threshold=&quot;200&quot; thresholdMs=&quot;100&quot;/&amp;gt;"/>
+                <!-- <stimulusLabel styleName="stimuliLabel"/> -->
+                <addPadding/>
+                <regionReplace regionId="AudioRecorderWebLevelIndicator" /> 
+                <regionReplace regionId="AudioThresholdIndicator" />
+                <regionReplace regionId="TriggerRegion" styleName="hiddenRegion">
+                    <htmlText featureText="No sound detected"/>
+                </regionReplace>
+                <regionReplace regionId="TimeRegion" />
+                <regionReplace regionId="FeedbackRegion" styleName="hiddenRegion">
+                    <htmlText featureText="Too slow, within three seconds is required"/>
+                </regionReplace>
+                <regionReplace regionId="ButtonsRegion" />
+                <addPadding/> 
+                <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="" mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
+                    <onSuccess>
+                        <regionReplace regionId="TimeRegion">
+                            <clearTimer listenerId="recordingTimer"/>
+                            <startTimer msToNext="0" listenerId="recordingTimer"/> 
+                            <timerLabel listenerId="recordingTimer" msLabelFormat="mm:ss" msToNext="0"/>
+                        </regionReplace>
+                        <addRecorderLevelTrigger threshold="200" thresholdMs="100" levelIndicatorStyle="recordingLevelIndicator">
+                            <recorderToneInjection dtmf="#" /> 
+                            <doLater msToNext="100"> 
+                                <recorderToneInjection dtmf="off" />
+                                <regionStyle regionId="TriggerRegion" styleName="indicatorOff"/>
+                            </doLater>
+                            <doLater msToNext="0"> 
+                                <regionReplace regionId="TriggerRegion" styleName="indicatorActive" />
+                                <compareTimer msToNext="3000" listenerId="recordingTimer">
+                                    <aboveThreshold>
+                                        <regionStyle regionId="FeedbackRegion" styleName=""/>
+                                    </aboveThreshold>
+                                    <withinThreshold>
+                                        <regionReplace regionId="FeedbackRegion" styleName="">
+                                            <htmlText featureText="Ok, within three seconds"/>
+                                        </regionReplace>
+                                    </withinThreshold>
+                                </compareTimer>
+                            </doLater>
+                        </addRecorderLevelTrigger>  
+                    </onSuccess>   
+                    <onError> 
+                        <htmlText featureText="startAudioRecorder onError"/>
+                    </onError>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
+                    <mediaPlaybackComplete/>
+                </startAudioRecorderWeb>
+                <addPadding/>
+                <regionAppend regionId="ButtonsRegion">
+                    <actionButton featureText="stopAudioRecorder">
+                        <stopAudioRecorder/>
+                        <regionStyle regionId="TriggerRegion" styleName=""/>
+                        <regionReplace regionId="ButtonsRegion" />
+                        <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                        <regionReplace regionId="AudioThresholdIndicator" />
+                        <regionReplace regionId="TimeRegion" />
+                        <regionReplace regionId="ButtonsRegion" />
+                        <actionButton featureText="nextStimulus">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </actionButton>
+                </regionAppend>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <stopAudioRecorder/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="RecorderLevelTrigger"/>
+                    <gotoPresenter target="RecorderLevelTrigger"/>
+                </actionButton> 
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Topics</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -8048,6 +8170,63 @@
             <onError><htmlText featureText="evaluateTokenText onError"/></onError> 
         </evaluateTokenText>
     </presenter>
+
+    <!--    <presenter back="Menu" menuLabel="stored stimulus response" type="stimulus" self="stored_stimulus_response" title="stored stimulus response">
+        <loadStimulus eventTag="stored_stimulus_response" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                                <groupNetwork groupMembers="A" phasesPerStimulus="2" groupCommunicationChannels="A,A">
+                    <groupNetworkActivity phaseMembers="A">
+                        <clearPage/>
+                        <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'::groupID::';Members:'::groupAllMemberCodes::';Score:::groupScore::;Channels:'::groupCommunicationChannels::';Scores:'::channelLoop::::channelLabel::-::channelScore:: ::/channelLoop::';::groupMemberCode::-best:::playerBestScore::;::groupMemberCode::-current:::playerScore::;GroupOther:'::groupOtherMemberCodes::';ChannelOther:'::channelOtherMemberCodes::';::groupActiveChannel:::::channelScore::;Message:'::groupMessageString::';"/>
+                        <htmlTokenText featureText="(::groupMemberCode:: playing with ::channelOtherMemberCodes::)" styleName="headerLabelCentered"/>
+                        <stimulusLabel/>
+                        <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
+                        <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
+                        <stimulusLabel styleName="stimuliLabel"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity phaseMembers="-:A">
+                        <clearPage/>
+                        <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'::groupID::';Members:'::groupAllMemberCodes::';Score:::groupScore::;Channels:'::groupCommunicationChannels::';Scores:'::channelLoop::::channelLabel::-::channelScore:: ::/channelLoop::';::groupMemberCode::-best:::playerBestScore::;::groupMemberCode::-current:::playerScore::;GroupOther:'::groupOtherMemberCodes::';ChannelOther:'::channelOtherMemberCodes::';::groupActiveChannel:::::channelScore::;Message:'::groupMessageString::';"/>
+                        <htmlTokenText featureText="(::groupMemberCode:: playing with ::channelOtherMemberCodes::)" styleName="headerLabelCentered"/>
+                        <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+
+
+
+                <htmlText featureText="This demonstration screen shows stored stimulus response.&lt;br/&gt;"/>
+ 
+                <stimulusHasResponse>
+                    <conditionTrue>
+                        <htmlTokenText featureText="The stored stimulus response should be shown here &lt;timerA&gt;ms"/>
+                        <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <stimulusLabel styleName="stimuliLabel"/>
+                        <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
+                        <actionButton featureText="Store [ENTER]" hotKey="ENTER" styleName="">
+                            <showStimulus/>
+                        </actionButton>
+                    </conditionFalse>
+                </stimulusHasResponse>
+
+
+
+
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="showOnBackButton"/>
+                    <gotoPresenter target="showOnBackButton"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>  
+            </stimuli>
+        </loadStimulus>
+    </presenter>-->
     <presenter back="Menu" menuLabel="stimulusCodeImageButton" type="stimulus" self="stimulusCodeImageButton" title="stimulusCodeImageButton">
         <loadStimulus eventTag="stimulusCodeImageButton" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -9633,6 +9812,8 @@
     <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
         <stimuliValidation/>
+        <addKeyboardDebug/>
+        <addDebugWidgets/>
     </presenter>
     <stimuli>
         <stimulus identifier="cond_1:Label for the stimuli" label="Label for the stimuli" pauseMs="0" code="Item1" tags="First_Stimuli_Screen cond_1"/>
