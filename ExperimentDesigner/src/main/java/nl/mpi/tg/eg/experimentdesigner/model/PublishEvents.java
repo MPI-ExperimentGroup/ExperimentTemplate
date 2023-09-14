@@ -54,7 +54,7 @@ public class PublishEvents implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date expiryDate;
     private PublishState publishState;
-    private boolean isWebApp;
+    private boolean isWebApp = true;
     private boolean isDesktop;
     private boolean isiOS;
     private boolean isAndroid;
