@@ -45,6 +45,7 @@ public class ExperimentListingJsonExtractorTest {
         URI outputDirectoryUri = this.getClass().getResource("/frinex-rest-output/").toURI();
         URI examplesDirectoryUri = this.getClass().getResource("/examples/").toURI();
         File listingDirectory = new File(new File(outputDirectoryUri), "listings");
+        // "listing_json_example.xml"
         final File[] fileUnderTest = {new File(new File(examplesDirectoryUri), "with_stimulus_example.xml"), new File(new File(examplesDirectoryUri), "minimal_example.xml")};
         final String[] expResult = {"{\n"
             + "  \"publishDate\" : \"2020-02-02\",\n"
@@ -107,7 +108,7 @@ public class ExperimentListingJsonExtractorTest {
                 // we deliberately loop on the larger array so that we throw an error if the lengths are different
                 assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitExpectedString.length);
                 assertTrue("Expected equal lengths but found: " + splitExpectedString.length + " : " + splitResultString.length, index < splitResultString.length);
-                assertEquals("listing_json_example.xml" + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
+                assertEquals(fileUnderTest[testFileIndex].getName() + " at line " + index, splitExpectedString[index].trim(), splitResultString[index].trim());
 //                System.out.println(splitExpectedString[index]);
 //                System.out.println(splitResultString[index]);
             }
