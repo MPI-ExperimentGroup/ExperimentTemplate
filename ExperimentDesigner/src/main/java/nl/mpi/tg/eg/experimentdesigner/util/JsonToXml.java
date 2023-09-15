@@ -137,7 +137,7 @@ public class JsonToXml {
                     try {
                         final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
                         // look for a frinex version element otherwise use the default schema file
-                        final String frinexVersion = experimentValidator.extractFrinexVersion(new FileReader(xmlFile), "/frinex");
+                        final String frinexVersion = experimentValidator.extractFrinexVersion(new FileReader(xmlFile), "frinex");
                         SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
                         final File schemaFile = new File(schemaDirectory + "/" + frinexVersion + ".xsd");
                         if (!schemaFile.exists()) {
