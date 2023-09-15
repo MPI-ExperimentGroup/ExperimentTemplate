@@ -146,7 +146,15 @@ public class JsonToXml {
                         Schema schema = schemaFactory.newSchema(schemaFile);
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
-                        experimentValidator.validateDocument(xmlFile);
+                        try {
+                            experimentValidator.validateDocument(xmlFile);
+                        } catch (SAXException saxe) {
+                            if (saxe.getMessage().contains("One of '{translation, onSuccess}' is expected.")) {
+                                throw new XpathExperimentException(saxe.getMessage() + " Please ensure the order of onSuccess and onError is correct. ");
+                            } else {
+                                throw new XpathExperimentException(saxe.getMessage());
+                            }
+                        }
                         final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
                         experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory), frinexVersion);
                         final UmlGenerator umlGenerator = new UmlGenerator();
