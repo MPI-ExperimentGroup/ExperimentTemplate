@@ -7,7 +7,7 @@
         self="FrameRateTimerExample" title="FrameRateTimer Example">
         <loadStimulus eventTag="FrameRateTimerExample" randomise="false" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="10">
-            <hasMoreStimulus>
+            <hasMoreStimulus> 
                 <clearPage />
                 <!-- prepare everything in a hidden state before the time critical section -->
                 <!-- the hidden style maintains its size and position on the page so there are no

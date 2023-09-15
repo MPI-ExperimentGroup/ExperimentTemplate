@@ -14,7 +14,7 @@
             width:30vw;
         }   
     </scss>      
-    <metadata/> 
+    <metadata/>  
     <presenter back="Menu" menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
         <htmlText featureText="This example demonstrates the streaming audio, video and shared canvas in Frinex group experiments. Group experiments are run with multiple participants, each on different computers over the network. As a result to use this example in the normal configuration you will need to run this experiment on multiple computers simultaneously." />
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="GroupStreamingExample" />

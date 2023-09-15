@@ -9,7 +9,7 @@
                 <htmlText featureText="This example shows how add a sound level trigger while recording."/>
                 <htmlText featureText="&amp;lt;addRecorderLevelTrigger threshold=&quot;200&quot; thresholdMs=&quot;100&quot;/&amp;gt;"/>
                 <!-- <stimulusLabel styleName="stimuliLabel"/> -->
-                <addPadding/>
+                <addPadding/> 
                 <regionReplace regionId="AudioRecorderWebLevelIndicator" /> 
                 <regionReplace regionId="AudioThresholdIndicator" />
                 <regionReplace regionId="TriggerRegion" styleName="hiddenRegion">
