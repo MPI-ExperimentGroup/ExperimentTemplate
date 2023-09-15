@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/stable.xsd" 
+            userIdGetParam="uuid" 
+            appNameDisplay="Listing Json Example" 
+            preserveLastState="false"   
+            obfuscateBrowserStorage="false"       
+            availableLocales="en,es,de,fr,nl" defaultLocale="nl"
+> 
+    <deployment
+        publishDate="2020-02-02"
+        expiryDate="2025-02-22"
+        isiOS="true"
+        isDesktop="true"      
+        isAndroid="true"  
+        isWebApp="false"
+        isUnity="true"                                 
+        state="staging"        
+        stagingServer="staging"
+        productionServer="production"                                                               
+    />    
+    <validationService stagingUrl="/listing_json_example-admin/validate" productionUrl="/listing_json_example-admin/mock-nph-read_bq_exp_data.pl"/>
+    <administration allowDataDeletion="true"/>
+</experiment>

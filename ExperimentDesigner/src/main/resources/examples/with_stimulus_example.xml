@@ -8,11 +8,6 @@
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
 > 
     <deployment
-        publishDate="2020-02-02"
-        expiryDate="2025-02-22"
-        isiOS="true"
-        isDesktop="true"      
-        isAndroid="true"                                   
         state="staging"                                                                       
     />    
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
