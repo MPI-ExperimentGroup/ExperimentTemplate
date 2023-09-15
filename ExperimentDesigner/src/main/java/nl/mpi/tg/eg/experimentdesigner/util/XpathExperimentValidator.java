@@ -103,6 +103,8 @@ public class XpathExperimentValidator {
                 throw new XpathExperimentException(saxe.getMessage() + " There must be no white space and no empty lines at the start of the XML file.");
             } else if (saxe.getMessage().contains("root element")) {
                 throw new XpathExperimentException(saxe.getMessage() + " There can only be one root element and it must be <experiment>...</experiment>.");
+            } else if (saxe.getMessage().contains("'{translation, onSuccess}'")) {
+                throw new XpathExperimentException(saxe.getMessage() + " Please ensure the order of onSuccess and onError is correct. ");
             } else {
                 throw new XpathExperimentException(saxe.getMessage());
             }
