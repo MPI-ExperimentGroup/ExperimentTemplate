@@ -10,7 +10,7 @@
         />                
     <administration />   
     <scss>  
-        .streamRegion { 
+        .streamRegion {  
             width:30vw;
         }   
     </scss>      
