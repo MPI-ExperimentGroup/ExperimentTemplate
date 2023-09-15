@@ -12,7 +12,7 @@
     <scss>  
         .streamRegion { 
             width:30vw;
-        }  
+        }   
     </scss>      
     <metadata/>
     <presenter back="Menu" menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
