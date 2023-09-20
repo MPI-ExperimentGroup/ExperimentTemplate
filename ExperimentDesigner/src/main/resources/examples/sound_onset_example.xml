@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
+        appNameDisplay="sound_onset_example">
+        <deployment state="staging" />
+        <scss>
+                .indicatorActive {
+                        background: darkgray;
+                        padding: 15px;
+                        border-radius: 15px;
+                }
+                .indicatorOff {
+                        background: none;
+                        padding: 15px;
+                        border-radius: 15px;
+                }
+                .recordingLevelIndicator {
+                        height: 5px;
+                        width: 25vw;
+                }
+                .bargraphInner.recordingLevelIndicator {
+                        min-height: 5px;
+                        background: blue;
+                }
+        </scss>
+        <metadata>
+                <field controlledMessage="." controlledRegex="." postName="tooSlowCounter"
+                        registrationField="tooSlowCounter" />
+                <field controlledMessage="." controlledRegex="." postName="inTimeCounter"
+                        registrationField="inTimeCounter" />
+        </metadata>
+        <presenter menuLabel="RecorderLevelTrigger" type="stimulus"
+                self="RecorderLevelTrigger" title="RecorderLevelTrigger">
+                <setMetadataValue fieldName="tooSlowCounter" dataLogFormat="0" />
+                <setMetadataValue fieldName="inTimeCounter" dataLogFormat="0" />
+                <triggerDefinition listenerId="updateTimeCounters" threshold="1" maximum="1">
+                        <compareTimer msToNext="3000"
+                                listenerId="recordingTimer">
+                                <aboveThreshold>
+                                        <setMetadataEvalTokens
+                                                fieldName="tooSlowCounter"
+                                                evaluateTokens="(::metadataField_tooSlowCounter::+1)">
+                                                <onSuccess />
+                                                <onError />
+                                        </setMetadataEvalTokens>
+                                        <regionStyle
+                                                regionId="FeedbackRegion"
+                                                styleName="" />
+                                </aboveThreshold>
+                                <withinThreshold>
+                                        <setMetadataEvalTokens
+                                                fieldName="inTimeCounter"
+                                                evaluateTokens="(::metadataField_inTimeCounter::+1)">
+                                                <onSuccess />
+                                                <onError />
+                                        </setMetadataEvalTokens>
+                                        <regionReplace
+                                                regionId="FeedbackRegion"
+                                                styleName="">
+                                                <htmlText
+                                                        featureText="Ok, within three seconds" />
+                                        </regionReplace>
+                                </withinThreshold>
+                        </compareTimer>
+                        <htmlTokenText
+                                featureText="inTimeCounter: ::metadataField_inTimeCounter::" />
+                        <htmlTokenText
+                                featureText="tooSlowCounter: ::metadataField_tooSlowCounter::" />
+                </triggerDefinition>
+                <loadStimulus eventTag="RecorderLevelTrigger" randomise="false"
+                        repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                        <hasMoreStimulus>
+                                <resetTrigger listenerId="updateTimeCounters" />
+                                <clearPage />
+                                <htmlText
+                                        featureText="This example shows how add a sound level trigger while recording." />
+                                <htmlText
+                                        featureText="&amp;lt;addRecorderLevelTrigger threshold=&quot;200&quot; thresholdMs=&quot;100&quot;/&amp;gt;" />
+                                <addPadding />
+                                <htmlText
+                                        featureText="Please ensure that you are in a quiet room and to try not to hesitate before speaking." />
+                                <htmlText
+                                        featureText="In this example you will have three seconds to speak and you will be given feedback intended to induce time pressure." />
+                                <!-- <stimulusLabel styleName="stimuliLabel"/> -->
+                                <addPadding />
+                                <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                                <regionReplace regionId="AudioThresholdIndicator" />
+                                <regionReplace regionId="TriggerRegion" styleName="hiddenRegion">
+                                        <htmlText featureText="No sound detected" />
+                                </regionReplace>
+                                <regionReplace regionId="TimeRegion" />
+                                <regionReplace regionId="FeedbackRegion" styleName="hiddenRegion">
+                                        <htmlText
+                                                featureText="Too slow, within three seconds is required" />
+                                </regionReplace>
+                                <regionReplace regionId="ButtonsRegion" />
+                                <addPadding />
+                                <startAudioRecorderWeb featureText="00:00:00"
+                                        downloadPermittedWindowMs="30000" deviceRegex=""
+                                        mediaId="recordedMedia"
+                                        levelIndicatorStyle="recordingLevelIndicator">
+                                        <onSuccess>
+                                                <regionReplace regionId="TimeRegion">
+                                                        <clearTimer listenerId="recordingTimer" />
+                                                        <startTimer msToNext="0"
+                                                                listenerId="recordingTimer" />
+                                                        <timerLabel listenerId="recordingTimer"
+                                                                msLabelFormat="mm:ss" msToNext="0" />
+                                                </regionReplace>
+                                                <addRecorderLevelTrigger threshold="200"
+                                                        thresholdMs="100"
+                                                        levelIndicatorStyle="recordingLevelIndicator">
+                                                        <!-- the recorderToneInjection can be
+                                                        omitted from your experiment, it is used
+                                                        here to validate the results collected with
+                                                        this example should that be required -->
+                                                        <recorderToneInjection dtmf="#" />
+                                                        <doLater msToNext="100">
+                                                                <recorderToneInjection dtmf="off" />
+                                                                <regionStyle
+                                                                        regionId="TriggerRegion"
+                                                                        styleName="indicatorOff" />
+                                                        </doLater>
+                                                        <doLater msToNext="0">
+                                                                <triggerMatching
+                                                                        listenerId="updateTimeCounters" />
+                                                                <regionReplace
+                                                                        regionId="TriggerRegion"
+                                                                        styleName="indicatorActive" />
+                                                        </doLater>
+                                                </addRecorderLevelTrigger>
+                                        </onSuccess>
+                                        <onError>
+                                                <htmlText featureText="startAudioRecorder onError" />
+                                        </onError>
+                                        <mediaLoaded />
+                                        <mediaLoadFailed />
+                                        <mediaPlaybackStarted />
+                                        <mediaPlaybackComplete />
+                                </startAudioRecorderWeb>
+                                <addPadding />
+                                <regionAppend regionId="ButtonsRegion">
+                                        <actionButton featureText="stopAudioRecorder">
+                                                <stopAudioRecorder />
+                                                <regionStyle regionId="TriggerRegion" styleName="" />
+                                                <regionReplace regionId="ButtonsRegion" />
+                                                <regionReplace
+                                                        regionId="AudioRecorderWebLevelIndicator" />
+                                                <regionReplace regionId="AudioThresholdIndicator" />
+                                                <regionReplace regionId="TimeRegion" />
+                                                <regionReplace regionId="ButtonsRegion" />
+                                                <actionButton featureText="nextStimulus">
+                                                        <nextStimulus repeatIncorrect="false" />
+                                                </actionButton>
+                                        </actionButton>
+                                </regionAppend>
+                        </hasMoreStimulus>
+                        <endOfStimulus>
+                                <clearPage />
+                                <stopAudioRecorder />
+                                <actionButton featureText="resetStimulus">
+                                        <resetStimulus target="RecorderLevelTrigger" />
+                                        <gotoPresenter target="RecorderLevelTrigger" />
+                                </actionButton>
+                        </endOfStimulus>
+                        <randomGrouping />
+                        <stimuli>
+                                <tag>Topics</tag>
+                        </stimuli>
+                </loadStimulus>
+        </presenter>
+        <stimuli>
+                <stimulus identifier="topic_1_1" label="1 : 1" tags="Topics" />
+                <stimulus identifier="topic_1_2" label="1 : 2" tags="Topics" />
+                <stimulus identifier="topic_1_3" label="1 : 3" tags="Topics" />
+                <stimulus identifier="topic_2_1" label="2 : 1" tags="Topics" />
+                <stimulus identifier="topic_2_2" label="2 : 2" tags="Topics" />
+                <stimulus identifier="topic_2_3" label="2 : 3" tags="Topics" />
+                <stimulus identifier="topic_3_1" label="3 : 1" tags="Topics" />
+                <stimulus identifier="topic_3_2" label="3 : 2" tags="Topics" />
+                <stimulus identifier="topic_3_3" label="3 : 3" tags="Topics" />
+                <stimulus identifier="topic_4_1" label="4 : 1" tags="Topics" />
+                <stimulus identifier="topic_4_2" label="4 : 2" tags="Topics" />
+                <stimulus identifier="topic_4_3" label="4 : 3" tags="Topics" />
+        </stimuli>
+</experiment>

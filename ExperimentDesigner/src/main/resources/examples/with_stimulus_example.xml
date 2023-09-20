@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- NOTE: to manually cache the latest XSD you can curl http://localhost:8070/frinex.xsd > ~/.lemminx/cache/http/frinexbuild.mpi.nl/frinex.xsd or curl http://frinexbuild.mpi.nl/alpha.xsd > ~/.lemminx/cache/http/frinexbuild.mpi.nl/alpha.xsd -->
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd" 
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd" 
             userIdGetParam="uuid" 
             appNameDisplay="With Stimulus Example" 
             preserveLastState="false"   
             obfuscateBrowserStorage="false"       
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
 > 
-    <deployment
-        state="staging"                                                                       
-    />    
+    <deployment state="staging" />    
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
     <administration allowDataDeletion="true">
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->

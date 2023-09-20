@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
         appNameDisplay="Recorder Level Trigger Example">
+    <deployment state="staging" />
     <metadata/>
     <presenter back="Menu" menuLabel="RecorderLevelTrigger" next="Menu" type="stimulus" self="RecorderLevelTrigger" title="RecorderLevelTrigger">
         <loadStimulus eventTag="RecorderLevelTrigger" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">

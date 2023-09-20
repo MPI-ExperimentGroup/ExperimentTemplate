@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd"
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beta.xsd"
             appNameDisplay="group_example" 
-            appNameInternal="group_example" 
-            backgroundColour="#FFFFFF" 
-            complementColour0="#EAC3A3" 
-            complementColour1="#9D7B5E" 
-            complementColour2="#C69E7C" 
-            complementColour3="#FFEDDE" 
-            complementColour4="#FFFDFB" 
-            defaultScale="1.0" 
-            isScalable="true" 
-            preserveLastState="false" 
-            primaryColour0="#628D8D" 
-            primaryColour1="#385E5E" 
-            primaryColour2="#4A7777" 
-            primaryColour3="#96ADAD" 
-            primaryColour4="#D5D8D8" 
-            rotatable="true" 
             showMenuBar="false"
-            obfuscateBrowserStorage="false" 
-            textFontSize="17">
+            preserveLastState="false"
+            obfuscateBrowserStorage="false" >
+    <deployment state="staging" />
     <administration/>
     <metadata>
         <field controlledMessage="stimulusImageRegion" controlledRegex=".'{'3,'}'" postName="stimulusImageRegion" registrationField="stimulusImageRegion" />

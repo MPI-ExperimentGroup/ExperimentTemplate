@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
             appNameDisplay="group_streaming_example"> 
         <deployment
-            publishDate="2023-09-06"
-            expiryDate="2025-09-06" 
             state="staging"                                               
             stagingServer="https://ems15.mpi.nl"               
             stunServer="coturn.mpi.nl"   
