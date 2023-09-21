@@ -3,7 +3,7 @@
         appNameDisplay="Recorder Level Trigger Example">
     <deployment state="staging" />
     <metadata/>
-    <presenter type="stimulus" title="RecorderLevelTrigger">
+    <presenter type="stimulus" self="RecorderLevelTrigger" title="RecorderLevelTrigger">
         <loadStimulus eventTag="RecorderLevelTrigger" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
