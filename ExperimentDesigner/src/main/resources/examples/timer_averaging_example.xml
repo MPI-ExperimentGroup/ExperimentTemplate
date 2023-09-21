@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd" appNameDisplay="Timer Averaging Example">
     <deployment state="staging" />
     <metadata/>
-    <presenter>
+    <presenter type="stimulus">
         <!-- <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
         </triggerDefinition> -->
         <addTimerTrigger minimum="500" maximum="1000" evaluateTokens="" listenerId="averagingTimer">
