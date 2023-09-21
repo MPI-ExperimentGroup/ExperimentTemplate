@@ -14,11 +14,11 @@
             <hardwareTimeStamp opto1="true" opto2="true"/>
             <addTimerTrigger minimum="100" maximum="100" evaluateTokens="100" listenerId="averagingTimer">
                 <onTimer><hardwareTimeStamp opto1="false"/></onTimer>
-                <onError><hardwareTimeStamp  opto1="false"/></onError>
+                <onError><htmlText featureText="100: Error" /></onError>
             </addTimerTrigger>
             <addTimerTrigger minimum="600" maximum="600" evaluateTokens="600" listenerId="averagingTimer">
                 <onTimer><triggerMatching listenerId="startAveragingTimer"/></onTimer>
-                <onError><triggerMatching listenerId="startAveragingTimer"/></onError>
+                <onError><htmlText featureText="600: Error" /></onError>
             </addTimerTrigger>
             <startTimer msToNext="500" listenerId="averagingTimer">
                 <hardwareTimeStamp opto2="false"/>
@@ -47,6 +47,15 @@
                         <htmlText featureText="Averaging: Error" />
                     </onError>
                 </setMetadataEvalTokens>
+                <compareTimer msToNext="510" listenerId="averagingTimer">
+                    <aboveThreshold>
+                        <clearTimer listenerId="averagingTimer" />
+                        <htmlText featureText="More that 510ms detected in one loop, 500ms is expected." />
+                        <htmlText featureText="Please make sure the device is on mains power (not in battery save mode)." />
+                        <htmlText featureText="Please also make sure that this page has focus, if you start doing other things on your device this page will be slowed down by the browser." />
+                    </aboveThreshold>
+                    <withinThreshold/>
+                </compareTimer>
             </startTimer>
         </triggerDefinition>
         <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
