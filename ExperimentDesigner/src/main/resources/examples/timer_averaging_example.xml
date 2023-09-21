@@ -11,7 +11,9 @@
     <presenter type="stimulus">
         <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
             <clearTimer listenerId="averagingTimer" />
+            <hardwareTimeStamp dtmf="A" opto1="true" opto2="false"/>
             <startTimer msToNext="500" listenerId="averagingTimer">
+                <hardwareTimeStamp dtmf="off" opto1="false" opto2="true"/>
                 <htmlTokenText featureText="averagingTimer: ::averagingTimer::"></htmlTokenText>
                 <setMetadataEvalTokens fieldName="samplesSum" evaluateTokens="::metadataField_samplesSum::+::averagingTimer::">
                     <onSuccess>
@@ -40,6 +42,7 @@
                 <triggerMatching listenerId="startAveragingTimer"/>
             </startTimer>
         </triggerDefinition>
+        <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
         <actionButton featureText="Start Timer (500ms 1000 times)" groupId="startButton">
             <disableButtonGroup matchingRegex="startButton" />
             <setMetadataValue fieldName="samplesSum" dataLogFormat="0" />
