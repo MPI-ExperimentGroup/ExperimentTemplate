@@ -11,9 +11,13 @@
     <presenter type="stimulus">
         <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
             <clearTimer listenerId="averagingTimer" />
-            <hardwareTimeStamp dtmf="A" opto1="true" opto2="false"/>
+            <hardwareTimeStamp opto1="true" opto2="true"/>
+            <addTimerTrigger minimum="100" maximum="100" evaluateTokens="100" listenerId="averagingTimer">
+                <onTimer><hardwareTimeStamp opto1="false"/></onTimer>
+                <onError><hardwareTimeStamp  opto1="false"/></onError>
+            </addTimerTrigger>
             <startTimer msToNext="500" listenerId="averagingTimer">
-                <hardwareTimeStamp dtmf="off" opto1="false" opto2="true"/>
+                <hardwareTimeStamp opto2="false"/>
                 <htmlTokenText featureText="averagingTimer: ::averagingTimer::"></htmlTokenText>
                 <setMetadataEvalTokens fieldName="samplesSum" evaluateTokens="::metadataField_samplesSum::+::averagingTimer::">
                     <onSuccess>
