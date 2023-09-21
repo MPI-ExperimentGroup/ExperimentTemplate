@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd" appNameDisplay="Timer Averaging Example">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
+    appNameDisplay="Timer Averaging Example">
     <deployment state="staging" />
-    <metadata/>
+    <metadata>
+        <field controlledMessage="." controlledRegex="0-9*" postName="samplesCount" registrationField="SampleCount" />
+        <field controlledMessage="." controlledRegex="0-9*" postName="samplesSum" registrationField="SampleSum" />
+        <field controlledMessage="." controlledRegex="0-9*" postName="samplesAverage" registrationField="SampleAverage" />
+    </metadata>
     <presenter type="stimulus">
         <!-- <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
         </triggerDefinition> -->
-        <addTimerTrigger minimum="500" maximum="1000" evaluateTokens="" listenerId="averagingTimer">
+        <addTimerTrigger minimum="500" maximum="1000" evaluateTokens="500" listenerId="averagingTimer">
             <onTimer>
                 <htmlTokenText featureText="averagingTimer ::averagingTimer::"></htmlTokenText>
-                <!-- TODO: collect the values and average them -->
-                <clearTimer listenerId="averagingTimer"/>
+                <setMetadataEvalTokens fieldName="samplesAverage" evaluateTokens="::metadataField_samplesSum::/::metadataField_samplesCount::">
+                    <onSuccess>
+                        <htmlTokenText featureText="Count: ::metadataField_samplesCount::" />
+                        <htmlTokenText featureText="Sum: ::metadataField_samplesSum::" />
+                        <htmlTokenText featureText="Average: ::metadataField_samplesAverage::" />
+                    </onSuccess>
+                    <onError>
+                        <htmlText featureText="Averaging Error" />
+                    </onError>
+                </setMetadataEvalTokens>
+                <clearTimer listenerId="averagingTimer" />
             </onTimer>
             <onError>
-                <htmlText featureText="averagingTimerListener was late"/>
+                <htmlText featureText="averagingTimerListener was late" />
             </onError>
         </addTimerTrigger>
         <actionButton featureText="Start Timer" groupId="startButton">
-            <startTimer msToNext="0" listenerId="averagingTimer"/>
-            <disableButtonGroup matchingRegex="startButton"/>
+            <startTimer msToNext="0" listenerId="averagingTimer" />
+            <disableButtonGroup matchingRegex="startButton" />
             <!-- <triggerMatching listenerId="startAveragingTimer"/> -->
         </actionButton>
     </presenter>
-    <stimuli/>
+    <stimuli />
 </experiment>
