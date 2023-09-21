@@ -16,6 +16,10 @@
                 <onTimer><hardwareTimeStamp opto1="false"/></onTimer>
                 <onError><hardwareTimeStamp  opto1="false"/></onError>
             </addTimerTrigger>
+            <addTimerTrigger minimum="600" maximum="600" evaluateTokens="600" listenerId="averagingTimer">
+                <onTimer><triggerMatching listenerId="startAveragingTimer"/></onTimer>
+                <onError><triggerMatching listenerId="startAveragingTimer"/></onError>
+            </addTimerTrigger>
             <startTimer msToNext="500" listenerId="averagingTimer">
                 <hardwareTimeStamp opto2="false"/>
                 <htmlTokenText featureText="averagingTimer: ::averagingTimer::"></htmlTokenText>
@@ -43,7 +47,6 @@
                         <htmlText featureText="Averaging: Error" />
                     </onError>
                 </setMetadataEvalTokens>
-                <triggerMatching listenerId="startAveragingTimer"/>
             </startTimer>
         </triggerDefinition>
         <htmlText featureText="&lt;a href=&quot;?hardwareTimeStamp&quot;&gt;Enable HardwareTimeStamps&lt;/a&gt;"/>
