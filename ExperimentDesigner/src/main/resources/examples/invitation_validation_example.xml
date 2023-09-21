@@ -3,7 +3,7 @@
     userIdGetParam="invitation_id" 
     appNameDisplay="invitation_validation_example"
     preserveLastState="false" >
-    <deployment state="staging" />
+    <deployment state="staging" isDesktop="true"/>
     <validationService>
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 
         <!--<validation matchingRegex="invitation_id|session_id|session_copepods|session_copepod|session_next_copepod|validation_error" enabledRegex="validated_invitation_id|validation_error"-->
@@ -84,7 +84,7 @@
         <addPadding/>
         <htmlText featureText="This example requires the invitation ID to follow the following format of three letters followed by 9 numbers: abc123456789."/>
         <addPadding/>
-        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/>
         <addPadding/>
         <metadataField fieldName="invitation_id"/>
         <addPadding/>
@@ -93,7 +93,7 @@
                 <hasMetadataValue fieldName="invitation_id" matchingRegex="...*">
                     <conditionTrue>
                         <addPadding/>
-                        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+                        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/>
                         <addPadding/>
                         <htmlTokenText featureText="
                 Your invitation ID has been saved and is:
@@ -104,13 +104,13 @@
                             <onSuccess>
                                 <htmlText featureText="onSuccess"/>
                                 <addPadding/>
-                                <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+                                <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/>
                             </onSuccess>
                             <onError>
                                 <htmlText featureText="onError"/>
                                 <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                                 <addPadding/>
-                                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
+                                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/>
                             </onError>
                         </switchUserIdButton>
                     </conditionTrue>
@@ -156,7 +156,7 @@
         </saveMetadataButton>
     </presenter>-->
     <presenter back="Menu" menuLabel="Increment Score" type="stimulus" next="Menu" self="incrementScoreExample" title="Increment Score">
-        <regionAppend regionId="scoreLabelsRegion"/>
+        <regionReplace regionId="scoreLabelsRegion"/>
         <triggerDefinition listenerId="scoreLabelsTrigger" threshold="0" maximum="0">
             <regionReplace regionId="scoreLabelsRegion">
                 <htmlTokenText featureText="
@@ -235,12 +235,12 @@
         <htmlText featureText="It is also possible to create participants in the administration system and set allowValidationOnMissing to false. Which would allow only predefined participants to validate. However this use case is not covered in this example experiment."/>
         <addPadding/>
         <htmlText featureText="This example requires the invitation ID to follow the following format of three letters followed by 9 numbers: abc123456789."/>
-        <addPadding/>        
-        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
         <addPadding/>
-        <htmlTokenText featureText="invitation_id: &lt;metadataField_invitation_id&gt;"/> 
+        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/>
         <addPadding/>
-        <htmlTokenText featureText="validated_invitation_id: &lt;metadataField_validated_invitation_id&gt;"/> 
+        <htmlTokenText featureText="invitation_id: &lt;metadataField_invitation_id&gt;"/>
+        <addPadding/>
+        <htmlTokenText featureText="validated_invitation_id: &lt;metadataField_validated_invitation_id&gt;"/>
         <addPadding/>
         <hasMetadataValue fieldName="validated_invitation_id" matchingRegex="...*">
             <conditionTrue>
@@ -268,7 +268,7 @@
         <metadataField fieldName="session_copepod"/>
         <metadataField fieldName="copepod_done"/>
         <htmlText featureText="This example has some additional metadata fields, which do not directly interact with the validation process: &quot;session_copepods&quot;, &quot;session_copepod&quot; and &quot;session_next_copepod&quot;."/>
-        <!--<htmlText featureText="Assuming the list contains session_copepod we act as if the name of this experiment is session_copepod and using setMetadataValue get the next item which is bdsmas."/>-->
+        <!--<htmlText featureText="Assuming the list contains session_copepod we act as if the name of this experiment is session_copepod and using setMetadataValue get the next item which is peabodyas."/>-->
         <htmlText featureText="In some experiments the value in &quot;session_next_copepod&quot; would later be used to redirect the user to that next experiment after the current one is complete."/>
         <setMetadataValue fieldName="session_copepods" dataLogFormat="Copepod_Antrisocopia prehensilis_Karllangia pulchra_Misophrioida_Monstrilloida_Mormonillidae_Platycopiidae_Poecilostomatoida_Siphonostomatoida_Speleophria bivexilla_Speleophria scottodicarloi_Speleophriidae_Tigriopus brevicornis"/>
         <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
@@ -297,7 +297,7 @@
         <addPadding/>
     </presenter>
     <presenter back="Menu" menuLabel="Invitation Validation Example" type="transmission" self="InvitationValidationExample" title="Invitation Validation Example">
-        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/>
         <htmlTokenText featureText="&quot;invitation_id&quot;: &lt;metadataField_invitation_id&gt;"/>
         <htmlTokenText featureText="&quot;token&quot;: &lt;metadataField_token&gt;"/>
         <htmlTokenText featureText="&quot;session_id&quot;: &lt;metadataField_session_id&gt;"/>
@@ -314,7 +314,7 @@
                 <htmlText featureText="onError"/>
                 <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                 <addPadding/>
-                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
+                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/>
             </onError>
         </switchUserIdButton>
         <addPadding/>
@@ -328,15 +328,14 @@
                     <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
                         <conditionTrue>
                             <addPadding/>
-                            <htmlTokenText featureText="&lt;metadataField_session_validation_error&gt;"/>                                                                                
+                            <htmlTokenText featureText="&lt;metadataField_session_validation_error&gt;"/>
                         </conditionTrue>
-                        <conditionFalse>                            
-                        </conditionFalse>
+                        <conditionFalse/>
                     </hasMetadataValue>
                     <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
                         <conditionTrue>
                             <addPadding/>
-                            <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                            <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>
                         </conditionTrue>
                         <conditionFalse>
                             <addPadding/>
@@ -353,21 +352,21 @@
                                     <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
                                         <conditionTrue>
                                             <addPadding/>
-                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will prevent or allow validation, such as copepod_done = no."/>
                                         </conditionTrue>
-                                        <conditionFalse>                            
+                                        <conditionFalse>
                                             <addPadding/>
                                             <htmlText featureText="The return value validated_invitation_id from transmitResults matches the provided invitation_id and the participant can proceed."/>
                                             <addPadding/>
                                             <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
                                         </conditionFalse>
-                                    </hasMetadataValue>                        
+                                    </hasMetadataValue>
                                 </conditionFalse>
                             </hasMetadataValue>
                         </conditionTrue>
                         <conditionFalse>
                             <addPadding/>
-                            <htmlText featureText="The return value validated_invitation_id from transmitResults does NOT match the provided invitation_id and the current user ID."/>
+                            <htmlText featureText="The return value validated_invitation_id from transmitResults does NOT match the provided invitation_id and the current user ID. This example requires you to switch current user ID to the invitation ID by clicking the button above."/>
                         </conditionFalse>
                     </hasMetadataValue>
                 </onSuccess>
@@ -379,7 +378,7 @@
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Invitation Validation Metadata Example" type="transmission" self="InvitationValidateMetadataExample" title="Invitation Validation Metadata Example">
-        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/> 
+        <htmlTokenText featureText="Current User ID: &lt;userId&gt;"/>
         <htmlTokenText featureText="&quot;invitation_id&quot;: &lt;metadataField_invitation_id&gt;"/>
         <htmlTokenText featureText="&quot;token&quot;: &lt;metadataField_token&gt;"/>
         <htmlTokenText featureText="&quot;session_id&quot;: &lt;metadataField_session_id&gt;"/>
@@ -396,84 +395,98 @@
                 <htmlText featureText="onError"/>
                 <htmlText featureText="Please make sure your invitation ID matches the validationRegex [a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                 <addPadding/>
-                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/> 
+                <htmlTokenText featureText="User ID unchanged: &lt;userId&gt;"/>
             </onError>
         </switchUserIdButton>
         <addPadding/>
         <targetButton featureText="Edit Invitation" target="EnterInvitationMetadata"/>
         <addPadding/>
         <actionButton featureText="Validate Invitation">
+            <regionReplace regionId="validateMetadataRegion"/>
             <validateMetadata>
                 <onSuccess>
-                    <addPadding/>
-                    <htmlText featureText="Transmitting the data for this session copepod ok"/>
+                    <regionAppend regionId="validateMetadataRegion">
+                        <addPadding/>
+                        <htmlText featureText="Validating the data for this session copepod ok"/>
+                    </regionAppend>
                     <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
                         <conditionTrue>
-                            <addPadding/>
-                            <htmlTokenText featureText="&lt;metadataField_session_validation_error&gt;"/>                                                                                
+                            <regionAppend regionId="validateMetadataRegion">
+                                <addPadding/>
+                                <htmlTokenText featureText="&lt;metadataField_session_validation_error&gt;"/>
+                            </regionAppend>
                         </conditionTrue>
-                        <conditionFalse>                            
-                        </conditionFalse>
+                        <conditionFalse/>
                     </hasMetadataValue>
                     <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
                         <conditionTrue>
-                            <addPadding/>
-                            <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                            <regionAppend regionId="validateMetadataRegion">
+                                <addPadding/>
+                                <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>
+                            </regionAppend>
                         </conditionTrue>
-                        <conditionFalse>
-                            <addPadding/>
-                        </conditionFalse>
+                        <conditionFalse/>
                     </hasMetadataValue>
                     <hasMetadataValue fieldName="invitation_id" matchingRegex="&lt;metadataField_validated_invitation_id&gt;">
                         <conditionTrue>
                             <hasMetadataValue fieldName="session_validation_error" matchingRegex=".+">
                                 <conditionTrue>
-                                    <addPadding/>
-                                    <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                    <regionAppend regionId="validateMetadataRegion">
+                                        <addPadding/>
+                                        <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                    </regionAppend>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
                                         <conditionTrue>
-                                            <addPadding/>
-                                            <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                            <regionAppend regionId="validateMetadataRegion">
+                                                <addPadding/>
+                                                <htmlText featureText="The metadata field validated_invitation_id is unchanged by this error and still matches the previously provided invitation_id. So you can continue editing the metadata for combinations that will allow or prevent validation."/>
+                                            </regionAppend>
                                         </conditionTrue>
-                                        <conditionFalse>                            
-                                            <addPadding/>
-                                            <htmlText featureText="The return value validated_invitation_id from validateMetadata matches the provided invitation_id and the participant can proceed."/>
-                                            <addPadding/>
-                                            <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
+                                        <conditionFalse>
+                                            <regionAppend regionId="validateMetadataRegion">
+                                                <addPadding/>
+                                                <htmlText featureText="The return value validated_invitation_id from validateMetadata matches the provided invitation_id and the participant can proceed."/>
+                                                <addPadding/>
+                                                <htmlTokenText featureText="You can now try editing the metadata for combinations that will prevent validation, such as copepod_done = yes."/>
+                                            </regionAppend>
                                         </conditionFalse>
-                                    </hasMetadataValue>                        
+                                    </hasMetadataValue>
                                 </conditionFalse>
                             </hasMetadataValue>
                         </conditionTrue>
                         <conditionFalse>
-                            <addPadding/>
-                            <htmlText featureText="The return value validated_invitation_id from validateMetadata does NOT match the provided invitation_id and the current user ID."/>
+                            <regionAppend regionId="validateMetadataRegion">
+                                <addPadding/>
+                                <htmlText featureText="The return value validated_invitation_id from validateMetadata does NOT match the provided invitation_id and the current user ID."/>
+                            </regionAppend>
                         </conditionFalse>
                     </hasMetadataValue>
                 </onSuccess>
                 <onError>
-                    <addPadding/>
-                    <htmlText featureText="Transmitting the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
+                    <regionAppend regionId="validateMetadataRegion">
+                        <addPadding/>
+                        <htmlText featureText="Validating the data for this session copepod failed. Please check your experiment registrationUrl (registrationUrlStaging and registrationUrlProduction) in your listing.json (built in validation is set by default)"/>
+                    </regionAppend>
                 </onError>
             </validateMetadata>
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="RedirectToUrlExample" type="transmission" self="RedirectToUrlExample" title="RedirectToUrlExample">
         <htmlText featureText="This experimental example will direct this user to the version of this experiment that is on the staging server. From there you should be able to validate and restore the users current state of metadata and score."/>
-        <addPadding/>           
+        <addPadding/>
         <actionButton featureText="redirectToStaging">
             <redirectToUrl src="https://frinexstaging.mpi.nl/invitation_validation_example/?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#InvitationValidateMetadataExample"/>
-        </actionButton>            
-        <addPadding/>           
+        </actionButton>
+        <addPadding/>
         <actionButton featureText="returnToLocal">
             <redirectToUrl src="cdvfile://localhost/assets/www/index.html?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#InvitationValidateMetadataExample"/>
-        </actionButton> 
-        <addPadding/>           
+        </actionButton>
+        <addPadding/>
         <actionButton featureText="redirect to staging with_stimulus_example">
             <redirectToUrl src="https://frinexstaging.mpi.nl/with_stimulus_example/?uuid=&lt;userId&gt;&amp;invitation_id=&lt;userId&gt;#RedirectToUrlExample"/>
-        </actionButton>  
+        </actionButton>
     </presenter>
     <presenter menuLabel="Finished" type="transmission" self="Finished" title="Finished">
         <!-- either <sendAllData> or <generateCompletionCode> can be used here -->
