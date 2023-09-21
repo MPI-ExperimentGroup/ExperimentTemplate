@@ -4,8 +4,7 @@
     appNameDisplay="FrameRateTimerExample">
     <deployment state="staging" />
     <metadata />
-    <presenter back="Menu" menuLabel="FrameRateTimerExample" type="stimulus"
-        self="FrameRateTimerExample" title="FrameRateTimer Example">
+    <presenter type="stimulus" title="FrameRateTimer Example">
         <loadStimulus eventTag="FrameRateTimerExample" randomise="false" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus> 
