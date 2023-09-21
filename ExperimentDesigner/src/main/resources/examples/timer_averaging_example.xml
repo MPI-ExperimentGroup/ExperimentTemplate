@@ -12,6 +12,18 @@
         <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
             <startTimer msToNext="500" listenerId="averagingTimer">
                 <htmlTokenText featureText="averagingTimer ::averagingTimer::"></htmlTokenText>
+                <setMetadataEvalTokens fieldName="samplesSum" evaluateTokens="::metadataField_samplesSum::+::averagingTimer::">
+                    <onSuccess />
+                    <onError>
+                        <htmlText featureText="Sum Error" />
+                    </onError>
+                </setMetadataEvalTokens>
+                <setMetadataEvalTokens fieldName="samplesCount" evaluateTokens="::metadataField_samplesCount::+1">
+                    <onSuccess />
+                    <onError>
+                        <htmlText featureText="Count Error" />
+                    </onError>
+                </setMetadataEvalTokens>
                 <setMetadataEvalTokens fieldName="samplesAverage" evaluateTokens="::metadataField_samplesSum::/::metadataField_samplesCount::">
                     <onSuccess>
                         <htmlTokenText featureText="Count: ::metadataField_samplesCount::" />
@@ -35,6 +47,9 @@
         </addTimerTrigger> -->
         <actionButton featureText="Start Timer" groupId="startButton">
             <disableButtonGroup matchingRegex="startButton" />
+            <setMetadataValue fieldName="samplesSum" dataLogFormat="0" />
+            <setMetadataValue fieldName="samplesCount" dataLogFormat="0" />
+            <setMetadataValue fieldName="samplesAverage" dataLogFormat="0" />
             <triggerMatching listenerId="startAveragingTimer"/>
         </actionButton>
     </presenter>
