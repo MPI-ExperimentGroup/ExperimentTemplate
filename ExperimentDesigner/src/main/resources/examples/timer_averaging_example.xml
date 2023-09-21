@@ -9,10 +9,8 @@
         <field controlledMessage="." controlledRegex="0-9*" postName="samplesAverage" registrationField="SampleAverage" />
     </metadata>
     <presenter type="stimulus">
-        <!-- <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
-        </triggerDefinition> -->
-        <addTimerTrigger minimum="500" maximum="1000" evaluateTokens="500" listenerId="averagingTimer">
-            <onTimer>
+        <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
+            <startTimer msToNext="500" listenerId="averagingTimer">
                 <htmlTokenText featureText="averagingTimer ::averagingTimer::"></htmlTokenText>
                 <setMetadataEvalTokens fieldName="samplesAverage" evaluateTokens="::metadataField_samplesSum::/::metadataField_samplesCount::">
                     <onSuccess>
@@ -24,16 +22,20 @@
                         <htmlText featureText="Averaging Error" />
                     </onError>
                 </setMetadataEvalTokens>
-                <clearTimer listenerId="averagingTimer" />
+                <!-- <clearTimer listenerId="averagingTimer" /> -->
+                <triggerMatching listenerId="startAveragingTimer"/>
+            </startTimer>
+        </triggerDefinition>
+        <!-- <addTimerTrigger minimum="500" maximum="1000" evaluateTokens="500" listenerId="averagingTimer">
+            <onTimer>                
             </onTimer>
             <onError>
                 <htmlText featureText="averagingTimerListener was late" />
             </onError>
-        </addTimerTrigger>
+        </addTimerTrigger> -->
         <actionButton featureText="Start Timer" groupId="startButton">
-            <startTimer msToNext="0" listenerId="averagingTimer" />
             <disableButtonGroup matchingRegex="startButton" />
-            <!-- <triggerMatching listenerId="startAveragingTimer"/> -->
+            <triggerMatching listenerId="startAveragingTimer"/>
         </actionButton>
     </presenter>
     <stimuli />
