@@ -47,10 +47,10 @@
                         <htmlText featureText="Averaging: Error" />
                     </onError>
                 </setMetadataEvalTokens>
-                <compareTimer msToNext="510" listenerId="averagingTimer">
+                <compareTimer msToNext="550" listenerId="averagingTimer">
                     <aboveThreshold>
                         <clearTimer listenerId="averagingTimer" />
-                        <htmlText featureText="More that 510ms detected in one loop, 500ms is expected." />
+                        <htmlText featureText="More that 550ms detected in one loop, 500ms is expected." />
                         <htmlText featureText="Please make sure the device is on mains power (not in battery save mode)." />
                         <htmlText featureText="Please also make sure that this page has focus, if you start doing other things on your device this page will be slowed down by the browser." />
                     </aboveThreshold>
