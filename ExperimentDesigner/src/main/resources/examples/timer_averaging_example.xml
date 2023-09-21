@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd" appNameDisplay="Timer Averaging Example">
+    <deployment state="staging" />
+    <metadata/>
+    <presenter>
+        <!-- <triggerDefinition listenerId="startAveragingTimer" threshold="0" maximum="1000">
+        </triggerDefinition> -->
+        <addTimerTrigger minimum="500" maximum="1000" evaluateTokens="" listenerId="averagingTimer">
+            <onTimer>
+                <htmlTokenText featureText="averagingTimer ::averagingTimer::"></htmlTokenText>
+                <!-- TODO: collect the values and average them -->
+                <clearTimer listenerId="averagingTimer"/>
+            </onTimer>
+            <onError>
+                <htmlText featureText="averagingTimerListener was late"/>
+            </onError>
+        </addTimerTrigger>
+        <actionButton featureText="Start Timer" groupId="startButton">
+            <startTimer msToNext="0" listenerId="averagingTimer"/>
+            <disableButtonGroup matchingRegex="startButton"/>
+            <!-- <triggerMatching listenerId="startAveragingTimer"/> -->
+        </actionButton>
+    </presenter>
+    <stimuli/>
+</experiment>
