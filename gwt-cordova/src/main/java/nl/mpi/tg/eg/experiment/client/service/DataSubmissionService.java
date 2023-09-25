@@ -191,6 +191,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"maxCorrectStreak\": " + jsonEscape(Integer.toString(userData.getMaxCorrectStreak())) + ",\n"
                 + "\"maxErrorStreak\": " + jsonEscape(Integer.toString(userData.getMaxErrorStreak())) + ",\n"
                 + "\"maxPotentialScore\": " + jsonEscape(Integer.toString(userData.getMaxPotentialScore())) + ",\n"
+                + "\"eventTimes\": " + TODO: getStopwatchTimes + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
 //        boolean containsChannel = false;
 //        for (int channel : ApplicationController.SDCARD_DATACHANNELS) {

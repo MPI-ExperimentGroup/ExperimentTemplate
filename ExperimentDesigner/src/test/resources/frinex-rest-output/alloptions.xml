@@ -516,8 +516,8 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <zeroStimulusStopwatch eventTag="eventTag"/>
-        <stopStimulusStopwatch eventTag="eventTag"/>
+        <zeroStimulusStopwatch eventId="eventId"/>
+        <stopStimulusStopwatch eventId="eventId"/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
@@ -761,8 +761,8 @@
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
-                <zeroStimulusStopwatch eventTag="eventTag"/>
-                <stopStimulusStopwatch eventTag="eventTag"/>
+                <zeroStimulusStopwatch eventId="eventId"/>
+                <stopStimulusStopwatch eventId="eventId"/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
@@ -1281,8 +1281,8 @@
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
-                <zeroStimulusStopwatch eventTag="eventTag"/>
-                <stopStimulusStopwatch eventTag="eventTag"/>
+                <zeroStimulusStopwatch eventId="eventId"/>
+                <stopStimulusStopwatch eventId="eventId"/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
@@ -1605,8 +1605,8 @@
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
-                <zeroStimulusStopwatch eventTag="eventTag"/>
-                <stopStimulusStopwatch eventTag="eventTag"/>
+                <zeroStimulusStopwatch eventId="eventId"/>
+                <stopStimulusStopwatch eventId="eventId"/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
@@ -1929,8 +1929,8 @@
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
-                <zeroStimulusStopwatch eventTag="eventTag"/>
-                <stopStimulusStopwatch eventTag="eventTag"/>
+                <zeroStimulusStopwatch eventId="eventId"/>
+                <stopStimulusStopwatch eventId="eventId"/>
                 <showStimulus>
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
@@ -2220,8 +2220,8 @@
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <logTimeStamp eventTag="eventTag"/>
-        <zeroStimulusStopwatch eventTag="eventTag"/>
-        <stopStimulusStopwatch eventTag="eventTag"/>
+        <zeroStimulusStopwatch eventId="eventId"/>
+        <stopStimulusStopwatch eventId="eventId"/>
         <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
         <recorderToneInjection dtmf="#"/>
         <dtmfTone msToNext="60" dtmf="#"/>
@@ -2296,8 +2296,8 @@
                     <showButtonGroup matchingRegex="matchingRegex"/>
                     <requestFocus matchingRegex="matchingRegex"/>
                     <logTimeStamp eventTag="eventTag"/>
-                    <zeroStimulusStopwatch eventTag="eventTag"/>
-                    <stopStimulusStopwatch eventTag="eventTag"/>
+                    <zeroStimulusStopwatch eventId="eventId"/>
+                    <stopStimulusStopwatch eventId="eventId"/>
                     <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
                     <recorderToneInjection dtmf="#"/>
                     <dtmfTone msToNext="60" dtmf="#"/>
@@ -2328,8 +2328,8 @@
                 <showButtonGroup matchingRegex="matchingRegex"/>
                 <requestFocus matchingRegex="matchingRegex"/>
                 <logTimeStamp eventTag="eventTag"/>
-                <zeroStimulusStopwatch eventTag="eventTag"/>
-                <stopStimulusStopwatch eventTag="eventTag"/>
+                <zeroStimulusStopwatch eventId="eventId"/>
+                <stopStimulusStopwatch eventId="eventId"/>
                 <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
                 <recorderToneInjection dtmf="#"/>
                 <dtmfTone msToNext="60" dtmf="#"/>
@@ -2358,8 +2358,8 @@
             <showButtonGroup matchingRegex="matchingRegex"/>
             <requestFocus matchingRegex="matchingRegex"/>
             <logTimeStamp eventTag="eventTag"/>
-            <zeroStimulusStopwatch eventTag="eventTag"/>
-            <stopStimulusStopwatch eventTag="eventTag"/>
+            <zeroStimulusStopwatch eventId="eventId"/>
+            <stopStimulusStopwatch eventId="eventId"/>
             <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
             <recorderToneInjection dtmf="#"/>
             <dtmfTone msToNext="60" dtmf="#"/>
@@ -2410,8 +2410,8 @@
             <showButtonGroup matchingRegex="matchingRegex"/>
             <requestFocus matchingRegex="matchingRegex"/>
             <logTimeStamp eventTag="eventTag"/>
-            <zeroStimulusStopwatch eventTag="eventTag"/>
-            <stopStimulusStopwatch eventTag="eventTag"/>
+            <zeroStimulusStopwatch eventId="eventId"/>
+            <stopStimulusStopwatch eventId="eventId"/>
             <hardwareTimeStamp opto1="invert" dtmf="#" opto2="true"/>
             <recorderToneInjection dtmf="#"/>
             <dtmfTone msToNext="60" dtmf="#"/>
@@ -2537,8 +2537,8 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
-        <zeroStimulusStopwatch eventTag="eventTag"/>
-        <stopStimulusStopwatch eventTag="eventTag"/>
+        <zeroStimulusStopwatch eventId="eventId"/>
+        <stopStimulusStopwatch eventId="eventId"/>
         <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
