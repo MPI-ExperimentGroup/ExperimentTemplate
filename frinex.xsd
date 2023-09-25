@@ -3501,6 +3501,28 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
+<xs:complexType name="zeroStimulusStopwatchType">
+<xs:annotation>
+<xs:documentation>Each stimulus response can have a number of stimulus time periods recorded. At the point when the time period should start the named period should be zeroed.</xs:documentation>
+</xs:annotation>
+<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:attribute name="eventId" type="postName">
+<xs:annotation>
+<xs:documentation>Event identifier.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="stopStimulusStopwatchType">
+<xs:annotation>
+<xs:documentation>Each stimulus response can have a number of stimulus time periods recorded. At the point when the time period should end the named period should be stopped.</xs:documentation>
+</xs:annotation>
+<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:attribute name="eventId" type="postName">
+<xs:annotation>
+<xs:documentation>Event identifier.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
 <xs:complexType name="hardwareTimeStampType">
 <xs:annotation>
 <xs:documentation>When the URL parameter &quot;hardwareTimeStamp&quot; is provided hardware measurable markers will be produced either visually on screen or as an audible tone or both. The visual markers are in the form of two black/white squares at the top of the screen. The audio markers are in the form of tones. These markers are equivalent to &lt;logTimeStamp&gt; and should be used in a similar way.</xs:documentation>
@@ -5588,6 +5610,8 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
@@ -5828,6 +5852,7 @@
 <xs:element name="startFrameRateTimer" type="startFrameRateTimerType"/>
 <xs:element name="startTimer" type="startTimerType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="styleButtonGroup" type="styleButtonGroupType"/>
 <xs:element name="submitTestResults" type="submitTestResultsType"/>
 <xs:element name="svgLoadGroups" type="svgLoadGroupsType"/>
@@ -5845,6 +5870,7 @@
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
 </xs:choice>
 </xs:group>
 <xs:group name="sequenceOnceOrdered_hasMediaRecorderPlaybackType">
@@ -5946,6 +5972,8 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
@@ -6111,6 +6139,8 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
@@ -6335,6 +6365,8 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
@@ -6573,6 +6605,8 @@
 <xs:element name="gotoPresenter" type="gotoPresenterType"/>
 <xs:element name="gotoNextPresenter" type="gotoNextPresenterType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
@@ -6671,6 +6705,8 @@
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
 <xs:element name="requestFocus" type="requestFocusType"/>
 <xs:element name="logTimeStamp" type="logTimeStampType"/>
+<xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
+<xs:element name="stopStimulusStopwatch" type="stopStimulusStopwatchType"/>
 <xs:element name="hardwareTimeStamp" type="hardwareTimeStampType"/>
 <xs:element name="recorderToneInjection" type="recorderToneInjectionType"/>
 <xs:element name="dtmfTone" type="dtmfToneType"/>
