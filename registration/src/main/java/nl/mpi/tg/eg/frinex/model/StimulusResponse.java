@@ -64,11 +64,12 @@ public class StimulusResponse {
     private int maxCorrectStreak;
     private int maxErrorStreak;
     private int maxPotentialScore;
-
+    private EventTime[] eventTimes;
+    
     public StimulusResponse() {
     }
 
-    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore) {
+    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore, EventTime[] eventTimes) {
         this.tagDate = tagDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -92,6 +93,7 @@ public class StimulusResponse {
         this.maxCorrectStreak = maxCorrectStreak;
         this.maxErrorStreak = maxErrorStreak;
         this.maxPotentialScore = maxPotentialScore;
+        this.eventTimes = eventTimes;
     }
 
     public long getId() {
@@ -196,6 +198,14 @@ public class StimulusResponse {
 
     public void setSubmitDate(Date submitDate) {
         this.submitDate = submitDate;
+    }
+
+    public EventTime[] getEventTimes() {
+        return eventTimes;
+    }
+
+    public void setEventTimes(EventTime[] eventTimes) {
+        this.eventTimes = eventTimes;
     }
 
     @Override

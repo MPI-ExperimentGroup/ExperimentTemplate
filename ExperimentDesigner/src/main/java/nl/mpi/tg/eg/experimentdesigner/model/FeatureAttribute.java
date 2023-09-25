@@ -73,6 +73,7 @@ public enum FeatureAttribute {
     evaluateMs(false), 
     filePerStimulus("When recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli"),
     eventTag("When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.", true, AttributeType.xsString),
+    eventId("Event identifier.", true, AttributeType.postName),
     ratingLabels,
     ratingLabelLeft(true),
     ratingLabelRight(true),

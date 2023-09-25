@@ -808,6 +808,13 @@ or local-name() eq 'submitGroupEvent'
         </xsl:for-each>
         <xsl:text>");</xsl:text>
     </xsl:template>
+    <xsl:template match="zeroStimulusStopwatch|stopStimulusStopwatch">
+        <xsl:text>    </xsl:text>
+        <xsl:value-of select ="local-name()"/>
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="@eventId" />
+        <xsl:text>();</xsl:text>
+    </xsl:template>
     <xsl:template match="hotKeyInput|touchInputCapture|touchInputStop|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
