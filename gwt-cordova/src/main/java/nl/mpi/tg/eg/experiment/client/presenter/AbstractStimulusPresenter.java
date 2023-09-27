@@ -1958,7 +1958,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     // determine the required threshold for the current sample
                     // but do not change the required threshold when currently triggering (the duration is not null) to make the effect more obvious to the user
                     requiredThreshold = accumulatorValue + (accumulatorValue / 100 * levelThreshold);
-                    requiredThreshold = (requiredThreshold > 100)? 100 : requiredThreshold;
+                    requiredThreshold = (requiredThreshold > 100) ? 100 : requiredThreshold;
                 }
                 // calculate the exponential moving average
                 accumulatorValue = (alpha * value) + (1.0 - alpha) * accumulatorValue;
@@ -2687,7 +2687,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 isCorrect = correctness;
             }
         }
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, formattedCode, isCorrect, elapsedMillis);
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, formattedCode, isCorrect, elapsedMillis, getStopwatchValues());
     }
 
     protected void touchInputStop() {
@@ -2878,4 +2878,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             hardwareTimeStamp.terminate();
         }
     }
+
+    final String appendStopwatchValue(final String eventId, final long stopwatchZero, final long stopwatchStop) {
+        if (stopwatchZero > 0 && stopwatchStop > 0) {
+            return "\"" + eventId + "\": " + (stopwatchStop - stopwatchZero) + ",";
+        } else {
+            return "";
+        }
+    }
+
+    abstract String getStopwatchValues();
 }
