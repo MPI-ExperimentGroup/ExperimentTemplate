@@ -836,7 +836,7 @@ or local-name() eq 'submitGroupEvent'
     <xsl:template match="zeroStimulusStopwatch|stopStimulusStopwatch">
         <xsl:value-of select="if(local-name() eq 'zeroStimulusStopwatch') then 'stopwatchZero' else ''" />
         <xsl:value-of select="if(local-name() eq 'stopStimulusStopwatch') then 'stopwatchStop' else ''" />
-        <xsl:value-of select ="concat('_', @eventId, ' = duration.elapsedMillis();'"/>
+        <xsl:value-of select ="concat('_', @eventId, ' = duration.elapsedMillis();')"/>
     </xsl:template>
     <xsl:template match="hotKeyInput|touchInputCapture|touchInputStop|logTimeStamp|hardwareTimeStamp|recorderToneInjection|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage|streamGroupCanvas|streamGroupCamera|sendGroupTokenMessage">
         <xsl:text>    </xsl:text>
