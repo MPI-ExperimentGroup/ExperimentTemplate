@@ -516,7 +516,6 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <stopStimulusStopwatch eventId="eventId"/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
@@ -2536,7 +2535,6 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
-        <stopStimulusStopwatch eventId="eventId"/>
         <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -3683,7 +3681,6 @@
         </setMetadataEvalTokens>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <stopStimulusStopwatch/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
@@ -5621,7 +5618,6 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <htmlTokenText featureText=""/>
         <actionButton featureText=""/>
-        <stopStimulusStopwatch/>
         <helpDialogue featureText="" closeButtonLabel=""/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
