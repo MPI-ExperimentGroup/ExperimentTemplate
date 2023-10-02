@@ -224,7 +224,7 @@ public enum PresenterType {
         //        popupMessage,
         pause,
         doLater,
-        zeroStimulusStopwatch, responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus}),
+        zeroStimulusStopwatch, stopStimulusStopwatch, responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus}),
     stimulus(new FeatureType[]{
         preloadAllStimuli,
         showColourReport,
@@ -343,7 +343,7 @@ public enum PresenterType {
         stimulusImage,
         stimulusAudio,
         userInfo,
-        zeroStimulusStopwatch, menuItem}),
+        zeroStimulusStopwatch, stopStimulusStopwatch, menuItem}),
     colourReport(new FeatureType[]{
         timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, actionTokenButton, compareTimer, habituationParadigmListener, triggerRandom, resetTrigger,
         activateRandomItem, stopAudioRecorder, startAudioRecorderTag,
