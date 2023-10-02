@@ -425,32 +425,29 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
             <xsl:apply-templates/> <!--select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData|stimuliValidation|addKeyboardDebug|stimulusImage|stimulusAudio"-->
             <xsl:text>    }
             </xsl:text>
-            <xsl:if test="descendant::zeroStimulusStopwatch or descendant::stopStimulusStopwatch">
-                <!-- <xsl:for-each select="(descendant::zeroStimulusStopwatch, descendant::stopStimulusStopwatch)[not(./@eventId='')]"> -->
-                <!-- <xsl:for-each select="distinct-values(descendant::zeroStimulusStopwatch/@eventId)"> -->
-                <!-- <xsl:for-each select="distinct-values(descendant::zeroStimulusStopwatch/@eventId), distinct-values(descendant::stopStimulusStopwatch/@eventId)"> -->
-                <xsl:for-each select="distinct-values((descendant::zeroStimulusStopwatch/@eventId, descendant::stopStimulusStopwatch/@eventId))">
-                <!-- <xsl:if test="descendant::zeroStimulusStopwatch or descendant::stopStimulusStopwatch"> -->
-                <!-- <xsl:for-each select="distinct-values((descendant::zeroStimulusStopwatch, descendant::stopStimulusStopwatch)/@eventId)"> -->
-                <!-- <xsl:for-each select="distinct-values(descendant::zeroStimulusStopwatch/@eventId), distinct-values(descendant::stopStimulusStopwatch[not(./@eventId=descendant::zeroStimulusStopwatch/@eventId)]/@eventId)"> -->
-                <!-- <xsl:for-each select="(descendant::zeroStimulusStopwatch, descendant::stopStimulusStopwatch)[not(./@eventId=preceding-sibling::/@eventId)]"> -->
-                <!-- [not(./@eventId=preceding-sibling::./@eventId)] -->
-                    <xsl:value-of select="concat('private long stopwatch_', ., ' = 0;&#xa;')" />
-                </xsl:for-each>
+            <xsl:if test="@type='stimulus'">
+                <xsl:if test="descendant::zeroStimulusStopwatch or descendant::stopStimulusStopwatch">
+                    <xsl:for-each select="distinct-values(tokenize(string-join((descendant::zeroStimulusStopwatch/@eventId,descendant::stopStimulusStopwatch/@eventId),','),','))">
+                    <!-- <xsl:for-each select="distinct-values(descendant::zeroStimulusStopwatch/@eventId), distinct-values(descendant::stopStimulusStopwatch[not(@eventId=descendant::zeroStimulusStopwatch/@eventId)]/@eventId)"> -->
+                            <xsl:value-of select="concat('private long stopwatchZero_', ., ' = 0;&#xa;')" />
+                            <xsl:value-of select="concat('private long stopwatchStop_', ., ' = 0;&#xa;')" />
+                    </xsl:for-each>
+                </xsl:if>
+                <xsl:text>
+                        private String getStopwatchValues() {
+                            appendStopwatchValue
+                </xsl:text>
+                    <!-- <xsl:for-each select="distinct-values(descendant::zeroStimulusStopwatch[not(./@eventId='')]/@eventId, descendant::stopStimulusStopwatch/[not(./@eventId='')]/@eventId)">
+                        descendant::stopStimulusStopwatch
+                        <xsl:value-of select="." />
+                        <!- <xsl:if test="position() != last()">
+                            <xsl:text>, </xsl:text>
+                        </xsl:if> ->
+                    </xsl:for-each> -->
+                <xsl:text>
+                }</xsl:text>
             </xsl:if>
             <xsl:text>
-                    private String getStopwatchValues() {
-                        appendStopwatchValue
-            </xsl:text>
-                <!-- <xsl:for-each select="distinct-values(descendant::zeroStimulusStopwatch[not(./@eventId='')]/@eventId, descendant::stopStimulusStopwatch/[not(./@eventId='')]/@eventId)">
-                    descendant::stopStimulusStopwatch
-                    <xsl:value-of select="." />
-                    <!- <xsl:if test="position() != last()">
-                        <xsl:text>, </xsl:text>
-                    </xsl:if> ->
-                </xsl:for-each> -->
-            <xsl:text>
-                    }
                 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
