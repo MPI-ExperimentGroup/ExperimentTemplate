@@ -30,6 +30,16 @@
                 <htmlText featureText="&lt;a href=&quot;?chosenList=L3r&quot;&gt;List 3 Reversed&lt;/a&gt;" />
                 <plainText featureText="&lt;list alias=&quot;L3r&quot;&gt;-d1e235-d1e275-d1e263-d1e241-&lt;/list&gt;" />
                 <addPadding />
+                <hasMetadataValue fieldName="chosenList" matchingRegex="L1|L2|L3|L3r">
+                    <conditionTrue />
+                    <conditionFalse>
+                        <!-- if the chosenList is not provided in the URL or previously set then it will be randomly set here -->
+                        <setMetadataEvalTokens fieldName="chosenList" evaluateTokens="getRandomItem('L1,L2,L3,L3r')">
+                            <onSuccess />
+                            <onError />
+                        </setMetadataEvalTokens>
+                    </conditionFalse> 
+                </hasMetadataValue>
                 <htmlTokenText featureText="The value of chosenList is: &quot;::metadataField_chosenList::&quot;" />
                 <addPadding />
                 <plainText featureText="When no list alias is found the tag &quot;all_stimuli&quot; will be used." />
