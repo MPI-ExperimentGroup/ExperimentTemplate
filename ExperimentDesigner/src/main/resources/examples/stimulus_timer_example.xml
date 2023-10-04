@@ -16,53 +16,52 @@
                     <htmlText featureText="+" styleName="crossAbsolute" />
                 </regionReplace>
                 <regionReplace regionId="stimulusRegion" styleName="hiddenRegionAbsolute">
-                        <!-- create your label with a hidden style here -->
-                        <stimulusLabel />
-                        <zeroStimulusStopwatch eventId="event_0"/>
-                        <zeroStimulusStopwatch eventId="event_600"/>
-                        <zeroStimulusStopwatch eventId="event_1000"/>
-                        <zeroStimulusStopwatch eventId="stop_missing"/>
-                        <stopStimulusStopwatch eventId="zero_missing"/>
-                        <startFrameRateTimer>
-                            <addFrameTimeTrigger evaluateMs="0" threshold="20">
-                                <onTime>
-                                    <stopStimulusStopwatch eventId="event_0"/>
-                                    <!-- unhide your cross here -->
-                                    <regionStyle regionId="crossRegion"
-                                        styleName="shownRegionAbsolute" />
-                                </onTime>
-                                <onError />
-                            </addFrameTimeTrigger>
-                            <addFrameTimeTrigger evaluateMs="600" threshold="20">
-                                <onTime>
-                                    <stopStimulusStopwatch eventId="event_600"/>
-                                    <!-- hide your label here -->
-                                    <regionStyle regionId="crossRegion"
-                                        styleName="hiddenRegionAbsolute" />
-                                    <!-- unhide your image here -->
-                                    <regionStyle regionId="stimulusRegion"
-                                        styleName="shownRegionAbsolute" />
-                                </onTime>
-                                <onError />
-                            </addFrameTimeTrigger>
-                            <addFrameTimeTrigger evaluateMs="1000" threshold="20">
-                                <onTime>
-                                    <stopStimulusStopwatch eventId="event_1000"/>
-                                    <!-- rehide your image here -->
-                                    <regionStyle regionId="stimulusRegion"
-                                        styleName="hiddenRegionAbsolute" />
-                                    <!-- next stimulus button here -->
-                                    <!-- we don't care when this happens so we use a doLater -->
-                                    <doLater msToNext="0">
-                                        <nextStimulusButton featureText="Next Stimulus"
-                                            eventTag="StimulusTimerExample"
-                                            repeatIncorrect="false" />
-                                    </doLater>
-                                </onTime>
-                                <onError />
-                            </addFrameTimeTrigger>
-                        </startFrameRateTimer>
-                    </stimulusImage>
+                    <!-- create your label with a hidden style here -->
+                    <stimulusLabel />
+                    <zeroStimulusStopwatch eventId="event_0"/>
+                    <zeroStimulusStopwatch eventId="event_600"/>
+                    <zeroStimulusStopwatch eventId="event_1000"/>
+                    <zeroStimulusStopwatch eventId="stop_missing"/>
+                    <stopStimulusStopwatch eventId="zero_missing"/>
+                    <startFrameRateTimer>
+                        <addFrameTimeTrigger evaluateMs="0" threshold="20">
+                            <onTime>
+                                <stopStimulusStopwatch eventId="event_0"/>
+                                <!-- unhide your cross here -->
+                                <regionStyle regionId="crossRegion"
+                                    styleName="shownRegionAbsolute" />
+                            </onTime>
+                            <onError />
+                        </addFrameTimeTrigger>
+                        <addFrameTimeTrigger evaluateMs="600" threshold="20">
+                            <onTime>
+                                <stopStimulusStopwatch eventId="event_600"/>
+                                <!-- hide your label here -->
+                                <regionStyle regionId="crossRegion"
+                                    styleName="hiddenRegionAbsolute" />
+                                <!-- unhide your image here -->
+                                <regionStyle regionId="stimulusRegion"
+                                    styleName="shownRegionAbsolute" />
+                            </onTime>
+                            <onError />
+                        </addFrameTimeTrigger>
+                        <addFrameTimeTrigger evaluateMs="1000" threshold="20">
+                            <onTime>
+                                <stopStimulusStopwatch eventId="event_1000"/>
+                                <!-- rehide your image here -->
+                                <regionStyle regionId="stimulusRegion"
+                                    styleName="hiddenRegionAbsolute" />
+                                <!-- next stimulus button here -->
+                                <!-- we don't care when this happens so we use a doLater -->
+                                <doLater msToNext="0">
+                                    <nextStimulusButton featureText="Next Stimulus"
+                                        eventTag="StimulusTimerExample"
+                                        repeatIncorrect="false" />
+                                </doLater>
+                            </onTime>
+                            <onError />
+                        </addFrameTimeTrigger>
+                    </startFrameRateTimer>
                 </regionReplace>
             </hasMoreStimulus>
             <endOfStimulus>
