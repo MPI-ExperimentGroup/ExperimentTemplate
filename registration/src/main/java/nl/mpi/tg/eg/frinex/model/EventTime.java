@@ -23,7 +23,7 @@ package nl.mpi.tg.eg.frinex.model;
  */
 public class EventTime {
     protected String id;
-    protected Long ms;
+    protected long ms;
 
     public EventTime() {
     }
