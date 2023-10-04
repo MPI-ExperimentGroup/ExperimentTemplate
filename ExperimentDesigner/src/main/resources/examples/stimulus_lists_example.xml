@@ -2,6 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Minimal Example">
+    <deployment state="staging" />
     <metadata>
         <field controlledRegex=".*" controlledMessage="." postName="stimuliSequentialDisplayExample" registrationField="Stimuli Allocation Field"/>
     </metadata>
