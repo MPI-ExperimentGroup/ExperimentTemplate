@@ -35,7 +35,9 @@
                     <conditionFalse>
                         <!-- if the chosenList is not provided in the URL or previously set then it will be randomly set here -->
                         <setMetadataEvalTokens fieldName="chosenList" evaluateTokens="getRandomItem('L1,L2,L3,L3r')">
-                            <onSuccess />
+                            <onSuccess>
+                                <htmlTokenText featureText="The value of chosenList was randomly allocated." />
+                            </onSuccess>
                             <onError />
                         </setMetadataEvalTokens>
                     </conditionFalse> 
