@@ -18,7 +18,7 @@
                 <regionReplace regionId="stimulusRegion" styleName="hiddenRegionAbsolute">
                     <!-- create your label with a hidden style here -->
                     <stimulusLabel />
-                    <zeroStimulusStopwatch eventId="event_0"/>
+                    <zeroStimulusStopwatch eventId="event_0"/> 
                     <zeroStimulusStopwatch eventId="event_600"/>
                     <zeroStimulusStopwatch eventId="event_1000"/>
                     <zeroStimulusStopwatch eventId="event_button"/>
