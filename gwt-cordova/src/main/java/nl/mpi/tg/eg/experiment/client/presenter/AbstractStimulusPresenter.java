@@ -936,7 +936,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String formattedScoreGroup = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(scoreGroupTokens);
         userResults.getUserData().clearCurrentScore(formattedScoreGroup);
         localStorage.storeUserScore(userResults);
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, elapsedMillis);
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "clearCurrentScore", currentStimulus, null, null, elapsedMillis, getStopwatchValues());
     }
 
     protected void scoreIncrement(final Stimulus currentStimulus, final int dataChannel, final int scoreValue) {
@@ -944,7 +944,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         userResults.getUserData().addPotentialScore(scoreValue);
         localStorage.storeUserScore(userResults);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
-        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "scoreIncrement", currentStimulus, null, null, elapsedMillis);
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "scoreIncrement", currentStimulus, null, null, elapsedMillis, getStopwatchValues());
     }
 
     protected void scoreLabel() {
@@ -1253,7 +1253,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     jsonStimulusMap.get(dragDropStimulus).put("regionDragDrop", new JSONString(codeResponse));
                     localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), dragDropStimulus, jsonStimulusMap.get(dragDropStimulus));
                     submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), dragDropStimulus.getUniqueId(), jsonStimulusMap.get(dragDropStimulus).toString());
-                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", dragDropStimulus, codeResponse, null, elapsedMillis);
+                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), 0, "regionDragDrop", dragDropStimulus, codeResponse, null, elapsedMillis, getStopwatchValues());
                 }
             };
         }
@@ -1550,7 +1550,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
                 // @todo: probably good to check if the data has changed before writing to disk
                 submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, elapsedMillis);
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, "stimulusButton", currentStimulus, presenterListener.getLabel(), isCorrect, elapsedMillis, getStopwatchValues());
                 presenterListener.eventFired(button, shotEventListener);
             }
 
@@ -1841,7 +1841,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
                         // @todo: probably good to check if the data has changed before writing to disk
                         submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
-                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, ratingItem, isCorrect, elapsedMillis);
+                        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, formattedGroupId, currentStimulus, ratingItem, isCorrect, elapsedMillis, getStopwatchValues());
                         timedStimulusListener.postLoadTimerFired();
                     }
 
@@ -2461,7 +2461,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 userResults.getUserData().addPotentialScore(correctness);
                 isCorrect = correctness;
             }
-            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, elapsedMillis);
+            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, elapsedMillis, getStopwatchValues());
         }
         return true;
     }

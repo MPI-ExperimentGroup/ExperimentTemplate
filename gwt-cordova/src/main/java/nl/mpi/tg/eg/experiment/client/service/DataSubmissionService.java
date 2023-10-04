@@ -168,7 +168,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
     }
 
-    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, final String responseGroup, Stimulus stimulus, String response, Boolean isCorrect, int eventMs, final String stopwatchJson) {
+    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, final String responseGroup, Stimulus stimulus, String response, Boolean isCorrect, int eventMs, final String[] stopwatchJson) {
         submitData(ServiceEndpoint.stimulusResponse, userData.getUserId(), "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userData.getUserId().toString()) + ",\n"
@@ -191,7 +191,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"maxCorrectStreak\": " + jsonEscape(Integer.toString(userData.getMaxCorrectStreak())) + ",\n"
                 + "\"maxErrorStreak\": " + jsonEscape(Integer.toString(userData.getMaxErrorStreak())) + ",\n"
                 + "\"maxPotentialScore\": " + jsonEscape(Integer.toString(userData.getMaxPotentialScore())) + ",\n"
-                + "\"eventTimes\": " + stopwatchJson + ",\n"
+                + "\"eventTimes\": [{" + String.join("},{", stopwatchJson) + "}],\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
 //        boolean containsChannel = false;
 //        for (int channel : ApplicationController.SDCARD_DATACHANNELS) {
