@@ -2,7 +2,9 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
     appNameDisplay="Minimal Example">
-    <metadata />
+    <metadata>
+        <field postName="stimuliSequentialDisplayExample" registrationField="Stimuli Allocation Field"/>
+    </metadata>
     <presenter type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
         <withStimuli eventTag="predefined_stimuli_example" randomise="false" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="1">
@@ -45,12 +47,12 @@
                 <addPadding />
                 <actionButton featureText="clearStimulusResponses and reaload">
                     <clearStimulusResponses tags="First_Stimuli_Screen" />
-                    <gotoPresenter target="single_line_text_box_no_action_example" />
+                    <gotoPresenter target="predefined_stimuli_example" />
                 </actionButton>
                 <addPadding />
                 <actionButton featureText="resetStimulus">
-                    <resetStimulus target="single_line_text_box_no_action_example" />
-                    <gotoPresenter target="single_line_text_box_no_action_example" />
+                    <resetStimulus target="predefined_stimuli_example" />
+                    <gotoPresenter target="predefined_stimuli_example" />
                 </actionButton>
             </afterStimulus>
             <randomGrouping storageField="stimuliSequentialDisplayExample">
