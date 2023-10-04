@@ -2880,11 +2880,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected final String appendStopwatchValue(final String eventId, final long stopwatchZero, final long stopwatchStop) {
-        if (stopwatchZero > 0 && stopwatchStop > 0) {
-            return "\"" + eventId + "\": " + (stopwatchStop - stopwatchZero);
-        } else {
-            return "";
-        }
+        return "\"" + eventId + "\": " + ((stopwatchZero > 0 && stopwatchStop > 0)? (stopwatchStop - stopwatchZero) : "null");
     }
 
     abstract String[] getStopwatchValues();
