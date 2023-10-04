@@ -81,27 +81,27 @@
         </loadStimulus>
     </presenter>
     <stimuli>     
-        <stimulus identifier="d1e269"  label="d1e269" tags="media" />
-        <stimulus identifier="d1e235"  label="d1e235" tags="media" />
-        <stimulus identifier="d1e241"  label="d1e241" tags="media" />
-        <stimulus identifier="d1e247"  label="d1e247" tags="media" />
-        <stimulus identifier="d1e253"  label="d1e253" tags="media" />
-        <stimulus identifier="d1e259"  label="d1e259" tags="media" />
-        <stimulus identifier="d1e266"  label="d1e266" tags="media" />
-        <stimulus identifier="d1e272"  label="d1e272" tags="media" />
-        <stimulus identifier="d1e278"  label="d1e278" tags="media" />
-        <stimulus identifier="d1e284"  label="d1e284" tags="media" />
-        <stimulus identifier="d1e290"  label="d1e290" tags="media" />
-        <stimulus identifier="d1e228"  label="d1e228" tags="media" />
-        <stimulus identifier="d1e238"  label="d1e238" tags="media" />
-        <stimulus identifier="d1e244"  label="d1e244" tags="media" />
-        <stimulus identifier="d1e250"  label="d1e250" tags="media" />
-        <stimulus identifier="d1e256"  label="d1e256" tags="media" />
-        <stimulus identifier="d1e263"  label="d1e263" tags="media" />
-        <stimulus identifier="d1e275"  label="d1e275" tags="media" />
-        <stimulus identifier="d1e281"  label="d1e281" tags="media" />
-        <stimulus identifier="d1e287"  label="d1e287" tags="media" />
-        <stimulus identifier="d1e293"  label="d1e293" tags="media" />
-        <stimulus identifier="d1e223"  label="d1e223" tags="media" />
+        <stimulus identifier="d1e269" label="d1e269" tags="media" />
+        <stimulus identifier="d1e235" label="d1e235" tags="media" />
+        <stimulus identifier="d1e241" label="d1e241" tags="media" />
+        <stimulus identifier="d1e247" label="d1e247" tags="media" />
+        <stimulus identifier="d1e253" label="d1e253" tags="media" />
+        <stimulus identifier="d1e259" label="d1e259" tags="media" />
+        <stimulus identifier="d1e266" label="d1e266" tags="media" />
+        <stimulus identifier="d1e272" label="d1e272" tags="media" />
+        <stimulus identifier="d1e278" label="d1e278" tags="media" />
+        <stimulus identifier="d1e284" label="d1e284" tags="media" />
+        <stimulus identifier="d1e290" label="d1e290" tags="media" />
+        <stimulus identifier="d1e228" label="d1e228" tags="media" />
+        <stimulus identifier="d1e238" label="d1e238" tags="media" />
+        <stimulus identifier="d1e244" label="d1e244" tags="media" />
+        <stimulus identifier="d1e250" label="d1e250" tags="media" />
+        <stimulus identifier="d1e256" label="d1e256" tags="media" />
+        <stimulus identifier="d1e263" label="d1e263" tags="media" />
+        <stimulus identifier="d1e275" label="d1e275" tags="media" />
+        <stimulus identifier="d1e281" label="d1e281" tags="media" />
+        <stimulus identifier="d1e287" label="d1e287" tags="media" />
+        <stimulus identifier="d1e293" label="d1e293" tags="media" />
+        <stimulus identifier="d1e223" label="d1e223" tags="media" />
     </stimuli>
 </experiment>
