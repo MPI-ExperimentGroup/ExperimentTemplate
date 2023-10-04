@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Minimal Example">
     <metadata>
-        <field controlledMessage=".*" postName="stimuliSequentialDisplayExample" registrationField="Stimuli Allocation Field"/>
+        <field controlledRegex=".*" controlledMessage="." postName="stimuliSequentialDisplayExample" registrationField="Stimuli Allocation Field"/>
     </metadata>
     <presenter type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
         <withStimuli eventTag="predefined_stimuli_example" randomise="false" repeatRandomWindow="0"
