@@ -23,7 +23,7 @@
                             <zeroStimulusStopwatch eventId="event_600"/>
                             <zeroStimulusStopwatch eventId="event_1000"/>
                             <zeroStimulusStopwatch eventId="stop_missing"/>
-                            <endStimulusStopwatch eventId="end_missing"/>
+                            <stopStimulusStopwatch eventId="zero_missing"/>
                             <startFrameRateTimer>
                                 <addFrameTimeTrigger evaluateMs="0" threshold="20">
                                     <onTime>
