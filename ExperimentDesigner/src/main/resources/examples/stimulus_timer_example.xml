@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/snapshot.xsd"
+    appNameDisplay="StimulusTimerExample">
+    <deployment state="staging" />
+    <metadata />
+    <presenter type="stimulus" self="StimulusTimerExample" title="StimulusTimerExample">
+        <loadStimulus eventTag="StimulusTimerExample" randomise="false" repeatRandomWindow="0"
+            maxStimuli="1000" repeatCount="10">
+            <hasMoreStimulus> 
+                <clearPage />
+                <!-- prepare everything in a hidden state before the time critical section -->
+                <!-- the hidden style maintains its size and position on the page so there are no
+                layout changes when it transitions between shown/hidden -->
+                <regionReplace regionId="crossRegion" styleName="hiddenRegionAbsolute">
+                    <htmlText featureText="+" styleName="crossAbsolute" />
+                </regionReplace>
+                <regionReplace regionId="stimulusRegion" styleName="hiddenRegionAbsolute">
+                    <stimulusImage msToNext="0" styleName="innerRegionAbsolute">
+                        <mediaLoaded>
+                            <!-- create your label with a hidden style here -->
+                            <zeroStimulusStopwatch eventId="event_0"/>
+                            <zeroStimulusStopwatch eventId="event_600"/>
+                            <zeroStimulusStopwatch eventId="event_1000"/>
+                            <zeroStimulusStopwatch eventId="stop_missing"/>
+                            <endStimulusStopwatch eventId="end_missing"/>
+                            <startFrameRateTimer>
+                                <addFrameTimeTrigger evaluateMs="0" threshold="20">
+                                    <onTime>
+                                        <stopStimulusStopwatch eventId="event_0"/>
+                                        <!-- unhide your cross here -->
+                                        <regionStyle regionId="crossRegion"
+                                            styleName="shownRegionAbsolute" />
+                                    </onTime>
+                                    <onError />
+                                </addFrameTimeTrigger>
+                                <addFrameTimeTrigger evaluateMs="600" threshold="20">
+                                    <onTime>
+                                        <stopStimulusStopwatch eventId="event_600"/>
+                                        <!-- hide your label here -->
+                                        <regionStyle regionId="crossRegion"
+                                            styleName="hiddenRegionAbsolute" />
+                                        <!-- unhide your image here -->
+                                        <regionStyle regionId="stimulusRegion"
+                                            styleName="shownRegionAbsolute" />
+                                    </onTime>
+                                    <onError />
+                                </addFrameTimeTrigger>
+                                <addFrameTimeTrigger evaluateMs="1000" threshold="20">
+                                    <onTime>
+                                        <stopStimulusStopwatch eventId="event_1000"/>
+                                        <!-- rehide your image here -->
+                                        <regionStyle regionId="stimulusRegion"
+                                            styleName="hiddenRegionAbsolute" />
+                                        <!-- next stimulus button here -->
+                                        <!-- we don't care when this happens so we use a doLater -->
+                                        <doLater msToNext="0">
+                                            <nextStimulusButton featureText="Next Stimulus"
+                                                eventTag="StimulusTimerExample"
+                                                repeatIncorrect="false" />
+                                        </doLater>
+                                    </onTime>
+                                    <onError />
+                                </addFrameTimeTrigger>
+                            </startFrameRateTimer>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <!-- gracefully handle any missing images -->
+                            <htmlText featureText="mediaLoadFailed"></htmlText>
+                            <stimulusLabel />
+                            <nextStimulusButton featureText="Next Stimulus"
+                                eventTag="mediaLoadFailed" repeatIncorrect="false" />
+                        </mediaLoadFailed>
+                    </stimulusImage>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage />
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="StimulusTimerExample" />
+                    <gotoPresenter target="StimulusTimerExample" />
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping />
+            <stimuli>
+                <tag>media</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <stimuli>     
+        <stimulus audioPath="d1e269_a" code="d1e269" identifier="d1e269" imagePath="d1e269.jpg" label="d1e269" pauseMs="0" tags="media" videoPath="d1e269_v"/>
+        <stimulus audioPath="d1e235_a" code="d1e235" identifier="d1e235" imagePath="d1e235.jpg" label="d1e235" pauseMs="0" tags="media" videoPath="d1e235_v"/>
+        <stimulus audioPath="d1e241_a" code="d1e241" identifier="d1e241" imagePath="d1e241.jpg" label="d1e241" pauseMs="0" tags="media" videoPath="d1e241_v"/>
+        <stimulus audioPath="d1e247_a" code="d1e247" identifier="d1e247" imagePath="d1e247.jpg" label="d1e247" pauseMs="0" tags="media" videoPath="d1e247_v"/>
+        <stimulus audioPath="d1e253_a" code="d1e253" identifier="d1e253" imagePath="d1e253.jpg" label="d1e253" pauseMs="0" tags="media" videoPath="d1e253_v"/>
+        <stimulus audioPath="d1e259_a" code="d1e259" identifier="d1e259" imagePath="d1e259.jpg" label="d1e259" pauseMs="0" tags="media" videoPath="d1e259_v"/>
+        <stimulus audioPath="d1e266_a" code="d1e266" identifier="d1e266" imagePath="d1e266.jpg" label="d1e266" pauseMs="0" tags="media" videoPath="d1e266_v"/>
+        <stimulus audioPath="d1e272_a" code="d1e272" identifier="d1e272" imagePath="d1e272.jpg" label="d1e272" pauseMs="0" tags="media" videoPath="d1e272_v"/>
+        <stimulus audioPath="d1e278_a" code="d1e278" identifier="d1e278" imagePath="d1e278.jpg" label="d1e278" pauseMs="0" tags="media" videoPath="d1e278_v"/>
+        <stimulus audioPath="d1e284_a" code="d1e284" identifier="d1e284" imagePath="d1e284.jpg" label="d1e284" pauseMs="0" tags="media" videoPath="d1e284_v"/>
+        <stimulus audioPath="d1e290_a" code="d1e290" identifier="d1e290" imagePath="d1e290.jpg" label="d1e290" pauseMs="0" tags="media" videoPath="d1e290_v"/>
+        <stimulus audioPath="d1e228_a" code="d1e228" identifier="d1e228" imagePath="d1e228.jpg" label="d1e228" pauseMs="0" tags="media" videoPath="d1e228_v"/>
+        <stimulus audioPath="d1e238_a" code="d1e238" identifier="d1e238" imagePath="d1e238.jpg" label="d1e238" pauseMs="0" tags="media" videoPath="d1e238_v"/>
+        <stimulus audioPath="d1e244_a" code="d1e244" identifier="d1e244" imagePath="d1e244.jpg" label="d1e244" pauseMs="0" tags="media" videoPath="d1e244_v"/>
+        <stimulus audioPath="d1e250_a" code="d1e250" identifier="d1e250" imagePath="d1e250.jpg" label="d1e250" pauseMs="0" tags="media" videoPath="d1e250_v"/>
+        <stimulus audioPath="d1e256_a" code="d1e256" identifier="d1e256" imagePath="d1e256.jpg" label="d1e256" pauseMs="0" tags="media" videoPath="d1e256_v"/>
+        <stimulus audioPath="d1e263_a" code="d1e263" identifier="d1e263" imagePath="d1e263.jpg" label="d1e263" pauseMs="0" tags="media" videoPath="d1e263_v"/>
+        <stimulus audioPath="d1e275_a" code="d1e275" identifier="d1e275" imagePath="d1e275.jpg" label="d1e275" pauseMs="0" tags="media" videoPath="d1e275_v"/>
+        <stimulus audioPath="d1e281_a" code="d1e281" identifier="d1e281" imagePath="d1e281.jpg" label="d1e281" pauseMs="0" tags="media" videoPath="d1e281_v"/>
+        <stimulus audioPath="d1e287_a" code="d1e287" identifier="d1e287" imagePath="d1e287.jpg" label="d1e287" pauseMs="0" tags="media" videoPath="d1e287_v"/>
+        <stimulus audioPath="d1e293_a" code="d1e293" identifier="d1e293" imagePath="d1e293.jpg" label="d1e293" pauseMs="0" tags="media" videoPath="d1e293_v"/>
+        <stimulus audioPath="d1e223_a" code="d1e223" identifier="d1e223" imagePath="d1e223.jpg" label="d1e223" pauseMs="0" tags="media" videoPath="d1e223_v"/>
+        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should trigger an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
+    </stimuli>
+</experiment>
