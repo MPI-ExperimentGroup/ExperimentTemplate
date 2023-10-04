@@ -64,4 +64,9 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
         preloadAllStimuli(progressBar, onSuccessListener, pictureList, pictureList.size());
     }
+
+    @Override
+    String[] getStopwatchValues() {
+        return new String[]{};
+    }
 }
