@@ -9143,62 +9143,6 @@
             </table>
         </regionReplace>
     </presenter>
-    <presenter back="Menu" menuLabel="Predefined Stimuli Example" type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
-        <withStimuli eventTag="predefined_stimuli_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <beforeStimulus>
-                <plainText featureText="The stimuli list in this example can be predetermined by the providing list alias in the URL."/>
-                <htmlTokenText featureText="Alternatively you could set the metadata field &quot;stimuliSequentialDisplayExample&quot; manually with &amp;lt;setMetadataValue fieldName=&quot;stimuliSequentialDisplayExample&quot; dataLogFormat=&quot;L1&quot;/&amp;gt;"/>
-                <addPadding/>
-                <htmlTokenText featureText="The value of stimuliSequentialDisplayExample is: &quot;::metadataField_stimuliSequentialDisplayExample::&quot;"/>
-                <addPadding/>
-                <plainText featureText="When no list alias is found the tag &quot;First_Stimuli_Screen&quot; will be used."/>
-                <addPadding/>
-                <plainText featureText="&lt;randomGrouping storageField=&quot;stimuliSequentialDisplayExample&quot;&gt;"/>
-                <plainText featureText="&lt;list alias=&quot;L1&quot;&gt;-R1-R2-R3-R4-Q1-Q2-Q3-Q8-&lt;/list&gt;"/>
-                <plainText featureText="&lt;list alias=&quot;L2&quot;&gt;-Q1-Q2-Q3-Q8-&lt;/list&gt;"/>
-                <plainText featureText="&lt;list alias=&quot;L3&quot;&gt;-R1-R2-R3-R4-&lt;/list&gt;"/>
-                <plainText featureText="&lt;/randomGrouping&gt;"/>
-                <plainText featureText="&lt;stimuli&gt;"/>
-                <plainText featureText="&lt;tag&gt;First_Stimuli_Screen&lt;/tag&gt;"/>
-                <plainText featureText="&lt;/stimuli&gt;"/>
-            </beforeStimulus>
-            <eachStimulus>
-                <htmlTokenText featureText="stimulusId: ::stimulusId::"/>
-            </eachStimulus>
-            <afterStimulus>
-                <addPadding/>
-                <htmlText featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L1&quot;&gt;List 1&lt;/a&gt;"/>
-                <addPadding/>
-                <htmlText featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L2&quot;&gt;List 2&lt;/a&gt;"/>
-                <addPadding/>
-                <htmlText featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L3&quot;&gt;List 3&lt;/a&gt;"/>
-                <addPadding/>
-                <actionButton featureText="clearStimulusResponses and reaload">
-                    <clearStimulusResponses tags="First_Stimuli_Screen"/>
-                    <gotoPresenter target="single_line_text_box_no_action_example"/>
-                </actionButton>
-                <addPadding/>
-                <actionButton featureText="resetStimulus">
-                    <resetStimulus target="single_line_text_box_no_action_example"/>
-                    <gotoPresenter target="single_line_text_box_no_action_example"/>
-                </actionButton>
-            </afterStimulus>
-            <randomGrouping storageField="stimuliSequentialDisplayExample">
-                <list alias="L1">-R1-R2-R3-R4-Q1-Q2-Q3-Q8-</list>
-                <list alias="L2">
-                    -Q1
-                    -Q2
-                    -Q3
-                    -Q8
-                    -
-                </list>
-                <list alias="L3">-R1-R2-R3-R4-</list>
-            </randomGrouping>
-            <stimuli>
-                <tag>First_Stimuli_Screen</tag>
-            </stimuli>
-        </withStimuli>
-    </presenter>
     <presenter back="Menu" menuLabel="Custom Completion Number" type="transmission" self="custom_completion_number" title="Custom Completion Number">
         <setMetadataEvalTokens evaluateTokens="random(10)random(10)random(10)random(10)random(10)random(10)random(10)" fieldName="customCompletionNumber">	
             <onSuccess> 

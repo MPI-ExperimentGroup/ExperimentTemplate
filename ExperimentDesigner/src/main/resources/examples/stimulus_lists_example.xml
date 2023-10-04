@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
+    appNameDisplay="Minimal Example">
+    <metadata />
+    <presenter type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
+        <withStimuli eventTag="predefined_stimuli_example" randomise="false" repeatRandomWindow="0"
+            maxStimuli="1000" repeatCount="1">
+            <beforeStimulus>
+                <plainText
+                    featureText="The stimuli list in this example can be predetermined by the providing list alias in the URL." />
+                <htmlTokenText
+                    featureText="Alternatively you could set the metadata field &quot;stimuliSequentialDisplayExample&quot; manually with &amp;lt;setMetadataValue fieldName=&quot;stimuliSequentialDisplayExample&quot; dataLogFormat=&quot;L1&quot;/&amp;gt;" />
+                <addPadding />
+                <htmlTokenText
+                    featureText="The value of stimuliSequentialDisplayExample is: &quot;::metadataField_stimuliSequentialDisplayExample::&quot;" />
+                <addPadding />
+                <plainText
+                    featureText="When no list alias is found the tag &quot;all_stimuli&quot; will be used." />
+                <addPadding />
+                <plainText
+                    featureText="&lt;randomGrouping storageField=&quot;stimuliSequentialDisplayExample&quot;&gt;" />
+                <plainText
+                    featureText="&lt;list alias=&quot;L1&quot;&gt;-R1-R2-R3-R4-Q1-Q2-Q3-Q8-&lt;/list&gt;" />
+                <plainText featureText="&lt;list alias=&quot;L2&quot;&gt;-Q1-Q2-Q3-Q8-&lt;/list&gt;" />
+                <plainText featureText="&lt;list alias=&quot;L3&quot;&gt;-R1-R2-R3-R4-&lt;/list&gt;" />
+                <plainText featureText="&lt;/randomGrouping&gt;" />
+                <plainText featureText="&lt;stimuli&gt;" />
+                <plainText featureText="&lt;tag&gt;First_Stimuli_Screen&lt;/tag&gt;" />
+                <plainText featureText="&lt;/stimuli&gt;" />
+            </beforeStimulus>
+            <eachStimulus>
+                <htmlTokenText featureText="stimulusId: ::stimulusId::" />
+            </eachStimulus>
+            <afterStimulus>
+                <addPadding />
+                <htmlText
+                    featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L1&quot;&gt;List 1&lt;/a&gt;" />
+                <addPadding />
+                <htmlText
+                    featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L2&quot;&gt;List 2&lt;/a&gt;" />
+                <addPadding />
+                <htmlText
+                    featureText="&lt;a href=&quot;?stimuliSequentialDisplayExample=L3&quot;&gt;List 3&lt;/a&gt;" />
+                <addPadding />
+                <actionButton featureText="clearStimulusResponses and reaload">
+                    <clearStimulusResponses tags="First_Stimuli_Screen" />
+                    <gotoPresenter target="single_line_text_box_no_action_example" />
+                </actionButton>
+                <addPadding />
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="single_line_text_box_no_action_example" />
+                    <gotoPresenter target="single_line_text_box_no_action_example" />
+                </actionButton>
+            </afterStimulus>
+            <randomGrouping storageField="stimuliSequentialDisplayExample">
+                <list alias="L1">-d1e269-d1e253-d1e253-d1e223-d1e281-d1e287-d1e293-d1e263-</list>
+                <list alias="L2">
+                    -d1e259
+                    -d1e247
+                    -d1e238
+                    -d1e272
+                    -
+                </list>
+                <list alias="L3">-d1e241-d1e263-d1e275-d1e235-</list>
+                <list alias="L3r">-d1e235-d1e275-d1e263-d1e241-</list>
+            </randomGrouping>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </withStimuli>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="d1e269" label="d1e269" tags="all_stimuli" />
+        <stimulus identifier="d1e235" label="d1e235" tags="all_stimuli" />
+        <stimulus identifier="d1e241" label="d1e241" tags="all_stimuli" />
+        <stimulus identifier="d1e247" label="d1e247" tags="all_stimuli" />
+        <stimulus identifier="d1e253" label="d1e253" tags="all_stimuli" />
+        <stimulus identifier="d1e259" label="d1e259" tags="all_stimuli" />
+        <stimulus identifier="d1e266" label="d1e266" tags="all_stimuli" />
+        <stimulus identifier="d1e272" label="d1e272" tags="all_stimuli" />
+        <stimulus identifier="d1e278" label="d1e278" tags="all_stimuli" />
+        <stimulus identifier="d1e284" label="d1e284" tags="all_stimuli" />
+        <stimulus identifier="d1e290" label="d1e290" tags="all_stimuli" />
+        <stimulus identifier="d1e228" label="d1e228" tags="all_stimuli" />
+        <stimulus identifier="d1e238" label="d1e238" tags="all_stimuli" />
+        <stimulus identifier="d1e244" label="d1e244" tags="all_stimuli" />
+        <stimulus identifier="d1e250" label="d1e250" tags="all_stimuli" />
+        <stimulus identifier="d1e256" label="d1e256" tags="all_stimuli" />
+        <stimulus identifier="d1e263" label="d1e263" tags="all_stimuli" />
+        <stimulus identifier="d1e275" label="d1e275" tags="all_stimuli" />
+        <stimulus identifier="d1e281" label="d1e281" tags="all_stimuli" />
+        <stimulus identifier="d1e287" label="d1e287" tags="all_stimuli" />
+        <stimulus identifier="d1e293" label="d1e293" tags="all_stimuli" />
+        <stimulus identifier="d1e223" label="d1e223" tags="all_stimuli" />
+    </stimuli>
+</experiment>
