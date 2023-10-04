@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Minimal Example">
     <metadata>
-        <field postName="stimuliSequentialDisplayExample" registrationField="Stimuli Allocation Field"/>
+        <field controlledMessage=".*" postName="stimuliSequentialDisplayExample" registrationField="Stimuli Allocation Field"/>
     </metadata>
     <presenter type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
         <withStimuli eventTag="predefined_stimuli_example" randomise="false" repeatRandomWindow="0"
