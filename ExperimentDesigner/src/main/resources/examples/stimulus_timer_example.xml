@@ -21,6 +21,7 @@
                     <zeroStimulusStopwatch eventId="event_0"/>
                     <zeroStimulusStopwatch eventId="event_600"/>
                     <zeroStimulusStopwatch eventId="event_1000"/>
+                    <zeroStimulusStopwatch eventId="event_button"/>
                     <zeroStimulusStopwatch eventId="stop_missing_will_be_ignored"/>
                     <stopStimulusStopwatch eventId="zero_missing_will_be_ignored"/>
                     <startFrameRateTimer>
@@ -54,9 +55,11 @@
                                 <!-- next stimulus button here -->
                                 <!-- we don't care when this happens so we use a doLater -->
                                 <doLater msToNext="0">
-                                    <nextStimulusButton featureText="Next Stimulus"
-                                        eventTag="StimulusTimerExample"
-                                        repeatIncorrect="false" />
+                                    <actionButton featureText="Next Stimulus">
+                                        <stopStimulusStopwatch eventId="event_button"/>
+                                        <setStimulusCodeResponse codeFormat="ButtonClicked" applyScore="true"/>
+                                        <nextStimulus repeatIncorrect="false" />
+                                    </actionButton>
                                 </doLater>
                             </onTime>
                             <onError />

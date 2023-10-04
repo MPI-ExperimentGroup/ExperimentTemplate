@@ -3248,7 +3248,7 @@
 </xs:complexType>
 <xs:complexType name="prevStimulusButtonType">
 <xs:annotation>
-<xs:documentation>Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
+<xs:documentation>Adds a button that when clicked decrements the current stimulus and triggers hasMoreStimulus. This button will not submit a stimulus response on its own. If however there is no previous stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
@@ -3300,7 +3300,7 @@
 </xs:complexType>
 <xs:complexType name="nextStimulusButtonType">
 <xs:annotation>
-<xs:documentation>Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
+<xs:documentation>Adds a button that when clicked increments the current stimulus and triggers hasMoreStimulus. This button will not submit a stimulus response on its own. If however there are no more stimuli then endOfStimulus will be triggered when the button is clicked.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
@@ -3352,7 +3352,7 @@
 </xs:complexType>
 <xs:complexType name="nextStimulusType">
 <xs:annotation>
-<xs:documentation>Increments the current stimulus and triggers hasMoreStimulus. If however there are no more stimuli then endOfStimulus will be triggered.</xs:documentation>
+<xs:documentation>Increments the current stimulus and triggers hasMoreStimulus. This will not submit a stimulus response on its own. If however there are no more stimuli then endOfStimulus will be triggered.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required">
@@ -3363,7 +3363,7 @@
 </xs:complexType>
 <xs:complexType name="prevStimulusType">
 <xs:annotation>
-<xs:documentation>Decrements the current stimulus and triggers hasMoreStimulus. If however there is no previous stimulus then endOfStimulus will be triggered.</xs:documentation>
+<xs:documentation>Decrements the current stimulus and triggers hasMoreStimulus. This will not submit a stimulus response on its own. If however there is no previous stimulus then endOfStimulus will be triggered.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="repeatIncorrect" type="xs:string" use="required">
