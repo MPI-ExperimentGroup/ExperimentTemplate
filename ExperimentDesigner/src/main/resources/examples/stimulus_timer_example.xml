@@ -21,8 +21,8 @@
                     <zeroStimulusStopwatch eventId="event_0"/>
                     <zeroStimulusStopwatch eventId="event_600"/>
                     <zeroStimulusStopwatch eventId="event_1000"/>
-                    <zeroStimulusStopwatch eventId="stop_missing"/>
-                    <stopStimulusStopwatch eventId="zero_missing"/>
+                    <zeroStimulusStopwatch eventId="stop_missing_will_be_ignored"/>
+                    <stopStimulusStopwatch eventId="zero_missing_will_be_ignored"/>
                     <startFrameRateTimer>
                         <addFrameTimeTrigger evaluateMs="0" threshold="20">
                             <onTime>
