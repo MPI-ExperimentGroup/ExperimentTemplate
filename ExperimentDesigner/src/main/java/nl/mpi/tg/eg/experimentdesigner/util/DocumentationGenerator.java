@@ -73,7 +73,7 @@ public class DocumentationGenerator {
                     Files.copy(new DocumentationGenerator().getMinimalExampleStream(), minimalExampleOutputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                     Source xmlFileStream = new StreamSource(minimalExampleOutputFile);
                     SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
-                    final File schemaFile = new File(schemaDirectory, "frinex.xsd");
+                    final File schemaFile = new File(schemaDirectory, "beta.xsd");
                     Schema schema = schemaFactory.newSchema(schemaFile);
                     Validator validator = schema.newValidator();
                     validator.validate(xmlFileStream);
