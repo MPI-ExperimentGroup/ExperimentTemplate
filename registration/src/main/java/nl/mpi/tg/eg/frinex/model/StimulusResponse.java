@@ -69,6 +69,7 @@ public class StimulusResponse {
     private List<EventTime> eventTimes; 
     
     public StimulusResponse() {
+        eventTimes = new ArrayList<>();
     }
 
     public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore, List<EventTime> eventTimes) {
