@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/snapshot.xsd"
     appNameDisplay="StimulusTimerExample">
     <deployment state="staging" />  
-    <metadata />
+    <metadata /> 
     <presenter type="stimulus" self="StimulusTimerExample" title="StimulusTimerExample">
         <loadStimulus eventTag="StimulusTimerExample" randomise="false" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="10">
