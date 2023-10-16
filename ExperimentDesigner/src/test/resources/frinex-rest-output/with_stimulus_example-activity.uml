@@ -547,10 +547,6 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
-:predefined_stimuli_example;
-if (navigation) then (back)
-:Menu;
-endif
 :custom_completion_number;
 if (navigation) then (back)
 :Menu;

@@ -130,7 +130,6 @@ Menu --> Admin
 Menu --> DataManagement
 Menu --> DataUpload
 Menu --> table_tags_inside_a_region_tag
-Menu --> predefined_stimuli_example
 Menu --> custom_completion_number
 Menu --> random_image_positions_remembered
 Menu --> preload_audio_example
@@ -319,7 +318,6 @@ sticky_menu_example --> Admin
 sticky_menu_example --> DataManagement
 sticky_menu_example --> DataUpload
 sticky_menu_example --> table_tags_inside_a_region_tag
-sticky_menu_example --> predefined_stimuli_example
 sticky_menu_example --> custom_completion_number
 sticky_menu_example --> random_image_positions_remembered
 sticky_menu_example --> preload_audio_example
@@ -865,7 +863,6 @@ allMenuItemsStyle --> Admin
 allMenuItemsStyle --> DataManagement
 allMenuItemsStyle --> DataUpload
 allMenuItemsStyle --> table_tags_inside_a_region_tag
-allMenuItemsStyle --> predefined_stimuli_example
 allMenuItemsStyle --> custom_completion_number
 allMenuItemsStyle --> random_image_positions_remembered
 allMenuItemsStyle --> preload_audio_example
@@ -916,11 +913,6 @@ DataUpload --> DataUpload : Retry
 DataUpload --> DataManagement : Participant's Data Listing
 state table_tags_inside_a_region_tag
 table_tags_inside_a_region_tag --> Menu : back
-state predefined_stimuli_example
-predefined_stimuli_example --> Menu : back
-predefined_stimuli_example --> single_line_text_box_no_action_example
-predefined_stimuli_example --> single_line_text_box_no_action_example
-predefined_stimuli_example --> single_line_text_box_no_action_example
 state custom_completion_number
 custom_completion_number --> Menu : back
 state random_image_positions_remembered
