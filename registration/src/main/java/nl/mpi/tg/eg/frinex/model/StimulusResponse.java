@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -64,12 +65,12 @@ public class StimulusResponse {
     private int maxCorrectStreak;
     private int maxErrorStreak;
     private int maxPotentialScore;
-    private EventTime[] eventTimes;
+    private List<EventTime> eventTimes; 
     
     public StimulusResponse() {
     }
 
-    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore, EventTime[] eventTimes) {
+    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore, List<EventTime> eventTimes) {
         this.tagDate = tagDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -200,11 +201,11 @@ public class StimulusResponse {
         this.submitDate = submitDate;
     }
 
-    public EventTime[] getEventTimes() {
+    public List<EventTime> getEventTimes() {
         return eventTimes;
     }
 
-    public void setEventTimes(EventTime[] eventTimes) {
+    public void setEventTimes(List<EventTime> eventTimes) {
         this.eventTimes = eventTimes;
     }
 
