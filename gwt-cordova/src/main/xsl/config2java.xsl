@@ -441,7 +441,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                         return new String[] {    
                 </xsl:text>
                 <!-- if there are stopwatch elements without an eventId attribute then add an appendStopwatchValue call -->
-                <xsl:value-of select="if (descendant::zeroStimulusStopwatch[not(@eventId])) then 'appendStopwatchValue(&quot;unnamed&quot;, stopwatchZero_, stopwatchStop_)&#xa;' else ''" />
+                <xsl:value-of select="if (descendant::zeroStimulusStopwatch[not(@eventId]) then 'appendStopwatchValue(&quot;unnamed&quot;, stopwatchZero_, stopwatchStop_)&#xa;' else ''" />
                 <xsl:for-each select="distinct-values((descendant::zeroStimulusStopwatch/@eventId,descendant::stopStimulusStopwatch/@eventId))">
                     <xsl:value-of select="concat(', appendStopwatchValue(&quot;', ., '&quot;, stopwatchZero_', ., ', stopwatchStop_', .,')&#xa;')" />
                 </xsl:for-each>
