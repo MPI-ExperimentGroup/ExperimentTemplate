@@ -8,7 +8,7 @@
         <loadStimulus eventTag="StimulusTimerExample" randomise="false" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>  
-                <clearPage />
+                <clearPage /> 
                 <!-- prepare everything in a hidden state before the time critical section -->
                 <!-- the hidden style maintains its size and position on the page so there are no
                 layout changes when it transitions between shown/hidden -->
