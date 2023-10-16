@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/snapshot.xsd"
     appNameDisplay="StimulusTimerExample">
-    <deployment state="staging" />   
+    <deployment state="staging" />    
     <metadata />    
     <presenter type="stimulus" self="StimulusTimerExample" title="StimulusTimerExample">
         <loadStimulus eventTag="StimulusTimerExample" randomise="false" repeatRandomWindow="0"
