@@ -31,8 +31,8 @@ import javax.persistence.Id;
 public class EventTime implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_db;
-    protected String id;
+    private long id;
+    protected String event;
     protected Long ms;
 
     public EventTime() {
