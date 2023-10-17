@@ -584,12 +584,12 @@
 </xs:sequence>
 <xs:attribute name="stagingUrl" type="xs:string">
 <xs:annotation>
-<xs:documentation>The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.</xs:documentation>
+<xs:documentation>The URL to an external staging registration service (for example to avoid cluttering the production validation service with mock data). When not specified the Frinex &lt;validation&gt; service is used.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="productionUrl" type="xs:string">
 <xs:annotation>
-<xs:documentation>The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.</xs:documentation>
+<xs:documentation>The URL to an external production registration service (for example external participant validation or registration or similar service). When not specified the Frinex &lt;validation&gt; service is used.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -5414,13 +5414,13 @@
 </xs:complexType>
 <xs:complexType name="validateMetadataType">
 <xs:annotation>
-<xs:documentation>Validates the current user id and the metadata fields (as listed in the validationService section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from this validationService section will be updated locally from the values previously saved in the admin system.</xs:documentation>
+<xs:documentation>Validates the current user id and the metadata fields (as listed in the validationService section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in the stagingUrl and productionUrl of the validationService), the corresponding return metadata fields from this validationService section will be updated locally from the values previously saved in the admin system.</xs:documentation>
 </xs:annotation>
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
 </xs:complexType>
 <xs:complexType name="transmitResultsType">
 <xs:annotation>
-<xs:documentation>Transmits the values of the metadata fields that match the sendingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the sendingRegex will be updated if there is such a field returned from that service. If the registration service returns a 200 response then onSuccess is triggered. When onSuccess is triggered this does not always indicate a validated state, you will also need to check the receiving fields. If there is a network error or the registration service returns a non 200 response then onError will be triggered. One and only one of either onError or onSuccess will always be triggered, however the time required to trigger will depend on network conditions.</xs:documentation>
+<xs:documentation>Transmits the values of the metadata fields that match the sendingRegex to the endpoint defined in stagingUrl and productionUrl of the validationService. Any metadata fields returned from that service which match the sendingRegex will be updated if there is such a field. If the connection to the registration service returns a 200 response then onSuccess is triggered. Depending on the validation service an onSuccess might only indicate a network success and does not always indicate a validated state from the validation service, you will also need to check the receiving fields. If there is a network error or the registration service returns a non 200 response then onError will be triggered. One and only one of either onError or onSuccess will always be triggered, however the time required to trigger will depend on network conditions.</xs:documentation>
 </xs:annotation>
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
 <xs:attribute name="receivingRegex" type="xs:string" use="required">
