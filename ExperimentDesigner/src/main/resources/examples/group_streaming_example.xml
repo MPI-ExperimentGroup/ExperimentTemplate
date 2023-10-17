@@ -6,7 +6,7 @@
             stagingServer="https://ems15.mpi.nl"               
             stunServer="coturn.mpi.nl"   
         />                
-    <administration />   
+    <administration />    
     <scss>  
         .streamRegion {  
             width:30vw;
