@@ -143,9 +143,9 @@ When provided determines which stun server will be used for group experiments wh
 </td></tr>
 <tr><td>
 <a href="#validationServiceType"><span style="color:purple">&lt;</span><span style="color:blue">validationService</span></a></td><td><span style="color:green">productionUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external production registration service (for example external participant validation or registration or similar service). When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 <span style="color:green">stagingUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external staging registration service (for example to avoid cluttering the production validation service with mock data). When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
@@ -255,9 +255,9 @@ Server side validation / registration services.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">validationService</span></td><td><span style="color:green">productionUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external production registration service (for example external participant validation or registration or similar service). When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 <span style="color:green">stagingUrl</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
+The URL to an external staging registration service (for example to avoid cluttering the production validation service with mock data). When not specified the Frinex &lt;validation&gt; service is used.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -16313,7 +16313,7 @@ String</span><br/>
 <h3 id="transmitResultsType" style="text-transform: uppercase;">
 transmitResults
 </h3>
-Transmits the values of the metadata fields that match the sendingRegex to the endpoint defined in registrationUrlStaging and registrationUrlProduction (listing.json), the metadata fields which match the sendingRegex will be updated if there is such a field returned from that service. If the registration service returns a 200 response then onSuccess is triggered. When onSuccess is triggered this does not always indicate a validated state, you will also need to check the receiving fields. If there is a network error or the registration service returns a non 200 response then onError will be triggered. One and only one of either onError or onSuccess will always be triggered, however the time required to trigger will depend on network conditions.
+Transmits the values of the metadata fields that match the sendingRegex to the endpoint defined in stagingUrl and productionUrl of the validationService. Any metadata fields returned from that service which match the sendingRegex will be updated if there is such a field. If the connection to the registration service returns a 200 response then onSuccess is triggered. Depending on the validation service an onSuccess might only indicate a network success and does not always indicate a validated state from the validation service, you will also need to check the receiving fields. If there is a network error or the registration service returns a non 200 response then onError will be triggered. One and only one of either onError or onSuccess will always be triggered, however the time required to trigger will depend on network conditions.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">transmitResults</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -17655,7 +17655,7 @@ userInfo
 <h3 id="validateMetadataType" style="text-transform: uppercase;">
 validateMetadata
 </h3>
-Validates the current user id and the metadata fields (as listed in the validationService section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in registrationUrlStaging and registrationUrlProduction of the listing.json), the corresponding return metadata fields from this validationService section will be updated locally from the values previously saved in the admin system.
+Validates the current user id and the metadata fields (as listed in the validationService section of the experiment configuration file) to the to the Frinex admin (unless another endpoint is defined in the stagingUrl and productionUrl of the validationService), the corresponding return metadata fields from this validationService section will be updated locally from the values previously saved in the admin system.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">validateMetadata</span></td><td><span style="color:purple">&gt;</span></td><td>
