@@ -48,7 +48,8 @@ public enum TokenText {
     stimulusVideo("Outputs the current stimulus video.", "::stimulusVideo::", "Video"),
     stimulusImage("Outputs the current stimulus image.", "::stimulusImage::", "Image"),
     stimulusTags("Outputs the current stimulus tags.", "::stimulusTags::", "tag_number,tag_interesting"),
-    stimulusPauseMs("Outputs the current stimulus pause ms.", "::stimulusPauseMs::", "0");
+    stimulusPauseMs("Outputs the current stimulus pause ms.", "::stimulusPauseMs::", "0"),
+    stimulusResponse("Outputs the stored responses of a specified stimulus Id of the current stimulus when the Id is blank. If a response group is provided that response value will be shown. For example a stimulus with the Id of D123 that has the response of ImageViewed and a group response of ButtonThreeClicked would output the following.", "::stimulusResponse_D123:: and ::stimulusResponse_D123_Step01::", "ImageViewed and ButtonThreeClicked");
     
 //::groupAllMemberCodes::
 //
