@@ -434,8 +434,8 @@ public class AbstractSchemaGenerator {
                                     .documentedAttribute("errorField", AttributeType.xsString, "If a validation error occurs the error message will be returned from the admin server in this metadatafield.", false)
                                     .documentedAttribute("errorMessage", AttributeType.xsString, "If no records match and a validation error occurs this is the error message that will be returned.", false)
                                     .documentedAttribute("allowValidationOnMissing", AttributeType.xsBoolean, "If there are no records for this user then if set to true the validation will succeed, if false then the user will need to be manually added into the admin system.", false)
-                        }).documentedAttribute("stagingUrl", AttributeType.xsString, "The URL to an external staging registration service. When not specified the Frinex &lt;validation&gt; service is used.", true)
-                        .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service. When not specified the Frinex &lt;validation&gt; service is used.", true),
+                        }).documentedAttribute("stagingUrl", AttributeType.xsString, "The URL to an external staging registration service (for example to avoid cluttering the production validation service with mock data). When not specified the Frinex &lt;validation&gt; service is used.", true)
+                        .documentedAttribute("productionUrl", AttributeType.xsString, "The URL to an external production registration service (for example external participant validation or registration or similar service). When not specified the Frinex &lt;validation&gt; service is used.", true),
                 new DocumentationElement("administration", "Administration", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
