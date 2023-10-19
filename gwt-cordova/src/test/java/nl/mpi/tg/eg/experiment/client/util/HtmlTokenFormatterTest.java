@@ -210,7 +210,15 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String getStoredStimulusValue(UserId userId, String stimulusId, String key) {
-                return "StoredStimulusValue(stimulusId:" + stimulusId + ",key:" + key + ")";
+                if ("D123".equals(stimulusId) && key.isEmpty()) {
+                    return "ImageViewed";
+                } else if ("D123".equals(stimulusId) && "Step01".equals(key)) {
+                    return "ButtonThreeClicked";
+                } else if (stimulusId.isEmpty() && "Step01".equals(key)) {
+                    return "ButtonClicked";
+                } else {
+                    return "StoredStimulusValue(stimulusId:" + stimulusId + ",key:" + key + ")";
+                }
             }
         };
         final MetadataField session_steps = new MetadataField("session_steps", "session_steps", "session_steps", "session_steps", "session_steps");
