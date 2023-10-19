@@ -37,4 +37,12 @@ public class EventTime implements Serializable {
 
     public EventTime() {
     }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public Long getMs() {
+        return ms;
+    }
 }

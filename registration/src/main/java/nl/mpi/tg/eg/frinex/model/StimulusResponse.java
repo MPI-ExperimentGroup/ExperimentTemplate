@@ -69,7 +69,7 @@ public class StimulusResponse {
     private int maxCorrectStreak;
     private int maxErrorStreak;
     private int maxPotentialScore;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<EventTime> eventTimes; 
     
     public StimulusResponse() {
