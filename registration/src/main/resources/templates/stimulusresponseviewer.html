@@ -92,6 +92,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <th>
                         <span class="balloontext">Maximum Potential Score</span>
                         <a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=maxPotentialScore' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">MPS</a></th>
+                    <th><span class="balloontext">Stimulus Events</span>Events</th>
                     <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=eventMs' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">EventMs</a></th>
                     <th><a  th:attr="href='?simple=' + ${simpleMode} + ${(dataChannel != null)?'&amp;dataChannel=' + dataChannel : ''} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;sort=tagDate' + ${(sortDirection == 'a')? '&amp;dir=d' : ''}">TagDate</a></th>
                 </tr>
@@ -121,6 +122,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.maxCorrectStreak}">maxCorrectStreak</td>
                     <td th:text="${prod.maxErrorStreak}">maxErrorStreak</td>
                     <td th:text="${prod.maxPotentialScore}">maxPotentialScore</td>
+                    <td><span th:each="event,eventIndex : ${prod.eventTimes}" th:text="${event.event}: ${event.ms} "></span>eventTimes</td>
                     <td th:text="${prod.eventMs}">eventMs</td>
                     <td th:text="${prod.tagDate}">tagDate</td>
                 </tr>
