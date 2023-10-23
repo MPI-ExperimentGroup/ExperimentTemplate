@@ -29,6 +29,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.EventTime;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -78,7 +79,7 @@ public class CsvController {
         response.setContentType("application/zip");
         response.addHeader("Content-Disposition", "attachment; filename=\"results.zip\"");
         response.addHeader("Content-Transfer-Encoding", "binary");
-        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+        try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             compressResults(outputStream);
             response.getOutputStream().write(outputStream.toByteArray());
             response.getOutputStream().flush();
@@ -105,8 +106,8 @@ public class CsvController {
         String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
         response.addHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
         response.addHeader("Content-Transfer-Encoding", "binary");
-        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-            try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
+        try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            try ( ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
                 zipOutputStream.setLevel(ZipOutputStream.STORED);
                 for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
                     addToZipArchive(zipOutputStream, audioData.getUserId() + "_" + audioData.getScreenName() + "_" + audioData.getStimulusId() + "_" + audioData.getId() + "." + audioData.getRecordingFormat().name(), audioData.getDataBlob());
@@ -214,7 +215,7 @@ public class CsvController {
     }
 
     void compressResults(final OutputStream out) throws IOException {
-        try (ZipOutputStream zipOutputStream = new ZipOutputStream(out)) {
+        try ( ZipOutputStream zipOutputStream = new ZipOutputStream(out)) {
             zipOutputStream.setLevel(ZipOutputStream.STORED);
             addToZipArchive(zipOutputStream, "participants.csv", getParticipantsCsv());
             addToZipArchive(zipOutputStream, "screenviews.csv", getScreenDataCsv());
@@ -334,13 +335,24 @@ public class CsvController {
         return stringBuilder.toString().getBytes();
     }
 
+    private String serialiseEventTimes(List<EventTime> eventTimes) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (EventTime event : eventTimes) {
+            stringBuilder.append(event.getEvent());
+            stringBuilder.append(":");
+            stringBuilder.append(event.getMs());
+            stringBuilder.append(";");
+        }
+        return stringBuilder.toString();
+    }
+
     private byte[] getStimulusResponseDataCsv() throws IOException {
         final StringBuilder stringBuilder = new StringBuilder();
         CSVPrinter printer = new CSVPrinter(
                 stringBuilder,
                 CSVFormat.DEFAULT
         );
-        printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "ScoreGroup", "StimulusId", "Response", "IsCorrect", "UserId", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
+        printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "ScoreGroup", "StimulusId", "Response", "IsCorrect", "UserId", "Events", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
         for (StimulusResponse stimulusResponse : stimulusResponseRepository.findAllDistinctRecords()) {
             printer.printRecord(stimulusResponse.getTagDate(),
                     stimulusResponse.getExperimentName(),
@@ -352,6 +364,7 @@ public class CsvController {
                     stimulusResponse.getResponse(),
                     stimulusResponse.getIsCorrect(),
                     stimulusResponse.getUserId(),
+                    serialiseEventTimes(stimulusResponse.getEventTimes()),
                     stimulusResponse.getEventMs(),
                     stimulusResponse.getGamesPlayed(),
                     stimulusResponse.getTotalScore(),
