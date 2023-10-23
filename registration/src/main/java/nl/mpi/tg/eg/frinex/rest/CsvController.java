@@ -354,7 +354,7 @@ public class CsvController {
         );
         printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "ScoreGroup", "StimulusId", "Response", "IsCorrect", "UserId", "Events", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
 //        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findAllDistinctRecords()) {
-        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findDistinct()) {
+        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findDistinctBy()) {
             printer.printRecord(stimulusResponse.getTagDate(),
                     stimulusResponse.getExperimentName(),
                     stimulusResponse.getScreenName(),
