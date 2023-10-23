@@ -354,31 +354,35 @@ public class CsvController {
         );
         printer.printRecord("TagDate", "ExperimentName", "ScreenName", "DataChannel", "ResponseGroup", "ScoreGroup", "StimulusId", "Response", "IsCorrect", "UserId", "Events", "EventMs", "GamesPlayed", "TotalScore", "TotalPotentialScore", "CurrentScore", "CorrectStreak", "ErrorStreak", "PotentialScore", "MaxScore", "MaxErrors", "MaxCorrectStreak", "MaxErrorStreak", "MaxPotentialScore");
 //        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findAllDistinctRecords()) {
-        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findDistinctUserIdTagDateEventMsStimulusIdResponseBy()) {
-            printer.printRecord(stimulusResponse.getTagDate(),
-                    stimulusResponse.getExperimentName(),
-                    stimulusResponse.getScreenName(),
-                    stimulusResponse.getDataChannel(),
-                    stimulusResponse.getResponseGroup(),
-                    stimulusResponse.getScoreGroup(),
-                    stimulusResponse.getStimulusId(),
-                    stimulusResponse.getResponse(),
-                    stimulusResponse.getIsCorrect(),
-                    stimulusResponse.getUserId(),
-                    serialiseEventTimes(stimulusResponse.getEventTimes()),
-                    stimulusResponse.getEventMs(),
-                    stimulusResponse.getGamesPlayed(),
-                    stimulusResponse.getTotalScore(),
-                    stimulusResponse.getTotalPotentialScore(),
-                    stimulusResponse.getCurrentScore(),
-                    stimulusResponse.getCorrectStreak(),
-                    stimulusResponse.getErrorStreak(),
-                    stimulusResponse.getPotentialScore(),
-                    stimulusResponse.getMaxScore(),
-                    stimulusResponse.getMaxErrors(),
-                    stimulusResponse.getMaxCorrectStreak(),
-                    stimulusResponse.getMaxErrorStreak(),
-                    stimulusResponse.getMaxPotentialScore());
+        final List<StimulusResponse> contentDistinct = new ArrayList<>();
+        for (StimulusResponse stimulusResponse : stimulusResponseRepository.findAllOrderByTagDateAsc()) {
+            if (!contentDistinct.contains(stimulusResponse)) {
+                contentDistinct.add(stimulusResponse);
+                printer.printRecord(stimulusResponse.getTagDate(),
+                        stimulusResponse.getExperimentName(),
+                        stimulusResponse.getScreenName(),
+                        stimulusResponse.getDataChannel(),
+                        stimulusResponse.getResponseGroup(),
+                        stimulusResponse.getScoreGroup(),
+                        stimulusResponse.getStimulusId(),
+                        stimulusResponse.getResponse(),
+                        stimulusResponse.getIsCorrect(),
+                        stimulusResponse.getUserId(),
+                        serialiseEventTimes(stimulusResponse.getEventTimes()),
+                        stimulusResponse.getEventMs(),
+                        stimulusResponse.getGamesPlayed(),
+                        stimulusResponse.getTotalScore(),
+                        stimulusResponse.getTotalPotentialScore(),
+                        stimulusResponse.getCurrentScore(),
+                        stimulusResponse.getCorrectStreak(),
+                        stimulusResponse.getErrorStreak(),
+                        stimulusResponse.getPotentialScore(),
+                        stimulusResponse.getMaxScore(),
+                        stimulusResponse.getMaxErrors(),
+                        stimulusResponse.getMaxCorrectStreak(),
+                        stimulusResponse.getMaxErrorStreak(),
+                        stimulusResponse.getMaxPotentialScore());
+            }
         }
         printer.close();
         return stringBuilder.toString().getBytes();

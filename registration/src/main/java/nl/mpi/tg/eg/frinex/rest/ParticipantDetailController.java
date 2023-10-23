@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletRequest;
@@ -24,6 +25,7 @@ import javax.validation.constraints.NotNull;
 import nl.mpi.tg.eg.frinex.model.DataDeletionLog;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -93,7 +95,13 @@ public class ParticipantDetailController {
         model.addAttribute("participantTagData", this.tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserIdOrderByTagDateAsc(id));
 //        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findByUserIdDistinctOrderByTagDateAsc(id));
-        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findDistinctTagDateEventMsResponseByUserIdOrderByTagDateAsc(id));
+        final List<StimulusResponse> contentDistinct = new ArrayList<>();
+        for (StimulusResponse stimulusResponse : this.stimulusResponseRepository.findByUserIdOrderByTagDateAsc(id)) {
+            if (!contentDistinct.contains(stimulusResponse)) {
+                contentDistinct.add(stimulusResponse);
+            }
+        }
+        model.addAttribute("participantResponseData", contentDistinct);
         model.addAttribute("participantAudioData", this.audioDataRepository.findByUserIdOrderBySubmitDateAsc(id));
         return "participantdetail";
     }
