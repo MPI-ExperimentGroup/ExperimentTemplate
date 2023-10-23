@@ -40,7 +40,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
 //    @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore, eventTimes) from StimulusResponse where userId = :userId order by tagDate asc")
 //    @Query("select distinct tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs from StimulusResponse where userId = :userId order by tagDate asc")
-    List<StimulusResponse> findDistinctUserIdTagDateEventMsStimulusIdResponseByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    List<StimulusResponse> findDistinctTagDateEventMsResponseByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
     List<StimulusResponse> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 

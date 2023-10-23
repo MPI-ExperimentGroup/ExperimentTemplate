@@ -604,7 +604,7 @@ public class preventValidationOnMissingValidationControllerTest {
 
             @Override
 //            public List<StimulusResponse> findByUserIdDistinctOrderByTagDateAsc(String userId) {
-            public List<StimulusResponse> findDistinctUserIdTagDateEventMsStimulusIdResponseByUserIdOrderByTagDateAsc(String userId) {
+            public List<StimulusResponse> findDistinctTagDateEventMsResponseByUserIdOrderByTagDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
