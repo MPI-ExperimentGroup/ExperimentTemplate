@@ -93,7 +93,7 @@ public class ParticipantDetailController {
         model.addAttribute("participantTagData", this.tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserIdOrderByTagDateAsc(id));
 //        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findByUserIdDistinctOrderByTagDateAsc(id));
-        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findDistinctByUserIdOrderByTagDateAsc(id));
+        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findDistinctUserIdTagDateEventMsStimulusIdResponseByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantAudioData", this.audioDataRepository.findByUserIdOrderBySubmitDateAsc(id));
         return "participantdetail";
     }

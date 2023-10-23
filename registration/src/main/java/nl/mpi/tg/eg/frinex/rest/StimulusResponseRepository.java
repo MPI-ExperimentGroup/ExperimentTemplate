@@ -40,7 +40,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
 //    @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore, eventTimes) from StimulusResponse where userId = :userId order by tagDate asc")
 //    @Query("select distinct tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs from StimulusResponse where userId = :userId order by tagDate asc")
-    List<StimulusResponse> findDistinctByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    List<StimulusResponse> findDistinctUserIdTagDateEventMsStimulusIdResponseByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
     List<StimulusResponse> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
@@ -48,7 +48,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
 //    @Query("select distinct new StimulusResponse(tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs, gamesPlayed, totalScore, totalPotentialScore, currentScore, correctStreak, errorStreak, potentialScore, maxScore, maxErrors, maxCorrectStreak, maxErrorStreak, maxPotentialScore, eventTimes) from StimulusResponse order by tagDate asc")
 //    @Query("select distinct tagDate, experimentName, screenName, dataChannel, responseGroup, scoreGroup, stimulusId, response, isCorrect, userId, eventMs from StimulusResponse order by tagDate asc")
-    List<StimulusResponse> findDistinctBy();
+    List<StimulusResponse> findDistinctUserIdTagDateEventMsStimulusIdResponseBy();
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
     Page<StimulusResponse> findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, 
