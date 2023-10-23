@@ -601,7 +601,8 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<StimulusResponse> findByUserIdDistinctOrderByTagDateAsc(String userId) {
+//            public List<StimulusResponse> findByUserIdDistinctOrderByTagDateAsc(String userId) {
+            public List<StimulusResponse> findDistinctByUserIdOrderByTagDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -616,7 +617,8 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<StimulusResponse> findAllDistinctRecords() {
+//            public List<StimulusResponse> findAllDistinctRecords() {
+            public List<StimulusResponse> findDistinct() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
