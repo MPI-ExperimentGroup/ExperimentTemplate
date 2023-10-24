@@ -213,8 +213,11 @@ public class ExperimentService {
                 }
                 participant.setAcceptLang(acceptLang);
                 participant.setUserAgent(userAgent);
-                participantRepository.setAsStaleByUserId(participant.getUserId());
-                participantRepository.save(participant);
+                // this is in a synchronized block because it is possible for two requests to occur at the same time resulting in two non stale records
+                synchronized (this) {
+                    participantRepository.setAsStaleByUserId(participant.getUserId());
+                    participantRepository.save(participant);
+                }
 //                }
             }
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), "", true), HttpStatus.OK);
