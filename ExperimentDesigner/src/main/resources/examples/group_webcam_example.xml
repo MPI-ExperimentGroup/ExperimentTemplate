@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="group_webcam_example">
+    <deployment
+        state="staging"
+        stagingServer="https://ems15.mpi.nl"
+        stunServer="coturn.mpi.nl"
+    />
+    <administration />
+    <metadata />
+    <presenter type="stimulus">
+        <regionAppend regionId="groupStatus" />
+        <addPadding />
+        <regionAppend regionId="groupOutput" />
+        <addPadding />
+        <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingTester" randomise="false"
+            repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
+            <groupNetwork groupMembers="A,B,C" phasesPerStimulus="3" groupCommunicationChannels="A,B|B,C|C,A">
+                <groupInitialisationError>
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput"></regionReplace>
+                </groupInitialisationError>
+                <groupNetworkConnecting>
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="GroupStreamingTester groupNetworkConnecting" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                    </regionReplace>
+                </groupNetworkConnecting>
+                <groupFindingMembers>
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupFindingMembers: waiting for the required members for this channel" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="This is member: ::groupMemberCode::" />
+                        <htmlTokenText featureText="Required members: ::groupAllMemberCodes::" />
+                        <htmlTokenText featureText="Assigned members: ::groupAssignedMemberCodes::" />
+                        <htmlTokenText featureText="Group: ::groupId::" />
+                        <htmlTokenText featureText="Group UUID: ::groupUUID::" />
+                        <addPadding />
+                    </regionReplace>
+                </groupFindingMembers>
+                <groupNetworkSynchronising>
+                    <regionReplace regionId="groupStatus">
+                        <htmlText featureText="groupNetworkSynchronising" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />                    
+                        <htmlTokenText featureText="Connected to: ::groupId::&lt;br/&gt;&lt;br/&gt;Group members: ::groupAllMemberCodes::&lt;br/&gt;&lt;br/&gt;As member: ::groupMemberCode::&lt;br/&gt;&lt;br/&gt;" />
+                    </regionReplace>
+                </groupNetworkSynchronising>
+                <groupPhaseListeners>
+                    <groupMemberActivity phaseMembers="ABC:ABC:ABC">
+                        <regionReplace regionId="groupStatus">
+                            <htmlTokenText featureText="ABC:ABC:ABC" />
+                        </regionReplace>
+                        <regionReplace regionId="groupOutput">
+                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
+                            <actionButton featureText="sendGroupStoredMessage">
+                                <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
+                            </actionButton>
+                            <actionButton featureText="start streamGroupCamera">
+                                <streamGroupCamera streamChannels="A,B|B,C">
+                                    <onSuccess>
+                                        <plainText featureText="streamGroupCamera onSuccess A,B|B,C"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamGroupCamera onErrorA,B|B,C"/>
+                                    </onError>
+                                </streamGroupCamera>
+                            </actionButton>
+                        </regionReplace>
+                    </groupMemberActivity>
+                </groupPhaseListeners>
+            </groupNetwork>
+            <endOfStimulus>
+                <clearPage />
+                <centrePage />
+                <htmlText featureText="No valid stimuli" />
+            </endOfStimulus>
+            <randomGrouping />
+            <stimuli>
+                <tag>all_stimuli</tag>
+            </stimuli>
+        </groupStimuli>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="d1e269" label="d1e269" tags="all_stimuli" />
+        <stimulus identifier="d1e235" label="d1e235" tags="all_stimuli" />
+        <stimulus identifier="d1e241" label="d1e241" tags="all_stimuli" />
+        <stimulus identifier="d1e247" label="d1e247" tags="all_stimuli" />
+        <stimulus identifier="d1e253" label="d1e253" tags="all_stimuli" />
+        <stimulus identifier="d1e259" label="d1e259" tags="all_stimuli" />
+    </stimuli>
+</experiment>
