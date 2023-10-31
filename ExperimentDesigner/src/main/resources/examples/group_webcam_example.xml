@@ -28,10 +28,10 @@
                         <htmlText featureText="GroupStreamingTester groupNetworkConnecting" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput">
-                        <htmlTokenText featureText="&lt;a href=&quot;?member=A&amp;group=::formatDateTime_HH:mm::&quot;&gt;Assign member A&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;?member=B&amp;group=::formatDateTime_HH:mm::&quot;&gt;Assign member B&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;?member=C&amp;group=::formatDateTime_HH:mm::&quot;&gt;Assign member C&lt;/a&gt;" />
-                        <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&quot;&gt;Assign member A&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&quot;&gt;Assign member B&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&quot;&gt;Assign member C&lt;/a&gt;" />
+                        <htmlTokenText featureText="Group: ::groupId:: MemberCode: ::groupMemberCode::" />
                     </regionReplace>
                 </groupNetworkConnecting>
                 <groupFindingMembers>
