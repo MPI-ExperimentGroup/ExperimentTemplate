@@ -86,7 +86,7 @@ public class VideoRecorder extends AbstractRecorder {
                     videoElement.autoplay = 'true';
                     videoPreviewElement.appendChild(videoElement);
                 }
-                $wnd.requestPermissions(true, true,
+                $wnd.requestPermissions(true, true, null,
                     function(recordingStream) {
                         // TODO: to prevent audio feedback we preview without audio and will record via this separate stream that has audio
                         $wnd.mediaRecorder = new MediaRecorder(recordingStream);

@@ -314,7 +314,7 @@ public abstract class GroupStreamHandler {
 
     private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        $wnd.requestPermissions(true, true,
+        $wnd.requestPermissions(true, true, null,
             function(captureStream) {
                 $wnd.localStream = captureStream;
                 $wnd.$("#groupLocalVideo")[0].srcObject = $wnd.localStream;

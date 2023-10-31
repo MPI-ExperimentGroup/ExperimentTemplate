@@ -650,7 +650,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected native void listAudioDevicesWeb(final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
         // first we trigger the request to record because when permission is not given then the list is always empty
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
-            $wnd.requestPermissions(false, true,
+            $wnd.requestPermissions(false, true, null,
             function() {
                 navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
                 for (var index = 0; (index < deviceInfos.length); index++) {

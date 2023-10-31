@@ -54,21 +54,24 @@ function createOffer(connection, successHandler, errorHandler) {
 function handleOffer(connection, offer, successHandler, errorHandler) {
     connection.setRemoteDescription(offer).then(
         connection.createAnswer().then(function (answer) {
-                successHandler(answer);
-                connection.setLocalDescription(answer);
-            }).catch(function (e) {
+            successHandler(answer);
+            connection.setLocalDescription(answer);
+        }).catch(function (e) {
             console.log("handleOffer " + e.message);
             errorHandler(e);
-            })
-        );
+        })
+    );
 }
 
 // function handleAnswer(connection, answer) {
 //     await connection.setRemoteDescription(answer);
 // }
 
-function requestPermissions(wantsVideo, wantsAudio, successHandler, errorHandler) {
-    navigator.mediaDevices.getUserMedia({video: wantsVideo, audio: wantsAudio}).then(function (stream) {
+function requestPermissions(wantsVideo, wantsAudio, exactDeviceId, successHandler, errorHandler) {
+    constraints = (exactDeviceId !== undefined && exactDeviceId !== null) ?
+        { video: wantsVideo, audio: wantsAudio, deviceId: { exact: exactDeviceId } }
+        : { video: wantsVideo, audio: wantsAudio };
+    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
         successHandler(stream);
     }).catch(function (e) {
         console.log("requestPermissions " + e.message);
