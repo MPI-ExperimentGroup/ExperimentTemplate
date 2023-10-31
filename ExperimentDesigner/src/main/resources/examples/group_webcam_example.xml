@@ -62,11 +62,23 @@
                             <htmlTokenText featureText="ABC:ABC:ABC" />
                         </regionReplace>
                         <regionReplace regionId="groupOutput">
-                            <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
-                            <htmlTokenText featureText="groupActiveChannel: ::groupActiveChannel::" />
-                            <htmlTokenText featureText="groupMemberCode: ::groupMemberCode::" />
+                            <htmlTokenText featureText="Stimulus: ::stimulusId::" />
+                            <htmlTokenText featureText="Phase: ::groupRequestedPhase::" />
+                            <htmlTokenText featureText="ActiveChannel: ::groupActiveChannel::" />
+                            <htmlTokenText featureText="Group: ::groupId::" />
+                            <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
                             <actionButton featureText="sendGroupStoredMessage">
                                 <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
+                            </actionButton>
+                            <actionButton featureText="start streamGroupCanvas" groupId="streamButtonGroup">
+                                <streamGroupCanvas streamChannels="A,B|B,C">
+                                    <onSuccess>
+                                        <plainText featureText="streamGroupCanvas onSuccess A,B|B,C"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamGroupCanvas onError A,B|B,C"/>
+                                    </onError>
+                                </streamGroupCanvas>
                             </actionButton>
                             <actionButton featureText="start streamGroupCamera">
                                 <streamGroupCamera streamChannels="A,B|B,C">
