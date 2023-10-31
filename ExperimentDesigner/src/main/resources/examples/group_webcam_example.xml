@@ -28,6 +28,9 @@
                         <htmlText featureText="GroupStreamingTester groupNetworkConnecting" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput">
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=A&amp;group=::formatDateTime_HH:mm::&quot;&gt;Assign member A&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=B&amp;group=::formatDateTime_HH:mm::&quot;&gt;Assign member B&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=C&amp;group=::formatDateTime_HH:mm::&quot;&gt;Assign member C&lt;/a&gt;" />
                         <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />
                     </regionReplace>
                 </groupNetworkConnecting>
