@@ -465,13 +465,13 @@ public abstract class GroupStreamHandler {
             if (isRelevant) {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
-                    if (member.equals(memberCode)) {
-                        if (isFirst) {
-                            addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
-                            offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                        } else {
-                            sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                        }
+                    if (member.equals(memberCode) && isFirst) {
+                        // if (isFirst) {
+                        addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
+                        offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        // } else {
+                            // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        // }
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
                         final String connectionKey = memberCode + "-Canvas>" + member;
@@ -498,13 +498,13 @@ public abstract class GroupStreamHandler {
             if (isRelevant) {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
-                    if (member.equals(memberCode)) {
-                        if (isFirst) {
-                            addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                        } else {
-                            sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                        }
+                    if (member.equals(memberCode) && isFirst) {
+                        // if (isFirst) {
+                        addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
+                        offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        // } else {
+                            // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        // }
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
                         final String connectionKey = memberCode + "-Camera>" + member;
