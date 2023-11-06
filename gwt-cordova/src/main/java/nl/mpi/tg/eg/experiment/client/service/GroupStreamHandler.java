@@ -312,6 +312,11 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
+    private native void sendReady(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+    }-*/;
+
     private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         $wnd.requestPermissions(true, true, null,
@@ -463,6 +468,8 @@ public abstract class GroupStreamHandler {
                         if (isFirst) {
                             addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
                             offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        } else {
+                            sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                         }
                     } else {
                         final String connectionName = "groupRemoteCanvas_" + member;
@@ -494,6 +501,8 @@ public abstract class GroupStreamHandler {
                         if (isFirst) {
                             addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
                             offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        } else {
+                            sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
                         }
                     } else {
                         final String connectionName = "groupRemoteCamera_" + member;
