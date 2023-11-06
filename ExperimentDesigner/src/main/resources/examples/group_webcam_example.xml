@@ -70,7 +70,7 @@
                             <actionButton featureText="sendGroupStoredMessage">
                                 <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
                             </actionButton>
-                            <actionButton featureText="start streamGroupCanvas" groupId="streamButtonGroup">
+                            <actionButton featureText="Canvas A,B|B,C" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="A,B|B,C">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCanvas onSuccess A,B|B,C"/>
@@ -80,7 +80,7 @@
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
-                            <actionButton featureText="start streamGroupCamera">
+                            <actionButton featureText="Camera A,B|B,C">
                                 <streamGroupCamera streamChannels="A,B|B,C">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCamera onSuccess A,B|B,C"/>
