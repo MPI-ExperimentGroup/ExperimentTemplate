@@ -317,7 +317,7 @@ public abstract class GroupStreamHandler {
         $wnd.requestPermissions(true, true, null,
             function(captureStream) {
                 $wnd.localStream = captureStream;
-                $wnd.$("#groupLocalVideo")[0].srcObject = $wnd.localStream;
+                $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Camera", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             }, function(error) {
@@ -417,7 +417,7 @@ public abstract class GroupStreamHandler {
         // remove all member remote video elements for each member
         $wnd.$("video[id^=groupRemote" + streamType + "]").remove();
         // remove local elements
-        $wnd.$("#groupLocalVideo").remove();
+        $wnd.$("#groupLocalCamera").remove();
         $wnd.$("#groupLocalCanvas").remove();
         $wnd.localStream = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
