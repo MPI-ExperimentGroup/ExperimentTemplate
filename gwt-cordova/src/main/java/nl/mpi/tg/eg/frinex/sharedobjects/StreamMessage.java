@@ -32,7 +32,7 @@ public class StreamMessage {
     };
 
     public enum StreamMessageType {
-        Canvas, Camera
+        Canvas, Camera, Receive
     };
 
     private UserId userId;

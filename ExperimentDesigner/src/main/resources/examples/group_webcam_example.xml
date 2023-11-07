@@ -7,7 +7,7 @@
         stagingServer="https://ems15.mpi.nl" 
         stunServer="coturn.mpi.nl" 
     /> 
-    <administration />  
+    <administration />   
     <metadata />
     <presenter type="stimulus">  
         <regionAppend regionId="groupStatus" />
@@ -81,7 +81,7 @@
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
-                            <actionButton featureText="Canvas B,A|C,B" groupId="streamButtonGroup">
+                            <!-- <actionButton featureText="Canvas B,A|C,B" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="B,A|C,B">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCanvas onSuccess B,A|C,B"/>
@@ -90,7 +90,7 @@
                                         <plainText featureText="streamGroupCanvas onError B,A|C,B"/>
                                     </onError>
                                 </streamGroupCanvas>
-                            </actionButton>
+                            </actionButton> -->
                             <actionButton featureText="Camera A,B|B,C">
                                 <streamGroupCamera streamChannels="A,B|B,C">
                                     <onSuccess>
