@@ -473,7 +473,9 @@ public abstract class GroupStreamHandler {
                             // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode,
                             // null, screenId);
                             // }
-                        } else {
+                        }
+                    } else {
+                        if (!isFirst) {
                             final String connectionName = "groupRemoteCanvas_" + member;
                             final String connectionKey = memberCode + "-Canvas>" + member;
                             if (!expectedConnections.containsKey(connectionKey)) {
@@ -509,7 +511,9 @@ public abstract class GroupStreamHandler {
                             // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode,
                             // null, screenId);
                             // }
-                        } else {
+                        }
+                    } else {
+                        if (!isFirst) {
                             final String connectionName = "groupRemoteCamera_" + member;
                             final String connectionKey = memberCode + "-Camera>" + member;
                             if (!expectedConnections.containsKey(connectionKey)) {
