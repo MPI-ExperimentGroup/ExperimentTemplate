@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="jquery/jquery.min.js"></script>
         <script language="javascript" type="text/javascript">
-            function robot() {
+            function robot(windowCount) {
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started";
                 var sizeSelectElement = document.getElementById("sizeSelect");
@@ -39,11 +39,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
                 var memberCodes = ['A', 'C', 'E', 'G', 'B', 'D', 'F', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
-                    var iframeTimer = setTimeout(function (frameIndex) {
-                        iframes[frameIndex].style.width = document.getElementById('frameWidth').value + 'vw';
-                        iframes[frameIndex].style.height = document.getElementById('frameHeight').value + 'vh';
-                        iframes[frameIndex].src = ".?" + sizeSelectValue + "&mockuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex] + "#" + document.getElementById('targetPresenter').value;
-                    }, 1000 * frameIndex, frameIndex);
+                    if (frameIndex > windowCount) {
+                        var iframeTimer = setTimeout(function (frameIndex) {
+                            iframes[frameIndex].style.width = document.getElementById('frameWidth').value + 'vw';
+                            iframes[frameIndex].style.height = document.getElementById('frameHeight').value + 'vh';
+                            iframes[frameIndex].src = ".?" + sizeSelectValue + "&mockuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex] + "#" + document.getElementById('targetPresenter').value;
+                        }, 1000 * frameIndex, frameIndex);
+                    } else {
+                        frameIndex.parentNode.removeChild(frameIndex);
+                    }
                 }
                 findAndClick();
             }
@@ -134,7 +138,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <option value="2" selected="selected">R0_4</option>
             <option value="3">R0_8</option>
         </select>
-        <button type="button" class="startRobotButton" onclick="robot();">All</button>
+        <button type="button" class="startRobotButton" onclick="robot(2);">2</button>
+        <button type="button" class="startRobotButton" onclick="robot(4);">4</button>
+        <button type="button" class="startRobotButton" onclick="robot(6);">6</button>
+        <button type="button" class="startRobotButton" onclick="robot(8);">All</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('A');">A</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('B');">B</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('C');">C</button>
