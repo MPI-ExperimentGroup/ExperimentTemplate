@@ -460,9 +460,9 @@ public abstract class GroupStreamHandler {
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
-            boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
+            // boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
             boolean isFirst = true;
-            if (isRelevant) {
+            // if (isRelevant) {
                 for (String member : channel.split(",")) {
                     // set up the elements and connection based on communication channels
                     if (member.equals(memberCode)) {
@@ -487,7 +487,7 @@ public abstract class GroupStreamHandler {
                     }
                     isFirst = false;
                 }
-            }
+            // }
         }
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
