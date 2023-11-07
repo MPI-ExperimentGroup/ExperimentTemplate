@@ -40,14 +40,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var memberCodes = ['A', 'C', 'E', 'G', 'B', 'D', 'F', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     if (groupMemebers.includes(memberCodes[frameIndex])) {
-                        iframes[frameIndex].style.visibility = "visible";
+                        iframes[frameIndex].style.display = "unset";
                         var iframeTimer = setTimeout(function (frameIndex) {
-                            iframes[frameIndex].style.width = document.getElementById('frameWidth').value + 'vw';
+                            // iframes[frameIndex].style.width = document.getElementById('frameWidth').value + 'vw';
                             iframes[frameIndex].style.height = document.getElementById('frameHeight').value + 'vh';
                             iframes[frameIndex].src = ".?" + sizeSelectValue + "&mockuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex] + "#" + document.getElementById('targetPresenter').value;
                         }, 1000 * frameIndex, frameIndex);
                     } else {
-                        iframes[frameIndex].style.visibility = "hidden";
+                        iframes[frameIndex].style.display = "none";
                     }
                 }
                 findAndClick();
@@ -154,7 +154,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         Group Name: <input type="text" id="groupName" placeholder="Optional group name...">  
         Target Presenter: <input type="text" id="targetPresenter" placeholder="Optional presenter name...">  
         Frame Height: <input type="number" id="frameHeight" value="50" max="100" min="0">
-        Frame Width: <input type="number" id="frameWidth" value="25" max="100" min="0">
+        <!-- Frame Width: <input type="number" id="frameWidth" value="25" max="100" min="0"> -->
         Robot Speed: <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
         <button type="button" onclick="reloadIframes();">reload frames</button>
