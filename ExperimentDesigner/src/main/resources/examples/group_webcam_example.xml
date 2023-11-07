@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/snapshot.xsd"
     appNameDisplay="group_webcam_example">
     <deployment 
-        state="staging"  
+        state="debug"  
         stagingServer="https://ems15.mpi.nl" 
         stunServer="coturn.mpi.nl" 
     /> 
@@ -78,6 +78,16 @@
                                     </onSuccess>
                                     <onError>
                                         <plainText featureText="streamGroupCanvas onError A,B|B,C"/>
+                                    </onError>
+                                </streamGroupCanvas>
+                            </actionButton>
+                            <actionButton featureText="Canvas B,A|C,B" groupId="streamButtonGroup">
+                                <streamGroupCanvas streamChannels="B,A|C,B">
+                                    <onSuccess>
+                                        <plainText featureText="streamGroupCanvas onSuccess B,A|C,B"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamGroupCanvas onError B,A|C,B"/>
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
