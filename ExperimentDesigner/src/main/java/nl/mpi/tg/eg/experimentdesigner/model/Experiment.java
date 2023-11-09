@@ -94,6 +94,10 @@ public class Experiment implements Serializable {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @XmlAttribute
     public String getAppNameDisplay() {
         return appNameDisplay;
