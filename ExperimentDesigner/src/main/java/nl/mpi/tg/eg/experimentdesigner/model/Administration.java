@@ -19,6 +19,10 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -26,8 +30,11 @@ import javax.xml.bind.annotation.XmlElement;
  * @since 06 March 2023 16:11 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public class Administration {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private Boolean allowDataDeletion = false;
     private List<DataChannel> dataChannels = new ArrayList<>();
 
