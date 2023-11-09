@@ -135,6 +135,14 @@ public class ExperimentController {
         model.addAttribute("wizardList", wizardRepository.findAll());
         return "design";
     }
+    
+    @RequestMapping("/blocks")
+    public String blocksWizard(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "blocks");
+//        model.addAttribute("wizardList", wizardRepository.findAll());
+        return "design";
+    }
 
     @RequestMapping("/wizard/start")
     public String startWizard(Model model, HttpServletRequest request) {
