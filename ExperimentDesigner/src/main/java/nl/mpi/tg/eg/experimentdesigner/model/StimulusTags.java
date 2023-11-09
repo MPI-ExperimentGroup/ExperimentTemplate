@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class StimulusTags {
+public class StimulusTags implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
