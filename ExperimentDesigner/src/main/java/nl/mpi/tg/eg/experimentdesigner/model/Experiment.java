@@ -29,7 +29,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -46,9 +45,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"publishEvents", "validationService", "administration", "scss", "metadata", "presenterScreen", "stimuli"})
 public class Experiment implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String appNameDisplay;
     private boolean showMenuBar = true;
+    @Column(unique = true)
     private String appNameInternal;
     private String resourceNetworkPath; // path to MPI_Scratch that contains any resource files needed for the experiment
 //    private String nextPresenterTag;
@@ -75,20 +77,27 @@ public class Experiment implements Serializable {
     private ValidationService validationService;
     private Administration administration = new Administration();
 
+    @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @XmlElement(name = "presenter")
     @OrderBy("displayOrder ASC")
     private List<PresenterScreen> presenterScreen = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @XmlElementWrapper(name = "metadata")
+    @XmlElement(name = "field")
     private List<Metadata> metadata = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @XmlElementWrapper(name = "stimuli")
+    @XmlElement(name = "stimulus")
     private List<Stimulus> stimuli = new ArrayList<>();
 
     public Experiment() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @XmlTransient
     public long getId() {
         return id;
@@ -107,7 +116,6 @@ public class Experiment implements Serializable {
         this.appNameDisplay = appNameDisplay;
     }
 
-    @Column(unique = true)
     @XmlAttribute
     public String getAppNameInternal() {
         return appNameInternal;
@@ -135,7 +143,6 @@ public class Experiment implements Serializable {
         this.textFontSize = textFontSize;
     }
 
-    @OneToMany(mappedBy = "experiment")
     @XmlElement(name = "deployment")
     public List<PublishEvents> getPublishEvents() {
         return publishEvents;
@@ -345,8 +352,6 @@ public class Experiment implements Serializable {
 //    public void setNextPresenterTag(String nextPresenterTag) {
 //        this.nextPresenterTag = nextPresenterTag;
 //    }
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @XmlElement(name = "presenter")
     public List<PresenterScreen> getPresenterScreen() {
         return presenterScreen;
     }
@@ -355,9 +360,6 @@ public class Experiment implements Serializable {
         this.presenterScreen = PresenterScreen;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @XmlElementWrapper(name = "metadata")
-    @XmlElement(name = "field")
     public List<Metadata> getMetadata() {
         return metadata;
     }
@@ -366,7 +368,7 @@ public class Experiment implements Serializable {
 //    public int getMetadataCount() {
 //        return metadata.size();
 //    }
-    @Transient
+//    @Transient
     public void addMetadataOnce(Metadata metadataField) {
         if (!metadata.contains(metadataField)) {
             metadata.add(metadataField);
@@ -377,9 +379,6 @@ public class Experiment implements Serializable {
         this.metadata = metadata;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @XmlElementWrapper(name = "stimuli")
-    @XmlElement(name = "stimulus")
     public List<Stimulus> getStimuli() {
         return stimuli;
     }
@@ -388,7 +387,7 @@ public class Experiment implements Serializable {
         this.stimuli = stimuli;
     }
 
-    @Transient
+//    @Transient
     public void appendUniqueStimuli(List<Stimulus> stimuliList) {
         if (stimuliList != null) {
             for (Stimulus stimulus : stimuliList) {
