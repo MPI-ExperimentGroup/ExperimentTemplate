@@ -38,40 +38,62 @@ import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
 public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private void getStart(Writer writer) throws IOException {
-        writer.append("function getFeatureBlocks() {\n" +
-                "return {\n" + //
-                "  \"kind\": \"flyoutToolbox\",\n" + //
-                "  \"contents\": [\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"controls_if\"\n" + //
-                "      },\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"controls_repeat_ext\"\n" + //
-                "      },\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"logic_compare\"\n" + //
-                "      },\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"math_number\"\n" + //
-                "      },\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"math_arithmetic\"\n" + //
-                "      },\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"text\"\n" + //
-                "      },\n" + //
-                "      {\n" + //
-                "          \"kind\": \"block\",\n" + //
-                "          \"type\": \"text_print\"\n" + //
-                "      },\n" + //
-                "  ]\n" + //
-                "};");
+        writer.append("function getFeatureBlocks() {\n"
+                + "    Blockly.defineBlocksWithJsonArray([{\n"
+                + "        \"type\": \"frinex_experiment\",\n"
+                + "        \"message0\": 'Experiment %1',\n"
+                + "        \"args0\": [\n"
+                + "            {\n"
+                + "                \"type\": \"input_value\",\n"
+                + "                \"name\": \"Name\",\n"
+                + "                \"check\": \"String\"\n"
+                + "            }\n"
+                + "        ],\n"
+                + "        \"message1\": \"Metadata %1\",\n"
+                + "        \"args1\": [\n"
+                + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+                + "        ],\n"
+                + "        \"colour\": 160\n"
+                + "    }]);\n"
+                + "    return {\n"
+                + "        \"kind\": \"flyoutToolbox\",\n"
+                + "        \"contents\": [\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"frinex_experiment\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"controls_if\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"controls_repeat_ext\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"logic_compare\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"math_number\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"math_arithmetic\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"text\"\n"
+                + "            },\n"
+                + "            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"text_print\"\n"
+                + "            },\n"
+                + "        ]\n"
+                + "    };\n"
+//                + "}"
+        );
     }
 
     private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
