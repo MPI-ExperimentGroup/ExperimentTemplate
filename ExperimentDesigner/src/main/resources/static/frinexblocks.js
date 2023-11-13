@@ -1,16 +1,24 @@
 function getFeatureBlocks() {
     Blockly.defineBlocksWithJsonArray([{
         "type": "frinex_experiment",
-        "message0": 'Experiment %1',
+        "message0": 'Experiment name %1',
         "args0": [
             {
-                "type": "input_value",
-                "name": "Name",
+                "type": "field_input",
+                "name": "appNameDisplay",
                 "check": "String"
             }
         ],
         "message1": "Metadata %1",
         "args1": [
+            { "type": "input_statement", "name": "DO" }
+        ],
+        "message2": "Presenters %1",
+        "args2": [
+            { "type": "input_statement", "name": "DO" }
+        ],
+        "message3": "Stimuli %1",
+        "args3": [
             { "type": "input_statement", "name": "DO" }
         ],
         "colour": 160

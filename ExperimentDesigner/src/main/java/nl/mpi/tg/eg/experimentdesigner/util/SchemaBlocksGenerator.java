@@ -34,18 +34,17 @@ import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
  * @since 13 November 2023 12:33 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-
 public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
                 + "    Blockly.defineBlocksWithJsonArray([{\n"
                 + "        \"type\": \"frinex_experiment\",\n"
-                + "        \"message0\": 'Experiment %1',\n"
+                + "        \"message0\": 'Experiment name %1',\n"
                 + "        \"args0\": [\n"
                 + "            {\n"
-                + "                \"type\": \"input_value\",\n"
-                + "                \"name\": \"Name\",\n"
+                + "                \"type\": \"field_input\",\n"
+                + "                \"name\": \"appNameDisplay\",\n"
                 + "                \"check\": \"String\"\n"
                 + "            }\n"
                 + "        ],\n"
@@ -53,6 +52,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        \"args1\": [\n"
                 + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
                 + "        ],\n"
+                + "        \"message2\": \"Presenters %1\",\n"
+                + "        \"args2\": [\n"
+                + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+                + "        ],\n"
+                + "        \"message3\": \"Stimuli %1\",\n"
+                + "        \"args3\": [\n"
+                + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+                + "        ],"
                 + "        \"colour\": 160\n"
                 + "    }]);\n"
                 + "    return {\n"
@@ -92,7 +99,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "            },\n"
                 + "        ]\n"
                 + "    };\n"
-//                + "}"
+        //                + "}"
         );
     }
 
