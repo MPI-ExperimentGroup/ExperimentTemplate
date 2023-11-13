@@ -69,6 +69,13 @@ public class DocumentationGeneratorTest {
         String actualHtmlResult = new String(Files.readAllBytes(Paths.get(htmlOutputFile.toURI())), StandardCharsets.UTF_8);
         assertEquals("frinex.html", expectedHtmlResult, actualHtmlResult);
 
+        System.out.println("createDocumentationGeneratorBlocksFile");
+        final File blocksOutputFile = new File(new File(outputDirectoryUri), "frinexblocks.js");
+        URI testBlocksUri = this.getClass().getResource("/static/frinexblocks.js").toURI();
+        String expectedBlocksResult = new String(Files.readAllBytes(Paths.get(testBlocksUri)), StandardCharsets.UTF_8);
+        String actualBlcoksResult = new String(Files.readAllBytes(Paths.get(blocksOutputFile.toURI())), StandardCharsets.UTF_8);
+        assertEquals("frinexblocks.js", expectedBlocksResult, actualBlcoksResult);
+
         for (String exampleName : new String[]{"minimal_example", "hello_world_example"}) {
             System.out.println("createDocumentationGeneratorXmlFile");
             final File schemaFile = new File(new File(outputDirectoryUri), "frinex.xsd");

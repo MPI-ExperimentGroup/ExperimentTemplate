@@ -133,7 +133,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     public void createJsFile(final File schemaOutputFile) throws IOException {
-        System.out.println("blicksFile: " + schemaOutputFile);
+        System.out.println("blocksFile: " + schemaOutputFile);
         FileWriter schemaOutputWriter = new FileWriter(schemaOutputFile);
         BufferedWriter bufferedWriter = new BufferedWriter(schemaOutputWriter);
         appendContents(bufferedWriter);
