@@ -81,9 +81,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
         int argsCount = 0;
         writer.append("{\n"
-                + "        \"type\": \"frinex_" + currentElement.typeName + "\",\n"
-                + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n");
-        argsCount++;
+                + "        \"type\": \"frinex_" + currentElement.typeName + "\",\n");
+                // + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
+        // argsCount++;
         if (currentElement.documentationText != null) {
             // writer.append(currentElement.documentationText);
         }
