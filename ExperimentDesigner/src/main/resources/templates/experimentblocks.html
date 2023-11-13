@@ -28,43 +28,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:fragment="editorblocks">
             <!--<script src="./webjars/blockly/blockly.min.js"></script>-->
             <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+            <script src="frinexblocks.js"></script>
             <div class="presenter">
                 <div id="editorDiv" style="height: 80vh; width: 80vw;"></div>
             </div>
             <script>
-                const featureTypes = {
-                    "kind": "flyoutToolbox",
-                    "contents": [
-                        {
-                            "kind": "block",
-                            "type": "controls_if"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "controls_repeat_ext"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_compare"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_number"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_arithmetic"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "text"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "text_print"
-                        },
-                    ]
-                }
+                const featureTypes = getFeatureBlocks();
                 const workspace = Blockly.inject('editorDiv', {toolbox: featureTypes});
             </script>
         </div>

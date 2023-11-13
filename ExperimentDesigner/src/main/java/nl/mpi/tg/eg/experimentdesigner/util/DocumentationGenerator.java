@@ -69,6 +69,12 @@ public class DocumentationGenerator {
                     System.out.println("Failed to create documentation file: " + exception.getMessage());
                 }
                 try {
+                    final File blocksOutputFile = new File(documentationDirectory, "frinexblocks.js");
+                    new SchemaBlocksGenerator().createJsFile(blocksOutputFile);
+                } catch (IOException exception) {
+                    System.out.println("Failed to create blocks file: " + exception.getMessage());
+                }
+                try {
                     final File minimalExampleOutputFile = new File(documentationDirectory, "minimal_example.xml");
                     Files.copy(new DocumentationGenerator().getMinimalExampleStream(), minimalExampleOutputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                     Source xmlFileStream = new StreamSource(minimalExampleOutputFile);
