@@ -38,76 +38,98 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
-                + "    Blockly.defineBlocksWithJsonArray([{\n"
-                + "        \"type\": \"frinex_experiment\",\n"
-                + "        \"message0\": 'Experiment name %1',\n"
-                + "        \"args0\": [\n"
-                + "            {\n"
-                + "                \"type\": \"field_input\",\n"
-                + "                \"name\": \"appNameDisplay\",\n"
-                + "                \"check\": \"String\"\n"
-                + "            }\n"
-                + "        ],\n"
-                + "        \"message1\": \"Metadata %1\",\n"
-                + "        \"args1\": [\n"
-                + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
-                + "        ],\n"
-                + "        \"message2\": \"Presenters %1\",\n"
-                + "        \"args2\": [\n"
-                + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
-                + "        ],\n"
-                + "        \"message3\": \"Stimuli %1\",\n"
-                + "        \"args3\": [\n"
-                + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
-                + "        ],"
-                + "        \"colour\": 160\n"
-                + "    }]);\n"
-                + "    return {\n"
-                + "        \"kind\": \"flyoutToolbox\",\n"
-                + "        \"contents\": [\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"frinex_experiment\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"controls_if\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"controls_repeat_ext\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"logic_compare\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"math_number\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"math_arithmetic\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"text\"\n"
-                + "            },\n"
-                + "            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"text_print\"\n"
-                + "            },\n"
-                + "        ]\n"
-                + "    };\n"
-        //                + "}"
+                + "    Blockly.defineBlocksWithJsonArray([\n"
+        // + " \"type\": \"frinex_experiment\",\n"
+        // + " \"message0\": 'Experiment name %1',\n"
+        // + " \"args0\": [\n"
+        // + " {\n"
+        // + " \"type\": \"field_input\",\n"
+        // + " \"name\": \"appNameDisplay\",\n"
+        // + " \"check\": \"String\"\n"
+        // + " }\n"
+        // + " ],\n"
+        // + " \"message1\": \"Metadata %1\",\n"
+        // + " \"args1\": [\n"
+        // + " { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+        // + " ],\n"
+        // + " \"message2\": \"Presenters %1\",\n"
+        // + " \"args2\": [\n"
+        // + " { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+        // + " ],\n"
+        // + " \"message3\": \"Stimuli %1\",\n"
+        // + " \"args3\": [\n"
+        // + " { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+        // + " ],"
+        // + " \"colour\": 160\n"
+        // + " }\n"
+        // + "}"
         );
     }
 
-    private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
+    private int addAttributes(Writer writer, DocumentationElement currentElement, int argsCount) throws IOException {
+        // + " \"message0\": 'Experiment name %1',\n"
+        // + " \"args0\": [\n"
+        // + " {\n"
+        // + " \"type\": \"field_input\",\n"
+        // + " \"name\": \"appNameDisplay\",\n"
+        // + " \"check\": \"String\"\n"
+        // + " }\n"
+        // + " ],\n"
+        return argsCount;
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
-        addAttributes(writer, currentElement);
+        int argsCount = 0;
+        writer.append("{\n"
+                + "        \"type\": \"frinex_" + currentElement.typeName + "\",\n"
+                + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n");
+        argsCount++;
+        if (currentElement.documentationText != null) {
+            // writer.append(currentElement.documentationText);
+        }
+        argsCount = addAttributes(writer, currentElement, argsCount);
+        List<String> childTypeList = childTypeLists.containsKey(currentElement.typeExtends)
+                ? childTypeLists.get(currentElement.typeExtends)
+                : Collections.EMPTY_LIST;
+        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) == 0 && childTypeList.isEmpty()
+                && !currentElement.hasStringContents) {
+        }
+        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0
+                || !childTypeList.isEmpty()) {
+        }
+        if (!childTypeList.isEmpty()
+                || currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0) {
+            if (childTypeList.size() + currentElement.childElements.length
+                    + (currentElement.isRecursive ? 1 : 0) > 10) {
+            }
+            if (childTypeList.size() > 10) {
+            }
+            if (currentElement.isRecursive) {
+            }
+            for (String childElement : childTypeList) {
+            }
+            for (DocumentationElement childElement : currentElement.childElements) {
+                writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n"
+                        + "        \"args" + argsCount + "\": [\n"
+                        + "            { \"type\": \"input_statement\", \"name\": \"DO\" }\n"
+                        + "        ],\n");
+                argsCount++;
+            }
+        }
+        if (currentElement.hasStringContents) {
+        }
+        if (currentElement.childElements.length > 0 || !childTypeList.isEmpty() || currentElement.hasStringContents) {
+        }
+        for (DocumentationElement childElement : currentElement.childElements) {
+            // omitting the translation elements here because they are already defined in
+            // their parent elements
+            if (!childElement.elementName.equals("translation")) {
+            }
+        }
+        if (currentElement.allowsCustomImplementation) {
+        }
+        writer.append("        \"colour\": 160\n"
+                + "    },\n");
     }
 
     private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage,
@@ -115,7 +137,46 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void getEnd(Writer writer) throws IOException {
-        writer.append("}\n");
+        writer.append(
+                "]);\n" + //
+                        "    return {\n"
+                        + "        \"kind\": \"flyoutToolbox\",\n"
+                        + "        \"contents\": [\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"frinex_experimentTyoe\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"controls_if\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"controls_repeat_ext\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"logic_compare\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"math_number\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"math_arithmetic\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"text\"\n"
+                        + "            },\n"
+                        + "            {\n"
+                        + "                \"kind\": \"block\",\n"
+                        + "                \"type\": \"text_print\"\n"
+                        + "            },\n"
+                        + "        ]\n"
+                        + "    };\n"
+                        + "}\n");
     }
 
     public void appendContents(Writer writer) throws IOException {
