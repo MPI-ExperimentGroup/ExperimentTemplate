@@ -34,7 +34,7 @@ function getFeatureBlocks() {
         ],
 "message7": "presenter %1",
         "args7": [
-            { "type": "input_field", "name": "presenter", "check": "frinex_presenterType" }
+            { "type": "input_statement", "name": "presenter", "check": "frinex_presenterType" }
         ],
 "message8": "stimuli %1",
         "args8": [
@@ -78,11 +78,11 @@ function getFeatureBlocks() {
  ],
 "message1": "recordMatch %1",
         "args1": [
-            { "type": "input_value", "name": "recordMatch", "check": "frinex_recordMatchType" }
+            { "type": "input_statement", "name": "recordMatch", "check": "frinex_recordMatchType" }
         ],
 "message2": "fieldMatch %1",
         "args2": [
-            { "type": "input_value", "name": "fieldMatch", "check": "frinex_fieldMatchType" }
+            { "type": "input_statement", "name": "fieldMatch", "check": "frinex_fieldMatchType" }
         ],
         "output": "frinex_validationType",
         "colour": 160
@@ -97,7 +97,7 @@ function getFeatureBlocks() {
  ],
 "message1": "adminUser %1",
         "args1": [
-            { "type": "input_value", "name": "adminUser", "check": "frinex_adminUserType" }
+            { "type": "input_statement", "name": "adminUser", "check": "frinex_adminUserType" }
         ],
 "message2": "dataAgreementField %1",
         "args2": [
@@ -105,15 +105,15 @@ function getFeatureBlocks() {
         ],
 "message3": "dataChannel %1",
         "args3": [
-            { "type": "input_value", "name": "dataChannel", "check": "frinex_dataChannelType" }
+            { "type": "input_statement", "name": "dataChannel", "check": "frinex_dataChannelType" }
         ],
 "message4": "chart %1",
         "args4": [
-            { "type": "input_value", "name": "chart", "check": "frinex_adminChartType" }
+            { "type": "input_statement", "name": "chart", "check": "frinex_adminChartType" }
         ],
 "message5": "dataTable %1",
         "args5": [
-            { "type": "input_value", "name": "dataTable", "check": "frinex_dataTableType" }
+            { "type": "input_statement", "name": "dataTable", "check": "frinex_dataTableType" }
         ],
         "output": "frinex_administrationType",
         "colour": 160
@@ -128,13 +128,14 @@ function getFeatureBlocks() {
  ],
 "message1": "metadata %1",
         "args1": [
-            { "type": "input_value", "name": "metadata", "check": "frinex_metadataType" }
+            { "type": "input_statement", "name": "metadata", "check": "frinex_metadataType" }
         ],
 "message2": "stimulusResponse %1",
         "args2": [
-            { "type": "input_value", "name": "stimulusResponse", "check": "frinex_stimulusResponseType" }
+            { "type": "input_statement", "name": "stimulusResponse", "check": "frinex_stimulusResponseType" }
         ],
-        "output": "frinex_adminChartType",
+        "previousStatement": "frinex_adminChartType",
+        "nextStatement": "frinex_adminChartType",
         "colour": 160
 },
 {
@@ -145,7 +146,8 @@ function getFeatureBlocks() {
  "type": "input_dummy",
  }
  ],
-        "output": "frinex_dataTableType",
+        "previousStatement": "frinex_dataTableType",
+        "nextStatement": "frinex_dataTableType",
         "colour": 160
 },
 {
@@ -158,7 +160,7 @@ function getFeatureBlocks() {
  ],
 "message1": "field %1",
         "args1": [
-            { "type": "input_value", "name": "field", "check": "frinex_fieldType" }
+            { "type": "input_statement", "name": "field", "check": "frinex_fieldType" }
         ],
         "output": "frinex_metadataType",
         "colour": 160
@@ -173,9 +175,10 @@ function getFeatureBlocks() {
  ],
 "message1": "translation %1",
         "args1": [
-            { "type": "input_value", "name": "translation", "check": "frinex_translationType" }
+            { "type": "input_statement", "name": "translation", "check": "frinex_translationType" }
         ],
-        "output": "frinex_fieldType",
+        "previousStatement": "frinex_fieldType",
+        "nextStatement": "frinex_fieldType",
         "colour": 160
 },
 {
@@ -188,9 +191,10 @@ function getFeatureBlocks() {
  ],
 "message1": "translation %1",
         "args1": [
-            { "type": "input_value", "name": "translation", "check": "frinex_translationType" }
+            { "type": "input_statement", "name": "translation", "check": "frinex_translationType" }
         ],
-        "output": "frinex_presenterType",
+        "previousStatement": "frinex_presenterType",
+        "nextStatement": "frinex_presenterType",
         "colour": 160
 },
 {
@@ -203,7 +207,7 @@ function getFeatureBlocks() {
  ],
 "message1": "stimulus %1",
         "args1": [
-            { "type": "input_value", "name": "stimulus", "check": "frinex_stimulusType" }
+            { "type": "input_statement", "name": "stimulus", "check": "frinex_stimulusType" }
         ],
         "output": "frinex_stimuliType",
         "colour": 160
@@ -218,9 +222,10 @@ function getFeatureBlocks() {
  ],
 "message1": "translation %1",
         "args1": [
-            { "type": "input_value", "name": "translation", "check": "frinex_translationType" }
+            { "type": "input_statement", "name": "translation", "check": "frinex_translationType" }
         ],
-        "output": "frinex_stimulusType",
+        "previousStatement": "frinex_stimulusType",
+        "nextStatement": "frinex_stimulusType",
         "colour": 160
 },
 {
@@ -233,11 +238,11 @@ function getFeatureBlocks() {
  ],
 "message1": "tag %1",
         "args1": [
-            { "type": "input_value", "name": "tag", "check": "frinex_tagType" }
+            { "type": "input_statement", "name": "tag", "check": "frinex_tagType" }
         ],
 "message2": "list %1",
         "args2": [
-            { "type": "input_value", "name": "list", "check": "frinex_listType" }
+            { "type": "input_statement", "name": "list", "check": "frinex_listType" }
         ],
         "output": "frinex_randomGroupingType",
         "colour": 160
@@ -252,7 +257,7 @@ function getFeatureBlocks() {
  ],
 "message1": "tag %1",
         "args1": [
-            { "type": "input_value", "name": "tag", "check": "frinex_tagType" }
+            { "type": "input_statement", "name": "tag", "check": "frinex_tagType" }
         ],
         "output": "frinex_stimuliSelectType",
         "colour": 160

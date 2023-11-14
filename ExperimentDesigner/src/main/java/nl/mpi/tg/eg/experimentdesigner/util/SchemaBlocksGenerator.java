@@ -158,7 +158,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n"
                         + "        \"args" + argsCount + "\": [\n"
                         + "            { ");
-                if (childElement.maxBounds > 1) {
+                if (childElement.maxBounds != 1) {
                     writer.append("\"type\": \"input_statement\", ");
                 } else if (childElement.minBounds > 0) {
                     writer.append("\"type\": \"input_field\", ");
@@ -192,7 +192,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         }
         if (currentElement.allowsCustomImplementation) {
         }
-        if (!"experimentType".equals(currentElement.typeName)) {
+        if (currentElement.maxBounds == 0) {
+            writer.append("        \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+            writer.append("        \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+        } else if (!"experimentType".equals(currentElement.typeName)) {
             writer.append("        \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }
         writer.append("        \"colour\": 160\n},\n");
