@@ -38,7 +38,6 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
-                + "    Blockly.defineBlocksWithJsonArray([\n"
         // + " \"type\": \"frinex_experiment\",\n"
         // + " \"message0\": 'Experiment name %1',\n"
         // + " \"args0\": [\n"
@@ -66,6 +65,38 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         );
     }
 
+//    private void defineBlocks(Writer writer) throws IOException {
+//        for (String baseType : childTypeLists.keySet()) {
+////            if ("allOnceUnordered_hasTrueFalseCondition".equals(baseType)) {
+////            writer.append("<xs:group name=\"" + baseType + "Type\">\n");
+////            writer.append("<xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
+////            for (String childTypeName : childTypeLists.get(baseType)) {
+////                writer.append("<xs:element name=\"");
+////                writer.append(childTypeName);
+////                writer.append("\" type=\"");
+////                writer.append(childTypeName);
+////                writer.append("Type\"/>\n");
+////            }
+////            writer.append("</xs:").append(baseType.startsWith("presenter") || baseType.startsWith(ChildType.choiceAnyCount.name()) ? "choice" : baseType.startsWith(ChildType.sequenceOnceOrdered.name()) ? "sequence" : "all").append(">\n");
+////            writer.append("</xs:group>\n");
+//        }
+////        }
+//    }
+    private void addToolbox(Writer writer) throws IOException {
+        writer.append("    return {\n"
+                + "        \"kind\": \"flyoutToolbox\",\n"
+                + "        \"contents\": [\n");
+        for (FeatureType featureType : FeatureType.values()) {
+            writer.append("            {\n"
+                    + "                \"kind\": \"block\",\n"
+                    + "                \"type\": \"frinex_" + featureType.name() + "Type\"\n"
+                    + "            },\n");
+        }
+        writer.append("        ]\n"
+                + "    };\n");
+//        }
+    }
+
     private int addAttributes(Writer writer, DocumentationElement currentElement, int argsCount) throws IOException {
         // + " \"message0\": 'Experiment name %1',\n"
         // + " \"args0\": [\n"
@@ -82,7 +113,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         int argsCount = 0;
         writer.append("{\n"
                 + "        \"type\": \"frinex_" + currentElement.typeName + "\",\n");
-                // + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
+        // + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
         // argsCount++;
         if (currentElement.documentationText != null) {
             // writer.append(currentElement.documentationText);
@@ -137,50 +168,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void getEnd(Writer writer) throws IOException {
-        writer.append(
-                "]);\n" + //
-                        "    return {\n"
-                        + "        \"kind\": \"flyoutToolbox\",\n"
-                        + "        \"contents\": [\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"frinex_experimentType\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"controls_if\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"controls_repeat_ext\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"logic_compare\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"math_number\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"math_arithmetic\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"text\"\n"
-                        + "            },\n"
-                        + "            {\n"
-                        + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"text_print\"\n"
-                        + "            },\n"
-                        + "        ]\n"
-                        + "    };\n"
-                        + "}\n");
+        writer.append("}\n");
     }
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
+        writer.append("    Blockly.defineBlocksWithJsonArray([\n");
         addElement(writer, rootElement);
         FeatureType[] sortedFeatureTypes = FeatureType.values();
         Arrays.sort(sortedFeatureTypes, new Comparator<FeatureType>() {
@@ -219,6 +212,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage,
                     currentToken.exampleResult);
         }
+        writer.append("]);\n");
+//        defineBlocks(writer);
+        addToolbox(writer);
         getEnd(writer);
     }
 

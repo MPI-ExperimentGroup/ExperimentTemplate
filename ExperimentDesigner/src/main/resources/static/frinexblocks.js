@@ -1146,35 +1146,959 @@ function getFeatureBlocks() {
         "contents": [
             {
                 "kind": "block",
-                "type": "frinex_experimentType"
+                "type": "frinex_htmlTextType"
             },
             {
                 "kind": "block",
-                "type": "controls_if"
+                "type": "frinex_htmlTokenTextType"
             },
             {
                 "kind": "block",
-                "type": "controls_repeat_ext"
+                "type": "frinex_evaluateTokenTextType"
             },
             {
                 "kind": "block",
-                "type": "logic_compare"
+                "type": "frinex_logTokenTextType"
             },
             {
                 "kind": "block",
-                "type": "math_number"
+                "type": "frinex_plainTextType"
             },
             {
                 "kind": "block",
-                "type": "math_arithmetic"
+                "type": "frinex_imageType"
             },
             {
                 "kind": "block",
-                "type": "text"
+                "type": "frinex_menuItemType"
             },
             {
                 "kind": "block",
-                "type": "text_print"
+                "type": "frinex_withStimuliType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupStimuliType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_loadStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_withMatchingStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_loadSdCardStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_currentStimulusHasTagType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_clearStimulusResponsesType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_validateStimuliResponsesType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusExistsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showStimuliReportType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendStimuliReportType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_targetButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_hotKeyInputType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_actionButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_actionTokenButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_disableButtonGroupType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_enableButtonGroupType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_hideButtonGroupType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_styleButtonGroupType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showButtonGroupType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_requestFocusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_svgLoadGroupsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_svgGroupAddType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_svgSetLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_svgGroupShowType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_svgGroupActionType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_svgGroupMatchingType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusSliderType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_touchInputLabelButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_touchInputImageButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_touchInputVideoButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_touchInputCaptureType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_captureStartType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_touchEndType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_touchInputStopType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ratingButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ratingRadioButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ratingCheckboxType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusFreeTextType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusRatingButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusRatingRadioType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusRatingCheckboxType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusHasRatingOptionsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_clearStimulusResponseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusHasResponseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_setStimulusCodeResponseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addStimulusCodeResponseValidationType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ratingFooterButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_targetFooterButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_actionFooterButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addPaddingType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_localStorageDataType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimuliValidationType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addKeyboardDebugType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addDebugWidgetsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_allMetadataFieldsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_metadataFieldType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusMetadataFieldType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_metadataFieldConnectionType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_metadataFieldVisibilityDependantType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_metadataFieldDateTriggeredType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_saveMetadataButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_createUserButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_switchUserIdButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_selectUserMenuType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_selectLocaleMenuType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_eraseLocalStorageButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_eraseUsersDataButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showCurrentMsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_cancelPauseTimersType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_cancelPauseAllType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showStimulusProgressType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_displayCompletionCodeType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_generateCompletionCodeType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendAllDataType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendMetadataType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_redirectToUrlType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_eraseLocalStorageOnWindowClosingType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_keepStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_removeMatchingStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_centrePageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_clearPageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_backgroundImageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_allMenuItemsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_prevStimulusButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_nextStimulusButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_nextStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_prevStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_nextMatchingStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addKinTypeGuiType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_hasGetParameterType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_hasMetadataValueType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_setMetadataValueType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_matchOnEvalTokensType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_progressIndicatorType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_setMetadataEvalTokensType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_activateRandomItemType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_gotoPresenterType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_gotoNextPresenterType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_logTimeStampType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_zeroStimulusStopwatchType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stopStimulusStopwatchType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_hardwareTimeStampType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_recorderToneInjectionType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_dtmfToneType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_audioButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_preloadAllStimuliType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showStimulusGridType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_matchingStimulusGridType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_pauseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_doLaterType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_requestNotificationType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_startTimerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_compareTimerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_clearTimerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_logTimerValueType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_timerLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_randomMsPauseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_evaluatePauseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addTimerTriggerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_startFrameRateTimerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addFrameTimeTriggerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addMediaTriggerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addRecorderDtmfTriggerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_addRecorderLevelTriggerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_triggerDefinitionType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_habituationParadigmListenerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_triggerMatchingType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_triggerRandomType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_resetTriggerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_countdownLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusPauseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onTimeType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onTimerType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_conditionTrueType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_conditionFalseType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onSuccessType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onActivateType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_kinTypeStringDiagramType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_loadKinTypeStringDiagramType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_editableKinEntitesDiagramType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onKeyUpType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onKeyDownType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_responseCorrectType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_responseIncorrectType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupNetworkType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_hasMoreStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_beforeStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_eachStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_afterStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_endOfStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_existingUserCheckType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_multipleUsersType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_singleUserType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_aboveThresholdType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_withinThresholdType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_mediaLoadedType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_mediaLoadFailedType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_mediaPlaybackStartedType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_mediaPlaybackCompleteType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_tableType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_rowType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_columnType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_regionAppendType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_regionStyleType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_regionCodeStyleType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_regionReplaceType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_regionClearType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_regionDragDropType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ondragstartType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ondragoverType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_ondropType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusPresentType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusImageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusCodeImageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusCodeImageButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusCodeVideoType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusVideoType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusCodeAudioType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusAudioType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_playMediaType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_rewindMediaType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_pauseMediaType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_logMediaTimeStampType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stimulusImageCaptureType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_VideoPanelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_AnnotationTimelinePanelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_audioInputSelectWebType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_startAudioRecorderWebType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_startAudioRecorderAppType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_stopAudioRecorderType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_startAudioRecorderTagType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_endAudioRecorderTagType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showHtmlPopupType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_helpDialogueType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_userInfoType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_versionDataType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_showColourReportType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupInitialisationErrorType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupNetworkConnectingType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupFindingMembersType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupNetworkSynchronisingType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupPhaseListenersType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupMemberActivityType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupMemberCodeLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupMemberLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupMessageLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupResponseStimulusImageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupResponseFeedbackType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupScoreLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_groupChannelScoreLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_scoreLabelType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_submitGroupEventType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendGroupMessageButtonType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendGroupMessageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendGroupStoredMessageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_streamGroupCanvasType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_streamGroupCameraType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_sendGroupTokenMessageType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_clearCurrentScoreType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_scoreIncrementType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_bestScoreAboveThresholdType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_totalScoreAboveThresholdType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_scoreAboveThresholdType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_resetStimulusType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_submitTestResultsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_validateMetadataType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_transmitResultsType"
+            },
+            {
+                "kind": "block",
+                "type": "frinex_onErrorType"
             },
         ]
     };
