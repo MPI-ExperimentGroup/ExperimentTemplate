@@ -101,14 +101,17 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private int addAttributes(Writer writer, DocumentationElement currentElement, int argsCount) throws IOException {
-        // + " \"message0\": 'Experiment name %1',\n"
-        // + " \"args0\": [\n"
-        // + " {\n"
-        // + " \"type\": \"field_input\",\n"
-        // + " \"name\": \"appNameDisplay\",\n"
-        // + " \"check\": \"String\"\n"
-        // + " }\n"
-        // + " ],\n"
+        for (DocumentationAttribute attribute : currentElement.attributeTypes) {
+            writer.append(" \"message" + argsCount + "\": '" + attribute.name + " %1',\n"
+                    + " \"args" + argsCount + "\": [\n"
+                    + " {\n"
+                    + " \"type\": \"field_input\",\n"
+                    + " \"name\": \"" + attribute.name + "\",\n"
+                    + " \"check\": \"String\"\n"
+                    + " }\n"
+                    + " ],\n");
+            argsCount++;
+        }
         return argsCount;
     }
 
@@ -126,7 +129,6 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.documentationText != null) {
             // writer.append(currentElement.documentationText);
         }
-        argsCount = addAttributes(writer, currentElement, argsCount);
         List<String> childTypeList = childTypeLists.containsKey(currentElement.typeExtends)
                 ? childTypeLists.get(currentElement.typeExtends)
                 : Collections.EMPTY_LIST;
@@ -139,6 +141,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + " }\n"
                 + " ],\n");
         argsCount++;
+        argsCount = addAttributes(writer, currentElement, argsCount);
 //        }
         if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0
                 || !childTypeList.isEmpty()) {
@@ -167,7 +170,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                    writer.append("\"type\": \"input_value\", ");
 //                }
 //                writer.append(""
-                        //                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                //                        + "\"name\": \"" + childElement.elementName + "\",\n"
 //                        + "\"check\": [");
 //                for (DocumentationElement childElement : currentElement.childElements) {
 //                    writer.append("\"frinex_" + childElement.typeName + "\",");
