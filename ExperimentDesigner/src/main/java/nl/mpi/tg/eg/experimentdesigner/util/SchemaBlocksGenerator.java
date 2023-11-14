@@ -159,7 +159,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             }
             if (currentElement.childElements.length == 0) {
             } else if (currentElement.childElements.length > 1) {
-//                writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n");
+                writer.append("\"message" + argsCount + "\": \" %1\",\n");
                 writer.append("        \"args" + argsCount + "\": [\n"
                         + "            { ");
 //                if (childElement.maxBounds != 1) {
@@ -169,14 +169,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                    writer.append("\"type\": \"input_field\", ");
 //                    writer.append("\"type\": \"input_value\", ");
 //                }
-//                writer.append(""
-                //                        + "\"name\": \"" + childElement.elementName + "\",\n"
-//                        + "\"check\": [");
-//                for (DocumentationElement childElement : currentElement.childElements) {
-//                    writer.append("\"frinex_" + childElement.typeName + "\",");
-//                }
-                writer.append(//"]"
-                        "}\n        ],\n");
+                writer.append(""
+                        //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                        + "\"check\": [");
+                for (DocumentationElement childElement : currentElement.childElements) {
+                    writer.append("\"frinex_" + childElement.typeName + "\",");
+                }
+                writer.append("]"
+                        + "}\n        ],\n");
                 argsCount++;
             }
         }
