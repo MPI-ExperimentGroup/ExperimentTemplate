@@ -166,14 +166,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                    writer.append("\"type\": \"input_field\", ");
 //                    writer.append("\"type\": \"input_value\", ");
 //                }
-                writer.append(""
+//                writer.append(""
                         //                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                        + "\"check\": [");
-                for (DocumentationElement childElement : currentElement.childElements) {
-                    writer.append("\"frinex_" + childElement.typeName + "\",");
-                }
-                writer.append("]}\n"
-                        + "        ],\n");
+//                        + "\"check\": [");
+//                for (DocumentationElement childElement : currentElement.childElements) {
+//                    writer.append("\"frinex_" + childElement.typeName + "\",");
+//                }
+                writer.append(//"]"
+                        "}\n        ],\n");
                 argsCount++;
             }
         }

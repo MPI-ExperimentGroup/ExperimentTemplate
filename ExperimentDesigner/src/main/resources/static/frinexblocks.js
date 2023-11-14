@@ -9,7 +9,7 @@ function getFeatureBlocks() {
  }
  ],
         "args1": [
-            { "type": "input_statement", "check": ["frinex_preventWindowCloseType","frinex_deploymentType","frinex_validationServiceType","frinex_administrationType","frinex_scssType","frinex_metadataType","frinex_presenterType","frinex_stimuliType",]}
+            { "type": "input_statement", }
         ],
         "colour": 160
 },
@@ -44,7 +44,7 @@ function getFeatureBlocks() {
  }
  ],
         "args1": [
-            { "type": "input_statement", "check": ["frinex_recordMatchType","frinex_fieldMatchType",]}
+            { "type": "input_statement", }
         ],
         "output": "frinex_validationType",
         "colour": 160
@@ -58,7 +58,7 @@ function getFeatureBlocks() {
  }
  ],
         "args1": [
-            { "type": "input_statement", "check": ["frinex_adminUserType","frinex_dataAgreementFieldType","frinex_dataChannelType","frinex_adminChartType","frinex_dataTableType",]}
+            { "type": "input_statement", }
         ],
         "output": "frinex_administrationType",
         "colour": 160
@@ -72,7 +72,7 @@ function getFeatureBlocks() {
  }
  ],
         "args1": [
-            { "type": "input_statement", "check": ["frinex_metadataType","frinex_stimulusResponseType",]}
+            { "type": "input_statement", }
         ],
         "previousStatement": "frinex_adminChartType",
         "nextStatement": "frinex_adminChartType",
@@ -157,7 +157,7 @@ function getFeatureBlocks() {
  }
  ],
         "args1": [
-            { "type": "input_statement", "check": ["frinex_tagType","frinex_listType",]}
+            { "type": "input_statement", }
         ],
         "output": "frinex_randomGroupingType",
         "colour": 160
