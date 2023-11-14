@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -31,6 +32,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
+
+    List<String> blockTypeLists = new ArrayList<>();
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
@@ -82,14 +85,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         writer.append("    return {\n"
                 + "        \"kind\": \"flyoutToolbox\",\n"
                 + "        \"contents\": [\n");
-        writer.append("            {\n"
-                + "                \"kind\": \"block\",\n"
-                + "                \"type\": \"frinex_" + rootElement.typeName + "\"\n"
-                + "            },\n");
-        for (FeatureType featureType : FeatureType.values()) {
+//        writer.append("            {\n"
+//                + "                \"kind\": \"block\",\n"
+//                + "                \"type\": \"frinex_" + rootElement.typeName + "\"\n"
+//                + "            },\n");
+        for (String blockType : blockTypeLists) {
             writer.append("            {\n"
                     + "                \"kind\": \"block\",\n"
-                    + "                \"type\": \"frinex_" + featureType.name() + "Type\"\n"
+                    + "                \"type\": \"frinex_" + blockType + "Type\"\n"
                     + "            },\n");
         }
         writer.append("        ]\n"
@@ -109,8 +112,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         return argsCount;
     }
 
+    private void addElement(Writer writer, final FeatureType featureType) throws IOException {
+//blockTypeLists
+    }
+
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
         int argsCount = 0;
+        blockTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("{\n"
                 + "        \"type\": \"frinex_" + currentElement.typeName + "\",\n");
         // + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
@@ -122,16 +130,16 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         List<String> childTypeList = childTypeLists.containsKey(currentElement.typeExtends)
                 ? childTypeLists.get(currentElement.typeExtends)
                 : Collections.EMPTY_LIST;
-        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) == 0 && childTypeList.isEmpty()
-                && !currentElement.hasStringContents) {
-            writer.append(" \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
-                    + " \"args" + argsCount + "\": [\n"
-                    + " {\n"
-                    + " \"type\": \"input_dummy\",\n"
-                    + " }\n"
-                    + " ],\n");
-            argsCount++;
-        }
+//        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) == 0 && childTypeList.isEmpty()
+//                && !currentElement.hasStringContents) {
+        writer.append(" \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
+                + " \"args" + argsCount + "\": [\n"
+                + " {\n"
+                + " \"type\": \"input_dummy\",\n"
+                + " }\n"
+                + " ],\n");
+        argsCount++;
+//        }
         if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0
                 || !childTypeList.isEmpty()) {
         }
@@ -149,7 +157,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             for (DocumentationElement childElement : currentElement.childElements) {
                 writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n"
                         + "        \"args" + argsCount + "\": [\n"
-                        + "            { \"type\": \"input_statement\", \"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.elementName + "Type\" }\n"
+                        + "            { \"type\": \"input_statement\", \"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.typeName + "Type\" }\n"
                         + "        ],\n");
                 argsCount++;
             }
@@ -176,7 +184,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.allowsCustomImplementation) {
         }
         if (!"experimentType".equals(currentElement.typeName)) {
-            writer.append("        \"output\": \"frinex_" + currentElement.typeName + "\",\n");
+            writer.append("        \"output\": \"frinex_" + currentElement.typeExtends + "\",\n");
         }
         writer.append("        \"colour\": 160\n},\n");
     }
@@ -254,7 +262,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         addElement(writer, rootElement.childElements[7]);
         addElement(writer, rootElement.childElements[7].childElements[0]);
         for (FeatureType featureType : FeatureType.values()) {
-            addElement(writer, new DocumentationElement(featureType));
+            addElement(writer, featureType);
         }
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0]);
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1]);
