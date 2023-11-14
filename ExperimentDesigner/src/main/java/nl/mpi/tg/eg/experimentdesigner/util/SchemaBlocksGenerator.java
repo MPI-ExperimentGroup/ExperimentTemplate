@@ -157,7 +157,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             for (DocumentationElement childElement : currentElement.childElements) {
                 writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n"
                         + "        \"args" + argsCount + "\": [\n"
-                        + "            { \"type\": \"input_statement\", \"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.typeName + "Type\" }\n"
+                        + "            { \"type\": \"input_statement\", \"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.typeName + "\" }\n"
                         + "        ],\n");
                 argsCount++;
             }
@@ -184,7 +184,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.allowsCustomImplementation) {
         }
         if (!"experimentType".equals(currentElement.typeName)) {
-            writer.append("        \"output\": \"frinex_" + currentElement.typeExtends + "\",\n");
+            writer.append("        \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }
         writer.append("        \"colour\": 160\n},\n");
     }
