@@ -92,7 +92,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         for (String blockType : blockTypeLists) {
             writer.append("            {\n"
                     + "                \"kind\": \"block\",\n"
-                    + "                \"type\": \"frinex_" + blockType + "Type\"\n"
+                    + "                \"type\": \"" + blockType + "\"\n"
                     + "            },\n");
         }
         writer.append("        ]\n"

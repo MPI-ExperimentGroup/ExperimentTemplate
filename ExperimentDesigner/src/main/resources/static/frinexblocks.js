@@ -263,59 +263,59 @@ function getFeatureBlocks() {
         "contents": [
             {
                 "kind": "block",
-                "type": "frinex_frinex_experimentTypeType"
+                "type": "frinex_experimentType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_deploymentTypeType"
+                "type": "frinex_deploymentType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_validationServiceTypeType"
+                "type": "frinex_validationServiceType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_validationTypeType"
+                "type": "frinex_validationType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_administrationTypeType"
+                "type": "frinex_administrationType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_adminChartTypeType"
+                "type": "frinex_adminChartType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_dataTableTypeType"
+                "type": "frinex_dataTableType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_metadataTypeType"
+                "type": "frinex_metadataType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_fieldTypeType"
+                "type": "frinex_fieldType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_presenterTypeType"
+                "type": "frinex_presenterType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_stimuliTypeType"
+                "type": "frinex_stimuliType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_stimulusTypeType"
+                "type": "frinex_stimulusType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_randomGroupingTypeType"
+                "type": "frinex_randomGroupingType"
             },
             {
                 "kind": "block",
-                "type": "frinex_frinex_stimuliSelectTypeType"
+                "type": "frinex_stimuliSelectType"
             },
         ]
     };
