@@ -18,7 +18,7 @@ function getFeatureBlocks() {
  ],
 "message2": " %1",
         "args2": [
-            { "type": "input_statement", "check": ["frinex_preventWindowCloseType","frinex_deploymentType","frinex_validationServiceType","frinex_administrationType","frinex_scssType","frinex_metadataType","frinex_presenterType","frinex_stimuliType",]}
+            { "type": "input_statement", "name": "DO", "check": ["frinex_preventWindowCloseType","frinex_deploymentType","frinex_validationServiceType","frinex_administrationType","frinex_scssType","frinex_metadataType","frinex_presenterType","frinex_stimuliType",]}
         ],
         "colour": 160
 },
@@ -86,7 +86,7 @@ function getFeatureBlocks() {
  ],
 "message4": " %1",
         "args4": [
-            { "type": "input_statement", "check": ["frinex_recordMatchType","frinex_fieldMatchType",]}
+            { "type": "input_statement", "name": "DO", "check": ["frinex_recordMatchType","frinex_fieldMatchType",]}
         ],
         "output": "frinex_validationType",
         "colour": 160
@@ -101,7 +101,7 @@ function getFeatureBlocks() {
  ],
 "message1": " %1",
         "args1": [
-            { "type": "input_statement", "check": ["frinex_adminUserType","frinex_dataAgreementFieldType","frinex_dataChannelType","frinex_adminChartType","frinex_dataTableType",]}
+            { "type": "input_statement", "name": "DO", "check": ["frinex_adminUserType","frinex_dataAgreementFieldType","frinex_dataChannelType","frinex_adminChartType","frinex_dataTableType",]}
         ],
         "output": "frinex_administrationType",
         "colour": 160
@@ -132,7 +132,7 @@ function getFeatureBlocks() {
  ],
 "message3": " %1",
         "args3": [
-            { "type": "input_statement", "check": ["frinex_metadataType","frinex_stimulusResponseType",]}
+            { "type": "input_statement", "name": "DO", "check": ["frinex_metadataType","frinex_stimulusResponseType",]}
         ],
         "previousStatement": "frinex_adminChartType",
         "nextStatement": "frinex_adminChartType",
@@ -282,7 +282,7 @@ function getFeatureBlocks() {
  ],
 "message1": " %1",
         "args1": [
-            { "type": "input_statement", "check": ["frinex_tagType","frinex_listType",]}
+            { "type": "input_statement", "name": "DO", "check": ["frinex_tagType","frinex_listType",]}
         ],
         "output": "frinex_randomGroupingType",
         "colour": 160
