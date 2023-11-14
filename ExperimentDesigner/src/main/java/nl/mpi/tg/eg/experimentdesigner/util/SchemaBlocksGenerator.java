@@ -86,6 +86,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         writer.append("    return {\n"
                 + "        \"kind\": \"flyoutToolbox\",\n"
                 + "        \"contents\": [\n");
+        writer.append("            {\n"
+                + "                \"kind\": \"block\",\n"
+                + "                \"type\": \"frinex_" + rootElement.typeName + "\"\n"
+                + "            },\n");
         for (FeatureType featureType : FeatureType.values()) {
             writer.append("            {\n"
                     + "                \"kind\": \"block\",\n"

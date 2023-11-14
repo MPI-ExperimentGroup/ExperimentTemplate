@@ -1146,6 +1146,10 @@ function getFeatureBlocks() {
         "contents": [
             {
                 "kind": "block",
+                "type": "frinex_experimentType"
+            },
+            {
+                "kind": "block",
                 "type": "frinex_htmlTextType"
             },
             {
