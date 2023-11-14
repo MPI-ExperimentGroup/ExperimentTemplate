@@ -121,7 +121,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //blockTypeLists
     }
 
-    private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
+    private void addElement(Writer writer, DocumentationElement currentElement/*, List<String>precedingBlocks*/) throws IOException {
         int argsCount = 0;
         blockTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("{\n"
@@ -159,7 +159,28 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             }
             for (String childElement : childTypeList) {
             }
+//            
             if (currentElement.childElements.length == 0) {
+            } else if (currentElement.childElements.length == 1 && currentElement.childElements[0].maxBounds == 0) {
+                writer.append("\"message" + argsCount + "\": \" %1\",\n");
+                writer.append("        \"args" + argsCount + "\": [\n"
+                        + "            { ");
+//                if (childElement.maxBounds != 1) {
+                writer.append("\"type\": \"input_statement\", \"name\": \"DO\", ");
+//                } else if (childElement.minBounds > 0) {
+//                } else {
+//                    writer.append("\"type\": \"input_field\", ");
+//                    writer.append("\"type\": \"input_value\", ");
+//                }
+                writer.append(""
+                        //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                        + "\"check\": [");
+                for (DocumentationElement childElement : currentElement.childElements[0].childElements) {
+                    writer.append("\"frinex_" + childElement.typeName + "\",");
+                }
+                writer.append("]"
+                        + "}\n        ],\n");
+                argsCount++;
             } else if (currentElement.childElements.length > 1) {
                 writer.append("\"message" + argsCount + "\": \" %1\",\n");
                 writer.append("        \"args" + argsCount + "\": [\n"
@@ -206,6 +227,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.maxBounds == 0) {
             writer.append("        \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
             writer.append("        \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+//        } else if (!precedingBlocks.isEmpty()) {
+//            writer.append("        \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+//            writer.append("        \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
         } else if (!"experimentType".equals(currentElement.typeName)) {
             writer.append("        \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }

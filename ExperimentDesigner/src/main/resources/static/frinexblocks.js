@@ -182,6 +182,10 @@ function getFeatureBlocks() {
  "type": "input_dummy",
  }
  ],
+"message1": " %1",
+        "args1": [
+            { "type": "input_statement", "name": "DO", "check": ["frinex_translationType",]}
+        ],
         "output": "frinex_metadataType",
         "colour": 160
 },
@@ -225,6 +229,10 @@ function getFeatureBlocks() {
  "check": "String"
  }
  ],
+"message5": " %1",
+        "args5": [
+            { "type": "input_statement", "name": "DO", "check": []}
+        ],
         "previousStatement": "frinex_fieldType",
         "nextStatement": "frinex_fieldType",
         "colour": 160
@@ -237,6 +245,10 @@ function getFeatureBlocks() {
  "type": "input_dummy",
  }
  ],
+"message1": " %1",
+        "args1": [
+            { "type": "input_statement", "name": "DO", "check": []}
+        ],
         "previousStatement": "frinex_presenterType",
         "nextStatement": "frinex_presenterType",
         "colour": 160
@@ -249,6 +261,10 @@ function getFeatureBlocks() {
  "type": "input_dummy",
  }
  ],
+"message1": " %1",
+        "args1": [
+            { "type": "input_statement", "name": "DO", "check": ["frinex_translationType",]}
+        ],
         "output": "frinex_stimuliType",
         "colour": 160
 },
@@ -268,6 +284,10 @@ function getFeatureBlocks() {
  "check": "String"
  }
  ],
+"message2": " %1",
+        "args2": [
+            { "type": "input_statement", "name": "DO", "check": []}
+        ],
         "previousStatement": "frinex_stimulusType",
         "nextStatement": "frinex_stimulusType",
         "colour": 160
