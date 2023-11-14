@@ -22,13 +22,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
-import nl.mpi.tg.eg.experimentdesigner.model.TokenMethod;
-import nl.mpi.tg.eg.experimentdesigner.model.TokenText;
 
 /**
  * @since 13 November 2023 12:33 PM (creation date)
@@ -128,6 +124,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 : Collections.EMPTY_LIST;
         if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) == 0 && childTypeList.isEmpty()
                 && !currentElement.hasStringContents) {
+            writer.append(" \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
+                    + " \"args" + argsCount + "\": [\n"
+                    + " {\n"
+                    + " \"type\": \"input_dummy\",\n"
+                    + " }\n"
+                    + " ],\n");
+            argsCount++;
         }
         if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) > 0
                 || !childTypeList.isEmpty()) {
@@ -152,6 +155,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             }
         }
         if (currentElement.hasStringContents) {
+            writer.append(" \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
+                    + " \"args" + argsCount + "\": [\n"
+                    + " {\n"
+                    + " \"type\": \"field_input\",\n"
+                    + " \"name\": \"" + currentElement.elementName + "\",\n"
+                    + " \"check\": \"String\"\n"
+                    + " }\n"
+                    + " ],\n");
+            argsCount++;
         }
         if (currentElement.childElements.length > 0 || !childTypeList.isEmpty() || currentElement.hasStringContents) {
         }
@@ -178,44 +190,72 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
         writer.append("    Blockly.defineBlocksWithJsonArray([\n");
+//        addElement(writer, rootElement);
+//        FeatureType[] sortedFeatureTypes = FeatureType.values();
+//        Arrays.sort(sortedFeatureTypes, new Comparator<FeatureType>() {
+//            @Override
+//            public int compare(FeatureType o1, FeatureType o2) {
+//                return o1.name().compareTo(o2.name());
+//            }
+//        });
+//        for (FeatureType featureType : sortedFeatureTypes) {
+//            if (featureType.isChildType(FeatureType.Contitionals.none)) {
+//                addElement(writer, new DocumentationElement(featureType));
+//            }
+//        }
+//        for (FeatureType featureType : sortedFeatureTypes) {
+//            if (featureType.isChildType(FeatureType.Contitionals.stimulusAction)) {
+//                addElement(writer, new DocumentationElement(featureType));
+//            }
+//        }
+//        for (FeatureType featureType : sortedFeatureTypes) {
+//            if (featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
+//                addElement(writer, new DocumentationElement(featureType));
+//            }
+//        }
+//        for (FeatureType featureType : sortedFeatureTypes) {
+//            if (!featureType.isChildType(FeatureType.Contitionals.none)
+//                    && !featureType.isChildType(FeatureType.Contitionals.stimulusAction)
+//                    && !featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
+//                addElement(writer, new DocumentationElement(featureType));
+//            }
+//        }
+//        for (TokenText currentToken : TokenText.values()) {
+//            addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage,
+//                    currentToken.exampleResult);
+//        }
+//        for (TokenMethod currentToken : TokenMethod.values()) {
+//            addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage,
+//                    currentToken.exampleResult);
+//        }
+
         addElement(writer, rootElement);
-        FeatureType[] sortedFeatureTypes = FeatureType.values();
-        Arrays.sort(sortedFeatureTypes, new Comparator<FeatureType>() {
-            @Override
-            public int compare(FeatureType o1, FeatureType o2) {
-                return o1.name().compareTo(o2.name());
-            }
-        });
-        for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.isChildType(FeatureType.Contitionals.none)) {
-                addElement(writer, new DocumentationElement(featureType));
-            }
+//        writer.append("<!--deploymentType-->\n");
+        addElement(writer, rootElement.childElements[1]);
+//        writer.append("<!--validationService-->\n");
+        addElement(writer, rootElement.childElements[2]);
+//        writer.append("<!--validationType-->\n");
+        addElement(writer, rootElement.childElements[2].childElements[0]);
+//        writer.append("<!--administrationType-->\n");
+        addElement(writer, rootElement.childElements[3]);
+//        writer.append("<!--chartType-->\n");
+        addElement(writer, rootElement.childElements[3].childElements[3]);
+//        writer.append("<!--tableType-->\n");
+        addElement(writer, rootElement.childElements[3].childElements[4]);
+//        writer.append("<!--metadataType-->\n");
+        addElement(writer, rootElement.childElements[5]);
+        //        writer.append("<!--fieldType-->\n");
+        addElement(writer, rootElement.childElements[5].childElements[0]);
+//        writer.append("<!--presenterType-->\n");
+        addElement(writer, rootElement.childElements[6]);
+//        writer.append("<!--stimuliType-->\n");
+        addElement(writer, rootElement.childElements[7]);
+        addElement(writer, rootElement.childElements[7].childElements[0]);
+        for (FeatureType featureType : FeatureType.values()) {
+            addElement(writer, new DocumentationElement(featureType));
         }
-        for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.isChildType(FeatureType.Contitionals.stimulusAction)) {
-                addElement(writer, new DocumentationElement(featureType));
-            }
-        }
-        for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
-                addElement(writer, new DocumentationElement(featureType));
-            }
-        }
-        for (FeatureType featureType : sortedFeatureTypes) {
-            if (!featureType.isChildType(FeatureType.Contitionals.none)
-                    && !featureType.isChildType(FeatureType.Contitionals.stimulusAction)
-                    && !featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
-                addElement(writer, new DocumentationElement(featureType));
-            }
-        }
-        for (TokenText currentToken : TokenText.values()) {
-            addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage,
-                    currentToken.exampleResult);
-        }
-        for (TokenMethod currentToken : TokenMethod.values()) {
-            addTokenText(writer, currentToken.name(), currentToken.usageDescription, currentToken.exampleUsage,
-                    currentToken.exampleResult);
-        }
+        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0]);
+        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1]);
         writer.append("]);\n");
 //        defineBlocks(writer);
         addToolbox(writer);
