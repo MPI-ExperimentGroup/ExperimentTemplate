@@ -144,7 +144,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         + "        \"contents\": [\n"
                         + "            {\n"
                         + "                \"kind\": \"block\",\n"
-                        + "                \"type\": \"frinex_experimentTyoe\"\n"
+                        + "                \"type\": \"frinex_experimentType\"\n"
                         + "            },\n"
                         + "            {\n"
                         + "                \"kind\": \"block\",\n"

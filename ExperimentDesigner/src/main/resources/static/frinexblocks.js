@@ -1146,7 +1146,7 @@ function getFeatureBlocks() {
         "contents": [
             {
                 "kind": "block",
-                "type": "frinex_experimentTyoe"
+                "type": "frinex_experimentType"
             },
             {
                 "kind": "block",
