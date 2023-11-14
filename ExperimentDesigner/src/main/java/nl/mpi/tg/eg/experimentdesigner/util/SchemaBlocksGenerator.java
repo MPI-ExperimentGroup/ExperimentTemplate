@@ -102,15 +102,17 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private int addAttributes(Writer writer, DocumentationElement currentElement, int argsCount) throws IOException {
         for (DocumentationAttribute attribute : currentElement.attributeTypes) {
-            writer.append(" \"message" + argsCount + "\": '" + attribute.name + " %1',\n"
-                    + " \"args" + argsCount + "\": [\n"
-                    + " {\n"
-                    + " \"type\": \"field_input\",\n"
-                    + " \"name\": \"" + attribute.name + "\",\n"
-                    + " \"check\": \"String\"\n"
-                    + " }\n"
-                    + " ],\n");
-            argsCount++;
+            if (!attribute.optional) {
+                writer.append(" \"message" + argsCount + "\": '" + attribute.name + " %1',\n"
+                        + " \"args" + argsCount + "\": [\n"
+                        + " {\n"
+                        + " \"type\": \"field_input\",\n"
+                        + " \"name\": \"" + attribute.name + "\",\n"
+                        + " \"check\": \"String\"\n"
+                        + " }\n"
+                        + " ],\n");
+                argsCount++;
+            }
         }
         return argsCount;
     }
