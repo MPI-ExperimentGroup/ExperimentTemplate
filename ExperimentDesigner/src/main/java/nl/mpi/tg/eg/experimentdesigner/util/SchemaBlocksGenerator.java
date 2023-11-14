@@ -157,7 +157,16 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             for (DocumentationElement childElement : currentElement.childElements) {
                 writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n"
                         + "        \"args" + argsCount + "\": [\n"
-                        + "            { \"type\": \"input_statement\", \"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.typeName + "\" }\n"
+                        + "            { ");
+                if (childElement.maxBounds > 1) {
+                    writer.append("\"type\": \"input_statement\", ");
+                } else if (childElement.minBounds > 0) {
+                    writer.append("\"type\": \"input_field\", ");
+                } else {
+                    writer.append("\"type\": \"input_value\", ");
+                }
+                writer.append(""
+                        + "\"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.typeName + "\" }\n"
                         + "        ],\n");
                 argsCount++;
             }
