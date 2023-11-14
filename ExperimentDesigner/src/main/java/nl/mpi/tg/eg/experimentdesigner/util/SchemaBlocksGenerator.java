@@ -154,19 +154,25 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             }
             for (String childElement : childTypeList) {
             }
-            for (DocumentationElement childElement : currentElement.childElements) {
-                writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n"
-                        + "        \"args" + argsCount + "\": [\n"
+            if (currentElement.childElements.length == 0) {
+            } else if (currentElement.childElements.length > 1) {
+//                writer.append("\"message" + argsCount + "\": \"" + childElement.elementName + " %1\",\n");
+                writer.append("        \"args" + argsCount + "\": [\n"
                         + "            { ");
-                if (childElement.maxBounds != 1) {
-                    writer.append("\"type\": \"input_statement\", ");
-                } else if (childElement.minBounds > 0) {
-                    writer.append("\"type\": \"input_field\", ");
-                } else {
-                    writer.append("\"type\": \"input_value\", ");
-                }
+//                if (childElement.maxBounds != 1) {
+                writer.append("\"type\": \"input_statement\", ");
+//                } else if (childElement.minBounds > 0) {
+//                } else {
+//                    writer.append("\"type\": \"input_field\", ");
+//                    writer.append("\"type\": \"input_value\", ");
+//                }
                 writer.append(""
-                        + "\"name\": \"" + childElement.elementName + "\", \"check\": \"frinex_" + childElement.typeName + "\" }\n"
+                        //                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                        + "\"check\": [");
+                for (DocumentationElement childElement : currentElement.childElements) {
+                    writer.append("\"frinex_" + childElement.typeName + "\",");
+                }
+                writer.append("]}\n"
                         + "        ],\n");
                 argsCount++;
             }
