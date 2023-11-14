@@ -175,9 +175,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         }
         if (currentElement.allowsCustomImplementation) {
         }
-        writer.append("\"output\": \"frinex_" + currentElement.typeName + "\",\n"
-                + "" + "        \"colour\": 160\n"
-                + "    },\n");
+        if (!"experimentType".equals(currentElement.typeName)) {
+            writer.append("        \"output\": \"frinex_" + currentElement.typeName + "\",\n");
+        }
+        writer.append("        \"colour\": 160\n},\n");
     }
 
     private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage,
