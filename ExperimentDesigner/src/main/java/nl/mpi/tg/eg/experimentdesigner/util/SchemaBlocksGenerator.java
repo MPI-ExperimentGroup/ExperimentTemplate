@@ -185,7 +185,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 List<String> inputFields = new ArrayList<>();
                 List<String> inputStatements = new ArrayList<>();
                 for (DocumentationElement childElement : currentElement.childElements) {
-                    if (childElement.maxBounds == 1 && childElement.childElements.length > 0) {
+                    if (childElement.maxBounds == 0) {
+                        inputStatements.add(childElement.typeName);
+                    } else if (childElement.maxBounds == 1 && childElement.childElements.length > 0) {
                         for (DocumentationElement grandchildElement : childElement.childElements) {
                             inputStatements.add(grandchildElement.typeName);
                         }
@@ -261,8 +263,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.allowsCustomImplementation) {
         }
         if (currentElement.maxBounds == 0) {
-            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
-            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+//            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+//            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //        } else if (!precedingBlocks.isEmpty()) {
 //            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");

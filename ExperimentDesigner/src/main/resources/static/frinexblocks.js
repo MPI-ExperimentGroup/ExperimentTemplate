@@ -24,7 +24,6 @@ function getFeatureBlocks() {
    "frinex_preventWindowCloseType",
    "frinex_deploymentType",
    "frinex_scssType",
-   "frinex_presenterType",
  ]
 }
  ],
@@ -40,6 +39,7 @@ function getFeatureBlocks() {
    "frinex_adminChartType",
    "frinex_dataTableType",
    "frinex_fieldType",
+   "frinex_presenterType",
    "frinex_stimulusType",
  ]
 }
@@ -110,7 +110,7 @@ function getFeatureBlocks() {
  ],
  "message4": " %1",
  "args4": [
-  { "type": "input_field",
+  { "type": "input_statement",
  "name": "DO",
  "check": [
    "frinex_recordMatchType",
@@ -134,8 +134,16 @@ function getFeatureBlocks() {
   { "type": "input_field",
  "name": "DO",
  "check": [
-   "frinex_adminUserType",
    "frinex_dataAgreementFieldType",
+ ]
+}
+ ],
+ "message2": " %1",
+ "args2": [
+  { "type": "input_statement",
+ "name": "DO",
+ "check": [
+   "frinex_adminUserType",
    "frinex_dataChannelType",
    "frinex_adminChartType",
    "frinex_dataTableType",
@@ -171,7 +179,7 @@ function getFeatureBlocks() {
  ],
  "message3": " %1",
  "args3": [
-  { "type": "input_field",
+  { "type": "input_statement",
  "name": "DO",
  "check": [
    "frinex_metadataType",
@@ -179,8 +187,6 @@ function getFeatureBlocks() {
  ]
 }
  ],
- "previousStatement": "frinex_adminChartType",
- "nextStatement": "frinex_adminChartType",
  "colour": 160
 },
 {
@@ -215,8 +221,6 @@ function getFeatureBlocks() {
  "check": "String"
  }
  ],
- "previousStatement": "frinex_dataTableType",
- "nextStatement": "frinex_dataTableType",
  "colour": 160
 },
 {
@@ -278,8 +282,6 @@ function getFeatureBlocks() {
   "args5": [
             { "type": "input_statement", "name": "DO", "check": []}
         ],
- "previousStatement": "frinex_fieldType",
- "nextStatement": "frinex_fieldType",
  "colour": 160
 },
 {
@@ -294,8 +296,6 @@ function getFeatureBlocks() {
   "args1": [
             { "type": "input_statement", "name": "DO", "check": []}
         ],
- "previousStatement": "frinex_presenterType",
- "nextStatement": "frinex_presenterType",
  "colour": 160
 },
 {
@@ -333,8 +333,6 @@ function getFeatureBlocks() {
   "args2": [
             { "type": "input_statement", "name": "DO", "check": []}
         ],
- "previousStatement": "frinex_stimulusType",
- "nextStatement": "frinex_stimulusType",
  "colour": 160
 },
 {
