@@ -121,7 +121,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //blockTypeLists
     }
 
-    private void addElement(Writer writer, DocumentationElement currentElement/*, List<String>precedingBlocks*/) throws IOException {
+    private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
         int argsCount = 0;
         blockTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("{\n"
@@ -262,7 +262,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         }
         if (currentElement.allowsCustomImplementation) {
         }
-        if (currentElement.maxBounds == 0) {
+        if (precedingBlocks != null) {
+            writer.append(" \"previousStatement\": [\n");
+            for (String blockType : precedingBlocks) {
+                writer.append("  \"frinex_" + blockType + "Type\",\n");
+            }
+            writer.append(" ],\n");
+//        } else if (currentElement.maxBounds == 0) {
 //            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //        } else if (!precedingBlocks.isEmpty()) {
@@ -324,33 +330,70 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                    currentToken.exampleResult);
 //        }
 
-        addElement(writer, rootElement);
+        addElement(writer, rootElement, null);
 //        writer.append("<!--deploymentType-->\n");
-        addElement(writer, rootElement.childElements[1]);
+        addElement(writer, rootElement.childElements[1], null);
 //        writer.append("<!--validationService-->\n");
-        addElement(writer, rootElement.childElements[2]);
+        addElement(writer, rootElement.childElements[2], null);
 //        writer.append("<!--validationType-->\n");
-        addElement(writer, rootElement.childElements[2].childElements[0]);
+        addElement(writer, rootElement.childElements[2].childElements[0], new String[]{"validation"});
 //        writer.append("<!--administrationType-->\n");
-        addElement(writer, rootElement.childElements[3]);
+        addElement(writer, rootElement.childElements[3], null);
 //        writer.append("<!--chartType-->\n");
-        addElement(writer, rootElement.childElements[3].childElements[3]);
+        addElement(writer, rootElement.childElements[3].childElements[3], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable"});
 //        writer.append("<!--tableType-->\n");
-        addElement(writer, rootElement.childElements[3].childElements[4]);
+        addElement(writer, rootElement.childElements[3].childElements[4], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable"});
 //        writer.append("<!--metadataType-->\n");
-        addElement(writer, rootElement.childElements[5]);
+        addElement(writer, rootElement.childElements[5], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable",
+            "field"});
         //        writer.append("<!--fieldType-->\n");
-        addElement(writer, rootElement.childElements[5].childElements[0]);
+        addElement(writer, rootElement.childElements[5].childElements[0], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable",
+            "field"});
 //        writer.append("<!--presenterType-->\n");
-        addElement(writer, rootElement.childElements[6]);
+        addElement(writer, rootElement.childElements[6], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable",
+            "field",
+            "presenter"});
 //        writer.append("<!--stimuliType-->\n");
-        addElement(writer, rootElement.childElements[7]);
-        addElement(writer, rootElement.childElements[7].childElements[0]);
+        addElement(writer, rootElement.childElements[7], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable",
+            "field",
+            "presenter",
+            "stimulus"});
+        addElement(writer, rootElement.childElements[7].childElements[0], null);
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, featureType);
         }
-        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0]);
-        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1]);
+        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0], null);
+        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], null);
         writer.append("]);\n");
 //        defineBlocks(writer);
         addToolbox(writer);
