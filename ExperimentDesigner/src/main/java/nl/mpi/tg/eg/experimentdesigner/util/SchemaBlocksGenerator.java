@@ -125,8 +125,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         int argsCount = 0;
         blockTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("{\n"
-                + "        \"type\": \"frinex_" + currentElement.typeName + "\",\n");
-        // + "        \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
+                + " \"type\": \"frinex_" + currentElement.typeName + "\",\n");
+        // + " \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
         // argsCount++;
         if (currentElement.documentationText != null) {
             // writer.append(currentElement.documentationText);
@@ -163,7 +163,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             if (currentElement.childElements.length == 0) {
             } else if (currentElement.childElements.length == 1 && currentElement.childElements[0].maxBounds == 0) {
                 writer.append("\"message" + argsCount + "\": \" %1\",\n");
-                writer.append("        \"args" + argsCount + "\": [\n"
+                writer.append("  \"args" + argsCount + "\": [\n"
                         + "            { ");
 //                if (childElement.maxBounds != 1) {
                 writer.append("\"type\": \"input_statement\", \"name\": \"DO\", ");
@@ -183,10 +183,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 argsCount++;
             } else if (currentElement.childElements.length > 1) {
                 writer.append("\"message" + argsCount + "\": \" %1\",\n");
-                writer.append("        \"args" + argsCount + "\": [\n"
-                        + "            { ");
+                writer.append(" \"args" + argsCount + "\": [\n"
+                        + "  { ");
 //                if (childElement.maxBounds != 1) {
-                writer.append("\"type\": \"input_statement\", \"name\": \"DO\", ");
+                writer.append("\"type\": \"input_statement\",\n \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
@@ -194,12 +194,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                }
                 writer.append(""
                         //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                        + "\"check\": [");
+                        + " \"check\": [\n");
                 for (DocumentationElement childElement : currentElement.childElements) {
-                    writer.append("\"frinex_" + childElement.typeName + "\",");
+                    writer.append("   \"frinex_" + childElement.typeName + "\",\n");
                 }
-                writer.append("]"
-                        + "}\n        ],\n");
+                writer.append(" ]\n"
+                        + "}\n ],\n");
                 argsCount++;
             }
         }
@@ -225,15 +225,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.allowsCustomImplementation) {
         }
         if (currentElement.maxBounds == 0) {
-            writer.append("        \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
-            writer.append("        \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //        } else if (!precedingBlocks.isEmpty()) {
-//            writer.append("        \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
-//            writer.append("        \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+//            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
+//            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
         } else if (!"experimentType".equals(currentElement.typeName)) {
-            writer.append("        \"output\": \"frinex_" + currentElement.typeName + "\",\n");
+            writer.append(" \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }
-        writer.append("        \"colour\": 160\n},\n");
+        writer.append(" \"colour\": 160\n},\n");
     }
 
     private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage,
