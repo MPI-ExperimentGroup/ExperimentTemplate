@@ -18,7 +18,7 @@ function getFeatureBlocks() {
  ],
  "message2": " %1",
  "args2": [
-  { "type": "input_field",
+  { "type": "input_value",
  "name": "DO",
  "check": [
    "frinex_preventWindowCloseType",
@@ -131,7 +131,7 @@ function getFeatureBlocks() {
  ],
  "message1": " %1",
  "args1": [
-  { "type": "input_field",
+  { "type": "input_value",
  "name": "DO",
  "check": [
    "frinex_dataAgreementFieldType",
@@ -345,7 +345,7 @@ function getFeatureBlocks() {
  ],
  "message1": " %1",
  "args1": [
-  { "type": "input_field",
+  { "type": "input_value",
  "name": "DO",
  "check": [
    "frinex_tagType",
