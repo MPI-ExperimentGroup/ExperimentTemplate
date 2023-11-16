@@ -16,19 +16,31 @@ function getFeatureBlocks() {
  "check": "String"
  }
  ],
-"message2": " %1",
+ "message2": " %1",
  "args2": [
-  { "type": "input_statement",
+  { "type": "input_field",
  "name": "DO",
  "check": [
    "frinex_preventWindowCloseType",
    "frinex_deploymentType",
-   "frinex_validationServiceType",
-   "frinex_administrationType",
    "frinex_scssType",
-   "frinex_metadataType",
    "frinex_presenterType",
-   "frinex_stimuliType",
+ ]
+}
+ ],
+ "message3": " %1",
+ "args3": [
+  { "type": "input_statement",
+ "name": "DO",
+ "check": [
+   "frinex_validationType",
+   "frinex_adminUserType",
+   "frinex_dataAgreementFieldType",
+   "frinex_dataChannelType",
+   "frinex_adminChartType",
+   "frinex_dataTableType",
+   "frinex_fieldType",
+   "frinex_stimulusType",
  ]
 }
  ],
@@ -96,9 +108,9 @@ function getFeatureBlocks() {
  "check": "String"
  }
  ],
-"message4": " %1",
+ "message4": " %1",
  "args4": [
-  { "type": "input_statement",
+  { "type": "input_field",
  "name": "DO",
  "check": [
    "frinex_recordMatchType",
@@ -117,9 +129,9 @@ function getFeatureBlocks() {
  "type": "input_dummy",
  }
  ],
-"message1": " %1",
+ "message1": " %1",
  "args1": [
-  { "type": "input_statement",
+  { "type": "input_field",
  "name": "DO",
  "check": [
    "frinex_adminUserType",
@@ -157,9 +169,9 @@ function getFeatureBlocks() {
  "check": "String"
  }
  ],
-"message3": " %1",
+ "message3": " %1",
  "args3": [
-  { "type": "input_statement",
+  { "type": "input_field",
  "name": "DO",
  "check": [
    "frinex_metadataType",
@@ -333,9 +345,9 @@ function getFeatureBlocks() {
  "type": "input_dummy",
  }
  ],
-"message1": " %1",
+ "message1": " %1",
  "args1": [
-  { "type": "input_statement",
+  { "type": "input_field",
  "name": "DO",
  "check": [
    "frinex_tagType",

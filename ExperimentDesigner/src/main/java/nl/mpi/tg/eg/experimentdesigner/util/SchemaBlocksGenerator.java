@@ -182,25 +182,61 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         + "}\n        ],\n");
                 argsCount++;
             } else if (currentElement.childElements.length > 1) {
-                writer.append("\"message" + argsCount + "\": \" %1\",\n");
-                writer.append(" \"args" + argsCount + "\": [\n"
-                        + "  { ");
+                List<String> inputFields = new ArrayList<>();
+                List<String> inputStatements = new ArrayList<>();
+                for (DocumentationElement childElement : currentElement.childElements) {
+                    if (childElement.maxBounds == 1 && childElement.childElements.length > 0) {
+                        for (DocumentationElement grandchildElement : childElement.childElements) {
+                            inputStatements.add(grandchildElement.typeName);
+                        }
+                    } else {
+                        inputFields.add(childElement.typeName);
+                    }
+                }
+                if (!inputFields.isEmpty()) {
+                    writer.append(" \"message" + argsCount + "\": \" %1\",\n");
+                    writer.append(" \"args" + argsCount + "\": [\n"
+                            + "  { ");
 //                if (childElement.maxBounds != 1) {
-                writer.append("\"type\": \"input_statement\",\n \"name\": \"DO\",\n");
+                    writer.append("\"type\": \"input_field\",\n \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
 //                    writer.append("\"type\": \"input_value\", ");
 //                }
-                writer.append(""
-                        //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                        + " \"check\": [\n");
-                for (DocumentationElement childElement : currentElement.childElements) {
-                    writer.append("   \"frinex_" + childElement.typeName + "\",\n");
+                    writer.append(""
+                            //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                            + " \"check\": [\n");
+                    for (String inputField : inputFields) {
+                        writer.append("   \"frinex_" + inputField + "\",\n");
+                    }
+                    writer.append(" ]\n"
+                            + "}\n ],\n");
+                    argsCount++;
                 }
-                writer.append(" ]\n"
-                        + "}\n ],\n");
-                argsCount++;
+
+                if (!inputStatements.isEmpty()) {
+                    writer.append(" \"message" + argsCount + "\": \" %1\",\n");
+                    writer.append(" \"args" + argsCount + "\": [\n"
+                            + "  { ");
+//                if (childElement.maxBounds != 1) {
+                    writer.append("\"type\": \"input_statement\",\n \"name\": \"DO\",\n");
+//                } else if (childElement.minBounds > 0) {
+//                } else {
+//                    writer.append("\"type\": \"input_field\", ");
+//                    writer.append("\"type\": \"input_value\", ");
+//                }
+                    writer.append(""
+                            //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                            + " \"check\": [\n");
+                    for (String inputStatement : inputStatements) {
+                        writer.append("   \"frinex_" + inputStatement + "\",\n");
+                    }
+                    writer.append(" ]\n"
+                            + "}\n ],\n");
+                    argsCount++;
+
+                }
             }
         }
         if (currentElement.hasStringContents) {
