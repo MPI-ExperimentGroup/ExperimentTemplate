@@ -121,6 +121,9 @@ function getFeatureBlocks() {
  "previousStatement": [
   "frinex_validationType",
  ],
+ "nextStatement": [
+  "frinex_validationType",
+ ],
  "colour": 160
 },
 {
@@ -197,6 +200,14 @@ function getFeatureBlocks() {
   "frinex_adminChartType",
   "frinex_dataTableType",
  ],
+ "nextStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+ ],
  "colour": 160
 },
 {
@@ -239,6 +250,14 @@ function getFeatureBlocks() {
   "frinex_adminChartType",
   "frinex_dataTableType",
  ],
+ "nextStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+ ],
  "colour": 160
 },
 {
@@ -254,6 +273,15 @@ function getFeatureBlocks() {
             { "type": "input_statement", "name": "DO", "check": ["frinex_translationType",]}
         ],
  "previousStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+  "frinex_fieldType",
+ ],
+ "nextStatement": [
   "frinex_validationType",
   "frinex_adminUserType",
   "frinex_dataAgreementFieldType",
@@ -317,6 +345,15 @@ function getFeatureBlocks() {
   "frinex_dataTableType",
   "frinex_fieldType",
  ],
+ "nextStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+  "frinex_fieldType",
+ ],
  "colour": 160
 },
 {
@@ -341,6 +378,16 @@ function getFeatureBlocks() {
   "frinex_fieldType",
   "frinex_presenterType",
  ],
+ "nextStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+  "frinex_fieldType",
+  "frinex_presenterType",
+ ],
  "colour": 160
 },
 {
@@ -356,6 +403,17 @@ function getFeatureBlocks() {
             { "type": "input_statement", "name": "DO", "check": ["frinex_translationType",]}
         ],
  "previousStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+  "frinex_fieldType",
+  "frinex_presenterType",
+  "frinex_stimulusType",
+ ],
+ "nextStatement": [
   "frinex_validationType",
   "frinex_adminUserType",
   "frinex_dataAgreementFieldType",

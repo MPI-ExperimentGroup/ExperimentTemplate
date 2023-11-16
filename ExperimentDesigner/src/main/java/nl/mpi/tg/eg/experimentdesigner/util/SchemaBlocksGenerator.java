@@ -268,6 +268,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 writer.append("  \"frinex_" + blockType + "Type\",\n");
             }
             writer.append(" ],\n");
+            writer.append(" \"nextStatement\": [\n");
+            for (String blockType : precedingBlocks) {
+                writer.append("  \"frinex_" + blockType + "Type\",\n");
+            }
+            writer.append(" ],\n");
 //        } else if (currentElement.maxBounds == 0) {
 //            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
