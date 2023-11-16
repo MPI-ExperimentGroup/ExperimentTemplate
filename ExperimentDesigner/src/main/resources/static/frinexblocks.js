@@ -446,7 +446,28 @@ function getFeatureBlocks() {
   "args2": [
             { "type": "input_statement", "name": "DO", "check": []}
         ],
- "output": "frinex_stimulusType",
+ "previousStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+  "frinex_fieldType",
+  "frinex_presenterType",
+  "frinex_stimulusType",
+ ],
+ "nextStatement": [
+  "frinex_validationType",
+  "frinex_adminUserType",
+  "frinex_dataAgreementFieldType",
+  "frinex_dataChannelType",
+  "frinex_adminChartType",
+  "frinex_dataTableType",
+  "frinex_fieldType",
+  "frinex_presenterType",
+  "frinex_stimulusType",
+ ],
  "colour": 160
 },
 {

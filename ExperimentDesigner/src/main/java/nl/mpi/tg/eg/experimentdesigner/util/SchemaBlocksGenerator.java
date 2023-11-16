@@ -393,7 +393,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             "field",
             "presenter",
             "stimulus"});
-        addElement(writer, rootElement.childElements[7].childElements[0], null);
+        addElement(writer, rootElement.childElements[7].childElements[0], new String[]{"validation",
+            "adminUser",
+            "dataAgreementField",
+            "dataChannel",
+            "adminChart",
+            "dataTable",
+            "field",
+            "presenter",
+            "stimulus"});
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, featureType);
         }
