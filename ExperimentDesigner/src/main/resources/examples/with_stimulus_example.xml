@@ -7,7 +7,7 @@
             obfuscateBrowserStorage="false"       
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
 > 
-    <deployment state="debug" />    
+    <deployment state="staging" />    
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
     <administration allowDataDeletion="true">
         <!--<dataAgreementField fieldName="dataAgreement" matchingRegex="true"/>  change this to have an attribute for each data type with its own regex "|disagree|agree"-->
