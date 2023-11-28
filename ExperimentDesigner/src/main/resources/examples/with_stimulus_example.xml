@@ -8706,7 +8706,7 @@
                                 </stimulusRatingButton>
                             </conditionTrue>
                             <conditionFalse>
-                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="(?s).{1,}" inputErrorMessage=" "/>
                                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
                             </conditionFalse>
                         </stimulusHasRatingOptions>
