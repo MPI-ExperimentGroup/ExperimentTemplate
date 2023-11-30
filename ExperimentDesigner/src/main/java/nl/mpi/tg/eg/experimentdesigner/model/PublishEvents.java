@@ -49,18 +49,29 @@ public class PublishEvents implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @XmlAttribute
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date publishDate;
+    @XmlAttribute
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date expiryDate;
+    @XmlAttribute
     private PublishState publishState;
+    @XmlAttribute
     private boolean isWebApp = true;
+    @XmlAttribute
     private boolean isDesktop;
+    @XmlAttribute
     private boolean isiOS;
+    @XmlAttribute
     private boolean isAndroid;
+    @XmlAttribute
     private boolean isUnity;
+    @XmlAttribute
     private String productionServer;
+    @XmlAttribute
     private String stagingServer;
+    @XmlAttribute
     private String frinexVersion;
     @ManyToOne
     private Experiment experiment;
@@ -93,57 +104,46 @@ public class PublishEvents implements Serializable {
 //    public String getExperimentDisplayName() {
 //        return experiment.getAppNameDisplay();
 //    }
-    @XmlAttribute
     public PublishState getState() {
         return publishState;
     }
 
-    @XmlAttribute
     public String getPublishDate() {
         return (publishDate != null) ? new SimpleDateFormat("yyyy-MM-dd").format(publishDate) : "";
     }
 
-    @XmlAttribute
     public String getExpiryDate() {
         return (expiryDate != null) ? new SimpleDateFormat("yyyy-MM-dd").format(expiryDate) : "";
     }
 
-    @XmlAttribute
     public boolean isIsWebApp() {
         return isWebApp;
     }
 
-    @XmlAttribute
     public boolean isIsiOS() {
         return isiOS;
     }
 
-    @XmlAttribute
     public boolean isIsAndroid() {
         return isAndroid;
     }
 
-    @XmlAttribute
     public boolean isIsUnity() {
         return isUnity;
     }
 
-    @XmlAttribute
     public boolean isIsDesktop() {
         return isDesktop;
     }
 
-    @XmlAttribute
     public String getStagingServer() {
         return stagingServer;
     }
 
-    @XmlAttribute
     public String getProductionServer() {
         return productionServer;
     }
 
-    @XmlAttribute
     public String getFrinexVersion() {
         return frinexVersion;
     }
