@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,28 +31,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class Metadata {
+public class Metadata implements Serializable {
 
     @Id
-    @XmlTransient
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @XmlAttribute
     private String postName;
-    @XmlAttribute
     private String registrationField;
-    @XmlAttribute
     private String controlledRegex;
-    @XmlAttribute
     private String controlledMessage;
-    @XmlAttribute
     private boolean preventServerDuplicates;
-    @XmlAttribute
     private String duplicatesControlledMessage;
 
     public Metadata() {
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }
@@ -69,6 +64,7 @@ public class Metadata {
         this.duplicatesControlledMessage = duplicatesControlledMessage;
     }
 
+    @XmlAttribute
     public String getPostName() {
         return postName;
     }
@@ -77,6 +73,7 @@ public class Metadata {
         this.postName = postName;
     }
 
+    @XmlAttribute
     public String getRegistrationField() {
         return registrationField;
     }
@@ -85,6 +82,7 @@ public class Metadata {
         this.registrationField = registrationField;
     }
 
+    @XmlAttribute
     public String getControlledRegex() {
         return controlledRegex;
     }
@@ -93,6 +91,7 @@ public class Metadata {
         this.controlledRegex = controlledRegex;
     }
 
+    @XmlAttribute
     public String getControlledMessage() {
         return controlledMessage;
     }
@@ -101,6 +100,7 @@ public class Metadata {
         this.controlledMessage = controlledMessage;
     }
 
+    @XmlAttribute
     public boolean isPreventServerDuplicates() {
         return preventServerDuplicates;
     }
@@ -109,6 +109,7 @@ public class Metadata {
         this.preventServerDuplicates = preventServerDuplicates;
     }
 
+    @XmlAttribute
     public String getDuplicatesControlledMessage() {
         return duplicatesControlledMessage;
     }
