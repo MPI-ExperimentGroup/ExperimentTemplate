@@ -4098,7 +4098,7 @@
                                 </stimulusRatingButton>
                             </conditionTrue>
                             <conditionFalse>
-                                <!--<plainText featureText="For this example please note that the regex validationRegex .{1,} on a multi line input will need to match on all lines, so the first empty line will not pass the validation test. In order for this example to allow both multiline input and tab+enter for next, the hotKey ENTER should be omitted and added validationRegex should be [\\\\s\\\\S]\\{1,\\} where th 1 indicates the minimum input."/>-->
+                                <!--<plainText featureText="For this example please note that the regex validationRegex .{1,} on a multiline input will need to match on all lines, so the first empty line will not pass the validation test. In order for this example to allow both multiline input and tab+enter for next, the hotKey ENTER should be omitted and added validationRegex should be [\\\\s\\\\S]\\{1,\\} where the 1 indicates the minimum input."/>-->
                                 <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex="[\\s\\S]{1,}" inputErrorMessage=" "/>
                                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" repeatIncorrect="false"/>
                             </conditionFalse>
@@ -5067,7 +5067,7 @@
         <loadStimulus eventTag="single_line_text_box_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <plainText featureText="The stimulus text box can be single line or multi line, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can trigger the next stimulus."/>
+                <plainText featureText="The stimulus text box can be single line or multiline, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can trigger the next stimulus."/>
                 <addPadding/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
@@ -5093,7 +5093,7 @@
     <presenter back="Menu" menuLabel="Single Line Text Box Without Action Example" type="stimulus" self="single_line_text_box_no_action_example" title="Single Line Text Box Without Action Example">
         <withStimuli eventTag="single_line_text_box_no_action_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <beforeStimulus>
-                <plainText featureText="The stimulus text box can be single line or multi line, with out without an action for that hotkey."/>
+                <plainText featureText="The stimulus text box can be single line or multiline, with out without an action for that hotkey."/>
             </beforeStimulus>
             <eachStimulus>
                 <addPadding/>

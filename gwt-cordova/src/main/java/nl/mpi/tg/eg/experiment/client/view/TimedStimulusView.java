@@ -664,6 +664,7 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public boolean isValid() {
                 if ((getValue().length() <= inputLengthLimit + 2) && (validationRegex == null || getValue().matches(validationRegex))) {
+                    // Note: to match multiline text the regex must use [\\s\\S]* or [\\s\\S]{1,}
                     textBox.setStylePrimaryName("metadataOK");
                     errorLabel.setVisible(false);
                     return true;
