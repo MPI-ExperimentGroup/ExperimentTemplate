@@ -40,20 +40,20 @@ public class Administration implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    //    @XmlElementWrapper(name = "dataManagement")
+    @XmlAttribute(name = "allowDataDeletion")
     private Boolean allowDataDeletion = false;
+    @XmlElement(name = "dataChannel")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<DataChannel> dataChannels = new ArrayList<>();
 
     public Administration() {
     }
 
-    @XmlElement(name = "dataChannel")
     public List<DataChannel> getDataChannels() {
         return dataChannels;
     }
 
-//    @XmlElementWrapper(name = "dataManagement")
-    @XmlAttribute(name = "allowDataDeletion")
     public Boolean getAllowDataDeletion() {
         // returning null to prevent the attibutes being added unless it is true
         return (this.allowDataDeletion) ? this.allowDataDeletion : null;
