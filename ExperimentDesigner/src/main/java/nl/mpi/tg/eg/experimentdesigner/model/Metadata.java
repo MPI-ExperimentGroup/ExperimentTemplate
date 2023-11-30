@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Metadata {
 
     @Id
+    @XmlTransient
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @XmlAttribute
@@ -51,7 +52,6 @@ public class Metadata {
     public Metadata() {
     }
 
-    @XmlTransient
     public long getId() {
         return id;
     }
