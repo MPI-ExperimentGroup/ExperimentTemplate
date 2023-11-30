@@ -35,7 +35,9 @@ public class ValidationService implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @XmlAttribute(name = "stagingUrl")
     private String stagingUrl;
+    @XmlAttribute(name = "productionUrl")
     private String productionUrl;
 
     public ValidationService() {
@@ -46,7 +48,6 @@ public class ValidationService implements Serializable {
         return id;
     }
 
-    @XmlAttribute(name = "stagingUrl")
     public String getRegistrationUrlStaging() {
         return stagingUrl;
     }
@@ -55,7 +56,6 @@ public class ValidationService implements Serializable {
         this.stagingUrl = stagingUrl;
     }
 
-    @XmlAttribute(name = "productionUrl")
     public String getRegistrationUrlProduction() {
         return productionUrl;
     }
