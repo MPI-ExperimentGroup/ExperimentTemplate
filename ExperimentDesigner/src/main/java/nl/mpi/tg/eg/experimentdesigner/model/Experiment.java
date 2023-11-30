@@ -47,36 +47,63 @@ public class Experiment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @XmlTransient
     private long id;
+    @XmlAttribute
     private String appNameDisplay;
+    @XmlAttribute
     private boolean showMenuBar = true;
     @Column(unique = true)
+    @XmlAttribute
     private String appNameInternal;
+    @XmlAttribute
     private String resourceNetworkPath; // path to MPI_Scratch that contains any resource files needed for the experiment
 //    private String nextPresenterTag;
+    @XmlAttribute
     private String primaryColour0;
+    @XmlAttribute
     private String primaryColour1;
+    @XmlAttribute
     private String primaryColour2;
+    @XmlAttribute
     private String primaryColour3;
+    @XmlAttribute
     private String primaryColour4;
+    @XmlAttribute
     private String complementColour0;
+    @XmlAttribute
     private String complementColour1;
+    @XmlAttribute
     private String complementColour2;
+    @XmlAttribute
     private String complementColour3;
+    @XmlAttribute
     private String complementColour4;
+    @XmlAttribute
     private String backgroundColour;
+    @XmlAttribute
     private int textFontSize = 17;
+    @XmlAttribute
     private boolean isScalable = true;
+    @XmlAttribute
     private boolean isRotatable = true;
+    @XmlAttribute
     private boolean preserveLastState = true;
     private boolean preventWindowClose = true;
+    @XmlAttribute
     private String defaultLocale;
+    @XmlAttribute
     private String availableLocales;
+    @XmlAttribute
     private float defaultScale = 1;
+    @XmlElement(name = "scss")
     private String scss;
+    @XmlElement(name = "validationService")
     private ValidationService validationService;
+    @XmlElement(name = "administration")
     private Administration administration = new Administration();
 
+    @XmlElement(name = "deployment")
     @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
 
@@ -98,7 +125,6 @@ public class Experiment implements Serializable {
     public Experiment() {
     }
 
-    @XmlTransient
     public long getId() {
         return id;
     }
@@ -107,7 +133,6 @@ public class Experiment implements Serializable {
         this.id = id;
     }
 
-    @XmlAttribute
     public String getAppNameDisplay() {
         return appNameDisplay;
     }
@@ -116,7 +141,6 @@ public class Experiment implements Serializable {
         this.appNameDisplay = appNameDisplay;
     }
 
-    @XmlAttribute
     public String getAppNameInternal() {
         return appNameInternal;
     }
@@ -125,7 +149,6 @@ public class Experiment implements Serializable {
         this.appNameInternal = appNameInternal.toLowerCase();
     }
 
-    @XmlAttribute
     public boolean isShowMenuBar() {
         return showMenuBar;
     }
@@ -134,7 +157,6 @@ public class Experiment implements Serializable {
         this.showMenuBar = showMenuBar;
     }
 
-    @XmlAttribute
     public int getTextFontSize() {
         return textFontSize;
     }
@@ -143,12 +165,10 @@ public class Experiment implements Serializable {
         this.textFontSize = textFontSize;
     }
 
-    @XmlElement(name = "deployment")
     public List<PublishEvents> getPublishEvents() {
         return publishEvents;
     }
 
-    @XmlElement(name = "administration")
     public Administration getAdministration() {
         return administration;
     }
@@ -157,7 +177,6 @@ public class Experiment implements Serializable {
         this.administration = administration;
     }
 
-    @XmlElement(name = "scss")
     public String getScss() {
         return scss;
     }
@@ -166,7 +185,6 @@ public class Experiment implements Serializable {
         this.scss = scss;
     }
 
-    @XmlElement(name = "validationService")
     public ValidationService getValidationService() {
         return validationService;
     }
@@ -175,7 +193,6 @@ public class Experiment implements Serializable {
         this.validationService = validationService;
     }
 
-    @XmlAttribute
     public String getDefaultLocale() {
         return (defaultLocale == null || defaultLocale.isEmpty()) ? "en" : defaultLocale;
     }
@@ -184,7 +201,6 @@ public class Experiment implements Serializable {
         this.defaultLocale = defaultLocale;
     }
 
-    @XmlAttribute
     public String getAvailableLocales() {
         return (availableLocales == null || availableLocales.isEmpty()) ? "en" : availableLocales;
     }
@@ -193,7 +209,6 @@ public class Experiment implements Serializable {
         this.availableLocales = availableLocales;
     }
 
-    @XmlAttribute
     public boolean isIsScalable() {
         return isScalable;
     }
@@ -202,7 +217,6 @@ public class Experiment implements Serializable {
         this.isScalable = isScalable;
     }
 
-    @XmlAttribute
     public boolean isRotatable() {
         return isRotatable;
     }
@@ -211,7 +225,6 @@ public class Experiment implements Serializable {
         this.isRotatable = isRotatable;
     }
 
-    @XmlAttribute
     public boolean isPreserveLastState() {
         return preserveLastState;
     }
@@ -228,7 +241,6 @@ public class Experiment implements Serializable {
         this.preventWindowClose = preventWindowClose;
     }
 
-    @XmlAttribute
     public float getDefaultScale() {
         return defaultScale;
     }
@@ -237,7 +249,6 @@ public class Experiment implements Serializable {
         this.defaultScale = defaultScale;
     }
 
-    @XmlAttribute
     public String getResourceNetworkPath() {
         return resourceNetworkPath;
     }
@@ -250,7 +261,6 @@ public class Experiment implements Serializable {
         this.primaryColour1 = primaryColour1;
     }
 
-    @XmlAttribute
     public String getPrimaryColour1() {
         return primaryColour1;
     }
@@ -259,7 +269,6 @@ public class Experiment implements Serializable {
         this.primaryColour2 = primaryColour2;
     }
 
-    @XmlAttribute
     public String getPrimaryColour2() {
         return primaryColour2;
     }
@@ -268,12 +277,10 @@ public class Experiment implements Serializable {
         this.primaryColour3 = primaryColour3;
     }
 
-    @XmlAttribute
     public String getPrimaryColour3() {
         return primaryColour3;
     }
 
-    @XmlAttribute
     public String getComplementColour1() {
         return complementColour1;
     }
@@ -282,7 +289,6 @@ public class Experiment implements Serializable {
         this.complementColour1 = complementColour1;
     }
 
-    @XmlAttribute
     public String getComplementColour2() {
         return complementColour2;
     }
@@ -291,7 +297,6 @@ public class Experiment implements Serializable {
         this.complementColour2 = complementColour2;
     }
 
-    @XmlAttribute
     public String getComplementColour3() {
         return complementColour3;
     }
@@ -300,7 +305,6 @@ public class Experiment implements Serializable {
         this.complementColour3 = complementColour3;
     }
 
-    @XmlAttribute
     public String getPrimaryColour0() {
         return primaryColour0;
     }
@@ -309,7 +313,6 @@ public class Experiment implements Serializable {
         this.primaryColour0 = primaryColour0;
     }
 
-    @XmlAttribute
     public String getPrimaryColour4() {
         return primaryColour4;
     }
@@ -318,7 +321,6 @@ public class Experiment implements Serializable {
         this.primaryColour4 = primaryColour4;
     }
 
-    @XmlAttribute
     public String getComplementColour0() {
         return complementColour0;
     }
@@ -327,7 +329,6 @@ public class Experiment implements Serializable {
         this.complementColour0 = complementColour0;
     }
 
-    @XmlAttribute
     public String getComplementColour4() {
         return complementColour4;
     }
@@ -336,7 +337,6 @@ public class Experiment implements Serializable {
         this.complementColour4 = complementColour4;
     }
 
-    @XmlAttribute
     public String getBackgroundColour() {
         return backgroundColour;
     }
