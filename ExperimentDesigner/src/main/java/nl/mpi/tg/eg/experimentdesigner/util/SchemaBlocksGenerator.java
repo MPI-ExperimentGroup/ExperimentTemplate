@@ -186,7 +186,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 List<List<String>> inputStatementList = new ArrayList<>();
                 List<String> inputStatementItem = null;
                 for (DocumentationElement childElement : currentElement.childElements) {
-                    if (inputStatementItem == null || childElement.typeName == "field" || childElement.typeName == "presenter" || childElement.typeName == "stimulu") {
+                    if (inputStatementItem == null || childElement.typeName == "fieldType" || childElement.typeName == "presenterType" || childElement.typeName == "stimulusType") {
                         inputStatementItem = new ArrayList<>();
                         inputStatementList.add(inputStatementItem);
                     }
