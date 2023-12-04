@@ -183,13 +183,18 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 argsCount++;
             } else if (currentElement.childElements.length > 1) {
                 List<String> inputFields = new ArrayList<>();
-                List<String> inputStatements = new ArrayList<>();
+                List<List<String>> inputStatementList = new ArrayList<>();
+                List<String> inputStatementItem = null;
                 for (DocumentationElement childElement : currentElement.childElements) {
+                    if (inputStatementItem == null || childElement.typeName == "field" || childElement.typeName == "presenter" || childElement.typeName == "stimulu") {
+                        inputStatementItem = new ArrayList<>();
+                        inputStatementList.add(inputStatementItem);
+                    }
                     if (childElement.maxBounds == 0) {
-                        inputStatements.add(childElement.typeName);
+                        inputStatementItem.add(childElement.typeName);
                     } else if (childElement.maxBounds == 1 && childElement.childElements.length > 0) {
                         for (DocumentationElement grandchildElement : childElement.childElements) {
-                            inputStatements.add(grandchildElement.typeName);
+                            inputStatementItem.add(grandchildElement.typeName);
                         }
                     } else {
                         inputFields.add(childElement.typeName);
@@ -216,28 +221,30 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                             + "}\n ],\n");
                     argsCount++;
                 }
-
-                if (!inputStatements.isEmpty()) {
-                    writer.append(" \"message" + argsCount + "\": \" %1\",\n");
-                    writer.append(" \"args" + argsCount + "\": [\n"
-                            + "  { ");
+                for (List<String> inputStatements : inputStatementList) {
+                    if (!inputStatements.isEmpty()) {
+                        writer.append(" \"message" + argsCount + "\": \" %1\",\n");
+                        writer.append(" \"args" + argsCount + "\": [\n"
+                                + "  { ");
 //                if (childElement.maxBounds != 1) {
-                    writer.append("\"type\": \"input_statement\",\n \"name\": \"DO\",\n");
+
+                        writer.append("\"type\": \"input_statement\",\n \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
 //                    writer.append("\"type\": \"input_value\", ");
 //                }
-                    writer.append(""
-                            //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                            + " \"check\": [\n");
-                    for (String inputStatement : inputStatements) {
-                        writer.append("   \"frinex_" + inputStatement + "\",\n");
-                    }
-                    writer.append(" ]\n"
-                            + "}\n ],\n");
-                    argsCount++;
+                        writer.append(""
+                                //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
+                                + " \"check\": [\n");
+                        for (String inputStatement : inputStatements) {
+                            writer.append("   \"frinex_" + inputStatement + "\",\n");
+                        }
+                        writer.append(" ]\n"
+                                + "}\n ],\n");
+                        argsCount++;
 
+                    }
                 }
             }
         }
