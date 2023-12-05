@@ -242,7 +242,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                             writer.append("            \"frinex_" + inputStatement + "\",\n");
                         }
                         writer.append("          ]\n"
-                                + "        }\n ],\n");
+                                + "        }\n      ],\n");
                         argsCount++;
 
                     }
@@ -273,12 +273,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (precedingBlocks != null) {
 //            writer.append("      \"previousStatement\": [\n");
 //            for (String blockType : precedingBlocks) {
-//                writer.append("  \"frinex_" + blockType + "Type\",\n");
+//                writer.append("        \"frinex_" + blockType + "Type\",\n");
 //            }
 //            writer.append(" ],\n");
             writer.append("      \"nextStatement\": [\n");
             for (String blockType : precedingBlocks) {
-                writer.append("  \"frinex_" + blockType + "Type\",\n");
+                writer.append("        \"frinex_" + blockType + "Type\",\n");
             }
             writer.append("      ],\n");
 //        } else if (currentElement.maxBounds == 0) {
@@ -290,7 +290,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         } else if (!"experimentType".equals(currentElement.typeName)) {
             writer.append("      \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }
-        writer.append("      \"colour\": 160\n},\n");
+        writer.append("      \"colour\": 160\n    },\n");
     }
 
     private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage,
