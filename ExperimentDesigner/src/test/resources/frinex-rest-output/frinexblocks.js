@@ -321,7 +321,11 @@ function getFeatureBlocks() {
       ],
       "message5": " %1",
       "args5": [
-        { "type": "input_statement", "name": "DO", "check": [] }
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": []
+        }
       ],
       "nextStatement": [
         "frinex_validationType",
