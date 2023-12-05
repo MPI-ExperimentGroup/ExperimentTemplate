@@ -130,6 +130,9 @@ function getFeatureBlocks() {
           ]
         }
       ],
+      "previousStatement": [
+        "frinex_validationType",
+      ],
       "nextStatement": [
         "frinex_validationType",
       ],
@@ -204,6 +207,14 @@ function getFeatureBlocks() {
           ]
         }
       ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -246,6 +257,14 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -274,6 +293,15 @@ function getFeatureBlocks() {
               ]
           }
         ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+        "frinex_fieldType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -334,6 +362,15 @@ function getFeatureBlocks() {
               ]
           }
         ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+        "frinex_fieldType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -362,6 +399,16 @@ function getFeatureBlocks() {
               ]
           }
         ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+        "frinex_fieldType",
+        "frinex_presenterType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -392,6 +439,17 @@ function getFeatureBlocks() {
               ]
           }
         ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+        "frinex_fieldType",
+        "frinex_presenterType",
+        "frinex_stimulusType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -430,6 +488,17 @@ function getFeatureBlocks() {
               ]
           }
         ],
+      "previousStatement": [
+        "frinex_validationType",
+        "frinex_adminUserType",
+        "frinex_dataAgreementFieldType",
+        "frinex_dataChannelType",
+        "frinex_adminChartType",
+        "frinex_dataTableType",
+        "frinex_fieldType",
+        "frinex_presenterType",
+        "frinex_stimulusType",
+      ],
       "nextStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
