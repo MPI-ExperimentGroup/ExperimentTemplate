@@ -40,12 +40,21 @@ function getFeatureBlocks() {
             "frinex_dataChannelType",
             "frinex_adminChartType",
             "frinex_dataTableType",
+          ]
+        }
+      ],
+      "message4": "field %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
             "frinex_fieldType",
           ]
         }
       ],
-      "message4": " %1",
-      "args4": [
+      "message5": "presenter %1",
+      "args5": [
         {
           "type": "input_statement",
           "name": "DO",
@@ -54,8 +63,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message5": " %1",
-      "args5": [
+      "message6": "stimulus %1",
+      "args6": [
         {
           "type": "input_statement",
           "name": "DO",
@@ -205,13 +214,22 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": " %1",
+      "message3": "metadata %1",
       "args3": [
         {
           "type": "input_statement",
           "name": "DO",
           "check": [
             "frinex_metadataType",
+          ]
+        }
+      ],
+      "message4": " %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
             "frinex_stimulusResponseType",
           ]
         }

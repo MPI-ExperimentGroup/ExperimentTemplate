@@ -125,7 +125,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
         int argsCount = 0;
         // TODO: pass the types list eg "presenterType" as a parameter to this menthod and separate them distinct input_values
-        final List<String> separatedObjects = Arrays.asList(new String[]{"fieldType", "presenterType", "stimulusType"});
+        final List<String> separatedObjects = Arrays.asList(new String[]{"metadataType", "fieldType", "presenterType", "stimulusType"});
         blockTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("    {\n"
                 + "      \"type\": \"frinex_" + currentElement.typeName + "\",\n");
@@ -229,7 +229,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 }
                 for (List<String> inputStatements : inputStatementList) {
                     if (!inputStatements.isEmpty()) {
-                        writer.append("      \"message" + argsCount + "\": \" %1\",\n");
+                        writer.append("      \"message" + argsCount + "\": \""
+                                + ((separatedObjects.contains(inputStatements.get(0))) ? inputStatements.get(0).replaceAll("Type$", "") : "")
+                                + " %1\",\n");
                         writer.append("      \"args" + argsCount + "\": [\n"
                                 + "        {\n");
 //                if (childElement.maxBounds != 1) {
