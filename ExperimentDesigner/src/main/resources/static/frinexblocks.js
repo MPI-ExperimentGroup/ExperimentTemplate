@@ -51,6 +51,15 @@ function getFeatureBlocks() {
           "name": "DO",
           "check": [
             "frinex_presenterType",
+          ]
+        }
+      ],
+      "message5": " %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
             "frinex_stimulusType",
           ]
         }
@@ -276,44 +285,6 @@ function getFeatureBlocks() {
       "colour": 160
     },
     {
-      "type": "frinex_metadataType",
-      "message0": 'metadata %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": " %1",
-      "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_translationType",
-              ]
-          }
-        ],
-      "previousStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
-      ],
-      "nextStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
-      ],
-      "colour": 160
-    },
-    {
       "type": "frinex_fieldType",
       "message0": 'field %1',
       "args0": [
@@ -363,21 +334,9 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
         "frinex_fieldType",
       ],
       "nextStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
         "frinex_fieldType",
       ],
       "colour": 160
@@ -400,66 +359,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
         "frinex_presenterType",
       ],
       "nextStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
         "frinex_presenterType",
-      ],
-      "colour": 160
-    },
-    {
-      "type": "frinex_stimuliType",
-      "message0": 'stimuli %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": " %1",
-      "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_translationType",
-              ]
-          }
-        ],
-      "previousStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
-        "frinex_presenterType",
-        "frinex_stimulusType",
-      ],
-      "nextStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
-        "frinex_presenterType",
-        "frinex_stimulusType",
       ],
       "colour": 160
     },
@@ -489,25 +392,9 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
-        "frinex_presenterType",
         "frinex_stimulusType",
       ],
       "nextStatement": [
-        "frinex_validationType",
-        "frinex_adminUserType",
-        "frinex_dataAgreementFieldType",
-        "frinex_dataChannelType",
-        "frinex_adminChartType",
-        "frinex_dataTableType",
-        "frinex_fieldType",
-        "frinex_presenterType",
         "frinex_stimulusType",
       ],
       "colour": 160
@@ -579,19 +466,11 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_metadataType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_fieldType"
       },
       {
         "kind": "block",
         "type": "frinex_presenterType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_stimuliType"
       },
       {
         "kind": "block",

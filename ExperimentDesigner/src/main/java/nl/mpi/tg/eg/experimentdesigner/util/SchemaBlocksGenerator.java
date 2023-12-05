@@ -23,6 +23,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -123,6 +124,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
         int argsCount = 0;
+        // TODO: pass the types list eg "presenterType" as a parameter to this menthod and separate them distinct input_values
+        final List<String> separatedObjects = Arrays.asList(new String[]{"fieldType", "presenterType", "stimulusType"});
         blockTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("    {\n"
                 + "      \"type\": \"frinex_" + currentElement.typeName + "\",\n");
@@ -186,8 +189,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 List<List<String>> inputStatementList = new ArrayList<>();
                 List<String> inputStatementItem = null;
                 for (DocumentationElement childElement : currentElement.childElements) {
-                    // TODO: pass the types list eg "presenterType" as a parameter to this menthod and separate them distinct input_values
-                    if (inputStatementItem == null || "fieldType".equals(childElement.typeName) || "presenterType".equals(childElement.typeName) || "stimulusType".equals(childElement.typeName)) {
+                    if (inputStatementItem == null || separatedObjects.contains(childElement.typeName)) {
                         inputStatementItem = new ArrayList<>();
                         inputStatementList.add(inputStatementItem);
                     }
@@ -199,6 +201,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         }
                     } else {
                         inputFields.add(childElement.typeName);
+                    }
+                    if (separatedObjects.contains(childElement.typeName)) {
+                        inputStatementItem = null;
                     }
                 }
                 if (!inputFields.isEmpty()) {
@@ -367,49 +372,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             "adminChart",
             "dataTable"});
 //        writer.append("<!--metadataType-->\n");
-        addElement(writer, rootElement.childElements[5], new String[]{"validation",
-            "adminUser",
-            "dataAgreementField",
-            "dataChannel",
-            "adminChart",
-            "dataTable",
-            "field"});
+//        addElement(writer, rootElement.childElements[5], new String[]{"field"});
         //        writer.append("<!--fieldType-->\n");
-        addElement(writer, rootElement.childElements[5].childElements[0], new String[]{"validation",
-            "adminUser",
-            "dataAgreementField",
-            "dataChannel",
-            "adminChart",
-            "dataTable",
-            "field"});
+        addElement(writer, rootElement.childElements[5].childElements[0], new String[]{"field"});
 //        writer.append("<!--presenterType-->\n");
-        addElement(writer, rootElement.childElements[6], new String[]{"validation",
-            "adminUser",
-            "dataAgreementField",
-            "dataChannel",
-            "adminChart",
-            "dataTable",
-            "field",
-            "presenter"});
+        addElement(writer, rootElement.childElements[6], new String[]{"presenter"});
 //        writer.append("<!--stimuliType-->\n");
-        addElement(writer, rootElement.childElements[7], new String[]{"validation",
-            "adminUser",
-            "dataAgreementField",
-            "dataChannel",
-            "adminChart",
-            "dataTable",
-            "field",
-            "presenter",
-            "stimulus"});
-        addElement(writer, rootElement.childElements[7].childElements[0], new String[]{"validation",
-            "adminUser",
-            "dataAgreementField",
-            "dataChannel",
-            "adminChart",
-            "dataTable",
-            "field",
-            "presenter",
-            "stimulus"});
+//        addElement(writer, rootElement.childElements[7], new String[]{"stimulus"});
+        addElement(writer, rootElement.childElements[7].childElements[0], new String[]{"stimulus"});
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, featureType);
         }
