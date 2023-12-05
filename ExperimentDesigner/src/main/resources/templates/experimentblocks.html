@@ -30,11 +30,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script src="https://unpkg.com/blockly/blockly.min.js"></script>
             <script src="frinexblocks.js"></script>
             <div class="presenter">
-                <div id="editorDiv" style="height: 80vh; width: 80vw;"></div>
+                <span id="editorDiv" style="height: 80vh; width: 80vw;"></span>
+                <textarea id="previewArea" cols="30" rows="10"></textarea>
             </div>
             <script>
                 const featureTypes = getFeatureBlocks();
-                const workspace = Blockly.inject('editorDiv', {toolbox: featureTypes});
+                const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
+
+                const supportedEvents = new Set([
+                    Blockly.Events.BLOCK_CHANGE,
+                    Blockly.Events.BLOCK_CREATE,
+                    Blockly.Events.BLOCK_DELETE,
+                    Blockly.Events.BLOCK_MOVE,
+                ]);
+
+                function updatePreview(event) {
+                    if (workspace.isDragging()) return;
+                    if (!supportedEvents.has(event.type)) return;
+
+                    const code = javascriptGenerator.workspaceToCode(workspace);
+                    document.getElementById('previewArea').value = code;
+                }
+                workspace.addChangeListener(updatePreview);
             </script>
         </div>
     </body>
