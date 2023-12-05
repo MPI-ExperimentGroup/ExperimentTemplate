@@ -103,14 +103,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private int addAttributes(Writer writer, DocumentationElement currentElement, int argsCount) throws IOException {
         for (DocumentationAttribute attribute : currentElement.attributeTypes) {
             if (!attribute.optional) {
-                writer.append(" \"message" + argsCount + "\": '" + attribute.name + " %1',\n"
-                        + " \"args" + argsCount + "\": [\n"
-                        + " {\n"
-                        + " \"type\": \"field_input\",\n"
-                        + " \"name\": \"" + attribute.name + "\",\n"
-                        + " \"check\": \"String\"\n"
-                        + " }\n"
-                        + " ],\n");
+                writer.append("      \"message" + argsCount + "\": '" + attribute.name + " %1',\n"
+                        + "      \"args" + argsCount + "\": [\n"
+                        + "        {\n"
+                        + "          \"type\": \"field_input\",\n"
+                        + "          \"name\": \"" + attribute.name + "\",\n"
+                        + "          \"check\": \"String\"\n"
+                        + "        }\n"
+                        + "      ],\n");
                 argsCount++;
             }
         }
@@ -124,8 +124,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
         int argsCount = 0;
         blockTypeLists.add("frinex_" + currentElement.typeName);
-        writer.append("{\n"
-                + " \"type\": \"frinex_" + currentElement.typeName + "\",\n");
+        writer.append("    {\n"
+                + "      \"type\": \"frinex_" + currentElement.typeName + "\",\n");
         // + " \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
         // argsCount++;
         if (currentElement.documentationText != null) {
@@ -136,12 +136,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 : Collections.EMPTY_LIST;
 //        if (currentElement.childElements.length + (currentElement.isRecursive ? 1 : 0) == 0 && childTypeList.isEmpty()
 //                && !currentElement.hasStringContents) {
-        writer.append(" \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
-                + " \"args" + argsCount + "\": [\n"
-                + " {\n"
-                + " \"type\": \"input_dummy\",\n"
-                + " }\n"
-                + " ],\n");
+        writer.append("      \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
+                + "      \"args" + argsCount + "\": [\n"
+                + "        {\n"
+                + "          \"type\": \"input_dummy\",\n"
+                + "        }\n"
+                + "      ],\n");
         argsCount++;
         argsCount = addAttributes(writer, currentElement, argsCount);
 //        }
@@ -162,11 +162,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //            
             if (currentElement.childElements.length == 0) {
             } else if (currentElement.childElements.length == 1 && currentElement.childElements[0].maxBounds == 0) {
-                writer.append("\"message" + argsCount + "\": \" %1\",\n");
-                writer.append("  \"args" + argsCount + "\": [\n"
-                        + "            { ");
+                writer.append("      \"message" + argsCount + "\": \" %1\",\n");
+                writer.append("      \"args" + argsCount + "\": [\n"
+                        + "            {\n");
 //                if (childElement.maxBounds != 1) {
-                writer.append("\"type\": \"input_statement\", \"name\": \"DO\", ");
+                writer.append("          \"type\": \"input_statement\", \"name\": \"DO\", ");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
@@ -174,12 +174,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                }
                 writer.append(""
                         //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                        + "\"check\": [");
+                        + "          \"check\": [");
                 for (DocumentationElement childElement : currentElement.childElements[0].childElements) {
-                    writer.append("\"frinex_" + childElement.typeName + "\",");
+                    writer.append("            \"frinex_" + childElement.typeName + "\",");
                 }
-                writer.append("]"
-                        + "}\n        ],\n");
+                writer.append("          ]"
+                        + "          }\n        ],\n");
                 argsCount++;
             } else if (currentElement.childElements.length > 1) {
                 List<String> inputFields = new ArrayList<>();
@@ -202,11 +202,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     }
                 }
                 if (!inputFields.isEmpty()) {
-                    writer.append(" \"message" + argsCount + "\": \" %1\",\n");
-                    writer.append(" \"args" + argsCount + "\": [\n"
-                            + "  { ");
+                    writer.append("      \"message" + argsCount + "\": \" %1\",\n");
+                    writer.append("      \"args" + argsCount + "\": [\n"
+                            + "        {\n");
 //                if (childElement.maxBounds != 1) {
-                    writer.append("\"type\": \"input_value\",\n \"name\": \"DO\",\n");
+                    writer.append("          \"type\": \"input_value\",\n          \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
@@ -214,22 +214,22 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                }
                     writer.append(""
                             //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                            + " \"check\": [\n");
+                            + "          \"check\": [\n");
                     for (String inputField : inputFields) {
-                        writer.append("   \"frinex_" + inputField + "\",\n");
+                        writer.append("            \"frinex_" + inputField + "\",\n");
                     }
-                    writer.append(" ]\n"
-                            + "}\n ],\n");
+                    writer.append("          ]\n"
+                            + "        }\n      ],\n");
                     argsCount++;
                 }
                 for (List<String> inputStatements : inputStatementList) {
                     if (!inputStatements.isEmpty()) {
-                        writer.append(" \"message" + argsCount + "\": \" %1\",\n");
-                        writer.append(" \"args" + argsCount + "\": [\n"
-                                + "  { ");
+                        writer.append("      \"message" + argsCount + "\": \" %1\",\n");
+                        writer.append("      \"args" + argsCount + "\": [\n"
+                                + "        {\n");
 //                if (childElement.maxBounds != 1) {
 
-                        writer.append("\"type\": \"input_statement\",\n \"name\": \"DO\",\n");
+                        writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
@@ -237,12 +237,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                }
                         writer.append(""
                                 //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                                + " \"check\": [\n");
+                                + "          \"check\": [\n");
                         for (String inputStatement : inputStatements) {
-                            writer.append("   \"frinex_" + inputStatement + "\",\n");
+                            writer.append("            \"frinex_" + inputStatement + "\",\n");
                         }
-                        writer.append(" ]\n"
-                                + "}\n ],\n");
+                        writer.append("          ]\n"
+                                + "        }\n ],\n");
                         argsCount++;
 
                     }
@@ -250,8 +250,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             }
         }
         if (currentElement.hasStringContents) {
-            writer.append(" \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
-                    + " \"args" + argsCount + "\": [\n"
+            writer.append("      \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
+                    + "      \"args" + argsCount + "\": [\n"
                     + " {\n"
                     + " \"type\": \"field_input\",\n"
                     + " \"name\": \"" + currentElement.elementName + "\",\n"
@@ -271,16 +271,16 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (currentElement.allowsCustomImplementation) {
         }
         if (precedingBlocks != null) {
-//            writer.append(" \"previousStatement\": [\n");
+//            writer.append("      \"previousStatement\": [\n");
 //            for (String blockType : precedingBlocks) {
 //                writer.append("  \"frinex_" + blockType + "Type\",\n");
 //            }
 //            writer.append(" ],\n");
-            writer.append(" \"nextStatement\": [\n");
+            writer.append("      \"nextStatement\": [\n");
             for (String blockType : precedingBlocks) {
                 writer.append("  \"frinex_" + blockType + "Type\",\n");
             }
-            writer.append(" ],\n");
+            writer.append("      ],\n");
 //        } else if (currentElement.maxBounds == 0) {
 //            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
@@ -288,9 +288,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //            writer.append(" \"previousStatement\": \"frinex_" + currentElement.typeName + "\",\n");
 //            writer.append(" \"nextStatement\": \"frinex_" + currentElement.typeName + "\",\n");
         } else if (!"experimentType".equals(currentElement.typeName)) {
-            writer.append(" \"output\": \"frinex_" + currentElement.typeName + "\",\n");
+            writer.append("      \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }
-        writer.append(" \"colour\": 160\n},\n");
+        writer.append("      \"colour\": 160\n},\n");
     }
 
     private void addTokenText(Writer writer, String tokenName, String usageDescription, String exampleUsage,
@@ -303,7 +303,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
-        writer.append("    Blockly.defineBlocksWithJsonArray([\n");
+        writer.append("  Blockly.defineBlocksWithJsonArray([\n");
 //        addElement(writer, rootElement);
 //        FeatureType[] sortedFeatureTypes = FeatureType.values();
 //        Arrays.sort(sortedFeatureTypes, new Comparator<FeatureType>() {
