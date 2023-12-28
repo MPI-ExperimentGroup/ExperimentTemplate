@@ -34,7 +34,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
  */
 public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
-    List<String> blockTypeLists = new ArrayList<>();
+    List<String> adminTypeLists = new ArrayList<>();
+    List<String> featureTypeLists = new ArrayList<>();
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
@@ -83,29 +84,43 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 ////        }
 //    }
     private void addJavaScriptGenerator(Writer writer) throws IOException {
-        for (String blockType : blockTypeLists) {
-            writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
-                    //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
-                    + "    return '" + blockType + "(\\'block_id_' + block.id + '\\');\\n';\n"
-                    + "  };\n");
+        for (List<String> blockTypeLists : new List[]{adminTypeLists, featureTypeLists}) {
+            for (String blockType : blockTypeLists) {
+                writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
+                        //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
+                        + "    return '" + blockType + "(\\'block_id_' + block.id + '\\');\\n';\n"
+                        + "  };\n");
+            }
         }
     }
 
     private void addToolbox(Writer writer) throws IOException {
         writer.append("  return {\n"
-                + "    \"kind\": \"flyoutToolbox\",\n"
+                + "    \"kind\": \"categoryToolbox\",\n"
                 + "    \"contents\": [\n");
-//        writer.append("            {\n"
-//                + "                \"kind\": \"block\",\n"
-//                + "                \"type\": \"frinex_" + rootElement.typeName + "\"\n"
-//                + "            },\n");
-        for (String blockType : blockTypeLists) {
+        writer.append("            {\n"
+                + "                \"kind\":\"category\",\n"
+                + "            \"name\":\"Experiment\",\n"
+                + "            \"categorystyle\":\"logic_category\","
+                + "            \"contents\":[");
+        for (String blockType : adminTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"block\",\n"
                     + "        \"type\": \"" + blockType + "\"\n"
                     + "      },\n");
         }
-        writer.append("    ]\n"
+        writer.append("            ]}, {\n"
+                + "                \"kind\":\"category\",\n"
+                + "            \"name\":\"Feature\",\n"
+                + "            \"categorystyle\":\"loop_category\","
+                + "            \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            writer.append("      {\n"
+                    + "        \"kind\": \"block\",\n"
+                    + "        \"type\": \"" + blockType + "\"\n"
+                    + "      },\n");
+        }
+        writer.append("    ]}]\n"
                 + "  };\n");
 //        }
     }
@@ -128,14 +143,22 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void addElement(Writer writer, final FeatureType featureType) throws IOException {
-//blockTypeLists
+        writer.append("    {\n"
+                + "      \"type\": \"frinex_" + featureType.name() + "Type\",\n"
+                + "      \"message0\": '" + featureType.name() + " %1',\n"
+                + "      \"args0\": [\n"
+                + "        {\n"
+                + "          \"type\": \"input_dummy\",\n"
+                + "        }\n"
+                + "      ]},\n");
+        featureTypeLists.add("frinex_" + featureType.name() + "Type");
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
         int argsCount = 0;
         // TODO: pass the types list eg "presenterType" as a parameter to this menthod and separate them distinct input_values
         final List<String> separatedObjects = Arrays.asList(new String[]{"metadataType", "fieldType", "presenterType", "stimulusType"});
-        blockTypeLists.add("frinex_" + currentElement.typeName);
+        adminTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("    {\n"
                 + "      \"type\": \"frinex_" + currentElement.typeName + "\",\n");
         // + " \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
