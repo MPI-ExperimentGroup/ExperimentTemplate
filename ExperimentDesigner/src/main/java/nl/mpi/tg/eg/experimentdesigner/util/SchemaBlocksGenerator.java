@@ -398,8 +398,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], null);
         writer.append("  ]);\n");
 //        defineBlocks(writer);
-        addToolbox(writer);
         addJavaScriptGenerator(writer);
+        addToolbox(writer);
         getEnd(writer);
     }
 

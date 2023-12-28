@@ -451,6 +451,42 @@ function getFeatureBlocks() {
       "colour": 160
     },
   ]);
+    javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block) {
+    return 'frinex_experimentType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_deploymentType'] = function(block) {
+    return 'frinex_deploymentType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_validationServiceType'] = function(block) {
+    return 'frinex_validationServiceType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_validationType'] = function(block) {
+    return 'frinex_validationType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_administrationType'] = function(block) {
+    return 'frinex_administrationType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_adminChartType'] = function(block) {
+    return 'frinex_adminChartType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_dataTableType'] = function(block) {
+    return 'frinex_dataTableType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function(block) {
+    return 'frinex_fieldType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function(block) {
+    return 'frinex_presenterType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function(block) {
+    return 'frinex_stimulusType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function(block) {
+    return 'frinex_randomGroupingType(\'block_id_' + block.id + '\');\n';
+  };
+    javascript.javascriptGenerator.forBlock['frinex_stimuliSelectType'] = function(block) {
+    return 'frinex_stimuliSelectType(\'block_id_' + block.id + '\');\n';
+  };
   return {
     "kind": "flyoutToolbox",
     "contents": [
@@ -504,40 +540,4 @@ function getFeatureBlocks() {
       },
     ]
   };
-    javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function (block) {
-    return 'frinex_experimentType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_deploymentType'] = function (block) {
-    return 'frinex_deploymentType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_validationServiceType'] = function (block) {
-    return 'frinex_validationServiceType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_validationType'] = function (block) {
-    return 'frinex_validationType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_administrationType'] = function (block) {
-    return 'frinex_administrationType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_adminChartType'] = function (block) {
-    return 'frinex_adminChartType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_dataTableType'] = function (block) {
-    return 'frinex_dataTableType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function (block) {
-    return 'frinex_fieldType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function (block) {
-    return 'frinex_presenterType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function (block) {
-    return 'frinex_stimulusType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function (block) {
-    return 'frinex_randomGroupingType(\'block_id_' + block.id + '\');\n';
-    };
-    javascript.javascriptGenerator.forBlock['frinex_stimuliSelectType'] = function (block) {
-    return 'frinex_stimuliSelectType(\'block_id_' + block.id + '\');\n';
-    };
 }
