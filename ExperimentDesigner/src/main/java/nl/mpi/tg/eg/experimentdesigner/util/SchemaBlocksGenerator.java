@@ -84,10 +84,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //    }
     private void addJavaScriptGenerator(Writer writer) throws IOException {
         for (String blockType : blockTypeLists) {
-            writer.append("javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
+            writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
                     //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
                     + "    return '" + blockType + "(\\'block_id_' + block.id + '\\');\\n';\n"
-                    + "  };");
+                    + "  };\n");
         }
     }
 
