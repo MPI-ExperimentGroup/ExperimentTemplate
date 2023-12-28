@@ -82,6 +82,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //        }
 ////        }
 //    }
+    private void addJavaScriptGenerator(Writer writer) throws IOException {
+        for (String blockType : blockTypeLists) {
+            writer.append("javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
+                    //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
+                    + "    return '" + blockType + "(\\'block_id_' + block.id + '\\');\\n';\n"
+                    + "  };");
+        }
+    }
+
     private void addToolbox(Writer writer) throws IOException {
         writer.append("  return {\n"
                 + "    \"kind\": \"flyoutToolbox\",\n"
@@ -390,6 +399,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         writer.append("  ]);\n");
 //        defineBlocks(writer);
         addToolbox(writer);
+        addJavaScriptGenerator(writer);
         getEnd(writer);
     }
 
